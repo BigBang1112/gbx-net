@@ -5,5 +5,7 @@ CPlugScriptWithSettings 0x09083000
   int SettingCount (local, write: "n.Settings?.Length ?? 0")
   int SettingsVersion
   if SettingsVersion >= 1
-    throw
+    byte SettingTypeVersion = 4
+    if SettingCount > 0
+      throw // typed settings are not supported yet
   CScriptSetting[SettingCount] Settings

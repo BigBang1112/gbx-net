@@ -8,9 +8,7 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> : NodeBuilder<global::G
     private protected CSceneObjectLinkBuilderBase() { }
     private protected CSceneObjectLinkBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    public TSelf WithMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilAssignment(), value, SupportedGames1);
-    public TSelf WithMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
+    public TSelf WithMobil(global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilAssignment(), value, SupportedGames1);
     public TSelf WithObject(global::GBX.NET.Engines.Scene.CSceneObject? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectAssignment(), value, SupportedGames1);
     public TSelf WithObjectReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectReferenceAssignment(), value, SupportedGames1);
     public TSelf WithRelativeLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetRelativeLocationAssignment(), value, SupportedGames1);
@@ -58,7 +56,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TM10 : CSceneObjectLinkBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TM10 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTM10? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
@@ -67,7 +64,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TMPU : CSceneObjectLinkBuilderBase<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TMPU WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
@@ -76,7 +72,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TMSX : CSceneObjectLinkBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TMSX WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
@@ -85,7 +80,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TMNESWC : CSceneObjectLinkBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TMNESWC WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
@@ -94,7 +88,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class VSK5 : CSceneObjectLinkBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public VSK5 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
@@ -103,7 +96,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TMF : CSceneObjectLinkBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TMF WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMF? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
@@ -112,7 +104,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class MP3 : CSceneObjectLinkBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public MP3 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectMP3? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
@@ -121,7 +112,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class TMT : CSceneObjectLinkBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public TMT WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMT? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
@@ -130,7 +120,6 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
     public partial class MP4 : CSceneObjectLinkBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
-        public MP4 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? value) => base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectMP4? value) => base.WithObject(value is null ? (global::GBX.NET.Engines.Scene.CSceneObject?)null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build() => BuildNode(CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);

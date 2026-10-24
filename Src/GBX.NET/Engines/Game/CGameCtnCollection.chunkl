@@ -114,6 +114,20 @@ CGameCtnCollection 0x03033000
   float WaterBottom = -1000f
   float CameraMinHeight = -1000f
 
+0x014 // legacy lighting
+  int BlocksShadow
+  bool ShadowCastBack
+  float ShadowSoftSizeInWorld = 1f
+  bool HasVertexLighting
+
+0x015 // legacy lighting and vertex colors
+  int BlocksShadow
+  bool ShadowCastBack
+  float ShadowSoftSizeInWorld = 1f
+  bool HasVertexLighting
+  float ColorVertexMin
+  float ColorVertexMax = 1f
+
 0x016 [TMSX]
   int BlocksShadow
   bool ShadowCastBack

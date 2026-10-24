@@ -178,11 +178,11 @@ public abstract partial class CScene : CMwNod, IClass
 
     public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CSceneMobil>? mobilRef;
-        public CSceneMobil? Mobil
+        private CSceneMobil.MobilPtr? mobil;
+        public CSceneMobil.MobilPtr? Mobil
         {
-            get => mobilRef?.Resolve();
-            set => NodeRef.SetEmbedded(ref mobilRef, value);
+            get => this.mobil;
+            set => this.mobil = value;
         }
 
         private NodeRef<CMwNod>? u01Ref;
@@ -204,12 +204,10 @@ public abstract partial class CScene : CMwNod, IClass
         {
             private readonly OldSceneMobil owner;
             internal NodeRefView(OldSceneMobil owner) => this.owner = owner;
-            public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
             yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
             yield break;
         }
@@ -224,14 +222,14 @@ public abstract partial class CScene : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((OldSceneMobil)clone).mobilRef = context.Clone(this.mobilRef)!;
+            ((OldSceneMobil)clone).mobil = context.Clone(this.mobil)!;
             ((OldSceneMobil)clone).u01Ref = context.Clone(this.u01Ref)!;
             ((OldSceneMobil)clone).location = context.Clone(this.location)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(ref this.mobilRef);
+            rw.ReadableWritable<CSceneMobil.MobilPtr>(ref this.mobil, version: v);
             rw.NodeRef(ref this.u01Ref);
             rw.Iso4(ref this.location);
         }

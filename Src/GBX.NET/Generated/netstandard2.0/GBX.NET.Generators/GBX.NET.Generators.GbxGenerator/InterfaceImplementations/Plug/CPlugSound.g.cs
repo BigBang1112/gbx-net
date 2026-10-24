@@ -45,7 +45,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         get => PitchFromDistance;
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFormSpeedKmh
     {
         get => VolumeFormSpeedKmh;
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -70,7 +70,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         get => PitchFromDistance;
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFormSpeedKmh
     {
         get => VolumeFormSpeedKmh;
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -95,7 +95,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         get => PitchFromDistance;
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFormSpeedKmh
     {
         get => VolumeFormSpeedKmh;
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

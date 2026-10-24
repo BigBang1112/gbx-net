@@ -12,22 +12,13 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneMobil>? mobilRef;
+    private CSceneMobil.MobilPtr? mobil;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A014001>]
-    public CSceneMobil? Mobil
+    public CSceneMobil.MobilPtr? Mobil
     {
-        get => mobilRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref mobilRef, value);
-    }
-
-    private string? name;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A014001>]
-    public string? Name
-    {
-        get => this.name;
-        set => this.name = value;
+        get => this.mobil;
+        set => this.mobil = value;
     }
 
     private NodeRef<CSceneObject>? objectRef;
@@ -64,13 +55,11 @@ public partial class CSceneObjectLink : CMwNod, IClass
     {
         private readonly CSceneObjectLink owner;
         internal NodeRefView(CSceneObjectLink owner) => this.owner = owner;
-        public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
         public NodeRef<CSceneObject> Object => NodeRef.GetOrCreate(ref owner.objectRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
         yield return new("Object", NodeRef.GetOrCreate(ref objectRef));
         yield break;
     }
@@ -78,8 +67,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneObjectLink)clone).mobilRef = context.Clone(this.mobilRef)!;
-        ((CSceneObjectLink)clone).name = context.Clone(this.name)!;
+        ((CSceneObjectLink)clone).mobil = context.Clone(this.mobil)!;
         ((CSceneObjectLink)clone).objectRef = context.Clone(this.objectRef)!;
         ((CSceneObjectLink)clone).relativeLocation = context.Clone(this.relativeLocation)!;
         ((CSceneObjectLink)clone).mobilTreeId = context.Clone(this.mobilTreeId)!;
@@ -186,18 +174,12 @@ public partial class CSceneObjectLink : CMwNod, IClass
         public override uint Id => 0x0A014001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public bool U01;
-        public int U02;
-        public int U03;
-        public int U05;
         public bool U06;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0A014001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0A014001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0A014001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0A014001)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0A014001)clone).U06 = context.Clone(this.U06)!;
         }
 
@@ -207,16 +189,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
             if (U01)
             {
-                rw.NodeRef(ref n.mobilRef);
-                rw.Int32(ref U02);
-
-                if (U02== 2)
-                {
-                    rw.Int32(ref U03);
-                }
-
-                rw.Id(ref n.name);
-                rw.Int32(ref U05);
+                rw.ReadableWritable<CSceneMobil.MobilPtr>(ref n.mobil);
             }
 
             if (!U01)

@@ -84,6 +84,32 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
         rw.Array<Vec2>(ref values, count);
     }
 
+    /// <summary>Reads or writes a legacy curve node stored directly, without a reference index. An empty curve writes an empty node.</summary>
+    public void ReadWriteDirect<T>(GbxReaderWriter rw) where T : CFuncKeysReal, new()
+    {
+        if (rw.Reader is not null)
+        {
+            curveRef.Node = rw.Reader.ReadNode<T>();
+            ReadLegacyCurve();
+            return;
+        }
+
+        if (rw.Writer is null)
+        {
+            return;
+        }
+
+        if (curveRef.Descriptor is not null)
+            throw new NotSupportedException("An external legacy curve cannot be written as a direct node.");
+
+        if (curveRef.Kind == NodeRefKind.None && values is { Length: > 0 })
+        {
+            curveRef.Node = typeof(T) == typeof(CPlugCurveSimpleNod) ? CreateSimpleNode() : CreateFunctionNode();
+        }
+
+        rw.Writer.WriteNode(curveRef.Resolve() ?? new T());
+    }
+
     private CFuncKeysReal CreateFunctionNode()
     {
         var node = new CFuncKeysReal

@@ -4,16 +4,11 @@
 namespace GBX.NET.Interfaces.Scene;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface ISceneObjectLinkMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneObjectLink where T0 : class where T1 : class
+public interface ISceneObjectLinkMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneObjectLink where T0 : class
 {
-    new T0? Mobil
+    new T0? Object
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil);
-        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new T1? Object
-    {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object);
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object);
         set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
@@ -24,12 +19,7 @@ public interface ISceneObjectLinkMembers2 : global::GBX.NET.Interfaces.Scene.ISc
 }
 public partial interface ISceneObjectLink : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObjectLink>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMobil? Mobil
-    {
-        get => (global::GBX.NET.Interfaces.Scene.ISceneMobil?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil);
-        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    string? Name { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneMobil.MobilPtr? Mobil { get; set; }
     global::GBX.NET.Interfaces.Scene.ISceneObject? Object
     {
         get => (global::GBX.NET.Interfaces.Scene.ISceneObject?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object);
@@ -38,39 +28,39 @@ public partial interface ISceneObjectLink : IClassVersion<global::GBX.NET.Engine
     Iso4 RelativeLocation { get; set; }
 }
 
-public partial interface ISceneObjectLinkTM10 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10>
+public partial interface ISceneObjectLinkTM10 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTM10>
 {
 }
 
-public partial interface ISceneObjectLinkTMPU : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU>
+public partial interface ISceneObjectLinkTMPU : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU>
 {
 }
 
-public partial interface ISceneObjectLinkTMSX : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkTMSX : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkTMNESWC : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkTMNESWC : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkVSK5 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkVSK5 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkTMF : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkTMF : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkMP3 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkMP3 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkTMT : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkTMT : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 
-public partial interface ISceneObjectLinkMP4 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+public partial interface ISceneObjectLinkMP4 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }
 

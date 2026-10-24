@@ -1,7 +1,14 @@
 CPlugFontBitmap 0x0904E000
 - inherits: CPlugFont
 
-0x002
+0x001 [TM10] // legacy bitmap and letters
+  CPlugBitmap LegacyBitmap
+  int FontHeight
+  int FontAscent
+  OldLetter[] OldLetters
+  bool
+
+0x002 [TMPU]
   CPlugBitmap LegacyBitmap
   bool
   int FontHeight

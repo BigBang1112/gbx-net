@@ -11,9 +11,18 @@ public interface IGameResourcesMembers1 : global::GBX.NET.Interfaces.Game.IGameR
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameResourcesMembers2 : global::GBX.NET.Interfaces.Game.IGameResources
 {
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ArticleIconStyle { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ArticleStyle { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockSoundFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTColorGradingImageFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DirectoryIconFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBg { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFont? InterfaceFont { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderActiveAvailable { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderActiveUnavailable { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderInactiveAvailable { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderInactiveUnavailable { get; set; }
 }
 public partial interface IGameResources : IClassVersion<global::GBX.NET.Engines.Game.CGameResources>
 {
@@ -97,12 +106,10 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     string? HymnsFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ImageTurboRoulette { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InGameDialogsFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBg { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBlockEditorFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorInventoryModelFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorSimpleFid { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? InterfaceFont { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfacePuzzleFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ManiaPlanetMenuMusic { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ManialinkBrowserOverlayFid { get; set; }

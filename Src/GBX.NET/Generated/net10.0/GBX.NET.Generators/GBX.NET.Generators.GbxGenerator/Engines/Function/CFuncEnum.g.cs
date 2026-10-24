@@ -13,7 +13,8 @@ public partial class CFuncEnum : CFunc, IClass
     internal override uint GetId() => Id;
 
     private int wantedCount;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    [AppliedWithChunk<Chunk0500E001>]
     [AppliedWithChunk<Chunk0500E005>]
     public int WantedCount
     {
@@ -22,7 +23,8 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private NodeRefList<CPlug>? values;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    [AppliedWithChunk<Chunk0500E001>]
     [AppliedWithChunk<Chunk0500E005>]
     public NodeRefList<CPlug>? Values
     {
@@ -31,12 +33,22 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private string? name;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
+    [AppliedWithChunk<Chunk0500E002>]
     [AppliedWithChunk<Chunk0500E005>]
     public string? Name
     {
         get => this.name;
         set => this.name = value;
+    }
+
+    private int subIconCount;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0500E003>]
+    public int SubIconCount
+    {
+        get => this.subIconCount;
+        set => this.subIconCount = value;
     }
 
     private Int2 atlas;
@@ -118,6 +130,7 @@ public partial class CFuncEnum : CFunc, IClass
         ((CFuncEnum)clone).wantedCount = context.Clone(this.wantedCount)!;
         ((CFuncEnum)clone).values = context.Clone(this.values)!;
         ((CFuncEnum)clone).name = context.Clone(this.name)!;
+        ((CFuncEnum)clone).subIconCount = context.Clone(this.subIconCount)!;
         ((CFuncEnum)clone).atlas = context.Clone(this.atlas)!;
         ((CFuncEnum)clone).valuesAtlasYx = context.CloneArray(this.valuesAtlasYx)!;
         ((CFuncEnum)clone).minTexCoord = context.Clone(this.minTexCoord)!;
@@ -128,6 +141,70 @@ public partial class CFuncEnum : CFunc, IClass
 
     public CFuncEnum()
     {
+    }
+
+    /// <summary>
+    /// CFuncEnum 0x001 chunk (values)
+    /// </summary>
+    [Chunk(0x0500E001, "values")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
+    public partial class Chunk0500E001 : Chunk<CFuncEnum>
+    {
+        public override uint Id => 0x0500E001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.wantedCount);
+            n.values = rw.ListNodeRef<CPlug>(n.values);
+        }
+    }
+
+    /// <summary>
+    /// CFuncEnum 0x002 chunk (Name)
+    /// </summary>
+    [Chunk(0x0500E002, "Name")]
+    [ChunkGameVersion(GameVersion.TMSX)]
+    public partial class Chunk0500E002 : Chunk<CFuncEnum>
+    {
+        public override uint Id => 0x0500E002;
+        public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.name);
+        }
+    }
+
+    /// <summary>
+    /// CFuncEnum 0x003 chunk (SubIconCount)
+    /// </summary>
+    [Chunk(0x0500E003, "SubIconCount")]
+    [ChunkGameVersion(GameVersion.TMSX)]
+    public partial class Chunk0500E003 : Chunk<CFuncEnum>
+    {
+        public override uint Id => 0x0500E003;
+        public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.subIconCount);
+        }
     }
 
     /// <summary>
@@ -201,6 +278,9 @@ public partial class CFuncEnum : CFunc, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0500E001 => new Chunk0500E001(),
+        0x0500E002 => new Chunk0500E002(),
+        0x0500E003 => new Chunk0500E003(),
         0x0500E005 => new Chunk0500E005(),
         0x0500E006 => new Chunk0500E006(),
         0x0500E007 => new Chunk0500E007(),

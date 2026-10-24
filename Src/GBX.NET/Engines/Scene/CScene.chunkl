@@ -17,6 +17,6 @@ CScene 0x0A001000
   OldSceneMobil[] OldMobils
 
 archive OldSceneMobil
-  CSceneMobil Mobil
+  CSceneMobil.MobilPtr Mobil
   CMwNod
   iso4 Location

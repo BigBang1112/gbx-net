@@ -12,11 +12,45 @@ public interface IControlStyleMembers1 : global::GBX.NET.Interfaces.Control.ICon
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlStyleMembers2 : global::GBX.NET.Interfaces.Control.IControlStyle
 {
-    global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons { get; set; }
+    Vec4 Color { get; set; }
+    Vec4 EditableColor { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFont? EditableFont { get; set; }
+    Vec4 GrayedColor { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFont? GrayedFont { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlStyleMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    T0? FocusAreaShader
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShader);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? FocusAreaShaderReadOnly
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderReadOnly);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? FocusAreaShaderSelected
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderSelected);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float SliderHeight { get; set; }
+    T0? SliderShaderBar
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderShaderBar);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderShaderBar = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? SliderShaderSlider
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderShaderSlider);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderShaderSlider = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float SliderWidth { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers4<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
 {
     new T0? FocusGainedScript
     {
@@ -30,7 +64,7 @@ public interface IControlStyleMembers3<T0> : global::GBX.NET.Interfaces.Control.
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers4<T0, T1> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class
+public interface IControlStyleMembers5<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class where T2 : class where T3 : class
 {
     new T0? DefaultShader
     {
@@ -42,6 +76,11 @@ public interface IControlStyleMembers4<T0, T1> : global::GBX.NET.Interfaces.Cont
         get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EntrySound);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    new T2? EnumForceIcons
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EnumForceIcons);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new T0? EnumListShader
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EnumListShader);
@@ -52,53 +91,66 @@ public interface IControlStyleMembers4<T0, T1> : global::GBX.NET.Interfaces.Cont
         get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EnumSound);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    new T3? FocusAreaSolid
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new T1? FocusSound
     {
         get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusSound);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    new T1? SliderSound
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers5<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+public interface IControlStyleMembers6<T0, T1> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class
 {
     T0? ActionSound
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).ActionSound);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    T1? ButtonDefaultIcons
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).ButtonDefaultIcons);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ButtonIconHeight { get; set; }
     float ButtonIconWidth { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers6 : global::GBX.NET.Interfaces.Control.IControlStyle
+public interface IControlStyleMembers7 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers8 : global::GBX.NET.Interfaces.Control.IControlStyle
 {
     string? ButtonDefaultIconId { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers7<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+public interface IControlStyleMembers9<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
 {
-    new T0? EnumForceIcons
+    Vec4 TimeLineRulerColorBig { get; set; }
+    Vec4 TimeLineRulerColorSmall { get; set; }
+    T0? TimeLineShaderBackground
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EnumForceIcons);
-        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).TimeLineShaderBackground);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).TimeLineShaderBackground = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers8<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
-{
-    T0? ButtonDefaultIcons
-    {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).ButtonDefaultIcons);
-        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers9 : global::GBX.NET.Interfaces.Control.IControlStyle
+public interface IControlStyleMembers10 : global::GBX.NET.Interfaces.Control.IControlStyle
 {
     Vec4 QuadLinesColor { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers10 : global::GBX.NET.Interfaces.Control.IControlStyle
+public interface IControlStyleMembers11 : global::GBX.NET.Interfaces.Control.IControlStyle
 {
     Vec4 QuadGradientColor0 { get; set; }
     Vec4 QuadGradientColor1 { get; set; }
@@ -110,21 +162,30 @@ public interface IControlStyleMembers10 : global::GBX.NET.Interfaces.Control.ICo
     Vec2 Quad_UvTopLeft { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers11<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+public interface IControlStyleMembers12<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    T0? FocusAreaShaderFocused
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderFocused);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaShaderFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers13<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
 {
     T0? EffectMaster
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).EffectMaster);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    float FocusAreaZOffset { get; set; }
     Vec4 LineGradientColor0 { get; set; }
     Vec4 LineGradientColor1 { get; set; }
     float Skew { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlStyleMembers12<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class where T2 : class where T3 : class
+public interface IControlStyleMembers14<T0, T1> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class
 {
-    bool FocusAreaEnable { get; set; }
     T0? FocusAreaMaterial
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaMaterial);
@@ -145,36 +206,20 @@ public interface IControlStyleMembers12<T0, T1, T2, T3> : global::GBX.NET.Interf
         get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaMaterialSelected);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    T1? FocusAreaSolid
-    {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid);
-        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
     float SliderBarHeight { get; set; }
-    T2? SliderBarIcons
+    T1? SliderBarIcons
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderBarIcons);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderBarIcons);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     float SliderBarWidth { get; set; }
     float SliderCursorHeight { get; set; }
-    T2? SliderCursorIcons
+    T1? SliderCursorIcons
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderCursorIcons);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderCursorIcons);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     float SliderCursorWidth { get; set; }
-    T3? SliderSound
-    {
-        get => (T3?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound);
-        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }
 public partial interface IControlStyle : IClassVersion<global::GBX.NET.Engines.Control.CControlStyle>
 {
@@ -208,6 +253,16 @@ public partial interface IControlStyle : IClassVersion<global::GBX.NET.Engines.C
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     bool FitTextSize { get; set; }
+    bool FocusAreaEnable { get; set; }
+    float FocusAreaMinHeight { get; set; }
+    float FocusAreaMinWidth { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid? FocusAreaSolid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float FocusAreaXMargin { get; set; }
+    float FocusAreaYMargin { get; set; }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain? FocusGainedScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusGainedScript);
@@ -223,41 +278,49 @@ public partial interface IControlStyle : IClassVersion<global::GBX.NET.Engines.C
         get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).FocusSound);
         set => ((global::GBX.NET.Engines.Control.CControlStyle)this).FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? SliderSound
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound);
+        set => ((global::GBX.NET.Engines.Control.CControlStyle)this).SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
-public partial interface IControlStyleTM10 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>
+public partial interface IControlStyleTM10 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10, global::GBX.NET.Interfaces.Function.IFuncEnumTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10, global::GBX.NET.Interfaces.Function.IFuncEnumTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7
 {
 }
 
-public partial interface IControlStyleTMPU : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10
+public partial interface IControlStyleTMPU : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU, global::GBX.NET.Interfaces.Function.IFuncEnumTMPU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU, global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers9<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11
+{
+    string? CharAttributes { get; set; }
+    string? EditableCharAttributes { get; set; }
+    string? GrayedCharAttributes { get; set; }
+}
+
+public partial interface IControlStyleTMSX : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Function.IFuncEnumTMSX, global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX>
 {
 }
 
-public partial interface IControlStyleTMSX : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX>
+public partial interface IControlStyleTMNESWC : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC>
 {
 }
 
-public partial interface IControlStyleTMNESWC : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC>
+public partial interface IControlStyleVSK5 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>
 {
 }
 
-public partial interface IControlStyleVSK5 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>
+public partial interface IControlStyleTMF : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers8, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>
 {
 }
 
-public partial interface IControlStyleTMF : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>
+public partial interface IControlStyleMP3 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>
 {
 }
 
-public partial interface IControlStyleMP3 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>
+public partial interface IControlStyleTMT : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>
 {
 }
 
-public partial interface IControlStyleTMT : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
-{
-}
-
-public partial interface IControlStyleMP4 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+public partial interface IControlStyleMP4 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers8, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>
 {
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ActionBackSound
     {
@@ -266,7 +329,7 @@ public partial interface IControlStyleMP4 : IControlStyle, global::GBX.NET.Inter
     }
 }
 
-public partial interface IControlStyleTM2020 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+public partial interface IControlStyleTM2020 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7, global::GBX.NET.Interfaces.Control.IControlStyleMembers11, global::GBX.NET.Interfaces.Control.IControlStyleMembers13<global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>
 {
 }
 

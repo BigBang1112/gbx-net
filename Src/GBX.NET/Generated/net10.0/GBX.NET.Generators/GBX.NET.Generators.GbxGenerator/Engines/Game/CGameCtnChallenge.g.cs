@@ -1293,11 +1293,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// CGameCtnChallenge 0x004 chunk (version)
     /// </summary>
     [Chunk(0x03043004, "version")]
-    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 4, 5, 5, 6, 10001, 6, 6, 6, 6, 6)]
     public partial class HeaderChunk03043004 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043004;
-        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public HeaderChunk03043004() : this(GameVersion.Unspecified)
@@ -1322,6 +1322,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             {
                 Version = 6;
             }
+            else if (gameVersion == GameVersion.VSK5)
+            {
+                Version = 10001;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1333,7 +1337,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 10001)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

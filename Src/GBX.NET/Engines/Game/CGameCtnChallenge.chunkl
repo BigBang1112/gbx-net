@@ -59,7 +59,7 @@ CGameCtnChallenge 0x03043000 // A map.
                   v11+
                     id TitleId
 
-0x004 (header, struct: SHeaderVersion) [TMPU.v2, TMS.v4, TMO.v4, TMSX.v5, TMNESWC.v5, TMU.v6, TMF.v6, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // version
+0x004 (header, struct: SHeaderVersion) [TMPU.v2, TMS.v4, TMO.v4, TMSX.v5, TMNESWC.v5, TMU.v6, VSK5.v10001, TMF.v6, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // version
   version
 
 0x005 (header, struct: SHeaderCommunity) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // xml

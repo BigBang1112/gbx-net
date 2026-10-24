@@ -43,18 +43,35 @@ CGameResources 0x0302D000
   CMwNod DefaultAvatarBitmapFid
   CMwNod
 
-0x009 [MP4] // interface font, background and legacy nodes
+0x006 // legacy interface font, background and styles
   CPlugFont InterfaceFont
   CMwNod InterfaceBg
+  CMwNod ShaderActiveAvailable
+  CMwNod ShaderInactiveAvailable
+  CMwNod ShaderActiveUnavailable
+  CMwNod ShaderInactiveUnavailable
+  CMwNod ArticleStyle
+  CMwNod ArticleIconStyle
+
+0x009 [TMF, MP4] // interface font, background, styles and directory icon
+  CPlugFont InterfaceFont
+  CMwNod InterfaceBg
+  CMwNod ShaderActiveAvailable
+  CMwNod ShaderInactiveAvailable
+  CMwNod ShaderActiveUnavailable
+  CMwNod ShaderInactiveUnavailable
+  CMwNod ArticleStyle
+  CMwNod ArticleIconStyle
+  bool HasDirectoryIconFid (local, write: "n.DirectoryIconFid is not null")
+  if HasDirectoryIconFid
+    CMwNod DirectoryIconFid
+
+0x00D // legacy painter setting fids
   CMwNod
   CMwNod
   CMwNod
   CMwNod
-  CMwNod
-  CMwNod
-  bool
-  if U07
-    CMwNod
+  CMwNod[]
 
 0x00F [MP4] // MediaTrackerInterfaceFid
   CMwNod MediaTrackerInterfaceFid
@@ -74,6 +91,9 @@ CGameResources 0x0302D000
 
 0x016 [MP4] // PainterSetting
   CGameCtnPainterSetting PainterSetting
+
+0x017 // legacy hymn fids
+  CMwNod[]
 
 0x018 [TMF] // UnknownFlagBitmap
   CMwNod UnknownFlagBitmap

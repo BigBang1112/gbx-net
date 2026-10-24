@@ -10,6 +10,7 @@ public abstract class CControlListBuilderBase<TSelf> : NodeBuilder<global::GBX.N
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMPU;
     public TSelf WithAcceptOwnControls(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(IEnumerable<global::GBX.NET.Engines.Control.CControlContainer.Child> values) => WithChilds(values.ToArray());
@@ -45,11 +46,21 @@ public abstract class CControlListBuilderMembers2<TSelf> : CControlListBuilderBa
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStyleId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, SupportedGames2);
 }
+public abstract class CControlListBuilderMembers3<TSelf> : CControlListBuilderMembers1<TSelf> where TSelf : CControlListBuilderMembers3<TSelf>
+{
+    private protected CControlListBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlList> state) : base(state) { }
+    public TSelf WithColumns(params global::GBX.NET.Engines.Control.CControlList.Unknown[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetColumnsAssignment(), value, SupportedGames4);
+    public TSelf WithColumns(IEnumerable<global::GBX.NET.Engines.Control.CControlList.Unknown> values) => WithColumns(values.ToArray());
+    public TSelf WithLinesHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetLinesHeightAssignment(), value, SupportedGames4);
+    public TSelf WithNbColumns(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetNbColumnsAssignment(), value, SupportedGames4);
+    public TSelf WithNbLinesPerPage(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetNbLinesPerPageAssignment(), value, SupportedGames4);
+}
 public partial class CControlListBuilder : CControlListBuilderBase<CControlListBuilder>
 {
     private static global::GBX.NET.Engines.Control.CControlList CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlList();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F000());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
@@ -65,13 +76,10 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
     private static global::GBX.NET.Engines.Control.CControlList CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlList();
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F007());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F001());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
@@ -92,13 +100,32 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Control.CControlList CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlList();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
     }
-    private static global::GBX.NET.Engines.Control.CControlList CreateRecipe3(GameVersion game)
+    private static global::GBX.NET.Engines.Control.CControlList CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlList();
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F007());
@@ -114,7 +141,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
     }
-    private static global::GBX.NET.Engines.Control.CControlList CreateRecipe4(GameVersion game)
+    private static global::GBX.NET.Engines.Control.CControlList CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlList();
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
@@ -140,7 +167,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CControlListBuilderMembers1<TM10>
+    public partial class TM10 : CControlListBuilderMembers3<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlList> state) : base(state) { }
         public TM10 WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -153,17 +180,18 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
-    public partial class TMPU : CControlListBuilderMembers1<TMPU>
+    public partial class TMPU : CControlListBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlList> state) : base(state) { }
         public TMPU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithFastPageStep(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetFastPageStepAssignment(), value, GameVersion.TMPU);
         public TMPU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(values, false));
         public TMPU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Control.IControlListTMPU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class TMSX : CControlListBuilderMembers2<TMSX>
@@ -179,7 +207,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public TMSX WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX> values) => WithObjectLink(values.ToArray());
         public TMSX WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class TMNESWC : CControlListBuilderMembers2<TMNESWC>
@@ -195,7 +223,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values) => WithObjectLink(values.ToArray());
         public TMNESWC WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class VSK5 : CControlListBuilderMembers2<VSK5>
@@ -211,7 +239,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class TMF : CControlListBuilderMembers2<TMF>
@@ -228,7 +256,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class MP3 : CControlListBuilderMembers2<MP3>
@@ -240,7 +268,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class TMT : CControlListBuilderMembers2<TMT>
@@ -252,7 +280,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class MP4 : CControlListBuilderMembers2<MP4>
@@ -265,7 +293,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
     public partial class TM2020 : CControlListBuilderMembers2<TM2020>
@@ -276,7 +304,7 @@ public partial class CControlListBuilder : CControlListBuilderBase<CControlListB
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlListTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Control.CControlList Build() => BuildNode(CControlListBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlList node);
     }
 }

@@ -14,6 +14,19 @@ CPlugSound 0x0901A000
   bool IsContinuous
   float Priority
 
+0x00A [TM10, TMPU] // distance and attenuation
+  float MinDistance
+  float MaxDistance
+  bool EnableDoppler
+  float VolumeAttenuationDirect
+  float VolumeAttenuationDirectHF
+  float VolumeAttenuationRoom
+  float VolumeAttenuationRoomHF
+  float AdditionalDopplerFactor
+  float AdditionalRolloffFactor
+  float AdditionalRoomRolloffFactor
+  float AirAbsorptionFactor
+
 0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   int<ESoundKind> SoundKind
   int InsideConeAngle

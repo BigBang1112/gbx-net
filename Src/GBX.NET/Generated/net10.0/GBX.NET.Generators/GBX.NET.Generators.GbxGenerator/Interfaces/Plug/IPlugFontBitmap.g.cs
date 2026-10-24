@@ -6,32 +6,17 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFontBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class where T1 : class
 {
-    new T0? CustomMaterialModel
+    Rect Bounds { get; set; }
+    T0? CustomMaterialModel
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
         set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T1? FallbackFont
+    T1? FallbackFont
     {
         get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
         set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-}
-public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
-{
-    Rect Bounds { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? CustomMaterialModel
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
-        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFontBitmap? FallbackFont
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugFontBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
-        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    int FontAscent { get; set; }
-    int FontHeight { get; set; }
     bool HasCustomMaterial { get; set; }
     bool HasTextureDataRefs { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? Letters { get; set; }
@@ -40,6 +25,29 @@ public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? Pages { get; set; }
     ushort[]? RemapLetters { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? RemapPages { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFontBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
+{
+    T0? LegacyBitmap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).LegacyBitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).LegacyBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter[]? OldLetters { get; set; }
+}
+public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
+{
+    int FontAscent { get; set; }
+    int FontHeight { get; set; }
+}
+
+public partial interface IPlugFontBitmapTM10 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
+{
+}
+
+public partial interface IPlugFontBitmapTMPU : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
+{
 }
 
 public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>

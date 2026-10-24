@@ -22,7 +22,6 @@ public interface IPlugSoundMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IP
     }
     string? GroupDuplicate { get; set; }
     int IgnoreSourceProperties { get; set; }
-    float MaxDistance { get; set; }
     int MaxDuplicates { get; set; }
     float Pitch { get; set; }
     int PitchFromDistMode { get; set; }
@@ -42,30 +41,41 @@ public interface IPlugSoundMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IP
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSound
 {
-    float ConeOutsideAttenuationHF { get; set; }
-    float Volume { get; set; }
+    float AdditionalDopplerFactor { get; set; }
+    float AdditionalRolloffFactor { get; set; }
+    float AdditionalRoomRolloffFactor { get; set; }
+    float MinDistance { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMembers3 : global::GBX.NET.Interfaces.Plug.IPlugSound
 {
-    float MaxDistanceOmni { get; set; }
+    float MaxDistance { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSoundMembers4 : global::GBX.NET.Interfaces.Plug.IPlugSound
+{
+    float ConeOutsideAttenuationHF { get; set; }
+    float Volume { get; set; }
     float VolumeAttenuationDirect { get; set; }
     float VolumeAttenuationDirectHF { get; set; }
     float VolumeAttenuationRoom { get; set; }
     float VolumeAttenuationRoomHF { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugSoundMembers4 : global::GBX.NET.Interfaces.Plug.IPlugSound
+public interface IPlugSoundMembers5 : global::GBX.NET.Interfaces.Plug.IPlugSound
 {
-    float AirAbsorptionFactor { get; set; }
+    float MaxDistanceOmni { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSoundMembers6 : global::GBX.NET.Interfaces.Plug.IPlugSound
+{
     float DopplerFactor { get; set; }
-    bool EnableDoppler { get; set; }
     float RefDistance { get; set; }
     float RolloffFactor { get; set; }
     float RoomRolloffFactor { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugSoundMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugSound where T0 : class
+public interface IPlugSoundMembers7<T0> : global::GBX.NET.Interfaces.Plug.IPlugSound where T0 : class
 {
     float PanAngleDeg { get; set; }
     float Radius { get; set; }
@@ -84,7 +94,9 @@ public partial interface IPlugSound : IClassVersion<global::GBX.NET.Engines.Plug
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
+    float AirAbsorptionFactor { get; set; }
     float ConeOutsideAttenuation { get; set; }
+    bool EnableDoppler { get; set; }
     int InsideConeAngle { get; set; }
     bool IsContinuous { get; set; }
     bool IsLooping { get; set; }
@@ -95,31 +107,31 @@ public partial interface IPlugSound : IClassVersion<global::GBX.NET.Engines.Plug
     global::GBX.NET.Engines.Plug.CPlugSound.ESoundKind SoundKind { get; set; }
 }
 
-public partial interface IPlugSoundTM10 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2
+public partial interface IPlugSoundTM10 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
 {
 }
 
-public partial interface IPlugSoundTMPU : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2
+public partial interface IPlugSoundTMPU : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
 {
 }
 
-public partial interface IPlugSoundTMSX : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
+public partial interface IPlugSoundTMSX : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
 }
 
-public partial interface IPlugSoundTMNESWC : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
+public partial interface IPlugSoundTMNESWC : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
 }
 
-public partial interface IPlugSoundVSK5 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
+public partial interface IPlugSoundVSK5 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
 }
 
-public partial interface IPlugSoundTMF : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
+public partial interface IPlugSoundTMF : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
 }
 
-public partial interface IPlugSoundMP3 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
+public partial interface IPlugSoundMP3 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? OldSubSources
     {
@@ -128,15 +140,15 @@ public partial interface IPlugSoundMP3 : IPlugSound, global::GBX.NET.Interfaces.
     }
 }
 
-public partial interface IPlugSoundTMT : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>
+public partial interface IPlugSoundTMT : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>
 {
 }
 
-public partial interface IPlugSoundMP4 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>
+public partial interface IPlugSoundMP4 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>
 {
 }
 
-public partial interface IPlugSoundTM2020 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>
+public partial interface IPlugSoundTM2020 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>
 {
 }
 

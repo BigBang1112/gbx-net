@@ -317,8 +317,10 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int blocksShadow;
-    /// <remarks>Applied with: 0x00B, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    /// <remarks>Applied with: 0x00B, 0x014, 0x015, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk0303300B>]
+    [AppliedWithChunk<Chunk03033014>]
+    [AppliedWithChunk<Chunk03033015>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -394,7 +396,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool shadowCastBack;
-    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    /// <remarks>Applied with: 0x014, 0x015, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    [AppliedWithChunk<Chunk03033014>]
+    [AppliedWithChunk<Chunk03033015>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -407,7 +411,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float shadowSoftSizeInWorld;
-    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    /// <remarks>Applied with: 0x014, 0x015, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    [AppliedWithChunk<Chunk03033014>]
+    [AppliedWithChunk<Chunk03033015>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -420,7 +426,8 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float colorVertexMin;
-    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    /// <remarks>Applied with: 0x015, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    [AppliedWithChunk<Chunk03033015>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -433,7 +440,8 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float colorVertexMax;
-    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    /// <remarks>Applied with: 0x015, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
+    [AppliedWithChunk<Chunk03033015>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -2042,6 +2050,52 @@ public partial class CGameCtnCollection : CMwNod, IClass
             rw.Single(ref n.waterTop);
             rw.Single(ref n.waterBottom);
             rw.Single(ref n.cameraMinHeight);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnCollection 0x014 chunk (legacy lighting)
+    /// </summary>
+    [Chunk(0x03033014, "legacy lighting")]
+    public partial class Chunk03033014 : Chunk<CGameCtnCollection>
+    {
+        public override uint Id => 0x03033014;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.blocksShadow);
+            rw.Boolean(ref n.shadowCastBack);
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            n.HasVertexLighting = rw.Boolean(n.HasVertexLighting);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnCollection 0x015 chunk (legacy lighting and vertex colors)
+    /// </summary>
+    [Chunk(0x03033015, "legacy lighting and vertex colors")]
+    public partial class Chunk03033015 : Chunk<CGameCtnCollection>
+    {
+        public override uint Id => 0x03033015;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.blocksShadow);
+            rw.Boolean(ref n.shadowCastBack);
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            n.HasVertexLighting = rw.Boolean(n.HasVertexLighting);
+            rw.Single(ref n.colorVertexMin);
+            rw.Single(ref n.colorVertexMax);
         }
     }
 
@@ -3822,6 +3876,8 @@ public partial class CGameCtnCollection : CMwNod, IClass
         0x0303300E => new Chunk0303300E(),
         0x03033011 => new Chunk03033011(),
         0x03033013 => new Chunk03033013(),
+        0x03033014 => new Chunk03033014(),
+        0x03033015 => new Chunk03033015(),
         0x03033016 => new Chunk03033016(),
         0x03033017 => new Chunk03033017(),
         0x03033018 => new Chunk03033018(),

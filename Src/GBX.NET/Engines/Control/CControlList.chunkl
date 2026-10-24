@@ -1,6 +1,28 @@
 CControlList 0x0700F000
 - inherits: CControlFrame
 
+0x000 [TM10] // legacy list layout and columns
+  int NbColumns
+  int NbLinesPerPage
+  float LinesHeight
+  CMwNod
+  string
+  int ColumnCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
+  int
+  Unknown[ColumnCount] Columns
+
+0x001 [TMPU] // legacy list layout and columns
+  int NbColumns
+  int NbLinesPerPage
+  int FastPageStep
+  float LinesHeight
+  int ColumnCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
+  Unknown[ColumnCount] Columns
+
 0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int
   int

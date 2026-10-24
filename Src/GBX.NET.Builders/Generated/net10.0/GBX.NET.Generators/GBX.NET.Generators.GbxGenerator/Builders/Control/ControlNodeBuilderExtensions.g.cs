@@ -59,6 +59,14 @@ public static class CControlEffectSimiBuilderExtensions
     }
 }
 
+public static class CControlEffectSwitchStyleBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlEffectSwitchStyle)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlEffectSwitchStyleBuilder Create() => new();
+    }
+}
+
 public static class CControlEntryBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlEntry)

@@ -18,18 +18,23 @@ public interface IGameActionModelMembers2<T0> : global::GBX.NET.Interfaces.GameD
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameActionModelMembers3<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameActionModel where T0 : class where T1 : class
+public interface IGameActionModelMembers3<T0, T1, T2> : global::GBX.NET.Interfaces.GameData.IGameActionModel where T0 : class where T1 : class where T2 : class
 {
+    IReadOnlyList<T0>? BulletModels_Nadeo
+    {
+        get => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).BulletModels_Nadeo is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBulletModel, T0>(((global::GBX.NET.Engines.GameData.CGameActionModel)this).GetBulletModels_NadeoInterfaceReferences, true, "BulletModels_Nadeo");
+        set => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).BulletModels_Nadeo = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, T0>(value, false));
+    }
     bool IsLockModeActive { get; set; }
     string? Name { get; set; }
-    new T0? Script
+    new T1? Script
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameActionModel)this).Script);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.GameData.CGameActionModel)this).Script);
         set => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    T1? ShieldModel
+    T2? ShieldModel
     {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.GameData.CGameActionModel)this).ShieldModel);
+        get => (T2?)(object?)(((global::GBX.NET.Engines.GameData.CGameActionModel)this).ShieldModel);
         set => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).ShieldModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     bool UseVehicleGuns { get; set; }
@@ -87,17 +92,11 @@ public partial interface IGameActionModelTMT : IGameActionModel, global::GBX.NET
     int[]? LegacyInventoryValues { get; set; }
 }
 
-public partial interface IGameActionModelMP4 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
+public partial interface IGameActionModelMP4 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>? BulletModels_Nadeo
-    {
-        get => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).BulletModels_Nadeo is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(((global::GBX.NET.Engines.GameData.CGameActionModel)this).GetBulletModels_NadeoInterfaceReferences, true, "BulletModels_Nadeo");
-        set => ((global::GBX.NET.Engines.GameData.CGameActionModel)this).BulletModels_Nadeo = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(value, false));
-    }
 }
 
-public partial interface IGameActionModelTM2020 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
+public partial interface IGameActionModelTM2020 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
 {
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? BulletModels_Nadeo { get; set; }
 }
 

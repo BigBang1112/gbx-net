@@ -306,6 +306,18 @@ internal sealed class SerializationWriter
             (!SyntaxOverlap.Has(owner.Existing, field.Name) || SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@')));
         var target = prefix + (hasBacking ? backing : property);
         var storedField = !field.IsLocal && owner.Occurrences.TryGetValue(declaration, out var shared) ? shared : field;
+        if (FieldModel.IsLegacyCurve(declaration) && LayoutModel.Has(declaration.Attributes, "direct") &&
+            storedField.StorageDeclaration.Type.Name == "PlugCurve")
+        {
+            var direct = $"({target} ??= new PlugCurve()).ReadWriteDirect<{declaration.Type.Name}>";
+            if (mode == SerializationMode.ReadWrite) code.Line($"{direct}(rw);");
+            else
+            {
+                code.Line($"using (var curveRw = new GbxReaderWriter({(mode == SerializationMode.Read ? "r" : "w")}))");
+                code.Line($"    {direct}(curveRw);");
+            }
+            return;
+        }
         if (declaration.Type.Name == "CFuncKeysReal" && storedField.StorageDeclaration.Type.Name == "PlugCurve")
         {
             if (mode == SerializationMode.ReadWrite) code.Line($"{target} = rw.ReadableWritable<PlugCurve>({target}, version: -1);");

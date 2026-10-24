@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBulletModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugBulletModel where T0 : class where T1 : class where T2 : class
+{
+    new T0? BitmapCrosshair { get; set; }
+    new T0? BitmapCrosshairTriLaser { get; set; }
+    new T0? BitmapLasersight { get; set; }
+    new T0? Icon { get; set; }
+    new T1? ParticleModelAlive { get; set; }
+    new T1? ParticleModelFire { get; set; }
+    new T2? SoundAlive { get; set; }
+    new T2? SoundFire { get; set; }
+    new T2? SoundGauge { get; set; }
+    new T2? SoundReloading { get; set; }
+}
 public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBulletModel>
 {
     int AmmoCostDuringTriggerDuration { get; set; }
@@ -17,7 +31,7 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float BulletVsRadiusMargin { get; set; }
     int ChargeDurationFull { get; set; }
     int ChargeDurationStop { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? DamageAttenuationFromDist { get; set; }
+    PlugCurve? DamageAttenuationFromDist { get; set; }
     bool DamageAttenuationWithDist { get; set; }
     int DefuserFirePeriod { get; set; }
     int DefuserMissAmmoLoss { get; set; }
@@ -36,7 +50,7 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float ExplosionDetectionRadius_Flying { get; set; }
     float ExplosionDetectionRadius_Resting { get; set; }
     float ExplosionElectroPulseValue { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionEnergyFromLifeTime { get; set; }
+    PlugCurve? ExplosionEnergyFromLifeTime { get; set; }
     float ExplosionEnergyWhenOccluded { get; set; }
     int ExplosionOccultationTest { get; set; }
     bool ExplosionOnAllPlayers { get; set; }
@@ -44,7 +58,7 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     int ExplosionOnImpactCount { get; set; }
     byte ExplosionOnImpactCountOnlyOnMaterialId { get; set; }
     byte ExplosionOnSurfaceMaterialId { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionRadiusCoefFromLifeTime { get; set; }
+    PlugCurve? ExplosionRadiusCoefFromLifeTime { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ExplosionSurface { get; set; }
     int FireBulletCount { get; set; }
     float FireBulletCountSpeedCoef { get; set; }
@@ -115,19 +129,19 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float Sm_ThisHitOtherBulletBonusAmmoCount { get; set; }
     int Sm_ThisHitOtherBulletBonusDuration { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSound? SoundAlive { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAlivePitchFromRemainingLifeTime { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime { get; set; }
+    PlugCurve? SoundAlivePitchFromRemainingLifeTime { get; set; }
+    PlugCurve? SoundAliveVolumeFromRemainingLifeTime { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSound? SoundFire { get; set; }
     Vec3 SoundFireOffset { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFirePitchFromRemainingAmmo { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFireVolumeFromRemainingAmmo { get; set; }
+    PlugCurve? SoundFirePitchFromRemainingAmmo { get; set; }
+    PlugCurve? SoundFireVolumeFromRemainingAmmo { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSound? SoundGauge { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSound? SoundReloading { get; set; }
     float SpearLockDist { get; set; }
     float Speed { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromHorizonAngle { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromTriggerDuration { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpreadCoefFormChargeDuration { get; set; }
+    PlugCurve? SpeedFromHorizonAngle { get; set; }
+    PlugCurve? SpeedFromTriggerDuration { get; set; }
+    PlugCurve? SpreadCoefFormChargeDuration { get; set; }
     float TrajectoryUTurnDistance { get; set; }
     float TriLaserNearMissDist { get; set; }
     float TriLaserRadiusAtOneMeter_Zoom0 { get; set; }
@@ -137,31 +151,19 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float WardRadius { get; set; }
 }
 
-public partial interface IPlugBulletModelMP4 : IPlugBulletModel
+public partial interface IPlugBulletModelMP4 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
     new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? BeamVisualModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshair { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshairTriLaser { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapLasersight { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? DamageAttenuationFromDist { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionBullet { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionEnergyFromLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionRadiusCoefFromLifeTime { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionSurface { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Icon { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ImpactBounce { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelAlive { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelFire { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundAlive { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAlivePitchFromRemainingLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAliveVolumeFromRemainingLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundFire { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFirePitchFromRemainingAmmo { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFireVolumeFromRemainingAmmo { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundGauge { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundReloading { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromHorizonAngle { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromTriggerDuration { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpreadCoefFormChargeDuration { get; set; }
+}
+
+public partial interface IPlugBulletModelTM2020 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+{
+    new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? BeamVisualModel { get; set; }
+    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionBullet { get; set; }
+    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionSurface { get; set; }
+    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ImpactBounce { get; set; }
 }
 

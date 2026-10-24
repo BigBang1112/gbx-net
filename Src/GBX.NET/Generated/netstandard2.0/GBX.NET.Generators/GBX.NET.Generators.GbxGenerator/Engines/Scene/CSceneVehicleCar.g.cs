@@ -21,10 +21,20 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         set => this.visualVehicles = value;
     }
 
+    private float speedClamp;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0A02B00A>]
+    public float SpeedClamp
+    {
+        get => this.speedClamp;
+        set => this.speedClamp = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CSceneVehicleCar)clone).visualVehicles = context.CloneArray(this.visualVehicles)!;
+        ((CSceneVehicleCar)clone).speedClamp = context.Clone(this.speedClamp)!;
     }
 
     public CSceneVehicleCar()
@@ -173,6 +183,36 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<VisualVehicle>(ref n.visualVehicles!);
+        }
+    }
+
+    /// <summary>
+    /// CSceneVehicleCar 0x00A chunk
+    /// </summary>
+    [Chunk(0x0A02B00A)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0A02B00A : Chunk<CSceneVehicleCar>
+    {
+        public override uint Id => 0x0A02B00A;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+        public float U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A02B00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A02B00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A02B00A)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref n.speedClamp);
+            rw.Single(ref U03);
         }
     }
 
@@ -367,6 +407,7 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         0x0A02B007 => new Chunk0A02B007(),
         0x0A02B008 => new Chunk0A02B008(),
         0x0A02B009 => new Chunk0A02B009(),
+        0x0A02B00A => new Chunk0A02B00A(),
         0x0A02B00B => new Chunk0A02B00B(),
         0x0A02B00C => new Chunk0A02B00C(),
         0x0A02B014 => new Chunk0A02B014(),

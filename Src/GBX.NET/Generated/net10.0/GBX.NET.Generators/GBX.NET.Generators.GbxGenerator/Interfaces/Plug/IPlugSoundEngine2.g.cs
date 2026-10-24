@@ -7,8 +7,6 @@ namespace GBX.NET.Interfaces.Plug;
 public interface IPlugSoundEngine2Members1 : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2
 {
     global::GBX.NET.Engines.Plug.CPlugSoundEngine2.AudioMotor[]? AudioMotors { get; set; }
-    PlugCurve? AudioMotors_PitchRandomize_Rpm { get; set; }
-    PlugCurve? AudioMotors_PitchRandomize_Throttle { get; set; }
     string? Loops_Folder { get; set; }
     bool Loops_RpmClamp { get; set; }
     bool Loops_UseVolumeCorrection { get; set; }
@@ -16,15 +14,9 @@ public interface IPlugSoundEngine2Members1 : global::GBX.NET.Interfaces.Plug.IPl
     float MixFront { get; set; }
     float Mix_FrontBackSpread { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSoundEngine2.PerspectiveVolume[]? PerspectiveVolumes { get; set; }
-    PlugCurve? RpmFactor_Gear { get; set; }
     float RpmGamma { get; set; }
     float RpmMaxFromEngine { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSoundEngine2.SubEmitter[]? SubEmitters { get; set; }
-    PlugCurve? Volume_Distance { get; set; }
-    PlugCurve? Volume_Gear { get; set; }
-    PlugCurve? Volume_Rpm { get; set; }
-    PlugCurve? Volume_Speed { get; set; }
-    PlugCurve? Volume_Throttle { get; set; }
 }
 public partial interface IPlugSoundEngine2 : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSoundEngine2>, global::GBX.NET.Interfaces.Plug.IPlugSound
 {
@@ -71,6 +63,14 @@ public partial interface IPlugSoundEngine2TMT : IPlugSoundEngine2, global::GBX.N
 
 public partial interface IPlugSoundEngine2MP4 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1
 {
+    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Rpm { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Throttle { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? RpmFactor_Gear { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Distance { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Gear { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Rpm { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Speed { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Throttle { get; set; }
 }
 
 public partial interface IPlugSoundEngine2TM2020 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1

@@ -6,6 +6,7 @@ namespace GBX.NET.Interfaces.Plug;
 public partial interface IPlugScriptWithSettings : IClassVersion<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings>
 {
     global::GBX.NET.Engines.Plug.CPlugFileTextScript? Script { get; set; }
+    byte SettingTypeVersion { get; set; }
     global::GBX.NET.Engines.Script.CScriptSetting[]? Settings { get; set; }
     int SettingsVersion { get; set; }
 }

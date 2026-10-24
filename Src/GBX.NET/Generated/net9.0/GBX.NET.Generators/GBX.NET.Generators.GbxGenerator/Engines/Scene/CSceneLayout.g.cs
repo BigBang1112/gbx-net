@@ -12,6 +12,94 @@ public partial class CSceneLayout : CScene, IClass
 
     internal override uint GetId() => Id;
 
+    private NodeRefList<CSceneSector>? sectors;
+    /// <remarks>Applied with: 0x000, 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003000>]
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public NodeRefList<CSceneSector>? Sectors
+    {
+        get => sectors;
+        set => sectors = value;
+    }
+
+    private NodeRefList<CSceneGate>? gates;
+    /// <remarks>Applied with: 0x001, 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003001>]
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CSceneGate>? Gates
+    {
+        get => gates;
+        set => gates = value;
+    }
+
+    private OldSceneObjectLoc[]? legacyLocations;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A003004>]
+    public OldSceneObjectLoc[]? LegacyLocations
+    {
+        get => this.legacyLocations;
+        set => this.legacyLocations = value;
+    }
+
+    private NodeRefList<CScenePath>? paths;
+    /// <remarks>Applied with: 0x005, 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003005>]
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CScenePath>? Paths
+    {
+        get => paths;
+        set => paths = value;
+    }
+
+    private OldSceneObject[]? legacyFields;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A003008>]
+    public OldSceneObject[]? LegacyFields
+    {
+        get => this.legacyFields;
+        set => this.legacyFields = value;
+    }
+
+    private OldSceneObjectLoc[]? legacySounds;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A003009>]
+    public OldSceneObjectLoc[]? LegacySounds
+    {
+        get => this.legacySounds;
+        set => this.legacySounds = value;
+    }
+
+    private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
+    /// <remarks>Applied with: 0x00F, 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A00300F>]
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public CSceneTrafficGraph? TrafficGraph
+    {
+        get => trafficGraphRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficGraphRef, value);
+    }
+
+    private NodeRefList<CSceneTrafficPath>? trafficPaths;
+    /// <remarks>Applied with: 0x00F, 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A00300F>]
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CSceneTrafficPath>? TrafficPaths
+    {
+        get => trafficPaths;
+        set => trafficPaths = value;
+    }
+
     private float cameraFarZ;
     /// <remarks>Applied with: 0x010, 0x01C body chunks</remarks>
     [AppliedWithChunk<Chunk0A003010>]
@@ -31,27 +119,46 @@ public partial class CSceneLayout : CScene, IClass
         set => this.cameraClearColor = value;
     }
 
-    private NodeRefList<CSceneSector>? sectors;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    private NodeRef<CSceneFx>? sceneFxRef;
+    /// <remarks>Applied with: 0x011, 0x013 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003011>]
+    [AppliedWithChunk<Chunk0A003013>]
+    public CSceneFx? SceneFx
+    {
+        get => sceneFxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneFxRef, value);
+    }
+
+    private NodeRefList<CMwNod>? moods;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A003012>]
+    public NodeRefList<CMwNod>? Moods
+    {
+        get => moods;
+        set => moods = value;
+    }
+
+    private NodeRefList<CMwNod>? sceneFxPools;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A003013>]
+    public NodeRefList<CMwNod>? SceneFxPools
+    {
+        get => sceneFxPools;
+        set => sceneFxPools = value;
+    }
+
+    private NodeRef<CSceneFxNod>? sceneFxNodRef;
+    /// <remarks>Applied with: 0x015, 0x016, 0x017, 0x018, 0x01B, 0x01C body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003015>]
     [AppliedWithChunk<Chunk0A003016>]
     [AppliedWithChunk<Chunk0A003017>]
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
-    public NodeRefList<CSceneSector>? Sectors
+    [AppliedWithChunk<Chunk0A00301C>]
+    public CSceneFxNod? SceneFxNod
     {
-        get => sectors;
-        set => sectors = value;
-    }
-
-    private NodeRefList<CSceneGate>? gates;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003016>]
-    [AppliedWithChunk<Chunk0A003017>]
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CSceneGate>? Gates
-    {
-        get => gates;
-        set => gates = value;
+        get => sceneFxNodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneFxNodRef, value);
     }
 
     private NodeRefList<CSceneLight>? lights;
@@ -148,52 +255,6 @@ public partial class CSceneLayout : CScene, IClass
         set => this.fieldLocations = value;
     }
 
-    private NodeRefList<CScenePath>? paths;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003016>]
-    [AppliedWithChunk<Chunk0A003017>]
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CScenePath>? Paths
-    {
-        get => paths;
-        set => paths = value;
-    }
-
-    private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003016>]
-    [AppliedWithChunk<Chunk0A003017>]
-    [AppliedWithChunk<Chunk0A003018>]
-    public CSceneTrafficGraph? TrafficGraph
-    {
-        get => trafficGraphRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref trafficGraphRef, value);
-    }
-
-    private NodeRefList<CSceneTrafficPath>? trafficPaths;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003016>]
-    [AppliedWithChunk<Chunk0A003017>]
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CSceneTrafficPath>? TrafficPaths
-    {
-        get => trafficPaths;
-        set => trafficPaths = value;
-    }
-
-    private NodeRef<CSceneFxNod>? sceneFxNodRef;
-    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B, 0x01C body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003016>]
-    [AppliedWithChunk<Chunk0A003017>]
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    [AppliedWithChunk<Chunk0A00301C>]
-    public CSceneFxNod? SceneFxNod
-    {
-        get => sceneFxNodRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref sceneFxNodRef, value);
-    }
-
     private SceneMobil[]? scene;
     /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
@@ -284,14 +345,17 @@ public partial class CSceneLayout : CScene, IClass
         internal NodeRefView(CSceneLayout owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CSceneSector>>? Sectors => owner.sectors?.References;
         public IReadOnlyList<NodeRef<CSceneGate>>? Gates => owner.gates?.References;
+        public IReadOnlyList<NodeRef<CScenePath>>? Paths => owner.paths?.References;
+        public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
+        public IReadOnlyList<NodeRef<CSceneTrafficPath>>? TrafficPaths => owner.trafficPaths?.References;
+        public NodeRef<CSceneFx> SceneFx => NodeRef.GetOrCreate(ref owner.sceneFxRef);
+        public IReadOnlyList<NodeRef<CMwNod>>? Moods => owner.moods?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? SceneFxPools => owner.sceneFxPools?.References;
+        public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
         public IReadOnlyList<NodeRef<CSceneLight>>? Lights => owner.lights?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Sounds => owner.sounds?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Locations => owner.locations?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Fields => owner.fields?.References;
-        public IReadOnlyList<NodeRef<CScenePath>>? Paths => owner.paths?.References;
-        public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
-        public IReadOnlyList<NodeRef<CSceneTrafficPath>>? TrafficPaths => owner.trafficPaths?.References;
-        public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
         public IReadOnlyList<NodeRef<CSceneObject>>? Objects => owner.objects?.References;
         public IReadOnlyList<NodeRef<CPlugWeatherModel>>? WeatherModels => owner.weatherModels?.References;
         public NodeRef<CPlugWeatherModel> WeatherModel => NodeRef.GetOrCreate(ref owner.weatherModelRef);
@@ -312,6 +376,25 @@ public partial class CSceneLayout : CScene, IClass
         {
             for (var i = 0; i < gates.Count; i++) yield return new("Gates" + "[" + i + "]", gates.Get(i));
         }
+        if (paths is not null)
+        {
+            for (var i = 0; i < paths.Count; i++) yield return new("Paths" + "[" + i + "]", paths.Get(i));
+        }
+        yield return new("TrafficGraph", NodeRef.GetOrCreate(ref trafficGraphRef));
+        if (trafficPaths is not null)
+        {
+            for (var i = 0; i < trafficPaths.Count; i++) yield return new("TrafficPaths" + "[" + i + "]", trafficPaths.Get(i));
+        }
+        yield return new("SceneFx", NodeRef.GetOrCreate(ref sceneFxRef));
+        if (moods is not null)
+        {
+            for (var i = 0; i < moods.Count; i++) yield return new("Moods" + "[" + i + "]", moods.Get(i));
+        }
+        if (sceneFxPools is not null)
+        {
+            for (var i = 0; i < sceneFxPools.Count; i++) yield return new("SceneFxPools" + "[" + i + "]", sceneFxPools.Get(i));
+        }
+        yield return new("SceneFxNod", NodeRef.GetOrCreate(ref sceneFxNodRef));
         if (lights is not null)
         {
             for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.Get(i));
@@ -328,16 +411,6 @@ public partial class CSceneLayout : CScene, IClass
         {
             for (var i = 0; i < fields.Count; i++) yield return new("Fields" + "[" + i + "]", fields.Get(i));
         }
-        if (paths is not null)
-        {
-            for (var i = 0; i < paths.Count; i++) yield return new("Paths" + "[" + i + "]", paths.Get(i));
-        }
-        yield return new("TrafficGraph", NodeRef.GetOrCreate(ref trafficGraphRef));
-        if (trafficPaths is not null)
-        {
-            for (var i = 0; i < trafficPaths.Count; i++) yield return new("TrafficPaths" + "[" + i + "]", trafficPaths.Get(i));
-        }
-        yield return new("SceneFxNod", NodeRef.GetOrCreate(ref sceneFxNodRef));
         if (objects is not null)
         {
             for (var i = 0; i < objects.Count; i++) yield return new("Objects" + "[" + i + "]", objects.Get(i));
@@ -356,10 +429,20 @@ public partial class CSceneLayout : CScene, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneLayout)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
-        ((CSceneLayout)clone).cameraClearColor = context.Clone(this.cameraClearColor)!;
         ((CSceneLayout)clone).sectors = context.Clone(this.sectors)!;
         ((CSceneLayout)clone).gates = context.Clone(this.gates)!;
+        ((CSceneLayout)clone).legacyLocations = context.CloneArray(this.legacyLocations)!;
+        ((CSceneLayout)clone).paths = context.Clone(this.paths)!;
+        ((CSceneLayout)clone).legacyFields = context.CloneArray(this.legacyFields)!;
+        ((CSceneLayout)clone).legacySounds = context.CloneArray(this.legacySounds)!;
+        ((CSceneLayout)clone).trafficGraphRef = context.Clone(this.trafficGraphRef)!;
+        ((CSceneLayout)clone).trafficPaths = context.Clone(this.trafficPaths)!;
+        ((CSceneLayout)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
+        ((CSceneLayout)clone).cameraClearColor = context.Clone(this.cameraClearColor)!;
+        ((CSceneLayout)clone).sceneFxRef = context.Clone(this.sceneFxRef)!;
+        ((CSceneLayout)clone).moods = context.Clone(this.moods)!;
+        ((CSceneLayout)clone).sceneFxPools = context.Clone(this.sceneFxPools)!;
+        ((CSceneLayout)clone).sceneFxNodRef = context.Clone(this.sceneFxNodRef)!;
         ((CSceneLayout)clone).lights = context.Clone(this.lights)!;
         ((CSceneLayout)clone).lightLocations = context.CloneArray(this.lightLocations)!;
         ((CSceneLayout)clone).sounds = context.Clone(this.sounds)!;
@@ -368,10 +451,6 @@ public partial class CSceneLayout : CScene, IClass
         ((CSceneLayout)clone).locationLocations = context.CloneArray(this.locationLocations)!;
         ((CSceneLayout)clone).fields = context.Clone(this.fields)!;
         ((CSceneLayout)clone).fieldLocations = context.CloneArray(this.fieldLocations)!;
-        ((CSceneLayout)clone).paths = context.Clone(this.paths)!;
-        ((CSceneLayout)clone).trafficGraphRef = context.Clone(this.trafficGraphRef)!;
-        ((CSceneLayout)clone).trafficPaths = context.Clone(this.trafficPaths)!;
-        ((CSceneLayout)clone).sceneFxNodRef = context.Clone(this.sceneFxNodRef)!;
         ((CSceneLayout)clone).scene = context.CloneArray(this.scene)!;
         ((CSceneLayout)clone).sceneLocations = context.CloneArray(this.sceneLocations)!;
         ((CSceneLayout)clone).objects = context.Clone(this.objects)!;
@@ -385,6 +464,158 @@ public partial class CSceneLayout : CScene, IClass
 
     public CSceneLayout()
     {
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x000 chunk (Sectors)
+    /// </summary>
+    [Chunk(0x0A003000, "Sectors")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003000 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.sectors = rw.ListNodeRef<CSceneSector>(n.sectors);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x001 chunk (Gates)
+    /// </summary>
+    [Chunk(0x0A003001, "Gates")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003001 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.gates = rw.ListNodeRef<CSceneGate>(n.gates);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x004 chunk (legacy locations)
+    /// </summary>
+    [Chunk(0x0A003004, "legacy locations")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003004 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003004;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<OldSceneObjectLoc>(ref n.legacyLocations!);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x005 chunk (Paths)
+    /// </summary>
+    [Chunk(0x0A003005, "Paths")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003005 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003005;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.paths = rw.ListNodeRef_deprec<CScenePath>(n.paths);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x007 chunk
+    /// </summary>
+    [Chunk(0x0A003007)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0A003007 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003007;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+        public int U01 = -1;
+        public Iso4 U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A003007)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Iso4(ref U02);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x008 chunk (legacy fields)
+    /// </summary>
+    [Chunk(0x0A003008, "legacy fields")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003008 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003008;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<OldSceneObject>(ref n.legacyFields!);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x009 chunk (legacy sounds)
+    /// </summary>
+    [Chunk(0x0A003009, "legacy sounds")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003009 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003009;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<OldSceneObjectLoc>(ref n.legacySounds!);
+        }
     }
 
     /// <summary>
@@ -411,6 +642,44 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     /// <summary>
+    /// CSceneLayout 0x00E chunk (legacy portal links, written empty)
+    /// </summary>
+    [Chunk(0x0A00300E, "legacy portal links, written empty")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A00300E : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A00300E;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x00F chunk (traffic)
+    /// </summary>
+    [Chunk(0x0A00300F, "traffic")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A00300F : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A00300F;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.trafficGraphRef);
+            n.trafficPaths = rw.ListNodeRef_deprec<CSceneTrafficPath>(n.trafficPaths);
+        }
+    }
+
+    /// <summary>
     /// CSceneLayout 0x010 chunk
     /// </summary>
     [Chunk(0x0A003010)]
@@ -429,6 +698,73 @@ public partial class CSceneLayout : CScene, IClass
         {
             rw.Single(ref n.cameraFarZ);
             rw.Vec3(ref n.cameraClearColor);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x011 chunk (SceneFx)
+    /// </summary>
+    [Chunk(0x0A003011, "SceneFx")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0A003011 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003011;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.sceneFxRef);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x012 chunk (moods)
+    /// </summary>
+    [Chunk(0x0A003012, "moods")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0A003012 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003012;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003012)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.moods = rw.ListNodeRef_deprec<CMwNod>(n.moods);
+            rw.Int32(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x013 chunk (SceneFx and pools)
+    /// </summary>
+    [Chunk(0x0A003013, "SceneFx and pools")]
+    [ChunkGameVersion(GameVersion.TMSX)]
+    public partial class Chunk0A003013 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003013;
+        public override GameVersion GameVersion => GameVersion.TMSX;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.sceneFxRef);
+            n.sceneFxPools = rw.ListNodeRef<CMwNod>(n.sceneFxPools);
         }
     }
 
@@ -461,6 +797,27 @@ public partial class CSceneLayout : CScene, IClass
             rw.Boolean(ref U02);
             rw.BoxAligned(ref U03);
             rw.Iso4(ref U04);
+        }
+    }
+
+    /// <summary>
+    /// CSceneLayout 0x015 chunk (SceneFxNod)
+    /// </summary>
+    [Chunk(0x0A003015, "SceneFxNod")]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
+    public partial class Chunk0A003015 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003015;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.sceneFxNodRef);
         }
     }
 
@@ -1463,11 +1820,161 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    public partial class OldSceneObjectLoc : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private NodeRef<CSceneObject>? objectRef;
+        public CSceneObject? Object
+        {
+            get => objectRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref objectRef, value);
+        }
+
+        private NodeRef<CSceneSector>? sectorRef;
+        public CSceneSector? Sector
+        {
+            get => sectorRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref sectorRef, value);
+        }
+
+        private Iso4 location;
+        public Iso4 Location
+        {
+            get => this.location;
+            set => this.location = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly OldSceneObjectLoc owner;
+            internal NodeRefView(OldSceneObjectLoc owner) => this.owner = owner;
+            public NodeRef<CSceneObject> Object => NodeRef.GetOrCreate(ref owner.objectRef);
+            public NodeRef<CSceneSector> Sector => NodeRef.GetOrCreate(ref owner.sectorRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Object", NodeRef.GetOrCreate(ref objectRef));
+            yield return new("Sector", NodeRef.GetOrCreate(ref sectorRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldSceneObjectLoc)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldSceneObjectLoc)clone).objectRef = context.Clone(this.objectRef)!;
+            ((OldSceneObjectLoc)clone).sectorRef = context.Clone(this.sectorRef)!;
+            ((OldSceneObjectLoc)clone).location = context.Clone(this.location)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref this.objectRef);
+            rw.NodeRef(ref this.sectorRef);
+            rw.Iso4(ref this.location);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class OldSceneObject : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private NodeRef<CSceneObject>? objectRef;
+        public CSceneObject? Object
+        {
+            get => objectRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref objectRef, value);
+        }
+
+        private NodeRef<CSceneSector>? sectorRef;
+        public CSceneSector? Sector
+        {
+            get => sectorRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref sectorRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly OldSceneObject owner;
+            internal NodeRefView(OldSceneObject owner) => this.owner = owner;
+            public NodeRef<CSceneObject> Object => NodeRef.GetOrCreate(ref owner.objectRef);
+            public NodeRef<CSceneSector> Sector => NodeRef.GetOrCreate(ref owner.sectorRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Object", NodeRef.GetOrCreate(ref objectRef));
+            yield return new("Sector", NodeRef.GetOrCreate(ref sectorRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldSceneObject)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldSceneObject)clone).objectRef = context.Clone(this.objectRef)!;
+            ((OldSceneObject)clone).sectorRef = context.Clone(this.sectorRef)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref this.objectRef);
+            rw.NodeRef(ref this.sectorRef);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0A003000 => new Chunk0A003000(),
+        0x0A003001 => new Chunk0A003001(),
+        0x0A003004 => new Chunk0A003004(),
+        0x0A003005 => new Chunk0A003005(),
+        0x0A003007 => new Chunk0A003007(),
+        0x0A003008 => new Chunk0A003008(),
+        0x0A003009 => new Chunk0A003009(),
         0x0A00300C => new Chunk0A00300C(),
+        0x0A00300E => new Chunk0A00300E(),
+        0x0A00300F => new Chunk0A00300F(),
         0x0A003010 => new Chunk0A003010(),
+        0x0A003011 => new Chunk0A003011(),
+        0x0A003012 => new Chunk0A003012(),
+        0x0A003013 => new Chunk0A003013(),
         0x0A003014 => new Chunk0A003014(),
+        0x0A003015 => new Chunk0A003015(),
         0x0A003016 => new Chunk0A003016(),
         0x0A003017 => new Chunk0A003017(),
         0x0A003018 => new Chunk0A003018(),

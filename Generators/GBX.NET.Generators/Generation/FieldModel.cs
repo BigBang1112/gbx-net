@@ -12,10 +12,14 @@ internal sealed class FieldModel(string name, FieldDeclaration declaration, bool
     public bool IsLocal => LayoutModel.Has(Declaration.Attributes, "local");
     public List<FieldDeclaration> Occurrences { get; } = [];
 
-    // A vehicle tuning property can be stored as either a legacy CFuncKeysReal node or
-    // as inline PlugCurve control points. Prefer the unified public representation when
-    // both encodings use the same property name.
-    public FieldDeclaration StorageDeclaration => Occurrences.Any(static x => x.Type.Name == "CFuncKeysReal")
+    // A curve property can be stored as a legacy CFuncKeysReal node, a direct legacy
+    // CPlugCurveSimpleNod node, or inline PlugCurve control points. Prefer the unified
+    // public representation when these encodings use the same property name.
+    public FieldDeclaration StorageDeclaration => Occurrences.Any(IsLegacyCurve)
         ? Occurrences.FirstOrDefault(static x => x.Type.Name == "PlugCurve" && x.Type.ArrayDimensions == 0) ?? Declaration
         : Declaration;
+
+    public static bool IsLegacyCurve(FieldDeclaration declaration) => declaration.Type.ArrayDimensions == 0 &&
+        (declaration.Type.Name == "CFuncKeysReal" ||
+        (declaration.Type.Name == "CPlugCurveSimpleNod" && LayoutModel.Has(declaration.Attributes, "direct")));
 }

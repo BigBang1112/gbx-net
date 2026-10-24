@@ -30,6 +30,15 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
         set => this.settingsVersion = value;
     }
 
+    private byte settingTypeVersion = 4;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09083000>]
+    public byte SettingTypeVersion
+    {
+        get => this.settingTypeVersion;
+        set => this.settingTypeVersion = value;
+    }
+
     private CScriptSetting[]? settings;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09083000>]
@@ -58,6 +67,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
         base.DeepCloneFields(clone, context);
         ((CPlugScriptWithSettings)clone).scriptRef = context.Clone(this.scriptRef)!;
         ((CPlugScriptWithSettings)clone).settingsVersion = context.Clone(this.settingsVersion)!;
+        ((CPlugScriptWithSettings)clone).settingTypeVersion = context.Clone(this.settingTypeVersion)!;
         ((CPlugScriptWithSettings)clone).settings = context.CloneArray(this.settings)!;
     }
 
@@ -88,7 +98,12 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
 
             if (n.SettingsVersion>= 1)
             {
-                throw new NotSupportedException();
+                rw.Byte(ref n.settingTypeVersion);
+
+                if (settingCount> 0)
+                {
+                    throw new NotSupportedException();
+                }
             }
 
             rw.ArrayReadableWritable<CScriptSetting>(ref n.settings!, settingCount);

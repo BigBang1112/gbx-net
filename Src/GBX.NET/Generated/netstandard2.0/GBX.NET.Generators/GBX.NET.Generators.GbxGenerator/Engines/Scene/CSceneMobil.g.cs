@@ -172,6 +172,130 @@ public partial class CSceneMobil : CSceneObject, IClass
         }
     }
 
+    public partial class MobilPtr : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private NodeRef<CSceneMobil>? modelRef;
+        public CSceneMobil? Model
+        {
+            get => modelRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref modelRef, value);
+        }
+
+        private int dataVersion = 2;
+        public int DataVersion
+        {
+            get => this.dataVersion;
+            set => this.dataVersion = value;
+        }
+
+        private int u01 = -1;
+        /// <summary>
+        /// class data terminator
+        /// </summary>
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private NodeRefList<CSceneObjectLink>? objectLinks;
+        public NodeRefList<CSceneObjectLink>? ObjectLinks
+        {
+            get => objectLinks;
+            set => objectLinks = value;
+        }
+
+        private NodeRef<CSceneMobil>? mobilRef;
+        public CSceneMobil? Mobil
+        {
+            get => mobilRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref mobilRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly MobilPtr owner;
+            internal NodeRefView(MobilPtr owner) => this.owner = owner;
+            public NodeRef<CSceneMobil> Model => NodeRef.GetOrCreate(ref owner.modelRef);
+            public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLinks => owner.objectLinks?.References;
+            public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
+            if (objectLinks is not null)
+            {
+                for (var i = 0; i < objectLinks.Count; i++) yield return new("ObjectLinks" + "[" + i + "]", objectLinks.Get(i));
+            }
+            yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (MobilPtr)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((MobilPtr)clone).modelRef = context.Clone(this.modelRef)!;
+            ((MobilPtr)clone).dataVersion = context.Clone(this.dataVersion)!;
+            ((MobilPtr)clone).u01 = context.Clone(this.u01)!;
+            ((MobilPtr)clone).name = context.Clone(this.name)!;
+            ((MobilPtr)clone).objectLinks = context.Clone(this.objectLinks)!;
+            ((MobilPtr)clone).mobilRef = context.Clone(this.mobilRef)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref this.modelRef);
+
+            if ((modelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
+            {
+                rw.Int32(ref this.dataVersion);
+
+                if (DataVersion== 2)
+                {
+                    rw.Int32(ref this.u01);
+                }
+
+                rw.Id(ref this.name);
+
+                if (DataVersion>= 1)
+                {
+                    this.objectLinks = rw.ListNodeRef<CSceneObjectLink>(this.objectLinks);
+                }
+            }
+            else
+            {
+                rw.NodeRef(ref this.mobilRef);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0A011003 => new Chunk0A011003(),

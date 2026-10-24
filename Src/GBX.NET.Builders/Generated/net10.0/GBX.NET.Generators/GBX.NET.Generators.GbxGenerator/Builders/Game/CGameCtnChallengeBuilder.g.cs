@@ -287,6 +287,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014());

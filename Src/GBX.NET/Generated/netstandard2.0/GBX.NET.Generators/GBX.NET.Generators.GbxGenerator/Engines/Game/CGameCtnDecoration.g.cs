@@ -245,6 +245,188 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     /// <summary>
+    /// CGameCtnDecoration 0x001 chunk (legacy DecoAudio sounds and musics)
+    /// </summary>
+    [Chunk(0x03038001, "legacy DecoAudio sounds and musics")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk03038001 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x002 chunk (legacy scene and size)
+    /// </summary>
+    [Chunk(0x03038002, "legacy scene and size")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk03038002 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+        public Int3 U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03038002 owner;
+            internal NodeRefView(Chunk03038002 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03038002)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03038002)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.Int3(ref U02);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x003 chunk (legacy DecoSize edition zone)
+    /// </summary>
+    [Chunk(0x03038003, "legacy DecoSize edition zone")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk03038003 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038003;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x004 chunk (legacy DecoAudio SoundAttenuationInEditor)
+    /// </summary>
+    [Chunk(0x03038004, "legacy DecoAudio SoundAttenuationInEditor")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk03038004 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038004;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x006 chunk (legacy DecoMood location and sun times)
+    /// </summary>
+    [Chunk(0x03038006, "legacy DecoMood location and sun times")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk03038006 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038006;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x007 chunk (legacy DecoAudio environments)
+    /// </summary>
+    [Chunk(0x03038007, "legacy DecoAudio environments")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk03038007 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038007;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x008 skippable chunk (legacy DecoSize BaseHeightBase)
+    /// </summary>
+    [Chunk(0x03038008, "legacy DecoSize BaseHeightBase")]
+    public partial class Chunk03038008 : SkippableChunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038008;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x009 chunk (legacy DecoSize size and scene)
+    /// </summary>
+    [Chunk(0x03038009, "legacy DecoSize size and scene")]
+    public partial class Chunk03038009 : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x03038009;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x00C chunk (legacy DecoMood remapping)
+    /// </summary>
+    [Chunk(0x0303800C, "legacy DecoMood remapping")]
+    public partial class Chunk0303800C : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x0303800C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnDecoration 0x00F chunk (legacy DecoMood shadows)
+    /// </summary>
+    [Chunk(0x0303800F, "legacy DecoMood shadows")]
+    public partial class Chunk0303800F : Chunk<CGameCtnDecoration>
+    {
+        public override uint Id => 0x0303800F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
     /// CGameCtnDecoration 0x011 chunk (DecoSize)
     /// </summary>
     [Chunk(0x03038011, "DecoSize")]
@@ -585,6 +767,16 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03038001 => new Chunk03038001(),
+        0x03038002 => new Chunk03038002(),
+        0x03038003 => new Chunk03038003(),
+        0x03038004 => new Chunk03038004(),
+        0x03038006 => new Chunk03038006(),
+        0x03038007 => new Chunk03038007(),
+        0x03038008 => new Chunk03038008(),
+        0x03038009 => new Chunk03038009(),
+        0x0303800C => new Chunk0303800C(),
+        0x0303800F => new Chunk0303800F(),
         0x03038011 => new Chunk03038011(),
         0x03038012 => new Chunk03038012(),
         0x03038013 => new Chunk03038013(),

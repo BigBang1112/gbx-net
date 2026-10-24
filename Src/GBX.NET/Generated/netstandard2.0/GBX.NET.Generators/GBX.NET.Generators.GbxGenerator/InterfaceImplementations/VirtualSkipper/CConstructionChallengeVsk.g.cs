@@ -70,6 +70,16 @@ public partial class CConstructionChallengeVsk : global::GBX.NET.Interfaces.Virt
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.VirtualSkipper.IVskCourseVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskVSK5.Course
+    {
+        get => Course;
+        set => Course = value is null ? null : value is global::GBX.NET.Engines.VirtualSkipper.CVskCourse node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.VirtualSkipper.IVskTrafficVSK5? global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskVSK5.Traffic
+    {
+        get => Traffic;
+        set => Traffic = value is null ? null : value is global::GBX.NET.Engines.VirtualSkipper.CVskTraffic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF? global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskTMF.BlockStock
     {
         get => BlockStock;

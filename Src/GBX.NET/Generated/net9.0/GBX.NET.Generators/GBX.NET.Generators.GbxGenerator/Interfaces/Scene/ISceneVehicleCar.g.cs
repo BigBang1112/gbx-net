@@ -6,6 +6,11 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneVehicleCarMembers1 : global::GBX.NET.Interfaces.Scene.ISceneVehicleCar
 {
+    float SpeedClamp { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneVehicleCarMembers2 : global::GBX.NET.Interfaces.Scene.ISceneVehicleCar
+{
     global::GBX.NET.Engines.Scene.CSceneVehicleCar.VisualVehicle[]? VisualVehicles { get; set; }
 }
 public partial interface ISceneVehicleCar : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicleCar>, global::GBX.NET.Interfaces.Scene.ISceneVehicle
@@ -19,7 +24,7 @@ public partial interface ISceneVehicleCar : IClassVersion<global::GBX.NET.Engine
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface ISceneVehicleCarTM10 : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers1
+public partial interface ISceneVehicleCarTM10 : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers1, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
     {
@@ -33,7 +38,7 @@ public partial interface ISceneVehicleCarTM10 : ISceneVehicleCar, global::GBX.NE
     }
 }
 
-public partial interface ISceneVehicleCarTMPU : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers1
+public partial interface ISceneVehicleCarTMPU : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers1, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
     {
@@ -47,7 +52,7 @@ public partial interface ISceneVehicleCarTMPU : ISceneVehicleCar, global::GBX.NE
     }
 }
 
-public partial interface ISceneVehicleCarTMSX : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers1
+public partial interface ISceneVehicleCarTMSX : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
     {

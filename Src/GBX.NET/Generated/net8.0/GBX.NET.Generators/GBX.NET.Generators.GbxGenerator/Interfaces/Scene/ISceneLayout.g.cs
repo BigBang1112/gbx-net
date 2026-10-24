@@ -30,16 +30,55 @@ public interface ISceneLayoutMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers2 : global::GBX.NET.Interfaces.Scene.ISceneLayout
 {
-    Vec3 CameraClearColor { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneFx? SceneFx { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers3 : global::GBX.NET.Interfaces.Scene.ISceneLayout
+{
+    global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObject[]? LegacyFields { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObjectLoc[]? LegacyLocations { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObjectLoc[]? LegacySounds { get; set; }
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Moods { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers4<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
+{
+    NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
+    T0? TrafficGraph
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers5<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
+{
+    Vec3 CameraClearColor { get; set; }
+    IReadOnlyList<T0>? Sectors
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, T0>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetSectorsInterfaceReferences, true, "Sectors");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, T0>(value, false));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers6 : global::GBX.NET.Interfaces.Scene.ISceneLayout
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Scene { get; set; }
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SceneLocations { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface ISceneLayoutMembers4<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
+public interface ISceneLayoutMembers7<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
+{
+    T0? SceneFxNod
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers8<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? FieldLocations { get; set; }
     IReadOnlyList<T0>? Fields
@@ -47,17 +86,9 @@ public interface ISceneLayoutMembers4<T0, T1> : global::GBX.NET.Interfaces.Scene
         get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Fields is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T0>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetFieldsInterfaceReferences, true, "Fields");
         set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Fields = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T0>(value, false));
     }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
-    T1? TrafficGraph
-    {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph);
-        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface ISceneLayoutMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class where T2 : class
+public interface ISceneLayoutMembers9<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
     IReadOnlyList<T0>? Lights
@@ -71,25 +102,11 @@ public interface ISceneLayoutMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.S
         get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T1>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetLocationsInterfaceReferences, true, "Locations");
         set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T1>(value, false));
     }
-    IReadOnlyList<T2>? Sectors
-    {
-        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, T2>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetSectorsInterfaceReferences, true, "Sectors");
-        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, T2>(value, false));
-    }
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
     IReadOnlyList<T1>? Sounds
     {
         get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T1>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetSoundsInterfaceReferences, true, "Sounds");
         set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T1>(value, false));
-    }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface ISceneLayoutMembers6<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
-{
-    T0? SceneFxNod
-    {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod);
-        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 public partial interface ISceneLayout : IClassVersion<global::GBX.NET.Engines.Scene.CSceneLayout>, global::GBX.NET.Interfaces.Scene.IScene
@@ -104,39 +121,40 @@ public partial interface ISceneLayout : IClassVersion<global::GBX.NET.Engines.Sc
     float CameraFarZ { get; set; }
 }
 
-public partial interface ISceneLayoutTM10 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
+public partial interface ISceneLayoutTM10 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>
 {
 }
 
-public partial interface ISceneLayoutTMPU : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
+public partial interface ISceneLayoutTMPU : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU>
 {
 }
 
-public partial interface ISceneLayoutTMSX : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
+public partial interface ISceneLayoutTMSX : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX>
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? SceneFxPools { get; set; }
+}
+
+public partial interface ISceneLayoutTMNESWC : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>
 {
 }
 
-public partial interface ISceneLayoutTMNESWC : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
+public partial interface ISceneLayoutVSK5 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>
 {
 }
 
-public partial interface ISceneLayoutVSK5 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>
+public partial interface ISceneLayoutTMF : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>
 {
 }
 
-public partial interface ISceneLayoutTMF : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>
+public partial interface ISceneLayoutMP3 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>
 {
 }
 
-public partial interface ISceneLayoutMP3 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3>
+public partial interface ISceneLayoutTMT : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>
 {
 }
 
-public partial interface ISceneLayoutTMT : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>
-{
-}
-
-public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>
+public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>
 {
     Iso4[]? ObjectLocations { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>? Objects
@@ -146,7 +164,7 @@ public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfa
     }
 }
 
-public partial interface ISceneLayoutTM2020 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>
+public partial interface ISceneLayoutTM2020 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>
 {
 }
 

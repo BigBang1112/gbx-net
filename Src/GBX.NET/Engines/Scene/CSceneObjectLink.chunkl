@@ -3,12 +3,7 @@ CSceneObjectLink 0x0A014000
 0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   bool U01
   if U01
-    CSceneMobil Mobil
-    int U02 // array of tree ids?
-    if U02 == 2
-      int U03
-    id Name
-    int U05
+    CSceneMobil.MobilPtr Mobil
   if !U01
     CSceneObject Object
   iso4 RelativeLocation

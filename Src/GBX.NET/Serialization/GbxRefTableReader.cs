@@ -75,7 +75,11 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
                 var resource = new GbxRefTableResource(refTable, flags, useFile, resourceIndex.GetValueOrDefault());
                 logger?.LogInformation("External resource: {Resource}", resource);
 
-                refTableForReader.Add(nodeIndex, resource);
+                if (!refTableForReader.ContainsKey(nodeIndex))
+                {
+                    refTableForReader.Add(nodeIndex, resource);
+                }
+
                 unlinkedResources.Add(new UnlinkedGbxRefTableResource(flags, useFile, nodeIndex, resourceIndex.GetValueOrDefault()));
                 continue;
             }
@@ -86,7 +90,11 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
             var file = new GbxRefTableFile(refTable, flags, useFile, filePath);
             logger?.LogInformation("External file: {File}", file);
 
-            refTableForReader.Add(nodeIndex, file);
+            // Some game files list the same node index more than once. The first entry is kept for lookups.
+            if (!refTableForReader.ContainsKey(nodeIndex))
+            {
+                refTableForReader.Add(nodeIndex, file);
+            }
 
             unlinkedFiles.Add(new UnlinkedGbxRefTableFile(flags, useFile, nodeIndex, filePath));
         }

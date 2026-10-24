@@ -1,0 +1,13 @@
+CVskTrafficPath 0x21067000
+
+0x005 [VSK5]
+  CMwNod Keys
+  ident
+  string Name
+  int StartTime
+  bool IsLooping
+  int
+  CMwNod Ghost
+  vec2
+  float
+  bool IsApplyRegattaRules

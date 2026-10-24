@@ -22,6 +22,11 @@ CGameItemModel 0x2E002000
 0x004 [TMSX]
   CMwNod
 
+0x005 // legacy cameras
+  CMwNod
+  CMwNod
+  CMwNod
+
 0x006 [TMSX, TMNESWC, VSK5, TMF, MP3] // DefaultCamIndex
   int DefaultCamIndex
 

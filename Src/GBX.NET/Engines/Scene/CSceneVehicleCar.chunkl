@@ -16,6 +16,12 @@ CSceneVehicleCar 0x0A02B000
 0x009 [TM10, TMPU, TMSX]
   VisualVehicle[] VisualVehicles
 
+0x00A [TM10, TMPU]
+  float
+  float
+  float SpeedClamp
+  float
+
 0x00B [TMPU, TMSX, TMNESWC]
   CMwNod
   CMwNod

@@ -742,6 +742,69 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
+    /// CGameItemModel 0x005 chunk (legacy cameras)
+    /// </summary>
+    [Chunk(0x2E002005, "legacy cameras")]
+    public partial class Chunk2E002005 : Chunk<CGameItemModel>
+    {
+        public override uint Id => 0x2E002005;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U03Ref;
+        public CMwNod? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E002005 owner;
+            internal NodeRefView(Chunk2E002005 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E002005)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk2E002005)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk2E002005)clone).U03Ref = context.Clone(this.U03Ref)!;
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
+        }
+    }
+
+    /// <summary>
     /// CGameItemModel 0x006 chunk (DefaultCamIndex)
     /// </summary>
     [Chunk(0x2E002006, "DefaultCamIndex")]
@@ -2151,6 +2214,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         0x2E002002 => new Chunk2E002002(),
         0x2E002003 => new Chunk2E002003(),
         0x2E002004 => new Chunk2E002004(),
+        0x2E002005 => new Chunk2E002005(),
         0x2E002006 => new Chunk2E002006(),
         0x2E002007 => new Chunk2E002007(),
         0x2E002008 => new Chunk2E002008(),

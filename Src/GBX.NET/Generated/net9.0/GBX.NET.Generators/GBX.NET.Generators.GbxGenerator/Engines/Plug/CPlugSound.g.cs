@@ -78,6 +78,114 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.priority = value;
     }
 
+    private float minDistance;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    public float MinDistance
+    {
+        get => this.minDistance;
+        set => this.minDistance = value;
+    }
+
+    private float maxDistance;
+    /// <remarks>Applied with: 0x00A, 0x00F body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00F>]
+    public float MaxDistance
+    {
+        get => this.maxDistance;
+        set => this.maxDistance = value;
+    }
+
+    private bool enableDoppler;
+    /// <remarks>Applied with: 0x00A, 0x00C, 0x00F body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    [AppliedWithChunk<Chunk0901A00F>]
+    public bool EnableDoppler
+    {
+        get => this.enableDoppler;
+        set => this.enableDoppler = value;
+    }
+
+    private float volumeAttenuationDirect;
+    /// <remarks>Applied with: 0x00A, 0x00C body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    public float VolumeAttenuationDirect
+    {
+        get => this.volumeAttenuationDirect;
+        set => this.volumeAttenuationDirect = value;
+    }
+
+    private float volumeAttenuationDirectHF;
+    /// <remarks>Applied with: 0x00A, 0x00C body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    public float VolumeAttenuationDirectHF
+    {
+        get => this.volumeAttenuationDirectHF;
+        set => this.volumeAttenuationDirectHF = value;
+    }
+
+    private float volumeAttenuationRoom;
+    /// <remarks>Applied with: 0x00A, 0x00C body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    public float VolumeAttenuationRoom
+    {
+        get => this.volumeAttenuationRoom;
+        set => this.volumeAttenuationRoom = value;
+    }
+
+    private float volumeAttenuationRoomHF;
+    /// <remarks>Applied with: 0x00A, 0x00C body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    public float VolumeAttenuationRoomHF
+    {
+        get => this.volumeAttenuationRoomHF;
+        set => this.volumeAttenuationRoomHF = value;
+    }
+
+    private float additionalDopplerFactor;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    public float AdditionalDopplerFactor
+    {
+        get => this.additionalDopplerFactor;
+        set => this.additionalDopplerFactor = value;
+    }
+
+    private float additionalRolloffFactor;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    public float AdditionalRolloffFactor
+    {
+        get => this.additionalRolloffFactor;
+        set => this.additionalRolloffFactor = value;
+    }
+
+    private float additionalRoomRolloffFactor;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    public float AdditionalRoomRolloffFactor
+    {
+        get => this.additionalRoomRolloffFactor;
+        set => this.additionalRoomRolloffFactor = value;
+    }
+
+    private float airAbsorptionFactor;
+    /// <remarks>Applied with: 0x00A, 0x00C, 0x00F v4+ body chunks</remarks>
+    [AppliedWithChunk<Chunk0901A00A>]
+    [AppliedWithChunk<Chunk0901A00C>]
+    [AppliedWithChunk<Chunk0901A00F>(4)]
+    public float AirAbsorptionFactor
+    {
+        get => this.airAbsorptionFactor;
+        set => this.airAbsorptionFactor = value;
+    }
+
     private ESoundKind soundKind;
     /// <remarks>Applied with: 0x00B, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
@@ -146,52 +254,6 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.maxDistanceOmni = value;
     }
 
-    private bool enableDoppler;
-    /// <remarks>Applied with: 0x00C, 0x00F body chunks</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    [AppliedWithChunk<Chunk0901A00F>]
-    public bool EnableDoppler
-    {
-        get => this.enableDoppler;
-        set => this.enableDoppler = value;
-    }
-
-    private float volumeAttenuationDirect;
-    /// <remarks>Applied with: 0x00C body chunk</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    public float VolumeAttenuationDirect
-    {
-        get => this.volumeAttenuationDirect;
-        set => this.volumeAttenuationDirect = value;
-    }
-
-    private float volumeAttenuationDirectHF;
-    /// <remarks>Applied with: 0x00C body chunk</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    public float VolumeAttenuationDirectHF
-    {
-        get => this.volumeAttenuationDirectHF;
-        set => this.volumeAttenuationDirectHF = value;
-    }
-
-    private float volumeAttenuationRoom;
-    /// <remarks>Applied with: 0x00C body chunk</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    public float VolumeAttenuationRoom
-    {
-        get => this.volumeAttenuationRoom;
-        set => this.volumeAttenuationRoom = value;
-    }
-
-    private float volumeAttenuationRoomHF;
-    /// <remarks>Applied with: 0x00C body chunk</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    public float VolumeAttenuationRoomHF
-    {
-        get => this.volumeAttenuationRoomHF;
-        set => this.volumeAttenuationRoomHF = value;
-    }
-
     private float dopplerFactor;
     /// <remarks>Applied with: 0x00C, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
@@ -220,16 +282,6 @@ public partial class CPlugSound : CPlugAudio, IClass
     {
         get => this.roomRolloffFactor;
         set => this.roomRolloffFactor = value;
-    }
-
-    private float airAbsorptionFactor;
-    /// <remarks>Applied with: 0x00C, 0x00F v4+ body chunks</remarks>
-    [AppliedWithChunk<Chunk0901A00C>]
-    [AppliedWithChunk<Chunk0901A00F>(4)]
-    public float AirAbsorptionFactor
-    {
-        get => this.airAbsorptionFactor;
-        set => this.airAbsorptionFactor = value;
     }
 
     private bool useLowPassFilter;
@@ -302,15 +354,6 @@ public partial class CPlugSound : CPlugAudio, IClass
     {
         get => this.groupDuplicate;
         set => this.groupDuplicate = value;
-    }
-
-    private float maxDistance;
-    /// <remarks>Applied with: 0x00F body chunk</remarks>
-    [AppliedWithChunk<Chunk0901A00F>]
-    public float MaxDistance
-    {
-        get => this.maxDistance;
-        set => this.maxDistance = value;
     }
 
     private NodeRef<CFuncKeysReal>? volumeFromDistanceRef;
@@ -450,6 +493,17 @@ public partial class CPlugSound : CPlugAudio, IClass
         ((CPlugSound)clone).isLooping = context.Clone(this.isLooping)!;
         ((CPlugSound)clone).isContinuous = context.Clone(this.isContinuous)!;
         ((CPlugSound)clone).priority = context.Clone(this.priority)!;
+        ((CPlugSound)clone).minDistance = context.Clone(this.minDistance)!;
+        ((CPlugSound)clone).maxDistance = context.Clone(this.maxDistance)!;
+        ((CPlugSound)clone).enableDoppler = context.Clone(this.enableDoppler)!;
+        ((CPlugSound)clone).volumeAttenuationDirect = context.Clone(this.volumeAttenuationDirect)!;
+        ((CPlugSound)clone).volumeAttenuationDirectHF = context.Clone(this.volumeAttenuationDirectHF)!;
+        ((CPlugSound)clone).volumeAttenuationRoom = context.Clone(this.volumeAttenuationRoom)!;
+        ((CPlugSound)clone).volumeAttenuationRoomHF = context.Clone(this.volumeAttenuationRoomHF)!;
+        ((CPlugSound)clone).additionalDopplerFactor = context.Clone(this.additionalDopplerFactor)!;
+        ((CPlugSound)clone).additionalRolloffFactor = context.Clone(this.additionalRolloffFactor)!;
+        ((CPlugSound)clone).additionalRoomRolloffFactor = context.Clone(this.additionalRoomRolloffFactor)!;
+        ((CPlugSound)clone).airAbsorptionFactor = context.Clone(this.airAbsorptionFactor)!;
         ((CPlugSound)clone).soundKind = context.Clone(this.soundKind)!;
         ((CPlugSound)clone).insideConeAngle = context.Clone(this.insideConeAngle)!;
         ((CPlugSound)clone).outsideConeAngle = context.Clone(this.outsideConeAngle)!;
@@ -457,15 +511,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         ((CPlugSound)clone).coneOutsideAttenuationHF = context.Clone(this.coneOutsideAttenuationHF)!;
         ((CPlugSound)clone).refDistance = context.Clone(this.refDistance)!;
         ((CPlugSound)clone).maxDistanceOmni = context.Clone(this.maxDistanceOmni)!;
-        ((CPlugSound)clone).enableDoppler = context.Clone(this.enableDoppler)!;
-        ((CPlugSound)clone).volumeAttenuationDirect = context.Clone(this.volumeAttenuationDirect)!;
-        ((CPlugSound)clone).volumeAttenuationDirectHF = context.Clone(this.volumeAttenuationDirectHF)!;
-        ((CPlugSound)clone).volumeAttenuationRoom = context.Clone(this.volumeAttenuationRoom)!;
-        ((CPlugSound)clone).volumeAttenuationRoomHF = context.Clone(this.volumeAttenuationRoomHF)!;
         ((CPlugSound)clone).dopplerFactor = context.Clone(this.dopplerFactor)!;
         ((CPlugSound)clone).rolloffFactor = context.Clone(this.rolloffFactor)!;
         ((CPlugSound)clone).roomRolloffFactor = context.Clone(this.roomRolloffFactor)!;
-        ((CPlugSound)clone).airAbsorptionFactor = context.Clone(this.airAbsorptionFactor)!;
         ((CPlugSound)clone).useLowPassFilter = context.Clone(this.useLowPassFilter)!;
         ((CPlugSound)clone).maxDuplicates = context.Clone(this.maxDuplicates)!;
         ((CPlugSound)clone).balanceGroup = context.Clone(this.balanceGroup)!;
@@ -474,7 +522,6 @@ public partial class CPlugSound : CPlugAudio, IClass
         ((CPlugSound)clone).pitch = context.Clone(this.pitch)!;
         ((CPlugSound)clone).fadePlayDuration = context.Clone(this.fadePlayDuration)!;
         ((CPlugSound)clone).groupDuplicate = context.Clone(this.groupDuplicate)!;
-        ((CPlugSound)clone).maxDistance = context.Clone(this.maxDistance)!;
         ((CPlugSound)clone).volumeFromDistanceRef = context.Clone(this.volumeFromDistanceRef)!;
         ((CPlugSound)clone).roomFxSend = context.Clone(this.roomFxSend)!;
         ((CPlugSound)clone).pitchFromDistMode = context.Clone(this.pitchFromDistMode)!;
@@ -558,6 +605,37 @@ public partial class CPlugSound : CPlugAudio, IClass
             rw.Boolean(ref n.isLooping);
             rw.Boolean(ref n.isContinuous);
             rw.Single(ref n.priority);
+        }
+    }
+
+    /// <summary>
+    /// CPlugSound 0x00A chunk (distance and attenuation)
+    /// </summary>
+    [Chunk(0x0901A00A, "distance and attenuation")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0901A00A : Chunk<CPlugSound>
+    {
+        public override uint Id => 0x0901A00A;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.minDistance);
+            rw.Single(ref n.maxDistance);
+            rw.Boolean(ref n.enableDoppler);
+            rw.Single(ref n.volumeAttenuationDirect);
+            rw.Single(ref n.volumeAttenuationDirectHF);
+            rw.Single(ref n.volumeAttenuationRoom);
+            rw.Single(ref n.volumeAttenuationRoomHF);
+            rw.Single(ref n.additionalDopplerFactor);
+            rw.Single(ref n.additionalRolloffFactor);
+            rw.Single(ref n.additionalRoomRolloffFactor);
+            rw.Single(ref n.airAbsorptionFactor);
         }
     }
 
@@ -988,6 +1066,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         0x0901A000 => new Chunk0901A000(),
         0x0901A002 => new Chunk0901A002(),
         0x0901A009 => new Chunk0901A009(),
+        0x0901A00A => new Chunk0901A00A(),
         0x0901A00B => new Chunk0901A00B(),
         0x0901A00C => new Chunk0901A00C(),
         0x0901A00D => new Chunk0901A00D(),

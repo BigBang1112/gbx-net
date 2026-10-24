@@ -19,6 +19,14 @@ public static class CGameAppBuilderExtensions
     }
 }
 
+public static class CGameButtonEffectBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameButtonEffect)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameButtonEffectBuilder Create() => new();
+    }
+}
+
 public static class CGameCampaignPlayerScoresBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Game.CGameCampaignPlayerScores)

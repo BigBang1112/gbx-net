@@ -6,16 +6,9 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFontBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class where T1 : class
 {
-    new T0? CustomMaterialModel { get; set; }
-    new T1? FallbackFont { get; set; }
-}
-public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
-{
     Rect Bounds { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? CustomMaterialModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFontBitmap? FallbackFont { get; set; }
-    int FontAscent { get; set; }
-    int FontHeight { get; set; }
+    T0? CustomMaterialModel { get; set; }
+    T1? FallbackFont { get; set; }
     bool HasCustomMaterial { get; set; }
     bool HasTextureDataRefs { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? Letters { get; set; }
@@ -24,6 +17,25 @@ public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? Pages { get; set; }
     ushort[]? RemapLetters { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? RemapPages { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFontBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
+{
+    T0? LegacyBitmap { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter[]? OldLetters { get; set; }
+}
+public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
+{
+    int FontAscent { get; set; }
+    int FontHeight { get; set; }
+}
+
+public partial interface IPlugFontBitmapTM10 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
+{
+}
+
+public partial interface IPlugFontBitmapTMPU : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
+{
 }
 
 public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>

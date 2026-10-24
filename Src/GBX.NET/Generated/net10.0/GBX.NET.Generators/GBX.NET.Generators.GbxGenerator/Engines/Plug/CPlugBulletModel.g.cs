@@ -165,13 +165,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.explosionBlowValue = value;
     }
 
-    private NodeRef<CFuncKeysReal>? explosionEnergyFromLifeTimeRef;
+    private PlugCurve? explosionEnergyFromLifeTime;
     /// <remarks>Applied with: 0x001 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(14)]
-    public CFuncKeysReal? ExplosionEnergyFromLifeTime
+    public PlugCurve? ExplosionEnergyFromLifeTime
     {
-        get => explosionEnergyFromLifeTimeRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref explosionEnergyFromLifeTimeRef, value);
+        get => this.explosionEnergyFromLifeTime;
+        set => this.explosionEnergyFromLifeTime = value;
     }
 
     private int fireEnergyCost = 1000;
@@ -210,13 +210,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.holdTriggerToPower = value;
     }
 
-    private NodeRef<CFuncKeysReal>? speedFromTriggerDurationRef;
+    private PlugCurve? speedFromTriggerDuration;
     /// <remarks>Applied with: 0x001 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(19)]
-    public CFuncKeysReal? SpeedFromTriggerDuration
+    public PlugCurve? SpeedFromTriggerDuration
     {
-        get => speedFromTriggerDurationRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref speedFromTriggerDurationRef, value);
+        get => this.speedFromTriggerDuration;
+        set => this.speedFromTriggerDuration = value;
     }
 
     private bool showImpactPos;
@@ -228,13 +228,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.showImpactPos = value;
     }
 
-    private NodeRef<CFuncKeysReal>? speedFromHorizonAngleRef;
+    private PlugCurve? speedFromHorizonAngle;
     /// <remarks>Applied with: 0x001 v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(21)]
-    public CFuncKeysReal? SpeedFromHorizonAngle
+    public PlugCurve? SpeedFromHorizonAngle
     {
-        get => speedFromHorizonAngleRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref speedFromHorizonAngleRef, value);
+        get => this.speedFromHorizonAngle;
+        set => this.speedFromHorizonAngle = value;
     }
 
     private float homingDist = 10;
@@ -390,13 +390,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.ammoCostDuringTriggerDuration = value;
     }
 
-    private NodeRef<CFuncKeysReal>? spreadCoefFormChargeDurationRef;
+    private PlugCurve? spreadCoefFormChargeDuration;
     /// <remarks>Applied with: 0x001 v39+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(39)]
-    public CFuncKeysReal? SpreadCoefFormChargeDuration
+    public PlugCurve? SpreadCoefFormChargeDuration
     {
-        get => spreadCoefFormChargeDurationRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref spreadCoefFormChargeDurationRef, value);
+        get => this.spreadCoefFormChargeDuration;
+        set => this.spreadCoefFormChargeDuration = value;
     }
 
     private float explosionDetectionRadius_Resting = -1;
@@ -678,13 +678,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.explosionBlowVerticalScale = value;
     }
 
-    private NodeRef<CFuncKeysReal>? explosionRadiusCoefFromLifeTimeRef;
+    private PlugCurve? explosionRadiusCoefFromLifeTime;
     /// <remarks>Applied with: 0x001 v63+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(63)]
-    public CFuncKeysReal? ExplosionRadiusCoefFromLifeTime
+    public PlugCurve? ExplosionRadiusCoefFromLifeTime
     {
-        get => explosionRadiusCoefFromLifeTimeRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref explosionRadiusCoefFromLifeTimeRef, value);
+        get => this.explosionRadiusCoefFromLifeTime;
+        set => this.explosionRadiusCoefFromLifeTime = value;
     }
 
     private bool explosionOnAllPlayers;
@@ -831,13 +831,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => this.damageAttenuationWithDist = value;
     }
 
-    private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
+    private PlugCurve? damageAttenuationFromDist;
     /// <remarks>Applied with: 0x001 v78+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD001>(78)]
-    public CFuncKeysReal? DamageAttenuationFromDist
+    public PlugCurve? DamageAttenuationFromDist
     {
-        get => damageAttenuationFromDistRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref damageAttenuationFromDistRef, value);
+        get => this.damageAttenuationFromDist;
+        set => this.damageAttenuationFromDist = value;
     }
 
     private bool isIce;
@@ -894,40 +894,40 @@ public partial class CPlugBulletModel : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref soundGaugeRef, value);
     }
 
-    private NodeRef<CFuncKeysReal>? soundAliveVolumeFromRemainingLifeTimeRef;
+    private PlugCurve? soundAliveVolumeFromRemainingLifeTime;
     /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD003>(6)]
-    public CFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime
+    public PlugCurve? SoundAliveVolumeFromRemainingLifeTime
     {
-        get => soundAliveVolumeFromRemainingLifeTimeRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref soundAliveVolumeFromRemainingLifeTimeRef, value);
+        get => this.soundAliveVolumeFromRemainingLifeTime;
+        set => this.soundAliveVolumeFromRemainingLifeTime = value;
     }
 
-    private NodeRef<CFuncKeysReal>? soundAlivePitchFromRemainingLifeTimeRef;
+    private PlugCurve? soundAlivePitchFromRemainingLifeTime;
     /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD003>(6)]
-    public CFuncKeysReal? SoundAlivePitchFromRemainingLifeTime
+    public PlugCurve? SoundAlivePitchFromRemainingLifeTime
     {
-        get => soundAlivePitchFromRemainingLifeTimeRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref soundAlivePitchFromRemainingLifeTimeRef, value);
+        get => this.soundAlivePitchFromRemainingLifeTime;
+        set => this.soundAlivePitchFromRemainingLifeTime = value;
     }
 
-    private NodeRef<CFuncKeysReal>? soundFireVolumeFromRemainingAmmoRef;
+    private PlugCurve? soundFireVolumeFromRemainingAmmo;
     /// <remarks>Applied with: 0x003 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD003>(7)]
-    public CFuncKeysReal? SoundFireVolumeFromRemainingAmmo
+    public PlugCurve? SoundFireVolumeFromRemainingAmmo
     {
-        get => soundFireVolumeFromRemainingAmmoRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref soundFireVolumeFromRemainingAmmoRef, value);
+        get => this.soundFireVolumeFromRemainingAmmo;
+        set => this.soundFireVolumeFromRemainingAmmo = value;
     }
 
-    private NodeRef<CFuncKeysReal>? soundFirePitchFromRemainingAmmoRef;
+    private PlugCurve? soundFirePitchFromRemainingAmmo;
     /// <remarks>Applied with: 0x003 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090CD003>(7)]
-    public CFuncKeysReal? SoundFirePitchFromRemainingAmmo
+    public PlugCurve? SoundFirePitchFromRemainingAmmo
     {
-        get => soundFirePitchFromRemainingAmmoRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref soundFirePitchFromRemainingAmmoRef, value);
+        get => this.soundFirePitchFromRemainingAmmo;
+        set => this.soundFirePitchFromRemainingAmmo = value;
     }
 
     private NodeRef<CPlugParticleEmitterModel>? particleModelAliveRef;
@@ -1187,20 +1187,10 @@ public partial class CPlugBulletModel : CMwNod, IClass
     {
         private readonly CPlugBulletModel owner;
         internal NodeRefView(CPlugBulletModel owner) => this.owner = owner;
-        public NodeRef<CFuncKeysReal> ExplosionEnergyFromLifeTime => NodeRef.GetOrCreate(ref owner.explosionEnergyFromLifeTimeRef);
-        public NodeRef<CFuncKeysReal> SpeedFromTriggerDuration => NodeRef.GetOrCreate(ref owner.speedFromTriggerDurationRef);
-        public NodeRef<CFuncKeysReal> SpeedFromHorizonAngle => NodeRef.GetOrCreate(ref owner.speedFromHorizonAngleRef);
-        public NodeRef<CFuncKeysReal> SpreadCoefFormChargeDuration => NodeRef.GetOrCreate(ref owner.spreadCoefFormChargeDurationRef);
-        public NodeRef<CFuncKeysReal> ExplosionRadiusCoefFromLifeTime => NodeRef.GetOrCreate(ref owner.explosionRadiusCoefFromLifeTimeRef);
-        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
         public NodeRef<CPlugSound> SoundFire => NodeRef.GetOrCreate(ref owner.soundFireRef);
         public NodeRef<CPlugSound> SoundAlive => NodeRef.GetOrCreate(ref owner.soundAliveRef);
         public NodeRef<CPlugSound> SoundReloading => NodeRef.GetOrCreate(ref owner.soundReloadingRef);
         public NodeRef<CPlugSound> SoundGauge => NodeRef.GetOrCreate(ref owner.soundGaugeRef);
-        public NodeRef<CFuncKeysReal> SoundAliveVolumeFromRemainingLifeTime => NodeRef.GetOrCreate(ref owner.soundAliveVolumeFromRemainingLifeTimeRef);
-        public NodeRef<CFuncKeysReal> SoundAlivePitchFromRemainingLifeTime => NodeRef.GetOrCreate(ref owner.soundAlivePitchFromRemainingLifeTimeRef);
-        public NodeRef<CFuncKeysReal> SoundFireVolumeFromRemainingAmmo => NodeRef.GetOrCreate(ref owner.soundFireVolumeFromRemainingAmmoRef);
-        public NodeRef<CFuncKeysReal> SoundFirePitchFromRemainingAmmo => NodeRef.GetOrCreate(ref owner.soundFirePitchFromRemainingAmmoRef);
         public NodeRef<CPlugParticleEmitterModel> ParticleModelAlive => NodeRef.GetOrCreate(ref owner.particleModelAliveRef);
         public NodeRef<CPlugParticleEmitterModel> ParticleModelFire => NodeRef.GetOrCreate(ref owner.particleModelFireRef);
         public NodeRef<CPlugBeamEmitterModel> BeamVisualModel => NodeRef.GetOrCreate(ref owner.beamVisualModelRef);
@@ -1215,20 +1205,10 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("ExplosionEnergyFromLifeTime", NodeRef.GetOrCreate(ref explosionEnergyFromLifeTimeRef));
-        yield return new("SpeedFromTriggerDuration", NodeRef.GetOrCreate(ref speedFromTriggerDurationRef));
-        yield return new("SpeedFromHorizonAngle", NodeRef.GetOrCreate(ref speedFromHorizonAngleRef));
-        yield return new("SpreadCoefFormChargeDuration", NodeRef.GetOrCreate(ref spreadCoefFormChargeDurationRef));
-        yield return new("ExplosionRadiusCoefFromLifeTime", NodeRef.GetOrCreate(ref explosionRadiusCoefFromLifeTimeRef));
-        yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
         yield return new("SoundFire", NodeRef.GetOrCreate(ref soundFireRef));
         yield return new("SoundAlive", NodeRef.GetOrCreate(ref soundAliveRef));
         yield return new("SoundReloading", NodeRef.GetOrCreate(ref soundReloadingRef));
         yield return new("SoundGauge", NodeRef.GetOrCreate(ref soundGaugeRef));
-        yield return new("SoundAliveVolumeFromRemainingLifeTime", NodeRef.GetOrCreate(ref soundAliveVolumeFromRemainingLifeTimeRef));
-        yield return new("SoundAlivePitchFromRemainingLifeTime", NodeRef.GetOrCreate(ref soundAlivePitchFromRemainingLifeTimeRef));
-        yield return new("SoundFireVolumeFromRemainingAmmo", NodeRef.GetOrCreate(ref soundFireVolumeFromRemainingAmmoRef));
-        yield return new("SoundFirePitchFromRemainingAmmo", NodeRef.GetOrCreate(ref soundFirePitchFromRemainingAmmoRef));
         yield return new("ParticleModelAlive", NodeRef.GetOrCreate(ref particleModelAliveRef));
         yield return new("ParticleModelFire", NodeRef.GetOrCreate(ref particleModelFireRef));
         yield return new("BeamVisualModel", NodeRef.GetOrCreate(ref beamVisualModelRef));
@@ -1262,14 +1242,14 @@ public partial class CPlugBulletModel : CMwNod, IClass
         ((CPlugBulletModel)clone).hiddenDist = context.Clone(this.hiddenDist)!;
         ((CPlugBulletModel)clone).explosionEnergyWhenOccluded = context.Clone(this.explosionEnergyWhenOccluded)!;
         ((CPlugBulletModel)clone).explosionBlowValue = context.Clone(this.explosionBlowValue)!;
-        ((CPlugBulletModel)clone).explosionEnergyFromLifeTimeRef = context.Clone(this.explosionEnergyFromLifeTimeRef)!;
+        ((CPlugBulletModel)clone).explosionEnergyFromLifeTime = context.Clone(this.explosionEnergyFromLifeTime)!;
         ((CPlugBulletModel)clone).fireEnergyCost = context.Clone(this.fireEnergyCost)!;
         ((CPlugBulletModel)clone).fireMaxEnergyStorage = context.Clone(this.fireMaxEnergyStorage)!;
         ((CPlugBulletModel)clone).explosionOccultationTest = context.Clone(this.explosionOccultationTest)!;
         ((CPlugBulletModel)clone).holdTriggerToPower = context.Clone(this.holdTriggerToPower)!;
-        ((CPlugBulletModel)clone).speedFromTriggerDurationRef = context.Clone(this.speedFromTriggerDurationRef)!;
+        ((CPlugBulletModel)clone).speedFromTriggerDuration = context.Clone(this.speedFromTriggerDuration)!;
         ((CPlugBulletModel)clone).showImpactPos = context.Clone(this.showImpactPos)!;
-        ((CPlugBulletModel)clone).speedFromHorizonAngleRef = context.Clone(this.speedFromHorizonAngleRef)!;
+        ((CPlugBulletModel)clone).speedFromHorizonAngle = context.Clone(this.speedFromHorizonAngle)!;
         ((CPlugBulletModel)clone).homingDist = context.Clone(this.homingDist)!;
         ((CPlugBulletModel)clone).homingPeriod = context.Clone(this.homingPeriod)!;
         ((CPlugBulletModel)clone).homingMaxAngularSpeed = context.Clone(this.homingMaxAngularSpeed)!;
@@ -1287,7 +1267,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
         ((CPlugBulletModel)clone).fireBulletSpreads = context.CloneArray(this.fireBulletSpreads)!;
         ((CPlugBulletModel)clone).trajectoryUTurnDistance = context.Clone(this.trajectoryUTurnDistance)!;
         ((CPlugBulletModel)clone).ammoCostDuringTriggerDuration = context.Clone(this.ammoCostDuringTriggerDuration)!;
-        ((CPlugBulletModel)clone).spreadCoefFormChargeDurationRef = context.Clone(this.spreadCoefFormChargeDurationRef)!;
+        ((CPlugBulletModel)clone).spreadCoefFormChargeDuration = context.Clone(this.spreadCoefFormChargeDuration)!;
         ((CPlugBulletModel)clone).explosionDetectionRadius_Resting = context.Clone(this.explosionDetectionRadius_Resting)!;
         ((CPlugBulletModel)clone).explosionDetectionRadius_Flying = context.Clone(this.explosionDetectionRadius_Flying)!;
         ((CPlugBulletModel)clone).explosionOnEndLife = context.Clone(this.explosionOnEndLife)!;
@@ -1319,7 +1299,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
         ((CPlugBulletModel)clone).projectileNearMissDelay = context.Clone(this.projectileNearMissDelay)!;
         ((CPlugBulletModel)clone).endLifeWithoutExplosionOnMaterialId = context.Clone(this.endLifeWithoutExplosionOnMaterialId)!;
         ((CPlugBulletModel)clone).explosionBlowVerticalScale = context.Clone(this.explosionBlowVerticalScale)!;
-        ((CPlugBulletModel)clone).explosionRadiusCoefFromLifeTimeRef = context.Clone(this.explosionRadiusCoefFromLifeTimeRef)!;
+        ((CPlugBulletModel)clone).explosionRadiusCoefFromLifeTime = context.Clone(this.explosionRadiusCoefFromLifeTime)!;
         ((CPlugBulletModel)clone).explosionOnAllPlayers = context.Clone(this.explosionOnAllPlayers)!;
         ((CPlugBulletModel)clone).isFlare = context.Clone(this.isFlare)!;
         ((CPlugBulletModel)clone).flareAttractionRadius = context.Clone(this.flareAttractionRadius)!;
@@ -1336,17 +1316,17 @@ public partial class CPlugBulletModel : CMwNod, IClass
         ((CPlugBulletModel)clone).directHitDamageValue = context.Clone(this.directHitDamageValue)!;
         ((CPlugBulletModel)clone).explosionBlowOnAllPlayers = context.Clone(this.explosionBlowOnAllPlayers)!;
         ((CPlugBulletModel)clone).damageAttenuationWithDist = context.Clone(this.damageAttenuationWithDist)!;
-        ((CPlugBulletModel)clone).damageAttenuationFromDistRef = context.Clone(this.damageAttenuationFromDistRef)!;
+        ((CPlugBulletModel)clone).damageAttenuationFromDist = context.Clone(this.damageAttenuationFromDist)!;
         ((CPlugBulletModel)clone).isIce = context.Clone(this.isIce)!;
         ((CPlugBulletModel)clone).soundFireRef = context.Clone(this.soundFireRef)!;
         ((CPlugBulletModel)clone).soundAliveRef = context.Clone(this.soundAliveRef)!;
         ((CPlugBulletModel)clone).soundFireOffset = context.Clone(this.soundFireOffset)!;
         ((CPlugBulletModel)clone).soundReloadingRef = context.Clone(this.soundReloadingRef)!;
         ((CPlugBulletModel)clone).soundGaugeRef = context.Clone(this.soundGaugeRef)!;
-        ((CPlugBulletModel)clone).soundAliveVolumeFromRemainingLifeTimeRef = context.Clone(this.soundAliveVolumeFromRemainingLifeTimeRef)!;
-        ((CPlugBulletModel)clone).soundAlivePitchFromRemainingLifeTimeRef = context.Clone(this.soundAlivePitchFromRemainingLifeTimeRef)!;
-        ((CPlugBulletModel)clone).soundFireVolumeFromRemainingAmmoRef = context.Clone(this.soundFireVolumeFromRemainingAmmoRef)!;
-        ((CPlugBulletModel)clone).soundFirePitchFromRemainingAmmoRef = context.Clone(this.soundFirePitchFromRemainingAmmoRef)!;
+        ((CPlugBulletModel)clone).soundAliveVolumeFromRemainingLifeTime = context.Clone(this.soundAliveVolumeFromRemainingLifeTime)!;
+        ((CPlugBulletModel)clone).soundAlivePitchFromRemainingLifeTime = context.Clone(this.soundAlivePitchFromRemainingLifeTime)!;
+        ((CPlugBulletModel)clone).soundFireVolumeFromRemainingAmmo = context.Clone(this.soundFireVolumeFromRemainingAmmo)!;
+        ((CPlugBulletModel)clone).soundFirePitchFromRemainingAmmo = context.Clone(this.soundFirePitchFromRemainingAmmo)!;
         ((CPlugBulletModel)clone).particleModelAliveRef = context.Clone(this.particleModelAliveRef)!;
         ((CPlugBulletModel)clone).particleModelFireRef = context.Clone(this.particleModelFireRef)!;
         ((CPlugBulletModel)clone).beamMaxLength = context.Clone(this.beamMaxLength)!;
@@ -1385,11 +1365,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x001 chunk
     /// </summary>
     [Chunk(0x090CD001)]
-    [ChunkGameVersion(GameVersion.MP4, 79)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 79, 86)]
     public partial class Chunk090CD001 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
         public float U02;
@@ -1414,6 +1394,14 @@ public partial class CPlugBulletModel : CMwNod, IClass
         public int U15;
         public float U16;
         public int U17;
+        public int U18;
+        public int U19;
+        public int U20;
+        public int U21;
+        public int U22;
+        public int U23;
+        public int U24;
+        public int U25;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1439,6 +1427,10 @@ public partial class CPlugBulletModel : CMwNod, IClass
             {
                 Version = 79;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 86;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1462,12 +1454,20 @@ public partial class CPlugBulletModel : CMwNod, IClass
             ((Chunk090CD001)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090CD001)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090CD001)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090CD001)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090CD001)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090CD001)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090CD001)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090CD001)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090CD001)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090CD001)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090CD001)clone).U25 = context.Clone(this.U25)!;
         }
 
         public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 79)
+            if (Version > 86)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1555,7 +1555,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
             if (Version >= 14)
             {
-                rw.NodeRef(ref n.explosionEnergyFromLifeTimeRef);
+                rw.ReadableWritable<PlugCurve>(ref n.explosionEnergyFromLifeTime, version: Version- 86);
             }
 
             if (Version >= 15)
@@ -1581,7 +1581,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
             if (Version >= 19)
             {
                 rw.Boolean(ref n.holdTriggerToPower);
-                rw.NodeRef(ref n.speedFromTriggerDurationRef);
+                rw.ReadableWritable<PlugCurve>(ref n.speedFromTriggerDuration, version: Version- 86);
             }
 
             if (Version >= 20)
@@ -1591,7 +1591,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
             if (Version >= 21)
             {
-                rw.NodeRef(ref n.speedFromHorizonAngleRef);
+                rw.ReadableWritable<PlugCurve>(ref n.speedFromHorizonAngle, version: Version- 86);
             }
 
             if (Version >= 22 && Version <= 43)
@@ -1672,7 +1672,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
             if (Version >= 39)
             {
                 rw.Int32(ref n.ammoCostDuringTriggerDuration);
-                rw.NodeRef(ref n.spreadCoefFormChargeDurationRef);
+                rw.ReadableWritable<PlugCurve>(ref n.spreadCoefFormChargeDuration, version: Version- 86);
             }
 
             if (Version >= 40)
@@ -1813,7 +1813,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
             if (Version >= 63)
             {
-                rw.NodeRef(ref n.explosionRadiusCoefFromLifeTimeRef);
+                rw.ReadableWritable<PlugCurve>(ref n.explosionRadiusCoefFromLifeTime, version: Version- 86);
             }
 
             if (Version >= 64)
@@ -1895,12 +1895,44 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
             if (Version >= 78)
             {
-                rw.NodeRef(ref n.damageAttenuationFromDistRef);
+                rw.ReadableWritable<PlugCurve>(ref n.damageAttenuationFromDist, version: Version- 86);
             }
 
             if (Version >= 79)
             {
                 rw.Boolean(ref n.isIce);
+            }
+
+            if (Version >= 80)
+            {
+                rw.Int32(ref U18);
+            }
+
+            if (Version >= 81)
+            {
+                rw.Int32(ref U19);
+            }
+
+            if (Version >= 82)
+            {
+                rw.Int32(ref U20);
+                rw.Int32(ref U21);
+                rw.Int32(ref U22);
+            }
+
+            if (Version >= 83)
+            {
+                rw.Int32(ref U23);
+            }
+
+            if (Version >= 84)
+            {
+                rw.Int32(ref U24);
+            }
+
+            if (Version >= 85)
+            {
+                rw.Int32(ref U25);
             }
         }
     }
@@ -1909,11 +1941,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x003 chunk
     /// </summary>
     [Chunk(0x090CD003)]
-    [ChunkGameVersion(GameVersion.MP4, 7)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 7, 8)]
     public partial class Chunk090CD003 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CPlugSound>? U01Ref;
@@ -1956,6 +1988,10 @@ public partial class CPlugBulletModel : CMwNod, IClass
             {
                 Version = 7;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1969,7 +2005,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
         public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 7)
+            if (Version > 8)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -2005,14 +2041,14 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref n.soundAliveVolumeFromRemainingLifeTimeRef);
-                rw.NodeRef(ref n.soundAlivePitchFromRemainingLifeTimeRef);
+                rw.ReadableWritable<PlugCurve>(ref n.soundAliveVolumeFromRemainingLifeTime, version: Version- 8);
+                rw.ReadableWritable<PlugCurve>(ref n.soundAlivePitchFromRemainingLifeTime, version: Version- 8);
             }
 
             if (Version >= 7)
             {
-                rw.NodeRef(ref n.soundFireVolumeFromRemainingAmmoRef);
-                rw.NodeRef(ref n.soundFirePitchFromRemainingAmmoRef);
+                rw.ReadableWritable<PlugCurve>(ref n.soundFireVolumeFromRemainingAmmo, version: Version- 8);
+                rw.ReadableWritable<PlugCurve>(ref n.soundFirePitchFromRemainingAmmo, version: Version- 8);
             }
         }
     }
@@ -2021,11 +2057,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x005 chunk
     /// </summary>
     [Chunk(0x090CD005)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 2)]
     public partial class Chunk090CD005 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD005;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CPlugParticleEmitterModel>? U01Ref;
@@ -2064,7 +2100,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
         public Chunk090CD005(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -2109,11 +2145,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x006 chunk
     /// </summary>
     [Chunk(0x090CD006)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 6)]
     public partial class Chunk090CD006 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD006;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -2154,7 +2190,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
         public Chunk090CD006(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 6;
             }
@@ -2217,11 +2253,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x007 chunk
     /// </summary>
     [Chunk(0x090CD007)]
-    [ChunkGameVersion(GameVersion.MP4, 8)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 8, 8)]
     public partial class Chunk090CD007 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD007;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk090CD007() : this(GameVersion.Unspecified)
@@ -2230,7 +2266,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
         public Chunk090CD007(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 8;
             }
@@ -2295,11 +2331,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x008 chunk
     /// </summary>
     [Chunk(0x090CD008)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090CD008 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD008;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk090CD008() : this(GameVersion.Unspecified)
@@ -2308,7 +2344,7 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
         public Chunk090CD008(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2342,12 +2378,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
     /// CPlugBulletModel 0x009 chunk
     /// </summary>
     [Chunk(0x090CD009)]
-    [ChunkGameVersion(GameVersion.MP4, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090CD009 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD009;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public int U01;
 
         public Chunk090CD009() : this(GameVersion.Unspecified)
         {
@@ -2359,18 +2396,23 @@ public partial class CPlugBulletModel : CMwNod, IClass
             {
                 Version = 4;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090CD009)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CD009)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > 5)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -2399,6 +2441,11 @@ public partial class CPlugBulletModel : CMwNod, IClass
             if (Version >= 4)
             {
                 rw.NodeRef(ref n.bitmapLasersightRef);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Int32(ref U01);
             }
         }
     }

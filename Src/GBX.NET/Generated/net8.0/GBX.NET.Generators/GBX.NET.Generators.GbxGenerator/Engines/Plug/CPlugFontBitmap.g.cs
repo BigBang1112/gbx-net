@@ -13,7 +13,8 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugBitmap>? legacyBitmapRef;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    [AppliedWithChunk<Chunk0904E001>]
     [AppliedWithChunk<Chunk0904E002>]
     public CPlugBitmap? LegacyBitmap
     {
@@ -22,7 +23,8 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     }
 
     private int fontHeight;
-    /// <remarks>Applied with: 0x002, 0x003, 0x007, 0x009 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x007, 0x009 body chunks</remarks>
+    [AppliedWithChunk<Chunk0904E001>]
     [AppliedWithChunk<Chunk0904E002>]
     [AppliedWithChunk<Chunk0904E003>]
     [AppliedWithChunk<Chunk0904E007>]
@@ -34,7 +36,8 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     }
 
     private int fontAscent;
-    /// <remarks>Applied with: 0x002, 0x003, 0x007, 0x009 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x007, 0x009 body chunks</remarks>
+    [AppliedWithChunk<Chunk0904E001>]
     [AppliedWithChunk<Chunk0904E002>]
     [AppliedWithChunk<Chunk0904E003>]
     [AppliedWithChunk<Chunk0904E007>]
@@ -46,7 +49,8 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     }
 
     private OldLetter[]? oldLetters;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    [AppliedWithChunk<Chunk0904E001>]
     [AppliedWithChunk<Chunk0904E002>]
     public OldLetter[]? OldLetters
     {
@@ -227,12 +231,41 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     }
 
     /// <summary>
+    /// CPlugFontBitmap 0x001 chunk (legacy bitmap and letters)
+    /// </summary>
+    [Chunk(0x0904E001, "legacy bitmap and letters")]
+    [ChunkGameVersion(GameVersion.TM10)]
+    public partial class Chunk0904E001 : Chunk<CPlugFontBitmap>
+    {
+        public override uint Id => 0x0904E001;
+        public override GameVersion GameVersion => GameVersion.TM10;
+        public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0904E001)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugFontBitmap n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.legacyBitmapRef);
+            rw.Int32(ref n.fontHeight);
+            rw.Int32(ref n.fontAscent);
+            rw.ArrayReadableWritable<OldLetter>(ref n.oldLetters!);
+            rw.Boolean(ref U01);
+        }
+    }
+
+    /// <summary>
     /// CPlugFontBitmap 0x002 chunk
     /// </summary>
     [Chunk(0x0904E002)]
+    [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0904E002 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E002;
+        public override GameVersion GameVersion => GameVersion.TMPU;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -819,6 +852,7 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0904E001 => new Chunk0904E001(),
         0x0904E002 => new Chunk0904E002(),
         0x0904E003 => new Chunk0904E003(),
         0x0904E004 => new Chunk0904E004(),

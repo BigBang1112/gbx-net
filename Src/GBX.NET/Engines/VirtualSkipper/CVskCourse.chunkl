@@ -1,0 +1,36 @@
+CVskCourse 0x21070000
+
+0x004 [VSK5.v1] // course components and links
+  versionb
+  CourseComponent[] Components (version: Version)
+  CourseLink[] Links (version: Version)
+  int[]
+
+0x005 [VSK5]
+  bool
+
+archive CourseComponent
+  byte Type
+  if Type == 1
+    v1=
+      ident
+      bool
+      CourseLink (version: v)
+      CourseLink (version: v)
+      CoursePoint (version: v)
+      CoursePoint (version: v)
+  if Type == 0
+    v1=
+      CoursePoint (version: v)
+
+archive CourseLink
+  v1=
+    int Index
+    bool
+
+archive CoursePoint
+  v1=
+    vec3 Position
+    ident
+    bool
+    bool

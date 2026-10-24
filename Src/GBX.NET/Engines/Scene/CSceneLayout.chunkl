@@ -1,18 +1,60 @@
 CSceneLayout 0x0A003000
 - inherits: CScene
 
+0x000 [TM10, TMPU, TMSX, TMNESWC] // Sectors
+  CSceneSector[] Sectors
+
+0x001 [TM10, TMPU, TMSX, TMNESWC] // Gates
+  CSceneGate[] Gates
+
+0x004 [TM10, TMPU, TMSX, TMNESWC] // legacy locations
+  OldSceneObjectLoc[] LegacyLocations
+
+0x005 [TM10, TMPU, TMSX, TMNESWC] // Paths
+  CScenePath[] Paths (deprec)
+
+0x007 [TM10, TMPU]
+  int = -1
+  iso4
+
+0x008 [TM10, TMPU, TMSX, TMNESWC] // legacy fields
+  OldSceneObject[] LegacyFields
+
+0x009 [TM10, TMPU, TMSX, TMNESWC] // legacy sounds
+  OldSceneObjectLoc[] LegacySounds
+
 0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int
+
+0x00E [TM10, TMPU, TMSX, TMNESWC] // legacy portal links, written empty
+
+0x00F [TM10, TMPU, TMSX, TMNESWC] // traffic
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
 
 0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   float CameraFarZ
   vec3 CameraClearColor
+
+0x011 [TM10, TMPU] // SceneFx
+  CSceneFx SceneFx
+
+0x012 [TM10, TMPU, TMSX, TMNESWC] // moods
+  CMwNod[] Moods (deprec)
+  int
+
+0x013 [TMSX] // SceneFx and pools
+  CSceneFx SceneFx
+  CMwNod[] SceneFxPools
 
 0x014 [TMSX, TMNESWC, VSK5, TMF]
   int
   bool
   box
   iso4
+
+0x015 [TMNESWC] // SceneFxNod
+  CSceneFxNod SceneFxNod
 
 0x016
   CSceneSector[] Sectors (deprec)
@@ -181,3 +223,12 @@ archive Unknown3
     CPlugSolid2Model
     v5+
       CPlugPrefab
+
+archive OldSceneObjectLoc
+  CSceneObject Object
+  CSceneSector Sector
+  iso4 Location
+
+archive OldSceneObject
+  CSceneObject Object
+  CSceneSector Sector

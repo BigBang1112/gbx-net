@@ -12,3 +12,15 @@ CSceneMobil 0x0A011000
 
 0x006 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   CSceneMessageHandler MessageHandler
+
+archive MobilPtr
+  CSceneMobil Model
+  if Model != null
+    int DataVersion = 2
+    if DataVersion == 2
+      int = -1 // class data terminator
+    id Name
+    if DataVersion >= 1
+      CSceneObjectLink[] ObjectLinks
+  else
+    CSceneMobil Mobil

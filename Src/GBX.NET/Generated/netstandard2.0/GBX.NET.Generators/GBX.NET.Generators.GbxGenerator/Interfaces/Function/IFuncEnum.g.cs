@@ -9,7 +9,20 @@ public interface IFuncEnumMembers1 : global::GBX.NET.Interfaces.Function.IFuncEn
     Vec2 TexSize { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IFuncEnumMembers2<T0> : global::GBX.NET.Interfaces.Function.IFuncEnum where T0 : class
+public interface IFuncEnumMembers2 : global::GBX.NET.Interfaces.Function.IFuncEnum
+{
+    Int2 Atlas { get; set; }
+    Vec2 MaxTexCoord { get; set; }
+    Vec2 MinTexCoord { get; set; }
+    int[]? ValuesAtlasYx { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncEnumMembers3 : global::GBX.NET.Interfaces.Function.IFuncEnum
+{
+    string? Name { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncEnumMembers4<T0> : global::GBX.NET.Interfaces.Function.IFuncEnum where T0 : class
 {
     T0? IconIndexs { get; set; }
 }
@@ -22,40 +35,48 @@ public partial interface IFuncEnum : IClassVersion<global::GBX.NET.Engines.Funct
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    Int2 Atlas { get; set; }
-    Vec2 MaxTexCoord { get; set; }
-    Vec2 MinTexCoord { get; set; }
-    string? Name { get; set; }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? Values { get; set; }
-    int[]? ValuesAtlasYx { get; set; }
     int WantedCount { get; set; }
 }
 
-public partial interface IFuncEnumTMNESWC : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMNESWC
+public partial interface IFuncEnumTM10 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTM10
 {
 }
 
-public partial interface IFuncEnumVSK5 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
+public partial interface IFuncEnumTMPU : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMPU
 {
 }
 
-public partial interface IFuncEnumTMF : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>
+public partial interface IFuncEnumTMSX : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMSX, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3
+{
+    int SubIconCount { get; set; }
+}
+
+public partial interface IFuncEnumTMNESWC : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3
 {
 }
 
-public partial interface IFuncEnumMP3 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>
+public partial interface IFuncEnumVSK5 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
 {
 }
 
-public partial interface IFuncEnumTMT : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
+public partial interface IFuncEnumTMF : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>
 {
 }
 
-public partial interface IFuncEnumMP4 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
+public partial interface IFuncEnumMP3 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>
 {
 }
 
-public partial interface IFuncEnumTM2020 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>
+public partial interface IFuncEnumTMT : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
+{
+}
+
+public partial interface IFuncEnumMP4 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
+{
+}
+
+public partial interface IFuncEnumTM2020 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>
 {
 }
 

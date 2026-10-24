@@ -12,13 +12,151 @@ public partial class CControlList : CControlFrame, IClass
 
     internal override uint GetId() => Id;
 
+    private int nbColumns;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk0700F000>]
+    [AppliedWithChunk<Chunk0700F001>]
+    public int NbColumns
+    {
+        get => this.nbColumns;
+        set => this.nbColumns = value;
+    }
+
+    private int nbLinesPerPage;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk0700F000>]
+    [AppliedWithChunk<Chunk0700F001>]
+    public int NbLinesPerPage
+    {
+        get => this.nbLinesPerPage;
+        set => this.nbLinesPerPage = value;
+    }
+
+    private float linesHeight;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk0700F000>]
+    [AppliedWithChunk<Chunk0700F001>]
+    public float LinesHeight
+    {
+        get => this.linesHeight;
+        set => this.linesHeight = value;
+    }
+
+    private Unknown[]? columns;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk0700F000>]
+    [AppliedWithChunk<Chunk0700F001>]
+    public Unknown[]? Columns
+    {
+        get => this.columns;
+        set => this.columns = value;
+    }
+
+    private int fastPageStep;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk0700F001>]
+    public int FastPageStep
+    {
+        get => this.fastPageStep;
+        set => this.fastPageStep = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CControlList)clone).nbColumns = context.Clone(this.nbColumns)!;
+        ((CControlList)clone).nbLinesPerPage = context.Clone(this.nbLinesPerPage)!;
+        ((CControlList)clone).linesHeight = context.Clone(this.linesHeight)!;
+        ((CControlList)clone).columns = context.CloneArray(this.columns)!;
+        ((CControlList)clone).fastPageStep = context.Clone(this.fastPageStep)!;
     }
 
     public CControlList()
     {
+    }
+
+    /// <summary>
+    /// CControlList 0x000 chunk (legacy list layout and columns)
+    /// </summary>
+    [Chunk(0x0700F000, "legacy list layout and columns")]
+    [ChunkGameVersion(GameVersion.TM10)]
+    public partial class Chunk0700F000 : Chunk<CControlList>
+    {
+        public override uint Id => 0x0700F000;
+        public override GameVersion GameVersion => GameVersion.TM10;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+        public string? U02;
+        public int U03;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0700F000 owner;
+            internal NodeRefView(Chunk0700F000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700F000)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0700F000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0700F000)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CControlList n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbColumns);
+            rw.Int32(ref n.nbLinesPerPage);
+            rw.Single(ref n.linesHeight);
+            rw.NodeRef(ref U01Ref);
+            rw.String(ref U02);
+            var columnCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            var columnWidthCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            var columnNodCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            rw.Int32(ref U03);
+            rw.ArrayReadableWritable<Unknown>(ref n.columns!, columnCount);
+        }
+    }
+
+    /// <summary>
+    /// CControlList 0x001 chunk (legacy list layout and columns)
+    /// </summary>
+    [Chunk(0x0700F001, "legacy list layout and columns")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk0700F001 : Chunk<CControlList>
+    {
+        public override uint Id => 0x0700F001;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlList n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbColumns);
+            rw.Int32(ref n.nbLinesPerPage);
+            rw.Int32(ref n.fastPageStep);
+            rw.Single(ref n.linesHeight);
+            var columnCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            var columnWidthCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            var columnNodCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
+            rw.ArrayReadableWritable<Unknown>(ref n.columns!, columnCount);
+        }
     }
 
     /// <summary>
@@ -231,6 +369,8 @@ public partial class CControlList : CControlFrame, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0700F000 => new Chunk0700F000(),
+        0x0700F001 => new Chunk0700F001(),
         0x0700F007 => new Chunk0700F007(),
         0x0700F00A => new Chunk0700F00A(),
         _ => base.NewChunk(chunkId),

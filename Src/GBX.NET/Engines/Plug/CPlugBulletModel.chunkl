@@ -1,6 +1,6 @@
 CPlugBulletModel 0x090CD000
 
-0x001 [MP4.v79]
+0x001 [MP4.v79, TM2020.v86]
   version
   v30+
     int BulletType
@@ -38,7 +38,7 @@ CPlugBulletModel 0x090CD000
   v13+
     float ExplosionBlowValue = 10
   v14+
-    CFuncKeysReal ExplosionEnergyFromLifeTime
+    PlugCurve ExplosionEnergyFromLifeTime (version: Version - 86)
   v15+
     int FireEnergyCost = 1000
   v16+
@@ -49,11 +49,11 @@ CPlugBulletModel 0x090CD000
     int ExplosionOccultationTest
   v19+
     bool HoldTriggerToPower
-    CFuncKeysReal SpeedFromTriggerDuration
+    PlugCurve SpeedFromTriggerDuration (version: Version - 86)
   v20+
     bool ShowImpactPos
   v21+
-    CFuncKeysReal SpeedFromHorizonAngle
+    PlugCurve SpeedFromHorizonAngle (version: Version - 86)
   v22..43
     bool
   v23+
@@ -89,7 +89,7 @@ CPlugBulletModel 0x090CD000
     float TrajectoryUTurnDistance = -1
   v39+
     int AmmoCostDuringTriggerDuration
-    CFuncKeysReal SpreadCoefFormChargeDuration
+    PlugCurve SpreadCoefFormChargeDuration (version: Version - 86)
   v40+
     float ExplosionDetectionRadius_Resting = -1
   v41+
@@ -152,7 +152,7 @@ CPlugBulletModel 0x090CD000
   v62+
     float ExplosionBlowVerticalScale = 1
   v63+
-    CFuncKeysReal ExplosionRadiusCoefFromLifeTime
+    PlugCurve ExplosionRadiusCoefFromLifeTime (version: Version - 86)
   v64+
     bool
   v65+
@@ -189,11 +189,25 @@ CPlugBulletModel 0x090CD000
     float
     int
   v78+
-    CFuncKeysReal DamageAttenuationFromDist
+    PlugCurve DamageAttenuationFromDist (version: Version - 86)
   v79+
     bool IsIce
+  v80+
+    int
+  v81+
+    int
+  v82+
+    int
+    int
+    int
+  v83+
+    int
+  v84+
+    int
+  v85+
+    int
 
-0x003 [MP4.v7]
+0x003 [MP4.v7, TM2020.v8]
   version
   CPlugSound SoundFire
   v2-
@@ -208,13 +222,13 @@ CPlugBulletModel 0x090CD000
   v5+
     CPlugSound SoundGauge
   v6+
-    CFuncKeysReal SoundAliveVolumeFromRemainingLifeTime
-    CFuncKeysReal SoundAlivePitchFromRemainingLifeTime
+    PlugCurve SoundAliveVolumeFromRemainingLifeTime (version: Version - 8)
+    PlugCurve SoundAlivePitchFromRemainingLifeTime (version: Version - 8)
   v7+
-    CFuncKeysReal SoundFireVolumeFromRemainingAmmo
-    CFuncKeysReal SoundFirePitchFromRemainingAmmo
+    PlugCurve SoundFireVolumeFromRemainingAmmo (version: Version - 8)
+    PlugCurve SoundFirePitchFromRemainingAmmo (version: Version - 8)
 
-0x005 [MP4.v2]
+0x005 [MP4.v2, TM2020.v2]
   version
   CPlugParticleEmitterModel ParticleModelAlive
   v1-
@@ -224,7 +238,7 @@ CPlugBulletModel 0x090CD000
     v1-
       CPlugParticleEmitterModel
 
-0x006 [MP4.v6]
+0x006 [MP4.v6, TM2020.v6]
   version
   v3-
     bool
@@ -241,7 +255,7 @@ CPlugBulletModel 0x090CD000
   v5=
     CPlugBeamEmitterModel
 
-0x007 [MP4.v8]
+0x007 [MP4.v8, TM2020.v8]
   version
   bool Sm_AutoAim
   float Sm_AimIntertia
@@ -261,14 +275,14 @@ CPlugBulletModel 0x090CD000
   v8+
     float Sm_Recoil
 
-0x008 [MP4.v1]
+0x008 [MP4.v1, TM2020.v1]
   version
   CPlugParticleMaterialImpactModel ImpactBounce
   CPlugParticleMaterialImpactModel ExplosionBullet
   v1+
     CPlugParticleMaterialImpactModel ExplosionSurface
 
-0x009 [MP4.v4]
+0x009 [MP4.v4, TM2020.v5]
   version
   CPlugBitmap BitmapCrosshair
   v1+
@@ -283,4 +297,6 @@ CPlugBulletModel 0x090CD000
     CPlugBitmap BitmapCrosshairTriLaser
   v4+
     CPlugBitmap BitmapLasersight
+  v5+
+    int
 

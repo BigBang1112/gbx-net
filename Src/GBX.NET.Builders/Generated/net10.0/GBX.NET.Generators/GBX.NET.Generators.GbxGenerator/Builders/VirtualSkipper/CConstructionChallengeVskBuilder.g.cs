@@ -21,6 +21,7 @@ public abstract class CConstructionChallengeVskBuilderBase<TSelf> : NodeBuilder<
     private protected const GameVersion SupportedGames12 = GameVersion.MP3 | GameVersion.TMT;
     private protected const GameVersion SupportedGames13 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames14 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames15 = GameVersion.VSK5;
     public TSelf WithAuthorLogin(string value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorLoginAssignment(), value, SupportedGames2);
     public TSelf WithBlockStock(global::GBX.NET.Engines.Game.CGameCtnCollectorList? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockAssignment(), value, SupportedGames2);
     public TSelf WithBlockStockReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockReferenceAssignment(), value, SupportedGames2);
@@ -287,6 +288,20 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
     private static global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk();
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080000());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080001());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080002());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080004());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080009());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk2108000A());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk2108000B());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk2108000C());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk2108000D());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk2108000E());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080011());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080012());
+        node.Chunks.Add(new global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk.Chunk21080013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014());
@@ -596,6 +611,7 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
     public partial class VSK5 : CConstructionChallengeVskBuilderBase<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk> state) : base(state) { }
+        public VSK5 WithAILevel(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetAILevelAssignment(), value, SupportedGames15);
         public VSK5 WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? value) => base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5? value) => base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithCheckpoints(List<Int3>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
@@ -614,20 +630,50 @@ public partial class CConstructionChallengeVskBuilder : CConstructionChallengeVs
         public VSK5 WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, SupportedGames4);
         public VSK5 WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? value) => WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithComments(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCommentsAssignment(), value, SupportedGames10);
+        public VSK5 WithCourse(global::GBX.NET.Engines.VirtualSkipper.CVskCourse? value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetCourseAssignment(), value, SupportedGames15);
+        public VSK5 WithCourseReference(NodeRef<global::GBX.NET.Engines.VirtualSkipper.CVskCourse> value) => SetReference(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetCourseReferenceAssignment(), value, SupportedGames15);
+        public VSK5 WithCourse(global::GBX.NET.Interfaces.VirtualSkipper.IVskCourseVSK5? value) => WithCourse(value is null ? (global::GBX.NET.Engines.VirtualSkipper.CVskCourse?)null : value is global::GBX.NET.Engines.VirtualSkipper.CVskCourse node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithCustomMusicPackDesc(PackDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCustomMusicPackDescAssignment(), value, SupportedGames6);
+        public VSK5 WithFinishFirst(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetFinishFirstAssignment(), value, SupportedGames15);
         public VSK5 WithHasCustomCamThumbnail(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasCustomCamThumbnailAssignment(), value, SupportedGames10);
+        public VSK5 WithIgnoreCollectionMeteo(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetIgnoreCollectionMeteoAssignment(), value, SupportedGames15);
+        public VSK5 WithInflictPenalty(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetInflictPenaltyAssignment(), value, SupportedGames15);
         public VSK5 WithIsLapRace(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, SupportedGames3);
         public VSK5 WithMapCoordOrigin(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordOriginAssignment(), value, SupportedGames6);
         public VSK5 WithMapCoordTarget(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordTargetAssignment(), value, SupportedGames6);
+        public VSK5 WithMeteo(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetMeteoAssignment(), value, SupportedGames15);
+        public VSK5 WithMeteoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetMeteoReferenceAssignment(), value, SupportedGames15);
         public VSK5 WithModPackDesc(PackDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, SupportedGames3);
         public VSK5 WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, SupportedGames3);
+        public VSK5 WithNbAIs(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetNbAIsAssignment(), value, SupportedGames15);
         public VSK5 WithNbLaps(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbLapsAssignment(), value, SupportedGames3);
+        public VSK5 WithNoPenalty(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetNoPenaltyAssignment(), value, SupportedGames15);
+        public VSK5 WithNoRules(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetNoRulesAssignment(), value, SupportedGames15);
         public VSK5 WithPassword(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public VSK5 WithRandomWindShift(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetRandomWindShiftAssignment(), value, SupportedGames15);
+        public VSK5 WithRulesType(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetRulesTypeAssignment(), value, SupportedGames15);
+        public VSK5 WithSmallShifts(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetSmallShiftsAssignment(), value, SupportedGames15);
+        public VSK5 WithSoloPuffLullSeed(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetSoloPuffLullSeedAssignment(), value, SupportedGames15);
+        public VSK5 WithSoloWindShiftSeed(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetSoloWindShiftSeedAssignment(), value, SupportedGames15);
+        public VSK5 WithStartDayTime(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetStartDayTimeAssignment(), value, SupportedGames15);
+        public VSK5 WithStartDelay(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetStartDelayAssignment(), value, SupportedGames15);
+        public VSK5 WithStartLowTideTime(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetStartLowTideTimeAssignment(), value, SupportedGames15);
+        public VSK5 WithStartSailUp(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetStartSailUpAssignment(), value, SupportedGames15);
+        public VSK5 WithStartWithPenalty(bool value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetStartWithPenaltyAssignment(), value, SupportedGames15);
         public VSK5 WithThumbnailFarClipPlane(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFarClipPlaneAssignment(), value, SupportedGames10);
         public VSK5 WithThumbnailFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFovAssignment(), value, SupportedGames10);
         public VSK5 WithThumbnailNearClipPlane(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailNearClipPlaneAssignment(), value, SupportedGames10);
         public VSK5 WithThumbnailPosition(global::GBX.NET.Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPositionAssignment(), value, SupportedGames10);
         public VSK5 WithThumbnailRotationMatrix(Mat3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailRotationMatrixAssignment(), value, SupportedGames10);
+        public VSK5 WithTimeLimit(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetTimeLimitAssignment(), value, SupportedGames15);
+        public VSK5 WithTraffic(global::GBX.NET.Engines.VirtualSkipper.CVskTraffic? value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetTrafficAssignment(), value, SupportedGames15);
+        public VSK5 WithTrafficReference(NodeRef<global::GBX.NET.Engines.VirtualSkipper.CVskTraffic> value) => SetReference(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetTrafficReferenceAssignment(), value, SupportedGames15);
+        public VSK5 WithTraffic(global::GBX.NET.Interfaces.VirtualSkipper.IVskTrafficVSK5? value) => WithTraffic(value is null ? (global::GBX.NET.Engines.VirtualSkipper.CVskTraffic?)null : value is global::GBX.NET.Engines.VirtualSkipper.CVskTraffic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithWeather(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetWeatherAssignment(), value, SupportedGames15);
+        public VSK5 WithWindDir(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetWindDirAssignment(), value, SupportedGames15);
+        public VSK5 WithWindShiftAngle(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetWindShiftAngleAssignment(), value, SupportedGames15);
+        public VSK5 WithWindShiftDur(int value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetWindShiftDurAssignment(), value, SupportedGames15);
+        public VSK5 WithWindStrength(byte value) => Set(global::GBX.NET.Builders.Engines.VirtualSkipper.CConstructionChallengeVskBuilderAssignments.GetWindStrengthAssignment(), value, SupportedGames15);
         public global::GBX.NET.Interfaces.VirtualSkipper.IConstructionChallengeVskVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk Build() => BuildNode(CConstructionChallengeVskBuilder.CreateRecipe7(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk node);

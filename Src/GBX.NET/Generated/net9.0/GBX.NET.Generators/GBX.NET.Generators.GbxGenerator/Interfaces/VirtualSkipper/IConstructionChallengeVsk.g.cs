@@ -110,6 +110,7 @@ public partial interface IConstructionChallengeVskTMU : IConstructionChallengeVs
 
 public partial interface IConstructionChallengeVskVSK5 : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5
 {
+    byte AILevel { get; set; }
     new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? BlockStock
     {
         get => (global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).BlockStock);
@@ -121,6 +122,39 @@ public partial interface IConstructionChallengeVskVSK5 : IConstructionChallengeV
         get => (global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).ChallengeParameters);
         set => ((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.VirtualSkipper.IVskCourseVSK5? Course
+    {
+        get => (global::GBX.NET.Interfaces.VirtualSkipper.IVskCourseVSK5?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).Course);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).Course = value is null ? null : value is global::GBX.NET.Engines.VirtualSkipper.CVskCourse node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    bool FinishFirst { get; set; }
+    bool IgnoreCollectionMeteo { get; set; }
+    bool InflictPenalty { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Meteo { get; set; }
+    byte NbAIs { get; set; }
+    bool NoPenalty { get; set; }
+    bool NoRules { get; set; }
+    bool RandomWindShift { get; set; }
+    byte RulesType { get; set; }
+    bool SmallShifts { get; set; }
+    int SoloPuffLullSeed { get; set; }
+    int SoloWindShiftSeed { get; set; }
+    int StartDayTime { get; set; }
+    byte StartDelay { get; set; }
+    int StartLowTideTime { get; set; }
+    bool StartSailUp { get; set; }
+    bool StartWithPenalty { get; set; }
+    int TimeLimit { get; set; }
+    global::GBX.NET.Interfaces.VirtualSkipper.IVskTrafficVSK5? Traffic
+    {
+        get => (global::GBX.NET.Interfaces.VirtualSkipper.IVskTrafficVSK5?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).Traffic);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).Traffic = value is null ? null : value is global::GBX.NET.Engines.VirtualSkipper.CVskTraffic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    byte Weather { get; set; }
+    byte WindDir { get; set; }
+    int WindShiftAngle { get; set; }
+    int WindShiftDur { get; set; }
+    byte WindStrength { get; set; }
 }
 
 public partial interface IConstructionChallengeVskTMF : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF

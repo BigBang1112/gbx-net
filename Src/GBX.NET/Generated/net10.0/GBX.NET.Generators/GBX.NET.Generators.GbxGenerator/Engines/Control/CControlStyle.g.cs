@@ -48,6 +48,112 @@ public partial class CControlStyle : CPlug, IClass
         set => NodeRef.SetEmbedded(ref entrySoundRef, value);
     }
 
+    private float sliderWidth;
+    /// <remarks>Applied with: 0x006, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk07017006>]
+    [AppliedWithChunk<Chunk07017011>]
+    public float SliderWidth
+    {
+        get => this.sliderWidth;
+        set => this.sliderWidth = value;
+    }
+
+    private float sliderHeight;
+    /// <remarks>Applied with: 0x006, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk07017006>]
+    [AppliedWithChunk<Chunk07017011>]
+    public float SliderHeight
+    {
+        get => this.sliderHeight;
+        set => this.sliderHeight = value;
+    }
+
+    private NodeRef<CPlugSound>? sliderSoundRef;
+    /// <remarks>Applied with: 0x006, 0x011, 0x01C body chunks</remarks>
+    [AppliedWithChunk<Chunk07017006>]
+    [AppliedWithChunk<Chunk07017011>]
+    [AppliedWithChunk<Chunk0701701C>]
+    public CPlugSound? SliderSound
+    {
+        get => sliderSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderSoundRef, value);
+    }
+
+    private NodeRef<CPlugShader>? sliderShaderBarRef;
+    /// <remarks>Applied with: 0x006, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk07017006>]
+    [AppliedWithChunk<Chunk07017011>]
+    public CPlugShader? SliderShaderBar
+    {
+        get => sliderShaderBarRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderShaderBarRef, value);
+    }
+
+    private NodeRef<CPlugShader>? sliderShaderSliderRef;
+    /// <remarks>Applied with: 0x006, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk07017006>]
+    [AppliedWithChunk<Chunk07017011>]
+    public CPlugShader? SliderShaderSlider
+    {
+        get => sliderShaderSliderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderShaderSliderRef, value);
+    }
+
+    private NodeRef<CPlugFont>? fontRef;
+    /// <remarks>Applied with: 0x008, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    [AppliedWithChunk<Chunk0701701B>]
+    public CPlugFont? Font
+    {
+        get => fontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fontRef, value);
+    }
+
+    private Vec4 color;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    public Vec4 Color
+    {
+        get => this.color;
+        set => this.color = value;
+    }
+
+    private NodeRef<CPlugFont>? grayedFontRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    public CPlugFont? GrayedFont
+    {
+        get => grayedFontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref grayedFontRef, value);
+    }
+
+    private Vec4 grayedColor;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    public Vec4 GrayedColor
+    {
+        get => this.grayedColor;
+        set => this.grayedColor = value;
+    }
+
+    private NodeRef<CPlugFont>? editableFontRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    public CPlugFont? EditableFont
+    {
+        get => editableFontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref editableFontRef, value);
+    }
+
+    private Vec4 editableColor;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017008>]
+    public Vec4 EditableColor
+    {
+        get => this.editableColor;
+        set => this.editableColor = value;
+    }
+
     private NodeRef<CPlugShader>? defaultShaderRef;
     /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk07017009>]
@@ -156,6 +262,102 @@ public partial class CControlStyle : CPlug, IClass
         set => NodeRef.SetEmbedded(ref buttonDefaultIconsRef, value);
     }
 
+    private bool focusAreaEnable;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public bool FocusAreaEnable
+    {
+        get => this.focusAreaEnable;
+        set => this.focusAreaEnable = value;
+    }
+
+    private NodeRef<CPlugShader>? focusAreaShaderRef;
+    /// <remarks>Applied with: 0x00F, 0x01A body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    public CPlugShader? FocusAreaShader
+    {
+        get => focusAreaShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaShaderRef, value);
+    }
+
+    private NodeRef<CPlugShader>? focusAreaShaderReadOnlyRef;
+    /// <remarks>Applied with: 0x00F, 0x01A body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    public CPlugShader? FocusAreaShaderReadOnly
+    {
+        get => focusAreaShaderReadOnlyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaShaderReadOnlyRef, value);
+    }
+
+    private NodeRef<CPlugShader>? focusAreaShaderSelectedRef;
+    /// <remarks>Applied with: 0x00F, 0x01A body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    public CPlugShader? FocusAreaShaderSelected
+    {
+        get => focusAreaShaderSelectedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaShaderSelectedRef, value);
+    }
+
+    private float focusAreaMinWidth;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public float FocusAreaMinWidth
+    {
+        get => this.focusAreaMinWidth;
+        set => this.focusAreaMinWidth = value;
+    }
+
+    private float focusAreaMinHeight;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public float FocusAreaMinHeight
+    {
+        get => this.focusAreaMinHeight;
+        set => this.focusAreaMinHeight = value;
+    }
+
+    private float focusAreaXMargin;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public float FocusAreaXMargin
+    {
+        get => this.focusAreaXMargin;
+        set => this.focusAreaXMargin = value;
+    }
+
+    private float focusAreaYMargin;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public float FocusAreaYMargin
+    {
+        get => this.focusAreaYMargin;
+        set => this.focusAreaYMargin = value;
+    }
+
+    private NodeRef<CPlugSolid>? focusAreaSolidRef;
+    /// <remarks>Applied with: 0x00F, 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701700F>]
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public CPlugSolid? FocusAreaSolid
+    {
+        get => focusAreaSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaSolidRef, value);
+    }
+
     private int enumForceDisplayType;
     /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk07017010>]
@@ -172,6 +374,60 @@ public partial class CControlStyle : CPlug, IClass
     {
         get => enumForceIconsRef?.Resolve();
         set => NodeRef.SetEmbedded(ref enumForceIconsRef, value);
+    }
+
+    private NodeRef<CPlugShader>? timeLineShaderBackgroundRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017011>]
+    public CPlugShader? TimeLineShaderBackground
+    {
+        get => timeLineShaderBackgroundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref timeLineShaderBackgroundRef, value);
+    }
+
+    private Vec4 timeLineRulerColorSmall;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017011>]
+    public Vec4 TimeLineRulerColorSmall
+    {
+        get => this.timeLineRulerColorSmall;
+        set => this.timeLineRulerColorSmall = value;
+    }
+
+    private Vec4 timeLineRulerColorBig;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017011>]
+    public Vec4 TimeLineRulerColorBig
+    {
+        get => this.timeLineRulerColorBig;
+        set => this.timeLineRulerColorBig = value;
+    }
+
+    private string? charAttributes;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017013>]
+    public string? CharAttributes
+    {
+        get => this.charAttributes;
+        set => this.charAttributes = value;
+    }
+
+    private string? grayedCharAttributes;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017013>]
+    public string? GrayedCharAttributes
+    {
+        get => this.grayedCharAttributes;
+        set => this.grayedCharAttributes = value;
+    }
+
+    private string? editableCharAttributes;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
+    [AppliedWithChunk<Chunk07017013>]
+    public string? EditableCharAttributes
+    {
+        get => this.editableCharAttributes;
+        set => this.editableCharAttributes = value;
     }
 
     private bool quadIsLines;
@@ -305,13 +561,23 @@ public partial class CControlStyle : CPlug, IClass
         set => this.lineGradientColor1 = value;
     }
 
-    private NodeRef<CPlugFont>? fontRef;
-    /// <remarks>Applied with: 0x01B body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701B>]
-    public CPlugFont? Font
+    private NodeRef<CPlugShader>? focusAreaShaderFocusedRef;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
+    [AppliedWithChunk<Chunk0701701A>]
+    public CPlugShader? FocusAreaShaderFocused
     {
-        get => fontRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref fontRef, value);
+        get => focusAreaShaderFocusedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaShaderFocusedRef, value);
+    }
+
+    private float focusAreaZOffset;
+    /// <remarks>Applied with: 0x01A, 0x01D body chunks</remarks>
+    [AppliedWithChunk<Chunk0701701A>]
+    [AppliedWithChunk<Chunk0701701D>]
+    public float FocusAreaZOffset
+    {
+        get => this.focusAreaZOffset;
+        set => this.focusAreaZOffset = value;
     }
 
     private float sliderBarWidth;
@@ -350,15 +616,6 @@ public partial class CControlStyle : CPlug, IClass
         set => this.sliderCursorHeight = value;
     }
 
-    private NodeRef<CPlugSound>? sliderSoundRef;
-    /// <remarks>Applied with: 0x01C body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701C>]
-    public CPlugSound? SliderSound
-    {
-        get => sliderSoundRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref sliderSoundRef, value);
-    }
-
     private NodeRef<CFuncEnum>? sliderBarIconsRef;
     /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
@@ -375,15 +632,6 @@ public partial class CControlStyle : CPlug, IClass
     {
         get => sliderCursorIconsRef?.Resolve();
         set => NodeRef.SetEmbedded(ref sliderCursorIconsRef, value);
-    }
-
-    private bool focusAreaEnable;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public bool FocusAreaEnable
-    {
-        get => this.focusAreaEnable;
-        set => this.focusAreaEnable = value;
     }
 
     private NodeRef<CPlugMaterial>? focusAreaMaterialRef;
@@ -422,60 +670,6 @@ public partial class CControlStyle : CPlug, IClass
         set => NodeRef.SetEmbedded(ref focusAreaMaterialFocusedRef, value);
     }
 
-    private float focusAreaMinWidth;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public float FocusAreaMinWidth
-    {
-        get => this.focusAreaMinWidth;
-        set => this.focusAreaMinWidth = value;
-    }
-
-    private float focusAreaMinHeight;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public float FocusAreaMinHeight
-    {
-        get => this.focusAreaMinHeight;
-        set => this.focusAreaMinHeight = value;
-    }
-
-    private float focusAreaXMargin;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public float FocusAreaXMargin
-    {
-        get => this.focusAreaXMargin;
-        set => this.focusAreaXMargin = value;
-    }
-
-    private float focusAreaYMargin;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public float FocusAreaYMargin
-    {
-        get => this.focusAreaYMargin;
-        set => this.focusAreaYMargin = value;
-    }
-
-    private NodeRef<CPlugSolid>? focusAreaSolidRef;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public CPlugSolid? FocusAreaSolid
-    {
-        get => focusAreaSolidRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref focusAreaSolidRef, value);
-    }
-
-    private float focusAreaZOffset;
-    /// <remarks>Applied with: 0x01D body chunk</remarks>
-    [AppliedWithChunk<Chunk0701701D>]
-    public float FocusAreaZOffset
-    {
-        get => this.focusAreaZOffset;
-        set => this.focusAreaZOffset = value;
-    }
-
     private string? buttonDefaultIconId;
     /// <remarks>Applied with: 0x01E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701701E>]
@@ -504,22 +698,31 @@ public partial class CControlStyle : CPlug, IClass
         public NodeRef<CMwCmdBlockMain> FocusLostScript => NodeRef.GetOrCreate(ref owner.focusLostScriptRef);
         public NodeRef<CPlugSound> FocusSound => NodeRef.GetOrCreate(ref owner.focusSoundRef);
         public NodeRef<CPlugSound> EntrySound => NodeRef.GetOrCreate(ref owner.entrySoundRef);
+        public NodeRef<CPlugSound> SliderSound => NodeRef.GetOrCreate(ref owner.sliderSoundRef);
+        public NodeRef<CPlugShader> SliderShaderBar => NodeRef.GetOrCreate(ref owner.sliderShaderBarRef);
+        public NodeRef<CPlugShader> SliderShaderSlider => NodeRef.GetOrCreate(ref owner.sliderShaderSliderRef);
+        public NodeRef<CPlugFont> Font => NodeRef.GetOrCreate(ref owner.fontRef);
+        public NodeRef<CPlugFont> GrayedFont => NodeRef.GetOrCreate(ref owner.grayedFontRef);
+        public NodeRef<CPlugFont> EditableFont => NodeRef.GetOrCreate(ref owner.editableFontRef);
         public NodeRef<CPlugShader> DefaultShader => NodeRef.GetOrCreate(ref owner.defaultShaderRef);
         public NodeRef<CPlugSound> EnumSound => NodeRef.GetOrCreate(ref owner.enumSoundRef);
         public NodeRef<CPlugShader> EnumListShader => NodeRef.GetOrCreate(ref owner.enumListShaderRef);
         public NodeRef<CPlugSound> ActionSound => NodeRef.GetOrCreate(ref owner.actionSoundRef);
         public NodeRef<CFuncEnum> ButtonDefaultIcons => NodeRef.GetOrCreate(ref owner.buttonDefaultIconsRef);
+        public NodeRef<CPlugShader> FocusAreaShader => NodeRef.GetOrCreate(ref owner.focusAreaShaderRef);
+        public NodeRef<CPlugShader> FocusAreaShaderReadOnly => NodeRef.GetOrCreate(ref owner.focusAreaShaderReadOnlyRef);
+        public NodeRef<CPlugShader> FocusAreaShaderSelected => NodeRef.GetOrCreate(ref owner.focusAreaShaderSelectedRef);
+        public NodeRef<CPlugSolid> FocusAreaSolid => NodeRef.GetOrCreate(ref owner.focusAreaSolidRef);
         public NodeRef<CFuncEnum> EnumForceIcons => NodeRef.GetOrCreate(ref owner.enumForceIconsRef);
+        public NodeRef<CPlugShader> TimeLineShaderBackground => NodeRef.GetOrCreate(ref owner.timeLineShaderBackgroundRef);
         public NodeRef<CControlEffectMaster> EffectMaster => NodeRef.GetOrCreate(ref owner.effectMasterRef);
-        public NodeRef<CPlugFont> Font => NodeRef.GetOrCreate(ref owner.fontRef);
-        public NodeRef<CPlugSound> SliderSound => NodeRef.GetOrCreate(ref owner.sliderSoundRef);
+        public NodeRef<CPlugShader> FocusAreaShaderFocused => NodeRef.GetOrCreate(ref owner.focusAreaShaderFocusedRef);
         public NodeRef<CFuncEnum> SliderBarIcons => NodeRef.GetOrCreate(ref owner.sliderBarIconsRef);
         public NodeRef<CFuncEnum> SliderCursorIcons => NodeRef.GetOrCreate(ref owner.sliderCursorIconsRef);
         public NodeRef<CPlugMaterial> FocusAreaMaterial => NodeRef.GetOrCreate(ref owner.focusAreaMaterialRef);
         public NodeRef<CPlugMaterial> FocusAreaMaterialReadOnly => NodeRef.GetOrCreate(ref owner.focusAreaMaterialReadOnlyRef);
         public NodeRef<CPlugMaterial> FocusAreaMaterialSelected => NodeRef.GetOrCreate(ref owner.focusAreaMaterialSelectedRef);
         public NodeRef<CPlugMaterial> FocusAreaMaterialFocused => NodeRef.GetOrCreate(ref owner.focusAreaMaterialFocusedRef);
-        public NodeRef<CPlugSolid> FocusAreaSolid => NodeRef.GetOrCreate(ref owner.focusAreaSolidRef);
         public NodeRef<CPlugSound> ActionBackSound => NodeRef.GetOrCreate(ref owner.actionBackSoundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -529,22 +732,31 @@ public partial class CControlStyle : CPlug, IClass
         yield return new("FocusLostScript", NodeRef.GetOrCreate(ref focusLostScriptRef));
         yield return new("FocusSound", NodeRef.GetOrCreate(ref focusSoundRef));
         yield return new("EntrySound", NodeRef.GetOrCreate(ref entrySoundRef));
+        yield return new("SliderSound", NodeRef.GetOrCreate(ref sliderSoundRef));
+        yield return new("SliderShaderBar", NodeRef.GetOrCreate(ref sliderShaderBarRef));
+        yield return new("SliderShaderSlider", NodeRef.GetOrCreate(ref sliderShaderSliderRef));
+        yield return new("Font", NodeRef.GetOrCreate(ref fontRef));
+        yield return new("GrayedFont", NodeRef.GetOrCreate(ref grayedFontRef));
+        yield return new("EditableFont", NodeRef.GetOrCreate(ref editableFontRef));
         yield return new("DefaultShader", NodeRef.GetOrCreate(ref defaultShaderRef));
         yield return new("EnumSound", NodeRef.GetOrCreate(ref enumSoundRef));
         yield return new("EnumListShader", NodeRef.GetOrCreate(ref enumListShaderRef));
         yield return new("ActionSound", NodeRef.GetOrCreate(ref actionSoundRef));
         yield return new("ButtonDefaultIcons", NodeRef.GetOrCreate(ref buttonDefaultIconsRef));
+        yield return new("FocusAreaShader", NodeRef.GetOrCreate(ref focusAreaShaderRef));
+        yield return new("FocusAreaShaderReadOnly", NodeRef.GetOrCreate(ref focusAreaShaderReadOnlyRef));
+        yield return new("FocusAreaShaderSelected", NodeRef.GetOrCreate(ref focusAreaShaderSelectedRef));
+        yield return new("FocusAreaSolid", NodeRef.GetOrCreate(ref focusAreaSolidRef));
         yield return new("EnumForceIcons", NodeRef.GetOrCreate(ref enumForceIconsRef));
+        yield return new("TimeLineShaderBackground", NodeRef.GetOrCreate(ref timeLineShaderBackgroundRef));
         yield return new("EffectMaster", NodeRef.GetOrCreate(ref effectMasterRef));
-        yield return new("Font", NodeRef.GetOrCreate(ref fontRef));
-        yield return new("SliderSound", NodeRef.GetOrCreate(ref sliderSoundRef));
+        yield return new("FocusAreaShaderFocused", NodeRef.GetOrCreate(ref focusAreaShaderFocusedRef));
         yield return new("SliderBarIcons", NodeRef.GetOrCreate(ref sliderBarIconsRef));
         yield return new("SliderCursorIcons", NodeRef.GetOrCreate(ref sliderCursorIconsRef));
         yield return new("FocusAreaMaterial", NodeRef.GetOrCreate(ref focusAreaMaterialRef));
         yield return new("FocusAreaMaterialReadOnly", NodeRef.GetOrCreate(ref focusAreaMaterialReadOnlyRef));
         yield return new("FocusAreaMaterialSelected", NodeRef.GetOrCreate(ref focusAreaMaterialSelectedRef));
         yield return new("FocusAreaMaterialFocused", NodeRef.GetOrCreate(ref focusAreaMaterialFocusedRef));
-        yield return new("FocusAreaSolid", NodeRef.GetOrCreate(ref focusAreaSolidRef));
         yield return new("ActionBackSound", NodeRef.GetOrCreate(ref actionBackSoundRef));
         yield break;
     }
@@ -556,6 +768,17 @@ public partial class CControlStyle : CPlug, IClass
         ((CControlStyle)clone).focusLostScriptRef = context.Clone(this.focusLostScriptRef)!;
         ((CControlStyle)clone).focusSoundRef = context.Clone(this.focusSoundRef)!;
         ((CControlStyle)clone).entrySoundRef = context.Clone(this.entrySoundRef)!;
+        ((CControlStyle)clone).sliderWidth = context.Clone(this.sliderWidth)!;
+        ((CControlStyle)clone).sliderHeight = context.Clone(this.sliderHeight)!;
+        ((CControlStyle)clone).sliderSoundRef = context.Clone(this.sliderSoundRef)!;
+        ((CControlStyle)clone).sliderShaderBarRef = context.Clone(this.sliderShaderBarRef)!;
+        ((CControlStyle)clone).sliderShaderSliderRef = context.Clone(this.sliderShaderSliderRef)!;
+        ((CControlStyle)clone).fontRef = context.Clone(this.fontRef)!;
+        ((CControlStyle)clone).color = context.Clone(this.color)!;
+        ((CControlStyle)clone).grayedFontRef = context.Clone(this.grayedFontRef)!;
+        ((CControlStyle)clone).grayedColor = context.Clone(this.grayedColor)!;
+        ((CControlStyle)clone).editableFontRef = context.Clone(this.editableFontRef)!;
+        ((CControlStyle)clone).editableColor = context.Clone(this.editableColor)!;
         ((CControlStyle)clone).defaultShaderRef = context.Clone(this.defaultShaderRef)!;
         ((CControlStyle)clone).fitTextSize = context.Clone(this.fitTextSize)!;
         ((CControlStyle)clone).enumSoundRef = context.Clone(this.enumSoundRef)!;
@@ -567,8 +790,23 @@ public partial class CControlStyle : CPlug, IClass
         ((CControlStyle)clone).buttonIconWidth = context.Clone(this.buttonIconWidth)!;
         ((CControlStyle)clone).buttonIconHeight = context.Clone(this.buttonIconHeight)!;
         ((CControlStyle)clone).buttonDefaultIconsRef = context.Clone(this.buttonDefaultIconsRef)!;
+        ((CControlStyle)clone).focusAreaEnable = context.Clone(this.focusAreaEnable)!;
+        ((CControlStyle)clone).focusAreaShaderRef = context.Clone(this.focusAreaShaderRef)!;
+        ((CControlStyle)clone).focusAreaShaderReadOnlyRef = context.Clone(this.focusAreaShaderReadOnlyRef)!;
+        ((CControlStyle)clone).focusAreaShaderSelectedRef = context.Clone(this.focusAreaShaderSelectedRef)!;
+        ((CControlStyle)clone).focusAreaMinWidth = context.Clone(this.focusAreaMinWidth)!;
+        ((CControlStyle)clone).focusAreaMinHeight = context.Clone(this.focusAreaMinHeight)!;
+        ((CControlStyle)clone).focusAreaXMargin = context.Clone(this.focusAreaXMargin)!;
+        ((CControlStyle)clone).focusAreaYMargin = context.Clone(this.focusAreaYMargin)!;
+        ((CControlStyle)clone).focusAreaSolidRef = context.Clone(this.focusAreaSolidRef)!;
         ((CControlStyle)clone).enumForceDisplayType = context.Clone(this.enumForceDisplayType)!;
         ((CControlStyle)clone).enumForceIconsRef = context.Clone(this.enumForceIconsRef)!;
+        ((CControlStyle)clone).timeLineShaderBackgroundRef = context.Clone(this.timeLineShaderBackgroundRef)!;
+        ((CControlStyle)clone).timeLineRulerColorSmall = context.Clone(this.timeLineRulerColorSmall)!;
+        ((CControlStyle)clone).timeLineRulerColorBig = context.Clone(this.timeLineRulerColorBig)!;
+        ((CControlStyle)clone).charAttributes = context.Clone(this.charAttributes)!;
+        ((CControlStyle)clone).grayedCharAttributes = context.Clone(this.grayedCharAttributes)!;
+        ((CControlStyle)clone).editableCharAttributes = context.Clone(this.editableCharAttributes)!;
         ((CControlStyle)clone).quadIsLines = context.Clone(this.quadIsLines)!;
         ((CControlStyle)clone).quadIsFill = context.Clone(this.quadIsFill)!;
         ((CControlStyle)clone).quadZ = context.Clone(this.quadZ)!;
@@ -582,25 +820,18 @@ public partial class CControlStyle : CPlug, IClass
         ((CControlStyle)clone).skew = context.Clone(this.skew)!;
         ((CControlStyle)clone).lineGradientColor0 = context.Clone(this.lineGradientColor0)!;
         ((CControlStyle)clone).lineGradientColor1 = context.Clone(this.lineGradientColor1)!;
-        ((CControlStyle)clone).fontRef = context.Clone(this.fontRef)!;
+        ((CControlStyle)clone).focusAreaShaderFocusedRef = context.Clone(this.focusAreaShaderFocusedRef)!;
+        ((CControlStyle)clone).focusAreaZOffset = context.Clone(this.focusAreaZOffset)!;
         ((CControlStyle)clone).sliderBarWidth = context.Clone(this.sliderBarWidth)!;
         ((CControlStyle)clone).sliderBarHeight = context.Clone(this.sliderBarHeight)!;
         ((CControlStyle)clone).sliderCursorWidth = context.Clone(this.sliderCursorWidth)!;
         ((CControlStyle)clone).sliderCursorHeight = context.Clone(this.sliderCursorHeight)!;
-        ((CControlStyle)clone).sliderSoundRef = context.Clone(this.sliderSoundRef)!;
         ((CControlStyle)clone).sliderBarIconsRef = context.Clone(this.sliderBarIconsRef)!;
         ((CControlStyle)clone).sliderCursorIconsRef = context.Clone(this.sliderCursorIconsRef)!;
-        ((CControlStyle)clone).focusAreaEnable = context.Clone(this.focusAreaEnable)!;
         ((CControlStyle)clone).focusAreaMaterialRef = context.Clone(this.focusAreaMaterialRef)!;
         ((CControlStyle)clone).focusAreaMaterialReadOnlyRef = context.Clone(this.focusAreaMaterialReadOnlyRef)!;
         ((CControlStyle)clone).focusAreaMaterialSelectedRef = context.Clone(this.focusAreaMaterialSelectedRef)!;
         ((CControlStyle)clone).focusAreaMaterialFocusedRef = context.Clone(this.focusAreaMaterialFocusedRef)!;
-        ((CControlStyle)clone).focusAreaMinWidth = context.Clone(this.focusAreaMinWidth)!;
-        ((CControlStyle)clone).focusAreaMinHeight = context.Clone(this.focusAreaMinHeight)!;
-        ((CControlStyle)clone).focusAreaXMargin = context.Clone(this.focusAreaXMargin)!;
-        ((CControlStyle)clone).focusAreaYMargin = context.Clone(this.focusAreaYMargin)!;
-        ((CControlStyle)clone).focusAreaSolidRef = context.Clone(this.focusAreaSolidRef)!;
-        ((CControlStyle)clone).focusAreaZOffset = context.Clone(this.focusAreaZOffset)!;
         ((CControlStyle)clone).buttonDefaultIconId = context.Clone(this.buttonDefaultIconId)!;
         ((CControlStyle)clone).actionBackSoundRef = context.Clone(this.actionBackSoundRef)!;
     }
@@ -684,6 +915,109 @@ public partial class CControlStyle : CPlug, IClass
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.NodeRef(ref n.entrySoundRef);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x006 chunk (slider)
+    /// </summary>
+    [Chunk(0x07017006, "slider")]
+    [ChunkGameVersion(GameVersion.TM10)]
+    public partial class Chunk07017006 : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x07017006;
+        public override GameVersion GameVersion => GameVersion.TM10;
+
+        private NodeRef<CPlugShader>? U01Ref;
+        public CPlugShader? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CPlugShader>? U02Ref;
+        public CPlugShader? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk07017006 owner;
+            internal NodeRefView(Chunk07017006 owner) => this.owner = owner;
+            public NodeRef<CPlugShader> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugShader> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07017006)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk07017006)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.sliderWidth);
+            rw.Single(ref n.sliderHeight);
+            rw.NodeRef(ref n.sliderSoundRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.sliderShaderBarRef);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.sliderShaderSliderRef);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x008 chunk (fonts and colors)
+    /// </summary>
+    [Chunk(0x07017008, "fonts and colors")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk07017008 : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x07017008;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07017008)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07017008)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk07017008)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk07017008)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk07017008)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk07017008)clone).U06 = context.Clone(this.U06)!;
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.fontRef);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Vec4(ref n.color);
+            rw.NodeRef(ref n.grayedFontRef);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Vec4(ref n.grayedColor);
+            rw.NodeRef(ref n.editableFontRef);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Vec4(ref n.editableColor);
         }
     }
 
@@ -808,6 +1142,35 @@ public partial class CControlStyle : CPlug, IClass
     }
 
     /// <summary>
+    /// CControlStyle 0x00F chunk (focus area)
+    /// </summary>
+    [Chunk(0x0701700F, "focus area")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    public partial class Chunk0701700F : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x0701700F;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.focusAreaEnable);
+            rw.NodeRef(ref n.focusAreaShaderRef);
+            rw.NodeRef(ref n.focusAreaShaderReadOnlyRef);
+            rw.NodeRef(ref n.focusAreaShaderSelectedRef);
+            rw.Single(ref n.focusAreaMinWidth);
+            rw.Single(ref n.focusAreaMinHeight);
+            rw.Single(ref n.focusAreaXMargin);
+            rw.Single(ref n.focusAreaYMargin);
+            rw.NodeRef(ref n.focusAreaSolidRef);
+        }
+    }
+
+    /// <summary>
     /// CControlStyle 0x010 chunk
     /// </summary>
     [Chunk(0x07017010)]
@@ -831,6 +1194,57 @@ public partial class CControlStyle : CPlug, IClass
             rw.Single(ref n.enumIconHeight);
             rw.Int32(ref n.enumForceDisplayType);
             rw.NodeRef(ref n.enumForceIconsRef);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x011 chunk (slider and timeline)
+    /// </summary>
+    [Chunk(0x07017011, "slider and timeline")]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk07017011 : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x07017011;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.sliderWidth);
+            rw.Single(ref n.sliderHeight);
+            rw.NodeRef(ref n.sliderSoundRef);
+            rw.NodeRef(ref n.sliderShaderBarRef);
+            rw.NodeRef(ref n.sliderShaderSliderRef);
+            rw.NodeRef(ref n.timeLineShaderBackgroundRef);
+            rw.Vec4(ref n.timeLineRulerColorSmall);
+            rw.Vec4(ref n.timeLineRulerColorBig);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x013 chunk (char attributes)
+    /// </summary>
+    [Chunk(0x07017013, "char attributes")]
+    [ChunkGameVersion(GameVersion.TMPU)]
+    public partial class Chunk07017013 : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x07017013;
+        public override GameVersion GameVersion => GameVersion.TMPU;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.charAttributes);
+            rw.String(ref n.grayedCharAttributes);
+            rw.String(ref n.editableCharAttributes);
         }
     }
 
@@ -958,6 +1372,66 @@ public partial class CControlStyle : CPlug, IClass
         {
             rw.Vec4(ref n.lineGradientColor0);
             rw.Vec4(ref n.lineGradientColor1);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x019 chunk (text settings)
+    /// </summary>
+    [Chunk(0x07017019, "text settings")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk07017019 : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x07017019;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+        public STextSettings? U01;
+        public STextSettings? U02;
+        public STextSettings? U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07017019)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07017019)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk07017019)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.ReadableWritable<STextSettings>(ref U01);
+            rw.ReadableWritable<STextSettings>(ref U02);
+            rw.ReadableWritable<STextSettings>(ref U03);
+        }
+    }
+
+    /// <summary>
+    /// CControlStyle 0x01A chunk (focus area)
+    /// </summary>
+    [Chunk(0x0701701A, "focus area")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
+    public partial class Chunk0701701A : Chunk<CControlStyle>
+    {
+        public override uint Id => 0x0701701A;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.focusAreaEnable);
+            rw.NodeRef(ref n.focusAreaShaderRef);
+            rw.NodeRef(ref n.focusAreaShaderReadOnlyRef);
+            rw.NodeRef(ref n.focusAreaShaderSelectedRef);
+            rw.NodeRef(ref n.focusAreaShaderFocusedRef);
+            rw.Single(ref n.focusAreaMinWidth);
+            rw.Single(ref n.focusAreaMinHeight);
+            rw.Single(ref n.focusAreaXMargin);
+            rw.Single(ref n.focusAreaYMargin);
+            rw.NodeRef(ref n.focusAreaSolidRef);
+            rw.Single(ref n.focusAreaZOffset);
         }
     }
 
@@ -1110,6 +1584,108 @@ public partial class CControlStyle : CPlug, IClass
         }
     }
 
+    public partial class STextSettings : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; }
+
+        private NodeRef<CPlugFont>? fontRef;
+        public CPlugFont? Font
+        {
+            get => fontRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref fontRef, value);
+        }
+
+        private float u01;
+        public float U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private Vec4 color;
+        public Vec4 Color
+        {
+            get => this.color;
+            set => this.color = value;
+        }
+
+        private string? charAttributes;
+        public string? CharAttributes
+        {
+            get => this.charAttributes;
+            set => this.charAttributes = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly STextSettings owner;
+            internal NodeRefView(STextSettings owner) => this.owner = owner;
+            public NodeRef<CPlugFont> Font => NodeRef.GetOrCreate(ref owner.fontRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Font", NodeRef.GetOrCreate(ref fontRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (STextSettings)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((STextSettings)clone).Version = context.Clone(this.Version)!;
+            ((STextSettings)clone).fontRef = context.Clone(this.fontRef)!;
+            ((STextSettings)clone).u01 = context.Clone(this.u01)!;
+            ((STextSettings)clone).u02 = context.Clone(this.u02)!;
+            ((STextSettings)clone).u03 = context.Clone(this.u03)!;
+            ((STextSettings)clone).color = context.Clone(this.color)!;
+            ((STextSettings)clone).charAttributes = context.Clone(this.charAttributes)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.NodeRef(ref this.fontRef);
+            rw.Single(ref this.u01);
+            rw.Single(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Vec4(ref this.color);
+            rw.String(ref this.charAttributes);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     public partial class STextSettings_ColorAndChars : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
         public int Version { get; set; } = 4;
@@ -1229,17 +1805,24 @@ public partial class CControlStyle : CPlug, IClass
     {
         0x07017000 => new Chunk07017000(),
         0x07017004 => new Chunk07017004(),
+        0x07017006 => new Chunk07017006(),
+        0x07017008 => new Chunk07017008(),
         0x07017009 => new Chunk07017009(),
         0x0701700B => new Chunk0701700B(),
         0x0701700C => new Chunk0701700C(),
         0x0701700D => new Chunk0701700D(),
         0x0701700E => new Chunk0701700E(),
+        0x0701700F => new Chunk0701700F(),
         0x07017010 => new Chunk07017010(),
+        0x07017011 => new Chunk07017011(),
+        0x07017013 => new Chunk07017013(),
         0x07017014 => new Chunk07017014(),
         0x07017015 => new Chunk07017015(),
         0x07017016 => new Chunk07017016(),
         0x07017017 => new Chunk07017017(),
         0x07017018 => new Chunk07017018(),
+        0x07017019 => new Chunk07017019(),
+        0x0701701A => new Chunk0701701A(),
         0x0701701B => new Chunk0701701B(),
         0x0701701C => new Chunk0701701C(),
         0x0701701D => new Chunk0701701D(),

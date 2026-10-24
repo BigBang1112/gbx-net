@@ -3,6 +3,14 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlListMembers1 : global::GBX.NET.Interfaces.Control.IControlList
+{
+    global::GBX.NET.Engines.Control.CControlList.Unknown[]? Columns { get; set; }
+    float LinesHeight { get; set; }
+    int NbColumns { get; set; }
+    int NbLinesPerPage { get; set; }
+}
 public partial interface IControlList : IClassVersion<global::GBX.NET.Engines.Control.CControlList>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,7 +22,7 @@ public partial interface IControlList : IClassVersion<global::GBX.NET.Engines.Co
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlListTM10 : IControlList, global::GBX.NET.Interfaces.Control.IControlFrameTM10
+public partial interface IControlListTM10 : IControlList, global::GBX.NET.Interfaces.Control.IControlFrameTM10, global::GBX.NET.Interfaces.Control.IControlListMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
@@ -23,9 +31,10 @@ public partial interface IControlListTM10 : IControlList, global::GBX.NET.Interf
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlListTMPU : IControlList, global::GBX.NET.Interfaces.Control.IControlFrameTMPU
+public partial interface IControlListTMPU : IControlList, global::GBX.NET.Interfaces.Control.IControlFrameTMPU, global::GBX.NET.Interfaces.Control.IControlListMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
+    int FastPageStep { get; set; }
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
