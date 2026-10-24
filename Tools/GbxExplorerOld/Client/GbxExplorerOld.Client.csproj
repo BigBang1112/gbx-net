@@ -4,7 +4,6 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <GitDefaultBranch>master</GitDefaultBranch>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
         <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
@@ -27,7 +26,7 @@
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
         <PackageReference Include="OmniSharp.Roslyn.CSharp" Version="1.37.4" />
         <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
-        <PackageReference Include="GitInfo" Version="3.6.0">
+        <PackageReference Include="SimplestGitSourceGenerator" Version="1.0.6">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
