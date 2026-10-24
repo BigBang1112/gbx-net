@@ -238,6 +238,8 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     internal bool IsRelease { get; set; } = true;
 
     internal GbxWriteSettings Settings { get; }
+    // Only the main body writer owns this context. Do not copy it to chunk payload writers.
+    internal CMwNod? ValidationRoot { get; set; }
     internal GbxRefTable? ReferenceTable { get; set; }
     private Dictionary<GbxRefTableNode, GbxRefTableNode>? importedRefs;
 

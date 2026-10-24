@@ -39,6 +39,6 @@ public class CGameCtnMediaBlockEntityTests
 
         using var output = new MemoryStream();
         parsed.Save(output);
-        await Assert.That(output.ToArray()).IsEquivalentTo(input.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(input.ToArray(), output.ToArray());
     }
 }

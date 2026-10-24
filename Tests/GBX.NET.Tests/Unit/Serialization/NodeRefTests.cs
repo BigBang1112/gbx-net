@@ -109,7 +109,7 @@ public class NodeRefTests
 
         using var rewritten = new MemoryStream();
         parsed.Save(rewritten);
-        await Assert.That(rewritten.ToArray()).IsEquivalentTo(stream.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(stream.ToArray(), rewritten.ToArray());
     }
 
     [Test]

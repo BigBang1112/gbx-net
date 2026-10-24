@@ -117,7 +117,19 @@ public class GmSurfTests
         gbx.Save(saved);
 
         // Assert
-        await Assert.That(saved.ToArray()).IsEquivalentTo(expected.ToArray(), CollectionOrdering.Matching);
+        var expectedData = expected.ToArray();
+        var savedData = saved.ToArray();
+        // Original native bytes remain identical before the new validation chunk.
+        await Assert.That(savedData[..(expectedData.Length - 4)])
+            .IsEquivalentTo(expectedData[..^4], CollectionOrdering.Matching);
+        saved.Position = expectedData.Length - 4;
+        using var reader = new BinaryReader(saved);
+        await Assert.That(reader.ReadUInt32()).IsEqualTo(0x01112000u);
+        await Assert.That(reader.ReadUInt32()).IsEqualTo(0x534B4950u);
+        var validationSize = reader.ReadInt32();
+        await Assert.That(reader.ReadBytes(validationSize).Length).IsEqualTo(validationSize);
+        await Assert.That(reader.ReadUInt32()).IsEqualTo(0xFACADE01u);
+        await Assert.That(saved.Position).IsEqualTo(saved.Length);
     }
 
     [Test]

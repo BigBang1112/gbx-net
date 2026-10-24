@@ -62,7 +62,7 @@ public class GbxRoundTripTests
         reparsed.Save(secondSave);
 
         // Assert
-        await Assert.That(secondSave.ToArray()).IsEquivalentTo(firstSave.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(firstSave.ToArray(), secondSave.ToArray());
     }
 
     private static async Task<Gbx> Parse(Stream stream, bool async)

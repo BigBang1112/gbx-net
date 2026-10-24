@@ -27,6 +27,14 @@ public interface IGbx
     void Save(string filePath, GbxWriteSettings settings = default);
 
 #if NET8_0_OR_GREATER
+    static abstract Task<GbxSignatureReadResult> ReadSignatureAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
+    static abstract GbxSignatureReadResult ReadSignature(Stream stream, GbxReadSettings settings = default);
+    static abstract Task<GbxSignatureReadResult> ReadSignatureAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
+    static abstract GbxSignatureReadResult ReadSignature(string filePath, GbxReadSettings settings = default);
+    static abstract bool TryReadSignature(Stream stream, [NotNullWhen(true)] out GbxSignature? signature, GbxReadSettings settings = default);
+    static abstract bool TryReadSignature(string filePath, [NotNullWhen(true)] out GbxSignature? signature, GbxReadSettings settings = default);
+    static abstract bool TryReadSignature(Stream stream, [NotNullWhen(true)] out GbxSignature? signature, out GbxSignatureStatus status, GbxReadSettings settings = default);
+    static abstract bool TryReadSignature(string filePath, [NotNullWhen(true)] out GbxSignature? signature, out GbxSignatureStatus status, GbxReadSettings settings = default);
     static abstract Gbx ParseHeader(Stream stream, GbxReadSettings settings = default);
     static abstract Gbx ParseHeader(string filePath, GbxReadSettings settings = default);
     static abstract Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new();

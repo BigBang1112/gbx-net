@@ -9,7 +9,15 @@ internal sealed class GbxBodyWriter(GbxBody body, GbxWriter writer)
         writer.NodeDict[node] = 0;
         
         using var readerWriter = new GbxReaderWriter(writer);
-        node.ReadWrite(readerWriter);
+        writer.ValidationRoot = node;
+        try
+        {
+            node.ReadWrite(readerWriter);
+        }
+        finally
+        {
+            writer.ValidationRoot = null;
+        }
     }
 
     internal void WriteRaw()

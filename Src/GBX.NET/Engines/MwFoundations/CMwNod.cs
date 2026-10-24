@@ -107,7 +107,7 @@ public partial class CMwNod : IClass
                 {
                     if (chunkId == rawChunkId)
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxValidationChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size})", chunkId, chunkSize);
                         }
@@ -118,7 +118,7 @@ public partial class CMwNod : IClass
                     }
                     else
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxValidationChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
                         }
@@ -144,7 +144,7 @@ public partial class CMwNod : IClass
                     throw new LengthLimitException(chunkSize);
                 }
 
-                if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
+                if (chunkId == GbxValidationChunk.Id || r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
                     r.SkipData(chunkSize);
                 }
@@ -330,7 +330,7 @@ public partial class CMwNod : IClass
 
         foreach (var chunk in Chunks)
         {
-            if (chunk is IHeaderChunk)
+            if (chunk is IHeaderChunk || chunk.Id == GbxValidationChunk.Id)
             {
                 continue;
             }
@@ -385,6 +385,11 @@ public partial class CMwNod : IClass
                 w.LoadFrom(chunkW);
                 ms.Dispose();
             }
+        }
+
+        if (ReferenceEquals(w.ValidationRoot, this))
+        {
+            GbxValidationChunk.Write(w);
         }
 
         w.WriteHexUInt32(FACADE);
