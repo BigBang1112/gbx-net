@@ -2,6 +2,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
 using GBX.NET.Tests.Mocks;
+using SimplestGitSourceGenerator;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -44,9 +45,10 @@ public class GbxValidationChunkTests
         var payloadStart = input.Position;
         await Assert.That(Encoding.ASCII.GetString(reader.ReadBytes(4))).IsEqualTo("GBXN");
         await Assert.That(reader.ReadInt32()).IsEqualTo(1);
-        await Assert.That(reader.ReadString()).IsNotEmpty();
         await Assert.That(reader.ReadInt64()).IsEqualTo((long)expectedPrefix.Length);
         await Assert.That(reader.ReadBytes(32)).IsEquivalentTo(SHA256.HashData(expectedPrefix), CollectionOrdering.Matching);
+        await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.CommitHash);
+        await Assert.That(reader.ReadString()).IsEqualTo(SimplestGit.Tag);
         await Assert.That(input.Position - payloadStart).IsEqualTo((long)size);
         await Assert.That(reader.ReadUInt32()).IsEqualTo(0xFACADE01u);
         await Assert.That(input.Position).IsEqualTo(input.Length);
