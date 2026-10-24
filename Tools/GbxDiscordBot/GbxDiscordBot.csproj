@@ -5,7 +5,6 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <GitDefaultBranch>master</GitDefaultBranch>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..</DockerfileContext>
         <UserSecretsId>de546b12-d1b6-495c-bdaa-726451bc14d5</UserSecretsId>
@@ -13,7 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="Discord.Net" Version="3.20.1" />
-        <PackageReference Include="GitInfo" Version="3.6.0">
+        <PackageReference Include="SimplestGitSourceGenerator" Version="1.0.6">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

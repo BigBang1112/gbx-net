@@ -371,4 +371,7 @@ Docs/ManiaPlanetReflectionRecovery.md
 
 tmp/*
 
+# Git metadata generated for each build
+Src/**/Generated/*/SimplestGitSourceGenerator/
+
 .codex/*
