@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionEmitterTrailsMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails where T0 : class
+{
+    new T0? ManagerModel { get; set; }
+}
 public partial interface IMotionEmitterTrails : IClassVersion<global::GBX.NET.Engines.Motion.CMotionEmitterTrails>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -13,11 +18,13 @@ public partial interface IMotionEmitterTrails : IClassVersion<global::GBX.NET.En
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     global::GBX.NET.Interfaces.Motion.IMotionManagerTrails? ManagerModel { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface IMotionEmitterTrailsTMSX : IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX
+public partial interface IMotionEmitterTrailsTM10 : IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMSX? ManagerModel { get; set; }
+}
+
+public partial interface IMotionEmitterTrailsTMSX : IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMSX>
+{
 }
 

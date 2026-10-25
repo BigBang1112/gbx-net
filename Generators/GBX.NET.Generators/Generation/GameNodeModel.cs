@@ -48,7 +48,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
 
             foreach (var game in knownGames)
             {
-                if (node.Layout.Game is not null && node.Layout.Game != game) continue;
+                if (node.Layout.Games.Length > 0 && !node.Layout.Games.Contains(game)) continue;
                 if (node.Chunks.Any(c => c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)) ||
                     plan.Existing.ContainsKey(node.InterfaceNamespace + "." + node.InterfaceName + game))
                     node.Games.Add(game);
@@ -66,7 +66,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
                         throw new InvalidOperationException("NodeBuilderRecipe requires one known GameVersion value.");
                     var gameName = SyntaxOverlap.Simple(arguments[0].Expression.ToString());
                     if (!knownGames.Contains(gameName)) throw new InvalidOperationException("NodeBuilderRecipe requires one known GameVersion value.");
-                    if (node.Layout.Game is not null && node.Layout.Game != gameName)
+                    if (node.Layout.Games.Length > 0 && !node.Layout.Games.Contains(gameName))
                         throw new InvalidOperationException("NodeBuilderRecipe conflicts with the class game qualifier.");
                     if (node.Recipes.ContainsKey(gameName)) throw new InvalidOperationException("Duplicate NodeBuilderRecipe for " + gameName);
                     var selected = new List<GameChunk>();

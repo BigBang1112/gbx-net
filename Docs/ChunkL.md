@@ -148,7 +148,7 @@ Version lists such as `[TM10.v3, TMF.v11, TM2020.v13]` document the observed for
 
 ## Game-version qualifiers
 
-When different native classes reuse the same class ID, keep one layout as the default and add a class-level `- game: TMF` attribute to the legacy layout. `GbxReadSettings.GameVersion` then selects that class for both root and embedded nodes. The generated header and Gbx factories preserve the selected type. The attribute selects an exact game context and does not change chunk writer qualifiers.
+When different native classes reuse the same class ID, keep one layout as the default and add a class-level `- game: TMF` attribute to the legacy layout. `GbxReadSettings.GameVersion` then selects that class for both root and embedded nodes. The generated header and Gbx factories preserve the selected type. The attribute selects an exact game context and does not change chunk writer qualifiers. List several games, such as `- game: TM10, TMSX`, when the legacy class applies to each of them.
 
 Use game-version qualifiers to record the games that write a chunk. A game that only reads a legacy chunk should not be added to that chunk's version list. Keep qualifiers for earlier games that wrote it.
 

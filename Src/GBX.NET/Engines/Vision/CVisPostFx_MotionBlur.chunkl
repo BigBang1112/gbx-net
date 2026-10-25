@@ -1,6 +1,19 @@
 CVisPostFx_MotionBlur 0x0C031000
 - inherits: CSceneFxCompo
 
+0x000 // legacy blur parameters
+  Technique = 0
+  int
+  int
+
+0x001 [TM10] // legacy technique and blur parameters
+  int Technique
+  if Technique == 0
+    int
+    int
+  if Technique == 1
+    float
+
 0x004 // legacy motion length shader
   CMwNod T2_Fid_PHlsl_MotionLenCmp
   CMwNod

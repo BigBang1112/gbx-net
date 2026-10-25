@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionManagerTrailsMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionManagerTrails where T0 : class
+{
+    new T0? MobilTrails { get; set; }
+}
 public partial interface IMotionManagerTrails : IClassVersion<global::GBX.NET.Engines.Motion.CMotionManagerTrails>, global::GBX.NET.Interfaces.Motion.IMotionManager
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -15,8 +20,11 @@ public partial interface IMotionManagerTrails : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Interfaces.Scene.ISceneMobilTrails? MobilTrails { get; set; }
 }
 
-public partial interface IMotionManagerTrailsTMSX : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX
+public partial interface IMotionManagerTrailsTM10 : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX? MobilTrails { get; set; }
+}
+
+public partial interface IMotionManagerTrailsTMSX : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX>
+{
 }
 

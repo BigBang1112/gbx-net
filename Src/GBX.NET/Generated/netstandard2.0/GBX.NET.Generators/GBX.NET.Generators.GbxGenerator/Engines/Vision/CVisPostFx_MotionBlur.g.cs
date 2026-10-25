@@ -12,6 +12,17 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
 
     internal override uint GetId() => Id;
 
+    private int technique;
+    /// <remarks>Applied with: 0x001, 0x005, 0x008 body chunks</remarks>
+    [AppliedWithChunk<Chunk0C031001>]
+    [AppliedWithChunk<Chunk0C031005>]
+    [AppliedWithChunk<Chunk0C031008>]
+    public int Technique
+    {
+        get => this.technique;
+        set => this.technique = value;
+    }
+
     private NodeRef<CMwNod>? t2_Fid_PHlsl_MotionLenCmpRef;
     /// <remarks>Applied with: 0x004, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0C031004>]
@@ -20,16 +31,6 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     {
         get => t2_Fid_PHlsl_MotionLenCmpRef?.Resolve();
         set => NodeRef.SetEmbedded(ref t2_Fid_PHlsl_MotionLenCmpRef, value);
-    }
-
-    private int technique;
-    /// <remarks>Applied with: 0x005, 0x008 body chunks</remarks>
-    [AppliedWithChunk<Chunk0C031005>]
-    [AppliedWithChunk<Chunk0C031008>]
-    public int Technique
-    {
-        get => this.technique;
-        set => this.technique = value;
     }
 
     private float t2_MotionScale = 1f;
@@ -114,8 +115,8 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CVisPostFx_MotionBlur)clone).t2_Fid_PHlsl_MotionLenCmpRef = context.Clone(this.t2_Fid_PHlsl_MotionLenCmpRef)!;
         ((CVisPostFx_MotionBlur)clone).technique = context.Clone(this.technique)!;
+        ((CVisPostFx_MotionBlur)clone).t2_Fid_PHlsl_MotionLenCmpRef = context.Clone(this.t2_Fid_PHlsl_MotionLenCmpRef)!;
         ((CVisPostFx_MotionBlur)clone).t2_MotionScale = context.Clone(this.t2_MotionScale)!;
         ((CVisPostFx_MotionBlur)clone).t2_MotionMaxLen = context.Clone(this.t2_MotionMaxLen)!;
         ((CVisPostFx_MotionBlur)clone).t2_DelayShadows = context.Clone(this.t2_DelayShadows)!;
@@ -126,6 +127,72 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
 
     public CVisPostFx_MotionBlur()
     {
+    }
+
+    /// <summary>
+    /// CVisPostFx_MotionBlur 0x000 chunk (legacy blur parameters)
+    /// </summary>
+    [Chunk(0x0C031000, "legacy blur parameters")]
+    public partial class Chunk0C031000 : Chunk<CVisPostFx_MotionBlur>
+    {
+        public override uint Id => 0x0C031000;
+        public int U01;
+        public int U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0C031000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0C031000)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CVisPostFx_MotionBlur n, GbxReaderWriter rw)
+        {
+            if (rw.Reader is not null)
+            {
+                n.Technique = 0;
+            }
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+        }
+    }
+
+    /// <summary>
+    /// CVisPostFx_MotionBlur 0x001 chunk (legacy technique and blur parameters)
+    /// </summary>
+    [Chunk(0x0C031001, "legacy technique and blur parameters")]
+    [ChunkGameVersion(GameVersion.TM10)]
+    public partial class Chunk0C031001 : Chunk<CVisPostFx_MotionBlur>
+    {
+        public override uint Id => 0x0C031001;
+        public override GameVersion GameVersion => GameVersion.TM10;
+        public int U01;
+        public int U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0C031001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0C031001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0C031001)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CVisPostFx_MotionBlur n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.technique);
+
+            if (n.Technique== 0)
+            {
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+            }
+
+            if (n.Technique== 1)
+            {
+                rw.Single(ref U03);
+            }
+        }
     }
 
     /// <summary>
@@ -310,6 +377,8 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0C031000 => new Chunk0C031000(),
+        0x0C031001 => new Chunk0C031001(),
         0x0C031004 => new Chunk0C031004(),
         0x0C031005 => new Chunk0C031005(),
         0x0C031006 => new Chunk0C031006(),

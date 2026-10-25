@@ -243,6 +243,14 @@ public static class CMwCmdExpClassParamBuilderExtensions
     }
 }
 
+public static class CMwCmdExpClassThisBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis)
+    {
+        public static global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpClassThisBuilder Create() => new();
+    }
+}
+
 public static class CMwCmdExpDiffBuilderExtensions
 {
     extension(global::GBX.NET.Engines.MwFoundations.CMwCmdExpDiff)
@@ -456,6 +464,14 @@ public static class CMwCmdProcBuilderExtensions
     extension(global::GBX.NET.Engines.MwFoundations.CMwCmdProc)
     {
         public static global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilder Create() => new();
+    }
+}
+
+public static class CMwCmdSleepBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.MwFoundations.CMwCmdSleep)
+    {
+        public static global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdSleepBuilder Create() => new();
     }
 }
 

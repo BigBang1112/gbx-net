@@ -131,6 +131,14 @@ public static class CSceneMobilLeavesBuilderExtensions
     }
 }
 
+public static class CSceneMobilParticlesFXBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneMobilParticlesFXBuilder Create() => new();
+    }
+}
+
 public static class CSceneMobilTrailsBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Scene.CSceneMobilTrails)

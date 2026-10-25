@@ -104,11 +104,11 @@ public partial class CSceneMobilTrails : CSceneMobil, IClass
     /// CSceneMobilTrails 0x001 chunk (shader, quad count and minimum distance)
     /// </summary>
     [Chunk(0x0A06D001, "shader, quad count and minimum distance")]
-    [ChunkGameVersion(GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX)]
     public partial class Chunk0A06D001 : Chunk<CSceneMobilTrails>
     {
         public override uint Id => 0x0A06D001;
-        public override GameVersion GameVersion => GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

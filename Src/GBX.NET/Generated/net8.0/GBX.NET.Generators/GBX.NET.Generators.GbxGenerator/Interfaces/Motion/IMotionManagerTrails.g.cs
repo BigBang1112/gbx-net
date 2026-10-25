@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionManagerTrailsMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionManagerTrails where T0 : class
+{
+    new T0? MobilTrails
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionManagerTrails)this).MobilTrails);
+        set => ((global::GBX.NET.Engines.Motion.CMotionManagerTrails)this).MobilTrails = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IMotionManagerTrails : IClassVersion<global::GBX.NET.Engines.Motion.CMotionManagerTrails>, global::GBX.NET.Interfaces.Motion.IMotionManager
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -19,12 +28,11 @@ public partial interface IMotionManagerTrails : IClassVersion<global::GBX.NET.En
     }
 }
 
-public partial interface IMotionManagerTrailsTMSX : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX
+public partial interface IMotionManagerTrailsTM10 : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX? MobilTrails
-    {
-        get => (global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX?)(object?)(((global::GBX.NET.Engines.Motion.CMotionManagerTrails)this).MobilTrails);
-        set => ((global::GBX.NET.Engines.Motion.CMotionManagerTrails)this).MobilTrails = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IMotionManagerTrailsTMSX : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX>
+{
 }
 

@@ -107,6 +107,14 @@ public static class CFuncShaderLayerUVBuilderExtensions
     }
 }
 
+public static class CFuncShaderTweakKeysTranssBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss)
+    {
+        public static global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilder Create() => new();
+    }
+}
+
 public static class CFuncShadersBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Function.CFuncShaders)

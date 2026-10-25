@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilTrailsMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails where T0 : class
+{
+    new T0? TrailShader
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).TrailShader);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface ISceneMobilTrails : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMobilTrails>, global::GBX.NET.Interfaces.Scene.ISceneMobil
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -19,7 +28,6 @@ public partial interface ISceneMobilTrails : IClassVersion<global::GBX.NET.Engin
     }
     float MinDist { get; set; }
     int QuadMaxCount { get; set; }
-    float TrailDistRatio { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugShader? TrailShader
     {
         get => (global::GBX.NET.Interfaces.Plug.IPlugShader?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).TrailShader);
@@ -27,7 +35,26 @@ public partial interface ISceneMobilTrails : IClassVersion<global::GBX.NET.Engin
     }
 }
 
-public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
+public partial interface ISceneMobilTrailsTM10 : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>
+{
+    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).MessageHandler);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM10?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
+    }
+}
+
+public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
     new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler
     {
@@ -44,10 +71,6 @@ public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.
         get => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
     }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? TrailShader
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).TrailShader);
-        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+    float TrailDistRatio { get; set; }
 }
 

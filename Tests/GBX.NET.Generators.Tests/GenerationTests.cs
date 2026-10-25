@@ -3977,6 +3977,29 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_ReusedClassIdForSeveralGames_MatchesEachGame()
+    {
+        var (result, _) = Run("",
+            new Text("Engines/Game/Modern.chunkl", "Modern 0x030C0000"),
+            new Text("Engines/Game/Legacy.chunkl", "Legacy 0x030C0000\n- game: TM10, TMSX"),
+            new Text("Resources/CollectionId.txt", "1 Stadium"));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var manager = result.GeneratedSources.Single(x => x.HintName == "Managers/ClassManager.g.cs").SourceText.ToString();
+        await Assert.That(manager).Contains("(0x030C0000, GameVersion.TM10 or GameVersion.TMSX) => new global::GBX.NET.Engines.Game.Legacy()");
+        await Assert.That(manager).Contains("0x030C0000 => new global::GBX.NET.Engines.Game.Modern()");
+    }
+
+    [Test]
+    public async Task Generate_ReusedClassIdWithOverlappingGames_ReportsDuplicate()
+    {
+        var (result, _) = Run("",
+            new Text("Engines/Game/First.chunkl", "First 0x030C0000\n- game: TM10, TMSX"),
+            new Text("Engines/Game/Second.chunkl", "Second 0x030C0000\n- game: TMSX"),
+            new Text("Resources/CollectionId.txt", "1 Stadium"));
+        await Assert.That(result.Diagnostics.Select(static x => x.GetMessage())).Contains(x => x.Contains("Duplicate class ID: 0x030C0000"));
+    }
+
+    [Test]
     public async Task Generate_ReusedClassId_SelectsGameSpecificNodeHeaderAndGbx()
     {
         var (result, output) = Run("",

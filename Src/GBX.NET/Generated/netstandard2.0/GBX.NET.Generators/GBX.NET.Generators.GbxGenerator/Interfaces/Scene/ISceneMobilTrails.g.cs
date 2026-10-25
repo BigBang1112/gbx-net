@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilTrailsMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails where T0 : class
+{
+    new T0? TrailShader { get; set; }
+}
 public partial interface ISceneMobilTrails : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMobilTrails>, global::GBX.NET.Interfaces.Scene.ISceneMobil
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -15,15 +20,21 @@ public partial interface ISceneMobilTrails : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Interfaces.Scene.ISceneMessageHandler? MessageHandler { get; set; }
     float MinDist { get; set; }
     int QuadMaxCount { get; set; }
-    float TrailDistRatio { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugShader? TrailShader { get; set; }
 }
 
-public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
+public partial interface ISceneMobilTrailsTM10 : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>
+{
+    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
+}
+
+public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
     new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? TrailShader { get; set; }
+    float TrailDistRatio { get; set; }
 }
 

@@ -299,6 +299,14 @@ public static class CControlTrackManiaTeamCardBuilderExtensions
     }
 }
 
+public static class CControlUiDockableBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlUiDockable)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlUiDockableBuilder Create() => new();
+    }
+}
+
 public static class CControlUiElementBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlUiElement)

@@ -7,6 +7,10 @@ public partial interface ISceneFx : IClassVersion<global::GBX.NET.Engines.Scene.
 {
 }
 
+public partial interface ISceneFxTM10 : ISceneFx
+{
+}
+
 public partial interface ISceneFxTMF : ISceneFx
 {
 }

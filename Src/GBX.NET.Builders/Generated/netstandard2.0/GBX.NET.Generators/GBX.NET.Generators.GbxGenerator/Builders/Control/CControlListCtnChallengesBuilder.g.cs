@@ -54,8 +54,8 @@ public abstract class CControlListCtnChallengesBuilderMembers3<TSelf> : CControl
 public abstract class CControlListCtnChallengesBuilderMembers4<TSelf> : CControlListCtnChallengesBuilderMembers2<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers4<TSelf>
 {
     private protected CControlListCtnChallengesBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
-    public TSelf WithColumns(params global::GBX.NET.Engines.Control.CControlList.Unknown[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetColumnsAssignment(), value, SupportedGames4);
-    public TSelf WithColumns(IEnumerable<global::GBX.NET.Engines.Control.CControlList.Unknown> values) => WithColumns(values.ToArray());
+    public TSelf WithColumns(params global::GBX.NET.Engines.Control.CControlList.Column[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetColumnsAssignment(), value, SupportedGames4);
+    public TSelf WithColumns(IEnumerable<global::GBX.NET.Engines.Control.CControlList.Column> values) => WithColumns(values.ToArray());
     public TSelf WithLinesHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetLinesHeightAssignment(), value, SupportedGames4);
     public TSelf WithNbColumns(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetNbColumnsAssignment(), value, SupportedGames4);
     public TSelf WithNbLinesPerPage(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetNbLinesPerPageAssignment(), value, SupportedGames4);

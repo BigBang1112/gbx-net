@@ -40,9 +40,9 @@ internal static class ManagerWriter
         Switch(code, "internal static partial GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId)", "classId", defaultClasses.Select(x => ($"0x{x.Id:X8}", $"new GbxHeader<{x.QualifiedName}>(basic)")), "null");
         Switch(code, "internal static partial Gbx? NewGbx(GbxHeader header, GbxBody body, IClass node)", "header.ClassId", classes.Select(x => ($"0x{x.Id:X8}" + (reusedClassIds.Contains(x.Id) ? $" when node is {x.QualifiedName}" : ""), $"new Gbx<{x.QualifiedName}>((GbxHeader<{x.QualifiedName}>)header, body, ({x.QualifiedName})node)")), "null");
 
-        Switch(code, "public static Type? GetType(uint classId, GameVersion game)", "(classId, game)", gameClasses.Select(x => ($"(0x{x.Id:X8}, GameVersion.{x.Game})", $"typeof({x.QualifiedName})")), "GetType(classId)");
-        Switch(code, "internal static IClass? New(uint classId, GameVersion game)", "(classId, game)", gameClasses.Where(static x => !x.IsAbstract).Select(x => ($"(0x{x.Id:X8}, GameVersion.{x.Game})", $"new {x.QualifiedName}()")), "New(classId)");
-        Switch(code, "internal static GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId, GameVersion game)", "(classId, game)", gameClasses.Select(x => ($"(0x{x.Id:X8}, GameVersion.{x.Game})", $"new GbxHeader<{x.QualifiedName}>(basic)")), "NewHeader(basic, classId)");
+        Switch(code, "public static Type? GetType(uint classId, GameVersion game)", "(classId, game)", gameClasses.Select(x => (GameCase(x), $"typeof({x.QualifiedName})")), "GetType(classId)");
+        Switch(code, "internal static IClass? New(uint classId, GameVersion game)", "(classId, game)", gameClasses.Where(static x => !x.IsAbstract).Select(x => (GameCase(x), $"new {x.QualifiedName}()")), "New(classId)");
+        Switch(code, "internal static GbxHeader? NewHeader(GbxHeaderBasic basic, uint classId, GameVersion game)", "(classId, game)", gameClasses.Select(x => (GameCase(x), $"new GbxHeader<{x.QualifiedName}>(basic)")), "NewHeader(basic, classId)");
         Switch(code, "internal static GbxHeader? NewHeader(GbxHeaderBasic basic, IClass node)", "node", gameClasses.Select(x => ($"{x.QualifiedName} _", $"new GbxHeader<{x.QualifiedName}>(basic)")), "NewHeader(basic, ClassIds[node.GetType()])");
         
         foreach (var header in new[] { true, false })
@@ -197,6 +197,9 @@ internal static class ManagerWriter
         code.Indent--;
         code.Line("};");
     }
+
+    private static string GameCase(LayoutModel layout)
+        => $"(0x{layout.Id:X8}, {string.Join(" or ", layout.Games.Select(static x => "GameVersion." + x))})";
 
     private static string Literal(string value)
         => Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(value, true);

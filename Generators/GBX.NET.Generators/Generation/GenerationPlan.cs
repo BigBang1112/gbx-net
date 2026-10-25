@@ -52,9 +52,12 @@ internal sealed class GenerationPlan
                     throw new InvalidOperationException("Ambiguous class name: " + layout.Name);
                 }
 
-                if (!ids.Add((layout.Id, layout.Game)))
+                foreach (var game in layout.Games.Length == 0 ? [null] : layout.Games.Select(static x => (string?)x))
                 {
-                    throw new InvalidOperationException($"Duplicate class ID: 0x{layout.Id:X8}");
+                    if (!ids.Add((layout.Id, game)))
+                    {
+                        throw new InvalidOperationException($"Duplicate class ID: 0x{layout.Id:X8}");
+                    }
                 }
 
                 layouts.Add(layout.Name, layout);

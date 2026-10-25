@@ -7,7 +7,7 @@ public abstract class CMotionManagerTrailsBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMotionManagerTrailsBuilderBase() { }
     private protected CMotionManagerTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerTrails> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMSX;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMSX;
     public TSelf WithMobilTrails(global::GBX.NET.Engines.Scene.CSceneMobilTrails? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerTrailsBuilderAssignments.GetMobilTrailsAssignment(), value, SupportedGames1);
     public TSelf WithMobilTrailsReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilTrails> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionManagerTrailsBuilderAssignments.GetMobilTrailsReferenceAssignment(), value, SupportedGames1);
 }
@@ -19,7 +19,16 @@ public partial class CMotionManagerTrailsBuilder : CMotionManagerTrailsBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Motion.CMotionManagerTrails.Chunk0804F000());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
+    public partial class TM10 : CMotionManagerTrailsBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerTrails> state) : base(state) { }
+        public TM10 WithMobilTrails(global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10? value) => base.WithMobilTrails(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobilTrails?)null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionManagerTrails Build() => BuildNode(CMotionManagerTrailsBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerTrails node);
+    }
     public partial class TMSX : CMotionManagerTrailsBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerTrails> state) : base(state) { }

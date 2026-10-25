@@ -269,6 +269,7 @@ public partial class CSceneLayoutBuilder : CSceneLayoutBuilderBase<CSceneLayoutB
     public partial class TM10 : CSceneLayoutBuilderMembers8<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLayout> state) : base(state) { }
+        public TM10 WithSceneFx(global::GBX.NET.Interfaces.Scene.ISceneFxTM10? value) => base.WithSceneFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithSectors(params global::GBX.NET.Interfaces.Scene.ISceneSectorTM10[] values) => base.WithSectors(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>(values, false));
         public TM10 WithSectors(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneSectorTM10> values) => WithSectors(values.ToArray());
         public TM10 WithTrafficGraph(global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10? value) => base.WithTrafficGraph(value is null ? (global::GBX.NET.Engines.Scene.CSceneTrafficGraph?)null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

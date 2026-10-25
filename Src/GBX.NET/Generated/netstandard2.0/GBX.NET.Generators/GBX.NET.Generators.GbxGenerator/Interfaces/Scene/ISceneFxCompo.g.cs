@@ -14,6 +14,10 @@ public partial interface ISceneFxCompo : IClassVersion<global::GBX.NET.Engines.S
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface ISceneFxCompoTM10 : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTM10
+{
+}
+
 public partial interface ISceneFxCompoTMF : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
 {
 }

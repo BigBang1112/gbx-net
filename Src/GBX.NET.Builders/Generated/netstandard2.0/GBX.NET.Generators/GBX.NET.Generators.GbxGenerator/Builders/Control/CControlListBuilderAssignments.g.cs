@@ -5,9 +5,9 @@ namespace GBX.NET.Builders.Engines.Control;
 
 internal static class CControlListBuilderAssignments
 {
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlList.Unknown[]?>? cached0;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlList.Unknown[]?> GetColumnsAssignment() => cached0 ??= new("Columns", new Action<object, global::GBX.NET.Engines.Control.CControlList.Unknown[]?>(Assign0), new Func<global::GBX.NET.Engines.Control.CControlList.Unknown[]?, global::GBX.NET.Engines.Control.CControlList.Unknown[]?>(Copy0));
-    private static void Assign0(object node, global::GBX.NET.Engines.Control.CControlList.Unknown[]? value) => ((global::GBX.NET.Engines.Control.CControlList)node).Columns = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlList.Column[]?>? cached0;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlList.Column[]?> GetColumnsAssignment() => cached0 ??= new("Columns", new Action<object, global::GBX.NET.Engines.Control.CControlList.Column[]?>(Assign0), new Func<global::GBX.NET.Engines.Control.CControlList.Column[]?, global::GBX.NET.Engines.Control.CControlList.Column[]?>(Copy0));
+    private static void Assign0(object node, global::GBX.NET.Engines.Control.CControlList.Column[]? value) => ((global::GBX.NET.Engines.Control.CControlList)node).Columns = value;
     private static NodeBuilderProperty<int>? cached1;
     internal static NodeBuilderProperty<int> GetFastPageStepAssignment() => cached1 ??= new("FastPageStep", new Action<object, int>(Assign1));
     private static void Assign1(object node, int value) => ((global::GBX.NET.Engines.Control.CControlList)node).FastPageStep = value;
@@ -20,5 +20,5 @@ internal static class CControlListBuilderAssignments
     private static NodeBuilderProperty<int>? cached4;
     internal static NodeBuilderProperty<int> GetNbLinesPerPageAssignment() => cached4 ??= new("NbLinesPerPage", new Action<object, int>(Assign4));
     private static void Assign4(object node, int value) => ((global::GBX.NET.Engines.Control.CControlList)node).NbLinesPerPage = value;
-    private static global::GBX.NET.Engines.Control.CControlList.Unknown[]? Copy0(global::GBX.NET.Engines.Control.CControlList.Unknown[]? value) => value is null ? null! : (global::GBX.NET.Engines.Control.CControlList.Unknown[])value.Clone();
+    private static global::GBX.NET.Engines.Control.CControlList.Column[]? Copy0(global::GBX.NET.Engines.Control.CControlList.Column[]? value) => value is null ? null! : (global::GBX.NET.Engines.Control.CControlList.Column[])value.Clone();
 }

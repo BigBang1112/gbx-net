@@ -6,7 +6,7 @@ namespace GBX.NET.Interfaces.Control;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlListMembers1 : global::GBX.NET.Interfaces.Control.IControlList
 {
-    global::GBX.NET.Engines.Control.CControlList.Unknown[]? Columns { get; set; }
+    global::GBX.NET.Engines.Control.CControlList.Column[]? Columns { get; set; }
     float LinesHeight { get; set; }
     int NbColumns { get; set; }
     int NbLinesPerPage { get; set; }

@@ -7,7 +7,7 @@ public abstract class CSceneMobilTrailsBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CSceneMobilTrailsBuilderBase() { }
     private protected CSceneMobilTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilTrails> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMSX;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMSX;
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, SupportedGames1);
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames1);
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames1);
@@ -19,13 +19,25 @@ public abstract class CSceneMobilTrailsBuilderBase<TSelf> : NodeBuilder<global::
     public TSelf WithObjectLink(params global::GBX.NET.Engines.Scene.CSceneObjectLink[] values) => WithObjectLink(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(values));
     public TSelf WithObjectLink(IEnumerable<global::GBX.NET.Engines.Scene.CSceneObjectLink> values) => WithObjectLink(values.ToArray());
     public TSelf WithQuadMaxCount(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilderAssignments.GetQuadMaxCountAssignment(), value, SupportedGames1);
-    public TSelf WithTrailDistRatio(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilderAssignments.GetTrailDistRatioAssignment(), value, SupportedGames1);
     public TSelf WithTrailShader(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilderAssignments.GetTrailShaderAssignment(), value, SupportedGames1);
     public TSelf WithTrailShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilderAssignments.GetTrailShaderReferenceAssignment(), value, SupportedGames1);
 }
 public partial class CSceneMobilTrailsBuilder : CSceneMobilTrailsBuilderBase<CSceneMobilTrailsBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneMobilTrails CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneMobilTrails();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobilTrails.Chunk0A06D001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneMobilTrails CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneMobilTrails();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobilTrails.Chunk0A06D001());
@@ -39,7 +51,20 @@ public partial class CSceneMobilTrailsBuilder : CSceneMobilTrailsBuilderBase<CSc
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
+    public partial class TM10 : CSceneMobilTrailsBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilTrails> state) : base(state) { }
+        public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(values, false));
+        public TM10 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10> values) => WithObjectLink(values.ToArray());
+        public TM10 WithTrailShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? value) => base.WithTrailShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMobilTrails Build() => BuildNode(CSceneMobilTrailsBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilTrails node);
+    }
     public partial class TMSX : CSceneMobilTrailsBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilTrails> state) : base(state) { }
@@ -47,9 +72,10 @@ public partial class CSceneMobilTrailsBuilder : CSceneMobilTrailsBuilderBase<CSc
         public TMSX WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMSX? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(values, false));
         public TMSX WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX> values) => WithObjectLink(values.ToArray());
+        public TMSX WithTrailDistRatio(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilderAssignments.GetTrailDistRatioAssignment(), value, GameVersion.TMSX);
         public TMSX WithTrailShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? value) => base.WithTrailShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilTrails Build() => BuildNode(CSceneMobilTrailsBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.Scene.CSceneMobilTrails Build() => BuildNode(CSceneMobilTrailsBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilTrails node);
     }
 }

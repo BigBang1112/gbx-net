@@ -17,6 +17,8 @@ internal sealed class LayoutModel
     public string? BaseName { get; }
     public bool IsAbstract { get; }
     public string? Game => File.Syntax.ClassAttributes.FirstOrDefault(static x => x.Name == "game")?.Value;
+    // A legacy class can apply to several games that shared its class ID.
+    public string[] Games => Game?.Split(',').Select(static x => x.Trim()).Where(static x => x.Length > 0).ToArray() ?? [];
     public ArchiveDeclaration? SelfArchive { get; }
     public List<ChunkModel> Chunks { get; } = [];
     public ScopeModel Scope { get; }

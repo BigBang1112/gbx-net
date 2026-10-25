@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionEmitterTrails : global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMSX
+public partial class CMotionEmitterTrails : global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMSX
 {
 }

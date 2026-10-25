@@ -12,14 +12,18 @@ public partial interface IVisPostFx_MotionBlur : IClassVersion<global::GBX.NET.E
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    bool T2_DelayShadows { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp { get; set; }
-    float T2_MotionMaxLen { get; set; }
-    float T2_MotionScale { get; set; }
     int Technique { get; set; }
+}
+
+public partial interface IVisPostFx_MotionBlurTM10 : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
+{
 }
 
 public partial interface IVisPostFx_MotionBlurTMF : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
 {
+    bool T2_DelayShadows { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp { get; set; }
+    float T2_MotionMaxLen { get; set; }
+    float T2_MotionScale { get; set; }
 }
 

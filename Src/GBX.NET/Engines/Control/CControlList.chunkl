@@ -11,7 +11,7 @@ CControlList 0x0700F000
   int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
   int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
   int
-  Unknown[ColumnCount] Columns
+  Column[ColumnCount] Columns
 
 0x001 [TMPU] // legacy list layout and columns
   int NbColumns
@@ -21,7 +21,7 @@ CControlList 0x0700F000
   int ColumnCount (local, write: "n.Columns?.Length ?? 0")
   int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
   int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
-  Unknown[ColumnCount] Columns
+  Column[ColumnCount] Columns
 
 0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int
@@ -45,6 +45,11 @@ CControlList 0x0700F000
   float
   float
   bool
+
+archive Column
+  string
+  float
+  CMwNod
 
 archive Unknown
   string

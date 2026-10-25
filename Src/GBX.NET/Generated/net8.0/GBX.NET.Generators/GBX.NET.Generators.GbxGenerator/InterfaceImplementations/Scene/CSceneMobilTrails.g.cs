@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobilTrails : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX
+public partial class CSceneMobilTrails : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX
 {
 }

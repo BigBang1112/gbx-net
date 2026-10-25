@@ -42,11 +42,11 @@ public partial class CControlList : CControlFrame, IClass
         set => this.linesHeight = value;
     }
 
-    private Unknown[]? columns;
+    private Column[]? columns;
     /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0700F000>]
     [AppliedWithChunk<Chunk0700F001>]
-    public Unknown[]? Columns
+    public Column[]? Columns
     {
         get => this.columns;
         set => this.columns = value;
@@ -127,7 +127,7 @@ public partial class CControlList : CControlFrame, IClass
             var columnWidthCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
             var columnNodCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
             rw.Int32(ref U03);
-            rw.ArrayReadableWritable<Unknown>(ref n.columns!, columnCount);
+            rw.ArrayReadableWritable<Column>(ref n.columns!, columnCount);
         }
     }
 
@@ -155,7 +155,7 @@ public partial class CControlList : CControlFrame, IClass
             var columnCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
             var columnWidthCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
             var columnNodCount = rw.Int32((rw.Writer is null ? default : (n.Columns?.Length?? 0)));
-            rw.ArrayReadableWritable<Unknown>(ref n.columns!, columnCount);
+            rw.ArrayReadableWritable<Column>(ref n.columns!, columnCount);
         }
     }
 
@@ -275,6 +275,77 @@ public partial class CControlList : CControlFrame, IClass
             rw.Single(ref U08);
             rw.Single(ref U09);
             rw.Boolean(ref U10);
+        }
+    }
+
+    public partial class Column : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private NodeRef<CMwNod>? u03Ref;
+        public CMwNod? U03
+        {
+            get => u03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u03Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Column owner;
+            internal NodeRefView(Column owner) => this.owner = owner;
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U03", NodeRef.GetOrCreate(ref u03Ref));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Column)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Column)clone).u01 = context.Clone(this.u01)!;
+            ((Column)clone).u02 = context.Clone(this.u02)!;
+            ((Column)clone).u03Ref = context.Clone(this.u03Ref)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.u01);
+            rw.Single(ref this.u02);
+            rw.NodeRef(ref this.u03Ref);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
