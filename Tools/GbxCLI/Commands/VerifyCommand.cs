@@ -15,6 +15,7 @@ internal static class VerifyCommand
         }
 
         var inputPath = arguments.InputPath;
+        var settings = new GbxReadSettings { GameVersion = arguments.Game };
 
         if (Directory.Exists(inputPath))
         {
@@ -24,7 +25,7 @@ internal static class VerifyCommand
 
             foreach (var path in paths)
             {
-                counts += await VerifyFileAsync(path, Path.GetRelativePath(inputPath, path), output);
+                counts += await VerifyFileAsync(path, Path.GetRelativePath(inputPath, path), settings, output);
             }
 
             await output.WriteLineAsync(counts.ToString());
@@ -41,12 +42,12 @@ internal static class VerifyCommand
             throw new InvalidDataException($"The file '{inputPath}' is not a Gbx file.");
         }
 
-        var result = await VerifyFileAsync(inputPath, inputPath, output);
+        var result = await VerifyFileAsync(inputPath, inputPath, settings, output);
         await output.WriteLineAsync(result.ToString());
         return result.Failed == 0 ? 0 : 1;
     }
 
-    private static async Task<VerifyCounts> VerifyFileAsync(string path, string displayPath, TextWriter output)
+    private static async Task<VerifyCounts> VerifyFileAsync(string path, string displayPath, GbxReadSettings settings, TextWriter output)
     {
         try
         {
@@ -62,7 +63,7 @@ internal static class VerifyCommand
                 throw new InvalidDataException("The file is too short to contain a Gbx signature.");
             }
 
-            EnsureBodyParsed(await Gbx.ParseAsync(stream));
+            EnsureBodyParsed(await Gbx.ParseAsync(stream, settings));
             return new(1, 0, 0);
         }
         catch (Exception exception)

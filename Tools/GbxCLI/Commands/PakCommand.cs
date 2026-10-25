@@ -34,7 +34,7 @@ internal static class PakCommand
 
         if (command == "verify" && Directory.Exists(arguments.InputPath))
         {
-            return await VerifyDirectoryAsync(arguments.InputPath, output);
+            return await VerifyDirectoryAsync(arguments.InputPath, Settings(arguments), output);
         }
 
         var (archivePath, entryPattern) = ParsedFile.ResolveInputPath(arguments.InputPath);
@@ -55,7 +55,7 @@ internal static class PakCommand
 
         if (command == "verify")
         {
-            return await WriteVerifyResultAsync(await VerifyAsync(pak, entries, prefix: string.Empty, output), output);
+            return await WriteVerifyResultAsync(await VerifyAsync(pak, entries, prefix: string.Empty, Settings(arguments), output), output);
         }
 
         if (command == "extract")
@@ -83,7 +83,7 @@ internal static class PakCommand
 
         if (command == "verify")
         {
-            return await WriteVerifyResultAsync(await VerifyZipAsync(entries, prefix: string.Empty, output), output);
+            return await WriteVerifyResultAsync(await VerifyZipAsync(entries, prefix: string.Empty, Settings(arguments), output), output);
         }
 
         if (command == "extract")
@@ -104,6 +104,8 @@ internal static class PakCommand
 
         return 0;
     }
+
+    private static GbxReadSettings Settings(PakArguments arguments) => new() { GameVersion = arguments.Game };
 
     private static async Task<(ParsedFile File, Pak Pak)> OpenPakAsync(string archivePath, string command)
     {
@@ -130,7 +132,7 @@ internal static class PakCommand
         }
     }
 
-    private static async Task<int> VerifyDirectoryAsync(string directoryPath, TextWriter output)
+    private static async Task<int> VerifyDirectoryAsync(string directoryPath, GbxReadSettings settings, TextWriter output)
     {
         var archives = 0;
         var unopened = 0;
@@ -156,13 +158,13 @@ internal static class PakCommand
                 if (isZip)
                 {
                     using var zip = new ZipFileIndex(path);
-                    counts = await VerifyZipAsync(zip.Select(null), name + Path.DirectorySeparatorChar, output);
+                    counts = await VerifyZipAsync(zip.Select(null), name + Path.DirectorySeparatorChar, settings, output);
                 }
                 else
                 {
                     var (file, pak) = await OpenPakAsync(path, "verify");
                     await using var _ = file;
-                    counts = await VerifyAsync(pak, new PakFileIndex(pak).Select(null), name + Path.DirectorySeparatorChar, output);
+                    counts = await VerifyAsync(pak, new PakFileIndex(pak).Select(null), name + Path.DirectorySeparatorChar, settings, output);
                 }
 
                 await output.WriteLineAsync($"{name}: {counts}");
@@ -199,7 +201,7 @@ internal static class PakCommand
         return counts.Failed == 0 ? 0 : 1;
     }
 
-    private static async Task<VerifyCounts> VerifyZipAsync(ZipFileIndex.Entry[] entries, string prefix, TextWriter output)
+    private static async Task<VerifyCounts> VerifyZipAsync(ZipFileIndex.Entry[] entries, string prefix, GbxReadSettings settings, TextWriter output)
     {
         var parsed = 0;
         var failed = 0;
@@ -239,14 +241,14 @@ internal static class PakCommand
                         throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
                     }
 
-                    var counts = await VerifyAsync(nestedPak, new PakFileIndex(nestedPak).Select(null), prefix + entry.Path + Path.DirectorySeparatorChar, output);
+                    var counts = await VerifyAsync(nestedPak, new PakFileIndex(nestedPak).Select(null), prefix + entry.Path + Path.DirectorySeparatorChar, settings, output);
                     parsed += counts.Parsed;
                     failed += counts.Failed;
                     skipped += counts.Skipped;
                     continue;
                 }
 
-                VerifyCommand.EnsureBodyParsed(await Gbx.ParseAsync(data));
+                VerifyCommand.EnsureBodyParsed(await Gbx.ParseAsync(data, settings));
                 parsed++;
             }
             catch (Exception exception)
@@ -373,7 +375,7 @@ internal static class PakCommand
         return path;
     }
 
-    private static async Task<VerifyCounts> VerifyAsync(Pak pak, PakFileIndex.Entry[] entries, string prefix, TextWriter output)
+    private static async Task<VerifyCounts> VerifyAsync(Pak pak, PakFileIndex.Entry[] entries, string prefix, GbxReadSettings settings, TextWriter output)
     {
         var parsed = 0;
         var failed = 0;
@@ -396,7 +398,7 @@ internal static class PakCommand
                     throw new InvalidDataException("The file is too short to contain a Gbx signature.");
                 }
 
-                VerifyCommand.EnsureBodyParsed(await pak.OpenGbxFileAsync(file));
+                VerifyCommand.EnsureBodyParsed(await pak.OpenGbxFileAsync(file, settings));
                 parsed++;
             }
             catch (Exception exception)

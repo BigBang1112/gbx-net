@@ -46,7 +46,7 @@ public interface IGamePlayerProfileMembers5 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
-    int BindingsForCompatVersion { get; set; }
+    int? BindingsForCompatVersion { get; set; }
     string? Description { get; set; }
     bool EnableCarSkinGeom { get; set; }
     Vec3 PainterCustomColor1 { get; set; }

@@ -1,6 +1,8 @@
+using GBX.NET;
+
 namespace GbxCLI.Commands;
 
-internal sealed record PakArguments(string InputPath, string? OutputPath, bool? Resolved)
+internal sealed record PakArguments(string InputPath, string? OutputPath, bool? Resolved, GameVersion Game)
 {
     public static PakArguments? Parse(IEnumerator<string> argsEnumerator, string command, TextWriter output)
     {
@@ -8,7 +10,7 @@ internal sealed record PakArguments(string InputPath, string? OutputPath, bool? 
         var arguments = FileArguments.Parse(argsEnumerator, $"pak {command}", output,
             requiresOutput: false, allowsOutput: command == "extract", tryHandleOption: TryHandleOption);
 
-        return arguments is null ? null : new PakArguments(arguments.InputPath, arguments.OutputPath, resolved);
+        return arguments is null ? null : new PakArguments(arguments.InputPath, arguments.OutputPath, resolved, arguments.Game);
 
         bool TryHandleOption(string arg)
         {

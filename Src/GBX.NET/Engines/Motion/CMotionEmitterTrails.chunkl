@@ -1,0 +1,6 @@
+CMotionEmitterTrails 0x0804F000
+- inherits: CMotionManaged
+- game: TMSX
+
+0x000 [TMSX] // ManagerModel
+  CMotionManagerTrails ManagerModel

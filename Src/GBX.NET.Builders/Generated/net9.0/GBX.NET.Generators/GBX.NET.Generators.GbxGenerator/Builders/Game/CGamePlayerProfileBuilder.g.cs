@@ -45,7 +45,7 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
 public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProfileBuilderMembers3<TSelf> where TSelf : CGamePlayerProfileBuilderMembers4<TSelf>
 {
     private protected CGamePlayerProfileBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
-    public TSelf WithBindingsForCompatVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatVersionAssignment(), value, SupportedGames6);
+    public TSelf WithBindingsForCompatVersion(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatVersionAssignment(), value, SupportedGames6);
     public TSelf WithDescription(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetDescriptionAssignment(), value, SupportedGames6);
     public TSelf WithEnableCarSkinGeom(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableCarSkinGeomAssignment(), value, SupportedGames6);
     public TSelf WithPainterCustomColor1(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetPainterCustomColor1Assignment(), value, SupportedGames6);

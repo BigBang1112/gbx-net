@@ -48,8 +48,8 @@ Use `gbx --help` for the command overview, `gbx pak --help` for PAK subcommands,
 | `eval` | `-i, --interactive` | Interactive placeholder. Without it, at least one C# expression is required. |
 | `script` | `--` | Pass remaining arguments to the script, including `--help` and `--version`. |
 | `pak files` | `--resolved` or `--unresolved` | Filter named/resolved files or unresolved hashes. Omit both to list all entries. |
-| `verify` | No additional options | Verify a Gbx file or a folder tree. |
-| `pak verify` | No additional options | Verify all entries, append an entry pattern, or pass a folder of archives. |
+| `verify` | `-g, --game <version>` | Verify a Gbx file or a folder tree. Optionally select the game version. |
+| `pak verify` | `-g, --game <version>` | Verify all entries, append an entry pattern, or pass a folder of archives. Optionally select the game version. |
 | `pak extract` | `-o, --output <directory>` | Optional destination. Defaults to `<archive>.extracted`. |
 | `compress`, `decompress` | `-o, --output <file>` | Required destination file. |
 
@@ -58,6 +58,12 @@ Interactive mode is not implemented yet. Built-in output commands never overwrit
 ## Verification
 
 `verify` fully parses a Gbx file. With a folder, it parses every Gbx file in the folder and its subfolders, detected by `GBX` signature or `.gbx` extension. Other files, including `.Pack.Gbx` archives, are skipped. It continues after exceptions, prints failing paths relative to the folder with their messages, and ends with the number of parsed, failed, and skipped files. The exit code is `1` if any file failed. Unknown root classes are reported as failures.
+
+Some games reuse a class ID for a different class. Pass `--game` with a `GameVersion` name, such as `TMSX` or `TMNESWC`, to read those classes as that game does. Names ignore case. Numbers and combined values are rejected. `pak verify` accepts the same option. Without it, version 3 PAK archives are read as `TMF`, and other files use the default classes.
+
+```sh
+gbx verify "GameData" --game TMSX
+```
 
 ## PAK files
 

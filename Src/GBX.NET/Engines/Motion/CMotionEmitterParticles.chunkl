@@ -11,6 +11,54 @@ CMotionEmitterParticles 0x08058000
   base
   bool IsEventMode
 
+0x0804F000 // legacy emitter model
+  CMwNod EmitterModel
+  bool IsActive
+  float
+  float
+  float
+
+0x0804F001 (base: 0x0804F000) // legacy emission parameters
+  base
+  bool UseOwnerLoc
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x0804F002 (base: 0x0804F001) // legacy emission parameters
+  base
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x0804F003 [TMSX] // emission parameters
+  CMwNod EmitterModel
+  bool IsActive
+  bool UseOwnerLoc
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
 archive EmitParams
   version = 1
   v1= (archive)

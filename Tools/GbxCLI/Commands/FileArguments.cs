@@ -1,6 +1,8 @@
+using GBX.NET;
+
 namespace GbxCLI.Commands;
 
-internal sealed record FileArguments(string InputPath, string? OutputPath, bool Interactive = false)
+internal sealed record FileArguments(string InputPath, string? OutputPath, bool Interactive = false, GameVersion Game = GameVersion.Unspecified)
 {
     public static FileArguments? Parse(
         IEnumerator<string> argsEnumerator,
@@ -13,6 +15,7 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
     {
         string? outputPath = null;
         var interactive = command == "parse" && inputPath is not null;
+        var game = GameVersion.Unspecified;
 
         while (argsEnumerator.MoveNext())
         {
@@ -53,6 +56,25 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
 
                     outputPath = argsEnumerator.Current;
                     continue;
+                case "-g":
+                case "--game":
+                    if (command is not ("verify" or "pak verify"))
+                    {
+                        throw new ArgumentException($"The {command} command does not accept {arg}.");
+                    }
+
+                    if (game != GameVersion.Unspecified)
+                    {
+                        throw new ArgumentException("Game can only be specified once.");
+                    }
+
+                    if (!argsEnumerator.MoveNext() || string.IsNullOrWhiteSpace(argsEnumerator.Current))
+                    {
+                        throw new ArgumentException($"Missing game version after {arg}.");
+                    }
+
+                    game = ParseGame(argsEnumerator.Current);
+                    continue;
             }
 
             if (inputPath is not null)
@@ -78,6 +100,21 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
             throw new ArgumentException($"The {command} command does not accept --output.");
         }
 
-        return new FileArguments(inputPath, outputPath, interactive);
+        return new FileArguments(inputPath, outputPath, interactive, game);
+    }
+
+    private static GameVersion ParseGame(string value)
+    {
+        // Names only: numbers and combined flags do not select a single game context.
+        if (!char.IsDigit(value[0])
+            && Enum.TryParse<GameVersion>(value, ignoreCase: true, out var game)
+            && game != GameVersion.Unspecified
+            && Enum.IsDefined(game))
+        {
+            return game;
+        }
+
+        var names = Enum.GetNames<GameVersion>().Where(static name => name != nameof(GameVersion.Unspecified));
+        throw new ArgumentException($"Unknown game version: {value}. Use one of: {string.Join(", ", names)}.");
     }
 }

@@ -283,12 +283,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.description = value;
     }
 
-    private int bindingsForCompatVersion = 7;
+    private int? bindingsForCompatVersion = 7;
     /// <remarks>Applied with: 0x02A, 0x03A, 0x062 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02A>]
     [AppliedWithChunk<Chunk0308C03A>]
     [AppliedWithChunk<Chunk0308C062>]
-    public int BindingsForCompatVersion
+    public int? BindingsForCompatVersion
     {
         get => this.bindingsForCompatVersion;
         set => this.bindingsForCompatVersion = value;
@@ -2387,9 +2387,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGamePlayerProfile 0x02A skippable chunk
+    /// CGamePlayerProfile 0x02A skippable chunk (BindingsForCompatVersion, written empty by TMSX)
     /// </summary>
-    [Chunk(0x0308C02A)]
+    [Chunk(0x0308C02A, "BindingsForCompatVersion, written empty by TMSX")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C02A : SkippableChunk<CGamePlayerProfile>
     {
@@ -2403,7 +2403,17 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.bindingsForCompatVersion);
+            if (rw.Reader != null && rw.Reader.BaseStream.Length > 0 || rw.Reader == null && n.BindingsForCompatVersion!= null)
+            {
+                rw.Int32(ref n.bindingsForCompatVersion);
+            }
+            else
+            {
+                if (rw.Reader is not null)
+                {
+                    n.BindingsForCompatVersion = null;
+                }
+            }
         }
     }
 

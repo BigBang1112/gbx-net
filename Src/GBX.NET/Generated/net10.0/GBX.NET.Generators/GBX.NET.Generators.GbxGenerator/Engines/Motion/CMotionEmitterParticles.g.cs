@@ -13,9 +13,13 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? emitterModelRef;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk08058001>]
     [AppliedWithChunk<Chunk08058002>]
+    [AppliedWithChunk<Chunk0804F000>]
+    [AppliedWithChunk<Chunk0804F001>]
+    [AppliedWithChunk<Chunk0804F002>]
+    [AppliedWithChunk<Chunk0804F003>]
     public CMwNod? EmitterModel
     {
         get => emitterModelRef?.Resolve();
@@ -23,9 +27,13 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
     }
 
     private bool isActive;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk08058001>]
     [AppliedWithChunk<Chunk08058002>]
+    [AppliedWithChunk<Chunk0804F000>]
+    [AppliedWithChunk<Chunk0804F001>]
+    [AppliedWithChunk<Chunk0804F002>]
+    [AppliedWithChunk<Chunk0804F003>]
     public bool IsActive
     {
         get => this.isActive;
@@ -33,9 +41,12 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
     }
 
     private bool useOwnerLoc = true;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk08058001>]
     [AppliedWithChunk<Chunk08058002>]
+    [AppliedWithChunk<Chunk0804F001>]
+    [AppliedWithChunk<Chunk0804F002>]
+    [AppliedWithChunk<Chunk0804F003>]
     public bool UseOwnerLoc
     {
         get => this.useOwnerLoc;
@@ -87,6 +98,184 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
 
     public CMotionEmitterParticles()
     {
+    }
+
+    /// <summary>
+    /// CMotionEmitterParticles 0x000 chunk (legacy emitter model)
+    /// </summary>
+    [Chunk(0x0804F000, "legacy emitter model")]
+    public partial class Chunk0804F000 : Chunk<CMotionEmitterParticles>
+    {
+        public override uint Id => 0x0804F000;
+        public float U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0804F000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0804F000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0804F000)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CMotionEmitterParticles n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.emitterModelRef);
+            rw.Boolean(ref n.isActive);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    /// <summary>
+    /// CMotionEmitterParticles 0x001 chunk (legacy emission parameters)
+    /// </summary>
+    [Chunk(0x0804F001, "legacy emission parameters")]
+    public partial class Chunk0804F001 : Chunk0804F000
+    {
+        public override uint Id => 0x0804F001;
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0804F001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0804F001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0804F001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0804F001)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0804F001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0804F001)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0804F001)clone).U07 = context.Clone(this.U07)!;
+        }
+
+        public override void ReadWrite(CMotionEmitterParticles n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Boolean(ref n.useOwnerLoc);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+        }
+    }
+
+    /// <summary>
+    /// CMotionEmitterParticles 0x002 chunk (legacy emission parameters)
+    /// </summary>
+    [Chunk(0x0804F002, "legacy emission parameters")]
+    public partial class Chunk0804F002 : Chunk0804F001
+    {
+        public override uint Id => 0x0804F002;
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+        public float U08;
+        public float U09;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0804F002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0804F002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0804F002)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0804F002)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0804F002)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0804F002)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0804F002)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0804F002)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0804F002)clone).U09 = context.Clone(this.U09)!;
+        }
+
+        public override void ReadWrite(CMotionEmitterParticles n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Single(ref U08);
+            rw.Single(ref U09);
+        }
+    }
+
+    /// <summary>
+    /// CMotionEmitterParticles 0x003 chunk (emission parameters)
+    /// </summary>
+    [Chunk(0x0804F003, "emission parameters")]
+    [ChunkGameVersion(GameVersion.TMSX)]
+    public partial class Chunk0804F003 : Chunk<CMotionEmitterParticles>
+    {
+        public override uint Id => 0x0804F003;
+        public override GameVersion GameVersion => GameVersion.TMSX;
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+        public float U08;
+        public float U09;
+        public float U10;
+        public float U11;
+        public float U12;
+        public float U13;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0804F003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0804F003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0804F003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0804F003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0804F003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0804F003)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0804F003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0804F003)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0804F003)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0804F003)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0804F003)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk0804F003)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk0804F003)clone).U13 = context.Clone(this.U13)!;
+        }
+
+        public override void ReadWrite(CMotionEmitterParticles n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.emitterModelRef);
+            rw.Boolean(ref n.isActive);
+            rw.Boolean(ref n.useOwnerLoc);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Single(ref U08);
+            rw.Single(ref U09);
+            rw.Single(ref U10);
+            rw.Single(ref U11);
+            rw.Single(ref U12);
+            rw.Single(ref U13);
+        }
     }
 
     /// <summary>
@@ -228,6 +417,10 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0804F000 => new Chunk0804F000(),
+        0x0804F001 => new Chunk0804F001(),
+        0x0804F002 => new Chunk0804F002(),
+        0x0804F003 => new Chunk0804F003(),
         0x08058001 => new Chunk08058001(),
         0x08058002 => new Chunk08058002(),
         _ => base.NewChunk(chunkId),

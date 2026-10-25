@@ -114,12 +114,12 @@ internal static class CliHelp
         "pak verify" => new(
             "pak verify <file> [options]",
             "Fully parse matching Gbx entries and list failures. Exit with code 1 if any fail.\nAppend a path or pattern to the archive to select entries. Matching ignores case.\nPass a folder to verify every PAK and ZIP archive directly inside it.",
-            string.Empty,
+            "  [cyan]-g, --game[/] <version>         Select the game when class IDs are reused, for example TMSX.",
             "gbx pak verify \"Resource.pak/*.Shader.Gbx\""),
         "verify" => new(
             "verify <file> [options]",
             "Fully parse a Gbx file and report the exception if it fails. Exit with code 1 if any fail.\nPass a folder to verify every Gbx file in it and its subfolders. Other files are skipped.",
-            string.Empty,
+            "  [cyan]-g, --game[/] <version>         Select the game when class IDs are reused, for example TMSX.",
             "gbx verify \"Maps\""),
         "pak extract" => new(
             "pak extract <file> [options]",

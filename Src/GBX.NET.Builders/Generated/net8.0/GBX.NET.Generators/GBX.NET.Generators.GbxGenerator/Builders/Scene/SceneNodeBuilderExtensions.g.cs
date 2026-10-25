@@ -131,6 +131,14 @@ public static class CSceneMobilLeavesBuilderExtensions
     }
 }
 
+public static class CSceneMobilTrailsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneMobilTrails)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneMobilTrailsBuilder Create() => new();
+    }
+}
+
 public static class CSceneMoodBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Scene.CSceneMood)

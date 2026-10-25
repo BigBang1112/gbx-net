@@ -273,8 +273,11 @@ CGamePlayerProfile 0x0308C000
 0x029 (skippable) [TMSX, TMNESWC]
   string Description (formatted)
 
-0x02A (skippable) [TMSX, TMNESWC]
-  int BindingsForCompatVersion = 7
+0x02A (skippable) [TMSX, TMNESWC] // BindingsForCompatVersion, written empty by TMSX
+  if rw.Reader != null && rw.Reader.BaseStream.Length > 0 || rw.Reader == null && BindingsForCompatVersion != null
+    int? BindingsForCompatVersion = 7
+  else
+    BindingsForCompatVersion = null
 
 0x02B (skippable) [TMNESWC]
   string

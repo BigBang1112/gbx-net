@@ -67,6 +67,30 @@ public class VerifyCommandTests
     }
 
     [Test]
+    public async Task Verify_GameOption_ParsesWithSelectedGame()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-verify-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "Valid.Gbx");
+            await File.WriteAllBytesAsync(path, PakEntryTests.CreateGbx(compressed: true));
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["verify", "--game", "TMSX", path], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(output.ToString()).IsEqualTo($"Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.{Environment.NewLine}");
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
     public async Task Verify_BrokenFile_ReportsFailure()
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-verify-");

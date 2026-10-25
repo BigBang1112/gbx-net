@@ -43,11 +43,27 @@ public static class CControlContainerBuilderExtensions
     }
 }
 
+public static class CControlEffectCombinedBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlEffectCombined)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlEffectCombinedBuilder Create() => new();
+    }
+}
+
 public static class CControlEffectMasterBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlEffectMaster)
     {
         public static global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilder Create() => new();
+    }
+}
+
+public static class CControlEffectMotionBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlEffectMotion)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlEffectMotionBuilder Create() => new();
     }
 }
 

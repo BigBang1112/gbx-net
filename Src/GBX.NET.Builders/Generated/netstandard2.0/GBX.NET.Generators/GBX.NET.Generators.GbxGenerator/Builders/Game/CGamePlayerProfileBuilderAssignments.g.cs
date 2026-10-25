@@ -32,9 +32,9 @@ internal static class CGamePlayerProfileBuilderAssignments
     private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>>? cached6Reference;
     internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>> GetBindingsForCompatConfigReferenceAssignment() => cached6Reference ??= new("BindingsForCompatConfig", new Action<object, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>>(Copy0));
     private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).References.BindingsForCompatConfig.CopyFrom(value);
-    private static NodeBuilderProperty<int>? cached7;
-    internal static NodeBuilderProperty<int> GetBindingsForCompatVersionAssignment() => cached7 ??= new("BindingsForCompatVersion", new Action<object, int>(Assign7));
-    private static void Assign7(object node, int value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).BindingsForCompatVersion = value;
+    private static NodeBuilderProperty<int?>? cached7;
+    internal static NodeBuilderProperty<int?> GetBindingsForCompatVersionAssignment() => cached7 ??= new("BindingsForCompatVersion", new Action<object, int?>(Assign7));
+    private static void Assign7(object node, int? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).BindingsForCompatVersion = value;
     private static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameBuddy[]?>? cached8;
     internal static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameBuddy[]?> GetBuddiesAssignment() => cached8 ??= new("Buddies", new Action<object, global::GBX.NET.Engines.Game.CGameBuddy[]?>(Assign8), new Func<global::GBX.NET.Engines.Game.CGameBuddy[]?, global::GBX.NET.Engines.Game.CGameBuddy[]?>(Copy1));
     private static void Assign8(object node, global::GBX.NET.Engines.Game.CGameBuddy[]? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).Buddies = value;

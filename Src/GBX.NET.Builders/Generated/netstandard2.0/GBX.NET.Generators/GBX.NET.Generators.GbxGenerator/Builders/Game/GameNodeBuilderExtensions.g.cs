@@ -1155,6 +1155,14 @@ public static class CGameMenuFrameBuilderExtensions
     }
 }
 
+public static class CGameMenuScaleEffectBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameMenuScaleEffect)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameMenuScaleEffectBuilder Create() => new();
+    }
+}
+
 public static class CGameNetOnlineMessageBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Game.CGameNetOnlineMessage)

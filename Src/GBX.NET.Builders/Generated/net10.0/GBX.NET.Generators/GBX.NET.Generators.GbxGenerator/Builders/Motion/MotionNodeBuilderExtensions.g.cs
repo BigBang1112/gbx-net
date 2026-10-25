@@ -51,11 +51,27 @@ public static class CMotionEmitterParticlesBuilderExtensions
     }
 }
 
+public static class CMotionEmitterTrailsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Motion.CMotionEmitterTrails)
+    {
+        public static global::GBX.NET.Builders.Engines.Motion.CMotionEmitterTrailsBuilder Create() => new();
+    }
+}
+
 public static class CMotionManagerLeavesBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Motion.CMotionManagerLeaves)
     {
         public static global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilder Create() => new();
+    }
+}
+
+public static class CMotionManagerTrailsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Motion.CMotionManagerTrails)
+    {
+        public static global::GBX.NET.Builders.Engines.Motion.CMotionManagerTrailsBuilder Create() => new();
     }
 }
 

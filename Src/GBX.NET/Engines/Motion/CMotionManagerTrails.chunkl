@@ -1,0 +1,6 @@
+CMotionManagerTrails 0x090E5000
+- inherits: CMotionManager
+- game: TMSX
+
+0x0804F000 [TMSX] // MobilTrails, stored under the emitter chunk ID
+  CSceneMobilTrails MobilTrails
