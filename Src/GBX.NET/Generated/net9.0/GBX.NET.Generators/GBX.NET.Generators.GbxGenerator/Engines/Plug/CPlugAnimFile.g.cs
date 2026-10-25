@@ -221,22 +221,22 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.legacyClips = value;
     }
 
-    private NodeRefList<CPlugAnimPoseGroup>? poseGroups;
-    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090B0003>(4)]
-    public NodeRefList<CPlugAnimPoseGroup>? PoseGroups
+    private LegacyPoseGroup[]? legacyPoseGroups;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(4, 9)]
+    public LegacyPoseGroup[]? LegacyPoseGroups
     {
-        get => poseGroups;
-        set => poseGroups = value;
+        get => this.legacyPoseGroups;
+        set => this.legacyPoseGroups = value;
     }
 
-    private NodeRefList<CPlugAnimPoseGrid>? poseGrids;
-    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090B0003>(4)]
-    public NodeRefList<CPlugAnimPoseGrid>? PoseGrids
+    private LegacyPoseGrid[]? legacyPoseGrids;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(4, 9)]
+    public LegacyPoseGrid[]? LegacyPoseGrids
     {
-        get => poseGrids;
-        set => poseGrids = value;
+        get => this.legacyPoseGrids;
+        set => this.legacyPoseGrids = value;
     }
 
     private LegacyGraph[]? legacyGraphs;
@@ -356,6 +356,24 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.clipResources = value;
     }
 
+    private NodeRefList<CPlugAnimPoseGroup>? poseGroups;
+    /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(10)]
+    public NodeRefList<CPlugAnimPoseGroup>? PoseGroups
+    {
+        get => poseGroups;
+        set => poseGroups = value;
+    }
+
+    private NodeRefList<CPlugAnimPoseGrid>? poseGrids;
+    /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(10)]
+    public NodeRefList<CPlugAnimPoseGrid>? PoseGrids
+    {
+        get => poseGrids;
+        set => poseGrids = value;
+    }
+
     private NodeRefList<CPlugAnimGraphStack>? graphStacks;
     /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(10)]
@@ -433,25 +451,17 @@ public partial class CPlugAnimFile : CMwNod, IClass
     {
         private readonly CPlugAnimFile owner;
         internal NodeRefView(CPlugAnimFile owner) => this.owner = owner;
-        public IReadOnlyList<NodeRef<CPlugAnimPoseGroup>>? PoseGroups => owner.poseGroups?.References;
-        public IReadOnlyList<NodeRef<CPlugAnimPoseGrid>>? PoseGrids => owner.poseGrids?.References;
         public IReadOnlyList<NodeRef<CPlugAnimVariantGroup>>? VariantGroups => owner.variantGroups?.References;
         public IReadOnlyList<NodeRef<CPlugAnimSkelEditionPose>>? EditionPoses => owner.editionPoses?.References;
         public IReadOnlyList<NodeRef<CPlugAnimClip>>? Clips => owner.clips?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimPoseGroup>>? PoseGroups => owner.poseGroups?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimPoseGrid>>? PoseGrids => owner.poseGrids?.References;
         public IReadOnlyList<NodeRef<CPlugAnimGraphStack>>? GraphStacks => owner.graphStacks?.References;
         public IReadOnlyList<NodeRef<CMwNod>>? JointGroupNodes => owner.jointGroupNodes?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        if (poseGroups is not null)
-        {
-            for (var i = 0; i < poseGroups.Count; i++) yield return new("PoseGroups" + "[" + i + "]", poseGroups.Get(i));
-        }
-        if (poseGrids is not null)
-        {
-            for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.Get(i));
-        }
         if (variantGroups is not null)
         {
             for (var i = 0; i < variantGroups.Count; i++) yield return new("VariantGroups" + "[" + i + "]", variantGroups.Get(i));
@@ -463,6 +473,14 @@ public partial class CPlugAnimFile : CMwNod, IClass
         if (clips is not null)
         {
             for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.Get(i));
+        }
+        if (poseGroups is not null)
+        {
+            for (var i = 0; i < poseGroups.Count; i++) yield return new("PoseGroups" + "[" + i + "]", poseGroups.Get(i));
+        }
+        if (poseGrids is not null)
+        {
+            for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.Get(i));
         }
         if (graphStacks is not null)
         {
@@ -501,8 +519,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).bakedClips = context.CloneArray(this.bakedClips)!;
         ((CPlugAnimFile)clone).editionClips = context.CloneArray(this.editionClips)!;
         ((CPlugAnimFile)clone).legacyClips = context.CloneArray(this.legacyClips)!;
-        ((CPlugAnimFile)clone).poseGroups = context.Clone(this.poseGroups)!;
-        ((CPlugAnimFile)clone).poseGrids = context.Clone(this.poseGrids)!;
+        ((CPlugAnimFile)clone).legacyPoseGroups = context.CloneArray(this.legacyPoseGroups)!;
+        ((CPlugAnimFile)clone).legacyPoseGrids = context.CloneArray(this.legacyPoseGrids)!;
         ((CPlugAnimFile)clone).legacyGraphs = context.CloneArray(this.legacyGraphs)!;
         ((CPlugAnimFile)clone).legacyGraphStacks = context.CloneArray(this.legacyGraphStacks)!;
         ((CPlugAnimFile)clone).variantGroups = context.Clone(this.variantGroups)!;
@@ -516,6 +534,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).resourceNames = context.CloneArray(this.resourceNames)!;
         ((CPlugAnimFile)clone).skelResources = context.CloneArray(this.skelResources)!;
         ((CPlugAnimFile)clone).clipResources = context.CloneArray(this.clipResources)!;
+        ((CPlugAnimFile)clone).poseGroups = context.Clone(this.poseGroups)!;
+        ((CPlugAnimFile)clone).poseGrids = context.Clone(this.poseGrids)!;
         ((CPlugAnimFile)clone).graphStacks = context.Clone(this.graphStacks)!;
         ((CPlugAnimFile)clone).jointGroupNodes = context.Clone(this.jointGroupNodes)!;
         ((CPlugAnimFile)clone).jointGroupResources = context.CloneArray(this.jointGroupResources)!;
@@ -642,8 +662,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    n.poseGroups = rw.ListNodeRef<CPlugAnimPoseGroup>(n.poseGroups);
-                    n.poseGrids = rw.ListNodeRef<CPlugAnimPoseGrid>(n.poseGrids);
+                    rw.ArrayReadableWritable<LegacyPoseGroup>(ref n.legacyPoseGroups!, version: Version);
+                    rw.ArrayReadableWritable<LegacyPoseGrid, CPlugAnimFile>(ref n.legacyPoseGrids!, n, version: n. PoseGridVersion);
                     rw.ArrayReadableWritable<LegacyGraph>(ref n.legacyGraphs!, version: n. GraphVersion);
                     rw.ArrayReadableWritable<LegacyGraphStack>(ref n.legacyGraphStacks!, version: n. GraphVersion);
 
@@ -4099,6 +4119,315 @@ public partial class CPlugAnimFile : CMwNod, IClass
         {
             ((LegacyEdition)clone).skelIndex = context.Clone(this.skelIndex)!;
             ((LegacyEdition)clone).edition = context.Clone(this.edition)!;
+        }
+    }
+
+    public partial class LegacyPoseGroup : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int jointGroupIndex;
+        public int JointGroupIndex
+        {
+            get => this.jointGroupIndex;
+            set => this.jointGroupIndex = value;
+        }
+
+        private int poseCount;
+        public int PoseCount
+        {
+            get => this.poseCount;
+            set => this.poseCount = value;
+        }
+
+        private TransQuat[]? u01;
+        public TransQuat[]? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private Vec2[]? poseCoords;
+        public Vec2[]? PoseCoords
+        {
+            get => this.poseCoords;
+            set => this.poseCoords = value;
+        }
+
+        private string[]? poseNames;
+        public string[]? PoseNames
+        {
+            get => this.poseNames;
+            set => this.poseNames = value;
+        }
+
+        private bool isDifference;
+        public bool IsDifference
+        {
+            get => this.isDifference;
+            set => this.isDifference = value;
+        }
+
+        private string? differenceFromClip;
+        public string? DifferenceFromClip
+        {
+            get => this.differenceFromClip;
+            set => this.differenceFromClip = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyPoseGroup)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyPoseGroup)clone).name = context.Clone(this.name)!;
+            ((LegacyPoseGroup)clone).jointGroupIndex = context.Clone(this.jointGroupIndex)!;
+            ((LegacyPoseGroup)clone).poseCount = context.Clone(this.poseCount)!;
+            ((LegacyPoseGroup)clone).u01 = context.CloneArray(this.u01)!;
+            ((LegacyPoseGroup)clone).poseCoords = context.CloneArray(this.poseCoords)!;
+            ((LegacyPoseGroup)clone).poseNames = context.CloneArray(this.poseNames)!;
+            ((LegacyPoseGroup)clone).isDifference = context.Clone(this.isDifference)!;
+            ((LegacyPoseGroup)clone).differenceFromClip = context.Clone(this.differenceFromClip)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Int32(ref this.jointGroupIndex);
+            rw.Int32(ref this.poseCount);
+            rw.Array<TransQuat>(ref this.u01!);
+            rw.Array<Vec2>(ref this.poseCoords!);
+            rw.ArrayId(ref this.poseNames!);
+            rw.Boolean(ref this.isDifference);
+            rw.Id(ref this.differenceFromClip);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyPoseGrid : IReadable<CPlugAnimFile>, IWritable<CPlugAnimFile>, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int jointGroupIndex;
+        public int JointGroupIndex
+        {
+            get => this.jointGroupIndex;
+            set => this.jointGroupIndex = value;
+        }
+
+        private int poseCount;
+        public int PoseCount
+        {
+            get => this.poseCount;
+            set => this.poseCount = value;
+        }
+
+        private TransQuat[]? legacyJointOffsets;
+        public TransQuat[]? LegacyJointOffsets
+        {
+            get => this.legacyJointOffsets;
+            set => this.legacyJointOffsets = value;
+        }
+
+        private TransQuat[]? u01;
+        public TransQuat[]? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private TransQuat[]? refPoseJoints;
+        /// <summary>
+        /// joint group indices select RefPoseGlobalJoints
+        /// </summary>
+        public TransQuat[]? RefPoseJoints
+        {
+            get => this.refPoseJoints;
+            set => this.refPoseJoints = value;
+        }
+
+        private float x0;
+        public float X0
+        {
+            get => this.x0;
+            set => this.x0 = value;
+        }
+
+        private float x2;
+        public float X2
+        {
+            get => this.x2;
+            set => this.x2 = value;
+        }
+
+        private float y0;
+        public float Y0
+        {
+            get => this.y0;
+            set => this.y0 = value;
+        }
+
+        private float y2;
+        public float Y2
+        {
+            get => this.y2;
+            set => this.y2 = value;
+        }
+
+        private float[]? xs;
+        public float[]? Xs
+        {
+            get => this.xs;
+            set => this.xs = value;
+        }
+
+        private float[]? ys;
+        public float[]? Ys
+        {
+            get => this.ys;
+            set => this.ys = value;
+        }
+
+        private TransQuat[]? jointOffsets;
+        public TransQuat[]? JointOffsets
+        {
+            get => this.jointOffsets;
+            set => this.jointOffsets = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyPoseGrid)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyPoseGrid)clone).name = context.Clone(this.name)!;
+            ((LegacyPoseGrid)clone).jointGroupIndex = context.Clone(this.jointGroupIndex)!;
+            ((LegacyPoseGrid)clone).poseCount = context.Clone(this.poseCount)!;
+            ((LegacyPoseGrid)clone).legacyJointOffsets = context.CloneArray(this.legacyJointOffsets)!;
+            ((LegacyPoseGrid)clone).u01 = context.CloneArray(this.u01)!;
+            ((LegacyPoseGrid)clone).refPoseJoints = context.CloneArray(this.refPoseJoints)!;
+            ((LegacyPoseGrid)clone).x0 = context.Clone(this.x0)!;
+            ((LegacyPoseGrid)clone).x2 = context.Clone(this.x2)!;
+            ((LegacyPoseGrid)clone).y0 = context.Clone(this.y0)!;
+            ((LegacyPoseGrid)clone).y2 = context.Clone(this.y2)!;
+            ((LegacyPoseGrid)clone).xs = context.CloneArray(this.xs)!;
+            ((LegacyPoseGrid)clone).ys = context.CloneArray(this.ys)!;
+            ((LegacyPoseGrid)clone).jointOffsets = context.CloneArray(this.jointOffsets)!;
+        }
+
+        public virtual void Read(GbxReader r, CPlugAnimFile n, int v = 0)
+        {
+            this.name = r.ReadId();
+            this.jointGroupIndex = r.ReadInt32();
+
+            if (v == 0)
+            {
+                this.poseCount = r.ReadInt32();
+                this.legacyJointOffsets = r.ReadArray<TransQuat>(PoseCount* 9);
+            }
+
+            if (v >= 1)
+            {
+                this.legacyJointOffsets = r.ReadArray<TransQuat>();
+            }
+
+            if (n.GraphVersion == 0)
+            {
+                this.u01 = r.ReadArray<TransQuat>();
+            }
+
+            if (n.GraphVersion >= 6)
+            {
+                this.refPoseJoints = r.ReadArray<TransQuat>();
+            }
+
+            if (v == 0)
+            {
+                this.x0 = r.ReadSingle();
+                this.x2 = r.ReadSingle();
+                this.y0 = r.ReadSingle();
+                this.y2 = r.ReadSingle();
+            }
+
+            if (v >= 1)
+            {
+                this.xs = r.ReadArray<float>();
+                this.ys = r.ReadArray<float>();
+                this.jointOffsets = r.ReadArray<TransQuat>();
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CPlugAnimFile n, int v = 0)
+        {
+            w.WriteIdAsString(this.name);
+            w.Write(this.jointGroupIndex);
+
+            if (v == 0)
+            {
+                w.Write(this.poseCount);
+                w.WriteArray<TransQuat>(this.legacyJointOffsets, PoseCount* 9);
+            }
+
+            if (v >= 1)
+            {
+                w.WriteArray<TransQuat>(this.legacyJointOffsets);
+            }
+
+            if (n.GraphVersion == 0)
+            {
+                w.WriteArray<TransQuat>(this.u01);
+            }
+
+            if (n.GraphVersion >= 6)
+            {
+                w.WriteArray<TransQuat>(this.refPoseJoints);
+            }
+
+            if (v == 0)
+            {
+                w.Write(this.x0);
+                w.Write(this.x2);
+                w.Write(this.y0);
+                w.Write(this.y2);
+            }
+
+            if (v >= 1)
+            {
+                w.WriteArray<float>(this.xs);
+                w.WriteArray<float>(this.ys);
+                w.WriteArray<TransQuat>(this.jointOffsets);
+            }
         }
     }
 

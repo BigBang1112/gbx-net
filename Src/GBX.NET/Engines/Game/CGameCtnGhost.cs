@@ -153,7 +153,7 @@ public partial class CGameCtnGhost
             rw.String(ref n.validate_ExeVersion);
             rw.UInt32(ref n.validate_ExeChecksum);
             rw.Int32(ref n.validate_OsKind);
-            rw.Int32(ref n.validate_CpuKind);
+            rw.EnumInt32<EKindCpu>(ref n.validate_CpuKind);
             rw.String(ref n.validate_RaceSettings);
             //
         }
@@ -383,7 +383,7 @@ public partial class CGameCtnGhost
             rw.String(ref n.validate_ExeVersion);
             rw.UInt32(ref n.validate_ExeChecksum);
             rw.Int32(ref n.validate_OsKind);
-            rw.Int32(ref n.validate_CpuKind);
+            rw.EnumInt32<EKindCpu>(ref n.validate_CpuKind);
             rw.UnixTime(ref n.walltimeStartTimestamp);
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);

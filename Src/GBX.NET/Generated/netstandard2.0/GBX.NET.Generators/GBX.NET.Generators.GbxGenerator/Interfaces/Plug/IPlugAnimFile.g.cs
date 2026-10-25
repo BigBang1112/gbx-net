@@ -18,6 +18,8 @@ public interface IPlugAnimFileMembers1 : global::GBX.NET.Interfaces.Plug.IPlugAn
     int LegacyEditionVersion { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? LegacyGraphStacks { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? LegacyGraphs { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGrid[]? LegacyPoseGrids { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGroup[]? LegacyPoseGroups { get; set; }
     int LegacyRootMotionVersion { get; set; }
     int PoseGridVersion { get; set; }
     int PoseGroupVersion { get; set; }
@@ -41,12 +43,12 @@ public interface IPlugAnimFileMembers3 : global::GBX.NET.Interfaces.Plug.IPlugAn
 public interface IPlugAnimFileMembers4 : global::GBX.NET.Interfaces.Plug.IPlugAnimFile
 {
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? PoseGrids { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? PoseGroups { get; set; }
 }
 public partial interface IPlugAnimFile : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimFile>
 {
     string? ImportString { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? PoseGrids { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? PoseGroups { get; set; }
     int SpotVersion { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]? Spots { get; set; }
     string? UpdateString { get; set; }

@@ -92,7 +92,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     string Validate_ExeVersion
     uint Validate_ExeChecksum
     int Validate_OsKind
-    int Validate_CpuKind
+    int<EKindCpu> Validate_CpuKind // CPU classification captured for validation, independent of CpuKind.
     string Validate_RaceSettings
 
 0x012 [TMU, VSK5, TMF] // old security key
@@ -152,7 +152,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x023 (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v3] // anticheat system info
   version
   string CpuDescription
-  int CpuKind
+  int<EKindCpu> CpuKind // CPU classification in the anticheat system info.
   string GpuDescription
   int GpuDeviceId
   int GpuVendorId
@@ -184,7 +184,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
   int Validate_OsKind
-  int Validate_CpuKind
+  int<EKindCpu> Validate_CpuKind
   string Validate_RaceSettings
   int? Validate_ValidationSeed
   bool SteeringWheelSensitivity
@@ -238,7 +238,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
   int Validate_OsKind
-  int Validate_CpuKind
+  int<EKindCpu> Validate_CpuKind
   unixtime? WalltimeStartTimestamp
   unixtime? WalltimeEndTimestamp
   string Validate_TitleId
@@ -312,6 +312,15 @@ archive SettingsInfos
 archive MatchReplaySeparator
   int
   int
+
+enum EKindCpu // Vendor and architecture reported to the game, not the CPU's maximum capabilities.
+  Unknown = 0
+  X86 = 1
+  IntelX86 = 2
+  AmdX86 = 3
+  X64 = 4
+  IntelX64 = 5
+  AmdX64 = 6
 
 enum ScopeType
   Unknown = -1

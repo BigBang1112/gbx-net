@@ -300,13 +300,16 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_OsKind = value;
     }
 
-    private int validate_CpuKind;
+    private EKindCpu validate_CpuKind;
+    /// <summary>
+    /// CPU classification captured for validation, independent of CpuKind.
+    /// </summary>
     /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public int Validate_CpuKind
+    public EKindCpu Validate_CpuKind
     {
         get => this.validate_CpuKind;
         set => this.validate_CpuKind = value;
@@ -408,10 +411,13 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.cpuDescription = value;
     }
 
-    private int cpuKind;
+    private EKindCpu cpuKind;
+    /// <summary>
+    /// CPU classification in the anticheat system info.
+    /// </summary>
     /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
-    public int CpuKind
+    public EKindCpu CpuKind
     {
         get => this.cpuKind;
         set => this.cpuKind = value;
@@ -1623,7 +1629,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             }
 
             rw.String(ref n.cpuDescription);
-            rw.Int32(ref n.cpuKind);
+            rw.EnumInt32<EKindCpu>(ref n.cpuKind);
             rw.String(ref n.gpuDescription);
             rw.Int32(ref n.gpuDeviceId);
             rw.Int32(ref n.gpuVendorId);
@@ -2576,6 +2582,20 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    /// <summary>
+    /// Vendor and architecture reported to the game, not the CPU's maximum capabilities.
+    /// </summary>
+    public enum EKindCpu
+    {
+        Unknown = 0,
+        X86 = 1,
+        IntelX86 = 2,
+        AmdX86 = 3,
+        X64 = 4,
+        IntelX64 = 5,
+        AmdX64 = 6,
     }
 
     public enum ScopeType

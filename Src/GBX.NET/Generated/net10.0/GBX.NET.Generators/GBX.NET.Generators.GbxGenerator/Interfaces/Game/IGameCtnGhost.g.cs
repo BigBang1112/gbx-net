@@ -7,7 +7,7 @@ namespace GBX.NET.Interfaces.Game;
 public interface IGameCtnGhostMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
 {
     string? CpuDescription { get; set; }
-    int CpuKind { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu CpuKind { get; set; }
     Checksum128? GhostUid128 { get; set; }
     byte GpuCount { get; set; }
     string? GpuDescription { get; set; }
@@ -90,7 +90,7 @@ public interface IGameCtnGhostMembers11 : global::GBX.NET.Interfaces.Game.IGameC
     int InputStoreVersion { get; set; }
     global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
     string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu Validate_CpuKind { get; set; }
     uint Validate_ExeChecksum { get; set; }
     string? Validate_ExeVersion { get; set; }
     int Validate_OsKind { get; set; }

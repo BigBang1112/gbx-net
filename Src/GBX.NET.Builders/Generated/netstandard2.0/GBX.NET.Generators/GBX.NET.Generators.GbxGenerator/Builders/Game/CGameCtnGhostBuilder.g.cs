@@ -52,7 +52,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public TSelf WithInputStoreVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputStoreVersionAssignment(), value, SupportedGames4);
     public TSelf WithInputs(global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetInputsAssignment(), value, SupportedGames4);
     public TSelf WithValidate_ChallengeUid(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ChallengeUidAssignment(), value, SupportedGames4);
-    public TSelf WithValidate_CpuKind(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, SupportedGames4);
+    public TSelf WithValidate_CpuKind(global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, SupportedGames4);
     public TSelf WithValidate_ExeChecksum(uint value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, SupportedGames4);
     public TSelf WithValidate_ExeVersion(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, SupportedGames4);
     public TSelf WithValidate_OsKind(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, SupportedGames4);
@@ -68,7 +68,7 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
 {
     private protected CGameCtnGhostBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
     public TSelf WithCpuDescription(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, SupportedGames5);
-    public TSelf WithCpuKind(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, SupportedGames5);
+    public TSelf WithCpuKind(global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, SupportedGames5);
     public TSelf WithGhostAvatarName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, SupportedGames3);
     public TSelf WithGhostUid128(Checksum128? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, SupportedGames5);
     public TSelf WithGhostVersion(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, SupportedGames3);

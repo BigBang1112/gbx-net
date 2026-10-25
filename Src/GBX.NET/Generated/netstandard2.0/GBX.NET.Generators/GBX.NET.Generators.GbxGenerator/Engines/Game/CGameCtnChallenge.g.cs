@@ -545,9 +545,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.challengeScript = value;
     }
 
-    /// <summary>
-    /// Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
-    /// </summary>
     /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk03043048>]
     public partial NodeRefList<CGameCtnBlock>? BakedBlocks { get; set; }
@@ -795,11 +792,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.worldDistortScales = value;
     }
 
+    /// <summary>
+    /// World distortion XYZ bitmap. Crashes ManiaPlanet if set (dead code).
+    /// </summary>
     /// <remarks>Applied with: 0x059 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03043059>(0, 0)]
     public partial CPlugBitmap? WorldDistortBitmap { get; set; }
 
     private WorldDistortBitmapData? worldDistortXYZ;
+    /// <summary>
+    /// World distortion XYZ bitmap data. Crashes ManiaPlanet if set (dead code).
+    /// </summary>
     /// <remarks>Applied with: 0x059 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043059>(1)]
     public WorldDistortBitmapData? WorldDistortXYZ

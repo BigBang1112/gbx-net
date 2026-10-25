@@ -1,6 +1,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
+using System.Net;
 using TmEssentials;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
@@ -9,11 +10,15 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnGhostTests
 {
     [Test]
-    [Arguments(0x11, 0)]
-    [Arguments(0x19, 0)]
-    [Arguments(0x25, 0)]
-    [Arguments(0x25, 1)]
-    public async Task ReadWrite_ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version)
+    [Arguments(0x11, 0, 2)]
+    [Arguments(0x19, 0, 3)]
+    [Arguments(0x25, 0, 5)]
+    [Arguments(0x25, 1, 6)]
+    [Arguments(0x11, 0, -1)]
+    [Arguments(0x19, 0, int.MaxValue)]
+    [Arguments(0x25, 0, -1)]
+    [Arguments(0x25, 1, int.MaxValue)]
+    public async Task ReadWrite_ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version, int cpuKind)
     {
         var payload = Payload(w =>
         {
@@ -26,7 +31,7 @@ public class CGameCtnGhostTests
             w.Write("Executable");
             w.Write(123u);
             w.Write(2);
-            w.Write(3);
+            w.Write(cpuKind);
             w.Write("Settings");
             if (offset != 0x11) w.Write(9); // Validation seed.
             if (offset == 0x25) w.Write(true);
@@ -39,12 +44,14 @@ public class CGameCtnGhostTests
 
         await Assert.That(ghost.InputStoreVersion).IsEqualTo(7);
         await Assert.That(ghost.InputCountLimit).IsEqualTo(456);
+        await Assert.That(ghost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
 #pragma warning disable GBXNET10001
         var clone = (CGameCtnGhost)ghost.DeepClone();
 #pragma warning restore GBXNET10001
         await Assert.That(clone.InputStoreVersion).IsEqualTo(7);
         await Assert.That(clone.InputCountLimit).IsEqualTo(456);
+        await Assert.That(clone.Validate_CpuKind).IsEqualTo(ghost.Validate_CpuKind);
         var rewritten = Payload(w =>
         {
             using var writeRw = new GbxReaderWriter(w);
@@ -182,9 +189,11 @@ public class CGameCtnGhostTests
     }
 
     [Test]
-    [Arguments(-1)]
-    [Arguments(120100)]
-    public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime)
+    [Arguments(-1, 5)]
+    [Arguments(120100, 6)]
+    [Arguments(-1, -1)]
+    [Arguments(120100, int.MaxValue)]
+    public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime, int cpuKind)
     {
         const int gameRules = unchecked((int)0xFEDCBA98);
         var payload = Payload(w =>
@@ -215,7 +224,7 @@ public class CGameCtnGhostTests
             w.Write(""); // executable version
             w.Write(0u); // executable checksum
             w.Write(0); // OS kind
-            w.Write(0); // CPU kind
+            w.Write(cpuKind);
             w.Write(-1); // walltime start
             w.Write(-1); // walltime end
             w.Write(""); // title ID
@@ -235,6 +244,7 @@ public class CGameCtnGhostTests
         await Assert.That(validationGhost.Validate_GameRules).IsEqualTo(ghost.Validate_GameRules);
         await Assert.That(validationGhost.Validate_RaceStartTime).IsEqualTo(ghost.Validate_RaceStartTime);
         await Assert.That(validationGhost.HasInputs).IsEqualTo(0);
+        await Assert.That(validationGhost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(validationGhost.SimulationFlags).IsEqualTo(0x12345679);
         await Assert.That(validationStream.Position).IsEqualTo((long)validationPayload.Length);
         var validationRewritten = Payload(w =>
@@ -387,6 +397,74 @@ public class CGameCtnGhostTests
         {
             using var writerWriter = new GbxReaderWriter(w);
             chunk.ReadWrite(ghost, writerWriter);
+        });
+        await Assert.That(rewritten.SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
+    [Arguments(CGameCtnGhost.EKindCpu.Unknown, 0)]
+    [Arguments(CGameCtnGhost.EKindCpu.X86, 1)]
+    [Arguments(CGameCtnGhost.EKindCpu.IntelX86, 2)]
+    [Arguments(CGameCtnGhost.EKindCpu.AmdX86, 3)]
+    [Arguments(CGameCtnGhost.EKindCpu.X64, 4)]
+    [Arguments(CGameCtnGhost.EKindCpu.IntelX64, 5)]
+    [Arguments(CGameCtnGhost.EKindCpu.AmdX64, 6)]
+    public async Task CpuKind_UsesNativeValues(CGameCtnGhost.EKindCpu kind, int value)
+    {
+        await Assert.That((int)kind).IsEqualTo(value);
+    }
+
+    [Test]
+    [Arguments(1, 0)]
+    [Arguments(1, 1)]
+    [Arguments(1, 2)]
+    [Arguments(1, 3)]
+    [Arguments(2, 4)]
+    [Arguments(2, 5)]
+    [Arguments(3, 6)]
+    [Arguments(3, -1)]
+    [Arguments(3, int.MaxValue)]
+    public async Task ReadWrite_SystemInfo_PreservesCpuKindIndependentlyOfValidation(int version, int cpuKind)
+    {
+        var payload = Payload(w =>
+        {
+            w.Write(version);
+            w.Write("CPU");
+            w.Write(cpuKind);
+            w.Write("GPU");
+            w.Write(123);
+            w.Write(456);
+            w.Write("Hardware");
+            w.WriteIPv4(IPAddress.Loopback);
+            w.Write("User");
+            if (version >= 2)
+            {
+                w.Write((byte)1);
+                w.Write(0);
+                w.Write(0);
+            }
+            if (version >= 3)
+            {
+                w.Write((byte)0);
+                w.Write((byte)0);
+            }
+        });
+        using var stream = new MemoryStream(payload);
+        using var reader = new GbxReader(stream);
+        using var rw = new GbxReaderWriter(reader);
+        var ghost = new CGameCtnGhost { Validate_CpuKind = CGameCtnGhost.EKindCpu.IntelX64 };
+        var chunk = new CGameCtnGhost.Chunk03092023();
+        chunk.ReadWrite(ghost, rw);
+
+        await Assert.That(ghost.CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
+        await Assert.That(ghost.Validate_CpuKind).IsEqualTo(CGameCtnGhost.EKindCpu.IntelX64);
+        await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
+        ghost.Validate_CpuKind = CGameCtnGhost.EKindCpu.AmdX64;
+        await Assert.That(ghost.CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
+        var rewritten = Payload(w =>
+        {
+            using var writeRw = new GbxReaderWriter(w);
+            new CGameCtnGhost.Chunk03092023 { Version = version }.ReadWrite(ghost, writeRw);
         });
         await Assert.That(rewritten.SequenceEqual(payload)).IsTrue();
     }

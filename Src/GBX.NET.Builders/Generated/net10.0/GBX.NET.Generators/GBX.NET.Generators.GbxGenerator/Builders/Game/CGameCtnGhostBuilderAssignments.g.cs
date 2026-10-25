@@ -17,9 +17,9 @@ internal static class CGameCtnGhostBuilderAssignments
     private static NodeBuilderProperty<string?>? cached3;
     internal static NodeBuilderProperty<string?> GetCpuDescriptionAssignment() => cached3 ??= new("CpuDescription", new Action<object, string?>(Assign3));
     private static void Assign3(object node, string? value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).CpuDescription = value;
-    private static NodeBuilderProperty<int>? cached4;
-    internal static NodeBuilderProperty<int> GetCpuKindAssignment() => cached4 ??= new("CpuKind", new Action<object, int>(Assign4));
-    private static void Assign4(object node, int value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).CpuKind = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu> GetCpuKindAssignment() => cached4 ??= new("CpuKind", new Action<object, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).CpuKind = value;
     private static NodeBuilderProperty<TimeInt32>? cached5;
     internal static NodeBuilderProperty<TimeInt32> GetEventsDurationAssignment() => cached5 ??= new("EventsDuration", new Action<object, TimeInt32>(Assign5));
     private static void Assign5(object node, TimeInt32 value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).EventsDuration = value;
@@ -161,9 +161,9 @@ internal static class CGameCtnGhostBuilderAssignments
     private static NodeBuilderProperty<string?>? cached50;
     internal static NodeBuilderProperty<string?> GetValidate_ChallengeUidAssignment() => cached50 ??= new("Validate_ChallengeUid", new Action<object, string?>(Assign50));
     private static void Assign50(object node, string? value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_ChallengeUid = value;
-    private static NodeBuilderProperty<int>? cached51;
-    internal static NodeBuilderProperty<int> GetValidate_CpuKindAssignment() => cached51 ??= new("Validate_CpuKind", new Action<object, int>(Assign51));
-    private static void Assign51(object node, int value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_CpuKind = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu>? cached51;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu> GetValidate_CpuKindAssignment() => cached51 ??= new("Validate_CpuKind", new Action<object, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu>(Assign51));
+    private static void Assign51(object node, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_CpuKind = value;
     private static NodeBuilderProperty<uint>? cached52;
     internal static NodeBuilderProperty<uint> GetValidate_ExeChecksumAssignment() => cached52 ??= new("Validate_ExeChecksum", new Action<object, uint>(Assign52));
     private static void Assign52(object node, uint value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_ExeChecksum = value;

@@ -266,7 +266,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x048 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // baked blocks
   version
   int = 6
-  CGameCtnBlock[] BakedBlocks (list) // Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
+  CGameCtnBlock[] BakedBlocks (list)
   SBakedClipsAdditionalData[] BakedClipsAdditionalData (list) // Preceded by U01.
 
 0x049 [MP3.v2, TMT.v2, MP4.v2, TM2020.v2] // mediatracker
@@ -365,13 +365,13 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   vec3 WorldDistortScales
   v0=
-    CPlugBitmap WorldDistortBitmap
+    CPlugBitmap WorldDistortBitmap // World distortion XYZ bitmap. Crashes ManiaPlanet if set (dead code).
   v1+
     bool HasWorldDistortXYZ (local, write: "n.WorldDistortXYZ is not null")
     if HasWorldDistortXYZ
       if Version >= 3
         throw (type: NotSupportedException, message: World distortion bitmaps are unsupported in chunk version 3)
-      WorldDistortBitmapData WorldDistortXYZ (version: Version)
+      WorldDistortBitmapData WorldDistortXYZ (version: Version) // World distortion XYZ bitmap data. Crashes ManiaPlanet if set (dead code).
     else
       WorldDistortXYZ = null
     v3+
