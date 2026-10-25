@@ -906,6 +906,7 @@ internal sealed class MemberSerializationWriter
             "color" => "Color",
             "rect" => "Rect",
             "transquat" => "TransQuat",
+            "transyawpitchrolldeg" => "TransYawPitchRollDeg",
             "timeint" or "timeint32" => "TimeInt32",
             "timefloat" or "timesingle" => "TimeSingle",
             "timeofday" => "TimeOfDay",
