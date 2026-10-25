@@ -48,6 +48,10 @@ public partial interface IFuncKeysRealTMNESWC : IFuncKeysReal, global::GBX.NET.I
 {
 }
 
+public partial interface IFuncKeysRealTMU : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMU, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
+{
+}
+
 public partial interface IFuncKeysRealVSK5 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
 }

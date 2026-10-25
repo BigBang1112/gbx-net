@@ -13,7 +13,7 @@ CScene2d 0x0A002000
   CSceneObject[] Cameras (deprec)
   CSceneLayout.SceneLoc[] CameraLocations
 
-0x002
+0x002 [TMU]
   rect Overlay
   CSceneSector Sector
   CSceneObject[] (deprec)

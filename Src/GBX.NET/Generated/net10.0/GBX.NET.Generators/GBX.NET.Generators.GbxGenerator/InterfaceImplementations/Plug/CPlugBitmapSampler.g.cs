@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapSampler : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020
+public partial class CPlugBitmapSampler : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020
 {
 }

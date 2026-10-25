@@ -18,7 +18,7 @@ CVisPostFx_MotionBlur 0x0C031000
   CMwNod T2_Fid_PHlsl_MotionLenCmp
   CMwNod
 
-0x005 [TMF] // legacy motion settings
+0x005 [TMU, TMF] // legacy motion settings
   int Technique
   int = 8
   int = 1000
@@ -27,7 +27,7 @@ CVisPostFx_MotionBlur 0x0C031000
   float T2_MotionMaxLen = 0.1f
   bool T2_DelayShadows = true
 
-0x006 [TMF] // T2_Fid_PHlsl_MotionLenCmp
+0x006 [TMU, TMF] // T2_Fid_PHlsl_MotionLenCmp
   CMwNod T2_Fid_PHlsl_MotionLenCmp
 
 0x007 // legacy depth bitmap and shader

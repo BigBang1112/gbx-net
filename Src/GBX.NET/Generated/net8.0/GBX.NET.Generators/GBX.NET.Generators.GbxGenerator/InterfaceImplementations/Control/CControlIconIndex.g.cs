@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlIconIndex : global::GBX.NET.Interfaces.Control.IControlIconIndex, global::GBX.NET.Interfaces.Control.IControlIconIndexVSK5, global::GBX.NET.Interfaces.Control.IControlIconIndexTMF
+public partial class CControlIconIndex : global::GBX.NET.Interfaces.Control.IControlIconIndex, global::GBX.NET.Interfaces.Control.IControlIconIndexTMU, global::GBX.NET.Interfaces.Control.IControlIconIndexVSK5, global::GBX.NET.Interfaces.Control.IControlIconIndexTMF
 {
 }

@@ -38,6 +38,12 @@ public partial interface ISceneToyVehicleTrackManiaTMNESWC : ISceneToyVehicleTra
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneToyVehicleTrackManiaTMU : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneToyVehicleTrackManiaVSK5 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

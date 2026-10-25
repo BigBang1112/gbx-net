@@ -3,8 +3,13 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesTMF, global::GBX.NET.Interfaces.Game.IGameResourcesMP4, global::GBX.NET.Interfaces.Game.IGameResourcesTM2020
+public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesTMU, global::GBX.NET.Interfaces.Game.IGameResourcesTMF, global::GBX.NET.Interfaces.Game.IGameResourcesMP4, global::GBX.NET.Interfaces.Game.IGameResourcesTM2020
 {
+    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU? global::GBX.NET.Interfaces.Game.IGameResourcesTMU.PainterSetting
+    {
+        get => PainterSetting;
+        set => PainterSetting = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Base
     {
         get => AudioBalance_Base;

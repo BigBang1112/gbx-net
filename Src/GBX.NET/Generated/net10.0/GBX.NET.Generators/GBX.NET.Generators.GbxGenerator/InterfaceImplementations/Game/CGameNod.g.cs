@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameNod : global::GBX.NET.Interfaces.Game.IGameNod, global::GBX.NET.Interfaces.Game.IGameNodTM10, global::GBX.NET.Interfaces.Game.IGameNodTMPU, global::GBX.NET.Interfaces.Game.IGameNodTMSX, global::GBX.NET.Interfaces.Game.IGameNodTMNESWC, global::GBX.NET.Interfaces.Game.IGameNodVSK5, global::GBX.NET.Interfaces.Game.IGameNodTMF, global::GBX.NET.Interfaces.Game.IGameNodMP3, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameNodTM2020
+public partial class CGameNod : global::GBX.NET.Interfaces.Game.IGameNod, global::GBX.NET.Interfaces.Game.IGameNodTM10, global::GBX.NET.Interfaces.Game.IGameNodTMPU, global::GBX.NET.Interfaces.Game.IGameNodTMSX, global::GBX.NET.Interfaces.Game.IGameNodTMNESWC, global::GBX.NET.Interfaces.Game.IGameNodTMU, global::GBX.NET.Interfaces.Game.IGameNodVSK5, global::GBX.NET.Interfaces.Game.IGameNodTMF, global::GBX.NET.Interfaces.Game.IGameNodMP3, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameNodTM2020
 {
 }

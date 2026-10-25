@@ -296,9 +296,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x005 chunk
     /// </summary>
     [Chunk(0x07007005)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07007005 : Chunk<CControlButton>
     {
         public override uint Id => 0x07007005;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -371,9 +373,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x008 chunk
     /// </summary>
     [Chunk(0x07007008)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07007008 : Chunk<CControlButton>
     {
         public override uint Id => 0x07007008;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -390,9 +394,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x009 chunk
     /// </summary>
     [Chunk(0x07007009)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07007009 : Chunk<CControlButton>
     {
         public override uint Id => 0x07007009;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -409,9 +415,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x00A chunk
     /// </summary>
     [Chunk(0x0700700A)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0700700A : Chunk<CControlButton>
     {
         public override uint Id => 0x0700700A;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -428,9 +436,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x00B chunk
     /// </summary>
     [Chunk(0x0700700B)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0700700B : Chunk<CControlButton>
     {
         public override uint Id => 0x0700700B;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -455,9 +465,11 @@ public partial class CControlButton : CControlText, IClass
     /// CControlButton 0x00C chunk
     /// </summary>
     [Chunk(0x0700700C)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0700700C : Chunk<CControlButton>
     {
         public override uint Id => 0x0700700C;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesTMF, global::GBX.NET.Interfaces.Game.IGameResourcesMP4, global::GBX.NET.Interfaces.Game.IGameResourcesTM2020
+public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesTMU, global::GBX.NET.Interfaces.Game.IGameResourcesTMF, global::GBX.NET.Interfaces.Game.IGameResourcesMP4, global::GBX.NET.Interfaces.Game.IGameResourcesTM2020
 {
 }

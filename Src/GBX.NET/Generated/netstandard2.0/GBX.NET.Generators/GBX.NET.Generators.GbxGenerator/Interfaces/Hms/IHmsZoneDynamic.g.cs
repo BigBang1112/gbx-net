@@ -30,6 +30,10 @@ public partial interface IHmsZoneDynamicTMNESWC : IHmsZoneDynamic, global::GBX.N
 {
 }
 
+public partial interface IHmsZoneDynamicTMU : IHmsZoneDynamic, global::GBX.NET.Interfaces.Hms.IHmsZoneTMU
+{
+}
+
 public partial interface IHmsZoneDynamicVSK5 : IHmsZoneDynamic, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5
 {
 }

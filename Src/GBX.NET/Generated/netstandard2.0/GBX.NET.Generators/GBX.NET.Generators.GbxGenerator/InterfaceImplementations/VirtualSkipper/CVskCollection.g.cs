@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.VirtualSkipper;
 
-public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.IVskCollection, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020
+public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.IVskCollection, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10.CompleteZoneList
     {
@@ -101,6 +101,31 @@ public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.
         set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC.IconSmallFid
+    {
+        get => IconSmallFid;
+        set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU.CompleteZoneList
+    {
+        get => CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
+        set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU.DefaultDecoration
+    {
+        get => DefaultDecoration;
+        set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU.DefaultZone
+    {
+        get => DefaultZone;
+        set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU.IconFid
+    {
+        get => IconFid;
+        set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU.IconSmallFid
     {
         get => IconSmallFid;
         set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

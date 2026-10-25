@@ -15,6 +15,10 @@ public partial interface IGameCtnMediaBlockTMNESWC : IGameCtnMediaBlock
 {
 }
 
+public partial interface IGameCtnMediaBlockTMU : IGameCtnMediaBlock
+{
+}
+
 public partial interface IGameCtnMediaBlockVSK5 : IGameCtnMediaBlock
 {
 }

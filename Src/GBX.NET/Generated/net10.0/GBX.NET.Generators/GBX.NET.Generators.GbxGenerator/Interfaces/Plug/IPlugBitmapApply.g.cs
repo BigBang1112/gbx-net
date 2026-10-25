@@ -30,6 +30,10 @@ public partial interface IPlugBitmapApplyTMNESWC : IPlugBitmapApply, global::GBX
 {
 }
 
+public partial interface IPlugBitmapApplyTMU : IPlugBitmapApply, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMU
+{
+}
+
 public partial interface IPlugBitmapApplyVSK5 : IPlugBitmapApply, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5
 {
 }

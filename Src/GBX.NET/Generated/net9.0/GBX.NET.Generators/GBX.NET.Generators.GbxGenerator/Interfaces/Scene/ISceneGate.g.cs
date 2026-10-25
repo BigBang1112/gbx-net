@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneGateMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneGate where T0 : class
+{
+    new T0? FirstPortal
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneGate)this).FirstPortal);
+        set => ((global::GBX.NET.Engines.Scene.CSceneGate)this).FirstPortal = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? SecondPortal
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneGate)this).SecondPortal);
+        set => ((global::GBX.NET.Engines.Scene.CSceneGate)this).SecondPortal = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface ISceneGate : IClassVersion<global::GBX.NET.Engines.Scene.CSceneGate>
 {
     global::GBX.NET.Interfaces.Hms.IHmsPortal? FirstPortal
@@ -17,17 +31,11 @@ public partial interface ISceneGate : IClassVersion<global::GBX.NET.Engines.Scen
     }
 }
 
-public partial interface ISceneGateTMNESWC : ISceneGate
+public partial interface ISceneGateTMNESWC : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC? FirstPortal
-    {
-        get => (global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneGate)this).FirstPortal);
-        set => ((global::GBX.NET.Engines.Scene.CSceneGate)this).FirstPortal = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC? SecondPortal
-    {
-        get => (global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneGate)this).SecondPortal);
-        set => ((global::GBX.NET.Engines.Scene.CSceneGate)this).SecondPortal = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface ISceneGateTMU : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMU>
+{
 }
 

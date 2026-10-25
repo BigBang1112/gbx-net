@@ -30,6 +30,10 @@ public partial interface IPlugMusicTypeTMNESWC : IPlugMusicType, global::GBX.NET
 {
 }
 
+public partial interface IPlugMusicTypeTMU : IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU
+{
+}
+
 public partial interface IPlugMusicTypeVSK5 : IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5
 {
 }

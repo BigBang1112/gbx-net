@@ -8,19 +8,19 @@ public abstract class CPlugCurveSimpleNodBuilderBase<TSelf> : NodeBuilder<global
     private protected CPlugCurveSimpleNodBuilderBase() { }
     private protected CPlugCurveSimpleNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
-    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithXs(IEnumerable<float> values) => WithXs(values.ToArray());
 }
 public abstract class CPlugCurveSimpleNodBuilderMembers1<TSelf> : CPlugCurveSimpleNodBuilderBase<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers1<TSelf>
 {
     private protected CPlugCurveSimpleNodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-    public TSelf WithYs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithYs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithYs(IEnumerable<float> values) => WithYs(values.ToArray());
 }
 public abstract class CPlugCurveSimpleNodBuilderMembers2<TSelf> : CPlugCurveSimpleNodBuilderMembers1<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers2<TSelf>
 {
     private protected CPlugCurveSimpleNodBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
-    public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugCurveSimpleNodBuilderMembers3<TSelf> : CPlugCurveSimpleNodBuilderMembers2<TSelf> where TSelf : CPlugCurveSimpleNodBuilderMembers3<TSelf>
 {
@@ -68,6 +68,7 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -102,6 +103,13 @@ public partial class CPlugCurveSimpleNodBuilder : CPlugCurveSimpleNodBuilderBase
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod Build() => BuildNode(CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
+    }
+    public partial class TMU : CPlugCurveSimpleNodBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod Build() => BuildNode(CPlugCurveSimpleNodBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCurveSimpleNod node);
     }
     public partial class VSK5 : CPlugCurveSimpleNodBuilderMembers2<VSK5>

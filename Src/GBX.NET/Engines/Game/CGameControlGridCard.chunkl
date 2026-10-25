@@ -17,7 +17,7 @@ CGameControlGridCard 0x030BA000
   uint DefaultCardClassId
   bool PushByColumns
 
-0x004
+0x004 [TMU]
   CGameControlCardManager CardManager
   bool FillWithDefault
   string DefaultCardName

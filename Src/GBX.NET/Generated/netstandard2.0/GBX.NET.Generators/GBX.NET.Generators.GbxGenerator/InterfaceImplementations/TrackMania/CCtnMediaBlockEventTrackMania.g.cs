@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CCtnMediaBlockEventTrackMania : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMSX, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaVSK5
+public partial class CCtnMediaBlockEventTrackMania : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMSX, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMU, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaVSK5
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCurveSimpleNod : global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTM10, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMPU, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMSX, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodVSK5, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMF, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodMP3, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMT, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodMP4, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTM2020
+public partial class CPlugCurveSimpleNod : global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTM10, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMPU, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMSX, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMU, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodVSK5, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMF, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodMP3, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTMT, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodMP4, global::GBX.NET.Interfaces.Plug.IPlugCurveSimpleNodTM2020
 {
 }

@@ -108,6 +108,10 @@ public partial interface IGameCtnBlockUnitInfoTMNESWC : IGameCtnBlockUnitInfo, g
 {
 }
 
+public partial interface IGameCtnBlockUnitInfoTMU : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
+{
+}
+
 public partial interface IGameCtnBlockUnitInfoVSK5 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
 }

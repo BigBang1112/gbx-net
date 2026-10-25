@@ -1,6 +1,6 @@
 CGameApp 0x03005000
 
-0x000
+0x000 [TMU]
   CMwNod
 
 0x001 (skippable)
@@ -8,7 +8,7 @@ CGameApp 0x03005000
   string
   string
 
-0x002
+0x002 [TMU]
   CMwNod
 
 0x003 (skippable)
@@ -24,7 +24,7 @@ CGameApp 0x03005000
   string
   string
 
-0x005 (skippable)
+0x005 (skippable) [TMU]
   string
   string
   string
@@ -32,7 +32,7 @@ CGameApp 0x03005000
   string
   bool
 
-0x006
+0x006 [TMU]
   CMwNod
 
 0x007

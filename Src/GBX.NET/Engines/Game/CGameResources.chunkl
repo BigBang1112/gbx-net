@@ -1,25 +1,25 @@
 CGameResources 0x0302D000
 
-0x000 [MP4] // sounds and musics
+0x000 [TMU, MP4] // sounds and musics
   NamedNod[] Sounds
   NamedNod[] Musics
 
-0x003 [MP4] // ReplayInterfaceFid
+0x003 [TMU, MP4] // ReplayInterfaceFid
   bool HasReplayInterfaceFid
   if HasReplayInterfaceFid
     CMwNod ReplayInterfaceFid
 
-0x004 [MP4] // InterfaceEditorFid
+0x004 [TMU, MP4] // InterfaceEditorFid
   bool HasInterfaceEditorFid
   if HasInterfaceEditorFid
     CMwNod InterfaceEditorFid
 
-0x005 [MP4] // InterfacePuzzleFid
+0x005 [TMU, MP4] // InterfacePuzzleFid
   bool HasInterfacePuzzleFid
   if HasInterfacePuzzleFid
     CMwNod InterfacePuzzleFid
 
-0x007 [MP4] // RaceInterfaceFid
+0x007 [TMU, MP4] // RaceInterfaceFid
   bool HasRaceInterfaceFid
   if HasRaceInterfaceFid
     CMwNod RaceInterfaceFid
@@ -39,7 +39,7 @@ CGameResources 0x0302D000
   if HasInterfaceBlockEditorFid
     CMwNod InterfaceBlockEditorFid
 
-0x008 [MP4] // DefaultAvatarBitmapFid
+0x008 [TMU, MP4] // DefaultAvatarBitmapFid
   CMwNod DefaultAvatarBitmapFid
   CMwNod
 
@@ -53,7 +53,7 @@ CGameResources 0x0302D000
   CMwNod ArticleStyle
   CMwNod ArticleIconStyle
 
-0x009 [TMF, MP4] // interface font, background, styles and directory icon
+0x009 [TMU, TMF, MP4] // interface font, background, styles and directory icon
   CPlugFont InterfaceFont
   CMwNod InterfaceBg
   CMwNod ShaderActiveAvailable
@@ -73,67 +73,67 @@ CGameResources 0x0302D000
   CMwNod
   CMwNod[]
 
-0x00F [MP4] // MediaTrackerInterfaceFid
+0x00F [TMU, MP4] // MediaTrackerInterfaceFid
   CMwNod MediaTrackerInterfaceFid
   CMwNod
 
-0x010 [MP4] // StyleSheetFid
+0x010 [TMU, MP4] // StyleSheetFid
   CMwNod StyleSheetFid
 
-0x012 [MP4] // EmptyChallengeCustomMusicFid
+0x012 [TMU, MP4] // EmptyChallengeCustomMusicFid
   CMwNod EmptyChallengeCustomMusicFid
 
-0x015 [TMF] // legacy MediaTracker resources
+0x015 [TMU, TMF] // legacy MediaTracker resources
   CMwNod
   CMwNod DefaultMTColorGradingImageFid
   CMwNod DefaultMTBlockBitmapFid
   CMwNod DefaultMTBlockSoundFid
 
-0x016 [MP4] // PainterSetting
+0x016 [TMU, MP4] // PainterSetting
   CGameCtnPainterSetting PainterSetting
 
 0x017 // legacy hymn fids
   CMwNod[]
 
-0x018 [TMF] // UnknownFlagBitmap
+0x018 [TMU, TMF] // UnknownFlagBitmap
   CMwNod UnknownFlagBitmap
 
-0x019 [MP4] // DefaultLeagueLogoBitmapFid
+0x019 [TMU, MP4] // DefaultLeagueLogoBitmapFid
   CMwNod DefaultLeagueLogoBitmapFid
   CMwNod
 
-0x01A [MP4]
+0x01A [TMU, MP4]
   CMwNod
 
-0x01B [MP4] // HymnsFolder
+0x01B [TMU, MP4] // HymnsFolder
   string HymnsFolder
 
-0x01C [TMF] // legacy interface resources
+0x01C [TMU, TMF] // legacy interface resources
   CMwNod
   CMwNod
 
-0x01D [TMF] // legacy interface resources
+0x01D [TMU, TMF] // legacy interface resources
   CMwNod
   CMwNod
 
-0x01E [MP4] // DefaultOnlineNewsIconBitmapFid
+0x01E [TMU, MP4] // DefaultOnlineNewsIconBitmapFid
   CMwNod DefaultOnlineNewsIconBitmapFid
   CMwNod
 
-0x01F [TMF] // legacy interface resources
+0x01F [TMU, TMF] // legacy interface resources
   CMwNod
   CMwNod
 
-0x020 [MP4] // FolderGlobalEnvBanners
+0x020 [TMU, MP4] // FolderGlobalEnvBanners
   string FolderGlobalEnvBanners
 
-0x021 [MP4] // PodiumScene
+0x021 [TMU, MP4] // PodiumScene
   CMwNod PodiumScene
 
-0x022 [MP4] // MenuBackgroundsFolder
+0x022 [TMU, MP4] // MenuBackgroundsFolder
   string MenuBackgroundsFolder
 
-0x023 [MP4] // DefaultTagBitmapFid
+0x023 [TMU, MP4] // DefaultTagBitmapFid
   CMwNod DefaultTagBitmapFid
 
 0x024 // legacy file

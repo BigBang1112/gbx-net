@@ -35,8 +35,8 @@ CPlugAnimFile 0x090B0000
       LegacyEdition[] EditionClips (version: n.SkelEditionVersion)
     LegacyClip[] LegacyClips (version: n.ClipVersion)
     v4+
-      CPlugAnimPoseGroup[] PoseGroups
-      CPlugAnimPoseGrid[] PoseGrids
+      LegacyPoseGroup[] LegacyPoseGroups
+      LegacyPoseGrid[] LegacyPoseGrids (version: n.PoseGridVersion)
       LegacyGraph[] LegacyGraphs (version: n.GraphVersion)
       LegacyGraphStack[] LegacyGraphStacks (version: n.GraphVersion)
       v5+
@@ -480,6 +480,38 @@ archive LegacyClip (contextual)
 
 archive LegacyEdition (contextual)
   int SkelIndex
+
+archive LegacyPoseGroup
+  id Name
+  int JointGroupIndex
+  int PoseCount
+  transquat[] U01
+  vec2[] PoseCoords
+  id[] PoseNames
+  bool IsDifference
+  id DifferenceFromClip
+
+archive LegacyPoseGrid (contextual)
+  id Name
+  int JointGroupIndex
+  v0=
+    int PoseCount
+    transquat[PoseCount * 9] LegacyJointOffsets
+  v1+
+    transquat[] LegacyJointOffsets // replaced by JointOffsets
+  if n.GraphVersion == 0
+    transquat[] U01
+  if n.GraphVersion >= 6
+    transquat[] RefPoseJoints // joint group indices select RefPoseGlobalJoints
+  v0=
+    float X0
+    float X2
+    float Y0
+    float Y2
+  v1+
+    float[] Xs
+    float[] Ys
+    transquat[] JointOffsets
 
 archive LegacyGraph
   v3+

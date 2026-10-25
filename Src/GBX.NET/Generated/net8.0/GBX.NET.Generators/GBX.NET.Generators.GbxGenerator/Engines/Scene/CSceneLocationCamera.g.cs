@@ -75,9 +75,11 @@ public partial class CSceneLocationCamera : CSceneLocation, IClass
     /// CSceneLocationCamera 0x001 chunk
     /// </summary>
     [Chunk(0x0A036001)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A036001 : Chunk<CSceneLocationCamera>
     {
         public override uint Id => 0x0A036001;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public float U01 = 60;
         public float U02 = 60;
         public float U03 = 3;

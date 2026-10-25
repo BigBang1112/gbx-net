@@ -25,9 +25,11 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
     /// CSceneFxSuperSample 0x000 chunk
     /// </summary>
     [Chunk(0x0A035000)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A035000 : Chunk<CSceneFxSuperSample>
     {
         public override uint Id => 0x0A035000;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public int U01;
         public int U02;
         public bool U03;

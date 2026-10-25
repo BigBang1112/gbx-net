@@ -28,7 +28,7 @@ CControlLabel 0x07006000
   int MaxLine = -1 (inherited)
   float ClipLength = -1f (inherited)
 
-0x006
+0x006 [TMU]
   string Label
   CPlugBitmap Bitmap
   bool DontDrawText

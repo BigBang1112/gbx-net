@@ -122,11 +122,11 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderHemisphere 0x001 chunk (legacy specular powers)
     /// </summary>
     [Chunk(0x09058001, "legacy specular powers")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09058001 : Chunk<CPlugBitmapRenderHemisphere>
     {
         public override uint Id => 0x09058001;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;

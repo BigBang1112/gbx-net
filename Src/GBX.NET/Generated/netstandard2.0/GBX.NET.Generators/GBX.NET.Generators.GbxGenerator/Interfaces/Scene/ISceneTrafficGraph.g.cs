@@ -23,6 +23,10 @@ public partial interface ISceneTrafficGraphTMNESWC : ISceneTrafficGraph
 {
 }
 
+public partial interface ISceneTrafficGraphTMU : ISceneTrafficGraph
+{
+}
+
 public partial interface ISceneTrafficGraphVSK5 : ISceneTrafficGraph
 {
 }

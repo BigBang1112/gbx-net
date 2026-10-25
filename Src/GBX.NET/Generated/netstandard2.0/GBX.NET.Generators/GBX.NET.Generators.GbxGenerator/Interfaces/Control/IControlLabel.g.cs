@@ -8,6 +8,13 @@ public interface IControlLabelMembers1 : global::GBX.NET.Interfaces.Control.ICon
 {
     Vec4 ImageColor { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlLabelMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlLabel where T0 : class
+{
+    T0? Bitmap { get; set; }
+    bool DontDrawText { get; set; }
+    string? Label { get; set; }
+}
 public partial interface IControlLabel : IClassVersion<global::GBX.NET.Engines.Control.CControlLabel>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -51,6 +58,14 @@ public partial interface IControlLabelTMNESWC : IControlLabel, global::GBX.NET.I
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlLabelTMU : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlLabelVSK5 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
@@ -91,11 +106,8 @@ public partial interface IControlLabelMP4 : IControlLabel, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTM2020 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlLabelMembers1
+public partial interface IControlLabelTM2020 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Bitmap { get; set; }
-    bool DontDrawText { get; set; }
-    string? Label { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }

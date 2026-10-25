@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, global::GBX.NET.Interfaces.Motion.IMotionsTM10, global::GBX.NET.Interfaces.Motion.IMotionsTMPU, global::GBX.NET.Interfaces.Motion.IMotionsTMSX, global::GBX.NET.Interfaces.Motion.IMotionsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionsVSK5, global::GBX.NET.Interfaces.Motion.IMotionsTMF, global::GBX.NET.Interfaces.Motion.IMotionsMP3, global::GBX.NET.Interfaces.Motion.IMotionsTMT, global::GBX.NET.Interfaces.Motion.IMotionsMP4
+public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, global::GBX.NET.Interfaces.Motion.IMotionsTM10, global::GBX.NET.Interfaces.Motion.IMotionsTMPU, global::GBX.NET.Interfaces.Motion.IMotionsTMSX, global::GBX.NET.Interfaces.Motion.IMotionsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionsTMU, global::GBX.NET.Interfaces.Motion.IMotionsVSK5, global::GBX.NET.Interfaces.Motion.IMotionsTMF, global::GBX.NET.Interfaces.Motion.IMotionsMP3, global::GBX.NET.Interfaces.Motion.IMotionsTMT, global::GBX.NET.Interfaces.Motion.IMotionsMP4
 {
     internal NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? GetMotionsInterfaceReferences() => Motions;
 }

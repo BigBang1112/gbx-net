@@ -15,10 +15,10 @@ public interface ISceneFxNodMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISce
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneFxNodMembers2<T0> : global::GBX.NET.Interfaces.Scene.ISceneFxNod where T0 : class
 {
-    new T0? Fx
+    IReadOnlyList<T0>? NodInputs
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxNod)this).Fx);
-        set => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).NodInputs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxNod, T0>(((global::GBX.NET.Engines.Scene.CSceneFxNod)this).GetNodInputsInterfaceReferences, true, "NodInputs");
+        set => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).NodInputs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, T0>(value, false));
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -29,10 +29,10 @@ public interface ISceneFxNodMembers3 : global::GBX.NET.Interfaces.Scene.ISceneFx
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneFxNodMembers4<T0> : global::GBX.NET.Interfaces.Scene.ISceneFxNod where T0 : class
 {
-    IReadOnlyList<T0>? NodInputs
+    new T0? Fx
     {
-        get => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).NodInputs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxNod, T0>(((global::GBX.NET.Engines.Scene.CSceneFxNod)this).GetNodInputsInterfaceReferences, true, "NodInputs");
-        set => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).NodInputs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, T0>(value, false));
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxNod)this).Fx);
+        set => ((global::GBX.NET.Engines.Scene.CSceneFxNod)this).Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 public partial interface ISceneFxNod : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxNod>
@@ -44,15 +44,19 @@ public partial interface ISceneFxNod : IClassVersion<global::GBX.NET.Engines.Sce
     }
 }
 
-public partial interface ISceneFxNodTMNESWC : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>
+public partial interface ISceneFxNodTMNESWC : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3
 {
 }
 
-public partial interface ISceneFxNodVSK5 : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>
+public partial interface ISceneFxNodTMU : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTMU>
 {
 }
 
-public partial interface ISceneFxNodTMF : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxTMF>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>
+public partial interface ISceneFxNodVSK5 : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3
+{
+}
+
+public partial interface ISceneFxNodTMF : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTMF>
 {
 }
 
@@ -68,7 +72,7 @@ public partial interface ISceneFxNodMP4 : ISceneFxNod, global::GBX.NET.Interface
 {
 }
 
-public partial interface ISceneFxNodTM2020 : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers1<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxTM2020>
+public partial interface ISceneFxNodTM2020 : ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers1<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>, global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTM2020>
 {
     int FxIndex { get; set; }
 }

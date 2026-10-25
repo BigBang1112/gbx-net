@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Graphic;
 
-public partial class GxLightDirectional : global::GBX.NET.Interfaces.Graphic.IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTM10, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMF, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMP3, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMT, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMP4, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTM2020
+public partial class GxLightDirectional : global::GBX.NET.Interfaces.Graphic.IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTM10, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMU, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMF, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMP3, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMT, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMP4, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTM2020
 {
 }

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMT, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020
+public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMT, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>? global::GBX.NET.Interfaces.Game.IGameCtnCampaign.ChallengeGroups
     {
@@ -29,6 +29,11 @@ public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtn
     {
         get => ChallengeGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(GetChallengeGroupsInterfaceReferences, true, "ChallengeGroups");
         set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>.ChallengeGroups
+    {
+        get => ChallengeGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>(GetChallengeGroupsInterfaceReferences, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>.ChallengeGroups
     {

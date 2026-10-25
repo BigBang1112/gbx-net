@@ -77,9 +77,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x002 chunk
     /// </summary>
     [Chunk(0x24001002)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk24001002 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -177,9 +179,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x006 chunk (legacy buffer)
     /// </summary>
     [Chunk(0x24001006, "legacy buffer")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk24001006 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwRefBuffer>? U01Ref;
         public CMwRefBuffer? U01
@@ -257,9 +261,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x008 chunk
     /// </summary>
     [Chunk(0x24001008)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk24001008 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001008;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -278,9 +284,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x009 chunk (legacy resources)
     /// </summary>
     [Chunk(0x24001009, "legacy resources")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk24001009 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001009;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

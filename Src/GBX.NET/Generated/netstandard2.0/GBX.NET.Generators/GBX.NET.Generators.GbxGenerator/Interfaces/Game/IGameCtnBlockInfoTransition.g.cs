@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoTransitionTMNESWC : IGameCtnBlockInfoT
 {
 }
 
+public partial interface IGameCtnBlockInfoTransitionTMU : IGameCtnBlockInfoTransition, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoTransitionVSK5 : IGameCtnBlockInfoTransition, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

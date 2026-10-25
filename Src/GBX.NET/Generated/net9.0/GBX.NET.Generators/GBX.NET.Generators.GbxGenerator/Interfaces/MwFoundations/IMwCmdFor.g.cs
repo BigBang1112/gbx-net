@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMwCmdForMembers1<T0> : global::GBX.NET.Interfaces.MwFoundations.IMwCmdFor where T0 : class
+{
+    new T0? Block
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.MwFoundations.CMwCmdFor)this).Block);
+        set => ((global::GBX.NET.Engines.MwFoundations.CMwCmdFor)this).Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IMwCmdFor : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdFor>
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock? Block
@@ -15,12 +24,11 @@ public partial interface IMwCmdFor : IClassVersion<global::GBX.NET.Engines.MwFou
     string? VariableName { get; set; }
 }
 
-public partial interface IMwCmdForTMF : IMwCmdFor
+public partial interface IMwCmdForTMU : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? Block
-    {
-        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF?)(object?)(((global::GBX.NET.Engines.MwFoundations.CMwCmdFor)this).Block);
-        set => ((global::GBX.NET.Engines.MwFoundations.CMwCmdFor)this).Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IMwCmdForTMF : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF>
+{
 }
 

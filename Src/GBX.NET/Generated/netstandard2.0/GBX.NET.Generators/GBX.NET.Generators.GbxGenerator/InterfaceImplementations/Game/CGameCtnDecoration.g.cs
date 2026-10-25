@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecoration : global::GBX.NET.Interfaces.Game.IGameCtnDecoration, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020
+public partial class CGameCtnDecoration : global::GBX.NET.Interfaces.Game.IGameCtnDecoration, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX>.DecoAudio
     {
@@ -39,6 +39,36 @@ public partial class CGameCtnDecoration : global::GBX.NET.Interfaces.Game.IGameC
     {
         get => DecoratorSolidWarp;
         set => DecoratorSolidWarp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU>.DecoAudio
+    {
+        get => DecoAudio;
+        set => DecoAudio = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU>.DecoMood
+    {
+        get => DecoMood;
+        set => DecoMood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU>.DecoSize
+    {
+        get => DecoSize;
+        set => DecoSize = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationSize node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU>.DecoratorSolidWarp
+    {
+        get => DecoratorSolidWarp;
+        set => DecoratorSolidWarp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>.TerrainModifierBase
+    {
+        get => TerrainModifierBase;
+        set => TerrainModifierBase = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>.TerrainModifierCovered
+    {
+        get => TerrainModifierCovered;
+        set => TerrainModifierCovered = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5>.DecoAudio
     {

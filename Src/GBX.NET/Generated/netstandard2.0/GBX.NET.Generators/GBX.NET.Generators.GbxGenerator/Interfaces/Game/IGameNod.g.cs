@@ -24,6 +24,10 @@ public partial interface IGameNodTMNESWC : IGameNod
 {
 }
 
+public partial interface IGameNodTMU : IGameNod
+{
+}
+
 public partial interface IGameNodVSK5 : IGameNod
 {
 }

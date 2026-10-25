@@ -232,11 +232,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     /// CPlugGameSkin 0x003 chunk
     /// </summary>
     [Chunk(0x090F4003)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F4003 : Chunk<CPlugGameSkin>
     {
         public override uint Id => 0x090F4003;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -254,11 +254,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     /// CPlugGameSkin 0x004 chunk
     /// </summary>
     [Chunk(0x090F4004)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 2, 4, 4, 5, 5, 5)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 2, 4, 4, 4, 5, 5, 5)]
     public partial class Chunk090F4004 : Chunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4004;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
         public bool U01;
         public string? U02;
@@ -275,7 +275,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 2;
             }
-            else if (gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+            else if (gameVersion == GameVersion.TMU || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
             {
                 Version = 4;
             }

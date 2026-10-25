@@ -1,7 +1,7 @@
 CGameCtnApp 0x030D3000
 - inherits: CGameApp
 
-0x000 [MP4] // Resources
+0x000 [TMU, MP4] // Resources
   CGameResources Resources
 
 0x001 // legacy files
@@ -25,25 +25,25 @@ CGameCtnApp 0x030D3000
   CGameCtnCampaign
   CGameCtnCampaign
 
-0x006 // legacy official campaigns
+0x006 [TMU] // legacy official campaigns
   CGameCtnCampaign[] BaseOfficialCampaigns (deprec)
 
-0x007 [MP4] // Advertising
+0x007 [TMU, MP4] // Advertising
   CMwNod Advertising
 
 0x008
   CMwNod
 
-0x009
+0x009 [TMU]
   CGameItemModel
 
 0x00A
   CPlugFileText
 
-0x00B
+0x00B [TMU]
   CPlugFileText*
 
-0x00C [MP4]
+0x00C [TMU, MP4]
   CMwNod[]
   CMwNod[]
 

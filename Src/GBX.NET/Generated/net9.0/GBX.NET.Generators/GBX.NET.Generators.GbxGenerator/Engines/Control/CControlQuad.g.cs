@@ -168,9 +168,11 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x003 chunk
     /// </summary>
     [Chunk(0x0701B003)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0701B003 : Chunk<CControlQuad>
     {
         public override uint Id => 0x0701B003;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

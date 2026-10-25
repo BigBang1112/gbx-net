@@ -94,6 +94,37 @@ public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Int
     }
 }
 
+public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU
+{
+    int DisplayType { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? FuncEnum
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncEnumTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    bool IsLooping { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlEnum)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlEnum)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
 public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

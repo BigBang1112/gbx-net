@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockImageBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CGameCtnMediaBlockImageBuilderBase() { }
     private protected CGameCtnMediaBlockImageBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEffect(global::GBX.NET.Engines.Control.CControlEffectSimi? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectAssignment(), value, SupportedGames1);
     public TSelf WithEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetEffectReferenceAssignment(), value, SupportedGames1);
     public TSelf WithImage(PackDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockImageBuilderAssignments.GetImageAssignment(), value, SupportedGames1);
@@ -28,6 +28,7 @@ public partial class CGameCtnMediaBlockImageBuilder : CGameCtnMediaBlockImageBui
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -49,6 +50,14 @@ public partial class CGameCtnMediaBlockImageBuilder : CGameCtnMediaBlockImageBui
         public TMNESWC WithEffect(global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC? value) => base.WithEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffectSimi?)null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage Build() => BuildNode(CGameCtnMediaBlockImageBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage node);
+    }
+    public partial class TMU : CGameCtnMediaBlockImageBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage> state) : base(state) { }
+        public TMU WithEffect(global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU? value) => base.WithEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffectSimi?)null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage Build() => BuildNode(CGameCtnMediaBlockImageBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage node);
     }
     public partial class VSK5 : CGameCtnMediaBlockImageBuilderBase<VSK5>

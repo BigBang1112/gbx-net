@@ -13,10 +13,10 @@ CControlSlider 0x0700B000
   CPlugShader
   CPlugShader
 
-0x002 // Axis
+0x002 [TMU] // Axis
   int Axis
 
-0x003 // bar and cursor icons
+0x003 [TMU] // bar and cursor icons
   id IconIdBar
   id IconIdCursor
 

@@ -37,6 +37,10 @@ public partial interface IFuncLightColorTMNESWC : IFuncLightColor, global::GBX.N
 {
 }
 
+public partial interface IFuncLightColorTMU : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMU, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
+{
+}
+
 public partial interface IFuncLightColorVSK5 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightVSK5, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
 }

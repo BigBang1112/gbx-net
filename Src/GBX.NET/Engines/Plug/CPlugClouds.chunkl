@@ -9,14 +9,14 @@ CPlugClouds 0x09180000
   CPlugFileImg ImageColorMax
   int Lighting
 
-0x001 (base: 0x000) // legacy speed scale
+0x001 (base: 0x000) [TMU] // legacy speed scale
   base
   float SpeedScale
 
-0x002 [TMNESWC, VSK5, TMF]
+0x002 [TMNESWC, TMU, VSK5, TMF]
   vec2[] PointHeights
 
-0x003 [VSK5, TMF]
+0x003 [TMU, VSK5, TMF]
   int HeightCenter
   vec2 HeightCenterXZ
 

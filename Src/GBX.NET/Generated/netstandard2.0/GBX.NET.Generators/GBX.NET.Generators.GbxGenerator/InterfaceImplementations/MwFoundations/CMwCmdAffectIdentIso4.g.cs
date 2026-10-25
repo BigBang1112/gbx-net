@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdAffectIdentIso4 : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4VSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMF
+public partial class CMwCmdAffectIdentIso4 : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4VSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentIso4TMF
 {
 }

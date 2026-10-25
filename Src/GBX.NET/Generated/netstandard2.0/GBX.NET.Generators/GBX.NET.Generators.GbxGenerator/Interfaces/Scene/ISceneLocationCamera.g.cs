@@ -34,6 +34,11 @@ public partial interface ISceneLocationCameraTMNESWC : ISceneLocationCamera, glo
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
 }
 
+public partial interface ISceneLocationCameraTMU : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+}
+
 public partial interface ISceneLocationCameraVSK5 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

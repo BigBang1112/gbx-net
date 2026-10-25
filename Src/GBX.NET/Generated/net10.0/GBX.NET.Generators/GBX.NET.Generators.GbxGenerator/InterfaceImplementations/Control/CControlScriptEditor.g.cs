@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlScriptEditor : global::GBX.NET.Interfaces.Control.IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMPU, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMSX, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMF, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP3, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMT, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP4, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM2020
+public partial class CControlScriptEditor : global::GBX.NET.Interfaces.Control.IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMPU, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMSX, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU, global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMF, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP3, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMT, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP4, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM2020
 {
 }

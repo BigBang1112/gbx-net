@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMT, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020
+public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMT, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? GetChallengeGroupsInterfaceReferences() => ChallengeGroups;
 }

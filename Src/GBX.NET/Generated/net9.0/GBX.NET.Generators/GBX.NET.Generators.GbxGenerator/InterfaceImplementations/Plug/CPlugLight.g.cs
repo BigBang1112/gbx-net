@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightTM10, global::GBX.NET.Interfaces.Plug.IPlugLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightTMF, global::GBX.NET.Interfaces.Plug.IPlugLightMP3, global::GBX.NET.Interfaces.Plug.IPlugLightTMT, global::GBX.NET.Interfaces.Plug.IPlugLightMP4, global::GBX.NET.Interfaces.Plug.IPlugLightTM2020
+public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightTM10, global::GBX.NET.Interfaces.Plug.IPlugLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugLightTMU, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightTMF, global::GBX.NET.Interfaces.Plug.IPlugLightMP3, global::GBX.NET.Interfaces.Plug.IPlugLightTMT, global::GBX.NET.Interfaces.Plug.IPlugLightMP4, global::GBX.NET.Interfaces.Plug.IPlugLightTM2020
 {
 }

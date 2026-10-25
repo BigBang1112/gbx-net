@@ -20,6 +20,11 @@ public partial class CGameCtnMediaTrack : global::GBX.NET.Interfaces.Game.IGameC
         get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC>(value, false));
     }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU> global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU>.Blocks
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU>(GetBlocksInterfaceReferences, true, "Blocks");
+        set => Blocks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU>(value, false));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5> global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5>.Blocks
     {
         get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5>(GetBlocksInterfaceReferences, true, "Blocks");

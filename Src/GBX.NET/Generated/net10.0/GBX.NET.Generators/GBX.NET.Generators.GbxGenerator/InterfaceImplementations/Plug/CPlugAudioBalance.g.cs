@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMSX, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMF, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020
+public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMSX, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMU, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMF, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020
 {
 }

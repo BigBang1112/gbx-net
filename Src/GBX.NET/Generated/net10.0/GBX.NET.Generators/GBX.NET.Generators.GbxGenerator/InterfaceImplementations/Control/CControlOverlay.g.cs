@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlOverlay : global::GBX.NET.Interfaces.Control.IControlOverlay, global::GBX.NET.Interfaces.Control.IControlOverlayTM10, global::GBX.NET.Interfaces.Control.IControlOverlayTMPU, global::GBX.NET.Interfaces.Control.IControlOverlayTMSX, global::GBX.NET.Interfaces.Control.IControlOverlayTMNESWC, global::GBX.NET.Interfaces.Control.IControlOverlayVSK5, global::GBX.NET.Interfaces.Control.IControlOverlayTMF, global::GBX.NET.Interfaces.Control.IControlOverlayMP3, global::GBX.NET.Interfaces.Control.IControlOverlayTMT, global::GBX.NET.Interfaces.Control.IControlOverlayMP4, global::GBX.NET.Interfaces.Control.IControlOverlayTM2020
+public partial class CControlOverlay : global::GBX.NET.Interfaces.Control.IControlOverlay, global::GBX.NET.Interfaces.Control.IControlOverlayTM10, global::GBX.NET.Interfaces.Control.IControlOverlayTMPU, global::GBX.NET.Interfaces.Control.IControlOverlayTMSX, global::GBX.NET.Interfaces.Control.IControlOverlayTMNESWC, global::GBX.NET.Interfaces.Control.IControlOverlayTMU, global::GBX.NET.Interfaces.Control.IControlOverlayVSK5, global::GBX.NET.Interfaces.Control.IControlOverlayTMF, global::GBX.NET.Interfaces.Control.IControlOverlayMP3, global::GBX.NET.Interfaces.Control.IControlOverlayTMT, global::GBX.NET.Interfaces.Control.IControlOverlayMP4, global::GBX.NET.Interfaces.Control.IControlOverlayTM2020
 {
 }

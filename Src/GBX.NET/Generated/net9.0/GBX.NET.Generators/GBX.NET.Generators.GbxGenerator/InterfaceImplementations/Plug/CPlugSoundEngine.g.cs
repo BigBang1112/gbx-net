@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSoundEngine : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM2020
+public partial class CPlugSoundEngine : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>? GetComponentsInterfaceReferences() => Components;
 }

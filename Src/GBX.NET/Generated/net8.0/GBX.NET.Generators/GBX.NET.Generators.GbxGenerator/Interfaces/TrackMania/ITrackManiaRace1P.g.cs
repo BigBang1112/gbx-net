@@ -30,6 +30,10 @@ public partial interface ITrackManiaRace1PTMNESWC : ITrackManiaRace1P, global::G
 {
 }
 
+public partial interface ITrackManiaRace1PTMU : ITrackManiaRace1P, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceTMU
+{
+}
+
 public partial interface ITrackManiaRace1PVSK5 : ITrackManiaRace1P, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceVSK5
 {
 }

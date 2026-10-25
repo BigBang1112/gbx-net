@@ -20,6 +20,10 @@ public partial interface IGameCtnMediaBlockUiTMNESWC : IGameCtnMediaBlockUi, glo
 {
 }
 
+public partial interface IGameCtnMediaBlockUiTMU : IGameCtnMediaBlockUi, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockUiVSK5 : IGameCtnMediaBlockUi, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }

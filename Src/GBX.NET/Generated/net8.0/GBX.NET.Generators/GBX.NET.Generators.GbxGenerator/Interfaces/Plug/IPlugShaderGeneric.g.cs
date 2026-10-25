@@ -91,6 +91,25 @@ public partial interface IPlugShaderGenericTMNESWC : IPlugShaderGeneric, global:
     }
 }
 
+public partial interface IPlugShaderGenericTMU : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU
+{
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMU? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMU?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface IPlugShaderGenericVSK5 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5
 {
     new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader

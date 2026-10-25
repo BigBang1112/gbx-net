@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlUiDockable : global::GBX.NET.Interfaces.Control.IControlUiDockable, global::GBX.NET.Interfaces.Control.IControlUiDockableTM10, global::GBX.NET.Interfaces.Control.IControlUiDockableTMPU, global::GBX.NET.Interfaces.Control.IControlUiDockableTMSX, global::GBX.NET.Interfaces.Control.IControlUiDockableTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiDockableVSK5, global::GBX.NET.Interfaces.Control.IControlUiDockableTMF, global::GBX.NET.Interfaces.Control.IControlUiDockableMP3, global::GBX.NET.Interfaces.Control.IControlUiDockableTMT, global::GBX.NET.Interfaces.Control.IControlUiDockableMP4, global::GBX.NET.Interfaces.Control.IControlUiDockableTM2020
+public partial class CControlUiDockable : global::GBX.NET.Interfaces.Control.IControlUiDockable, global::GBX.NET.Interfaces.Control.IControlUiDockableTM10, global::GBX.NET.Interfaces.Control.IControlUiDockableTMPU, global::GBX.NET.Interfaces.Control.IControlUiDockableTMSX, global::GBX.NET.Interfaces.Control.IControlUiDockableTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiDockableTMU, global::GBX.NET.Interfaces.Control.IControlUiDockableVSK5, global::GBX.NET.Interfaces.Control.IControlUiDockableTMF, global::GBX.NET.Interfaces.Control.IControlUiDockableMP3, global::GBX.NET.Interfaces.Control.IControlUiDockableTMT, global::GBX.NET.Interfaces.Control.IControlUiDockableMP4, global::GBX.NET.Interfaces.Control.IControlUiDockableTM2020
 {
 }

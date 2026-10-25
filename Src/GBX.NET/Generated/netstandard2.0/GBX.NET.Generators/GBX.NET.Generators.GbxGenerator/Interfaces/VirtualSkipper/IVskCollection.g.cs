@@ -50,6 +50,15 @@ public partial interface IVskCollectionTMNESWC : IVskCollection, global::GBX.NET
     new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? IconSmallFid { get; set; }
 }
 
+public partial interface IVskCollectionTMU : IVskCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMU
+{
+    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>? CompleteZoneList { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU? DefaultDecoration { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU? DefaultZone { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? IconFid { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? IconSmallFid { get; set; }
+}
+
 public partial interface IVskCollectionVSK5 : IVskCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5
 {
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>? CompleteZoneList { get; set; }

@@ -46,6 +46,10 @@ public partial interface IGameAdvertisingTMNESWC : IGameAdvertising, global::GBX
 {
 }
 
+public partial interface IGameAdvertisingTMU : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMU, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
+{
+}
+
 public partial interface IGameAdvertisingVSK5 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodVSK5, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
 }

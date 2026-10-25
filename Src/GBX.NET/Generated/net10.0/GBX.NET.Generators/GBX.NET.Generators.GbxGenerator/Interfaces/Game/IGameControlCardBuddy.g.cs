@@ -114,6 +114,35 @@ public partial interface IGameControlCardBuddyTMNESWC : IGameControlCardBuddy, g
     }
 }
 
+public partial interface IGameControlCardBuddyTMU : IGameControlCardBuddy, global::GBX.NET.Interfaces.Game.IGameControlCardTMU
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).CreateScript);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).Motion);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardBuddy)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
 public partial interface IGameControlCardBuddyVSK5 : IGameControlCardBuddy, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript

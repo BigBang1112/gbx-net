@@ -103,9 +103,17 @@ public partial interface IConstructionChallengeVskTMNESWC : IConstructionChallen
 
 public partial interface IConstructionChallengeVskTMU : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU
 {
-    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU? BlockStock
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).BlockStock);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU? ChallengeParameters
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).ChallengeParameters);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CConstructionChallengeVsk)this).ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IConstructionChallengeVskVSK5 : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5

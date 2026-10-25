@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlFrameStyledMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlFrameStyled where T0 : class
+{
+    T0? StyleSheet { get; set; }
+}
 public partial interface IControlFrameStyled : IClassVersion<global::GBX.NET.Engines.Control.CControlFrameStyled>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -50,6 +55,15 @@ public partial interface IControlFrameStyledTMNESWC : IControlFrameStyled, globa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlFrameStyledTMU : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.Control.IControlFrameStyledMembers1<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU>
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlFrameStyledVSK5 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -86,14 +100,13 @@ public partial interface IControlFrameStyledTMT : IControlFrameStyled, global::G
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlFrameStyledMP4 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameMP4
+public partial interface IControlFrameStyledMP4 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlFrameStyledMembers1<global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? StyleSheet { get; set; }
 }
 
 public partial interface IControlFrameStyledTM2020 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameTM2020

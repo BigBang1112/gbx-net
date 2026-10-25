@@ -1,19 +1,19 @@
 CHmsLightMap 0x06021000
 - inherits: CMwNod
 
-0x000 [VSK5]
+0x000 [TMU, VSK5]
   CMwNod
   CMwNod
   CMwNod[10]
   CMwNod
 
-0x001 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugPointsInSphereOpt PointsInSphereOpt
 
-0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x002 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwNod
 
-0x003 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x003 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CHmsLightMapMood Mood
 
 0x004 [TMF]

@@ -17,5 +17,5 @@ property bool IsToKeepInSaveAsRelease
     else
       Flags = Flags & 0xFFFFFFFD
 
-0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Flags
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // Flags
   datauint Flags = 2

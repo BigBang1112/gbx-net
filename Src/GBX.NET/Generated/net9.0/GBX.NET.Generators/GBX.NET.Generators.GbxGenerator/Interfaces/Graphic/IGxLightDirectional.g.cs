@@ -43,6 +43,10 @@ public partial interface IGxLightDirectionalTMNESWC : IGxLightDirectional, globa
 {
 }
 
+public partial interface IGxLightDirectionalTMU : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMU, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
+{
+}
+
 public partial interface IGxLightDirectionalVSK5 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
 }

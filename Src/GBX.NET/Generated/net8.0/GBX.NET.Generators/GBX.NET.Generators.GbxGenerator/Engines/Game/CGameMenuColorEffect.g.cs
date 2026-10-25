@@ -135,11 +135,11 @@ public partial class CGameMenuColorEffect : CControlEffect, IClass
     /// CGameMenuColorEffect 0x000 chunk
     /// </summary>
     [Chunk(0x03019000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk03019000 : Chunk<CGameMenuColorEffect>
     {
         public override uint Id => 0x03019000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

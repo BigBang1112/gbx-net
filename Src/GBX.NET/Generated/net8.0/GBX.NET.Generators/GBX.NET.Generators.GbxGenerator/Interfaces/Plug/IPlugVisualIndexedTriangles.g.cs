@@ -30,6 +30,10 @@ public partial interface IPlugVisualIndexedTrianglesTMNESWC : IPlugVisualIndexed
 {
 }
 
+public partial interface IPlugVisualIndexedTrianglesTMU : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMU
+{
+}
+
 public partial interface IPlugVisualIndexedTrianglesVSK5 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedVSK5
 {
 }

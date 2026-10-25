@@ -280,9 +280,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x005 skippable chunk (frustum, clip plane, margin and mirror scale)
     /// </summary>
     [Chunk(0x09087005, "frustum, clip plane, margin and mirror scale")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk09087005 : SkippableChunk<CPlugBitmapRenderWater>
     {
         public override uint Id => 0x09087005;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public Iso4 U01;
         public uint U02;
 
@@ -309,9 +311,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x006 skippable chunk (FogMaxDepth)
     /// </summary>
     [Chunk(0x09087006, "FogMaxDepth")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk09087006 : SkippableChunk<CPlugBitmapRenderWater>
     {
         public override uint Id => 0x09087006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020
+public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier.BlockInfoFrontier
     {
@@ -26,6 +26,11 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC>.BlockInfoFrontier
+    {
+        get => BlockInfoFrontier;
+        set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMU>.BlockInfoFrontier
     {
         get => BlockInfoFrontier;
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

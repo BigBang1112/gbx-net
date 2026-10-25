@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlSlider : global::GBX.NET.Interfaces.Control.IControlSlider, global::GBX.NET.Interfaces.Control.IControlSliderTM10, global::GBX.NET.Interfaces.Control.IControlSliderTMPU, global::GBX.NET.Interfaces.Control.IControlSliderTMSX, global::GBX.NET.Interfaces.Control.IControlSliderTMNESWC, global::GBX.NET.Interfaces.Control.IControlSliderVSK5, global::GBX.NET.Interfaces.Control.IControlSliderTMF, global::GBX.NET.Interfaces.Control.IControlSliderMP3, global::GBX.NET.Interfaces.Control.IControlSliderTMT, global::GBX.NET.Interfaces.Control.IControlSliderMP4, global::GBX.NET.Interfaces.Control.IControlSliderTM2020
+public partial class CControlSlider : global::GBX.NET.Interfaces.Control.IControlSlider, global::GBX.NET.Interfaces.Control.IControlSliderTM10, global::GBX.NET.Interfaces.Control.IControlSliderTMPU, global::GBX.NET.Interfaces.Control.IControlSliderTMSX, global::GBX.NET.Interfaces.Control.IControlSliderTMNESWC, global::GBX.NET.Interfaces.Control.IControlSliderTMU, global::GBX.NET.Interfaces.Control.IControlSliderVSK5, global::GBX.NET.Interfaces.Control.IControlSliderTMF, global::GBX.NET.Interfaces.Control.IControlSliderMP3, global::GBX.NET.Interfaces.Control.IControlSliderTMT, global::GBX.NET.Interfaces.Control.IControlSliderMP4, global::GBX.NET.Interfaces.Control.IControlSliderTM2020
 {
 }

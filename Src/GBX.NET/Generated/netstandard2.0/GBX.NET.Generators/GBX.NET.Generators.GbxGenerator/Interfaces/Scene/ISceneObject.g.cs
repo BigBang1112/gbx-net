@@ -6,11 +6,12 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneObjectMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneObject where T0 : class
 {
-    T0? Motion { get; set; }
-    string? Name { get; set; }
+    new T0? Motion { get; set; }
 }
 public partial interface ISceneObject : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObject>
 {
+    global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
+    string? Name { get; set; }
 }
 
 public partial interface ISceneObjectTM10 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>
@@ -29,7 +30,7 @@ public partial interface ISceneObjectTMNESWC : ISceneObject, global::GBX.NET.Int
 {
 }
 
-public partial interface ISceneObjectTMU : ISceneObject
+public partial interface ISceneObjectTMU : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMU>
 {
 }
 

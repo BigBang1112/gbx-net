@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShadersTM10, global::GBX.NET.Interfaces.Function.IFuncShadersTMPU, global::GBX.NET.Interfaces.Function.IFuncShadersTMSX, global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShadersVSK5, global::GBX.NET.Interfaces.Function.IFuncShadersTMF, global::GBX.NET.Interfaces.Function.IFuncShadersMP3, global::GBX.NET.Interfaces.Function.IFuncShadersTMT, global::GBX.NET.Interfaces.Function.IFuncShadersMP4, global::GBX.NET.Interfaces.Function.IFuncShadersTM2020
+public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShadersTM10, global::GBX.NET.Interfaces.Function.IFuncShadersTMPU, global::GBX.NET.Interfaces.Function.IFuncShadersTMSX, global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShadersTMU, global::GBX.NET.Interfaces.Function.IFuncShadersVSK5, global::GBX.NET.Interfaces.Function.IFuncShadersTMF, global::GBX.NET.Interfaces.Function.IFuncShadersMP3, global::GBX.NET.Interfaces.Function.IFuncShadersTMT, global::GBX.NET.Interfaces.Function.IFuncShadersMP4, global::GBX.NET.Interfaces.Function.IFuncShadersTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader>? global::GBX.NET.Interfaces.Function.IFuncShaders.FuncShaders
     {
@@ -29,6 +29,11 @@ public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncSha
     {
         get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>(GetFuncShadersInterfaceReferences, true, "FuncShaders");
         set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMU>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMU>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMU>(GetFuncShadersInterfaceReferences, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>.FuncShaders
     {

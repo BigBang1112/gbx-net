@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockCameraPath : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPath, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTM2020
+public partial class CGameCtnMediaBlockCameraPath : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPath, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTM2020
 {
 }

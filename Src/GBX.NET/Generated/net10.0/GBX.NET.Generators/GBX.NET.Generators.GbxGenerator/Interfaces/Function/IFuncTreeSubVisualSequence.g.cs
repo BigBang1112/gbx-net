@@ -38,6 +38,10 @@ public partial interface IFuncTreeSubVisualSequenceTMNESWC : IFuncTreeSubVisualS
 {
 }
 
+public partial interface IFuncTreeSubVisualSequenceTMU : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMU
+{
+}
+
 public partial interface IFuncTreeSubVisualSequenceVSK5 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
 }

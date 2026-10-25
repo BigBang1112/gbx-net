@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameRaceMembers1 : global::GBX.NET.Interfaces.Game.IGameRace
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceFid { get; set; }
+}
 public partial interface IGameRace : IClassVersion<global::GBX.NET.Engines.Game.CGameRace>, global::GBX.NET.Interfaces.Game.IGamePlayground
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -30,13 +35,16 @@ public partial interface IGameRaceTMNESWC : IGameRace, global::GBX.NET.Interface
 {
 }
 
+public partial interface IGameRaceTMU : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMU, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
+{
+}
+
 public partial interface IGameRaceVSK5 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundVSK5
 {
 }
 
-public partial interface IGameRaceTMF : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMF
+public partial interface IGameRaceTMF : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMF, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceFid { get; set; }
 }
 
 public partial interface IGameRaceMP3 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundMP3

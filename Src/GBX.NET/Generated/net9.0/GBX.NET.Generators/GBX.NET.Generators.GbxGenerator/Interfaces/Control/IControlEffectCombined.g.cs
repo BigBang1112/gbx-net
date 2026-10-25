@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectCombinedMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlEffectCombined where T0 : class
+{
+    new T0? Effects
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectCombined)this).Effects);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectCombined)this).Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IControlEffectCombined : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectCombined>, global::GBX.NET.Interfaces.Control.IControlEffect
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -19,12 +28,11 @@ public partial interface IControlEffectCombined : IClassVersion<global::GBX.NET.
     }
 }
 
-public partial interface IControlEffectCombinedTMSX : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+public partial interface IControlEffectCombinedTMSX : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? Effects
-    {
-        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectCombined)this).Effects);
-        set => ((global::GBX.NET.Engines.Control.CControlEffectCombined)this).Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IControlEffectCombinedTMU : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>
+{
 }
 

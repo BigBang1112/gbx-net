@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoFrontierTMNESWC : IGameCtnBlockInfoFro
 {
 }
 
+public partial interface IGameCtnBlockInfoFrontierTMU : IGameCtnBlockInfoFrontier, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoFrontierVSK5 : IGameCtnBlockInfoFrontier, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

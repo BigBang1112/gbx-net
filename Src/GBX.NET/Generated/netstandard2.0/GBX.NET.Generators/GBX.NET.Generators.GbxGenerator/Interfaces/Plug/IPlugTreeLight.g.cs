@@ -56,6 +56,15 @@ public partial interface IPlugTreeLightTMNESWC : IPlugTreeLight, global::GBX.NET
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? Visual { get; set; }
 }
 
+public partial interface IPlugTreeLightTMU : IPlugTreeLight, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMU>
+{
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>? Children { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncTreeTMU? FuncTree { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU? Generator { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? ModelSolid { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugVisualTMU? Visual { get; set; }
+}
+
 public partial interface IPlugTreeLightVSK5 : IPlugTreeLight, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightVSK5>
 {
     new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>? Children { get; set; }

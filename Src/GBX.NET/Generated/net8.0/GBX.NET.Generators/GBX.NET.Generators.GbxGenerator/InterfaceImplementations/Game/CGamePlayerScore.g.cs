@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGamePlayerScore : global::GBX.NET.Interfaces.Game.IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTM10, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMPU, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMSX, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlayerScoreVSK5, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF
+public partial class CGamePlayerScore : global::GBX.NET.Interfaces.Game.IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTM10, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMPU, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMSX, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMU, global::GBX.NET.Interfaces.Game.IGamePlayerScoreVSK5, global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? GetCampaignPlayerScoresInterfaceReferences() => CampaignPlayerScores;
 }

@@ -58,6 +58,10 @@ public partial interface IGameCtnBlockInfoClipTMNESWC : IGameCtnBlockInfoClip, g
 {
 }
 
+public partial interface IGameCtnBlockInfoClipTMU : IGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMembers3
+{
+}
+
 public partial interface IGameCtnBlockInfoClipVSK5 : IGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMembers3
 {
 }

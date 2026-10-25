@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncSegment : global::GBX.NET.Interfaces.Function.IFuncSegment, global::GBX.NET.Interfaces.Function.IFuncSegmentTMF, global::GBX.NET.Interfaces.Function.IFuncSegmentMP4
+public partial class CFuncSegment : global::GBX.NET.Interfaces.Function.IFuncSegment, global::GBX.NET.Interfaces.Function.IFuncSegmentTMU, global::GBX.NET.Interfaces.Function.IFuncSegmentTMF, global::GBX.NET.Interfaces.Function.IFuncSegmentMP4
 {
 }

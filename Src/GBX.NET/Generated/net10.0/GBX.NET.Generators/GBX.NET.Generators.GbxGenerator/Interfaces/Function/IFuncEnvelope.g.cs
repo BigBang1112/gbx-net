@@ -30,6 +30,10 @@ public partial interface IFuncEnvelopeTMNESWC : IFuncEnvelope, global::GBX.NET.I
 {
 }
 
+public partial interface IFuncEnvelopeTMU : IFuncEnvelope, global::GBX.NET.Interfaces.Function.IFuncTMU
+{
+}
+
 public partial interface IFuncEnvelopeVSK5 : IFuncEnvelope, global::GBX.NET.Interfaces.Function.IFuncVSK5
 {
 }

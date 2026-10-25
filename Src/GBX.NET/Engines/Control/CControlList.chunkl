@@ -23,7 +23,7 @@ CControlList 0x0700F000
   int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
   Column[ColumnCount] Columns
 
-0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x007 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
   int
   int
   int
@@ -33,7 +33,7 @@ CControlList 0x0700F000
   int
   Unknown[]
 
-0x00A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x00A [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
   float
   float
   float

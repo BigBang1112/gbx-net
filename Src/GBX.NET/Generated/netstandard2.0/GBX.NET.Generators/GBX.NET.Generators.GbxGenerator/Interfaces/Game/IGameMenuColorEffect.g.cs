@@ -25,6 +25,10 @@ public partial interface IGameMenuColorEffect : IClassVersion<global::GBX.NET.En
     int PeriodMs { get; set; }
 }
 
+public partial interface IGameMenuColorEffectTMU : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMU
+{
+}
+
 public partial interface IGameMenuColorEffectTMF : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMF
 {
 }

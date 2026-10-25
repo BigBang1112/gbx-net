@@ -13,17 +13,16 @@ public partial interface ISceneFxBloom : IClassVersion<global::GBX.NET.Engines.S
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     int BlurSize { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>? Datas
-    {
-        get => ((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>(((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).GetDatasInterfaceReferences, true, "Datas");
-        set => ((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>(value, false));
-    }
     float Intensity { get; set; }
+}
+
+public partial interface ISceneFxBloomTMU : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+{
 }
 
 public partial interface ISceneFxBloomTMF : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? Datas
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? Datas
     {
         get => ((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).GetDatasInterfaceReferences, true, "Datas");
         set => ((global::GBX.NET.Engines.Scene.CSceneFxBloom)this).Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(value, false));

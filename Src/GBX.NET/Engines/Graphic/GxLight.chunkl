@@ -1,6 +1,6 @@
 GxLight 0x04001000
 
-0x008 [TM10, TMPU, TMSX, TMNESWC]
+0x008 [TM10, TMPU, TMSX, TMNESWC, TMU]
   vec3 Color
   float Intensity
   int<EFlags> Flags

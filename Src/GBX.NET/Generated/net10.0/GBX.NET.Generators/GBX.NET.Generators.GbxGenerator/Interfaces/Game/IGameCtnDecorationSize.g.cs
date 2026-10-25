@@ -39,6 +39,10 @@ public partial interface IGameCtnDecorationSizeTMNESWC : IGameCtnDecorationSize,
 {
 }
 
+public partial interface IGameCtnDecorationSizeTMU : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU>
+{
+}
+
 public partial interface IGameCtnDecorationSizeVSK5 : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5>
 {
 }

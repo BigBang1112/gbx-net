@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuFrame, global::GBX.NET.Interfaces.Game.IGameMenuFrameTM10, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMPU, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMSX, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuFrameVSK5, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMF, global::GBX.NET.Interfaces.Game.IGameMenuFrameMP3, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMT, global::GBX.NET.Interfaces.Game.IGameMenuFrameMP4, global::GBX.NET.Interfaces.Game.IGameMenuFrameTM2020
+public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuFrame, global::GBX.NET.Interfaces.Game.IGameMenuFrameTM10, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMPU, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMSX, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU, global::GBX.NET.Interfaces.Game.IGameMenuFrameVSK5, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMF, global::GBX.NET.Interfaces.Game.IGameMenuFrameMP3, global::GBX.NET.Interfaces.Game.IGameMenuFrameTMT, global::GBX.NET.Interfaces.Game.IGameMenuFrameMP4, global::GBX.NET.Interfaces.Game.IGameMenuFrameTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Game.IGameMenuFrameTM10.CreateScript
     {
@@ -84,6 +84,41 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.CreateScript
+    {
+        get => CreateScript;
+        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Game.IGameMenuFrameVSK5.CreateScript
     {

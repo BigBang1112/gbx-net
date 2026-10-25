@@ -52,6 +52,10 @@ public partial interface IGameCtnZoneFlatTMNESWC : IGameCtnZoneFlat, global::GBX
 {
 }
 
+public partial interface IGameCtnZoneFlatTMU : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
+{
+}
+
 public partial interface IGameCtnZoneFlatVSK5 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
 }

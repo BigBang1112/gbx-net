@@ -38,6 +38,12 @@ public partial interface ISceneToyTMNESWC : ISceneToy, global::GBX.NET.Interface
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneToyTMU : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneToyVSK5 : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

@@ -23,6 +23,10 @@ public partial interface IGameCtnMediaBlockTimeTMNESWC : IGameCtnMediaBlockTime,
 {
 }
 
+public partial interface IGameCtnMediaBlockTimeTMU : IGameCtnMediaBlockTime, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockTimeVSK5 : IGameCtnMediaBlockTime, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }

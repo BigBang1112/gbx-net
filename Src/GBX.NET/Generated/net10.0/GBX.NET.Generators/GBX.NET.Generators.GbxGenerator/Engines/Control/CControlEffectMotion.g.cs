@@ -151,11 +151,11 @@ public partial class CControlEffectMotion : CControlEffect, IClass
     /// CControlEffectMotion 0x000 chunk (particle emitter and envelope)
     /// </summary>
     [Chunk(0x07011000, "particle emitter and envelope")]
-    [ChunkGameVersion(GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
     public partial class Chunk07011000 : Chunk<CControlEffectMotion>
     {
         public override uint Id => 0x07011000;
-        public override GameVersion GameVersion => GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -177,11 +177,11 @@ public partial class CControlEffectMotion : CControlEffect, IClass
     /// CControlEffectMotion 0x001 chunk (envelope, intensity, speed and charge time)
     /// </summary>
     [Chunk(0x07011001, "envelope, intensity, speed and charge time")]
-    [ChunkGameVersion(GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
     public partial class Chunk07011001 : Chunk<CControlEffectMotion>
     {
         public override uint Id => 0x07011001;
-        public override GameVersion GameVersion => GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

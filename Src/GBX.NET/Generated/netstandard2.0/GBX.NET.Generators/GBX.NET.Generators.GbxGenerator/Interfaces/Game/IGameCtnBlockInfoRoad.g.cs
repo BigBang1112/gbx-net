@@ -36,6 +36,10 @@ public partial interface IGameCtnBlockInfoRoadTMNESWC : IGameCtnBlockInfoRoad, g
 {
 }
 
+public partial interface IGameCtnBlockInfoRoadTMU : IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMU>
+{
+}
+
 public partial interface IGameCtnBlockInfoRoadVSK5 : IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5>
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVisualGrid : global::GBX.NET.Interfaces.Plug.IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualGridVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTM2020
+public partial class CPlugVisualGrid : global::GBX.NET.Interfaces.Plug.IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualGridVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualGridMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualGridTM2020
 {
 }

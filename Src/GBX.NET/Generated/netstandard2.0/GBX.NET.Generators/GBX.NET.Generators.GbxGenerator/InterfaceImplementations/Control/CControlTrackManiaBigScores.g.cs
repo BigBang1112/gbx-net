@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlTrackManiaBigScores : global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScores, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTM10, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMPU, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMSX, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMNESWC, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresVSK5, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMF, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresMP3, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMT, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresMP4, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTM2020
+public partial class CControlTrackManiaBigScores : global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScores, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTM10, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMPU, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMSX, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMNESWC, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresVSK5, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMF, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresMP3, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMT, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresMP4, global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTM10.CreateScript
     {
@@ -84,6 +84,31 @@ public partial class CControlTrackManiaBigScores : global::GBX.NET.Interfaces.Co
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU.CreateScript
+    {
+        get => CreateScript;
+        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlTrackManiaBigScoresVSK5.CreateScript
     {

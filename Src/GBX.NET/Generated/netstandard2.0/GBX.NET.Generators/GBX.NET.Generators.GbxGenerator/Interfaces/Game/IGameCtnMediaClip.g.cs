@@ -45,9 +45,8 @@ public partial interface IGameCtnMediaClipTMNESWC : IGameCtnMediaClip, global::G
 {
 }
 
-public partial interface IGameCtnMediaClipTMU : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>
+public partial interface IGameCtnMediaClipTMU : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneTMU>
 {
-    global::GBX.NET.Engines.Scene.CScene? Scene { get; set; }
 }
 
 public partial interface IGameCtnMediaClipVSK5 : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneVSK5>

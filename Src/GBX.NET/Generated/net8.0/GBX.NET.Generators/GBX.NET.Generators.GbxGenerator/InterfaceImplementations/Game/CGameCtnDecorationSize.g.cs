@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020
+public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020
 {
 }

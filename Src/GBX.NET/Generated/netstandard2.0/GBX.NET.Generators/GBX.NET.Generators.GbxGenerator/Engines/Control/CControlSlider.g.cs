@@ -204,9 +204,11 @@ public partial class CControlSlider : CControlBase, IClass
     /// CControlSlider 0x002 chunk (Axis)
     /// </summary>
     [Chunk(0x0700B002, "Axis")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0700B002 : Chunk<CControlSlider>
     {
         public override uint Id => 0x0700B002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -223,9 +225,11 @@ public partial class CControlSlider : CControlBase, IClass
     /// CControlSlider 0x003 chunk (bar and cursor icons)
     /// </summary>
     [Chunk(0x0700B003, "bar and cursor icons")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0700B003 : Chunk<CControlSlider>
     {
         public override uint Id => 0x0700B003;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

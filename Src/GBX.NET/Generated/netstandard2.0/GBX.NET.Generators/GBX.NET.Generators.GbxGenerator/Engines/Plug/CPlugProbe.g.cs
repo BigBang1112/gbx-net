@@ -26,22 +26,23 @@ public partial class CPlugProbe : CPlug, IClass
     /// </summary>
     [Chunk(0x09106000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk09106000 : Chunk<CPlugProbe>
+    public partial class Chunk09106000 : Chunk<CPlugProbe>, IVersionable
     {
         public override uint Id => 0x09106000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
-        public Vec3 U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
+        public int Version { get; set; }
+        public Vec3 U01;
+        public float U02 = 0.2f;
+        public float U03 = 0.2f;
+        public float U04 = 0.2f;
+        public float U05 = 0.2f;
+        public float U06 = 0.2f;
+        public float U07 = 0.2f;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk09106000)clone).Version = context.Clone(this.Version)!;
             ((Chunk09106000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk09106000)clone).U02 = context.Clone(this.U02)!;
             ((Chunk09106000)clone).U03 = context.Clone(this.U03)!;
@@ -49,19 +50,23 @@ public partial class CPlugProbe : CPlug, IClass
             ((Chunk09106000)clone).U05 = context.Clone(this.U05)!;
             ((Chunk09106000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk09106000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09106000)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(CPlugProbe n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Vec3(ref U02);
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Vec3(ref U01);
+            rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref U05);
             rw.Single(ref U06);
             rw.Single(ref U07);
-            rw.Single(ref U08);
         }
     }
 

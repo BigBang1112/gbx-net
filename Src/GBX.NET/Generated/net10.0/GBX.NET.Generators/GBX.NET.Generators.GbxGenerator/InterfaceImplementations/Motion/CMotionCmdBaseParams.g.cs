@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionCmdBaseParams : global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParams, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4
+public partial class CMotionCmdBaseParams : global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParams, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMU, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4
 {
 }

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020
+public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>? GetCompatibleZonesInterfaceReferences() => CompatibleZones;
 }

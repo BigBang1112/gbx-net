@@ -31,12 +31,6 @@ public partial interface ISceneMobil : IClassVersion<global::GBX.NET.Engines.Sce
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    global::GBX.NET.Interfaces.Motion.IMotion? Motion
-    {
-        get => (global::GBX.NET.Interfaces.Motion.IMotion?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion);
-        set => ((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    string? Name { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink
     {
         get => ((global::GBX.NET.Engines.Scene.CSceneMobil)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLink>(((global::GBX.NET.Engines.Scene.CSceneMobil)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
@@ -76,6 +70,15 @@ public partial interface ISceneMobilTMNESWC : ISceneMobil, global::GBX.NET.Inter
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
+public partial interface ISceneMobilTMU : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion);
         set => ((global::GBX.NET.Engines.Scene.CSceneMobil)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

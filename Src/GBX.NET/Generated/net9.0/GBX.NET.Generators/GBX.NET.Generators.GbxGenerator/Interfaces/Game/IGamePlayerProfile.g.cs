@@ -17,11 +17,21 @@ public interface IGamePlayerProfileMembers2<T0> : global::GBX.NET.Interfaces.Gam
         get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsForCompatConfig);
         set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers3 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
     string? NickName { get; set; }
     bool UnlockAllCheat { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGamePlayerProfileMembers3 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+public interface IGamePlayerProfileMembers4 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    string? ProfileId { get; set; }
+    string? ProfileName { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers5 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
     global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies { get; set; }
     string? CurrentSoloPlaylistName { get; set; }
@@ -31,7 +41,7 @@ public interface IGamePlayerProfileMembers3 : global::GBX.NET.Interfaces.Game.IG
     bool RememberOnlinePassword { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGamePlayerProfileMembers4 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
     bool AllowDownload { get; set; }
     bool EnableAvatars { get; set; }
@@ -39,12 +49,12 @@ public interface IGamePlayerProfileMembers4 : global::GBX.NET.Interfaces.Game.IG
     bool ShowEditorHelp { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGamePlayerProfileMembers5 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+public interface IGamePlayerProfileMembers7 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
     byte MaxPlayerCount { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+public interface IGamePlayerProfileMembers8 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
     int? BindingsForCompatVersion { get; set; }
     string? Description { get; set; }
@@ -57,7 +67,13 @@ public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IG
     Vec3 TrailColor { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGamePlayerProfileMembers7<T0, T1> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class where T1 : class
+public interface IGamePlayerProfileMembers9 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers10<T0, T1> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class where T1 : class
 {
     bool AutoConnect { get; set; }
     T0? BindingsConfig
@@ -65,8 +81,6 @@ public interface IGamePlayerProfileMembers7<T0, T1> : global::GBX.NET.Interfaces
         get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsConfig);
         set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
     bool EnableChat { get; set; }
     IReadOnlyList<T1>? InboxMessages
     {
@@ -96,33 +110,35 @@ public interface IGamePlayerProfileMembers7<T0, T1> : global::GBX.NET.Interfaces
 }
 public partial interface IGamePlayerProfile : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfile>
 {
-    string? ProfileId { get; set; }
-    string? ProfileName { get; set; }
 }
 
-public partial interface IGamePlayerProfileTM10 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10>
+public partial interface IGamePlayerProfileTM10 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4
 {
 }
 
-public partial interface IGamePlayerProfileTMPU : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5
+public partial interface IGamePlayerProfileTMPU : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7
 {
 }
 
-public partial interface IGamePlayerProfileTMSX : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6
+public partial interface IGamePlayerProfileTMSX : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers8
 {
 }
 
-public partial interface IGamePlayerProfileTMNESWC : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6
+public partial interface IGamePlayerProfileTMNESWC : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers8
 {
     string? OnlinePassword { get; set; }
 }
 
-public partial interface IGamePlayerProfileVSK5 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>
+public partial interface IGamePlayerProfileTMU : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMU>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers9
+{
+}
+
+public partial interface IGamePlayerProfileVSK5 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers8, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers9, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers10<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>
 {
     string? LegacyOnlineValidationCode { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>
+public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers8, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers9, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers10<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>
 {
     bool AskForAccountConversion { get; set; }
     bool AskOpponents { get; set; }
@@ -172,19 +188,19 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     int[]? TagDisplayList { get; set; }
 }
 
-public partial interface IGamePlayerProfileMP3 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
+public partial interface IGamePlayerProfileMP3 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4
 {
 }
 
-public partial interface IGamePlayerProfileTMT : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
+public partial interface IGamePlayerProfileTMT : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4
 {
 }
 
-public partial interface IGamePlayerProfileMP4 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
+public partial interface IGamePlayerProfileMP4 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4
 {
 }
 
-public partial interface IGamePlayerProfileTM2020 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
+public partial interface IGamePlayerProfileTM2020 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4
 {
 }
 

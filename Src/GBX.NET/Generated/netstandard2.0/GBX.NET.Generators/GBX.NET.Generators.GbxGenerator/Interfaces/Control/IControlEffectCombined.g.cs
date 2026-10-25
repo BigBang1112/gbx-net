@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectCombinedMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlEffectCombined where T0 : class
+{
+    new T0? Effects { get; set; }
+}
 public partial interface IControlEffectCombined : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectCombined>, global::GBX.NET.Interfaces.Control.IControlEffect
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -15,8 +20,11 @@ public partial interface IControlEffectCombined : IClassVersion<global::GBX.NET.
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? Effects { get; set; }
 }
 
-public partial interface IControlEffectCombinedTMSX : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+public partial interface IControlEffectCombinedTMSX : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? Effects { get; set; }
+}
+
+public partial interface IControlEffectCombinedTMU : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>
+{
 }
 

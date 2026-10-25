@@ -7,7 +7,7 @@ public abstract class CGameMenuScaleEffectBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameMenuScaleEffectBuilderBase() { }
     private protected CGameMenuScaleEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuScaleEffect> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMSX;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMSX | GameVersion.TMU;
     public TSelf WithAllowDecalage(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuScaleEffectBuilderAssignments.GetAllowDecalageAssignment(), value, SupportedGames1);
     public TSelf WithAllowHideBeforeEffect(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuScaleEffectBuilderAssignments.GetAllowHideBeforeEffectAssignment(), value, SupportedGames1);
     public TSelf WithDownBorderScale(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuScaleEffectBuilderAssignments.GetDownBorderScaleAssignment(), value, SupportedGames1);
@@ -32,11 +32,19 @@ public partial class CGameMenuScaleEffectBuilder : CGameMenuScaleEffectBuilderBa
         return node;
     }
     public TMSX ForTMSX() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public partial class TMSX : CGameMenuScaleEffectBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuScaleEffect> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameMenuScaleEffect Build() => BuildNode(CGameMenuScaleEffectBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuScaleEffect node);
+    }
+    public partial class TMU : CGameMenuScaleEffectBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuScaleEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuScaleEffect Build() => BuildNode(CGameMenuScaleEffectBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuScaleEffect node);
     }
 }

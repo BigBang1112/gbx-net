@@ -7,7 +7,7 @@ public abstract class CPlugShaderPassBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CPlugShaderPassBuilderBase() { }
     private protected CPlugShaderPassBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX;
     private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMPU;
@@ -16,7 +16,7 @@ public abstract class CPlugShaderPassBuilderBase<TSelf> : NodeBuilder<global::GB
 public abstract class CPlugShaderPassBuilderMembers1<TSelf> : CPlugShaderPassBuilderBase<TSelf> where TSelf : CPlugShaderPassBuilderMembers1<TSelf>
 {
     private protected CPlugShaderPassBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-    public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugShaderPassBuilderMembers2<TSelf> : CPlugShaderPassBuilderMembers1<TSelf> where TSelf : CPlugShaderPassBuilderMembers2<TSelf>
 {
@@ -102,6 +102,7 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -127,8 +128,8 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class TMSX : CPlugShaderPassBuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public TMSX WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        public TMSX WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public TMSX WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public TMSX WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(values, false));
@@ -140,8 +141,8 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class TMNESWC : CPlugShaderPassBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public TMNESWC WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        public TMNESWC WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public TMNESWC WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public TMNESWC WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(values, false));
@@ -150,10 +151,22 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
         public global::GBX.NET.Engines.Plug.CPlugShaderPass Build() => BuildNode(CPlugShaderPassBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
     }
+    public partial class TMU : CPlugShaderPassBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
+        public TMU WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
+        public TMU WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
+        public TMU WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>(values, false));
+        public TMU WithVertexTextures(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU> values) => WithVertexTextures(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugShaderPass Build() => BuildNode(CPlugShaderPassBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderPass node);
+    }
     public partial class VSK5 : CPlugShaderPassBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public VSK5 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public VSK5 WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public VSK5 WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(values, false));
@@ -165,7 +178,7 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class TMF : CPlugShaderPassBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public TMF WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public TMF WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public TMF WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(values, false));
@@ -177,7 +190,7 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class MP3 : CPlugShaderPassBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public MP3 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public MP3 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public MP3 WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3 BuildInterface() => Build();
@@ -187,7 +200,7 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class TMT : CPlugShaderPassBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public TMT WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMT WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMT WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public TMT WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public TMT WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(values, false));
@@ -199,7 +212,7 @@ public partial class CPlugShaderPassBuilder : CPlugShaderPassBuilderBase<CPlugSh
     public partial class MP4 : CPlugShaderPassBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderPass> state) : base(state) { }
-        public MP4 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP4 WithVertexTextures(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilderAssignments.GetVertexTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public MP4 WithVertexTextures(params global::GBX.NET.Engines.Plug.CPlugBitmapSampler[] values) => WithVertexTextures(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(values));
         public MP4 WithVertexTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> values) => WithVertexTextures(values.ToArray());
         public MP4 WithVertexTextures(params global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4[] values) => WithVertexTextures(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(values, false));

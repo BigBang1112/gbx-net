@@ -30,6 +30,16 @@ public partial interface IPlugBitmapRenderWaterTMNESWC : IPlugBitmapRenderWater,
 {
 }
 
+public partial interface IPlugBitmapRenderWaterTMU : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
+{
+    float ClipPlaneHeight { get; set; }
+    float FMargin { get; set; }
+    float FogMaxDepth { get; set; }
+    BoxAligned Frustum { get; set; }
+    bool IsOrthographic { get; set; }
+    float MirrorScaleY { get; set; }
+}
+
 public partial interface IPlugBitmapRenderWaterVSK5 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
 }

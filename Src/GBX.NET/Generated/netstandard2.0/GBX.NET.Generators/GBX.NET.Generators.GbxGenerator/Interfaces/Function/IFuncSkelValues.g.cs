@@ -30,6 +30,10 @@ public partial interface IFuncSkelValuesTMNESWC : IFuncSkelValues, global::GBX.N
 {
 }
 
+public partial interface IFuncSkelValuesTMU : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMU>
+{
+}
+
 public partial interface IFuncSkelValuesVSK5 : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>
 {
 }

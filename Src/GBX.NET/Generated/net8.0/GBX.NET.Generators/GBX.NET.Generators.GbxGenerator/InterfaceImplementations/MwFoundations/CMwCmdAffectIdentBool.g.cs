@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdAffectIdentBool : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBool, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMF
+public partial class CMwCmdAffectIdentBool : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBool, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentBoolTMF
 {
 }

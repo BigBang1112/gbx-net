@@ -3,13 +3,8 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020
+public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>? global::GBX.NET.Interfaces.Plug.IPlugShaderApply.BitmapAddresses
-    {
-        get => BitmapAddresses is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(GetBitmapAddressesInterfaceReferences, true, "BitmapAddresses");
-        set => BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(value, false));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10>? global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10>.BitmapAddresses
     {
         get => BitmapAddresses is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10>(GetBitmapAddressesInterfaceReferences, true, "BitmapAddresses");
@@ -186,6 +181,21 @@ public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugSha
         set => SelfIllum = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC.SolidWiredApply
+    {
+        get => SolidWiredApply;
+        set => SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncShaderTMU? global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU.FuncShader
+    {
+        get => FuncShader;
+        set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>? global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU.Passes
+    {
+        get => Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(GetPassesInterfaceReferences, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU.SolidWiredApply
     {
         get => SolidWiredApply;
         set => SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

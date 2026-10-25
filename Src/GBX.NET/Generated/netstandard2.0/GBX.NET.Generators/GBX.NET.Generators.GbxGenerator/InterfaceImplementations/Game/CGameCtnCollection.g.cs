@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMF, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP3, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020
+public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMF, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP3, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZone>? global::GBX.NET.Interfaces.Game.IGameCtnCollection.CompleteZoneList
     {
@@ -150,6 +150,46 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => MapFid;
         set => MapFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.CompleteZoneList
+    {
+        get => CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
+        set => CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.DefaultDecoration
+    {
+        get => DefaultDecoration;
+        set => DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.DefaultZone
+    {
+        get => DefaultZone;
+        set => DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.IconFid
+    {
+        get => IconFid;
+        set => IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.IconSmallFid
+    {
+        get => IconSmallFid;
+        set => IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.LoadScreenFid
+    {
+        get => LoadScreenFid;
+        set => LoadScreenFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.MapFid
+    {
+        get => MapFid;
+        set => MapFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>.ReplacementTerrainModifiers
+    {
+        get => ReplacementTerrainModifiers is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>(GetReplacementTerrainModifiersInterfaceReferences, true, "ReplacementTerrainModifiers");
+        set => ReplacementTerrainModifiers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>(value, false));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.CompleteZoneList
     {
         get => CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>(GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
@@ -185,7 +225,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => MapFid;
         set => MapFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>(value, false));
@@ -230,7 +270,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => MapFid;
         set => MapFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>(value, false));
@@ -290,7 +330,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => OffZone_FogMatter;
         set => OffZone_FogMatter = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogMatter node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>(value, false));
@@ -355,7 +395,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => OffZone_FogMatter;
         set => OffZone_FogMatter = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogMatter node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>(value, false));
@@ -420,7 +460,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => OffZone_FogMatter;
         set => OffZone_FogMatter = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogMatter node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>(value, false));
@@ -545,7 +585,7 @@ public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameC
         get => OffZone_FogMatter;
         set => OffZone_FogMatter = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogMatter node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModelsFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers16<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModelsFids
     {
         get => ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>(GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
         set => ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>(value, false));

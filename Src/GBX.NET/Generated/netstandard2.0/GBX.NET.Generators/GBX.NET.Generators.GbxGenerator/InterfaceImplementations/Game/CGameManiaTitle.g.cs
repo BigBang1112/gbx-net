@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManiaTitle : global::GBX.NET.Interfaces.Game.IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameManiaTitleTM10, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMPU, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMSX, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMNESWC, global::GBX.NET.Interfaces.Game.IGameManiaTitleVSK5, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMF, global::GBX.NET.Interfaces.Game.IGameManiaTitleMP3, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleTM2020
+public partial class CGameManiaTitle : global::GBX.NET.Interfaces.Game.IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameManiaTitleTM10, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMPU, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMSX, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMNESWC, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMU, global::GBX.NET.Interfaces.Game.IGameManiaTitleVSK5, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMF, global::GBX.NET.Interfaces.Game.IGameManiaTitleMP3, global::GBX.NET.Interfaces.Game.IGameManiaTitleTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleTM2020
 {
     string? global::GBX.NET.Interfaces.Game.IGameNod.Name
     {

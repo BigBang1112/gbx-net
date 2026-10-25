@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderShadow : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadow, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTM2020
+public partial class CPlugBitmapRenderShadow : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadow, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderShadowTM2020
 {
 }

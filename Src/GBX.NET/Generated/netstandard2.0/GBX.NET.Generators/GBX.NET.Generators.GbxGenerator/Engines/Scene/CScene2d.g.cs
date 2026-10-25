@@ -238,9 +238,11 @@ public partial class CScene2d : CScene, IClass
     /// CScene2d 0x002 chunk
     /// </summary>
     [Chunk(0x0A002002)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A002002 : Chunk<CScene2d>
     {
         public override uint Id => 0x0A002002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         public NodeRefList<CSceneObject>? U01;
         public CSceneLayout.SceneLoc[]? U02;

@@ -16,6 +16,10 @@ public partial interface IGameCtnMediaClipGroupTMNESWC : IGameCtnMediaClipGroup
 {
 }
 
+public partial interface IGameCtnMediaClipGroupTMU : IGameCtnMediaClipGroup
+{
+}
+
 public partial interface IGameCtnMediaClipGroupVSK5 : IGameCtnMediaClipGroup
 {
 }

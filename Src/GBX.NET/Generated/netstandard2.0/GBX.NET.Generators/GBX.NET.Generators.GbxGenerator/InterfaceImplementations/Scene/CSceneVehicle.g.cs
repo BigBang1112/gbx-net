@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM2020
+public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMU, global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM2020
 {
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10.Motion
     {
@@ -44,6 +44,16 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>.Environment
     {

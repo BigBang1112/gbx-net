@@ -37,6 +37,10 @@ public partial interface IFuncLightTMNESWC : IFuncLight, global::GBX.NET.Interfa
 {
 }
 
+public partial interface IFuncLightTMU : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMU, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
+{
+}
+
 public partial interface IFuncLightVSK5 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
 }

@@ -14,7 +14,7 @@ CPlugBitmapRender 0x09086000
   ushort SVIdMask = 0x8138 [TM10 = 0, TMPU = 0, TMSX = 0x138, TMNESWC = 0x338, VSK5 = 0x338, TMF = 0x338, TM2020 = 0x8130] // Shader visibility bits to check.
   ushort SVIdRef // Required shader visibility bits.
 
-0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // item and shader visibility filters
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // item and shader visibility filters
   ushort IVIdMask = 0x8138 [TM10 = 0, TMPU = 0, TMSX = 0x138, TMNESWC = 0x338, VSK5 = 0x338, TMF = 0x338, TM2020 = 0x8130] // Item visibility bits to check.
   ushort IVIdRef // Required item visibility bits.
   ushort SVIdMask
@@ -28,25 +28,25 @@ CPlugBitmapRender 0x09086000
 
 0x007 (base: 0x001) // legacy clear bitmap and render flags
 
-0x008 (skippable) [TMPU, TMSX, TMNESWC, VSK5, TMF, TMT, MP4, TM2020] // render path
+0x008 (skippable) [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // render path
   int<ERenderPath> RenderPath
   int<ERenderPathFails> RenderPathFails = ERenderPathFails.Hide
 
 0x009 (base: 0x001) [TMPU] // legacy clear bitmap and render flags
 
-0x00A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // FogCustomFarZ
+0x00A [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // FogCustomFarZ
   float FogCustomFarZ = 50f
 
-0x00B [TMSX, TMNESWC, VSK5, TMF] // clear bitmap and render flags
+0x00B [TMSX, TMNESWC, TMU, VSK5, TMF] // clear bitmap and render flags
   uint ClearColor
   datauint RenderFlags = 0x2E8007E2 // Packed render, clear-bitmap and color-write settings.
   CPlugBitmap BitmapClear
   vec2? BitmapClearUV
 
-0x00C [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // RenderSub
+0x00C [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // RenderSub
   CPlugBitmapRenderSub RenderSub
 
-0x00D [TMNESWC, VSK5] // legacy secondary render flags
+0x00D [TMNESWC, TMU, VSK5] // legacy secondary render flags
   datauint RenderFlags2 = 0x7800 [TMNESWC = 0, VSK5 = 0] // Packed blur, fog and lighting settings.
 
 0x00E (base: 0x00D) [TMF] // secondary render flags

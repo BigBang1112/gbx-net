@@ -46,6 +46,10 @@ public partial interface IHmsZoneTMNESWC : IHmsZone
 {
 }
 
+public partial interface IHmsZoneTMU : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+}
+
 public partial interface IHmsZoneVSK5 : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
 }

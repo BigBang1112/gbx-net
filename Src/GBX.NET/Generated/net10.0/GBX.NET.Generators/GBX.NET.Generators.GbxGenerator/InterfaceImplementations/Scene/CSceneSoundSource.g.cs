@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneSoundSource : global::GBX.NET.Interfaces.Scene.ISceneSoundSource, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMPU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMSX, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMF, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP3, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMT, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP4, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM2020
+public partial class CSceneSoundSource : global::GBX.NET.Interfaces.Scene.ISceneSoundSource, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMPU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMSX, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMF, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP3, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMT, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP4, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM2020
 {
 }

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMT, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP4, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TM2020
+public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMU, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMT, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP4, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TM2020
 {
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.FlyingLookDownFactorFromSpeedRatio
     {
@@ -31,6 +31,21 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.SlerpSpeedModulationFromSpeed
+    {
+        get => SlerpSpeedModulationFromSpeed;
+        set => SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU>.FlyingLookDownFactorFromSpeedRatio
+    {
+        get => FlyingLookDownFactorFromSpeedRatio;
+        set => FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU>.LookAtFactorFromUpSpeedRatio
+    {
+        get => LookAtFactorFromUpSpeedRatio;
+        set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU>.SlerpSpeedModulationFromSpeed
     {
         get => SlerpSpeedModulationFromSpeed;
         set => SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

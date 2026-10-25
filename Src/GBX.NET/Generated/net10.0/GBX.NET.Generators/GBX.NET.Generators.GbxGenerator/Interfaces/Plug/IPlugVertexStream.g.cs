@@ -37,6 +37,10 @@ public partial interface IPlugVertexStreamTMNESWC : IPlugVertexStream, global::G
 {
 }
 
+public partial interface IPlugVertexStreamTMU : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU>
+{
+}
+
 public partial interface IPlugVertexStreamVSK5 : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5>
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncTreeRotate : global::GBX.NET.Interfaces.Function.IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM10, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMPU, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMSX, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMNESWC, global::GBX.NET.Interfaces.Function.IFuncTreeRotateVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMF, global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP3, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMT, global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP4, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM2020
+public partial class CFuncTreeRotate : global::GBX.NET.Interfaces.Function.IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM10, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMPU, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMSX, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMNESWC, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMU, global::GBX.NET.Interfaces.Function.IFuncTreeRotateVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMF, global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP3, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMT, global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP4, global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM2020
 {
 }

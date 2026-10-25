@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTM10, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMPU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMSX, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceVSK5, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMF, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMP3
+public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTM10, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMPU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMSX, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceVSK5, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMF, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMP3
 {
     global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Hms.IHmsSoundSource.PlugSound
     {
@@ -26,6 +26,11 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.PlugSound
+    {
+        get => PlugSound;
+        set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>.PlugSound
     {
         get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

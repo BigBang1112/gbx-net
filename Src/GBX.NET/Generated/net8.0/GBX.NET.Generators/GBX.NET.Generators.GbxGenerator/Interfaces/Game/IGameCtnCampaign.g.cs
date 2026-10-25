@@ -88,6 +88,10 @@ public partial interface IGameCtnCampaignTMNESWC : IGameCtnCampaign, global::GBX
 {
 }
 
+public partial interface IGameCtnCampaignTMU : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
+{
+}
+
 public partial interface IGameCtnCampaignVSK5 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
 }

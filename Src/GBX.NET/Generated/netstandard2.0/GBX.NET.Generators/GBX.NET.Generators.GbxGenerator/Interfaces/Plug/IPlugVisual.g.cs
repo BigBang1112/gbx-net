@@ -51,6 +51,10 @@ public partial interface IPlugVisualTMNESWC : IPlugVisual, global::GBX.NET.Inter
 {
 }
 
+public partial interface IPlugVisualTMU : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
+{
+}
+
 public partial interface IPlugVisualVSK5 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
 }

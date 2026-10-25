@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMwCmdIfMembers1<T0> : global::GBX.NET.Interfaces.MwFoundations.IMwCmdIf where T0 : class
+{
+    new T0? ElseBlock { get; set; }
+    new T0? IfBlock { get; set; }
+}
 public partial interface IMwCmdIf : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdIf>
 {
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Condition { get; set; }
@@ -10,9 +16,11 @@ public partial interface IMwCmdIf : IClassVersion<global::GBX.NET.Engines.MwFoun
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock? IfBlock { get; set; }
 }
 
-public partial interface IMwCmdIfTMF : IMwCmdIf
+public partial interface IMwCmdIfTMU : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? ElseBlock { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? IfBlock { get; set; }
+}
+
+public partial interface IMwCmdIfTMF : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF>
+{
 }
 

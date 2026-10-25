@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4
+public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4
 {
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10>.ManagerModel
     {
@@ -21,6 +21,11 @@ public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IM
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC>.ManagerModel
+    {
+        get => ManagerModel;
+        set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU? global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU>.ManagerModel
     {
         get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

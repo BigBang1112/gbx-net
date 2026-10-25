@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTM10, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMPU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMSX, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceVSK5, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMF, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMP3
+public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTM10, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMPU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMSX, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMU, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceVSK5, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMF, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMP3
 {
 }

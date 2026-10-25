@@ -1,6 +1,6 @@
 CGameCtnPainterSetting 0x03048000
 
-0x000 // legacy materials, fade bitmaps and scenes
+0x000 [TMU] // legacy materials, fade bitmaps and scenes
   CPlugMaterial MaterialPaint
   CPlugBitmap BitmapBrushFade
   CPlugBitmap BitmapStickerFade
@@ -12,22 +12,22 @@ CGameCtnPainterSetting 0x03048000
   vec2
   vec2
 
-0x001 // Camera
+0x001 [TMU] // Camera
   CGameControlCameraOrbital3d Camera
 
-0x002 // ImageSubObjectAllIcon
+0x002 [TMU] // ImageSubObjectAllIcon
   CPlugFileImg ImageSubObjectAllIcon
 
-0x003 // icon and mouse wheel deltas
+0x003 [TMU] // icon and mouse wheel deltas
   CPlugFileImg ImageSubObjectAllIcon
   float MouseZDeltaRot
   float MouseZDeltaScale
 
-0x004 // camera bottom clipping
+0x004 [TMU] // camera bottom clipping
   bool CameraBottomClipGeometry
   float CameraBottomIn_m1p1
 
-0x005 // remapping skin and folder
+0x005 [TMU] // remapping skin and folder
   CPlugGameSkin Remapping
   string RemapFolder
 

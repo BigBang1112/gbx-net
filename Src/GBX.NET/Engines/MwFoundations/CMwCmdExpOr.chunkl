@@ -1,6 +1,6 @@
 CMwCmdExpOr 0x01049000
 - inherits: CMwCmdExpBool
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Value1
   CMwCmdExp Value2

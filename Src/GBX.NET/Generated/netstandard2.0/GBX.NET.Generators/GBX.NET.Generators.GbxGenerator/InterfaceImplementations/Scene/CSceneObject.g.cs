@@ -5,6 +5,11 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020
 {
+    global::GBX.NET.Interfaces.Motion.IMotion? global::GBX.NET.Interfaces.Scene.ISceneObject.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>.Motion
     {
         get => Motion;
@@ -21,6 +26,11 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMU>.Motion
     {
         get => Motion;
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

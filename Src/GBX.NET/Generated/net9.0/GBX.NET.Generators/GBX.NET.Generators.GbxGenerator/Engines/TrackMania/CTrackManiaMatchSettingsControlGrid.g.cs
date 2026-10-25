@@ -146,11 +146,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : CControlGrid, IClass
     /// CTrackManiaMatchSettingsControlGrid 0x000 chunk (play list controls and paging)
     /// </summary>
     [Chunk(0x2409C000, "play list controls and paging")]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
     public partial class Chunk2409C000 : Chunk<CTrackManiaMatchSettingsControlGrid>
     {
         public override uint Id => 0x2409C000;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -174,11 +174,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : CControlGrid, IClass
     /// CTrackManiaMatchSettingsControlGrid 0x001 chunk (PlayListNameLabel)
     /// </summary>
     [Chunk(0x2409C001, "PlayListNameLabel")]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
     public partial class Chunk2409C001 : Chunk<CTrackManiaMatchSettingsControlGrid>
     {
         public override uint Id => 0x2409C001;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -30,6 +30,10 @@ public partial interface IPlugCurveSimpleNodTMNESWC : IPlugCurveSimpleNod, globa
 {
 }
 
+public partial interface IPlugCurveSimpleNodTMU : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU
+{
+}
+
 public partial interface IPlugCurveSimpleNodVSK5 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoRectAsym : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsym, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTM2020
+public partial class CGameCtnBlockInfoRectAsym : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsym, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRectAsymTM2020
 {
 }

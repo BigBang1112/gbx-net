@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCardGeneric : global::GBX.NET.Interfaces.Game.IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTM10, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardGenericVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMF, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMP3, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMT, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMP4, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTM2020
+public partial class CGameControlCardGeneric : global::GBX.NET.Interfaces.Game.IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTM10, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMU, global::GBX.NET.Interfaces.Game.IGameControlCardGenericVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMF, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMP3, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTMT, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMP4, global::GBX.NET.Interfaces.Game.IGameControlCardGenericTM2020
 {
 }

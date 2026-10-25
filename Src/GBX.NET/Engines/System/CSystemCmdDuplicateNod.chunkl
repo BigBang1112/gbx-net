@@ -1,5 +1,5 @@
 CSystemCmdDuplicateNod 0x0B00F000
 - inherits: CMwCmdExpClass
 
-0x000 [TMPU]
+0x000 [TMPU, TMU]
   CMwNod

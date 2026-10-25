@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlFrameInventoryManager : global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManager, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTM10, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMPU, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMSX, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerVSK5, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMF, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerMP3, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMT, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerMP4, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTM2020
+public partial class CGameControlFrameInventoryManager : global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManager, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTM10, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMPU, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMSX, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerVSK5, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMF, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerMP3, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMT, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerMP4, global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTM10.CreateScript
     {
@@ -84,6 +84,31 @@ public partial class CGameControlFrameInventoryManager : global::GBX.NET.Interfa
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU.CreateScript
+    {
+        get => CreateScript;
+        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Game.IGameControlFrameInventoryManagerVSK5.CreateScript
     {

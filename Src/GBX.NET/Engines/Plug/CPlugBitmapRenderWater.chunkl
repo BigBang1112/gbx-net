@@ -26,7 +26,7 @@ CPlugBitmapRenderWater 0x09087000
   base
   bool
 
-0x005 (skippable) // frustum, clip plane, margin and mirror scale
+0x005 (skippable) [TMU] // frustum, clip plane, margin and mirror scale
   bool IsOrthographic
   boxaligned Frustum
   iso4
@@ -35,7 +35,7 @@ CPlugBitmapRenderWater 0x09087000
   float FMargin
   float MirrorScaleY
 
-0x006 (skippable) // FogMaxDepth
+0x006 (skippable) [TMU] // FogMaxDepth
   float FogMaxDepth
 
 0x007 (skippable) // split sky and depth bitmaps

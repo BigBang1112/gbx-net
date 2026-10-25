@@ -102,9 +102,11 @@ public partial class CSceneFxBloom : CSceneFxCompo, IClass
     /// CSceneFxBloom 0x001 chunk
     /// </summary>
     [Chunk(0x0A03B001)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A03B001 : Chunk<CSceneFxBloom>
     {
         public override uint Id => 0x0A03B001;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public float U01;
         public float U02;
         public float U03;

@@ -85,11 +85,11 @@ public partial class CFuncFullColorGradient : CFunc, IClass
     /// CFuncFullColorGradient 0x000 chunk
     /// </summary>
     [Chunk(0x05039000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk05039000 : Chunk<CFuncFullColorGradient>
     {
         public override uint Id => 0x05039000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;

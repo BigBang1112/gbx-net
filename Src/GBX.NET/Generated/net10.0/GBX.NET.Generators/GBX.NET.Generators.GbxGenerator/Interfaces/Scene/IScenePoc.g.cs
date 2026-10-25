@@ -13,12 +13,6 @@ public partial interface IScenePoc : IClassVersion<global::GBX.NET.Engines.Scene
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     bool IsActive { get; set; }
-    global::GBX.NET.Interfaces.Motion.IMotion? Motion
-    {
-        get => (global::GBX.NET.Interfaces.Motion.IMotion?)(object?)(((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion);
-        set => ((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    string? Name { get; set; }
 }
 
 public partial interface IScenePocTM10 : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10
@@ -53,6 +47,15 @@ public partial interface IScenePocTMNESWC : IScenePoc, global::GBX.NET.Interface
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
+public partial interface IScenePocTMU : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion);
         set => ((global::GBX.NET.Engines.Scene.CScenePoc)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

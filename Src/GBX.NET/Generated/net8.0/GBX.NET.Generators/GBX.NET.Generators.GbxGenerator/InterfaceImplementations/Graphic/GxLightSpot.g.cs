@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Graphic;
 
-public partial class GxLightSpot : global::GBX.NET.Interfaces.Graphic.IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM10, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightSpotVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMF, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP3, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMT, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP4, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM2020
+public partial class GxLightSpot : global::GBX.NET.Interfaces.Graphic.IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM10, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMU, global::GBX.NET.Interfaces.Graphic.IGxLightSpotVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMF, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP3, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMT, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP4, global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM2020
 {
     uint global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX.Flags
     {
@@ -11,6 +11,11 @@ public partial class GxLightSpot : global::GBX.NET.Interfaces.Graphic.IGxLightSp
         set => ((global::GBX.NET.Engines.Graphic.GxLightBall)this).Flags = value;
     }
     uint global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC.Flags
+    {
+        get => ((global::GBX.NET.Engines.Graphic.GxLightBall)this).Flags;
+        set => ((global::GBX.NET.Engines.Graphic.GxLightBall)this).Flags = value;
+    }
+    uint global::GBX.NET.Interfaces.Graphic.IGxLightBallTMU.Flags
     {
         get => ((global::GBX.NET.Engines.Graphic.GxLightBall)this).Flags;
         set => ((global::GBX.NET.Engines.Graphic.GxLightBall)this).Flags = value;

@@ -43,6 +43,10 @@ public partial interface IPlugMaterialTMNESWC : IPlugMaterial, global::GBX.NET.I
 {
 }
 
+public partial interface IPlugMaterialTMU : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU>
+{
+}
+
 public partial interface IPlugMaterialVSK5 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5>
 {
 }

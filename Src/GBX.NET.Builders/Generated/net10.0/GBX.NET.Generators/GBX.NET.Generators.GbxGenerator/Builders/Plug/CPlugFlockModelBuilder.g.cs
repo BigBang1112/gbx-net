@@ -7,8 +7,8 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CPlugFlockModelBuilderBase() { }
     private protected CPlugFlockModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP4;
     public TSelf WithAnimPeriod(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimPeriodAssignment(), value, SupportedGames1);
@@ -54,6 +54,7 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -88,6 +89,13 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
+    }
+    public partial class TMU : CPlugFlockModelBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFlockModel Build() => BuildNode(CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
     public partial class VSK5 : CPlugFlockModelBuilderMembers1<VSK5>

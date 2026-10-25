@@ -50,6 +50,15 @@ public partial interface ISceneLocationCameraTMNESWC : ISceneLocationCamera, glo
     }
 }
 
+public partial interface ISceneLocationCameraTMU : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface ISceneLocationCameraVSK5 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion

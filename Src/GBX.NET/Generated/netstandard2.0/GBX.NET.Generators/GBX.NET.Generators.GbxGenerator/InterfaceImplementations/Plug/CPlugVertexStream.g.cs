@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVertexStream : global::GBX.NET.Interfaces.Plug.IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020
+public partial class CPlugVertexStream : global::GBX.NET.Interfaces.Plug.IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugVertexStream? global::GBX.NET.Interfaces.Plug.IPlugVertexStream.StreamModel
     {
@@ -16,6 +16,11 @@ public partial class CPlugVertexStream : global::GBX.NET.Interfaces.Plug.IPlugVe
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC>.StreamModel
+    {
+        get => StreamModel;
+        set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU? global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU>.StreamModel
     {
         get => StreamModel;
         set => StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

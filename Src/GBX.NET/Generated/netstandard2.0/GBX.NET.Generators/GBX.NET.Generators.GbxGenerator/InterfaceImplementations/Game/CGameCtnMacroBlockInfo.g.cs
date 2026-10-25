@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMacroBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020
+public partial class CGameCtnMacroBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>.AutoTerrains
     {

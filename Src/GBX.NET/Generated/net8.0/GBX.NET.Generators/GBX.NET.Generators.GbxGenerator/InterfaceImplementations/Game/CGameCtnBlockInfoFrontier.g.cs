@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoFrontier : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020
+public partial class CGameCtnBlockInfoFrontier : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020
 {
 }

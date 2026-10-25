@@ -23,6 +23,10 @@ public partial interface IGameCtnMediaBlockCameraPathTMNESWC : IGameCtnMediaBloc
 {
 }
 
+public partial interface IGameCtnMediaBlockCameraPathTMU : IGameCtnMediaBlockCameraPath, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockCameraPathVSK5 : IGameCtnMediaBlockCameraPath, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraVSK5
 {
 }

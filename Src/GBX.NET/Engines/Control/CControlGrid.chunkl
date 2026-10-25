@@ -4,7 +4,7 @@ CControlGrid 0x07015000
 0x000
   vec2[n.Childs.Length] ChildsSquares
 
-0x001
+0x001 [TMU]
   CControlLayout MainLayout
   bool
   bool
@@ -14,7 +14,7 @@ CControlGrid 0x07015000
 0x002
   float[] ForceColumnsWidths
 
-0x003
+0x003 [TMU]
   float[] ForceColumnsWidths
   bool PackEmptyRows = true
 

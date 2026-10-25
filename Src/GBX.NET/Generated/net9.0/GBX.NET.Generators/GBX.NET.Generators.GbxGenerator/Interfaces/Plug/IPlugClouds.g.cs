@@ -36,6 +36,10 @@ public partial interface IPlugCloudsTMNESWC : IPlugClouds, global::GBX.NET.Inter
 {
 }
 
+public partial interface IPlugCloudsTMU : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>
+{
+}
+
 public partial interface IPlugCloudsVSK5 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>
 {
 }

@@ -126,11 +126,11 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderCubeMap 0x000 chunk (legacy cube settings)
     /// </summary>
     [Chunk(0x09088000, "legacy cube settings")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk09088000 : Chunk<CPlugBitmapRenderCubeMap>
     {
         public override uint Id => 0x09088000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

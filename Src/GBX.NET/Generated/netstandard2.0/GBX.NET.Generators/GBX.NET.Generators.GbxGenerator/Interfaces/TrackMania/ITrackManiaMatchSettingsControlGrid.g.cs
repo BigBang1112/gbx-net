@@ -3,6 +3,19 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaMatchSettingsControlGridMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGrid where T0 : class where T1 : class where T2 : class
+{
+    T0? ButtonNextPage { get; set; }
+    T0? ButtonPreviousPage { get; set; }
+    T1? ChallengeCardTemplate { get; set; }
+    int CurrentPage { get; set; }
+    int MaxChallengeInfosPerColumn { get; set; }
+    int MaxChallengeInfosPerRow { get; set; }
+    int NbPage { get; set; }
+    T2? PlayListCommentLabel { get; set; }
+    T2? PlayListNameLabel { get; set; }
+}
 public partial interface ITrackManiaMatchSettingsControlGrid : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid>, global::GBX.NET.Interfaces.Control.IControlGrid
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -41,22 +54,22 @@ public partial interface ITrackManiaMatchSettingsControlGridTMSX : ITrackManiaMa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridTMNESWC : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMNESWC
+public partial interface ITrackManiaMatchSettingsControlGridTMNESWC : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMNESWC, global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC>
 {
-    global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? ButtonNextPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? ButtonPreviousPage { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMNESWC? ChallengeCardTemplate { get; set; }
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    int CurrentPage { get; set; }
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
-    int MaxChallengeInfosPerColumn { get; set; }
-    int MaxChallengeInfosPerRow { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    int NbPage { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? PlayListCommentLabel { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? PlayListNameLabel { get; set; }
+}
+
+public partial interface ITrackManiaMatchSettingsControlGridTMU : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMU, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMU, global::GBX.NET.Interfaces.Control.IControlLabelTMU>
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
 public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5

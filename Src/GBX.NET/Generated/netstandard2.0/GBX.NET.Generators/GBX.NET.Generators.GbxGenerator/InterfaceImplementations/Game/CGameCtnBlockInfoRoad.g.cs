@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020
+public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad.Slope
     {
@@ -26,6 +26,11 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC>.Slope
+    {
+        get => Slope;
+        set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMU>.Slope
     {
         get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

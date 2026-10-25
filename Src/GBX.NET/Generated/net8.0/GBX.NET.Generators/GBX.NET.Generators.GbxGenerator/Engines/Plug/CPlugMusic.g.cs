@@ -196,9 +196,11 @@ public partial class CPlugMusic : CPlugMusicType, IClass
     /// CPlugMusic 0x004 chunk (legacy sound files buffer)
     /// </summary>
     [Chunk(0x0901C004, "legacy sound files buffer")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0901C004 : Chunk<CPlugMusic>
     {
         public override uint Id => 0x0901C004;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwRefBuffer>? U01Ref;
         public CMwRefBuffer? U01

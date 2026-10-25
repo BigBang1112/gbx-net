@@ -30,6 +30,10 @@ public partial interface IMotionManagedTMNESWC : IMotionManaged, global::GBX.NET
 {
 }
 
+public partial interface IMotionManagedTMU : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMU
+{
+}
+
 public partial interface IMotionManagedVSK5 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionVSK5
 {
 }

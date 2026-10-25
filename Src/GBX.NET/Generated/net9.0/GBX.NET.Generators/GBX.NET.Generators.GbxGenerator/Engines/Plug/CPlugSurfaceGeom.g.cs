@@ -115,11 +115,11 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     /// CPlugSurfaceGeom 0x004 chunk (bounding box and geometry)
     /// </summary>
     [Chunk(0x0900F004, "bounding box and geometry")]
-    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0900F004 : Chunk<CPlugSurfaceGeom>
     {
         public override uint Id => 0x0900F004;
-        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

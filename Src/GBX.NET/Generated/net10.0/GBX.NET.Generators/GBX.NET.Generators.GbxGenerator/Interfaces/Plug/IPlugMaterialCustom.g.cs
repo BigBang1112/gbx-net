@@ -23,6 +23,10 @@ public partial interface IPlugMaterialCustomTMNESWC : IPlugMaterialCustom
 {
 }
 
+public partial interface IPlugMaterialCustomTMU : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+{
+}
+
 public partial interface IPlugMaterialCustomVSK5 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
 }

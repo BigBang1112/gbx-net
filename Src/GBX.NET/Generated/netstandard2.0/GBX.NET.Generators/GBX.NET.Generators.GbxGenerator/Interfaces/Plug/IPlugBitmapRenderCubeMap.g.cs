@@ -46,6 +46,10 @@ public partial interface IPlugBitmapRenderCubeMapTMNESWC : IPlugBitmapRenderCube
 {
 }
 
+public partial interface IPlugBitmapRenderCubeMapTMU : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
+{
+}
+
 public partial interface IPlugBitmapRenderCubeMapVSK5 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
 }

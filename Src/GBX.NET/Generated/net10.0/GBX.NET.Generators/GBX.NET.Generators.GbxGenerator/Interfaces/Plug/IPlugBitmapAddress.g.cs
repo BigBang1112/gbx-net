@@ -56,6 +56,10 @@ public partial interface IPlugBitmapAddressTMNESWC : IPlugBitmapAddress, global:
 {
 }
 
+public partial interface IPlugBitmapAddressTMU : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
+{
+}
+
 public partial interface IPlugBitmapAddressVSK5 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
 }

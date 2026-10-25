@@ -57,6 +57,10 @@ public partial interface IHmsLightTMNESWC : IHmsLight, global::GBX.NET.Interface
 {
 }
 
+public partial interface IHmsLightTMU : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Graphic.IGxLightTMU>
+{
+}
+
 public partial interface IHmsLightVSK5 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5>
 {
 }

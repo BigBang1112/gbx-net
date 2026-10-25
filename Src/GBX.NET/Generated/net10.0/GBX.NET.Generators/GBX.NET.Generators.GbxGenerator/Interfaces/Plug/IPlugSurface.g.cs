@@ -12,18 +12,26 @@ public interface IPlugSurfaceMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlu
         set => ((global::GBX.NET.Engines.Plug.CPlugSurface)this).Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSurfaceMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugSurface where T0 : class
+{
+    T0? Geom
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSurface>
 {
     global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials { get; set; }
 }
 
-public partial interface IPlugSurfaceTMF : IPlugSurface
+public partial interface IPlugSurfaceTMU : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? Geom
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom);
-        set => ((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IPlugSurfaceTMF : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF>
+{
 }
 
 public partial interface IPlugSurfaceMP3 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP3>

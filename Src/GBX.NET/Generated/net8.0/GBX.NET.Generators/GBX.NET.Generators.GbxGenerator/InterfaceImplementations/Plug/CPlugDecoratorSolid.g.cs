@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020
+public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? GetTreeDecoratorsInterfaceReferences() => TreeDecorators;
 }

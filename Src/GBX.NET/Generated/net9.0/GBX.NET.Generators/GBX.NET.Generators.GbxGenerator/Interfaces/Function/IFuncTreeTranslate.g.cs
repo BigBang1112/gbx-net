@@ -37,6 +37,10 @@ public partial interface IFuncTreeTranslateTMNESWC : IFuncTreeTranslate, global:
 {
 }
 
+public partial interface IFuncTreeTranslateTMU : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
+{
+}
+
 public partial interface IFuncTreeTranslateVSK5 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
 }

@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMwCmdBlockMainMembers1 : global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Methods { get; set; }
+}
 public partial interface IMwCmdBlockMain : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -30,12 +35,15 @@ public partial interface IMwCmdBlockMainTMNESWC : IMwCmdBlockMain, global::GBX.N
 {
 }
 
+public partial interface IMwCmdBlockMainTMU : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainMembers1
+{
+}
+
 public partial interface IMwCmdBlockMainVSK5 : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5
 {
 }
 
-public partial interface IMwCmdBlockMainTMF : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF
+public partial interface IMwCmdBlockMainTMF : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainMembers1
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Methods { get; set; }
 }
 

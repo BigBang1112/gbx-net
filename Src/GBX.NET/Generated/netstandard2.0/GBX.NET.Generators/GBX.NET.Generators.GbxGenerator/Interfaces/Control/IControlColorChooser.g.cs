@@ -4,7 +4,12 @@
 namespace GBX.NET.Interfaces.Control;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlColorChooserMembers1 : global::GBX.NET.Interfaces.Control.IControlColorChooser
+public interface IControlColorChooserMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlColorChooser where T0 : class
+{
+    T0? ColorChooserShader { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlColorChooserMembers2 : global::GBX.NET.Interfaces.Control.IControlColorChooser
 {
     Vec2 ColorChooserSize { get; set; }
     int StyleType { get; set; }
@@ -56,6 +61,15 @@ public partial interface IControlColorChooserTMNESWC : IControlColorChooser, glo
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlColorChooserTMU : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlColorChooserVSK5 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -92,9 +106,8 @@ public partial interface IControlColorChooserTMT : IControlColorChooser, global:
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlColorChooserMP4 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1
+public partial interface IControlColorChooserMP4 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
 {
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? ColorChooserShader { get; set; }
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -102,7 +115,7 @@ public partial interface IControlColorChooserMP4 : IControlColorChooser, global:
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlColorChooserTM2020 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1
+public partial interface IControlColorChooserTM2020 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

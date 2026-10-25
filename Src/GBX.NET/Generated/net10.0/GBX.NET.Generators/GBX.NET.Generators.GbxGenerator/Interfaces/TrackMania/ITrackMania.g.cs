@@ -14,6 +14,10 @@ public partial interface ITrackMania : IClassVersion<global::GBX.NET.Engines.Tra
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface ITrackManiaTMU : ITrackMania, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU
+{
+}
+
 public partial interface ITrackManiaTMF : ITrackMania, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF
 {
 }

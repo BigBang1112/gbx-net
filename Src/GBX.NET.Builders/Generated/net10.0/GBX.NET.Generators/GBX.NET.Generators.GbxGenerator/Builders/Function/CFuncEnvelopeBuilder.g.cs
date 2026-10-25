@@ -7,7 +7,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CFuncEnvelopeBuilderBase() { }
     private protected CFuncEnvelopeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAmplitude(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, SupportedGames1);
     public TSelf WithFrequency(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, SupportedGames1);
     public TSelf WithKeyFramePos1(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, SupportedGames1);
@@ -27,6 +27,7 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -46,6 +47,13 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build() => BuildNode(CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
+    }
+    public partial class TMU : CFuncEnvelopeBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncEnvelope Build() => BuildNode(CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnvelope node);
     }
     public partial class VSK5 : CFuncEnvelopeBuilderBase<VSK5>

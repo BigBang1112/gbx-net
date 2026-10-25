@@ -47,6 +47,10 @@ public partial interface IGameCtnChallengeParametersTMNESWC : IGameCtnChallengeP
 {
 }
 
+public partial interface IGameCtnChallengeParametersTMU : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
+{
+}
+
 public partial interface IGameCtnChallengeParametersVSK5 : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
 }

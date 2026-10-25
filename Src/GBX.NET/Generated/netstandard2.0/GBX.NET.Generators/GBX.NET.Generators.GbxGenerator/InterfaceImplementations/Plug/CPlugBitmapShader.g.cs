@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM2020
+public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? global::GBX.NET.Interfaces.Plug.IPlugBitmapShader.BitmapToSwap
     {
@@ -66,6 +66,16 @@ public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBi
         set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Shader
+    {
+        get => Shader;
+        set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.BitmapToSwap
+    {
+        get => BitmapToSwap;
+        set => BitmapToSwap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.Shader
     {
         get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

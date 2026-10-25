@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMPU, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMSX, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMT, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM2020
+public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMPU, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMSX, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMU, global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMT, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? GetCustomCampaignsInterfaceReferences() => CustomCampaigns;
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetInboxMessagesInterfaceReferences() => InboxMessages;

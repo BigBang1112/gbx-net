@@ -8,7 +8,7 @@ CGameControlCard 0x0309A000
   bool UseDelays
   bool
 
-0x002
+0x002 [TMU]
   bool UseDelays
   bool
   bool

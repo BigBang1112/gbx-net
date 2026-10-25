@@ -100,11 +100,11 @@ public partial class CControlColorChooser : CControlFrame, IClass
     /// CControlColorChooser 0x001 chunk (ColorChooserShader)
     /// </summary>
     [Chunk(0x0701E001, "ColorChooserShader")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0701E001 : Chunk<CControlColorChooser>
     {
         public override uint Id => 0x0701E001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -121,11 +121,11 @@ public partial class CControlColorChooser : CControlFrame, IClass
     /// CControlColorChooser 0x002 chunk (ColorChooserSize)
     /// </summary>
     [Chunk(0x0701E002, "ColorChooserSize")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0701E002 : Chunk<CControlColorChooser>
     {
         public override uint Id => 0x0701E002;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -142,11 +142,11 @@ public partial class CControlColorChooser : CControlFrame, IClass
     /// CControlColorChooser 0x003 chunk (StyleType)
     /// </summary>
     [Chunk(0x0701E003, "StyleType")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0701E003 : Chunk<CControlColorChooser>
     {
         public override uint Id => 0x0701E003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

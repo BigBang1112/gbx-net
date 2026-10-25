@@ -28,6 +28,10 @@ public partial interface ISceneFxDepthOfField : IClassVersion<global::GBX.NET.En
     int TexSizeN { get; set; }
 }
 
+public partial interface ISceneFxDepthOfFieldTMU : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+{
+}
+
 public partial interface ISceneFxDepthOfFieldTMF : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
 {
 }

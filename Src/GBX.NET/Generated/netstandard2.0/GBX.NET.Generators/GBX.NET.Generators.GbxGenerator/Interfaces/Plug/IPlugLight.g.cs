@@ -41,6 +41,10 @@ public partial interface IPlugLightTMNESWC : IPlugLight, global::GBX.NET.Interfa
 {
 }
 
+public partial interface IPlugLightTMU : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Function.IFuncLightTMU>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMU>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
+{
+}
+
 public partial interface IPlugLightVSK5 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Function.IFuncLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
 }

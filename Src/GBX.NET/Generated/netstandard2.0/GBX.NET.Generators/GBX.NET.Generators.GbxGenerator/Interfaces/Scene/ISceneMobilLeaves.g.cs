@@ -59,6 +59,12 @@ public partial interface ISceneMobilLeavesTMNESWC : ISceneMobilLeaves, global::G
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneMobilLeavesTMU : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneMobilLeavesVSK5 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

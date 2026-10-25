@@ -7,14 +7,14 @@ public abstract class CMotionsBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.E
 {
     private protected CMotionsBuilderBase() { }
     private protected CMotionsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) : base(state) { }
-    public TSelf WithMotions(NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithMotions(NodeRefList<global::GBX.NET.Engines.Motion.CMotion>? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionsBuilderAssignments.GetMotionsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithMotions(params global::GBX.NET.Engines.Motion.CMotion[] values) => WithMotions(new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(values));
     public TSelf WithMotions(IEnumerable<global::GBX.NET.Engines.Motion.CMotion> values) => WithMotions(values.ToArray());
 }
 public abstract class CMotionsBuilderMembers1<TSelf> : CMotionsBuilderBase<TSelf> where TSelf : CMotionsBuilderMembers1<TSelf>
 {
     private protected CMotionsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
 {
@@ -34,6 +34,7 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -75,6 +76,15 @@ public partial class CMotionsBuilder : CMotionsBuilderBase<CMotionsBuilder>
         public TMNESWC WithMotions(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC> values) => WithMotions(values.ToArray());
         public global::GBX.NET.Interfaces.Motion.IMotionsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotions Build() => BuildNode(CMotionsBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
+    }
+    public partial class TMU : CMotionsBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotions> state) : base(state) { }
+        public TMU WithMotions(params global::GBX.NET.Interfaces.Motion.IMotionTMU[] values) => base.WithMotions(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMU>(values, false));
+        public TMU WithMotions(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionTMU> values) => WithMotions(values.ToArray());
+        public global::GBX.NET.Interfaces.Motion.IMotionsTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotions Build() => BuildNode(CMotionsBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotions node);
     }
     public partial class VSK5 : CMotionsBuilderMembers1<VSK5>

@@ -4,7 +4,7 @@ CGameControlDataType 0x0309C000
   string Name
   CGameControlCard CardTemplate
 
-0x001
+0x001 [TMU]
   string Name
   uint ClassId
   CGameControlCard CardTemplate

@@ -43,6 +43,13 @@ public partial interface IPlugShaderGenericTMNESWC : IPlugShaderGeneric, global:
     new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? SolidWiredApply { get; set; }
 }
 
+public partial interface IPlugShaderGenericTMU : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU
+{
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMU? FuncShader { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>? Passes { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? SolidWiredApply { get; set; }
+}
+
 public partial interface IPlugShaderGenericVSK5 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5
 {
     new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader { get; set; }

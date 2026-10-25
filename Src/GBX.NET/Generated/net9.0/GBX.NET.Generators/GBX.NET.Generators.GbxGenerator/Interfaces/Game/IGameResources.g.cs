@@ -11,6 +11,36 @@ public interface IGameResourcesMembers1 : global::GBX.NET.Interfaces.Game.IGameR
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameResourcesMembers2 : global::GBX.NET.Interfaces.Game.IGameResources
 {
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultAvatarBitmapFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultLeagueLogoBitmapFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultOnlineNewsIconBitmapFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTagBitmapFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? EmptyChallengeCustomMusicFid { get; set; }
+    string? FolderGlobalEnvBanners { get; set; }
+    bool HasInterfaceEditorFid { get; set; }
+    bool HasInterfacePuzzleFid { get; set; }
+    bool HasRaceInterfaceFid { get; set; }
+    bool HasReplayInterfaceFid { get; set; }
+    string? HymnsFolder { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfacePuzzleFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? MediaTrackerInterfaceFid { get; set; }
+    string? MenuBackgroundsFolder { get; set; }
+    global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Musics { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumScene { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? RaceInterfaceFid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ReplayInterfaceFid { get; set; }
+    global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Sounds { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleSheetFid { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameResourcesMembers3 : global::GBX.NET.Interfaces.Game.IGameResources
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? UnknownFlagBitmap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameResourcesMembers4 : global::GBX.NET.Interfaces.Game.IGameResources
+{
     global::GBX.NET.Engines.MwFoundations.CMwNod? ArticleIconStyle { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ArticleStyle { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockBitmapFid { get; set; }
@@ -28,13 +58,21 @@ public partial interface IGameResources : IClassVersion<global::GBX.NET.Engines.
 {
 }
 
-public partial interface IGameResourcesTMF : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2
+public partial interface IGameResourcesTMU : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2, global::GBX.NET.Interfaces.Game.IGameResourcesMembers3, global::GBX.NET.Interfaces.Game.IGameResourcesMembers4
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? MenusRemapping { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? UnknownFlagBitmap { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU? PainterSetting
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).PainterSetting);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).PainterSetting = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
-public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers1, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2
+public partial interface IGameResourcesTMF : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers3, global::GBX.NET.Interfaces.Game.IGameResourcesMembers4
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? MenusRemapping { get; set; }
+}
+
+public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers1, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2, global::GBX.NET.Interfaces.Game.IGameResourcesMembers4
 {
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Base
     {
@@ -69,16 +107,12 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetServerSummaryFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardStationMainFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardStationSummaryFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultAvatarBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorEditorFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorModuleFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorVehicleFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultLeagueLogoBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTDecal2dBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMusicFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultOnlineNewsIconBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultSkillScoreComputerFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTagBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTeamLogoBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTransitionInClipFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultTransitionOutClipFid { get; set; }
@@ -94,29 +128,18 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     global::GBX.NET.Engines.MwFoundations.CMwNod? EditorModuleInterfaceFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EditorPixelCheckerImageFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EditorVehicleInterfaceFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? EmptyChallengeCustomMusicFid { get; set; }
-    string? FolderGlobalEnvBanners { get; set; }
     bool HasInterfaceBlockEditorFid { get; set; }
-    bool HasInterfaceEditorFid { get; set; }
     bool HasInterfaceEditorSimpleFid { get; set; }
-    bool HasInterfacePuzzleFid { get; set; }
-    bool HasRaceInterfaceFid { get; set; }
     bool HasRaceNetInterfaceFid { get; set; }
-    bool HasReplayInterfaceFid { get; set; }
-    string? HymnsFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ImageTurboRoulette { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InGameDialogsFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceBlockEditorFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorInventoryModelFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceEditorSimpleFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? InterfacePuzzleFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ManiaPlanetMenuMusic { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ManialinkBrowserOverlayFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialSkyDomeMenu { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialsLibrariesFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? MediaTrackerInterfaceFid { get; set; }
-    string? MenuBackgroundsFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuManialink3dFid { get; set; }
     global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? MenuManialink3dResources { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuManialink3d_BaseStyleFid { get; set; }
@@ -136,19 +159,14 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundInventoryScriptFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundSpeedMeterScriptFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ModulePlaygroundStoreScriptFid { get; set; }
-    global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Musics { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? OffZoneLayerShaderFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? OffZoneSurfaceShaderFid { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnPainterSetting? PainterSetting { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? PlanetSolidFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? PluginsMenuOverlayFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumScene { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? ProgressOverlayFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? RaceInterfaceFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? RaceNetInterfaceFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? ReplayInterfaceFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SceneFxNodRoot { get; set; }
-    global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Sounds { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationBronzeFid { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? StationGameSkin
     {
@@ -160,7 +178,6 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationSilverFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StoryInterfaceFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StyleDefaultTitleLogos { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleSheetFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StyleUrlLink { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SystemDialogsFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SystemMenuFid { get; set; }

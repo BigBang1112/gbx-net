@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoSlope : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020
+public partial class CGameCtnBlockInfoSlope : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020
 {
 }

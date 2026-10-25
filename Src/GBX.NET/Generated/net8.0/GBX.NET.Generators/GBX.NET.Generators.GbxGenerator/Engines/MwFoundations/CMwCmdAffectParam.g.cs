@@ -59,11 +59,11 @@ public partial class CMwCmdAffectParam : CMwCmdInst, IClass
     /// CMwCmdAffectParam 0x001 chunk
     /// </summary>
     [Chunk(0x01033001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk01033001 : Chunk<CMwCmdAffectParam>
     {
         public override uint Id => 0x01033001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
         public int U01;
         public int U02;
 

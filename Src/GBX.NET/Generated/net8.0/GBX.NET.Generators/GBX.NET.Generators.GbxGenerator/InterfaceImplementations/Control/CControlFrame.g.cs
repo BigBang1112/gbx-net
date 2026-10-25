@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlFrame : global::GBX.NET.Interfaces.Control.IControlFrame, global::GBX.NET.Interfaces.Control.IControlFrameTM10, global::GBX.NET.Interfaces.Control.IControlFrameTMPU, global::GBX.NET.Interfaces.Control.IControlFrameTMSX, global::GBX.NET.Interfaces.Control.IControlFrameTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameVSK5, global::GBX.NET.Interfaces.Control.IControlFrameTMF, global::GBX.NET.Interfaces.Control.IControlFrameMP3, global::GBX.NET.Interfaces.Control.IControlFrameTMT, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlFrameTM2020
+public partial class CControlFrame : global::GBX.NET.Interfaces.Control.IControlFrame, global::GBX.NET.Interfaces.Control.IControlFrameTM10, global::GBX.NET.Interfaces.Control.IControlFrameTMPU, global::GBX.NET.Interfaces.Control.IControlFrameTMSX, global::GBX.NET.Interfaces.Control.IControlFrameTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.Control.IControlFrameVSK5, global::GBX.NET.Interfaces.Control.IControlFrameTMF, global::GBX.NET.Interfaces.Control.IControlFrameMP3, global::GBX.NET.Interfaces.Control.IControlFrameTMT, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlFrameTM2020
 {
 }

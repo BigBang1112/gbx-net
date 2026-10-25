@@ -30,6 +30,10 @@ public partial interface IFuncTreeTMNESWC : IFuncTree, global::GBX.NET.Interface
 {
 }
 
+public partial interface IFuncTreeTMU : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMU
+{
+}
+
 public partial interface IFuncTreeVSK5 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5
 {
 }

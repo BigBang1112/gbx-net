@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionShader : global::GBX.NET.Interfaces.Motion.IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderTM10, global::GBX.NET.Interfaces.Motion.IMotionShaderTMPU, global::GBX.NET.Interfaces.Motion.IMotionShaderTMSX, global::GBX.NET.Interfaces.Motion.IMotionShaderTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionShaderVSK5, global::GBX.NET.Interfaces.Motion.IMotionShaderTMF, global::GBX.NET.Interfaces.Motion.IMotionShaderMP3, global::GBX.NET.Interfaces.Motion.IMotionShaderTMT, global::GBX.NET.Interfaces.Motion.IMotionShaderMP4
+public partial class CMotionShader : global::GBX.NET.Interfaces.Motion.IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderTM10, global::GBX.NET.Interfaces.Motion.IMotionShaderTMPU, global::GBX.NET.Interfaces.Motion.IMotionShaderTMSX, global::GBX.NET.Interfaces.Motion.IMotionShaderTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionShaderTMU, global::GBX.NET.Interfaces.Motion.IMotionShaderVSK5, global::GBX.NET.Interfaces.Motion.IMotionShaderTMF, global::GBX.NET.Interfaces.Motion.IMotionShaderMP3, global::GBX.NET.Interfaces.Motion.IMotionShaderTMT, global::GBX.NET.Interfaces.Motion.IMotionShaderMP4
 {
 }

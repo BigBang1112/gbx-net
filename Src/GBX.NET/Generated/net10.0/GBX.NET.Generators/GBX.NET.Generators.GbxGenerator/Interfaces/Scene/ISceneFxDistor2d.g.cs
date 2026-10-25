@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxDistor2dMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneFxDistor2d where T0 : class
+{
+    new T0? BitmapDistor
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor);
+        set => ((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface ISceneFxDistor2d : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxDistor2d>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -20,12 +29,11 @@ public partial interface ISceneFxDistor2d : IClassVersion<global::GBX.NET.Engine
     float DistorScale { get; set; }
 }
 
-public partial interface ISceneFxDistor2dTMF : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
+public partial interface ISceneFxDistor2dTMU : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF? BitmapDistor
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor);
-        set => ((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface ISceneFxDistor2dTMF : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF>
+{
 }
 

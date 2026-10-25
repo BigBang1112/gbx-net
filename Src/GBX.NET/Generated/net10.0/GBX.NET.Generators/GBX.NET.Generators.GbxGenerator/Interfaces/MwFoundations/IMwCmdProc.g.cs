@@ -9,6 +9,10 @@ public partial interface IMwCmdProc : IClassVersion<global::GBX.NET.Engines.MwFo
     global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter { get; set; }
 }
 
+public partial interface IMwCmdProcTMU : IMwCmdProc
+{
+}
+
 public partial interface IMwCmdProcTMF : IMwCmdProc
 {
 }

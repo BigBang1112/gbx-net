@@ -48,6 +48,10 @@ public partial interface IPlugSoundSurfaceTMNESWC : IPlugSoundSurface, global::G
 {
 }
 
+public partial interface IPlugSoundSurfaceTMU : IPlugSoundSurface, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMembers2
+{
+}
+
 public partial interface IPlugSoundSurfaceVSK5 : IPlugSoundSurface, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMembers2
 {
 }

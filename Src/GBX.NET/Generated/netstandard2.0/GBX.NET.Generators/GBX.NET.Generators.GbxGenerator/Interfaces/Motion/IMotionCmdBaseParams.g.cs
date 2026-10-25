@@ -25,6 +25,10 @@ public partial interface IMotionCmdBaseParamsTMNESWC : IMotionCmdBaseParams
 {
 }
 
+public partial interface IMotionCmdBaseParamsTMU : IMotionCmdBaseParams
+{
+}
+
 public partial interface IMotionCmdBaseParamsVSK5 : IMotionCmdBaseParams
 {
 }

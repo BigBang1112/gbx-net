@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.VirtualSkipper;
 
-public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.IVskCollection, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020
+public partial class CVskCollection : global::GBX.NET.Interfaces.VirtualSkipper.IVskCollection, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM10, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMPU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMSX, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMNESWC, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMU, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionVSK5, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMF, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP3, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTMT, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionMP4, global::GBX.NET.Interfaces.VirtualSkipper.IVskCollectionTM2020
 {
 }

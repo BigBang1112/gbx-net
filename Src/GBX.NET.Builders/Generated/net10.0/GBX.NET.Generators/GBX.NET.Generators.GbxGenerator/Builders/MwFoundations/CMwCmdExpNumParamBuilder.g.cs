@@ -7,7 +7,7 @@ public abstract class CMwCmdExpNumParamBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CMwCmdExpNumParamBuilderBase() { }
     private protected CMwCmdExpNumParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
-    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
+    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF | GameVersion.TMU);
 }
 public partial class CMwCmdExpNumParamBuilder : CMwCmdExpNumParamBuilderBase<CMwCmdExpNumParamBuilder>
 {
@@ -18,7 +18,15 @@ public partial class CMwCmdExpNumParamBuilder : CMwCmdExpNumParamBuilderBase<CMw
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01048001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpNumParamBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
     public partial class TMF : CMwCmdExpNumParamBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }

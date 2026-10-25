@@ -1,7 +1,7 @@
 CPlugSoundMood 0x0901B000
 - inherits: CPlugSound
 
-0x000 [TMF, MP4, TM2020]
+0x000 [TMU, TMF, MP4, TM2020]
   int EventCount (local, write: n.Events.Length)
   int EventPeriodCount (local, write: n.Events.Length)
   Event[EventCount] Events

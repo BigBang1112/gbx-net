@@ -39,9 +39,8 @@ public partial interface IGameCtnMediaTrackTMNESWC : IGameCtnMediaTrack, global:
 {
 }
 
-public partial interface IGameCtnMediaTrackTMU : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTMU : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU>
 {
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> Blocks { get; set; }
 }
 
 public partial interface IGameCtnMediaTrackVSK5 : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5>

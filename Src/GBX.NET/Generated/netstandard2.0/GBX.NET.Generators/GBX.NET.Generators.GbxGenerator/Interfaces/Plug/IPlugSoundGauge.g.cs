@@ -86,6 +86,10 @@ public partial interface IPlugSoundGaugeTMNESWC : IPlugSoundGauge, global::GBX.N
 {
 }
 
+public partial interface IPlugSoundGaugeTMU : IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU
+{
+}
+
 public partial interface IPlugSoundGaugeVSK5 : IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5
 {
 }

@@ -31,6 +31,10 @@ public partial interface IFuncShaderLayerUVTMNESWC : IFuncShaderLayerUV, global:
 {
 }
 
+public partial interface IFuncShaderLayerUVTMU : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMU
+{
+}
+
 public partial interface IFuncShaderLayerUVVSK5 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
 {
 }

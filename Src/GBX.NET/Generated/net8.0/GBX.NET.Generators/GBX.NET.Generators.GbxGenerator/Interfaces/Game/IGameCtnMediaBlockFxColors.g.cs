@@ -23,6 +23,10 @@ public partial interface IGameCtnMediaBlockFxColorsTMNESWC : IGameCtnMediaBlockF
 {
 }
 
+public partial interface IGameCtnMediaBlockFxColorsTMU : IGameCtnMediaBlockFxColors, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockFxColorsVSK5 : IGameCtnMediaBlockFxColors, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxVSK5
 {
 }

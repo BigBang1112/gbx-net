@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020
+public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020
 {
     global::GBX.NET.Interfaces.Scene.ISceneLayout? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize.Scene
     {
@@ -16,6 +16,11 @@ public partial class CGameCtnDecorationSize : global::GBX.NET.Interfaces.Game.IG
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC>.Scene
+    {
+        get => Scene;
+        set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU>.Scene
     {
         get => Scene;
         set => Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

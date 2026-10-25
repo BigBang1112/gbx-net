@@ -29,6 +29,10 @@ public partial interface ISceneMessageHandlerTMNESWC : ISceneMessageHandler, glo
 {
 }
 
+public partial interface ISceneMessageHandlerTMU : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
+{
+}
+
 public partial interface ISceneMessageHandlerVSK5 : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
 }

@@ -26,6 +26,10 @@ public partial interface IMwCmdBlockTMNESWC : IMwCmdBlock
 {
 }
 
+public partial interface IMwCmdBlockTMU : IMwCmdBlock
+{
+}
+
 public partial interface IMwCmdBlockVSK5 : IMwCmdBlock
 {
 }

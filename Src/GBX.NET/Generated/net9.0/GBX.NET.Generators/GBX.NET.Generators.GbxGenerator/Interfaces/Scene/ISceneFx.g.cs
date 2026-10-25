@@ -11,6 +11,10 @@ public partial interface ISceneFxTM10 : ISceneFx
 {
 }
 
+public partial interface ISceneFxTMU : ISceneFx
+{
+}
+
 public partial interface ISceneFxTMF : ISceneFx
 {
 }

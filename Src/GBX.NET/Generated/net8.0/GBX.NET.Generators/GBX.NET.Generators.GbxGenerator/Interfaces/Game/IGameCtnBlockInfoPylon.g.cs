@@ -38,6 +38,10 @@ public partial interface IGameCtnBlockInfoPylonTMNESWC : IGameCtnBlockInfoPylon,
 {
 }
 
+public partial interface IGameCtnBlockInfoPylonTMU : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoPylonVSK5 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

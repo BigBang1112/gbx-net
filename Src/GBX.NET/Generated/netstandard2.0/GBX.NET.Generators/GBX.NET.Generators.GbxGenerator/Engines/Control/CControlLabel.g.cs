@@ -250,9 +250,11 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x006 chunk
     /// </summary>
     [Chunk(0x07006006)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07006006 : Chunk<CControlLabel>
     {
         public override uint Id => 0x07006006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

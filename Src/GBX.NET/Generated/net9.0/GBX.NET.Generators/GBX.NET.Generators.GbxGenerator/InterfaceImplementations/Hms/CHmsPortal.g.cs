@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsPortal : global::GBX.NET.Interfaces.Hms.IHmsPortal, global::GBX.NET.Interfaces.Hms.IHmsPortalTM10, global::GBX.NET.Interfaces.Hms.IHmsPortalTMPU, global::GBX.NET.Interfaces.Hms.IHmsPortalTMSX, global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsPortalVSK5, global::GBX.NET.Interfaces.Hms.IHmsPortalTMF, global::GBX.NET.Interfaces.Hms.IHmsPortalMP3, global::GBX.NET.Interfaces.Hms.IHmsPortalTMT
+public partial class CHmsPortal : global::GBX.NET.Interfaces.Hms.IHmsPortal, global::GBX.NET.Interfaces.Hms.IHmsPortalTM10, global::GBX.NET.Interfaces.Hms.IHmsPortalTMPU, global::GBX.NET.Interfaces.Hms.IHmsPortalTMSX, global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsPortalTMU, global::GBX.NET.Interfaces.Hms.IHmsPortalVSK5, global::GBX.NET.Interfaces.Hms.IHmsPortalTMF, global::GBX.NET.Interfaces.Hms.IHmsPortalMP3, global::GBX.NET.Interfaces.Hms.IHmsPortalTMT
 {
 }

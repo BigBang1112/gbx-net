@@ -25,9 +25,11 @@ public partial class CGameApp : CMwNod, IClass
     /// CGameApp 0x000 chunk
     /// </summary>
     [Chunk(0x03005000)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03005000 : Chunk<CGameApp>
     {
         public override uint Id => 0x03005000;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -93,9 +95,11 @@ public partial class CGameApp : CMwNod, IClass
     /// CGameApp 0x002 chunk
     /// </summary>
     [Chunk(0x03005002)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03005002 : Chunk<CGameApp>
     {
         public override uint Id => 0x03005002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -197,9 +201,11 @@ public partial class CGameApp : CMwNod, IClass
     /// CGameApp 0x005 skippable chunk
     /// </summary>
     [Chunk(0x03005005)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03005005 : SkippableChunk<CGameApp>
     {
         public override uint Id => 0x03005005;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public string? U01;
         public string? U02;
         public string? U03;
@@ -233,9 +239,11 @@ public partial class CGameApp : CMwNod, IClass
     /// CGameApp 0x006 chunk
     /// </summary>
     [Chunk(0x03005006)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03005006 : Chunk<CGameApp>
     {
         public override uint Id => 0x03005006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

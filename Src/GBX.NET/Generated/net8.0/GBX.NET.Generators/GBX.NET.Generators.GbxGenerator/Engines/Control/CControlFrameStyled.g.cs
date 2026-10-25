@@ -88,11 +88,11 @@ public partial class CControlFrameStyled : CControlFrame, IClass
     /// CControlFrameStyled 0x001 chunk
     /// </summary>
     [Chunk(0x07026001)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk07026001 : Chunk<CControlFrameStyled>
     {
         public override uint Id => 0x07026001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

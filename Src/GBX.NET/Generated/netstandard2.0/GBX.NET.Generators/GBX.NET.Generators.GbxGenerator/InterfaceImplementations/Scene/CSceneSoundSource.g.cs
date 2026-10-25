@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneSoundSource : global::GBX.NET.Interfaces.Scene.ISceneSoundSource, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMPU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMSX, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMF, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP3, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMT, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP4, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM2020
+public partial class CSceneSoundSource : global::GBX.NET.Interfaces.Scene.ISceneSoundSource, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMPU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMSX, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMF, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP3, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMT, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP4, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM2020
 {
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10.Motion
     {
@@ -21,6 +21,11 @@ public partial class CSceneSoundSource : global::GBX.NET.Interfaces.Scene.IScene
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMU.Motion
     {
         get => Motion;
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

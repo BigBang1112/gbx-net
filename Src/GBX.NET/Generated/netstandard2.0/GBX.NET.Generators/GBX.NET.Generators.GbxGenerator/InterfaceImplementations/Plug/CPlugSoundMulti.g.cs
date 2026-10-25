@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020
+public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020
 {
     global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFromInput
     {

@@ -7,8 +7,8 @@ public abstract class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase<TSelf> : No
 {
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase() { }
     private protected CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.TMNESWC | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
@@ -40,6 +40,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -52,6 +53,13 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder : CCtnMediaBlock
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay Build() => BuildNode(CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
+    }
+    public partial class TMU : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay> state) : base(state) { }
+        public global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay Build() => BuildNode(CCtnMediaBlockUiTMSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay node);
     }
     public partial class VSK5 : CCtnMediaBlockUiTMSimpleEvtsDisplayBuilderMembers1<VSK5>

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMF, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMP3, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMT, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMP4
+public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMU, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMF, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMP3, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayTMT, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMP4
 {
 }

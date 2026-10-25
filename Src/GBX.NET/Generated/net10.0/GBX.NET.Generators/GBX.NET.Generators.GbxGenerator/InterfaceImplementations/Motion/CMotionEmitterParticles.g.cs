@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionEmitterParticles : global::GBX.NET.Interfaces.Motion.IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMP4
+public partial class CMotionEmitterParticles : global::GBX.NET.Interfaces.Motion.IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMU, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMP4
 {
 }

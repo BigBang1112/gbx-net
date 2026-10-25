@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlTimeLine : global::GBX.NET.Interfaces.Control.IControlTimeLine, global::GBX.NET.Interfaces.Control.IControlTimeLineTM10, global::GBX.NET.Interfaces.Control.IControlTimeLineTMPU, global::GBX.NET.Interfaces.Control.IControlTimeLineTMSX, global::GBX.NET.Interfaces.Control.IControlTimeLineTMNESWC, global::GBX.NET.Interfaces.Control.IControlTimeLineVSK5, global::GBX.NET.Interfaces.Control.IControlTimeLineTMF, global::GBX.NET.Interfaces.Control.IControlTimeLineMP3, global::GBX.NET.Interfaces.Control.IControlTimeLineTMT, global::GBX.NET.Interfaces.Control.IControlTimeLineMP4, global::GBX.NET.Interfaces.Control.IControlTimeLineTM2020
+public partial class CControlTimeLine : global::GBX.NET.Interfaces.Control.IControlTimeLine, global::GBX.NET.Interfaces.Control.IControlTimeLineTM10, global::GBX.NET.Interfaces.Control.IControlTimeLineTMPU, global::GBX.NET.Interfaces.Control.IControlTimeLineTMSX, global::GBX.NET.Interfaces.Control.IControlTimeLineTMNESWC, global::GBX.NET.Interfaces.Control.IControlTimeLineTMU, global::GBX.NET.Interfaces.Control.IControlTimeLineVSK5, global::GBX.NET.Interfaces.Control.IControlTimeLineTMF, global::GBX.NET.Interfaces.Control.IControlTimeLineMP3, global::GBX.NET.Interfaces.Control.IControlTimeLineTMT, global::GBX.NET.Interfaces.Control.IControlTimeLineMP4, global::GBX.NET.Interfaces.Control.IControlTimeLineTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlTimeLineTM10.LegacyStyle
     {
@@ -64,6 +64,26 @@ public partial class CControlTimeLine : global::GBX.NET.Interfaces.Control.ICont
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlTimeLineTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlTimeLineTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlTimeLineTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlTimeLineTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlTimeLineVSK5.LegacyStyle
     {

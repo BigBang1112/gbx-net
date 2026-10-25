@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdSleep : global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTM10
+public partial class CMwCmdSleep : global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMU
 {
 }

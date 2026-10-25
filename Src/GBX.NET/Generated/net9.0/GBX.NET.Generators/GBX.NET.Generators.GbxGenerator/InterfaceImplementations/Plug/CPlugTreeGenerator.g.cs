@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugTreeGenerator : global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTM2020
+public partial class CPlugTreeGenerator : global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTM2020
 {
 }

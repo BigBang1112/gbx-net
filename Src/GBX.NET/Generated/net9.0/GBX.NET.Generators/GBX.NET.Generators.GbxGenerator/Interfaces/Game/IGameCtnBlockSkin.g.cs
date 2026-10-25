@@ -35,6 +35,10 @@ public partial interface IGameCtnBlockSkinTMNESWC : IGameCtnBlockSkin, global::G
 {
 }
 
+public partial interface IGameCtnBlockSkinTMU : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
+{
+}
+
 public partial interface IGameCtnBlockSkinVSK5 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
 }

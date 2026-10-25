@@ -37,6 +37,10 @@ public partial interface IGameCtnMediaBlockImageTMNESWC : IGameCtnMediaBlockImag
 {
 }
 
+public partial interface IGameCtnMediaBlockImageTMU : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU>
+{
+}
+
 public partial interface IGameCtnMediaBlockImageVSK5 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5>
 {
 }

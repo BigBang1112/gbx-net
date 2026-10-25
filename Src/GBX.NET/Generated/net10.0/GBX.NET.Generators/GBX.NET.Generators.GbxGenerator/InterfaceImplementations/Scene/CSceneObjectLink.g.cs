@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4
+public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4
 {
 }

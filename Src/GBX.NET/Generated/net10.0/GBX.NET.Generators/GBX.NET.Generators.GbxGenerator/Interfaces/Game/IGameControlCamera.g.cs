@@ -48,6 +48,10 @@ public partial interface IGameControlCameraTMNESWC : IGameControlCamera, global:
 {
 }
 
+public partial interface IGameControlCameraTMU : IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers2
+{
+}
+
 public partial interface IGameControlCameraVSK5 : IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers2
 {
 }

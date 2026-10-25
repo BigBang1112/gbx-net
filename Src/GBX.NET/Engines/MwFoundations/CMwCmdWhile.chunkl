@@ -1,6 +1,6 @@
 CMwCmdWhile 0x01037000
 - inherits: CMwCmdInst
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Condition
   CMwCmdBlock Block

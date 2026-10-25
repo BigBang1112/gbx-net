@@ -35,6 +35,10 @@ public partial interface IMwRefBufferTMNESWC : IMwRefBuffer, global::GBX.NET.Int
 {
 }
 
+public partial interface IMwRefBufferTMU : IMwRefBuffer, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMembers2
+{
+}
+
 public partial interface IMwRefBufferVSK5 : IMwRefBuffer, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMembers2
 {
 }

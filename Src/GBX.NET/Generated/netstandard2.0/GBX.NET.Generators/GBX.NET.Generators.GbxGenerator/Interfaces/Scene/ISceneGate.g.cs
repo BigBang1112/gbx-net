@@ -3,15 +3,23 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneGateMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneGate where T0 : class
+{
+    new T0? FirstPortal { get; set; }
+    new T0? SecondPortal { get; set; }
+}
 public partial interface ISceneGate : IClassVersion<global::GBX.NET.Engines.Scene.CSceneGate>
 {
     global::GBX.NET.Interfaces.Hms.IHmsPortal? FirstPortal { get; set; }
     global::GBX.NET.Interfaces.Hms.IHmsPortal? SecondPortal { get; set; }
 }
 
-public partial interface ISceneGateTMNESWC : ISceneGate
+public partial interface ISceneGateTMNESWC : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC? FirstPortal { get; set; }
-    new global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC? SecondPortal { get; set; }
+}
+
+public partial interface ISceneGateTMU : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMU>
+{
 }
 

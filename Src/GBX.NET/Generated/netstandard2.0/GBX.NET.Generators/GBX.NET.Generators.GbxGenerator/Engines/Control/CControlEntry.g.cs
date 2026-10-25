@@ -252,9 +252,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x008 chunk
     /// </summary>
     [Chunk(0x07009008)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07009008 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009008;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -277,9 +279,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x009 chunk
     /// </summary>
     [Chunk(0x07009009)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07009009 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009009;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

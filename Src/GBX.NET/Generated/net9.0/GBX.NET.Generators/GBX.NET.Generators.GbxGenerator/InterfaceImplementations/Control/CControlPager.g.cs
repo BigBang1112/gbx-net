@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlPager : global::GBX.NET.Interfaces.Control.IControlPager, global::GBX.NET.Interfaces.Control.IControlPagerTM10, global::GBX.NET.Interfaces.Control.IControlPagerTMPU, global::GBX.NET.Interfaces.Control.IControlPagerTMSX, global::GBX.NET.Interfaces.Control.IControlPagerTMNESWC, global::GBX.NET.Interfaces.Control.IControlPagerVSK5, global::GBX.NET.Interfaces.Control.IControlPagerTMF, global::GBX.NET.Interfaces.Control.IControlPagerMP3, global::GBX.NET.Interfaces.Control.IControlPagerTMT, global::GBX.NET.Interfaces.Control.IControlPagerMP4, global::GBX.NET.Interfaces.Control.IControlPagerTM2020
+public partial class CControlPager : global::GBX.NET.Interfaces.Control.IControlPager, global::GBX.NET.Interfaces.Control.IControlPagerTM10, global::GBX.NET.Interfaces.Control.IControlPagerTMPU, global::GBX.NET.Interfaces.Control.IControlPagerTMSX, global::GBX.NET.Interfaces.Control.IControlPagerTMNESWC, global::GBX.NET.Interfaces.Control.IControlPagerTMU, global::GBX.NET.Interfaces.Control.IControlPagerVSK5, global::GBX.NET.Interfaces.Control.IControlPagerTMF, global::GBX.NET.Interfaces.Control.IControlPagerMP3, global::GBX.NET.Interfaces.Control.IControlPagerTMT, global::GBX.NET.Interfaces.Control.IControlPagerMP4, global::GBX.NET.Interfaces.Control.IControlPagerTM2020
 {
 }

@@ -7,7 +7,7 @@ public abstract class CMwCmdExpBoolParamBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CMwCmdExpBoolParamBuilderBase() { }
     private protected CMwCmdExpBoolParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam> state) : base(state) { }
-    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
+    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF | GameVersion.TMU);
 }
 public partial class CMwCmdExpBoolParamBuilder : CMwCmdExpBoolParamBuilderBase<CMwCmdExpBoolParamBuilder>
 {
@@ -18,7 +18,15 @@ public partial class CMwCmdExpBoolParamBuilder : CMwCmdExpBoolParamBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam.Chunk0103D001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpBoolParamBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolParamTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam Build() => BuildNode(CMwCmdExpBoolParamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam node);
+    }
     public partial class TMF : CMwCmdExpBoolParamBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolParam> state) : base(state) { }

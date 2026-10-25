@@ -105,6 +105,10 @@ public partial interface IGameControlCameraTrackManiaRace2TMNESWC : IGameControl
 {
 }
 
+public partial interface IGameControlCameraTrackManiaRace2TMU : IGameControlCameraTrackManiaRace2, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMU, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members1, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU>
+{
+}
+
 public partial interface IGameControlCameraTrackManiaRace2VSK5 : IGameControlCameraTrackManiaRace2, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members1, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2Members2<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>
 {
 }

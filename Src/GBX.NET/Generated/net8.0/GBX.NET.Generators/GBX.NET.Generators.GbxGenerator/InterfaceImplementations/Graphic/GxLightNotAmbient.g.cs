@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Graphic;
 
-public partial class GxLightNotAmbient : global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM10, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020
+public partial class GxLightNotAmbient : global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM10, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMU, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020
 {
 }

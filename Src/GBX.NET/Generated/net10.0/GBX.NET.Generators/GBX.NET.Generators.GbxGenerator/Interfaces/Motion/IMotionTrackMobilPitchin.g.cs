@@ -31,6 +31,10 @@ public partial interface IMotionTrackMobilPitchinTMNESWC : IMotionTrackMobilPitc
 {
 }
 
+public partial interface IMotionTrackMobilPitchinTMU : IMotionTrackMobilPitchin
+{
+}
+
 public partial interface IMotionTrackMobilPitchinVSK5 : IMotionTrackMobilPitchin
 {
 }

@@ -1,12 +1,12 @@
 CPlugSoundSurface 0x0905E000
 - inherits: CPlugSound
 
-0x000 [TMSX, TMNESWC, VSK5, TMF, MP3] // legacy impact, texture and skid sounds by material
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // legacy impact, texture and skid sounds by material
   float EdMaxSpeedKmh = 500f
   int Count (local, write: "n.MaterialSounds?.Length ?? 0")
   MaterialSound[Count] MaterialSounds (version: 0)
 
-0x001 [TMSX, TMNESWC, VSK5, TMF] // impact attenuation
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF] // impact attenuation
   float BigImpactAttenuation = 1.2f
   float SmallImpactAttenuation = 0.8f
 

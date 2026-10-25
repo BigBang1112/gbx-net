@@ -24,6 +24,10 @@ public partial interface IGameCtnCollectorListTMNESWC : IGameCtnCollectorList
 {
 }
 
+public partial interface IGameCtnCollectorListTMU : IGameCtnCollectorList
+{
+}
+
 public partial interface IGameCtnCollectorListVSK5 : IGameCtnCollectorList
 {
 }

@@ -102,11 +102,11 @@ public partial class CSceneFxDistor2d : CSceneFxCompo, IClass
     /// CSceneFxDistor2d 0x001 chunk
     /// </summary>
     [Chunk(0x0A07B001)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0A07B001 : Chunk<CSceneFxDistor2d>
     {
         public override uint Id => 0x0A07B001;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

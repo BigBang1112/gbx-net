@@ -57,6 +57,10 @@ public partial interface IGameManiaTitleTMNESWC : IGameManiaTitle, global::GBX.N
 {
 }
 
+public partial interface IGameManiaTitleTMU : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodTMU
+{
+}
+
 public partial interface IGameManiaTitleVSK5 : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodVSK5
 {
 }

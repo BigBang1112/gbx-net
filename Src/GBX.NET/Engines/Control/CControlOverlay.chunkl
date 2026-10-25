@@ -3,7 +3,7 @@ CControlOverlay 0x07013000
 
 0x000 (empty)
 
-0x001 [TMNESWC] // overlay scene
+0x001 [TMNESWC, TMU] // overlay scene
   CSceneLayout
   float
   float

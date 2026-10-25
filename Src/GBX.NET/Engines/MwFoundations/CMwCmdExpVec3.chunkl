@@ -1,7 +1,7 @@
 CMwCmdExpVec3 0x0105F000
 - inherits: CMwCmdExp
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Exp1
   CMwCmdExp Exp2
   CMwCmdExp Exp3

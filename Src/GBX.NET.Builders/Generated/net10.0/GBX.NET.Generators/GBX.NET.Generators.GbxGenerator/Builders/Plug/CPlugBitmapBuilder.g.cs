@@ -7,8 +7,8 @@ public abstract class CPlugBitmapBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CPlugBitmapBuilderBase() { }
     private protected CPlugBitmapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames5 = GameVersion.TM2020;
@@ -39,7 +39,7 @@ public abstract class CPlugBitmapBuilderMembers1<TSelf> : CPlugBitmapBuilderBase
 public abstract class CPlugBitmapBuilderMembers2<TSelf> : CPlugBitmapBuilderMembers1<TSelf> where TSelf : CPlugBitmapBuilderMembers2<TSelf>
 {
     private protected CPlugBitmapBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state) : base(state) { }
-    public TSelf WithMipMapFadeAlphas(params float[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapFadeAlphasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithMipMapFadeAlphas(params float[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetMipMapFadeAlphasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithMipMapFadeAlphas(IEnumerable<float> values) => WithMipMapFadeAlphas(values.ToArray());
 }
 public abstract class CPlugBitmapBuilderMembers3<TSelf> : CPlugBitmapBuilderMembers2<TSelf> where TSelf : CPlugBitmapBuilderMembers3<TSelf>
@@ -50,7 +50,7 @@ public abstract class CPlugBitmapBuilderMembers3<TSelf> : CPlugBitmapBuilderMemb
 public abstract class CPlugBitmapBuilderMembers4<TSelf> : CPlugBitmapBuilderMembers2<TSelf> where TSelf : CPlugBitmapBuilderMembers4<TSelf>
 {
     private protected CPlugBitmapBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state) : base(state) { }
-    public TSelf WithAtlasCountUVs(params global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUVsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    public TSelf WithAtlasCountUVs(params global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapBuilderAssignments.GetAtlasCountUVsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithAtlasCountUVs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount> values) => WithAtlasCountUVs(values.ToArray());
 }
 public abstract class CPlugBitmapBuilderMembers5<TSelf> : CPlugBitmapBuilderMembers3<TSelf> where TSelf : CPlugBitmapBuilderMembers5<TSelf>
@@ -198,6 +198,7 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -238,6 +239,14 @@ public partial class CPlugBitmapBuilder : CPlugBitmapBuilderBase<CPlugBitmapBuil
         public TMNESWC WithBitmapRender(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC? value) => base.WithBitmapRender(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRender?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmap Build() => BuildNode(CPlugBitmapBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmap node);
+    }
+    public partial class TMU : CPlugBitmapBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmap> state) : base(state) { }
+        public TMU WithBitmapRender(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU? value) => base.WithBitmapRender(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRender?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmap Build() => BuildNode(CPlugBitmapBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmap node);
     }
     public partial class VSK5 : CPlugBitmapBuilderMembers4<VSK5>

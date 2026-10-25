@@ -9,9 +9,11 @@ public abstract class CGameResourcesBuilderBase<TSelf> : NodeBuilder<global::GBX
     private protected CGameResourcesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4;
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF;
-    private protected const GameVersion SupportedGames4 = GameVersion.TM2020;
-    private protected const GameVersion SupportedGames5 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMU;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames6 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames7 = GameVersion.TMF | GameVersion.TMU;
 }
 public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuilderBase<TSelf> where TSelf : CGameResourcesBuilderMembers1<TSelf>
 {
@@ -41,9 +43,79 @@ public abstract class CGameResourcesBuilderMembers1<TSelf> : CGameResourcesBuild
     public TSelf WithShaderInactiveUnavailable(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetShaderInactiveUnavailableAssignment(), value, SupportedGames3);
     public TSelf WithShaderInactiveUnavailableReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetShaderInactiveUnavailableReferenceAssignment(), value, SupportedGames3);
 }
+public abstract class CGameResourcesBuilderMembers2<TSelf> : CGameResourcesBuilderMembers1<TSelf> where TSelf : CGameResourcesBuilderMembers2<TSelf>
+{
+    private protected CGameResourcesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
+    public TSelf WithDefaultAvatarBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultAvatarBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultLeagueLogoBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultLeagueLogoBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultOnlineNewsIconBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultOnlineNewsIconBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultTagBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidAssignment(), value, SupportedGames4);
+    public TSelf WithDefaultTagBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithEmptyChallengeCustomMusicFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidAssignment(), value, SupportedGames4);
+    public TSelf WithEmptyChallengeCustomMusicFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithFolderGlobalEnvBanners(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetFolderGlobalEnvBannersAssignment(), value, SupportedGames4);
+    public TSelf WithHasInterfaceEditorFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorFidAssignment(), value, SupportedGames4);
+    public TSelf WithHasInterfacePuzzleFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfacePuzzleFidAssignment(), value, SupportedGames4);
+    public TSelf WithHasRaceInterfaceFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceInterfaceFidAssignment(), value, SupportedGames4);
+    public TSelf WithHasReplayInterfaceFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasReplayInterfaceFidAssignment(), value, SupportedGames4);
+    public TSelf WithHymnsFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHymnsFolderAssignment(), value, SupportedGames4);
+    public TSelf WithInterfaceEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidAssignment(), value, SupportedGames4);
+    public TSelf WithInterfaceEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithInterfacePuzzleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidAssignment(), value, SupportedGames4);
+    public TSelf WithInterfacePuzzleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithMediaTrackerInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidAssignment(), value, SupportedGames4);
+    public TSelf WithMediaTrackerInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithMenuBackgroundsFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuBackgroundsFolderAssignment(), value, SupportedGames4);
+    public TSelf WithMusics(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMusicsAssignment(), value, SupportedGames4);
+    public TSelf WithMusics(IEnumerable<global::GBX.NET.Engines.Game.CGameResources.NamedNod> values) => WithMusics(values.ToArray());
+    public TSelf WithPainterSetting(global::GBX.NET.Engines.Game.CGameCtnPainterSetting? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingAssignment(), value, SupportedGames4);
+    public TSelf WithPainterSettingReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithPodiumScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneAssignment(), value, SupportedGames4);
+    public TSelf WithPodiumSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithRaceInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidAssignment(), value, SupportedGames4);
+    public TSelf WithRaceInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithReplayInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidAssignment(), value, SupportedGames4);
+    public TSelf WithReplayInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithSounds(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSoundsAssignment(), value, SupportedGames4);
+    public TSelf WithSounds(IEnumerable<global::GBX.NET.Engines.Game.CGameResources.NamedNod> values) => WithSounds(values.ToArray());
+    public TSelf WithStyleSheetFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidAssignment(), value, SupportedGames4);
+    public TSelf WithStyleSheetFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidReferenceAssignment(), value, SupportedGames4);
+}
 public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameResourcesBuilder>
 {
     private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameResources();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D00F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D012());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D015());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D016());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D018());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D019());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D01F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D020());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D021());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D022());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D023());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameResources();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D009());
@@ -56,7 +128,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D02A());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe1(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameResources();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D000());
@@ -111,7 +183,7 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D047() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe2(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameResources CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameResources();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D045(game));
@@ -124,23 +196,34 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameResources.Chunk0302D04F() { Version = 0 });
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMU : CGameResourcesBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
+        public TMU WithPainterSetting(global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU? value) => base.WithPainterSetting(value is null ? (global::GBX.NET.Engines.Game.CGameCtnPainterSetting?)null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithUnknownFlagBitmap(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapAssignment(), value, SupportedGames7);
+        public TMU WithUnknownFlagBitmapReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapReferenceAssignment(), value, SupportedGames7);
+        public global::GBX.NET.Interfaces.Game.IGameResourcesTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameResources node);
+    }
     public partial class TMF : CGameResourcesBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
-        public TMF WithMenusRemapping(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingAssignment(), value, SupportedGames5);
-        public TMF WithMenusRemappingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingReferenceAssignment(), value, SupportedGames5);
-        public TMF WithUnknownFlagBitmap(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapAssignment(), value, SupportedGames5);
-        public TMF WithUnknownFlagBitmapReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapReferenceAssignment(), value, SupportedGames5);
+        public TMF WithMenusRemapping(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingAssignment(), value, SupportedGames6);
+        public TMF WithMenusRemappingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenusRemappingReferenceAssignment(), value, SupportedGames6);
+        public TMF WithUnknownFlagBitmap(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapAssignment(), value, SupportedGames7);
+        public TMF WithUnknownFlagBitmapReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetUnknownFlagBitmapReferenceAssignment(), value, SupportedGames7);
         public global::GBX.NET.Interfaces.Game.IGameResourcesTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameResources node);
     }
-    public partial class MP4 : CGameResourcesBuilderMembers1<MP4>
+    public partial class MP4 : CGameResourcesBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
         public MP4 WithAudioBalance_Base(global::GBX.NET.Engines.Plug.CPlugAudioBalance? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAudioBalance_BaseAssignment(), value, SupportedGames1);
@@ -174,8 +257,6 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithCardStationMainFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationMainFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithCardStationSummaryFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidAssignment(), value, SupportedGames1);
         public MP4 WithCardStationSummaryFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCardStationSummaryFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultAvatarBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultAvatarBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultAvatarBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultEditorEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultEditorEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorEditorFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultEditorMeshFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidAssignment(), value, SupportedGames2);
@@ -184,18 +265,12 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithDefaultEditorModuleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorModuleFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultEditorVehicleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultEditorVehicleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorVehicleFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultLeagueLogoBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultLeagueLogoBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultLeagueLogoBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultMTDecal2dBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultMTDecal2dBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMTDecal2dBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultMusicFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultMusicFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultMusicFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultOnlineNewsIconBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultOnlineNewsIconBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultOnlineNewsIconBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultSkillScoreComputerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultSkillScoreComputerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultSkillScoreComputerFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultTagBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultTagBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTagBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultTeamLogoBitmapFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidAssignment(), value, SupportedGames1);
         public MP4 WithDefaultTeamLogoBitmapFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTeamLogoBitmapFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithDefaultTransitionInClipFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultTransitionInClipFidAssignment(), value, SupportedGames1);
@@ -226,31 +301,19 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithEditorPixelCheckerImageFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorPixelCheckerImageFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithEditorVehicleInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidAssignment(), value, SupportedGames1);
         public MP4 WithEditorVehicleInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEditorVehicleInterfaceFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithEmptyChallengeCustomMusicFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidAssignment(), value, SupportedGames1);
-        public MP4 WithEmptyChallengeCustomMusicFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetEmptyChallengeCustomMusicFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithFolderGlobalEnvBanners(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetFolderGlobalEnvBannersAssignment(), value, SupportedGames1);
         public MP4 WithHasInterfaceBlockEditorFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceBlockEditorFidAssignment(), value, SupportedGames1);
-        public MP4 WithHasInterfaceEditorFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorFidAssignment(), value, SupportedGames1);
         public MP4 WithHasInterfaceEditorSimpleFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfaceEditorSimpleFidAssignment(), value, SupportedGames1);
-        public MP4 WithHasInterfacePuzzleFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasInterfacePuzzleFidAssignment(), value, SupportedGames1);
-        public MP4 WithHasRaceInterfaceFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceInterfaceFidAssignment(), value, SupportedGames1);
         public MP4 WithHasRaceNetInterfaceFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasRaceNetInterfaceFidAssignment(), value, SupportedGames1);
-        public MP4 WithHasReplayInterfaceFid(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHasReplayInterfaceFidAssignment(), value, SupportedGames1);
-        public MP4 WithHymnsFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetHymnsFolderAssignment(), value, SupportedGames1);
         public MP4 WithImageTurboRoulette(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteAssignment(), value, SupportedGames1);
         public MP4 WithImageTurboRouletteReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetImageTurboRouletteReferenceAssignment(), value, SupportedGames1);
         public MP4 WithInGameDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidAssignment(), value, SupportedGames1);
         public MP4 WithInGameDialogsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInGameDialogsFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceBlockEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceBlockEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceBlockEditorFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithInterfaceEditorFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidAssignment(), value, SupportedGames1);
-        public MP4 WithInterfaceEditorFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceEditorInventoryModelFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceEditorInventoryModelFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorInventoryModelFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceEditorSimpleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidAssignment(), value, SupportedGames1);
         public MP4 WithInterfaceEditorSimpleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfaceEditorSimpleFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithInterfacePuzzleFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidAssignment(), value, SupportedGames1);
-        public MP4 WithInterfacePuzzleFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetInterfacePuzzleFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithManiaPlanetMenuMusic(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicAssignment(), value, SupportedGames1);
         public MP4 WithManiaPlanetMenuMusicReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManiaPlanetMenuMusicReferenceAssignment(), value, SupportedGames1);
         public MP4 WithManialinkBrowserOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetManialinkBrowserOverlayFidAssignment(), value, SupportedGames1);
@@ -259,9 +322,6 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithMaterialSkyDomeMenuReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialSkyDomeMenuReferenceAssignment(), value, SupportedGames1);
         public MP4 WithMaterialsLibrariesFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidAssignment(), value, SupportedGames1);
         public MP4 WithMaterialsLibrariesFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMaterialsLibrariesFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithMediaTrackerInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidAssignment(), value, SupportedGames1);
-        public MP4 WithMediaTrackerInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMediaTrackerInterfaceFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithMenuBackgroundsFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuBackgroundsFolderAssignment(), value, SupportedGames1);
         public MP4 WithMenuManialink3dFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidAssignment(), value, SupportedGames1);
         public MP4 WithMenuManialink3dFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithMenuManialink3dResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMenuManialink3dResourcesAssignment(), value, SupportedGames1);
@@ -300,32 +360,20 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithModulePlaygroundSpeedMeterScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundSpeedMeterScriptFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithModulePlaygroundStoreScriptFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidAssignment(), value, SupportedGames1);
         public MP4 WithModulePlaygroundStoreScriptFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetModulePlaygroundStoreScriptFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithMusics(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetMusicsAssignment(), value, SupportedGames1);
-        public MP4 WithMusics(IEnumerable<global::GBX.NET.Engines.Game.CGameResources.NamedNod> values) => WithMusics(values.ToArray());
         public MP4 WithOffZoneLayerShaderFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidAssignment(), value, SupportedGames1);
         public MP4 WithOffZoneLayerShaderFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneLayerShaderFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithOffZoneSurfaceShaderFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidAssignment(), value, SupportedGames1);
         public MP4 WithOffZoneSurfaceShaderFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetOffZoneSurfaceShaderFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithPainterSetting(global::GBX.NET.Engines.Game.CGameCtnPainterSetting? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingAssignment(), value, SupportedGames1);
-        public MP4 WithPainterSettingReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPainterSettingReferenceAssignment(), value, SupportedGames1);
         public MP4 WithPlanetSolidFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidAssignment(), value, SupportedGames1);
         public MP4 WithPlanetSolidFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPlanetSolidFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithPluginsMenuOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidAssignment(), value, SupportedGames1);
         public MP4 WithPluginsMenuOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPluginsMenuOverlayFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithPodiumScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneAssignment(), value, SupportedGames1);
-        public MP4 WithPodiumSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetPodiumSceneReferenceAssignment(), value, SupportedGames1);
         public MP4 WithProgressOverlayFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidAssignment(), value, SupportedGames1);
         public MP4 WithProgressOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetProgressOverlayFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithRaceInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidAssignment(), value, SupportedGames1);
-        public MP4 WithRaceInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceInterfaceFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithRaceNetInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidAssignment(), value, SupportedGames1);
         public MP4 WithRaceNetInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetRaceNetInterfaceFidReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithReplayInterfaceFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidAssignment(), value, SupportedGames1);
-        public MP4 WithReplayInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetReplayInterfaceFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithSceneFxNodRoot(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootAssignment(), value, SupportedGames1);
         public MP4 WithSceneFxNodRootReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSceneFxNodRootReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithSounds(params global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSoundsAssignment(), value, SupportedGames1);
-        public MP4 WithSounds(IEnumerable<global::GBX.NET.Engines.Game.CGameResources.NamedNod> values) => WithSounds(values.ToArray());
         public MP4 WithStationBronzeFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidAssignment(), value, SupportedGames1);
         public MP4 WithStationBronzeFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationBronzeFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithStationGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStationGameSkinAssignment(), value, SupportedGames1);
@@ -341,8 +389,6 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithStoryInterfaceFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStoryInterfaceFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithStyleDefaultTitleLogos(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosAssignment(), value, SupportedGames1);
         public MP4 WithStyleDefaultTitleLogosReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleDefaultTitleLogosReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithStyleSheetFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidAssignment(), value, SupportedGames1);
-        public MP4 WithStyleSheetFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleSheetFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithStyleUrlLink(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkAssignment(), value, SupportedGames1);
         public MP4 WithStyleUrlLinkReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetStyleUrlLinkReferenceAssignment(), value, SupportedGames1);
         public MP4 WithSystemDialogsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemDialogsFidAssignment(), value, SupportedGames1);
@@ -353,32 +399,32 @@ public partial class CGameResourcesBuilder : CGameResourcesBuilderBase<CGameReso
         public MP4 WithSystemOverlayFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetSystemOverlayFidReferenceAssignment(), value, SupportedGames1);
         public MP4 WithTitleTemplateFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTitleTemplateFolderAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Game.IGameResourcesMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameResources node);
     }
     public partial class TM2020 : CGameResourcesBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameResources> state) : base(state) { }
-        public TM2020 WithAdnFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAdnFolderAssignment(), value, SupportedGames4);
-        public TM2020 WithBadWordDict(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictAssignment(), value, SupportedGames4);
-        public TM2020 WithBadWordDictReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithCompiledWordDictionary(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCompiledWordDictionaryAssignment(), value, SupportedGames4);
+        public TM2020 WithAdnFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetAdnFolderAssignment(), value, SupportedGames5);
+        public TM2020 WithBadWordDict(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictAssignment(), value, SupportedGames5);
+        public TM2020 WithBadWordDictReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetBadWordDictReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithCompiledWordDictionary(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetCompiledWordDictionaryAssignment(), value, SupportedGames5);
         public TM2020 WithCompiledWordDictionary(IEnumerable<byte> values) => WithCompiledWordDictionary(values.ToArray());
-        public TM2020 WithDefaultEditorMediaTrackerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidAssignment(), value, SupportedGames4);
-        public TM2020 WithDefaultEditorMediaTrackerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidReferenceAssignment(), value, SupportedGames4);
+        public TM2020 WithDefaultEditorMediaTrackerFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidAssignment(), value, SupportedGames5);
+        public TM2020 WithDefaultEditorMediaTrackerFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMediaTrackerFidReferenceAssignment(), value, SupportedGames5);
         public TM2020 WithDefaultEditorMeshFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidAssignment(), value, SupportedGames2);
         public TM2020 WithDefaultEditorMeshFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorMeshFidReferenceAssignment(), value, SupportedGames2);
-        public TM2020 WithDefaultEditorSkinFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidAssignment(), value, SupportedGames4);
-        public TM2020 WithDefaultEditorSkinFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterDefaultSettingsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterDefaultSettingsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterMoodFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterMoodFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterSceneLayoutFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidAssignment(), value, SupportedGames4);
-        public TM2020 WithIconShooterSceneLayoutFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithTrafficFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTrafficFolderAssignment(), value, SupportedGames4);
+        public TM2020 WithDefaultEditorSkinFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidAssignment(), value, SupportedGames5);
+        public TM2020 WithDefaultEditorSkinFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetDefaultEditorSkinFidReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterDefaultSettingsFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterDefaultSettingsFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterDefaultSettingsFidReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterMoodFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterMoodFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterMoodFidReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterSceneLayoutFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidAssignment(), value, SupportedGames5);
+        public TM2020 WithIconShooterSceneLayoutFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetIconShooterSceneLayoutFidReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithTrafficFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameResourcesBuilderAssignments.GetTrafficFolderAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.Game.IGameResourcesTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameResources Build() => BuildNode(CGameResourcesBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameResources node);
     }
 }

@@ -6,7 +6,7 @@ CTrackManiaControlCheckPointList 0x2406E000
   CControlStyle
   CControlStyle
 
-0x001 // line styles
+0x001 [TMU] // line styles
   StyleSheetElem
   StyleSheetElem
   StyleSheetElem

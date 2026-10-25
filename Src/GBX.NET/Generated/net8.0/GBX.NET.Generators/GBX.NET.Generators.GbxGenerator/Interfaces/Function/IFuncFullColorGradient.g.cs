@@ -20,6 +20,10 @@ public partial interface IFuncFullColorGradient : IClassVersion<global::GBX.NET.
     Vec3 KeyFrameValue3 { get; set; }
 }
 
+public partial interface IFuncFullColorGradientTMU : IFuncFullColorGradient, global::GBX.NET.Interfaces.Function.IFuncTMU
+{
+}
+
 public partial interface IFuncFullColorGradientTMF : IFuncFullColorGradient, global::GBX.NET.Interfaces.Function.IFuncTMF
 {
 }

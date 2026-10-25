@@ -39,6 +39,10 @@ public partial interface IPlugBitmapRenderSubTMNESWC : IPlugBitmapRenderSub, glo
 {
 }
 
+public partial interface IPlugBitmapRenderSubTMU : IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>
+{
+}
+
 public partial interface IPlugBitmapRenderSubVSK5 : IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
 }

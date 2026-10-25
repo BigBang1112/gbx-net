@@ -43,6 +43,10 @@ public partial interface IFuncPlugTMNESWC : IFuncPlug, global::GBX.NET.Interface
 {
 }
 
+public partial interface IFuncPlugTMU : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
+{
+}
+
 public partial interface IFuncPlugVSK5 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
 }

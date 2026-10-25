@@ -37,6 +37,10 @@ public partial interface IPlugBitmapRenderLightOccTMNESWC : IPlugBitmapRenderLig
 {
 }
 
+public partial interface IPlugBitmapRenderLightOccTMU : IPlugBitmapRenderLightOcc, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+}
+
 public partial interface IPlugBitmapRenderLightOccVSK5 : IPlugBitmapRenderLightOcc, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
 }

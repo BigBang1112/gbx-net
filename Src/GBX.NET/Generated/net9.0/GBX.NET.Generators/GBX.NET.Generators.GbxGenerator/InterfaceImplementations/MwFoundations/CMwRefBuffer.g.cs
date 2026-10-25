@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwRefBuffer : global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM10, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020
+public partial class CMwRefBuffer : global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM10, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020
 {
 }

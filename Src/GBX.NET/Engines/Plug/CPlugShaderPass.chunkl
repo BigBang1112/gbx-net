@@ -51,10 +51,10 @@ CPlugShaderPass 0x09067000
     GpuLoadFx[] PixelLoadFxs = empty (version: 0)
     vec4[] PixelFxValues = empty
 
-0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4] // VertexTextures
+0x006 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4] // VertexTextures
   CPlugBitmapSampler[] VertexTextures = empty
 
-0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT] // render-state flags
+0x007 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT] // render-state flags
   datauint Flags = 1
 
 0x008 [TMSX, TMNESWC] // vertex and pixel GPU effects
@@ -72,7 +72,7 @@ CPlugShaderPass 0x09067000
   PipelineGpu VertexPipeline
   PipelineGpu PixelPipeline
 
-0x00A [VSK5, TMF, MP3, TMT, MP4, TM2020] // sampler exclusions and GPU effects
+0x00A [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // sampler exclusions and GPU effects
   id[] SkipSamplers = empty
   PipelineGpu VertexPipeline
   PipelineGpu PixelPipeline

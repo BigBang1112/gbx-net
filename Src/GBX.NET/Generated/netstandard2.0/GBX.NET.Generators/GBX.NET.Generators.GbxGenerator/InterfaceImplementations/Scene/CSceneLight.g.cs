@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneLight : global::GBX.NET.Interfaces.Scene.ISceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTM10, global::GBX.NET.Interfaces.Scene.ISceneLightTMPU, global::GBX.NET.Interfaces.Scene.ISceneLightTMSX, global::GBX.NET.Interfaces.Scene.ISceneLightTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneLightMP4, global::GBX.NET.Interfaces.Scene.ISceneLightTM2020
+public partial class CSceneLight : global::GBX.NET.Interfaces.Scene.ISceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTM10, global::GBX.NET.Interfaces.Scene.ISceneLightTMPU, global::GBX.NET.Interfaces.Scene.ISceneLightTMSX, global::GBX.NET.Interfaces.Scene.ISceneLightTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneLightMP4, global::GBX.NET.Interfaces.Scene.ISceneLightTM2020
 {
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneLightTM10.Motion
     {
@@ -21,6 +21,11 @@ public partial class CSceneLight : global::GBX.NET.Interfaces.Scene.ISceneLight,
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneLightTMNESWC.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneLightTMU.Motion
     {
         get => Motion;
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

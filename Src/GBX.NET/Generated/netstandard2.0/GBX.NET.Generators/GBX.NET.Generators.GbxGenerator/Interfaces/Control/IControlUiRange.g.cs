@@ -46,6 +46,14 @@ public partial interface IControlUiRangeTMNESWC : IControlUiRange, global::GBX.N
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlUiRangeTMU : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+{
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlUiRangeVSK5 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

@@ -1,7 +1,7 @@
 CPlugSolid 0x09005000
 - inherits: CPlug
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // PlugIdCounter
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // PlugIdCounter
   int PlugIdCounter = 1
 
 0x006 // legacy mass and inertia
@@ -52,7 +52,7 @@ CPlugSolid 0x09005000
   if !HasModel
     CPlugTree Tree
 
-0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // mass, inertia, and friction
+0x00E [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF] // mass, inertia, and friction
   float Mass = 1
   vec3 CenterOfMass
   mat3 InverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f)
@@ -64,10 +64,10 @@ CPlugSolid 0x09005000
   float
   float
 
-0x010 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy vehicle environment
+0x010 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy vehicle environment
   CMwNod // CSceneVehicleEnvironment
 
-0x011 [VSK5, TMF, MP3, TMT, MP4, TM2020] // model and tree
+0x011 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // model and tree
   bool UseModel = true
   bool HasModel (local, write: "Model is not null")
   if HasModel
@@ -76,7 +76,7 @@ CPlugSolid 0x09005000
   if !HasModel
     CPlugTree Tree
 
-0x012 [VSK5, TMF] // TileCountU
+0x012 [TMU, VSK5, TMF] // TileCountU
   byte TileCountU
 
 0x017 [MP3.v3, TMT.v3, MP4.v3, TM2020.v3] // SolidPreLightGen

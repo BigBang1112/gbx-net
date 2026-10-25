@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.GameData;
 
-public partial class CGameItemModel : global::GBX.NET.Interfaces.GameData.IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameItemModelTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020
+public partial class CGameItemModel : global::GBX.NET.Interfaces.GameData.IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameItemModelTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelTMU, global::GBX.NET.Interfaces.GameData.IGameItemModelVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020
 {
     global::GBX.NET.Engines.MwFoundations.CMwNod? global::GBX.NET.Interfaces.GameData.IGameCtnCollector.IconFid
     {
@@ -131,6 +131,86 @@ public partial class CGameItemModel : global::GBX.NET.Interfaces.GameData.IGameI
         set => StemMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC>.Vehicle
+    {
+        get => Vehicle;
+        set => Vehicle = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.BannerProfileFid
+    {
+        get => BannerProfileFid;
+        set => BannerProfileFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU>.DecoratorSolid
+    {
+        get => DecoratorSolid;
+        set => DecoratorSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.FrontLight
+    {
+        get => FrontLight;
+        set => FrontLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.FrontLightSmall
+    {
+        get => FrontLightSmall;
+        set => FrontLightSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU>.LowQualitySolid
+    {
+        get => LowQualitySolid;
+        set => LowQualitySolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialDetails
+    {
+        get => MaterialDetails;
+        set => MaterialDetails = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialGlass
+    {
+        get => MaterialGlass;
+        set => MaterialGlass = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialPilot
+    {
+        get => MaterialPilot;
+        set => MaterialPilot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialSkin
+    {
+        get => MaterialSkin;
+        set => MaterialSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.ProjFront
+    {
+        get => ProjFront;
+        set => ProjFront = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.ProjShadow
+    {
+        get => ProjShadow;
+        set => ProjShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.IScene2dTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMU>.RaceInterfaceFid
+    {
+        get => RaceInterfaceFid;
+        set => RaceInterfaceFid = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>.RearLight
+    {
+        get => RearLight;
+        set => RearLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.StemBumpMaterial
+    {
+        get => StemBumpMaterial;
+        set => StemBumpMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.StemMaterial
+    {
+        get => StemMaterial;
+        set => StemMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU>.Vehicle
     {
         get => Vehicle;
         set => Vehicle = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

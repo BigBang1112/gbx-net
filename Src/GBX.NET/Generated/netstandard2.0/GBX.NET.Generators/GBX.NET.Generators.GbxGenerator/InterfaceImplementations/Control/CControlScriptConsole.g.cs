@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlScriptConsole : global::GBX.NET.Interfaces.Control.IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM10, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMPU, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMSX, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptConsoleVSK5, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMF, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP3, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMT, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP4, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM2020
+public partial class CControlScriptConsole : global::GBX.NET.Interfaces.Control.IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM10, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMPU, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMSX, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMU, global::GBX.NET.Interfaces.Control.IControlScriptConsoleVSK5, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMF, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP3, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMT, global::GBX.NET.Interfaces.Control.IControlScriptConsoleMP4, global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlScriptConsoleTM10.LegacyStyle
     {
@@ -64,6 +64,26 @@ public partial class CControlScriptConsole : global::GBX.NET.Interfaces.Control.
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlScriptConsoleTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlScriptConsoleVSK5.LegacyStyle
     {

@@ -7,7 +7,7 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CMotionDayTimeBuilderBase() { }
     private protected CMotionDayTimeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithDayMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialAssignment(), value, SupportedGames1);
     public TSelf WithDayMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetDayMaterialReferenceAssignment(), value, SupportedGames1);
     public TSelf WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionDayTimeBuilderAssignments.GetLegacyModelAssignment(), value, SupportedGames1);
@@ -18,7 +18,7 @@ public abstract class CMotionDayTimeBuilderBase<TSelf> : NodeBuilder<global::GBX
 public abstract class CMotionDayTimeBuilderMembers1<TSelf> : CMotionDayTimeBuilderBase<TSelf> where TSelf : CMotionDayTimeBuilderMembers1<TSelf>
 {
     private protected CMotionDayTimeBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMotionDayTimeBuilder : CMotionDayTimeBuilderBase<CMotionDayTimeBuilder>
 {
@@ -38,6 +38,7 @@ public partial class CMotionDayTimeBuilder : CMotionDayTimeBuilderBase<CMotionDa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -80,6 +81,15 @@ public partial class CMotionDayTimeBuilder : CMotionDayTimeBuilderBase<CMotionDa
         public TMNESWC WithNightMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? value) => base.WithNightMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionDayTime Build() => BuildNode(CMotionDayTimeBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionDayTime node);
+    }
+    public partial class TMU : CMotionDayTimeBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionDayTime> state) : base(state) { }
+        public TMU WithDayMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? value) => base.WithDayMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithNightMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? value) => base.WithNightMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionDayTime Build() => BuildNode(CMotionDayTimeBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionDayTime node);
     }
     public partial class VSK5 : CMotionDayTimeBuilderMembers1<VSK5>

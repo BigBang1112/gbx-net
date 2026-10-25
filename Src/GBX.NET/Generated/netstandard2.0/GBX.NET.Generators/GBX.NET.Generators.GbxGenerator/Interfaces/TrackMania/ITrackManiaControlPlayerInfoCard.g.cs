@@ -50,6 +50,16 @@ public partial interface ITrackManiaControlPlayerInfoCardTMNESWC : ITrackManiaCo
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMU
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+    bool ShowBasedTimeInfosInRounds { get; set; }
+}
+
 public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }

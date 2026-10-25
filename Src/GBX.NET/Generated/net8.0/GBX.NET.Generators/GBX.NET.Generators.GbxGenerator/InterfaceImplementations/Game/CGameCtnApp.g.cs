@@ -3,6 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnApp : global::GBX.NET.Interfaces.Game.IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppTMF, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020
+public partial class CGameCtnApp : global::GBX.NET.Interfaces.Game.IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppTMF, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020
 {
+    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? GetBaseOfficialCampaignsInterfaceReferences() => BaseOfficialCampaigns;
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockFxBlurDepth : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepth, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTM2020
+public partial class CGameCtnMediaBlockFxBlurDepth : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepth, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTM2020
 {
 }

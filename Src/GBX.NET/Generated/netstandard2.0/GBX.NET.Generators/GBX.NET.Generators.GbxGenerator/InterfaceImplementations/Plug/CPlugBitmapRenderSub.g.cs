@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020
+public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.ShaderToForce
     {
@@ -11,6 +11,11 @@ public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlu
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.ShaderToForce
+    {
+        get => ShaderToForce;
+        set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.ShaderToForce
     {
         get => ShaderToForce;
         set => ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

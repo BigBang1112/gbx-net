@@ -37,6 +37,10 @@ public partial interface IMotionSkelSimpleTMNESWC : IMotionSkelSimple, global::G
 {
 }
 
+public partial interface IMotionSkelSimpleTMU : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU>
+{
+}
+
 public partial interface IMotionSkelSimpleVSK5 : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5>
 {
 }

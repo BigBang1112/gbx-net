@@ -65,7 +65,7 @@ CControlEnum 0x0700A000
   int TextMode (inherited)
   CFuncEnum FuncEnum
 
-0x009 // looping, display and text modes, enum and clip length
+0x009 [TMU] // looping, display and text modes, enum and clip length
   bool IsLooping
   int
   int DisplayType
@@ -73,5 +73,5 @@ CControlEnum 0x0700A000
   CFuncEnum FuncEnum
   float ClipLength (inherited)
 
-0x00A
+0x00A [TMU]
   id[]

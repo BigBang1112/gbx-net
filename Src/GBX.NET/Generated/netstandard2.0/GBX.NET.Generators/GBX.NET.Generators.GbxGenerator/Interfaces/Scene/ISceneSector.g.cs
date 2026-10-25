@@ -30,6 +30,10 @@ public partial interface ISceneSectorTMNESWC : ISceneSector, global::GBX.NET.Int
 {
 }
 
+public partial interface ISceneSectorTMU : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMU>
+{
+}
+
 public partial interface ISceneSectorVSK5 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5>
 {
 }

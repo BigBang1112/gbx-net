@@ -8,6 +8,10 @@ public partial interface IMwCmdExpBool : IClassVersion<global::GBX.NET.Engines.M
     bool Bool { get; set; }
 }
 
+public partial interface IMwCmdExpBoolTMU : IMwCmdExpBool
+{
+}
+
 public partial interface IMwCmdExpBoolTMF : IMwCmdExpBool
 {
 }

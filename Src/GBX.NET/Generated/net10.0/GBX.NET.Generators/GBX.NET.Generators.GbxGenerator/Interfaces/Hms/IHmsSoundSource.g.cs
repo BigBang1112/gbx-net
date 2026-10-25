@@ -51,6 +51,10 @@ public partial interface IHmsSoundSourceTMNESWC : IHmsSoundSource, global::GBX.N
 {
 }
 
+public partial interface IHmsSoundSourceTMU : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
+{
+}
+
 public partial interface IHmsSoundSourceVSK5 : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
 }

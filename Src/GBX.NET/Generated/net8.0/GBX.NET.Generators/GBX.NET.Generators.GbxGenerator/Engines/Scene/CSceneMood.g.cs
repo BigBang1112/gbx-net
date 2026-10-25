@@ -35,11 +35,11 @@ public partial class CSceneMood : CMwNod, IClass
     /// CSceneMood 0x000 chunk
     /// </summary>
     [Chunk(0x0A042000)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
     public partial class Chunk0A042000 : Chunk<CSceneMood>
     {
         public override uint Id => 0x0A042000;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

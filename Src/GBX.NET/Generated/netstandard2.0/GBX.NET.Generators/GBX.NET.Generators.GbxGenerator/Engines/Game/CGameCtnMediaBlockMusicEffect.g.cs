@@ -38,11 +38,11 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
     /// CGameCtnMediaBlockMusicEffect 0x000 chunk
     /// </summary>
     [Chunk(0x030A6000)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
     {
         public override uint Id => 0x030A6000;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

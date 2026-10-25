@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoSlopeTMNESWC : IGameCtnBlockInfoSlope,
 {
 }
 
+public partial interface IGameCtnBlockInfoSlopeTMU : IGameCtnBlockInfoSlope, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoSlopeVSK5 : IGameCtnBlockInfoSlope, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

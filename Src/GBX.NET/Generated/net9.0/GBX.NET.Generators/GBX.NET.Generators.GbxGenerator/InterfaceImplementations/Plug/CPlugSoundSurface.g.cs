@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSoundSurface : global::GBX.NET.Interfaces.Plug.IPlugSoundSurface, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTM2020
+public partial class CPlugSoundSurface : global::GBX.NET.Interfaces.Plug.IPlugSoundSurface, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundSurfaceTM2020
 {
 }

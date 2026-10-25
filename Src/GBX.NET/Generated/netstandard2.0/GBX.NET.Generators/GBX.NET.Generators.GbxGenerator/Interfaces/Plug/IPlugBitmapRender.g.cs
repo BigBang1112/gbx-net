@@ -65,6 +65,10 @@ public partial interface IPlugBitmapRenderTMNESWC : IPlugBitmapRender, global::G
 {
 }
 
+public partial interface IPlugBitmapRenderTMU : IPlugBitmapRender, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers7
+{
+}
+
 public partial interface IPlugBitmapRenderVSK5 : IPlugBitmapRender, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMembers7
 {
 }

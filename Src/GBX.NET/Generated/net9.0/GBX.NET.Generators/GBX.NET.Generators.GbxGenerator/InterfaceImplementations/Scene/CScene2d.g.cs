@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CScene2d : global::GBX.NET.Interfaces.Scene.IScene2d, global::GBX.NET.Interfaces.Scene.IScene2dTM10, global::GBX.NET.Interfaces.Scene.IScene2dTMPU, global::GBX.NET.Interfaces.Scene.IScene2dTMSX, global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC, global::GBX.NET.Interfaces.Scene.IScene2dVSK5, global::GBX.NET.Interfaces.Scene.IScene2dTMF, global::GBX.NET.Interfaces.Scene.IScene2dMP3, global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.Scene.IScene2dTM2020
+public partial class CScene2d : global::GBX.NET.Interfaces.Scene.IScene2d, global::GBX.NET.Interfaces.Scene.IScene2dTM10, global::GBX.NET.Interfaces.Scene.IScene2dTMPU, global::GBX.NET.Interfaces.Scene.IScene2dTMSX, global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC, global::GBX.NET.Interfaces.Scene.IScene2dTMU, global::GBX.NET.Interfaces.Scene.IScene2dVSK5, global::GBX.NET.Interfaces.Scene.IScene2dTMF, global::GBX.NET.Interfaces.Scene.IScene2dMP3, global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.Scene.IScene2dTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>? GetCamerasInterfaceReferences() => Cameras;
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>? GetLightsInterfaceReferences() => Lights;

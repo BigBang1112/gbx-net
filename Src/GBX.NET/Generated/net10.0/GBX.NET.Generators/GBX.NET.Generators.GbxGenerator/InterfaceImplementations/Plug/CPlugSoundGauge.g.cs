@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSoundGauge : global::GBX.NET.Interfaces.Plug.IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTM2020
+public partial class CPlugSoundGauge : global::GBX.NET.Interfaces.Plug.IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeTM2020
 {
 }

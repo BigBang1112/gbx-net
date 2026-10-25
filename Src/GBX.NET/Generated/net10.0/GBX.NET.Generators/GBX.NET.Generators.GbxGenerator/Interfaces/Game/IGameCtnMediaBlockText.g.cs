@@ -38,6 +38,10 @@ public partial interface IGameCtnMediaBlockTextTMNESWC : IGameCtnMediaBlockText,
 {
 }
 
+public partial interface IGameCtnMediaBlockTextTMU : IGameCtnMediaBlockText, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU>
+{
+}
+
 public partial interface IGameCtnMediaBlockTextVSK5 : IGameCtnMediaBlockText, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5>
 {
 }

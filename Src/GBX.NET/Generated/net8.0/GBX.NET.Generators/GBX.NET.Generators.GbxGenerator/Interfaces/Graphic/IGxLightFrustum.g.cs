@@ -32,6 +32,10 @@ public partial interface IGxLightFrustumTMNESWC : IGxLightFrustum, global::GBX.N
 {
 }
 
+public partial interface IGxLightFrustumTMU : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMU
+{
+}
+
 public partial interface IGxLightFrustumVSK5 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5
 {
 }

@@ -48,6 +48,10 @@ public partial interface IMotionPlayerTMNESWC : IMotionPlayer, global::GBX.NET.I
 {
 }
 
+public partial interface IMotionPlayerTMU : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMU, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMU>
+{
+}
+
 public partial interface IMotionPlayerVSK5 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseVSK5>
 {
 }

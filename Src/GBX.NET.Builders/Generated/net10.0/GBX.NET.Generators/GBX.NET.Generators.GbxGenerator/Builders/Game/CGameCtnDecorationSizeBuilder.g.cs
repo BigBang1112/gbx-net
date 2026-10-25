@@ -7,7 +7,7 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnDecorationSizeBuilderBase() { }
     private protected CGameCtnDecorationSizeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithBaseHeightBase(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightBaseAssignment(), value, SupportedGames1);
     public TSelf WithEditionZoneMax(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMaxAssignment(), value, SupportedGames1);
@@ -41,6 +41,7 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -63,6 +64,14 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public TMNESWC WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC? value) => base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build() => BuildNode(CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
+    }
+    public partial class TMU : CGameCtnDecorationSizeBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
+        public TMU WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU? value) => base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build() => BuildNode(CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
     }
     public partial class VSK5 : CGameCtnDecorationSizeBuilderBase<VSK5>

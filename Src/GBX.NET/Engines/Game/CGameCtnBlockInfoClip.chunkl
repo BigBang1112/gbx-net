@@ -14,7 +14,7 @@ constructor
   if LegacySymmetricalClip != null
     SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
-0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // SymmetricalClipId
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // SymmetricalClipId
   id SymmetricalClipId
 
 0x003 // legacy free clip flag

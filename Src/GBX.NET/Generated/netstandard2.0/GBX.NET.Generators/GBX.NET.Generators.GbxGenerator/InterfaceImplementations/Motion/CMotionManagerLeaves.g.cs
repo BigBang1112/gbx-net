@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT
+public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT
 {
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves? global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves.MobilLeaves
     {
@@ -26,6 +26,11 @@ public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IM
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC>.MobilLeaves
+    {
+        get => MobilLeaves;
+        set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU? global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU>.MobilLeaves
     {
         get => MobilLeaves;
         set => MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

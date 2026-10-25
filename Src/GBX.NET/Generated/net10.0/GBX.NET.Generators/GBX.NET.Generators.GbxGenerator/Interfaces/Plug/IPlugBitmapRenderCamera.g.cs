@@ -30,6 +30,10 @@ public partial interface IPlugBitmapRenderCameraTMNESWC : IPlugBitmapRenderCamer
 {
 }
 
+public partial interface IPlugBitmapRenderCameraTMU : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
+{
+}
+
 public partial interface IPlugBitmapRenderCameraVSK5 : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
 }

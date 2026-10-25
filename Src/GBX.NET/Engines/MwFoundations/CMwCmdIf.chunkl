@@ -1,7 +1,7 @@
 CMwCmdIf 0x01036000
 - inherits: CMwCmdInst
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Condition
   CMwCmdBlock IfBlock
   CMwCmdBlock ElseBlock

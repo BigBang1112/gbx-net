@@ -4,7 +4,16 @@
 namespace GBX.NET.Interfaces.Control;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlColorChooserMembers1 : global::GBX.NET.Interfaces.Control.IControlColorChooser
+public interface IControlColorChooserMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlColorChooser where T0 : class
+{
+    T0? ColorChooserShader
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).ColorChooserShader);
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).ColorChooserShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlColorChooserMembers2 : global::GBX.NET.Interfaces.Control.IControlColorChooser
 {
     Vec2 ColorChooserSize { get; set; }
     int StyleType { get; set; }
@@ -120,6 +129,35 @@ public partial interface IControlColorChooserTMNESWC : IControlColorChooser, glo
     }
 }
 
+public partial interface IControlColorChooserTMU : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).CreateScript);
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlColorChooser)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
 public partial interface IControlColorChooserVSK5 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
@@ -216,13 +254,8 @@ public partial interface IControlColorChooserTMT : IControlColorChooser, global:
     }
 }
 
-public partial interface IControlColorChooserMP4 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1
+public partial interface IControlColorChooserMP4 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
 {
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? ColorChooserShader
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlColorChooser)this).ColorChooserShader);
-        set => ((global::GBX.NET.Engines.Control.CControlColorChooser)this).ColorChooserShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -246,7 +279,7 @@ public partial interface IControlColorChooserMP4 : IControlColorChooser, global:
     }
 }
 
-public partial interface IControlColorChooserTM2020 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers1
+public partial interface IControlColorChooserTM2020 : IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.Control.IControlColorChooserMembers2
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout

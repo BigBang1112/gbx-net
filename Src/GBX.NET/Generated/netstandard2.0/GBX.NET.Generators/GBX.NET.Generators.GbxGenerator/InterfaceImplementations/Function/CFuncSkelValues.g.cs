@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC, global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF
+public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF
 {
     global::GBX.NET.Interfaces.Function.IFuncSkel? global::GBX.NET.Interfaces.Function.IFuncSkelValues.Skel
     {
@@ -26,6 +26,11 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC>.Skel
+    {
+        get => Skel;
+        set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMU? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMU>.Skel
     {
         get => Skel;
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

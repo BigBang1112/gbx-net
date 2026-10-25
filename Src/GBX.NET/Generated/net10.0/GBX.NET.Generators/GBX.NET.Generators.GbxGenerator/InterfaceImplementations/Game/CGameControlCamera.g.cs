@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCamera : global::GBX.NET.Interfaces.Game.IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraTM2020
+public partial class CGameControlCamera : global::GBX.NET.Interfaces.Game.IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraTM2020
 {
 }

@@ -40,6 +40,10 @@ public partial interface IPlugSoundMoodTMNESWC : IPlugSoundMood, global::GBX.NET
 {
 }
 
+public partial interface IPlugSoundMoodTMU : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers2
+{
+}
+
 public partial interface IPlugSoundMoodVSK5 : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5
 {
 }

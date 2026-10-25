@@ -68,9 +68,11 @@ public partial class CHmsZoneOverlay : CHmsZone, IClass
     /// CHmsZoneOverlay 0x000 chunk
     /// </summary>
     [Chunk(0x06009000)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk06009000 : Chunk<CHmsZoneOverlay>
     {
         public override uint Id => 0x06009000;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public bool U01;
         public float U02;
         public float U03;

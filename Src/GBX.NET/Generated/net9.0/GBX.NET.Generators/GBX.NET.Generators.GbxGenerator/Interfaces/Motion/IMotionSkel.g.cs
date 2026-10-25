@@ -64,6 +64,15 @@ public partial interface IMotionSkelTMNESWC : IMotionSkel, global::GBX.NET.Inter
     }
 }
 
+public partial interface IMotionSkelTMU : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMU, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMU>
+{
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface IMotionSkelVSK5 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5>
 {
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? SkelValues

@@ -38,6 +38,10 @@ public partial interface IPlugCharPhySpecialPropertyTMNESWC : IPlugCharPhySpecia
 {
 }
 
+public partial interface IPlugCharPhySpecialPropertyTMU : IPlugCharPhySpecialProperty
+{
+}
+
 public partial interface IPlugCharPhySpecialPropertyVSK5 : IPlugCharPhySpecialProperty
 {
 }

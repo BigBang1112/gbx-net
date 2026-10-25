@@ -7,11 +7,11 @@ public abstract class CPlugBitmapRenderSubBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CPlugBitmapRenderSubBuilderBase() { }
     private protected CPlugBitmapRenderSubBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithIVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, SupportedGames1);
     public TSelf WithIVIdRef(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, SupportedGames1);
     public TSelf WithSVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, SupportedGames1);
@@ -35,14 +35,14 @@ public abstract class CPlugBitmapRenderSubBuilderMembers3<TSelf> : CPlugBitmapRe
 {
     private protected CPlugBitmapRenderSubBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> state) : base(state) { }
     public TSelf WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, SupportedGames2);
-    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithShaderToForce(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderSubBuilderAssignments.GetShaderToForceAssignment(), value, SupportedGames2);
     public TSelf WithShaderToForceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderSubBuilderAssignments.GetShaderToForceReferenceAssignment(), value, SupportedGames2);
 }
 public abstract class CPlugBitmapRenderSubBuilderMembers4<TSelf> : CPlugBitmapRenderSubBuilderMembers3<TSelf> where TSelf : CPlugBitmapRenderSubBuilderMembers4<TSelf>
 {
     private protected CPlugBitmapRenderSubBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> state) : base(state) { }
-    public TSelf WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, SupportedGames3);
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames3);
 }
@@ -112,6 +112,7 @@ public partial class CPlugBitmapRenderSubBuilder : CPlugBitmapRenderSubBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -155,6 +156,16 @@ public partial class CPlugBitmapRenderSubBuilder : CPlugBitmapRenderSubBuilderBa
         public TMNESWC WithShaderToForce(global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? value) => base.WithShaderToForce(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub Build() => BuildNode(CPlugBitmapRenderSubBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node);
+    }
+    public partial class TMU : CPlugBitmapRenderSubBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> state) : base(state) { }
+        public TMU WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithShaderToForce(global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? value) => base.WithShaderToForce(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub Build() => BuildNode(CPlugBitmapRenderSubBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node);
     }
     public partial class VSK5 : CPlugBitmapRenderSubBuilderMembers4<VSK5>

@@ -62,6 +62,10 @@ public partial interface IHmsItemTMNESWC : IHmsItem, global::GBX.NET.Interfaces.
 {
 }
 
+public partial interface IHmsItemTMU : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>
+{
+}
+
 public partial interface IHmsItemVSK5 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>
 {
 }

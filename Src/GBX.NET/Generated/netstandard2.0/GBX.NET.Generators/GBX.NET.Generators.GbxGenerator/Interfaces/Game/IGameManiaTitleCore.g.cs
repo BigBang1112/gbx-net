@@ -30,6 +30,10 @@ public partial interface IGameManiaTitleCoreTMNESWC : IGameManiaTitleCore, globa
 {
 }
 
+public partial interface IGameManiaTitleCoreTMU : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTMU
+{
+}
+
 public partial interface IGameManiaTitleCoreVSK5 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodVSK5
 {
 }

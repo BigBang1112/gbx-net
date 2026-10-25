@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugMusic : global::GBX.NET.Interfaces.Plug.IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTM10, global::GBX.NET.Interfaces.Plug.IPlugMusicTMPU, global::GBX.NET.Interfaces.Plug.IPlugMusicTMSX, global::GBX.NET.Interfaces.Plug.IPlugMusicTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMusicVSK5, global::GBX.NET.Interfaces.Plug.IPlugMusicTMF, global::GBX.NET.Interfaces.Plug.IPlugMusicMP3, global::GBX.NET.Interfaces.Plug.IPlugMusicTMT, global::GBX.NET.Interfaces.Plug.IPlugMusicMP4, global::GBX.NET.Interfaces.Plug.IPlugMusicTM2020
+public partial class CPlugMusic : global::GBX.NET.Interfaces.Plug.IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTM10, global::GBX.NET.Interfaces.Plug.IPlugMusicTMPU, global::GBX.NET.Interfaces.Plug.IPlugMusicTMSX, global::GBX.NET.Interfaces.Plug.IPlugMusicTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMusicTMU, global::GBX.NET.Interfaces.Plug.IPlugMusicVSK5, global::GBX.NET.Interfaces.Plug.IPlugMusicTMF, global::GBX.NET.Interfaces.Plug.IPlugMusicMP3, global::GBX.NET.Interfaces.Plug.IPlugMusicTMT, global::GBX.NET.Interfaces.Plug.IPlugMusicMP4, global::GBX.NET.Interfaces.Plug.IPlugMusicTM2020
 {
 }

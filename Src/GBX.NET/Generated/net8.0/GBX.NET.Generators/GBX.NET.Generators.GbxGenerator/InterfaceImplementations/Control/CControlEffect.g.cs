@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffect : global::GBX.NET.Interfaces.Control.IControlEffect, global::GBX.NET.Interfaces.Control.IControlEffectTM10, global::GBX.NET.Interfaces.Control.IControlEffectTMPU, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.Control.IControlEffectTM2020
+public partial class CControlEffect : global::GBX.NET.Interfaces.Control.IControlEffect, global::GBX.NET.Interfaces.Control.IControlEffectTM10, global::GBX.NET.Interfaces.Control.IControlEffectTMPU, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.Control.IControlEffectTM2020
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockSound : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTM2020
+public partial class CGameCtnMediaBlockSound : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTM2020
 {
 }

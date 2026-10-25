@@ -3,24 +3,29 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleSheetMembers1<T0, T1> : global::GBX.NET.Interfaces.Control.IControlStyleSheet where T0 : class where T1 : class
+{
+    new T0? Buffer { get; set; }
+    new T1? MasterStyle { get; set; }
+}
 public partial interface IControlStyleSheet : IClassVersion<global::GBX.NET.Engines.Control.CControlStyleSheet>
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? Buffer { get; set; }
     Vec3[]? Colors { get; set; }
     float[]? ColorsAlpha { get; set; }
     global::GBX.NET.Interfaces.Control.IControlStyle? MasterStyle { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerIconStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextBackgroundStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextStyle { get; set; }
 }
 
-public partial interface IControlStyleSheetMP4 : IControlStyleSheet
+public partial interface IControlStyleSheetTMU : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU, global::GBX.NET.Interfaces.Control.IControlStyleTMU>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? Buffer { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? MasterStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerIconStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextBackgroundStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextStyle { get; set; }
+}
+
+public partial interface IControlStyleSheetMP4 : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4, global::GBX.NET.Interfaces.Control.IControlStyleMP4>
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerIconStyle { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextBackgroundStyle { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextStyle { get; set; }
 }
 

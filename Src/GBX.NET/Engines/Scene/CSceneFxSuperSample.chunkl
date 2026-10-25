@@ -1,7 +1,7 @@
 CSceneFxSuperSample 0x0A035000
 - inherits: CSceneFxCompo
 
-0x000
+0x000 [TMU]
   int
   int
   bool

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugPointsInSphereOpt : global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMSX, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020
+public partial class CPlugPointsInSphereOpt : global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMSX, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020
 {
 }

@@ -160,11 +160,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     /// CControlIconIndex 0x000 chunk
     /// </summary>
     [Chunk(0x0702B000)]
-    [ChunkGameVersion(GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0702B000 : Chunk<CControlIconIndex>
     {
         public override uint Id => 0x0702B000;
-        public override GameVersion GameVersion => GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

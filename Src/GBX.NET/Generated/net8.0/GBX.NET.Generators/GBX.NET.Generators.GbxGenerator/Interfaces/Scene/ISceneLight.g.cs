@@ -51,6 +51,15 @@ public partial interface ISceneLightTMNESWC : ISceneLight, global::GBX.NET.Inter
     }
 }
 
+public partial interface ISceneLightTMU : ISceneLight, global::GBX.NET.Interfaces.Scene.IScenePocTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLight)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLight)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface ISceneLightVSK5 : ISceneLight, global::GBX.NET.Interfaces.Scene.IScenePocVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion

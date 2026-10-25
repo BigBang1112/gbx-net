@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneTM2020
+public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTMU, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? GetMotionManagerModelsInterfaceReferences() => MotionManagerModels;
 }

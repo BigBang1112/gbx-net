@@ -40,6 +40,10 @@ public partial interface IHmsPortalTMNESWC : IHmsPortal
 {
 }
 
+public partial interface IHmsPortalTMU : IHmsPortal
+{
+}
+
 public partial interface IHmsPortalVSK5 : IHmsPortal
 {
 }

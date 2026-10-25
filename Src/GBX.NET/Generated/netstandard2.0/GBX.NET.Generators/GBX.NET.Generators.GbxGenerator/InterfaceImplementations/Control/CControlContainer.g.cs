@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlContainer : global::GBX.NET.Interfaces.Control.IControlContainer, global::GBX.NET.Interfaces.Control.IControlContainerTM10, global::GBX.NET.Interfaces.Control.IControlContainerTMPU, global::GBX.NET.Interfaces.Control.IControlContainerTMSX, global::GBX.NET.Interfaces.Control.IControlContainerTMNESWC, global::GBX.NET.Interfaces.Control.IControlContainerVSK5, global::GBX.NET.Interfaces.Control.IControlContainerTMF, global::GBX.NET.Interfaces.Control.IControlContainerMP3, global::GBX.NET.Interfaces.Control.IControlContainerTMT, global::GBX.NET.Interfaces.Control.IControlContainerMP4, global::GBX.NET.Interfaces.Control.IControlContainerTM2020
+public partial class CControlContainer : global::GBX.NET.Interfaces.Control.IControlContainer, global::GBX.NET.Interfaces.Control.IControlContainerTM10, global::GBX.NET.Interfaces.Control.IControlContainerTMPU, global::GBX.NET.Interfaces.Control.IControlContainerTMSX, global::GBX.NET.Interfaces.Control.IControlContainerTMNESWC, global::GBX.NET.Interfaces.Control.IControlContainerTMU, global::GBX.NET.Interfaces.Control.IControlContainerVSK5, global::GBX.NET.Interfaces.Control.IControlContainerTMF, global::GBX.NET.Interfaces.Control.IControlContainerMP3, global::GBX.NET.Interfaces.Control.IControlContainerTMT, global::GBX.NET.Interfaces.Control.IControlContainerMP4, global::GBX.NET.Interfaces.Control.IControlContainerTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain? global::GBX.NET.Interfaces.Control.IControlContainer.CreateScript
     {
@@ -89,6 +89,31 @@ public partial class CControlContainer : global::GBX.NET.Interfaces.Control.ICon
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU>.CreateScript
+    {
+        get => CreateScript;
+        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlContainerTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlContainerTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlContainerTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlContainerTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.CreateScript
     {

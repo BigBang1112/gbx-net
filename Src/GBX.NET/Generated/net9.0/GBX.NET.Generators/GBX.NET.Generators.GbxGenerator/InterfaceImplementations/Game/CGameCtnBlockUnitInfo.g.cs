@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020
+public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? GetClipsInterfaceReferences() => Clips;
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? GetClipsBottomInterfaceReferences() => ClipsBottom;

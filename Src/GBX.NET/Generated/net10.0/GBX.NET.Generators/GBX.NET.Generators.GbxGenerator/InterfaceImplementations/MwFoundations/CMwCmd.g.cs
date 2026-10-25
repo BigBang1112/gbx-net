@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmd : global::GBX.NET.Interfaces.MwFoundations.IMwCmd, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMF, global::GBX.NET.Interfaces.MwFoundations.IMwCmdMP3, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMT, global::GBX.NET.Interfaces.MwFoundations.IMwCmdMP4
+public partial class CMwCmd : global::GBX.NET.Interfaces.MwFoundations.IMwCmd, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMF, global::GBX.NET.Interfaces.MwFoundations.IMwCmdMP3, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMT, global::GBX.NET.Interfaces.MwFoundations.IMwCmdMP4
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlFrameAnimated : global::GBX.NET.Interfaces.Control.IControlFrameAnimated, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTM10, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMPU, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMSX, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedVSK5, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMF, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedMP3, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMT, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedMP4, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTM2020
+public partial class CControlFrameAnimated : global::GBX.NET.Interfaces.Control.IControlFrameAnimated, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTM10, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMPU, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMSX, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMU, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedVSK5, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMF, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedMP3, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTMT, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedMP4, global::GBX.NET.Interfaces.Control.IControlFrameAnimatedTM2020
 {
 }

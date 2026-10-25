@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM2020
+public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM2020
 {
 }

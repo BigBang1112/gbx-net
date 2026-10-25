@@ -16,6 +16,10 @@ public partial interface IMwCmdExpEgal : IClassVersion<global::GBX.NET.Engines.M
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
+public partial interface IMwCmdExpEgalTMU : IMwCmdExpEgal, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMU
+{
+}
+
 public partial interface IMwCmdExpEgalTMF : IMwCmdExpEgal, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMF
 {
 }

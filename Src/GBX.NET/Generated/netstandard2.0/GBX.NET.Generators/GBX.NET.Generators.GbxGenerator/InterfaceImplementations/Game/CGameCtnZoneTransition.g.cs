@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM2020
+public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3>.BlockInfoTransition
     {

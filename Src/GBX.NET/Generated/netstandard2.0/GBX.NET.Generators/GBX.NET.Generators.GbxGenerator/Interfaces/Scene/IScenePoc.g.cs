@@ -13,8 +13,6 @@ public partial interface IScenePoc : IClassVersion<global::GBX.NET.Engines.Scene
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     bool IsActive { get; set; }
-    global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    string? Name { get; set; }
 }
 
 public partial interface IScenePocTM10 : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10
@@ -35,6 +33,11 @@ public partial interface IScenePocTMSX : IScenePoc, global::GBX.NET.Interfaces.S
 public partial interface IScenePocTMNESWC : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
+}
+
+public partial interface IScenePocTMU : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
 }
 
 public partial interface IScenePocVSK5 : IScenePoc, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5

@@ -13,3 +13,8 @@ public partial interface IMwCmdSleepTM10 : IMwCmdSleep
     new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum? Time { get; set; }
 }
 
+public partial interface IMwCmdSleepTMU : IMwCmdSleep
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? Time { get; set; }
+}
+

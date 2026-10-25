@@ -3,14 +3,19 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectMotion : global::GBX.NET.Interfaces.Control.IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMSX
+public partial class CControlEffectMotion : global::GBX.NET.Interfaces.Control.IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMU
 {
     global::GBX.NET.Interfaces.Function.IFuncEnvelope? global::GBX.NET.Interfaces.Control.IControlEffectMotion.Envelope
     {
         get => Envelope;
         set => Envelope = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMotionTMSX.Envelope
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.Envelope
+    {
+        get => Envelope;
+        set => Envelope = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU? global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU>.Envelope
     {
         get => Envelope;
         set => Envelope = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

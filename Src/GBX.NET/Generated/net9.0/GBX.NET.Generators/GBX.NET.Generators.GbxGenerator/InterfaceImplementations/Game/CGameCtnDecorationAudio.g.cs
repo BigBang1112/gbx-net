@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationAudio : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020
+public partial class CGameCtnDecorationAudio : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020
 {
 }

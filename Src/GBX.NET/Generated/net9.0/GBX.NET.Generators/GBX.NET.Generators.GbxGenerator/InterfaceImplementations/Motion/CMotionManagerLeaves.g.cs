@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT
+public partial class CMotionManagerLeaves : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT
 {
 }

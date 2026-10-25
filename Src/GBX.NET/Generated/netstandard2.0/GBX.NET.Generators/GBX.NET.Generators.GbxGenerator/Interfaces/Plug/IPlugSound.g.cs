@@ -103,6 +103,10 @@ public partial interface IPlugSoundTMNESWC : IPlugSound, global::GBX.NET.Interfa
 {
 }
 
+public partial interface IPlugSoundTMU : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
+{
+}
+
 public partial interface IPlugSoundVSK5 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers6
 {
 }

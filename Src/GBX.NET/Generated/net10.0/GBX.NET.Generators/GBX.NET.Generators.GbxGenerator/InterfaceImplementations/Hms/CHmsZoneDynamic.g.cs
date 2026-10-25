@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsZoneDynamic : global::GBX.NET.Interfaces.Hms.IHmsZoneDynamic, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicMP3, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTM2020
+public partial class CHmsZoneDynamic : global::GBX.NET.Interfaces.Hms.IHmsZoneDynamic, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMU, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicMP3, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneDynamicTM2020
 {
 }

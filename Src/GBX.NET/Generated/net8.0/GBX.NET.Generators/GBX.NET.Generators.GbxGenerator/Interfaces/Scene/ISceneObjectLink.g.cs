@@ -44,6 +44,10 @@ public partial interface ISceneObjectLinkTMNESWC : ISceneObjectLink, global::GBX
 {
 }
 
+public partial interface ISceneObjectLinkTMU : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
+{
+}
+
 public partial interface ISceneObjectLinkVSK5 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
 }

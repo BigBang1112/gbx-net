@@ -44,6 +44,10 @@ public partial interface IPlugSoundEngineTMNESWC : IPlugSoundEngine, global::GBX
 {
 }
 
+public partial interface IPlugSoundEngineTMU : IPlugSoundEngine, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>
+{
+}
+
 public partial interface IPlugSoundEngineVSK5 : IPlugSoundEngine, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5
 {
 }

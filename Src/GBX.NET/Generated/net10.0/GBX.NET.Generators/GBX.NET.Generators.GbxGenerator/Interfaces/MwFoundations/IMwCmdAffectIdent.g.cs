@@ -24,6 +24,10 @@ public partial interface IMwCmdAffectIdentTMNESWC : IMwCmdAffectIdent
 {
 }
 
+public partial interface IMwCmdAffectIdentTMU : IMwCmdAffectIdent
+{
+}
+
 public partial interface IMwCmdAffectIdentVSK5 : IMwCmdAffectIdent
 {
 }

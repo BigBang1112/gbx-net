@@ -35,6 +35,10 @@ public partial interface IMotionWeatherTMNESWC : IMotionWeather, global::GBX.NET
 {
 }
 
+public partial interface IMotionWeatherTMU : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMU
+{
+}
+
 public partial interface IMotionWeatherVSK5 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
 {
 }

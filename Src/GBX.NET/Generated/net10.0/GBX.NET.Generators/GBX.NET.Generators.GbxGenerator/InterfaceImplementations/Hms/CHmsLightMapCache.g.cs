@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsLightMapCache : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020
+public partial class CHmsLightMapCache : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMU, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020
 {
 }

@@ -107,6 +107,10 @@ public partial interface IPlugWeatherTMNESWC : IPlugWeather, global::GBX.NET.Int
 {
 }
 
+public partial interface IPlugWeatherTMU : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTMU>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+}
+
 public partial interface IPlugWeatherVSK5 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5>
 {
 }

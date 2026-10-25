@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaClipGroup : global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroup, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020
+public partial class CGameCtnMediaClipGroup : global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroup, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020
 {
 }

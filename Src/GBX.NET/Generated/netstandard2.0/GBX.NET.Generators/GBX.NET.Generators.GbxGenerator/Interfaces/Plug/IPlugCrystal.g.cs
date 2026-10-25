@@ -45,6 +45,10 @@ public partial interface IPlugCrystalTMNESWC : IPlugCrystal, global::GBX.NET.Int
 {
 }
 
+public partial interface IPlugCrystalTMU : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
+{
+}
+
 public partial interface IPlugCrystalVSK5 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
 }

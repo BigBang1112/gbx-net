@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM2020
+public partial class CPlugBitmapShader : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? GetLegacyBitmapsInterfaceReferences() => LegacyBitmaps;
 }

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapSampler : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020
+public partial class CPlugBitmapSampler : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler.Bitmap
     {
@@ -26,6 +26,11 @@ public partial class CPlugBitmapSampler : global::GBX.NET.Interfaces.Plug.IPlugB
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.Bitmap
     {
         get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

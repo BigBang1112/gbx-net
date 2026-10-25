@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC, global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF
+public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU, global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5, global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF
 {
 }

@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectMotionMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlEffectMotion where T0 : class
+{
+    new T0? Envelope { get; set; }
+}
 public partial interface IControlEffectMotion : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectMotion>, global::GBX.NET.Interfaces.Control.IControlEffect
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -25,8 +30,11 @@ public partial interface IControlEffectMotion : IClassVersion<global::GBX.NET.En
     float SpeedStart { get; set; }
 }
 
-public partial interface IControlEffectMotionTMSX : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+public partial interface IControlEffectMotionTMSX : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? Envelope { get; set; }
+}
+
+public partial interface IControlEffectMotionTMU : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU>
+{
 }
 

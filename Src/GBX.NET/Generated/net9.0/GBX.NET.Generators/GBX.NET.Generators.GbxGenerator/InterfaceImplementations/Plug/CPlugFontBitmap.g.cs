@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020
+public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020
 {
 }

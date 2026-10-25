@@ -7,7 +7,7 @@ public abstract class CPlugDecoratorSolidBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CPlugDecoratorSolidBuilderBase() { }
     private protected CPlugDecoratorSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state) : base(state) { }
-    public TSelf WithTreeDecorators(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithTreeDecorators(NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilderAssignments.GetTreeDecoratorsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithTreeDecorators(params global::GBX.NET.Engines.Plug.CPlugDecoratorTree[] values) => WithTreeDecorators(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(values));
     public TSelf WithTreeDecorators(IEnumerable<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> values) => WithTreeDecorators(values.ToArray());
 }
@@ -20,6 +20,7 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -35,6 +36,15 @@ public partial class CPlugDecoratorSolidBuilder : CPlugDecoratorSolidBuilderBase
         public TMNESWC WithTreeDecorators(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC> values) => WithTreeDecorators(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorSolid Build() => BuildNode(CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
+    }
+    public partial class TMU : CPlugDecoratorSolidBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> state) : base(state) { }
+        public TMU WithTreeDecorators(params global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU[] values) => base.WithTreeDecorators(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>(values, false));
+        public TMU WithTreeDecorators(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU> values) => WithTreeDecorators(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorSolid Build() => BuildNode(CPlugDecoratorSolidBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node);
     }
     public partial class VSK5 : CPlugDecoratorSolidBuilderBase<VSK5>

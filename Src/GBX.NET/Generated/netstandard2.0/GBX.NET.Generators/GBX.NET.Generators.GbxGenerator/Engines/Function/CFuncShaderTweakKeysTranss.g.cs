@@ -25,11 +25,11 @@ public partial class CFuncShaderTweakKeysTranss : CFuncShader, IClass
     /// CFuncShaderTweakKeysTranss 0x000 chunk
     /// </summary>
     [Chunk(0x05033000)]
-    [ChunkGameVersion(GameVersion.TM10)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMU)]
     public partial class Chunk05033000 : Chunk<CFuncShaderTweakKeysTranss>
     {
         public override uint Id => 0x05033000;
-        public override GameVersion GameVersion => GameVersion.TM10;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMU;
 
         public NodeRefList<CMwNod>? U01;
 

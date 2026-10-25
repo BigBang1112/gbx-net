@@ -31,6 +31,10 @@ public partial interface IFuncKeysTMNESWC : IFuncKeys, global::GBX.NET.Interface
 {
 }
 
+public partial interface IFuncKeysTMU : IFuncKeys, global::GBX.NET.Interfaces.Function.IFuncTMU
+{
+}
+
 public partial interface IFuncKeysVSK5 : IFuncKeys, global::GBX.NET.Interfaces.Function.IFuncVSK5
 {
 }

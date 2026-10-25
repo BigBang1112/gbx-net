@@ -15,6 +15,10 @@ public partial interface IPlugIndexBufferTMNESWC : IPlugIndexBuffer
 {
 }
 
+public partial interface IPlugIndexBufferTMU : IPlugIndexBuffer
+{
+}
+
 public partial interface IPlugIndexBufferVSK5 : IPlugIndexBuffer
 {
 }

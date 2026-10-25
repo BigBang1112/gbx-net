@@ -108,6 +108,10 @@ public partial interface IGameCtnDecorationMoodTMNESWC : IGameCtnDecorationMood,
 {
 }
 
+public partial interface IGameCtnDecorationMoodTMU : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>
+{
+}
+
 public partial interface IGameCtnDecorationMoodVSK5 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>
 {
 }

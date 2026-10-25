@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlButton : global::GBX.NET.Interfaces.Control.IControlButton, global::GBX.NET.Interfaces.Control.IControlButtonTM10, global::GBX.NET.Interfaces.Control.IControlButtonTMPU, global::GBX.NET.Interfaces.Control.IControlButtonTMSX, global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC, global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Control.IControlButtonMP3, global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Control.IControlButtonMP4, global::GBX.NET.Interfaces.Control.IControlButtonTM2020
+public partial class CControlButton : global::GBX.NET.Interfaces.Control.IControlButton, global::GBX.NET.Interfaces.Control.IControlButtonTM10, global::GBX.NET.Interfaces.Control.IControlButtonTMPU, global::GBX.NET.Interfaces.Control.IControlButtonTMSX, global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC, global::GBX.NET.Interfaces.Control.IControlButtonTMU, global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Control.IControlButtonMP3, global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Control.IControlButtonMP4, global::GBX.NET.Interfaces.Control.IControlButtonTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlButtonTM10.LegacyStyle
     {
@@ -64,6 +64,41 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlButtonTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlButtonVSK5.LegacyStyle
     {

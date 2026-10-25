@@ -1,9 +1,9 @@
 CSceneFxNod 0x0A03A000
 
-0x000 [TMNESWC, VSK5, TMF]
+0x000 [TMNESWC, TMU, VSK5, TMF]
   CSceneFx Fx
 
-0x001 [TMNESWC, VSK5, TMF]
+0x001 [TMNESWC, TMU, VSK5, TMF]
   CSceneFxNod[] NodInputs (deprec)
   int
 

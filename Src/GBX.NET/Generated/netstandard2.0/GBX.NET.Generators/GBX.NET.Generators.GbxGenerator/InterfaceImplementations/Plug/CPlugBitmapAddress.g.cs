@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapAddress : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020
+public partial class CPlugBitmapAddress : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020
 {
 }

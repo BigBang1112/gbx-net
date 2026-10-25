@@ -14,7 +14,13 @@ public interface IScene2dMembers1<T0> : global::GBX.NET.Interfaces.Scene.IScene2
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IScene2dMembers2<T0, T1> : global::GBX.NET.Interfaces.Scene.IScene2d where T0 : class where T1 : class
+public interface IScene2dMembers2 : global::GBX.NET.Interfaces.Scene.IScene2d
+{
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? MobilLocations { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Mobils { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IScene2dMembers3<T0, T1> : global::GBX.NET.Interfaces.Scene.IScene2d where T0 : class where T1 : class
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? CameraLocations { get; set; }
     IReadOnlyList<T0>? Cameras
@@ -28,8 +34,6 @@ public interface IScene2dMembers2<T0, T1> : global::GBX.NET.Interfaces.Scene.ISc
         get => ((global::GBX.NET.Engines.Scene.CScene2d)this).Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, T1>(((global::GBX.NET.Engines.Scene.CScene2d)this).GetLightsInterfaceReferences, true, "Lights");
         set => ((global::GBX.NET.Engines.Scene.CScene2d)this).Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, T1>(value, false));
     }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? MobilLocations { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Mobils { get; set; }
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
     IReadOnlyList<T0>? Sounds
     {
@@ -64,27 +68,31 @@ public partial interface IScene2dTMNESWC : IScene2d, global::GBX.NET.Interfaces.
 {
 }
 
+public partial interface IScene2dTMU : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTMU, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTMU>, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU, global::GBX.NET.Interfaces.Scene.ISceneLightTMU>
+{
+}
+
 public partial interface IScene2dVSK5 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneVSK5
 {
 }
 
-public partial interface IScene2dTMF : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneLightTMF>
+public partial interface IScene2dTMF : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneLightTMF>
 {
 }
 
-public partial interface IScene2dMP3 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneLightMP3>
+public partial interface IScene2dMP3 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneLightMP3>
 {
 }
 
-public partial interface IScene2dTMT : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneLightTMT>
+public partial interface IScene2dTMT : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneLightTMT>
 {
 }
 
-public partial interface IScene2dMP4 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorMP4>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneLightMP4>
+public partial interface IScene2dMP4 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorMP4>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneLightMP4>
 {
 }
 
-public partial interface IScene2dTM2020 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTM2020>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneLightTM2020>
+public partial interface IScene2dTM2020 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTM2020>, global::GBX.NET.Interfaces.Scene.IScene2dMembers2, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneLightTM2020>
 {
 }
 

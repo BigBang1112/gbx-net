@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4
+public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockTransitionFade : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFade, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTM2020
+public partial class CGameCtnMediaBlockTransitionFade : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFade, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTM2020
 {
 }

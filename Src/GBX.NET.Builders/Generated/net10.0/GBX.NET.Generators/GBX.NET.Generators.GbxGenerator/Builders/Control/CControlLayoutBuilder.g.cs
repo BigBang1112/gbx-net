@@ -7,7 +7,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CControlLayoutBuilderBase() { }
     private protected CControlLayoutBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMU;
     public TSelf WithAlignHorizontal(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, SupportedGames1);
     public TSelf WithAlignVertical(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, SupportedGames1);
     public TSelf WithPaddingHorizontal(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, SupportedGames1);
@@ -23,11 +23,19 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlLayout.Chunk0700C001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMU : CControlLayoutBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
     public partial class TMF : CControlLayoutBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }

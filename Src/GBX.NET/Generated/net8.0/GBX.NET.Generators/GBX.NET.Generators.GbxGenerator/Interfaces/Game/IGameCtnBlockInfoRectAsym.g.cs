@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoRectAsymTMNESWC : IGameCtnBlockInfoRec
 {
 }
 
+public partial interface IGameCtnBlockInfoRectAsymTMU : IGameCtnBlockInfoRectAsym, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoRectAsymVSK5 : IGameCtnBlockInfoRectAsym, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

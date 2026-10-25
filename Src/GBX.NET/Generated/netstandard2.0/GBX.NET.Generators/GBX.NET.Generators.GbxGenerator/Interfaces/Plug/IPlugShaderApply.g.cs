@@ -27,7 +27,7 @@ public interface IPlugShaderApplyMembers2<T0> : global::GBX.NET.Interfaces.Plug.
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderApplyMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugShaderApply where T0 : class
 {
-    new IReadOnlyList<T0>? BitmapAddresses { get; set; }
+    IReadOnlyList<T0>? BitmapAddresses { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderApplyMembers4 : global::GBX.NET.Interfaces.Plug.IPlugShaderApply
@@ -54,7 +54,6 @@ public partial interface IPlugShaderApply : IClassVersion<global::GBX.NET.Engine
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>? BitmapAddresses { get; set; }
 }
 
 public partial interface IPlugShaderApplyTM10 : IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10>, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM10>
@@ -83,6 +82,13 @@ public partial interface IPlugShaderApplyTMNESWC : IPlugShaderApply, global::GBX
     new global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? FuncShader { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>? Passes { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? SolidWiredApply { get; set; }
+}
+
+public partial interface IPlugShaderApplyTMU : IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMU
+{
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMU? FuncShader { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>? Passes { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? SolidWiredApply { get; set; }
 }
 
 public partial interface IPlugShaderApplyVSK5 : IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMembers6

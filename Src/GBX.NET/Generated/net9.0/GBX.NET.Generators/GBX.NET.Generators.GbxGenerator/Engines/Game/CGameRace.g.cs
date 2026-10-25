@@ -49,11 +49,11 @@ public partial class CGameRace : CGamePlayground, IClass
     /// CGameRace 0x000 chunk
     /// </summary>
     [Chunk(0x03073000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk03073000 : Chunk<CGameRace>
     {
         public override uint Id => 0x03073000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
         public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

@@ -15,6 +15,10 @@ public partial interface IMwCmdExpBoolParam : IClassVersion<global::GBX.NET.Engi
     global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter { get; set; }
 }
 
+public partial interface IMwCmdExpBoolParamTMU : IMwCmdExpBoolParam, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMU
+{
+}
+
 public partial interface IMwCmdExpBoolParamTMF : IMwCmdExpBoolParam, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMF
 {
 }

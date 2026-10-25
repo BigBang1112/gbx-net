@@ -17,6 +17,10 @@ public partial interface IHmsLightMapMood : IClassVersion<global::GBX.NET.Engine
     float DirectionalScale { get; set; }
 }
 
+public partial interface IHmsLightMapMoodTMU : IHmsLightMapMood
+{
+}
+
 public partial interface IHmsLightMapMoodVSK5 : IHmsLightMapMood
 {
 }

@@ -25,11 +25,11 @@ public partial class CSystemCmdDuplicateNod : CMwCmdExpClass, IClass
     /// CSystemCmdDuplicateNod 0x000 chunk
     /// </summary>
     [Chunk(0x0B00F000)]
-    [ChunkGameVersion(GameVersion.TMPU)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMU)]
     public partial class Chunk0B00F000 : Chunk<CSystemCmdDuplicateNod>
     {
         public override uint Id => 0x0B00F000;
-        public override GameVersion GameVersion => GameVersion.TMPU;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

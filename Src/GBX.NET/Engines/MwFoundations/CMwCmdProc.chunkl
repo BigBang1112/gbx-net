@@ -1,7 +1,7 @@
 CMwCmdProc 0x01097000
 - inherits: CMwCmdInst
 
-0x002 [TMF]
+0x002 [TMU, TMF]
   CMwCmdExpClassParam.ParamArchive Parameter
   CMwCmdExp[] Arguments
   CMwNod

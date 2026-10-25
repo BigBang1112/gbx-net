@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockCameraEffect : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTM2020
+public partial class CGameCtnMediaBlockCameraEffect : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTM2020
 {
 }

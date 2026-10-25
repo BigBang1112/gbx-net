@@ -28,6 +28,10 @@ public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC : ICtnMediaB
 {
 }
 
+public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayTMU : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMU, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMembers1
+{
+}
+
 public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayVSK5 : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMembers1
 {
 }

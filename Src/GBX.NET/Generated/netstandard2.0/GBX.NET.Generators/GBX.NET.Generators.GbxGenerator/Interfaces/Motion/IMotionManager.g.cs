@@ -23,6 +23,10 @@ public partial interface IMotionManagerTMNESWC : IMotionManager
 {
 }
 
+public partial interface IMotionManagerTMU : IMotionManager
+{
+}
+
 public partial interface IMotionManagerVSK5 : IMotionManager
 {
 }

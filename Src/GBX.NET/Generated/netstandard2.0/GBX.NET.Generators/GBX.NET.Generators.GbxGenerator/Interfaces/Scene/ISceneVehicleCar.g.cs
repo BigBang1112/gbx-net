@@ -48,6 +48,12 @@ public partial interface ISceneVehicleCarTMNESWC : ISceneVehicleCar, global::GBX
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneVehicleCarTMU : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneVehicleCarVSK5 : ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

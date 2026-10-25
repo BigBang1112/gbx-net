@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlList : global::GBX.NET.Interfaces.Control.IControlList, global::GBX.NET.Interfaces.Control.IControlListTM10, global::GBX.NET.Interfaces.Control.IControlListTMPU, global::GBX.NET.Interfaces.Control.IControlListTMSX, global::GBX.NET.Interfaces.Control.IControlListTMNESWC, global::GBX.NET.Interfaces.Control.IControlListVSK5, global::GBX.NET.Interfaces.Control.IControlListTMF, global::GBX.NET.Interfaces.Control.IControlListMP3, global::GBX.NET.Interfaces.Control.IControlListTMT, global::GBX.NET.Interfaces.Control.IControlListMP4, global::GBX.NET.Interfaces.Control.IControlListTM2020
+public partial class CControlList : global::GBX.NET.Interfaces.Control.IControlList, global::GBX.NET.Interfaces.Control.IControlListTM10, global::GBX.NET.Interfaces.Control.IControlListTMPU, global::GBX.NET.Interfaces.Control.IControlListTMSX, global::GBX.NET.Interfaces.Control.IControlListTMNESWC, global::GBX.NET.Interfaces.Control.IControlListTMU, global::GBX.NET.Interfaces.Control.IControlListVSK5, global::GBX.NET.Interfaces.Control.IControlListTMF, global::GBX.NET.Interfaces.Control.IControlListMP3, global::GBX.NET.Interfaces.Control.IControlListTMT, global::GBX.NET.Interfaces.Control.IControlListMP4, global::GBX.NET.Interfaces.Control.IControlListTM2020
 {
 }

@@ -28,6 +28,10 @@ public partial interface IPlugSurfaceGeomTMNESWC : IPlugSurfaceGeom
 {
 }
 
+public partial interface IPlugSurfaceGeomTMU : IPlugSurfaceGeom, global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomMembers1
+{
+}
+
 public partial interface IPlugSurfaceGeomVSK5 : IPlugSurfaceGeom, global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomMembers1
 {
 }

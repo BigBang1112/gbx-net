@@ -1,10 +1,10 @@
 CMwCmdExpBoolParam 0x0103D000
 - inherits: CMwCmdExpBool
 
-0x0103B000 [TMF]
+0x0103B000 [TMU, TMF]
 
 0x000
   CMwCmdExpClassParam.OldParamArchive OldParameter
 
-0x001 [TMF]
+0x001 [TMU, TMF]
   CMwCmdExpClassParam.ParamArchive Parameter

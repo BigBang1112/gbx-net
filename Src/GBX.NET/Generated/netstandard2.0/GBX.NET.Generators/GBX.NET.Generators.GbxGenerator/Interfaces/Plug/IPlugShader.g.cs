@@ -56,6 +56,10 @@ public partial interface IPlugShaderTMNESWC : IPlugShader, global::GBX.NET.Inter
 {
 }
 
+public partial interface IPlugShaderTMU : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
+{
+}
+
 public partial interface IPlugShaderVSK5 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
 }

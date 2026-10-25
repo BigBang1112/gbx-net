@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneTrafficGraph : global::GBX.NET.Interfaces.Scene.ISceneTrafficGraph, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF
+public partial class CSceneTrafficGraph : global::GBX.NET.Interfaces.Scene.ISceneTrafficGraph, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF
 {
 }

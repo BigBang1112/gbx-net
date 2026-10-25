@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncKeys : global::GBX.NET.Interfaces.Function.IFuncKeys, global::GBX.NET.Interfaces.Function.IFuncKeysTM10, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysTMF, global::GBX.NET.Interfaces.Function.IFuncKeysMP3, global::GBX.NET.Interfaces.Function.IFuncKeysTMT, global::GBX.NET.Interfaces.Function.IFuncKeysMP4, global::GBX.NET.Interfaces.Function.IFuncKeysTM2020
+public partial class CFuncKeys : global::GBX.NET.Interfaces.Function.IFuncKeys, global::GBX.NET.Interfaces.Function.IFuncKeysTM10, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysTMU, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysTMF, global::GBX.NET.Interfaces.Function.IFuncKeysMP3, global::GBX.NET.Interfaces.Function.IFuncKeysTMT, global::GBX.NET.Interfaces.Function.IFuncKeysMP4, global::GBX.NET.Interfaces.Function.IFuncKeysTM2020
 {
 }

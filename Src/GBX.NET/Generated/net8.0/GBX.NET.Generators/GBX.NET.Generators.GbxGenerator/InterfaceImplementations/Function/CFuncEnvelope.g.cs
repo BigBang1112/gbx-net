@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncEnvelope : global::GBX.NET.Interfaces.Function.IFuncEnvelope, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP3, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMT, global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP4
+public partial class CFuncEnvelope : global::GBX.NET.Interfaces.Function.IFuncEnvelope, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP3, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMT, global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP4
 {
 }

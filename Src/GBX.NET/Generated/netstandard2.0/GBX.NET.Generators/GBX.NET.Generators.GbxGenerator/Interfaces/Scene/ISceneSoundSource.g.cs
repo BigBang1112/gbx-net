@@ -39,6 +39,11 @@ public partial interface ISceneSoundSourceTMNESWC : ISceneSoundSource, global::G
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
 }
 
+public partial interface ISceneSoundSourceTMU : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+}
+
 public partial interface ISceneSoundSourceVSK5 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

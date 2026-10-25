@@ -31,6 +31,10 @@ public partial interface IPlugVisual2DTMNESWC : IPlugVisual2D, global::GBX.NET.I
 {
 }
 
+public partial interface IPlugVisual2DTMU : IPlugVisual2D, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU
+{
+}
+
 public partial interface IPlugVisual2DVSK5 : IPlugVisual2D, global::GBX.NET.Interfaces.Plug.IPlugVisualVSK5
 {
 }

@@ -57,6 +57,10 @@ public partial interface IPlugFlockModelTMNESWC : IPlugFlockModel, global::GBX.N
 {
 }
 
+public partial interface IPlugFlockModelTMU : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
+{
+}
+
 public partial interface IPlugFlockModelVSK5 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
 }

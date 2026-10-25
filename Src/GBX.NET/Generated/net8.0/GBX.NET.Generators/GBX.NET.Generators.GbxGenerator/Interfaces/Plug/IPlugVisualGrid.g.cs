@@ -34,6 +34,10 @@ public partial interface IPlugVisualGridTMNESWC : IPlugVisualGrid, global::GBX.N
 {
 }
 
+public partial interface IPlugVisualGridTMU : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMU
+{
+}
+
 public partial interface IPlugVisualGridVSK5 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5
 {
 }

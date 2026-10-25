@@ -360,9 +360,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x003 chunk (frames, main frame index and music)
     /// </summary>
     [Chunk(0x03009003, "frames, main frame index and music")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009003 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009003;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -375,9 +377,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x004 chunk (legacy background scene and camera field of view)
     /// </summary>
     [Chunk(0x03009004, "legacy background scene and camera field of view")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009004 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009004;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -395,9 +399,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x005 chunk (legacy frustum)
     /// </summary>
     [Chunk(0x03009005, "legacy frustum")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009005 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009005;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -415,9 +421,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x006 chunk (legacy scene, camera and frame locations)
     /// </summary>
     [Chunk(0x03009006, "legacy scene, camera and frame locations")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009006 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -435,9 +443,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x007 chunk (StyleSheet)
     /// </summary>
     [Chunk(0x03009007, "StyleSheet")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009007 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009007;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -454,9 +464,11 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x008 chunk (GridStep)
     /// </summary>
     [Chunk(0x03009008, "GridStep")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk03009008 : Chunk<CGameMenu>
     {
         public override uint Id => 0x03009008;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

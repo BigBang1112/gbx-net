@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockTrails : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrails, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTM2020
+public partial class CGameCtnMediaBlockTrails : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrails, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTM2020
 {
 }

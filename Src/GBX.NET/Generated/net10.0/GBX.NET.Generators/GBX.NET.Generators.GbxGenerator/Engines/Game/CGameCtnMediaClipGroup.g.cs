@@ -47,11 +47,11 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     /// CGameCtnMediaClipGroup 0x002 chunk
     /// </summary>
     [Chunk(0x0307A002)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
     }
 
     /// <summary>

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxDepthOfField : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMF
+public partial class CSceneFxDepthOfField : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMF
 {
 }

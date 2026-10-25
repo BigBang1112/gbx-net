@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlUiRange : global::GBX.NET.Interfaces.Control.IControlUiRange, global::GBX.NET.Interfaces.Control.IControlUiRangeTM10, global::GBX.NET.Interfaces.Control.IControlUiRangeTMPU, global::GBX.NET.Interfaces.Control.IControlUiRangeTMSX, global::GBX.NET.Interfaces.Control.IControlUiRangeTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiRangeVSK5, global::GBX.NET.Interfaces.Control.IControlUiRangeTMF, global::GBX.NET.Interfaces.Control.IControlUiRangeMP3, global::GBX.NET.Interfaces.Control.IControlUiRangeTMT, global::GBX.NET.Interfaces.Control.IControlUiRangeMP4, global::GBX.NET.Interfaces.Control.IControlUiRangeTM2020
+public partial class CControlUiRange : global::GBX.NET.Interfaces.Control.IControlUiRange, global::GBX.NET.Interfaces.Control.IControlUiRangeTM10, global::GBX.NET.Interfaces.Control.IControlUiRangeTMPU, global::GBX.NET.Interfaces.Control.IControlUiRangeTMSX, global::GBX.NET.Interfaces.Control.IControlUiRangeTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiRangeTMU, global::GBX.NET.Interfaces.Control.IControlUiRangeVSK5, global::GBX.NET.Interfaces.Control.IControlUiRangeTMF, global::GBX.NET.Interfaces.Control.IControlUiRangeMP3, global::GBX.NET.Interfaces.Control.IControlUiRangeTMT, global::GBX.NET.Interfaces.Control.IControlUiRangeMP4, global::GBX.NET.Interfaces.Control.IControlUiRangeTM2020
 {
 }

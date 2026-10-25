@@ -56,6 +56,10 @@ public partial interface IFuncEnumTMNESWC : IFuncEnum, global::GBX.NET.Interface
 {
 }
 
+public partial interface IFuncEnumTMU : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>
+{
+}
+
 public partial interface IFuncEnumVSK5 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2, global::GBX.NET.Interfaces.Function.IFuncEnumMembers3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
 {
 }

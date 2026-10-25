@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobilParticlesFX : global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM2020
+public partial class CSceneMobilParticlesFX : global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM2020
 {
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM10.Motion
     {
@@ -44,6 +44,16 @@ public partial class CSceneMobilParticlesFX : global::GBX.NET.Interfaces.Scene.I
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXVSK5.Motion
     {

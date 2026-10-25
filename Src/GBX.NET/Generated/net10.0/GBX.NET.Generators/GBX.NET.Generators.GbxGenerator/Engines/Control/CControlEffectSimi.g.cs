@@ -125,11 +125,11 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     /// CControlEffectSimi 0x004 chunk
     /// </summary>
     [Chunk(0x07010004)]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk07010004 : Chunk<CControlEffectSimi>
     {
         public override uint Id => 0x07010004;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

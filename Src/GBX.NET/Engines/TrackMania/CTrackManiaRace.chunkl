@@ -22,7 +22,7 @@ CTrackManiaRace 0x24014000
   CMwNod
   CMwNod
 
-0x002 [TMF]
+0x002 [TMU, TMF]
   int = 1500
   CMwNod
   CMwNod

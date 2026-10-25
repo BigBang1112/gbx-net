@@ -95,6 +95,20 @@ public partial interface ISceneMobilLeavesTMNESWC : ISceneMobilLeaves, global::G
     }
 }
 
+public partial interface ISceneMobilLeavesTMU : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilLeaves)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilLeaves)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneMobilLeaves)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Scene.CSceneMobilLeaves)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilLeaves)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
 public partial interface ISceneMobilLeavesVSK5 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion

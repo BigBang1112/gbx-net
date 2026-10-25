@@ -108,6 +108,10 @@ public partial interface IPlugTreeTMNESWC : IPlugTree, global::GBX.NET.Interface
 {
 }
 
+public partial interface IPlugTreeTMU : IPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU>, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers5<global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU>
+{
+}
+
 public partial interface IPlugTreeVSK5 : IPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualVSK5>, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers5<global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5>
 {
 }

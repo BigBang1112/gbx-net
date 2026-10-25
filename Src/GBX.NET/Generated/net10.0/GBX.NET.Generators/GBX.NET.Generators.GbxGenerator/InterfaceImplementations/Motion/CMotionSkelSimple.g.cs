@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF
+public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF
 {
 }

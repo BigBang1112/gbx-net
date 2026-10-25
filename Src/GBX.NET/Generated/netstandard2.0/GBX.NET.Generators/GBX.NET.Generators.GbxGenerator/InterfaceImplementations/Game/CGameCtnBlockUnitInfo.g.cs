@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020
+public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo.Clips
     {
@@ -36,6 +36,16 @@ public partial class CGameCtnBlockUnitInfo : global::GBX.NET.Interfaces.Game.IGa
         set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC>.ReplacementBlockInfo
+    {
+        get => ReplacementBlockInfo;
+        set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>.Clips
+    {
+        get => Clips is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>(GetClipsInterfaceReferences, true, "Clips");
+        set => Clips = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU>.ReplacementBlockInfo
     {
         get => ReplacementBlockInfo;
         set => ReplacementBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

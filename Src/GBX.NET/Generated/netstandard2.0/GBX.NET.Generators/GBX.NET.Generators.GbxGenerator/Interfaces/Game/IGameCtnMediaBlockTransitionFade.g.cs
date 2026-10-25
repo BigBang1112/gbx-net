@@ -24,6 +24,10 @@ public partial interface IGameCtnMediaBlockTransitionFadeTMNESWC : IGameCtnMedia
 {
 }
 
+public partial interface IGameCtnMediaBlockTransitionFadeTMU : IGameCtnMediaBlockTransitionFade, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockTransitionFadeVSK5 : IGameCtnMediaBlockTransitionFade, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionVSK5
 {
 }

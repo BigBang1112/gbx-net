@@ -46,6 +46,17 @@ public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Int
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU
+{
+    int DisplayType { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? FuncEnum { get; set; }
+    bool IsLooping { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.System;
 
-public partial class CSystemCmdDuplicateNod : global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNod, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTM10, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMPU, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMSX, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMNESWC, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodVSK5, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMF
+public partial class CSystemCmdDuplicateNod : global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNod, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTM10, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMPU, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMSX, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMNESWC, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMU, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodVSK5, global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMF
 {
 }

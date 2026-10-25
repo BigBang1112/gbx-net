@@ -42,6 +42,10 @@ public partial interface IHmsLightMap : IClassVersion<global::GBX.NET.Engines.Hm
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt? PointsInSphereOpt { get; set; }
 }
 
+public partial interface IHmsLightMapTMU : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>
+{
+}
+
 public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
 {
 }

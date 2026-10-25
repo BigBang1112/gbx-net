@@ -3,8 +3,13 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncEnumTM10, global::GBX.NET.Interfaces.Function.IFuncEnumTMPU, global::GBX.NET.Interfaces.Function.IFuncEnumTMSX, global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020
+public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncEnumTM10, global::GBX.NET.Interfaces.Function.IFuncEnumTMPU, global::GBX.NET.Interfaces.Function.IFuncEnumTMSX, global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumTMU, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020
 {
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU? global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>.IconIndexs
+    {
+        get => IconIndexs;
+        set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Function.IFuncEnumMembers4<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.IconIndexs
     {
         get => IconIndexs;

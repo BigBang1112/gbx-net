@@ -7,13 +7,10 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CPlugShaderApplyBuilderBase() { }
     private protected CPlugShaderApplyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX;
-    public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, SupportedGames1);
-    public TSelf WithBitmapAddresses(params global::GBX.NET.Engines.Plug.CPlugBitmapAddress[] values) => WithBitmapAddresses(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(values));
-    public TSelf WithBitmapAddresses(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> values) => WithBitmapAddresses(values.ToArray());
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, SupportedGames1);
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, SupportedGames1);
     public TSelf WithLightMapQuality(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLightMapQualityAssignment(), value, SupportedGames1);
@@ -30,19 +27,22 @@ public abstract class CPlugShaderApplyBuilderBase<TSelf> : NodeBuilder<global::G
 public abstract class CPlugShaderApplyBuilderMembers1<TSelf> : CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShaderApplyBuilderMembers1<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
     public TSelf WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
 }
 public abstract class CPlugShaderApplyBuilderMembers2<TSelf> : CPlugShaderApplyBuilderBase<TSelf> where TSelf : CPlugShaderApplyBuilderMembers2<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
-    public TSelf WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugShaderApplyBuilderMembers3<TSelf> : CPlugShaderApplyBuilderMembers2<TSelf> where TSelf : CPlugShaderApplyBuilderMembers3<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
     public TSelf WithApplyField(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetApplyFieldAssignment(), value, SupportedGames2);
+    public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithBitmapAddresses(params global::GBX.NET.Engines.Plug.CPlugBitmapAddress[] values) => WithBitmapAddresses(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(values));
+    public TSelf WithBitmapAddresses(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> values) => WithBitmapAddresses(values.ToArray());
     public TSelf WithTexOpConstant(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetTexOpConstantAssignment(), value, SupportedGames2);
 }
 public abstract class CPlugShaderApplyBuilderMembers4<TSelf> : CPlugShaderApplyBuilderMembers3<TSelf> where TSelf : CPlugShaderApplyBuilderMembers4<TSelf>
@@ -53,6 +53,9 @@ public abstract class CPlugShaderApplyBuilderMembers4<TSelf> : CPlugShaderApplyB
 public abstract class CPlugShaderApplyBuilderMembers5<TSelf> : CPlugShaderApplyBuilderMembers1<TSelf> where TSelf : CPlugShaderApplyBuilderMembers5<TSelf>
 {
     private protected CPlugShaderApplyBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
+    public TSelf WithBitmapAddresses(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithBitmapAddresses(params global::GBX.NET.Engines.Plug.CPlugBitmapAddress[] values) => WithBitmapAddresses(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(values));
+    public TSelf WithBitmapAddresses(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> values) => WithBitmapAddresses(values.ToArray());
     public TSelf WithBlendDst(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendDstAssignment(), value, SupportedGames4);
     public TSelf WithBlendSrc(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBlendSrcAssignment(), value, SupportedGames4);
     public TSelf WithBumpMap(global::GBX.NET.Engines.Plug.CPlugBitmapAddress? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderApplyBuilderAssignments.GetBumpMapAssignment(), value, SupportedGames4);
@@ -123,9 +126,6 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
     private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002015());
@@ -136,13 +136,24 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002015());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002016());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe5(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
@@ -162,7 +173,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900201F() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
@@ -182,7 +193,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk09002020(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe7(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugShaderApply CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
@@ -206,6 +217,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -288,11 +300,27 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public TMNESWC WithLightMap(global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC? value) => base.WithLightMap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapAddress?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithPasses(params global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC[] values) => base.WithPasses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(values, false));
         public TMNESWC WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC> values) => WithPasses(values.ToArray());
-        public TMNESWC WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithSelfIllum(global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC? value) => base.WithSelfIllum(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapAddress?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
+    }
+    public partial class TMU : CPlugShaderApplyBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShaderApply> state) : base(state) { }
+        public TMU WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMU? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
+        public TMU WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
+        public TMU WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderTMU[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>(values, false));
+        public TMU WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU> values) => WithLegacyCustomShaders(values.ToArray());
+        public TMU WithPasses(params global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU[] values) => base.WithPasses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(values, false));
+        public TMU WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU> values) => WithPasses(values.ToArray());
+        public TMU WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class VSK5 : CPlugShaderApplyBuilderMembers3<VSK5>
@@ -301,7 +329,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public VSK5 WithBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5[] values) => base.WithBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5>(values, false));
         public VSK5 WithBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5> values) => WithBitmapAddresses(values.ToArray());
         public VSK5 WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
         public VSK5 WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
         public VSK5 WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>(values, false));
@@ -310,7 +338,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public VSK5 WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5> values) => WithPasses(values.ToArray());
         public VSK5 WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMF : CPlugShaderApplyBuilderMembers4<TMF>
@@ -319,7 +347,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public TMF WithBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF[] values) => base.WithBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF>(values, false));
         public TMF WithBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF> values) => WithBitmapAddresses(values.ToArray());
         public TMF WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMF? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
         public TMF WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
         public TMF WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderTMF[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>(values, false));
@@ -328,7 +356,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public TMF WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF> values) => WithPasses(values.ToArray());
         public TMF WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class MP3 : CPlugShaderApplyBuilderMembers6<MP3>
@@ -343,7 +371,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public MP3 WithUnusedBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3[] values) => base.WithUnusedBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3>(values, false));
         public MP3 WithUnusedBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3> values) => WithUnusedBitmapAddresses(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TMT : CPlugShaderApplyBuilderMembers6<TMT>
@@ -359,7 +387,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public TMT WithUnusedBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT[] values) => base.WithUnusedBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>(values, false));
         public TMT WithUnusedBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT> values) => WithUnusedBitmapAddresses(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class MP4 : CPlugShaderApplyBuilderMembers6<MP4>
@@ -375,7 +403,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public MP4 WithUnusedBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4[] values) => base.WithUnusedBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>(values, false));
         public MP4 WithUnusedBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4> values) => WithUnusedBitmapAddresses(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
     public partial class TM2020 : CPlugShaderApplyBuilderMembers6<TM2020>
@@ -391,7 +419,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
         public TM2020 WithUnusedBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020[] values) => base.WithUnusedBitmapAddresses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(values, false));
         public TM2020 WithUnusedBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020> values) => WithUnusedBitmapAddresses(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugShaderApply Build() => BuildNode(CPlugShaderApplyBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShaderApply node);
     }
 }

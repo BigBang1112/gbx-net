@@ -1,7 +1,7 @@
 CMwCmdExpStringIdent 0x0104F000
 - inherits: CMwCmdExpString
 
-0x0104E000 [TMF]
+0x0104E000 [TMU, TMF]
 
-0x000 [TMF] // Ident
+0x000 [TMU, TMF] // Ident
   string Ident

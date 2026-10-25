@@ -42,6 +42,10 @@ public partial interface ISceneTMNESWC : IScene, global::GBX.NET.Interfaces.Scen
 {
 }
 
+public partial interface ISceneTMU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>
+{
+}
+
 public partial interface ISceneVSK5 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>
 {
 }

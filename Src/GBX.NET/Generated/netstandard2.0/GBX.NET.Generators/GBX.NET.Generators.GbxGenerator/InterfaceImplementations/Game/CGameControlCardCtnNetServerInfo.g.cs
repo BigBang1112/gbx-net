@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCardCtnNetServerInfo : global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfo, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTM10, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoMP3, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoMP4, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTM2020
+public partial class CGameControlCardCtnNetServerInfo : global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfo, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTM10, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMPU, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMSX, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoMP3, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoMP4, global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTM10.CreateScript
     {
@@ -84,6 +84,31 @@ public partial class CGameControlCardCtnNetServerInfo : global::GBX.NET.Interfac
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU.CreateScript
+    {
+        get => CreateScript;
+        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Game.IGameControlCardCtnNetServerInfoVSK5.CreateScript
     {

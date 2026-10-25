@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlUiElementMembers1 : global::GBX.NET.Interfaces.Control.IControlUiElement
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Resources { get; set; }
+}
 public partial interface IControlUiElement : IClassVersion<global::GBX.NET.Engines.Control.CControlUiElement>, global::GBX.NET.Interfaces.Control.IControlForm
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -50,6 +55,15 @@ public partial interface IControlUiElementTMNESWC : IControlUiElement, global::G
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlUiElementTMU : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMU, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlUiElementVSK5 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -59,14 +73,13 @@ public partial interface IControlUiElementVSK5 : IControlUiElement, global::GBX.
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementTMF : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMF
+public partial interface IControlUiElementTMF : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMF, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Resources { get; set; }
 }
 
 public partial interface IControlUiElementMP3 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormMP3

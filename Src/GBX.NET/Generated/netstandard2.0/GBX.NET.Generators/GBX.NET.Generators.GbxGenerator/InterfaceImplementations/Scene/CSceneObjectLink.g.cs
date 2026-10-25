@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4
+public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4
 {
     global::GBX.NET.Interfaces.Scene.ISceneObject? global::GBX.NET.Interfaces.Scene.ISceneObjectLink.Object
     {
@@ -26,6 +26,11 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>.Object
+    {
+        get => Object;
+        set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMU? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Object
     {
         get => Object;
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

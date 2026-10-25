@@ -44,6 +44,10 @@ public partial interface IShootManiaTMNESWC : IShootMania, global::GBX.NET.Inter
 {
 }
 
+public partial interface IShootManiaTMU : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMU
+{
+}
+
 public partial interface IShootManiaVSK5 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreVSK5
 {
 }

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMF, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP3, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020
+public partial class CGameCtnCollection : global::GBX.NET.Interfaces.Game.IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMU, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMF, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP3, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>? GetCompleteZoneListInterfaceReferences() => CompleteZoneList;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? GetParticleEmitterModelsFidsInterfaceReferences() => ParticleEmitterModelsFids;

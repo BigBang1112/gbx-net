@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Graphic;
 
-public partial class GxLightBall : global::GBX.NET.Interfaces.Graphic.IGxLightBall, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM10, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMF, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP3, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMT, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020
+public partial class GxLightBall : global::GBX.NET.Interfaces.Graphic.IGxLightBall, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM10, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMU, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMF, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP3, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMT, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020
 {
     global::GBX.NET.Engines.Graphic.GxLight.EFlags global::GBX.NET.Interfaces.Graphic.IGxLight.Flags
     {

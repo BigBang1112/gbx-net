@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneToyVehicleTrackMania : global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTM10, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMPU, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMSX, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaVSK5, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMF, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaMP3, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMT, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaMP4, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTM2020
+public partial class CSceneToyVehicleTrackMania : global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTM10, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMPU, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMSX, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMU, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaVSK5, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMF, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaMP3, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMT, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaMP4, global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTM2020
 {
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTM10.Motion
     {
@@ -44,6 +44,16 @@ public partial class CSceneToyVehicleTrackMania : global::GBX.NET.Interfaces.Sce
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Scene.ISceneToyVehicleTrackManiaVSK5.Motion
     {

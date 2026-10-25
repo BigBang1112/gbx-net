@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxDistor2d : global::GBX.NET.Interfaces.Scene.ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF
+public partial class CSceneFxDistor2d : global::GBX.NET.Interfaces.Scene.ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF
 {
 }

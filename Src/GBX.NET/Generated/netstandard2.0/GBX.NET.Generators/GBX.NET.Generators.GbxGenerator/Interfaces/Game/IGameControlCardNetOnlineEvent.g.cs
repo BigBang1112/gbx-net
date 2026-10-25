@@ -50,6 +50,15 @@ public partial interface IGameControlCardNetOnlineEventTMNESWC : IGameControlCar
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IGameControlCardNetOnlineEventTMU : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTMU
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IGameControlCardNetOnlineEventVSK5 : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }

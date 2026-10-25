@@ -4,5 +4,5 @@ CControlFrameStyled 0x07026000
 0x000
   CMwRefBuffer LegacyStyleBuffer
 
-0x001 [MP4]
+0x001 [TMU, MP4]
   CControlStyleSheet StyleSheet

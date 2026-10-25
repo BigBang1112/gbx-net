@@ -86,11 +86,11 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     /// CGameNetOnlineMessage 0x000 chunk
     /// </summary>
     [Chunk(0x03028000)]
-    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03028000 : Chunk<CGameNetOnlineMessage>
     {
         public override uint Id => 0x03028000;
-        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

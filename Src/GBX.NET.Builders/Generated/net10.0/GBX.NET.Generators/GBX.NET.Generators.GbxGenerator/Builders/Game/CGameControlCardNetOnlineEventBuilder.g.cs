@@ -7,9 +7,9 @@ public abstract class CGameControlCardNetOnlineEventBuilderBase<TSelf> : NodeBui
 {
     private protected CGameControlCardNetOnlineEventBuilderBase() { }
     private protected CGameControlCardNetOnlineEventBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAcceptOwnControls(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(IEnumerable<global::GBX.NET.Engines.Control.CControlContainer.Child> values) => WithChilds(values.ToArray());
@@ -82,6 +82,8 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
     private static global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent.Chunk030DB002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCard.Chunk0309A002());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
@@ -97,7 +99,6 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
     private static global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent.Chunk030DB002());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
@@ -111,6 +112,22 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent.Chunk030DB002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent();
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
@@ -128,6 +145,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -194,6 +212,24 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
+    public partial class TMU : CGameControlCardNetOnlineEventBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent> state) : base(state) { }
+        public TMU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
+        public TMU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
+        public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
+        public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithUseDelays(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCardBuilderAssignments.GetUseDelaysAssignment(), value, GameVersion.TMU);
+        public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
+    }
     public partial class VSK5 : CGameControlCardNetOnlineEventBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent> state) : base(state) { }
@@ -207,7 +243,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
     public partial class TMF : CGameControlCardNetOnlineEventBuilderMembers2<TMF>
@@ -224,7 +260,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
     public partial class MP3 : CGameControlCardNetOnlineEventBuilderMembers2<MP3>
@@ -236,7 +272,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
     public partial class TMT : CGameControlCardNetOnlineEventBuilderMembers2<TMT>
@@ -248,7 +284,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
     public partial class MP4 : CGameControlCardNetOnlineEventBuilderMembers2<MP4>
@@ -261,7 +297,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
     public partial class TM2020 : CGameControlCardNetOnlineEventBuilderMembers2<TM2020>
@@ -272,7 +308,7 @@ public partial class CGameControlCardNetOnlineEventBuilder : CGameControlCardNet
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineEventTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent Build() => BuildNode(CGameControlCardNetOnlineEventBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineEvent node);
     }
 }

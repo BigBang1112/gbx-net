@@ -11,7 +11,7 @@ CFuncEnum 0x0500E000
 0x003 [TMSX] // SubIconCount
   int SubIconCount
 
-0x005 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x005 [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int WantedCount
   CPlug[] Values
   id Name
@@ -20,7 +20,7 @@ CFuncEnum 0x0500E000
   vec2 MinTexCoord
   vec2 MaxTexCoord
 
-0x006 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x006 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwRefBuffer IconIndexs
 
 0x007 [TMF, MP3, TMT, MP4, TM2020]

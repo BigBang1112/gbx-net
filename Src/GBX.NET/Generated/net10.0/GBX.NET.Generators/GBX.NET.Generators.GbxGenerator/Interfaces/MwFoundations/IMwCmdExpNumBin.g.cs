@@ -16,6 +16,10 @@ public partial interface IMwCmdExpNumBin : IClassVersion<global::GBX.NET.Engines
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
+public partial interface IMwCmdExpNumBinTMU : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU
+{
+}
+
 public partial interface IMwCmdExpNumBinTMF : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMF
 {
 }

@@ -7,7 +7,7 @@ public abstract class CSceneSoundSourceBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CSceneSoundSourceBuilderBase() { }
     private protected CSceneSoundSourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithIsActive(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CScenePocBuilderAssignments.GetIsActiveAssignment(), value, SupportedGames1);
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, SupportedGames1);
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, SupportedGames1);
@@ -16,7 +16,7 @@ public abstract class CSceneSoundSourceBuilderBase<TSelf> : NodeBuilder<global::
 public abstract class CSceneSoundSourceBuilderMembers1<TSelf> : CSceneSoundSourceBuilderBase<TSelf> where TSelf : CSceneSoundSourceBuilderMembers1<TSelf>
 {
     private protected CSceneSoundSourceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
-    public TSelf WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneSoundSourceBuilderAssignments.GetSoundSourceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneSoundSourceBuilderAssignments.GetSoundSourceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSceneSoundSourceBuilder>
 {
@@ -47,6 +47,7 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -85,6 +86,14 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build() => BuildNode(CSceneSoundSourceBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
+    }
+    public partial class TMU : CSceneSoundSourceBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
+        public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneSoundSource Build() => BuildNode(CSceneSoundSourceBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
     public partial class VSK5 : CSceneSoundSourceBuilderMembers1<VSK5>

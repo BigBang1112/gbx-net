@@ -7,11 +7,11 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CPlugAudioEnvironmentBuilderBase() { }
     private protected CPlugAudioEnvironmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames5 = GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithDecayHFRatio(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFRatioAssignment(), value, SupportedGames1);
     public TSelf WithDecayLFRatio(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayLFRatioAssignment(), value, SupportedGames1);
     public TSelf WithDecayTime(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeAssignment(), value, SupportedGames1);
@@ -117,6 +117,7 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -148,6 +149,15 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public TMNESWC WithName(string value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build() => BuildNode(CPlugAudioEnvironmentBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
+    }
+    public partial class TMU : CPlugAudioEnvironmentBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
+        public TMU WithDopplerFactor(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, SupportedGames2);
+        public TMU WithName(string value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build() => BuildNode(CPlugAudioEnvironmentBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
     public partial class VSK5 : CPlugAudioEnvironmentBuilderMembers3<VSK5>

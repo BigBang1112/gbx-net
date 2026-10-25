@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionWeather : global::GBX.NET.Interfaces.Motion.IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionWeatherTM10, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMPU, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMSX, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionWeatherVSK5, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMF, global::GBX.NET.Interfaces.Motion.IMotionWeatherMP3, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMT, global::GBX.NET.Interfaces.Motion.IMotionWeatherMP4
+public partial class CMotionWeather : global::GBX.NET.Interfaces.Motion.IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionWeatherTM10, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMPU, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMSX, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMU, global::GBX.NET.Interfaces.Motion.IMotionWeatherVSK5, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMF, global::GBX.NET.Interfaces.Motion.IMotionWeatherMP3, global::GBX.NET.Interfaces.Motion.IMotionWeatherTMT, global::GBX.NET.Interfaces.Motion.IMotionWeatherMP4
 {
 }

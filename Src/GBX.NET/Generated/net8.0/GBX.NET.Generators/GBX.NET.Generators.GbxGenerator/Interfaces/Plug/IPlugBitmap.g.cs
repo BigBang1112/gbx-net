@@ -108,6 +108,10 @@ public partial interface IPlugBitmapTMNESWC : IPlugBitmap, global::GBX.NET.Inter
 {
 }
 
+public partial interface IPlugBitmapTMU : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
+{
+}
+
 public partial interface IPlugBitmapVSK5 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
 }

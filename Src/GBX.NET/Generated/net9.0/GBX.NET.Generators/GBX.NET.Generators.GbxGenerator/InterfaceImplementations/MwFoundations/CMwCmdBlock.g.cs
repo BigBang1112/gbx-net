@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdBlock : global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF
+public partial class CMwCmdBlock : global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF
 {
 }

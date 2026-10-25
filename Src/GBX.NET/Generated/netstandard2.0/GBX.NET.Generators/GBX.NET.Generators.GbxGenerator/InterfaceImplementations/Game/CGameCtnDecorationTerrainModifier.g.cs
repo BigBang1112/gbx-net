@@ -3,9 +3,14 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4
+public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4
 {
     global::GBX.NET.Interfaces.Plug.IPlugGameSkin? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier.Remapping
+    {
+        get => Remapping;
+        set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>.Remapping
     {
         get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

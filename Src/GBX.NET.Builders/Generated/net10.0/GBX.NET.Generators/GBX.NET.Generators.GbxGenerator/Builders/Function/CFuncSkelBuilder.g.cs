@@ -7,7 +7,7 @@ public abstract class CFuncSkelBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CFuncSkelBuilderBase() { }
     private protected CFuncSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state) : base(state) { }
-    public TSelf WithBones(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelBuilderAssignments.GetBonesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithBones(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelBuilderAssignments.GetBonesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithBones(IEnumerable<string> values) => WithBones(values.ToArray());
 }
 public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
@@ -22,6 +22,7 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CFuncSkelBuilderBase<TM10>
@@ -50,6 +51,13 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build() => BuildNode(CFuncSkelBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkel node);
+    }
+    public partial class TMU : CFuncSkelBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSkelTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSkel Build() => BuildNode(CFuncSkelBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSkel node);
     }
     public partial class VSK5 : CFuncSkelBuilderBase<VSK5>

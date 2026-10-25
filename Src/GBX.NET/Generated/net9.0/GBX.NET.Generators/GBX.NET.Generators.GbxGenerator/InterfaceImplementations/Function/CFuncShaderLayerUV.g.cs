@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncShaderLayerUV : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM10, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMF, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020
+public partial class CFuncShaderLayerUV : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM10, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMF, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020
 {
 }

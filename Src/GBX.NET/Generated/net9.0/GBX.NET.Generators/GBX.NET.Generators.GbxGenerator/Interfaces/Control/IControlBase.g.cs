@@ -4,12 +4,7 @@
 namespace GBX.NET.Interfaces.Control;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers1 : global::GBX.NET.Interfaces.Control.IControlBase
-{
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
+public interface IControlBaseMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
 {
     new T0? LegacyStyle
     {
@@ -18,16 +13,12 @@ public interface IControlBaseMembers2<T0> : global::GBX.NET.Interfaces.Control.I
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
+public interface IControlBaseMembers2 : global::GBX.NET.Interfaces.Control.IControlBase
 {
-    new T0? Layout
-    {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlBase)this).Layout);
-        set => ((global::GBX.NET.Engines.Control.CControlBase)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers4<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
+public interface IControlBaseMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
 {
     T0? Style
     {
@@ -35,6 +26,15 @@ public interface IControlBaseMembers4<T0> : global::GBX.NET.Interfaces.Control.I
         set => ((global::GBX.NET.Engines.Control.CControlBase)this).Style = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     string? StyleId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlBaseMembers4<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
+{
+    new T0? Layout
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlBase)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlBase)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IControlBase : IClassVersion<global::GBX.NET.Engines.Control.CControlBase>, global::GBX.NET.Interfaces.Scene.ISceneToy
 {
@@ -60,7 +60,7 @@ public partial interface IControlBase : IClassVersion<global::GBX.NET.Engines.Co
     string? StackText { get; set; }
 }
 
-public partial interface IControlBaseTM10 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM10, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTM10>
+public partial interface IControlBaseTM10 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM10, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM10>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
     {
@@ -74,7 +74,7 @@ public partial interface IControlBaseTM10 : IControlBase, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlBaseTMPU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMPU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMPU>
+public partial interface IControlBaseTMPU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMPU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMPU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
     {
@@ -88,7 +88,7 @@ public partial interface IControlBaseTMPU : IControlBase, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlBaseTMSX : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMSX, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
+public partial interface IControlBaseTMSX : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMSX, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
     {
@@ -102,7 +102,7 @@ public partial interface IControlBaseTMSX : IControlBase, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlBaseTMNESWC : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMNESWC, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
+public partial interface IControlBaseTMNESWC : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMNESWC, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
     {
@@ -116,7 +116,21 @@ public partial interface IControlBaseTMNESWC : IControlBase, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlBaseVSK5 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyVSK5, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
+public partial interface IControlBaseTMU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTMU>
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlBase)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlBase)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlBase)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlBase)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlBase)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
+public partial interface IControlBaseVSK5 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyVSK5, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion
     {
@@ -130,7 +144,7 @@ public partial interface IControlBaseVSK5 : IControlBase, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlBaseTMF : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMF, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleTMF>
+public partial interface IControlBaseTMF : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMF, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion
     {
@@ -144,7 +158,7 @@ public partial interface IControlBaseTMF : IControlBase, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlBaseMP3 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP3, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleMP3>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleMP3>
+public partial interface IControlBaseMP3 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP3, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP3>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP3>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion
     {
@@ -158,7 +172,7 @@ public partial interface IControlBaseMP3 : IControlBase, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlBaseTMT : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMT, global::GBX.NET.Interfaces.Control.IControlBaseMembers1, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMT>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
+public partial interface IControlBaseTMT : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMT, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMT>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion
     {
@@ -172,7 +186,7 @@ public partial interface IControlBaseTMT : IControlBase, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlBaseMP4 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP4, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleMP4>
+public partial interface IControlBaseMP4 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP4, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion
     {
@@ -186,7 +200,7 @@ public partial interface IControlBaseMP4 : IControlBase, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlBaseTM2020 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM2020, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>
+public partial interface IControlBaseTM2020 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM2020, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion
     {

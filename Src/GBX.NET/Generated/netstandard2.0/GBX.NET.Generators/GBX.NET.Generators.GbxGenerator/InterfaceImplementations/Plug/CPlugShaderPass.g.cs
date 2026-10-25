@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugShaderPass : global::GBX.NET.Interfaces.Plug.IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020
+public partial class CPlugShaderPass : global::GBX.NET.Interfaces.Plug.IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>.VertexTextures
     {
@@ -14,6 +14,11 @@ public partial class CPlugShaderPass : global::GBX.NET.Interfaces.Plug.IPlugShad
     {
         get => VertexTextures is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(GetVertexTexturesInterfaceReferences, true, "VertexTextures");
         set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>.VertexTextures
+    {
+        get => VertexTextures is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>(GetVertexTexturesInterfaceReferences, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>.VertexTextures
     {

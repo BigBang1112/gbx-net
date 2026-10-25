@@ -16,22 +16,22 @@ CGameMenu 0x03009000
 0x002 // legacy style sheet buffer
   CMwRefBuffer
 
-0x003 // frames, main frame index and music
+0x003 [TMU] // frames, main frame index and music
 
-0x004 // legacy background scene and camera field of view
+0x004 [TMU] // legacy background scene and camera field of view
   CMwNod BackgroundScene
   float BackgroundCameraFov
 
-0x005 // legacy frustum
+0x005 [TMU] // legacy frustum
   bool IsOrthographic
   boxaligned Frustum
 
-0x006 // legacy scene, camera and frame locations
+0x006 [TMU] // legacy scene, camera and frame locations
 
-0x007 // StyleSheet
+0x007 [TMU] // StyleSheet
   CControlStyleSheet StyleSheet
 
-0x008 // GridStep
+0x008 [TMU] // GridStep
   vec2 GridStep
 
 0x009 // frustum and menu order

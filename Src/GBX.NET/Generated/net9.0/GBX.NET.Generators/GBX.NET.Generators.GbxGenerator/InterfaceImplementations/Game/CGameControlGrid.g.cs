@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlGrid : global::GBX.NET.Interfaces.Game.IGameControlGrid, global::GBX.NET.Interfaces.Game.IGameControlGridTM10, global::GBX.NET.Interfaces.Game.IGameControlGridTMPU, global::GBX.NET.Interfaces.Game.IGameControlGridTMSX, global::GBX.NET.Interfaces.Game.IGameControlGridTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlGridVSK5, global::GBX.NET.Interfaces.Game.IGameControlGridTMF, global::GBX.NET.Interfaces.Game.IGameControlGridMP3, global::GBX.NET.Interfaces.Game.IGameControlGridTMT, global::GBX.NET.Interfaces.Game.IGameControlGridMP4, global::GBX.NET.Interfaces.Game.IGameControlGridTM2020
+public partial class CGameControlGrid : global::GBX.NET.Interfaces.Game.IGameControlGrid, global::GBX.NET.Interfaces.Game.IGameControlGridTM10, global::GBX.NET.Interfaces.Game.IGameControlGridTMPU, global::GBX.NET.Interfaces.Game.IGameControlGridTMSX, global::GBX.NET.Interfaces.Game.IGameControlGridTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlGridTMU, global::GBX.NET.Interfaces.Game.IGameControlGridVSK5, global::GBX.NET.Interfaces.Game.IGameControlGridTMF, global::GBX.NET.Interfaces.Game.IGameControlGridMP3, global::GBX.NET.Interfaces.Game.IGameControlGridTMT, global::GBX.NET.Interfaces.Game.IGameControlGridMP4, global::GBX.NET.Interfaces.Game.IGameControlGridTM2020
 {
 }

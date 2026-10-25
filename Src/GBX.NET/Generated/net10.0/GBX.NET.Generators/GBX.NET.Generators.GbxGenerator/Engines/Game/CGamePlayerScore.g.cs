@@ -634,11 +634,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
     /// CGamePlayerScore 0x004 chunk
     /// </summary>
     [Chunk(0x0308D004)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, 18)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, -1, 18)]
     public partial class Chunk0308D004 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D004;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -678,11 +678,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
     /// CGamePlayerScore 0x006 chunk
     /// </summary>
     [Chunk(0x0308D006)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, -1, 2)]
     public partial class Chunk0308D006 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D006;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -721,11 +721,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
     /// CGamePlayerScore 0x008 chunk
     /// </summary>
     [Chunk(0x0308D008)]
-    [ChunkGameVersion(GameVersion.VSK5)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0308D008 : Chunk<CGamePlayerScore>
     {
         public override uint Id => 0x0308D008;
-        public override GameVersion GameVersion => GameVersion.VSK5;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
         public DeprecatedPlayerCampaignSkillScore[]? U01;
         public DateTime? U02;
 

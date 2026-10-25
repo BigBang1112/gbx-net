@@ -14,6 +14,10 @@ public partial interface IControlIconIndex : IClassVersion<global::GBX.NET.Engin
     string? Name { get; set; }
 }
 
+public partial interface IControlIconIndexTMU : IControlIconIndex
+{
+}
+
 public partial interface IControlIconIndexVSK5 : IControlIconIndex
 {
 }

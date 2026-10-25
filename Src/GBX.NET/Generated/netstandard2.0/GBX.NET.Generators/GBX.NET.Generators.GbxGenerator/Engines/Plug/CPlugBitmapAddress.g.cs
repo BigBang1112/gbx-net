@@ -445,11 +445,11 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     /// CPlugBitmapAddress 0x007 chunk (UV generation and transforms)
     /// </summary>
     [Chunk(0x09047007, "UV generation and transforms")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09047007 : Chunk09047006
     {
         public override uint Id => 0x09047007;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -483,11 +483,11 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     /// CPlugBitmapAddress 0x009 chunk (BumpEnvScale)
     /// </summary>
     [Chunk(0x09047009, "BumpEnvScale")]
-    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk09047009 : Chunk<CPlugBitmapAddress>
     {
         public override uint Id => 0x09047009;
-        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

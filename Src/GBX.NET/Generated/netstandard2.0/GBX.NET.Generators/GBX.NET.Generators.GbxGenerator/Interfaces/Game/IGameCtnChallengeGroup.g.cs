@@ -66,6 +66,10 @@ public partial interface IGameCtnChallengeGroupTMNESWC : IGameCtnChallengeGroup,
 {
 }
 
+public partial interface IGameCtnChallengeGroupTMU : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
+{
+}
+
 public partial interface IGameCtnChallengeGroupVSK5 : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
 }

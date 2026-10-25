@@ -30,6 +30,10 @@ public partial interface IMwCmdExpClassThisTMNESWC : IMwCmdExpClassThis, global:
 {
 }
 
+public partial interface IMwCmdExpClassThisTMU : IMwCmdExpClassThis, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMU
+{
+}
+
 public partial interface IMwCmdExpClassThisVSK5 : IMwCmdExpClassThis, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassVSK5
 {
 }

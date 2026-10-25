@@ -1,9 +1,9 @@
 CMwCmdExpNumFunction 0x01055000
 - inherits: CMwCmdExpNum
 
-0x01046000 [TMF] // Type
+0x01046000 [TMU, TMF] // Type
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Value
   int FunctionType
   if FunctionType == 11

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020
+public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? GetAdditionalVariantsAirInterfaceReferences() => AdditionalVariantsAir;
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? GetAdditionalVariantsGroundInterfaceReferences() => AdditionalVariantsGround;

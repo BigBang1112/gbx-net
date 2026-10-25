@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020
+public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugGameSkin? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood.Remapping
     {
@@ -16,6 +16,16 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC>.Remapping
+    {
+        get => Remapping;
+        set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>.HmsLightMap
+    {
+        get => HmsLightMap;
+        set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>.Remapping
     {
         get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

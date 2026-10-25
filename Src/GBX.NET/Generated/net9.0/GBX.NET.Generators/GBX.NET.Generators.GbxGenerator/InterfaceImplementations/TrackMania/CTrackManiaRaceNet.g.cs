@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CTrackManiaRaceNet : global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNet, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetMP3, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTM2020
+public partial class CTrackManiaRaceNet : global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNet, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetMP3, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTM2020
 {
 }

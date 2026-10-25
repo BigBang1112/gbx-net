@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEntry : global::GBX.NET.Interfaces.Control.IControlEntry, global::GBX.NET.Interfaces.Control.IControlEntryTM10, global::GBX.NET.Interfaces.Control.IControlEntryTMPU, global::GBX.NET.Interfaces.Control.IControlEntryTMSX, global::GBX.NET.Interfaces.Control.IControlEntryTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryVSK5, global::GBX.NET.Interfaces.Control.IControlEntryTMF, global::GBX.NET.Interfaces.Control.IControlEntryMP3, global::GBX.NET.Interfaces.Control.IControlEntryTMT, global::GBX.NET.Interfaces.Control.IControlEntryMP4, global::GBX.NET.Interfaces.Control.IControlEntryTM2020
+public partial class CControlEntry : global::GBX.NET.Interfaces.Control.IControlEntry, global::GBX.NET.Interfaces.Control.IControlEntryTM10, global::GBX.NET.Interfaces.Control.IControlEntryTMPU, global::GBX.NET.Interfaces.Control.IControlEntryTMSX, global::GBX.NET.Interfaces.Control.IControlEntryTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryTMU, global::GBX.NET.Interfaces.Control.IControlEntryVSK5, global::GBX.NET.Interfaces.Control.IControlEntryTMF, global::GBX.NET.Interfaces.Control.IControlEntryMP3, global::GBX.NET.Interfaces.Control.IControlEntryTMT, global::GBX.NET.Interfaces.Control.IControlEntryMP4, global::GBX.NET.Interfaces.Control.IControlEntryTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlEntryTM10.LegacyStyle
     {
@@ -64,6 +64,26 @@ public partial class CControlEntry : global::GBX.NET.Interfaces.Control.IControl
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlEntryTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlEntryTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlEntryTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlEntryTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlEntryVSK5.LegacyStyle
     {

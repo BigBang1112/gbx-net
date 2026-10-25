@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightTM10, global::GBX.NET.Interfaces.Plug.IPlugLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightTMF, global::GBX.NET.Interfaces.Plug.IPlugLightMP3, global::GBX.NET.Interfaces.Plug.IPlugLightTMT, global::GBX.NET.Interfaces.Plug.IPlugLightMP4, global::GBX.NET.Interfaces.Plug.IPlugLightTM2020
+public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightTM10, global::GBX.NET.Interfaces.Plug.IPlugLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugLightTMU, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightTMF, global::GBX.NET.Interfaces.Plug.IPlugLightMP3, global::GBX.NET.Interfaces.Plug.IPlugLightTMT, global::GBX.NET.Interfaces.Plug.IPlugLightMP4, global::GBX.NET.Interfaces.Plug.IPlugLightTM2020
 {
     global::GBX.NET.Interfaces.Graphic.IGxLight? global::GBX.NET.Interfaces.Plug.IPlugLight.Light
     {
@@ -86,6 +86,26 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC>.Light
+    {
+        get => Light;
+        set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Function.IFuncLightTMU>.BitmapFlare
+    {
+        get => BitmapFlare;
+        set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Function.IFuncLightTMU>.BitmapProjector
+    {
+        get => BitmapProjector;
+        set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncLightTMU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Function.IFuncLightTMU>.FuncLight
+    {
+        get => FuncLight;
+        set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMU>.Light
     {
         get => Light;
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

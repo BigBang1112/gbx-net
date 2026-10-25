@@ -1,14 +1,14 @@
 CControlStyle 0x07017000
 - inherits: CPlug
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwCmdBlockMain FocusGainedScript
   CMwCmdBlockMain FocusLostScript
   CPlugSound FocusSound
   CMwNod
   CMwNod
 
-0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugSound EntrySound
 
 0x006 [TM10] // slider
@@ -34,25 +34,25 @@ CControlStyle 0x07017000
   float
   vec4 EditableColor
 
-0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x009 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugShader DefaultShader
 
-0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x00B [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool FitTextSize
   int
   int
 
-0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id
 
-0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x00D [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
   CPlugSound EnumSound
   CPlugShader EnumListShader
   int EnumMaxElemCount
   float EnumIconWidth
   float EnumIconHeight
 
-0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+0x00E [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF]
   CPlugSound ActionSound
   float ButtonIconWidth
   float ButtonIconHeight
@@ -69,7 +69,7 @@ CControlStyle 0x07017000
   float FocusAreaYMargin
   CPlugSolid FocusAreaSolid
 
-0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x010 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugSound EnumSound
   CPlugShader EnumListShader
   int EnumMaxElemCount
@@ -93,7 +93,7 @@ CControlStyle 0x07017000
   string GrayedCharAttributes
   string EditableCharAttributes
 
-0x014 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x014 [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -102,7 +102,7 @@ CControlStyle 0x07017000
   vec4 QuadGradientColor1
   vec4 QuadLinesColor
 
-0x015 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x015 [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -112,10 +112,10 @@ CControlStyle 0x07017000
   vec2 Quad_UvTopLeft
   vec2 Quad_UvBottomRight
 
-0x016 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x016 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CControlEffectMaster EffectMaster
 
-0x017 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x017 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool QuadIsLines
   bool QuadIsFill
   float QuadZ
@@ -126,7 +126,7 @@ CControlStyle 0x07017000
   vec2 Quad_UvBottomRight
   float Skew
 
-0x018 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x018 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   vec4 LineGradientColor0
   vec4 LineGradientColor1
 
@@ -148,7 +148,7 @@ CControlStyle 0x07017000
   CPlugSolid FocusAreaSolid
   float FocusAreaZOffset
 
-0x01B [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x01B [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugFont Font
   float
   float
@@ -156,7 +156,7 @@ CControlStyle 0x07017000
   STextSettings_ColorAndChars
   STextSettings_ColorAndChars
 
-0x01C [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x01C [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float SliderBarWidth
   float SliderBarHeight
   float SliderCursorWidth
@@ -165,7 +165,7 @@ CControlStyle 0x07017000
   CFuncEnum SliderBarIcons
   CFuncEnum SliderCursorIcons
 
-0x01D [VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x01D [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool FocusAreaEnable
   CPlugMaterial FocusAreaMaterial
   CPlugMaterial FocusAreaMaterialReadOnly

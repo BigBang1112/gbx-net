@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderLightOcc : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOcc, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTM2020
+public partial class CPlugBitmapRenderLightOcc : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOcc, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.BitmapToModulate
     {
@@ -11,6 +11,11 @@ public partial class CPlugBitmapRenderLightOcc : global::GBX.NET.Interfaces.Plug
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.BitmapToModulate
+    {
+        get => BitmapToModulate;
+        set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.BitmapToModulate
     {
         get => BitmapToModulate;
         set => BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

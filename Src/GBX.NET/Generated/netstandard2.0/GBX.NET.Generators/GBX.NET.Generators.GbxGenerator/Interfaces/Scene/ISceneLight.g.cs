@@ -35,6 +35,11 @@ public partial interface ISceneLightTMNESWC : ISceneLight, global::GBX.NET.Inter
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
 }
 
+public partial interface ISceneLightTMU : ISceneLight, global::GBX.NET.Interfaces.Scene.IScenePocTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+}
+
 public partial interface ISceneLightVSK5 : ISceneLight, global::GBX.NET.Interfaces.Scene.IScenePocVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

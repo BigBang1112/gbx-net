@@ -44,6 +44,10 @@ public partial interface IPlugBitmapRenderLightFromMapTMNESWC : IPlugBitmapRende
 {
 }
 
+public partial interface IPlugBitmapRenderLightFromMapTMU : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+{
+}
+
 public partial interface IPlugBitmapRenderLightFromMapVSK5 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
 {
 }

@@ -30,3 +30,7 @@ public partial interface IGameMenuScaleEffectTMSX : IGameMenuScaleEffect, global
 {
 }
 
+public partial interface IGameMenuScaleEffectTMU : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMU
+{
+}
+

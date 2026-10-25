@@ -57,6 +57,10 @@ public partial interface IMotionShaderTMNESWC : IMotionShader, global::GBX.NET.I
 {
 }
 
+public partial interface IMotionShaderTMU : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>
+{
+}
+
 public partial interface IMotionShaderVSK5 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
 }

@@ -130,6 +130,35 @@ public partial interface IVskCollectionTMNESWC : IVskCollection, global::GBX.NET
     }
 }
 
+public partial interface IVskCollectionTMU : IVskCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMU
+{
+    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>? CompleteZoneList
+    {
+        get => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU? DefaultDecoration
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).DefaultDecoration);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU? DefaultZone
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).DefaultZone);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? IconFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).IconFid);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? IconSmallFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU?)(object?)(((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).IconSmallFid);
+        set => ((global::GBX.NET.Engines.VirtualSkipper.CVskCollection)this).IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface IVskCollectionVSK5 : IVskCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5
 {
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>? CompleteZoneList

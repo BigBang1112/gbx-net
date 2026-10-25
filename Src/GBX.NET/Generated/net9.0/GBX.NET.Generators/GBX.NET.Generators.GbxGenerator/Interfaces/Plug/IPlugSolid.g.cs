@@ -93,6 +93,10 @@ public partial interface IPlugSolidTMNESWC : IPlugSolid, global::GBX.NET.Interfa
 {
 }
 
+public partial interface IPlugSolidTMU : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers5, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
+{
+}
+
 public partial interface IPlugSolidVSK5 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers5, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
 }

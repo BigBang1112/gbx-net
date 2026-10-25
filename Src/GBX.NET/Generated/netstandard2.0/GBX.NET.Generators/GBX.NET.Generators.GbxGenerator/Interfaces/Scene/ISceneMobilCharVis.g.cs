@@ -38,6 +38,12 @@ public partial interface ISceneMobilCharVisTMNESWC : ISceneMobilCharVis, global:
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneMobilCharVisTMU : ISceneMobilCharVis, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneMobilCharVisVSK5 : ISceneMobilCharVis, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }

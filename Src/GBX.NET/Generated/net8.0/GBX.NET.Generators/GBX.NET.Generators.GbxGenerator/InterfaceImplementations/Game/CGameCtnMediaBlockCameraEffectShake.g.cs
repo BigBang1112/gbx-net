@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockCameraEffectShake : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShake, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTM2020
+public partial class CGameCtnMediaBlockCameraEffectShake : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShake, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTM2020
 {
 }

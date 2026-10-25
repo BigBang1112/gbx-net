@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockUi : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUi, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiMP4
+public partial class CGameCtnMediaBlockUi : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUi, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiMP4
 {
 }

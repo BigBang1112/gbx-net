@@ -1,6 +1,6 @@
 CMwCmdExpEgal 0x01040000
 - inherits: CMwCmdExpBool
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Value1
   CMwCmdExp Value2

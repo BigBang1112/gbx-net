@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlScriptEditor : global::GBX.NET.Interfaces.Control.IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMPU, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMSX, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMF, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP3, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMT, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP4, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM2020
+public partial class CControlScriptEditor : global::GBX.NET.Interfaces.Control.IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMPU, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMSX, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMNESWC, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU, global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMF, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP3, global::GBX.NET.Interfaces.Control.IControlScriptEditorTMT, global::GBX.NET.Interfaces.Control.IControlScriptEditorMP4, global::GBX.NET.Interfaces.Control.IControlScriptEditorTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10.LegacyStyle
     {
@@ -64,6 +64,26 @@ public partial class CControlScriptEditor : global::GBX.NET.Interfaces.Control.I
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU.LegacyStyle
+    {
+        get => LegacyStyle;
+        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Control.IControlScriptEditorTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5.LegacyStyle
     {

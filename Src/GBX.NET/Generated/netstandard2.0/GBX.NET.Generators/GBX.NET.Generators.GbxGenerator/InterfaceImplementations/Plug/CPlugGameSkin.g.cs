@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugGameSkin : global::GBX.NET.Interfaces.Plug.IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020
+public partial class CPlugGameSkin : global::GBX.NET.Interfaces.Plug.IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU, global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020
 {
 }

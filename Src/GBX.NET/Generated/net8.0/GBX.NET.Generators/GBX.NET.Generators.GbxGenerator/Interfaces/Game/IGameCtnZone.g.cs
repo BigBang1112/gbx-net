@@ -45,6 +45,10 @@ public partial interface IGameCtnZoneTMNESWC : IGameCtnZone, global::GBX.NET.Int
 {
 }
 
+public partial interface IGameCtnZoneTMU : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
+{
+}
+
 public partial interface IGameCtnZoneVSK5 : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
 }

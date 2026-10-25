@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020
+public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMU, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020
 {
 }

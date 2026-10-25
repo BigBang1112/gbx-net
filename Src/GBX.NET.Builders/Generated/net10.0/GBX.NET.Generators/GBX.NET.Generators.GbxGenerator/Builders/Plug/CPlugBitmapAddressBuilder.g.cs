@@ -7,9 +7,9 @@ public abstract class CPlugBitmapAddressBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugBitmapAddressBuilderBase() { }
     private protected CPlugBitmapAddressBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMPU;
     public TSelf WithTexCoordIndex(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetTexCoordIndexAssignment(), value, SupportedGames1);
     public TSelf WithTransfoIso3(Iso3? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetTransfoIso3Assignment(), value, SupportedGames1);
@@ -26,7 +26,7 @@ public abstract class CPlugBitmapAddressBuilderMembers1<TSelf> : CPlugBitmapAddr
 public abstract class CPlugBitmapAddressBuilderMembers2<TSelf> : CPlugBitmapAddressBuilderMembers1<TSelf> where TSelf : CPlugBitmapAddressBuilderMembers2<TSelf>
 {
     private protected CPlugBitmapAddressBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
-    public TSelf WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugBitmapAddressBuilderMembers3<TSelf> : CPlugBitmapAddressBuilderMembers2<TSelf> where TSelf : CPlugBitmapAddressBuilderMembers3<TSelf>
 {
@@ -115,6 +115,7 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -144,7 +145,7 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public TMSX WithAddressFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetAddressFlagsAssignment(), value, SupportedGames2);
         public TMSX WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithDirectTransfo(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetDirectTransfoAssignment(), value, SupportedGames2);
         public TMSX WithUseBitmapTcScale(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetUseBitmapTcScaleAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMSX BuildInterface() => Build();
@@ -156,11 +157,23 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public TMNESWC WithAddressFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetAddressFlagsAssignment(), value, SupportedGames2);
         public TMNESWC WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithDirectTransfo(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetDirectTransfoAssignment(), value, SupportedGames2);
         public TMNESWC WithUseBitmapTcScale(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetUseBitmapTcScaleAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapAddress Build() => BuildNode(CPlugBitmapAddressBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAddress node);
+    }
+    public partial class TMU : CPlugBitmapAddressBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
+        public TMU WithAddressFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetAddressFlagsAssignment(), value, SupportedGames2);
+        public TMU WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithDirectTransfo(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetDirectTransfoAssignment(), value, SupportedGames2);
+        public TMU WithUseBitmapTcScale(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetUseBitmapTcScaleAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmapAddress Build() => BuildNode(CPlugBitmapAddressBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAddress node);
     }
     public partial class VSK5 : CPlugBitmapAddressBuilderMembers2<VSK5>
@@ -168,7 +181,7 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public VSK5 WithAddressFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetAddressFlagsAssignment(), value, SupportedGames2);
         public VSK5 WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithDirectTransfo(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetDirectTransfoAssignment(), value, SupportedGames2);
         public VSK5 WithUseBitmapTcScale(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetUseBitmapTcScaleAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressVSK5 BuildInterface() => Build();
@@ -179,8 +192,8 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public TMF WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-        public TMF WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMF WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapAddress Build() => BuildNode(CPlugBitmapAddressBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAddress node);
@@ -189,7 +202,7 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public MP3 WithAddressFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetAddressFlagsAssignment(), value, SupportedGames2);
-        public MP3 WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public MP3 WithDirectTransfo(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetDirectTransfoAssignment(), value, SupportedGames2);
         public MP3 WithUseBitmapTcScale(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetUseBitmapTcScaleAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP3 BuildInterface() => Build();
@@ -200,7 +213,7 @@ public partial class CPlugBitmapAddressBuilder : CPlugBitmapAddressBuilderBase<C
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapAddress> state) : base(state) { }
         public TMT WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMT WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMT WithBumpEnvScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapAddressBuilderAssignments.GetBumpEnvScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapAddress Build() => BuildNode(CPlugBitmapAddressBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapAddress node);

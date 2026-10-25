@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockFxColors : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColors, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTM2020
+public partial class CGameCtnMediaBlockFxColors : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColors, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTM2020
 {
 }

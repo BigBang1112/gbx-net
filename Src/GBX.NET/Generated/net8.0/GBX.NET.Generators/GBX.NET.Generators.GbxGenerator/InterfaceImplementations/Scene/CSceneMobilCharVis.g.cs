@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobilCharVis : global::GBX.NET.Interfaces.Scene.ISceneMobilCharVis, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTM2020
+public partial class CSceneMobilCharVis : global::GBX.NET.Interfaces.Scene.ISceneMobilCharVis, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilCharVisTM2020
 {
 }

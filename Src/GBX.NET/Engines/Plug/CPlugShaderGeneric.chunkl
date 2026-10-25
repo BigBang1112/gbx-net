@@ -10,7 +10,7 @@ CPlugShaderGeneric 0x09004000
 0x002
   SMaterial Material (version: 2)
 
-0x003 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x003 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   SMaterial Material (version: 3)
 
 archive SMaterial

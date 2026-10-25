@@ -7,7 +7,7 @@ public abstract class CSceneSectorBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CSceneSectorBuilderBase() { }
     private protected CSceneSectorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithScene(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetSceneAssignment(), value, SupportedGames1);
     public TSelf WithZone(global::GBX.NET.Engines.Hms.CHmsZone? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneAssignment(), value, SupportedGames1);
     public TSelf WithZoneReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsZone> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneReferenceAssignment(), value, SupportedGames1);
@@ -27,6 +27,7 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -65,6 +66,14 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public TMNESWC WithZone(global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC? value) => base.WithZone(value is null ? (global::GBX.NET.Engines.Hms.CHmsZone?)null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build() => BuildNode(CSceneSectorBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSector node);
+    }
+    public partial class TMU : CSceneSectorBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state) : base(state) { }
+        public TMU WithZone(global::GBX.NET.Interfaces.Hms.IHmsZoneTMU? value) => base.WithZone(value is null ? (global::GBX.NET.Engines.Hms.CHmsZone?)null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneSectorTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneSector Build() => BuildNode(CSceneSectorBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSector node);
     }
     public partial class VSK5 : CSceneSectorBuilderBase<VSK5>

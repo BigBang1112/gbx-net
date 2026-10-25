@@ -5,6 +5,6 @@ CSceneFxDistor2d 0x0A07B000
   CMwNod
   float DistorScale
 
-0x001 [TMF]
+0x001 [TMU, TMF]
   CPlugShaderApply BitmapDistor
   float DistorScale

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF
+public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? GetSolidFidsInterfaceReferences() => SolidFids;
 }

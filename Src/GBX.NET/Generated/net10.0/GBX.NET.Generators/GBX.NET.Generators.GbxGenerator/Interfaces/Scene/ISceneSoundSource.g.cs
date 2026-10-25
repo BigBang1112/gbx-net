@@ -55,6 +55,15 @@ public partial interface ISceneSoundSourceTMNESWC : ISceneSoundSource, global::G
     }
 }
 
+public partial interface ISceneSoundSourceTMU : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneSoundSource)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneSoundSource)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
 public partial interface ISceneSoundSourceVSK5 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion

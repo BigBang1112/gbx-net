@@ -9,7 +9,7 @@ CGamePlayerProfile 0x0308C000
   string NickName (formatted)
   id ProfileId
 
-0x001 [VSK5]
+0x001 [TMU, VSK5]
   LegacyVehicleProfile[]
 
 0x002
@@ -29,10 +29,10 @@ CGamePlayerProfile 0x0308C000
   int
   int
 
-0x005 [TM10, TMPU, VSK5]
+0x005 [TM10, TMPU, TMU, VSK5]
   LegacyVehicleSkin[]
 
-0x006 [TM10, TMPU, TMSX, TMNESWC]
+0x006 [TM10, TMPU, TMSX, TMNESWC, TMU]
   CInputBindingsConfig BindingsForCompatConfig
 
 0x007
@@ -788,7 +788,7 @@ CGamePlayerProfile 0x0308C000
   // Each profile chunk is preceded by its class ID, names, checksum, update time and v2+ creation time, and stored as data.
   CGamePlayerProfileChunk[] ProfileChunks (direct)
 
-0x240B5003 (not-remapped) [VSK5, TMF]
+0x240B5003 (not-remapped) [TMU, VSK5, TMF]
   string
   string
   string
@@ -806,13 +806,13 @@ CGamePlayerProfile 0x0308C000
   id
   id
 
-0x240B5004 (not-remapped) [VSK5, TMF]
+0x240B5004 (not-remapped) [TMU, VSK5, TMF]
   CGameCtnChallenge[]
 
-0x240B5006 (not-remapped) [VSK5, TMF]
+0x240B5006 (not-remapped) [TMU, VSK5, TMF]
   ChallengeOpponent[] ChallengeOpponents
 
-0x240B5007 (not-remapped) [VSK5, TMF]
+0x240B5007 (not-remapped) [TMU, VSK5, TMF]
   CampaignUnlock[] CampaignUnlocks
 
 0x240B5009 (not-remapped) [TMF]

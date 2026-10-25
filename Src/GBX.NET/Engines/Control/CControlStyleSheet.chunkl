@@ -1,16 +1,16 @@
 CControlStyleSheet 0x07027000
 - inherits: CPlug
 
-0x002 [MP4]
+0x002 [TMU, MP4]
   CControlStyle MasterStyle
 
-0x003 [MP4]
+0x003 [TMU, MP4]
   CMwRefBuffer Buffer
 
 0x004
   vec4[] LegacyColors
 
-0x005 [MP4]
+0x005 [TMU, MP4]
   vec3[] Colors
   float[] ColorsAlpha
 

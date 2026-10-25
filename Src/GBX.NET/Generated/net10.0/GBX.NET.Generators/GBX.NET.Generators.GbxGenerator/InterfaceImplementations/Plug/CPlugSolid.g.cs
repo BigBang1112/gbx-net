@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020
+public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? GetParticleEmitterModelsInterfaceReferences() => ParticleEmitterModels;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? GetSoundsInterfaceReferences() => Sounds;

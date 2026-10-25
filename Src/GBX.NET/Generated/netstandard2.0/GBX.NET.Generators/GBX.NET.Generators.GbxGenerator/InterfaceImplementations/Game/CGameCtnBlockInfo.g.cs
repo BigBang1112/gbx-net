@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020
+public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10>.AirBlockUnitInfos
     {
@@ -121,6 +121,36 @@ public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCt
         set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC>.Pillar
+    {
+        get => Pillar;
+        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.AirBlockUnitInfos
+    {
+        get => AirBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(GetAirBlockUnitInfosInterfaceReferences, false, "AirBlockUnitInfos");
+        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.AirHelperMobil
+    {
+        get => AirHelperMobil;
+        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.ConstructionModeHelperMobil
+    {
+        get => ConstructionModeHelperMobil;
+        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.GroundBlockUnitInfos
+    {
+        get => GroundBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(GetGroundBlockUnitInfosInterfaceReferences, false, "GroundBlockUnitInfos");
+        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.GroundHelperMobil
+    {
+        get => GroundHelperMobil;
+        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers4<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU>.Pillar
     {
         get => Pillar;
         set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CTrackManiaCore : global::GBX.NET.Interfaces.TrackMania.ITrackManiaCore, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP3, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM2020
+public partial class CTrackManiaCore : global::GBX.NET.Interfaces.TrackMania.ITrackManiaCore, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP3, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM2020
 {
 }

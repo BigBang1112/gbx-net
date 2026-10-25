@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdWhile : global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMF
+public partial class CMwCmdWhile : global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMF
 {
 }

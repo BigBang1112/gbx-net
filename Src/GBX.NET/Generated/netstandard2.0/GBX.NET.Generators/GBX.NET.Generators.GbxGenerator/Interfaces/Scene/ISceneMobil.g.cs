@@ -23,8 +23,6 @@ public partial interface ISceneMobil : IClassVersion<global::GBX.NET.Engines.Sce
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    string? Name { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
 }
 
@@ -46,6 +44,11 @@ public partial interface ISceneMobilTMSX : ISceneMobil, global::GBX.NET.Interfac
 public partial interface ISceneMobilTMNESWC : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
+}
+
+public partial interface ISceneMobilTMU : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
 }
 
 public partial interface ISceneMobilVSK5 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>

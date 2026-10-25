@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockUiSimpleEvtsDisplay : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayMP4
+public partial class CGameCtnMediaBlockUiSimpleEvtsDisplay : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayMP4
 {
 }

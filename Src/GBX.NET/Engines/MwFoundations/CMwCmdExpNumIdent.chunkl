@@ -1,11 +1,11 @@
 CMwCmdExpNumIdent 0x01047000
 - inherits: CMwCmdExpNum
 
-0x01046000 [TMF] // Type
+0x01046000 [TMU, TMF] // Type
 
 0x000 // Ident
   string Ident
 
-0x001 [TMF]
+0x001 [TMU, TMF]
   string Ident
   int

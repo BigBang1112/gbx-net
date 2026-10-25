@@ -3,13 +3,8 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobil : global::GBX.NET.Interfaces.Scene.ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020
+public partial class CSceneMobil : global::GBX.NET.Interfaces.Scene.ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020
 {
-    global::GBX.NET.Interfaces.Motion.IMotion? global::GBX.NET.Interfaces.Scene.ISceneMobil.Motion
-    {
-        get => Motion;
-        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? global::GBX.NET.Interfaces.Scene.ISceneMobil.ObjectLink
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLink>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
@@ -74,6 +69,21 @@ public partial class CSceneMobil : global::GBX.NET.Interfaces.Scene.ISceneMobil,
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU? global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU>.MessageHandler
+    {
+        get => MessageHandler;
+        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneMobilTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5>.MessageHandler
     {

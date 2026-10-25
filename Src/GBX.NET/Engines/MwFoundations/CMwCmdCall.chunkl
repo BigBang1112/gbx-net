@@ -4,5 +4,5 @@ CMwCmdCall 0x01034000
 0x000
   CMwCmdExpClassParam.OldParamArchive OldParameter
 
-0x001 [TMF]
+0x001 [TMU, TMF]
   CMwCmdExpClassParam.ParamArchive Parameter

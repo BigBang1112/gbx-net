@@ -4,4 +4,4 @@ CTrackManiaControlCard 0x2408F000
 0x000 // UseDelays
   bool UseDelays (inherited)
 
-0x001
+0x001 [TMU]

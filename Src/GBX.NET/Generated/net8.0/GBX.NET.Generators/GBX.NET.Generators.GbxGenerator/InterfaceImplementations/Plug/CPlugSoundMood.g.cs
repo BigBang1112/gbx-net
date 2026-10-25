@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSoundMood : global::GBX.NET.Interfaces.Plug.IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTM2020
+public partial class CPlugSoundMood : global::GBX.NET.Interfaces.Plug.IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodTM2020
 {
 }

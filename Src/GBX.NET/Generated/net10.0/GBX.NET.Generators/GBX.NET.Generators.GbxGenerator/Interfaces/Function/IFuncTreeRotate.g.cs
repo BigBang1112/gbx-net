@@ -33,6 +33,10 @@ public partial interface IFuncTreeRotateTMNESWC : IFuncTreeRotate, global::GBX.N
 {
 }
 
+public partial interface IFuncTreeRotateTMU : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMU
+{
+}
+
 public partial interface IFuncTreeRotateVSK5 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5
 {
 }

@@ -17,3 +17,12 @@ public partial interface IMwCmdSleepTM10 : IMwCmdSleep
     new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum? Time { get; set; }
 }
 
+public partial interface IMwCmdSleepTMU : IMwCmdSleep
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? Time
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU?)(object?)(((global::GBX.NET.Engines.MwFoundations.CMwCmdSleep)this).Time);
+        set => ((global::GBX.NET.Engines.MwFoundations.CMwCmdSleep)this).Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+

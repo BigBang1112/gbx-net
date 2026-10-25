@@ -8,7 +8,7 @@ public abstract class CControlIconIndexBuilderBase<TSelf> : NodeBuilder<global::
     private protected CControlIconIndexBuilderBase() { }
     private protected CControlIconIndexBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.TMF;
-    private protected const GameVersion SupportedGames2 = GameVersion.TMF | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithIndexOff(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, SupportedGames2);
     public TSelf WithIndexOffFocused(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, SupportedGames2);
     public TSelf WithIndexOffGrayed(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, SupportedGames2);
@@ -31,8 +31,16 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CControlIconIndexBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlIconIndexTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlIconIndex Build() => BuildNode(CControlIconIndexBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlIconIndex node);
+    }
     public partial class VSK5 : CControlIconIndexBuilderBase<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) : base(state) { }

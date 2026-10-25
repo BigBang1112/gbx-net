@@ -1,5 +1,5 @@
 CMwCmdExpString 0x0104E000
 - inherits: CMwCmdExp
 
-0x000 [TMF] // String
+0x000 [TMU, TMF] // String
   string String

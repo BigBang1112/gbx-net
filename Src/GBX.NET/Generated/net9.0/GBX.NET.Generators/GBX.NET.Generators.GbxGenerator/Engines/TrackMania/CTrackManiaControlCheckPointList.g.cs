@@ -120,9 +120,11 @@ public partial class CTrackManiaControlCheckPointList : CControlFrame, IClass
     /// CTrackManiaControlCheckPointList 0x001 chunk (line styles)
     /// </summary>
     [Chunk(0x2406E001, "line styles")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk2406E001 : Chunk<CTrackManiaControlCheckPointList>
     {
         public override uint Id => 0x2406E001;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public StyleSheetElem? U01;
         public StyleSheetElem? U02;
         public StyleSheetElem? U03;

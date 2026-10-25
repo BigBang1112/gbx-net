@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFunc : global::GBX.NET.Interfaces.Function.IFunc, global::GBX.NET.Interfaces.Function.IFuncTM10, global::GBX.NET.Interfaces.Function.IFuncTMPU, global::GBX.NET.Interfaces.Function.IFuncTMSX, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncTM2020
+public partial class CFunc : global::GBX.NET.Interfaces.Function.IFunc, global::GBX.NET.Interfaces.Function.IFuncTM10, global::GBX.NET.Interfaces.Function.IFuncTMPU, global::GBX.NET.Interfaces.Function.IFuncTMSX, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncTM2020
 {
 }

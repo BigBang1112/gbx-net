@@ -30,6 +30,10 @@ public partial interface IGamePlaygroundTMNESWC : IGamePlayground, global::GBX.N
 {
 }
 
+public partial interface IGamePlaygroundTMU : IGamePlayground, global::GBX.NET.Interfaces.Game.IGameNodTMU
+{
+}
+
 public partial interface IGamePlaygroundVSK5 : IGamePlayground, global::GBX.NET.Interfaces.Game.IGameNodVSK5
 {
 }

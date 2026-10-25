@@ -41,6 +41,10 @@ public partial interface IMotionCmdBaseTMNESWC : IMotionCmdBase, global::GBX.NET
 {
 }
 
+public partial interface IMotionCmdBaseTMU : IMotionCmdBase, global::GBX.NET.Interfaces.MwFoundations.IMwCmdTMU, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMU>
+{
+}
+
 public partial interface IMotionCmdBaseVSK5 : IMotionCmdBase, global::GBX.NET.Interfaces.MwFoundations.IMwCmdVSK5, global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5>
 {
 }

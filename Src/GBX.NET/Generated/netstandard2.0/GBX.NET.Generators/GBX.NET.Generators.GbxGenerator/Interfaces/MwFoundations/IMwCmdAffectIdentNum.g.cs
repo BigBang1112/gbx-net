@@ -30,6 +30,10 @@ public partial interface IMwCmdAffectIdentNumTMNESWC : IMwCmdAffectIdentNum, glo
 {
 }
 
+public partial interface IMwCmdAffectIdentNumTMU : IMwCmdAffectIdentNum, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentTMU
+{
+}
+
 public partial interface IMwCmdAffectIdentNumVSK5 : IMwCmdAffectIdentNum, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentVSK5
 {
 }

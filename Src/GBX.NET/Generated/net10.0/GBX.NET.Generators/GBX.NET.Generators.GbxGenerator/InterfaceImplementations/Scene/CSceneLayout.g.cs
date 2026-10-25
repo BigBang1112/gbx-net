@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020
+public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU, global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>? GetFieldsInterfaceReferences() => Fields;
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? GetGatesInterfaceReferences() => Gates;

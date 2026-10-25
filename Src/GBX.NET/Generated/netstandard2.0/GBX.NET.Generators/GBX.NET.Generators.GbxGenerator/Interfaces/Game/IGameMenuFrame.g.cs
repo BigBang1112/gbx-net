@@ -50,6 +50,19 @@ public partial interface IGameMenuFrameTMNESWC : IGameMenuFrame, global::GBX.NET
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IGameMenuFrameTMU : IGameMenuFrame, global::GBX.NET.Interfaces.Control.IControlFrameTMU
+{
+    string AutoBackButtonId { get; set; }
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? FrameScene { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? ShowSound { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? UpDownSound { get; set; }
+}
+
 public partial interface IGameMenuFrameVSK5 : IGameMenuFrame, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }

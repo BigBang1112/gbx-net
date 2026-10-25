@@ -26,6 +26,10 @@ public partial interface IPlugSoundComponentTMNESWC : IPlugSoundComponent
 {
 }
 
+public partial interface IPlugSoundComponentTMU : IPlugSoundComponent
+{
+}
+
 public partial interface IPlugSoundComponentVSK5 : IPlugSoundComponent
 {
 }

@@ -60,6 +60,14 @@ public partial interface IControlContainerTMNESWC : IControlContainer, global::G
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlContainerTMU : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMU, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU>
+{
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IControlContainerVSK5 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

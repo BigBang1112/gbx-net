@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionPlayer : global::GBX.NET.Interfaces.Motion.IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionPlayerTM10, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMPU, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMSX, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionPlayerVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMF, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP3, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMT, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP4
+public partial class CMotionPlayer : global::GBX.NET.Interfaces.Motion.IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionPlayerTM10, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMPU, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMSX, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMU, global::GBX.NET.Interfaces.Motion.IMotionPlayerVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMF, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP3, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMT, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP4
 {
     global::GBX.NET.Interfaces.Motion.IMotionCmdBase? global::GBX.NET.Interfaces.Motion.IMotionPlayer.Base
     {
@@ -26,6 +26,11 @@ public partial class CMotionPlayer : global::GBX.NET.Interfaces.Motion.IMotionPl
         set => Base = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC>.Base
+    {
+        get => Base;
+        set => Base = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMU? global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMU>.Base
     {
         get => Base;
         set => Base = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

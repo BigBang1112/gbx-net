@@ -94,6 +94,10 @@ public partial interface IPlugAudioEnvironmentTMNESWC : IPlugAudioEnvironment, g
 {
 }
 
+public partial interface IPlugAudioEnvironmentTMU : IPlugAudioEnvironment, global::GBX.NET.Interfaces.Plug.IPlugAudioTMU, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMembers3, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMembers4
+{
+}
+
 public partial interface IPlugAudioEnvironmentVSK5 : IPlugAudioEnvironment, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMembers3, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMembers4
 {
 }

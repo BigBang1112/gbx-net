@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxNod : global::GBX.NET.Interfaces.Scene.ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF, global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT, global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4, global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020
+public partial class CSceneFxNod : global::GBX.NET.Interfaces.Scene.ISceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU, global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF, global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT, global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4, global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>? GetNodInputsInterfaceReferences() => NodInputs;
 }

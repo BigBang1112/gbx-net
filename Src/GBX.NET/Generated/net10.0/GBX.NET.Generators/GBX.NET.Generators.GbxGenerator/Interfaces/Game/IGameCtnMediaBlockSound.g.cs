@@ -38,6 +38,10 @@ public partial interface IGameCtnMediaBlockSoundTMNESWC : IGameCtnMediaBlockSoun
 {
 }
 
+public partial interface IGameCtnMediaBlockSoundTMU : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockSoundVSK5 : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }

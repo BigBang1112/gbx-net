@@ -51,6 +51,15 @@ public partial interface IPlugTreeVisualMipTMNESWC : IPlugTreeVisualMip, global:
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? Visual { get; set; }
 }
 
+public partial interface IPlugTreeVisualMipTMU : IPlugTreeVisualMip, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU
+{
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>? Children { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncTreeTMU? FuncTree { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU? Generator { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? ModelSolid { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugVisualTMU? Visual { get; set; }
+}
+
 public partial interface IPlugTreeVisualMipVSK5 : IPlugTreeVisualMip, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5
 {
     new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>? Children { get; set; }

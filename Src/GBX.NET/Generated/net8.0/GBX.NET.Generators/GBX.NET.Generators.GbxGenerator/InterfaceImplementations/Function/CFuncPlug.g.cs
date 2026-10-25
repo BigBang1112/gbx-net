@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncPlug : global::GBX.NET.Interfaces.Function.IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncPlugTM10, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5, global::GBX.NET.Interfaces.Function.IFuncPlugTMF, global::GBX.NET.Interfaces.Function.IFuncPlugMP3, global::GBX.NET.Interfaces.Function.IFuncPlugTMT, global::GBX.NET.Interfaces.Function.IFuncPlugMP4, global::GBX.NET.Interfaces.Function.IFuncPlugTM2020
+public partial class CFuncPlug : global::GBX.NET.Interfaces.Function.IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncPlugTM10, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC, global::GBX.NET.Interfaces.Function.IFuncPlugTMU, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5, global::GBX.NET.Interfaces.Function.IFuncPlugTMF, global::GBX.NET.Interfaces.Function.IFuncPlugMP3, global::GBX.NET.Interfaces.Function.IFuncPlugTMT, global::GBX.NET.Interfaces.Function.IFuncPlugMP4, global::GBX.NET.Interfaces.Function.IFuncPlugTM2020
 {
 }

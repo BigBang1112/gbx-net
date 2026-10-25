@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVisualLines2D : global::GBX.NET.Interfaces.Plug.IPlugVisualLines2D, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTM2020
+public partial class CPlugVisualLines2D : global::GBX.NET.Interfaces.Plug.IPlugVisualLines2D, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualLines2DTM2020
 {
 }

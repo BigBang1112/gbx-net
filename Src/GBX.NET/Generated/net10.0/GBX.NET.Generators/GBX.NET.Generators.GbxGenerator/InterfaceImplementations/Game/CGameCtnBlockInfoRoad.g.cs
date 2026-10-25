@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020
+public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020
 {
 }

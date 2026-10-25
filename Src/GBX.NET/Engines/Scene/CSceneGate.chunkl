@@ -10,7 +10,7 @@ CSceneGate 0x0A006000
     CMwNod
     id
 
-0x001 [TMNESWC] // portals
+0x001 [TMNESWC, TMU] // portals
   int
   CHmsPortal FirstPortal
   if FirstPortal != null

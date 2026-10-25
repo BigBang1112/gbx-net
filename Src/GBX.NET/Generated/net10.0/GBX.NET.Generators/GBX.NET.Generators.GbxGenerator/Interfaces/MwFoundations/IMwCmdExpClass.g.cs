@@ -23,6 +23,10 @@ public partial interface IMwCmdExpClassTMNESWC : IMwCmdExpClass
 {
 }
 
+public partial interface IMwCmdExpClassTMU : IMwCmdExpClass
+{
+}
+
 public partial interface IMwCmdExpClassVSK5 : IMwCmdExpClass
 {
 }

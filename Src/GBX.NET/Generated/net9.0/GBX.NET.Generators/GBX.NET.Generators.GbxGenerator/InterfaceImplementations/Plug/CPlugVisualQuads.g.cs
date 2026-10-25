@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVisualQuads : global::GBX.NET.Interfaces.Plug.IPlugVisualQuads, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTM2020
+public partial class CPlugVisualQuads : global::GBX.NET.Interfaces.Plug.IPlugVisualQuads, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualQuadsTM2020
 {
 }

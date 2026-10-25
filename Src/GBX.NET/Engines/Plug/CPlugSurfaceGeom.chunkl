@@ -11,6 +11,6 @@ CPlugSurfaceGeom 0x0900F000
 
 0x002 [TM10, TMPU, TMSX, TMNESWC]
 
-0x004 (demonstration: partial) [VSK5, TMF] // bounding box and geometry
+0x004 (demonstration: partial) [TMU, VSK5, TMF] // bounding box and geometry
   id
   boxaligned BoundingBox = (0, 0, 0, -1, -1, -1)

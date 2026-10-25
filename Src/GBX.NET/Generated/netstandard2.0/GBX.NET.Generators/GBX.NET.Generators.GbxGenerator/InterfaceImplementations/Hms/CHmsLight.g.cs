@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsLight : global::GBX.NET.Interfaces.Hms.IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightTM10, global::GBX.NET.Interfaces.Hms.IHmsLightTMPU, global::GBX.NET.Interfaces.Hms.IHmsLightTMSX, global::GBX.NET.Interfaces.Hms.IHmsLightTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsLightVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMP3, global::GBX.NET.Interfaces.Hms.IHmsLightTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMP4, global::GBX.NET.Interfaces.Hms.IHmsLightTM2020
+public partial class CHmsLight : global::GBX.NET.Interfaces.Hms.IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightTM10, global::GBX.NET.Interfaces.Hms.IHmsLightTMPU, global::GBX.NET.Interfaces.Hms.IHmsLightTMSX, global::GBX.NET.Interfaces.Hms.IHmsLightTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsLightTMU, global::GBX.NET.Interfaces.Hms.IHmsLightVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMP3, global::GBX.NET.Interfaces.Hms.IHmsLightTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMP4, global::GBX.NET.Interfaces.Hms.IHmsLightTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? global::GBX.NET.Interfaces.Hms.IHmsLight.BitmapFlare
     {
@@ -76,6 +76,21 @@ public partial class CHmsLight : global::GBX.NET.Interfaces.Hms.IHmsLight, globa
         set => BitmapSprite = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC>.MainGxLight
+    {
+        get => MainGxLight;
+        set => MainGxLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Graphic.IGxLightTMU>.BitmapFlare
+    {
+        get => BitmapFlare;
+        set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Graphic.IGxLightTMU>.BitmapSprite
+    {
+        get => BitmapSprite;
+        set => BitmapSprite = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMU? global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Graphic.IGxLightTMU>.MainGxLight
     {
         get => MainGxLight;
         set => MainGxLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

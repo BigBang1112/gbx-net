@@ -30,6 +30,10 @@ public partial interface IFuncShaderTweakKeysTranssTMNESWC : IFuncShaderTweakKey
 {
 }
 
+public partial interface IFuncShaderTweakKeysTranssTMU : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMU
+{
+}
+
 public partial interface IFuncShaderTweakKeysTranssVSK5 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
 {
 }

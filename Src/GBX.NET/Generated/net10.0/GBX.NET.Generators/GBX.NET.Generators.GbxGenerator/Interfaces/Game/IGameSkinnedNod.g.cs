@@ -30,6 +30,10 @@ public partial interface IGameSkinnedNodTMNESWC : IGameSkinnedNod, global::GBX.N
 {
 }
 
+public partial interface IGameSkinnedNodTMU : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodTMU
+{
+}
+
 public partial interface IGameSkinnedNodVSK5 : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodVSK5
 {
 }

@@ -50,6 +50,10 @@ public partial interface IPlugGameSkinTMNESWC : IPlugGameSkin, global::GBX.NET.I
 {
 }
 
+public partial interface IPlugGameSkinTMU : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
+{
+}
+
 public partial interface IPlugGameSkinVSK5 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
 }

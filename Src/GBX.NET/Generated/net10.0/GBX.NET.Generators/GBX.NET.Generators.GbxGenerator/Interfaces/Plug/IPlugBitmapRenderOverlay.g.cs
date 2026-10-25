@@ -30,6 +30,10 @@ public partial interface IPlugBitmapRenderOverlayTMNESWC : IPlugBitmapRenderOver
 {
 }
 
+public partial interface IPlugBitmapRenderOverlayTMU : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
+{
+}
+
 public partial interface IPlugBitmapRenderOverlayVSK5 : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
 }

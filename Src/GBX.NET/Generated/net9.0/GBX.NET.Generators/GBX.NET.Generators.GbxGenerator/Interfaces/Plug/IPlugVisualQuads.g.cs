@@ -30,6 +30,10 @@ public partial interface IPlugVisualQuadsTMNESWC : IPlugVisualQuads, global::GBX
 {
 }
 
+public partial interface IPlugVisualQuadsTMU : IPlugVisualQuads, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMU
+{
+}
+
 public partial interface IPlugVisualQuadsVSK5 : IPlugVisualQuads, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5
 {
 }

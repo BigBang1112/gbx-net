@@ -148,9 +148,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x002 chunk (saturation, brightness, contrast and hue bitmap)
     /// </summary>
     [Chunk(0x0A034002, "saturation, brightness, contrast and hue bitmap")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A034002 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -174,9 +176,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x005 chunk (legacy color materials)
     /// </summary>
     [Chunk(0x0A034005, "legacy color materials")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A034005 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034005;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -216,9 +220,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x008 chunk (legacy parameters)
     /// </summary>
     [Chunk(0x0A034008, "legacy parameters")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A034008 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034008;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public float U01;
         public float U02;
         public float U03;
@@ -273,9 +279,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x009 chunk (parameters)
     /// </summary>
     [Chunk(0x0A034009, "parameters")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0A034009 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034009;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public Param? U01;
         public Param? U02;
         public Param? U03;

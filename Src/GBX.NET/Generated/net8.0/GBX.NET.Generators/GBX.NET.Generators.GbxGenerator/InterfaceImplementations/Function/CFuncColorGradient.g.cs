@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncColorGradient : global::GBX.NET.Interfaces.Function.IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncColorGradientMP3, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMT, global::GBX.NET.Interfaces.Function.IFuncColorGradientMP4, global::GBX.NET.Interfaces.Function.IFuncColorGradientTM2020
+public partial class CFuncColorGradient : global::GBX.NET.Interfaces.Function.IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMU, global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncColorGradientMP3, global::GBX.NET.Interfaces.Function.IFuncColorGradientTMT, global::GBX.NET.Interfaces.Function.IFuncColorGradientMP4, global::GBX.NET.Interfaces.Function.IFuncColorGradientTM2020
 {
 }

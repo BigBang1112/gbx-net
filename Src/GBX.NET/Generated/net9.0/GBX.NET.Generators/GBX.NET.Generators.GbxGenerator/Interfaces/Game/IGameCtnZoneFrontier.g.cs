@@ -60,6 +60,10 @@ public partial interface IGameCtnZoneFrontierTMNESWC : IGameCtnZoneFrontier, glo
 {
 }
 
+public partial interface IGameCtnZoneFrontierTMU : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMU>
+{
+}
+
 public partial interface IGameCtnZoneFrontierVSK5 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5>
 {
 }

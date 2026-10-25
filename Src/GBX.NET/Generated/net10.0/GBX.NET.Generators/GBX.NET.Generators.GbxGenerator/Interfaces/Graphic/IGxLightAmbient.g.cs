@@ -36,6 +36,10 @@ public partial interface IGxLightAmbientTMNESWC : IGxLightAmbient, global::GBX.N
 {
 }
 
+public partial interface IGxLightAmbientTMU : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMU, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
+{
+}
+
 public partial interface IGxLightAmbientVSK5 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
 }

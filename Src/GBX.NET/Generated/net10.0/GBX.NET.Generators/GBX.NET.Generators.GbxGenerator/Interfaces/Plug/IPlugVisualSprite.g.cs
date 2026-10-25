@@ -54,6 +54,10 @@ public partial interface IPlugVisualSpriteTMNESWC : IPlugVisualSprite, global::G
 {
 }
 
+public partial interface IPlugVisualSpriteTMU : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
+{
+}
+
 public partial interface IPlugVisualSpriteVSK5 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
 {
 }

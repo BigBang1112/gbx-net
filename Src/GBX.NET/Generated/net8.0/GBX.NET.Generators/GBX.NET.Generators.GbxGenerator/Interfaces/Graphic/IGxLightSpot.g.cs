@@ -44,6 +44,11 @@ public partial interface IGxLightSpotTMNESWC : IGxLightSpot, global::GBX.NET.Int
     new uint Flags { get; set; }
 }
 
+public partial interface IGxLightSpotTMU : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMU, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
+{
+    new uint Flags { get; set; }
+}
+
 public partial interface IGxLightSpotVSK5 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
     new uint Flags { get; set; }

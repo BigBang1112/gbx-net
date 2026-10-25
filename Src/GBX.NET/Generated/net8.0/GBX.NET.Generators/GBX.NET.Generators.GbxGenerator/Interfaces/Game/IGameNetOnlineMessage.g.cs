@@ -13,6 +13,10 @@ public partial interface IGameNetOnlineMessage : IClassVersion<global::GBX.NET.E
     string? Subject { get; set; }
 }
 
+public partial interface IGameNetOnlineMessageTMU : IGameNetOnlineMessage
+{
+}
+
 public partial interface IGameNetOnlineMessageVSK5 : IGameNetOnlineMessage
 {
 }

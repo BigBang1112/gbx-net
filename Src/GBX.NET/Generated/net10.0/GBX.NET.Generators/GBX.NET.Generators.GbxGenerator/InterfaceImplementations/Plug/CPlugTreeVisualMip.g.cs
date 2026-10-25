@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugTreeVisualMip : global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMip, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM2020
+public partial class CPlugTreeVisualMip : global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMip, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM2020
 {
 }

@@ -282,9 +282,11 @@ public partial class CMotionEmitterParticles : CMotionManaged, IClass
     /// CMotionEmitterParticles 0x001 chunk (particle emission parameters)
     /// </summary>
     [Chunk(0x08058001, "particle emission parameters")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk08058001 : Chunk<CMotionEmitterParticles>
     {
         public override uint Id => 0x08058001;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

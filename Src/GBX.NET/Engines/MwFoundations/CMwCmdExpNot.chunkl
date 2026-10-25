@@ -1,5 +1,5 @@
 CMwCmdExpNot 0x01045000
 - inherits: CMwCmdExpBool
 
-0x000 [TMF]
+0x000 [TMU, TMF]
   CMwCmdExp Value

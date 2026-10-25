@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugIndexBuffer : global::GBX.NET.Interfaces.Plug.IPlugIndexBuffer, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMSX, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP3, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMT, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP4, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTM2020
+public partial class CPlugIndexBuffer : global::GBX.NET.Interfaces.Plug.IPlugIndexBuffer, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMSX, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMU, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP3, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMT, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP4, global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTM2020
 {
 }

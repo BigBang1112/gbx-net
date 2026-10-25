@@ -30,6 +30,10 @@ public partial interface ITrackManiaRaceNetLapsTMNESWC : ITrackManiaRaceNetLaps,
 {
 }
 
+public partial interface ITrackManiaRaceNetLapsTMU : ITrackManiaRaceNetLaps, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetTMU
+{
+}
+
 public partial interface ITrackManiaRaceNetLapsVSK5 : ITrackManiaRaceNetLaps, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetVSK5
 {
 }

@@ -30,6 +30,10 @@ public partial interface IPlugBitmapRenderShadowTMNESWC : IPlugBitmapRenderShado
 {
 }
 
+public partial interface IPlugBitmapRenderShadowTMU : IPlugBitmapRenderShadow, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
+{
+}
+
 public partial interface IPlugBitmapRenderShadowVSK5 : IPlugBitmapRenderShadow, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
 }

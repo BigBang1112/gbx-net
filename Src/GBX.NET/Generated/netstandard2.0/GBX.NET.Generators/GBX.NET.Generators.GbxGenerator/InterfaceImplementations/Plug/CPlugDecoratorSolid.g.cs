@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020
+public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid.TreeDecorators
     {
@@ -14,6 +14,11 @@ public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlug
     {
         get => TreeDecorators is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>(GetTreeDecoratorsInterfaceReferences, true, "TreeDecorators");
         set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>.TreeDecorators
+    {
+        get => TreeDecorators is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>(GetTreeDecoratorsInterfaceReferences, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>.TreeDecorators
     {

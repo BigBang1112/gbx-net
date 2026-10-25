@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneVehicleCar : global::GBX.NET.Interfaces.Scene.ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM2020
+public partial class CSceneVehicleCar : global::GBX.NET.Interfaces.Scene.ISceneVehicleCar, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMU, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM2020
 {
 }

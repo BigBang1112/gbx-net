@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlStyleSheet : global::GBX.NET.Interfaces.Control.IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4
+public partial class CControlStyleSheet : global::GBX.NET.Interfaces.Control.IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU, global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4
 {
 }

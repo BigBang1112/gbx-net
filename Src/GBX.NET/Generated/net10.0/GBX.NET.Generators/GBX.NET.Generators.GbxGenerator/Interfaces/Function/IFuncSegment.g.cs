@@ -15,6 +15,10 @@ public partial interface IFuncSegment : IClassVersion<global::GBX.NET.Engines.Fu
     global::GBX.NET.Engines.Function.CFuncSegment.Key[]? Keys { get; set; }
 }
 
+public partial interface IFuncSegmentTMU : IFuncSegment, global::GBX.NET.Interfaces.Function.IFuncTMU
+{
+}
+
 public partial interface IFuncSegmentTMF : IFuncSegment, global::GBX.NET.Interfaces.Function.IFuncTMF
 {
 }

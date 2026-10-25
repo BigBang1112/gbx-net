@@ -36,3 +36,7 @@ public partial interface IControlEffectSwitchStyleTMPU : IControlEffectSwitchSty
 {
 }
 
+public partial interface IControlEffectSwitchStyleTMU : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>
+{
+}
+

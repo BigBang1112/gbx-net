@@ -7,7 +7,7 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CPlugBitmapShaderBuilderBase() { }
     private protected CPlugBitmapShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBitmapToSwap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapAssignment(), value, SupportedGames1);
     public TSelf WithBitmapToSwapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapReferenceAssignment(), value, SupportedGames1);
     public TSelf WithShader(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderAssignment(), value, SupportedGames1);
@@ -38,6 +38,7 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -86,6 +87,15 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public TMNESWC WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build() => BuildNode(CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
+    }
+    public partial class TMU : CPlugBitmapShaderBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
+        public TMU WithBitmapToSwap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapToSwap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build() => BuildNode(CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
     }
     public partial class VSK5 : CPlugBitmapShaderBuilderBase<VSK5>

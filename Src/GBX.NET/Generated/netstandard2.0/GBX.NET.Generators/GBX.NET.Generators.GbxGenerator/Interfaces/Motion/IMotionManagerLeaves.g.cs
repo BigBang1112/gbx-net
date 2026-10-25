@@ -36,6 +36,10 @@ public partial interface IMotionManagerLeavesTMNESWC : IMotionManagerLeaves, glo
 {
 }
 
+public partial interface IMotionManagerLeavesTMU : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU>
+{
+}
+
 public partial interface IMotionManagerLeavesVSK5 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5>
 {
 }

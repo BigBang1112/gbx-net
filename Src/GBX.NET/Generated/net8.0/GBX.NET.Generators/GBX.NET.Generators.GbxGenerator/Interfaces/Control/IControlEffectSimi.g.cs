@@ -35,6 +35,10 @@ public partial interface IControlEffectSimiTMNESWC : IControlEffectSimi, global:
 {
 }
 
+public partial interface IControlEffectSimiTMU : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
+{
+}
+
 public partial interface IControlEffectSimiVSK5 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
 }

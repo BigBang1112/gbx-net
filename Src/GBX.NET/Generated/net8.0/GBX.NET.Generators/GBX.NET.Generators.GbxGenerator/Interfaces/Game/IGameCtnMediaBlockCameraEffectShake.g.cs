@@ -23,6 +23,10 @@ public partial interface IGameCtnMediaBlockCameraEffectShakeTMNESWC : IGameCtnMe
 {
 }
 
+public partial interface IGameCtnMediaBlockCameraEffectShakeTMU : IGameCtnMediaBlockCameraEffectShake, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockCameraEffectShakeVSK5 : IGameCtnMediaBlockCameraEffectShake, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectVSK5
 {
 }

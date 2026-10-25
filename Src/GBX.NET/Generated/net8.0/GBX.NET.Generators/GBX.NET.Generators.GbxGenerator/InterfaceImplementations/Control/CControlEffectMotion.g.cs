@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectMotion : global::GBX.NET.Interfaces.Control.IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMSX
+public partial class CControlEffectMotion : global::GBX.NET.Interfaces.Control.IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMotionTMU
 {
 }

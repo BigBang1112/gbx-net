@@ -25,11 +25,11 @@ public partial class CControlTrackManiaTeamCard : CTrackManiaControlCard, IClass
     /// CControlTrackManiaTeamCard 0x000 chunk
     /// </summary>
     [Chunk(0x24090000)]
-    [ChunkGameVersion(GameVersion.TMNESWC)]
+    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
     public partial class Chunk24090000 : Chunk<CControlTrackManiaTeamCard>
     {
         public override uint Id => 0x24090000;
-        public override GameVersion GameVersion => GameVersion.TMNESWC;
+        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

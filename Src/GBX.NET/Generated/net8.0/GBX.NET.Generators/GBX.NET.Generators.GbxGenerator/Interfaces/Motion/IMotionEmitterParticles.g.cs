@@ -10,6 +10,11 @@ public interface IMotionEmitterParticlesMembers1 : global::GBX.NET.Interfaces.Mo
     bool IsActive { get; set; }
     bool UseOwnerLoc { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionEmitterParticlesMembers2 : global::GBX.NET.Interfaces.Motion.IMotionEmitterParticles
+{
+    global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? Params { get; set; }
+}
 public partial interface IMotionEmitterParticles : IClassVersion<global::GBX.NET.Engines.Motion.CMotionEmitterParticles>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -30,14 +35,17 @@ public partial interface IMotionEmitterParticlesTMNESWC : IMotionEmitterParticle
 {
 }
 
+public partial interface IMotionEmitterParticlesTMU : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedTMU, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers1, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers2
+{
+}
+
 public partial interface IMotionEmitterParticlesVSK5 : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
 {
 }
 
-public partial interface IMotionEmitterParticlesTMF : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers1
+public partial interface IMotionEmitterParticlesTMF : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers1, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers2
 {
     bool IsEventMode { get; set; }
-    global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? Params { get; set; }
 }
 
 public partial interface IMotionEmitterParticlesMP3 : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3

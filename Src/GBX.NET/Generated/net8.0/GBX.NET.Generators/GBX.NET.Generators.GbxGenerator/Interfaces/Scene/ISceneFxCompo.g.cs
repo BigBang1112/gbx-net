@@ -18,6 +18,10 @@ public partial interface ISceneFxCompoTM10 : ISceneFxCompo, global::GBX.NET.Inte
 {
 }
 
+public partial interface ISceneFxCompoTMU : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMU
+{
+}
+
 public partial interface ISceneFxCompoTMF : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
 {
 }

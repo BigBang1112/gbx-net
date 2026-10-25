@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4
+public partial class CMotionEmitterLeaves : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4
 {
 }

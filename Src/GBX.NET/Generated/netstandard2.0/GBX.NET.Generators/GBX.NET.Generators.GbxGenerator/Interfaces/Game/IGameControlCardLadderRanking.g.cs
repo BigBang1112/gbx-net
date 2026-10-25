@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCardLadderRankingMembers1 : global::GBX.NET.Interfaces.Game.IGameControlCardLadderRanking
+{
+    bool DoSelectionOnChildsCount { get; set; }
+    bool UseTop3Medals { get; set; }
+}
 public partial interface IGameControlCardLadderRanking : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCardLadderRanking>, global::GBX.NET.Interfaces.Game.IGameControlCard
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -50,6 +56,15 @@ public partial interface IGameControlCardLadderRankingTMNESWC : IGameControlCard
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IGameControlCardLadderRankingTMU : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardTMU, global::GBX.NET.Interfaces.Game.IGameControlCardLadderRankingMembers1
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IGameControlCardLadderRankingVSK5 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -86,15 +101,13 @@ public partial interface IGameControlCardLadderRankingTMT : IGameControlCardLadd
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlCardLadderRankingMP4 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardMP4
+public partial interface IGameControlCardLadderRankingMP4 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardMP4, global::GBX.NET.Interfaces.Game.IGameControlCardLadderRankingMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    bool DoSelectionOnChildsCount { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
-    bool UseTop3Medals { get; set; }
 }
 
 public partial interface IGameControlCardLadderRankingTM2020 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020

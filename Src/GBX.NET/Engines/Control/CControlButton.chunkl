@@ -20,7 +20,7 @@ CControlButton 0x07007000
 0x004
   CFuncEnum Icons
 
-0x005
+0x005 [TMU]
   string Label
   int DisplayType
   CMwCmdBlockMain ActionScript
@@ -37,23 +37,23 @@ CControlButton 0x07007000
   int SubIconIndexOff
   SubIconIndexOn = SubIconIndexOff
 
-0x008
+0x008 [TMU]
   CPlugSound ActionSound
 
-0x009
+0x009 [TMU]
   float ClipLength = -1f (inherited)
 
-0x00A
+0x00A [TMU]
   int TextMode = 3 (inherited)
 
-0x00B
+0x00B [TMU]
   id IconsId
   if IconsId == ""
     CFuncEnum Icons
   int SubIconIndexOff
   int SubIconIndexOn
 
-0x00C
+0x00C [TMU]
   id
 
 0x00D [TM2020]

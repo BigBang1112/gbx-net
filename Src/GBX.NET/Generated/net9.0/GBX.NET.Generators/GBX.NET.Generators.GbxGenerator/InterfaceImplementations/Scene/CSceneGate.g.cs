@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneGate : global::GBX.NET.Interfaces.Scene.ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC
+public partial class CSceneGate : global::GBX.NET.Interfaces.Scene.ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneGateTMU
 {
 }

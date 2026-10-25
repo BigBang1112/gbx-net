@@ -16,6 +16,10 @@ public partial interface IPlugPointsInSphereOptTMNESWC : IPlugPointsInSphereOpt
 {
 }
 
+public partial interface IPlugPointsInSphereOptTMU : IPlugPointsInSphereOpt
+{
+}
+
 public partial interface IPlugPointsInSphereOptVSK5 : IPlugPointsInSphereOpt
 {
 }

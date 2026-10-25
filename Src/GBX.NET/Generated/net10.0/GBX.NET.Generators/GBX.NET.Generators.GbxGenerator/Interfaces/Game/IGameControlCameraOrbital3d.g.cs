@@ -51,6 +51,10 @@ public partial interface IGameControlCameraOrbital3dTMNESWC : IGameControlCamera
 {
 }
 
+public partial interface IGameControlCameraOrbital3dTMU : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+{
+}
+
 public partial interface IGameControlCameraOrbital3dVSK5 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
 }

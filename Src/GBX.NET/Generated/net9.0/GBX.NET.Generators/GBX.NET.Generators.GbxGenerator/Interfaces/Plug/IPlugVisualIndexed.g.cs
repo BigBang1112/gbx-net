@@ -30,6 +30,10 @@ public partial interface IPlugVisualIndexedTMNESWC : IPlugVisualIndexed, global:
 {
 }
 
+public partial interface IPlugVisualIndexedTMU : IPlugVisualIndexed, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMU
+{
+}
+
 public partial interface IPlugVisualIndexedVSK5 : IPlugVisualIndexed, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5
 {
 }

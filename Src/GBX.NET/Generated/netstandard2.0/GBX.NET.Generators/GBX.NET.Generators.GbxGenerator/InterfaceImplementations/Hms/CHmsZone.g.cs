@@ -3,8 +3,13 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneMP3, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020
+public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneTMU, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneMP3, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.BitmapCubeReflectHardSpecA
+    {
+        get => BitmapCubeReflectHardSpecA;
+        set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapCubeReflectHardSpecA
     {
         get => BitmapCubeReflectHardSpecA;

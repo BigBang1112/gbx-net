@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameApp : global::GBX.NET.Interfaces.Game.IGameApp, global::GBX.NET.Interfaces.Game.IGameAppTMF, global::GBX.NET.Interfaces.Game.IGameAppTM2020
+public partial class CGameApp : global::GBX.NET.Interfaces.Game.IGameApp, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameAppTMF, global::GBX.NET.Interfaces.Game.IGameAppTM2020
 {
 }

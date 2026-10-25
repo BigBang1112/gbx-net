@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF, global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT, global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4, global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020
+public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMU, global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF, global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3, global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT, global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4, global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020
 {
 }

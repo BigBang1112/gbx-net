@@ -334,9 +334,11 @@ public partial class CGameMenuFrame : CControlFrame, IClass
     /// CGameMenuFrame 0x005 chunk (sounds and scene)
     /// </summary>
     [Chunk(0x0300B005, "sounds and scene")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0300B005 : Chunk<CGameMenuFrame>
     {
         public override uint Id => 0x0300B005;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public float U01;
         public float U02;
         public float U03;
@@ -367,9 +369,11 @@ public partial class CGameMenuFrame : CControlFrame, IClass
     /// CGameMenuFrame 0x006 chunk (AutoBackButtonId)
     /// </summary>
     [Chunk(0x0300B006, "AutoBackButtonId")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0300B006 : Chunk<CGameMenuFrame>
     {
         public override uint Id => 0x0300B006;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -386,9 +390,11 @@ public partial class CGameMenuFrame : CControlFrame, IClass
     /// CGameMenuFrame 0x007 chunk
     /// </summary>
     [Chunk(0x0300B007)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk0300B007 : Chunk<CGameMenuFrame>
     {
         public override uint Id => 0x0300B007;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public float U01;
         public float U02;
 

@@ -3,14 +3,22 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMwCmdWhileMembers1<T0> : global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhile where T0 : class
+{
+    new T0? Block { get; set; }
+}
 public partial interface IMwCmdWhile : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile>
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock? Block { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Condition { get; set; }
 }
 
-public partial interface IMwCmdWhileTMF : IMwCmdWhile
+public partial interface IMwCmdWhileTMU : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF? Block { get; set; }
+}
+
+public partial interface IMwCmdWhileTMF : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF>
+{
 }
 

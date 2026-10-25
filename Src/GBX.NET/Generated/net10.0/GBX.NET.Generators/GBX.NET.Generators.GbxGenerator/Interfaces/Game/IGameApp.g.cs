@@ -7,6 +7,10 @@ public partial interface IGameApp : IClassVersion<global::GBX.NET.Engines.Game.C
 {
 }
 
+public partial interface IGameAppTMU : IGameApp
+{
+}
+
 public partial interface IGameAppTMF : IGameApp
 {
 }

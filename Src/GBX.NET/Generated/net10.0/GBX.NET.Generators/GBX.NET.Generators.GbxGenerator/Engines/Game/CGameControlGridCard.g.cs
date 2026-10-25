@@ -220,9 +220,11 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
     /// CGameControlGridCard 0x004 chunk
     /// </summary>
     [Chunk(0x030BA004)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030BA004 : Chunk<CGameControlGridCard>
     {
         public override uint Id => 0x030BA004;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

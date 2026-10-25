@@ -3,6 +3,14 @@
 
 namespace GBX.NET.Interfaces.Vision;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IVisPostFx_MotionBlurMembers1 : global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlur
+{
+    bool T2_DelayShadows { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp { get; set; }
+    float T2_MotionMaxLen { get; set; }
+    float T2_MotionScale { get; set; }
+}
 public partial interface IVisPostFx_MotionBlur : IClassVersion<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -19,11 +27,11 @@ public partial interface IVisPostFx_MotionBlurTM10 : IVisPostFx_MotionBlur, glob
 {
 }
 
-public partial interface IVisPostFx_MotionBlurTMF : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
+public partial interface IVisPostFx_MotionBlurTMU : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1
 {
-    bool T2_DelayShadows { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp { get; set; }
-    float T2_MotionMaxLen { get; set; }
-    float T2_MotionScale { get; set; }
+}
+
+public partial interface IVisPostFx_MotionBlurTMF : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1
+{
 }
 

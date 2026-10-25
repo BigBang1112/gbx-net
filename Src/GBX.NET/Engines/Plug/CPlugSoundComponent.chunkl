@@ -1,6 +1,6 @@
 CPlugSoundComponent 0x0908F000
 
-0x000 [TMSX, TMNESWC, VSK5, TMF, TMT, MP4, TM2020] // volume and pitch from speed (RPM in legacy games)
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // volume and pitch from speed (RPM in legacy games)
   CMwNod PlugFile // CPlugFileSnd
   float MinVolume
   float MaxVolume = 1f

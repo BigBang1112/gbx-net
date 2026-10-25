@@ -29,22 +29,22 @@ CGameCtnDecoration 0x03038000
 
 0x00F // legacy DecoMood shadows
 
-0x011 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoSize
+0x011 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoSize
   CGameCtnDecorationSize DecoSize
 
-0x012 [TMSX, TMNESWC, VSK5, TMF, MP3] // DecoAudio
+0x012 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // DecoAudio
   CGameCtnDecorationAudio DecoAudio
 
-0x013 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoMood
+0x013 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoMood
   CGameCtnDecorationMood DecoMood
 
-0x014 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoratorSolidWarp
+0x014 [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoratorSolidWarp
   CPlugDecoratorSolid DecoratorSolidWarp
 
-0x015 [VSK5, TMF, MP3, TMT, MP4] // TerrainModifierCovered
+0x015 [TMU, VSK5, TMF, MP3, TMT, MP4] // TerrainModifierCovered
   CGameCtnDecorationTerrainModifier TerrainModifierCovered
 
-0x016 [VSK5, TMF, MP3, TMT, MP4] // TerrainModifierBase
+0x016 [TMU, VSK5, TMF, MP3, TMT, MP4] // TerrainModifierBase
   CGameCtnDecorationTerrainModifier TerrainModifierBase
 
 0x017 [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]

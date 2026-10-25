@@ -23,6 +23,10 @@ public partial interface ICtnMediaBlockEventTrackManiaTMNESWC : ICtnMediaBlockEv
 {
 }
 
+public partial interface ICtnMediaBlockEventTrackManiaTMU : ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaMembers1
+{
+}
+
 public partial interface ICtnMediaBlockEventTrackManiaVSK5 : ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaMembers1
 {
 }

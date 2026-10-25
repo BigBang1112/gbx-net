@@ -51,7 +51,7 @@ CGameMenuFrame 0x0300B000
   float
   float
 
-0x005 // sounds and scene
+0x005 [TMU] // sounds and scene
   CPlugSound UpDownSound
   CPlugSound ShowSound
   CMwNod FrameScene
@@ -60,10 +60,10 @@ CGameMenuFrame 0x0300B000
   float
   float
 
-0x006 // AutoBackButtonId
+0x006 [TMU] // AutoBackButtonId
   id AutoBackButtonId = "CardBack"
 
-0x007
+0x007 [TMU]
   float
   float
 

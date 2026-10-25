@@ -23,6 +23,10 @@ public partial interface IFuncTMNESWC : IFunc
 {
 }
 
+public partial interface IFuncTMU : IFunc
+{
+}
+
 public partial interface IFuncVSK5 : IFunc
 {
 }

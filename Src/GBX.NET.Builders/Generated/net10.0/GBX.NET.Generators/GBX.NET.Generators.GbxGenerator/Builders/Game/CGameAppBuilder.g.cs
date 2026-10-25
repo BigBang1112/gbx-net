@@ -13,29 +13,46 @@ public partial class CGameAppBuilder : CGameAppBuilderBase<CGameAppBuilder>
     private static global::GBX.NET.Engines.Game.CGameApp CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameApp();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005006());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameApp CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameApp();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameApp CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameApp();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMU : CGameAppBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameApp> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameAppTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameApp Build() => BuildNode(CGameAppBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameApp node);
+    }
     public partial class TMF : CGameAppBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameApp> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameAppTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameApp Build() => BuildNode(CGameAppBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameApp Build() => BuildNode(CGameAppBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameApp node);
     }
     public partial class TM2020 : CGameAppBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameApp> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameAppTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameApp Build() => BuildNode(CGameAppBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameApp Build() => BuildNode(CGameAppBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameApp node);
     }
 }

@@ -36,6 +36,10 @@ public partial interface IPlugVisual3DTMNESWC : IPlugVisual3D, global::GBX.NET.I
 {
 }
 
+public partial interface IPlugVisual3DTMU : IPlugVisual3D, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU
+{
+}
+
 public partial interface IPlugVisual3DVSK5 : IPlugVisual3D, global::GBX.NET.Interfaces.Plug.IPlugVisualVSK5
 {
 }

@@ -24,6 +24,10 @@ public partial interface IGameCtnMediaBlockTrailsTMNESWC : IGameCtnMediaBlockTra
 {
 }
 
+public partial interface IGameCtnMediaBlockTrailsTMU : IGameCtnMediaBlockTrails, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockTrailsVSK5 : IGameCtnMediaBlockTrails, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }

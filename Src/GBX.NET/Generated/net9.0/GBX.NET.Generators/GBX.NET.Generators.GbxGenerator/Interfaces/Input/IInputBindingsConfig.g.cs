@@ -31,6 +31,10 @@ public partial interface IInputBindingsConfigTMNESWC : IInputBindingsConfig
 {
 }
 
+public partial interface IInputBindingsConfigTMU : IInputBindingsConfig
+{
+}
+
 public partial interface IInputBindingsConfigVSK5 : IInputBindingsConfig
 {
 }

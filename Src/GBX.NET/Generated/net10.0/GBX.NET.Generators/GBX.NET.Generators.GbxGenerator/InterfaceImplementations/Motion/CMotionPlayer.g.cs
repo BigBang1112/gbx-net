@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionPlayer : global::GBX.NET.Interfaces.Motion.IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionPlayerTM10, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMPU, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMSX, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionPlayerVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMF, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP3, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMT, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP4
+public partial class CMotionPlayer : global::GBX.NET.Interfaces.Motion.IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionPlayerTM10, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMPU, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMSX, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMU, global::GBX.NET.Interfaces.Motion.IMotionPlayerVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMF, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP3, global::GBX.NET.Interfaces.Motion.IMotionPlayerTMT, global::GBX.NET.Interfaces.Motion.IMotionPlayerMP4
 {
 }

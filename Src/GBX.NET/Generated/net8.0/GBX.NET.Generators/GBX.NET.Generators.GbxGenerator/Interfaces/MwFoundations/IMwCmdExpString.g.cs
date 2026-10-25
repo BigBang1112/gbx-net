@@ -8,6 +8,10 @@ public partial interface IMwCmdExpString : IClassVersion<global::GBX.NET.Engines
     string? String { get; set; }
 }
 
+public partial interface IMwCmdExpStringTMU : IMwCmdExpString
+{
+}
+
 public partial interface IMwCmdExpStringTMF : IMwCmdExpString
 {
 }

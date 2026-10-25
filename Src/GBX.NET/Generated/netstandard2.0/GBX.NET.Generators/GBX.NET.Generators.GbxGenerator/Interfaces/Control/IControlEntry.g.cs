@@ -46,6 +46,19 @@ public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.I
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMU
+{
+    bool IsPassword { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    int MaxLength { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+    bool SelectAllOnFocusGained { get; set; }
+    bool SetValueOnFocusLost { get; set; }
+    int Type { get; set; }
+}
+
 public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

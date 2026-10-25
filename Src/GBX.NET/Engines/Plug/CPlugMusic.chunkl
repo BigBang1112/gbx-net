@@ -15,7 +15,7 @@ CPlugMusic 0x0901C000
   CMwNod
   bool
 
-0x004 // legacy sound files buffer
+0x004 [TMU] // legacy sound files buffer
   CMwRefBuffer
 
 0x005 // legacy sound files

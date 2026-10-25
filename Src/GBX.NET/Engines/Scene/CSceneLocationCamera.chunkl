@@ -5,7 +5,7 @@ CSceneLocationCamera 0x0A036000
   bool IsOrthographic
   boxaligned Frustum
 
-0x001
+0x001 [TMU]
   float = 60
   float = 60
   float = 3

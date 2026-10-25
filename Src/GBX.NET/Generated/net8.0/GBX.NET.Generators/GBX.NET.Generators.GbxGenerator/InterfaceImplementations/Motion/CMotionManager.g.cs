@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionManager : global::GBX.NET.Interfaces.Motion.IMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT
+public partial class CMotionManager : global::GBX.NET.Interfaces.Motion.IMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerTMU, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT
 {
 }

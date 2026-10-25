@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsLightMap : global::GBX.NET.Interfaces.Hms.IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020
+public partial class CHmsLightMap : global::GBX.NET.Interfaces.Hms.IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU, global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5, global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF, global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020
 {
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMood? global::GBX.NET.Interfaces.Hms.IHmsLightMap.Mood
     {
@@ -11,6 +11,16 @@ public partial class CHmsLightMap : global::GBX.NET.Interfaces.Hms.IHmsLightMap,
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt? global::GBX.NET.Interfaces.Hms.IHmsLightMap.PointsInSphereOpt
+    {
+        get => PointsInSphereOpt;
+        set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>.Mood
+    {
+        get => Mood;
+        set => Mood = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU? global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>.PointsInSphereOpt
     {
         get => PointsInSphereOpt;
         set => PointsInSphereOpt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

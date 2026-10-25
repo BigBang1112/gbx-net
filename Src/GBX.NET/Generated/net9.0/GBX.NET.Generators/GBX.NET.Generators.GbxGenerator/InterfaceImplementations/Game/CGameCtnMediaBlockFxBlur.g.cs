@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockFxBlur : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlur, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTM2020
+public partial class CGameCtnMediaBlockFxBlur : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlur, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTM2020
 {
 }

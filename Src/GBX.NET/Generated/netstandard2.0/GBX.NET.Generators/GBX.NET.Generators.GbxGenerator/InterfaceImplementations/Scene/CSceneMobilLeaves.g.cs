@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobilLeaves : global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM2020
+public partial class CSceneMobilLeaves : global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.LeafShader
     {
@@ -64,6 +64,21 @@ public partial class CSceneMobilLeaves : global::GBX.NET.Interfaces.Scene.IScene
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.LeafShader
+    {
+        get => LeafShader;
+        set => LeafShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMU? global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.LeafShader
     {

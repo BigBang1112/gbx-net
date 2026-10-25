@@ -49,11 +49,11 @@ public partial class CControlEffectCombined : CControlEffect, IClass
     /// CControlEffectCombined 0x000 chunk (Effects)
     /// </summary>
     [Chunk(0x07023000, "Effects")]
-    [ChunkGameVersion(GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
     public partial class Chunk07023000 : Chunk<CControlEffectCombined>
     {
         public override uint Id => 0x07023000;
-        public override GameVersion GameVersion => GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

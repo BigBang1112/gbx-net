@@ -7,7 +7,7 @@ public abstract class CFuncShaderLayerUVBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CFuncShaderLayerUVBuilderBase() { }
     private protected CFuncShaderLayerUVBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
     public TSelf WithLayerName(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetLayerNameAssignment(), value, SupportedGames1);
     public TSelf WithPeriod(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, SupportedGames1);
@@ -16,7 +16,7 @@ public abstract class CFuncShaderLayerUVBuilderBase<TSelf> : NodeBuilder<global:
 public abstract class CFuncShaderLayerUVBuilderMembers1<TSelf> : CFuncShaderLayerUVBuilderBase<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers1<TSelf>
 {
     private protected CFuncShaderLayerUVBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncShaderLayerUVBuilderMembers2<TSelf> : CFuncShaderLayerUVBuilderMembers1<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers2<TSelf>
 {
@@ -58,6 +58,14 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500A());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015011());
@@ -68,7 +76,7 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005());
         return node;
     }
-    private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe3(GameVersion game)
+    private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005());
@@ -81,6 +89,7 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -117,6 +126,13 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
+    public partial class TMU : CFuncShaderLayerUVBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
+    }
     public partial class VSK5 : CFuncShaderLayerUVBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
@@ -128,35 +144,35 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class MP3 : CFuncShaderLayerUVBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TMT : CFuncShaderLayerUVBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class MP4 : CFuncShaderLayerUVBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
     public partial class TM2020 : CFuncShaderLayerUVBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncFullColorGradient : global::GBX.NET.Interfaces.Function.IFuncFullColorGradient, global::GBX.NET.Interfaces.Function.IFuncFullColorGradientTMF
+public partial class CFuncFullColorGradient : global::GBX.NET.Interfaces.Function.IFuncFullColorGradient, global::GBX.NET.Interfaces.Function.IFuncFullColorGradientTMU, global::GBX.NET.Interfaces.Function.IFuncFullColorGradientTMF
 {
 }

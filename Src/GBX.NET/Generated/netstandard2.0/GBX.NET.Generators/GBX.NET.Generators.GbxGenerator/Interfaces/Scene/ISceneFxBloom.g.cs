@@ -13,12 +13,15 @@ public partial interface ISceneFxBloom : IClassVersion<global::GBX.NET.Engines.S
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     int BlurSize { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>? Datas { get; set; }
     float Intensity { get; set; }
+}
+
+public partial interface ISceneFxBloomTMU : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+{
 }
 
 public partial interface ISceneFxBloomTMF : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? Datas { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? Datas { get; set; }
 }
 

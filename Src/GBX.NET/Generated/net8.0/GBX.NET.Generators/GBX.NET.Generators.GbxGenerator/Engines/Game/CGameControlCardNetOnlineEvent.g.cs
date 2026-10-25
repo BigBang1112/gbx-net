@@ -129,11 +129,11 @@ public partial class CGameControlCardNetOnlineEvent : CGameControlCard, IClass
     /// CGameControlCardNetOnlineEvent 0x002 chunk
     /// </summary>
     [Chunk(0x030DB002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk030DB002 : Chunk<CGameControlCardNetOnlineEvent>
     {
         public override uint Id => 0x030DB002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

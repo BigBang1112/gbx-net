@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxCompo : global::GBX.NET.Interfaces.Scene.ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020
+public partial class CSceneFxCompo : global::GBX.NET.Interfaces.Scene.ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020
 {
 }

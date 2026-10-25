@@ -2,11 +2,11 @@ CPlugProbe 0x09106000
 - inherits: CPlug
 
 0x000 [MP3, TMT, MP4, TM2020]
-  int
+  version
   vec3
-  float
-  float
-  float
-  float
-  float
-  float
+  float = 0.2f
+  float = 0.2f
+  float = 0.2f
+  float = 0.2f
+  float = 0.2f
+  float = 0.2f

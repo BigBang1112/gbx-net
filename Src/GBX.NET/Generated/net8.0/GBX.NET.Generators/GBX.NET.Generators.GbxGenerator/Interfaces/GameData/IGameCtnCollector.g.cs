@@ -70,6 +70,10 @@ public partial interface IGameCtnCollectorTMNESWC : IGameCtnCollector, global::G
 {
 }
 
+public partial interface IGameCtnCollectorTMU : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+{
+}
+
 public partial interface IGameCtnCollectorVSK5 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
 {
 }

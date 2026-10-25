@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneTM2020
+public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTMU, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>.MotionManagerModels
     {
@@ -14,6 +14,11 @@ public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::G
     {
         get => MotionManagerModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(GetMotionManagerModelsInterfaceReferences, true, "MotionManagerModels");
         set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>.MotionManagerModels
+    {
+        get => MotionManagerModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>(GetMotionManagerModelsInterfaceReferences, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>.MotionManagerModels
     {

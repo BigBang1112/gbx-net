@@ -12,12 +12,6 @@ public partial interface ISceneLocation : IClassVersion<global::GBX.NET.Engines.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Motion.IMotion? Motion
-    {
-        get => (global::GBX.NET.Interfaces.Motion.IMotion?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion);
-        set => ((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    string? Name { get; set; }
 }
 
 public partial interface ISceneLocationTM10 : ISceneLocation, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10
@@ -52,6 +46,15 @@ public partial interface ISceneLocationTMNESWC : ISceneLocation, global::GBX.NET
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+
+public partial interface ISceneLocationTMU : ISceneLocation, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU
+{
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion);
         set => ((global::GBX.NET.Engines.Scene.CSceneLocation)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

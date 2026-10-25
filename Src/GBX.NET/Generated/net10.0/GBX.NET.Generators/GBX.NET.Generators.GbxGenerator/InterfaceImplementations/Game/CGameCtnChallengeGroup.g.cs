@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020
+public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? GetMapFilesInterfaceReferences() => MapFiles;
 }

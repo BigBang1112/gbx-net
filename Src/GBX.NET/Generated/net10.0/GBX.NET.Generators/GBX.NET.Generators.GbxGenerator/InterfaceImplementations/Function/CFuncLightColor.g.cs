@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncLightColor : global::GBX.NET.Interfaces.Function.IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightColorTM10, global::GBX.NET.Interfaces.Function.IFuncLightColorTMPU, global::GBX.NET.Interfaces.Function.IFuncLightColorTMSX, global::GBX.NET.Interfaces.Function.IFuncLightColorTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightColorVSK5, global::GBX.NET.Interfaces.Function.IFuncLightColorTMF, global::GBX.NET.Interfaces.Function.IFuncLightColorMP3, global::GBX.NET.Interfaces.Function.IFuncLightColorTMT, global::GBX.NET.Interfaces.Function.IFuncLightColorMP4, global::GBX.NET.Interfaces.Function.IFuncLightColorTM2020
+public partial class CFuncLightColor : global::GBX.NET.Interfaces.Function.IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightColorTM10, global::GBX.NET.Interfaces.Function.IFuncLightColorTMPU, global::GBX.NET.Interfaces.Function.IFuncLightColorTMSX, global::GBX.NET.Interfaces.Function.IFuncLightColorTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightColorTMU, global::GBX.NET.Interfaces.Function.IFuncLightColorVSK5, global::GBX.NET.Interfaces.Function.IFuncLightColorTMF, global::GBX.NET.Interfaces.Function.IFuncLightColorMP3, global::GBX.NET.Interfaces.Function.IFuncLightColorTMT, global::GBX.NET.Interfaces.Function.IFuncLightColorMP4, global::GBX.NET.Interfaces.Function.IFuncLightColorTM2020
 {
 }

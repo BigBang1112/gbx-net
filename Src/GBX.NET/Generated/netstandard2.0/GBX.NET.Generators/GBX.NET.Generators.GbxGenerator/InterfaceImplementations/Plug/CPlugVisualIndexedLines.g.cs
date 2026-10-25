@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVisualIndexedLines : global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLines, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM2020
+public partial class CPlugVisualIndexedLines : global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLines, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM2020
 {
 }

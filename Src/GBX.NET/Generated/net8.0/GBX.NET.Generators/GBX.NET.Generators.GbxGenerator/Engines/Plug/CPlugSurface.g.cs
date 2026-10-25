@@ -57,11 +57,11 @@ public partial class CPlugSurface : CPlug, IClass
     /// CPlugSurface 0x000 chunk
     /// </summary>
     [Chunk(0x0900C000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0900C000 : Chunk<CPlugSurface>
     {
         public override uint Id => 0x0900C000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

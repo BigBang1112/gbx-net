@@ -57,11 +57,11 @@ public partial class CControlUiElement : CControlForm, IClass
     /// CControlUiElement 0x000 chunk (Resources)
     /// </summary>
     [Chunk(0x07004000, "Resources")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk07004000 : Chunk<CControlUiElement>
     {
         public override uint Id => 0x07004000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

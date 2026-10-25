@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCameraOrbital3d : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTM2020
+public partial class CGameControlCameraOrbital3d : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTM2020
 {
 }

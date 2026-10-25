@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockInfoClassic : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassic, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM2020
+public partial class CGameCtnBlockInfoClassic : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassic, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM2020
 {
 }

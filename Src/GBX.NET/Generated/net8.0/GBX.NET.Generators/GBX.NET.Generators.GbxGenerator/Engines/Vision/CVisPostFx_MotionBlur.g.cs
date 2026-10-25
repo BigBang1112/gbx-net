@@ -241,11 +241,11 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     /// CVisPostFx_MotionBlur 0x005 chunk (legacy motion settings)
     /// </summary>
     [Chunk(0x0C031005, "legacy motion settings")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0C031005 : Chunk<CVisPostFx_MotionBlur>
     {
         public override uint Id => 0x0C031005;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
         public int U01 = 8;
         public int U02 = 1000;
         public float U03 = 0.9f;
@@ -274,11 +274,11 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     /// CVisPostFx_MotionBlur 0x006 chunk (T2_Fid_PHlsl_MotionLenCmp)
     /// </summary>
     [Chunk(0x0C031006, "T2_Fid_PHlsl_MotionLenCmp")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0C031006 : Chunk<CVisPostFx_MotionBlur>
     {
         public override uint Id => 0x0C031006;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

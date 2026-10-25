@@ -1,13 +1,13 @@
 CGameControlCardGeneric 0x030BD000
 - inherits: CGameControlCard
 
-0x000
+0x000 [TMU]
   int Type
 
 0x001
   LocalData Data
 
-0x002 // legacy own data
+0x002 [TMU] // legacy own data
   LocalData Data
 
 0x003

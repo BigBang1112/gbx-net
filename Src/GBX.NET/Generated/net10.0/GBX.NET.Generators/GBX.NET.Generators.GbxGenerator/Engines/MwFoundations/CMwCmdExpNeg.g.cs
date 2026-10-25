@@ -49,11 +49,11 @@ public partial class CMwCmdExpNeg : CMwCmdExpNum, IClass
     /// CMwCmdExpNeg 0x000 chunk (Value)
     /// </summary>
     [Chunk(0x01044000, "Value")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk01044000 : Chunk<CMwCmdExpNeg>
     {
         public override uint Id => 0x01044000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

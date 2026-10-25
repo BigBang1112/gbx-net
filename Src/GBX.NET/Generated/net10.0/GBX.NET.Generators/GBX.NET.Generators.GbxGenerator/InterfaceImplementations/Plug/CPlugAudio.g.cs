@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAudio : global::GBX.NET.Interfaces.Plug.IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioTM10, global::GBX.NET.Interfaces.Plug.IPlugAudioTMPU, global::GBX.NET.Interfaces.Plug.IPlugAudioTMSX, global::GBX.NET.Interfaces.Plug.IPlugAudioTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioTMF, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020
+public partial class CPlugAudio : global::GBX.NET.Interfaces.Plug.IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioTM10, global::GBX.NET.Interfaces.Plug.IPlugAudioTMPU, global::GBX.NET.Interfaces.Plug.IPlugAudioTMSX, global::GBX.NET.Interfaces.Plug.IPlugAudioTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugAudioTMU, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioTMF, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020
 {
 }

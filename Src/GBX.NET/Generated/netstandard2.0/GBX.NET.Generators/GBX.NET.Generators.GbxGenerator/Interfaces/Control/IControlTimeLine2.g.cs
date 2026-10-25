@@ -46,6 +46,30 @@ public partial interface IControlTimeLine2TMNESWC : IControlTimeLine2, global::G
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlTimeLine2TMU : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+{
+    float BlockHeight { get; set; }
+    float Height { get; set; }
+    float KeyHeight { get; set; }
+    float KeyHighLightHeight { get; set; }
+    float KeyHighLightWidth { get; set; }
+    float KeyWidth { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+    float RulerHeight { get; set; }
+    Vec4 RulerLinesColorBig { get; set; }
+    Vec4 RulerLinesColorSmall { get; set; }
+    float TimeCursorHeight { get; set; }
+    Vec4 TimeCursorLineColor { get; set; }
+    float TimeCursorWidth { get; set; }
+    int TrackCount { get; set; }
+    float TrackHeight { get; set; }
+    Vec4 TrackSeparationColor { get; set; }
+    float Width { get; set; }
+}
+
 public partial interface IControlTimeLine2VSK5 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

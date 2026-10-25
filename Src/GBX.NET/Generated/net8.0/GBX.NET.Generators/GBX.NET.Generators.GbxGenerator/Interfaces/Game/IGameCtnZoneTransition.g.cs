@@ -48,6 +48,10 @@ public partial interface IGameCtnZoneTransitionTMNESWC : IGameCtnZoneTransition,
 {
 }
 
+public partial interface IGameCtnZoneTransitionTMU : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU
+{
+}
+
 public partial interface IGameCtnZoneTransitionVSK5 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5
 {
 }

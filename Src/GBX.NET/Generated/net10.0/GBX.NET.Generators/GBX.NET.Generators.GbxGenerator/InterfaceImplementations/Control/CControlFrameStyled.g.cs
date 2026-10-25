@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlFrameStyled : global::GBX.NET.Interfaces.Control.IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameStyledTM10, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMPU, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMSX, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameStyledVSK5, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMF, global::GBX.NET.Interfaces.Control.IControlFrameStyledMP3, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMT, global::GBX.NET.Interfaces.Control.IControlFrameStyledMP4, global::GBX.NET.Interfaces.Control.IControlFrameStyledTM2020
+public partial class CControlFrameStyled : global::GBX.NET.Interfaces.Control.IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameStyledTM10, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMPU, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMSX, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMNESWC, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMU, global::GBX.NET.Interfaces.Control.IControlFrameStyledVSK5, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMF, global::GBX.NET.Interfaces.Control.IControlFrameStyledMP3, global::GBX.NET.Interfaces.Control.IControlFrameStyledTMT, global::GBX.NET.Interfaces.Control.IControlFrameStyledMP4, global::GBX.NET.Interfaces.Control.IControlFrameStyledTM2020
 {
 }

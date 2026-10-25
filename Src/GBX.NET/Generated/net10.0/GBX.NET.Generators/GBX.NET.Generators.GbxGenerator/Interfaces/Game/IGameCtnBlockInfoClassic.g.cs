@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoClassicTMNESWC : IGameCtnBlockInfoClas
 {
 }
 
+public partial interface IGameCtnBlockInfoClassicTMU : IGameCtnBlockInfoClassic, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoClassicVSK5 : IGameCtnBlockInfoClassic, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
 }

@@ -7,7 +7,7 @@ public abstract class CMwCmdIfBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.E
 {
     private protected CMwCmdIfBuilderBase() { }
     private protected CMwCmdIfBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdIf> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithCondition(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdIfBuilderAssignments.GetConditionAssignment(), value, SupportedGames1);
     public TSelf WithConditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdIfBuilderAssignments.GetConditionReferenceAssignment(), value, SupportedGames1);
     public TSelf WithElseBlock(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdIfBuilderAssignments.GetElseBlockAssignment(), value, SupportedGames1);
@@ -23,7 +23,17 @@ public partial class CMwCmdIfBuilder : CMwCmdIfBuilderBase<CMwCmdIfBuilder>
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdIf.Chunk01036000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdIfBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdIf> state) : base(state) { }
+        public TMU WithElseBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU? value) => base.WithElseBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithIfBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU? value) => base.WithIfBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdIf Build() => BuildNode(CMwCmdIfBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdIf node);
+    }
     public partial class TMF : CMwCmdIfBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdIf> state) : base(state) { }

@@ -7,7 +7,7 @@ public abstract class CPlugTreeBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CPlugTreeBuilderBase() { }
     private protected CPlugTreeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.TMNESWC | GameVersion.TMSX;
     public TSelf WithChildren(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetChildrenAssignment(), value, SupportedGames1);
     public TSelf WithChildren(params global::GBX.NET.Engines.Plug.CPlugTree[] values) => WithChildren(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(values));
@@ -92,6 +92,7 @@ public partial class CPlugTreeBuilder : CPlugTreeBuilderBase<CPlugTreeBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -152,6 +153,19 @@ public partial class CPlugTreeBuilder : CPlugTreeBuilderBase<CPlugTreeBuilder>
         public TMNESWC WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? value) => base.WithVisual(value is null ? (global::GBX.NET.Engines.Plug.CPlugVisual?)null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTree Build() => BuildNode(CPlugTreeBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTree node);
+    }
+    public partial class TMU : CPlugTreeBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTree> state) : base(state) { }
+        public TMU WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMU[] values) => base.WithChildren(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>(values, false));
+        public TMU WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU> values) => WithChildren(values.ToArray());
+        public TMU WithFuncTree(global::GBX.NET.Interfaces.Function.IFuncTreeTMU? value) => base.WithFuncTree(value is null ? (global::GBX.NET.Engines.Function.CFuncTree?)null : value is global::GBX.NET.Engines.Function.CFuncTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithGenerator(global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU? value) => base.WithGenerator(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeGenerator?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeGenerator node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithModelSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? value) => base.WithModelSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTMU? value) => base.WithVisual(value is null ? (global::GBX.NET.Engines.Plug.CPlugVisual?)null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugTreeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugTree Build() => BuildNode(CPlugTreeBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTree node);
     }
     public partial class VSK5 : CPlugTreeBuilderBase<VSK5>

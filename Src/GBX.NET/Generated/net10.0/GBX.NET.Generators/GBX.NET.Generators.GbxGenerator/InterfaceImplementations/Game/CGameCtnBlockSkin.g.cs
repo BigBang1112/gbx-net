@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnBlockSkin : global::GBX.NET.Interfaces.Game.IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM2020
+public partial class CGameCtnBlockSkin : global::GBX.NET.Interfaces.Game.IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM2020
 {
 }

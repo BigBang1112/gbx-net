@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockImage : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTM2020
+public partial class CGameCtnMediaBlockImage : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageTM2020
 {
     global::GBX.NET.Interfaces.Control.IControlEffectSimi? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImage.Effect
     {
@@ -16,6 +16,11 @@ public partial class CGameCtnMediaBlockImage : global::GBX.NET.Interfaces.Game.I
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC>.Effect
+    {
+        get => Effect;
+        set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU>.Effect
     {
         get => Effect;
         set => Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

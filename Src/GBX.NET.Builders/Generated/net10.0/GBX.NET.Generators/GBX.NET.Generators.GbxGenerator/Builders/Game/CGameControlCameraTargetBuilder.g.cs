@@ -7,9 +7,9 @@ public abstract class CGameControlCameraTargetBuilderBase<TSelf> : NodeBuilder<g
 {
     private protected CGameControlCameraTargetBuilderBase() { }
     private protected CGameControlCameraTargetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithInterpolate(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, SupportedGames1);
     public TSelf WithIsUpLinked(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, SupportedGames1);
     public TSelf WithLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, SupportedGames1);
@@ -97,6 +97,7 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -108,7 +109,7 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     public partial class TMSX : CGameControlCameraTargetBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public TMSX WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMSX WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithRelativeTargetPos(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
@@ -117,15 +118,23 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     public partial class TMNESWC : CGameControlCameraTargetBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
+    }
+    public partial class TMU : CGameControlCameraTargetBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
+        public TMU WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
     }
     public partial class VSK5 : CGameControlCameraTargetBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
@@ -133,7 +142,7 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     public partial class TMF : CGameControlCameraTargetBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);
@@ -141,7 +150,7 @@ public partial class CGameControlCameraTargetBuilder : CGameControlCameraTargetB
     public partial class MP3 : CGameControlCameraTargetBuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraTarget> state) : base(state) { }
-        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraTarget Build() => BuildNode(CGameControlCameraTargetBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraTarget node);

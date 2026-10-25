@@ -1,18 +1,18 @@
 CSceneFxColors 0x0A034000
 - inherits: CSceneFxCompo
 
-0x002 // saturation, brightness, contrast and hue bitmap
+0x002 [TMU] // saturation, brightness, contrast and hue bitmap
   CPlugBitmap BitmapSbch
   if BitmapSbch != null
     vec2 BitmapTcScale
     vec2 BitmapTcPeriod
     vec2[4] BitmapRanges
 
-0x005 // legacy color materials
+0x005 [TMU] // legacy color materials
   CMwNod MaterialColors
   CMwNod
 
-0x008 // legacy parameters
+0x008 [TMU] // legacy parameters
   float
   float
   float
@@ -27,7 +27,7 @@ CSceneFxColors 0x0A034000
   Param
   Param
 
-0x009 // parameters
+0x009 [TMU] // parameters
   Param
   Param
   Param

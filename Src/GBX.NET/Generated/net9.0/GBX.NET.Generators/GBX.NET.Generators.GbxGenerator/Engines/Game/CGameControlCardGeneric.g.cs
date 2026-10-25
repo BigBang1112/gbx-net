@@ -50,9 +50,11 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
     /// CGameControlCardGeneric 0x000 chunk
     /// </summary>
     [Chunk(0x030BD000)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030BD000 : Chunk<CGameControlCardGeneric>
     {
         public override uint Id => 0x030BD000;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -88,9 +90,11 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
     /// CGameControlCardGeneric 0x002 chunk (legacy own data)
     /// </summary>
     [Chunk(0x030BD002, "legacy own data")]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030BD002 : Chunk<CGameControlCardGeneric>
     {
         public override uint Id => 0x030BD002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMood : global::GBX.NET.Interfaces.Scene.ISceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC
+public partial class CSceneMood : global::GBX.NET.Interfaces.Scene.ISceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMoodTMU
 {
 }

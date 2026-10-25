@@ -23,6 +23,10 @@ public partial interface IGameCtnMediaBlockMusicEffectTMNESWC : IGameCtnMediaBlo
 {
 }
 
+public partial interface IGameCtnMediaBlockMusicEffectTMU : IGameCtnMediaBlockMusicEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockMusicEffectVSK5 : IGameCtnMediaBlockMusicEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
 {
 }

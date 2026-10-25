@@ -40,6 +40,10 @@ public partial interface IGxLightTMNESWC : IGxLight
 {
 }
 
+public partial interface IGxLightTMU : IGxLight
+{
+}
+
 public partial interface IGxLightVSK5 : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
 }

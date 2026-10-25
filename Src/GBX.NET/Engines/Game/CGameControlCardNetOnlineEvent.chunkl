@@ -9,4 +9,4 @@ CGameControlCardNetOnlineEvent 0x030DB000
 0x001 // legacy resource
   CMwNod
 
-0x002 (empty) [TMF]
+0x002 (empty) [TMU, TMF]

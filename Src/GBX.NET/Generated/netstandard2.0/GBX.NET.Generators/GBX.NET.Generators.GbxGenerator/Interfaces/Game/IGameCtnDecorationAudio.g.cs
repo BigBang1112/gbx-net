@@ -63,6 +63,10 @@ public partial interface IGameCtnDecorationAudioTMNESWC : IGameCtnDecorationAudi
 {
 }
 
+public partial interface IGameCtnDecorationAudioTMU : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMU>
+{
+}
+
 public partial interface IGameCtnDecorationAudioVSK5 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentVSK5>
 {
 }

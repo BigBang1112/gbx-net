@@ -104,13 +104,13 @@ property bool DirectTransfo
   else
     UVTransfoMat4 = null
 
-0x007 (base: 0x006) [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // UV generation and transforms
+0x007 (base: 0x006) [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // UV generation and transforms
 
 0x008 [TMSX, TMNESWC] // legacy map effects and bump scale
   SMapFxDescOld[] MapFxDescs
   float BumpEnvScale = 1
 
-0x009 [VSK5, TMF, MP3, TMT] // BumpEnvScale
+0x009 [TMU, VSK5, TMF, MP3, TMT] // BumpEnvScale
   float BumpEnvScale = 1
 
 archive SMapFxDescOld

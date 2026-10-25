@@ -26,6 +26,10 @@ public interface IPlugDecoratorTreeMembers2<T0, T1> : global::GBX.NET.Interfaces
 public interface IPlugDecoratorTreeMembers3 : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree
 {
     int ExistCond { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecoratorTreeMembers4 : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree
+{
     bool NoLocation { get; set; }
 }
 public partial interface IPlugDecoratorTree : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>
@@ -52,27 +56,31 @@ public partial interface IPlugDecoratorTreeTMNESWC : IPlugDecoratorTree, global:
 {
 }
 
-public partial interface IPlugDecoratorTreeVSK5 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeTMU : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMU>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
 }
 
-public partial interface IPlugDecoratorTreeTMF : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeVSK5 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
 {
 }
 
-public partial interface IPlugDecoratorTreeMP3 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeTMF : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
 {
 }
 
-public partial interface IPlugDecoratorTreeTMT : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeMP3 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
 {
 }
 
-public partial interface IPlugDecoratorTreeMP4 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeTMT : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
 {
 }
 
-public partial interface IPlugDecoratorTreeTM2020 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
+public partial interface IPlugDecoratorTreeMP4 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
+{
+}
+
+public partial interface IPlugDecoratorTreeTM2020 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers4
 {
 }
 

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Hms;
 
-public partial class CHmsItem : global::GBX.NET.Interfaces.Hms.IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemTM10, global::GBX.NET.Interfaces.Hms.IHmsItemTMPU, global::GBX.NET.Interfaces.Hms.IHmsItemTMSX, global::GBX.NET.Interfaces.Hms.IHmsItemTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsItemVSK5, global::GBX.NET.Interfaces.Hms.IHmsItemTMF, global::GBX.NET.Interfaces.Hms.IHmsItemMP3, global::GBX.NET.Interfaces.Hms.IHmsItemTMT, global::GBX.NET.Interfaces.Hms.IHmsItemMP4, global::GBX.NET.Interfaces.Hms.IHmsItemTM2020
+public partial class CHmsItem : global::GBX.NET.Interfaces.Hms.IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemTM10, global::GBX.NET.Interfaces.Hms.IHmsItemTMPU, global::GBX.NET.Interfaces.Hms.IHmsItemTMSX, global::GBX.NET.Interfaces.Hms.IHmsItemTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsItemTMU, global::GBX.NET.Interfaces.Hms.IHmsItemVSK5, global::GBX.NET.Interfaces.Hms.IHmsItemTMF, global::GBX.NET.Interfaces.Hms.IHmsItemMP3, global::GBX.NET.Interfaces.Hms.IHmsItemTMT, global::GBX.NET.Interfaces.Hms.IHmsItemMP4, global::GBX.NET.Interfaces.Hms.IHmsItemTM2020
 {
 }

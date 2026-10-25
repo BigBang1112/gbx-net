@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEntry : global::GBX.NET.Interfaces.Control.IControlEntry, global::GBX.NET.Interfaces.Control.IControlEntryTM10, global::GBX.NET.Interfaces.Control.IControlEntryTMPU, global::GBX.NET.Interfaces.Control.IControlEntryTMSX, global::GBX.NET.Interfaces.Control.IControlEntryTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryVSK5, global::GBX.NET.Interfaces.Control.IControlEntryTMF, global::GBX.NET.Interfaces.Control.IControlEntryMP3, global::GBX.NET.Interfaces.Control.IControlEntryTMT, global::GBX.NET.Interfaces.Control.IControlEntryMP4, global::GBX.NET.Interfaces.Control.IControlEntryTM2020
+public partial class CControlEntry : global::GBX.NET.Interfaces.Control.IControlEntry, global::GBX.NET.Interfaces.Control.IControlEntryTM10, global::GBX.NET.Interfaces.Control.IControlEntryTMPU, global::GBX.NET.Interfaces.Control.IControlEntryTMSX, global::GBX.NET.Interfaces.Control.IControlEntryTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryTMU, global::GBX.NET.Interfaces.Control.IControlEntryVSK5, global::GBX.NET.Interfaces.Control.IControlEntryTMF, global::GBX.NET.Interfaces.Control.IControlEntryMP3, global::GBX.NET.Interfaces.Control.IControlEntryTMT, global::GBX.NET.Interfaces.Control.IControlEntryMP4, global::GBX.NET.Interfaces.Control.IControlEntryTM2020
 {
 }

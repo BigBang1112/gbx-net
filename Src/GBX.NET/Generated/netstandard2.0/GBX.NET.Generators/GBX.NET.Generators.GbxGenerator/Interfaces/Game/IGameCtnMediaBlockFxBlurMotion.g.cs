@@ -24,6 +24,10 @@ public partial interface IGameCtnMediaBlockFxBlurMotionTMNESWC : IGameCtnMediaBl
 {
 }
 
+public partial interface IGameCtnMediaBlockFxBlurMotionTMU : IGameCtnMediaBlockFxBlurMotion, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockFxBlurMotionVSK5 : IGameCtnMediaBlockFxBlurMotion, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurVSK5
 {
 }

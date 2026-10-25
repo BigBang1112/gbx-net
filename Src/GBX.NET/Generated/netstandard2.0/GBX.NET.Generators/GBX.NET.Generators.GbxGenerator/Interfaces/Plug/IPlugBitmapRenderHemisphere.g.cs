@@ -43,6 +43,10 @@ public partial interface IPlugBitmapRenderHemisphereTMNESWC : IPlugBitmapRenderH
 {
 }
 
+public partial interface IPlugBitmapRenderHemisphereTMU : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
+{
+}
+
 public partial interface IPlugBitmapRenderHemisphereVSK5 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
 {
 }

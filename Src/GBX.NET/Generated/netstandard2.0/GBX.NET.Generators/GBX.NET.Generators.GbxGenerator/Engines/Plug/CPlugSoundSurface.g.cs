@@ -83,11 +83,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     /// CPlugSoundSurface 0x000 chunk (legacy impact, texture and skid sounds by material)
     /// </summary>
     [Chunk(0x0905E000, "legacy impact, texture and skid sounds by material")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0905E000 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E000;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -106,11 +106,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     /// CPlugSoundSurface 0x001 chunk (impact attenuation)
     /// </summary>
     [Chunk(0x0905E001, "impact attenuation")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0905E001 : Chunk<CPlugSoundSurface>
     {
         public override uint Id => 0x0905E001;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

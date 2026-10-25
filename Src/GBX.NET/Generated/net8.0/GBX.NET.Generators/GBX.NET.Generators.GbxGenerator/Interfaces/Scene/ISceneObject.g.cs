@@ -6,15 +6,20 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneObjectMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneObject where T0 : class
 {
-    T0? Motion
+    new T0? Motion
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObject)this).Motion);
         set => ((global::GBX.NET.Engines.Scene.CSceneObject)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    string? Name { get; set; }
 }
 public partial interface ISceneObject : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObject>
 {
+    global::GBX.NET.Interfaces.Motion.IMotion? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotion?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObject)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneObject)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    string? Name { get; set; }
 }
 
 public partial interface ISceneObjectTM10 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>
@@ -33,7 +38,7 @@ public partial interface ISceneObjectTMNESWC : ISceneObject, global::GBX.NET.Int
 {
 }
 
-public partial interface ISceneObjectTMU : ISceneObject
+public partial interface ISceneObjectTMU : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMU>
 {
 }
 

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderOverlay : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTM2020
+public partial class CPlugBitmapRenderOverlay : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayTM2020
 {
 }

@@ -39,6 +39,10 @@ public partial interface IMotionDayTimeTMNESWC : IMotionDayTime, global::GBX.NET
 {
 }
 
+public partial interface IMotionDayTimeTMU : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMU, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>
+{
+}
+
 public partial interface IMotionDayTimeVSK5 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>
 {
 }

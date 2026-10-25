@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020
+public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020
 {
 }

@@ -46,6 +46,18 @@ public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Int
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+{
+    int GradientDir { get; set; }
+    bool IsFill { get; set; }
+    bool IsLines { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+    Vec2 Size { get; set; }
+}
+
 public partial interface IControlQuadVSK5 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }

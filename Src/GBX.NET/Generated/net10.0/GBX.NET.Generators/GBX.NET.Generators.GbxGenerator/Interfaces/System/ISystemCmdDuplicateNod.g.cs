@@ -30,6 +30,10 @@ public partial interface ISystemCmdDuplicateNodTMNESWC : ISystemCmdDuplicateNod,
 {
 }
 
+public partial interface ISystemCmdDuplicateNodTMU : ISystemCmdDuplicateNod, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMU
+{
+}
+
 public partial interface ISystemCmdDuplicateNodVSK5 : ISystemCmdDuplicateNod, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassVSK5
 {
 }

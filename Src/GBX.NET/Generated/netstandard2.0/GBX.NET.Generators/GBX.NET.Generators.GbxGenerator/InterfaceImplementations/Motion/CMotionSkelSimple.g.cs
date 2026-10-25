@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF
+public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMU, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF
 {
     global::GBX.NET.Interfaces.Function.IFuncSkelValues? global::GBX.NET.Interfaces.Motion.IMotionSkelSimple.SkelValues
     {
@@ -26,6 +26,11 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC>.SkelValues
+    {
+        get => SkelValues;
+        set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU>.SkelValues
     {
         get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

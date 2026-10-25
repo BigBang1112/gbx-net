@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020
+public partial class CPlugBitmapRenderSub : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSub, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020
 {
 }

@@ -23,6 +23,10 @@ public partial interface IGameCtnDecorationTerrainModifier : IClassVersion<globa
     }
 }
 
+public partial interface IGameCtnDecorationTerrainModifierTMU : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>
+{
+}
+
 public partial interface IGameCtnDecorationTerrainModifierVSK5 : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>
 {
 }

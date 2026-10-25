@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugVisual : global::GBX.NET.Interfaces.Plug.IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020
+public partial class CPlugVisual : global::GBX.NET.Interfaces.Plug.IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>? GetVertexStreamsInterfaceReferences() => VertexStreams;
 }

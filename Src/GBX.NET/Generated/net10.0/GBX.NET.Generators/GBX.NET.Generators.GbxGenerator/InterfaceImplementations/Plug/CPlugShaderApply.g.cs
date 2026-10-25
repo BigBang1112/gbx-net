@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020
+public partial class CPlugShaderApply : global::GBX.NET.Interfaces.Plug.IPlugShaderApply, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? GetBitmapAddressesInterfaceReferences() => BitmapAddresses;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? GetUnusedBitmapAddressesInterfaceReferences() => UnusedBitmapAddresses;

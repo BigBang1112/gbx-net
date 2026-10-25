@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnZoneFlat : global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTM2020
+public partial class CGameCtnZoneFlat : global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat.BlockInfoClip
     {
@@ -101,6 +101,26 @@ public partial class CGameCtnZoneFlat : global::GBX.NET.Interfaces.Game.IGameCtn
         set => BlockInfoPylon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC>.BlockInfoRoad
+    {
+        get => BlockInfoRoad;
+        set => BlockInfoRoad = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU>.BlockInfoClip
+    {
+        get => BlockInfoClip;
+        set => BlockInfoClip = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU>.BlockInfoFlat
+    {
+        get => BlockInfoFlat;
+        set => BlockInfoFlat = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU>.BlockInfoPylon
+    {
+        get => BlockInfoPylon;
+        set => BlockInfoPylon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU>.BlockInfoRoad
     {
         get => BlockInfoRoad;
         set => BlockInfoRoad = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -23,6 +23,10 @@ public partial interface IMwCmdTMNESWC : IMwCmd
 {
 }
 
+public partial interface IMwCmdTMU : IMwCmd
+{
+}
+
 public partial interface IMwCmdVSK5 : IMwCmd
 {
 }

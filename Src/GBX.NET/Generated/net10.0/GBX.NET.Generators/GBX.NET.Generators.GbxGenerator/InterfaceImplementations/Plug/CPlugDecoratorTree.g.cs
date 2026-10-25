@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020
+public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020
 {
 }

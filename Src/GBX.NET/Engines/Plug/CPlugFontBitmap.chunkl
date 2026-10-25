@@ -15,23 +15,23 @@ CPlugFontBitmap 0x0904E000
   int FontAscent
   OldLetter[] OldLetters
 
-0x003
+0x003 [TMU]
   int FontHeight
   int FontAscent
   Letter[] Letters
   Page[] Pages
 
-0x004 [MP4, TM2020]
+0x004 [TMU, MP4, TM2020]
   RemapPage[] RemapPages
   ushort[] RemapLetters
 
-0x005
+0x005 [TMU]
   int KerningCount (local, write: "n.Kernings?.Length ?? 0")
   if KerningCount > 0
     int KerningCapacity
     Kerning[KerningCount] Kernings
 
-0x006 [MP4, TM2020]
+0x006 [TMU, MP4, TM2020]
   rect Bounds = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue)
 
 0x007

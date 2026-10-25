@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleTM10, global::GBX.NET.Interfaces.Control.IControlStyleTMPU, global::GBX.NET.Interfaces.Control.IControlStyleTMSX, global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC, global::GBX.NET.Interfaces.Control.IControlStyleVSK5, global::GBX.NET.Interfaces.Control.IControlStyleTMF, global::GBX.NET.Interfaces.Control.IControlStyleMP3, global::GBX.NET.Interfaces.Control.IControlStyleTMT, global::GBX.NET.Interfaces.Control.IControlStyleMP4, global::GBX.NET.Interfaces.Control.IControlStyleTM2020
+public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleTM10, global::GBX.NET.Interfaces.Control.IControlStyleTMPU, global::GBX.NET.Interfaces.Control.IControlStyleTMSX, global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC, global::GBX.NET.Interfaces.Control.IControlStyleTMU, global::GBX.NET.Interfaces.Control.IControlStyleVSK5, global::GBX.NET.Interfaces.Control.IControlStyleTMF, global::GBX.NET.Interfaces.Control.IControlStyleMP3, global::GBX.NET.Interfaces.Control.IControlStyleTMT, global::GBX.NET.Interfaces.Control.IControlStyleMP4, global::GBX.NET.Interfaces.Control.IControlStyleTM2020
 {
 }

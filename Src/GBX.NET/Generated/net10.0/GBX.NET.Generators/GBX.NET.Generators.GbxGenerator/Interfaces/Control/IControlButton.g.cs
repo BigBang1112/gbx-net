@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers1 : global::GBX.NET.Interfaces.Control.IControlButton
+{
+    int DisplayType { get; set; }
+    string? Label { get; set; }
+}
 public partial interface IControlButton : IClassVersion<global::GBX.NET.Engines.Control.CControlButton>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -92,6 +98,48 @@ public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET
         get => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(((global::GBX.NET.Engines.Control.CControlButton)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
     }
+}
+
+public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
+{
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? ActionScript
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? ActionSound
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? Icons
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncEnumTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Icons);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    string? IconsId { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlButton)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+    int SubIconIndexOff { get; set; }
+    int SubIconIndexOn { get; set; }
 }
 
 public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextVSK5
@@ -202,10 +250,8 @@ public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020
+public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
 {
-    int DisplayType { get; set; }
-    string? Label { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM2020?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);

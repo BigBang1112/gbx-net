@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockTrailsBuilderBase<TSelf> : NodeBuilder<g
 {
     private protected CGameCtnMediaBlockTrailsBuilderBase() { }
     private protected CGameCtnMediaBlockTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrailsBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
@@ -21,6 +21,7 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -40,6 +41,13 @@ public partial class CGameCtnMediaBlockTrailsBuilder : CGameCtnMediaBlockTrailsB
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails Build() => BuildNode(CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
+    }
+    public partial class TMU : CGameCtnMediaBlockTrailsBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrailsTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails Build() => BuildNode(CGameCtnMediaBlockTrailsBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTrails node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTrailsBuilderBase<VSK5>

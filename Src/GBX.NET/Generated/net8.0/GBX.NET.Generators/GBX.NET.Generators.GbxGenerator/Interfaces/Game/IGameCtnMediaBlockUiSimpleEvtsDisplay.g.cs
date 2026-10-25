@@ -18,6 +18,10 @@ public partial interface IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC : IGameCtn
 {
 }
 
+public partial interface IGameCtnMediaBlockUiSimpleEvtsDisplayTMU : IGameCtnMediaBlockUiSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMU
+{
+}
+
 public partial interface IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5 : IGameCtnMediaBlockUiSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiVSK5
 {
 }

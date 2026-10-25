@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, global::GBX.NET.Interfaces.Motion.IMotionsTM10, global::GBX.NET.Interfaces.Motion.IMotionsTMPU, global::GBX.NET.Interfaces.Motion.IMotionsTMSX, global::GBX.NET.Interfaces.Motion.IMotionsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionsVSK5, global::GBX.NET.Interfaces.Motion.IMotionsTMF, global::GBX.NET.Interfaces.Motion.IMotionsMP3, global::GBX.NET.Interfaces.Motion.IMotionsTMT, global::GBX.NET.Interfaces.Motion.IMotionsMP4
+public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, global::GBX.NET.Interfaces.Motion.IMotionsTM10, global::GBX.NET.Interfaces.Motion.IMotionsTMPU, global::GBX.NET.Interfaces.Motion.IMotionsTMSX, global::GBX.NET.Interfaces.Motion.IMotionsTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionsTMU, global::GBX.NET.Interfaces.Motion.IMotionsVSK5, global::GBX.NET.Interfaces.Motion.IMotionsTMF, global::GBX.NET.Interfaces.Motion.IMotionsMP3, global::GBX.NET.Interfaces.Motion.IMotionsTMT, global::GBX.NET.Interfaces.Motion.IMotionsMP4
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotion>? global::GBX.NET.Interfaces.Motion.IMotions.Motions
     {
@@ -29,6 +29,11 @@ public partial class CMotions : global::GBX.NET.Interfaces.Motion.IMotions, glob
     {
         get => Motions is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>(GetMotionsInterfaceReferences, true, "Motions");
         set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMU>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMU>.Motions
+    {
+        get => Motions is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMU>(GetMotionsInterfaceReferences, true, "Motions");
+        set => Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotionTMU>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionVSK5>? global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>.Motions
     {

@@ -64,6 +64,10 @@ public partial interface IPlugShaderPassTMNESWC : IPlugShaderPass, global::GBX.N
 {
 }
 
+public partial interface IPlugShaderPassTMU : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
+{
+}
+
 public partial interface IPlugShaderPassVSK5 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
 }

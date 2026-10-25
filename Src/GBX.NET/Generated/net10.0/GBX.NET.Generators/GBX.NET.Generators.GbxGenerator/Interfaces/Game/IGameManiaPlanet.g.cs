@@ -14,6 +14,10 @@ public partial interface IGameManiaPlanet : IClassVersion<global::GBX.NET.Engine
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IGameManiaPlanetTMU : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMU
+{
+}
+
 public partial interface IGameManiaPlanetTMF : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMF
 {
 }

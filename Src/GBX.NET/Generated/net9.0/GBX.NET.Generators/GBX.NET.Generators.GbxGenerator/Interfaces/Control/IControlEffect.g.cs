@@ -23,6 +23,10 @@ public partial interface IControlEffectTMNESWC : IControlEffect
 {
 }
 
+public partial interface IControlEffectTMU : IControlEffect
+{
+}
+
 public partial interface IControlEffectVSK5 : IControlEffect
 {
 }

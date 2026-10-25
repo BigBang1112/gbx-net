@@ -7,7 +7,7 @@ CSceneFxBloom 0x0A03B000
   float
   float Intensity
 
-0x001
+0x001 [TMU]
   int BlurSize
   float
   float

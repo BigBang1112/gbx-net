@@ -41,6 +41,10 @@ public partial interface IControlEffectMasterTMNESWC : IControlEffectMaster, glo
 {
 }
 
+public partial interface IControlEffectMasterTMU : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>
+{
+}
+
 public partial interface IControlEffectMasterVSK5 : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
 {
 }

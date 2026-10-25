@@ -31,6 +31,10 @@ public partial interface IPlugVisualIndexedLinesTMNESWC : IPlugVisualIndexedLine
 {
 }
 
+public partial interface IPlugVisualIndexedLinesTMU : IPlugVisualIndexedLines, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMU
+{
+}
+
 public partial interface IPlugVisualIndexedLinesVSK5 : IPlugVisualIndexedLines, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedVSK5
 {
 }

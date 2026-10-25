@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.GameData;
 
-public partial class CGameCtnCollector : global::GBX.NET.Interfaces.GameData.IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020
+public partial class CGameCtnCollector : global::GBX.NET.Interfaces.GameData.IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMU, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020
 {
 }

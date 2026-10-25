@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEnum : global::GBX.NET.Interfaces.Control.IControlEnum, global::GBX.NET.Interfaces.Control.IControlEnumTM10, global::GBX.NET.Interfaces.Control.IControlEnumTMPU, global::GBX.NET.Interfaces.Control.IControlEnumTMSX, global::GBX.NET.Interfaces.Control.IControlEnumTMNESWC, global::GBX.NET.Interfaces.Control.IControlEnumVSK5, global::GBX.NET.Interfaces.Control.IControlEnumTMF, global::GBX.NET.Interfaces.Control.IControlEnumMP3, global::GBX.NET.Interfaces.Control.IControlEnumTMT, global::GBX.NET.Interfaces.Control.IControlEnumMP4, global::GBX.NET.Interfaces.Control.IControlEnumTM2020
+public partial class CControlEnum : global::GBX.NET.Interfaces.Control.IControlEnum, global::GBX.NET.Interfaces.Control.IControlEnumTM10, global::GBX.NET.Interfaces.Control.IControlEnumTMPU, global::GBX.NET.Interfaces.Control.IControlEnumTMSX, global::GBX.NET.Interfaces.Control.IControlEnumTMNESWC, global::GBX.NET.Interfaces.Control.IControlEnumTMU, global::GBX.NET.Interfaces.Control.IControlEnumVSK5, global::GBX.NET.Interfaces.Control.IControlEnumTMF, global::GBX.NET.Interfaces.Control.IControlEnumMP3, global::GBX.NET.Interfaces.Control.IControlEnumTMT, global::GBX.NET.Interfaces.Control.IControlEnumMP4, global::GBX.NET.Interfaces.Control.IControlEnumTM2020
 {
 }

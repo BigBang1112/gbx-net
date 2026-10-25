@@ -1584,11 +1584,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x000 chunk (sounds and musics)
     /// </summary>
     [Chunk(0x0302D000, "sounds and musics")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D000 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1606,11 +1606,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x003 chunk (ReplayInterfaceFid)
     /// </summary>
     [Chunk(0x0302D003, "ReplayInterfaceFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D003 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1632,11 +1632,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x004 chunk (InterfaceEditorFid)
     /// </summary>
     [Chunk(0x0302D004, "InterfaceEditorFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D004 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D004;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1658,11 +1658,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x005 chunk (InterfacePuzzleFid)
     /// </summary>
     [Chunk(0x0302D005, "InterfacePuzzleFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D005 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D005;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1710,11 +1710,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x007 chunk (RaceInterfaceFid)
     /// </summary>
     [Chunk(0x0302D007, "RaceInterfaceFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D007 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D007;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1736,11 +1736,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x008 chunk (DefaultAvatarBitmapFid)
     /// </summary>
     [Chunk(0x0302D008, "DefaultAvatarBitmapFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D008 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D008;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -1780,11 +1780,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x009 chunk (interface font, background, styles and directory icon)
     /// </summary>
     [Chunk(0x0302D009, "interface font, background, styles and directory icon")]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF | GameVersion.MP4)]
     public partial class Chunk0302D009 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D009;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1897,11 +1897,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x00F chunk (MediaTrackerInterfaceFid)
     /// </summary>
     [Chunk(0x0302D00F, "MediaTrackerInterfaceFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D00F : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D00F;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -1941,11 +1941,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x010 chunk (StyleSheetFid)
     /// </summary>
     [Chunk(0x0302D010, "StyleSheetFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D010 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D010;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1962,11 +1962,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x012 chunk (EmptyChallengeCustomMusicFid)
     /// </summary>
     [Chunk(0x0302D012, "EmptyChallengeCustomMusicFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D012 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D012;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1983,11 +1983,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x015 chunk (legacy MediaTracker resources)
     /// </summary>
     [Chunk(0x0302D015, "legacy MediaTracker resources")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0302D015 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D015;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2029,11 +2029,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x016 chunk (PainterSetting)
     /// </summary>
     [Chunk(0x0302D016, "PainterSetting")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D016 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D016;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2089,11 +2089,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x018 chunk (UnknownFlagBitmap)
     /// </summary>
     [Chunk(0x0302D018, "UnknownFlagBitmap")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0302D018 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D018;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2110,11 +2110,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x019 chunk (DefaultLeagueLogoBitmapFid)
     /// </summary>
     [Chunk(0x0302D019, "DefaultLeagueLogoBitmapFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D019 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D019;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2154,11 +2154,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01A chunk
     /// </summary>
     [Chunk(0x0302D01A)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D01A : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01A;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2197,11 +2197,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01B chunk (HymnsFolder)
     /// </summary>
     [Chunk(0x0302D01B, "HymnsFolder")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D01B : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01B;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2218,11 +2218,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01C chunk (legacy interface resources)
     /// </summary>
     [Chunk(0x0302D01C, "legacy interface resources")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0302D01C : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2272,11 +2272,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01D chunk (legacy interface resources)
     /// </summary>
     [Chunk(0x0302D01D, "legacy interface resources")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0302D01D : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01D;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2326,11 +2326,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01E chunk (DefaultOnlineNewsIconBitmapFid)
     /// </summary>
     [Chunk(0x0302D01E, "DefaultOnlineNewsIconBitmapFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D01E : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01E;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2370,11 +2370,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x01F chunk (legacy interface resources)
     /// </summary>
     [Chunk(0x0302D01F, "legacy interface resources")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk0302D01F : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D01F;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -2424,11 +2424,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x020 chunk (FolderGlobalEnvBanners)
     /// </summary>
     [Chunk(0x0302D020, "FolderGlobalEnvBanners")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D020 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D020;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2445,11 +2445,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x021 chunk (PodiumScene)
     /// </summary>
     [Chunk(0x0302D021, "PodiumScene")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D021 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D021;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2466,11 +2466,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x022 chunk (MenuBackgroundsFolder)
     /// </summary>
     [Chunk(0x0302D022, "MenuBackgroundsFolder")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D022 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D022;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2487,11 +2487,11 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x023 chunk (DefaultTagBitmapFid)
     /// </summary>
     [Chunk(0x0302D023, "DefaultTagBitmapFid")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk0302D023 : Chunk<CGameResources>
     {
         public override uint Id => 0x0302D023;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

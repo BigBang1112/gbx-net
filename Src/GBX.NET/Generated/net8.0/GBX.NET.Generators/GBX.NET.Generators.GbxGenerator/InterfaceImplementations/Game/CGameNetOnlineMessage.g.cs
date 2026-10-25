@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameNetOnlineMessage : global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020
+public partial class CGameNetOnlineMessage : global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMU, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020
 {
 }

@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlFrameStyledMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlFrameStyled where T0 : class
+{
+    T0? StyleSheet
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).StyleSheet);
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IControlFrameStyled : IClassVersion<global::GBX.NET.Engines.Control.CControlFrameStyled>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -114,6 +123,35 @@ public partial interface IControlFrameStyledTMNESWC : IControlFrameStyled, globa
     }
 }
 
+public partial interface IControlFrameStyledTMU : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.Control.IControlFrameStyledMembers1<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU>
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).CreateScript);
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
+    }
+}
+
 public partial interface IControlFrameStyledVSK5 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
@@ -210,7 +248,7 @@ public partial interface IControlFrameStyledTMT : IControlFrameStyled, global::G
     }
 }
 
-public partial interface IControlFrameStyledMP4 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameMP4
+public partial interface IControlFrameStyledMP4 : IControlFrameStyled, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlFrameStyledMembers1<global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
@@ -232,11 +270,6 @@ public partial interface IControlFrameStyledMP4 : IControlFrameStyled, global::G
     {
         get => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
-    }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? StyleSheet
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlFrameStyled)this).StyleSheet);
-        set => ((global::GBX.NET.Engines.Control.CControlFrameStyled)this).StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 

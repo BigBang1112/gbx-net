@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnApp where T0 : class
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
+    T0? Resources { get; set; }
+}
 public partial interface IGameCtnApp : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnApp>, global::GBX.NET.Interfaces.Game.IGameApp
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,16 +20,19 @@ public partial interface IGameCtnApp : IClassVersion<global::GBX.NET.Engines.Gam
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IGameCtnAppTMU : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesTMU>
+{
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>? BaseOfficialCampaigns { get; set; }
+}
+
 public partial interface IGameCtnAppTMF : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMF
 {
 }
 
-public partial interface IGameCtnAppMP4 : IGameCtnApp
+public partial interface IGameCtnAppMP4 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesMP4>
 {
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
     bool MenuBackground_MustLoopIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? Resources { get; set; }
 }
 
 public partial interface IGameCtnAppTM2020 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTM2020

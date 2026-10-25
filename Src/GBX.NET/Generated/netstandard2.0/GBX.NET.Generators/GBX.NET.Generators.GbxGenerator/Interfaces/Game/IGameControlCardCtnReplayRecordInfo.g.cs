@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCardCtnReplayRecordInfoMembers1 : global::GBX.NET.Interfaces.Game.IGameControlCardCtnReplayRecordInfo
+{
+    bool ShortName { get; set; }
+}
 public partial interface IGameControlCardCtnReplayRecordInfo : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCardCtnReplayRecordInfo>, global::GBX.NET.Interfaces.Game.IGameControlCard
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -50,6 +55,15 @@ public partial interface IGameControlCardCtnReplayRecordInfoTMNESWC : IGameContr
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IGameControlCardCtnReplayRecordInfoTMU : IGameControlCardCtnReplayRecordInfo, global::GBX.NET.Interfaces.Game.IGameControlCardTMU, global::GBX.NET.Interfaces.Game.IGameControlCardCtnReplayRecordInfoMembers1
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IGameControlCardCtnReplayRecordInfoVSK5 : IGameControlCardCtnReplayRecordInfo, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -86,14 +100,13 @@ public partial interface IGameControlCardCtnReplayRecordInfoTMT : IGameControlCa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlCardCtnReplayRecordInfoMP4 : IGameControlCardCtnReplayRecordInfo, global::GBX.NET.Interfaces.Game.IGameControlCardMP4
+public partial interface IGameControlCardCtnReplayRecordInfoMP4 : IGameControlCardCtnReplayRecordInfo, global::GBX.NET.Interfaces.Game.IGameControlCardMP4, global::GBX.NET.Interfaces.Game.IGameControlCardCtnReplayRecordInfoMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
-    bool ShortName { get; set; }
 }
 
 public partial interface IGameControlCardCtnReplayRecordInfoTM2020 : IGameControlCardCtnReplayRecordInfo, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020

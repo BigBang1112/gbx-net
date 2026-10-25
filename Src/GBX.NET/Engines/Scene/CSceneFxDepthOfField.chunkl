@@ -23,11 +23,11 @@ CSceneFxDepthOfField 0x0A077000
   float FocusRange = 2f
   CMwNod FidMrtDOF_BlurAtDepth
 
-0x003 (base: 0x001) [TMF] // focus range
+0x003 (base: 0x001) [TMU, TMF] // focus range
   base
   float FocusRange
 
-0x004 [TMF] // FidMrtDOF_BlurAtDepth
+0x004 [TMU, TMF] // FidMrtDOF_BlurAtDepth
   CMwNod FidMrtDOF_BlurAtDepth
 
 0x005

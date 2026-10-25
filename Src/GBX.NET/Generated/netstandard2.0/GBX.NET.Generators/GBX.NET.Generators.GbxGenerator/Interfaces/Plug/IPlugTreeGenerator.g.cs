@@ -18,6 +18,10 @@ public partial interface IPlugTreeGeneratorTMNESWC : IPlugTreeGenerator
 {
 }
 
+public partial interface IPlugTreeGeneratorTMU : IPlugTreeGenerator
+{
+}
+
 public partial interface IPlugTreeGeneratorVSK5 : IPlugTreeGenerator
 {
 }

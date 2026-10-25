@@ -23,6 +23,10 @@ public partial interface IMotionEmitterFlockTMNESWC : IMotionEmitterFlock, globa
 {
 }
 
+public partial interface IMotionEmitterFlockTMU : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedTMU
+{
+}
+
 public partial interface IMotionEmitterFlockVSK5 : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
 {
 }

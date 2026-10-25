@@ -1,7 +1,7 @@
 CHmsZoneOverlay 0x06009000
 - inherits: CHmsZone
 
-0x000
+0x000 [TMU]
   bool IsOrthographic
   boxaligned Frustum
   bool

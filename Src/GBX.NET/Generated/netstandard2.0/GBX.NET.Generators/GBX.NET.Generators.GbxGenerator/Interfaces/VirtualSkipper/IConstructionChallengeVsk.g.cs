@@ -59,9 +59,9 @@ public partial interface IConstructionChallengeVskTMNESWC : IConstructionChallen
 
 public partial interface IConstructionChallengeVskTMU : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU
 {
-    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU? BlockStock { get; set; }
     new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
+    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU? ChallengeParameters { get; set; }
 }
 
 public partial interface IConstructionChallengeVskVSK5 : IConstructionChallengeVsk, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5

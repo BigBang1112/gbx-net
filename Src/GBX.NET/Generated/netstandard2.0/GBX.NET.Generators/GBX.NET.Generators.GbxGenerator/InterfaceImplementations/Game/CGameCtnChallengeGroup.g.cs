@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020
+public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>.MapFiles
     {
@@ -39,6 +39,16 @@ public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IG
     {
         get => MapFiles is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>(GetMapFilesInterfaceReferences, true, "MapFiles");
         set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>.LinkedCampaign
+    {
+        get => LinkedCampaign;
+        set => LinkedCampaign = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU>.MapFiles
+    {
+        get => MapFiles is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU>(GetMapFilesInterfaceReferences, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>.LinkedCampaign
     {

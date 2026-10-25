@@ -28,6 +28,10 @@ public partial interface IPlugAudioTMNESWC : IPlugAudio, global::GBX.NET.Interfa
 {
 }
 
+public partial interface IPlugAudioTMU : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
+{
+}
+
 public partial interface IPlugAudioVSK5 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
 }

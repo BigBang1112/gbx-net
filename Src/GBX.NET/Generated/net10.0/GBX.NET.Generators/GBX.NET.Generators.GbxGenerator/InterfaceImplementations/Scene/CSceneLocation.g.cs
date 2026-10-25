@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneLocation : global::GBX.NET.Interfaces.Scene.ISceneLocation, global::GBX.NET.Interfaces.Scene.ISceneLocationTM10, global::GBX.NET.Interfaces.Scene.ISceneLocationTMPU, global::GBX.NET.Interfaces.Scene.ISceneLocationTMSX, global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLocationVSK5, global::GBX.NET.Interfaces.Scene.ISceneLocationTMF, global::GBX.NET.Interfaces.Scene.ISceneLocationMP3, global::GBX.NET.Interfaces.Scene.ISceneLocationTMT, global::GBX.NET.Interfaces.Scene.ISceneLocationMP4, global::GBX.NET.Interfaces.Scene.ISceneLocationTM2020
+public partial class CSceneLocation : global::GBX.NET.Interfaces.Scene.ISceneLocation, global::GBX.NET.Interfaces.Scene.ISceneLocationTM10, global::GBX.NET.Interfaces.Scene.ISceneLocationTMPU, global::GBX.NET.Interfaces.Scene.ISceneLocationTMSX, global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLocationTMU, global::GBX.NET.Interfaces.Scene.ISceneLocationVSK5, global::GBX.NET.Interfaces.Scene.ISceneLocationTMF, global::GBX.NET.Interfaces.Scene.ISceneLocationMP3, global::GBX.NET.Interfaces.Scene.ISceneLocationTMT, global::GBX.NET.Interfaces.Scene.ISceneLocationMP4, global::GBX.NET.Interfaces.Scene.ISceneLocationTM2020
 {
 }

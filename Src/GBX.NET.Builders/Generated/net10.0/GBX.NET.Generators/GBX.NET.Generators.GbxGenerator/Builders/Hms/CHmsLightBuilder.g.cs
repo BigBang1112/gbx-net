@@ -7,7 +7,7 @@ public abstract class CHmsLightBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CHmsLightBuilderBase() { }
     private protected CHmsLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, SupportedGames1);
     public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, SupportedGames1);
     public TSelf WithBitmapSprite(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, SupportedGames1);
@@ -27,6 +27,7 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -73,6 +74,16 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public TMNESWC WithMainGxLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? value) => base.WithMainGxLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build() => BuildNode(CHmsLightBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
+    }
+    public partial class TMU : CHmsLightBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state) : base(state) { }
+        public TMU WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBitmapSprite(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapSprite(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMainGxLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMU? value) => base.WithMainGxLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Hms.IHmsLightTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Hms.CHmsLight Build() => BuildNode(CHmsLightBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLight node);
     }
     public partial class VSK5 : CHmsLightBuilderBase<VSK5>

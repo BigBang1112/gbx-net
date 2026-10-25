@@ -1,5 +1,5 @@
 CMwCmdSleep 0x01082000
 - inherits: CMwCmdInst
 
-0x000 [TM10] // Time
+0x000 [TM10, TMU] // Time
   CMwCmdExpNum Time

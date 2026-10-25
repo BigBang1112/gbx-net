@@ -7,7 +7,7 @@ public abstract class CSceneMoodBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CSceneMoodBuilderBase() { }
     private protected CSceneMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
-    public TSelf WithLights(params global::GBX.NET.Engines.Scene.CSceneMood.MoodLight[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMoodBuilderAssignments.GetLightsAssignment(), value, GameVersion.TMNESWC);
+    public TSelf WithLights(params global::GBX.NET.Engines.Scene.CSceneMood.MoodLight[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMoodBuilderAssignments.GetLightsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMU);
     public TSelf WithLights(IEnumerable<global::GBX.NET.Engines.Scene.CSceneMood.MoodLight> values) => WithLights(values.ToArray());
 }
 public partial class CSceneMoodBuilder : CSceneMoodBuilderBase<CSceneMoodBuilder>
@@ -19,11 +19,19 @@ public partial class CSceneMoodBuilder : CSceneMoodBuilderBase<CSceneMoodBuilder
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public partial class TMNESWC : CSceneMoodBuilderBase<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
         public global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class TMU : CSceneMoodBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
     }
 }

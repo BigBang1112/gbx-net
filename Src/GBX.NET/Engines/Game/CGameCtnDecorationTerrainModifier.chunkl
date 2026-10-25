@@ -1,8 +1,8 @@
 CGameCtnDecorationTerrainModifier 0x0303C000
 
-0x000 [VSK5, TMF, MP3, TMT, MP4]
+0x000 [TMU, VSK5, TMF, MP3, TMT, MP4]
   CPlugGameSkin Remapping
   string RemapFolder
 
-0x001 [VSK5, TMF, MP3, TMT, MP4]
+0x001 [TMU, VSK5, TMF, MP3, TMT, MP4]
   id IdName

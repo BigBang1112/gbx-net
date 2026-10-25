@@ -256,11 +256,11 @@ public partial class CTrackManiaRace : CGameRace, IClass
     /// CTrackManiaRace 0x002 chunk
     /// </summary>
     [Chunk(0x24014002)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk24014002 : Chunk<CTrackManiaRace>
     {
         public override uint Id => 0x24014002;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
         public int U01 = 1500;
 
         private NodeRef<CMwNod>? U02Ref;

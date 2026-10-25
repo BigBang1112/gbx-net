@@ -8,14 +8,22 @@ public interface IPlugSurfaceMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlu
 {
     T0? Skel { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSurfaceMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugSurface where T0 : class
+{
+    T0? Geom { get; set; }
+}
 public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSurface>
 {
     global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials { get; set; }
 }
 
-public partial interface IPlugSurfaceTMF : IPlugSurface
+public partial interface IPlugSurfaceTMU : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? Geom { get; set; }
+}
+
+public partial interface IPlugSurfaceTMF : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF>
+{
 }
 
 public partial interface IPlugSurfaceMP3 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP3>

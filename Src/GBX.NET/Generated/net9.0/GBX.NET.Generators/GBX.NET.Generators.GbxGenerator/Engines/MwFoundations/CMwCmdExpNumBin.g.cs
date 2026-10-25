@@ -61,11 +61,11 @@ public partial class CMwCmdExpNumBin : CMwCmdExpNum, IClass
     /// CMwCmdExpNumBin 0x000 chunk (Type)
     /// </summary>
     [Chunk(0x01046000, "Type")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk01046000 : Chunk<CMwCmdExpNumBin>
     {
         public override uint Id => 0x01046000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -77,11 +77,11 @@ public partial class CMwCmdExpNumBin : CMwCmdExpNum, IClass
     /// CMwCmdExpNumBin 0x000 chunk
     /// </summary>
     [Chunk(0x01053000)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
     public partial class Chunk01053000 : Chunk<CMwCmdExpNumBin>
     {
         public override uint Id => 0x01053000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

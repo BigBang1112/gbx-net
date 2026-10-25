@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaControlScoresMembers1 : global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlScores
+{
+    bool OnlyArrivedPlayers { get; set; }
+    bool WithSpecPlayers { get; set; }
+}
 public partial interface ITrackManiaControlScores : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaControlScores>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -50,6 +56,15 @@ public partial interface ITrackManiaControlScoresTMNESWC : ITrackManiaControlSco
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface ITrackManiaControlScoresTMU : ITrackManiaControlScores, global::GBX.NET.Interfaces.Control.IControlFrameTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlScoresMembers1
+{
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface ITrackManiaControlScoresVSK5 : ITrackManiaControlScores, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
@@ -59,15 +74,13 @@ public partial interface ITrackManiaControlScoresVSK5 : ITrackManiaControlScores
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlScoresTMF : ITrackManiaControlScores, global::GBX.NET.Interfaces.Control.IControlFrameTMF
+public partial interface ITrackManiaControlScoresTMF : ITrackManiaControlScores, global::GBX.NET.Interfaces.Control.IControlFrameTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlScoresMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
-    bool OnlyArrivedPlayers { get; set; }
-    bool WithSpecPlayers { get; set; }
 }
 
 public partial interface ITrackManiaControlScoresMP3 : ITrackManiaControlScores, global::GBX.NET.Interfaces.Control.IControlFrameMP3

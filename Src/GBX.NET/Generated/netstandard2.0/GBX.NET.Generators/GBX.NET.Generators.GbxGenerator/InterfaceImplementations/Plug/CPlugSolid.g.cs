@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020
+public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugSolid? global::GBX.NET.Interfaces.Plug.IPlugSolid.Model
     {
@@ -51,6 +51,16 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>.Tree
+    {
+        get => Tree;
+        set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>.Model
+    {
+        get => Model;
+        set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMU? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>.Tree
     {
         get => Tree;
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -13,7 +13,7 @@ CControlQuad 0x0701B000
   vec2 Size = (-1, -1)
   int GradientDir = 2
 
-0x003
+0x003 [TMU]
   vec2 Size = (-1, -1)
   int GradientDir = 2
   bool IsLines

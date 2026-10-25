@@ -66,6 +66,10 @@ public partial interface IGameCtnDecorationTMNESWC : IGameCtnDecoration, global:
 {
 }
 
+public partial interface IGameCtnDecorationTMU : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>
+{
+}
+
 public partial interface IGameCtnDecorationVSK5 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5>
 {
 }

@@ -25,6 +25,10 @@ public partial interface IPlugDecoratorSolidTMNESWC : IPlugDecoratorSolid, globa
 {
 }
 
+public partial interface IPlugDecoratorSolidTMU : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU>
+{
+}
+
 public partial interface IPlugDecoratorSolidVSK5 : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>
 {
 }

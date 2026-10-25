@@ -65,11 +65,11 @@ public partial class CGameControlCardLadderRanking : CGameControlCard, IClass
     /// CGameControlCardLadderRanking 0x001 chunk (selection and medals)
     /// </summary>
     [Chunk(0x030C1001, "selection and medals")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
     public partial class Chunk030C1001 : Chunk<CGameControlCardLadderRanking>
     {
         public override uint Id => 0x030C1001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

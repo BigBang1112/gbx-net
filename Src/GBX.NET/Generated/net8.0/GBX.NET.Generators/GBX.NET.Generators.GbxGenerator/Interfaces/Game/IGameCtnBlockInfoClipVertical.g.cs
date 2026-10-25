@@ -30,6 +30,10 @@ public partial interface IGameCtnBlockInfoClipVerticalTMNESWC : IGameCtnBlockInf
 {
 }
 
+public partial interface IGameCtnBlockInfoClipVerticalTMU : IGameCtnBlockInfoClipVertical, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU
+{
+}
+
 public partial interface IGameCtnBlockInfoClipVerticalVSK5 : IGameCtnBlockInfoClipVertical, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5
 {
 }

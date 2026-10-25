@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdExpAdd : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpAdd, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpAddTMF
+public partial class CMwCmdExpAdd : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpAdd, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpAddTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpAddTMF
 {
 }

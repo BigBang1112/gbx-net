@@ -12,3 +12,7 @@ public partial interface ISceneMoodTMNESWC : ISceneMood
 {
 }
 
+public partial interface ISceneMoodTMU : ISceneMood
+{
+}
+

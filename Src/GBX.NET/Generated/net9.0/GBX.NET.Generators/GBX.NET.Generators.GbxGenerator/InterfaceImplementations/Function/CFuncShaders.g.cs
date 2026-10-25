@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Function;
 
-public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShadersTM10, global::GBX.NET.Interfaces.Function.IFuncShadersTMPU, global::GBX.NET.Interfaces.Function.IFuncShadersTMSX, global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShadersVSK5, global::GBX.NET.Interfaces.Function.IFuncShadersTMF, global::GBX.NET.Interfaces.Function.IFuncShadersMP3, global::GBX.NET.Interfaces.Function.IFuncShadersTMT, global::GBX.NET.Interfaces.Function.IFuncShadersMP4, global::GBX.NET.Interfaces.Function.IFuncShadersTM2020
+public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShadersTM10, global::GBX.NET.Interfaces.Function.IFuncShadersTMPU, global::GBX.NET.Interfaces.Function.IFuncShadersTMSX, global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShadersTMU, global::GBX.NET.Interfaces.Function.IFuncShadersVSK5, global::GBX.NET.Interfaces.Function.IFuncShadersTMF, global::GBX.NET.Interfaces.Function.IFuncShadersMP3, global::GBX.NET.Interfaces.Function.IFuncShadersTMT, global::GBX.NET.Interfaces.Function.IFuncShadersMP4, global::GBX.NET.Interfaces.Function.IFuncShadersTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>? GetFuncShadersInterfaceReferences() => FuncShaders;
 }

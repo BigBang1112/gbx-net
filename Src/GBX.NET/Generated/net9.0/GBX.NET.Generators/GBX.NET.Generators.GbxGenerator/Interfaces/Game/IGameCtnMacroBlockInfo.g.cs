@@ -66,6 +66,10 @@ public partial interface IGameCtnMacroBlockInfoTMNESWC : IGameCtnMacroBlockInfo,
 {
 }
 
+public partial interface IGameCtnMacroBlockInfoTMU : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMU
+{
+}
+
 public partial interface IGameCtnMacroBlockInfoVSK5 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5
 {
 }

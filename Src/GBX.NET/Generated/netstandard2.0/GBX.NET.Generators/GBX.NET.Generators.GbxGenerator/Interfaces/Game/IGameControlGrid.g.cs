@@ -50,6 +50,28 @@ public partial interface IGameControlGridTMNESWC : IGameControlGrid, global::GBX
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
+public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU
+{
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastNextPage { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastPreviousPage { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFirstPage { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonLastPage { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonNextPage { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonPreviousPage { get; set; }
+    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlEntryTMU? EntryPageCounter { get; set; }
+    int FastNextPageCount { get; set; }
+    int FastPreviousPageCount { get; set; }
+    bool ForceHideArrows { get; set; }
+    bool ForceHidePageCounter { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
+    int MaxPerColumn { get; set; }
+    int MaxPerRow { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
+}
+
 public partial interface IGameControlGridVSK5 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }

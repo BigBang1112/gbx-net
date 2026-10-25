@@ -30,6 +30,10 @@ public partial interface IMwCmdAffectIdentEnumTMNESWC : IMwCmdAffectIdentEnum, g
 {
 }
 
+public partial interface IMwCmdAffectIdentEnumTMU : IMwCmdAffectIdentEnum, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentTMU
+{
+}
+
 public partial interface IMwCmdAffectIdentEnumVSK5 : IMwCmdAffectIdentEnum, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentVSK5
 {
 }

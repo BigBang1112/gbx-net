@@ -1,7 +1,7 @@
 CMwCmdExpStringParam 0x01050000
 - inherits: CMwCmdExpString
 
-0x0104E000 [TMF]
+0x0104E000 [TMU, TMF]
 
 0x000
   CMwCmdExpClassParam.OldParamArchive OldParameter
@@ -9,6 +9,6 @@ CMwCmdExpStringParam 0x01050000
 0x001
   CMwCmdExpClassParam.ParamArchive Parameter
 
-0x002 [TMF]
+0x002 [TMU, TMF]
   CMwCmdExpClassParam.ParamArchive Parameter
   bool

@@ -35,12 +35,12 @@ property bool UseTextureAtlas
 0x002 [TM10, TMPU] // SpriteFlags
   uint SpriteFlags
 
-0x005 [TMSX, TMNESWC, VSK5, TMF] // legacy sprite flags, direction, and pivot
+0x005 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy sprite flags, direction, and pivot
   uint SpriteFlags
   vec3 GlobalDirection = (0, 1, 0)
   vec2 PivotPoint
 
-0x006 [TMSX, TMNESWC, VSK5, TMF] // legacy atlas grid dimensions
+0x006 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy atlas grid dimensions
   ushort AtlasGridCountU = 1
   ushort AtlasGridCountV = 1
 

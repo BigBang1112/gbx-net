@@ -177,9 +177,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x001 chunk
     /// </summary>
     [Chunk(0x07015001)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07015001 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015001;
+        public override GameVersion GameVersion => GameVersion.TMU;
         public bool U01;
         public bool U02;
 
@@ -223,9 +225,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x003 chunk
     /// </summary>
     [Chunk(0x07015003)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk07015003 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015003;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

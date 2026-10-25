@@ -37,6 +37,10 @@ public partial interface IMotionEmitterLeavesTMNESWC : IMotionEmitterLeaves, glo
 {
 }
 
+public partial interface IMotionEmitterLeavesTMU : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU>
+{
+}
+
 public partial interface IMotionEmitterLeavesVSK5 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5>
 {
 }

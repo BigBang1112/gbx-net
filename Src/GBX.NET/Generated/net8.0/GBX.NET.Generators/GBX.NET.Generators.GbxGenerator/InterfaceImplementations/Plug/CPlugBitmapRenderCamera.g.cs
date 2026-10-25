@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderCamera : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTM2020
+public partial class CPlugBitmapRenderCamera : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTM2020
 {
 }

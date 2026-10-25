@@ -7,7 +7,7 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CPlugMaterialCustomBuilderBase() { }
     private protected CPlugMaterialCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithGpuFxs1(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs1Assignment(), value, SupportedGames1);
     public TSelf WithGpuFxs1(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx> values) => WithGpuFxs1(values.ToArray());
     public TSelf WithGpuFxs2(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs2Assignment(), value, SupportedGames1);
@@ -18,7 +18,7 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> : NodeBuilder<global
 public abstract class CPlugMaterialCustomBuilderMembers1<TSelf> : CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugMaterialCustomBuilderMembers1<TSelf>
 {
     private protected CPlugMaterialCustomBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-    public TSelf WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values) => WithSkipSamplers(values.ToArray());
 }
 public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase<CPlugMaterialCustomBuilder>
@@ -90,6 +90,7 @@ public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -110,6 +111,13 @@ public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build() => BuildNode(CPlugMaterialCustomBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
+    }
+    public partial class TMU : CPlugMaterialCustomBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build() => BuildNode(CPlugMaterialCustomBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
     public partial class VSK5 : CPlugMaterialCustomBuilderMembers1<VSK5>

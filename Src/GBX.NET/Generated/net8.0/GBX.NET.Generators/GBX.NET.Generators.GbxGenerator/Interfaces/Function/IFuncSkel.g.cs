@@ -25,6 +25,10 @@ public partial interface IFuncSkelTMNESWC : IFuncSkel
 {
 }
 
+public partial interface IFuncSkelTMU : IFuncSkel
+{
+}
+
 public partial interface IFuncSkelVSK5 : IFuncSkel
 {
 }

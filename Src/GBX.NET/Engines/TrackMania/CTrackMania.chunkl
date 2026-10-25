@@ -5,7 +5,7 @@ CTrackMania 0x24001000
   CMwNod
   CMwNod
 
-0x002 (empty)
+0x002 (empty) [TMU]
 
 0x003 // legacy Resources
   CGameResources
@@ -13,16 +13,16 @@ CTrackMania 0x24001000
 0x005 // legacy campaign
   CGameCtnCampaign
 
-0x006 // legacy buffer
+0x006 [TMU] // legacy buffer
   CMwRefBuffer
 
 0x007 // legacy files
   CMwNod[]
 
-0x008
+0x008 [TMU]
   int
 
-0x009 // legacy resources
+0x009 [TMU] // legacy resources
   CMwNod
   CMwNod
   CMwNod

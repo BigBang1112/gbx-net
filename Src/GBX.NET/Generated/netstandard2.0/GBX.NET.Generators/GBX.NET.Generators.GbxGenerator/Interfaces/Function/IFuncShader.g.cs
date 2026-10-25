@@ -30,6 +30,10 @@ public partial interface IFuncShaderTMNESWC : IFuncShader, global::GBX.NET.Inter
 {
 }
 
+public partial interface IFuncShaderTMU : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMU
+{
+}
+
 public partial interface IFuncShaderVSK5 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5
 {
 }

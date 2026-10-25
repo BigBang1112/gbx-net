@@ -5,7 +5,7 @@ CPlugBitmapRenderHemisphere 0x09058000
   int<EHemiLayout> HemiLayout
   float SpecularPower0 = 44f [TMSX = 20f, TMNESWC = 20f, VSK5 = 20f, TMF = 20f]
 
-0x001 [TMSX, TMNESWC, VSK5, TMF] // legacy specular powers
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy specular powers
   int<EHemiLayout> HemiLayout
   float SpecularPower0
   float SpecularPower1

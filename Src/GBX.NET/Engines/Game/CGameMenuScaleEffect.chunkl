@@ -1,7 +1,7 @@
 CGameMenuScaleEffect 0x03032000
 - inherits: CControlEffect
 
-0x000 [TMSX] // border scales and letter scaling
+0x000 [TMSX, TMU] // border scales and letter scaling
   int Period = 500
   float LeftBorderScale = 1f
   float RightBorderScale = 1f
@@ -12,9 +12,9 @@ CGameMenuScaleEffect 0x03032000
   bool IsHalf
   bool IsInverse
 
-0x001 [TMSX] // decalage and hiding before effect
+0x001 [TMSX, TMU] // decalage and hiding before effect
   bool AllowDecalage = true
   bool AllowHideBeforeEffect
 
-0x002 [TMSX] // ReCenter
+0x002 [TMSX, TMU] // ReCenter
   bool ReCenter

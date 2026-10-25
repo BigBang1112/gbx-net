@@ -73,6 +73,10 @@ public partial interface IPlugAudioBalanceTMNESWC : IPlugAudioBalance, global::G
 {
 }
 
+public partial interface IPlugAudioBalanceTMU : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioTMU
+{
+}
+
 public partial interface IPlugAudioBalanceVSK5 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioVSK5
 {
 }

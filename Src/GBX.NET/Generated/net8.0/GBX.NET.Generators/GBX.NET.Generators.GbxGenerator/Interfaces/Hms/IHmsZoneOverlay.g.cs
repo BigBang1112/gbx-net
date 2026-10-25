@@ -3,6 +3,13 @@
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsZoneOverlayMembers1 : global::GBX.NET.Interfaces.Hms.IHmsZoneOverlay
+{
+    BoxAligned Frustum { get; set; }
+    bool IsOrthographic { get; set; }
+    bool UseZBuffer { get; set; }
+}
 public partial interface IHmsZoneOverlay : IClassVersion<global::GBX.NET.Engines.Hms.CHmsZoneOverlay>, global::GBX.NET.Interfaces.Hms.IHmsZone
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -30,6 +37,10 @@ public partial interface IHmsZoneOverlayTMNESWC : IHmsZoneOverlay, global::GBX.N
 {
 }
 
+public partial interface IHmsZoneOverlayTMU : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMU, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
+{
+}
+
 public partial interface IHmsZoneOverlayVSK5 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5
 {
 }
@@ -46,12 +57,9 @@ public partial interface IHmsZoneOverlayTMT : IHmsZoneOverlay, global::GBX.NET.I
 {
 }
 
-public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4
+public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
     int AdaptRatio { get; set; }
-    BoxAligned Frustum { get; set; }
-    bool IsOrthographic { get; set; }
-    bool UseZBuffer { get; set; }
 }
 
 public partial interface IHmsZoneOverlayTM2020 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020

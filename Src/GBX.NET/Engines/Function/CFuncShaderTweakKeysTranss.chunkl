@@ -1,5 +1,5 @@
 CFuncShaderTweakKeysTranss 0x05033000
 - inherits: CFuncShader
 
-0x000 [TM10]
+0x000 [TM10, TMU]
   CMwNod[]

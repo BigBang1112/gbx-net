@@ -4,6 +4,6 @@ CGameControlCardLadderRanking 0x030C1000
 0x000 // DoSelectionOnChildsCount
   bool DoSelectionOnChildsCount
 
-0x001 [MP4] // selection and medals
+0x001 [TMU, MP4] // selection and medals
   bool DoSelectionOnChildsCount
   bool UseTop3Medals

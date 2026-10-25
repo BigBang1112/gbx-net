@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionShader : global::GBX.NET.Interfaces.Motion.IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderTM10, global::GBX.NET.Interfaces.Motion.IMotionShaderTMPU, global::GBX.NET.Interfaces.Motion.IMotionShaderTMSX, global::GBX.NET.Interfaces.Motion.IMotionShaderTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionShaderVSK5, global::GBX.NET.Interfaces.Motion.IMotionShaderTMF, global::GBX.NET.Interfaces.Motion.IMotionShaderMP3, global::GBX.NET.Interfaces.Motion.IMotionShaderTMT, global::GBX.NET.Interfaces.Motion.IMotionShaderMP4
+public partial class CMotionShader : global::GBX.NET.Interfaces.Motion.IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderTM10, global::GBX.NET.Interfaces.Motion.IMotionShaderTMPU, global::GBX.NET.Interfaces.Motion.IMotionShaderTMSX, global::GBX.NET.Interfaces.Motion.IMotionShaderTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionShaderTMU, global::GBX.NET.Interfaces.Motion.IMotionShaderVSK5, global::GBX.NET.Interfaces.Motion.IMotionShaderTMF, global::GBX.NET.Interfaces.Motion.IMotionShaderMP3, global::GBX.NET.Interfaces.Motion.IMotionShaderTMT, global::GBX.NET.Interfaces.Motion.IMotionShaderMP4
 {
     global::GBX.NET.Interfaces.Function.IFuncShader? global::GBX.NET.Interfaces.Motion.IMotionShader.FuncShader
     {
@@ -76,6 +76,21 @@ public partial class CMotionShader : global::GBX.NET.Interfaces.Motion.IMotionSh
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Shader
+    {
+        get => Shader;
+        set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncShaderTMU? global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.FuncShader
+    {
+        get => FuncShader;
+        set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.Material
+    {
+        get => Material;
+        set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>.Shader
     {
         get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxBloom : global::GBX.NET.Interfaces.Scene.ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF
+public partial class CSceneFxBloom : global::GBX.NET.Interfaces.Scene.ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMU, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF
 {
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? GetDatasInterfaceReferences() => Datas;
 }

@@ -54,6 +54,10 @@ public partial interface IPlugBitmapSamplerTMNESWC : IPlugBitmapSampler, global:
 {
 }
 
+public partial interface IPlugBitmapSamplerTMU : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+}
+
 public partial interface IPlugBitmapSamplerVSK5 : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
 }

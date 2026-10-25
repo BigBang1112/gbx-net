@@ -33,6 +33,10 @@ public partial interface IFuncColorGradientTMNESWC : IFuncColorGradient, global:
 {
 }
 
+public partial interface IFuncColorGradientTMU : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncTMU
+{
+}
+
 public partial interface IFuncColorGradientVSK5 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncVSK5
 {
 }

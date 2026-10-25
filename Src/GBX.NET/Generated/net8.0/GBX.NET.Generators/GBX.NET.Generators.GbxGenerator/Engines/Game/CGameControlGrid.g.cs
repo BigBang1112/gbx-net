@@ -225,9 +225,11 @@ public partial class CGameControlGrid : CControlGrid, IClass
     /// CGameControlGrid 0x000 chunk
     /// </summary>
     [Chunk(0x030B9000)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030B9000 : Chunk<CGameControlGrid>
     {
         public override uint Id => 0x030B9000;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -252,9 +254,11 @@ public partial class CGameControlGrid : CControlGrid, IClass
     /// CGameControlGrid 0x001 chunk
     /// </summary>
     [Chunk(0x030B9001)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030B9001 : Chunk<CGameControlGrid>
     {
         public override uint Id => 0x030B9001;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -272,9 +276,11 @@ public partial class CGameControlGrid : CControlGrid, IClass
     /// CGameControlGrid 0x002 chunk
     /// </summary>
     [Chunk(0x030B9002)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030B9002 : Chunk<CGameControlGrid>
     {
         public override uint Id => 0x030B9002;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -291,9 +297,11 @@ public partial class CGameControlGrid : CControlGrid, IClass
     /// CGameControlGrid 0x003 chunk
     /// </summary>
     [Chunk(0x030B9003)]
+    [ChunkGameVersion(GameVersion.TMU)]
     public partial class Chunk030B9003 : Chunk<CGameControlGrid>
     {
         public override uint Id => 0x030B9003;
+        public override GameVersion GameVersion => GameVersion.TMU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

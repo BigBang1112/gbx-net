@@ -60,6 +60,11 @@ public interface IHmsLightMapCacheMembers5 : global::GBX.NET.Interfaces.Hms.IHms
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsLightMapCacheMembers6 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
 {
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]? MapsLegacy { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers7 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
     string? ChallengeIdLegacy { get; set; }
 }
 public partial interface IHmsLightMapCache : IClassVersion<global::GBX.NET.Engines.Hms.CHmsLightMapCache>
@@ -72,12 +77,15 @@ public partial interface IHmsLightMapCache : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Engines.Hms.CHmsLightMapCache.ESortMode SortMode { get; set; }
 }
 
-public partial interface IHmsLightMapCacheVSK5 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6
+public partial interface IHmsLightMapCacheTMU : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers7
 {
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]? MapsLegacy { get; set; }
 }
 
-public partial interface IHmsLightMapCacheTMF : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6
+public partial interface IHmsLightMapCacheVSK5 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers7
+{
+}
+
+public partial interface IHmsLightMapCacheTMF : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers7
 {
 }
 

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockMusicEffect : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTM2020
+public partial class CGameCtnMediaBlockMusicEffect : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTM2020
 {
 }

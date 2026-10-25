@@ -40,6 +40,10 @@ public partial interface IFuncKeysSkelTMNESWC : IFuncKeysSkel, global::GBX.NET.I
 {
 }
 
+public partial interface IFuncKeysSkelTMU : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMU, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMU>
+{
+}
+
 public partial interface IFuncKeysSkelVSK5 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>
 {
 }

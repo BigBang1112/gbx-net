@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugTree : global::GBX.NET.Interfaces.Plug.IPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020
+public partial class CPlugTree : global::GBX.NET.Interfaces.Plug.IPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTree>? global::GBX.NET.Interfaces.Plug.IPlugTree.Children
     {
@@ -126,6 +126,31 @@ public partial class CPlugTree : global::GBX.NET.Interfaces.Plug.IPlugTree, glob
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC, global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC>.Visual
+    {
+        get => Visual;
+        set => Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU>.Children
+    {
+        get => Children is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>(GetChildrenInterfaceReferences, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncTreeTMU? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU>.FuncTree
+    {
+        get => FuncTree;
+        set => FuncTree = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers5<global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU>.Generator
+    {
+        get => Generator;
+        set => Generator = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeGenerator node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU>.ModelSolid
+    {
+        get => ModelSolid;
+        set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugVisualTMU? global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTMU, global::GBX.NET.Interfaces.Function.IFuncTreeTMU, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Plug.IPlugVisualTMU>.Visual
     {
         get => Visual;
         set => Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

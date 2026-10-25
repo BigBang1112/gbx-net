@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBitmapRenderWater : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTM2020
+public partial class CPlugBitmapRenderWater : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTM2020
 {
 }

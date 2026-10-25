@@ -7,7 +7,7 @@ public abstract class CMwCmdExpNegBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CMwCmdExpNegBuilderBase() { }
     private protected CMwCmdExpNegBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithInteger(int value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, SupportedGames1);
     public TSelf WithReal(float value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, SupportedGames1);
     public TSelf WithType(int value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, SupportedGames1);
@@ -23,7 +23,15 @@ public partial class CMwCmdExpNegBuilder : CMwCmdExpNegBuilderBase<CMwCmdExpNegB
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpNegBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNegTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg Build() => BuildNode(CMwCmdExpNegBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg node);
+    }
     public partial class TMF : CMwCmdExpNegBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNeg> state) : base(state) { }

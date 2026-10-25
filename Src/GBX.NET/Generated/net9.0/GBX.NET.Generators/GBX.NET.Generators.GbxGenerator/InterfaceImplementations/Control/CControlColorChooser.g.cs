@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlColorChooser : global::GBX.NET.Interfaces.Control.IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlColorChooserTM10, global::GBX.NET.Interfaces.Control.IControlColorChooserTMPU, global::GBX.NET.Interfaces.Control.IControlColorChooserTMSX, global::GBX.NET.Interfaces.Control.IControlColorChooserTMNESWC, global::GBX.NET.Interfaces.Control.IControlColorChooserVSK5, global::GBX.NET.Interfaces.Control.IControlColorChooserTMF, global::GBX.NET.Interfaces.Control.IControlColorChooserMP3, global::GBX.NET.Interfaces.Control.IControlColorChooserTMT, global::GBX.NET.Interfaces.Control.IControlColorChooserMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserTM2020
+public partial class CControlColorChooser : global::GBX.NET.Interfaces.Control.IControlColorChooser, global::GBX.NET.Interfaces.Control.IControlColorChooserTM10, global::GBX.NET.Interfaces.Control.IControlColorChooserTMPU, global::GBX.NET.Interfaces.Control.IControlColorChooserTMSX, global::GBX.NET.Interfaces.Control.IControlColorChooserTMNESWC, global::GBX.NET.Interfaces.Control.IControlColorChooserTMU, global::GBX.NET.Interfaces.Control.IControlColorChooserVSK5, global::GBX.NET.Interfaces.Control.IControlColorChooserTMF, global::GBX.NET.Interfaces.Control.IControlColorChooserMP3, global::GBX.NET.Interfaces.Control.IControlColorChooserTMT, global::GBX.NET.Interfaces.Control.IControlColorChooserMP4, global::GBX.NET.Interfaces.Control.IControlColorChooserTM2020
 {
 }

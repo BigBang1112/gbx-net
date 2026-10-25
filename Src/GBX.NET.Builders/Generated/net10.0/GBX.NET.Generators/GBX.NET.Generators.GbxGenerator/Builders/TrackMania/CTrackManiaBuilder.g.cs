@@ -8,16 +8,44 @@ public abstract class CTrackManiaBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
     private protected CTrackManiaBuilderBase() { }
     private protected CTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMU;
+}
+public abstract class CTrackManiaBuilderMembers1<TSelf> : CTrackManiaBuilderBase<TSelf> where TSelf : CTrackManiaBuilderMembers1<TSelf>
+{
+    private protected CTrackManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
+    public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames2);
+    public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames2);
+    public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames2);
 }
 public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuilder>
 {
     private static global::GBX.NET.Engines.TrackMania.CTrackMania CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackMania();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackMania.Chunk24001002());
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackMania.Chunk24001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackMania.Chunk24001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackMania.Chunk24001009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005006());
         return node;
     }
     private static global::GBX.NET.Engines.TrackMania.CTrackMania CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackMania();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CTrackMania CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackMania();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013000() { Version = 0 });
@@ -34,32 +62,44 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013());
         return node;
     }
-    private static global::GBX.NET.Engines.TrackMania.CTrackMania CreateRecipe2(GameVersion game)
+    private static global::GBX.NET.Engines.TrackMania.CTrackMania CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackMania();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMU : CTrackManiaBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
+        public TMU WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMU);
+        public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
+        public TMU WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU[] values) => WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(values, false));
+        public TMU WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public TMU WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesTMU? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackMania node);
+    }
     public partial class TMF : CTrackManiaBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackMania node);
     }
-    public partial class MP4 : CTrackManiaBuilderBase<MP4>
+    public partial class MP4 : CTrackManiaBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
         public MP4 WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, SupportedGames1);
         public MP4 WithAdditionalSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
         public MP4 WithAdditionalSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalSkinsFids(values.ToArray());
-        public MP4 WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames1);
-        public MP4 WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames1);
         public MP4 WithCoverFlowDesc(global::GBX.NET.Engines.Game.CGameCoverFlowDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescAssignment(), value, SupportedGames1);
         public MP4 WithCoverFlowDescReference(NodeRef<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescReferenceAssignment(), value, SupportedGames1);
         public MP4 WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? value) => WithCoverFlowDesc(value is null ? (global::GBX.NET.Engines.Game.CGameCoverFlowDesc?)null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -68,20 +108,18 @@ public partial class CTrackManiaBuilder : CTrackManiaBuilderBase<CTrackManiaBuil
         public MP4 WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? value) => WithDefaultStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithManiaTitlesFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetManiaTitlesFolderAssignment(), value, SupportedGames1);
         public MP4 WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, SupportedGames1);
-        public MP4 WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
-        public MP4 WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value) => WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithTitleMainDefaultBgFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidAssignment(), value, SupportedGames1);
         public MP4 WithTitleMainDefaultBgFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidReferenceAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackMania node);
     }
     public partial class TM2020 : CTrackManiaBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackMania> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.TrackMania.CTrackMania Build() => BuildNode(CTrackManiaBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackMania node);
     }
 }

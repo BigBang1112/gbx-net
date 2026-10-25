@@ -34,6 +34,10 @@ public partial interface IGamePlayerScoreTMNESWC : IGamePlayerScore, global::GBX
 {
 }
 
+public partial interface IGamePlayerScoreTMU : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
+{
+}
+
 public partial interface IGamePlayerScoreVSK5 : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
 }
