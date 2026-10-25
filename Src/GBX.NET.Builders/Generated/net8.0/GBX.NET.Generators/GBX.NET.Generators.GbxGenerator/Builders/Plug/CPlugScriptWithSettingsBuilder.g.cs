@@ -10,6 +10,7 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> : NodeBuilder<gl
     private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithScript(global::GBX.NET.Engines.Plug.CPlugFileTextScript? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, SupportedGames1);
     public TSelf WithScriptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithSettingTypeVersion(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingTypeVersionAssignment(), value, SupportedGames1);
     public TSelf WithSettings(params global::GBX.NET.Engines.Script.CScriptSetting[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, SupportedGames1);
     public TSelf WithSettings(IEnumerable<global::GBX.NET.Engines.Script.CScriptSetting> values) => WithSettings(values.ToArray());
     public TSelf WithSettingsVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, SupportedGames1);

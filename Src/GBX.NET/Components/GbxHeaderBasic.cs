@@ -39,6 +39,10 @@ public readonly record struct GbxHeaderBasic(
 
         var version = r.ReadUInt16();
         var format = r.ReadFormatByte();
+
+        // The remaining basic header bytes stay raw in text-formatted files
+        using var binaryScope = r.ForceBinary();
+
         var compressionOfRefTable = (GbxCompression)r.ReadByte();
         var compressionOfBody = (GbxCompression)r.ReadByte();
         var mode = GbxMode.Editor;

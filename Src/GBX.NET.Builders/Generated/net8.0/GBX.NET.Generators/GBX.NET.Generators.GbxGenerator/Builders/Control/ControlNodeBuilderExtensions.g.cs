@@ -59,6 +59,14 @@ public static class CControlEffectSimiBuilderExtensions
     }
 }
 
+public static class CControlEffectSwitchStyleBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlEffectSwitchStyle)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlEffectSwitchStyleBuilder Create() => new();
+    }
+}
+
 public static class CControlEntryBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlEntry)
@@ -171,6 +179,14 @@ public static class CControlListCtnChallengesBuilderExtensions
     }
 }
 
+public static class CControlOverlayBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlOverlay)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlOverlayBuilder Create() => new();
+    }
+}
+
 public static class CControlPagerBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlPager)
@@ -240,6 +256,30 @@ public static class CControlTimeLine2BuilderExtensions
     extension(global::GBX.NET.Engines.Control.CControlTimeLine2)
     {
         public static global::GBX.NET.Builders.Engines.Control.CControlTimeLine2Builder Create() => new();
+    }
+}
+
+public static class CControlTrackManiaBigScoresBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlTrackManiaBigScores)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlTrackManiaBigScoresBuilder Create() => new();
+    }
+}
+
+public static class CControlTrackManiaScoresBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlTrackManiaScores)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlTrackManiaScoresBuilder Create() => new();
+    }
+}
+
+public static class CControlTrackManiaTeamCardBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlTrackManiaTeamCard)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlTrackManiaTeamCardBuilder Create() => new();
     }
 }
 

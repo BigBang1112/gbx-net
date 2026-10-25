@@ -139,6 +139,10 @@ public partial class CGameControlCardNetOnlineEvent : CGameControlCard, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameControlCardNetOnlineEvent n, GbxReaderWriter rw)
+        {
+        }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

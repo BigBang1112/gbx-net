@@ -304,6 +304,20 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return buffer[0] == 'G' && buffer[1] == 'B' && buffer[2] == 'X';
     }
 
+    public override byte ReadByte()
+    {
+        return Mode switch
+        {
+            SerializationMode.Gbx => Format switch
+            {
+                GbxFormat.Binary => base.ReadByte(),
+                GbxFormat.Text => byte.Parse(ReadToCRLF()),
+                _ => throw new FormatNotSupportedException(Format)
+            },
+            _ => throw new SerializationModeNotSupportedException(Mode),
+        };
+    }
+
     public override short ReadInt16()
     {
         return Mode switch

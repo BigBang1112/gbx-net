@@ -134,6 +134,7 @@ ChunkL attributes describe how GBX.NET should generate a chunk:
 - `skippable` generates a size-prefixed skippable chunk.
 - `ignore` marks the generated chunk as ignored.
 - `demonstration` documents a known layout without generating its serialization implementation.
+- `empty` generates an empty serialization method for a chunk without data. A chunk without a body and without this attribute is treated as not implemented.
 - `base: 0xHHH` extends a previous chunk. Use `base` in the body where inherited serialization should run.
 - `struct: Name` describes the raw name of a struct used for a header chunk.
 

@@ -9,5 +9,6 @@ public partial class CControlBase
     internal bool HasControlStack => this is Engines.Game.CGameControlCard
         or Engines.Game.CGamePlaygroundControlScores or Engines.Game.CGamePlaygroundControlMessages
         or CControlPager or CControlList or Engines.TrackMania.CTrackManiaControlCheckPointList
-        || this is not (CControlContainer or CControlLabel or CControlQuad);
+        or CControlTrackManiaScores or CControlTrackManiaBigScores or Engines.TrackMania.CTrackManiaMatchSettingsControlGrid
+        || this is not (CControlContainer or CControlLabel or CControlQuad or CControlOverlay);
 }

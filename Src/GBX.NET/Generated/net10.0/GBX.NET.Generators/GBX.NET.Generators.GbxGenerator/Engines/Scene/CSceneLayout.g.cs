@@ -129,10 +129,10 @@ public partial class CSceneLayout : CScene, IClass
         set => NodeRef.SetEmbedded(ref sceneFxRef, value);
     }
 
-    private NodeRefList<CMwNod>? moods;
+    private NodeRefList<CSceneMood>? moods;
     /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003012>]
-    public NodeRefList<CMwNod>? Moods
+    public NodeRefList<CSceneMood>? Moods
     {
         get => moods;
         set => moods = value;
@@ -349,7 +349,7 @@ public partial class CSceneLayout : CScene, IClass
         public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
         public IReadOnlyList<NodeRef<CSceneTrafficPath>>? TrafficPaths => owner.trafficPaths?.References;
         public NodeRef<CSceneFx> SceneFx => NodeRef.GetOrCreate(ref owner.sceneFxRef);
-        public IReadOnlyList<NodeRef<CMwNod>>? Moods => owner.moods?.References;
+        public IReadOnlyList<NodeRef<CSceneMood>>? Moods => owner.moods?.References;
         public IReadOnlyList<NodeRef<CMwNod>>? SceneFxPools => owner.sceneFxPools?.References;
         public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
         public IReadOnlyList<NodeRef<CSceneLight>>? Lights => owner.lights?.References;
@@ -655,6 +655,10 @@ public partial class CSceneLayout : CScene, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+        }
     }
 
     /// <summary>
@@ -741,7 +745,7 @@ public partial class CSceneLayout : CScene, IClass
 
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
-            n.moods = rw.ListNodeRef_deprec<CMwNod>(n.moods);
+            n.moods = rw.ListNodeRef_deprec<CSceneMood>(n.moods);
             rw.Int32(ref U01);
         }
     }

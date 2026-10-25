@@ -78,9 +78,9 @@ public abstract class CSceneLayoutBuilderMembers6<TSelf> : CSceneLayoutBuilderMe
     public TSelf WithLegacyLocations(IEnumerable<global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObjectLoc> values) => WithLegacyLocations(values.ToArray());
     public TSelf WithLegacySounds(params global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObjectLoc[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLayoutBuilderAssignments.GetLegacySoundsAssignment(), value, SupportedGames8);
     public TSelf WithLegacySounds(IEnumerable<global::GBX.NET.Engines.Scene.CSceneLayout.OldSceneObjectLoc> values) => WithLegacySounds(values.ToArray());
-    public TSelf WithMoods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLayoutBuilderAssignments.GetMoodsAssignment(), value, SupportedGames8);
-    public TSelf WithMoods(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithMoods(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
-    public TSelf WithMoods(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithMoods(values.ToArray());
+    public TSelf WithMoods(NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLayoutBuilderAssignments.GetMoodsAssignment(), value, SupportedGames8);
+    public TSelf WithMoods(params global::GBX.NET.Engines.Scene.CSceneMood[] values) => WithMoods(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>(values));
+    public TSelf WithMoods(IEnumerable<global::GBX.NET.Engines.Scene.CSceneMood> values) => WithMoods(values.ToArray());
 }
 public abstract class CSceneLayoutBuilderMembers7<TSelf> : CSceneLayoutBuilderMembers3<TSelf> where TSelf : CSceneLayoutBuilderMembers7<TSelf>
 {
@@ -306,6 +306,10 @@ public partial class CSceneLayoutBuilder : CSceneLayoutBuilderBase<CSceneLayoutB
     public partial class TMNESWC : CSceneLayoutBuilderMembers9<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLayout> state) : base(state) { }
+        public TMNESWC WithGates(params global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC[] values) => base.WithGates(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>(values, false));
+        public TMNESWC WithGates(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC> values) => WithGates(values.ToArray());
+        public TMNESWC WithMoods(params global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC[] values) => base.WithMoods(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>(values, false));
+        public TMNESWC WithMoods(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC> values) => WithMoods(values.ToArray());
         public TMNESWC WithMotionManagerModels(params global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC[] values) => base.WithMotionManagerModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(values, false));
         public TMNESWC WithMotionManagerModels(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC> values) => WithMotionManagerModels(values.ToArray());
         public TMNESWC WithSceneFxNod(global::GBX.NET.Engines.Scene.CSceneFxNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLayoutBuilderAssignments.GetSceneFxNodAssignment(), value, SupportedGames1);

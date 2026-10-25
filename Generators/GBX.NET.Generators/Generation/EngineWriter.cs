@@ -809,7 +809,7 @@ internal static class EngineWriter
             code.Close();
         }
 
-        if (!demonstration && chunk.Declaration.Body.Count > 0)
+        if (!demonstration && (chunk.Declaration.Body.Count > 0 || LayoutModel.Has(chunk.Declaration.Attributes, "empty")))
         {
             foreach (var mode in chunk.Scope.Separate ? new[] { SerializationMode.Read, SerializationMode.Write } : new[] { SerializationMode.ReadWrite })
             {

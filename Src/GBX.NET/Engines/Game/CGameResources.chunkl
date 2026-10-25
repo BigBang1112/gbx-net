@@ -139,7 +139,7 @@ CGameResources 0x0302D000
 0x024 // legacy file
   CMwNod
 
-0x025
+0x025 (empty)
 
 0x026 [MP4] // DefaultMusicFid
   CMwNod DefaultMusicFid

@@ -251,7 +251,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
         if (methods?.Any(static m => m.Identifier.ValueText is "ReadWrite" or "Write" &&
             (m.Body is not null || m.ExpressionBody is not null)) == true) return true;
         if (LayoutModel.Has(chunk.Declaration.Attributes, "demonstration")) return false;
-        if (chunk.Scope.Body.Count > 0) return true;
+        if (chunk.Scope.Body.Count > 0 || LayoutModel.Has(chunk.Declaration.Attributes, "empty")) return true;
         var inherited = LayoutModel.Attribute(chunk.Declaration.Attributes, "base");
         if (inherited is null) return false;
         var id = LayoutModel.Hex(inherited);

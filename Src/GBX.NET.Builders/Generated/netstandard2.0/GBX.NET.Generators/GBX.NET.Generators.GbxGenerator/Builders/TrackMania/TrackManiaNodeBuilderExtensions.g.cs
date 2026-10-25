@@ -123,6 +123,14 @@ public static class CTrackManiaCoreBuilderExtensions
     }
 }
 
+public static class CTrackManiaMatchSettingsControlGridBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)
+    {
+        public static global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilder Create() => new();
+    }
+}
+
 public static class CTrackManiaRaceBuilderExtensions
 {
     extension(global::GBX.NET.Engines.TrackMania.CTrackManiaRace)

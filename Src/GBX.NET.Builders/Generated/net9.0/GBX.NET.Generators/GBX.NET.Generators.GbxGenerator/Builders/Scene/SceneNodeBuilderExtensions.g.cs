@@ -59,6 +59,14 @@ public static class CSceneFxStereoscopyBuilderExtensions
     }
 }
 
+public static class CSceneGateBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneGate)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneGateBuilder Create() => new();
+    }
+}
+
 public static class CSceneLayoutBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Scene.CSceneLayout)
@@ -120,6 +128,14 @@ public static class CSceneMobilLeavesBuilderExtensions
     extension(global::GBX.NET.Engines.Scene.CSceneMobilLeaves)
     {
         public static global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilder Create() => new();
+    }
+}
+
+public static class CSceneMoodBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneMood)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneMoodBuilder Create() => new();
     }
 }
 

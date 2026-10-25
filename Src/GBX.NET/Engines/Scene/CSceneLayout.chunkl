@@ -26,7 +26,7 @@ CSceneLayout 0x0A003000
 0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int
 
-0x00E [TM10, TMPU, TMSX, TMNESWC] // legacy portal links, written empty
+0x00E (empty) [TM10, TMPU, TMSX, TMNESWC] // legacy portal links, written empty
 
 0x00F [TM10, TMPU, TMSX, TMNESWC] // traffic
   CSceneTrafficGraph TrafficGraph
@@ -40,7 +40,7 @@ CSceneLayout 0x0A003000
   CSceneFx SceneFx
 
 0x012 [TM10, TMPU, TMSX, TMNESWC] // moods
-  CMwNod[] Moods (deprec)
+  CSceneMood[] Moods (deprec)
   int
 
 0x013 [TMSX] // SceneFx and pools

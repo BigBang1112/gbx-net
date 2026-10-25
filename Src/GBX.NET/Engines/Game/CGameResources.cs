@@ -25,11 +25,4 @@ public partial class CGameResources
             Data = rw.Data(Data, size - 4);
         }
     }
-
-    public partial class Chunk0302D025
-    {
-        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
-        {
-        }
-    }
 }

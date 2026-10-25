@@ -3069,6 +3069,26 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_EmptyChunk_EmitsEmptyReadWrite()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 (empty)
+            0x002
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+
+        var generated = Engine(result).ToString();
+        var method = generated.IndexOf("public override void ReadWrite(Example n, GbxReaderWriter rw)", StringComparison.Ordinal);
+        await Assert.That(method).IsGreaterThan(generated.IndexOf("class Chunk03043001", StringComparison.Ordinal));
+        await Assert.That(method).IsLessThan(generated.IndexOf("class Chunk03043002", StringComparison.Ordinal));
+        await Assert.That(generated[method..].Split('}')[0]).DoesNotContain("rw.");
+        await Assert.That(generated.Split("public override void ReadWrite(").Length).IsEqualTo(2);
+    }
+
+    [Test]
     public async Task Generate_PartialDemonstration_EmitsMembersWithoutSerialization()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """

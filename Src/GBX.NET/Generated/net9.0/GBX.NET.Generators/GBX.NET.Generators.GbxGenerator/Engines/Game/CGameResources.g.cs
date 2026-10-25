@@ -2557,6 +2557,10 @@ public partial class CGameResources : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+        }
     }
 
     /// <summary>

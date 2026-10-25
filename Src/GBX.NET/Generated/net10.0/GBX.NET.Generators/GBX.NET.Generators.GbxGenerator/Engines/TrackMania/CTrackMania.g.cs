@@ -85,6 +85,10 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
         {
             base.DeepCloneFields(clone, context);
         }
+
+        public override void ReadWrite(CTrackMania n, GbxReaderWriter rw)
+        {
+        }
     }
 
     /// <summary>
