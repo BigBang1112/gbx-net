@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionManagerTrails : global::GBX.NET.Interfaces.Motion.IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMSX
+public partial class CMotionManagerTrails : global::GBX.NET.Interfaces.Motion.IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMSX
 {
     global::GBX.NET.Interfaces.Scene.ISceneMobilTrails? global::GBX.NET.Interfaces.Motion.IMotionManagerTrails.MobilTrails
     {
@@ -11,6 +11,11 @@ public partial class CMotionManagerTrails : global::GBX.NET.Interfaces.Motion.IM
         set => MobilTrails = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10? global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10>.MobilTrails
+    {
+        get => MobilTrails;
+        set => MobilTrails = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU? global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU>.MobilTrails
     {
         get => MobilTrails;
         set => MobilTrails = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

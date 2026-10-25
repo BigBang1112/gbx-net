@@ -212,6 +212,58 @@ public partial class CSceneMobil : CSceneObject, IClass
             set => objectLinks = value;
         }
 
+        private int legacyContainerDataVersion = 1;
+        /// <summary>
+        /// legacy container instance data, only empty records are supported
+        /// </summary>
+        public int LegacyContainerDataVersion
+        {
+            get => this.legacyContainerDataVersion;
+            set => this.legacyContainerDataVersion = value;
+        }
+
+        private int legacyContainerDataCount;
+        public int LegacyContainerDataCount
+        {
+            get => this.legacyContainerDataCount;
+            set => this.legacyContainerDataCount = value;
+        }
+
+        private int legacyMenuFrameDataVersion = 1;
+        public int LegacyMenuFrameDataVersion
+        {
+            get => this.legacyMenuFrameDataVersion;
+            set => this.legacyMenuFrameDataVersion = value;
+        }
+
+        private NodeRef<CMwCmdBlockMain>? onBeforeShowScriptRef;
+        public CMwCmdBlockMain? OnBeforeShowScript
+        {
+            get => onBeforeShowScriptRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref onBeforeShowScriptRef, value);
+        }
+
+        private NodeRef<CMwCmdBlockMain>? onShowScriptRef;
+        public CMwCmdBlockMain? OnShowScript
+        {
+            get => onShowScriptRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref onShowScriptRef, value);
+        }
+
+        private NodeRef<CMwCmdBlockMain>? onHideScriptRef;
+        public CMwCmdBlockMain? OnHideScript
+        {
+            get => onHideScriptRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref onHideScriptRef, value);
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
         private NodeRef<CSceneMobil>? mobilRef;
         public CSceneMobil? Mobil
         {
@@ -226,6 +278,9 @@ public partial class CSceneMobil : CSceneObject, IClass
             internal NodeRefView(MobilPtr owner) => this.owner = owner;
             public NodeRef<CSceneMobil> Model => NodeRef.GetOrCreate(ref owner.modelRef);
             public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLinks => owner.objectLinks?.References;
+            public NodeRef<CMwCmdBlockMain> OnBeforeShowScript => NodeRef.GetOrCreate(ref owner.onBeforeShowScriptRef);
+            public NodeRef<CMwCmdBlockMain> OnShowScript => NodeRef.GetOrCreate(ref owner.onShowScriptRef);
+            public NodeRef<CMwCmdBlockMain> OnHideScript => NodeRef.GetOrCreate(ref owner.onHideScriptRef);
             public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -235,6 +290,9 @@ public partial class CSceneMobil : CSceneObject, IClass
             {
                 for (var i = 0; i < objectLinks.Count; i++) yield return new("ObjectLinks" + "[" + i + "]", objectLinks.Get(i));
             }
+            yield return new("OnBeforeShowScript", NodeRef.GetOrCreate(ref onBeforeShowScriptRef));
+            yield return new("OnShowScript", NodeRef.GetOrCreate(ref onShowScriptRef));
+            yield return new("OnHideScript", NodeRef.GetOrCreate(ref onHideScriptRef));
             yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
             yield break;
         }
@@ -254,6 +312,13 @@ public partial class CSceneMobil : CSceneObject, IClass
             ((MobilPtr)clone).u01 = context.Clone(this.u01)!;
             ((MobilPtr)clone).name = context.Clone(this.name)!;
             ((MobilPtr)clone).objectLinks = context.Clone(this.objectLinks)!;
+            ((MobilPtr)clone).legacyContainerDataVersion = context.Clone(this.legacyContainerDataVersion)!;
+            ((MobilPtr)clone).legacyContainerDataCount = context.Clone(this.legacyContainerDataCount)!;
+            ((MobilPtr)clone).legacyMenuFrameDataVersion = context.Clone(this.legacyMenuFrameDataVersion)!;
+            ((MobilPtr)clone).onBeforeShowScriptRef = context.Clone(this.onBeforeShowScriptRef)!;
+            ((MobilPtr)clone).onShowScriptRef = context.Clone(this.onShowScriptRef)!;
+            ((MobilPtr)clone).onHideScriptRef = context.Clone(this.onHideScriptRef)!;
+            ((MobilPtr)clone).u02 = context.Clone(this.u02)!;
             ((MobilPtr)clone).mobilRef = context.Clone(this.mobilRef)!;
         }
 
@@ -275,6 +340,25 @@ public partial class CSceneMobil : CSceneObject, IClass
                 if (DataVersion>= 1)
                 {
                     this.objectLinks = rw.ListNodeRef<CSceneObjectLink>(this.objectLinks);
+                }
+
+                if (DataVersion< 2 && IsContainerModel)
+                {
+                    rw.Int32(ref this.legacyContainerDataVersion);
+                    rw.Int32(ref this.legacyContainerDataCount);
+
+                    if (IsMenuFrameModel)
+                    {
+                        rw.Int32(ref this.legacyMenuFrameDataVersion);
+                        rw.NodeRef(ref this.onBeforeShowScriptRef);
+                        rw.NodeRef(ref this.onShowScriptRef);
+                        rw.NodeRef(ref this.onHideScriptRef);
+
+                        if (LegacyMenuFrameDataVersion>= 1)
+                        {
+                            rw.Id(ref this.u02);
+                        }
+                    }
                 }
             }
             else

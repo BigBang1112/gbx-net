@@ -267,6 +267,14 @@ public static class CControlTextBuilderExtensions
     }
 }
 
+public static class CControlTimeLineBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlTimeLine)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlTimeLineBuilder Create() => new();
+    }
+}
+
 public static class CControlTimeLine2BuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlTimeLine2)

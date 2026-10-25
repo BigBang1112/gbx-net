@@ -30,6 +30,13 @@ public partial interface ISceneMobilTrailsTM10 : ISceneMobilTrails, global::GBX.
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
+public partial interface ISceneMobilTrailsTMPU : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>
+{
+    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
+}
+
 public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
     new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }

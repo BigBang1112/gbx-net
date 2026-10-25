@@ -7,7 +7,7 @@ public abstract class CMotionEmitterTrailsBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMotionEmitterTrailsBuilderBase() { }
     private protected CMotionEmitterTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterTrails> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMSX;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
     public TSelf WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerTrails? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterTrailsBuilderAssignments.GetManagerModelAssignment(), value, SupportedGames1);
     public TSelf WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerTrails> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterTrailsBuilderAssignments.GetManagerModelReferenceAssignment(), value, SupportedGames1);
 }
@@ -26,6 +26,7 @@ public partial class CMotionEmitterTrailsBuilder : CMotionEmitterTrailsBuilderBa
         return node;
     }
     public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public partial class TM10 : CMotionEmitterTrailsBuilderBase<TM10>
     {
@@ -33,6 +34,14 @@ public partial class CMotionEmitterTrailsBuilder : CMotionEmitterTrailsBuilderBa
         public TM10 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerTrails?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterTrails Build() => BuildNode(CMotionEmitterTrailsBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterTrails node);
+    }
+    public partial class TMPU : CMotionEmitterTrailsBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterTrails> state) : base(state) { }
+        public TMPU WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMPU? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerTrails?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionEmitterTrails Build() => BuildNode(CMotionEmitterTrailsBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterTrails node);
     }
     public partial class TMSX : CMotionEmitterTrailsBuilderBase<TMSX>

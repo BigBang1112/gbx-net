@@ -49,11 +49,11 @@ public partial class CMotionEmitterTrails : CMotionManaged, IClass
     /// CMotionEmitterTrails 0x000 chunk (ManagerModel)
     /// </summary>
     [Chunk(0x0804F000, "ManagerModel")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk0804F000 : Chunk<CMotionEmitterTrails>
     {
         public override uint Id => 0x0804F000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

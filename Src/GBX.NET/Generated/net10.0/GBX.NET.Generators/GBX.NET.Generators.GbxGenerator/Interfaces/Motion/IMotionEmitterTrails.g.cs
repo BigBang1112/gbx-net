@@ -32,6 +32,10 @@ public partial interface IMotionEmitterTrailsTM10 : IMotionEmitterTrails, global
 {
 }
 
+public partial interface IMotionEmitterTrailsTMPU : IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMPU>
+{
+}
+
 public partial interface IMotionEmitterTrailsTMSX : IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMSX>
 {
 }

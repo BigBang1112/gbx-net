@@ -54,6 +54,25 @@ public partial interface ISceneMobilTrailsTM10 : ISceneMobilTrails, global::GBX.
     }
 }
 
+public partial interface ISceneMobilTrailsTMPU : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>
+{
+    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).MessageHandler);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMPU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneMobilTrails)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
+    }
+}
+
 public partial interface ISceneMobilTrailsTMSX : ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
     new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler

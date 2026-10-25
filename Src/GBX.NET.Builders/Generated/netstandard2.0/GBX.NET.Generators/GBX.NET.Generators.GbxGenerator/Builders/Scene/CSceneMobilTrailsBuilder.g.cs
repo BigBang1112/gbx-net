@@ -7,7 +7,7 @@ public abstract class CSceneMobilTrailsBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CSceneMobilTrailsBuilderBase() { }
     private protected CSceneMobilTrailsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilTrails> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMSX;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, SupportedGames1);
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames1);
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames1);
@@ -52,6 +52,7 @@ public partial class CSceneMobilTrailsBuilder : CSceneMobilTrailsBuilderBase<CSc
         return node;
     }
     public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public partial class TM10 : CSceneMobilTrailsBuilderBase<TM10>
     {
@@ -63,6 +64,18 @@ public partial class CSceneMobilTrailsBuilder : CSceneMobilTrailsBuilderBase<CSc
         public TM10 WithTrailShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? value) => base.WithTrailShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilTrails Build() => BuildNode(CSceneMobilTrailsBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilTrails node);
+    }
+    public partial class TMPU : CSceneMobilTrailsBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilTrails> state) : base(state) { }
+        public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(values, false));
+        public TMPU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU> values) => WithObjectLink(values.ToArray());
+        public TMPU WithTrailShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? value) => base.WithTrailShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMobilTrails Build() => BuildNode(CSceneMobilTrailsBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilTrails node);
     }
     public partial class TMSX : CSceneMobilTrailsBuilderBase<TMSX>

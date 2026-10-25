@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMobilTrails : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX
+public partial class CSceneMobilTrails : global::GBX.NET.Interfaces.Scene.ISceneMobilTrails, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX
 {
     global::GBX.NET.Interfaces.Scene.ISceneMessageHandler? global::GBX.NET.Interfaces.Scene.ISceneMobilTrails.MessageHandler
     {
@@ -31,6 +31,26 @@ public partial class CSceneMobilTrails : global::GBX.NET.Interfaces.Scene.IScene
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.TrailShader
+    {
+        get => TrailShader;
+        set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU.MessageHandler
+    {
+        get => MessageHandler;
+        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionTMPU? global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU.Motion
+    {
+        get => Motion;
+        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU.ObjectLink
+    {
+        get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.TrailShader
     {
         get => TrailShader;
         set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

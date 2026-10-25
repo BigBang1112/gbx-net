@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Motion;
 
-public partial class CMotionEmitterTrails : global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMSX
+public partial class CMotionEmitterTrails : global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsTMSX
 {
     global::GBX.NET.Interfaces.Motion.IMotionManagerTrails? global::GBX.NET.Interfaces.Motion.IMotionEmitterTrails.ManagerModel
     {
@@ -11,6 +11,11 @@ public partial class CMotionEmitterTrails : global::GBX.NET.Interfaces.Motion.IM
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10? global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTM10>.ManagerModel
+    {
+        get => ManagerModel;
+        set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMPU? global::GBX.NET.Interfaces.Motion.IMotionEmitterTrailsMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsTMPU>.ManagerModel
     {
         get => ManagerModel;
         set => ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerTrails node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

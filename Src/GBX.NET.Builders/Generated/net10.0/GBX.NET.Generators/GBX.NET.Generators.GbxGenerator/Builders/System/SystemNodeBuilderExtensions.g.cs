@@ -3,6 +3,14 @@
 
 namespace GBX.NET.Engines.System;
 
+public static class CSystemCmdDuplicateNodBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.System.CSystemCmdDuplicateNod)
+    {
+        public static global::GBX.NET.Builders.Engines.System.CSystemCmdDuplicateNodBuilder Create() => new();
+    }
+}
+
 public static class CSystemConfigBuilderExtensions
 {
     extension(global::GBX.NET.Engines.System.CSystemConfig)

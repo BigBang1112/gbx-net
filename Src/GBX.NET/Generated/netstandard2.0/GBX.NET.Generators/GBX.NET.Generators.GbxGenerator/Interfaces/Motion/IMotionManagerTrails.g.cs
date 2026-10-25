@@ -24,6 +24,10 @@ public partial interface IMotionManagerTrailsTM10 : IMotionManagerTrails, global
 {
 }
 
+public partial interface IMotionManagerTrailsTMPU : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMPU>
+{
+}
+
 public partial interface IMotionManagerTrailsTMSX : IMotionManagerTrails, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerTrailsMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTrailsTMSX>
 {
 }

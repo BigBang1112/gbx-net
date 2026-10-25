@@ -22,5 +22,15 @@ archive MobilPtr
     id Name
     if DataVersion >= 1
       CSceneObjectLink[] ObjectLinks
+    if DataVersion < 2 && IsContainerModel
+      int LegacyContainerDataVersion = 1 // legacy container instance data, only empty records are supported
+      int LegacyContainerDataCount
+      if IsMenuFrameModel
+        int LegacyMenuFrameDataVersion = 1
+        CMwCmdBlockMain OnBeforeShowScript
+        CMwCmdBlockMain OnShowScript
+        CMwCmdBlockMain OnHideScript
+        if LegacyMenuFrameDataVersion >= 1
+          id
   else
     CSceneMobil Mobil
