@@ -7230,10 +7230,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             }
 
             rw.Single(ref n.turboYellowAccelCoef);
-            rw.ReadableWritable<PlugCurve>(ref n.turboYellowConstantFromSpeed, version: Version- 3);
+            rw.ReadableWritable<PlugCurve>(ref n.turboYellowConstantFromSpeed, version: Version- 5);
             rw.Int32(ref n.turboYellowAccelCoefDuration);
             rw.Single(ref n.turboRedAccelCoef);
-            rw.ReadableWritable<PlugCurve>(ref n.turboRedConstantFromSpeed, version: Version- 3);
+            rw.ReadableWritable<PlugCurve>(ref n.turboRedConstantFromSpeed, version: Version- 5);
             rw.Int32(ref n.turboRedAccelCoefDuration);
 
             if (Version >= 1)
@@ -7244,7 +7244,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 if (Version >= 2)
                 {
                     rw.Single(ref n.turboCheatAccelCoef);
-                    rw.ReadableWritable<PlugCurve>(ref n.turboCheatConstantFromSpeed, version: Version- 3);
+                    rw.ReadableWritable<PlugCurve>(ref n.turboCheatConstantFromSpeed, version: Version- 5);
                     rw.Int32(ref n.turboCheatAccelCoefDuration);
                     rw.Int32(ref n.turboCheatConstantDuration);
 
@@ -8411,7 +8411,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                             if (Version >= 7)
                             {
-                                rw.ReadableWritable<PlugCurve>(ref U11, version: Version);
+                                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 8);
                             }
 
                             if (Version >= 5)

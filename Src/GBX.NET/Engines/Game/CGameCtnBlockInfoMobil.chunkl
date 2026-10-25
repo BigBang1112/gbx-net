@@ -58,7 +58,7 @@ CGameCtnBlockInfoMobil 0x03122000
   v16..22
     CPlugPath CitizenNetworkPath
   v17..22
-    CPlugRoadChunk[] LegacyCitizenRoadChunks (deprec)
+    CPlugRoadChunk[] LegacyCitizenRoadChunks
   v23+
     CPlugRoadChunkCitizen[] CitizenRoadChunks
   v18+
@@ -78,7 +78,7 @@ CGameCtnBlockInfoMobil 0x03122000
       vec3 VFXDirection = (0, 0, 1)
     float VFXAngle
   v20..22
-    CPlugRoadChunk[] LegacyPlacementPatches (deprec)
+    CPlugRoadChunk[] LegacyPlacementPatches
   v23+
     CPlugPlacementPatch[] PlacementPatches
   v21+

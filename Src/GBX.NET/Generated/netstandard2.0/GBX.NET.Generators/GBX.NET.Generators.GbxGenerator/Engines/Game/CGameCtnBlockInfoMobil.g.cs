@@ -648,7 +648,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 17 && Version <= 22)
             {
-                n.LegacyCitizenRoadChunks = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyCitizenRoadChunks);
+                n.LegacyCitizenRoadChunks = rw.ListNodeRef<CPlugRoadChunk>(n.LegacyCitizenRoadChunks);
             }
 
             if (Version >= 23)
@@ -696,7 +696,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 20 && Version <= 22)
             {
-                n.LegacyPlacementPatches = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyPlacementPatches);
+                n.LegacyPlacementPatches = rw.ListNodeRef<CPlugRoadChunk>(n.LegacyPlacementPatches);
             }
 
             if (Version >= 23)

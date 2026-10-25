@@ -1792,10 +1792,6 @@ public partial class CPlugCharVisModel : CMwNod, IClass
             if (Version >= 32)
             {
                 rw.NodeRef(ref U14Ref);
-            }
-
-            if (Version >= 33)
-            {
                 rw.NodeRef(ref U15Ref);
             }
         }

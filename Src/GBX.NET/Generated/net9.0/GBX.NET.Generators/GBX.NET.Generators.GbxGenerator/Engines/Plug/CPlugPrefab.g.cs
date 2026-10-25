@@ -59,6 +59,8 @@ public partial class CPlugPrefab : CMwNod, IClass
             ((EntRef)clone).position = context.Clone(this.position)!;
             ((EntRef)clone).@params = context.Clone(this.@params)!;
             ((EntRef)clone).u01 = context.Clone(this.u01)!;
+            ((EntRef)clone).legacyPhase01 = context.Clone(this.legacyPhase01)!;
+            ((EntRef)clone).u02 = context.Clone(this.u02)!;
         }
 
         public void Read(GbxReader r, int v = 0)

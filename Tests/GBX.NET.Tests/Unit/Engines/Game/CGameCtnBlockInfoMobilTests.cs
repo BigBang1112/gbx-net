@@ -282,11 +282,7 @@ public class CGameCtnBlockInfoMobilTests
         if (version is >= 10 and <= 12) writer.Write(102);
         if (version == 12) writer.Write(103);
         if (version is >= 16 and <= 22) writer.Write(-1); // CitizenNetworkPath.
-        if (version >= 17)
-        {
-            if (version <= 22) writer.Write(10);
-            WriteList(writer, nonemptyLists, citizen);
-        }
+        if (version >= 17) WriteList(writer, nonemptyLists, citizen); // Citizen lists have no deprecated version.
         if (version >= 18)
         {
             writer.Write(-1); // VFXs.
@@ -308,11 +304,7 @@ public class CGameCtnBlockInfoMobilTests
             }
             writer.Write(13f); // VFXAngle.
         }
-        if (version >= 20)
-        {
-            if (version <= 22) writer.Write(10);
-            WriteList(writer, nonemptyLists, placement);
-        }
+        if (version >= 20) WriteList(writer, nonemptyLists, placement); // Placement lists have no deprecated version.
         if (version >= 21) writer.Write(-1); // Additional external asset.
         writer.Write(Sentinel);
         return stream.ToArray();

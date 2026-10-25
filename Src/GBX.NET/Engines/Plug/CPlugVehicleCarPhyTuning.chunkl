@@ -723,17 +723,17 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x094 [MP3.v1, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
   version
   float TurboYellowAccelCoef
-  PlugCurve TurboYellowConstantFromSpeed (version: Version - 3)
+  PlugCurve TurboYellowConstantFromSpeed (version: Version - 5)
   int TurboYellowAccelCoefDuration
   float TurboRedAccelCoef
-  PlugCurve TurboRedConstantFromSpeed (version: Version - 3)
+  PlugCurve TurboRedConstantFromSpeed (version: Version - 5)
   int TurboRedAccelCoefDuration
   v1+
     int? TurboYellowConstantDuration = 1000
     int? TurboRedConstantDuration = 1000
     v2+
       float? TurboCheatAccelCoef = 3f
-      PlugCurve TurboCheatConstantFromSpeed (version: Version - 3)
+      PlugCurve TurboCheatConstantFromSpeed (version: Version - 5)
       int? TurboCheatAccelCoefDuration = 1000
       int? TurboCheatConstantDuration = 1000
       v3=
@@ -1018,7 +1018,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
           v6-
             float?
           v7+
-            PlugCurve
+            PlugCurve (version: Version - 8)
           v5+
             float?
             v6+

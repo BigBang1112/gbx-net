@@ -379,6 +379,14 @@ public static class CPlugDecoratorTreeBuilderExtensions
     }
 }
 
+public static class CPlugDestructibleFxBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugDestructibleFx)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugDestructibleFxBuilder Create() => new();
+    }
+}
+
 public static class CPlugDynaWaterModelBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel)

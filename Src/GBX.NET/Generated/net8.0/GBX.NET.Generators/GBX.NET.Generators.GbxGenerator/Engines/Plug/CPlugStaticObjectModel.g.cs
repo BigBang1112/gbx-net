@@ -30,15 +30,6 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         set => NodeRef.SetEmbedded(ref meshRef, value);
     }
 
-    private bool isMeshCollidable;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
-    public bool IsMeshCollidable
-    {
-        get => this.isMeshCollidable;
-        set => this.isMeshCollidable = value;
-    }
-
     private NodeRef<CPlugSurface>? shapeRef;
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
@@ -46,6 +37,15 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     {
         get => shapeRef?.Resolve();
         set => NodeRef.SetEmbedded(ref shapeRef, value);
+    }
+
+    private bool isMeshCollidable;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public bool IsMeshCollidable
+    {
+        get => this.isMeshCollidable;
+        set => this.isMeshCollidable = value;
     }
 
     public NodeRefView References => new(this);
@@ -69,8 +69,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         base.DeepCloneFields(clone, context);
         ((CPlugStaticObjectModel)clone).version = context.Clone(this.version)!;
         ((CPlugStaticObjectModel)clone).meshRef = context.Clone(this.meshRef)!;
-        ((CPlugStaticObjectModel)clone).isMeshCollidable = context.Clone(this.isMeshCollidable)!;
         ((CPlugStaticObjectModel)clone).shapeRef = context.Clone(this.shapeRef)!;
+        ((CPlugStaticObjectModel)clone).isMeshCollidable = context.Clone(this.isMeshCollidable)!;
     }
 
     public CPlugStaticObjectModel()
@@ -81,11 +81,24 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     {
         rw.Int32(ref this.version);
         rw.NodeRef(ref this.meshRef);
-        rw.Boolean(ref this.isMeshCollidable, asByte: true);
 
-        if (!IsMeshCollidable)
+        if (Version< 3)
         {
             rw.NodeRef(ref this.shapeRef);
+
+            if (Version== 2)
+            {
+                rw.Boolean(ref this.isMeshCollidable, asByte: true);
+            }
+        }
+        else
+        {
+            rw.Boolean(ref this.isMeshCollidable, asByte: true);
+
+            if (!IsMeshCollidable)
+            {
+                rw.NodeRef(ref this.shapeRef);
+            }
         }
     }
 
