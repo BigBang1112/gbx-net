@@ -12,9 +12,21 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
 
     internal override uint GetId() => Id;
 
+    private LegacyPlacement[]? legacyPlacements;
+    /// <summary>
+    /// placement and location pairs
+    /// </summary>
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
+    public LegacyPlacement[]? LegacyPlacements
+    {
+        get => this.legacyPlacements;
+        set => this.legacyPlacements = value;
+    }
+
     private NPlugItemPlacement_SPlacement[]? placements;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
     public NPlugItemPlacement_SPlacement[]? Placements
     {
         get => this.placements;
@@ -38,6 +50,7 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((NPlugItemPlacement_SPlacementGroup)clone).legacyPlacements = context.CloneArray(this.legacyPlacements)!;
         ((NPlugItemPlacement_SPlacementGroup)clone).placements = context.CloneArray(this.placements)!;
         ((NPlugItemPlacement_SPlacementGroup)clone).u01 = context.CloneArray(this.u01)!;
         ((NPlugItemPlacement_SPlacementGroup)clone).u02 = context.CloneArray(this.u02)!;
@@ -51,9 +64,20 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.ArrayReadableWritable<NPlugItemPlacement_SPlacement>(ref this.placements!, version: Version);
-        rw.Array<short>(ref this.u01!);
-        rw.Array<TransQuat>(ref this.u02!);
+
+        if (Version == 0)
+        {
+            var legacyPlacementCount = rw.Int32((rw.Writer is null ? default : (LegacyPlacements?.Length?? 0)));
+            var legacyLocationCount = rw.Int32((rw.Writer is null ? default : (LegacyPlacements?.Length?? 0)));
+            rw.ArrayReadableWritable<LegacyPlacement>(ref this.legacyPlacements!, legacyPlacementCount, version: Version);
+        }
+
+        if (Version >= 1)
+        {
+            rw.ArrayReadableWritable<NPlugItemPlacement_SPlacement>(ref this.placements!, version: Version);
+            rw.Array<short>(ref this.u01!);
+            rw.Array<TransQuat>(ref this.u02!);
+        }
     }
 
     public virtual void Read(GbxReader r, int v = 0)
@@ -66,5 +90,54 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
     {
         using var rw = new GbxReaderWriter(w);
         ReadWrite(rw, v);
+    }
+
+    public partial class LegacyPlacement : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private NPlugItemPlacement_SPlacement? placement;
+        public NPlugItemPlacement_SPlacement? Placement
+        {
+            get => this.placement;
+            set => this.placement = value;
+        }
+
+        private TransQuat location;
+        public TransQuat Location
+        {
+            get => this.location;
+            set => this.location = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyPlacement)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyPlacement)clone).placement = context.Clone(this.placement)!;
+            ((LegacyPlacement)clone).location = context.Clone(this.location)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ReadableWritable<NPlugItemPlacement_SPlacement>(ref this.placement, version: v);
+            rw.TransQuat(ref this.location);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
     }
 }

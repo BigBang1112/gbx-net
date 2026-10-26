@@ -40,6 +40,11 @@ public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGa
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state) : base(state) { }
         public TM2020 WithPhyModel(global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020? value) => base.WithPhyModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel?)null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSpawnableObjects(NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetSpawnableObjectsAssignment(), value, GameVersion.TM2020);
+        public TM2020 WithSpawnableObjects(params global::GBX.NET.Engines.GameData.CGameObjectModel[] values) => WithSpawnableObjects(new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(values));
+        public TM2020 WithSpawnableObjects(IEnumerable<global::GBX.NET.Engines.GameData.CGameObjectModel> values) => WithSpawnableObjects(values.ToArray());
+        public TM2020 WithSpawnableObjects(params global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020[] values) => WithSpawnableObjects(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(values, false));
+        public TM2020 WithSpawnableObjects(IEnumerable<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020> values) => WithSpawnableObjects(values.ToArray());
         public TM2020 WithVisModel(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020? value) => base.WithVisModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModel?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameVehicleModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameVehicleModel Build() => BuildNode(CGameVehicleModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);

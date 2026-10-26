@@ -8,13 +8,13 @@ public abstract class CGameActionModelBuilderBase<TSelf> : NodeBuilder<global::G
     private protected CGameActionModelBuilderBase() { }
     private protected CGameActionModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    public TSelf WithActionName(string value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionNameAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM2020;
     public TSelf WithActionScriptEffectVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionScriptEffectVersionAssignment(), value, SupportedGames1);
     public TSelf WithActionScriptEffects(params global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionScriptEffectsAssignment(), value, SupportedGames1);
     public TSelf WithActionScriptEffects(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect> values) => WithActionScriptEffects(values.ToArray());
-    public TSelf WithActionType(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionTypeAssignment(), value, SupportedGames1);
     public TSelf WithAnim(global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetAnimAssignment(), value, SupportedGames1);
     public TSelf WithAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetAnimReferenceAssignment(), value, SupportedGames1);
     public TSelf WithBeamVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBeamVersionAssignment(), value, SupportedGames1);
@@ -30,8 +30,6 @@ public abstract class CGameActionModelBuilderBase<TSelf> : NodeBuilder<global::G
     public TSelf WithIcon(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconAssignment(), value, SupportedGames1);
     public TSelf WithIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconReferenceAssignment(), value, SupportedGames1);
     public TSelf WithIconRef(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconRefAssignment(), value, SupportedGames1);
-    public TSelf WithIsCustom(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsCustomAssignment(), value, SupportedGames1);
-    public TSelf WithLegacyText(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyTextAssignment(), value, SupportedGames1);
     public TSelf WithParticleBlockVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetParticleBlockVersionAssignment(), value, SupportedGames1);
     public TSelf WithParticleBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetParticleBlocksAssignment(), value, SupportedGames1);
     public TSelf WithParticleBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock> values) => WithParticleBlocks(values.ToArray());
@@ -47,23 +45,19 @@ public abstract class CGameActionModelBuilderBase<TSelf> : NodeBuilder<global::G
 public abstract class CGameActionModelBuilderMembers1<TSelf> : CGameActionModelBuilderBase<TSelf> where TSelf : CGameActionModelBuilderMembers1<TSelf>
 {
     private protected CGameActionModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
-    public TSelf WithInventoryItemClass(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetInventoryItemClassAssignment(), value, SupportedGames3);
-    public TSelf WithLegacyFlag(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyFlagAssignment(), value, SupportedGames3);
-    public TSelf WithSpriteBlockVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlockVersionAssignment(), value, SupportedGames3);
-    public TSelf WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlocksAssignment(), value, SupportedGames3);
-    public TSelf WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values) => WithSpriteBlocks(values.ToArray());
+    public TSelf WithActionType(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionTypeAssignment(), value, SupportedGames2);
+    public TSelf WithIsCustom(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsCustomAssignment(), value, SupportedGames2);
+    public TSelf WithLegacyActionName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyActionNameAssignment(), value, SupportedGames2);
+    public TSelf WithLegacyText(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyTextAssignment(), value, SupportedGames2);
 }
 public abstract class CGameActionModelBuilderMembers2<TSelf> : CGameActionModelBuilderMembers1<TSelf> where TSelf : CGameActionModelBuilderMembers2<TSelf>
 {
     private protected CGameActionModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
-    public TSelf WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBulletModels_NadeoAssignment(), value, SupportedGames2);
-    public TSelf WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values) => WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
-    public TSelf WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values) => WithBulletModels_Nadeo(values.ToArray());
-    public TSelf WithIsLockModeActive(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsLockModeActiveAssignment(), value, SupportedGames2);
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetNameAssignment(), value, SupportedGames2);
-    public TSelf WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelAssignment(), value, SupportedGames2);
-    public TSelf WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithUseVehicleGuns(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetUseVehicleGunsAssignment(), value, SupportedGames2);
+    public TSelf WithInventoryItemClass(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetInventoryItemClassAssignment(), value, SupportedGames4);
+    public TSelf WithLegacyFlag(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyFlagAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    public TSelf WithSpriteBlockVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlockVersionAssignment(), value, SupportedGames4);
+    public TSelf WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlocksAssignment(), value, SupportedGames4);
+    public TSelf WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values) => WithSpriteBlocks(values.ToArray());
 }
 public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGameActionModelBuilder>
 {
@@ -79,7 +73,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class MP3 : CGameActionModelBuilderBase<MP3>
+    public partial class MP3 : CGameActionModelBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public MP3 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -87,7 +81,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
-    public partial class TMT : CGameActionModelBuilderMembers1<TMT>
+    public partial class TMT : CGameActionModelBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public TMT WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -100,23 +94,56 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
     public partial class MP4 : CGameActionModelBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
+        public MP4 WithActionName(string value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionNameAssignment(), value, SupportedGames3);
         public MP4 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithBulletModels_Nadeo(params global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4[] values) => base.WithBulletModels_Nadeo(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(values, false));
+        public MP4 WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBulletModels_NadeoAssignment(), value, SupportedGames3);
+        public MP4 WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values) => WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
+        public MP4 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values) => WithBulletModels_Nadeo(values.ToArray());
+        public MP4 WithBulletModels_Nadeo(params global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4[] values) => WithBulletModels_Nadeo(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(values, false));
         public MP4 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4> values) => WithBulletModels_Nadeo(values.ToArray());
+        public MP4 WithIsLockModeActive(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsLockModeActiveAssignment(), value, GameVersion.MP4);
         public MP4 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? value) => base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelAssignment(), value, SupportedGames3);
+        public MP4 WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, SupportedGames3);
+        public MP4 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? value) => WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithUseVehicleGuns(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetUseVehicleGunsAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.GameData.IGameActionModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
-    public partial class TM2020 : CGameActionModelBuilderMembers2<TM2020>
+    public partial class TM2020 : CGameActionModelBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
+        public TM2020 WithActionName(string value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionNameAssignment(), value, SupportedGames3);
         public TM2020 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithBulletModels_Nadeo(params global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020[] values) => base.WithBulletModels_Nadeo(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020>(values, false));
+        public TM2020 WithBehaviour(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBehaviourAssignment(), value, SupportedGames5);
+        public TM2020 WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBulletModels_NadeoAssignment(), value, SupportedGames3);
+        public TM2020 WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values) => WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
+        public TM2020 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values) => WithBulletModels_Nadeo(values.ToArray());
+        public TM2020 WithBulletModels_Nadeo(params global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020[] values) => WithBulletModels_Nadeo(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020>(values, false));
         public TM2020 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020> values) => WithBulletModels_Nadeo(values.ToArray());
+        public TM2020 WithCompatBullet_Nadeo(global::GBX.NET.Engines.Plug.CPlugBulletModel? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCompatBullet_NadeoAssignment(), value, SupportedGames5);
+        public TM2020 WithCompatBullet_NadeoReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBulletModel> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCompatBullet_NadeoReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithCompatBullet_Nadeo(global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020? value) => WithCompatBullet_Nadeo(value is null ? (global::GBX.NET.Engines.Plug.CPlugBulletModel?)null : value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithExternalAction(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetExternalActionAssignment(), value, SupportedGames5);
+        public TM2020 WithIconFocusedCancelRef(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconFocusedCancelRefAssignment(), value, SupportedGames5);
+        public TM2020 WithIconFocusedValidateRef(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconFocusedValidateRefAssignment(), value, SupportedGames5);
+        public TM2020 WithIcon_Focused_Cancel(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIcon_Focused_CancelAssignment(), value, SupportedGames5);
+        public TM2020 WithIcon_Focused_CancelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIcon_Focused_CancelReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithIcon_Focused_Validate(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIcon_Focused_ValidateAssignment(), value, SupportedGames5);
+        public TM2020 WithIcon_Focused_ValidateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIcon_Focused_ValidateReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithInventoryItemClass(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetInventoryItemClassAssignment(), value, SupportedGames4);
+        public TM2020 WithItems(params global::GBX.NET.Engines.GameData.CGameItemModel[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetItemsAssignment(), value, SupportedGames5);
+        public TM2020 WithItems(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel> values) => WithItems(values.ToArray());
         public TM2020 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? value) => base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelAssignment(), value, SupportedGames3);
+        public TM2020 WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, SupportedGames3);
+        public TM2020 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? value) => WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSpriteBlockVersion(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlockVersionAssignment(), value, SupportedGames4);
+        public TM2020 WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlocksAssignment(), value, SupportedGames4);
+        public TM2020 WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values) => WithSpriteBlocks(values.ToArray());
+        public TM2020 WithUseVehicleGuns(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetUseVehicleGunsAssignment(), value, SupportedGames3);
+        public TM2020 WithUseVehicleLockedEnt(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetUseVehicleLockedEntAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);

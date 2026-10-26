@@ -6,6 +6,4 @@ CPlugScriptWithSettings 0x09083000
   int SettingsVersion
   if SettingsVersion >= 1
     byte SettingTypeVersion = 4
-    if SettingCount > 0
-      throw // typed settings are not supported yet
-  CScriptSetting[SettingCount] Settings
+  CScriptSetting[SettingCount] Settings (version: SettingsVersion >= 1 ? SettingTypeVersion + 1 : 0) // 0 for untyped settings, otherwise the script type version + 1

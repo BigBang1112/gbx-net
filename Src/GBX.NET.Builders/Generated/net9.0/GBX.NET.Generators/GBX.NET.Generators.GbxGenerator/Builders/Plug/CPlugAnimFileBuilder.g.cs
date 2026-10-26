@@ -125,6 +125,8 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public TM2020 WithClassIds(IEnumerable<uint> values) => WithClassIds(values.ToArray());
         public TM2020 WithClipResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipResourcesAssignment(), value, SupportedGames4);
         public TM2020 WithClipResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithClipResources(values.ToArray());
+        public TM2020 WithGraphStacks(params global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020[] values) => base.WithGraphStacks(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020>(values, false));
+        public TM2020 WithGraphStacks(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020> values) => WithGraphStacks(values.ToArray());
         public TM2020 WithGraphVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphVersionAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
         public TM2020 WithGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphsAssignment(), value, SupportedGames4);
         public TM2020 WithGraphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot> values) => WithGraphs(values.ToArray());
@@ -134,6 +136,8 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public TM2020 WithLegacyResources1(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithLegacyResources1(values.ToArray());
         public TM2020 WithLegacyResources2(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources2Assignment(), value, SupportedGames4);
         public TM2020 WithLegacyResources2(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithLegacyResources2(values.ToArray());
+        public TM2020 WithPoseGrids(params global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020[] values) => base.WithPoseGrids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020>(values, false));
+        public TM2020 WithPoseGrids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020> values) => WithPoseGrids(values.ToArray());
         public TM2020 WithResourceNames(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetResourceNamesAssignment(), value, SupportedGames4);
         public TM2020 WithResourceNames(IEnumerable<string> values) => WithResourceNames(values.ToArray());
         public TM2020 WithSkelResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelResourcesAssignment(), value, SupportedGames4);

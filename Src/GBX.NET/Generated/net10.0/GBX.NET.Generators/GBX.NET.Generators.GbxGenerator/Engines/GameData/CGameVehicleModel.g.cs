@@ -39,6 +39,15 @@ public partial class CGameVehicleModel : CMwNod, IClass
         set => this.itemOccupantSlotModels = value;
     }
 
+    private NodeRefList<CGameObjectModel>? spawnableObjects;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E01C000>(1)]
+    public NodeRefList<CGameObjectModel>? SpawnableObjects
+    {
+        get => spawnableObjects;
+        set => spawnableObjects = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -46,12 +55,17 @@ public partial class CGameVehicleModel : CMwNod, IClass
         internal NodeRefView(CGameVehicleModel owner) => this.owner = owner;
         public NodeRef<CPlugVehiclePhyModel> PhyModel => NodeRef.GetOrCreate(ref owner.phyModelRef);
         public NodeRef<CPlugVehicleVisModel> VisModel => NodeRef.GetOrCreate(ref owner.visModelRef);
+        public IReadOnlyList<NodeRef<CGameObjectModel>>? SpawnableObjects => owner.spawnableObjects?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         yield return new("PhyModel", NodeRef.GetOrCreate(ref phyModelRef));
         yield return new("VisModel", NodeRef.GetOrCreate(ref visModelRef));
+        if (spawnableObjects is not null)
+        {
+            for (var i = 0; i < spawnableObjects.Count; i++) yield return new("SpawnableObjects" + "[" + i + "]", spawnableObjects.Get(i));
+        }
         yield break;
     }
 
@@ -61,6 +75,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
         ((CGameVehicleModel)clone).phyModelRef = context.Clone(this.phyModelRef)!;
         ((CGameVehicleModel)clone).visModelRef = context.Clone(this.visModelRef)!;
         ((CGameVehicleModel)clone).itemOccupantSlotModels = context.CloneArray(this.itemOccupantSlotModels)!;
+        ((CGameVehicleModel)clone).spawnableObjects = context.Clone(this.spawnableObjects)!;
     }
 
     public CGameVehicleModel()
@@ -78,13 +93,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        public NodeRefList<CGameObjectModel>? U01;
-
-        private NodeRef<CMwNod>? U02Ref;
-        public CMwNod? U02
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
         {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -92,17 +105,12 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             private readonly Chunk2E01C000 owner;
             internal NodeRefView(Chunk2E01C000 owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CGameObjectModel>>? U01 => owner.U01?.References;
-            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            if (U01 is not null)
-            {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
-            }
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -126,8 +134,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E01C000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E01C000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E01C000)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk2E01C000)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameVehicleModel n, GbxReaderWriter rw)
@@ -144,11 +151,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                U01 = rw.ListNodeRef<CGameObjectModel>(U01);
+                n.spawnableObjects = rw.ListNodeRef<CGameObjectModel>(n.spawnableObjects);
 
                 if (Version == 2)
                 {
-                    rw.NodeRef(ref U02Ref);
+                    rw.NodeRef(ref U01Ref);
                 }
             }
         }
@@ -163,27 +170,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
             set => this.id = value;
         }
 
-        private NodeRefList<CGameActionModel>? actions;
-        public NodeRefList<CGameActionModel>? Actions
+        private CGameActionModel[]? actions;
+        public CGameActionModel[]? Actions
         {
-            get => actions;
-            set => actions = value;
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly ItemOccupantSlotModel owner;
-            internal NodeRefView(ItemOccupantSlotModel owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CGameActionModel>>? Actions => owner.actions?.References;
-        }
-        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            if (actions is not null)
-            {
-                for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
-            }
-            yield break;
+            get => this.actions;
+            set => this.actions = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -197,13 +188,13 @@ public partial class CGameVehicleModel : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((ItemOccupantSlotModel)clone).id = context.Clone(this.id)!;
-            ((ItemOccupantSlotModel)clone).actions = context.Clone(this.actions)!;
+            ((ItemOccupantSlotModel)clone).actions = context.CloneArray(this.actions)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.id);
-            this.actions = rw.ListNodeRef<CGameActionModel>(this.actions);
+            rw.ArrayNode<CGameActionModel>(ref this.actions!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

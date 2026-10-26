@@ -85,19 +85,36 @@ archive OccupantSlot
   byte U01
   v2+
     id U02
-    v3+
-      vec3 U03
-      v4+
-        bool U04
-        if U04
-          int U05
-          float U06
-          int U07
-          int U08
-          v5+
-            bool U09
-            v7+
-              byte U10
-              v8+
-                bool U11
-                float U12
+  v3+
+    vec3 U03
+  v4..12
+    bool U04
+    if U04
+      int U05
+      float U06
+      int U07
+      int U08
+      v5+
+        bool U09
+      v7..11
+        byte U10
+      v8+
+        bool U11
+        float U12
+      v9+
+        float U13
+        float U14
+        CPlugCurveSimpleNod U15 (direct)
+  v13+
+    int // discarded
+    bool U04
+    bool U11
+    float U12
+    float U06
+    bool U09
+    float U13
+    float U14
+    int U05
+    CPlugCurveSimpleNod U18
+    float U16
+    float U17

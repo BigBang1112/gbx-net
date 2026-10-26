@@ -236,6 +236,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
 
+    /// <summary>
+    /// Native reads skippable chunk data into a separate memory stream, so dummy writes of nested nodes do not reach the Pak cipher.
+    /// </summary>
+    internal bool IsSkippableChunkReader { get; init; }
+
     internal byte? PackDescVersion { get => packDescVersion; set => packDescVersion = value; }
     internal int? DeprecVersion { get => deprecVersion; set => deprecVersion = value; }
 
@@ -2038,7 +2043,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal bool TryInitializeDecryption(IClass node)
     {
-        if (Settings.EncryptionInitializer is null)
+        // Encapsulated and skippable chunks are archived through a separate memory stream natively
+        if (Settings.EncryptionInitializer is null || encapsulation is not null || IsSkippableChunkReader)
         {
             return false;
         }

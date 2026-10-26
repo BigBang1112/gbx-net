@@ -3,6 +3,15 @@ NPlugItemPlacement_SPlacementGroup 0x2F0D8000
 
 archive
   version
-  NPlugItemPlacement_SPlacement[] Placements
-  short[]
-  transquat[]
+  v0= (archive)
+    int LegacyPlacementCount (local, write: "LegacyPlacements?.Length ?? 0")
+    int LegacyLocationCount (local, write: "LegacyPlacements?.Length ?? 0")
+    LegacyPlacement[LegacyPlacementCount] LegacyPlacements // placement and location pairs
+  v1+ (archive)
+    NPlugItemPlacement_SPlacement[] Placements
+    short[]
+    transquat[]
+
+archive LegacyPlacement
+  NPlugItemPlacement_SPlacement Placement
+  transquat Location

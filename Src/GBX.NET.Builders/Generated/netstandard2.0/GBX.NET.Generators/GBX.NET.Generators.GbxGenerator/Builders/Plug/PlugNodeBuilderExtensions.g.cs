@@ -35,11 +35,35 @@ public static class CPlugAnimFileBuilderExtensions
     }
 }
 
+public static class CPlugAnimGraphBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugAnimGraph)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugAnimGraphBuilder Create() => new();
+    }
+}
+
+public static class CPlugAnimGraphStackBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugAnimGraphStackBuilder Create() => new();
+    }
+}
+
 public static class CPlugAnimLocSimpleBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugAnimLocSimple)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilder Create() => new();
+    }
+}
+
+public static class CPlugAnimPoseGridBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilder Create() => new();
     }
 }
 
@@ -912,6 +936,14 @@ public static class CPlugTrainWagonModelBuilderExtensions
     extension(global::GBX.NET.Engines.Plug.CPlugTrainWagonModel)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelBuilder Create() => new();
+    }
+}
+
+public static class CPlugTrainWagonModelCustomBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugTrainWagonModelCustom)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugTrainWagonModelCustomBuilder Create() => new();
     }
 }
 

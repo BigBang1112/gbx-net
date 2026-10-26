@@ -22,5 +22,6 @@ public partial interface IGameVehicleModelMP4 : IGameVehicleModel, global::GBX.N
 
 public partial interface IGameVehicleModelTM2020 : IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? SpawnableObjects { get; set; }
 }
 

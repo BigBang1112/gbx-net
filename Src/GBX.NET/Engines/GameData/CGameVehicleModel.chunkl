@@ -6,10 +6,10 @@ CGameVehicleModel 0x2E01C000
   CPlugVehicleVisModel VisModel
   ItemOccupantSlotModel[] ItemOccupantSlotModels
   v1+
-    CGameObjectModel[]
+    CGameObjectModel[] SpawnableObjects
     v2=
       CMwNod
 
 archive ItemOccupantSlotModel
   id Id
-  CGameActionModel[] Actions
+  CGameActionModel[] Actions (direct)

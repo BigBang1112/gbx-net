@@ -8179,7 +8179,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 1)
             {
-                if (Version <= 20)
+                if (Version <= 19)
                 {
                     rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 21);
                     rw.Single(ref U10);
@@ -8196,7 +8196,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 2)
             {
-                if (Version <= 20)
+                if (Version <= 19)
                 {
                     rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 21);
                 }
@@ -8221,7 +8221,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 21);
                 rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 21);
 
-                if (Version <= 20)
+                if (Version <= 19)
                 {
                     rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 21);
                 }
@@ -9220,7 +9220,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 11)
             {
-                if (Version <= 17)
+                if (Version <= 16)
                 {
                     rw.Int32(ref U19);
                     rw.Int32(ref U20);
@@ -9235,7 +9235,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 13)
             {
-                if (Version <= 17)
+                if (Version <= 16)
                 {
                     rw.Int32(ref U23);
                 }

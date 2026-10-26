@@ -38,5 +38,10 @@ public partial interface IGameVehicleModelMP4 : IGameVehicleModel, global::GBX.N
 
 public partial interface IGameVehicleModelTM2020 : IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? SpawnableObjects
+    {
+        get => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).SpawnableObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).GetSpawnableObjectsInterfaceReferences, true, "SpawnableObjects");
+        set => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).SpawnableObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(value, false));
+    }
 }
 

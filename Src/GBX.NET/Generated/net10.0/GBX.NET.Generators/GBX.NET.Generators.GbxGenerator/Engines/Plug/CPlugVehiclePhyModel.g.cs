@@ -845,6 +845,64 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
             set => this.u12 = value;
         }
 
+        private float u13;
+        public float U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private float u14;
+        public float U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private CPlugCurveSimpleNod? u15;
+        public CPlugCurveSimpleNod? U15
+        {
+            get => this.u15;
+            set => this.u15 = value;
+        }
+
+        private int u16;
+        /// <summary>
+        /// discarded
+        /// </summary>
+        public int U16
+        {
+            get => this.u16;
+            set => this.u16 = value;
+        }
+
+        private NodeRef<CPlugCurveSimpleNod>? u18Ref;
+        public CPlugCurveSimpleNod? U18
+        {
+            get => u18Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u18Ref, value);
+        }
+
+        private float u17;
+        public float U17
+        {
+            get => this.u17;
+            set => this.u17 = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly OccupantSlot owner;
+            internal NodeRefView(OccupantSlot owner) => this.owner = owner;
+            public NodeRef<CPlugCurveSimpleNod> U18 => NodeRef.GetOrCreate(ref owner.u18Ref);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U18", NodeRef.GetOrCreate(ref u18Ref));
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (OccupantSlot)MemberwiseClone();
@@ -867,6 +925,12 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
             ((OccupantSlot)clone).u10 = context.Clone(this.u10)!;
             ((OccupantSlot)clone).u11 = context.Clone(this.u11)!;
             ((OccupantSlot)clone).u12 = context.Clone(this.u12)!;
+            ((OccupantSlot)clone).u13 = context.Clone(this.u13)!;
+            ((OccupantSlot)clone).u14 = context.Clone(this.u14)!;
+            ((OccupantSlot)clone).u15 = context.Clone(this.u15)!;
+            ((OccupantSlot)clone).u16 = context.Clone(this.u16)!;
+            ((OccupantSlot)clone).u18Ref = context.Clone(this.u18Ref)!;
+            ((OccupantSlot)clone).u17 = context.Clone(this.u17)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -876,40 +940,63 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
             if (v >= 2)
             {
                 rw.Id(ref this.u02);
+            }
 
-                if (v >= 3)
+            if (v >= 3)
+            {
+                rw.Vec3(ref this.u03);
+            }
+
+            if (v >= 4 && v <= 12)
+            {
+                rw.Boolean(ref this.u04);
+
+                if (U04)
                 {
-                    rw.Vec3(ref this.u03);
+                    rw.Int32(ref this.u05);
+                    rw.Single(ref this.u06);
+                    rw.Int32(ref this.u07);
+                    rw.Int32(ref this.u08);
 
-                    if (v >= 4)
+                    if (v >= 5)
                     {
-                        rw.Boolean(ref this.u04);
+                        rw.Boolean(ref this.u09);
+                    }
 
-                        if (U04)
-                        {
-                            rw.Int32(ref this.u05);
-                            rw.Single(ref this.u06);
-                            rw.Int32(ref this.u07);
-                            rw.Int32(ref this.u08);
+                    if (v >= 7 && v <= 11)
+                    {
+                        rw.Byte(ref this.u10);
+                    }
 
-                            if (v >= 5)
-                            {
-                                rw.Boolean(ref this.u09);
+                    if (v >= 8)
+                    {
+                        rw.Boolean(ref this.u11);
+                        rw.Single(ref this.u12);
+                    }
 
-                                if (v >= 7)
-                                {
-                                    rw.Byte(ref this.u10);
-
-                                    if (v >= 8)
-                                    {
-                                        rw.Boolean(ref this.u11);
-                                        rw.Single(ref this.u12);
-                                    }
-                                }
-                            }
-                        }
+                    if (v >= 9)
+                    {
+                        rw.Single(ref this.u13);
+                        rw.Single(ref this.u14);
+                        rw.Node<CPlugCurveSimpleNod>(ref this.u15);
                     }
                 }
+            }
+
+            if (v >= 13)
+            {
+                rw.Int32(ref this.u16);
+                rw.Boolean(ref this.u04);
+                rw.Boolean(ref this.u11);
+                rw.Single(ref this.u12);
+                rw.Single(ref this.u06);
+                rw.Boolean(ref this.u09);
+                rw.Single(ref this.u13);
+                rw.Single(ref this.u14);
+                rw.Int32(ref this.u05);
+                rw.NodeRef(ref this.u18Ref);
+                this.u16 = (int)rw.Single((float)this.u16);
+                rw.Single(ref this.u17);
             }
         }
 

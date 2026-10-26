@@ -48,13 +48,13 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.legacyShield = value;
     }
 
-    private string? name;
+    private string actionName = "Action";
     /// <remarks>Applied with: 0x000 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(23)]
-    public string? Name
+    public string ActionName
     {
-        get => this.name;
-        set => this.name = value;
+        get => this.actionName;
+        set => this.actionName = value;
     }
 
     private int inventoryItemClass;
@@ -75,7 +75,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.legacyInventoryValues = value;
     }
 
-    private int spriteBlockVersion;
+    private int spriteBlockVersion = 1;
     /// <remarks>Applied with: 0x000 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(19)]
     public int SpriteBlockVersion
@@ -102,7 +102,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.description = value;
     }
 
-    private int beamVersion = 1;
+    private int beamVersion = 15;
     /// <remarks>Applied with: 0x000 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(16)]
     public int BeamVersion
@@ -124,26 +124,29 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool isCustom;
-    /// <remarks>Applied with: 0x000 v15+ body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>(15)]
+    /// <remarks>Applied with: 0x000 v15-32 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(15, 32)]
     public bool IsCustom
     {
         get => this.isCustom;
         set => this.isCustom = value;
     }
 
-    private string actionName = "Action";
-    /// <remarks>Applied with: 0x000 v14+ body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>(14)]
-    public string ActionName
+    private string? legacyActionName;
+    /// <remarks>Applied with: 0x000 v14-31 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(14, 31)]
+    public string? LegacyActionName
     {
-        get => this.actionName;
-        set => this.actionName = value;
+        get => this.legacyActionName;
+        set => this.legacyActionName = value;
     }
 
     private int actionType;
-    /// <remarks>Applied with: 0x000 v13+ body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>(13)]
+    /// <summary>
+    /// discarded
+    /// </summary>
+    /// <remarks>Applied with: 0x000 v13-32 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(13, 32)]
     public int ActionType
     {
         get => this.actionType;
@@ -168,7 +171,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.cooldown = value;
     }
 
-    private int scriptParamsVersion = 2;
+    private int scriptParamsVersion = 6;
     /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(10)]
     public int ScriptParamsVersion
@@ -177,7 +180,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.scriptParamsVersion = value;
     }
 
-    private int actionScriptEffectVersion;
+    private int actionScriptEffectVersion = 3;
     /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(10)]
     public int ActionScriptEffectVersion
@@ -195,7 +198,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.actionScriptEffects = value;
     }
 
-    private int customBulletVersion;
+    private int customBulletVersion = 28;
     /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(7)]
     public int CustomBulletVersion
@@ -213,7 +216,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.projectiles = value;
     }
 
-    private int soundBlockVersion = 2;
+    private int soundBlockVersion = 4;
     /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(5)]
     public int SoundBlockVersion
@@ -222,7 +225,7 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.soundBlockVersion = value;
     }
 
-    private int particleBlockVersion = 1;
+    private int particleBlockVersion = 9;
     /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(5)]
     public int ParticleBlockVersion
@@ -232,8 +235,8 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? legacyText;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>]
+    /// <remarks>Applied with: 0x000 v0-34 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(0, 34)]
     public string? LegacyText
     {
         get => this.legacyText;
@@ -274,6 +277,15 @@ public partial class CGameActionModel : CMwNod, IClass
     {
         get => scriptRef?.Resolve();
         set => NodeRef.SetEmbedded(ref scriptRef, value);
+    }
+
+    private int behaviour = 2;
+    /// <remarks>Applied with: 0x000 v36+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(36)]
+    public int Behaviour
+    {
+        get => this.behaviour;
+        set => this.behaviour = value;
     }
 
     private NodeRef<CPlugBitmap>? legacyIconRef;
@@ -340,8 +352,8 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool legacyFlag;
-    /// <remarks>Applied with: 0x000 v20+ body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>(20)]
+    /// <remarks>Applied with: 0x000 v20-32 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(20, 32)]
     public bool LegacyFlag
     {
         get => this.legacyFlag;
@@ -349,8 +361,8 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool isLockModeActive;
-    /// <remarks>Applied with: 0x000 v27+ body chunk</remarks>
-    [AppliedWithChunk<Chunk2E008000>(27)]
+    /// <remarks>Applied with: 0x000 v27-33 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(27, 33)]
     public bool IsLockModeActive
     {
         get => this.isLockModeActive;
@@ -375,6 +387,78 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.legacyLockModeValues = value;
     }
 
+    private CGameItemModel[]? items;
+    /// <remarks>Applied with: 0x000 v37+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(37)]
+    public CGameItemModel[]? Items
+    {
+        get => this.items;
+        set => this.items = value;
+    }
+
+    private string? iconFocusedValidateRef;
+    /// <remarks>Applied with: 0x000 v38+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(38)]
+    public string? IconFocusedValidateRef
+    {
+        get => this.iconFocusedValidateRef;
+        set => this.iconFocusedValidateRef = value;
+    }
+
+    private NodeRef<CPlugFileImg>? icon_Focused_ValidateRef;
+    /// <remarks>Applied with: 0x000 v38+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(38)]
+    public CPlugFileImg? Icon_Focused_Validate
+    {
+        get => icon_Focused_ValidateRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref icon_Focused_ValidateRef, value);
+    }
+
+    private string? iconFocusedCancelRef;
+    /// <remarks>Applied with: 0x000 v38+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(38)]
+    public string? IconFocusedCancelRef
+    {
+        get => this.iconFocusedCancelRef;
+        set => this.iconFocusedCancelRef = value;
+    }
+
+    private NodeRef<CPlugFileImg>? icon_Focused_CancelRef;
+    /// <remarks>Applied with: 0x000 v38+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(38)]
+    public CPlugFileImg? Icon_Focused_Cancel
+    {
+        get => icon_Focused_CancelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref icon_Focused_CancelRef, value);
+    }
+
+    private NodeRef<CPlugBulletModel>? compatBullet_NadeoRef;
+    /// <remarks>Applied with: 0x000 v39+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(39)]
+    public CPlugBulletModel? CompatBullet_Nadeo
+    {
+        get => compatBullet_NadeoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref compatBullet_NadeoRef, value);
+    }
+
+    private bool useVehicleLockedEnt;
+    /// <remarks>Applied with: 0x000 v40+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(40)]
+    public bool UseVehicleLockedEnt
+    {
+        get => this.useVehicleLockedEnt;
+        set => this.useVehicleLockedEnt = value;
+    }
+
+    private int externalAction;
+    /// <remarks>Applied with: 0x000 v43+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E008000>(43)]
+    public int ExternalAction
+    {
+        get => this.externalAction;
+        set => this.externalAction = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -389,6 +473,9 @@ public partial class CGameActionModel : CMwNod, IClass
         public NodeRef<CPlugBitmap> LegacyIcon => NodeRef.GetOrCreate(ref owner.legacyIconRef);
         public NodeRef<CPlugFileImg> Icon => NodeRef.GetOrCreate(ref owner.iconNodeRef);
         public NodeRef<CPlugFileImg> CrossHair => NodeRef.GetOrCreate(ref owner.crossHairNodeRef);
+        public NodeRef<CPlugFileImg> Icon_Focused_Validate => NodeRef.GetOrCreate(ref owner.icon_Focused_ValidateRef);
+        public NodeRef<CPlugFileImg> Icon_Focused_Cancel => NodeRef.GetOrCreate(ref owner.icon_Focused_CancelRef);
+        public NodeRef<CPlugBulletModel> CompatBullet_Nadeo => NodeRef.GetOrCreate(ref owner.compatBullet_NadeoRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -408,6 +495,9 @@ public partial class CGameActionModel : CMwNod, IClass
         yield return new("LegacyIcon", NodeRef.GetOrCreate(ref legacyIconRef));
         yield return new("Icon", NodeRef.GetOrCreate(ref iconNodeRef));
         yield return new("CrossHair", NodeRef.GetOrCreate(ref crossHairNodeRef));
+        yield return new("Icon_Focused_Validate", NodeRef.GetOrCreate(ref icon_Focused_ValidateRef));
+        yield return new("Icon_Focused_Cancel", NodeRef.GetOrCreate(ref icon_Focused_CancelRef));
+        yield return new("CompatBullet_Nadeo", NodeRef.GetOrCreate(ref compatBullet_NadeoRef));
         yield break;
     }
 
@@ -418,7 +508,7 @@ public partial class CGameActionModel : CMwNod, IClass
         ((CGameActionModel)clone).bulletModels_Nadeo = context.Clone(this.bulletModels_Nadeo)!;
         ((CGameActionModel)clone).shieldModelRef = context.Clone(this.shieldModelRef)!;
         ((CGameActionModel)clone).legacyShield = context.Clone(this.legacyShield)!;
-        ((CGameActionModel)clone).name = context.Clone(this.name)!;
+        ((CGameActionModel)clone).actionName = context.Clone(this.actionName)!;
         ((CGameActionModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
         ((CGameActionModel)clone).legacyInventoryValues = context.CloneArray(this.legacyInventoryValues)!;
         ((CGameActionModel)clone).spriteBlockVersion = context.Clone(this.spriteBlockVersion)!;
@@ -427,7 +517,7 @@ public partial class CGameActionModel : CMwNod, IClass
         ((CGameActionModel)clone).beamVersion = context.Clone(this.beamVersion)!;
         ((CGameActionModel)clone).beams = context.CloneArray(this.beams)!;
         ((CGameActionModel)clone).isCustom = context.Clone(this.isCustom)!;
-        ((CGameActionModel)clone).actionName = context.Clone(this.actionName)!;
+        ((CGameActionModel)clone).legacyActionName = context.Clone(this.legacyActionName)!;
         ((CGameActionModel)clone).actionType = context.Clone(this.actionType)!;
         ((CGameActionModel)clone).gaugeId = context.Clone(this.gaugeId)!;
         ((CGameActionModel)clone).cooldown = context.Clone(this.cooldown)!;
@@ -443,6 +533,7 @@ public partial class CGameActionModel : CMwNod, IClass
         ((CGameActionModel)clone).animRef = context.Clone(this.animRef)!;
         ((CGameActionModel)clone).legacyScriptRef = context.Clone(this.legacyScriptRef)!;
         ((CGameActionModel)clone).scriptRef = context.Clone(this.scriptRef)!;
+        ((CGameActionModel)clone).behaviour = context.Clone(this.behaviour)!;
         ((CGameActionModel)clone).legacyIconRef = context.Clone(this.legacyIconRef)!;
         ((CGameActionModel)clone).iconRef = context.Clone(this.iconRef)!;
         ((CGameActionModel)clone).iconNodeRef = context.Clone(this.iconNodeRef)!;
@@ -454,6 +545,14 @@ public partial class CGameActionModel : CMwNod, IClass
         ((CGameActionModel)clone).isLockModeActive = context.Clone(this.isLockModeActive)!;
         ((CGameActionModel)clone).legacyLockMode = context.Clone(this.legacyLockMode)!;
         ((CGameActionModel)clone).legacyLockModeValues = context.CloneArray(this.legacyLockModeValues)!;
+        ((CGameActionModel)clone).items = context.CloneArray(this.items)!;
+        ((CGameActionModel)clone).iconFocusedValidateRef = context.Clone(this.iconFocusedValidateRef)!;
+        ((CGameActionModel)clone).icon_Focused_ValidateRef = context.Clone(this.icon_Focused_ValidateRef)!;
+        ((CGameActionModel)clone).iconFocusedCancelRef = context.Clone(this.iconFocusedCancelRef)!;
+        ((CGameActionModel)clone).icon_Focused_CancelRef = context.Clone(this.icon_Focused_CancelRef)!;
+        ((CGameActionModel)clone).compatBullet_NadeoRef = context.Clone(this.compatBullet_NadeoRef)!;
+        ((CGameActionModel)clone).useVehicleLockedEnt = context.Clone(this.useVehicleLockedEnt)!;
+        ((CGameActionModel)clone).externalAction = context.Clone(this.externalAction)!;
     }
 
     public CGameActionModel()
@@ -470,6 +569,15 @@ public partial class CGameActionModel : CMwNod, IClass
         public override uint Id => 0x2E008000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public bool U01;
+        public int U02;
+        public int U03;
+        public Int2 U04;
+        public byte U05;
+        public int U06;
+        public int U07;
+        public Int2 U08;
+        public int U09;
 
         public Chunk2E008000() : this(GameVersion.Unspecified)
         {
@@ -493,12 +601,23 @@ public partial class CGameActionModel : CMwNod, IClass
             {
                 Version = 44;
             }
+
+            U03 = 1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E008000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E008000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E008000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E008000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E008000)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk2E008000)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk2E008000)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk2E008000)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E008000)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk2E008000)clone).U09 = context.Clone(this.U09)!;
         }
 
         public override void ReadWrite(CGameActionModel n, GbxReaderWriter rw)
@@ -531,7 +650,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 23)
             {
-                rw.String(ref n.name);
+                rw.String(ref n.actionName);
             }
 
             if (Version >= 22)
@@ -539,12 +658,9 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Int32(ref n.inventoryItemClass);
             }
 
-            if (Version >= 21)
+            if (Version >= 21 && Version <= 23)
             {
-                if (Version <= 23)
-                {
-                    rw.Array<int>(ref n.legacyInventoryValues!, 2);
-                }
+                rw.Array<int>(ref n.legacyInventoryValues!, 2);
             }
 
             if (Version >= 19)
@@ -564,25 +680,27 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.ArrayReadableWritable<CPlugCustomBeamModel>(ref n.beams!, version: Version>= 18 ? n. BeamVersion : 1);
             }
 
-            if (Version >= 15)
+            if (Version >= 15 && Version <= 32)
             {
                 rw.Boolean(ref n.isCustom);
             }
 
-            if (Version >= 26)
+            if (Version >= 33 && Version <= 35)
             {
-                rw.String(ref n.actionName);
+                rw.Boolean(ref U01);
             }
 
-            if (Version <= 25)
+            if (Version >= 26 && Version <= 31)
             {
-                if (Version >= 14)
-                {
-                    rw.Id(ref n.actionName);
-                }
+                rw.String(ref n.legacyActionName);
             }
 
-            if (Version >= 13)
+            if (Version >= 14 && Version <= 25)
+            {
+                rw.Id(ref n.legacyActionName);
+            }
+
+            if (Version >= 13 && Version <= 32)
             {
                 rw.Int32(ref n.actionType);
             }
@@ -592,12 +710,9 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Id(ref n.gaugeId);
             }
 
-            if (Version <= 9)
+            if (Version >= 8 && Version <= 9)
             {
-                if (Version >= 8)
-                {
-                    rw.ReadableWritable<ScriptParams>(ref n.cooldown, version: 2);
-                }
+                rw.ReadableWritable<ScriptParams>(ref n.cooldown, version: 2);
             }
 
             if (Version >= 10)
@@ -605,7 +720,7 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Int32(ref n.scriptParamsVersion);
                 rw.Int32(ref n.actionScriptEffectVersion);
                 rw.ReadableWritable<ScriptParams>(ref n.cooldown, version: n. ScriptParamsVersion);
-                rw.ArrayReadableWritable<ActionScriptEffect>(ref n.actionScriptEffects!, version: n. ActionScriptEffectVersion);
+                rw.ArrayReadableWritable<ActionScriptEffect, CGameActionModel>(ref n.actionScriptEffects!, n, version: Version);
             }
 
             if (Version >= 7)
@@ -615,7 +730,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.ArrayReadableWritable<CPlugCustomBulletModel>(ref n.projectiles!, version: n. CustomBulletVersion);
+                rw.ArrayReadableWritable<CPlugCustomBulletModel>(ref n.projectiles!, version: Version>= 7 ? n. CustomBulletVersion : 0);
             }
 
             if (Version >= 5)
@@ -624,7 +739,10 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Int32(ref n.particleBlockVersion);
             }
 
-            rw.String(ref n.legacyText);
+            if (Version <= 34)
+            {
+                rw.String(ref n.legacyText);
+            }
 
             if (Version <= 5)
             {
@@ -641,6 +759,19 @@ public partial class CGameActionModel : CMwNod, IClass
             if (Version >= 11)
             {
                 rw.NodeRef(ref n.scriptRef);
+            }
+
+            if (Version >= 36)
+            {
+                n.behaviour = (int)rw.Byte((byte)n.behaviour);
+
+                if (Version< 44 && n.Behaviour> 2)
+                {
+                    if (rw.Reader is not null)
+                    {
+                        n.Behaviour = n.Behaviour+ 1;
+                    }
+                }
             }
 
             if (Version <= 11)
@@ -667,11 +798,11 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.ArrayReadableWritable<ParticleBlock>(ref n.particleBlocks!, version: n. ParticleBlockVersion);
-                rw.ArrayReadableWritable<SoundBlock>(ref n.soundBlocks!, version: n. SoundBlockVersion);
+                rw.ArrayReadableWritable<ParticleBlock>(ref n.particleBlocks!, version: Version>= 5 ? n. ParticleBlockVersion : 1);
+                rw.ArrayReadableWritable<SoundBlock>(ref n.soundBlocks!, version: Version>= 5 ? n. SoundBlockVersion : 2);
             }
 
-            if (Version >= 20)
+            if (Version >= 20 && Version <= 32)
             {
                 rw.Boolean(ref n.legacyFlag);
             }
@@ -692,9 +823,66 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Array<int>(ref n.legacyLockModeValues!, 2);
             }
 
-            if (Version >= 29)
+            if (Version >= 29 && Version <= 33)
             {
                 rw.Boolean(ref n.isLockModeActive);
+            }
+
+            if (Version >= 37)
+            {
+                rw.ArrayNode<CGameItemModel>(ref n.items!);
+            }
+
+            if (Version >= 38)
+            {
+                rw.String(ref n.iconFocusedValidateRef);
+
+                if (n.IconFocusedValidateRef== null || n.IconFocusedValidateRef== "")
+                {
+                    rw.NodeRef(ref n.icon_Focused_ValidateRef);
+                }
+
+                rw.String(ref n.iconFocusedCancelRef);
+
+                if (n.IconFocusedCancelRef== null || n.IconFocusedCancelRef== "")
+                {
+                    rw.NodeRef(ref n.icon_Focused_CancelRef);
+                }
+            }
+
+            if (Version >= 39)
+            {
+                rw.NodeRef(ref n.compatBullet_NadeoRef);
+            }
+
+            if (Version >= 40)
+            {
+                rw.Boolean(ref n.useVehicleLockedEnt);
+            }
+
+            if (Version >= 41)
+            {
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int2(ref U04);
+                rw.Byte(ref U05);
+
+                if (U03!= 0)
+                {
+                    rw.Int32(ref U06);
+                }
+            }
+
+            if (Version >= 42)
+            {
+                rw.Int32(ref U07);
+                rw.Int2(ref U08);
+            }
+
+            if (Version >= 43)
+            {
+                rw.Int32(ref U09);
+                rw.Int32(ref n.externalAction);
             }
         }
     }
@@ -1030,25 +1218,25 @@ public partial class CGameActionModel : CMwNod, IClass
 
     public partial class ScriptParams : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01 = 300;
-        public int U01
+        private int cooldown = 300;
+        public int Cooldown
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.cooldown;
+            set => this.cooldown = value;
         }
 
-        private int u02 = 1600;
-        public int U02
+        private int energyCost = 1600;
+        public int EnergyCost
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.energyCost;
+            set => this.energyCost = value;
         }
 
-        private int u03 = 6400;
-        public int U03
+        private int energyMax = 6400;
+        public int EnergyMax
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.energyMax;
+            set => this.energyMax = value;
         }
 
         private bool u04;
@@ -1191,39 +1379,67 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.u23 = value;
         }
 
-        private int u24 = 300;
-        public int U24
+        private bool energyReload = true;
+        public bool EnergyReload
         {
-            get => this.u24;
-            set => this.u24 = value;
+            get => this.energyReload;
+            set => this.energyReload = value;
         }
 
-        private int u25 = 1600;
-        public int U25
+        private bool cancelledByTechNoWeapon = true;
+        public bool CancelledByTechNoWeapon
         {
-            get => this.u25;
-            set => this.u25 = value;
+            get => this.cancelledByTechNoWeapon;
+            set => this.cancelledByTechNoWeapon = value;
         }
 
-        private int u26 = 6400;
-        public int U26
+        private bool groundedOwnerOnly;
+        public bool GroundedOwnerOnly
         {
-            get => this.u26;
-            set => this.u26 = value;
+            get => this.groundedOwnerOnly;
+            set => this.groundedOwnerOnly = value;
         }
 
-        private bool u27;
-        public bool U27
+        private bool staticOwnerOnly;
+        public bool StaticOwnerOnly
         {
-            get => this.u27;
-            set => this.u27 = value;
+            get => this.staticOwnerOnly;
+            set => this.staticOwnerOnly = value;
         }
 
-        private bool u28 = true;
-        public bool U28
+        private bool useableInWater;
+        public bool UseableInWater
         {
-            get => this.u28;
-            set => this.u28 = value;
+            get => this.useableInWater;
+            set => this.useableInWater = value;
+        }
+
+        private int directHitDamage = -1;
+        public int DirectHitDamage
+        {
+            get => this.directHitDamage;
+            set => this.directHitDamage = value;
+        }
+
+        private int explosionDamage;
+        public int ExplosionDamage
+        {
+            get => this.explosionDamage;
+            set => this.explosionDamage = value;
+        }
+
+        private float explosionDamage_Radius;
+        public float ExplosionDamage_Radius
+        {
+            get => this.explosionDamage_Radius;
+            set => this.explosionDamage_Radius = value;
+        }
+
+        private float explosionDamage_RadiusAttenuation;
+        public float ExplosionDamage_RadiusAttenuation
+        {
+            get => this.explosionDamage_RadiusAttenuation;
+            set => this.explosionDamage_RadiusAttenuation = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1236,9 +1452,9 @@ public partial class CGameActionModel : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((ScriptParams)clone).u01 = context.Clone(this.u01)!;
-            ((ScriptParams)clone).u02 = context.Clone(this.u02)!;
-            ((ScriptParams)clone).u03 = context.Clone(this.u03)!;
+            ((ScriptParams)clone).cooldown = context.Clone(this.cooldown)!;
+            ((ScriptParams)clone).energyCost = context.Clone(this.energyCost)!;
+            ((ScriptParams)clone).energyMax = context.Clone(this.energyMax)!;
             ((ScriptParams)clone).u04 = context.Clone(this.u04)!;
             ((ScriptParams)clone).u05 = context.Clone(this.u05)!;
             ((ScriptParams)clone).u06 = context.Clone(this.u06)!;
@@ -1259,11 +1475,15 @@ public partial class CGameActionModel : CMwNod, IClass
             ((ScriptParams)clone).u21 = context.Clone(this.u21)!;
             ((ScriptParams)clone).u22 = context.Clone(this.u22)!;
             ((ScriptParams)clone).u23 = context.Clone(this.u23)!;
-            ((ScriptParams)clone).u24 = context.Clone(this.u24)!;
-            ((ScriptParams)clone).u25 = context.Clone(this.u25)!;
-            ((ScriptParams)clone).u26 = context.Clone(this.u26)!;
-            ((ScriptParams)clone).u27 = context.Clone(this.u27)!;
-            ((ScriptParams)clone).u28 = context.Clone(this.u28)!;
+            ((ScriptParams)clone).energyReload = context.Clone(this.energyReload)!;
+            ((ScriptParams)clone).cancelledByTechNoWeapon = context.Clone(this.cancelledByTechNoWeapon)!;
+            ((ScriptParams)clone).groundedOwnerOnly = context.Clone(this.groundedOwnerOnly)!;
+            ((ScriptParams)clone).staticOwnerOnly = context.Clone(this.staticOwnerOnly)!;
+            ((ScriptParams)clone).useableInWater = context.Clone(this.useableInWater)!;
+            ((ScriptParams)clone).directHitDamage = context.Clone(this.directHitDamage)!;
+            ((ScriptParams)clone).explosionDamage = context.Clone(this.explosionDamage)!;
+            ((ScriptParams)clone).explosionDamage_Radius = context.Clone(this.explosionDamage_Radius)!;
+            ((ScriptParams)clone).explosionDamage_RadiusAttenuation = context.Clone(this.explosionDamage_RadiusAttenuation)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -1272,9 +1492,9 @@ public partial class CGameActionModel : CMwNod, IClass
             {
                 if (v >= 1)
                 {
-                    rw.Int32(ref this.u01);
-                    rw.Int32(ref this.u02);
-                    rw.Int32(ref this.u03);
+                    rw.Int32(ref this.cooldown);
+                    rw.Int32(ref this.energyCost);
+                    rw.Int32(ref this.energyMax);
                     rw.Boolean(ref this.u04);
                     rw.Boolean(ref this.u05);
                     rw.Int32(ref this.u06);
@@ -1302,19 +1522,32 @@ public partial class CGameActionModel : CMwNod, IClass
                 rw.Single(ref this.u23);
             }
 
-            if (v >= 2)
+            if (v >= 3)
             {
-                if (v >= 3)
-                {
-                    rw.Int32(ref this.u24);
-                    rw.Int32(ref this.u25);
-                    rw.Int32(ref this.u26);
-                    rw.Boolean(ref this.u27);
+                rw.Int32(ref this.cooldown);
+                rw.Int32(ref this.energyCost);
+                rw.Int32(ref this.energyMax);
+                rw.Boolean(ref this.u07);
 
-                    if (v >= 4)
-                    {
-                        rw.Boolean(ref this.u28);
-                    }
+                if (v >= 4)
+                {
+                    rw.Boolean(ref this.energyReload);
+                }
+
+                if (v >= 5)
+                {
+                    rw.Boolean(ref this.cancelledByTechNoWeapon);
+                    rw.Boolean(ref this.groundedOwnerOnly);
+                    rw.Boolean(ref this.staticOwnerOnly);
+                    rw.Boolean(ref this.useableInWater);
+                }
+
+                if (v >= 6)
+                {
+                    rw.Int32(ref this.directHitDamage);
+                    rw.Int32(ref this.explosionDamage);
+                    rw.Single(ref this.explosionDamage_Radius);
+                    rw.Single(ref this.explosionDamage_RadiusAttenuation);
                 }
             }
         }
@@ -1332,7 +1565,7 @@ public partial class CGameActionModel : CMwNod, IClass
         }
     }
 
-    public partial class ActionScriptEffect : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    public partial class ActionScriptEffect : IReadable<CGameActionModel>, IWritable<CGameActionModel>, IDeepCloneable
     {
         private int @type;
         public int Type
@@ -1348,13 +1581,6 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.animEffect = value;
         }
 
-        private EffectScriptEffect? effectEffect;
-        public EffectScriptEffect? EffectEffect
-        {
-            get => this.effectEffect;
-            set => this.effectEffect = value;
-        }
-
         private BuffScriptEffect? buffEffect;
         public BuffScriptEffect? BuffEffect
         {
@@ -1362,11 +1588,35 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.buffEffect = value;
         }
 
+        private EffectScriptEffect? effectEffect;
+        public EffectScriptEffect? EffectEffect
+        {
+            get => this.effectEffect;
+            set => this.effectEffect = value;
+        }
+
         private ProjScriptEffect? projEffect;
         public ProjScriptEffect? ProjEffect
         {
             get => this.projEffect;
             set => this.projEffect = value;
+        }
+
+        private ScriptEffect4? effect4;
+        public ScriptEffect4? Effect4
+        {
+            get => this.effect4;
+            set => this.effect4 = value;
+        }
+
+        private int[]? legacyEffectValues;
+        /// <summary>
+        /// discarded
+        /// </summary>
+        public int[]? LegacyEffectValues
+        {
+            get => this.legacyEffectValues;
+            set => this.legacyEffectValues = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1381,33 +1631,149 @@ public partial class CGameActionModel : CMwNod, IClass
         {
             ((ActionScriptEffect)clone).@type = context.Clone(this.@type)!;
             ((ActionScriptEffect)clone).animEffect = context.Clone(this.animEffect)!;
-            ((ActionScriptEffect)clone).effectEffect = context.Clone(this.effectEffect)!;
             ((ActionScriptEffect)clone).buffEffect = context.Clone(this.buffEffect)!;
+            ((ActionScriptEffect)clone).effectEffect = context.Clone(this.effectEffect)!;
             ((ActionScriptEffect)clone).projEffect = context.Clone(this.projEffect)!;
+            ((ActionScriptEffect)clone).effect4 = context.Clone(this.effect4)!;
+            ((ActionScriptEffect)clone).legacyEffectValues = context.CloneArray(this.legacyEffectValues)!;
+        }
+
+        public virtual void Read(GbxReader r, CGameActionModel n, int v = 0)
+        {
+            this.@type = r.ReadInt32();
+
+            if (Type== 0)
+            {
+                this.animEffect = r.ReadReadable<AnimScriptEffect>(version: v);
+            }
+            else if (Type== 3)
+            {
+                this.buffEffect = r.ReadReadable<BuffScriptEffect>(version: v);
+            }
+            else if (v< 32)
+            {
+                if (Type== 5)
+                {
+                    this.effectEffect = r.ReadReadable<EffectScriptEffect>(version: n. ActionScriptEffectVersion);
+                }
+                else
+                {
+                    this.projEffect = r.ReadReadable<ProjScriptEffect>(version: v);
+                }
+            }
+            else if (Type== 1 || Type== 2 || Type== 4 && v< 35)
+            {
+                this.projEffect = r.ReadReadable<ProjScriptEffect>(version: v);
+            }
+            else if (Type== 4)
+            {
+                this.effect4 = r.ReadReadable<ScriptEffect4>(version: n. ActionScriptEffectVersion);
+            }
+            else if (Type== 5)
+            {
+                this.legacyEffectValues = r.ReadArray<int>(9);
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CGameActionModel n, int v = 0)
+        {
+            w.Write(this.@type);
+
+            if (Type== 0)
+            {
+                w.WriteWritable<AnimScriptEffect>(this.animEffect, version: v);
+            }
+            else if (Type== 3)
+            {
+                w.WriteWritable<BuffScriptEffect>(this.buffEffect, version: v);
+            }
+            else if (v< 32)
+            {
+                if (Type== 5)
+                {
+                    w.WriteWritable<EffectScriptEffect>(this.effectEffect, version: n. ActionScriptEffectVersion);
+                }
+                else
+                {
+                    w.WriteWritable<ProjScriptEffect>(this.projEffect, version: v);
+                }
+            }
+            else if (Type== 1 || Type== 2 || Type== 4 && v< 35)
+            {
+                w.WriteWritable<ProjScriptEffect>(this.projEffect, version: v);
+            }
+            else if (Type== 4)
+            {
+                w.WriteWritable<ScriptEffect4>(this.effect4, version: n. ActionScriptEffectVersion);
+            }
+            else if (Type== 5)
+            {
+                w.WriteArray<int>(this.legacyEffectValues, 9);
+            }
+        }
+    }
+
+    public partial class ScriptEffect4 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        /// <summary>
+        /// discarded
+        /// </summary>
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        /// <summary>
+        /// discarded
+        /// </summary>
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ScriptEffect4)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ScriptEffect4)clone).u01 = context.Clone(this.u01)!;
+            ((ScriptEffect4)clone).u02 = context.Clone(this.u02)!;
+            ((ScriptEffect4)clone).u03 = context.Clone(this.u03)!;
+            ((ScriptEffect4)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.@type);
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
 
-            if (Type== 0)
+            if (v <= 2)
             {
-                rw.ReadableWritable<AnimScriptEffect>(ref this.animEffect, version: v);
-            }
-
-            if (Type== 5)
-            {
-                rw.ReadableWritable<EffectScriptEffect>(ref this.effectEffect, version: v);
-            }
-
-            if (Type== 3)
-            {
-                rw.ReadableWritable<BuffScriptEffect>(ref this.buffEffect, version: v);
-            }
-
-            if (Type!= 0 && Type!= 5 && Type!= 3)
-            {
-                rw.ReadableWritable<ProjScriptEffect>(ref this.projEffect, version: v);
+                rw.Int32(ref this.u03);
+                rw.Int32(ref this.u04);
             }
         }
 

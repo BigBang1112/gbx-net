@@ -1,0 +1,7 @@
+CPlugTrainWagonModelCustom 0x09121000
+
+0x000 [MP4.v1, TM2020.v1] // acceleration, speed and mass
+  version
+  float Accel
+  float Speed
+  float Mass

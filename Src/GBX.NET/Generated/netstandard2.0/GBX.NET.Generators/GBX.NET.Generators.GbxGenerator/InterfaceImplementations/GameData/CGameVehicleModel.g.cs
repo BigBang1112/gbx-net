@@ -30,9 +30,15 @@ public partial class CGameVehicleModel : global::GBX.NET.Interfaces.GameData.IGa
         get => PhyModel;
         set => PhyModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? global::GBX.NET.Interfaces.GameData.IGameVehicleModelTM2020.SpawnableObjects
+    {
+        get => SpawnableObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(GetSpawnableObjectsInterfaceReferences, true, "SpawnableObjects");
+        set => SpawnableObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(value, false));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020? global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>.VisModel
     {
         get => VisModel;
         set => VisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    internal NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? GetSpawnableObjectsInterfaceReferences() => SpawnableObjects;
 }

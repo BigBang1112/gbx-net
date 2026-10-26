@@ -53,9 +53,9 @@ public class GbxActionTests
         await GbxAssert.HaveEqualSerializedData(original, clone);
         await Assert.That(clone.Node.Anim).IsNotSameReferenceAs(original.Node.Anim);
 
-        clone.Node.ActionName = "EditedAction";
+        clone.Node.LegacyActionName = "EditedAction";
         clone.Node.Description = "Edited description";
-        if (game == "MP4") clone.Node.Name = "Edited display name";
+        if (game == "MP4") clone.Node.ActionName = "Edited display name";
         var anim = clone.Node.Anim!;
         var edition = game == "MP3" ? anim.EditionClips![0].Edition : anim.Clips![0].Edition!;
         await Assert.That(edition).IsNotNull();
@@ -80,10 +80,10 @@ public class GbxActionTests
         var restored = Gbx.Parse<CGameActionModel>(saved, settings);
         await Assert.That(restored.Body.Exception).IsNull();
         await GbxAssert.AreDeeplyEqual(clone.Node, restored.Node);
-        await Assert.That(restored.Node.ActionName).IsEqualTo("EditedAction");
+        await Assert.That(restored.Node.LegacyActionName).IsEqualTo("EditedAction");
         await Assert.That(restored.Node.Description).IsEqualTo("Edited description");
-        if (game == "MP4") await Assert.That(restored.Node.Name).IsEqualTo("Edited display name");
+        if (game == "MP4") await Assert.That(restored.Node.ActionName).IsEqualTo("Edited display name");
         await Assert.That(restored.Node.Script!.Settings![0].Integer).IsEqualTo(42);
-        await Assert.That(original.Node.ActionName).IsNotEqualTo("EditedAction");
+        await Assert.That(original.Node.LegacyActionName).IsNotEqualTo("EditedAction");
     }
 }

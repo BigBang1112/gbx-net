@@ -12,15 +12,6 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
 
     internal override uint GetId() => Id;
 
-    private int iLayout;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
-    public int ILayout
-    {
-        get => this.iLayout;
-        set => this.iLayout = value;
-    }
-
     private NPlugItemPlacement_SPlacementOption[]? options;
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
@@ -30,11 +21,20 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
         set => this.options = value;
     }
 
+    private int iLayout;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
+    public int ILayout
+    {
+        get => this.iLayout;
+        set => this.iLayout = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((NPlugItemPlacement_SPlacement)clone).iLayout = context.Clone(this.iLayout)!;
         ((NPlugItemPlacement_SPlacement)clone).options = context.CloneArray(this.options)!;
+        ((NPlugItemPlacement_SPlacement)clone).iLayout = context.Clone(this.iLayout)!;
         ((NPlugItemPlacement_SPlacement)clone).Version = context.Clone(this.Version)!;
     }
 
@@ -45,8 +45,17 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.Int32(ref this.iLayout);
-        rw.ArrayReadableWritable<NPlugItemPlacement_SPlacementOption>(ref this.options!, version: Version);
+
+        if (Version == 0)
+        {
+            rw.ArrayReadableWritable<NPlugItemPlacement_SPlacementOption>(ref this.options!, 1, version: Version);
+        }
+
+        if (Version >= 1)
+        {
+            rw.Int32(ref this.iLayout);
+            rw.ArrayReadableWritable<NPlugItemPlacement_SPlacementOption>(ref this.options!, version: Version);
+        }
     }
 
     public virtual void Read(GbxReader r, int v = 0)

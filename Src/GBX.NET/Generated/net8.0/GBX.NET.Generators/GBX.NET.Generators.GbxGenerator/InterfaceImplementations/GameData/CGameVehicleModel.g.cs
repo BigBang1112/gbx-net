@@ -5,4 +5,5 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameVehicleModel : global::GBX.NET.Interfaces.GameData.IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMP4, global::GBX.NET.Interfaces.GameData.IGameVehicleModelTM2020
 {
+    internal NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? GetSpawnableObjectsInterfaceReferences() => SpawnableObjects;
 }

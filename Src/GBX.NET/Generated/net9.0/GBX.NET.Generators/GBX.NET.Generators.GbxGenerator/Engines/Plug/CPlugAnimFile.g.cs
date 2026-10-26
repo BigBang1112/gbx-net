@@ -4989,6 +4989,69 @@ public partial class CPlugAnimFile : CMwNod, IClass
             set => this.flags = value;
         }
 
+        private Int3 u01;
+        public Int3 U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private LegacyAnimBlendEntry[]? blendEntries;
+        public LegacyAnimBlendEntry[]? BlendEntries
+        {
+            get => this.blendEntries;
+            set => this.blendEntries = value;
+        }
+
+        private LegacyAnimClip[]? legacyBlendClips;
+        public LegacyAnimClip[]? LegacyBlendClips
+        {
+            get => this.legacyBlendClips;
+            set => this.legacyBlendClips = value;
+        }
+
+        private LegacyAnimClip[]? clips;
+        public LegacyAnimClip[]? Clips
+        {
+            get => this.clips;
+            set => this.clips = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float[]? xs;
+        public float[]? Xs
+        {
+            get => this.xs;
+            set => this.xs = value;
+        }
+
+        private float[]? ys;
+        public float[]? Ys
+        {
+            get => this.ys;
+            set => this.ys = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (LegacyAnimNode)MemberwiseClone();
@@ -5002,6 +5065,15 @@ public partial class CPlugAnimFile : CMwNod, IClass
             ((LegacyAnimNode)clone).@type = context.Clone(this.@type)!;
             ((LegacyAnimNode)clone).clipName = context.Clone(this.clipName)!;
             ((LegacyAnimNode)clone).flags = context.Clone(this.flags)!;
+            ((LegacyAnimNode)clone).u01 = context.Clone(this.u01)!;
+            ((LegacyAnimNode)clone).blendEntries = context.CloneArray(this.blendEntries)!;
+            ((LegacyAnimNode)clone).legacyBlendClips = context.CloneArray(this.legacyBlendClips)!;
+            ((LegacyAnimNode)clone).clips = context.CloneArray(this.clips)!;
+            ((LegacyAnimNode)clone).u02 = context.Clone(this.u02)!;
+            ((LegacyAnimNode)clone).xs = context.CloneArray(this.xs)!;
+            ((LegacyAnimNode)clone).ys = context.CloneArray(this.ys)!;
+            ((LegacyAnimNode)clone).u03 = context.Clone(this.u03)!;
+            ((LegacyAnimNode)clone).u04 = context.Clone(this.u04)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -5017,9 +5089,228 @@ public partial class CPlugAnimFile : CMwNod, IClass
                     rw.Int32(ref this.flags);
                 }
             }
-            else if (Type!= -1)
+            else if (Type== 1)
+            {
+                rw.Int3(ref this.u01);
+                rw.ArrayReadableWritable<LegacyAnimBlendEntry>(ref this.blendEntries!, version: v);
+
+                if (v >= 5 && v <= 6)
+                {
+                    rw.ArrayReadableWritable<LegacyAnimClip>(ref this.legacyBlendClips!, version: v);
+                }
+            }
+            else if (Type== 2 || Type== 3)
+            {
+                rw.ArrayReadableWritable<LegacyAnimClip>(ref this.clips!, version: v);
+            }
+            else if (Type== 4)
+            {
+                rw.Id(ref this.u02);
+            }
+            else if (Type== 6)
+            {
+                rw.Array<float>(ref this.xs!);
+                rw.Array<float>(ref this.ys!);
+                rw.ArrayReadableWritable<LegacyAnimClip>(ref this.clips!, version: v);
+                rw.String(ref this.u03);
+                rw.String(ref this.u04);
+            }
+            else if (Type!= -1 && Type!= 5)
             {
                 throw new NotSupportedException("Unsupported legacy animation node type");
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyAnimClip : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? clipName;
+        public string? ClipName
+        {
+            get => this.clipName;
+            set => this.clipName = value;
+        }
+
+        private int flags;
+        public int Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyAnimClip)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyAnimClip)clone).clipName = context.Clone(this.clipName)!;
+            ((LegacyAnimClip)clone).flags = context.Clone(this.flags)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.clipName);
+
+            if (v >= 11)
+            {
+                rw.Int32(ref this.flags);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyAnimBlendEntry : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private LegacyAnimClip? clip;
+        public LegacyAnimClip? Clip
+        {
+            get => this.clip;
+            set => this.clip = value;
+        }
+
+        private float u01;
+        public float U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float u03;
+        public float U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private float u04;
+        public float U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private float rootYawOffset;
+        public float RootYawOffset
+        {
+            get => this.rootYawOffset;
+            set => this.rootYawOffset = value;
+        }
+
+        private float rootYawSpeed = 360;
+        public float RootYawSpeed
+        {
+            get => this.rootYawSpeed;
+            set => this.rootYawSpeed = value;
+        }
+
+        private string? u06;
+        public string? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int rootYawMode = 4;
+        public int RootYawMode
+        {
+            get => this.rootYawMode;
+            set => this.rootYawMode = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyAnimBlendEntry)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyAnimBlendEntry)clone).clip = context.Clone(this.clip)!;
+            ((LegacyAnimBlendEntry)clone).u01 = context.Clone(this.u01)!;
+            ((LegacyAnimBlendEntry)clone).u02 = context.Clone(this.u02)!;
+            ((LegacyAnimBlendEntry)clone).u03 = context.Clone(this.u03)!;
+            ((LegacyAnimBlendEntry)clone).u04 = context.Clone(this.u04)!;
+            ((LegacyAnimBlendEntry)clone).u05 = context.Clone(this.u05)!;
+            ((LegacyAnimBlendEntry)clone).rootYawOffset = context.Clone(this.rootYawOffset)!;
+            ((LegacyAnimBlendEntry)clone).rootYawSpeed = context.Clone(this.rootYawSpeed)!;
+            ((LegacyAnimBlendEntry)clone).u06 = context.Clone(this.u06)!;
+            ((LegacyAnimBlendEntry)clone).rootYawMode = context.Clone(this.rootYawMode)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ReadableWritable<LegacyAnimClip>(ref this.clip, version: v);
+            rw.Single(ref this.u01);
+            rw.Single(ref this.u02);
+            rw.Single(ref this.u03);
+            rw.Single(ref this.u04);
+            rw.Int32(ref this.u05);
+
+            if (v <= 9)
+            {
+                rw.Single(ref this.rootYawOffset);
+            }
+
+            if (v <= 8)
+            {
+                rw.Single(ref this.rootYawSpeed);
+            }
+
+            rw.Id(ref this.u06);
+
+            if (v >= 9)
+            {
+                rw.Int32(ref this.rootYawMode);
+                rw.Single(ref this.rootYawSpeed);
+
+                if (v >= 10)
+                {
+                    rw.Single(ref this.rootYawOffset);
+                }
             }
         }
 

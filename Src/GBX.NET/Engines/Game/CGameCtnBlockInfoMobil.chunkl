@@ -80,7 +80,10 @@ CGameCtnBlockInfoMobil 0x03122000
   v20..22
     CPlugRoadChunk[] LegacyPlacementPatches
   v23+
-    CPlugPlacementPatch[] PlacementPatches
+    if rw.Reader != null && Version == 23
+      CPlugRoadChunk[] LegacyPlacementPatches // native reads version 23 patches as road chunks
+    else
+      CPlugPlacementPatch[] PlacementPatches
   v21+
     CMwNod // Additional external mobil asset
 

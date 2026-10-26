@@ -11,47 +11,47 @@ CGameActionModel 0x2E008000
   v24=
     LegacyShieldModel LegacyShield
   v23+
-    string Name
+    string ActionName = "Action"
   v22+
     int InventoryItemClass
-  v21+
-    v23-
-      int[2] LegacyInventoryValues
+  v21..23
+    int[2] LegacyInventoryValues
   v19+
-    int SpriteBlockVersion
+    int SpriteBlockVersion = 1
     SpriteBlock[] SpriteBlocks (version: SpriteBlockVersion)
   v17+
     string Description
   v16+
-    int BeamVersion = 1
+    int BeamVersion = 15
     CPlugCustomBeamModel[] Beams (version: Version >= 18 ? n.BeamVersion : 1) // native ignores BeamVersion before v18
-  v15+
+  v15..32
     bool IsCustom
-  v26+
-    string ActionName = "Action"
-  v25-
-    v14+
-      id ActionName = "Action"
-  v13+
-    int ActionType
+  v33..35
+    bool // legacy non-custom flag, discards the script when set
+  v26..31
+    string LegacyActionName
+  v14..25
+    id LegacyActionName
+  v13..32
+    int ActionType // discarded
   v9+
     id GaugeId = "FXGauge_Gauge_EnergyBall_Normal"
-  v9-
-    v8+
-      ScriptParams Cooldown (version: 2)
+  v8..9
+    ScriptParams Cooldown (version: 2)
   v10+
-    int ScriptParamsVersion = 2
-    int ActionScriptEffectVersion
+    int ScriptParamsVersion = 6
+    int ActionScriptEffectVersion = 3
     ScriptParams Cooldown (version: n.ScriptParamsVersion)
-    ActionScriptEffect[] ActionScriptEffects (version: n.ActionScriptEffectVersion)
+    ActionScriptEffect[] ActionScriptEffects (version: Version)
   v7+
-    int CustomBulletVersion
+    int CustomBulletVersion = 28
   v6+
-    CPlugCustomBulletModel[] Projectiles (version: n.CustomBulletVersion)
+    CPlugCustomBulletModel[] Projectiles (version: Version >= 7 ? n.CustomBulletVersion : 0)
   v5+
-    int SoundBlockVersion = 2
-    int ParticleBlockVersion = 1
-  string LegacyText
+    int SoundBlockVersion = 4
+    int ParticleBlockVersion = 9
+  v34-
+    string LegacyText
   v5-
     CPlugBulletModel[] BulletModels
   CPlugAnimFile Anim
@@ -59,6 +59,10 @@ CGameActionModel 0x2E008000
     CPlugFileTextScript LegacyScript
   v11+
     CPlugScriptWithSettings Script
+  v36+
+    byte<int> Behaviour = 2
+    if Version < 44 && Behaviour > 2
+      Behaviour = Behaviour + 1 // behaviour 3 was inserted in v44
   v11-
     CPlugBitmap LegacyIcon
   v12+
@@ -69,9 +73,9 @@ CGameActionModel 0x2E008000
     if CrossHairRef == null || CrossHairRef == ""
       CPlugFileImg CrossHair
   v1+
-    ParticleBlock[] ParticleBlocks (version: n.ParticleBlockVersion)
-    SoundBlock[] SoundBlocks (version: n.SoundBlockVersion)
-  v20+
+    ParticleBlock[] ParticleBlocks (version: Version >= 5 ? n.ParticleBlockVersion : 1)
+    SoundBlock[] SoundBlocks (version: Version >= 5 ? n.SoundBlockVersion : 2)
+  v20..32
     bool LegacyFlag
   v28=
     bool IsLockModeActive
@@ -80,8 +84,34 @@ CGameActionModel 0x2E008000
   v27=
     bool IsLockModeActive
     int[2] LegacyLockModeValues
-  v29+
+  v29..33
     bool IsLockModeActive
+  v37+
+    CGameItemModel[] Items (direct)
+  v38+
+    string IconFocusedValidateRef
+    if IconFocusedValidateRef == null || IconFocusedValidateRef == ""
+      CPlugFileImg Icon_Focused_Validate
+    string IconFocusedCancelRef
+    if IconFocusedCancelRef == null || IconFocusedCancelRef == ""
+      CPlugFileImg Icon_Focused_Cancel
+  v39+
+    CPlugBulletModel CompatBullet_Nadeo
+  v40+
+    bool UseVehicleLockedEnt
+  v41+
+    int
+    int = 1
+    int2
+    byte
+    if U03 != 0
+      int
+  v42+
+    int
+    int2
+  v43+
+    int
+    int ExternalAction
 
 archive LegacyShieldModel
   string ShapeRef
@@ -116,49 +146,72 @@ archive SpriteKey
 archive ScriptParams
   v2-
     v1+
-      int U01 = 300
-      int U02 = 1600
-      int U03 = 6400
+      int Cooldown = 300
+      int EnergyCost = 1600
+      int EnergyMax = 6400
       bool U04
       bool U05
       int U06
       bool U07
   v2=
-    int
-    int
-    bool
-    float
-    float
-    float
-    float
-    float
-    float
-    bool
-    float
-    float
-    float
-    float
-    float
-    float
-  v2+
-    v3+
-      int U24 = 300
-      int U25 = 1600
-      int U26 = 6400
-      bool U27
-      v4+
-        bool U28 = true
+    int U08
+    int U09
+    bool U10
+    float U11
+    float U12
+    float U13
+    float U14
+    float U15
+    float U16
+    bool U17
+    float U18
+    float U19
+    float U20
+    float U21
+    float U22
+    float U23
+  v3+
+    int Cooldown = 300
+    int EnergyCost = 1600
+    int EnergyMax = 6400
+    bool U07
+    v4+
+      bool EnergyReload = true
+    v5+
+      bool CancelledByTechNoWeapon = true
+      bool GroundedOwnerOnly
+      bool StaticOwnerOnly
+      bool UseableInWater
+    v6+
+      int DirectHitDamage = -1
+      int ExplosionDamage
+      float ExplosionDamage_Radius
+      float ExplosionDamage_RadiusAttenuation
 
-archive ActionScriptEffect
+archive ActionScriptEffect (contextual) // version is the action chunk version
   int Type
   if Type == 0
     AnimScriptEffect AnimEffect
-  if Type == 5
-    EffectScriptEffect EffectEffect
-  if Type == 3
+  else if Type == 3
     BuffScriptEffect BuffEffect
-  if Type != 0 && Type != 5 && Type != 3
+  else if v < 32
+    if Type == 5
+      EffectScriptEffect EffectEffect (version: n.ActionScriptEffectVersion)
+    else
+      ProjScriptEffect ProjEffect
+  else if Type == 1 || Type == 2 || Type == 4 && v < 35
     ProjScriptEffect ProjEffect
+  else if Type == 4
+    ScriptEffect4 Effect4 (version: n.ActionScriptEffectVersion)
+  else if Type == 5
+    int[9] LegacyEffectValues // discarded
+
+archive ScriptEffect4
+  int
+  int
+  v2-
+    int // discarded
+    int // discarded
 
 archive AnimScriptEffect
   int

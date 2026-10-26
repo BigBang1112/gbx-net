@@ -40,6 +40,9 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     }
 
     private CScriptSetting[]? settings;
+    /// <summary>
+    /// 0 for untyped settings, otherwise the script type version + 1
+    /// </summary>
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09083000>]
     public CScriptSetting[]? Settings
@@ -99,14 +102,9 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
             if (n.SettingsVersion>= 1)
             {
                 rw.Byte(ref n.settingTypeVersion);
-
-                if (settingCount> 0)
-                {
-                    throw new NotSupportedException();
-                }
             }
 
-            rw.ArrayReadableWritable<CScriptSetting>(ref n.settings!, settingCount);
+            rw.ArrayReadableWritable<CScriptSetting>(ref n.settings!, settingCount, version: n.SettingsVersion>= 1 ? n.SettingTypeVersion+ 1 : 0);
         }
     }
 

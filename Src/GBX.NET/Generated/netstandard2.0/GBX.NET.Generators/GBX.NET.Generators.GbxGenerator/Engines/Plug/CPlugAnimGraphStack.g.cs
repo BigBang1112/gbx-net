@@ -12,12 +12,112 @@ public partial class CPlugAnimGraphStack : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private string? name;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09138000>]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private NodeRefList<CPlugAnimGraph>? graphs;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk09138000>]
+    public NodeRefList<CPlugAnimGraph>? Graphs
+    {
+        get => graphs;
+        set => graphs = value;
+    }
+
+    private CPlugAnimFile.LegacyInputActionDelay[]? inputActionDelays;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09138000>(12)]
+    public CPlugAnimFile.LegacyInputActionDelay[]? InputActionDelays
+    {
+        get => this.inputActionDelays;
+        set => this.inputActionDelays = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAnimGraphStack owner;
+        internal NodeRefView(CPlugAnimGraphStack owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugAnimGraph>>? Graphs => owner.graphs?.References;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (graphs is not null)
+        {
+            for (var i = 0; i < graphs.Count; i++) yield return new("Graphs" + "[" + i + "]", graphs.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAnimGraphStack)clone).name = context.Clone(this.name)!;
+        ((CPlugAnimGraphStack)clone).graphs = context.Clone(this.graphs)!;
+        ((CPlugAnimGraphStack)clone).inputActionDelays = context.CloneArray(this.inputActionDelays)!;
     }
 
     public CPlugAnimGraphStack()
     {
     }
+
+    /// <summary>
+    /// CPlugAnimGraphStack 0x000 chunk (graphs and input action delays)
+    /// </summary>
+    [Chunk(0x09138000, "graphs and input action delays")]
+    [ChunkGameVersion(GameVersion.TM2020, 13)]
+    public partial class Chunk09138000 : Chunk<CPlugAnimGraphStack>, IVersionable
+    {
+        public override uint Id => 0x09138000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09138000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09138000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 13;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09138000)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugAnimGraphStack n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 13)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Id(ref n.name);
+            n.graphs = rw.ListNodeRef<CPlugAnimGraph>(n.graphs);
+
+            if (Version >= 12)
+            {
+                rw.ArrayReadableWritable<CPlugAnimFile.LegacyInputActionDelay>(ref n.inputActionDelays!, version: Version);
+            }
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x09138000 => new Chunk09138000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

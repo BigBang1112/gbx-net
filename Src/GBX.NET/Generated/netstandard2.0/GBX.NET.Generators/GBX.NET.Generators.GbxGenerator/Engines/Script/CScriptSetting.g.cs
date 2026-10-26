@@ -22,8 +22,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private int @type;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
     public int Type
     {
         get => this.@type;
@@ -31,8 +31,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private bool boolean;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
     public bool Boolean
     {
         get => this.boolean;
@@ -40,8 +40,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private int integer;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
     public int Integer
     {
         get => this.integer;
@@ -49,8 +49,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private float real;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
     public float Real
     {
         get => this.real;
@@ -58,12 +58,21 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     }
 
     private string? text;
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
+    /// <remarks>Applied with: archive v0-0</remarks>
+    [AppliedWithArchive(0, 0)]
     public string? Text
     {
         get => this.text;
         set => this.text = value;
+    }
+
+    private ScriptSettingValue? typedValue;
+    /// <remarks>Applied with: archive v1+</remarks>
+    [AppliedWithArchive(1)]
+    public ScriptSettingValue? TypedValue
+    {
+        get => this.typedValue;
+        set => this.typedValue = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -75,6 +84,7 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
         ((CScriptSetting)clone).integer = context.Clone(this.integer)!;
         ((CScriptSetting)clone).real = context.Clone(this.real)!;
         ((CScriptSetting)clone).text = context.Clone(this.text)!;
+        ((CScriptSetting)clone).typedValue = context.Clone(this.typedValue)!;
     }
 
     public CScriptSetting()
@@ -84,31 +94,39 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.String(ref this.name);
-        rw.Int32(ref this.@type);
 
-        if (Type== 0)
+        if (v== 0)
         {
-            rw.Boolean(ref this.boolean);
+            rw.Int32(ref this.@type);
+
+            if (Type== 0)
+            {
+                rw.Boolean(ref this.boolean);
+            }
+
+            if (Type== 1)
+            {
+                rw.Int32(ref this.integer);
+            }
+
+            if (Type== 2)
+            {
+                rw.Single(ref this.real);
+            }
+
+            if (Type== 3)
+            {
+                rw.String(ref this.text);
+            }
+
+            if (Type< 0 || Type> 3)
+            {
+                throw new NotSupportedException();
+            }
         }
-
-        if (Type== 1)
+        else
         {
-            rw.Int32(ref this.integer);
-        }
-
-        if (Type== 2)
-        {
-            rw.Single(ref this.real);
-        }
-
-        if (Type== 3)
-        {
-            rw.String(ref this.text);
-        }
-
-        if (Type< 0 || Type> 3)
-        {
-            throw new NotSupportedException();
+            rw.ReadableWritable<ScriptSettingValue>(ref this.typedValue, version: v- 1);
         }
     }
 

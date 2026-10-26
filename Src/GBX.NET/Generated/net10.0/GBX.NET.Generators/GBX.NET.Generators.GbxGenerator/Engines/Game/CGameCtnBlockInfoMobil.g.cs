@@ -701,7 +701,14 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 23)
             {
-                n.placementPatches = rw.ListNodeRef<CPlugPlacementPatch>(n.placementPatches);
+                if (rw.Reader != null && Version== 23)
+                {
+                    n.LegacyPlacementPatches = rw.ListNodeRef<CPlugRoadChunk>(n.LegacyPlacementPatches);
+                }
+                else
+                {
+                    n.placementPatches = rw.ListNodeRef<CPlugPlacementPatch>(n.placementPatches);
+                }
             }
 
             if (Version >= 21)

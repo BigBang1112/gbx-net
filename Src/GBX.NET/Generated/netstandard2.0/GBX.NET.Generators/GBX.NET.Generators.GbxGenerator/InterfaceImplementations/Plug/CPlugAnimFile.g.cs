@@ -5,4 +5,16 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugAnimFile : global::GBX.NET.Interfaces.Plug.IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020>? global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020.GraphStacks
+    {
+        get => GraphStacks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020>(GetGraphStacksInterfaceReferences, true, "GraphStacks");
+        set => GraphStacks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020>? global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020.PoseGrids
+    {
+        get => PoseGrids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020>(GetPoseGridsInterfaceReferences, true, "PoseGrids");
+        set => PoseGrids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020>(value, false));
+    }
+    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GetGraphStacksInterfaceReferences() => GraphStacks;
+    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? GetPoseGridsInterfaceReferences() => PoseGrids;
 }
