@@ -77,7 +77,7 @@ Append a resolved path, stored path, hash, filename, or quoted wildcard pattern 
 
 Wildcard matching supports `*` (any number of characters, including folder separators) and `?` (one character). Patterns can match full paths or paths relative to any parent folder. In `eval` on an archive, `Files` still contains the original stored keys.
 
-`pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed.
+`pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed. Newer title packs list entries without stored data. These entries are skipped and counted separately in the summary.
 
 Pass a folder to `pak verify` to verify every PAK and ZIP archive directly inside it, such as a game's `Packs` folder. Subfolders are not searched. Archives are detected from their contents. Failing entries are prefixed with the archive name, and a summary line follows each archive. Archives that cannot be opened, for example without a matching key, are reported and the run continues. The last line totals all archives.
 

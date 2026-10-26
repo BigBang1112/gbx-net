@@ -206,6 +206,7 @@ internal static class PakCommand
         var parsed = 0;
         var failed = 0;
         var skipped = 0;
+        var unstored = 0;
 
         foreach (var entry in entries)
         {
@@ -245,6 +246,7 @@ internal static class PakCommand
                     parsed += counts.Parsed;
                     failed += counts.Failed;
                     skipped += counts.Skipped;
+                    unstored += counts.Unstored;
                     continue;
                 }
 
@@ -258,7 +260,7 @@ internal static class PakCommand
             }
         }
 
-        return new(parsed, failed, skipped);
+        return new(parsed, failed, skipped, unstored);
     }
 
     private static async Task<bool> HasGbxSignatureAsync(ZipArchiveEntry file)
@@ -380,10 +382,18 @@ internal static class PakCommand
         var parsed = 0;
         var failed = 0;
         var skipped = 0;
+        var unstored = 0;
 
         foreach (var entry in entries)
         {
             var file = entry.File;
+
+            // Newer title packs list entries without stored data.
+            if (file.Offset == uint.MaxValue && file.UncompressedSize == 0)
+            {
+                unstored++;
+                continue;
+            }
 
             try
             {
@@ -408,7 +418,7 @@ internal static class PakCommand
             }
         }
 
-        return new(parsed, failed, skipped);
+        return new(parsed, failed, skipped, unstored);
     }
 
     private static async Task<bool> IsGbxAsync(Pak pak, PakFile file, string path)

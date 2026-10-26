@@ -5,7 +5,12 @@ public sealed class PakFile
     public string Name { get; }
     public string FolderPath { get; }
     public uint ClassId { get; }
+    
+    /// <summary>
+    /// Offset of the file within the Pak archive. This can be <see cref="uint.MaxValue"/> if the file data is not available anywhere.
+    /// </summary>
     public uint Offset { get; }
+
     public int UncompressedSize { get; }
     public int CompressedSize { get; }
 
