@@ -77,7 +77,12 @@ internal partial class LZ4Stream : Stream
     private IntPtr dictionary;
     private IntPtr lz4_stream;
     private IntPtr ringBuffer;
-    private const int RING_BUFFER_SIZE = 73728;
+    private int ringBufferOffset;
+
+    // Native limits of the LZ4 block reader
+    private const int RING_BUFFER_SIZE = 0x20000;
+    private const int MAX_COMPRESSED_BLOCK_SIZE = 0x8090;
+    private const int MAX_BLOCK_SIZE = 0x8000;
 
     private byte[] _buffer = [];
     private int _bufferIndex = 0;
@@ -169,7 +174,7 @@ internal partial class LZ4Stream : Stream
                 uint numBytes2 = (uint)innerStream.ReadByte();
                 numBytes |= numBytes2 << 8;
                 // Console.WriteLine($"    numBytes={numBytes}");
-                if (numBytes > 4128)
+                if (numBytes > MAX_COMPRESSED_BLOCK_SIZE)
                     throw new LZ4Exception("Wrong number of bytes");
 
                 var srcBuf = new byte[numBytes];
@@ -177,11 +182,11 @@ internal partial class LZ4Stream : Stream
                 if (inputSize != numBytes)
                     throw new LZ4Exception("Wrong number of bytes read from inner stream");
 
-                int offsetInRingBuffer = position % RING_BUFFER_SIZE;
+                int offsetInRingBuffer = ringBufferOffset;
                 int newSize;
                 fixed (byte* src = srcBuf)
                 {
-                    newSize = LZ4_decompress_safe_continue(lz4_stream, src, (byte*)(ringBuffer + offsetInRingBuffer), srcBuf.Length, 4096);
+                    newSize = LZ4_decompress_safe_continue(lz4_stream, src, (byte*)(ringBuffer + offsetInRingBuffer), srcBuf.Length, MAX_BLOCK_SIZE);
                 }
                 // Console.WriteLine($"    newSize={newSize}");
                 if (newSize < 0)
@@ -191,6 +196,12 @@ internal partial class LZ4Stream : Stream
                 _bufferIndex = 0;
                 _buffer = new byte[newSize];
                 Marshal.Copy(ringBuffer + offsetInRingBuffer, _buffer, 0, newSize);
+
+                ringBufferOffset += newSize;
+                if (ringBufferOffset + MAX_BLOCK_SIZE > RING_BUFFER_SIZE - 1)
+                {
+                    ringBufferOffset = 0;
+                }
             }
         }
 
