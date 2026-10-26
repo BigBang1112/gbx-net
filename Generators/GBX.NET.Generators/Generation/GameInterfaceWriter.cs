@@ -29,7 +29,7 @@ internal static class GameInterfaceWriter
                 var type = model.Project(member, game);
                 var hidesInherited = game.Length > 0 && node.IsCommon(member.Name) ||
                     GameNodeModel.ExistingContract(model.Plan, node, game, member.Name) is not null ||
-                    parent?.MembersFor(game).Any(m => m.Name == member.Name) == true;
+                    parent?.MemberFor(game, member.Name) is not null;
                 var declaration = $"{(hidesInherited ? "new " : "")}{type} {SyntaxOverlap.Escape(member.Name)}";
                 if (model.DefaultImplementations && type != member.Type)
                 {

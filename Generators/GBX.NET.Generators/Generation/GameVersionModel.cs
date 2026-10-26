@@ -76,7 +76,7 @@ internal sealed class GameVersionModel(GenerationPlan plan, Dictionary<string, G
     {
         if (Parent(node) is not { } parent ||
             game.Length > 0 && (!parent.Games.Contains(game) || node.IsCommon(member.Name))) return false;
-        var inherited = parent.MembersFor(game).FirstOrDefault(m => m.Name == member.Name);
+        var inherited = parent.MemberFor(game, member.Name);
         if (GameNodeModel.ExistingContract(Plan, parent, game, member.Name) is { } existing &&
             (SyntaxOverlap.Normalize(GameNodeModel.Qualify(existing.Type.ToString(), member.Owner, Plan)) !=
                 SyntaxOverlap.Normalize(Project(member, game)) ||

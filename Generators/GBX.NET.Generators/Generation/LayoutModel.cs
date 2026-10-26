@@ -24,6 +24,10 @@ internal sealed class LayoutModel
     public ScopeModel Scope { get; }
     public Dictionary<string, ScopeModel> Archives { get; } = new(StringComparer.Ordinal);
 
+    // Layouts that inherit from this one, directly or indirectly. The generation
+    // plan fills it once every layout is known.
+    public List<LayoutModel> Descendants { get; } = [];
+
     public LayoutModel(ParsedChunkLFile file, ImmutableDictionary<string, ExistingType> existing)
     {
         File = file;

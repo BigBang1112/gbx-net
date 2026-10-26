@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace GBX.NET.Generators.Generation;
 
 internal sealed class GameNodeModel(LayoutModel layout)
@@ -17,13 +19,23 @@ internal sealed class GameNodeModel(LayoutModel layout)
     public string? MetadataError { get; private set; }
 
     public string Interface(string game = "") => "global::" + InterfaceNamespace + "." + InterfaceName + game;
-    public IEnumerable<GameMember> Common => Members.Where(m => Games.All(m.Games.Contains));
+
+    // Create finishes the games and members before any writer reads the common view.
+    private GameMember[]? common;
+    private HashSet<string>? commonNames;
+    private Dictionary<string, GameMember>? membersByName;
+    public IReadOnlyList<GameMember> Common => common ??= Members.Where(m => Games.All(m.Games.Contains)).ToArray();
 
     // An empty game denotes the common view shared by every game.
     public IEnumerable<string> Views => new[] { "" }.Concat(Games);
     public IEnumerable<GameMember> MembersFor(string game) => game.Length == 0 ? Common : Members.Where(m => m.Games.Contains(game));
+
+    // Member names are unique within a node.
+    public GameMember? MemberFor(string game, string name)
+        => (membersByName ??= Members.ToDictionary(static m => m.Name, StringComparer.Ordinal)).TryGetValue(name, out var member) &&
+            (game.Length == 0 ? IsCommon(name) : member.Games.Contains(game)) ? member : null;
     public IEnumerable<GameMethod> MethodsFor(string game) => Methods.Where(m => game.Length == 0 ? Games.All(m.Games.Contains) : m.Games.Contains(game));
-    public bool IsCommon(string member) => Common.Any(m => m.Name == member);
+    public bool IsCommon(string member) => (commonNames ??= new HashSet<string>(Common.Select(static m => m.Name), StringComparer.Ordinal)).Contains(member);
     public IEnumerable<string> BuildableGames => Games.Where(g => !RecipeErrors.ContainsKey(g));
     public bool HasBuilder => !Layout.IsAbstract && BuildableGames.Any();
 
@@ -33,16 +45,21 @@ internal sealed class GameNodeModel(LayoutModel layout)
             .Select(static g => g.Key).ToArray();
         var nodes = plan.Layouts.Values.ToDictionary(static l => l.Name, static l => new GameNodeModel(l), StringComparer.Ordinal);
 
+        // Derived nodes share their inherited chunks, along with the versions each chunk caches.
+        var gameChunks = new Dictionary<ChunkModel, GameChunk>();
+
         foreach (var node in nodes.Values)
         {
+            var declared = new HashSet<(uint Id, bool IsHeader)>();
             foreach (var owner in Hierarchy(node.Layout, plan.Layouts))
             {
                 foreach (var chunk in owner.Chunks)
                 {
                     // Match virtual chunk dispatch: a derived declaration with the
                     // same ID replaces the inherited implementation.
-                    if (!node.Chunks.Any(c => c.Chunk.Id == chunk.Id && c.Chunk.IsHeader == chunk.IsHeader))
-                        node.Chunks.Add(new GameChunk(owner, chunk));
+                    if (!declared.Add((chunk.Id, chunk.IsHeader))) continue;
+                    if (!gameChunks.TryGetValue(chunk, out var gameChunk)) gameChunks.Add(chunk, gameChunk = new GameChunk(owner, chunk));
+                    node.Chunks.Add(gameChunk);
                 }
             }
 
@@ -112,6 +129,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
             node.Games.AddRange(ordered);
         }
 
+        var versionedMethods = new Dictionary<LayoutModel, List<(MethodDeclarationSyntax, AttributeArgumentListSyntax)>>();
         foreach (var node in nodes.Values)
         {
             if (node.Games.Count == 0) continue;
@@ -121,8 +139,9 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 foreach (var field in owner.Scope.Fields.Where(static f => !f.IsUnknown && !f.IsLocal && !f.IsVersion))
                 {
                     if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited"))) continue;
-                    if (owner.Existing?.Properties.Any(p => p.Identifier.ValueText == field.Name &&
-                        p.ExplicitInterfaceSpecifier is null && !p.Modifiers.Any(SyntaxKind.PublicKeyword)) == true) continue;
+                    if (owner.Existing?.MembersByName.TryGetValue(field.Name, out var declarations) == true &&
+                        declarations.OfType<PropertyDeclarationSyntax>().Any(static p => p.ExplicitInterfaceSpecifier is null &&
+                            !p.Modifiers.Any(SyntaxKind.PublicKeyword))) continue;
                     var reference = ReferenceModel.IsNode(field.StorageDeclaration, owner, plan.Layouts, plan.Existing);
                     var type = reference
                         ? (field.StorageDeclaration.Type.ArrayDimensions == 0 ? ReferenceModel.Element(field) + "?" : ReferenceModel.CollectionType(field) + "?")
@@ -155,14 +174,16 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 }
             }
 
+            var writers = node.Games.ToDictionary(static game => game, game => node.Recipes.TryGetValue(game, out var recipe) ? recipe :
+                node.Chunks.Where(c => c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)).ToList(), StringComparer.Ordinal);
             foreach (var member in properties.Values.OrderBy(static m => m.Name, StringComparer.Ordinal))
             {
+                HashSet<string>? names = null;
                 foreach (var game in node.Games)
                 {
                     var contract = ExistingContract(plan, node, game, member.Name);
                     if (contract is not null) member.Games.Add(game);
-                    else if ((node.Recipes.TryGetValue(game, out var recipe) ? recipe : node.Chunks.Where(c =>
-                        c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game))).Any(c => Available(c, member, game)))
+                    else if (writers[game].Any(c => c.Owner == member.Owner && Available(c, member, names ??= AppliedNames(member), game)))
                         member.Games.Add(game);
                 }
                 if (member.Games.Count > 0) node.Members.Add(member);
@@ -170,13 +191,12 @@ internal sealed class GameNodeModel(LayoutModel layout)
 
             foreach (var owner in Hierarchy(node.Layout, plan.Layouts))
             {
-                foreach (var method in owner.Existing?.Methods.Where(static m => m.Modifiers.Any(SyntaxKind.PublicKeyword) &&
-                    !m.Modifiers.Any(SyntaxKind.StaticKeyword) && m.ExplicitInterfaceSpecifier is null) ?? [])
+                if (!versionedMethods.TryGetValue(owner, out var candidates))
+                    versionedMethods.Add(owner, candidates = VersionedMethods(owner));
+
+                foreach (var (method, attributeArguments) in candidates)
                 {
-                    var attribute = method.AttributeLists.SelectMany(static l => l.Attributes)
-                        .FirstOrDefault(static a => a.Name.ToString().Contains("MethodGameVersion"));
-                    if (attribute?.ArgumentList is null) continue;
-                    if (method.TypeParameterList is not null || attribute.ArgumentList.Arguments.Count != 1)
+                    if (method.TypeParameterList is not null || attributeArguments.Arguments.Count != 1)
                     {
                         node.MemberErrors.Add(method.Identifier.ValueText + ": generic or version-scoped method requires an explicit interface contract");
                         continue;
@@ -213,9 +233,23 @@ internal sealed class GameNodeModel(LayoutModel layout)
         return nodes;
     }
 
-    private static bool Available(GameChunk candidate, GameMember member, string game)
+    // Public instance methods with a game version attribute and an argument list.
+    private static List<(MethodDeclarationSyntax, AttributeArgumentListSyntax)> VersionedMethods(LayoutModel owner)
     {
-        if (candidate.Owner != member.Owner) return false;
+        var result = new List<(MethodDeclarationSyntax, AttributeArgumentListSyntax)>();
+        foreach (var method in owner.Existing?.Methods.Where(static m => m.Modifiers.Any(SyntaxKind.PublicKeyword) &&
+            !m.Modifiers.Any(SyntaxKind.StaticKeyword) && m.ExplicitInterfaceSpecifier is null) ?? [])
+        {
+            var attribute = method.AttributeLists.SelectMany(static l => l.Attributes)
+                .FirstOrDefault(static a => a.Name.ToString().Contains("MethodGameVersion"));
+            if (attribute?.ArgumentList is { } arguments) result.Add((method, arguments));
+        }
+        return result;
+    }
+
+    // A custom property is applied wherever a field its getter reads is applied.
+    private static HashSet<string> AppliedNames(GameMember member)
+    {
         var names = new HashSet<string>(StringComparer.Ordinal) { member.Name };
         if (member.Owner.FindProperty(member.Name) is { } property)
         {
@@ -225,7 +259,11 @@ internal sealed class GameNodeModel(LayoutModel layout)
                     .DescendantNodesAndSelf().OfType<IdentifierNameSyntax>()) names.Add(identifier.Identifier.ValueText);
             }
         }
+        return names;
+    }
 
+    private static bool Available(GameChunk candidate, GameMember member, HashSet<string> names, string game)
+    {
         var version = candidate.Version(game);
         if (AppliedWithChunkRanges.Get(candidate.Chunk, names, candidate.Owner.Chunks, candidate.Owner.Id)
             .Any(r => r.Start <= version && r.End >= version)) return true;
@@ -287,8 +325,17 @@ internal sealed class GameNodeModel(LayoutModel layout)
         }
     }
 
+    // Every derived node qualifies its inherited members again, so remember the result per owner.
+    private static readonly ConditionalWeakTable<LayoutModel, Dictionary<string, string>> qualifiedTypes = new();
+
     public static string Qualify(string type, LayoutModel owner, GenerationPlan plan)
-        => new TypeQualifier(owner, plan).Visit(SyntaxFactory.ParseTypeName(type))!.ToString();
+    {
+        // A driver runs its steps one at a time, and each layout belongs to a single plan.
+        var qualified = qualifiedTypes.GetValue(owner, static _ => new Dictionary<string, string>(StringComparer.Ordinal));
+        if (!qualified.TryGetValue(type, out var result))
+            qualified.Add(type, result = new TypeQualifier(owner, plan).Visit(SyntaxFactory.ParseTypeName(type))!.ToString());
+        return result;
+    }
 
     private sealed class TypeQualifier(LayoutModel owner, GenerationPlan plan) : CSharpSyntaxRewriter
     {

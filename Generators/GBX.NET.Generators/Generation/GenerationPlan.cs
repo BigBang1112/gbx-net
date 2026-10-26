@@ -67,7 +67,16 @@ internal sealed class GenerationPlan
                 diagnostics.Add(EngineWriter.Diagnostic(file, exception));
             }
         }
-        
+
+        foreach (var layout in layouts.Values)
+        {
+            var visited = new HashSet<string>(StringComparer.Ordinal) { layout.Name };
+            for (var current = layout; current.BaseName is not null && layouts.TryGetValue(current.BaseName, out current) && visited.Add(current.Name);)
+            {
+                current.Descendants.Add(layout);
+            }
+        }
+
         return new GenerationPlan(inputs.Existing, layouts.ToImmutable(),
             diagnostics.Count == diagnostics.Capacity ? diagnostics.MoveToImmutable() : diagnostics.ToImmutable());
     }

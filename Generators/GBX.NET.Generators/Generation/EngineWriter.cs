@@ -630,7 +630,7 @@ internal static class EngineWriter
 
         var applications = Applications().ToArray();
         var archiveRanges = layout.SelfArchive is null ? []
-            : AppliedWithChunkRanges.GetArchive(layout.SelfArchive.Body, layout.Scope, fields);
+            : AppliedWithChunkRanges.GetArchive(layout.Scope, fields);
         if (applications.Length == 0 && archiveRanges.Count == 0) return;
 
         var groups = applications.GroupBy(static x => x.Chunk.IsHeader).Select(group =>
@@ -660,7 +660,7 @@ internal static class EngineWriter
 
         IEnumerable<(LayoutModel Owner, ChunkModel Chunk, AppliedWithChunkRanges.Range Range)> Applications()
         {
-            var descendants = layouts.Values.Where(owner => owner != layout && fields.Any(name => InheritsField(owner, name)))
+            var descendants = layout.Descendants.Where(owner => fields.Any(name => InheritsField(owner, name)))
                 .OrderBy(static x => x.File.TypeKey, StringComparer.Ordinal);
             foreach (var owner in new[] { layout }.Concat(descendants))
             {

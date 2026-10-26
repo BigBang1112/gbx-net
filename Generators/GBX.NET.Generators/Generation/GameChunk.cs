@@ -6,7 +6,15 @@ internal sealed class GameChunk(LayoutModel owner, ChunkModel chunk)
     public ChunkModel Chunk { get; } = chunk;
     public bool HasVersion => Payloads().Any(static c => c.Scope.HasVersion);
 
+    private readonly Dictionary<string, int> versions = new(StringComparer.Ordinal);
+
     public int Version(string game)
+    {
+        if (!versions.TryGetValue(game, out var version)) versions.Add(game, version = FindVersion(game));
+        return version;
+    }
+
+    private int FindVersion(string game)
     {
         var qualifier = Chunk.Declaration.VersionQualifiers.FirstOrDefault(q => q.Label == game);
         if (qualifier?.MaxVersion is { } version) return version;

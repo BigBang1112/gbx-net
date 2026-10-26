@@ -1,5 +1,6 @@
 using ChunkL;
 using ChunkL.Syntax;
+using System.Runtime.CompilerServices;
 
 namespace GBX.NET.Generators.Generation;
 
@@ -13,35 +14,54 @@ internal static class AppliedWithChunkRanges
 
     private static readonly Range All = new(0, int.MaxValue);
 
-    public static IReadOnlyList<Range> Get(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId)
-    {
-        var result = new List<Range>();
-        Collect(chunk, field, chunks, classId, [All], result, new HashSet<uint>());
-        return Normalize(result);
-    }
+    // One walk collects the ranges of every field, so each chunk or archive body is
+    // walked once per generation run instead of once per property. The models live
+    // for a single run, and the weak tables release their entries afterwards.
+    private static readonly ConditionalWeakTable<ChunkModel, Dictionary<string, List<Range>>> chunkRanges = new();
+    private static readonly ConditionalWeakTable<ScopeModel, Dictionary<string, List<Range>>> archiveRanges = new();
 
     public static IReadOnlyList<Range> Get(ChunkModel chunk, IEnumerable<string> fields, IReadOnlyList<ChunkModel> chunks, uint classId)
-        => Normalize(fields.SelectMany(field => Get(chunk, field, chunks, classId)));
+        => Lookup(chunkRanges.GetValue(chunk, _ => Collect(chunk, chunks, classId)), fields);
 
     /// <summary>
     /// Gets the class archive versions that apply the fields. Archives with their own version report that version,
     /// other archives report the caller's version argument.
     /// </summary>
-    public static IReadOnlyList<Range> GetArchive(IEnumerable<IBodyStatement> body, ScopeModel scope, IEnumerable<string> fields)
-    {
-        var result = new List<Range>();
-        foreach (var field in fields)
+    public static IReadOnlyList<Range> GetArchive(ScopeModel scope, IEnumerable<string> fields)
+        => Lookup(archiveRanges.GetValue(scope, static scope =>
         {
-            Walk(body, [All], field, scope, scope.HasVersion ? StoredVersionNames : ArgumentVersionNames, archive: true, onBase: null, result);
-        }
-        return Normalize(result);
-    }
+            var result = new Dictionary<string, List<Range>>(StringComparer.Ordinal);
+            Walk(scope.Body, [All], scope, scope.HasVersion ? StoredVersionNames : ArgumentVersionNames, archive: true, onBase: null, result);
+            return Normalize(result);
+        }), fields);
 
     private static readonly string[] StoredVersionNames = ["Version"];
     private static readonly string[] ArgumentVersionNames = ["v"];
 
-    private static void Collect(ChunkModel chunk, string field, IReadOnlyList<ChunkModel> chunks, uint classId,
-        IReadOnlyList<Range> versions, List<Range> result, HashSet<uint> visited)
+    private static IReadOnlyList<Range> Lookup(Dictionary<string, List<Range>> ranges, IEnumerable<string> fields)
+    {
+        List<Range>? single = null;
+        List<Range>? combined = null;
+        foreach (var field in fields)
+        {
+            if (!ranges.TryGetValue(field, out var found)) continue;
+            if (single is null) single = found;
+            else (combined ??= [.. single]).AddRange(found);
+        }
+
+        // Each stored list is already normalized, so a single field needs no copy.
+        return combined is not null ? Normalize(combined) : single ?? (IReadOnlyList<Range>)[];
+    }
+
+    private static Dictionary<string, List<Range>> Collect(ChunkModel chunk, IReadOnlyList<ChunkModel> chunks, uint classId)
+    {
+        var result = new Dictionary<string, List<Range>>(StringComparer.Ordinal);
+        Collect(chunk, chunks, classId, [All], result, []);
+        return Normalize(result);
+    }
+
+    private static void Collect(ChunkModel chunk, IReadOnlyList<ChunkModel> chunks, uint classId,
+        IReadOnlyList<Range> versions, Dictionary<string, List<Range>> result, HashSet<uint> visited)
     {
         if (!visited.Add(chunk.Id)) return;
 
@@ -56,19 +76,19 @@ internal static class AppliedWithChunkRanges
 
         if (chunk.Scope.Body.Count == 0 && parent is not null)
         {
-            Collect(parent, field, chunks, classId, versions, result, visited);
+            Collect(parent, chunks, classId, versions, result, visited);
         }
         else
         {
-            Walk(chunk.Scope.Body, versions, field, chunk.Scope, chunk.Scope.HasVersion ? StoredVersionNames : [], archive: false,
-                parent is null ? null : current => Collect(parent, field, chunks, classId, current, result, visited), result);
+            Walk(chunk.Scope.Body, versions, chunk.Scope, chunk.Scope.HasVersion ? StoredVersionNames : [], archive: false,
+                parent is null ? null : current => Collect(parent, chunks, classId, current, result, visited), result);
         }
 
         visited.Remove(chunk.Id);
     }
 
-    private static void Walk(IEnumerable<IBodyStatement> statements, IReadOnlyList<Range> current, string field, ScopeModel scope,
-        string[] versionNames, bool archive, Action<IReadOnlyList<Range>>? onBase, List<Range> result)
+    private static void Walk(IEnumerable<IBodyStatement> statements, IReadOnlyList<Range> current, ScopeModel scope,
+        string[] versionNames, bool archive, Action<IReadOnlyList<Range>>? onBase, Dictionary<string, List<Range>> result)
     {
         if (current.Count == 0) return;
 
@@ -80,14 +100,15 @@ internal static class AppliedWithChunkRanges
                     onBase?.Invoke(current);
                     break;
 
-                case FieldDeclaration declaration when declaration.Name == field &&
+                case FieldDeclaration declaration when declaration.Name is { } name &&
                     scope.Occurrences.TryGetValue(declaration, out var occurrence) && !occurrence.IsUnknown && !occurrence.IsLocal:
-                    result.AddRange(current);
+                    if (!result.TryGetValue(name, out var ranges)) result.Add(name, ranges = []);
+                    ranges.AddRange(current);
                     break;
 
                 // An archive with its own version reports that version, so caller version branches do not narrow it.
                 case VersionCondition version when archive && scope.HasVersion && LayoutModel.Has(version.Attributes, "chunk"):
-                    Walk(version.Body, current, field, scope, versionNames, archive, onBase, result);
+                    Walk(version.Body, current, scope, versionNames, archive, onBase, result);
                     break;
 
                 case VersionCondition version:
@@ -98,7 +119,7 @@ internal static class AppliedWithChunkRanges
                         _ => int.MaxValue
                     };
                     var start = version.Kind == VersionConditionKind.LessOrEqual ? 0 : version.Version;
-                    Walk(version.Body, Intersect(current, [new Range(start, end)]), field, scope, versionNames, archive, onBase, result);
+                    Walk(version.Body, Intersect(current, [new Range(start, end)]), scope, versionNames, archive, onBase, result);
                     break;
 
                 case IfStatement conditional:
@@ -109,32 +130,32 @@ internal static class AppliedWithChunkRanges
                     {
                         VisitBranch(alternative.Condition, alternative.Body);
                     }
-                    if (conditional.Else is not null) Walk(conditional.Else.Body, remaining, field, scope, versionNames, archive, onBase, result);
+                    if (conditional.Else is not null) Walk(conditional.Else.Body, remaining, scope, versionNames, archive, onBase, result);
 
                     void VisitBranch(ChunkL.Syntax.Expression condition, IEnumerable<IBodyStatement> body)
                     {
                         var allowed = versionNames.Length > 0 ? Condition(condition, versionNames) : null;
-                        Walk(body, allowed is null ? remaining : Intersect(remaining, allowed), field, scope, versionNames, archive, onBase, result);
+                        Walk(body, allowed is null ? remaining : Intersect(remaining, allowed), scope, versionNames, archive, onBase, result);
                         if (allowed is not null) remaining = Except(remaining, allowed);
                     }
                     break;
                 }
 
                 case BlockStatement block:
-                    Walk(block.Body, current, field, scope, versionNames, archive, onBase, result);
+                    Walk(block.Body, current, scope, versionNames, archive, onBase, result);
                     break;
 
                 case LoopStatement loop:
-                    Walk(loop.Body, current, field, scope, versionNames, archive, onBase, result);
+                    Walk(loop.Body, current, scope, versionNames, archive, onBase, result);
                     break;
 
                 case WhileStatement loop:
-                    Walk(loop.Body, current, field, scope, versionNames, archive, onBase, result);
+                    Walk(loop.Body, current, scope, versionNames, archive, onBase, result);
                     break;
 
                 case SwitchStatement selection:
-                    foreach (var branch in selection.Cases) Walk(branch.Body, current, field, scope, versionNames, archive, onBase, result);
-                    if (selection.Default is not null) Walk(selection.Default.Body, current, field, scope, versionNames, archive, onBase, result);
+                    foreach (var branch in selection.Cases) Walk(branch.Body, current, scope, versionNames, archive, onBase, result);
+                    if (selection.Default is not null) Walk(selection.Default.Body, current, scope, versionNames, archive, onBase, result);
                     break;
             }
         }
@@ -247,10 +268,22 @@ internal static class AppliedWithChunkRanges
         return Normalize(result);
     }
 
-    private static IReadOnlyList<Range> Normalize(IEnumerable<Range> ranges)
+    private static Dictionary<string, List<Range>> Normalize(Dictionary<string, List<Range>> ranges)
     {
-        var result = new List<Range>();
-        foreach (var range in ranges.OrderBy(static x => x.Start).ThenBy(static x => x.End))
+        foreach (var key in ranges.Keys.ToArray())
+        {
+            ranges[key] = Normalize(ranges[key]);
+        }
+        return ranges;
+    }
+
+    private static List<Range> Normalize(IEnumerable<Range> ranges)
+    {
+        var sorted = new List<Range>(ranges);
+        sorted.Sort(static (x, y) => x.Start != y.Start ? x.Start.CompareTo(y.Start) : x.End.CompareTo(y.End));
+
+        var result = new List<Range>(sorted.Count);
+        foreach (var range in sorted)
         {
             if (range.Start > range.End) continue;
             if (result.Count == 0 || (long)range.Start > (long)result[result.Count - 1].End + 1)

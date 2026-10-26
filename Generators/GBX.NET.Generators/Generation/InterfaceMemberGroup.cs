@@ -24,8 +24,7 @@ internal sealed class InterfaceMemberGroup(GameNodeModel node, string[] games, L
                 // A game-specific base node contract can introduce another
                 // declaration with this name. Keep the unifying declaration on
                 // the derived game interface in that case.
-                !(parent is not null && parent.Games.Contains(game) &&
-                  parent.Members.Any(m => m.Name == member.Name && m.Games.Contains(game)))).ToArray();
+                !(parent is not null && parent.Games.Contains(game) && parent.MemberFor(game, member.Name) is not null)).ToArray();
             foreach (var matching in games.GroupBy(game =>
             {
                 var type = model.Project(member, game);
