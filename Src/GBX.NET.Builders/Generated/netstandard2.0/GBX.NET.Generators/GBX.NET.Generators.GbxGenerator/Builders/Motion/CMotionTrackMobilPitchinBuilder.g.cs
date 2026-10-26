@@ -7,7 +7,7 @@ public abstract class CMotionTrackMobilPitchinBuilderBase<TSelf> : NodeBuilder<g
 {
     private protected CMotionTrackMobilPitchinBuilderBase() { }
     private protected CMotionTrackMobilPitchinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithFlottaison(float value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetFlottaisonAssignment(), value, SupportedGames1);
     public TSelf WithMaxAngle(float value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetMaxAngleAssignment(), value, SupportedGames1);
     public TSelf WithOffsetHauteur(float value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionTrackMobilPitchinBuilderAssignments.GetOffsetHauteurAssignment(), value, SupportedGames1);
@@ -30,6 +30,7 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -60,6 +61,13 @@ public partial class CMotionTrackMobilPitchinBuilder : CMotionTrackMobilPitchinB
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state) : base(state) { }
         public global::GBX.NET.Interfaces.Motion.IMotionTrackMobilPitchinTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin Build() => BuildNode(CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
+    }
+    public partial class TMU : CMotionTrackMobilPitchinBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Motion.IMotionTrackMobilPitchinTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin Build() => BuildNode(CMotionTrackMobilPitchinBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionTrackMobilPitchin node);
     }
     public partial class VSK5 : CMotionTrackMobilPitchinBuilderBase<VSK5>

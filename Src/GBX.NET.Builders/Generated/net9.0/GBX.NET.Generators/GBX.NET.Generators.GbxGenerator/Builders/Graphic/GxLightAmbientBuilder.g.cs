@@ -7,8 +7,8 @@ public abstract class GxLightAmbientBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected GxLightAmbientBuilderBase() { }
     private protected GxLightAmbientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
     public TSelf WithColor(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
     public TSelf WithFlags(global::GBX.NET.Engines.Graphic.GxLight.EFlags value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlagsAssignment(), value, SupportedGames1);
@@ -67,6 +67,7 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -101,6 +102,13 @@ public partial class GxLightAmbientBuilder : GxLightAmbientBuilderBase<GxLightAm
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
         public global::GBX.NET.Interfaces.Graphic.IGxLightAmbientTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightAmbient Build() => BuildNode(GxLightAmbientBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
+    }
+    public partial class TMU : GxLightAmbientBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightAmbient> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Graphic.IGxLightAmbientTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Graphic.GxLightAmbient Build() => BuildNode(GxLightAmbientBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightAmbient node);
     }
     public partial class VSK5 : GxLightAmbientBuilderMembers3<VSK5>

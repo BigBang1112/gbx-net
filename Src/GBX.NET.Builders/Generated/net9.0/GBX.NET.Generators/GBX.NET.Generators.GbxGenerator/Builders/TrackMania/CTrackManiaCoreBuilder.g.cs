@@ -8,7 +8,7 @@ public abstract class CTrackManiaCoreBuilderBase<TSelf> : NodeBuilder<global::GB
     private protected CTrackManiaCoreBuilderBase() { }
     private protected CTrackManiaCoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4;
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CTrackManiaCoreBuilder : CTrackManiaCoreBuilderBase<CTrackManiaCoreBuilder>
 {
@@ -29,6 +29,7 @@ public partial class CTrackManiaCoreBuilder : CTrackManiaCoreBuilderBase<CTrackM
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -63,6 +64,13 @@ public partial class CTrackManiaCoreBuilder : CTrackManiaCoreBuilderBase<CTrackM
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaCore Build() => BuildNode(CTrackManiaCoreBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaCore node);
+    }
+    public partial class TMU : CTrackManiaCoreBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaCore> state) : base(state) { }
+        public global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaCore Build() => BuildNode(CTrackManiaCoreBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaCore node);
     }
     public partial class VSK5 : CTrackManiaCoreBuilderBase<VSK5>

@@ -7,7 +7,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CFuncTreeRotateBuilderBase() { }
     private protected CFuncTreeRotateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAngleMax(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMaxAssignment(), value, SupportedGames1);
     public TSelf WithAngleMin(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMinAssignment(), value, SupportedGames1);
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
@@ -18,7 +18,7 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> : NodeBuilder<global::GB
 public abstract class CFuncTreeRotateBuilderMembers1<TSelf> : CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeRotateBuilderMembers1<TSelf>
 {
     private protected CFuncTreeRotateBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncTreeRotateBuilderMembers2<TSelf> : CFuncTreeRotateBuilderMembers1<TSelf> where TSelf : CFuncTreeRotateBuilderMembers2<TSelf>
 {
@@ -52,6 +52,7 @@ public partial class CFuncTreeRotateBuilder : CFuncTreeRotateBuilderBase<CFuncTr
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -86,6 +87,13 @@ public partial class CFuncTreeRotateBuilder : CFuncTreeRotateBuilderBase<CFuncTr
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build() => BuildNode(CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
+    }
+    public partial class TMU : CFuncTreeRotateBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncTreeRotate Build() => BuildNode(CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
     public partial class VSK5 : CFuncTreeRotateBuilderMembers1<VSK5>

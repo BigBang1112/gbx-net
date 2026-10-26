@@ -7,7 +7,7 @@ public abstract class CMwCmdExpBoolBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMwCmdExpBoolBuilderBase() { }
     private protected CMwCmdExpBoolBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
-    public TSelf WithBool(bool value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
+    public TSelf WithBool(bool value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF | GameVersion.TMU);
 }
 public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBoolBuilder>
 {
@@ -17,7 +17,15 @@ public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBo
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpBoolBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build() => BuildNode(CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node);
+    }
     public partial class TMF : CMwCmdExpBoolBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }

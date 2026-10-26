@@ -7,7 +7,7 @@ public abstract class CMwCmdSleepBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CMwCmdSleepBuilderBase() { }
     private protected CMwCmdSleepBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdSleep> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMU;
     public TSelf WithTime(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdSleepBuilderAssignments.GetTimeAssignment(), value, SupportedGames1);
     public TSelf WithTimeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdSleepBuilderAssignments.GetTimeReferenceAssignment(), value, SupportedGames1);
 }
@@ -20,11 +20,20 @@ public partial class CMwCmdSleepBuilder : CMwCmdSleepBuilderBase<CMwCmdSleepBuil
         return node;
     }
     public TM10 ForTM10() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public partial class TM10 : CMwCmdSleepBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdSleep> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdSleep Build() => BuildNode(CMwCmdSleepBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdSleep node);
+    }
+    public partial class TMU : CMwCmdSleepBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdSleep> state) : base(state) { }
+        public TMU WithTime(global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? value) => base.WithTime(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdSleep Build() => BuildNode(CMwCmdSleepBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdSleep node);
     }
 }

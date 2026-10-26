@@ -67,6 +67,14 @@ public static class CControlEffectMotionBuilderExtensions
     }
 }
 
+public static class CControlEffectMoveFrameBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Control.CControlEffectMoveFrame)
+    {
+        public static global::GBX.NET.Builders.Engines.Control.CControlEffectMoveFrameBuilder Create() => new();
+    }
+}
+
 public static class CControlEffectSimiBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Control.CControlEffectSimi)

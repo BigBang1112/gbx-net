@@ -7,9 +7,9 @@ public abstract class CFuncEnumBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CFuncEnumBuilderBase() { }
     private protected CFuncEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithValues(NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAssignment(), value, SupportedGames1);
     public TSelf WithValues(params global::GBX.NET.Engines.Plug.CPlug[] values) => WithValues(new NodeRefList<global::GBX.NET.Engines.Plug.CPlug>(values));
     public TSelf WithValues(IEnumerable<global::GBX.NET.Engines.Plug.CPlug> values) => WithValues(values.ToArray());
@@ -18,7 +18,7 @@ public abstract class CFuncEnumBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 public abstract class CFuncEnumBuilderMembers1<TSelf> : CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilderMembers1<TSelf>
 {
     private protected CFuncEnumBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncEnumBuilderMembers2<TSelf> : CFuncEnumBuilderMembers1<TSelf> where TSelf : CFuncEnumBuilderMembers2<TSelf>
 {
@@ -77,6 +77,7 @@ public partial class CFuncEnumBuilder : CFuncEnumBuilderBase<CFuncEnumBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -112,6 +113,14 @@ public partial class CFuncEnumBuilder : CFuncEnumBuilderBase<CFuncEnumBuilder>
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build() => BuildNode(CFuncEnumBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
+    }
+    public partial class TMU : CFuncEnumBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
+        public TMU WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU? value) => base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Function.IFuncEnumTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncEnum Build() => BuildNode(CFuncEnumBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
     public partial class VSK5 : CFuncEnumBuilderMembers3<VSK5>

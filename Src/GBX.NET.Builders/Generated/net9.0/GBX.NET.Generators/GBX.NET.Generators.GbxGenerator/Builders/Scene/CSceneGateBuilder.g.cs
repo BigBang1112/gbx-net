@@ -7,7 +7,7 @@ public abstract class CSceneGateBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CSceneGateBuilderBase() { }
     private protected CSceneGateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneGate> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMNESWC;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMNESWC | GameVersion.TMU;
     public TSelf WithFirstPortal(global::GBX.NET.Engines.Hms.CHmsPortal? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneGateBuilderAssignments.GetFirstPortalAssignment(), value, SupportedGames1);
     public TSelf WithFirstPortalReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsPortal> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneGateBuilderAssignments.GetFirstPortalReferenceAssignment(), value, SupportedGames1);
     public TSelf WithSecondPortal(global::GBX.NET.Engines.Hms.CHmsPortal? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneGateBuilderAssignments.GetSecondPortalAssignment(), value, SupportedGames1);
@@ -22,6 +22,7 @@ public partial class CSceneGateBuilder : CSceneGateBuilderBase<CSceneGateBuilder
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public partial class TMNESWC : CSceneGateBuilderBase<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneGate> state) : base(state) { }
@@ -29,6 +30,15 @@ public partial class CSceneGateBuilder : CSceneGateBuilderBase<CSceneGateBuilder
         public TMNESWC WithSecondPortal(global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC? value) => base.WithSecondPortal(value is null ? (global::GBX.NET.Engines.Hms.CHmsPortal?)null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneGate Build() => BuildNode(CSceneGateBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneGate node);
+    }
+    public partial class TMU : CSceneGateBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneGate> state) : base(state) { }
+        public TMU WithFirstPortal(global::GBX.NET.Interfaces.Hms.IHmsPortalTMU? value) => base.WithFirstPortal(value is null ? (global::GBX.NET.Engines.Hms.CHmsPortal?)null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithSecondPortal(global::GBX.NET.Interfaces.Hms.IHmsPortalTMU? value) => base.WithSecondPortal(value is null ? (global::GBX.NET.Engines.Hms.CHmsPortal?)null : value is global::GBX.NET.Engines.Hms.CHmsPortal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneGateTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneGate Build() => BuildNode(CSceneGateBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneGate node);
     }
 }

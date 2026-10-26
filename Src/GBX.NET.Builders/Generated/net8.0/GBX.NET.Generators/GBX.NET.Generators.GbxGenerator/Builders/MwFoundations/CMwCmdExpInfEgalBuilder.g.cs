@@ -7,7 +7,7 @@ public abstract class CMwCmdExpInfEgalBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CMwCmdExpInfEgalBuilderBase() { }
     private protected CMwCmdExpInfEgalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, SupportedGames1);
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1ReferenceAssignment(), value, SupportedGames1);
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, SupportedGames1);
@@ -22,7 +22,15 @@ public partial class CMwCmdExpInfEgalBuilder : CMwCmdExpInfEgalBuilderBase<CMwCm
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpInfEgalBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
+    }
     public partial class TMF : CMwCmdExpInfEgalBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }

@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockFxBlurMotionBuilderBase<TSelf> : NodeBui
 {
     private protected CGameCtnMediaBlockFxBlurMotionBuilderBase() { }
     private protected CGameCtnMediaBlockFxBlurMotionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurMotionBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurMotionBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
@@ -21,6 +21,7 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -40,6 +41,13 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build() => BuildNode(CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion node);
+    }
+    public partial class TMU : CGameCtnMediaBlockFxBlurMotionBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build() => BuildNode(CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion node);
     }
     public partial class VSK5 : CGameCtnMediaBlockFxBlurMotionBuilderBase<VSK5>

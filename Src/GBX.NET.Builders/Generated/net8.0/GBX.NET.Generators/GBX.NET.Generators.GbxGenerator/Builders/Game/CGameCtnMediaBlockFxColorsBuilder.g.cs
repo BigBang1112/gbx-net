@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockFxColorsBuilderBase<TSelf> : NodeBuilder
 {
     private protected CGameCtnMediaBlockFxColorsBuilderBase() { }
     private protected CGameCtnMediaBlockFxColorsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors> state) : base(state) { }
-    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxColorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxColorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors.Key> values) => WithKeys(values.ToArray());
 }
@@ -21,6 +21,7 @@ public partial class CGameCtnMediaBlockFxColorsBuilder : CGameCtnMediaBlockFxCol
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -40,6 +41,13 @@ public partial class CGameCtnMediaBlockFxColorsBuilder : CGameCtnMediaBlockFxCol
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors Build() => BuildNode(CGameCtnMediaBlockFxColorsBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors node);
+    }
+    public partial class TMU : CGameCtnMediaBlockFxColorsBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxColorsTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors Build() => BuildNode(CGameCtnMediaBlockFxColorsBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxColors node);
     }
     public partial class VSK5 : CGameCtnMediaBlockFxColorsBuilderBase<VSK5>

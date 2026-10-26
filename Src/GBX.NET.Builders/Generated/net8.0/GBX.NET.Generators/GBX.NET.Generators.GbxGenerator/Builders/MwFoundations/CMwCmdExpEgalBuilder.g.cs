@@ -7,7 +7,7 @@ public abstract class CMwCmdExpEgalBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMwCmdExpEgalBuilderBase() { }
     private protected CMwCmdExpEgalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithBool(bool value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, SupportedGames1);
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1Assignment(), value, SupportedGames1);
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEgalBuilderAssignments.GetValue1ReferenceAssignment(), value, SupportedGames1);
@@ -23,7 +23,15 @@ public partial class CMwCmdExpEgalBuilder : CMwCmdExpEgalBuilderBase<CMwCmdExpEg
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpEgalBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpEgalTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal Build() => BuildNode(CMwCmdExpEgalBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal node);
+    }
     public partial class TMF : CMwCmdExpEgalBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEgal> state) : base(state) { }

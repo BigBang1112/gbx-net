@@ -7,13 +7,13 @@ public abstract class CGameAdvertisingBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGameAdvertisingBuilderBase() { }
     private protected CGameAdvertisingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameAdvertisingBuilderMembers1<TSelf> : CGameAdvertisingBuilderBase<TSelf> where TSelf : CGameAdvertisingBuilderMembers1<TSelf>
 {
     private protected CGameAdvertisingBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
-    public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameAdvertisingBuilderAssignments.GetFilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithFiles(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithFiles(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithFiles(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithFiles(values.ToArray());
 }
@@ -62,6 +62,7 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -102,6 +103,13 @@ public partial class CGameAdvertisingBuilder : CGameAdvertisingBuilderBase<CGame
         public TMNESWC WithFilesOrig(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithFilesOrig(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameAdvertisingTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameAdvertising Build() => BuildNode(CGameAdvertisingBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
+    }
+    public partial class TMU : CGameAdvertisingBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameAdvertising> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameAdvertisingTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameAdvertising Build() => BuildNode(CGameAdvertisingBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameAdvertising node);
     }
     public partial class VSK5 : CGameAdvertisingBuilderMembers2<VSK5>

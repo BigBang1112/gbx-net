@@ -8,7 +8,7 @@ public abstract class CShootManiaBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
     private protected CShootManiaBuilderBase() { }
     private protected CShootManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBuilderMembers1<TSelf>
 {
@@ -37,6 +37,7 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -71,6 +72,13 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build() => BuildNode(CShootManiaBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
+    }
+    public partial class TMU : CShootManiaBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
+        public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.ShootMania.CShootMania Build() => BuildNode(CShootManiaBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
     public partial class VSK5 : CShootManiaBuilderBase<VSK5>

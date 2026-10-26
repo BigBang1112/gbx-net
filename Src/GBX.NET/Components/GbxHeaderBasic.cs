@@ -17,6 +17,9 @@ public readonly record struct GbxHeaderBasic(
 {
     public static readonly GbxHeaderBasic Default = Create();
 
+    [Obsolete("Use Mode instead.")]
+    public GbxUnknownByte UnknownByte { get => (GbxUnknownByte)Mode; init => Mode = (GbxMode)value; }
+
     public static GbxHeaderBasic Create(
         ushort version = 6,
         GbxFormat format = GbxFormat.Binary,

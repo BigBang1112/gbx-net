@@ -43,6 +43,9 @@ public partial class CGameGhost
         public int? U01 { get; set; }
 
         public TimeInt32? FirstSampleTime { get; set; }
+
+        [Obsolete("Use FirstSampleTime instead.")]
+        public int? U02 { get => FirstSampleTime?.TotalMilliseconds; set => FirstSampleTime = value is null ? null : new TimeInt32(value.Value); }
         
         public int[]? Offsets { get; set; }
 

@@ -18,7 +18,7 @@ public abstract class CMotionWeatherBuilderMembers1<TSelf> : CMotionWeatherBuild
 public abstract class CMotionWeatherBuilderMembers2<TSelf> : CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeatherBuilderMembers2<TSelf>
 {
     private protected CMotionWeatherBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMotionWeatherBuilder : CMotionWeatherBuilderBase<CMotionWeatherBuilder>
 {
@@ -38,6 +38,7 @@ public partial class CMotionWeatherBuilder : CMotionWeatherBuilderBase<CMotionWe
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -71,6 +72,13 @@ public partial class CMotionWeatherBuilder : CMotionWeatherBuilderBase<CMotionWe
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build() => BuildNode(CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
+    }
+    public partial class TMU : CMotionWeatherBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionWeather Build() => BuildNode(CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
     public partial class VSK5 : CMotionWeatherBuilderMembers2<VSK5>

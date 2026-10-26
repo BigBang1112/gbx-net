@@ -7,7 +7,7 @@ public abstract class CMwCmdProcBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CMwCmdProcBuilderBase() { }
     private protected CMwCmdProcBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithArguments(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdProcBuilderAssignments.GetArgumentsAssignment(), value, SupportedGames1);
     public TSelf WithArguments(params global::GBX.NET.Engines.MwFoundations.CMwCmdExp[] values) => WithArguments(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(values));
     public TSelf WithArguments(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> values) => WithArguments(values.ToArray());
@@ -21,7 +21,15 @@ public partial class CMwCmdProcBuilder : CMwCmdProcBuilderBase<CMwCmdProcBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdProc.Chunk01097002());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdProcBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdProcTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdProc Build() => BuildNode(CMwCmdProcBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdProc node);
+    }
     public partial class TMF : CMwCmdProcBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdProc> state) : base(state) { }

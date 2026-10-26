@@ -7,7 +7,7 @@ public abstract class CMwCmdExpNumFunctionBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMwCmdExpNumFunctionBuilderBase() { }
     private protected CMwCmdExpNumFunctionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithFunction(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.FunctionArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionAssignment(), value, SupportedGames1);
     public TSelf WithFunctionType(int value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetFunctionTypeAssignment(), value, SupportedGames1);
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumFunctionBuilderAssignments.GetValueAssignment(), value, SupportedGames1);
@@ -22,7 +22,15 @@ public partial class CMwCmdExpNumFunctionBuilder : CMwCmdExpNumFunctionBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction.Chunk01055000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpNumFunctionBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumFunctionTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction Build() => BuildNode(CMwCmdExpNumFunctionBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction node);
+    }
     public partial class TMF : CMwCmdExpNumFunctionBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumFunction> state) : base(state) { }

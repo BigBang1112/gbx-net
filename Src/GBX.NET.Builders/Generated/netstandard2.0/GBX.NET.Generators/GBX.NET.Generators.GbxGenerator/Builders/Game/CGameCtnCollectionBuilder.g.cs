@@ -7,11 +7,11 @@ public abstract class CGameCtnCollectionBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CGameCtnCollectionBuilderBase() { }
     private protected CGameCtnCollectionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollection> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
-    private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames6 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames7 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
     private protected const GameVersion SupportedGames8 = GameVersion.MP4;
@@ -87,8 +87,8 @@ public abstract class CGameCtnCollectionBuilderMembers4<TSelf> : CGameCtnCollect
 public abstract class CGameCtnCollectionBuilderMembers5<TSelf> : CGameCtnCollectionBuilderMembers3<TSelf> where TSelf : CGameCtnCollectionBuilderMembers5<TSelf>
 {
     private protected CGameCtnCollectionBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollection> state) : base(state) { }
-    public TSelf WithIsWaterOutsidePlayField(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetIsWaterOutsidePlayFieldAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    public TSelf WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithIsWaterOutsidePlayField(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetIsWaterOutsidePlayFieldAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnCollectionBuilderMembers6<TSelf> : CGameCtnCollectionBuilderMembers4<TSelf> where TSelf : CGameCtnCollectionBuilderMembers6<TSelf>
 {
@@ -125,9 +125,9 @@ public abstract class CGameCtnCollectionBuilderMembers7<TSelf> : CGameCtnCollect
 public abstract class CGameCtnCollectionBuilderMembers8<TSelf> : CGameCtnCollectionBuilderMembers7<TSelf> where TSelf : CGameCtnCollectionBuilderMembers8<TSelf>
 {
     private protected CGameCtnCollectionBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollection> state) : base(state) { }
-    public TSelf WithIsWaterOutsidePlayField(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetIsWaterOutsidePlayFieldAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithIsWaterOutsidePlayField(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetIsWaterOutsidePlayFieldAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithLegacyWaterFogDepthScale(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetLegacyWaterFogDepthScaleAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
-    public TSelf WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnCollectionBuilderMembers9<TSelf> : CGameCtnCollectionBuilderMembers6<TSelf> where TSelf : CGameCtnCollectionBuilderMembers9<TSelf>
 {
@@ -325,6 +325,7 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -366,14 +367,14 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
         public TMSX WithCompleteZoneList(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX> values) => WithCompleteZoneList(values.ToArray());
         public TMSX WithDefaultDecoration(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX? value) => base.WithDefaultDecoration(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecoration?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithDefaultZone(global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX? value) => base.WithDefaultZone(value is null ? (global::GBX.NET.Engines.Game.CGameCtnZone?)null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMSX WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithHasVertexLighting(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasVertexLightingAssignment(), value, GameVersion.TMSX);
         public TMSX WithIconFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithIconFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithIconSmallFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithIconSmallFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithLoadScreenFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithLoadScreenFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMapFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithMapFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        public TMSX WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCollection Build() => BuildNode(CGameCtnCollectionBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollection node);
@@ -385,15 +386,34 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
         public TMNESWC WithCompleteZoneList(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC> values) => WithCompleteZoneList(values.ToArray());
         public TMNESWC WithDefaultDecoration(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC? value) => base.WithDefaultDecoration(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecoration?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithDefaultZone(global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC? value) => base.WithDefaultZone(value is null ? (global::GBX.NET.Engines.Game.CGameCtnZone?)null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithIconFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithIconFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithIconSmallFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithIconSmallFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithLoadScreenFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithLoadScreenFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMapFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithMapFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        public TMNESWC WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithWaterTop(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterTopAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCollection Build() => BuildNode(CGameCtnCollectionBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollection node);
+    }
+    public partial class TMU : CGameCtnCollectionBuilderMembers5<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollection> state) : base(state) { }
+        public TMU WithCompleteZoneList(params global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU[] values) => base.WithCompleteZoneList(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU>(values, false));
+        public TMU WithCompleteZoneList(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU> values) => WithCompleteZoneList(values.ToArray());
+        public TMU WithDefaultDecoration(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU? value) => base.WithDefaultDecoration(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecoration?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithDefaultZone(global::GBX.NET.Interfaces.Game.IGameCtnZoneTMU? value) => base.WithDefaultZone(value is null ? (global::GBX.NET.Engines.Game.CGameCtnZone?)null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithIconFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithIconFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithIconSmallFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithIconSmallFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLoadScreenFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithLoadScreenFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMapFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithMapFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithReplacementTerrainModifiers(params global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU[] values) => base.WithReplacementTerrainModifiers(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU>(values, false));
+        public TMU WithReplacementTerrainModifiers(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU> values) => WithReplacementTerrainModifiers(values.ToArray());
+        public TMU WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnCollection Build() => BuildNode(CGameCtnCollectionBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollection node);
     }
     public partial class VSK5 : CGameCtnCollectionBuilderMembers5<VSK5>
@@ -403,7 +423,7 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
         public VSK5 WithCompleteZoneList(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5> values) => WithCompleteZoneList(values.ToArray());
         public VSK5 WithDefaultDecoration(global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5? value) => base.WithDefaultDecoration(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecoration?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithDefaultZone(global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5? value) => base.WithDefaultZone(value is null ? (global::GBX.NET.Engines.Game.CGameCtnZone?)null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithHasBackgroundShadow(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetHasBackgroundShadowAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithIconFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithIconFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithIconSmallFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithIconSmallFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithLoadScreenFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithLoadScreenFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -412,7 +432,7 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
         public VSK5 WithParticleEmitterModelsFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5> values) => WithParticleEmitterModelsFids(values.ToArray());
         public VSK5 WithReplacementTerrainModifiers(params global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5[] values) => base.WithReplacementTerrainModifiers(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5>(values, false));
         public VSK5 WithReplacementTerrainModifiers(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5> values) => WithReplacementTerrainModifiers(values.ToArray());
-        public VSK5 WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCollectionVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCollection Build() => BuildNode(CGameCtnCollectionBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollection node);
@@ -435,7 +455,7 @@ public partial class CGameCtnCollectionBuilder : CGameCtnCollectionBuilderBase<C
         public TMF WithParticleEmitterModelsFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF> values) => WithParticleEmitterModelsFids(values.ToArray());
         public TMF WithReplacementTerrainModifiers(params global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF[] values) => base.WithReplacementTerrainModifiers(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF>(values, false));
         public TMF WithReplacementTerrainModifiers(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF> values) => WithReplacementTerrainModifiers(values.ToArray());
-        public TMF WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithWaterBottom(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectionBuilderAssignments.GetWaterBottomAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCollection Build() => BuildNode(CGameCtnCollectionBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollection node);

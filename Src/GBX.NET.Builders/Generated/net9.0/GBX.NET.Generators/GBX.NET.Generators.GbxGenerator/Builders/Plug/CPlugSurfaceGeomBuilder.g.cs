@@ -11,7 +11,7 @@ public abstract class CPlugSurfaceGeomBuilderBase<TSelf> : NodeBuilder<global::G
 public abstract class CPlugSurfaceGeomBuilderMembers1<TSelf> : CPlugSurfaceGeomBuilderBase<TSelf> where TSelf : CPlugSurfaceGeomBuilderMembers1<TSelf>
 {
     private protected CPlugSurfaceGeomBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
-    public TSelf WithBoundingBox(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceGeomBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    public TSelf WithBoundingBox(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceGeomBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlugSurfaceGeomBuilder>
 {
@@ -27,13 +27,13 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
     private static global::GBX.NET.Engines.Plug.CPlugSurfaceGeom CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugSurfaceGeom CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004());
         return node;
     }
@@ -41,6 +41,7 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CPlugSurfaceGeomBuilderBase<TM10>
@@ -71,18 +72,25 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
     }
+    public partial class TMU : CPlugSurfaceGeomBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
+    }
     public partial class VSK5 : CPlugSurfaceGeomBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
     }
     public partial class TMF : CPlugSurfaceGeomBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build() => BuildNode(CPlugSurfaceGeomBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
     }
 }

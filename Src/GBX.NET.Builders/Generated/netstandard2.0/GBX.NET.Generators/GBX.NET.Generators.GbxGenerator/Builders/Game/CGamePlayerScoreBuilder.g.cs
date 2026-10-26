@@ -7,9 +7,9 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGamePlayerScoreBuilderBase() { }
     private protected CGamePlayerScoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.TMF;
-    private protected const GameVersion SupportedGames3 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithNickName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNickNameAssignment(), value, SupportedGames1);
     public TSelf WithPlayerId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerIdAssignment(), value, SupportedGames1);
     public TSelf WithPlayerName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerNameAssignment(), value, SupportedGames1);
@@ -58,6 +58,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CGamePlayerScoreBuilderBase<TM10>
@@ -86,6 +87,13 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build() => BuildNode(CGamePlayerScoreBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
+    }
+    public partial class TMU : CGamePlayerScoreBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGamePlayerScore Build() => BuildNode(CGamePlayerScoreBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
     }
     public partial class VSK5 : CGamePlayerScoreBuilderMembers1<VSK5>

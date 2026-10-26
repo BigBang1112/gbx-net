@@ -398,6 +398,27 @@ public partial class CGameCtnGhost
 
     public partial class SettingsInfos
     {
+        [Obsolete("Use MouseAccelEnabled instead.")]
+        public bool U04 { get => MouseAccelEnabled; set => MouseAccelEnabled = value; }
+
+        [Obsolete("Use MouseAccelQuantity instead.")]
+        public float U05 { get => MouseAccelQuantity; set => MouseAccelQuantity = value; }
+
+        [Obsolete("Use MouseSensitivities instead.")]
+        public float[]? U08 { get => MouseSensitivities; set => MouseSensitivities = value; }
+
+        [Obsolete("Use ScreenWidth, ScreenHeight and Time instead.")]
+        public Int3 U10
+        {
+            get => new(ScreenWidth, ScreenHeight, Time.TotalMilliseconds);
+            set
+            {
+                ScreenWidth = value.X;
+                ScreenHeight = value.Y;
+                Time = new TimeInt32(value.Z);
+            }
+        }
+
         [Obsolete("Use MouseSensitivitiesEnableSpecific instead.")]
         public bool U06 { get => MouseSensitivitiesEnableSpecific; set => MouseSensitivitiesEnableSpecific = value; }
 

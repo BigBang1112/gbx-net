@@ -7,7 +7,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameMenuColorEffectBuilderBase() { }
     private protected CGameMenuColorEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithColorBeams(params global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, SupportedGames1);
     public TSelf WithColorBeams(IEnumerable<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam> values) => WithColorBeams(values.ToArray());
     public TSelf WithForceFirstColorWord(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, SupportedGames1);
@@ -29,7 +29,15 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CGameMenuColorEffectBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
     public partial class TMF : CGameMenuColorEffectBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }

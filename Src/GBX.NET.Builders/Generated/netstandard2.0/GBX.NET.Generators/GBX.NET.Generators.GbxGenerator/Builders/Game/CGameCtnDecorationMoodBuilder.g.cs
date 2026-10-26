@@ -7,9 +7,9 @@ public abstract class CGameCtnDecorationMoodBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnDecorationMoodBuilderBase() { }
     private protected CGameCtnDecorationMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithBackgroundIsLocallyLighted(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetBackgroundIsLocallyLightedAssignment(), value, SupportedGames1);
@@ -122,6 +122,7 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -144,6 +145,15 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         public TMNESWC WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
+    }
+    public partial class TMU : CGameCtnDecorationMoodBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+        public TMU WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU? value) => base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build() => BuildNode(CGameCtnDecorationMoodBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
     public partial class VSK5 : CGameCtnDecorationMoodBuilderMembers1<VSK5>

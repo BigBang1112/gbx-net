@@ -7,8 +7,8 @@ public abstract class CGameCtnZoneFrontierBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameCtnZoneFrontierBuilderBase() { }
     private protected CGameCtnZoneFrontierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithBlockInfoFrontier(global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierAssignment(), value, SupportedGames1);
     public TSelf WithBlockInfoFrontierReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFrontierBuilderAssignments.GetBlockInfoFrontierReferenceAssignment(), value, SupportedGames1);
@@ -27,7 +27,7 @@ public abstract class CGameCtnZoneFrontierBuilderMembers1<TSelf> : CGameCtnZoneF
 public abstract class CGameCtnZoneFrontierBuilderMembers2<TSelf> : CGameCtnZoneFrontierBuilderMembers1<TSelf> where TSelf : CGameCtnZoneFrontierBuilderMembers2<TSelf>
 {
     private protected CGameCtnZoneFrontierBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state) : base(state) { }
-    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnZoneFrontierBuilderMembers3<TSelf> : CGameCtnZoneFrontierBuilderMembers1<TSelf> where TSelf : CGameCtnZoneFrontierBuilderMembers3<TSelf>
 {
@@ -81,6 +81,7 @@ public partial class CGameCtnZoneFrontierBuilder : CGameCtnZoneFrontierBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -119,6 +120,14 @@ public partial class CGameCtnZoneFrontierBuilder : CGameCtnZoneFrontierBuilderBa
         public TMNESWC WithBlockInfoFrontier(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC? value) => base.WithBlockInfoFrontier(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFrontier Build() => BuildNode(CGameCtnZoneFrontierBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFrontier node);
+    }
+    public partial class TMU : CGameCtnZoneFrontierBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier> state) : base(state) { }
+        public TMU WithBlockInfoFrontier(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMU? value) => base.WithBlockInfoFrontier(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnZoneFrontier Build() => BuildNode(CGameCtnZoneFrontierBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFrontier node);
     }
     public partial class VSK5 : CGameCtnZoneFrontierBuilderMembers2<VSK5>

@@ -7,13 +7,13 @@ public abstract class CFuncKeysTransBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CFuncKeysTransBuilderBase() { }
     private protected CFuncKeysTransBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
-    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithXs(IEnumerable<float> values) => WithXs(values.ToArray());
 }
 public abstract class CFuncKeysTransBuilderMembers1<TSelf> : CFuncKeysTransBuilderBase<TSelf> where TSelf : CFuncKeysTransBuilderMembers1<TSelf>
 {
     private protected CFuncKeysTransBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
-    public TSelf WithTrans(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysTransBuilderAssignments.GetTransAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    public TSelf WithTrans(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysTransBuilderAssignments.GetTransAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithTrans(IEnumerable<Vec3> values) => WithTrans(values.ToArray());
 }
 public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeysTransBuilder>
@@ -38,6 +38,7 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -72,6 +73,13 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
+    }
+    public partial class TMU : CFuncKeysTransBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
     public partial class VSK5 : CFuncKeysTransBuilderMembers1<VSK5>

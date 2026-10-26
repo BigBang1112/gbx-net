@@ -7,7 +7,7 @@ public abstract class CMotionShaderBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMotionShaderBuilderBase() { }
     private protected CMotionShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderAssignment(), value, SupportedGames1);
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, SupportedGames1);
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionShaderBuilderAssignments.GetMaterialAssignment(), value, SupportedGames1);
@@ -27,6 +27,7 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -72,6 +73,16 @@ public partial class CMotionShaderBuilder : CMotionShaderBuilderBase<CMotionShad
         public TMNESWC WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionShaderTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionShader Build() => BuildNode(CMotionShaderBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
+    }
+    public partial class TMU : CMotionShaderBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionShader> state) : base(state) { }
+        public TMU WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMU? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? value) => base.WithShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionShaderTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionShader Build() => BuildNode(CMotionShaderBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionShader node);
     }
     public partial class VSK5 : CMotionShaderBuilderBase<VSK5>

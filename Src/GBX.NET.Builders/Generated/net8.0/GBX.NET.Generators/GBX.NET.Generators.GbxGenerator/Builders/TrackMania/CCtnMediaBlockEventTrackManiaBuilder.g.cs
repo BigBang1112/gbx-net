@@ -7,14 +7,14 @@ public abstract class CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> : NodeBuil
 {
     private protected CCtnMediaBlockEventTrackManiaBuilderBase() { }
     private protected CCtnMediaBlockEventTrackManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
 public abstract class CCtnMediaBlockEventTrackManiaBuilderMembers1<TSelf> : CCtnMediaBlockEventTrackManiaBuilderBase<TSelf> where TSelf : CCtnMediaBlockEventTrackManiaBuilderMembers1<TSelf>
 {
     private protected CCtnMediaBlockEventTrackManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
-    public TSelf WithEvents(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.VSK5);
+    public TSelf WithEvents(params global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CCtnMediaBlockEventTrackManiaBuilderAssignments.GetEventsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithEvents(IEnumerable<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event> values) => WithEvents(values.ToArray());
 }
 public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventTrackManiaBuilderBase<CCtnMediaBlockEventTrackManiaBuilder>
@@ -33,6 +33,7 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public partial class TMSX : CCtnMediaBlockEventTrackManiaBuilderBase<TMSX>
     {
@@ -48,6 +49,13 @@ public partial class CCtnMediaBlockEventTrackManiaBuilder : CCtnMediaBlockEventT
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania Build() => BuildNode(CCtnMediaBlockEventTrackManiaBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
+    }
+    public partial class TMU : CCtnMediaBlockEventTrackManiaBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania> state) : base(state) { }
+        public global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania Build() => BuildNode(CCtnMediaBlockEventTrackManiaBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania node);
     }
     public partial class VSK5 : CCtnMediaBlockEventTrackManiaBuilderMembers1<VSK5>

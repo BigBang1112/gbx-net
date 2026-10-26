@@ -7,7 +7,7 @@ public abstract class CGameCtnCollectorListBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CGameCtnCollectorListBuilderBase() { }
     private protected CGameCtnCollectorListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state) : base(state) { }
-    public TSelf WithCollectorStock(List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithCollectorStock(List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCollectorListBuilderAssignments.GetCollectorStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithCollectorStock(params global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock[] values) => WithCollectorStock(new List<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock>(values));
     public TSelf WithCollectorStock(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCollectorList.SCollectorStock> values) => WithCollectorStock(values.ToArray());
 }
@@ -23,6 +23,7 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -57,6 +58,13 @@ public partial class CGameCtnCollectorListBuilder : CGameCtnCollectorListBuilder
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCollectorList Build() => BuildNode(CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
+    }
+    public partial class TMU : CGameCtnCollectorListBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCollectorList> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnCollectorList Build() => BuildNode(CGameCtnCollectorListBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCollectorList node);
     }
     public partial class VSK5 : CGameCtnCollectorListBuilderBase<VSK5>

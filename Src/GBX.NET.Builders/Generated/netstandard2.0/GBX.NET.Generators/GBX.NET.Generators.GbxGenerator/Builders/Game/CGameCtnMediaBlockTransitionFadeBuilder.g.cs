@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockTransitionFadeBuilderBase<TSelf> : NodeB
 {
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase() { }
     private protected CGameCtnMediaBlockTransitionFadeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTransitionFadeBuilderAssignments.GetKeysAssignment(), value, SupportedGames1);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade.Key>(values));
@@ -23,6 +23,7 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -42,6 +43,13 @@ public partial class CGameCtnMediaBlockTransitionFadeBuilder : CGameCtnMediaBloc
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade Build() => BuildNode(CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
+    }
+    public partial class TMU : CGameCtnMediaBlockTransitionFadeBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTransitionFadeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade Build() => BuildNode(CGameCtnMediaBlockTransitionFadeBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTransitionFade node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTransitionFadeBuilderBase<VSK5>

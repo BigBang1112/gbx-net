@@ -7,7 +7,7 @@ public abstract class CMwCmdAffectParamIso4BuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CMwCmdAffectParamIso4BuilderBase() { }
     private protected CMwCmdAffectParamIso4BuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamIso4> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetParameterAssignment(), value, SupportedGames1);
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueAssignment(), value, SupportedGames1);
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueReferenceAssignment(), value, SupportedGames1);
@@ -20,7 +20,15 @@ public partial class CMwCmdAffectParamIso4Builder : CMwCmdAffectParamIso4Builder
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdAffectParamIso4BuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamIso4> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamIso4TMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamIso4 Build() => BuildNode(CMwCmdAffectParamIso4Builder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamIso4 node);
+    }
     public partial class TMF : CMwCmdAffectParamIso4BuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamIso4> state) : base(state) { }

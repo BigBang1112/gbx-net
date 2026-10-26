@@ -7,7 +7,7 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CControlEffectMasterBuilderBase() { }
     private protected CControlEffectMasterBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithActionEffect(global::GBX.NET.Engines.Control.CControlEffect? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectAssignment(), value, SupportedGames1);
     public TSelf WithActionEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectReferenceAssignment(), value, SupportedGames1);
     public TSelf WithFocusEffect(global::GBX.NET.Engines.Control.CControlEffect? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectAssignment(), value, SupportedGames1);
@@ -42,6 +42,7 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -84,6 +85,24 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public TMNESWC WithSpecialEffect(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? value) => base.WithSpecialEffect(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build() => BuildNode(CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
+    }
+    public partial class TMU : CControlEffectMasterBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state) : base(state) { }
+        public TMU WithActionEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithActionEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFocusEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithFocusEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFocusGainedByAnotherEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithFocusGainedByAnotherEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFocusGainedEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithFocusGainedEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFocusLostByAnotherEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithFocusLostByAnotherEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFocusLostEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithFocusLostEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithHidingEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithHidingEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithManagedEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithManagedEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithShowingEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithShowingEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithSleepingEffect(global::GBX.NET.Interfaces.Control.IControlEffectTMU? value) => base.WithSleepingEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffect?)null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithSpecialEffect(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU? value) => base.WithSpecialEffect(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMaster Build() => BuildNode(CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMaster node);
     }
     public partial class VSK5 : CControlEffectMasterBuilderBase<VSK5>

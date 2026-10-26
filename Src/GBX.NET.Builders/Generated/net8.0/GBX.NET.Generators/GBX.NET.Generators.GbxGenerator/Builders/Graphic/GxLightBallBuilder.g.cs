@@ -7,11 +7,11 @@ public abstract class GxLightBallBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected GxLightBallBuilderBase() { }
     private protected GxLightBallBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightBall> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAmbientRGB(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAmbientRGBAssignment(), value, SupportedGames1);
     public TSelf WithColor(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
     public TSelf WithEmittingRadius(float value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingRadiusAssignment(), value, SupportedGames1);
@@ -109,6 +109,7 @@ public partial class GxLightBallBuilder : GxLightBallBuilderBase<GxLightBallBuil
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -147,6 +148,15 @@ public partial class GxLightBallBuilder : GxLightBallBuilderBase<GxLightBallBuil
         public TMNESWC WithAttenuation2(float value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightBall Build() => BuildNode(GxLightBallBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightBall node);
+    }
+    public partial class TMU : GxLightBallBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightBall> state) : base(state) { }
+        public TMU WithAttenuation1(float value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, SupportedGames5);
+        public TMU WithAttenuation2(float value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, SupportedGames5);
+        public global::GBX.NET.Interfaces.Graphic.IGxLightBallTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Graphic.GxLightBall Build() => BuildNode(GxLightBallBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightBall node);
     }
     public partial class VSK5 : GxLightBallBuilderMembers4<VSK5>

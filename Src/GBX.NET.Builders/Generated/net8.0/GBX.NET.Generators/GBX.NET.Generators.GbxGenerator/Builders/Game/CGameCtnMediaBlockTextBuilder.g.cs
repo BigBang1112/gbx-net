@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockTextBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnMediaBlockTextBuilderBase() { }
     private protected CGameCtnMediaBlockTextBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithColor(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
     public TSelf WithEffect(global::GBX.NET.Engines.Control.CControlEffectSimi? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectAssignment(), value, SupportedGames1);
     public TSelf WithEffectReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectSimi> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTextBuilderAssignments.GetEffectReferenceAssignment(), value, SupportedGames1);
@@ -30,6 +30,7 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -51,6 +52,14 @@ public partial class CGameCtnMediaBlockTextBuilder : CGameCtnMediaBlockTextBuild
         public TMNESWC WithEffect(global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC? value) => base.WithEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffectSimi?)null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockText Build() => BuildNode(CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
+    }
+    public partial class TMU : CGameCtnMediaBlockTextBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText> state) : base(state) { }
+        public TMU WithEffect(global::GBX.NET.Interfaces.Control.IControlEffectSimiTMU? value) => base.WithEffect(value is null ? (global::GBX.NET.Engines.Control.CControlEffectSimi?)null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTextTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockText Build() => BuildNode(CGameCtnMediaBlockTextBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockText node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTextBuilderBase<VSK5>

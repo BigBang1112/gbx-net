@@ -7,11 +7,11 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> : NodeBuilde
 {
     private protected CGameControlCameraOrbital3dBuilderBase() { }
     private protected CGameControlCameraOrbital3dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP4;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithInterpolate(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, SupportedGames1);
     public TSelf WithIsUpLinked(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, SupportedGames1);
     public TSelf WithLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, SupportedGames1);
@@ -21,7 +21,7 @@ public abstract class CGameControlCameraOrbital3dBuilderBase<TSelf> : NodeBuilde
 public abstract class CGameControlCameraOrbital3dBuilderMembers1<TSelf> : CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf : CGameControlCameraOrbital3dBuilderMembers1<TSelf>
 {
     private protected CGameControlCameraOrbital3dBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-    public TSelf WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameControlCameraOrbital3dBuilderMembers2<TSelf> : CGameControlCameraOrbital3dBuilderBase<TSelf> where TSelf : CGameControlCameraOrbital3dBuilderMembers2<TSelf>
 {
@@ -63,7 +63,7 @@ public abstract class CGameControlCameraOrbital3dBuilderMembers4<TSelf> : CGameC
     private protected CGameControlCameraOrbital3dBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
     public TSelf WithDefaultFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, SupportedGames5);
     public TSelf WithDefaultNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, SupportedGames5);
-    public TSelf WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithForcedUp(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, SupportedGames5);
     public TSelf WithMaxFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, SupportedGames5);
     public TSelf WithMaxFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, SupportedGames5);
@@ -147,6 +147,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -158,7 +159,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
     public partial class TMSX : CGameControlCameraOrbital3dBuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-        public TMSX WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMSX WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithRelativeTargetPos(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
@@ -167,15 +168,23 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
     public partial class TMNESWC : CGameControlCameraOrbital3dBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node);
+    }
+    public partial class TMU : CGameControlCameraOrbital3dBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
+        public TMU WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node);
     }
     public partial class VSK5 : CGameControlCameraOrbital3dBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node);
@@ -183,7 +192,7 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
     public partial class TMF : CGameControlCameraOrbital3dBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node);
@@ -191,8 +200,8 @@ public partial class CGameControlCameraOrbital3dBuilder : CGameControlCameraOrbi
     public partial class MP3 : CGameControlCameraOrbital3dBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> state) : base(state) { }
-        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-        public MP3 WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public MP3 WithDefaultRadius(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraOrbital3dBuilderAssignments.GetDefaultRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d Build() => BuildNode(CGameControlCameraOrbital3dBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node);

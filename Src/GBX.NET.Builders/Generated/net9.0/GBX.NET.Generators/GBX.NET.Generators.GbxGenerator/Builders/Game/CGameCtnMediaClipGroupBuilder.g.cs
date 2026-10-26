@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaClipGroupBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnMediaClipGroupBuilderBase() { }
     private protected CGameCtnMediaClipGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state) : base(state) { }
-    public TSelf WithClips(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithClips(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipGroupBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithClips(params global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger[] values) => WithClips(new List<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger>(values));
     public TSelf WithClips(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup.ClipTrigger> values) => WithClips(values.ToArray());
 }
@@ -27,6 +27,7 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -47,6 +48,13 @@ public partial class CGameCtnMediaClipGroupBuilder : CGameCtnMediaClipGroupBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup Build() => BuildNode(CGameCtnMediaClipGroupBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
+    }
+    public partial class TMU : CGameCtnMediaClipGroupBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup Build() => BuildNode(CGameCtnMediaClipGroupBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node);
     }
     public partial class VSK5 : CGameCtnMediaClipGroupBuilderBase<VSK5>

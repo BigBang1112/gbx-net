@@ -85,6 +85,8 @@ public partial class CGameCtnMediaTrackBuilder : CGameCtnMediaTrackBuilderBase<C
     public partial class TMU : CGameCtnMediaTrackBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> state) : base(state) { }
+        public TMU WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU[] values) => base.WithBlocks(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU>(values, false));
+        public TMU WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMU> values) => WithBlocks(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaTrack Build() => BuildNode(CGameCtnMediaTrackBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaTrack node);

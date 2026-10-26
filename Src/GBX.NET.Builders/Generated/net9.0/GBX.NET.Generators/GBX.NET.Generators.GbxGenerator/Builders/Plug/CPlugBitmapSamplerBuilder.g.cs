@@ -7,7 +7,7 @@ public abstract class CPlugBitmapSamplerBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugBitmapSamplerBuilderBase() { }
     private protected CPlugBitmapSamplerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapAssignment(), value, SupportedGames1);
     public TSelf WithBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetBitmapReferenceAssignment(), value, SupportedGames1);
     public TSelf WithMipMapLodBias(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetMipMapLodBiasAssignment(), value, SupportedGames1);
@@ -21,7 +21,7 @@ public abstract class CPlugBitmapSamplerBuilderMembers1<TSelf> : CPlugBitmapSamp
 public abstract class CPlugBitmapSamplerBuilderMembers2<TSelf> : CPlugBitmapSamplerBuilderBase<TSelf> where TSelf : CPlugBitmapSamplerBuilderMembers2<TSelf>
 {
     private protected CPlugBitmapSamplerBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state) : base(state) { }
-    public TSelf WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithLegacyFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapSamplerBuilderAssignments.GetLegacyFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugBitmapSamplerBuilderMembers3<TSelf> : CPlugBitmapSamplerBuilderMembers1<TSelf> where TSelf : CPlugBitmapSamplerBuilderMembers3<TSelf>
 {
@@ -70,6 +70,7 @@ public partial class CPlugBitmapSamplerBuilder : CPlugBitmapSamplerBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -107,6 +108,14 @@ public partial class CPlugBitmapSamplerBuilder : CPlugBitmapSamplerBuilderBase<C
         public TMNESWC WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapSampler Build() => BuildNode(CPlugBitmapSamplerBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapSampler node);
+    }
+    public partial class TMU : CPlugBitmapSamplerBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapSampler> state) : base(state) { }
+        public TMU WithBitmap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmapSampler Build() => BuildNode(CPlugBitmapSamplerBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapSampler node);
     }
     public partial class VSK5 : CPlugBitmapSamplerBuilderMembers2<VSK5>

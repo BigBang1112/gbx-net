@@ -7,11 +7,8 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CSceneFxBloomBuilderBase() { }
     private protected CSceneFxBloomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithBlurSize(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, SupportedGames1);
-    public TSelf WithDatas(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, SupportedGames1);
-    public TSelf WithDatas(params global::GBX.NET.Engines.Scene.CSceneFxBloomData[] values) => WithDatas(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(values));
-    public TSelf WithDatas(IEnumerable<global::GBX.NET.Engines.Scene.CSceneFxBloomData> values) => WithDatas(values.ToArray());
     public TSelf WithIntensity(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, SupportedGames1);
 }
 public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBloomBuilder>
@@ -19,17 +16,34 @@ public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBlo
     private static global::GBX.NET.Engines.Scene.CSceneFxBloom CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxBloom();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B001());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxBloom CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxBloom();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CSceneFxBloomBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxBloom Build() => BuildNode(CSceneFxBloomBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxBloom node);
+    }
     public partial class TMF : CSceneFxBloomBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) : base(state) { }
-        public TMF WithDatas(params global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF[] values) => base.WithDatas(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(values, false));
+        public TMF WithDatas(NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
+        public TMF WithDatas(params global::GBX.NET.Engines.Scene.CSceneFxBloomData[] values) => WithDatas(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(values));
+        public TMF WithDatas(IEnumerable<global::GBX.NET.Engines.Scene.CSceneFxBloomData> values) => WithDatas(values.ToArray());
+        public TMF WithDatas(params global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF[] values) => WithDatas(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(values, false));
         public TMF WithDatas(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF> values) => WithDatas(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxBloom Build() => BuildNode(CSceneFxBloomBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Scene.CSceneFxBloom Build() => BuildNode(CSceneFxBloomBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxBloom node);
     }
 }

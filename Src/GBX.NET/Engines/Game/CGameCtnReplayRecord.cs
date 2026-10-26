@@ -341,6 +341,9 @@ public partial class CGameCtnReplayRecord
     [Obsolete("Use GetValidationGhost()?.Inputs instead.")]
     public ImmutableArray<IInput>? Inputs => GetValidationGhost()?.Inputs;
 
+    [Obsolete("Use GetValidationGhost()?.EventsDuration instead.")]
+    public TimeInt32? EventsDuration => GetValidationGhost()?.EventsDuration ?? pendingEventsDuration;
+
     /// <summary>
     /// Time-dependent mappings from recorded entity scene UIDs to indices in <see cref="Ghosts"/>.
     /// </summary>

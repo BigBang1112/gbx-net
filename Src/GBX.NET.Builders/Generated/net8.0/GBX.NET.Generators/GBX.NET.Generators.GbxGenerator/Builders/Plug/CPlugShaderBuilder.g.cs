@@ -7,7 +7,7 @@ public abstract class CPlugShaderBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CPlugShaderBuilderBase() { }
     private protected CPlugShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithFuncShader(global::GBX.NET.Engines.Function.CFuncShader? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderAssignment(), value, SupportedGames1);
     public TSelf WithFuncShaderReference(NodeRef<global::GBX.NET.Engines.Function.CFuncShader> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetFuncShaderReferenceAssignment(), value, SupportedGames1);
@@ -24,14 +24,14 @@ public abstract class CPlugShaderBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 public abstract class CPlugShaderBuilderMembers1<TSelf> : CPlugShaderBuilderBase<TSelf> where TSelf : CPlugShaderBuilderMembers1<TSelf>
 {
     private protected CPlugShaderBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
-    public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
     public TSelf WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
 }
 public abstract class CPlugShaderBuilderMembers2<TSelf> : CPlugShaderBuilderBase<TSelf> where TSelf : CPlugShaderBuilderMembers2<TSelf>
 {
     private protected CPlugShaderBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
-    public TSelf WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRequirementFlags(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetRequirementFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugShaderBuilderMembers3<TSelf> : CPlugShaderBuilderMembers2<TSelf> where TSelf : CPlugShaderBuilderMembers3<TSelf>
 {
@@ -105,6 +105,7 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -156,7 +157,7 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
         public TMNESWC WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
         public TMNESWC WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
         public TMNESWC WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>(values, false));
@@ -168,11 +169,27 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
         public global::GBX.NET.Engines.Plug.CPlugShader Build() => BuildNode(CPlugShaderBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShader node);
     }
+    public partial class TMU : CPlugShaderBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
+        public TMU WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMU? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
+        public TMU WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
+        public TMU WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderTMU[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMU>(values, false));
+        public TMU WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderTMU> values) => WithLegacyCustomShaders(values.ToArray());
+        public TMU WithPasses(params global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU[] values) => base.WithPasses(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU>(values, false));
+        public TMU WithPasses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMU> values) => WithPasses(values.ToArray());
+        public TMU WithSolidWiredApply(global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMU? value) => base.WithSolidWiredApply(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapApply?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugShaderTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugShader Build() => BuildNode(CPlugShaderBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugShader node);
+    }
     public partial class VSK5 : CPlugShaderBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
         public VSK5 WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
         public VSK5 WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
         public VSK5 WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>(values, false));
@@ -188,7 +205,7 @@ public partial class CPlugShaderBuilder : CPlugShaderBuilderBase<CPlugShaderBuil
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugShader> state) : base(state) { }
         public TMF WithFuncShader(global::GBX.NET.Interfaces.Function.IFuncShaderTMF? value) => base.WithFuncShader(value is null ? (global::GBX.NET.Engines.Function.CFuncShader?)null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithLegacyCustomShaders(NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugShaderBuilderAssignments.GetLegacyCustomShadersAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithLegacyCustomShaders(params global::GBX.NET.Engines.Plug.CPlugShader[] values) => WithLegacyCustomShaders(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(values));
         public TMF WithLegacyCustomShaders(IEnumerable<global::GBX.NET.Engines.Plug.CPlugShader> values) => WithLegacyCustomShaders(values.ToArray());
         public TMF WithLegacyCustomShaders(params global::GBX.NET.Interfaces.Plug.IPlugShaderTMF[] values) => WithLegacyCustomShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>(values, false));

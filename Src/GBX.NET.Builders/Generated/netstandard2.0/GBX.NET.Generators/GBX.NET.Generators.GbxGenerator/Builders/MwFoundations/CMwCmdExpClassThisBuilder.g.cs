@@ -20,6 +20,7 @@ public partial class CMwCmdExpClassThisBuilder : CMwCmdExpClassThisBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CMwCmdExpClassThisBuilderBase<TM10>
@@ -48,6 +49,13 @@ public partial class CMwCmdExpClassThisBuilder : CMwCmdExpClassThisBuilderBase<C
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassThisTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis Build() => BuildNode(CMwCmdExpClassThisBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis node);
+    }
+    public partial class TMU : CMwCmdExpClassThisBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassThisTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis Build() => BuildNode(CMwCmdExpClassThisBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassThis node);
     }
     public partial class VSK5 : CMwCmdExpClassThisBuilderBase<VSK5>

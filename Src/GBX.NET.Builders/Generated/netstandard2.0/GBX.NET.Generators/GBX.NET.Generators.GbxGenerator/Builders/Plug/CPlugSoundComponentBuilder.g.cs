@@ -7,7 +7,7 @@ public abstract class CPlugSoundComponentBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CPlugSoundComponentBuilderBase() { }
     private protected CPlugSoundComponentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithFadeInEndSpeedKmh(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInEndSpeedKmhAssignment(), value, SupportedGames1);
     public TSelf WithFadeInStartSpeedKmh(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeInStartSpeedKmhAssignment(), value, SupportedGames1);
     public TSelf WithFadeOutEndSpeedKmh(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundComponentBuilderAssignments.GetFadeOutEndSpeedKmhAssignment(), value, SupportedGames1);
@@ -31,6 +31,7 @@ public partial class CPlugSoundComponentBuilder : CPlugSoundComponentBuilderBase
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -50,6 +51,13 @@ public partial class CPlugSoundComponentBuilder : CPlugSoundComponentBuilderBase
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSoundComponent Build() => BuildNode(CPlugSoundComponentBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSoundComponent node);
+    }
+    public partial class TMU : CPlugSoundComponentBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSoundComponent> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSoundComponent Build() => BuildNode(CPlugSoundComponentBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSoundComponent node);
     }
     public partial class VSK5 : CPlugSoundComponentBuilderBase<VSK5>

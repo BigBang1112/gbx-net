@@ -7,7 +7,7 @@ public abstract class CFuncSegmentBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CFuncSegmentBuilderBase() { }
     private protected CFuncSegmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
-    public TSelf WithKeys(params global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
+    public TSelf WithKeys(params global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMU);
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncSegment.Key> values) => WithKeys(values.ToArray());
 }
 public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentBuilder>
@@ -18,10 +18,18 @@ public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentB
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public partial class TMU : CFuncSegmentBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSegmentTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
+    }
     public partial class TMF : CFuncSegmentBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }

@@ -7,8 +7,8 @@ public abstract class CPlugVisualIndexedTrianglesBuilderBase<TSelf> : NodeBuilde
 {
     private protected CPlugVisualIndexedTrianglesBuilderBase() { }
     private protected CPlugVisualIndexedTrianglesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBlendShapes(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesAssignment(), value, SupportedGames1);
     public TSelf WithBlendShapesReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesReferenceAssignment(), value, SupportedGames1);
     public TSelf WithSubVisuals(params Int3[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, SupportedGames1);
@@ -24,7 +24,7 @@ public abstract class CPlugVisualIndexedTrianglesBuilderMembers1<TSelf> : CPlugV
 public abstract class CPlugVisualIndexedTrianglesBuilderMembers2<TSelf> : CPlugVisualIndexedTrianglesBuilderBase<TSelf> where TSelf : CPlugVisualIndexedTrianglesBuilderMembers2<TSelf>
 {
     private protected CPlugVisualIndexedTrianglesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
-    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugVisualIndexedTrianglesBuilderMembers3<TSelf> : CPlugVisualIndexedTrianglesBuilderMembers1<TSelf> where TSelf : CPlugVisualIndexedTrianglesBuilderMembers3<TSelf>
 {
@@ -35,7 +35,7 @@ public abstract class CPlugVisualIndexedTrianglesBuilderMembers3<TSelf> : CPlugV
 public abstract class CPlugVisualIndexedTrianglesBuilderMembers4<TSelf> : CPlugVisualIndexedTrianglesBuilderMembers2<TSelf> where TSelf : CPlugVisualIndexedTrianglesBuilderMembers4<TSelf>
 {
     private protected CPlugVisualIndexedTrianglesBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
-    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values) => WithSplits(values.ToArray());
 }
 public abstract class CPlugVisualIndexedTrianglesBuilderMembers5<TSelf> : CPlugVisualIndexedTrianglesBuilderMembers3<TSelf> where TSelf : CPlugVisualIndexedTrianglesBuilderMembers5<TSelf>
@@ -146,6 +146,7 @@ public partial class CPlugVisualIndexedTrianglesBuilder : CPlugVisualIndexedTria
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -164,7 +165,7 @@ public partial class CPlugVisualIndexedTrianglesBuilder : CPlugVisualIndexedTria
     public partial class TMPU : CPlugVisualIndexedTrianglesBuilderMembers5<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
-        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTrianglesTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles node);
@@ -178,6 +179,15 @@ public partial class CPlugVisualIndexedTrianglesBuilder : CPlugVisualIndexedTria
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTrianglesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles node);
+    }
+    public partial class TMU : CPlugVisualIndexedTrianglesBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles> state) : base(state) { }
+        public TMU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
+        public TMU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTrianglesTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles Build() => BuildNode(CPlugVisualIndexedTrianglesBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexedTriangles node);
     }
     public partial class VSK5 : CPlugVisualIndexedTrianglesBuilderMembers4<VSK5>

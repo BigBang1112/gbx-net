@@ -24,6 +24,7 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -44,6 +45,13 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugIndexBuffer> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build() => BuildNode(CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
+    }
+    public partial class TMU : CPlugIndexBufferBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugIndexBuffer> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build() => BuildNode(CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node);
     }
     public partial class VSK5 : CPlugIndexBufferBuilderBase<VSK5>

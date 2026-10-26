@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockTimeBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnMediaBlockTimeBuilderBase() { }
     private protected CGameCtnMediaBlockTimeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime> state) : base(state) { }
-    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTimeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTimeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime.Key> values) => WithKeys(values.ToArray());
 }
@@ -21,6 +21,7 @@ public partial class CGameCtnMediaBlockTimeBuilder : CGameCtnMediaBlockTimeBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -39,6 +40,13 @@ public partial class CGameCtnMediaBlockTimeBuilder : CGameCtnMediaBlockTimeBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTimeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime Build() => BuildNode(CGameCtnMediaBlockTimeBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime node);
+    }
+    public partial class TMU : CGameCtnMediaBlockTimeBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTimeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime Build() => BuildNode(CGameCtnMediaBlockTimeBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTime node);
     }
     public partial class VSK5 : CGameCtnMediaBlockTimeBuilderBase<VSK5>

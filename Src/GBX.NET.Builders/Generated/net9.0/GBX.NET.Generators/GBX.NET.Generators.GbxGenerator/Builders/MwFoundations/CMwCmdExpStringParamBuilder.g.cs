@@ -7,7 +7,7 @@ public abstract class CMwCmdExpStringParamBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMwCmdExpStringParamBuilderBase() { }
     private protected CMwCmdExpStringParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam> state) : base(state) { }
-    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
+    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpStringParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF | GameVersion.TMU);
 }
 public partial class CMwCmdExpStringParamBuilder : CMwCmdExpStringParamBuilderBase<CMwCmdExpStringParamBuilder>
 {
@@ -18,7 +18,15 @@ public partial class CMwCmdExpStringParamBuilder : CMwCmdExpStringParamBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam.Chunk01050002());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpStringParamBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringParamTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam Build() => BuildNode(CMwCmdExpStringParamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam node);
+    }
     public partial class TMF : CMwCmdExpStringParamBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpStringParam> state) : base(state) { }

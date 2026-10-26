@@ -7,7 +7,7 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> : Node
 {
     private protected CGameCtnDecorationTerrainModifierBuilderBase() { }
     private protected CGameCtnDecorationTerrainModifierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithIdName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetIdNameAssignment(), value, SupportedGames1);
     public TSelf WithRemapFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemapFolderAssignment(), value, SupportedGames1);
     public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingAssignment(), value, SupportedGames1);
@@ -22,6 +22,7 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -29,6 +30,14 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public partial class TMU : CGameCtnDecorationTerrainModifierBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state) : base(state) { }
+        public TMU WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build() => BuildNode(CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node);
+    }
     public partial class VSK5 : CGameCtnDecorationTerrainModifierBuilderBase<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state) : base(state) { }

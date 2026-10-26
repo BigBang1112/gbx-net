@@ -7,7 +7,7 @@ public abstract class CControlEffectSwitchStyleBuilderBase<TSelf> : NodeBuilder<
 {
     private protected CControlEffectSwitchStyleBuilderBase() { }
     private protected CControlEffectSwitchStyleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSwitchStyle> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMU;
     public TSelf WithFocusedStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSwitchStyleBuilderAssignments.GetFocusedStyleAssignment(), value, SupportedGames1);
     public TSelf WithFocusedStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlEffectSwitchStyleBuilderAssignments.GetFocusedStyleReferenceAssignment(), value, SupportedGames1);
 }
@@ -21,6 +21,7 @@ public partial class CControlEffectSwitchStyleBuilder : CControlEffectSwitchStyl
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public partial class TM10 : CControlEffectSwitchStyleBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSwitchStyle> state) : base(state) { }
@@ -35,6 +36,14 @@ public partial class CControlEffectSwitchStyleBuilder : CControlEffectSwitchStyl
         public TMPU WithFocusedStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value) => base.WithFocusedStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSwitchStyle Build() => BuildNode(CControlEffectSwitchStyleBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSwitchStyle node);
+    }
+    public partial class TMU : CControlEffectSwitchStyleBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSwitchStyle> state) : base(state) { }
+        public TMU WithFocusedStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithFocusedStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectSwitchStyle Build() => BuildNode(CControlEffectSwitchStyleBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSwitchStyle node);
     }
 }

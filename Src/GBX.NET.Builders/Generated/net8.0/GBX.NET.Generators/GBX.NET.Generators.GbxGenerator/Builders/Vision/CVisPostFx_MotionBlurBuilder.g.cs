@@ -7,8 +7,17 @@ public abstract class CVisPostFx_MotionBlurBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CVisPostFx_MotionBlurBuilderBase() { }
     private protected CVisPostFx_MotionBlurBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
-    public TSelf WithTechnique(int value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TM10 | GameVersion.TMF);
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    public TSelf WithTechnique(int value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetTechniqueAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMU);
+}
+public abstract class CVisPostFx_MotionBlurBuilderMembers1<TSelf> : CVisPostFx_MotionBlurBuilderBase<TSelf> where TSelf : CVisPostFx_MotionBlurBuilderMembers1<TSelf>
+{
+    private protected CVisPostFx_MotionBlurBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) : base(state) { }
+    public TSelf WithT2_DelayShadows(bool value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, SupportedGames1);
+    public TSelf WithT2_Fid_PHlsl_MotionLenCmp(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, SupportedGames1);
+    public TSelf WithT2_Fid_PHlsl_MotionLenCmpReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithT2_MotionMaxLen(float value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, SupportedGames1);
+    public TSelf WithT2_MotionScale(float value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, SupportedGames1);
 }
 public partial class CVisPostFx_MotionBlurBuilder : CVisPostFx_MotionBlurBuilderBase<CVisPostFx_MotionBlurBuilder>
 {
@@ -26,6 +35,7 @@ public partial class CVisPostFx_MotionBlurBuilder : CVisPostFx_MotionBlurBuilder
         return node;
     }
     public TM10 ForTM10() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CVisPostFx_MotionBlurBuilderBase<TM10>
     {
@@ -34,14 +44,16 @@ public partial class CVisPostFx_MotionBlurBuilder : CVisPostFx_MotionBlurBuilder
         public global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur Build() => BuildNode(CVisPostFx_MotionBlurBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node);
     }
-    public partial class TMF : CVisPostFx_MotionBlurBuilderBase<TMF>
+    public partial class TMU : CVisPostFx_MotionBlurBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur Build() => BuildNode(CVisPostFx_MotionBlurBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node);
+    }
+    public partial class TMF : CVisPostFx_MotionBlurBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur> state) : base(state) { }
-        public TMF WithT2_DelayShadows(bool value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_DelayShadowsAssignment(), value, SupportedGames1);
-        public TMF WithT2_Fid_PHlsl_MotionLenCmp(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpAssignment(), value, SupportedGames1);
-        public TMF WithT2_Fid_PHlsl_MotionLenCmpReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_Fid_PHlsl_MotionLenCmpReferenceAssignment(), value, SupportedGames1);
-        public TMF WithT2_MotionMaxLen(float value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionMaxLenAssignment(), value, SupportedGames1);
-        public TMF WithT2_MotionScale(float value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilderAssignments.GetT2_MotionScaleAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur Build() => BuildNode(CVisPostFx_MotionBlurBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur node);

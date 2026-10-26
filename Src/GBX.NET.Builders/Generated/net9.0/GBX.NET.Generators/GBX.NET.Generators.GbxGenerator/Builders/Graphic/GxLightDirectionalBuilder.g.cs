@@ -7,8 +7,8 @@ public abstract class GxLightDirectionalBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected GxLightDirectionalBuilderBase() { }
     private protected GxLightDirectionalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
     public TSelf WithBoundaryHintPos(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightDirectionalBuilderAssignments.GetBoundaryHintPosAssignment(), value, SupportedGames1);
     public TSelf WithColor(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
@@ -84,6 +84,7 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -118,6 +119,13 @@ public partial class GxLightDirectionalBuilder : GxLightDirectionalBuilderBase<G
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
         public global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightDirectional Build() => BuildNode(GxLightDirectionalBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
+    }
+    public partial class TMU : GxLightDirectionalBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightDirectional> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Graphic.GxLightDirectional Build() => BuildNode(GxLightDirectionalBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightDirectional node);
     }
     public partial class VSK5 : GxLightDirectionalBuilderMembers3<VSK5>

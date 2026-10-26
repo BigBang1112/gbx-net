@@ -7,8 +7,8 @@ public abstract class CGameCtnZoneTransitionBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnZoneTransitionBuilderBase() { }
     private protected CGameCtnZoneTransitionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneTransition> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithHeight(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHeightAssignment(), value, SupportedGames1);
     public TSelf WithSurfaceId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetSurfaceIdAssignment(), value, SupportedGames1);
@@ -23,7 +23,7 @@ public abstract class CGameCtnZoneTransitionBuilderMembers1<TSelf> : CGameCtnZon
 public abstract class CGameCtnZoneTransitionBuilderMembers2<TSelf> : CGameCtnZoneTransitionBuilderMembers1<TSelf> where TSelf : CGameCtnZoneTransitionBuilderMembers2<TSelf>
 {
     private protected CGameCtnZoneTransitionBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneTransition> state) : base(state) { }
-    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnZoneTransitionBuilderMembers3<TSelf> : CGameCtnZoneTransitionBuilderMembers1<TSelf> where TSelf : CGameCtnZoneTransitionBuilderMembers3<TSelf>
 {
@@ -79,6 +79,7 @@ public partial class CGameCtnZoneTransitionBuilder : CGameCtnZoneTransitionBuild
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -113,6 +114,13 @@ public partial class CGameCtnZoneTransitionBuilder : CGameCtnZoneTransitionBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneTransition> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneTransition Build() => BuildNode(CGameCtnZoneTransitionBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneTransition node);
+    }
+    public partial class TMU : CGameCtnZoneTransitionBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneTransition> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnZoneTransition Build() => BuildNode(CGameCtnZoneTransitionBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneTransition node);
     }
     public partial class VSK5 : CGameCtnZoneTransitionBuilderMembers2<VSK5>

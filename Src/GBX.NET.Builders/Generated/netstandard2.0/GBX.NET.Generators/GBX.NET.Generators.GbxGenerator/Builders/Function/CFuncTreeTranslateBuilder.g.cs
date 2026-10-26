@@ -7,8 +7,8 @@ public abstract class CFuncTreeTranslateBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CFuncTreeTranslateBuilderBase() { }
     private protected CFuncTreeTranslateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
     public TSelf WithPeriod(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, SupportedGames1);
     public TSelf WithPhase(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, SupportedGames1);
@@ -56,6 +56,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -74,7 +75,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     public partial class TMPU : CFuncTreeTranslateBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public TMPU WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMPU WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -82,7 +83,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     public partial class TMSX : CFuncTreeTranslateBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public TMSX WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -90,15 +91,23 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     public partial class TMNESWC : CFuncTreeTranslateBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public TMNESWC WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
+    }
+    public partial class TMU : CFuncTreeTranslateBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
+        public TMU WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
     public partial class VSK5 : CFuncTreeTranslateBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public VSK5 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -107,7 +116,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
         public TMF WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        public TMF WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -116,7 +125,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
         public MP3 WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        public MP3 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -125,7 +134,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
         public TMT WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        public TMT WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMT WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -134,7 +143,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
         public MP4 WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        public MP4 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP4 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
@@ -143,7 +152,7 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
         public TM2020 WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-        public TM2020 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TM2020 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build() => BuildNode(CFuncTreeTranslateBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);

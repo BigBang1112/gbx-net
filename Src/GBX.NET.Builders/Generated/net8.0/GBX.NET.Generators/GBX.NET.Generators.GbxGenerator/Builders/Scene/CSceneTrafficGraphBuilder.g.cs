@@ -20,6 +20,7 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CSceneTrafficGraphBuilderBase<TM10>
@@ -48,6 +49,13 @@ public partial class CSceneTrafficGraphBuilder : CSceneTrafficGraphBuilderBase<C
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneTrafficGraph> state) : base(state) { }
         public global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneTrafficGraph Build() => BuildNode(CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
+    }
+    public partial class TMU : CSceneTrafficGraphBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneTrafficGraph> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneTrafficGraph Build() => BuildNode(CSceneTrafficGraphBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneTrafficGraph node);
     }
     public partial class VSK5 : CSceneTrafficGraphBuilderBase<VSK5>

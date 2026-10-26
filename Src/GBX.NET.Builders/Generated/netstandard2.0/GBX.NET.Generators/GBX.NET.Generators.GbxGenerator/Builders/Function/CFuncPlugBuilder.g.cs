@@ -7,7 +7,7 @@ public abstract class CFuncPlugBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CFuncPlugBuilderBase() { }
     private protected CFuncPlugBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
     public TSelf WithPeriod(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, SupportedGames1);
     public TSelf WithPhase(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, SupportedGames1);
@@ -15,7 +15,7 @@ public abstract class CFuncPlugBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 public abstract class CFuncPlugBuilderMembers1<TSelf> : CFuncPlugBuilderBase<TSelf> where TSelf : CFuncPlugBuilderMembers1<TSelf>
 {
     private protected CFuncPlugBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncPlugBuilderMembers2<TSelf> : CFuncPlugBuilderMembers1<TSelf> where TSelf : CFuncPlugBuilderMembers2<TSelf>
 {
@@ -46,6 +46,7 @@ public partial class CFuncPlugBuilder : CFuncPlugBuilderBase<CFuncPlugBuilder>
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -80,6 +81,13 @@ public partial class CFuncPlugBuilder : CFuncPlugBuilderBase<CFuncPlugBuilder>
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build() => BuildNode(CFuncPlugBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
+    }
+    public partial class TMU : CFuncPlugBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncPlugTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncPlug Build() => BuildNode(CFuncPlugBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
     public partial class VSK5 : CFuncPlugBuilderMembers1<VSK5>

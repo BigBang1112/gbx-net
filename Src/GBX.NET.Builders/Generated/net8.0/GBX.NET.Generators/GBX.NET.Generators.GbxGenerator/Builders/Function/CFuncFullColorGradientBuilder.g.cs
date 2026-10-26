@@ -7,7 +7,7 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CFuncFullColorGradientBuilderBase() { }
     private protected CFuncFullColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithKeyFramePos1(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, SupportedGames1);
     public TSelf WithKeyFramePos2(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, SupportedGames1);
     public TSelf WithKeyFrameValue0(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, SupportedGames1);
@@ -23,7 +23,15 @@ public partial class CFuncFullColorGradientBuilder : CFuncFullColorGradientBuild
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CFuncFullColorGradientBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncFullColorGradientTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncFullColorGradient Build() => BuildNode(CFuncFullColorGradientBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncFullColorGradient node);
+    }
     public partial class TMF : CFuncFullColorGradientBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) : base(state) { }

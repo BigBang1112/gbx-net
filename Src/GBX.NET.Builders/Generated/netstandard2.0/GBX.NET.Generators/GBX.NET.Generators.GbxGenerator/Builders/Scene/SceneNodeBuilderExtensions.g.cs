@@ -27,6 +27,14 @@ public static class CSceneFxBloomDataBuilderExtensions
     }
 }
 
+public static class CSceneFxColorsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxColors)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilder Create() => new();
+    }
+}
+
 public static class CSceneFxDepthOfFieldBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField)
@@ -56,6 +64,14 @@ public static class CSceneFxStereoscopyBuilderExtensions
     extension(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy)
     {
         public static global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilder Create() => new();
+    }
+}
+
+public static class CSceneFxSuperSampleBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxSuperSample)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxSuperSampleBuilder Create() => new();
     }
 }
 

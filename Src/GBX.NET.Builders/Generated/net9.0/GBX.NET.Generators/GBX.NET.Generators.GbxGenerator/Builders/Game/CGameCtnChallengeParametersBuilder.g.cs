@@ -7,8 +7,8 @@ public abstract class CGameCtnChallengeParametersBuilderBase<TSelf> : NodeBuilde
 {
     private protected CGameCtnChallengeParametersBuilderBase() { }
     private protected CGameCtnChallengeParametersBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithAuthorTime(TimeInt32? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetAuthorTimeAssignment(), value, SupportedGames1);
     public TSelf WithBronzeTime(TimeInt32? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetBronzeTimeAssignment(), value, SupportedGames1);
@@ -25,7 +25,7 @@ public abstract class CGameCtnChallengeParametersBuilderMembers1<TSelf> : CGameC
 public abstract class CGameCtnChallengeParametersBuilderMembers2<TSelf> : CGameCtnChallengeParametersBuilderMembers1<TSelf> where TSelf : CGameCtnChallengeParametersBuilderMembers2<TSelf>
 {
     private protected CGameCtnChallengeParametersBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state) : base(state) { }
-    public TSelf WithItems(params int[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetItemsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithItems(params int[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilderAssignments.GetItemsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithItems(IEnumerable<int> values) => WithItems(values.ToArray());
 }
 public abstract class CGameCtnChallengeParametersBuilderMembers3<TSelf> : CGameCtnChallengeParametersBuilderMembers1<TSelf> where TSelf : CGameCtnChallengeParametersBuilderMembers3<TSelf>
@@ -80,6 +80,7 @@ public partial class CGameCtnChallengeParametersBuilder : CGameCtnChallengeParam
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -114,6 +115,13 @@ public partial class CGameCtnChallengeParametersBuilder : CGameCtnChallengeParam
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallengeParameters Build() => BuildNode(CGameCtnChallengeParametersBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node);
+    }
+    public partial class TMU : CGameCtnChallengeParametersBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnChallengeParameters Build() => BuildNode(CGameCtnChallengeParametersBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node);
     }
     public partial class VSK5 : CGameCtnChallengeParametersBuilderMembers2<VSK5>

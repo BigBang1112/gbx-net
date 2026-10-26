@@ -7,7 +7,7 @@ public abstract class CPlugCharPhySpecialPropertyBuilderBase<TSelf> : NodeBuilde
 {
     private protected CPlugCharPhySpecialPropertyBuilderBase() { }
     private protected CPlugCharPhySpecialPropertyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithJumpPadFixedVel(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetJumpPadFixedVelAssignment(), value, SupportedGames1);
     public TSelf WithSpecialType(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.ESpecialType value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhySpecialPropertyBuilderAssignments.GetSpecialTypeAssignment(), value, SupportedGames1);
@@ -37,6 +37,7 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -71,6 +72,13 @@ public partial class CPlugCharPhySpecialPropertyBuilder : CPlugCharPhySpecialPro
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
+    }
+    public partial class TMU : CPlugCharPhySpecialPropertyBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty Build() => BuildNode(CPlugCharPhySpecialPropertyBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node);
     }
     public partial class VSK5 : CPlugCharPhySpecialPropertyBuilderBase<VSK5>

@@ -7,7 +7,7 @@ public abstract class CMotionCmdBaseParamsBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMotionCmdBaseParamsBuilderBase() { }
     private protected CMotionCmdBaseParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithPeriod(TimeInt32 value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPeriodAssignment(), value, SupportedGames1);
     public TSelf WithPhase(float value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseParamsBuilderAssignments.GetPhaseAssignment(), value, SupportedGames1);
 }
@@ -23,6 +23,7 @@ public partial class CMotionCmdBaseParamsBuilder : CMotionCmdBaseParamsBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -56,6 +57,13 @@ public partial class CMotionCmdBaseParamsBuilder : CMotionCmdBaseParamsBuilderBa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state) : base(state) { }
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBaseParams Build() => BuildNode(CMotionCmdBaseParamsBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node);
+    }
+    public partial class TMU : CMotionCmdBaseParamsBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionCmdBaseParams Build() => BuildNode(CMotionCmdBaseParamsBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node);
     }
     public partial class VSK5 : CMotionCmdBaseParamsBuilderBase<VSK5>

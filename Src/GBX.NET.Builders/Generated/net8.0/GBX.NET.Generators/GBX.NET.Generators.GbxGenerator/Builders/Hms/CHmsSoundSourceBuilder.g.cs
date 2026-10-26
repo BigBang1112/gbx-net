@@ -7,8 +7,8 @@ public abstract class CHmsSoundSourceBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CHmsSoundSourceBuilderBase() { }
     private protected CHmsSoundSourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithPitch(float value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPitchAssignment(), value, SupportedGames1);
     public TSelf WithPlugSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundAssignment(), value, SupportedGames1);
     public TSelf WithPlugSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetPlugSoundReferenceAssignment(), value, SupportedGames1);
@@ -24,7 +24,7 @@ public abstract class CHmsSoundSourceBuilderMembers1<TSelf> : CHmsSoundSourceBui
 public abstract class CHmsSoundSourceBuilderMembers2<TSelf> : CHmsSoundSourceBuilderMembers1<TSelf> where TSelf : CHmsSoundSourceBuilderMembers2<TSelf>
 {
     private protected CHmsSoundSourceBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) : base(state) { }
-    public TSelf WithVolumicSize(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    public TSelf WithVolumicSize(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsSoundSourceBuilderAssignments.GetVolumicSizeAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSoundSourceBuilder>
 {
@@ -60,6 +60,7 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -93,6 +94,14 @@ public partial class CHmsSoundSourceBuilder : CHmsSoundSourceBuilderBase<CHmsSou
         public TMNESWC WithPlugSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? value) => base.WithPlugSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsSoundSource Build() => BuildNode(CHmsSoundSourceBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
+    }
+    public partial class TMU : CHmsSoundSourceBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsSoundSource> state) : base(state) { }
+        public TMU WithPlugSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? value) => base.WithPlugSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Hms.CHmsSoundSource Build() => BuildNode(CHmsSoundSourceBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsSoundSource node);
     }
     public partial class VSK5 : CHmsSoundSourceBuilderMembers2<VSK5>

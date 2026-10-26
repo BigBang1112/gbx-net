@@ -7,8 +7,8 @@ public abstract class CPlugVisualGridBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CPlugVisualGridBuilderBase() { }
     private protected CPlugVisualGridBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBlendShapes(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesAssignment(), value, SupportedGames1);
     public TSelf WithBlendShapesReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesReferenceAssignment(), value, SupportedGames1);
     public TSelf WithNbPointX(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualGridBuilderAssignments.GetNbPointXAssignment(), value, SupportedGames1);
@@ -28,7 +28,7 @@ public abstract class CPlugVisualGridBuilderMembers1<TSelf> : CPlugVisualGridBui
 public abstract class CPlugVisualGridBuilderMembers2<TSelf> : CPlugVisualGridBuilderBase<TSelf> where TSelf : CPlugVisualGridBuilderMembers2<TSelf>
 {
     private protected CPlugVisualGridBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) : base(state) { }
-    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugVisualGridBuilderMembers3<TSelf> : CPlugVisualGridBuilderMembers1<TSelf> where TSelf : CPlugVisualGridBuilderMembers3<TSelf>
 {
@@ -39,7 +39,7 @@ public abstract class CPlugVisualGridBuilderMembers3<TSelf> : CPlugVisualGridBui
 public abstract class CPlugVisualGridBuilderMembers4<TSelf> : CPlugVisualGridBuilderMembers2<TSelf> where TSelf : CPlugVisualGridBuilderMembers4<TSelf>
 {
     private protected CPlugVisualGridBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) : base(state) { }
-    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values) => WithSplits(values.ToArray());
 }
 public abstract class CPlugVisualGridBuilderMembers5<TSelf> : CPlugVisualGridBuilderMembers3<TSelf> where TSelf : CPlugVisualGridBuilderMembers5<TSelf>
@@ -150,6 +150,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -168,7 +169,7 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
     public partial class TMPU : CPlugVisualGridBuilderMembers5<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) : base(state) { }
-        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualGrid Build() => BuildNode(CPlugVisualGridBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualGrid node);
@@ -182,6 +183,15 @@ public partial class CPlugVisualGridBuilder : CPlugVisualGridBuilderBase<CPlugVi
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualGrid Build() => BuildNode(CPlugVisualGridBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualGrid node);
+    }
+    public partial class TMU : CPlugVisualGridBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualGrid> state) : base(state) { }
+        public TMU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
+        public TMU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.Plug.IPlugVisualGridTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugVisualGrid Build() => BuildNode(CPlugVisualGridBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualGrid node);
     }
     public partial class VSK5 : CPlugVisualGridBuilderMembers4<VSK5>

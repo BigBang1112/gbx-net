@@ -9,14 +9,9 @@ public abstract class CPlugAnimFileBuilderBase<TSelf> : NodeBuilder<global::GBX.
     private protected CPlugAnimFileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames4 = GameVersion.TM2020;
     public TSelf WithImportString(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetImportStringAssignment(), value, SupportedGames1);
-    public TSelf WithPoseGrids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridsAssignment(), value, SupportedGames1);
-    public TSelf WithPoseGrids(params global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid[] values) => WithPoseGrids(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>(values));
-    public TSelf WithPoseGrids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid> values) => WithPoseGrids(values.ToArray());
-    public TSelf WithPoseGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupsAssignment(), value, SupportedGames1);
-    public TSelf WithPoseGroups(params global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup[] values) => WithPoseGroups(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>(values));
-    public TSelf WithPoseGroups(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup> values) => WithPoseGroups(values.ToArray());
     public TSelf WithSpotVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotVersionAssignment(), value, SupportedGames1);
     public TSelf WithSpots(params global::GBX.NET.Engines.Plug.CPlugAnimSpotModel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSpotsAssignment(), value, SupportedGames1);
     public TSelf WithSpots(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimSpotModel> values) => WithSpots(values.ToArray());
@@ -31,9 +26,22 @@ public abstract class CPlugAnimFileBuilderMembers1<TSelf> : CPlugAnimFileBuilder
     public TSelf WithSkels(params global::GBX.NET.Engines.Plug.CPlugSkel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public TSelf WithSkels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSkel> values) => WithSkels(values.ToArray());
 }
-public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilderMembers1<TSelf> where TSelf : CPlugAnimFileBuilderMembers2<TSelf>
+public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilderBase<TSelf> where TSelf : CPlugAnimFileBuilderMembers2<TSelf>
 {
     private protected CPlugAnimFileBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
+    public TSelf WithGraphStacks(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, SupportedGames3);
+    public TSelf WithGraphStacks(params global::GBX.NET.Engines.Plug.CPlugAnimGraphStack[] values) => WithGraphStacks(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>(values));
+    public TSelf WithGraphStacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> values) => WithGraphStacks(values.ToArray());
+    public TSelf WithPoseGrids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridsAssignment(), value, SupportedGames3);
+    public TSelf WithPoseGrids(params global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid[] values) => WithPoseGrids(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>(values));
+    public TSelf WithPoseGrids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid> values) => WithPoseGrids(values.ToArray());
+    public TSelf WithPoseGroups(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupsAssignment(), value, SupportedGames3);
+    public TSelf WithPoseGroups(params global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup[] values) => WithPoseGroups(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup>(values));
+    public TSelf WithPoseGroups(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimPoseGroup> values) => WithPoseGroups(values.ToArray());
+}
+public abstract class CPlugAnimFileBuilderMembers3<TSelf> : CPlugAnimFileBuilderMembers1<TSelf> where TSelf : CPlugAnimFileBuilderMembers3<TSelf>
+{
+    private protected CPlugAnimFileBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
     public TSelf WithBakedClips(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedClipsAssignment(), value, SupportedGames2);
     public TSelf WithBakedClips(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked> values) => WithBakedClips(values.ToArray());
     public TSelf WithBakedVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedVersionAssignment(), value, SupportedGames2);
@@ -55,6 +63,10 @@ public abstract class CPlugAnimFileBuilderMembers2<TSelf> : CPlugAnimFileBuilder
     public TSelf WithLegacyGraphStacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack> values) => WithLegacyGraphStacks(values.ToArray());
     public TSelf WithLegacyGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyGraphsAssignment(), value, SupportedGames2);
     public TSelf WithLegacyGraphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph> values) => WithLegacyGraphs(values.ToArray());
+    public TSelf WithLegacyPoseGrids(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGrid[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyPoseGridsAssignment(), value, SupportedGames2);
+    public TSelf WithLegacyPoseGrids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGrid> values) => WithLegacyPoseGrids(values.ToArray());
+    public TSelf WithLegacyPoseGroups(params global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGroup[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyPoseGroupsAssignment(), value, SupportedGames2);
+    public TSelf WithLegacyPoseGroups(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyPoseGroup> values) => WithLegacyPoseGroups(values.ToArray());
     public TSelf WithLegacyRootMotionVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyRootMotionVersionAssignment(), value, SupportedGames2);
     public TSelf WithPoseGridVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGridVersionAssignment(), value, SupportedGames2);
     public TSelf WithPoseGroupVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetPoseGroupVersionAssignment(), value, SupportedGames2);
@@ -78,59 +90,55 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class MP3 : CPlugAnimFileBuilderMembers2<MP3>
+    public partial class MP3 : CPlugAnimFileBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);
     }
-    public partial class TMT : CPlugAnimFileBuilderMembers2<TMT>
+    public partial class TMT : CPlugAnimFileBuilderMembers3<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);
     }
-    public partial class MP4 : CPlugAnimFileBuilderMembers1<MP4>
+    public partial class MP4 : CPlugAnimFileBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
         public MP4 WithClips(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP4);
         public MP4 WithClips(params global::GBX.NET.Engines.Plug.CPlugAnimClip[] values) => WithClips(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>(values));
         public MP4 WithClips(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimClip> values) => WithClips(values.ToArray());
-        public MP4 WithGraphStacks(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-        public MP4 WithGraphStacks(params global::GBX.NET.Engines.Plug.CPlugAnimGraphStack[] values) => WithGraphStacks(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>(values));
-        public MP4 WithGraphStacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> values) => WithGraphStacks(values.ToArray());
+        public MP4 WithSkels(params global::GBX.NET.Engines.Plug.CPlugSkel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
+        public MP4 WithSkels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSkel> values) => WithSkels(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);
     }
-    public partial class TM2020 : CPlugAnimFileBuilderBase<TM2020>
+    public partial class TM2020 : CPlugAnimFileBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimFile> state) : base(state) { }
-        public TM2020 WithBakedResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedResourcesAssignment(), value, SupportedGames3);
+        public TM2020 WithBakedResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetBakedResourcesAssignment(), value, SupportedGames4);
         public TM2020 WithBakedResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithBakedResources(values.ToArray());
-        public TM2020 WithClassIds(params uint[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClassIdsAssignment(), value, SupportedGames3);
+        public TM2020 WithClassIds(params uint[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClassIdsAssignment(), value, SupportedGames4);
         public TM2020 WithClassIds(IEnumerable<uint> values) => WithClassIds(values.ToArray());
-        public TM2020 WithClipResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipResourcesAssignment(), value, SupportedGames3);
+        public TM2020 WithClipResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipResourcesAssignment(), value, SupportedGames4);
         public TM2020 WithClipResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithClipResources(values.ToArray());
-        public TM2020 WithGraphStacks(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphStacksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
-        public TM2020 WithGraphStacks(params global::GBX.NET.Engines.Plug.CPlugAnimGraphStack[] values) => WithGraphStacks(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>(values));
-        public TM2020 WithGraphStacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> values) => WithGraphStacks(values.ToArray());
         public TM2020 WithGraphVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphVersionAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
-        public TM2020 WithGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphsAssignment(), value, SupportedGames3);
+        public TM2020 WithGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetGraphsAssignment(), value, SupportedGames4);
         public TM2020 WithGraphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot> values) => WithGraphs(values.ToArray());
-        public TM2020 WithJointGroupResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupResourcesAssignment(), value, SupportedGames3);
+        public TM2020 WithJointGroupResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetJointGroupResourcesAssignment(), value, SupportedGames4);
         public TM2020 WithJointGroupResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithJointGroupResources(values.ToArray());
-        public TM2020 WithLegacyResources1(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources1Assignment(), value, SupportedGames3);
+        public TM2020 WithLegacyResources1(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources1Assignment(), value, SupportedGames4);
         public TM2020 WithLegacyResources1(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithLegacyResources1(values.ToArray());
-        public TM2020 WithLegacyResources2(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources2Assignment(), value, SupportedGames3);
+        public TM2020 WithLegacyResources2(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetLegacyResources2Assignment(), value, SupportedGames4);
         public TM2020 WithLegacyResources2(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithLegacyResources2(values.ToArray());
-        public TM2020 WithResourceNames(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetResourceNamesAssignment(), value, SupportedGames3);
+        public TM2020 WithResourceNames(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetResourceNamesAssignment(), value, SupportedGames4);
         public TM2020 WithResourceNames(IEnumerable<string> values) => WithResourceNames(values.ToArray());
-        public TM2020 WithSkelResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelResourcesAssignment(), value, SupportedGames3);
+        public TM2020 WithSkelResources(params global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelResourcesAssignment(), value, SupportedGames4);
         public TM2020 WithSkelResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource> values) => WithSkelResources(values.ToArray());
-        public TM2020 WithVariableVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariableVersionAssignment(), value, SupportedGames3);
+        public TM2020 WithVariableVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetVariableVersionAssignment(), value, SupportedGames4);
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimFile Build() => BuildNode(CPlugAnimFileBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimFile node);

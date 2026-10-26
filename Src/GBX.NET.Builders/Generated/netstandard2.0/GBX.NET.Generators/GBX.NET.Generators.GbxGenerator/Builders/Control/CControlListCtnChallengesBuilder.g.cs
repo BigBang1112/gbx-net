@@ -7,15 +7,11 @@ public abstract class CControlListCtnChallengesBuilderBase<TSelf> : NodeBuilder<
 {
     private protected CControlListCtnChallengesBuilderBase() { }
     private protected CControlListCtnChallengesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMPU;
     private protected const GameVersion SupportedGames5 = GameVersion.TMU;
-}
-public abstract class CControlListCtnChallengesBuilderMembers1<TSelf> : CControlListCtnChallengesBuilderBase<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers1<TSelf>
-{
-    private protected CControlListCtnChallengesBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
     public TSelf WithAcceptOwnControls(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(IEnumerable<global::GBX.NET.Engines.Control.CControlContainer.Child> values) => WithChilds(values.ToArray());
@@ -38,22 +34,22 @@ public abstract class CControlListCtnChallengesBuilderMembers1<TSelf> : CControl
     public TSelf WithStackText(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, SupportedGames1);
     public TSelf WithUseScript(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, SupportedGames1);
 }
-public abstract class CControlListCtnChallengesBuilderMembers2<TSelf> : CControlListCtnChallengesBuilderMembers1<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers2<TSelf>
+public abstract class CControlListCtnChallengesBuilderMembers1<TSelf> : CControlListCtnChallengesBuilderBase<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers1<TSelf>
 {
-    private protected CControlListCtnChallengesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
+    private protected CControlListCtnChallengesBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
 }
-public abstract class CControlListCtnChallengesBuilderMembers3<TSelf> : CControlListCtnChallengesBuilderMembers1<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers3<TSelf>
+public abstract class CControlListCtnChallengesBuilderMembers2<TSelf> : CControlListCtnChallengesBuilderBase<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers2<TSelf>
 {
-    private protected CControlListCtnChallengesBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
+    private protected CControlListCtnChallengesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, SupportedGames2);
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStyleId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, SupportedGames2);
 }
-public abstract class CControlListCtnChallengesBuilderMembers4<TSelf> : CControlListCtnChallengesBuilderMembers2<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers4<TSelf>
+public abstract class CControlListCtnChallengesBuilderMembers3<TSelf> : CControlListCtnChallengesBuilderMembers1<TSelf> where TSelf : CControlListCtnChallengesBuilderMembers3<TSelf>
 {
-    private protected CControlListCtnChallengesBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
+    private protected CControlListCtnChallengesBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
     public TSelf WithColumns(params global::GBX.NET.Engines.Control.CControlList.Column[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetColumnsAssignment(), value, SupportedGames4);
     public TSelf WithColumns(IEnumerable<global::GBX.NET.Engines.Control.CControlList.Column> values) => WithColumns(values.ToArray());
     public TSelf WithLinesHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListBuilderAssignments.GetLinesHeightAssignment(), value, SupportedGames4);
@@ -117,6 +113,18 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
     {
         var node = new global::GBX.NET.Engines.Control.CControlListCtnChallenges();
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlListConstruction.Chunk24009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlList.Chunk0700F00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
     }
     private static global::GBX.NET.Engines.Control.CControlListCtnChallenges CreateRecipe4(GameVersion game)
@@ -179,7 +187,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CControlListCtnChallengesBuilderMembers4<TM10>
+    public partial class TM10 : CControlListCtnChallengesBuilderMembers3<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TM10 WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -192,7 +200,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMPU : CControlListCtnChallengesBuilderMembers4<TMPU>
+    public partial class TMPU : CControlListCtnChallengesBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TMPU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -206,7 +214,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMSX : CControlListCtnChallengesBuilderMembers3<TMSX>
+    public partial class TMSX : CControlListCtnChallengesBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TMSX WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -222,7 +230,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMNESWC : CControlListCtnChallengesBuilderMembers3<TMNESWC>
+    public partial class TMNESWC : CControlListCtnChallengesBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TMNESWC WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -238,9 +246,19 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMU : CControlListCtnChallengesBuilderBase<TMU>
+    public partial class TMU : CControlListCtnChallengesBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
+        public TMU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
+        public TMU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
+        public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
+        public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithStyleNotValid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListConstructionBuilderAssignments.GetStyleNotValidAssignment(), value, SupportedGames5);
         public TMU WithStyleNotValidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlListConstructionBuilderAssignments.GetStyleNotValidReferenceAssignment(), value, SupportedGames5);
         public TMU WithStyleValid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlListConstructionBuilderAssignments.GetStyleValidAssignment(), value, SupportedGames5);
@@ -249,7 +267,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class VSK5 : CControlListCtnChallengesBuilderMembers3<VSK5>
+    public partial class VSK5 : CControlListCtnChallengesBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public VSK5 WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -265,7 +283,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMF : CControlListCtnChallengesBuilderMembers3<TMF>
+    public partial class TMF : CControlListCtnChallengesBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TMF WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -282,7 +300,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class MP3 : CControlListCtnChallengesBuilderMembers3<MP3>
+    public partial class MP3 : CControlListCtnChallengesBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public MP3 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -294,7 +312,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TMT : CControlListCtnChallengesBuilderMembers3<TMT>
+    public partial class TMT : CControlListCtnChallengesBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TMT WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -306,7 +324,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class MP4 : CControlListCtnChallengesBuilderMembers3<MP4>
+    public partial class MP4 : CControlListCtnChallengesBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public MP4 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutMP4? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -319,7 +337,7 @@ public partial class CControlListCtnChallengesBuilder : CControlListCtnChallenge
         public global::GBX.NET.Engines.Control.CControlListCtnChallenges Build() => BuildNode(CControlListCtnChallengesBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlListCtnChallenges node);
     }
-    public partial class TM2020 : CControlListCtnChallengesBuilderMembers3<TM2020>
+    public partial class TM2020 : CControlListCtnChallengesBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlListCtnChallenges> state) : base(state) { }
         public TM2020 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

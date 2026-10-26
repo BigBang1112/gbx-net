@@ -7,11 +7,11 @@ public abstract class CPlugBitmapRenderLightOccBuilderBase<TSelf> : NodeBuilder<
 {
     private protected CPlugBitmapRenderLightOccBuilderBase() { }
     private protected CPlugBitmapRenderLightOccBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithIVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, SupportedGames1);
     public TSelf WithIVIdRef(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, SupportedGames1);
     public TSelf WithSVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, SupportedGames1);
@@ -34,13 +34,13 @@ public abstract class CPlugBitmapRenderLightOccBuilderMembers2<TSelf> : CPlugBit
 public abstract class CPlugBitmapRenderLightOccBuilderMembers3<TSelf> : CPlugBitmapRenderLightOccBuilderMembers2<TSelf> where TSelf : CPlugBitmapRenderLightOccBuilderMembers3<TSelf>
 {
     private protected CPlugBitmapRenderLightOccBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) : base(state) { }
-    public TSelf WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
-    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugBitmapRenderLightOccBuilderMembers4<TSelf> : CPlugBitmapRenderLightOccBuilderMembers3<TSelf> where TSelf : CPlugBitmapRenderLightOccBuilderMembers4<TSelf>
 {
     private protected CPlugBitmapRenderLightOccBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) : base(state) { }
-    public TSelf WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, SupportedGames2);
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames2);
 }
@@ -121,6 +121,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -174,6 +175,20 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc Build() => BuildNode(CPlugBitmapRenderLightOccBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc node);
     }
+    public partial class TMU : CPlugBitmapRenderLightOccBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) : base(state) { }
+        public TMU WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, SupportedGames3);
+        public TMU WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, SupportedGames3);
+        public TMU WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => WithBitmapToModulate(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithFovY(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, SupportedGames3);
+        public TMU WithOpacity(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, SupportedGames3);
+        public TMU WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOccTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc Build() => BuildNode(CPlugBitmapRenderLightOccBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc node);
+    }
     public partial class VSK5 : CPlugBitmapRenderLightOccBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc> state) : base(state) { }
@@ -208,7 +223,7 @@ public partial class CPlugBitmapRenderLightOccBuilder : CPlugBitmapRenderLightOc
         public MP3 WithBitmapToModulate(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateAssignment(), value, SupportedGames3);
         public MP3 WithBitmapToModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetBitmapToModulateReferenceAssignment(), value, SupportedGames3);
         public MP3 WithBitmapToModulate(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => WithBitmapToModulate(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP3 WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public MP3 WithFovY(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetFovYAssignment(), value, SupportedGames3);
         public MP3 WithOpacity(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightOccBuilderAssignments.GetOpacityAssignment(), value, SupportedGames3);
         public MP3 WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, SupportedGames2);

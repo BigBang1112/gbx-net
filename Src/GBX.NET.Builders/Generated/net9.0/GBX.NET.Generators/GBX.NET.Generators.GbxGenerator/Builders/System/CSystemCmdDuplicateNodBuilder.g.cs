@@ -27,6 +27,7 @@ public partial class CSystemCmdDuplicateNodBuilder : CSystemCmdDuplicateNodBuild
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CSystemCmdDuplicateNodBuilderBase<TM10>
@@ -55,6 +56,13 @@ public partial class CSystemCmdDuplicateNodBuilder : CSystemCmdDuplicateNodBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.System.CSystemCmdDuplicateNod> state) : base(state) { }
         public global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemCmdDuplicateNod node);
+    }
+    public partial class TMU : CSystemCmdDuplicateNodBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.System.CSystemCmdDuplicateNod> state) : base(state) { }
+        public global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemCmdDuplicateNod node);
     }
     public partial class VSK5 : CSystemCmdDuplicateNodBuilderBase<VSK5>

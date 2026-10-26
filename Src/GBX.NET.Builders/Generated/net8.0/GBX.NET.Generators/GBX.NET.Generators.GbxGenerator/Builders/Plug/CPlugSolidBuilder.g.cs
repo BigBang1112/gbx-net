@@ -7,9 +7,9 @@ public abstract class CPlugSolidBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CPlugSolidBuilderBase() { }
     private protected CPlugSolidBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.TM2020;
     public TSelf WithModel(global::GBX.NET.Engines.Plug.CPlugSolid? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelAssignment(), value, SupportedGames1);
     public TSelf WithModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelReferenceAssignment(), value, SupportedGames1);
@@ -21,7 +21,7 @@ public abstract class CPlugSolidBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 public abstract class CPlugSolidBuilderMembers1<TSelf> : CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuilderMembers1<TSelf>
 {
     private protected CPlugSolidBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public TSelf WithModelIsExternal(bool? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithModelIsExternal(bool? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<TSelf> where TSelf : CPlugSolidBuilderMembers2<TSelf>
 {
@@ -36,8 +36,8 @@ public abstract class CPlugSolidBuilderMembers2<TSelf> : CPlugSolidBuilderBase<T
 public abstract class CPlugSolidBuilderMembers3<TSelf> : CPlugSolidBuilderMembers2<TSelf> where TSelf : CPlugSolidBuilderMembers3<TSelf>
 {
     private protected CPlugSolidBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
-    public TSelf WithModelIsExternal(bool? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
-    public TSelf WithTileCountU(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    public TSelf WithModelIsExternal(bool? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetModelIsExternalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithTileCountU(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSolidBuilderAssignments.GetTileCountUAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugSolidBuilderMembers4<TSelf> : CPlugSolidBuilderMembers1<TSelf> where TSelf : CPlugSolidBuilderMembers4<TSelf>
 {
@@ -130,6 +130,7 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -172,6 +173,15 @@ public partial class CPlugSolidBuilder : CPlugSolidBuilderBase<CPlugSolidBuilder
         public TMNESWC WithTree(global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC? value) => base.WithTree(value is null ? (global::GBX.NET.Engines.Plug.CPlugTree?)null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
+    }
+    public partial class TMU : CPlugSolidBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSolid> state) : base(state) { }
+        public TMU WithModel(global::GBX.NET.Interfaces.Plug.IPlugSolidTMU? value) => base.WithModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithTree(global::GBX.NET.Interfaces.Plug.IPlugTreeTMU? value) => base.WithTree(value is null ? (global::GBX.NET.Engines.Plug.CPlugTree?)null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSolidTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSolid Build() => BuildNode(CPlugSolidBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSolid node);
     }
     public partial class VSK5 : CPlugSolidBuilderMembers3<VSK5>

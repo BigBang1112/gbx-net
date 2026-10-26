@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockMusicEffectBuilderBase<TSelf> : NodeBuil
 {
     private protected CGameCtnMediaBlockMusicEffectBuilderBase() { }
     private protected CGameCtnMediaBlockMusicEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect> state) : base(state) { }
-    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockMusicEffectBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockMusicEffectBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect.Key> values) => WithKeys(values.ToArray());
 }
@@ -27,6 +27,7 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -46,6 +47,13 @@ public partial class CGameCtnMediaBlockMusicEffectBuilder : CGameCtnMediaBlockMu
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect Build() => BuildNode(CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
+    }
+    public partial class TMU : CGameCtnMediaBlockMusicEffectBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMusicEffectTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect Build() => BuildNode(CGameCtnMediaBlockMusicEffectBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockMusicEffect node);
     }
     public partial class VSK5 : CGameCtnMediaBlockMusicEffectBuilderBase<VSK5>

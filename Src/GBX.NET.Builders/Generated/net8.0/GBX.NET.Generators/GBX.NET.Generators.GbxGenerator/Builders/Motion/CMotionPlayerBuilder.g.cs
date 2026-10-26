@@ -7,7 +7,7 @@ public abstract class CMotionPlayerBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMotionPlayerBuilderBase() { }
     private protected CMotionPlayerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBase(global::GBX.NET.Engines.Motion.CMotionCmdBase? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseAssignment(), value, SupportedGames1);
     public TSelf WithBaseReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBase> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetBaseReferenceAssignment(), value, SupportedGames1);
     public TSelf WithIsPhysics(bool value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionPlayerBuilderAssignments.GetIsPhysicsAssignment(), value, SupportedGames1);
@@ -20,7 +20,7 @@ public abstract class CMotionPlayerBuilderBase<TSelf> : NodeBuilder<global::GBX.
 public abstract class CMotionPlayerBuilderMembers1<TSelf> : CMotionPlayerBuilderBase<TSelf> where TSelf : CMotionPlayerBuilderMembers1<TSelf>
 {
     private protected CMotionPlayerBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMotionPlayerBuilder : CMotionPlayerBuilderBase<CMotionPlayerBuilder>
 {
@@ -40,6 +40,7 @@ public partial class CMotionPlayerBuilder : CMotionPlayerBuilderBase<CMotionPlay
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -77,6 +78,14 @@ public partial class CMotionPlayerBuilder : CMotionPlayerBuilderBase<CMotionPlay
         public TMNESWC WithBase(global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC? value) => base.WithBase(value is null ? (global::GBX.NET.Engines.Motion.CMotionCmdBase?)null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionPlayerTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionPlayer Build() => BuildNode(CMotionPlayerBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionPlayer node);
+    }
+    public partial class TMU : CMotionPlayerBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionPlayer> state) : base(state) { }
+        public TMU WithBase(global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMU? value) => base.WithBase(value is null ? (global::GBX.NET.Engines.Motion.CMotionCmdBase?)null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionPlayerTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionPlayer Build() => BuildNode(CMotionPlayerBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionPlayer node);
     }
     public partial class VSK5 : CMotionPlayerBuilderMembers1<VSK5>

@@ -7,7 +7,7 @@ public abstract class CInputBindingsConfigBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CInputBindingsConfigBuilderBase() { }
     private protected CInputBindingsConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBindings(params global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? value) => Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetBindingsAssignment(), value, SupportedGames1);
     public TSelf WithBindings(IEnumerable<global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding> values) => WithBindings(values.ToArray());
     public TSelf WithConfiguredDevices(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Input.CInputBindingsConfigBuilderAssignments.GetConfiguredDevicesAssignment(), value, SupportedGames1);
@@ -48,6 +48,7 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -82,6 +83,13 @@ public partial class CInputBindingsConfigBuilder : CInputBindingsConfigBuilderBa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) : base(state) { }
         public global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Input.CInputBindingsConfig Build() => BuildNode(CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
+    }
+    public partial class TMU : CInputBindingsConfigBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Input.CInputBindingsConfig> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Input.CInputBindingsConfig Build() => BuildNode(CInputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Input.CInputBindingsConfig node);
     }
     public partial class VSK5 : CInputBindingsConfigBuilderBase<VSK5>

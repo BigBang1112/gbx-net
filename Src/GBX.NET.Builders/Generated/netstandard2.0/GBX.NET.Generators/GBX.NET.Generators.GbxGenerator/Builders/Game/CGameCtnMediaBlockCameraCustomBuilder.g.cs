@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockCameraCustomBuilderBase<TSelf> : NodeBui
 {
     private protected CGameCtnMediaBlockCameraCustomBuilderBase() { }
     private protected CGameCtnMediaBlockCameraCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom> state) : base(state) { }
-    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraCustomBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraCustomBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom.Key> values) => WithKeys(values.ToArray());
 }
@@ -33,6 +33,7 @@ public partial class CGameCtnMediaBlockCameraCustomBuilder : CGameCtnMediaBlockC
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -52,6 +53,13 @@ public partial class CGameCtnMediaBlockCameraCustomBuilder : CGameCtnMediaBlockC
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraCustomTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom Build() => BuildNode(CGameCtnMediaBlockCameraCustomBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom node);
+    }
+    public partial class TMU : CGameCtnMediaBlockCameraCustomBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraCustomTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom Build() => BuildNode(CGameCtnMediaBlockCameraCustomBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraCustom node);
     }
     public partial class VSK5 : CGameCtnMediaBlockCameraCustomBuilderBase<VSK5>

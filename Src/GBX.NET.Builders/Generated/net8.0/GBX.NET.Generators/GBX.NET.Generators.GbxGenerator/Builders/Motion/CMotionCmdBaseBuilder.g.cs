@@ -7,7 +7,7 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CMotionCmdBaseBuilderBase() { }
     private protected CMotionCmdBaseBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithCmdBaseParams(global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsAssignment(), value, SupportedGames1);
     public TSelf WithCmdBaseParamsReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsReferenceAssignment(), value, SupportedGames1);
     public TSelf WithIsAbsolutePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsAbsolutePhaseAssignment(), value, SupportedGames1);
@@ -28,6 +28,7 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -65,6 +66,14 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public TMNESWC WithCmdBaseParams(global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC? value) => base.WithCmdBaseParams(value is null ? (global::GBX.NET.Engines.Motion.CMotionCmdBaseParams?)null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build() => BuildNode(CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionCmdBase node);
+    }
+    public partial class TMU : CMotionCmdBaseBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state) : base(state) { }
+        public TMU WithCmdBaseParams(global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMU? value) => base.WithCmdBaseParams(value is null ? (global::GBX.NET.Engines.Motion.CMotionCmdBaseParams?)null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionCmdBase Build() => BuildNode(CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionCmdBase node);
     }
     public partial class VSK5 : CMotionCmdBaseBuilderBase<VSK5>

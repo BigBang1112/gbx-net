@@ -7,7 +7,7 @@ public abstract class CMotionEmitterLeavesBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMotionEmitterLeavesBuilderBase() { }
     private protected CMotionEmitterLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
 }
 public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitterLeavesBuilderBase<TSelf> where TSelf : CMotionEmitterLeavesBuilderMembers1<TSelf>
 {
@@ -41,6 +41,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -68,7 +69,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public TMSX WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
@@ -77,16 +78,25 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public TMNESWC WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
+    }
+    public partial class TMU : CMotionEmitterLeavesBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
+        public TMU WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
     public partial class VSK5 : CMotionEmitterLeavesBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public VSK5 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
@@ -95,7 +105,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public TMF WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
@@ -104,7 +114,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public MP3 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP3 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP3 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
@@ -113,7 +123,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
         public TMT WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT? value) => base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMT WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMT WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
@@ -121,7 +131,7 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     public partial class MP4 : CMotionEmitterLeavesBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public MP4 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public MP4 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build() => BuildNode(CMotionEmitterLeavesBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);

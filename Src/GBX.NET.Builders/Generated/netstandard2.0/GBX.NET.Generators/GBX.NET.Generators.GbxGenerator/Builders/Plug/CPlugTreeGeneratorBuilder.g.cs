@@ -7,7 +7,7 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugTreeGeneratorBuilderBase() { }
     private protected CPlugTreeGeneratorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, SupportedGames1);
     public TSelf WithIsSaveGenerated(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, SupportedGames1);
     public TSelf WithIsToKeepInSaveAsRelease(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, SupportedGames1);
@@ -22,6 +22,7 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -42,6 +43,13 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build() => BuildNode(CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
+    }
+    public partial class TMU : CPlugTreeGeneratorBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build() => BuildNode(CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node);
     }
     public partial class VSK5 : CPlugTreeGeneratorBuilderBase<VSK5>

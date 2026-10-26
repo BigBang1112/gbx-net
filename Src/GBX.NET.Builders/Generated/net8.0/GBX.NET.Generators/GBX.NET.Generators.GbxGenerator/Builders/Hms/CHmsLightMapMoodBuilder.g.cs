@@ -7,7 +7,7 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CHmsLightMapMoodBuilderBase() { }
     private protected CHmsLightMapMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithAmbientRange(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, SupportedGames1);
     public TSelf WithDirectionalScale(float value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, SupportedGames1);
@@ -34,6 +34,7 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004() { Version = 0 });
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -42,6 +43,13 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMU : CHmsLightMapMoodBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build() => BuildNode(CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
+    }
     public partial class VSK5 : CHmsLightMapMoodBuilderBase<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }

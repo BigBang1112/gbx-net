@@ -7,7 +7,7 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CMotionManagerLeavesBuilderBase() { }
     private protected CMotionManagerLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithMobilLeaves(global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, SupportedGames1);
     public TSelf WithMobilLeavesReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesReferenceAssignment(), value, SupportedGames1);
 }
@@ -23,6 +23,7 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -57,6 +58,14 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public TMNESWC WithMobilLeaves(global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC? value) => base.WithMobilLeaves(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobilLeaves?)null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build() => BuildNode(CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
+    }
+    public partial class TMU : CMotionManagerLeavesBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state) : base(state) { }
+        public TMU WithMobilLeaves(global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMU? value) => base.WithMobilLeaves(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobilLeaves?)null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build() => BuildNode(CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node);
     }
     public partial class VSK5 : CMotionManagerLeavesBuilderBase<VSK5>

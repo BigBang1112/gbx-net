@@ -7,10 +7,11 @@ public abstract class CTrackManiaMatchSettingsControlGridBuilderBase<TSelf> : No
 {
     private protected CTrackManiaMatchSettingsControlGridBuilderBase() { }
     private protected CTrackManiaMatchSettingsControlGridBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.TMNESWC;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.TMNESWC | GameVersion.TMU;
+    private protected const GameVersion SupportedGames5 = GameVersion.TMU;
     public TSelf WithAcceptOwnControls(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(params global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, SupportedGames1);
     public TSelf WithChilds(IEnumerable<global::GBX.NET.Engines.Control.CControlContainer.Child> values) => WithChilds(values.ToArray());
@@ -45,6 +46,26 @@ public abstract class CTrackManiaMatchSettingsControlGridBuilderMembers2<TSelf> 
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, SupportedGames2);
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStyleId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, SupportedGames2);
+}
+public abstract class CTrackManiaMatchSettingsControlGridBuilderMembers3<TSelf> : CTrackManiaMatchSettingsControlGridBuilderMembers2<TSelf> where TSelf : CTrackManiaMatchSettingsControlGridBuilderMembers3<TSelf>
+{
+    private protected CTrackManiaMatchSettingsControlGridBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid> state) : base(state) { }
+    public TSelf WithButtonNextPage(global::GBX.NET.Engines.Control.CControlButton? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonNextPageAssignment(), value, SupportedGames4);
+    public TSelf WithButtonNextPageReference(NodeRef<global::GBX.NET.Engines.Control.CControlButton> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonNextPageReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithButtonPreviousPage(global::GBX.NET.Engines.Control.CControlButton? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonPreviousPageAssignment(), value, SupportedGames4);
+    public TSelf WithButtonPreviousPageReference(NodeRef<global::GBX.NET.Engines.Control.CControlButton> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonPreviousPageReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithChallengeCardTemplate(global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetChallengeCardTemplateAssignment(), value, SupportedGames4);
+    public TSelf WithChallengeCardTemplateReference(NodeRef<global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetChallengeCardTemplateReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithCurrentPage(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetCurrentPageAssignment(), value, SupportedGames4);
+    public TSelf WithMaxChallengeInfosPerColumn(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetMaxChallengeInfosPerColumnAssignment(), value, SupportedGames4);
+    public TSelf WithMaxChallengeInfosPerRow(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetMaxChallengeInfosPerRowAssignment(), value, SupportedGames4);
+    public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
+    public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithNbPage(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetNbPageAssignment(), value, SupportedGames4);
+    public TSelf WithPlayListCommentLabel(global::GBX.NET.Engines.Control.CControlLabel? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListCommentLabelAssignment(), value, SupportedGames4);
+    public TSelf WithPlayListCommentLabelReference(NodeRef<global::GBX.NET.Engines.Control.CControlLabel> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListCommentLabelReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithPlayListNameLabel(global::GBX.NET.Engines.Control.CControlLabel? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListNameLabelAssignment(), value, SupportedGames4);
+    public TSelf WithPlayListNameLabelReference(NodeRef<global::GBX.NET.Engines.Control.CControlLabel> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListNameLabelReferenceAssignment(), value, SupportedGames4);
 }
 public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMatchSettingsControlGridBuilderBase<CTrackManiaMatchSettingsControlGridBuilder>
 {
@@ -102,6 +123,10 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
     private static global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid();
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid.Chunk2409C000());
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid.Chunk2409C001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlGrid.Chunk07015001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlGrid.Chunk07015003());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
@@ -124,6 +149,21 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
@@ -132,6 +172,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -182,39 +223,51 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
-    public partial class TMNESWC : CTrackManiaMatchSettingsControlGridBuilderMembers2<TMNESWC>
+    public partial class TMNESWC : CTrackManiaMatchSettingsControlGridBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid> state) : base(state) { }
-        public TMNESWC WithButtonNextPage(global::GBX.NET.Engines.Control.CControlButton? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonNextPageAssignment(), value, SupportedGames4);
-        public TMNESWC WithButtonNextPageReference(NodeRef<global::GBX.NET.Engines.Control.CControlButton> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonNextPageReferenceAssignment(), value, SupportedGames4);
-        public TMNESWC WithButtonNextPage(global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? value) => WithButtonNextPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithButtonPreviousPage(global::GBX.NET.Engines.Control.CControlButton? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonPreviousPageAssignment(), value, SupportedGames4);
-        public TMNESWC WithButtonPreviousPageReference(NodeRef<global::GBX.NET.Engines.Control.CControlButton> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetButtonPreviousPageReferenceAssignment(), value, SupportedGames4);
-        public TMNESWC WithButtonPreviousPage(global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? value) => WithButtonPreviousPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithChallengeCardTemplate(global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetChallengeCardTemplateAssignment(), value, SupportedGames4);
-        public TMNESWC WithChallengeCardTemplateReference(NodeRef<global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetChallengeCardTemplateReferenceAssignment(), value, SupportedGames4);
-        public TMNESWC WithChallengeCardTemplate(global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMNESWC? value) => WithChallengeCardTemplate(value is null ? (global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo?)null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithButtonNextPage(global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? value) => base.WithButtonNextPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithButtonPreviousPage(global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC? value) => base.WithButtonPreviousPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithChallengeCardTemplate(global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMNESWC? value) => base.WithChallengeCardTemplate(value is null ? (global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo?)null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithCurrentPage(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetCurrentPageAssignment(), value, SupportedGames4);
         public TMNESWC WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithMaxChallengeInfosPerColumn(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetMaxChallengeInfosPerColumnAssignment(), value, SupportedGames4);
-        public TMNESWC WithMaxChallengeInfosPerRow(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetMaxChallengeInfosPerRowAssignment(), value, SupportedGames4);
-        public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
-        public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithNbPage(int value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetNbPageAssignment(), value, SupportedGames4);
         public TMNESWC WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(values, false));
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values) => WithObjectLink(values.ToArray());
-        public TMNESWC WithPlayListCommentLabel(global::GBX.NET.Engines.Control.CControlLabel? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListCommentLabelAssignment(), value, SupportedGames4);
-        public TMNESWC WithPlayListCommentLabelReference(NodeRef<global::GBX.NET.Engines.Control.CControlLabel> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListCommentLabelReferenceAssignment(), value, SupportedGames4);
-        public TMNESWC WithPlayListCommentLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? value) => WithPlayListCommentLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithPlayListNameLabel(global::GBX.NET.Engines.Control.CControlLabel? value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListNameLabelAssignment(), value, SupportedGames4);
-        public TMNESWC WithPlayListNameLabelReference(NodeRef<global::GBX.NET.Engines.Control.CControlLabel> value) => SetReference(global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaMatchSettingsControlGridBuilderAssignments.GetPlayListNameLabelReferenceAssignment(), value, SupportedGames4);
-        public TMNESWC WithPlayListNameLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? value) => WithPlayListNameLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithPlayListCommentLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? value) => base.WithPlayListCommentLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithPlayListNameLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC? value) => base.WithPlayListNameLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
+    }
+    public partial class TMU : CTrackManiaMatchSettingsControlGridBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid> state) : base(state) { }
+        public TMU WithButtonNextPage(global::GBX.NET.Interfaces.Control.IControlButtonTMU? value) => base.WithButtonNextPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithButtonPreviousPage(global::GBX.NET.Interfaces.Control.IControlButtonTMU? value) => base.WithButtonPreviousPage(value is null ? (global::GBX.NET.Engines.Control.CControlButton?)null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithChallengeCardTemplate(global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMU? value) => base.WithChallengeCardTemplate(value is null ? (global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo?)null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithForceColumnsUniformWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetForceColumnsUniformWidthAssignment(), value, SupportedGames5);
+        public TMU WithForceColumnsWidths(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetForceColumnsWidthsAssignment(), value, SupportedGames5);
+        public TMU WithForceColumnsWidths(IEnumerable<float> values) => WithForceColumnsWidths(values.ToArray());
+        public TMU WithForceRowsUniformHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetForceRowsUniformHeightAssignment(), value, SupportedGames5);
+        public TMU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMainLayout(global::GBX.NET.Engines.Control.CControlLayout? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetMainLayoutAssignment(), value, SupportedGames5);
+        public TMU WithMainLayoutReference(NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetMainLayoutReferenceAssignment(), value, SupportedGames5);
+        public TMU WithMainLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMU? value) => WithMainLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
+        public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
+        public TMU WithPackEmptyRows(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlGridBuilderAssignments.GetPackEmptyRowsAssignment(), value, SupportedGames5);
+        public TMU WithPlayListCommentLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMU? value) => base.WithPlayListCommentLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithPlayListNameLabel(global::GBX.NET.Interfaces.Control.IControlLabelTMU? value) => base.WithPlayListNameLabel(value is null ? (global::GBX.NET.Engines.Control.CControlLabel?)null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class VSK5 : CTrackManiaMatchSettingsControlGridBuilderMembers2<VSK5>
@@ -230,7 +283,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class TMF : CTrackManiaMatchSettingsControlGridBuilderMembers2<TMF>
@@ -247,7 +300,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class MP3 : CTrackManiaMatchSettingsControlGridBuilderMembers2<MP3>
@@ -259,7 +312,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class TMT : CTrackManiaMatchSettingsControlGridBuilderMembers2<TMT>
@@ -271,7 +324,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class MP4 : CTrackManiaMatchSettingsControlGridBuilderMembers2<MP4>
@@ -284,7 +337,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
     public partial class TM2020 : CTrackManiaMatchSettingsControlGridBuilderMembers2<TM2020>
@@ -295,7 +348,7 @@ public partial class CTrackManiaMatchSettingsControlGridBuilder : CTrackManiaMat
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid Build() => BuildNode(CTrackManiaMatchSettingsControlGridBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid node);
     }
 }

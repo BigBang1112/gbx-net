@@ -7,7 +7,7 @@ public abstract class CFuncShadersBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CFuncShadersBuilderBase() { }
     private protected CFuncShadersBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaders> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
     public TSelf WithFuncShaders(NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShadersBuilderAssignments.GetFuncShadersAssignment(), value, SupportedGames1);
     public TSelf WithFuncShaders(params global::GBX.NET.Engines.Function.CFuncShader[] values) => WithFuncShaders(new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(values));
@@ -18,7 +18,7 @@ public abstract class CFuncShadersBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 public abstract class CFuncShadersBuilderMembers1<TSelf> : CFuncShadersBuilderBase<TSelf> where TSelf : CFuncShadersBuilderMembers1<TSelf>
 {
     private protected CFuncShadersBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaders> state) : base(state) { }
-    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncShadersBuilderMembers2<TSelf> : CFuncShadersBuilderMembers1<TSelf> where TSelf : CFuncShadersBuilderMembers2<TSelf>
 {
@@ -52,6 +52,7 @@ public partial class CFuncShadersBuilder : CFuncShadersBuilderBase<CFuncShadersB
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -94,6 +95,15 @@ public partial class CFuncShadersBuilder : CFuncShadersBuilderBase<CFuncShadersB
         public TMNESWC WithFuncShaders(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC> values) => WithFuncShaders(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaders Build() => BuildNode(CFuncShadersBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaders node);
+    }
+    public partial class TMU : CFuncShadersBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaders> state) : base(state) { }
+        public TMU WithFuncShaders(params global::GBX.NET.Interfaces.Function.IFuncShaderTMU[] values) => base.WithFuncShaders(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMU>(values, false));
+        public TMU WithFuncShaders(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncShaderTMU> values) => WithFuncShaders(values.ToArray());
+        public global::GBX.NET.Interfaces.Function.IFuncShadersTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncShaders Build() => BuildNode(CFuncShadersBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaders node);
     }
     public partial class VSK5 : CFuncShadersBuilderMembers1<VSK5>

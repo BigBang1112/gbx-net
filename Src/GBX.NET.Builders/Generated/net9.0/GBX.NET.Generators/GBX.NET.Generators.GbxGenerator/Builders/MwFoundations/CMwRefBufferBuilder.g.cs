@@ -7,7 +7,7 @@ public abstract class CMwRefBufferBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CMwRefBufferBuilderBase() { }
     private protected CMwRefBufferBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
 }
 public abstract class CMwRefBufferBuilderMembers1<TSelf> : CMwRefBufferBuilderBase<TSelf> where TSelf : CMwRefBufferBuilderMembers1<TSelf>
 {
@@ -42,6 +42,7 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -76,6 +77,13 @@ public partial class CMwRefBufferBuilder : CMwRefBufferBuilderBase<CMwRefBufferB
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer Build() => BuildNode(CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
+    }
+    public partial class TMU : CMwRefBufferBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer Build() => BuildNode(CMwRefBufferBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node);
     }
     public partial class VSK5 : CMwRefBufferBuilderMembers1<VSK5>

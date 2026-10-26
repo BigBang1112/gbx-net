@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<TSelf> : 
 {
     private protected CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase() { }
     private protected CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
@@ -20,6 +20,7 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -32,6 +33,13 @@ public partial class CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder : CGameCtnMedi
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay Build() => BuildNode(CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
+    }
+    public partial class TMU : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay Build() => BuildNode(CGameCtnMediaBlockUiSimpleEvtsDisplayBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUiSimpleEvtsDisplay node);
     }
     public partial class VSK5 : CGameCtnMediaBlockUiSimpleEvtsDisplayBuilderBase<VSK5>

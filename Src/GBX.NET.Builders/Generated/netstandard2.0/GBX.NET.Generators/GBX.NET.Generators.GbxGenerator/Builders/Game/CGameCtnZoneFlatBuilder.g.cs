@@ -7,8 +7,8 @@ public abstract class CGameCtnZoneFlatBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGameCtnZoneFlatBuilderBase() { }
     private protected CGameCtnZoneFlatBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithBlockInfoClip(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipAssignment(), value, SupportedGames1);
     public TSelf WithBlockInfoClipReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFlatBuilderAssignments.GetBlockInfoClipReferenceAssignment(), value, SupportedGames1);
@@ -32,7 +32,7 @@ public abstract class CGameCtnZoneFlatBuilderMembers1<TSelf> : CGameCtnZoneFlatB
 public abstract class CGameCtnZoneFlatBuilderMembers2<TSelf> : CGameCtnZoneFlatBuilderMembers1<TSelf> where TSelf : CGameCtnZoneFlatBuilderMembers2<TSelf>
 {
     private protected CGameCtnZoneFlatBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state) : base(state) { }
-    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithHasWater(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneBuilderAssignments.GetHasWaterAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnZoneFlatBuilderMembers3<TSelf> : CGameCtnZoneFlatBuilderMembers1<TSelf> where TSelf : CGameCtnZoneFlatBuilderMembers3<TSelf>
 {
@@ -80,6 +80,7 @@ public partial class CGameCtnZoneFlatBuilder : CGameCtnZoneFlatBuilderBase<CGame
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -130,6 +131,17 @@ public partial class CGameCtnZoneFlatBuilder : CGameCtnZoneFlatBuilderBase<CGame
         public TMNESWC WithBlockInfoRoad(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC? value) => base.WithBlockInfoRoad(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFlat Build() => BuildNode(CGameCtnZoneFlatBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFlat node);
+    }
+    public partial class TMU : CGameCtnZoneFlatBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFlat> state) : base(state) { }
+        public TMU WithBlockInfoClip(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU? value) => base.WithBlockInfoClip(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBlockInfoFlat(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMU? value) => base.WithBlockInfoFlat(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFlat node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBlockInfoPylon(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMU? value) => base.WithBlockInfoPylon(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithBlockInfoRoad(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMU? value) => base.WithBlockInfoRoad(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnZoneFlat Build() => BuildNode(CGameCtnZoneFlatBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnZoneFlat node);
     }
     public partial class VSK5 : CGameCtnZoneFlatBuilderMembers2<VSK5>

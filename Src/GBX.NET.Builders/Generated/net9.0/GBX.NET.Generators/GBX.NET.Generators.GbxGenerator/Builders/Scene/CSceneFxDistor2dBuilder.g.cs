@@ -7,7 +7,7 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CSceneFxDistor2dBuilderBase() { }
     private protected CSceneFxDistor2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithBitmapDistor(global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorAssignment(), value, SupportedGames1);
     public TSelf WithBitmapDistorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorReferenceAssignment(), value, SupportedGames1);
     public TSelf WithDistorScale(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetDistorScaleAssignment(), value, SupportedGames1);
@@ -20,7 +20,16 @@ public partial class CSceneFxDistor2dBuilder : CSceneFxDistor2dBuilderBase<CScen
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CSceneFxDistor2dBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TMU WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
     public partial class TMF : CSceneFxDistor2dBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }

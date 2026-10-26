@@ -7,7 +7,7 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CPlugVertexStreamBuilderBase() { }
     private protected CPlugVertexStreamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithDataDecls(params global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, SupportedGames1);
     public TSelf WithDataDecls(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl> values) => WithDataDecls(values.ToArray());
     public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, SupportedGames1);
@@ -30,6 +30,7 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -52,6 +53,14 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public TMNESWC WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC? value) => base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
+    }
+    public partial class TMU : CPlugVertexStreamBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
+        public TMU WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU? value) => base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugVertexStream Build() => BuildNode(CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
     public partial class VSK5 : CPlugVertexStreamBuilderBase<VSK5>

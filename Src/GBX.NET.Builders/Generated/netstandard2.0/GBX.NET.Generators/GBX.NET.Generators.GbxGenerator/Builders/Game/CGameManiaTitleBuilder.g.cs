@@ -78,6 +78,7 @@ public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameMa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -112,6 +113,13 @@ public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameMa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameManiaTitleTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
+    }
+    public partial class TMU : CGameManiaTitleBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameManiaTitleTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
     }
     public partial class VSK5 : CGameManiaTitleBuilderBase<VSK5>

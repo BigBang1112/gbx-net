@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockUiBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameCtnMediaBlockUiBuilderBase() { }
     private protected CGameCtnMediaBlockUiBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
     public TSelf WithStart(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockUiBuilderAssignments.GetStartAssignment(), value, SupportedGames1);
 }
@@ -20,6 +20,7 @@ public partial class CGameCtnMediaBlockUiBuilder : CGameCtnMediaBlockUiBuilderBa
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -32,6 +33,13 @@ public partial class CGameCtnMediaBlockUiBuilder : CGameCtnMediaBlockUiBuilderBa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi Build() => BuildNode(CGameCtnMediaBlockUiBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi node);
+    }
+    public partial class TMU : CGameCtnMediaBlockUiBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi Build() => BuildNode(CGameCtnMediaBlockUiBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockUi node);
     }
     public partial class VSK5 : CGameCtnMediaBlockUiBuilderBase<VSK5>

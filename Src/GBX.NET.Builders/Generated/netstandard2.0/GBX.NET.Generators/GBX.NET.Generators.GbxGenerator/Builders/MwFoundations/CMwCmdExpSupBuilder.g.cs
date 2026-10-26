@@ -7,7 +7,7 @@ public abstract class CMwCmdExpSupBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CMwCmdExpSupBuilderBase() { }
     private protected CMwCmdExpSupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, SupportedGames1);
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1ReferenceAssignment(), value, SupportedGames1);
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, SupportedGames1);
@@ -22,7 +22,15 @@ public partial class CMwCmdExpSupBuilder : CMwCmdExpSupBuilderBase<CMwCmdExpSupB
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpSupBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpSupTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup Build() => BuildNode(CMwCmdExpSupBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup node);
+    }
     public partial class TMF : CMwCmdExpSupBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state) : base(state) { }

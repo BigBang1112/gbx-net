@@ -7,8 +7,8 @@ public abstract class CPlugVisual2DBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CPlugVisual2DBuilderBase() { }
     private protected CPlugVisual2DBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithSubVisuals(params Int3[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, SupportedGames1);
     public TSelf WithSubVisuals(IEnumerable<Int3> values) => WithSubVisuals(values.ToArray());
     public TSelf WithVertices2D(params global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual2DBuilderAssignments.GetVertices2DAssignment(), value, SupportedGames1);
@@ -24,7 +24,7 @@ public abstract class CPlugVisual2DBuilderMembers1<TSelf> : CPlugVisual2DBuilder
 public abstract class CPlugVisual2DBuilderMembers2<TSelf> : CPlugVisual2DBuilderBase<TSelf> where TSelf : CPlugVisual2DBuilderMembers2<TSelf>
 {
     private protected CPlugVisual2DBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
-    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugVisual2DBuilderMembers3<TSelf> : CPlugVisual2DBuilderMembers1<TSelf> where TSelf : CPlugVisual2DBuilderMembers3<TSelf>
 {
@@ -34,7 +34,7 @@ public abstract class CPlugVisual2DBuilderMembers3<TSelf> : CPlugVisual2DBuilder
 public abstract class CPlugVisual2DBuilderMembers4<TSelf> : CPlugVisual2DBuilderMembers2<TSelf> where TSelf : CPlugVisual2DBuilderMembers4<TSelf>
 {
     private protected CPlugVisual2DBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
-    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values) => WithSplits(values.ToArray());
 }
 public abstract class CPlugVisual2DBuilderMembers5<TSelf> : CPlugVisual2DBuilderMembers4<TSelf> where TSelf : CPlugVisual2DBuilderMembers5<TSelf>
@@ -128,6 +128,7 @@ public partial class CPlugVisual2DBuilder : CPlugVisual2DBuilderBase<CPlugVisual
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -146,7 +147,7 @@ public partial class CPlugVisual2DBuilder : CPlugVisual2DBuilderBase<CPlugVisual
     public partial class TMPU : CPlugVisual2DBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
-        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMPU WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisual2D node);
@@ -158,6 +159,15 @@ public partial class CPlugVisual2DBuilder : CPlugVisual2DBuilderBase<CPlugVisual
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisual2D node);
+    }
+    public partial class TMU : CPlugVisual2DBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisual2D> state) : base(state) { }
+        public TMU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
+        public TMU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugVisual2D Build() => BuildNode(CPlugVisual2DBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisual2D node);
     }
     public partial class VSK5 : CPlugVisual2DBuilderMembers4<VSK5>

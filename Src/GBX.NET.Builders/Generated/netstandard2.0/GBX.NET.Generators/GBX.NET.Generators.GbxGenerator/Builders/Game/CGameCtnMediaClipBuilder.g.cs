@@ -117,6 +117,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
     public partial class TMU : CGameCtnMediaClipBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
+        public TMU WithScene(global::GBX.NET.Interfaces.Scene.ISceneTMU? value) => base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CScene?)null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU[] values) => base.WithTracks(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>(values, false));
         public TMU WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU> values) => WithTracks(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU BuildInterface() => Build();

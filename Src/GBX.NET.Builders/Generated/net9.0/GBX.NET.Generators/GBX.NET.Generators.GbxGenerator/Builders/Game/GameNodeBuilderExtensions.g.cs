@@ -187,6 +187,14 @@ public static class CGameControlCardLeagueBuilderExtensions
     }
 }
 
+public static class CGameControlCardManagerBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameControlCardManager)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameControlCardManagerBuilder Create() => new();
+    }
+}
+
 public static class CGameControlCardMessageBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Game.CGameControlCardMessage)
@@ -224,6 +232,14 @@ public static class CGameControlCardProfileBuilderExtensions
     extension(global::GBX.NET.Engines.Game.CGameControlCardProfile)
     {
         public static global::GBX.NET.Builders.Engines.Game.CGameControlCardProfileBuilder Create() => new();
+    }
+}
+
+public static class CGameControlDataTypeBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameControlDataType)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameControlDataTypeBuilder Create() => new();
     }
 }
 
@@ -995,6 +1011,14 @@ public static class CGameCtnMediaTrackBuilderExtensions
     }
 }
 
+public static class CGameCtnPainterSettingBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameCtnPainterSetting)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilder Create() => new();
+    }
+}
+
 public static class CGameCtnPrecalcPartParamsBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)
@@ -1136,6 +1160,14 @@ public static class CGameManialink3dStyleBuilderExtensions
     extension(global::GBX.NET.Engines.Game.CGameManialink3dStyle)
     {
         public static global::GBX.NET.Builders.Engines.Game.CGameManialink3dStyleBuilder Create() => new();
+    }
+}
+
+public static class CGameMenuBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Game.CGameMenu)
+    {
+        public static global::GBX.NET.Builders.Engines.Game.CGameMenuBuilder Create() => new();
     }
 }
 

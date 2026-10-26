@@ -7,7 +7,7 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CSceneFxDepthOfFieldBuilderBase() { }
     private protected CSceneFxDepthOfFieldBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithBlurAmp(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurAmpAssignment(), value, SupportedGames1);
     public TSelf WithBlurRatio(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurRatioAssignment(), value, SupportedGames1);
     public TSelf WithBlurSize(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeAssignment(), value, SupportedGames1);
@@ -33,7 +33,15 @@ public partial class CSceneFxDepthOfFieldBuilder : CSceneFxDepthOfFieldBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077004());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CSceneFxDepthOfFieldBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
     public partial class TMF : CSceneFxDepthOfFieldBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }

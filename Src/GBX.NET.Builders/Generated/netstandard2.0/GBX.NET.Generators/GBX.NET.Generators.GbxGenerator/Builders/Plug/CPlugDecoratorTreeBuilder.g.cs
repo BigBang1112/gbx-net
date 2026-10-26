@@ -7,8 +7,7 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugDecoratorTreeBuilderBase() { }
     private protected CPlugDecoratorTreeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialAssignment(), value, SupportedGames1);
     public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialReferenceAssignment(), value, SupportedGames1);
     public TSelf WithShadowCasterApplyOnChilds(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterApplyOnChildsAssignment(), value, SupportedGames1);
@@ -23,12 +22,16 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> : NodeBuilder<global:
 public abstract class CPlugDecoratorTreeBuilderMembers1<TSelf> : CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDecoratorTreeBuilderMembers1<TSelf>
 {
     private protected CPlugDecoratorTreeBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-    public TSelf WithExistCond(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetExistCondAssignment(), value, SupportedGames2);
-    public TSelf WithNoLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetNoLocationAssignment(), value, SupportedGames2);
+    public TSelf WithExistCond(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetExistCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugDecoratorTreeBuilderMembers2<TSelf> : CPlugDecoratorTreeBuilderMembers1<TSelf> where TSelf : CPlugDecoratorTreeBuilderMembers2<TSelf>
 {
     private protected CPlugDecoratorTreeBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
+    public TSelf WithNoLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetNoLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+}
+public abstract class CPlugDecoratorTreeBuilderMembers3<TSelf> : CPlugDecoratorTreeBuilderMembers2<TSelf> where TSelf : CPlugDecoratorTreeBuilderMembers3<TSelf>
+{
+    private protected CPlugDecoratorTreeBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
     public TSelf WithCollidableCond(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetCollidableCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
 }
 public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<CPlugDecoratorTreeBuilder>
@@ -42,16 +45,23 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
     private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2007());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009());
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -69,58 +79,67 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class VSK5 : CPlugDecoratorTreeBuilderMembers1<VSK5>
+    public partial class TMU : CPlugDecoratorTreeBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
+        public TMU WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMU? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
+    }
+    public partial class VSK5 : CPlugDecoratorTreeBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public VSK5 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TMF : CPlugDecoratorTreeBuilderMembers2<TMF>
+    public partial class TMF : CPlugDecoratorTreeBuilderMembers3<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public TMF WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class MP3 : CPlugDecoratorTreeBuilderMembers2<MP3>
+    public partial class MP3 : CPlugDecoratorTreeBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public MP3 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TMT : CPlugDecoratorTreeBuilderMembers2<TMT>
+    public partial class TMT : CPlugDecoratorTreeBuilderMembers3<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public TMT WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class MP4 : CPlugDecoratorTreeBuilderMembers2<MP4>
+    public partial class MP4 : CPlugDecoratorTreeBuilderMembers3<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public MP4 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TM2020 : CPlugDecoratorTreeBuilderMembers2<TM2020>
+    public partial class TM2020 : CPlugDecoratorTreeBuilderMembers3<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
         public TM2020 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? value) => base.WithTreeLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugTreeLight?)null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build() => BuildNode(CPlugDecoratorTreeBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
 }

@@ -7,8 +7,8 @@ public abstract class CPlugCloudsBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CPlugCloudsBuilderBase() { }
     private protected CPlugCloudsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.VSK5;
-    public TSelf WithPointHeights(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithPointHeights(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithPointHeights(IEnumerable<Vec2> values) => WithPointHeights(values.ToArray());
 }
 public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBuilderMembers1<TSelf>
@@ -38,12 +38,21 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
     }
     private static global::GBX.NET.Engines.Plug.CPlugClouds CreateRecipe1(GameVersion game)
     {
+        var node = new global::GBX.NET.Engines.Plug.CPlugClouds();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugClouds CreateRecipe2(GameVersion game)
+    {
         var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180004());
         return node;
     }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMNESWC : CPlugCloudsBuilderBase<TMNESWC>
@@ -53,13 +62,22 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
+    public partial class TMU : CPlugCloudsBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
+        public TMU WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidTMU[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>(values, false));
+        public TMU WithSolidFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU> values) => WithSolidFids(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugCloudsTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
+    }
     public partial class VSK5 : CPlugCloudsBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
         public VSK5 WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(values, false));
         public VSK5 WithSolidFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5> values) => WithSolidFids(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
     public partial class TMF : CPlugCloudsBuilderMembers1<TMF>
@@ -68,7 +86,7 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         public TMF WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidTMF[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(values, false));
         public TMF WithSolidFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF> values) => WithSolidFids(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
 }

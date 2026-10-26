@@ -13,7 +13,7 @@ public partial class CPlugProbeBuilder : CPlugProbeBuilderBase<CPlugProbeBuilder
     private static global::GBX.NET.Engines.Plug.CPlugProbe CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugProbe();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugProbe.Chunk09106000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugProbe.Chunk09106000() { Version = 0 });
         return node;
     }
     public MP3 ForMP3() => new(state.Snapshot());

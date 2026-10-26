@@ -7,15 +7,15 @@ public abstract class CGameCtnDecorationBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CGameCtnDecorationBuilderBase() { }
     private protected CGameCtnDecorationBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecoration> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames6 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames7 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames8 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames9 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames9 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames10 = GameVersion.TM2020;
     public TSelf WithCatalogPosition(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, SupportedGames1);
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, SupportedGames1);
@@ -293,6 +293,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -357,6 +358,24 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMNESWC WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, SupportedGames9);
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
+    }
+    public partial class TMU : CGameCtnDecorationBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecoration> state) : base(state) { }
+        public TMU WithCopperPrice(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, SupportedGames9);
+        public TMU WithDecoAudio(global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMU? value) => base.WithDecoAudio(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationAudio?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithDecoMood(global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMU? value) => base.WithDecoMood(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationMood?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithDecoSize(global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMU? value) => base.WithDecoSize(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationSize?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationSize node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithDecoratorSolidWarp(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU? value) => base.WithDecoratorSolidWarp(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithNbAvailableMax(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, SupportedGames9);
+        public TMU WithNbAvailableMin(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, SupportedGames9);
+        public TMU WithNeedUnlock(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, SupportedGames9);
+        public TMU WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, SupportedGames9);
+        public TMU WithTerrainModifierBase(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU? value) => base.WithTerrainModifierBase(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMU? value) => base.WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class VSK5 : CGameCtnDecorationBuilderMembers4<VSK5>

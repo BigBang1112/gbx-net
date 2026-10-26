@@ -7,8 +7,8 @@ public abstract class CGameCtnBlockSkinBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CGameCtnBlockSkinBuilderBase() { }
     private protected CGameCtnBlockSkinBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    public TSelf WithText(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithText(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockSkinBuilderAssignments.GetTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockSkinBuilderMembers1<TSelf> : CGameCtnBlockSkinBuilderBase<TSelf> where TSelf : CGameCtnBlockSkinBuilderMembers1<TSelf>
 {
@@ -45,6 +45,7 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -79,6 +80,13 @@ public partial class CGameCtnBlockSkinBuilder : CGameCtnBlockSkinBuilderBase<CGa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockSkin Build() => BuildNode(CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
+    }
+    public partial class TMU : CGameCtnBlockSkinBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnBlockSkin Build() => BuildNode(CGameCtnBlockSkinBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockSkin node);
     }
     public partial class VSK5 : CGameCtnBlockSkinBuilderMembers2<VSK5>

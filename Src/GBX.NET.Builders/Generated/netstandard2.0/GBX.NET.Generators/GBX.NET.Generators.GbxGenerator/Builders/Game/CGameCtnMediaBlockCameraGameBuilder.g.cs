@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockCameraGameBuilderBase<TSelf> : NodeBuild
 {
     private protected CGameCtnMediaBlockCameraGameBuilderBase() { }
     private protected CGameCtnMediaBlockCameraGameBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithClipEntId(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetClipEntIdAssignment(), value, SupportedGames1);
     public TSelf WithEnd(TimeSingle value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetEndAssignment(), value, SupportedGames1);
@@ -16,7 +16,7 @@ public abstract class CGameCtnMediaBlockCameraGameBuilderBase<TSelf> : NodeBuild
 public abstract class CGameCtnMediaBlockCameraGameBuilderMembers1<TSelf> : CGameCtnMediaBlockCameraGameBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockCameraGameBuilderMembers1<TSelf>
 {
     private protected CGameCtnMediaBlockCameraGameBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
-    public TSelf WithGameCamOld(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamOldAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithGameCamOld(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraGameBuilderAssignments.GetGameCamOldAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnMediaBlockCameraGameBuilderMembers2<TSelf> : CGameCtnMediaBlockCameraGameBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockCameraGameBuilderMembers2<TSelf>
 {
@@ -61,6 +61,7 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -80,6 +81,13 @@ public partial class CGameCtnMediaBlockCameraGameBuilder : CGameCtnMediaBlockCam
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame Build() => BuildNode(CGameCtnMediaBlockCameraGameBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
+    }
+    public partial class TMU : CGameCtnMediaBlockCameraGameBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame Build() => BuildNode(CGameCtnMediaBlockCameraGameBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame node);
     }
     public partial class VSK5 : CGameCtnMediaBlockCameraGameBuilderMembers1<VSK5>

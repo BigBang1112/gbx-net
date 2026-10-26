@@ -7,12 +7,12 @@ public abstract class CGameCtnCampaignBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGameCtnCampaignBuilderBase() { }
     private protected CGameCtnCampaignBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    public TSelf WithChallengeGroups(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetChallengeGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithChallengeGroups(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetChallengeGroupsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithChallengeGroups(params global::GBX.NET.Engines.Game.CGameCtnChallengeGroup[] values) => WithChallengeGroups(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(values));
     public TSelf WithChallengeGroups(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup> values) => WithChallengeGroups(values.ToArray());
 }
@@ -142,6 +142,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -174,7 +175,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public TMSX WithCampaignId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, SupportedGames1);
         public TMSX WithChallengeGroups(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX[] values) => base.WithChallengeGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>(values, false));
         public TMSX WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX> values) => WithChallengeGroups(values.ToArray());
-        public TMSX WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMSX WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMSX WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
         public TMSX WithType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX BuildInterface() => Build();
@@ -187,11 +188,27 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public TMNESWC WithCampaignId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetCampaignIdAssignment(), value, SupportedGames1);
         public TMNESWC WithChallengeGroups(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC[] values) => base.WithChallengeGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(values, false));
         public TMNESWC WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC> values) => WithChallengeGroups(values.ToArray());
-        public TMNESWC WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
         public TMNESWC WithType(global::GBX.NET.Engines.Game.CGameCtnCampaign.EType value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetTypeAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCampaign Build() => BuildNode(CGameCtnCampaignBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCampaign node);
+    }
+    public partial class TMU : CGameCtnCampaignBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state) : base(state) { }
+        public TMU WithBronzeCompleteValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeCompleteValueAssignment(), value, SupportedGames5);
+        public TMU WithBronzeMedalValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetBronzeMedalValueAssignment(), value, SupportedGames5);
+        public TMU WithChallengeGroups(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU[] values) => base.WithChallengeGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU>(values, false));
+        public TMU WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMU> values) => WithChallengeGroups(values.ToArray());
+        public TMU WithGoldCompleteValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldCompleteValueAssignment(), value, SupportedGames5);
+        public TMU WithGoldMedalValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldMedalValueAssignment(), value, SupportedGames5);
+        public TMU WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithSilverCompleteValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverCompleteValueAssignment(), value, SupportedGames5);
+        public TMU WithSilverMedalValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverMedalValueAssignment(), value, SupportedGames5);
+        public global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnCampaign Build() => BuildNode(CGameCtnCampaignBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCampaign node);
     }
     public partial class VSK5 : CGameCtnCampaignBuilderMembers3<VSK5>
@@ -203,7 +220,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         public VSK5 WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5> values) => WithChallengeGroups(values.ToArray());
         public VSK5 WithGoldCompleteValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldCompleteValueAssignment(), value, SupportedGames5);
         public VSK5 WithGoldMedalValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetGoldMedalValueAssignment(), value, SupportedGames5);
-        public VSK5 WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithSilverCompleteValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverCompleteValueAssignment(), value, SupportedGames5);
         public VSK5 WithSilverMedalValue(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetSilverMedalValueAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5 BuildInterface() => Build();
@@ -215,7 +232,7 @@ public partial class CGameCtnCampaignBuilder : CGameCtnCampaignBuilderBase<CGame
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnCampaign> state) : base(state) { }
         public TMF WithChallengeGroups(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF[] values) => base.WithChallengeGroups(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>(values, false));
         public TMF WithChallengeGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF> values) => WithChallengeGroups(values.ToArray());
-        public TMF WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilderAssignments.GetIsInternalAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnCampaign Build() => BuildNode(CGameCtnCampaignBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnCampaign node);

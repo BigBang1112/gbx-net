@@ -7,8 +7,8 @@ public abstract class CFuncKeysSkelBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CFuncKeysSkelBuilderBase() { }
     private protected CFuncKeysSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysSkel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
-    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithXs(IEnumerable<float> values) => WithXs(values.ToArray());
 }
 public abstract class CFuncKeysSkelBuilderMembers1<TSelf> : CFuncKeysSkelBuilderBase<TSelf> where TSelf : CFuncKeysSkelBuilderMembers1<TSelf>
@@ -41,6 +41,7 @@ public partial class CFuncKeysSkelBuilder : CFuncKeysSkelBuilderBase<CFuncKeysSk
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -79,6 +80,14 @@ public partial class CFuncKeysSkelBuilder : CFuncKeysSkelBuilderBase<CFuncKeysSk
         public TMNESWC WithSkel(global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? value) => base.WithSkel(value is null ? (global::GBX.NET.Engines.Function.CFuncSkel?)null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysSkel Build() => BuildNode(CFuncKeysSkelBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysSkel node);
+    }
+    public partial class TMU : CFuncKeysSkelBuilderMembers1<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysSkel> state) : base(state) { }
+        public TMU WithSkel(global::GBX.NET.Interfaces.Function.IFuncSkelTMU? value) => base.WithSkel(value is null ? (global::GBX.NET.Engines.Function.CFuncSkel?)null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncKeysSkel Build() => BuildNode(CFuncKeysSkelBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysSkel node);
     }
     public partial class VSK5 : CFuncKeysSkelBuilderMembers1<VSK5>

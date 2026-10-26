@@ -7,7 +7,7 @@ public abstract class CGameSkinnedNodBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CGameSkinnedNodBuilderBase() { }
     private protected CGameSkinnedNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CGameSkinnedNodBuilder : CGameSkinnedNodBuilderBase<CGameSkinnedNodBuilder>
 {
@@ -21,6 +21,7 @@ public partial class CGameSkinnedNodBuilder : CGameSkinnedNodBuilderBase<CGameSk
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -55,6 +56,13 @@ public partial class CGameSkinnedNodBuilder : CGameSkinnedNodBuilderBase<CGameSk
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
+    }
+    public partial class TMU : CGameSkinnedNodBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
     }
     public partial class VSK5 : CGameSkinnedNodBuilderBase<VSK5>

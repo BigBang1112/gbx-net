@@ -7,7 +7,7 @@ public abstract class CPlugPointsInSphereOptBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CPlugPointsInSphereOptBuilderBase() { }
     private protected CPlugPointsInSphereOptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) : base(state) { }
-    public TSelf WithPacks(params global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithPacks(params global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithPacks(IEnumerable<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack> values) => WithPacks(values.ToArray());
 }
 public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuilderBase<CPlugPointsInSphereOptBuilder>
@@ -20,6 +20,7 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -40,6 +41,13 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build() => BuildNode(CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
+    }
+    public partial class TMU : CPlugPointsInSphereOptBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build() => BuildNode(CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node);
     }
     public partial class VSK5 : CPlugPointsInSphereOptBuilderBase<VSK5>

@@ -7,10 +7,10 @@ public abstract class CGameControlCameraTrackManiaRace2BuilderBase<TSelf> : Node
 {
     private protected CGameControlCameraTrackManiaRace2BuilderBase() { }
     private protected CGameControlCameraTrackManiaRace2BuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithInterpolate(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, SupportedGames1);
     public TSelf WithIsUpLinked(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, SupportedGames1);
     public TSelf WithLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, SupportedGames1);
@@ -36,7 +36,7 @@ public abstract class CGameControlCameraTrackManiaRace2BuilderMembers1<TSelf> : 
 public abstract class CGameControlCameraTrackManiaRace2BuilderMembers2<TSelf> : CGameControlCameraTrackManiaRace2BuilderMembers1<TSelf> where TSelf : CGameControlCameraTrackManiaRace2BuilderMembers2<TSelf>
 {
     private protected CGameControlCameraTrackManiaRace2BuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-    public TSelf WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithDeltaDistDamperKa(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaDistDamperKaAssignment(), value, SupportedGames4);
     public TSelf WithDeltaDistDamperKi(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaDistDamperKiAssignment(), value, SupportedGames4);
     public TSelf WithDeltaLookAtFactorDamperKa(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaLookAtFactorDamperKaAssignment(), value, SupportedGames4);
@@ -169,6 +169,7 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -194,7 +195,7 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMNESWC WithDefaultFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, SupportedGames3);
         public TMNESWC WithDefaultNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, SupportedGames3);
         public TMNESWC WithForcedUp(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, SupportedGames3);
-        public TMNESWC WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+        public TMNESWC WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? value) => base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMaxFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, SupportedGames3);
         public TMNESWC WithMaxFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, SupportedGames3);
@@ -210,13 +211,35 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build() => BuildNode(CGameControlCameraTrackManiaRace2Builder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
     }
+    public partial class TMU : CGameControlCameraTrackManiaRace2BuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
+        public TMU WithDefaultFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, SupportedGames3);
+        public TMU WithDefaultNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, SupportedGames3);
+        public TMU WithForcedUp(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, SupportedGames3);
+        public TMU WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? value) => base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMaxFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, SupportedGames3);
+        public TMU WithMaxFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, SupportedGames3);
+        public TMU WithMaxNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, SupportedGames3);
+        public TMU WithMinFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, SupportedGames3);
+        public TMU WithMinFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, SupportedGames3);
+        public TMU WithMinNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, SupportedGames3);
+        public TMU WithRelativeFollowedPos(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, SupportedGames3);
+        public TMU WithRollFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? value) => base.WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithUseForcedUp(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, SupportedGames3);
+        public TMU WithYawFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU? value) => base.WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build() => BuildNode(CGameControlCameraTrackManiaRace2Builder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
+    }
     public partial class VSK5 : CGameControlCameraTrackManiaRace2BuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
         public VSK5 WithDefaultFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, SupportedGames3);
         public VSK5 WithDefaultNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, SupportedGames3);
         public VSK5 WithForcedUp(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, SupportedGames3);
-        public VSK5 WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+        public VSK5 WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? value) => base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMaxFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, SupportedGames3);
         public VSK5 WithMaxFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, SupportedGames3);
@@ -238,7 +261,7 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMF WithDefaultFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, SupportedGames3);
         public TMF WithDefaultNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, SupportedGames3);
         public TMF WithForcedUp(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, SupportedGames3);
-        public TMF WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+        public TMF WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? value) => base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithMaxFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, SupportedGames3);
         public TMF WithMaxFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, SupportedGames3);
@@ -257,7 +280,7 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
     public partial class MP3 : CGameControlCameraTrackManiaRace2BuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public MP3 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2MP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build() => BuildNode(CGameControlCameraTrackManiaRace2Builder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
@@ -290,7 +313,7 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
     public partial class TM2020 : CGameControlCameraTrackManiaRace2BuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public TM2020 WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+        public TM2020 WithIsRollFromInput(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build() => BuildNode(CGameControlCameraTrackManiaRace2Builder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);

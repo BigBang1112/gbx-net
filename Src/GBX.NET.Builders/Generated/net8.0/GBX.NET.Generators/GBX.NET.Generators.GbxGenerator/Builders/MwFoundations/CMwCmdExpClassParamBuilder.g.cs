@@ -7,7 +7,7 @@ public abstract class CMwCmdExpClassParamBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CMwCmdExpClassParamBuilderBase() { }
     private protected CMwCmdExpClassParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam> state) : base(state) { }
-    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpClassParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpClassParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMwCmdExpClassParamBuilder : CMwCmdExpClassParamBuilderBase<CMwCmdExpClassParamBuilder>
 {
@@ -22,6 +22,7 @@ public partial class CMwCmdExpClassParamBuilder : CMwCmdExpClassParamBuilderBase
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CMwCmdExpClassParamBuilderBase<TM10>
@@ -50,6 +51,13 @@ public partial class CMwCmdExpClassParamBuilder : CMwCmdExpClassParamBuilderBase
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassParamTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam Build() => BuildNode(CMwCmdExpClassParamBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam node);
+    }
+    public partial class TMU : CMwCmdExpClassParamBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassParamTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam Build() => BuildNode(CMwCmdExpClassParamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam node);
     }
     public partial class VSK5 : CMwCmdExpClassParamBuilderBase<VSK5>

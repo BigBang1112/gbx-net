@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockFxBlurDepthBuilderBase<TSelf> : NodeBuil
 {
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase() { }
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) : base(state) { }
-    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key> values) => WithKeys(values.ToArray());
 }
@@ -21,6 +21,7 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -40,6 +41,13 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build() => BuildNode(CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
+    }
+    public partial class TMU : CGameCtnMediaBlockFxBlurDepthBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build() => BuildNode(CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node);
     }
     public partial class VSK5 : CGameCtnMediaBlockFxBlurDepthBuilderBase<VSK5>

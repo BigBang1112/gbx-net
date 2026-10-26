@@ -7,7 +7,7 @@ public abstract class CSceneLocationBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CSceneLocationBuilderBase() { }
     private protected CSceneLocationBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocation> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, SupportedGames1);
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, SupportedGames1);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
@@ -31,6 +31,7 @@ public partial class CSceneLocationBuilder : CSceneLocationBuilderBase<CSceneLoc
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -69,6 +70,14 @@ public partial class CSceneLocationBuilder : CSceneLocationBuilderBase<CSceneLoc
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLocation Build() => BuildNode(CSceneLocationBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocation node);
+    }
+    public partial class TMU : CSceneLocationBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocation> state) : base(state) { }
+        public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneLocationTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneLocation Build() => BuildNode(CSceneLocationBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocation node);
     }
     public partial class VSK5 : CSceneLocationBuilderBase<VSK5>

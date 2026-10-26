@@ -7,7 +7,7 @@ public abstract class CMwCmdExpEnumBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMwCmdExpEnumBuilderBase() { }
     private protected CMwCmdExpEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
     public TSelf WithEnumValue(int value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetEnumValueAssignment(), value, SupportedGames1);
     public TSelf WithParamId(uint value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpEnumBuilderAssignments.GetParamIdAssignment(), value, SupportedGames1);
 }
@@ -19,7 +19,15 @@ public partial class CMwCmdExpEnumBuilder : CMwCmdExpEnumBuilderBase<CMwCmdExpEn
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum.Chunk01059000());
         return node;
     }
+    public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TMU : CMwCmdExpEnumBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpEnumTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum Build() => BuildNode(CMwCmdExpEnumBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum node);
+    }
     public partial class TMF : CMwCmdExpEnumBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpEnum> state) : base(state) { }

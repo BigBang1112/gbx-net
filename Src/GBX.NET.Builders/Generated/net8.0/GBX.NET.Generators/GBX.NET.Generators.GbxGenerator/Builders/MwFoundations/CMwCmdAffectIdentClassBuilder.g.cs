@@ -7,7 +7,7 @@ public abstract class CMwCmdAffectIdentClassBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CMwCmdAffectIdentClassBuilderBase() { }
     private protected CMwCmdAffectIdentClassBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithValue(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectIdentBuilderAssignments.GetValueAssignment(), value, SupportedGames1);
     public TSelf WithValueReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectIdentBuilderAssignments.GetValueReferenceAssignment(), value, SupportedGames1);
 }
@@ -23,6 +23,7 @@ public partial class CMwCmdAffectIdentClassBuilder : CMwCmdAffectIdentClassBuild
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CMwCmdAffectIdentClassBuilderBase<TM10>
@@ -51,6 +52,13 @@ public partial class CMwCmdAffectIdentClassBuilder : CMwCmdAffectIdentClassBuild
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentClassTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass Build() => BuildNode(CMwCmdAffectIdentClassBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass node);
+    }
+    public partial class TMU : CMwCmdAffectIdentClassBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentClassTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass Build() => BuildNode(CMwCmdAffectIdentClassBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentClass node);
     }
     public partial class VSK5 : CMwCmdAffectIdentClassBuilderBase<VSK5>

@@ -8,19 +8,19 @@ public abstract class CFuncKeysRealBuilderBase<TSelf> : NodeBuilder<global::GBX.
     private protected CFuncKeysRealBuilderBase() { }
     private protected CFuncKeysRealBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
-    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithXs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysBuilderAssignments.GetXsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithXs(IEnumerable<float> values) => WithXs(values.ToArray());
 }
 public abstract class CFuncKeysRealBuilderMembers1<TSelf> : CFuncKeysRealBuilderBase<TSelf> where TSelf : CFuncKeysRealBuilderMembers1<TSelf>
 {
     private protected CFuncKeysRealBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
-    public TSelf WithYs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithYs(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetYsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithYs(IEnumerable<float> values) => WithYs(values.ToArray());
 }
 public abstract class CFuncKeysRealBuilderMembers2<TSelf> : CFuncKeysRealBuilderMembers1<TSelf> where TSelf : CFuncKeysRealBuilderMembers2<TSelf>
 {
     private protected CFuncKeysRealBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
-    public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithRealInterp(global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysRealBuilderAssignments.GetRealInterpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CFuncKeysRealBuilderMembers3<TSelf> : CFuncKeysRealBuilderMembers2<TSelf> where TSelf : CFuncKeysRealBuilderMembers3<TSelf>
 {
@@ -67,6 +67,7 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -101,6 +102,13 @@ public partial class CFuncKeysRealBuilder : CFuncKeysRealBuilderBase<CFuncKeysRe
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysReal Build() => BuildNode(CFuncKeysRealBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
+    }
+    public partial class TMU : CFuncKeysRealBuilderMembers2<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysReal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncKeysRealTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncKeysReal Build() => BuildNode(CFuncKeysRealBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysReal node);
     }
     public partial class VSK5 : CFuncKeysRealBuilderMembers2<VSK5>

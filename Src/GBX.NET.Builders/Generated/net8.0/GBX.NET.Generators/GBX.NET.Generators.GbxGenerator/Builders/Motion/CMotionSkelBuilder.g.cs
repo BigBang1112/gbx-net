@@ -7,7 +7,7 @@ public abstract class CMotionSkelBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CMotionSkelBuilderBase() { }
     private protected CMotionSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithKeysSkel(global::GBX.NET.Engines.Function.CFuncKeysSkel? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelBuilderAssignments.GetKeysSkelAssignment(), value, SupportedGames1);
     public TSelf WithKeysSkelReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysSkel> value) => SetReference(global::GBX.NET.Builders.Engines.Motion.CMotionSkelBuilderAssignments.GetKeysSkelReferenceAssignment(), value, SupportedGames1);
     public TSelf WithSkelValues(global::GBX.NET.Engines.Function.CFuncSkelValues? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, SupportedGames1);
@@ -26,6 +26,7 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TM10 : CMotionSkelBuilderBase<TM10>
@@ -62,6 +63,15 @@ public partial class CMotionSkelBuilder : CMotionSkelBuilderBase<CMotionSkelBuil
         public TMNESWC WithSkelValues(global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? value) => base.WithSkelValues(value is null ? (global::GBX.NET.Engines.Function.CFuncSkelValues?)null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Motion.IMotionSkelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkel Build() => BuildNode(CMotionSkelBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
+    }
+    public partial class TMU : CMotionSkelBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkel> state) : base(state) { }
+        public TMU WithKeysSkel(global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMU? value) => base.WithKeysSkel(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysSkel?)null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithSkelValues(global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMU? value) => base.WithSkelValues(value is null ? (global::GBX.NET.Engines.Function.CFuncSkelValues?)null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Motion.IMotionSkelTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Motion.CMotionSkel Build() => BuildNode(CMotionSkelBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionSkel node);
     }
     public partial class VSK5 : CMotionSkelBuilderBase<VSK5>

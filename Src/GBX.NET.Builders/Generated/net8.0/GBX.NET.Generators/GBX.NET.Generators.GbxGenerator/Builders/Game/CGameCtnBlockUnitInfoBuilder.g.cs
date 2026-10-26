@@ -7,11 +7,11 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CGameCtnBlockUnitInfoBuilderBase() { }
     private protected CGameCtnBlockUnitInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.TM2020;
-    private protected const GameVersion SupportedGames5 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithClips(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetClipsAssignment(), value, SupportedGames1);
     public TSelf WithClips(params global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip[] values) => WithClips(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip>(values));
     public TSelf WithClips(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip> values) => WithClips(values.ToArray());
@@ -24,17 +24,17 @@ public abstract class CGameCtnBlockUnitInfoBuilderBase<TSelf> : NodeBuilder<glob
 public abstract class CGameCtnBlockUnitInfoBuilderMembers1<TSelf> : CGameCtnBlockUnitInfoBuilderBase<TSelf> where TSelf : CGameCtnBlockUnitInfoBuilderMembers1<TSelf>
 {
     private protected CGameCtnBlockUnitInfoBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-    public TSelf WithUnderground(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithUnderground(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockUnitInfoBuilderMembers2<TSelf> : CGameCtnBlockUnitInfoBuilderMembers1<TSelf> where TSelf : CGameCtnBlockUnitInfoBuilderMembers2<TSelf>
 {
     private protected CGameCtnBlockUnitInfoBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-    public TSelf WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockUnitInfoBuilderMembers3<TSelf> : CGameCtnBlockUnitInfoBuilderMembers2<TSelf> where TSelf : CGameCtnBlockUnitInfoBuilderMembers3<TSelf>
 {
     private protected CGameCtnBlockUnitInfoBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-    public TSelf WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockUnitInfoBuilderMembers4<TSelf> : CGameCtnBlockUnitInfoBuilderMembers1<TSelf> where TSelf : CGameCtnBlockUnitInfoBuilderMembers4<TSelf>
 {
@@ -135,6 +135,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -174,7 +175,7 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
     public partial class TMNESWC : CGameCtnBlockUnitInfoBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-        public TMNESWC WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithClips(params global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC[] values) => base.WithClips(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>(values, false));
         public TMNESWC WithClips(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC> values) => WithClips(values.ToArray());
         public TMNESWC WithReplacementBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC? value) => base.WithReplacementBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -182,14 +183,26 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
         public global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo Build() => BuildNode(CGameCtnBlockUnitInfoBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node);
     }
+    public partial class TMU : CGameCtnBlockUnitInfoBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
+        public TMU WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithClips(params global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU[] values) => base.WithClips(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU>(values, false));
+        public TMU WithClips(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMU> values) => WithClips(values.ToArray());
+        public TMU WithReplacementBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMU? value) => base.WithReplacementBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo Build() => BuildNode(CGameCtnBlockUnitInfoBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node);
+    }
     public partial class VSK5 : CGameCtnBlockUnitInfoBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-        public VSK5 WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithClips(params global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5[] values) => base.WithClips(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>(values, false));
         public VSK5 WithClips(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5> values) => WithClips(values.ToArray());
         public VSK5 WithReplacementBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5? value) => base.WithReplacementBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo Build() => BuildNode(CGameCtnBlockUnitInfoBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node);
@@ -197,11 +210,11 @@ public partial class CGameCtnBlockUnitInfoBuilder : CGameCtnBlockUnitInfoBuilder
     public partial class TMF : CGameCtnBlockUnitInfoBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> state) : base(state) { }
-        public TMF WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithAcceptPylons(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetAcceptPylonsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithClips(params global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF[] values) => base.WithClips(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>(values, false));
         public TMF WithClips(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF> values) => WithClips(values.ToArray());
         public TMF WithReplacementBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF? value) => base.WithReplacementBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithTerrainModifierId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockUnitInfoBuilderAssignments.GetTerrainModifierIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo Build() => BuildNode(CGameCtnBlockUnitInfoBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node);

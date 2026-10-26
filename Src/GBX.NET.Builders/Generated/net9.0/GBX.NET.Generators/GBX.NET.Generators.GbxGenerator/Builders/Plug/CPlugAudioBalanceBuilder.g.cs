@@ -9,7 +9,7 @@ public abstract class CPlugAudioBalanceBuilderBase<TSelf> : NodeBuilder<global::
     private protected CPlugAudioBalanceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    public TSelf WithName(string value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithName(string value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugAudioBalanceBuilderMembers1<TSelf> : CPlugAudioBalanceBuilderBase<TSelf> where TSelf : CPlugAudioBalanceBuilderMembers1<TSelf>
 {
@@ -65,6 +65,7 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -85,6 +86,13 @@ public partial class CPlugAudioBalanceBuilder : CPlugAudioBalanceBuilderBase<CPl
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
+    }
+    public partial class TMU : CPlugAudioBalanceBuilderBase<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioBalance> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAudioBalance Build() => BuildNode(CPlugAudioBalanceBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioBalance node);
     }
     public partial class VSK5 : CPlugAudioBalanceBuilderBase<VSK5>

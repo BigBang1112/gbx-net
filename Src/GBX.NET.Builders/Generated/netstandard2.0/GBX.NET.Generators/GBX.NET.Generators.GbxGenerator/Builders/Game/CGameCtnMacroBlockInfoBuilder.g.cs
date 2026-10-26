@@ -7,11 +7,11 @@ public abstract class CGameCtnMacroBlockInfoBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnMacroBlockInfoBuilderBase() { }
     private protected CGameCtnMacroBlockInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames6 = GameVersion.TM2020;
     public TSelf WithCatalogPosition(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, SupportedGames1);
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, SupportedGames1);
@@ -77,7 +77,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public TSelf WithOffzoneTriggerSize(Int3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, SupportedGames3);
     public TSelf WithOffzones(params BoxInt3[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetOffzonesAssignment(), value, SupportedGames3);
     public TSelf WithOffzones(IEnumerable<BoxInt3> values) => WithOffzones(values.ToArray());
-    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSceneDecals(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetSceneDecalsAssignment(), value, SupportedGames3);
     public TSelf WithSceneDecals(IEnumerable<byte> values) => WithSceneDecals(values.ToArray());
     public TSelf WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetScriptMetadataAssignment(), value, SupportedGames3);
@@ -240,6 +240,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -276,7 +277,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
-        public TMSX WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMSX WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
@@ -284,15 +285,23 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     public partial class TMNESWC : CGameCtnMacroBlockInfoBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
-        public TMNESWC WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMNESWC WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
+    }
+    public partial class TMU : CGameCtnMacroBlockInfoBuilderMembers3<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
+        public TMU WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class VSK5 : CGameCtnMacroBlockInfoBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
-        public VSK5 WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public VSK5 WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
@@ -304,7 +313,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMF WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMF WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMF WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
-        public TMF WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+        public TMF WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);

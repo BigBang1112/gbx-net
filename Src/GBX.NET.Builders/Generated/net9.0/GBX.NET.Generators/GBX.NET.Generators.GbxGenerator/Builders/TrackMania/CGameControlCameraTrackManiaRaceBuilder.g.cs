@@ -7,10 +7,10 @@ public abstract class CGameControlCameraTrackManiaRaceBuilderBase<TSelf> : NodeB
 {
     private protected CGameControlCameraTrackManiaRaceBuilderBase() { }
     private protected CGameControlCameraTrackManiaRaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithInterpolate(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, SupportedGames1);
     public TSelf WithIsUpLinked(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, SupportedGames1);
     public TSelf WithLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, SupportedGames1);
@@ -51,7 +51,7 @@ public abstract class CGameControlCameraTrackManiaRaceBuilderMembers2<TSelf> : C
 public abstract class CGameControlCameraTrackManiaRaceBuilderMembers3<TSelf> : CGameControlCameraTrackManiaRaceBuilderMembers1<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers3<TSelf>
 {
     private protected CGameControlCameraTrackManiaRaceBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-    public TSelf WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    public TSelf WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameControlCameraTrackManiaRaceBuilderMembers4<TSelf> : CGameControlCameraTrackManiaRaceBuilderMembers2<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers4<TSelf>
 {
@@ -129,6 +129,7 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
     }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -160,7 +161,7 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
     public partial class TMNESWC : CGameControlCameraTrackManiaRaceBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMNESWC WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMNESWC WithCarCameraAlign(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, SupportedGames2);
         public TMNESWC WithCarCameraDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, SupportedGames2);
         public TMNESWC WithCarCameraHeight(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, SupportedGames2);
@@ -176,10 +177,29 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
+    public partial class TMU : CGameControlCameraTrackManiaRaceBuilderMembers4<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+        public TMU WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithCarCameraAlign(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, SupportedGames2);
+        public TMU WithCarCameraDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, SupportedGames2);
+        public TMU WithCarCameraHeight(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, SupportedGames2);
+        public TMU WithCarCameraTargetDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraTargetDistanceAssignment(), value, SupportedGames2);
+        public TMU WithConeAperture(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeApertureAssignment(), value, SupportedGames2);
+        public TMU WithConeMaxSpeed(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMaxSpeedAssignment(), value, SupportedGames2);
+        public TMU WithConeMinSpeed(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMinSpeedAssignment(), value, SupportedGames2);
+        public TMU WithIsSegmentCast(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetIsSegmentCastAssignment(), value, SupportedGames2);
+        public TMU WithSegmentCastLength(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastLengthAssignment(), value, SupportedGames2);
+        public TMU WithSegmentCastMinDist(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastMinDistAssignment(), value, SupportedGames2);
+        public TMU WithUseSpeedDir(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetUseSpeedDirAssignment(), value, SupportedGames2);
+        public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
+    }
     public partial class VSK5 : CGameControlCameraTrackManiaRaceBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public VSK5 WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithCarCameraAlign(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, SupportedGames2);
         public VSK5 WithCarCameraDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, SupportedGames2);
         public VSK5 WithCarCameraHeight(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, SupportedGames2);
@@ -198,7 +218,7 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
     public partial class TMF : CGameControlCameraTrackManiaRaceBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+        public TMF WithCanUseRelativeTargetLocation(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public TMF WithCarCameraAlign(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, SupportedGames2);
         public TMF WithCarCameraDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, SupportedGames2);
         public TMF WithCarCameraHeight(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, SupportedGames2);

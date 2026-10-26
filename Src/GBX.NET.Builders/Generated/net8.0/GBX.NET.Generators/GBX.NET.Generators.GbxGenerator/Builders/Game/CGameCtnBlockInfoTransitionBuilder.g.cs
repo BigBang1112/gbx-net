@@ -7,12 +7,12 @@ public abstract class CGameCtnBlockInfoTransitionBuilderBase<TSelf> : NodeBuilde
 {
     private protected CGameCtnBlockInfoTransitionBuilderBase() { }
     private protected CGameCtnBlockInfoTransitionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT;
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.TMT;
     private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames6 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames7 = GameVersion.TM2020;
     public TSelf WithCatalogPosition(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, SupportedGames1);
     public TSelf WithIconFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconFidAssignment(), value, SupportedGames1);
@@ -39,7 +39,7 @@ public abstract class CGameCtnBlockInfoTransitionBuilderMembers3<TSelf> : CGameC
 {
     private protected CGameCtnBlockInfoTransitionBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition> state) : base(state) { }
     public TSelf WithNoRespawn(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
-    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockInfoTransitionBuilderMembers4<TSelf> : CGameCtnBlockInfoTransitionBuilderBase<TSelf> where TSelf : CGameCtnBlockInfoTransitionBuilderMembers4<TSelf>
 {
@@ -77,8 +77,8 @@ public abstract class CGameCtnBlockInfoTransitionBuilderMembers4<TSelf> : CGameC
 public abstract class CGameCtnBlockInfoTransitionBuilderMembers5<TSelf> : CGameCtnBlockInfoTransitionBuilderMembers4<TSelf> where TSelf : CGameCtnBlockInfoTransitionBuilderMembers5<TSelf>
 {
     private protected CGameCtnBlockInfoTransitionBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition> state) : base(state) { }
-    public TSelf WithIsReplacement(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
-    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    public TSelf WithIsReplacement(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIsReplacementAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnBlockInfoTransitionBuilderMembers6<TSelf> : CGameCtnBlockInfoTransitionBuilderMembers3<TSelf> where TSelf : CGameCtnBlockInfoTransitionBuilderMembers6<TSelf>
 {
@@ -357,6 +357,7 @@ public partial class CGameCtnBlockInfoTransitionBuilder : CGameCtnBlockInfoTrans
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
+    public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -434,6 +435,21 @@ public partial class CGameCtnBlockInfoTransitionBuilder : CGameCtnBlockInfoTrans
         public TMNESWC WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition Build() => BuildNode(CGameCtnBlockInfoTransitionBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node);
+    }
+    public partial class TMU : CGameCtnBlockInfoTransitionBuilderMembers5<TMU>
+    {
+        internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition> state) : base(state) { }
+        public TMU WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(values, true));
+        public TMU WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMU WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(values, true));
+        public TMU WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMU WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition Build() => BuildNode(CGameCtnBlockInfoTransitionBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node);
     }
     public partial class VSK5 : CGameCtnBlockInfoTransitionBuilderMembers5<VSK5>

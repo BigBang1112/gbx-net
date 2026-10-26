@@ -71,6 +71,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings
         set => flags2 = BitHelper.SetBit(flags2, 0, value);
     }
 
+    [Obsolete("Use UnlockAllCheat instead.")]
+    public bool UnlockAllCheats { get => UnlockAllCheat; set => UnlockAllCheat = value; }
+
     public bool FriendsCheat
     {
         get => BitHelper.GetBit(flags2, 1);
