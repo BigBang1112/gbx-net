@@ -58,23 +58,33 @@ internal sealed class GameSymbols : IEquatable<GameSymbols>
         var methodMasks = ImmutableDictionary.CreateBuilder<string, long>(StringComparer.Ordinal);
         foreach (var owner in plan.Layouts.Values)
         {
-            foreach (var property in owner.Existing?.Properties ?? [])
-            {
-                if (property.ExplicitInterfaceSpecifier is not null || !property.Modifiers.Any(SyntaxKind.PublicKeyword) ||
-                    property.Modifiers.Any(SyntaxKind.StaticKeyword)) continue;
-                if (compilation.GetSemanticModel(property.SyntaxTree).GetDeclaredSymbol(property) is not IPropertySymbol symbol ||
-                    symbol.Type.TypeKind == TypeKind.Error) continue;
-                propertyTypes[PropertyKey(owner, property)] = symbol.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat.WithMiscellaneousOptions(
-                    SymbolDisplayMiscellaneousOptions.UseSpecialTypes | SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier));
-            }
+            // An edit inside a member body keeps the plan cached, along with syntax from an
+            // earlier compilation. Read the declarations of this compilation through the symbol.
+            // The source declaration also wins over the referenced metadata of a builder package.
+            if (owner.Existing is null || compilation.GetTypeByMetadataName(owner.File.TypeKey) is not { } type) continue;
 
-            foreach (var method in owner.Existing?.Methods ?? [])
+            foreach (var reference in type.DeclaringSyntaxReferences)
             {
-                var attribute = method.AttributeLists.SelectMany(static l => l.Attributes)
-                    .FirstOrDefault(static a => a.Name.ToString().Contains("MethodGameVersion"));
-                if (attribute?.ArgumentList?.Arguments.Count != 1) continue;
-                var constant = compilation.GetSemanticModel(method.SyntaxTree).GetConstantValue(attribute.ArgumentList.Arguments[0].Expression);
-                if (constant.HasValue) methodMasks[MethodKey(owner, method)] = Convert.ToInt64(constant.Value);
+                if (reference.GetSyntax() is not TypeDeclarationSyntax declaration) continue;
+                var model = compilation.GetSemanticModel(declaration.SyntaxTree);
+
+                foreach (var property in declaration.Members.OfType<PropertyDeclarationSyntax>())
+                {
+                    if (property.ExplicitInterfaceSpecifier is not null || !property.Modifiers.Any(SyntaxKind.PublicKeyword) ||
+                        property.Modifiers.Any(SyntaxKind.StaticKeyword)) continue;
+                    if (model.GetDeclaredSymbol(property) is not IPropertySymbol symbol || symbol.Type.TypeKind == TypeKind.Error) continue;
+                    propertyTypes[PropertyKey(owner, property)] = symbol.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat.WithMiscellaneousOptions(
+                        SymbolDisplayMiscellaneousOptions.UseSpecialTypes | SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier));
+                }
+
+                foreach (var method in declaration.Members.OfType<MethodDeclarationSyntax>())
+                {
+                    var attribute = method.AttributeLists.SelectMany(static l => l.Attributes)
+                        .FirstOrDefault(static a => a.Name.ToString().Contains("MethodGameVersion"));
+                    if (attribute?.ArgumentList?.Arguments.Count != 1) continue;
+                    var constant = model.GetConstantValue(attribute.ArgumentList.Arguments[0].Expression);
+                    if (constant.HasValue) methodMasks[MethodKey(owner, method)] = Convert.ToInt64(constant.Value);
+                }
             }
         }
 

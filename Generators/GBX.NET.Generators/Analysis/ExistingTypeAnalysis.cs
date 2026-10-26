@@ -42,6 +42,10 @@ internal static class ExistingTypeAnalysis
             containingTypeKey, key, ImmutableArray.Create(declaration));
     }
 
+    // Merge rebuilds the dictionary after every edit. Comparing it by value keeps the
+    // generation plan cached when no declaration changed its shape.
+    public static IEqualityComparer<ImmutableDictionary<string, ExistingType>> Comparer { get; } = new TypesComparer();
+
     public static ImmutableDictionary<string, ExistingType> Merge(
         ImmutableArray<ExistingType> declarations, CancellationToken token)
     {
@@ -66,6 +70,24 @@ internal static class ExistingTypeAnalysis
     {
         var arity = GetArity(declaration);
         return declaration.Identifier.ValueText + (arity == 0 ? "" : "`" + arity);
+    }
+
+    private sealed class TypesComparer : IEqualityComparer<ImmutableDictionary<string, ExistingType>>
+    {
+        public bool Equals(ImmutableDictionary<string, ExistingType>? left, ImmutableDictionary<string, ExistingType>? right)
+        {
+            if (ReferenceEquals(left, right)) return true;
+            if (left is null || right is null || left.Count != right.Count) return false;
+
+            foreach (var pair in left)
+            {
+                if (!right.TryGetValue(pair.Key, out var other) || !pair.Value.Equals(other)) return false;
+            }
+
+            return true;
+        }
+
+        public int GetHashCode(ImmutableDictionary<string, ExistingType> types) => types.Count;
     }
 
 }

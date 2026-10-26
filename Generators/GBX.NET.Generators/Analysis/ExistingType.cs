@@ -108,10 +108,16 @@ internal sealed class ExistingType : IEquatable<ExistingType>
     private static string Qualify(ExplicitInterfaceSpecifierSyntax? specifier, string name) =>
         specifier is null ? name : $"{specifier.Name}.{name}";
 
-    // The syntax provider reruns its transform after every edit. An unchanged
-    // tree keeps its nodes, so equal declarations let the generation plan cache.
+    // The syntax provider reruns its transform after every edit. An unchanged tree keeps
+    // its nodes, and an edit inside a member body keeps the declaration shape, so either
+    // lets the generation plan cache. The builder writer looks for assignment helpers in
+    // the bodies and comments of builder partials, so those compare in full.
     public bool Equals(ExistingType? other) => other is not null && Key == other.Key &&
-        Declarations.SequenceEqual(other.Declarations, static (left, right) => ReferenceEquals(left, right));
+        Declarations.Length == other.Declarations.Length &&
+        Declarations.Zip(other.Declarations, (left, right) => ReferenceEquals(left, right) ||
+            DeclarationShape.Equals(left, right, bodies: IsBuilder)).All(static same => same);
+
+    private bool IsBuilder => Namespace == "GBX.NET.Builders" || Namespace.StartsWith("GBX.NET.Builders.", StringComparison.Ordinal);
 
     public override bool Equals(object? obj) => Equals(obj as ExistingType);
 

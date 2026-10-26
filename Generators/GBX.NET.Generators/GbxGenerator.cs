@@ -30,6 +30,7 @@ public sealed class GbxGenerator : IIncrementalGenerator
                 .SelectMany(tree => tree.GetRoot(token).DescendantNodes().Where(ExistingTypeAnalysis.IsCandidate))
                 .Select(node => ExistingTypeAnalysis.Read(node, token)).Where(static declaration => declaration is not null)
                 .Select(static declaration => declaration!)), token))
+            .WithComparer(ExistingTypeAnalysis.Comparer)
             .WithTrackingName("ExistingEngineTypes");
 
         var parseResults = context.AdditionalTextsProvider
