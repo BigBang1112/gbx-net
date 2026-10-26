@@ -263,7 +263,7 @@ public class CHmsLightMapCacheLayoutTests
             var games = writer ? GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020
                 : offset switch
                 {
-                    5 => GameVersion.VSK5,
+                    5 => GameVersion.TMU | GameVersion.VSK5,
                     7 => GameVersion.TMF,
                     _ => GameVersion.Unspecified
                 };

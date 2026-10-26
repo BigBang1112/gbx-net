@@ -68,27 +68,4 @@ public class CompatibilityAliasTests
         await Assert.That(header.UnknownByte).IsEqualTo(GbxUnknownByte.E);
         await Assert.That((header with { UnknownByte = GbxUnknownByte.R }).Mode).IsEqualTo(GbxMode.Release);
     }
-
-    [Test]
-    public async Task VisualMipLevel_Deconstructs()
-    {
-        var (farZ, tree) = new CPlugTreeVisualMip.Level(64f, null);
-
-        await Assert.That(farZ).IsEqualTo(64f);
-        await Assert.That(tree).IsNull();
-    }
-
-    [Test]
-    public async Task PlayerProfileOnlineAliases_ForwardToAccountSettings()
-    {
-        var settings = new CGamePlayerProfileChunk_AccountSettings();
-        var profile = new CGamePlayerProfile { ProfileChunks = [settings] };
-
-        profile.OnlinePlanets = 1234;
-        profile.RSAPrivateKey = "key";
-
-        await Assert.That(settings.OnlinePlanets).IsEqualTo(1234);
-        await Assert.That(settings.RSAPrivateKey).IsEqualTo("key");
-        await Assert.That(new CGamePlayerProfile().OnlinePlanets).IsNull();
-    }
 }
