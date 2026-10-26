@@ -144,7 +144,15 @@ internal static class PakLoader
             return (pak, false);
         }
 
-        foreach (var baseKey in GetKeys(path))
+        var candidates = GetKeys(path);
+
+        // Title packs can be renamed, so also try the title ID stored in the public header.
+        if (pak is Pak6 { TitleId: { } titleId } && keys.TryGetValue(titleId, out var titleKeys))
+        {
+            candidates = [.. candidates, .. titleKeys.Except(candidates)];
+        }
+
+        foreach (var baseKey in candidates)
         {
             var key = Pak.ComputeKey(Convert.FromHexString(baseKey));
 
