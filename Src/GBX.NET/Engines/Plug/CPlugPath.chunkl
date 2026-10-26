@@ -1,9 +1,12 @@
 CPlugPath 0x09119000
 
-0x000 [MP4.v2, TM2020.v3]
+0x000 [MP4.v2, TM2020.v3] // polylines and line groups
   version
   CPlugPolyLine3[] PolyLines
   v2+
     bool
-    byte
-    data LineGroups // length must equal PolyLines
+    boolbyte HasLineGroups (local, write: "n.LineGroups is not null")
+    if HasLineGroups
+      data LineGroups // length must equal PolyLines
+  v3+
+    int

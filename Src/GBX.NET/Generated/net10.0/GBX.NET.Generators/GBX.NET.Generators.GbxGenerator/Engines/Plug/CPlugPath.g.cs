@@ -62,9 +62,9 @@ public partial class CPlugPath : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugPath 0x000 chunk
+    /// CPlugPath 0x000 chunk (polylines and line groups)
     /// </summary>
-    [Chunk(0x09119000)]
+    [Chunk(0x09119000, "polylines and line groups")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk09119000 : Chunk<CPlugPath>, IVersionable
     {
@@ -72,7 +72,7 @@ public partial class CPlugPath : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-        public byte U02;
+        public int U02;
 
         public Chunk09119000() : this(GameVersion.Unspecified)
         {
@@ -111,8 +111,17 @@ public partial class CPlugPath : CMwNod, IClass
             if (Version >= 2)
             {
                 rw.Boolean(ref U01);
-                rw.Byte(ref U02);
-                rw.Data(ref n.lineGroups);
+                var hasLineGroups = rw.Boolean((rw.Writer is null ? default : (n.LineGroups is not null)), asByte: true);
+
+                if (hasLineGroups)
+                {
+                    rw.Data(ref n.lineGroups);
+                }
+            }
+
+            if (Version >= 3)
+            {
+                rw.Int32(ref U02);
             }
         }
     }
