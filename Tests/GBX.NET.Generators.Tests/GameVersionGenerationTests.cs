@@ -589,6 +589,71 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_GameBuilders_BuildsEveryGameWithoutIgnoredChunks()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        var legacy = Example.Create().ForTM10().WithValue(7).Build();
+                        var modern = Example.Create().ForMP4().WithValue(8).Build();
+                        return legacy.Value == 7 && legacy.Chunks.Count == 2 && legacy.GetChunk<Chunk03043002>() is not null
+                            && modern.Value == 8 && modern.Chunks.Count == 1 && modern.GetChunk<Chunk03043003>() is null;
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4]
+              int Value
+            0x002 [TM10]
+            0x003 (ignore) [MP4]
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        // A chunk without a writer stays in the recipe and fails when written.
+        // An ignored chunk is never written, so the recipe leaves it out.
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_OmitsNodesThatCannotBeWritten()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                [GBX.NET.Attributes.WriteNotSupported]
+                public partial class Base { }
+            }
+            """, new Text("Engines/Game/Base.chunkl", """
+            Base 0x03044000
+            0x001 [TM10]
+              int Value
+            """), new Text("Engines/Game/Derived.chunkl", """
+            Derived 0x03045000
+            - inherits: Base
+            0x001 [TM10]
+              int Other
+            """), new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10]
+              int Value
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var hints = result.GeneratedSources.Select(static s => s.HintName).ToArray();
+        await Assert.That(hints.Where(static h => h.StartsWith("Builders/", StringComparison.Ordinal) &&
+            (h.Contains("Base") || h.Contains("Derived")))).IsEmpty();
+        await Assert.That(hints).Contains("Builders/Game/ExampleBuilder.g.cs");
+        // The game version interfaces remain available for reading.
+        await Assert.That(compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IBaseTM10")).IsNotNull();
+        await Assert.That(compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IDerivedTM10")).IsNotNull();
+    }
+
+    [Test]
     public async Task Generate_GameBuilders_CustomizationCanChangeRecipeVersions()
     {
         var (result, compilation) = RunGame("""
@@ -714,7 +779,7 @@ public partial class GenerationTests
         await Assert.That(result.GeneratedSources.Select(static s => s.HintName)).IsEquivalentTo(new[]
         {
             "Builders/Game/ExampleBuilderAssignments.g.cs", "Builders/Game/ExampleBuilder.g.cs",
-            "Builders/Game/GameNodeBuilderExtensions.g.cs", "Builders/NodeBuilderCoverage.g.cs"
+            "Builders/Game/GameNodeBuilderExtensions.g.cs"
         });
         await Assert.That(InvokeBuilders(library, builders)).IsEqualTo(true);
     }
@@ -780,8 +845,7 @@ public partial class GenerationTests
             """ + GameSupport, true, [layout]);
         var (result, builders) = RunBuilders(library, layout, "");
         await Assert.That(result.Diagnostics.Select(static d => d.Id).ToArray()).IsEquivalentTo(new[] { "GBXNETGEN300" });
-        var coverage = result.GeneratedSources.Single(static s => s.HintName == "Builders/NodeBuilderCoverage.g.cs").SourceText.ToString();
-        await Assert.That(coverage).Contains("Example: NodeBuilderRecipe requires one known GameVersion value.");
+        await Assert.That(result.Diagnostics.Single().GetMessage()).Contains("NodeBuilderRecipe requires one known GameVersion value.");
     }
 
     [Test]
@@ -895,6 +959,7 @@ public partial class GenerationTests
             [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
             public class NodeBuilderRecipeAttribute(GBX.NET.GameVersion game, params System.Type[] chunks) : System.Attribute { }
             public class MethodGameVersionAttribute(GBX.NET.GameVersion game) : System.Attribute { }
+            public class WriteNotSupportedAttribute : System.Attribute { }
         }
         namespace GBX.NET.Exceptions
         {

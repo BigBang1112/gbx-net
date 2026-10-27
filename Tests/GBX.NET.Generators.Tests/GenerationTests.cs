@@ -4433,6 +4433,7 @@ public partial class GenerationTests
             public interface IChunk { }
             public class Chunk : IChunk
             {
+                public virtual bool Ignore => false;
                 public virtual System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, GBX.NET.NodeRef>> EnumerateReferences() => [];
                 internal virtual void DeepCloneFields(Chunk clone, GBX.NET.Serialization.DeepCloneContext context) { }
             }

@@ -14,9 +14,10 @@ internal sealed class GameNodeModel(LayoutModel layout)
     public List<GameMethod> Methods { get; } = [];
     public List<string> MemberErrors { get; } = [];
     public List<GameChunk> Chunks { get; } = [];
-    public Dictionary<string, string> RecipeErrors { get; } = new(StringComparer.Ordinal);
     public Dictionary<string, List<GameChunk>> Recipes { get; } = new(StringComparer.Ordinal);
     public string? MetadataError { get; private set; }
+    // A node that cannot be written has nothing to build. Derived nodes inherit this.
+    public bool WriteNotSupported { get; private set; }
 
     public string Interface(string game = "") => "global::" + InterfaceNamespace + "." + InterfaceName + game;
 
@@ -36,8 +37,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
             (game.Length == 0 ? IsCommon(name) : member.Games.Contains(game)) ? member : null;
     public IEnumerable<GameMethod> MethodsFor(string game) => Methods.Where(m => game.Length == 0 ? Games.All(m.Games.Contains) : m.Games.Contains(game));
     public bool IsCommon(string member) => (commonNames ??= new HashSet<string>(Common.Select(static m => m.Name), StringComparer.Ordinal)).Contains(member);
-    public IEnumerable<string> BuildableGames => Games.Where(g => !RecipeErrors.ContainsKey(g));
-    public bool HasBuilder => !Layout.IsAbstract && BuildableGames.Any();
+    public bool HasBuilder => !Layout.IsAbstract && !WriteNotSupported && Games.Count > 0;
 
     public static Dictionary<string, GameNodeModel> Create(GenerationPlan plan, GameSymbols symbols)
     {
@@ -53,6 +53,8 @@ internal sealed class GameNodeModel(LayoutModel layout)
             var declared = new HashSet<(uint Id, bool IsHeader)>();
             foreach (var owner in Hierarchy(node.Layout, plan.Layouts))
             {
+                if (owner.Existing?.Attributes.Any(static a => SyntaxOverlap.Simple(a.Name.ToString()) is "WriteNotSupported" or "WriteNotSupportedAttribute") == true)
+                    node.WriteNotSupported = true;
                 foreach (var chunk in owner.Chunks)
                 {
                     // Match virtual chunk dispatch: a derived declaration with the
@@ -96,6 +98,8 @@ internal sealed class GameNodeModel(LayoutModel layout)
                         if (chunk is null) throw new InvalidOperationException("Unknown recipe chunk: " + chunkName);
                         if (selected.Any(c => c.Chunk.IsHeader == chunk.Chunk.IsHeader && c.Chunk.Id == chunk.Chunk.Id))
                             throw new InvalidOperationException("Duplicate recipe chunk: " + chunkName);
+                        if (chunk.Chunk.Declaration.VersionQualifiers.Count > 0 && !chunk.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == gameName))
+                            throw new InvalidOperationException($"Recipe chunk {chunkName} is not a documented {gameName} writer.");
                         selected.Add(chunk);
                     }
                     node.Recipes.Add(gameName, selected);
@@ -174,8 +178,13 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 }
             }
 
-            var writers = node.Games.ToDictionary(static game => game, game => node.Recipes.TryGetValue(game, out var recipe) ? recipe :
-                node.Chunks.Where(c => c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)).ToList(), StringComparer.Ordinal);
+            // Every game gets a recipe. A chunk without a writer fails when the
+            // node is written. An ignored chunk is never written, so it is left out.
+            foreach (var game in node.Games.Where(g => !node.Recipes.ContainsKey(g)))
+            {
+                node.Recipes[game] = node.Chunks.Where(c => !LayoutModel.Has(c.Chunk.Declaration.Attributes, "ignore") &&
+                    c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)).ToList();
+            }
             foreach (var member in properties.Values.OrderBy(static m => m.Name, StringComparer.Ordinal))
             {
                 HashSet<string>? names = null;
@@ -183,7 +192,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 {
                     var contract = ExistingContract(plan, node, game, member.Name);
                     if (contract is not null) member.Games.Add(game);
-                    else if (writers[game].Any(c => c.Owner == member.Owner && Available(c, member, names ??= AppliedNames(member), game)))
+                    else if (node.Recipes[game].Any(c => c.Owner == member.Owner && Available(c, member, names ??= AppliedNames(member), game)))
                         member.Games.Add(game);
                 }
                 if (member.Games.Count > 0) node.Members.Add(member);
@@ -216,18 +225,6 @@ internal sealed class GameNodeModel(LayoutModel layout)
                     if (model.Games.Count > 0 && !node.Methods.Any(m => m.Declaration.Identifier.ValueText == method.Identifier.ValueText &&
                         m.Parameters == parameters)) node.Methods.Add(model);
                 }
-            }
-
-            foreach (var game in node.Games)
-            {
-                if (!node.Recipes.ContainsKey(game))
-                    node.Recipes[game] = node.Chunks.Where(c => c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)).ToList();
-                var invalid = node.Recipes[game]
-                    .FirstOrDefault(c => !Writable(c, plan, new HashSet<uint>()));
-                if (invalid is not null) node.RecipeErrors[game] = $"chunk 0x{invalid.Chunk.Id:X8} has no writable implementation";
-                var incompatible = node.Recipes[game].FirstOrDefault(c => c.Chunk.Declaration.VersionQualifiers.Count > 0 &&
-                    !c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game));
-                if (incompatible is not null) node.RecipeErrors[game] = $"chunk 0x{incompatible.Chunk.Id:X8} is not a documented {game} writer";
             }
         }
         return nodes;
@@ -278,24 +275,6 @@ internal sealed class GameNodeModel(LayoutModel layout)
             }
         }
         return false;
-    }
-
-    private static bool Writable(GameChunk candidate, GenerationPlan plan, HashSet<uint> visited)
-    {
-        var chunk = candidate.Chunk;
-        if (!visited.Add(chunk.Id)) return false;
-        if (LayoutModel.Has(chunk.Declaration.Attributes, "ignore")) return false;
-        var methods = chunk.Scope.Existing?.Methods;
-        if (methods?.Any(static m => m.Identifier.ValueText is "ReadWrite" or "Write" &&
-            (m.Body is not null || m.ExpressionBody is not null)) == true) return true;
-        if (LayoutModel.Has(chunk.Declaration.Attributes, "demonstration")) return false;
-        if (chunk.Scope.Body.Count > 0 || LayoutModel.Has(chunk.Declaration.Attributes, "empty")) return true;
-        var inherited = LayoutModel.Attribute(chunk.Declaration.Attributes, "base");
-        if (inherited is null) return false;
-        var id = LayoutModel.Hex(inherited);
-        if (id <= 0xFFF) id |= candidate.Owner.Id;
-        var parent = candidate.Owner.Chunks.FirstOrDefault(c => c.Id == id);
-        return parent is not null && Writable(new GameChunk(candidate.Owner, parent), plan, visited);
     }
 
     public static PropertyDeclarationSyntax? ExistingContract(GenerationPlan plan, GameNodeModel node, string game, string member)

@@ -62,16 +62,23 @@ public abstract class CGameCtnGhostBuilderMembers6<TSelf> : CGameCtnGhostBuilder
 {
     private protected CGameCtnGhostBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
     public TSelf WithSecurityKey128(UInt128? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithSkinFile(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilderMembers5<TSelf> where TSelf : CGameCtnGhostBuilderMembers7<TSelf>
 {
     private protected CGameCtnGhostBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+    public TSelf WithGhostAvatarName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, SupportedGames3);
+    public TSelf WithGhostVersion(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, SupportedGames3);
+    public TSelf WithSkinPackDescs(List<PackDesc>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, SupportedGames3);
+    public TSelf WithSkinPackDescs(params PackDesc[] values) => WithSkinPackDescs(new List<PackDesc>(values));
+    public TSelf WithSkinPackDescs(IEnumerable<PackDesc> values) => WithSkinPackDescs(values.ToArray());
+    public TSelf WithValidate_ValidationSeed(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, SupportedGames3);
+}
+public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilderMembers7<TSelf> where TSelf : CGameCtnGhostBuilderMembers8<TSelf>
+{
+    private protected CGameCtnGhostBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
     public TSelf WithCpuDescription(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuDescriptionAssignment(), value, SupportedGames5);
     public TSelf WithCpuKind(global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetCpuKindAssignment(), value, SupportedGames5);
-    public TSelf WithGhostAvatarName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostAvatarNameAssignment(), value, SupportedGames3);
     public TSelf WithGhostUid128(Checksum128? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostUid128Assignment(), value, SupportedGames5);
-    public TSelf WithGhostVersion(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGhostVersionAssignment(), value, SupportedGames3);
     public TSelf WithGpuCount(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuCountAssignment(), value, SupportedGames5);
     public TSelf WithGpuDescription(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDescriptionAssignment(), value, SupportedGames5);
     public TSelf WithGpuDeviceId(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetGpuDeviceIdAssignment(), value, SupportedGames5);
@@ -95,24 +102,20 @@ public abstract class CGameCtnGhostBuilderMembers7<TSelf> : CGameCtnGhostBuilder
     public TSelf WithSecurityKey256(UInt256? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey256Assignment(), value, SupportedGames5);
     public TSelf WithSettings(params global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSettingsAssignment(), value, SupportedGames5);
     public TSelf WithSettings(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos> values) => WithSettings(values.ToArray());
-    public TSelf WithSkinPackDescs(List<PackDesc>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinPackDescsAssignment(), value, SupportedGames3);
-    public TSelf WithSkinPackDescs(params PackDesc[] values) => WithSkinPackDescs(new List<PackDesc>(values));
-    public TSelf WithSkinPackDescs(IEnumerable<PackDesc> values) => WithSkinPackDescs(values.ToArray());
     public TSelf WithSteeringWheelSensitivity(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSteeringWheelSensitivityAssignment(), value, SupportedGames5);
-    public TSelf WithValidate_ValidationSeed(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ValidationSeedAssignment(), value, SupportedGames3);
 }
-public abstract class CGameCtnGhostBuilderMembers8<TSelf> : CGameCtnGhostBuilderMembers7<TSelf> where TSelf : CGameCtnGhostBuilderMembers8<TSelf>
+public abstract class CGameCtnGhostBuilderMembers9<TSelf> : CGameCtnGhostBuilderMembers8<TSelf> where TSelf : CGameCtnGhostBuilderMembers9<TSelf>
 {
-    private protected CGameCtnGhostBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+    private protected CGameCtnGhostBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
     public TSelf WithBadge(global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetBadgeAssignment(), value, SupportedGames7);
     public TSelf WithHasBadges(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetHasBadgesAssignment(), value, SupportedGames7);
     public TSelf WithRaceStartTime(TimeInt32? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRaceStartTimeAssignment(), value, SupportedGames7);
     public TSelf WithRecordingContext(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetRecordingContextAssignment(), value, SupportedGames7);
     public TSelf WithSkinCustomization(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinCustomizationAssignment(), value, SupportedGames7);
 }
-public abstract class CGameCtnGhostBuilderMembers9<TSelf> : CGameCtnGhostBuilderMembers8<TSelf> where TSelf : CGameCtnGhostBuilderMembers9<TSelf>
+public abstract class CGameCtnGhostBuilderMembers10<TSelf> : CGameCtnGhostBuilderMembers9<TSelf> where TSelf : CGameCtnGhostBuilderMembers10<TSelf>
 {
-    private protected CGameCtnGhostBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+    private protected CGameCtnGhostBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
     public TSelf WithValidate_TitleChecksum(Checksum256? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleChecksumAssignment(), value, SupportedGames6);
     public TSelf WithValidate_TitleId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_TitleIdAssignment(), value, SupportedGames6);
 }
@@ -202,30 +205,22 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092012());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092015());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092017());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092018());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092019());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnGhost();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092009());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C());
@@ -234,6 +229,8 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092017());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C());
@@ -272,12 +269,40 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092028());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe9(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnGhost();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309200F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201B(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk0309201D(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092022(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092023(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092024() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092025(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092026());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092027(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092028());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnGhost CreateRecipe10(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnGhost();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000(game));
@@ -319,6 +344,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -373,6 +399,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
     public partial class TMU : CGameCtnGhostBuilderMembers6<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+        public TMU WithSkinFile(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe5(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
@@ -380,32 +407,41 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
     public partial class VSK5 : CGameCtnGhostBuilderMembers6<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+        public VSK5 WithSkinFile(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSkinFileAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
-    public partial class MP3 : CGameCtnGhostBuilderMembers7<MP3>
+    public partial class TMF : CGameCtnGhostBuilderMembers7<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
+        public TMF WithSecurityKey128(UInt128? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSecurityKey128Assignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
+    }
+    public partial class MP3 : CGameCtnGhostBuilderMembers8<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
-    public partial class TMT : CGameCtnGhostBuilderMembers8<TMT>
+    public partial class TMT : CGameCtnGhostBuilderMembers9<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
-    public partial class MP4 : CGameCtnGhostBuilderMembers9<MP4>
+    public partial class MP4 : CGameCtnGhostBuilderMembers10<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe9(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
-    public partial class TM2020 : CGameCtnGhostBuilderMembers9<TM2020>
+    public partial class TM2020 : CGameCtnGhostBuilderMembers10<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnGhost> state) : base(state) { }
         public TM2020 WithAppearanceVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetAppearanceVersionAssignment(), value, SupportedGames8);
@@ -427,7 +463,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public TM2020 WithWalltimeEndTimestamp(DateTimeOffset? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeEndTimestampAssignment(), value, SupportedGames8);
         public TM2020 WithWalltimeStartTimestamp(DateTimeOffset? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetWalltimeStartTimestampAssignment(), value, SupportedGames8);
         public global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnGhost Build() => BuildNode(CGameCtnGhostBuilder.CreateRecipe10(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnGhost node);
     }
 }

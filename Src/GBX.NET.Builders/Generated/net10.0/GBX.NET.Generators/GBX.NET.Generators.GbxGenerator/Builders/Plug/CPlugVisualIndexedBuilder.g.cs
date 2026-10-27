@@ -81,9 +81,10 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600A());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe3(GameVersion game)
@@ -91,13 +92,14 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         var node = new global::GBX.NET.Engines.Plug.CPlugVisualIndexed();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisualIndexed.Chunk0906A001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe4(GameVersion game)
@@ -111,10 +113,24 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualIndexed();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisualIndexed.Chunk0906A001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVisualIndexed();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisualIndexed.Chunk0906A001());
@@ -129,7 +145,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010() { Version = 0 });
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugVisualIndexed CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugVisualIndexed();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugVisualIndexed.Chunk0906A001());
@@ -145,6 +161,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -170,6 +187,21 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
+    public partial class TMSX : CPlugVisualIndexedBuilderMembers5<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexed> state) : base(state) { }
+        public TMSX WithNPatchTessLevel(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values) => WithSplits(values.ToArray());
+        public TMSX WithVertexStreams(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVertexStreamsAssignment(), value, GameVersion.TMSX);
+        public TMSX WithVertexStreams(params global::GBX.NET.Engines.Plug.CPlugVertexStream[] values) => WithVertexStreams(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>(values));
+        public TMSX WithVertexStreams(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVertexStream> values) => WithVertexStreams(values.ToArray());
+        public TMSX WithVertexStreams(params global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX[] values) => WithVertexStreams(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>(values, false));
+        public TMSX WithVertexStreams(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> values) => WithVertexStreams(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
+    }
     public partial class TMNESWC : CPlugVisualIndexedBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexed> state) : base(state) { }
@@ -178,7 +210,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public TMNESWC WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class TMU : CPlugVisualIndexedBuilderMembers4<TMU>
@@ -187,7 +219,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public TMU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public TMU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class VSK5 : CPlugVisualIndexedBuilderMembers4<VSK5>
@@ -196,7 +228,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public VSK5 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public VSK5 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class TMF : CPlugVisualIndexedBuilderMembers4<TMF>
@@ -207,7 +239,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public TMF WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public TMF WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class MP3 : CPlugVisualIndexedBuilderMembers6<MP3>
@@ -216,7 +248,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public MP3 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public MP3 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class TMT : CPlugVisualIndexedBuilderMembers6<TMT>
@@ -225,7 +257,7 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public TMT WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public TMT WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class MP4 : CPlugVisualIndexedBuilderMembers6<MP4>
@@ -234,14 +266,14 @@ public partial class CPlugVisualIndexedBuilder : CPlugVisualIndexedBuilderBase<C
         public MP4 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, SupportedGames2);
         public MP4 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
     public partial class TM2020 : CPlugVisualIndexedBuilderMembers6<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualIndexed> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugVisualIndexed Build() => BuildNode(CPlugVisualIndexedBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualIndexed node);
     }
 }

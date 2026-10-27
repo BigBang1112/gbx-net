@@ -98,7 +98,7 @@ If a member stops being common, an obsolete method in the outer builder partial 
 
 ## Exceptional creation recipes
 
-Most builders use the game's verified chunk writer qualifiers. When that selection needs an explicit override, add `NodeBuilderRecipe` to the node partial. The supplied types replace the inferred chunk selection for that game, including inherited and header chunks:
+Most builders use the game's chunk writer qualifiers. Chunks marked `ignore` are left out, they are not meant to be used in builders. When that selection needs an explicit override, add `NodeBuilderRecipe` to the node partial. The supplied types replace the inferred chunk selection for that game, including inherited and header chunks:
 
 ```cs
 using GBX.NET.Attributes;
@@ -112,14 +112,13 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnMediaClip;
 ```
 
-This example records the clip's existing TMF selection. Use an override only when the default recipe needs correction. Invalid contexts, duplicate declarations, unknown chunk types, and chunks without writable implementations are diagnosed. An override does not add writer support to a chunk that cannot serialize its payload.
+This example records the clip's existing TMF selection. Use an override only when the default recipe needs correction. Invalid contexts, duplicate declarations, unknown chunk types, and chunks not documented for the selected game are diagnosed. An override does not add writer support to a chunk that cannot serialize its payload.
 
-Unqualified chunks do not establish support for every game. Nodes with incomplete recipes can have generated interfaces without a callable builder for the affected game. The generated `Builders/NodeBuilderCoverage.g.cs` in `GBX.NET.Builders` contains a deterministic summary of missing game metadata and incomplete recipes.
+Unqualified chunks do not establish support for every game. Every game with chunk writer qualifiers gets a builder stage, even when a recipe chunk has no writer implementation. Building such a node succeeds, and writing it throws `NotImplementedException` for that chunk. A node marked with `WriteNotSupported`, and any node derived from it, gets no builder.
 
 | Diagnostic | Meaning |
 | --- | --- |
 | `GBXNETGEN300` | Invalid game version API declaration, recipe metadata, or builder customization. |
-| `GBXNETGEN301` | A game recipe contains a chunk without a writable implementation. |
 | `GBXNETGEN302` | A generic or version-scoped method needs an explicit game interface contract. |
 
 Native editor modes, domain requirements such as minimum key counts, and arbitrary handwritten setter semantics cannot all be inferred from chunk qualifiers. Keep reusable serialization facts in layouts, and use recipe overrides or partials for the exceptional behavior.

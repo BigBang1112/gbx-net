@@ -7,8 +7,6 @@ internal static class GameVersionWriter
 {
     private static readonly DiagnosticDescriptor InvalidApi = new("GBXNETGEN300", "Cannot generate game version API",
         "Cannot generate game version API for {0}: {1}", "GBX.NET.Generators", DiagnosticSeverity.Error, true);
-    private static readonly DiagnosticDescriptor MissingRecipe = new("GBXNETGEN301", "Game creation recipe is incomplete",
-        "No {1} builder for {0}: {2}", "GBX.NET.Generators", DiagnosticSeverity.Info, true);
     private static readonly DiagnosticDescriptor MissingMember = new("GBXNETGEN302", "Game member context is incomplete",
         "Cannot project {0}: {1}", "GBX.NET.Generators", DiagnosticSeverity.Info, true);
 
@@ -33,7 +31,6 @@ internal static class GameVersionWriter
             context.ReportDiagnostic(Diagnostic.Create(InvalidApi, Location.None, "game metadata", exception.Message));
             return;
         }
-        var coverage = new List<string>();
         var factories = new List<GameNodeModel>();
         if (builders) NodeBuilderWriter.WriteAssignments(context, model);
         foreach (var node in model.Nodes.Values.OrderBy(static n => n.Layout.File.TypeKey, StringComparer.Ordinal))
@@ -42,29 +39,16 @@ internal static class GameVersionWriter
             var location = Location.Create(node.Layout.File.Path, default, default);
             if (node.MetadataError is not null)
             {
-                coverage.Add(node.Layout.Name + ": " + node.MetadataError);
                 context.ReportDiagnostic(Diagnostic.Create(InvalidApi, location, node.Layout.Name, node.MetadataError));
                 continue;
             }
-            if (node.Games.Count == 0)
-            {
-                coverage.Add(node.Layout.Name + ": no game writer metadata");
-                continue;
-            }
+            if (node.Games.Count == 0) continue;
             try
             {
-                foreach (var error in node.MemberErrors)
-                {
-                    coverage.Add(node.Layout.Name + "/" + error);
-                    if (apis) context.ReportDiagnostic(Diagnostic.Create(MissingMember, location, node.Layout.Name, error));
-                }
-                foreach (var game in node.RecipeErrors)
-                {
-                    coverage.Add(node.Layout.Name + "/" + game.Key + ": " + game.Value);
-                    if (builders) context.ReportDiagnostic(Diagnostic.Create(MissingRecipe, location, node.Layout.Name, game.Key, game.Value));
-                }
                 if (apis)
                 {
+                    foreach (var error in node.MemberErrors)
+                        context.ReportDiagnostic(Diagnostic.Create(MissingMember, location, node.Layout.Name, error));
                     context.AddSource($"Interfaces/{node.Layout.File.Engine}/{node.InterfaceName}.g.cs", GameInterfaceWriter.Interfaces(node, model, symbols.ClassContract));
                     context.AddSource($"InterfaceImplementations/{node.Layout.File.Engine}/{node.Layout.Name}.g.cs", GameInterfaceWriter.Implementation(node, model));
                 }
@@ -79,8 +63,6 @@ internal static class GameVersionWriter
                 context.ReportDiagnostic(Diagnostic.Create(InvalidApi, location, node.Layout.Name, exception.Message));
             }
         }
-        if (!builders) return;
-        NodeBuilderWriter.WriteFactories(context, factories);
-        NodeBuilderWriter.WriteCoverage(context, coverage);
+        if (builders) NodeBuilderWriter.WriteFactories(context, factories);
     }
 }
