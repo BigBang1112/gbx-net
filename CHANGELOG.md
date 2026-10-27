@@ -3,7 +3,7 @@
 ## [GBX.NET 2.5.0](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.0) - Unreleased
 
 - **Added 250+ new Gbx classes** and updated existing ones
-- **Discovered 4400+ member names** across class and archive layouts
+- **Discovered 4500+ member names** across class and archive layouts
 - Reworked node references to preserve external file and resource descriptors for any node
   - Added `NodeRef<T>`, `NodeRefList<T>`, and `References` views with lazy resolution
   - Deprecated older `External<T>` APIs
