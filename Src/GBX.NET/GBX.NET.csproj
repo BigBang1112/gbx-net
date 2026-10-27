@@ -11,6 +11,23 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes>
+- **Added 250+ new Gbx classes** and updated existing ones
+- **Discovered 4400+ member names** across class and archive layouts
+- Reworked node references to preserve external file and resource descriptors for any node
+  - Added `NodeRef&lt;T&gt;`, `NodeRefList&lt;T&gt;`, and `References` views with lazy resolution
+  - Deprecated older `External&lt;T&gt;` APIs
+  - Node collections now use `NodeRefList&lt;T&gt;`
+- Finally implemented `CMwNod.DeepClone()` for cloning nodes
+- Added support for `Action.Gbx` and `Crystal.Gbx`
+- Added generated Game Version Interfaces
+- Reworked class source generator
+  - Uses syntax trees over symbols, which improves build time
+  - Better handling of partial classes, chunk versions, and game-specific defaults
+  - Uses new ChunkL spec
+- Added `AppliedWithArchiveAttribute`
+- Unchanged map embedded data are now reused when writing
+- Fixed validation ghost sample data
+- Fixed lightmaps without frames
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>

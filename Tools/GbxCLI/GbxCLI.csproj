@@ -23,6 +23,9 @@
         <Description>A command-line interface for inspecting and transforming Gbx files with GBX.NET.</Description>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReleaseNotes>
+- A tool for parsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
+        </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>
 

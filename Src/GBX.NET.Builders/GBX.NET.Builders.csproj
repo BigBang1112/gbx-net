@@ -10,7 +10,9 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, builder, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Added generated fluent node builders with game-specific chunks and defaults
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 

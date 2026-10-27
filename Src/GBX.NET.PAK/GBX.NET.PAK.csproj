@@ -10,7 +10,11 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Added Blowfish counter mode support
+- Fixed some class ID unwrapping issues
+- Fixed a few LZ4 decompression issues
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
