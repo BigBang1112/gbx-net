@@ -169,7 +169,7 @@ public partial class CGameCtnChallenge
                         foreach (var parameter in parameterSet.Parameters)
                         {
                             w.Write(parameter.CatalogIndex);
-                            w.Write(parameter.FunctionIndex);
+                            w.Write((byte)parameter.FunctionIndex);
                             w.Write(parameter.Value);
                         }
                         break;
@@ -588,7 +588,7 @@ public partial class CGameCtnChallenge
 
                 for (var j = 0; j < parameters.Length; j++)
                 {
-                    var functionIndex = r.ReadByte();
+                    var functionIndex = r.ReadInt32();
 
                     parameters[j] = new CGameCtnMediaClip.TMUnlimiter.Parameter
                     {
@@ -636,7 +636,7 @@ public partial class CGameCtnChallenge
 
             var blockGroups = r.ReadListReadable<TMUnlimiter.BlockGroup>();
 
-            ReadBlocks(n, n.TMUnlimiterData, r, [], [], blockGroups);
+            ReadBlocksV6(n, n.TMUnlimiterData, r, blockGroups);
         }
 
         private static void WriteV6(CGameCtnChallenge n, GbxWriter w)
@@ -737,7 +737,7 @@ public partial class CGameCtnChallenge
 
             w.WriteListWritable(blockGroups);
 
-            WriteBlocks(n, n.TMUnlimiterData!, w, [], [], blockGroups);
+            WriteBlocksV6(n, n.TMUnlimiterData!, w, blockGroups);
         }
 
         private static void ReadV7(CGameCtnChallenge n, GbxReader r, int ver)
@@ -978,7 +978,8 @@ public partial class CGameCtnChallenge
                 switch (blockType)
                 {
                     case 0: // game block
-                        n.blocks.Add(ReadGameBlock(r, byteCoord: false));
+                        block = ReadGameBlock(r, byteCoord: false);
+                        n.blocks.Add(block);
                         break;
                     case 1: // trigger block
                         var triggerBlock = new TMUnlimiter.TriggerBlock
@@ -1136,6 +1137,175 @@ public partial class CGameCtnChallenge
                         throw new InvalidDataException($"Unknown block type {blockType}.");
                 }
             }
+        }
+
+        private static void ReadBlocksV6(
+            CGameCtnChallenge n,
+            TMUnlimiter tmUnlimiter,
+            GbxReader r,
+            List<TMUnlimiter.BlockGroup> allBlockGroups)
+        {
+            tmUnlimiter.FakeBlocks = n.blocks?.GetEmbeddedNodes().ToList()!;
+
+            var blockCount = r.ReadInt32();
+            n.blocks = [];
+
+            for (var i = 0; i < blockCount; i++)
+            {
+                var blockType = r.ReadByte();
+
+                var block = default(CGameCtnBlock);
+                var tmUnlimiterBlock = default(TMUnlimiter.Block);
+
+                switch (blockType)
+                {
+                    case 0: // game block
+                        block = ReadGameBlock(r, byteCoord: false);
+                        n.blocks.Add(block);
+                        break;
+                    case 2: // external block
+                        var externalBlock = new TMUnlimiter.ExternalBlock(
+                            Name: r.ReadIdAsString(),
+                            Author: r.ReadIdAsString())
+                        {
+                            Coord = r.ReadInt3(),
+                            Direction = (Direction)r.ReadByte(),
+                            Flags = r.ReadInt32()
+                        };
+                        tmUnlimiter.ExternalBlocks.Add(externalBlock);
+                        tmUnlimiterBlock = externalBlock;
+                        break;
+                    default:
+                        throw new InvalidDataException($"Unknown block type {blockType}.");
+                }
+
+                var flags2 = r.ReadUInt16();
+
+                // throw if any flags outside the known bits are set
+                if ((flags2 & ~0x3FF) != 0)
+                {
+                    throw new InvalidDataException($"Unknown block flags2 set: {flags2 & ~0x3FF}");
+                }
+
+                var isInverted = (flags2 & 1) != 0;
+                block?.TMUnlimiterData?.IsInverted = isInverted;
+                tmUnlimiterBlock?.IsInverted = isInverted;
+
+                if ((flags2 & (1 << 1)) != 0) // isOffsetApplied
+                {
+                    var offset = r.ReadVec3();
+                    block?.TMUnlimiterData?.Offset = offset;
+                    tmUnlimiterBlock?.Offset = offset;
+                }
+
+                if ((flags2 & (1 << 2)) != 0) // isRotationApplied
+                {
+                    var rotation = r.ReadVec3();
+                    block?.TMUnlimiterData?.Rotation = rotation;
+                    tmUnlimiterBlock?.Rotation = rotation;
+                }
+
+                if ((flags2 & (1 << 3)) != 0) // isScaleApplied
+                {
+                    var scale = r.ReadVec3();
+                    block?.TMUnlimiterData?.Scale = scale;
+                    tmUnlimiterBlock?.Scale = scale;
+                }
+
+                var isDynamic = (flags2 & (1 << 4)) != 0;
+                block?.TMUnlimiterData?.IsDynamic = isDynamic;
+                tmUnlimiterBlock?.IsDynamic = isDynamic;
+
+                var isInvisible = (flags2 & (1 << 5)) != 0;
+                block?.TMUnlimiterData?.IsInvisible = isInvisible;
+                tmUnlimiterBlock?.IsInvisible = isInvisible;
+
+                var isNonCollidable = (flags2 & (1 << 6)) != 0;
+                block?.TMUnlimiterData?.IsNonCollidable = isNonCollidable;
+                tmUnlimiterBlock?.IsNonCollidable = isNonCollidable;
+
+                // alterSpawnPoint has no stored spawn location
+                var spawnPointAlterMethod = (flags2 & (1 << 7)) != 0
+                    ? TMUnlimiter.ESpawnPointAlterMethod.Automatic
+                    : TMUnlimiter.ESpawnPointAlterMethod.None;
+                block?.TMUnlimiterData?.SpawnPointAlterMethod = spawnPointAlterMethod;
+                tmUnlimiterBlock?.SpawnPointAlterMethod = spawnPointAlterMethod;
+
+                if ((flags2 & (1 << 8)) != 0) // isInBlockGroup
+                {
+                    List<TMUnlimiter.BlockGroup> mappedBlockGroups = [allBlockGroups[r.ReadInt32()]];
+                    block?.TMUnlimiterData?.BlockGroups = mappedBlockGroups;
+                    tmUnlimiterBlock?.BlockGroups = mappedBlockGroups;
+                }
+
+                var isClassicTerrain = (flags2 & (1 << 9)) != 0;
+                block?.TMUnlimiterData?.IsClassicTerrain = isClassicTerrain;
+                tmUnlimiterBlock?.IsClassicTerrain = isClassicTerrain;
+            }
+        }
+
+        private static void WriteBlocksV6(
+            CGameCtnChallenge n,
+            TMUnlimiter tmUnlimiter,
+            GbxWriter w,
+            List<TMUnlimiter.BlockGroup> allBlockGroups)
+        {
+            var blocks = n.blocks ?? throw new InvalidOperationException("Blocks are null.");
+
+            w.Write(blocks.Count + tmUnlimiter.ExternalBlocks.Count);
+
+            foreach (var block in blocks)
+            {
+                w.Write((byte)0); // game block
+                WriteGameBlock(w, block, byteCoord: false);
+
+                WriteBlockV6Properties(w, block, tmUnlimiterBlock: null, allBlockGroups);
+            }
+
+            foreach (var externalBlock in tmUnlimiter.ExternalBlocks)
+            {
+                w.Write((byte)2); // external block
+                w.Write(externalBlock.Name);
+                w.Write(externalBlock.Author);
+                w.Write(externalBlock.Coord);
+                w.Write((byte)externalBlock.Direction);
+                w.Write(externalBlock.Flags);
+
+                WriteBlockV6Properties(w, block: null, externalBlock, allBlockGroups);
+            }
+        }
+
+        private static void WriteBlockV6Properties(GbxWriter w, CGameCtnBlock? block, TMUnlimiter.Block? tmUnlimiterBlock, List<TMUnlimiter.BlockGroup> allBlockGroups)
+        {
+            var isInverted = block?.TMUnlimiterData?.IsInverted ?? tmUnlimiterBlock?.IsInverted ?? false;
+            var offset = (block?.TMUnlimiterData?.Offset ?? tmUnlimiterBlock?.Offset).GetValueOrDefault();
+            var rotation = (block?.TMUnlimiterData?.Rotation ?? tmUnlimiterBlock?.Rotation).GetValueOrDefault();
+            var scale = (block?.TMUnlimiterData?.Scale ?? tmUnlimiterBlock?.Scale).GetValueOrDefault(Vec3.One);
+            var isDynamic = block?.TMUnlimiterData?.IsDynamic ?? tmUnlimiterBlock?.IsDynamic ?? false;
+            var isInvisible = block?.TMUnlimiterData?.IsInvisible ?? tmUnlimiterBlock?.IsInvisible ?? false;
+            var isNonCollidable = block?.TMUnlimiterData?.IsNonCollidable ?? tmUnlimiterBlock?.IsNonCollidable ?? false;
+            var spawnPointAlterMethod = block?.TMUnlimiterData?.SpawnPointAlterMethod ?? tmUnlimiterBlock?.SpawnPointAlterMethod ?? TMUnlimiter.ESpawnPointAlterMethod.None;
+            var blockGroup = (block?.TMUnlimiterData?.BlockGroups ?? tmUnlimiterBlock?.BlockGroups)?.FirstOrDefault();
+            var isClassicTerrain = block?.TMUnlimiterData?.IsClassicTerrain ?? tmUnlimiterBlock?.IsClassicTerrain ?? false;
+
+            var flags = (ushort)0;
+            if (isInverted) flags |= 1;
+            if (offset != Vec3.Zero) flags |= 1 << 1;
+            if (rotation != Vec3.Zero) flags |= 1 << 2;
+            if (scale != Vec3.One) flags |= 1 << 3;
+            if (isDynamic) flags |= 1 << 4;
+            if (isInvisible) flags |= 1 << 5;
+            if (isNonCollidable) flags |= 1 << 6;
+            if (spawnPointAlterMethod != TMUnlimiter.ESpawnPointAlterMethod.None) flags |= 1 << 7;
+            if (blockGroup is not null) flags |= 1 << 8;
+            if (isClassicTerrain) flags |= 1 << 9;
+
+            w.Write(flags);
+
+            if (offset != Vec3.Zero) w.Write(offset);
+            if (rotation != Vec3.Zero) w.Write(rotation);
+            if (scale != Vec3.One) w.Write(scale);
+            if (blockGroup is not null) w.Write(allBlockGroups.IndexOf(blockGroup));
         }
 
         private static CGameCtnBlock ReadGameBlock(GbxReader r, bool byteCoord)
@@ -2598,6 +2768,8 @@ public partial class CGameCtnChallenge
             public bool IsNonCollidable { get; set; }
             public bool IsDynamic { get; set; }
             public bool IsInvisible { get; set; }
+            public bool IsInverted { get; set; }
+            public bool IsClassicTerrain { get; set; }
             public ERespawnCapability RespawnCapability { get; set; }
             public EBlockTriggerActivationMethod BlockTriggerActivationMethod { get; set; }
         }

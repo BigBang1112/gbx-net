@@ -85,6 +85,47 @@ public class GbxFixtureTests
     }
 
     [Test]
+    public async Task TMUnlimiterMapFixtureReplacesFakeBlocksWithUnlimiterData()
+    {
+        // Arrange
+        var path = TestFiles.Gbx("CGameCtnChallenge", "CGameCtnChallenge TMF 003.Challenge.Gbx");
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+
+        // Act
+        var map = Gbx.ParseNode<CGameCtnChallenge>(path, settings);
+
+        // Assert
+        var unlimiter = map.TMUnlimiterData!;
+        await Assert.That(map.GetChunk<CGameCtnChallenge.Chunk3F001003>()!.Version).IsEqualTo(7);
+        await Assert.That(unlimiter.FakeBlocks!.Count).IsEqualTo(1);
+        await Assert.That(map.Blocks!.Count).IsEqualTo(138);
+        await Assert.That(map.Blocks.All(block => block.TMUnlimiterData is not null)).IsTrue();
+        await Assert.That(map.Blocks[0].Name).IsEqualTo("IslandGrass");
+        await Assert.That(map.Blocks[0].Coord).IsEqualTo(new Int3(27, 1, 20));
+        await Assert.That(unlimiter.AngelScriptModules.Count).IsEqualTo(1);
+        await Assert.That(unlimiter.ParameterSets.Count).IsEqualTo(1);
+    }
+
+    [Test]
+    public async Task TMUnlimiterEncryptedMapFixtureKeepsVanillaBlocks()
+    {
+        // Arrange
+        var path = TestFiles.Gbx("CGameCtnChallenge", "CGameCtnChallenge TMF 004.Challenge.Gbx");
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+
+        // Act
+        var map = Gbx.ParseNode<CGameCtnChallenge>(path, settings);
+
+        // Assert
+        await Assert.That(map.GetChunk<CGameCtnChallenge.Chunk3F001000>()).IsNotNull();
+        await Assert.That(map.TMUnlimiterData).IsNotNull();
+        await Assert.That(map.TMUnlimiterData!.SkyDecorationVisibility).IsEqualTo(CGameCtnChallenge.TMUnlimiter.DecorationVisibility.Everything);
+        await Assert.That(map.Blocks!.Count).IsEqualTo(57);
+        await Assert.That(map.Blocks.All(block => block.TMUnlimiterData is null)).IsTrue();
+        await Assert.That(map.Blocks[0].Name).IsEqualTo("BayHarbor");
+    }
+
+    [Test]
     public async Task TM2020ReplayReturnsCompleteGhostDataWithSynchronousAndAsynchronousParsing()
     {
         // Arrange

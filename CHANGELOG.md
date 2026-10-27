@@ -19,6 +19,7 @@
 - Unchanged map embedded data are now reused when writing
 - Fixed validation ghost sample data
 - Fixed lightmaps without frames
+- Fixed issues with TMUnlimiter 1.3 maps
 
 GBX.NET.Builders 2.5.0
 - Added generated fluent node builders with game-specific chunks and defaults

@@ -28,6 +28,7 @@
 - Unchanged map embedded data are now reused when writing
 - Fixed validation ghost sample data
 - Fixed lightmaps without frames
+- Fixed issues with TMUnlimiter 1.3 maps
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
