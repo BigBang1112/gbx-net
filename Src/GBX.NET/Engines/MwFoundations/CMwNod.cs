@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.MwFoundations;
 [Class(0x01001000)]
 public partial class CMwNod : IClass
 {
-    internal const int MaxSkippableChunkSize = 0x10000000; // ~268MB
+    internal const int MaxSkippableChunkSize = 0x20000000; // 512MB
 
     private const uint SKIP = 0x534B4950;
     private const uint FACADE = 0xFACADE01;
