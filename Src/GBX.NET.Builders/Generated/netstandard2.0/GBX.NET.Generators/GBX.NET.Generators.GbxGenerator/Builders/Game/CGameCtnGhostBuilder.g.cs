@@ -55,7 +55,7 @@ public abstract class CGameCtnGhostBuilderMembers5<TSelf> : CGameCtnGhostBuilder
     public TSelf WithValidate_CpuKind(global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_CpuKindAssignment(), value, SupportedGames4);
     public TSelf WithValidate_ExeChecksum(uint value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeChecksumAssignment(), value, SupportedGames4);
     public TSelf WithValidate_ExeVersion(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ExeVersionAssignment(), value, SupportedGames4);
-    public TSelf WithValidate_OsKind(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, SupportedGames4);
+    public TSelf WithValidate_OsKind(global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_OsKindAssignment(), value, SupportedGames4);
     public TSelf WithValidate_RaceSettings(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceSettingsAssignment(), value, SupportedGames4);
 }
 public abstract class CGameCtnGhostBuilderMembers6<TSelf> : CGameCtnGhostBuilderMembers5<TSelf> where TSelf : CGameCtnGhostBuilderMembers6<TSelf>

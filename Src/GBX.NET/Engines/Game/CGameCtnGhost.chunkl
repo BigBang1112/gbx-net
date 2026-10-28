@@ -91,7 +91,7 @@ CGameCtnGhost 0x03092000 // A ghost.
     // Packed input records are handled in C# before the validation fields.
     string Validate_ExeVersion
     uint Validate_ExeChecksum
-    int Validate_OsKind
+    int<EKindOs> Validate_OsKind // OS classification captured for validation. TM2020 clients and servers write WindowsNt6_2 (14) regardless of the host OS.
     int<EKindCpu> Validate_CpuKind // CPU classification captured for validation, independent of CpuKind.
     string Validate_RaceSettings
 
@@ -183,7 +183,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   // Packed input records are handled in C# before the validation fields.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
-  int Validate_OsKind
+  int<EKindOs> Validate_OsKind
   int<EKindCpu> Validate_CpuKind
   string Validate_RaceSettings
   int? Validate_ValidationSeed
@@ -237,7 +237,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   // Input stores indicated by HasInputs are not supported yet.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
-  int Validate_OsKind
+  int<EKindOs> Validate_OsKind
   int<EKindCpu> Validate_CpuKind
   unixtime? WalltimeStartTimestamp
   unixtime? WalltimeEndTimestamp
@@ -312,6 +312,30 @@ archive SettingsInfos
 archive MatchReplaySeparator
   int
   int
+
+enum EKindOs
+  Windows31OrUnknown = 0 // Windows 3.1/Win32s display label, also used for unrecognized platform IDs.
+  Windows95 = 1 // Win9x minor version below 10.
+  Windows98 = 2 // Win9x minor version from 10 through 89.
+  WindowsMe = 3 // Win9x minor version 90 or later.
+  WindowsNt3 = 4 // Native label NT 3.51; the detector accepts any NT major version below 4.
+  WindowsNt4 = 5
+  WindowsNt5 = 6 // Windows 2000. TM10 through TMU also use this for any NT major version above 4 with minor version 0.
+  WindowsNt5_1 = 7 // Windows XP. TM10 through TMU also use this for any NT major version above 4 with minor version 1.
+  WindowsNt5_2 = 8 // Server 2003 family. TM10 through TMU also use this for any NT major version above 4 with minor version 2 or later.
+  Linux = 9 // Explicitly identified by the native HTTP User-Agent code.
+  WindowsNt6 = 10 // Vista classification. VSK5/TMF use this for all NT 6.x; MP1 uses it for NT 6.x except 6.1.
+  WindowsNt6Server = 11 // Server 2008 family. VSK5/TMF also use this for unrecognized later NT major versions.
+  WindowsNt6_1 = 12 // Windows 7 classification.
+  WindowsNt6_2Server = 13 // Server 2012 classification in MP2 and later; the same value means Unknown in MP1.
+  UnknownMP1 = 13 // MP1's unrecognized NT major version; alias of WindowsNt6_2Server in later games.
+  WindowsNt6_2 = 14 // Windows 8 classification. TM2020 clients and servers always write this value into validation data.
+  WindowsNt6_3 = 15 // Windows 8.1 classification in TMT/MP4 and later; the same value means Unknown in MP2/MP3.
+  WindowsNt6_3Server = 16 // Server 2012 R2 classification.
+  WindowsNt10 = 17 // Windows 10 classification.
+  WindowsNt10Server = 18 // Native label Server 2016 Preview.
+  WindowsNt10Other = 19 // Unrecognized NT 10.x minor version; native label 10 Unknown.
+  Unknown = 20 // Unknown in the extended TMT/MP4 and later mapping; older games use different values.
 
 enum EKindCpu // Vendor and architecture reported to the game, not the CPU's maximum capabilities.
   Unknown = 0

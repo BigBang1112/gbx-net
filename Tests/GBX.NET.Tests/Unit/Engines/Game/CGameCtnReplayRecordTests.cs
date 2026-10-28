@@ -235,7 +235,7 @@ public class CGameCtnReplayRecordTests
             await Assert.That(ghost.InputCountLimit).IsEqualTo(23);
             await Assert.That(ghost.Inputs[0]).IsEqualTo(new Accelerate(new TimeInt32(10), true));
             await Assert.That(ghost.Validate_ExeChecksum).IsEqualTo(0x12345678u);
-            await Assert.That(ghost.Validate_OsKind).IsEqualTo(2);
+            await Assert.That(ghost.Validate_OsKind).IsEqualTo(CGameCtnGhost.EKindOs.Windows98);
             await Assert.That(ghost.Validate_CpuKind).IsEqualTo(CGameCtnGhost.EKindCpu.AmdX86);
             await Assert.That(ghost.Validate_RaceSettings).IsEqualTo("Settings");
             await Assert.That(ghost.SecurityKey128).IsEqualTo(key);

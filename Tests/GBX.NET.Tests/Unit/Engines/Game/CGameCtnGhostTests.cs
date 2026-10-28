@@ -10,15 +10,17 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnGhostTests
 {
     [Test]
-    [Arguments(0x11, 0, 2)]
-    [Arguments(0x19, 0, 3)]
-    [Arguments(0x25, 0, 5)]
-    [Arguments(0x25, 1, 6)]
-    [Arguments(0x11, 0, -1)]
-    [Arguments(0x19, 0, int.MaxValue)]
-    [Arguments(0x25, 0, -1)]
-    [Arguments(0x25, 1, int.MaxValue)]
-    public async Task ReadWrite_ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version, int cpuKind)
+    [Arguments(0x11, 0, 2, 0)]
+    [Arguments(0x19, 0, 3, 2)]
+    [Arguments(0x25, 0, 5, 14)]
+    [Arguments(0x25, 1, 6, 17)]
+    [Arguments(0x11, 0, -1, -1)]
+    [Arguments(0x19, 0, int.MaxValue, int.MaxValue)]
+    [Arguments(0x25, 0, -1, 9)]
+    [Arguments(0x25, 1, 2, 13)]
+    [Arguments(0x25, 1, 2, 15)]
+    [Arguments(0x25, 1, int.MaxValue, 20)]
+    public async Task ReadWrite_ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version, int cpuKind, int osKind)
     {
         var payload = Payload(w =>
         {
@@ -30,7 +32,7 @@ public class CGameCtnGhostTests
             w.Write(456); // Input count limit.
             w.Write("Executable");
             w.Write(123u);
-            w.Write(2);
+            w.Write(osKind);
             w.Write(cpuKind);
             w.Write("Settings");
             if (offset != 0x11) w.Write(9); // Validation seed.
@@ -44,6 +46,7 @@ public class CGameCtnGhostTests
 
         await Assert.That(ghost.InputStoreVersion).IsEqualTo(7);
         await Assert.That(ghost.InputCountLimit).IsEqualTo(456);
+        await Assert.That(ghost.Validate_OsKind).IsEqualTo((CGameCtnGhost.EKindOs)osKind);
         await Assert.That(ghost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
 #pragma warning disable GBXNET10001
@@ -51,6 +54,7 @@ public class CGameCtnGhostTests
 #pragma warning restore GBXNET10001
         await Assert.That(clone.InputStoreVersion).IsEqualTo(7);
         await Assert.That(clone.InputCountLimit).IsEqualTo(456);
+        await Assert.That(clone.Validate_OsKind).IsEqualTo(ghost.Validate_OsKind);
         await Assert.That(clone.Validate_CpuKind).IsEqualTo(ghost.Validate_CpuKind);
         var rewritten = Payload(w =>
         {
@@ -189,11 +193,11 @@ public class CGameCtnGhostTests
     }
 
     [Test]
-    [Arguments(-1, 5)]
-    [Arguments(120100, 6)]
-    [Arguments(-1, -1)]
-    [Arguments(120100, int.MaxValue)]
-    public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime, int cpuKind)
+    [Arguments(-1, 5, 14)]
+    [Arguments(120100, 6, 17)]
+    [Arguments(-1, -1, -1)]
+    [Arguments(120100, int.MaxValue, int.MaxValue)]
+    public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime, int cpuKind, int osKind)
     {
         const int gameRules = unchecked((int)0xFEDCBA98);
         var payload = Payload(w =>
@@ -223,7 +227,7 @@ public class CGameCtnGhostTests
             w.Write(0); // no input store
             w.Write(""); // executable version
             w.Write(0u); // executable checksum
-            w.Write(0); // OS kind
+            w.Write(osKind);
             w.Write(cpuKind);
             w.Write(-1); // walltime start
             w.Write(-1); // walltime end
@@ -244,6 +248,7 @@ public class CGameCtnGhostTests
         await Assert.That(validationGhost.Validate_GameRules).IsEqualTo(ghost.Validate_GameRules);
         await Assert.That(validationGhost.Validate_RaceStartTime).IsEqualTo(ghost.Validate_RaceStartTime);
         await Assert.That(validationGhost.HasInputs).IsEqualTo(0);
+        await Assert.That(validationGhost.Validate_OsKind).IsEqualTo((CGameCtnGhost.EKindOs)osKind);
         await Assert.That(validationGhost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(validationGhost.SimulationFlags).IsEqualTo(0x12345679);
         await Assert.That(validationStream.Position).IsEqualTo((long)validationPayload.Length);

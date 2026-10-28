@@ -93,7 +93,7 @@ public interface IGameCtnGhostMembers11 : global::GBX.NET.Interfaces.Game.IGameC
     global::GBX.NET.Engines.Game.CGameCtnGhost.EKindCpu Validate_CpuKind { get; set; }
     uint Validate_ExeChecksum { get; set; }
     string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs Validate_OsKind { get; set; }
     string? Validate_RaceSettings { get; set; }
 }
 public partial interface IGameCtnGhost : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnGhost>, global::GBX.NET.Interfaces.Game.IGameGhost

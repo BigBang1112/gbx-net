@@ -886,7 +886,7 @@ public partial class CGameCtnReplayRecord
         {
             var exeVersion = r.ReadString();
             var exeChecksum = r.ReadUInt32();
-            var osKind = r.ReadInt32();
+            var osKind = (CGameCtnGhost.EKindOs)r.ReadInt32();
             var cpuKind = (CGameCtnGhost.EKindCpu)r.ReadInt32();
             var raceSettings = r.ReadString();
 

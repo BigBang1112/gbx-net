@@ -288,13 +288,16 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_ExeChecksum = value;
     }
 
-    private int validate_OsKind;
+    private EKindOs validate_OsKind;
+    /// <summary>
+    /// OS classification captured for validation. TM2020 clients and servers write WindowsNt6_2 (14) regardless of the host OS.
+    /// </summary>
     /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
-    public int Validate_OsKind
+    public EKindOs Validate_OsKind
     {
         get => this.validate_OsKind;
         set => this.validate_OsKind = value;
@@ -2582,6 +2585,95 @@ public partial class CGameCtnGhost : CGameGhost, IClass
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EKindOs
+    {
+        /// <summary>
+        /// Windows 3.1/Win32s display label, also used for unrecognized platform IDs.
+        /// </summary>
+        Windows31OrUnknown = 0,
+        /// <summary>
+        /// Win9x minor version below 10.
+        /// </summary>
+        Windows95 = 1,
+        /// <summary>
+        /// Win9x minor version from 10 through 89.
+        /// </summary>
+        Windows98 = 2,
+        /// <summary>
+        /// Win9x minor version 90 or later.
+        /// </summary>
+        WindowsMe = 3,
+        /// <summary>
+        /// Native label NT 3.51; the detector accepts any NT major version below 4.
+        /// </summary>
+        WindowsNt3 = 4,
+        WindowsNt4 = 5,
+        /// <summary>
+        /// Windows 2000. TM10 through TMU also use this for any NT major version above 4 with minor version 0.
+        /// </summary>
+        WindowsNt5 = 6,
+        /// <summary>
+        /// Windows XP. TM10 through TMU also use this for any NT major version above 4 with minor version 1.
+        /// </summary>
+        WindowsNt5_1 = 7,
+        /// <summary>
+        /// Server 2003 family. TM10 through TMU also use this for any NT major version above 4 with minor version 2 or later.
+        /// </summary>
+        WindowsNt5_2 = 8,
+        /// <summary>
+        /// Explicitly identified by the native HTTP User-Agent code.
+        /// </summary>
+        Linux = 9,
+        /// <summary>
+        /// Vista classification. VSK5/TMF use this for all NT 6.x; MP1 uses it for NT 6.x except 6.1.
+        /// </summary>
+        WindowsNt6 = 10,
+        /// <summary>
+        /// Server 2008 family. VSK5/TMF also use this for unrecognized later NT major versions.
+        /// </summary>
+        WindowsNt6Server = 11,
+        /// <summary>
+        /// Windows 7 classification.
+        /// </summary>
+        WindowsNt6_1 = 12,
+        /// <summary>
+        /// Server 2012 classification in MP2 and later; the same value means Unknown in MP1.
+        /// </summary>
+        WindowsNt6_2Server = 13,
+        /// <summary>
+        /// MP1's unrecognized NT major version; alias of WindowsNt6_2Server in later games.
+        /// </summary>
+        UnknownMP1 = 13,
+        /// <summary>
+        /// Windows 8 classification. TM2020 clients and servers always write this value into validation data.
+        /// </summary>
+        WindowsNt6_2 = 14,
+        /// <summary>
+        /// Windows 8.1 classification in TMT/MP4 and later; the same value means Unknown in MP2/MP3.
+        /// </summary>
+        WindowsNt6_3 = 15,
+        /// <summary>
+        /// Server 2012 R2 classification.
+        /// </summary>
+        WindowsNt6_3Server = 16,
+        /// <summary>
+        /// Windows 10 classification.
+        /// </summary>
+        WindowsNt10 = 17,
+        /// <summary>
+        /// Native label Server 2016 Preview.
+        /// </summary>
+        WindowsNt10Server = 18,
+        /// <summary>
+        /// Unrecognized NT 10.x minor version; native label 10 Unknown.
+        /// </summary>
+        WindowsNt10Other = 19,
+        /// <summary>
+        /// Unknown in the extended TMT/MP4 and later mapping; older games use different values.
+        /// </summary>
+        Unknown = 20,
     }
 
     /// <summary>

@@ -179,9 +179,9 @@ internal static class CGameCtnGhostBuilderAssignments
     private static NodeBuilderProperty<int>? cached56;
     internal static NodeBuilderProperty<int> GetValidate_GameRulesAssignment() => cached56 ??= new("Validate_GameRules", new Action<object, int>(Assign56));
     private static void Assign56(object node, int value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_GameRules = value;
-    private static NodeBuilderProperty<int>? cached57;
-    internal static NodeBuilderProperty<int> GetValidate_OsKindAssignment() => cached57 ??= new("Validate_OsKind", new Action<object, int>(Assign57));
-    private static void Assign57(object node, int value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_OsKind = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs>? cached57;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs> GetValidate_OsKindAssignment() => cached57 ??= new("Validate_OsKind", new Action<object, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs>(Assign57));
+    private static void Assign57(object node, global::GBX.NET.Engines.Game.CGameCtnGhost.EKindOs value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_OsKind = value;
     private static NodeBuilderProperty<string?>? cached58;
     internal static NodeBuilderProperty<string?> GetValidate_RaceSettingsAssignment() => cached58 ??= new("Validate_RaceSettings", new Action<object, string?>(Assign58));
     private static void Assign58(object node, string? value) => ((global::GBX.NET.Engines.Game.CGameCtnGhost)node).Validate_RaceSettings = value;
