@@ -65,9 +65,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorTime = value;
     }
 
+    private int[]? items;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0305B006>]
-    public partial int[]? Items { get; set; }
+    public int[]? Items
+    {
+        get => this.items;
+        set => this.items = value;
+    }
 
     private TimeInt32 timeLimit = new TimeInt32(60000);
     /// <remarks>Applied with: 0x007, 0x008, 0x00A body chunks</remarks>
@@ -90,9 +95,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorScore = value;
     }
 
+    private NodeRefList<CGameCtnGhost>? legacyValidateGhosts;
     /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0305B00B>]
-    public partial NodeRefList<CGameCtnGhost>? LegacyValidateGhosts { get; set; }
+    public NodeRefList<CGameCtnGhost>? LegacyValidateGhosts
+    {
+        get => legacyValidateGhosts;
+        set => legacyValidateGhosts = value;
+    }
 
     private string? mapType;
     /// <remarks>Applied with: 0x00C, 0x00E body chunks</remarks>
@@ -160,6 +170,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         ((CGameCtnChallengeParameters)clone).silverTime = context.Clone(this.silverTime)!;
         ((CGameCtnChallengeParameters)clone).goldTime = context.Clone(this.goldTime)!;
         ((CGameCtnChallengeParameters)clone).authorTime = context.Clone(this.authorTime)!;
+        ((CGameCtnChallengeParameters)clone).items = context.CloneArray(this.items)!;
         ((CGameCtnChallengeParameters)clone).timeLimit = context.Clone(this.timeLimit)!;
         ((CGameCtnChallengeParameters)clone).authorScore = context.Clone(this.authorScore)!;
         ((CGameCtnChallengeParameters)clone).legacyValidateGhosts = context.Clone(this.legacyValidateGhosts)!;
@@ -167,7 +178,6 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         ((CGameCtnChallengeParameters)clone).mapStyle = context.Clone(this.mapStyle)!;
         ((CGameCtnChallengeParameters)clone).raceValidateGhostRef = context.Clone(this.raceValidateGhostRef)!;
         ((CGameCtnChallengeParameters)clone).isValidatedForScriptModes = context.Clone(this.isValidatedForScriptModes)!;
-        ((CGameCtnChallengeParameters)clone).items = context.CloneArray(this.items)!;
     }
 
     public CGameCtnChallengeParameters()

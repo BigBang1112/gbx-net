@@ -16,7 +16,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod?
 #else
     private object? sync;
 
-    private object Sync => LazyInitializer.EnsureInitialized(ref sync);
+    private object Sync => LazyInitializer.EnsureInitialized(ref sync)!;
 #endif
     private GbxRefTableNode? descriptor;
     private T? node;

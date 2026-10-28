@@ -77,7 +77,7 @@ public partial class CPlugFileGen : IVersionable
         rw.Array<Vec4>(ref colorParams);
         if (v >= 0) rw.Array<float>(ref realParams);
         if (v >= 3) rw.String(ref script);
-        if (v >= 4) rw.ArrayNode<CFuncKeysReal>(ref functions);
+        if (v >= 4) rw.ArrayNode<CFuncKeysReal>(ref functions!);
         if (v >= 6) rw.ListNodeRef(ref inputImages);
         if (GenKind == (int)EGenKind.Pixels) rw.Data(ref pixelData, PixelDataLength);
     }

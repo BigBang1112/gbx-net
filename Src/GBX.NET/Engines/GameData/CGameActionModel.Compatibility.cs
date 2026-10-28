@@ -3,7 +3,7 @@ namespace GBX.NET.Engines.GameData;
 public partial class CGameActionModel
 {
     [Obsolete("Use ActionName instead.")]
-    public string? Name { get => ActionName; set => ActionName = value; }
+    public string Name { get => ActionName; set => ActionName = value; }
 
     public partial class SpriteBlock
     {
