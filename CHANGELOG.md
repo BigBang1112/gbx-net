@@ -1,6 +1,6 @@
 # Changelog
 
-## [GBX.NET 2.5.0](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.0) - Unreleased
+## [GBX.NET 2.5.0](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.0) - 2026-10-28
 
 - **Added 250+ new Gbx classes** and updated existing ones
 - **Discovered 4500+ member names** across class and archive layouts
