@@ -94,12 +94,6 @@ else
 
         using var scope = Logger.BeginScope(file.Name);
 
-        if (file.Size > Settings.MaxAllowedFileSize)
-        {
-            Logger.LogWarning("Supplied file with size of {fileSize} bytes exceeds the maximum of {maxSize} bytes. You can increase this maximum in the Settings.", file.Size, Settings.MaxAllowedFileSize);
-            return;
-        }
-
         try
         {
             var gbx = await GbxService.ImportGbxAsync(file, async eventName =>

@@ -34,7 +34,7 @@ public class GbxService : IGbxService
         _logger.LogDebug("Last modified: {lastModified}", file.LastModified.DateTime);
         _logger.LogInformation("Opening the file stream...");
 
-        using var generalStream = file.OpenReadStream(_settings.MaxAllowedFileSize, cancellationToken);
+        using var generalStream = file.OpenReadStream(long.MaxValue, cancellationToken);
 
         _logger.LogInformation("Verifying that the stream is a Gbx stream...");
 
