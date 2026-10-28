@@ -497,22 +497,6 @@ Currently, it is split into 3 ideas:
 - Generated Game Version Interfaces, based on the layouts' game metadata
 - [Generated Builders](Docs/NodeBuilders.md) in the `GBX.NET.Builders` package, available where a supported creation recipe can be established
 
-Since 2.0.1, the experimentation of Game Version Interfaces started on the `CGameCtnChallenge` and `CGameCtnBlock` classes. Example:
-
-```cs
-using GBX.NET;
-using GBX.NET.Engines.Game;
-using GBX.NET.Interfaces.Game;
-
-var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>("Path/To/My.Map.Gbx");
-
-foreach (var block in map.GetBlocks())
-{
-    Console.WriteLine(block.Name);
-    // Console.WriteLine(block.Color); -- block color is not available in TMF
-}
-```
-
 Create a node with the selected game's chunks and defaults (requires the `GBX.NET.Builders` package):
 
 ```cs
