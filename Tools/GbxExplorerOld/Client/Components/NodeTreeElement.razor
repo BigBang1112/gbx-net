@@ -16,7 +16,7 @@
 @{
     var value = GetValue(out bool error); // cache throughout render
     var reference = Value as NodeRef ?? NodeReferenceMetadata.GetReference(Owner, Property);
-    var supposedType = Property?.PropertyType ?? (reference is null ? value?.GetType() : NodeReferenceMetadata.GetNodeType(reference));
+    var supposedType = Property?.PropertyType ?? value?.GetType() ?? (reference is null ? null : NodeReferenceMetadata.GetNodeType(reference));
     var actualType = value?.GetType() ?? supposedType; // type/class of the element
 
     var typeInfo = default(TypeInfoModel);
