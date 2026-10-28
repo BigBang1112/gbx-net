@@ -1,0 +1,33 @@
+CPlugDestructibleFx 0x090D6000
+
+0x000 [TM2020.v5] // impact effects, sounds and destruction parameters
+  version
+  CPlugParticleMaterialImpactModel
+  v1+
+    CPlugSound
+    CPlugParticleEmitterModel
+    CPlugSound
+  v2+
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    int
+    int
+  v3+
+    int
+  v4+
+    CPlugParticleMaterialImpactModel
+    CPlugParticleEmitterModel
+  v5+
+    CPlugParticleEmitterModel
+
+0x001
+  version
+  int = 200
+  float
+  float
+  float

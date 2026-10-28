@@ -7,24 +7,27 @@
 /// <param name="Format">Format of Gbx.</param>
 /// <param name="CompressionOfRefTable">Compression of reference table.</param>
 /// <param name="CompressionOfBody">Compression of body.</param>
-/// <param name="UnknownByte">An unknown (also unused) byte. Potentially R(elease)/E(arlyAccess).</param>
+/// <param name="Mode">Editor ('E') or release ('R') serialization mode. Headers before version 4 omit this byte and use editor mode.</param>
 public readonly record struct GbxHeaderBasic(
     ushort Version,
     GbxFormat Format,
     GbxCompression CompressionOfRefTable,
     GbxCompression CompressionOfBody,
-    GbxUnknownByte UnknownByte)
+    GbxMode Mode)
 {
     public static readonly GbxHeaderBasic Default = Create();
+
+    [Obsolete("Use Mode instead.")]
+    public GbxUnknownByte UnknownByte { get => (GbxUnknownByte)Mode; init => Mode = (GbxMode)value; }
 
     public static GbxHeaderBasic Create(
         ushort version = 6,
         GbxFormat format = GbxFormat.Binary,
         GbxCompression compressionOfRefTable = GbxCompression.Uncompressed,
         GbxCompression compressionOfBody = GbxCompression.Compressed,
-        GbxUnknownByte unknownByte = GbxUnknownByte.R)
+        GbxMode mode = GbxMode.Release)
     {
-        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, unknownByte);
+        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, mode);
     }
 
     internal static GbxHeaderBasic Parse(GbxReader reader)
@@ -39,16 +42,27 @@ public readonly record struct GbxHeaderBasic(
 
         var version = r.ReadUInt16();
         var format = r.ReadFormatByte();
+
+        // The remaining basic header bytes stay raw in text-formatted files
+        using var binaryScope = r.ForceBinary();
+
         var compressionOfRefTable = (GbxCompression)r.ReadByte();
         var compressionOfBody = (GbxCompression)r.ReadByte();
-        var unknownByte = GbxUnknownByte.R;
+        var mode = GbxMode.Editor;
 
         if (version >= 4)
         {
-            unknownByte = (GbxUnknownByte)r.ReadByte();
+            mode = (GbxMode)r.ReadByte();
+
+            if (mode is not GbxMode.Editor and not GbxMode.Release)
+            {
+                throw new InvalidDataException($"Invalid Gbx serialization mode byte: 0x{(byte)mode:X2}.");
+            }
         }
 
-        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, unknownByte);
+        r.IsRelease = mode == GbxMode.Release;
+
+        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, mode);
     }
 
     /// <summary>
@@ -79,6 +93,13 @@ public readonly record struct GbxHeaderBasic(
     {
         var w = writer;
 
+        if (Version >= 4 && Mode is not GbxMode.Editor and not GbxMode.Release)
+        {
+            throw new InvalidDataException($"Invalid Gbx serialization mode byte: 0x{(byte)Mode:X2}.");
+        }
+
+        w.IsRelease = Version >= 4 && Mode == GbxMode.Release;
+
         // GBX magic
         w.WriteGbxMagic();
 
@@ -89,7 +110,7 @@ public readonly record struct GbxHeaderBasic(
 
         if (Version >= 4)
         {
-            w.Write((byte)UnknownByte);
+            w.Write((byte)Mode);
         }
 
         return true;

@@ -1,71 +1,83 @@
 CGameCtnDecorationAudio 0x03039000
 
-0x000
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
 
-0x001
- CPlugAudioEnvironment AudioEnvOutsideOpen (external)
- CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF]
+  CPlugAudioEnvironment AudioEnvOutsideOpen
+  CPlugAudioEnvironment AudioEnvOutsideEnclosed
 
-0x002
- float SoundAttenuationInEditor
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF]
+  float SoundAttenuationInEditor
 
-0x003
- version
- v1+
-  v3-
-   CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
-   CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
- CPlugAudioBalance AudioBalance_PlaygroundLoud (external)
- CPlugAudioBalance AudioBalance_ReplayLoud (external)
- CPlugAudioBalance AudioBalance_Podium (external)
- v6+
-  CPlugAudioBalance AudioBalance_PlaygroundSoft (external)
-  CPlugAudioBalance AudioBalance_ReplaySoft (external)
- CPlugAudioBalance AudioBalance_TM_EvtStartLine (external)
- CPlugAudioBalance AudioBalance_TM_EvtCheckpoint (external)
- CPlugAudioBalance AudioBalance_TM_EvtRespawn (external)
- CPlugAudioBalance AudioBalance_TM_EvtCrash (external)
- CPlugAudioBalance AudioBalance_TM_EvtFlying (external)
- v7+
-  CPlugAudioBalance AudioBalance_TM_EvtSwimming (external)
- CPlugAudioBalance AudioBalance_SM_EvtSpawn (external)
- v2+
-  CPlugAudioBalance AudioBalance_Overlay_Underground (external)
-  CPlugAudioBalance AudioBalance_Overlay_Far (external)
-  CPlugAudioBalance AudioBalance_SM_EvtUnspawn (external)
-  CPlugAudioBalance AudioBalance_SM_EvtHit (external)
-  v3+
-   CPlugAudioBalance AudioBalance_SM_EvtFire (external)
-   v4+
-    CPlugAudioBalance AudioBalance_SM_EvtHitEliminated (external)
-    v5+
-     v5=
-      CPlugAudioBalance
-      CPlugAudioBalance
-      CPlugAudioBalance
-      CPlugAudioBalance
-      CPlugAudioBalance
-      CPlugAudioBalance
-     v6+
-      CPlugAudioBalance
-      v8+
-       CPlugAudioBalance AudioBalance_SM_EvtBulletTime (external)
+0x003 [MP3.v6, TMT.v7, MP4.v7, TM2020.v9]
+  version
+  v1+
+    v4-
+      CPlugAudioBalance AudioBalance_PlaygroundLoud
+      CPlugAudioBalance AudioBalance_PlaygroundLoud
+  CPlugAudioBalance AudioBalance_PlaygroundLoud
+  CPlugAudioBalance AudioBalance_ReplayLoud
+  CPlugAudioBalance AudioBalance_Podium
+  v6+
+    CPlugAudioBalance AudioBalance_PlaygroundSoft
+    CPlugAudioBalance AudioBalance_ReplaySoft
+  CPlugAudioBalance AudioBalance_TM_EvtStartLine
+  CPlugAudioBalance AudioBalance_TM_EvtCheckpoint
+  CPlugAudioBalance AudioBalance_TM_EvtRespawn
+  CPlugAudioBalance AudioBalance_TM_EvtCrash
+  CPlugAudioBalance AudioBalance_TM_EvtFlying
+  v7+
+    CPlugAudioBalance AudioBalance_TM_EvtSwimming
+  CPlugAudioBalance AudioBalance_SM_EvtSpawn
+  v2+
+    CPlugAudioBalance AudioBalance_Overlay_Underground
+    CPlugAudioBalance AudioBalance_Overlay_Far
+    CPlugAudioBalance AudioBalance_SM_EvtUnspawn
+    CPlugAudioBalance AudioBalance_SM_EvtHit
+    v3+
+      CPlugAudioBalance AudioBalance_SM_EvtFire
+      v4+
+        CPlugAudioBalance AudioBalance_SM_EvtHitEliminated
+        v5+
+          v5=
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+          v6+
+            CPlugCurveSimpleNod
+  v8+
+    CPlugAudioBalance AudioBalance_SM_EvtBulletTime
+  v9+
+    CPlugAudioBalance AudioBalance_SM_EvtBoost
 
-0x004
- version
- CPlugAudioEnvironment AudioEnvOutsideOpen (external)
- CPlugAudioEnvironment AudioEnvOutsideEnclosed (external)
- CPlugAudioEnvironment AudioEnvUndergroundOpen (external)
- CPlugAudioEnvironment AudioEnvUndergroundEnclosed (external)
+0x004 [MP3.v0, TMT.v0, MP4.v0, TM2020.v1]
+  version
+  CPlugAudioEnvironment AudioEnvOutsideOpen
+  CPlugAudioEnvironment AudioEnvOutsideEnclosed
+  CPlugAudioEnvironment AudioEnvUndergroundOpen
+  CPlugAudioEnvironment AudioEnvUndergroundEnclosed
+  v1+
+    CPlugAudioEnvironment AudioEnvUnderwater
 
-0x005
- version
- float
- float CameraWooshMinSpeedKmh
- float ReverbMinBlockDist
- float ReverbMaxBlockDist
- float[] ReverbMaterialGains
+0x005 [MP3, TMT, MP4, TM2020]
+  version
+  float
+  float CameraWooshMinSpeedKmh
+  float ReverbMinBlockDist
+  float ReverbMaxBlockDist
+  float[] ReverbMaterialGains
 
-0x006
- version
- CPlugFileText ModifierXmlFile (external)
+0x006 [MP3, TMT, MP4, TM2020]
+  version
+  CPlugFileText* ModifierXmlFile
+
+0x007 [TM2020]
+  version
+  CPlugFileText* DefaultWooshDecoItems
+  CPlugFileText*
+  CPlugFileText*
+  CPlugFileText*
+  CPlugFileText*

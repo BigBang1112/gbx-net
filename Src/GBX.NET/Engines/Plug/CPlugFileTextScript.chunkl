@@ -1,1 +1,2 @@
 CPlugFileTextScript 0x09054000
+- inherits: CPlugFileText

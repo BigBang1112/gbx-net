@@ -3,14 +3,17 @@
 public partial class CGameBlockItem
 {
     private string archetypeBlockInfoId = string.Empty;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E025000>]
     public string ArchetypeBlockInfoId { get => archetypeBlockInfoId; set => archetypeBlockInfoId = value; }
 
     private Id archetypeBlockInfoCollectionId = new();
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E025000>]
     public Id ArchetypeBlockInfoCollectionId { get => archetypeBlockInfoCollectionId; set => archetypeBlockInfoCollectionId = value; }
 
     private List<Mobil> customizedVariants = [];
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E025000>]
     public List<Mobil> CustomizedVariants { get => customizedVariants; set => customizedVariants = value; }
 

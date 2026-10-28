@@ -1,0 +1,2 @@
+CGameCtnMediaBlockEvent 0x03087000 // Deprecated base for MediaTracker event blocks; no own chunks.
+- inherits: CGameCtnMediaBlock

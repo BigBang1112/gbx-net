@@ -1,0 +1,49 @@
+CPlugBitmapRenderWater 0x09087000
+- inherits: CPlugBitmapRender
+
+0x000 // legacy frustum
+  bool IsOrthographic
+  boxaligned Frustum
+  iso4
+  bool
+
+0x001 (base: 0x000) // legacy clip plane and margin
+  base
+  bool
+  float ClipPlaneHeight
+  bool
+  float FMargin
+
+0x002 (base: 0x001)
+  base
+  bool
+
+0x003 (base: 0x002) // legacy mirror scale
+  base
+  float MirrorScaleY
+
+0x004 (base: 0x003)
+  base
+  bool
+
+0x005 (skippable) [TMU] // frustum, clip plane, margin and mirror scale
+  bool IsOrthographic
+  boxaligned Frustum
+  iso4
+  datauint
+  float ClipPlaneHeight
+  float FMargin
+  float MirrorScaleY
+
+0x006 (skippable) [TMU] // FogMaxDepth
+  float FogMaxDepth
+
+0x007 (skippable) // split sky and depth bitmaps
+  CPlugBitmap BitmapSplitSky
+  CPlugBitmap BitmapDepth
+
+0x008 (skippable) // update periods
+  version = 1
+  int MaxUpdatePeriod
+  v1+
+    int InvisibleSleepPeriod

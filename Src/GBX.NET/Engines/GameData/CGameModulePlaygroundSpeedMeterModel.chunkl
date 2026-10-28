@@ -1,0 +1,40 @@
+CGameModulePlaygroundSpeedMeterModel 0x2E01F000
+- inherits: CGameModulePlaygroundModel
+
+0x000 (skippable) // meter, speed, distance and images
+  version = 2
+  float GlobalScale
+  float MeterSize
+  float MeterClipOffset
+  float MeterOpacity
+  float MeterFullCircleValue
+  int MeterNbGauge
+  float MeterCircleMaxAngle
+  float MeterCircleOffsetAngle
+  bool MeterShowBackground
+  bool MeterShowSpeedBar
+  v2+
+    string MeterBGColor
+    string MeterInnerColor
+    string MeterMiddleColor
+    string MeterOuterColor
+  bool DistanceShowValue
+  bool DistanceShowFooter
+  byte SpeedForcedUnit
+  float SpeedValueScale
+  bool SpeedShowUnit
+  float SpeedUnitScale
+  bool SpeedShowFooter
+  v2+
+    bool SpeedShowCustomText
+    string SpeedCustomText
+  CGameModulePlaygroundModel.ImageRef GaugeBGImage
+  CGameModulePlaygroundModel.ImageRef MeterInnerImage
+  CGameModulePlaygroundModel.ImageRef MeterMiddleImage
+  CGameModulePlaygroundModel.ImageRef MeterOuterImage
+  CGameModulePlaygroundModel.ImageRef SpeedBarImage
+  CGameModulePlaygroundModel.ImageRef FooterKMHLineImage
+  CGameModulePlaygroundModel.ImageRef FooterKMHUnitImage
+  CGameModulePlaygroundModel.ImageRef FooterMiHUnitImage
+  CGameModulePlaygroundModel.ImageRef FooterMSUnitImage
+  CGameModulePlaygroundModel.ImageRef FootLineDistanceImage

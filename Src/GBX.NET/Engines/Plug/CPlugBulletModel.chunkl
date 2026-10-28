@@ -1,2 +1,302 @@
 CPlugBulletModel 0x090CD000
 
+0x001 [MP4.v79, TM2020.v86]
+  version
+  v30+
+    int BulletType
+  v26+
+    id
+  float Speed = 10
+  float Mass
+  float<int> ExplosionDamageValue
+  float LifeTime = 5
+  v1+
+    float
+  v2+
+    int FirePeriod = 100
+  v3+
+    float ExplosionBlowRadius
+  v4+
+    int FireBulletCount = 1
+    float FireBulletDispersionAngleDeg
+  v5+
+    float FluidFriction
+  v6+
+    float ImpactBouncingN
+  v7..41
+    int
+  v8+
+    float ImpactBouncingT
+  v9+
+    float BulletRadius
+  v10+
+    float RestSpeed = 1
+  v11+
+    float HiddenDist
+  v12+
+    float ExplosionEnergyWhenOccluded
+  v13+
+    float ExplosionBlowValue = 10
+  v14+
+    PlugCurve ExplosionEnergyFromLifeTime (version: Version - 86)
+  v15+
+    int FireEnergyCost = 1000
+  v16+
+    int FireMaxEnergyStorage = 10000
+  v17..21
+    CFuncKeysReal
+  v18+
+    int ExplosionOccultationTest
+  v19+
+    bool HoldTriggerToPower
+    PlugCurve SpeedFromTriggerDuration (version: Version - 86)
+  v20+
+    bool ShowImpactPos
+  v21+
+    PlugCurve SpeedFromHorizonAngle (version: Version - 86)
+  v22..43
+    bool
+  v23+
+    float HomingDist = 10
+    float HomingPeriod = 0.05f
+  v24+
+    float HomingMaxAngularSpeed = 90
+  v27+
+    float GunSpeedCoef
+    float GunSpeedCoefRatioMin = 0.2f
+    float GunSpeedCoefRatioMax = 2
+  v28+
+    float FireBulletCountSpeedCoef = 1
+  v29+
+    float ExplosionBlowRadiusAttenuation
+  v31=
+    float
+  v32+
+    float TriLaserRadiusAtOneMeter_Zoom0 = 0.01f
+    float TriLaserRadiusAtOneMeter_Zoom1 = 0.01f
+  v33+
+    int ChargeDurationFull = 1000
+    int ChargeDurationStop = 300
+  v34+
+    float SpearLockDist = 1
+  v35+
+    int EnergyGainDelay
+  v36=
+    vec2[]
+  v37+
+    vec3[] FireBulletSpreads
+  v38+
+    float TrajectoryUTurnDistance = -1
+  v39+
+    int AmmoCostDuringTriggerDuration
+    PlugCurve SpreadCoefFormChargeDuration (version: Version - 86)
+  v40+
+    float ExplosionDetectionRadius_Resting = -1
+  v41+
+    float ExplosionDetectionRadius_Flying = -1
+  v42+
+    bool ExplosionOnEndLife = true
+    v48-
+      bool
+    v49+
+      int ExplosionOnImpactCount = 1
+  v43+
+    float LifeTimeAfterFirstImpact = 5
+  v44+
+    float ExplosionDamageRadius
+    float ExplosionDamageRadiusAttenuation
+  v45+
+    float BulletVsRadiusMargin = 0.2f
+  v46+
+    int Sm_ThisHitOtherBulletBonusDuration = 500
+    v53-
+      float
+  v47+
+    int DefuserFirePeriod
+  v48+
+    int DefuserMissAmmoLoss = 500
+  v50..56
+    int
+  v51+
+    float TriLaserNearMissDist = 1
+  v52+
+    int BulletVsMinAgeMs = 500
+  v53+
+    int Sm_OtherHitThisBulletBonusDuration
+    v53-
+      float
+  v55+
+    float Sm_ThisHitOtherBulletBonusAmmoCount = 1
+    float Sm_OtherHitThisBulletBonusAmmoCount
+  v56+
+    vec3[] FireBulletPattern_GrowingOffset_Offsets
+    int FireBulletPattern_Mode
+    float FireBulletPattern_InitialBlendDuration
+    int FireBulletPattern_SpiralHatchetNet_BulletCount = 1
+    float FireBulletPattern_SpiralHatchetNet_Radius = 1
+    float FireBulletPattern_SpiralHatchetNet_SpinPerSecond = 1
+  v57+
+    byte ExplosionOnSurfaceMaterialId = 255
+    byte ExplosionOnImpactCountOnlyOnMaterialId = 255
+  v58+
+    bool FireBulletPattern_RotateOddBulletsCounterClockwise
+    bool FireBulletPattern_ApexRegroup
+    float FireBulletPattern_ApexRegroup_MinApexTime = 0.5f
+  v59+
+    float ProjectileNearMissDist
+    float ProjectileNearMissDelay = 1
+  v60+
+    byte EndLifeWithoutExplosionOnMaterialId = 255
+  v61+
+    bool
+  v62+
+    float ExplosionBlowVerticalScale = 1
+  v63+
+    PlugCurve ExplosionRadiusCoefFromLifeTime (version: Version - 86)
+  v64+
+    bool
+  v65+
+    bool ExplosionOnAllPlayers
+  v66+
+    bool IsFlare
+    float FlareAttractionRadius = 50
+    float FlareExplosionRadius = 2
+  v67+
+    float ExplosionElectroPulseValue
+  v68+
+    float GuidedAngularSpeed = 90
+  v69+
+    int HomingLockDuration = 500
+  v70+
+    bool IsWard
+    float WardRadius = 50
+  v71+
+    bool FireBulletPattern_OnlyVisual
+  v72+
+    int GuidedMinLifeTime = 500
+  v73+
+    bool MultiSphereDetection
+    float GuidedRollAngleMax = 0.7853982f
+  v74+
+    int
+    int
+  v75+
+    int DirectHitDamageValue = -1
+  v76+
+    bool ExplosionBlowOnAllPlayers = true
+  v77+
+    bool DamageAttenuationWithDist
+    float
+    int
+  v78+
+    PlugCurve DamageAttenuationFromDist (version: Version - 86)
+  v79+
+    bool IsIce
+  v80+
+    int
+  v81+
+    int
+  v82+
+    int
+    int
+    int
+  v83+
+    int
+  v84+
+    int
+  v85+
+    int
+
+0x003 [MP4.v7, TM2020.v8]
+  version
+  CPlugSound SoundFire
+  v2-
+    CPlugSound
+  CPlugSound SoundAlive
+  v1..2
+    CPlugSound
+  v2+
+    vec3 SoundFireOffset
+  v4+
+    CPlugSound SoundReloading
+  v5+
+    CPlugSound SoundGauge
+  v6+
+    PlugCurve SoundAliveVolumeFromRemainingLifeTime (version: Version - 8)
+    PlugCurve SoundAlivePitchFromRemainingLifeTime (version: Version - 8)
+  v7+
+    PlugCurve SoundFireVolumeFromRemainingAmmo (version: Version - 8)
+    PlugCurve SoundFirePitchFromRemainingAmmo (version: Version - 8)
+
+0x005 [MP4.v2, TM2020.v2]
+  version
+  CPlugParticleEmitterModel ParticleModelAlive
+  v1-
+    CPlugParticleEmitterModel
+  v1+
+    CPlugParticleEmitterModel ParticleModelFire
+    v1-
+      CPlugParticleEmitterModel
+
+0x006 [MP4.v6, TM2020.v6]
+  version
+  v3-
+    bool
+  float BeamMaxLength = 50
+  v0=
+    float
+    CPlugMaterial
+  v1+
+    CPlugBeamEmitterModel BeamVisualModel
+  v2+
+    vec3 VisualOffsetFirstPerson
+  v3+
+    float VisualOffsetDuration
+  v5=
+    CPlugBeamEmitterModel
+
+0x007 [MP4.v8, TM2020.v8]
+  version
+  bool Sm_AutoAim
+  float Sm_AimIntertia
+  v2+
+    id Sm_SpModelName
+  v3+
+    int Sm_SpChargeDuration = 5000
+    int Sm_SpInactivityDelayBeforeCharge = 1000
+  v4+
+    bool Sm_FirstPersonCam
+  v5+
+    vec3 Sm_FirstPersonCamOffset
+  v6+
+    float Sm_FirstPersonCamFov = -1
+  v7+
+    int Sm_ProtectDuration
+  v8+
+    float Sm_Recoil
+
+0x008 [MP4.v1, TM2020.v1]
+  version
+  CPlugParticleMaterialImpactModel ImpactBounce
+  CPlugParticleMaterialImpactModel ExplosionBullet
+  v1+
+    CPlugParticleMaterialImpactModel ExplosionSurface
+
+0x009 [MP4.v4, TM2020.v5]
+  version
+  CPlugBitmap BitmapCrosshair
+  v1+
+    CPlugBitmap Icon
+    string Name
+  v2+
+    float SizeXScreenPercent
+    float SizeYScreenPercent
+    float SizeXScreenPercentMax
+    float SizeYScreenPercentMax
+  v3+
+    CPlugBitmap BitmapCrosshairTriLaser
+  v4+
+    CPlugBitmap BitmapLasersight
+  v5+
+    int
+

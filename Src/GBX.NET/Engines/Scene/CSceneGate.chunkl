@@ -1,1 +1,27 @@
 CSceneGate 0x0A006000
+
+0x000 // legacy portals
+  int
+  CHmsPortal FirstPortal
+  CMwNod
+  id
+  if U01 != 2
+    CHmsPortal SecondPortal
+    CMwNod
+    id
+
+0x001 [TMNESWC, TMU] // portals
+  int
+  CHmsPortal FirstPortal
+  if FirstPortal != null
+    CMwNod
+    int
+    id
+    id
+  if U01 != 2
+    CHmsPortal SecondPortal
+    if SecondPortal != null
+      CMwNod
+      int
+      id
+      id

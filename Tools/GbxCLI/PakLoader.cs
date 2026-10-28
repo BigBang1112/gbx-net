@@ -1,0 +1,240 @@
+using GBX.NET.PAK;
+using System.Buffers.Binary;
+using System.Globalization;
+
+namespace GbxCLI;
+
+internal static class PakLoader
+{
+    private static readonly Dictionary<string, string[]> keys = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Alpine"] = ["3CB15D69FF8BE9C2C14D93F9379BC8EE"],
+        ["Auckland"] = ["4B74F6DEDADAFD0BBE2E4A199753575D"],
+        ["Bay"] = ["CF77EDFD5A6447BD91927FF03C229DE2"],
+        ["BlueBay"] = ["105C22EB2CFAC821DF2282E634B453BD"],
+        ["Boats"] = ["C670BCB9AFBEC787EFEA123EE6EEDB60"],
+        ["Canyon"] = ["14A779253D53C4F6E1DEF3D030D02C74"],
+        ["Coast"] = ["130BE6AAA08D844CB56E879F50F961E5"],
+        ["Cryo"] = ["C9C3C3970DABCF47A7FBA20C0565A4F3"],
+        ["dedicated"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["dedicated_SMStorm"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["dedicated_TMCanyon"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["dedicated_TMLagoon"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["dedicated_TMStadium"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["dedicated_TMValley"] = ["30B4B4DDF925763B3F362804B57979FE"],
+        ["FPS_CSI2013@emilieng"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["Game"] = ["9A9A3A018B35FC65304247396A894B05", "EB2EA8E276999116DEE4CAC13E97354D"],
+        ["Gothic"] = ["DDC9D4EBCC7B34051F3D648ABE775D54"],
+        ["GreenCoast"] = ["105C22EB2CFAC821DF2282E634B453BD"],
+        ["History"] = ["95B72D933957F1D8958C1D98A2B2B3A5"],
+        ["Island"] = ["BD267DA6DA7F790A8D597600DC1C8EA1"],
+        ["LaTrinite"] = ["03457C052F1D2F9AA2F2D3E7914D5D76"],
+        ["Malmo"] = ["CD9582B3024735E5E214BF4EEA5D3087"],
+        ["ManiaPlanet"] = ["24283C7980351AAB426F880FBA61817C"],
+        ["ManiaPlanet_ActionFx"] = ["24283C7980351AAB426F880FBA61817C"],
+        ["ManiaPlanet_Core"] = ["24283C7980351AAB426F880FBA61817C"],
+        ["Maniaplanet_ModelsSport"] = ["24283C7980351AAB426F880FBA61817C"],
+        ["Marseille"] = ["E25AAEF779F0AE72C64A75499CA80143"],
+        ["Meteor"] = ["D635A8EF4EC72654C393D90BAFBF3B61"],
+        ["Mountain"] = ["6ED45DE8D651CF519F9CB55C382F4007"],
+        ["Napoli"] = ["85D67CCF7574F89742A1EC3059F6D62C"],
+        ["Nordic"] = ["9CE491FD2ED167DF2541F51785EF3038"],
+        ["OrbitalDev@falguiere"] = ["26980C3B98958C0F74BE91BBCEE99C7D"],
+        ["OrbitalDev@game_build"] = ["F6980C3B98958C0F74BE91BBCEE99C7D"],
+        ["Paris"] = ["7ECA455973889E69407BFB29FC3D0127"],
+        ["PortoCervo"] = ["397FF1A962ADDE07F2DD852C2A9D4464"],
+        ["QingDao"] = ["0B21415CFEB8C3F634F7F8BE73CAB8E8"],
+        ["QMFuture"] = ["DADE3CCED44233B9CC67954563226112"],
+        ["QMHistory"] = ["95B72D933957F1D8958C1D98A2B2B3A5"],
+        ["QMSociety"] = ["3CBCF2EC76C141B4DED886D4EA7990AA"],
+        ["Rally"] = ["1DDD2185144D6AB1F232596AAD9E8C46"],
+        ["RedIsland"] = ["105C22EB2CFAC821DF2282E634B453BD"],
+        ["Resource"] = ["087480148E51B70DD83AF2D86F974FEF", "BE3BFB3192A3D3143E0CA1F1DA916C8A"],
+        ["Rio"] = ["709EF6F4223A2C67AA05F3B6CF0F1D28"],
+        ["SanFrancisco"] = ["3E2E958E58F9A1B96C69A830893991C1"],
+        ["ShootMania"] = ["A901E0D6D0805C2EFF5D03BF3DC7A46F"],
+        ["SMCryo"] = ["C9C3C3970DABCF47A7FBA20C0565A4F3"],
+        ["SMGothic"] = ["DDC9D4EBCC7B34051F3D648ABE775D54"],
+        ["SMMeteor"] = ["D635A8EF4EC72654C393D90BAFBF3B61"],
+        ["SMOrbitalDev@game_build"] = ["06980C3B98958C0F74BE91BBCEE99C7D"],
+        ["SMParis"] = ["7ECA455973889E69407BFB29FC3D0127"],
+        ["SMStorm"] = ["667C7A089F2856C93B30B2CD4C06DE45"],
+        ["SMStorm_2013-02-09"] = ["667C7A089F2856C93B30B2CD4C06DE45"],
+        ["SMStorm@nadeo"] = ["FA9ADB8AA1B8ED6015F6B5E1EB3327A6"],
+        ["SMStormElite@nadeolabs"] = ["3CBCF2EC76E3CCED8A2B2B3A5A7990AA"],
+        ["SMStormJoust@nadeolabs"] = ["9B4DED886D5B72D933957F1D8958C1D9"],
+        ["SMStormRoyal@nadeolabs"] = ["4C1414EDAD4233B9CC67954563226112"],
+        ["Society"] = ["3CBCF2EC76C141B4DED886D4EA7990AA"],
+        ["Speed"] = ["1323243EB19404511B51BB62A2A2C38F"],
+        ["Stadium"] = ["21DA8E75B00B33FD68EFA7182FD2163F", "5B985F4CC43013C458A4C99A4B285E1E"],
+        ["StadiumDev"] = ["895AB8AEC43013C458ADADD39129B98A"],
+        ["StadiumScenery"] = ["5B985F4CC43013C458A4C99A4B285E1E"],
+        ["Storm"] = ["667C7A089F2856C93B30B2CD4C06DE45"],
+        ["Sydney"] = ["3D0682990BBAFCE3A4404F341F4D01E4"],
+        ["Titles"] = ["29E6D9E44FB38ED1BC1F21E400FF273F"],
+        ["TM_Oculus_Demo@powerproust"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMCanyon"] = ["14A779253D53C4F6E1DEF3D030D02C74"],
+        ["TMCanyon_campaign"] = ["7A49CA620F043D49D20F8BD1D21B2286"],
+        ["TMCanyon@nadeo"] = ["EE2C0FECCE92C0094CA5C6924D6AEAEB"],
+        ["TMCanyonCE"] = ["14A779253D53C4F6E1DEF3D030D02C74"],
+        ["TMConsole@gabriel3"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMLagoon"] = ["6ED45DE8D651CF519F9CB55C382F4007"],
+        ["TMLagoon@nadeo"] = ["14BAEBBAFBE4868446C95BB093CB099E"],
+        ["TMLagoonCE"] = ["6ED45DE8D651CF519F9CB55C382F4007"],
+        ["TMNext"] = ["5F4FC43233B989DAED3918C1190F4A5A"],
+        ["TMNext@nadeolabs"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMOrbitalDev@game_build"] = ["16980C3B98958C0F74BE91BBCEE99C7D"],
+        ["TMProgression@eole"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMStadium"] = ["5B985F4CC43013C458A4C99A4B285E1E"],
+        ["TMStadium_2013-02-26_0179e680"] = ["5B985F4CC43013C458A4C99A4B285E1E"],
+        ["TMStadium_campaign"] = ["A4B68496988F76EE996BE80F6881DCF4"],
+        ["TMStadium@nadeo"] = ["76AA9E530032D987895ABE8AE7983480"],
+        ["TMStadiumCE"] = ["5B985F4CC43013C458A4C99A4B285E1E"],
+        ["TMTest@nadeo"] = ["C6980CC30A99590F74BE91BBCEE99C7D"],
+        ["TMTest@nadeolabs"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMTest@powerproust"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMTest@xavier"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMTestEG@emilieng"] = ["B4B1CDADD391D233B98958C1D90F4951"],
+        ["TMTurbo@nadeolabs"] = ["5038519A8AD9270786D2097400055A5D"],
+        ["TMTurbo.Title.Pack"] = ["5038519A8AD9270786D2097400055A5D"],
+        ["TMTurbo_Update.Title.Pack"] = ["5038519A8AD9270786D2097400055A5D"],
+        ["TMValley"] = ["5BDB289BFB0E9DFCAA3AA9B5FEB7D733"],
+        ["TMValley_campaign"] = ["DE92F19585A4AC52FE781BFF135F0630"],
+        ["TMValley@nadeo"] = ["696A8EC244BBCFDA0A343C09C4B2BC7E"],
+        ["TMValleyCE"] = ["5BDB289BFB0E9DFCAA3AA9B5FEB7D733"],
+        ["Trackmania"] = ["50106CD3E964B316CAA0780F4949737D"],
+        ["TrackManiaCE"] = ["50106CD3E964B316CAA0780F4949737D"],
+        ["Trackmania.Title.Pack"] = ["50106CD3E964B316CAA0780F4949737D"],
+        ["Trapani"] = ["DF227DCB97A0DC3662A7D34AE4525502"],
+        ["Tropical"] = ["1988F24FD661FD5890E0A46F94327917"],
+        ["Update"] = ["19ED4601E3E8E53CFB30E184C013B3DF"],
+        ["Valencia"] = ["1FAA96DEFA40D019E33E788245F774D7"],
+        ["Vancouver"] = ["11A905FD6251998B663489F5496D537A"],
+        ["WhiteShore"] = ["105C22EB2CFAC821DF2282E634B453BD"],
+        ["Wight"] = ["B70F2BF8475EDF00A399BC68EDD45422"],
+    };
+
+    private static readonly byte[] defaultHeaderKey = Convert.FromHexString("56EECBBBDEB6BC90A17DFCEB761D59CE");
+
+    internal static IReadOnlyList<string> GetKeys(string path)
+    {
+        var name = Path.GetFileNameWithoutExtension(path);
+        if (keys.TryGetValue(name, out var candidates))
+        {
+            return candidates;
+        }
+
+        var separator = name.LastIndexOf('_');
+        if (separator > 0
+            && DateOnly.TryParseExact(name.AsSpan(separator + 1), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _)
+            && keys.TryGetValue(name[..separator], out candidates))
+        {
+            return candidates;
+        }
+
+        return [];
+    }
+
+    internal static async Task<(Pak Pak, bool HasKey)> ParseAsync(Stream stream, string path)
+    {
+        var pak = await Pak.ParseAsync(stream);
+
+        if (!pak.IsHeaderPrivate && !pak.IsDataPrivate)
+        {
+            return (pak, false);
+        }
+
+        var candidates = GetKeys(path);
+
+        // Title packs can be renamed, so also try the title ID stored in the public header.
+        if (pak is Pak6 { TitleId: { } titleId } && keys.TryGetValue(titleId, out var titleKeys))
+        {
+            candidates = [.. candidates, .. titleKeys.Except(candidates)];
+        }
+
+        foreach (var baseKey in candidates)
+        {
+            var key = Pak.ComputeKey(Convert.FromHexString(baseKey));
+
+            if (pak.IsHeaderPrivate && !await HasMatchingHeaderAsync(stream, pak, key))
+            {
+                continue;
+            }
+
+            stream.Position = 0;
+            return (await Pak.ParseAsync(stream, key, KeyType.EncryptionKey), true);
+        }
+
+        return (pak, false);
+    }
+
+    private static async Task<bool> HasMatchingHeaderAsync(Stream stream, Pak pak, byte[] key)
+    {
+        var headerPosition = stream.Position;
+        var headerKey = (byte[])key.Clone();
+
+        for (var i = 0; i < headerKey.Length; i++)
+        {
+            headerKey[i] ^= (byte)((pak.UseDefaultHeaderKey ? defaultHeaderKey[i] : 0) ^ (pak.KeySalt?[i] ?? 0));
+        }
+
+        try
+        {
+            var ivBytes = new byte[8];
+            await stream.ReadExactlyAsync(ivBytes);
+            using var decrypted = new BlowfishStream(stream, headerKey, BinaryPrimitives.ReadUInt64LittleEndian(ivBytes), pak.Version);
+            var prefixSize = 20 + (pak.Version < 15 ? 4 : 0) + (pak.Version >= 2 ? 8 : 0)
+                + (pak.Version >= 14 ? 16 : 0) + (pak.Version >= 16 ? 4 : 0) + (pak.Version >= 3 ? 16 : 0);
+            var prefix = new byte[prefixSize];
+            await decrypted.ReadExactlyAsync(prefix);
+
+            // Reject wrong keys before the parser reads arbitrary folder/file counts.
+            // The data offset moved into the public header in version 15.
+            var dataStart = pak.Version >= 15
+                ? (long)pak.HeaderMaxSize!.Value
+                : BinaryPrimitives.ReadUInt32LittleEndian(prefix.AsSpan(20));
+            var gbxHeadersStart = BinaryPrimitives.ReadUInt32LittleEndian(prefix.AsSpan(16));
+
+            if (dataStart < headerPosition + ivBytes.Length + prefix.Length + 4
+                || dataStart > stream.Length
+                || (gbxHeadersStart != 0 && (gbxHeadersStart < dataStart || gbxHeadersStart > stream.Length)))
+            {
+                return false;
+            }
+
+            var value = new byte[4];
+
+            if (pak.Version == 6)
+            {
+                // Version 6 stores the author version and four strings before the flags.
+                await decrypted.ReadExactlyAsync(value);
+                var buffer = new byte[4096];
+
+                for (var i = 0; i < 4; i++)
+                {
+                    await decrypted.ReadExactlyAsync(value);
+                    var length = BinaryPrimitives.ReadInt32LittleEndian(value);
+
+                    if (length < 0 || length > dataStart - headerPosition - ivBytes.Length - decrypted.Position)
+                    {
+                        return false;
+                    }
+
+                    while (length > 0)
+                    {
+                        var count = Math.Min(length, buffer.Length);
+                        await decrypted.ReadExactlyAsync(buffer.AsMemory(0, count));
+                        length -= count;
+                    }
+                }
+            }
+
+            await decrypted.ReadExactlyAsync(value);
+            return BinaryPrimitives.ReadUInt32LittleEndian(value) <= 7;
+        }
+        finally
+        {
+            stream.Position = headerPosition;
+        }
+    }
+}

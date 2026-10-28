@@ -1,10 +1,14 @@
 ﻿using System.Numerics;
 using System.Text;
+using System.Net;
+using System.Net.Sockets;
 using System.Xml;
 using GBX.NET.Managers;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
+using Microsoft.Extensions.Logging;
 
 #if NET6_0_OR_GREATER
 using System.Buffers;
@@ -68,6 +72,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(BoxAligned value);
     void Write(BoxInt3 value);
     void Write(Color value);
+    void Write(Iso3 value);
     void Write(Iso4 value);
     void Write(Mat3 value);
     void Write(Mat4 value);
@@ -80,8 +85,7 @@ public partial interface IGbxWriter : IDisposable
     void Write(PackDesc? value);
     void WriteNodeRef<T>(T? value) where T : IClass;
     [IgnoreForCodeGeneration] void WriteNodeRef(IClass? value);
-    void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass;
-    [IgnoreForCodeGeneration] void WriteNodeRef(IClass? value, in GbxRefTableFile? file);
+    [IgnoreForCodeGeneration] void WriteNodeRef(NodeRef? nodeRef);
     void WriteNode<T>(T? value) where T : IClass;
     void WriteMetaRef<T>(T? value) where T : IClass;
     void Write(TimeInt32 value);
@@ -91,7 +95,9 @@ public partial interface IGbxWriter : IDisposable
     void WriteTimeOfDay(TimeSpan? value);
     void WriteFileTime(DateTime? value);
     void WriteSystemTime(DateTime? value);
-    void WriteUnixTime(DateTimeOffset value);
+    void WriteUnixTime(DateTimeOffset? value);
+    /// <summary>Writes an IPv4 address as a UInt32, with the first address octet in the most significant byte. Null writes 0.0.0.0.</summary>
+    void WriteIPv4(IPAddress? value);
     void WriteSmallLen(int value);
     void WriteSmallString(string? value);
     void WriteMarker(string value);
@@ -100,7 +106,7 @@ public partial interface IGbxWriter : IDisposable
     void WriteZlibData(ZlibData? value, Action<GbxWriter> action);
     void WriteOptimizedInt(int value, int determineFrom);
     void WriteVarNat15(short value);
-    void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new();
+    void WriteWritable<T>(T? value, int version = 0) where T : IWritable?, new();
     void WriteWritable<TWritable, TNode>(TWritable? value, TNode node, int version = 0)
         where TNode : IClass
         where TWritable : IWritable<TNode>, new();
@@ -121,31 +127,50 @@ public partial interface IGbxWriter : IDisposable
     void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
     void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct;
     void WriteArray_deprec<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct;
+    void WriteJaggedArray<T>(T[][]? value, int? innerLength = null, int? outerLength = null) where T : struct;
     void WriteList<T>(List<T>? value, bool lengthInBytes = false) where T : struct;
     void WriteList<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct;
     void WriteList_deprec<T>(List<T>? value, bool lengthInBytes = false) where T : struct;
     void WriteList_deprec<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct;
+    void WriteArrayNode<T>(T?[]? value) where T : IClass;
     void WriteArrayNodeRef<T>(T?[]? value) where T : IClass;
     void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass;
     void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass;
+    void WriteJaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = null, int? outerLength = null) where T : IClass;
     void WriteListNodeRef<T>(List<T?>? value) where T : IClass;
     void WriteListNodeRef<T>(List<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(List<T?>? value) where T : IClass;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
+    void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod;
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
+    void WriteArrayWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0) where T : IWritable<TNode>, new() where TNode : IClass;
+    void WriteArrayWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IWritable<TNode>, new() where TNode : IClass;
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
-    void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
-    void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
+    /// <summary>Writes an array of rows. A null length writes an Int32 length prefix for that dimension.</summary>
+    void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new();
+    void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new();
+    void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new();
 
     void WriteArrayId(string[]? value);
     void WriteArrayId(string[]? value, int length);
     void WriteArrayId_deprec(string[]? value);
+    void WriteJaggedArrayId(string[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayString(string[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayIdent(Ident[][]? value, int? innerLength = null, int? outerLength = null);
+    void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null);
     void WriteListId(List<string>? value);
     void WriteListId(List<string>? value, int length);
     void WriteListId_deprec(List<string>? value);
@@ -175,6 +200,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     private int? idVersion;
     private Dictionary<string, int>? idDict;
     private Dictionary<object, int>? nodeDict;
+    private int nextNodeIndex = 1;
     private Encapsulation? encapsulation;
     private GbxReaderWriter? rw;
 
@@ -198,8 +224,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         ? idDict ??= []
         : encapsulation.IdWriteDict;
 
-    internal Dictionary<object, int> NodeDict => nodeDict ??= ExpectedNodeCount.HasValue
-        ? new(ExpectedNodeCount.Value) : [];
+    internal Dictionary<object, int> NodeDict => nodeDict ??= new(ExpectedNodeCount ?? 0, DeepCloneContext.ReferenceComparer.Instance);
 
     internal Encapsulation? Encapsulation { get => encapsulation; set => encapsulation = value; }
 
@@ -211,12 +236,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
+    internal bool IsRelease { get; set; } = true;
+
     internal GbxWriteSettings Settings { get; }
+    internal ILogger? Logger => Settings.Logger;
+    internal GbxRefTable? ReferenceTable { get; set; }
+    private Dictionary<GbxRefTableNode, GbxRefTableNode>? importedRefs;
 
     public ClassIdRemapMode ClassIdRemapMode { get; set; }
 
     public GbxWriter(Stream output, GbxWriteSettings settings = default) : base(output, encoding, !settings.CloseStream)
     {
+        Settings = settings;
     }
 
     public GbxWriter(XmlWriter output) : base(Stream.Null, encoding)
@@ -231,14 +262,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (writer is GbxWriter w)
         {
+            IsRelease = w.IsRelease;
             idVersion = w.idVersion;
             idDict = w.idDict;
             nodeDict = w.nodeDict;
+            nextNodeIndex = w.nextNodeIndex;
             encapsulation = w.encapsulation;
             PackDescVersion = w.PackDescVersion;
             DeprecVersion = w.DeprecVersion;
 
             ExpectedNodeCount = w.ExpectedNodeCount;
+            ReferenceTable = w.ReferenceTable;
+            importedRefs = w.importedRefs;
         }
     }
 
@@ -388,10 +423,10 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
                 {
                     return;
                 }
-    
+
                 // TODO: Optimize
                 Write(encoding.GetBytes(value));
-    
+
                 return;
             default:
                 throw new ArgumentException("Invalid length prefix.", nameof(lengthPrefix));
@@ -478,7 +513,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     public void WriteBigInt(BigInteger value, int byteLength)
     {
         var bytes = value.ToByteArray();
-        
+
         if (bytes.Length == byteLength)
         {
             // No padding necessary
@@ -662,11 +697,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
         Span<byte> buffer = stackalloc byte[6];
-        
+
         BitConverter.TryWriteBytes(buffer.Slice(0, 2), (Half)value.X);
         BitConverter.TryWriteBytes(buffer.Slice(2, 2), (Half)value.Y);
         BitConverter.TryWriteBytes(buffer.Slice(4, 2), (Half)value.Z);
-        
+
         BaseStream.Write(buffer);
 #else
         var x = HalfUtility.FloatToHalf(value.X);
@@ -813,6 +848,16 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(value.G);
         Write(value.B);
         Write(value.A);
+    }
+
+    public void Write(Iso3 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.TX);
+        Write(value.TY);
     }
 
     public void Write(Iso4 value)
@@ -976,79 +1021,20 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteNodeRef<T>(T? value, in GbxRefTableFile? file) where T : IClass
-    {
-        WriteNodeRef((IClass?)value, in file);
-    }
-
-    [IgnoreForCodeGeneration]
-    public void WriteNodeRef(IClass? value, in GbxRefTableFile? file)
-    {
-        if (value is null && file is null)
-        {
-            Write(-1);
-            return;
-        }
-
-        if (encapsulation is null)
-        {
-            if ((file is not null && NodeDict.TryGetValue(file, out int index))
-            || (value is not null && NodeDict.TryGetValue(value, out index)))
-            {
-                Write(index);
-                return;
-            }
-
-            var key = file ?? (object?)value ?? throw new InvalidOperationException("File or value is null.");
-
-            index = NodeDict.Count + 1;
-
-            if (NodeDict.ContainsKey(key))
-            {
-                // TODO: Report on replacements
-            }
-
-            NodeDict[key] = index;
-
-            Write(index);
-
-            if (file is not null)
-            {
-                return;
-            }
-        }
-
-        if (value is null)
-        {
-            throw new InvalidOperationException("Value is null.");
-        }
-
-        if (ClassManager.GetId(value.GetType()) is not uint classId)
-        {
-            throw new InvalidOperationException("Class ID not found.");
-        }
-
-        if (value?.IsWriteSupported == false)
-        {
-            throw new ClassWriteNotSupportedException(classId);
-        }
-
-        WriteClassId(classId);
-
-        rw ??= new GbxReaderWriter(this);
-
-        value.ReadWrite(rw);
-    }
-
     public void WriteNodeRef<T>(T? value) where T : IClass
     {
-        WriteNodeRef(value, file: null);
+        WriteNodeRef((IClass?)value);
     }
 
     [IgnoreForCodeGeneration]
     public void WriteNodeRef(IClass? value)
     {
-        WriteNodeRef(value, file: null);
+        var reference = new NodeRef<CMwNod>();
+        if (value is CMwNod node)
+            reference.Node = node;
+        else if (value is not null)
+            throw new NotSupportedException("Node references require a CMwNod target.");
+        WriteNodeRef(reference);
     }
 
     public void WriteNode<T>(T? value) where T : IClass
@@ -1059,34 +1045,37 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
+        WriteNodeContent(value);
+    }
+
+    private void WriteNodeContent(IClass node)
+    {
         rw ??= new GbxReaderWriter(this);
 
-        value.ReadWrite(rw);
+        using var _ = Logger?.BeginScope("{ClassName}", ClassManager.GetName(node.GetType()));
+
+        node.ReadWrite(rw);
     }
 
     public void WriteMetaRef<T>(T? value) where T : IClass
     {
         if (value is null)
         {
-            Write(-1);
+            WriteHexInt32(-1);
             return;
         }
 
-        if (ClassManager.GetId(value.GetType()) is not uint classId)
-        {
-            throw new InvalidOperationException("Class ID not found.");
-        }
+        if (value is not CMwNod nod) throw new NotSupportedException("Meta references require a CMwNod target.");
+        var classId = nod.GetId();
 
-        if (value?.IsWriteSupported == false)
+        if (!value.IsWriteSupported)
         {
             throw new ClassWriteNotSupportedException(classId);
         }
 
-        Write(classId);
+        WriteHexUInt32(classId);
 
-        rw ??= new GbxReaderWriter(this);
-
-        value.ReadWrite(rw);
+        WriteNodeContent(value);
     }
 
     public void Write(TimeInt32 value)
@@ -1166,9 +1155,27 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(data);
     }
 
-    public void WriteUnixTime(DateTimeOffset value)
+    public void WriteUnixTime(DateTimeOffset? value)
     {
-        Write((uint)value.ToUnixTimeSeconds());
+        Write(value is null ? uint.MaxValue : (uint)value.Value.ToUnixTimeSeconds());
+    }
+
+    /// <inheritdoc cref="IGbxWriter.WriteIPv4"/>
+    public void WriteIPv4(IPAddress? value)
+    {
+        if (value is null)
+        {
+            Write(0u);
+            return;
+        }
+
+        if (value.AddressFamily != AddressFamily.InterNetwork)
+        {
+            throw new ArgumentException("Only IPv4 addresses can be serialized as a UInt32.", nameof(value));
+        }
+
+        var bytes = value.GetAddressBytes();
+        Write(((uint)bytes[0] << 24) | ((uint)bytes[1] << 16) | ((uint)bytes[2] << 8) | bytes[3]);
     }
 
     public void WriteSmallLen(int value)
@@ -1251,10 +1258,10 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write((sbyte)Math.Clamp(MathF.Round(velPitch / (MathF.PI / 2) * sbyte.MaxValue), sbyte.MinValue, sbyte.MaxValue));
 
 #else
-        
+
         var w = Math.Max(-1.0, Math.Min(1.0, rotation.W));
         var angle = Math.Acos(w);
-    
+
         var sinAngle = Math.Sin(angle);
         var axisPitch = 0.0;
         var axisHeading = 0.0;
@@ -1431,7 +1438,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #else
                 Write(MemoryMarshal.Cast<int, byte>(value).ToArray());
 #endif
-                WriteArray(value);
                 break;
             case >= byte.MaxValue:
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
@@ -1468,13 +1474,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         switch ((uint)determineFrom.GetValueOrDefault(value.Length))
         {
             case >= ushort.MaxValue:
-                WriteArray(value);
+                WriteArray(value, value.Length);
                 break;
             case >= byte.MaxValue:
-                WriteArray(Array.ConvertAll(value, x => x.X & 0xFFFF | x.Y << 16));
+                WriteArray(Array.ConvertAll(value, x => x.X & 0xFFFF | x.Y << 16), value.Length);
                 break;
             default:
-                WriteArray(Array.ConvertAll(value, x => (ushort)(x.X & 0xFF | x.Y << 8)));
+                WriteArray(Array.ConvertAll(value, x => (ushort)(x.X & 0xFF | x.Y << 8)), value.Length);
                 break;
         }
     }
@@ -1518,7 +1524,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable, new()
+    public void WriteWritable<T>(T? value, int version = 0) where T : IWritable?, new()
     {
         if (value is null)
         {
@@ -1660,9 +1666,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        EnsureValidLength(value.Length);
+        var byteLength = GetCollectionByteLength<T>(value.Length, lengthInBytes: false);
 
-        Write(value.Length);
+        Write(lengthInBytes ? byteLength : value.Length);
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
         Write(MemoryMarshal.Cast<T, byte>(value));
 #else
@@ -1672,39 +1678,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArray<T>(T[]? value, int length, bool lengthInBytes = false) where T : struct
     {
-        if (value is null || value.Length == 0)
-        {
-            return;
-        }
-
-        EnsureValidLength(length);
-
-        if (value.Length == length)
-        {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-            Write(MemoryMarshal.Cast<T, byte>(value));
-#else
-            Write(MemoryMarshal.Cast<T, byte>(value).ToArray());
-#endif
-            return;
-        }
-
-        if (value.Length > length)
-        {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length));
-#else
-            Write(MemoryMarshal.Cast<T, byte>(value).Slice(0, length).ToArray());
-#endif
-            return;
-        }
-
-        // Can be improved
-#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()));
-#else
-        Write(MemoryMarshal.Cast<T, byte>(value.Concat(Enumerable.Repeat(default(T), value.Length - length)).ToArray()).ToArray());
-#endif
+        WriteCollection<T>(value, length, lengthInBytes);
     }
 
     public void WriteArray_deprec<T>(T[]? value, bool lengthInBytes = false) where T : struct
@@ -1719,6 +1693,9 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteArray(value, length, lengthInBytes);
     }
 
+    public void WriteJaggedArray<T>(T[][]? value, int? innerLength = null, int? outerLength = null) where T : struct
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
     public void WriteList<T>(List<T>? value, bool lengthInBytes = false) where T : struct
     {
         if (value is null || value.Count == 0)
@@ -1727,14 +1704,11 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
-        EnsureValidLength(value.Count);
+        var byteLength = GetCollectionByteLength<T>(value.Count, lengthInBytes: false);
 
-        Write(value.Count);
+        Write(lengthInBytes ? byteLength : value.Count);
 #if NET6_0_OR_GREATER
-        if (value is List<T> list)
-        {
-            Write(MemoryMarshal.Cast<T, byte>(CollectionsMarshal.AsSpan(list)));
-        }
+        Write(MemoryMarshal.Cast<T, byte>(CollectionsMarshal.AsSpan(value)));
 #else
         Write(MemoryMarshal.Cast<T, byte>(value.ToArray()).ToArray());
 #endif
@@ -1742,7 +1716,46 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteList<T>(List<T>? value, int length, bool lengthInBytes = false) where T : struct
     {
-        throw new NotImplementedException();
+#if NET6_0_OR_GREATER
+        WriteCollection<T>(CollectionsMarshal.AsSpan(value), length, lengthInBytes);
+#else
+        WriteCollection<T>(value?.ToArray(), length, lengthInBytes);
+#endif
+    }
+
+    private int GetCollectionByteLength<T>(int length, bool lengthInBytes) where T : struct
+    {
+        EnsureValidLength(length);
+        var byteLength = lengthInBytes ? length : checked(length * Unsafe.SizeOf<T>());
+        EnsureValidLength(byteLength);
+        return byteLength;
+    }
+
+    private void WriteCollection<T>(ReadOnlySpan<T> value, int length, bool lengthInBytes) where T : struct
+    {
+        var byteLength = GetCollectionByteLength<T>(length, lengthInBytes);
+        var bytes = MemoryMarshal.Cast<T, byte>(value);
+        var count = Math.Min(bytes.Length, byteLength);
+
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        Write(bytes.Slice(0, count));
+#else
+        Write(bytes.Slice(0, count).ToArray());
+#endif
+
+        var remaining = byteLength - count;
+        if (remaining == 0)
+        {
+            return;
+        }
+
+        var padding = new byte[Math.Min(remaining, 4096)];
+        while (remaining > 0)
+        {
+            var paddingLength = Math.Min(remaining, padding.Length);
+            Write(padding, 0, paddingLength);
+            remaining -= paddingLength;
+        }
     }
 
     public void WriteList_deprec<T>(List<T>? value, bool lengthInBytes = false) where T : struct
@@ -1755,6 +1768,27 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         WriteDeprecVersion();
         WriteList(value, length, lengthInBytes);
+    }
+
+    /// <summary>Writes a count followed by node bodies without reference indices or class IDs. Null entries cannot be represented.</summary>
+    public void WriteArrayNode<T>(T?[]? value) where T : IClass
+    {
+        if (value is not null && value.Any(static item => item is null))
+        {
+            throw new ArgumentException("Direct node arrays cannot contain null entries.", nameof(value));
+        }
+
+        Write(value?.Length ?? 0);
+
+        if (value is null)
+        {
+            return;
+        }
+
+        foreach (var item in value)
+        {
+            WriteNode(item);
+        }
     }
 
     public void WriteArrayNodeRef<T>(T?[]? value) where T : IClass
@@ -1775,7 +1809,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteArrayNodeRef<T>(T?[]? value, int length) where T : IClass
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteNodeRef(value is not null && i < value.Length ? value[i] : default);
+        }
     }
 
     public void WriteArrayNodeRef_deprec<T>(T?[]? value) where T : IClass
@@ -1783,6 +1822,15 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteDeprecVersion();
         WriteArrayNodeRef(value);
     }
+
+    public void WriteJaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = null, int? outerLength = null) where T : IClass
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
+        {
+            foreach (var item in row)
+            {
+                WriteNodeRef(item);
+            }
+        });
 
     public void WriteListNodeRef<T>(List<T?>? value) where T : IClass
     {
@@ -1802,7 +1850,12 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
     public void WriteListNodeRef<T>(List<T?>? value, int length) where T : IClass
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            WriteNodeRef(value is not null && i < value.Count ? value[i] : default);
+        }
     }
 
     public void WriteListNodeRef_deprec<T>(List<T?>? value) where T : IClass
@@ -1811,6 +1864,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteListNodeRef(value);
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod
     {
         if (value is null)
@@ -1823,21 +1877,40 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         foreach (var item in value)
         {
-            WriteNodeRef(item?.Node, item?.File);
+            WriteNodeRef(item?.ToNodeRef());
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var item = value is not null && i < value.Length ? value[i] : null;
+            WriteNodeRef(item?.ToNodeRef());
+        }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteArrayExternalNodeRef(value);
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
+    public void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
+        {
+            foreach (var item in row)
+            {
+                WriteNodeRef(item?.ToNodeRef());
+            }
+        });
+
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod
     {
         if (value is null)
@@ -1850,19 +1923,54 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         foreach (var item in value)
         {
-            WriteNodeRef(item.Node, item.File);
+            WriteNodeRef(item.ToNodeRef());
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod
     {
-        throw new NotImplementedException();
+        EnsureValidLength(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var item = value is not null && i < value.Count ? value[i] : null;
+            WriteNodeRef(item?.ToNodeRef());
+        }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteListExternalNodeRef(value);
+    }
+
+
+    public void WriteArrayWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0)
+        where T : IWritable<TNode>, new() where TNode : IClass
+    {
+        EnsureValidLength(length);
+        for (var i = 0; i < length; i++)
+        {
+            WriteWritable<T, TNode>(value is not null && i < value.Length ? value[i] : new T(), node, version);
+        }
+    }
+
+    public void WriteArrayWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IWritable<TNode>, new() where TNode : IClass
+    {
+        var length = value?.Length ?? 0;
+        if (byteLengthPrefix)
+        {
+            if (length > byte.MaxValue) throw new ArgumentOutOfRangeException(nameof(value));
+            Write((byte)length);
+        }
+        else
+        {
+            Write(length);
+        }
+        WriteArrayWritable(value, node, length, version);
     }
 
     public void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
@@ -1894,13 +2002,87 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    public void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new()
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
+        {
+            foreach (var item in row)
+            {
+                WriteWritable(item, version);
+            }
+        });
+
+    private void WriteJaggedArrayRows<T>(T[][]? value, int? innerLength, int? outerLength, Action<T[]> writeRow)
+    {
+        if (innerLength is < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(innerLength));
+        }
+
+        if (outerLength is < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(outerLength));
+        }
+
+        var count = value?.Length ?? 0;
+        EnsureValidLength(count);
+
+        if (innerLength.HasValue)
+        {
+            EnsureValidLength(innerLength.Value);
+        }
+
+        if (outerLength.HasValue && count != outerLength.Value)
+        {
+            throw new InvalidOperationException("Invalid outer array length.");
+        }
+
+        if (value is not null)
+        {
+            foreach (var row in value)
+            {
+                if (innerLength.HasValue && row?.Length != innerLength.Value)
+                {
+                    throw new InvalidOperationException("Invalid inner array length.");
+                }
+
+                if (row is not null)
+                {
+                    EnsureValidLength(row.Length);
+                }
+            }
+        }
+
+        if (!outerLength.HasValue)
+        {
+            Write(count);
+        }
+
+        if (value is not null)
+        {
+            foreach (var row in value)
+            {
+                if (!innerLength.HasValue)
+                {
+                    Write(row?.Length ?? 0);
+                }
+
+                if (row is null)
+                {
+                    continue;
+                }
+
+                writeRow(row);
+            }
+        }
+    }
+
     public void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
     {
         WriteDeprecVersion();
         WriteArrayWritable(value, byteLengthPrefix, version);
     }
 
-    public void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
+    public void WriteListWritable<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new()
     {
         if (value is null)
         {
@@ -1929,7 +2111,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
-    public void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
+    public void WriteListWritable_deprec<T>(List<T>? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable?, new()
     {
         WriteDeprecVersion();
         WriteListWritable(value, byteLengthPrefix, version);
@@ -1988,6 +2170,18 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteDeprecVersion();
         WriteArrayId(value);
     }
+
+    public void WriteJaggedArrayId(string[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArrayId(row, row.Length));
+
+    public void WriteJaggedArrayString(string[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
+    public void WriteJaggedArrayIdent(Ident[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
+
+    public void WriteJaggedArrayPackDesc(PackDesc[][]? value, int? innerLength = null, int? outerLength = null)
+        => WriteJaggedArrayRows(value, innerLength, outerLength, row => WriteArray(row, row.Length));
 
     public void WriteListId(List<string>? value)
     {
@@ -2078,7 +2272,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(0);
 
         using var ms = new MemoryStream();
-        using var wBuffer = new GbxWriter(ms);
+        using var wBuffer = new GbxWriter(ms, Settings with { CloseStream = false });
         using var _ = new Encapsulation(wBuffer);
 
         action(wBuffer);
@@ -2104,39 +2298,31 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteData(value.Data);
     }
 
-    internal void WriteChunkId(uint chunkId)
+    /// <returns>The raw chunk ID that was written.</returns>
+    internal uint WriteChunkId(uint chunkId)
     {
-        if (ClassIdRemapMode == ClassIdRemapMode.Latest)
+        var rawChunkId = ClassIdRemapMode switch
         {
-            WriteHexUInt32(chunkId);
-            return;
-        }
+            ClassIdRemapMode.Latest => chunkId,
+            ClassIdRemapMode.Id2008 when (chunkId & 0xFFFFF000) == 0x2E001000 => 0x0301A000 | (chunkId & 0xFFF),
+            _ => ClassManager.Unwrap(chunkId)
+        };
 
-        if (ClassIdRemapMode == ClassIdRemapMode.Id2008 && (chunkId & 0xFFFFF000) == 0x2E001000)
-        {
-            WriteHexUInt32(0x0301A000 | (chunkId & 0xFFF));
-            return;
-        }
-
-        var unwrappedChunkId = ClassManager.Unwrap(chunkId);
-        WriteHexUInt32(unwrappedChunkId);
+        WriteHexUInt32(rawChunkId);
+        return rawChunkId;
     }
 
-    internal void WriteClassId(uint classId)
+    /// <returns>The raw class ID that was written.</returns>
+    internal uint WriteClassId(uint classId)
     {
-        if (ClassIdRemapMode == ClassIdRemapMode.Latest)
+        var rawClassId = ClassIdRemapMode switch
         {
-            WriteHexUInt32(classId);
-            return;
-        }
-        
-        if (ClassIdRemapMode == ClassIdRemapMode.Id2008 && classId == 0x2E001000)
-        {
-            WriteHexUInt32(0x0301A000);
-            return;
-        }
+            ClassIdRemapMode.Latest => classId,
+            ClassIdRemapMode.Id2008 when classId == 0x2E001000 => 0x0301A000u,
+            _ => ClassManager.Unwrap(classId)
+        };
 
-        var unwrappedClassId = ClassManager.Unwrap(classId);
-        WriteHexUInt32(unwrappedClassId);
+        WriteHexUInt32(rawClassId);
+        return rawClassId;
     }
 }

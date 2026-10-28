@@ -1,32 +1,32 @@
 CGamePlayerProfileChunk_GlobalInterfaceSettings 0x03179000
 - inherits: CGamePlayerProfileChunk
 
-0x001 (skippable)
- version
- SPluginSettings[] PluginSettings
+0x001 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
+  version
+  SPluginSettings[] PluginSettings
 
-0x002 (skippable)
- version
- byte
- 
-0x003 (skippable)
- version
- byte
- 
-0x004 (skippable)
- version
- bool OpenWebLinksInSteamOverlay
- v1+
-  bool SynchonizeSteamWorkshopFiles
-  v2+
-   bool PreferSteamScreenshots
+0x002 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte
 
-0x005 (skippable)
- version
- int
+0x003 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  byte
+
+0x004 (skippable) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
+  version
+  bool OpenWebLinksInSteamOverlay
+  v1+
+    bool SynchonizeSteamWorkshopFiles
+    v2+
+      bool PreferSteamScreenshots
+
+0x005 (skippable) [MP3, TMT, MP4, TM2020]
+  version
+  int
 
 archive SPluginSettings
- string
- float
- float
- float
+  string
+  float
+  float
+  float

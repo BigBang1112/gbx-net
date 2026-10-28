@@ -1,11 +1,22 @@
 CPlugBitmapRenderCubeMap 0x09088000
 - inherits: CPlugBitmapRender
 
-0x001
- uint
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // legacy cube settings
+  int CubeFaceCount = 6
+  float NearZ = 0.5f
+  float FarZ = 1000f
 
-0x002
- int CubeFaceCount
- float NearZ
- float FarZ
- float MinDistToUpdate
+0x001 [TMF, MP3, TMT, MP4, TM2020] // flags
+  datauint Flags
+
+0x002 (base: 0x000) [TMF, MP3, TMT, MP4, TM2020] // cube settings and update distance
+  base
+  float MinDistToUpdate = 1f
+
+0x003 // image-space bitmap and distance
+  CPlugBitmap BitmapImageSpace
+  float BitmapImageSpaceDistToCenter
+
+0x004 (base: 0x003) [TMF, TMT, MP4, TM2020] // image-space bitmap and scaling
+  base
+  float BitmapImageSpaceScaleHeight = 1f

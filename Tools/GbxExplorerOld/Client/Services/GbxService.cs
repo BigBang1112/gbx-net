@@ -119,7 +119,7 @@ public class GbxService : IGbxService
     private static async Task<MemoryStream?> VerifyAndCreateGbxStreamAsync(Stream stream, CancellationToken cancellationToken)
     {
         var magicBuffer = new byte[3];
-        await stream.ReadAsync(magicBuffer, cancellationToken);
+        await stream.ReadExactlyAsync(magicBuffer, cancellationToken);
 
         if (!magicBuffer.SequenceEqual(gbxMagic))
         {

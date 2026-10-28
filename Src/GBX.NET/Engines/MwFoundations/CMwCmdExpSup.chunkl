@@ -1,0 +1,2 @@
+CMwCmdExpSup 0x0104C000
+- inherits: CMwCmdExpBoolBin

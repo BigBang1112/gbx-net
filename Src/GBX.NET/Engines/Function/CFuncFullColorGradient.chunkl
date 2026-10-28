@@ -1,0 +1,14 @@
+CFuncFullColorGradient 0x05039000
+- inherits: CFunc
+
+0x000 [TMU, TMF]
+  vec3 KeyFrameValue0
+  float
+  vec3 KeyFrameValue1
+  float
+  vec3 KeyFrameValue2
+  float
+  vec3 KeyFrameValue3
+  float
+  float KeyFramePos1
+  float KeyFramePos2

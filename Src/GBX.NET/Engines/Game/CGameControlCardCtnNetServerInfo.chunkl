@@ -1,0 +1,2 @@
+CGameControlCardCtnNetServerInfo 0x030BF000
+- inherits: CGameControlCard

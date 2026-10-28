@@ -1,0 +1,76 @@
+CGameApp 0x03005000
+
+0x000 [TMU]
+  CMwNod
+
+0x001 (skippable)
+  string
+  string
+  string
+
+0x002 [TMU]
+  CMwNod
+
+0x003 (skippable)
+  string
+  string
+  string
+  string
+
+0x004 (skippable)
+  string
+  string
+  string
+  string
+  string
+
+0x005 (skippable) [TMU]
+  string
+  string
+  string
+  string
+  string
+  bool
+
+0x006 [TMU]
+  CMwNod
+
+0x007
+  int
+  CMwNod
+
+0x008 (skippable)
+  string
+  string
+  string
+  string
+  string
+  string
+  int
+  string
+  bool
+
+0x009 (skippable) [TMF]
+  string
+  string
+  string
+  string
+  string
+  string
+  int
+  string
+  bool
+  bool
+
+0x00B (skippable) [TM2020] // legacy application metadata
+  string
+  string
+  string
+  string
+  string
+  string
+  int
+  string
+  string
+  int
+  int

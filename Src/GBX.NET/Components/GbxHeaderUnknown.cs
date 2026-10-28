@@ -24,7 +24,7 @@ public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHe
     public override GbxHeaderUnknown DeepClone()
 #endif
     {
-        var clone = new GbxHeaderUnknown(Basic, ClassId);
+        var clone = new GbxHeaderUnknown(Basic, ClassId) { NumNodes = NumNodes };
 
         foreach (var chunk in UserData)
         {

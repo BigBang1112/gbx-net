@@ -1,0 +1,29 @@
+CControlScriptEditor 0x07034000
+- inherits: CControlBase
+
+0x000 // legacy syntax colors
+  vec4 KeywordColor
+  vec4 OperatorColor
+  vec4 ConstantColor
+  vec4 CommentColor
+  vec4 ClassNameColor
+  vec4 IdentColor
+  vec4 OthersColor
+  vec4 DirectiveColor
+  vec4 UnexpectedColor
+
+0x001 // ShowLineNumbers
+  bool ShowLineNumbers
+
+0x002 // syntax colors
+  version
+  vec4 KeywordColor
+  vec4 OperatorColor
+  vec4 ConstantColor
+  vec4 CommentColor
+  vec4 ClassNameColor
+  vec4 IdentColor
+  vec4 OthersColor
+  vec4 DirectiveColor
+  vec4
+  vec4 UnexpectedColor

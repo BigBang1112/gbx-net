@@ -1,0 +1,55 @@
+CControlLabel 0x07006000
+- inherits: CControlText
+
+0x000
+  CPlugFont
+  vec2
+  vec4
+
+0x001
+  string Label
+  DontDrawText = true
+
+0x002
+  string Label
+  bool DontDrawText
+
+0x003
+  int MaxLine = -1 (inherited)
+
+0x004
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
+
+0x005
+  string Label
+  CPlugBitmap Bitmap
+  bool DontDrawText
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
+
+0x006 [TMU]
+  string Label
+  CPlugBitmap Bitmap
+  bool DontDrawText
+  int MaxLine = -1 (inherited)
+  float ClipLength = -1f (inherited)
+  int TextMode = 3 (inherited)
+
+0x007
+  string Label
+  CPlugBitmap Bitmap
+  bool DontDrawText
+
+0x008 (skippable) [MP4, TM2020]
+  version
+  vec4 ImageColor = (1, 1, 1, 1)
+
+0x009 [TM2020.v1]
+  version
+  bool DontDrawText
+  v1+
+    CPlugBitmap Bitmap
+  string Label
+  v0=
+    CPlugBitmap Bitmap

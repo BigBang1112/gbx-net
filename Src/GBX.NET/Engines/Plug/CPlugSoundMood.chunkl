@@ -1,0 +1,15 @@
+CPlugSoundMood 0x0901B000
+- inherits: CPlugSound
+
+0x000 [TMU, TMF, MP4, TM2020]
+  int EventCount (local, write: n.Events.Length)
+  int EventPeriodCount (local, write: n.Events.Length)
+  Event[EventCount] Events
+
+0x001 [MP4, TM2020]
+  version
+  CPlugFileSnd InsideFileSnd
+
+archive Event
+  CPlugFileSnd Sound
+  float Period

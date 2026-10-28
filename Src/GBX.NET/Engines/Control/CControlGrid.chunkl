@@ -1,0 +1,33 @@
+CControlGrid 0x07015000
+- inherits: CControlContainer
+
+0x000
+  vec2[n.Childs.Length] ChildsSquares
+
+0x001 [TMU]
+  CControlLayout MainLayout
+  bool
+  bool
+  float ForceColumnsUniformWidth = -1f
+  float ForceRowsUniformHeight = -1f
+
+0x002
+  float[] ForceColumnsWidths
+
+0x003 [TMU]
+  float[] ForceColumnsWidths
+  bool PackEmptyRows = true
+
+0x004
+  bool
+  bool
+
+0x005
+  float HorizontalSkewOffset
+  float VerticalSkewOffset
+
+0x006
+  version
+  bool PagedGrid_Enable
+  int PagedGrid_FastPageStep = 10
+  int PagedGrid_NbLinesPerPage = 10

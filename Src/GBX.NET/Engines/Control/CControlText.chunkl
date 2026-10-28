@@ -1,0 +1,7 @@
+CControlText 0x07031000
+- inherits: CControlBase
+
+0x000
+  int MaxLine = -1
+  float ClipLength = -1f
+  int TextMode = 3

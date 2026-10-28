@@ -171,17 +171,28 @@ public partial class Gbx : IGbx
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    public virtual Gbx DeepClone() => new(Header.DeepClone(), Body.DeepClone())
+    public virtual Gbx DeepClone()
+    {
+        var context = new DeepCloneContext();
+        var clone = CreateCloneShell();
+        context.Register(this, clone);
+        clone.Node = context.Clone(Node);
+        return clone;
+    }
+
+#pragma warning disable GBXNET10001
+    internal virtual Gbx CreateCloneShell() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
         RefTable = RefTable?.DeepClone(),
         ReadSettings = ReadSettings,
-        Node = Node?.DeepClone(),
+        Node = Node,
         IdVersion = IdVersion,
         PackDescVersion = PackDescVersion,
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
+#pragma warning restore GBXNET10001
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
@@ -203,6 +214,9 @@ public partial class Gbx : IGbx
 
         var header = GbxHeader.Parse(reader, out var node);
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
+
+        if (refTable is not null && node is CMwNod owner && filePath is not null)
+            refTable.LoadContext = NodeRefLoadContext.Create(filePath, owner);
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
@@ -241,6 +255,7 @@ public partial class Gbx : IGbx
         }
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
+        refTable?.LoadContext?.MarkParsed();
         gbx.RefTable = refTable;
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;
@@ -312,7 +327,7 @@ public partial class Gbx : IGbx
         var header = GbxHeader.Parse(reader, out var node);
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
-        
+
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             if (logger is not null)
@@ -436,6 +451,10 @@ public partial class Gbx : IGbx
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
+        var logger = settings.Logger;
+        logger?.LogInformation("Gbx Save (IMPLICIT)");
+        logger?.LogDebug("File path: {FilePath}", (stream as FileStream)?.Name);
+
         var packDescVersion = settings.PackDescVersion ?? PackDescVersion.GetValueOrDefault(3);
         var deprecVersion = DeprecVersion.GetValueOrDefault(10);
         var classIdRemapMode = settings.ClassIdRemapMode ?? ClassIdRemapMode;
@@ -446,16 +465,25 @@ public partial class Gbx : IGbx
             DeprecVersion = deprecVersion,
             ClassIdRemapMode = classIdRemapMode
         };
-        
-        Header.Write(writer, Node, settings);
+
+        Header.Write(writer, Node);
 
         var hasRawBodyData = !Body.RawData.IsDefaultOrEmpty;
+        var outputRefTable = hasRawBodyData ? RefTable : new GbxRefTable
+        {
+            AncestorLevel = RefTable?.AncestorLevel ?? 0,
+            InferAncestorLevelOnWrite = RefTable is null,
+            FileSystemPath = stream is FileStream outputFile ? Path.GetDirectoryName(outputFile.Name) : RefTable?.FileSystemPath
+        };
 
         var bodyUncompressedMs = default(MemoryStream);
 
+        var numNodes = default(int);
+
         if (hasRawBodyData)
         {
-            writer.Write(Header.NumNodes);
+            numNodes = Header.NumNodes;
+            writer.Write(numNodes);
         }
         else if (Node is not null)
         {
@@ -463,14 +491,17 @@ public partial class Gbx : IGbx
 
             using var bodyWriter = new GbxWriter(bodyUncompressedMs, settings with { CloseStream = false })
             {
+                IsRelease = writer.IsRelease,
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
+                ReferenceTable = outputRefTable,
                 ClassIdRemapMode = classIdRemapMode
             };
 
             Body.WriteUncompressed(Node, bodyWriter);
 
-            writer.Write(bodyWriter.NodeDict.Count + 1);
+            numNodes = bodyWriter.NodeDict.Count;
+            writer.Write(numNodes);
             writer.LoadFrom(bodyWriter);
 
             bodyUncompressedMs.Position = 0;
@@ -484,13 +515,21 @@ public partial class Gbx : IGbx
             throw new Exception("Node cannot be null for a known header, as the node contains the header chunk definitions.");
         }
 
-        if (RefTable is null)
+        logger?.LogDebug("Number of nodes: {NumNodes}", numNodes);
+
+        if (numNodes > short.MaxValue)
+        {
+            logger?.LogWarning("Number of nodes {NumNodes} exceeds 32767, which may cause the game to ignore the Gbx.", numNodes);
+        }
+
+        if (outputRefTable is null)
         {
             writer.Write(0); // number of external nodes
+            logger?.LogDebug("Number of external nodes: {NumExternalNodes}", 0);
         }
         else
         {
-            RefTable.Write(writer, Header, hasRawBodyData);
+            outputRefTable.Write(writer, Header, hasRawBodyData);
         }
 
         if (hasRawBodyData)
@@ -501,6 +540,15 @@ public partial class Gbx : IGbx
         {
             Body.Write(writer, bodyUncompressedMs, Header.Basic.CompressionOfBody);
             bodyUncompressedMs.Dispose();
+        }
+
+        if (logger is not null)
+        {
+            logger.LogDebug("Id version: {IdVersion}", writer.IdVersion);
+            logger.LogDebug("PackDesc version: {PackDescVersion}", writer.PackDescVersion);
+            logger.LogDebug("Deprec version: {DeprecVersion}", writer.DeprecVersion);
+            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", writer.ClassIdRemapMode);
+            logger.LogInformation(Header is GbxHeaderUnknown ? "Unknown Gbx completed." : "Known Gbx completed.");
         }
     }
 
@@ -882,7 +930,7 @@ public class Gbx<
     /// <param name="node">Node.</param>
     public Gbx(T node) : this(node, GbxHeaderBasic.Default)
     {
-        
+
     }
 
     /// <summary>
@@ -902,10 +950,13 @@ public class Gbx<
     [Experimental("GBXNET10001")]
 #endif
 #if NETSTANDARD2_0
-    public override Gbx DeepClone() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
+    public override Gbx DeepClone() => base.DeepClone();
 #else
-    public override Gbx<T> DeepClone() => new(Header.DeepClone(), Body.DeepClone(), (T)Node.DeepClone())
+    public override Gbx<T> DeepClone() => (Gbx<T>)base.DeepClone();
 #endif
+
+#pragma warning disable GBXNET10001
+    internal override Gbx CreateCloneShell() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), Node)
     {
         FilePath = FilePath,
         RefTable = RefTable?.DeepClone(),
@@ -915,6 +966,7 @@ public class Gbx<
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
+#pragma warning restore GBXNET10001
 
     /// <summary>
     /// Implicitly casts <see cref="Gbx{T}"/> to its <see cref="Gbx{T}.Node"/>.

@@ -1,0 +1,18 @@
+CHmsZoneOverlay 0x06009000
+- inherits: CHmsZone
+
+0x000 [TMU]
+  bool IsOrthographic
+  boxaligned Frustum
+  bool
+  float
+  float
+  bool UseZBuffer
+  rect
+
+0x001 [MP4]
+  bool IsOrthographic
+  boxaligned Frustum
+  int AdaptRatio
+  bool UseZBuffer
+  rect

@@ -17,11 +17,11 @@ public partial class CGameCtnMediaClip
         public sealed record Parameter
         {
             public byte CatalogIndex { get; set; }
-            public byte FunctionIndex { get; set; }
+            public int FunctionIndex { get; set; }
             public float Value { get; set; }
             public string? StringValue { get; set; }
 
-            internal static bool IsStringParameter(uint functionIndex) => (CGameCtnChallenge.TMUnlimiter.ParameterName)functionIndex switch
+            internal static bool IsStringParameter(int functionIndex) => (CGameCtnChallenge.TMUnlimiter.ParameterName)functionIndex switch
             {
                 CGameCtnChallenge.TMUnlimiter.ParameterName.World_ExecuteParameterSet
                 or CGameCtnChallenge.TMUnlimiter.ParameterName.World_ExecuteScript

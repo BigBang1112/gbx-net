@@ -1,0 +1,10 @@
+CPlugCharPhyMaterials 0x090FB000
+
+0x000
+  int[] MaterialIndices
+  CPlugCharPhyMaterial[] Materials (deprec)
+
+0x002 [TM2020.v1]
+  version
+  byte[]
+  CPlugCharPhyMaterial[] Materials

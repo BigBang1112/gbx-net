@@ -1,1 +1,8 @@
 CPlugAnimGraphStack 0x09138000
+
+0x000 [TM2020.v13] // graphs and input action delays
+  version
+  id Name
+  CPlugAnimGraph[] Graphs
+  v12+
+    CPlugAnimFile.LegacyInputActionDelay[] InputActionDelays

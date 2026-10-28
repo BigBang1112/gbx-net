@@ -1,1 +1,5 @@
 CPlugAnimGraph 0x0912B000
+
+0x000 [TM2020.v13] // graph
+  version
+  CPlugAnimFile.LegacyGraph Graph (version: Version)

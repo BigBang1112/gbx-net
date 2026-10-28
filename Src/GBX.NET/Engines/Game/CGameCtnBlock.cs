@@ -115,13 +115,12 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         set => SetFlagBit(PillarBit, value);
     }
 
-    private CGameCtnBlockSkin? skin;
     /// <summary>
     /// Used skin on the block.
     /// </summary>
     public CGameCtnBlockSkin? Skin
     {
-        get => skin;
+        get => skinRef?.Resolve();
         set
         {
             if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
@@ -130,7 +129,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
             }
 
             flags |= 1 << SkinnableBit;
-            skin = value;
+            NodeRef.SetEmbedded(ref skinRef, value);
         }
     }
 
@@ -143,14 +142,17 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         set => SetFlagBit(ReplacementBit, value);
     }
 
-    private CGameWaypointSpecialProperty? waypointSpecialProperty;
     /// <summary>
     /// Additional block parameters.
     /// </summary>
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
-        get => waypointSpecialProperty;
-        set => SetFlagBitAndObject(WaypointBit, ref waypointSpecialProperty, value);
+        get => waypointSpecialPropertyRef?.Resolve();
+        set
+        {
+            SetFlagBit(WaypointBit, value is not null);
+            NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
+        }
     }
 
     /// <summary>
@@ -216,7 +218,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public CGameCtnBlock()
     {
-        
+
     }
 
     public partial class Chunk03057002
@@ -230,7 +232,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
             var flags = r.ReadInt32();
             if ((flags & (1 << 27)) != 0)
             {
-                n.skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+                r.ReadNodeRef(ref n.skinRef);
             }
             n.Flags = 0;
             n.Variant = (byte)(flags & 0xFFF);
@@ -250,15 +252,15 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
                 ((n.Flags & 0xF000) << 12);
 
             // in case of private value desync
-            if (n.skin is not null)
+            if ((n.skinRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 flags |= 1 << 27;
             }
 
             w.Write(flags);
-            if (n.skin is not null)
+            if ((n.skinRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                w.WriteNodeRef<CGameCtnBlockSkin>(n.skin);
+                w.WriteNodeRef(n.skinRef);
             }
         }
     }
@@ -298,6 +300,15 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03057002;
 
-    [ArchiveGenerationOptions( StructureKind = StructureKind.SeparateReadAndWrite )]
-    public partial class SSquareCardEventIds;
+    public partial class SSquareCardEventIds
+    {
+        [Obsolete("Use Version instead.")]
+        public int U01 { get => Version; set => Version = value; }
+
+        [Obsolete("Use BlockUnitIndex instead.")]
+        public int U02 { get => BlockUnitIndex; set => BlockUnitIndex = value; }
+
+        [Obsolete("Use CardEventIds instead.")]
+        public Ident[]? U03 { get => CardEventIds; set => CardEventIds = value; }
+    }
 }

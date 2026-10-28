@@ -9,6 +9,7 @@ COPY .git/ ./.git/
 RUN dotnet workload install wasm-tools
 
 # copy csproj and restore as distinct layers
+COPY Src/Directory.Build.targets Src/
 COPY Tools/GbxExplorerOld/Client/*.csproj Tools/GbxExplorerOld/Client/
 COPY Src/GBX.NET/*.csproj Src/GBX.NET/
 COPY Src/GBX.NET.LZO/*.csproj Src/GBX.NET.LZO/

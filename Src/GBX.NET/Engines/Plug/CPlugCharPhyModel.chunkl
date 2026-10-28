@@ -1,0 +1,930 @@
+CPlugCharPhyModel 0x090C9000
+
+0x000 [MP4, TM2020]
+  id Name
+
+0x00D [MP4.v2, TM2020.v2]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  v2+
+    bool
+
+0x00E [MP4, TM2020] // jump
+  version
+  bool
+  bool
+  int
+  float
+  float
+
+0x00F [MP4.v4, TM2020.v5] // run
+  version
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  v2-
+    CFuncKeysReal
+    float
+  v1+
+    float
+    float
+  v2+
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+  v4+
+    bool
+
+0x010 [MP4.v1, TM2020.v3]
+  version
+  PlugCurve (version: Version - 3)
+  PlugCurve (version: Version - 3)
+  v0=
+    float
+  v2+
+    int
+    PlugCurve (version: Version - 3)
+    PlugCurve (version: Version - 3)
+    PlugCurve (version: Version - 3)
+
+0x011 [MP4.v12, TM2020.v16]
+  version
+  PlugCurve (version: Version - 15)
+  v1+
+    float
+  v2=
+    bool
+  v3=
+    int
+  v5+
+    float
+  v6+
+    float
+  v7+
+    float
+    float
+  v8+
+    float
+    bool
+  v9+
+    PlugCurve (version: Version - 15)
+  v10+
+    bool
+  v11+
+    bool
+  v12+
+    bool
+  v13+
+    float
+  v14+
+    int
+  v16+
+    string[]
+
+0x012 [MP4.v26, TM2020.v28] // walk
+  version
+  PlugCurve (version: Version - 28)
+  PlugCurve (version: Version - 28)
+  v10-
+    CFuncKeysReal
+  v16-
+    float
+  float
+  v2+
+    bool
+  v3=
+    float
+  v4+
+    int
+  v5+
+    int
+    PlugCurve (version: Version - 28)
+  if Version >= 6 && Version <= 8
+    float
+    float
+    CFuncKeysReal
+    CFuncKeysReal
+  v6+
+    PlugCurve (version: Version - 28)
+  v7+
+    PlugCurve (version: Version - 28)
+    PlugCurve (version: Version - 28)
+  v8+
+    PlugCurve (version: Version - 28)
+  v9+
+    int
+    PlugCurve (version: Version - 28)
+    PlugCurve (version: Version - 28)
+  v10+
+    PlugCurve (version: Version - 28)
+  v12=
+    CMwNod
+    CMwNod
+  v13+
+    PlugCurve (version: Version - 28)
+  v14+
+    bool
+  v15+
+    PlugCurve (version: Version - 28)
+  if Version >= 15 && Version <= 18
+    float
+  v19+
+    PlugCurve (version: Version - 28)
+  v16+
+    PlugCurve (version: Version - 28)
+  v18+
+    PlugCurve (version: Version - 28)
+    float
+  v20+
+    float
+    float
+  if Version >= 20 && Version <= 22
+    CMwNod
+  v21+
+    float
+  v23+
+    float
+    float
+    float
+  v24+
+    PlugCurve (version: Version - 28)
+  v25+
+    PlugCurve (version: Version - 28)
+  v26+
+    bool
+  v27+
+    int
+    PlugCurve (version: Version - 28)
+
+0x013 [MP4.v6, TM2020.v7] // sneak
+  version
+  v2-
+    CMwNod
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 7)
+  float
+  v2+
+    float
+  v4+
+    float
+    float
+  v5=
+    float
+
+0x014 [MP4.v9, TM2020.v10] // attractor
+  version
+  CMwNod
+  CMwNod
+  float
+  v1-
+    float
+  float
+  float
+  v1-
+    float
+  float
+  float
+  float
+  float
+  v0=
+    float
+  if Version == 0 || Version == 4 || Version == 5 || Version == 6
+    bool
+    bool
+    float
+  if Version == 0 || Version >= 4
+    bool
+  if Version == 0 || Version == 4 || Version == 5 || Version == 6
+    bool
+  if Version == 0 || Version >= 4
+    float
+    float
+    float
+  if Version >= 1 && Version <= 3
+    CMwNod
+  v4+
+    bool
+  if Version >= 5 && Version <= 8
+    float
+  v5=
+    float
+  v6+
+    float
+    PlugCurve (version: Version - 10)
+  v7+
+    bool
+  v8+
+    bool
+  v9+
+    PlugCurve (version: Version - 10)
+
+0x015 [MP4.v1, TM2020.v2]
+  version
+  PlugCurve (version: Version - 2)
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 2)
+
+0x016 [MP4.v2, TM2020.v3] // swim
+  version
+  v2+
+    bool
+  PlugCurve (version: Version - 3)
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 3)
+  float
+  bool
+
+0x017 [MP4.v6, TM2020.v7] // swim
+  version
+  v6+
+    bool
+  PlugCurve (version: Version - 7)
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 7)
+  v4-
+    float
+  v1-
+    float
+    float
+  v2+
+    float
+    float
+    PlugCurve (version: Version - 7)
+  v5+
+    float
+    float
+    float
+    float
+
+0x018 [MP4.v3, TM2020.v4] // sneak
+  version
+  PlugCurve (version: Version - 4)
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 4)
+  float
+  v2=
+    float
+  v3+
+    CPlugSurface
+
+0x019 [MP4.v10, TM2020.v11] // wall jump
+  version
+  bool
+  bool
+  float
+  float
+  float
+  float
+  v1+
+    float
+  if Version >= 2 && Version <= 5
+    int
+  v3+
+    float
+    int
+    PlugCurve (version: Version - 11)
+  v4+
+    int
+    PlugCurve (version: Version - 11)
+  v5=
+    int
+  v6+
+    PlugCurve (version: Version - 11)
+  v7+
+    float
+  v8+
+    bool
+  v9+
+    float
+  v10+
+    bool
+    int
+
+0x01A [MP4, TM2020] // jump
+  version
+  bool
+  float
+  float
+  float
+
+0x01B [MP4.v19, TM2020.v20] // jump
+  version
+  PlugCurve (version: Version - 20)
+  v5-
+    float
+  v6+
+    PlugCurve (version: Version - 20)
+  v1+
+    float
+  v2+
+    int
+    int
+  v4+
+    float
+    float
+    PlugCurve (version: Version - 20)
+  v5+
+    float
+  v7+
+    PlugCurve (version: Version - 20)
+  v8=
+    CMwNod
+  if Version >= 8 && Version <= 10
+    CMwNod
+  v9+
+    float
+  v10+
+    bool
+  v12=
+    float
+  v13+
+    PlugCurve (version: Version - 20)
+  v12+
+    PlugCurve (version: Version - 20)
+  v14+
+    bool
+  if Version >= 14 && Version <= 15
+    CMwNod
+  v15+
+    PlugCurve (version: Version - 20)
+  v16+
+    int
+    int
+    float
+  v17+
+    int
+  v18+
+    int
+    int
+  v19+
+    int
+    int
+
+0x01C [MP4.v21, TM2020.v22] // stamina
+  version
+  ushort
+  v1-
+    float
+  v12-
+    float
+  float
+  PlugCurve (version: Version - 22)
+  if Version >= 1 && Version <= 11
+    float
+  if Version >= 2 && Version <= 13
+    CMwNod
+  if Version >= 3 && Version <= 11
+    PlugCurve (version: Version - 22)
+  if Version >= 4 && Version <= 13
+    float
+  v5+
+    float
+  if Version >= 6 && Version <= 12
+    CMwNod
+  if Version >= 7 && Version <= 12
+    CMwNod
+    CMwNod
+  v8+
+    int
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+  if Version >= 9 && Version <= 10
+    float
+    float
+    float
+    float
+  v10+
+    int
+    int
+    float
+    float
+    float
+    float
+  v13+
+    float
+  v15+
+    float
+  v16+
+    PlugCurve (version: Version - 22)
+  v17=
+    float
+  v18+
+    PlugCurve (version: Version - 22)
+  v19+
+    int
+  v20+
+    bool
+  v21+
+    float
+    float
+    float
+    float
+    float
+    float
+
+0x01D [MP4.v4, TM2020.v5] // gliding
+  version
+  v4+
+    bool
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  v1..2
+    float
+    float
+  v2+
+    int
+  v3+
+    float
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+
+0x01F [MP4.v6, TM2020.v7] // air control
+  version
+  v4+
+    bool
+  PlugCurve (version: Version - 7)
+  PlugCurve (version: Version - 7)
+  v1=
+    float
+  v2+
+    PlugCurve (version: Version - 7)
+  v3+
+    PlugCurve (version: Version - 7)
+  v5+
+    int
+    int
+
+0x020 [MP4.v2, TM2020.v2]
+  version
+  float
+  v2+
+    bool
+
+0x022 [MP4.v6, TM2020.v7]
+  version
+  float
+  v4-
+    float
+  int
+  v4-
+    bool
+    float
+    float
+  if Version >= 1 && Version <= 4
+    bool
+  v1+
+    float
+  v2+
+    float
+    PlugCurve (version: Version - 7)
+    int
+    float
+    float
+    float
+    float
+  v4+
+    float
+  v6+
+    bool
+
+0x023 [MP4.v6, TM2020.v8]
+  version
+  float
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  v1+
+    CPlugCharPhyRecoilModel[]
+  v2+
+    int SmoothingVersion
+    SmoothRealModel[2] Smoothing (version: SmoothingVersion)
+  v3+
+    bool
+    int
+    float
+  v4+
+    float
+    float
+    float
+  v5+
+    float
+    float
+    float
+    float
+  v6+
+    float
+  v7+
+    float
+
+0x024 [MP4.v1, TM2020.v2]
+  version
+  v0=
+    CMwRefBuffer
+  v1+
+    CMwNod
+  v2+
+    CPlugCharPhyMaterial[]
+
+0x025 [MP4.v1, TM2020.v1]
+  version
+  int
+  float
+  float
+  v1=
+    float
+    float
+
+0x026 [MP4.v2, TM2020.v3]
+  version
+  bool
+  PlugCurve (version: Version - 3)
+  v1+
+    float
+
+0x027 [MP4.v10, TM2020.v11] // slide surf
+  version
+  bool
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  v4-
+    float
+  v1+
+    PlugCurve (version: Version - 11)
+  if Version >= 2 && Version <= 4
+    int
+  v2+
+    float
+  v3+
+    float
+  v4+
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
+  v6+
+    PlugCurve (version: Version - 11)
+    bool
+  v7=
+    CMwNod
+  v9+
+    bool
+  v10+
+    PlugCurve (version: Version - 11)
+
+0x028 [MP4.v5, TM2020.v6] // attractor
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  bool
+  float
+  float
+  bool
+  float
+  PlugCurve (version: Version - 6)
+  bool
+  bool
+  PlugCurve (version: Version - 6)
+  float
+  v2=
+    PlugCurve (version: Version - 6)
+    int
+  v3+
+    int
+    int
+    PlugCurve (version: Version - 6)
+  v4+
+    PlugCurve (version: Version - 6)
+  v5+
+    bool
+
+0x029 [MP4.v1, TM2020.v1]
+  version
+  CPlugSurface
+  int
+  v1=
+    float
+    float
+    float
+    float
+
+0x02A [MP4.v1, TM2020.v1]
+  version
+  bool
+  float
+  float
+  float
+
+0x02B [MP4.v6, TM2020.v7] // grapnel
+  version
+  bool GrapnelEnabled
+  float GrapnelCharPhyFrictionCoef
+  float GrapnelInitialSpeed
+  float GrapnelMaxDist
+  float GrapnelMinDist
+  float GrapnelRadius
+  v2+
+    bool GrapnelAutoJump
+    bool GrapnelAutoRetract
+    bool GrapnelElastic
+    bool GrapnelMaintainButtonDown
+    bool GrapnelOnlyInAirState
+    bool GrapnelSwitchElasticNormalEnabled
+  v3+
+    bool GrapnelElasticInstantThrow
+    PlugCurve GrapnelElasticForceTensor (version: Version - 7)
+    PlugCurve GrapnelElasticForceThrow (version: Version - 7)
+    PlugCurve GrapnelElasticForceThrowVertical (version: Version - 7)
+  v4+
+    bool GrapnelElasticUseMouseToStretch
+    float GrapnelMouseStretchSpeed
+    float GrapnelSlowDownGroundStateAllDir
+    float GrapnelSlowDownAllDirCoef
+    float GrapnelSlowDownTractionDirCoef
+  v5+
+    bool GrapnelControlledEndJump
+    bool GrapnelAimControlEndJump
+    int GrapnelAfterGrapnelFrictionDuration
+    PlugCurve GrapnelTractionFromDist (version: Version - 7)
+    float GrapnelOffsetDirYForce
+  v6+
+    bool GrapnelCanFireIfMissed
+    bool GrapnelOnlyOnChar
+    float GrapnelDynaTractionForceCoef
+
+0x02C [MP4.v13, TM2020.v13] // values discarded by all games
+  version
+  bool
+  v2+
+    float
+    bool
+    bool
+  v3+
+    bool
+    bool
+    bool
+    int
+  v4+
+    bool
+  v5+
+    int
+  v6+
+    int
+    int
+  v7+
+    bool
+  v8+
+    int
+    bool
+    int
+    int
+    bool
+    float
+    float
+    int
+  v9+
+    float
+    float
+  v10+
+    int
+    bool
+    int
+    int
+    bool
+    float
+    float
+    int
+    float
+  v11+
+    int
+  v12+
+    float
+  v13+
+    float
+
+0x02D [MP4.v7, TM2020.v8] // power boots
+  version
+  bool PowerBootsAccelEnabled
+  int PowerBootsCooldown
+  int PowerBootsDuration
+  PlugCurve PowerBootsAccelCurveFromVelKmh (version: Version - 8)
+  v2+
+    bool PowerBootsWalkOnWaterEnabled
+  v3+
+    bool PowerBootsStayOnGround
+    float PowerBootsMinSpeedToStayOnGround
+  v4+
+    bool PowerBootsSuperJump
+    float PowerBootsSuperJumpCoef
+  v5+
+    bool PowerBootsJumpEnabled
+  v6+
+    bool PowerBootsStrafeDisabled
+  v7+
+    bool PowerBootsMaintainButtonDown
+
+0x02E [MP4.v4, TM2020.v9] // jet pack
+  version
+  bool JetPackEnabled
+  v2+
+    float // legacy JetPackAirForceCoef, read again from v3
+    float // discarded
+  v3+
+    float JetPackAirForceCoef
+    float JetPackTakeOffImpulse
+    PlugCurve JetPackYForceFromYSpeed (version: Version - 9)
+  v4+
+    int JetPackVersion2
+    bool JetPackReturnToVerticalPitch
+    bool JetPackReturnToVerticalRoll
+    float JetPackClampPitchValueDeg
+    float JetPackClampRollValueDeg
+    float JetPackFrictionRotCoef
+    float JetPackPitchRotationSpeedDegS
+    float JetPackRollRotationSpeedDegS
+  v5+
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+    float
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+  v6+
+    PlugCurve (version: Version - 9)
+    float
+  v7+
+    PlugCurve (version: Version - 9)
+    float
+    float
+  v8+
+    float
+    ushort
+    ushort
+    ushort
+
+0x02F [MP4.v1] // sniper turret
+  version
+  bool SniperTurretEnabled
+  int SniperTurretDuration
+  int SniperTurretCooldown
+  ushort SniperTurretAmmoGain
+
+0x031 [MP4.v4, TM2020.v5]
+  version
+  bool
+  bool
+  bool
+  bool
+  int
+  float
+  bool
+  int
+  int
+  float
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  v2+
+    PlugCurve (version: Version - 5)
+  v3+
+    bool
+    int
+    float
+  v4+
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+
+0x032 [TM2020.v1]
+  version
+  float
+
+0x033 [TM2020.v1]
+  version
+  float
+  float
+  float
+
+0x034 [TM2020.v1]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x035 [TM2020.v10]
+  version
+  float
+  float
+  float
+  float
+  PlugCurve (version: Version - 10)
+  float
+  float
+  float
+  PlugCurve (version: Version - 10)
+  float
+  float
+  float
+  float
+  float
+  v1+
+    float
+    float
+    float
+  v2+
+    float
+    float
+  v3+
+    float
+  v4+
+    float
+  v5+
+    float
+    float
+    float
+    float
+  v6+
+    float
+  v7+
+    float
+    float
+    float
+  v8+
+    float
+    float
+  v9+
+    float
+
+0x036 [TM2020]
+  version
+  float
+  float
+  float
+
+0x037 [TM2020.v1]
+  version
+  float
+  float
+  float
+  float
+  v1+
+    float
+    float
+
+0x038 [TM2020]
+  version
+  float
+  float
+
+archive SmoothRealModel
+  float U01
+  float U02
+  float U03

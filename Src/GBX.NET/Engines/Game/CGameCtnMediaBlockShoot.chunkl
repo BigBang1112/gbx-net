@@ -1,6 +1,6 @@
 CGameCtnMediaBlockShoot 0x03145000
 - inherits: CGameCtnMediaBlock
 
-0x000
- timefloat Start
- timefloat End
+0x000 [TMT, MP4, TM2020]
+  float Start (time)
+  float End (time)

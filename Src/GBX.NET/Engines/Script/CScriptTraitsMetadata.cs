@@ -190,7 +190,7 @@ public partial class CScriptTraitsMetadata
     /// CScriptTraitsGenericContainer::ChunkContents
     /// </summary>
     /// <exception cref="NotSupportedException"></exception>
-    private static ScriptTrait ReadContents(GbxReader r, IScriptType type, bool noContent, int version) => type.Type switch
+    internal static ScriptTrait ReadContents(GbxReader r, IScriptType type, bool noContent, int version) => type.Type switch
     {
         EScriptType.Boolean => new ScriptTrait<bool>(type, !noContent && r.ReadBoolean(asByte: version >= 1)),
         EScriptType.Integer => new ScriptTrait<int>(type, noContent ? default : r.ReadInt32()),
@@ -245,7 +245,7 @@ public partial class CScriptTraitsMetadata
     /// <summary>
     /// CScriptTraitsGenericContainer::ChunkType
     /// </summary>
-    private static IScriptType ReadType(GbxReader r, int version)
+    internal static IScriptType ReadType(GbxReader r, int version)
     {
         var type = (EScriptType)(version >= 1 ? r.ReadByte() : r.ReadInt32());
 
@@ -363,7 +363,7 @@ public partial class CScriptTraitsMetadata
         }
     }
 
-    private static void WriteType(GbxWriter w, IScriptType type, int version)
+    internal static void WriteType(GbxWriter w, IScriptType type, int version)
     {
         if (version >= 1)
         {
@@ -402,7 +402,7 @@ public partial class CScriptTraitsMetadata
         }
     }
 
-    private static void WriteContents(GbxWriter w, ScriptTrait trait, int version)
+    internal static void WriteContents(GbxWriter w, ScriptTrait trait, int version)
     {
         switch (trait)
         {

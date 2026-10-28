@@ -35,6 +35,17 @@ public partial class Pak : IDisposable
     public uint GbxHeadersStart { get; private set; }
     public int? GbxHeadersSize { get; private set; }
     public int? GbxHeadersComprSize { get; private set; }
+
+    /// <summary>
+    /// MD5 of the stored Gbx headers section, including alignment padding from version 17. Available from version 14.
+    /// </summary>
+    public UInt128? GbxHeadersChecksum { get; private set; }
+
+    /// <summary>
+    /// Pack membership mask. Available from version 3.
+    /// </summary>
+    public UInt128? PackMask { get; private set; }
+
     public int? HeaderMaxSize { get; protected set; }
     public uint? Size { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
@@ -42,6 +53,16 @@ public partial class Pak : IDisposable
     public virtual bool IsHeaderPrivate => true;
     public virtual bool UseDefaultHeaderKey => false;
     public virtual bool IsHeaderEncrypted => true;
+    public virtual bool IsDataPrivate => true;
+
+    /// <summary>
+    /// Value XORed into the header and data encryption keys. Available from version 7.
+    /// </summary>
+    public virtual byte[]? KeySalt { get; protected set; }
+
+    protected bool HasKeySalt => KeySalt is { } salt && Array.Exists(salt, x => x != 0);
+
+    private bool IsDataEncrypted => IsDataPrivate || HasKeySalt || (key is not null && Array.Exists(key, x => x != 0));
 
     public AuthorInfo? AuthorInfo { get; protected set; }
 
@@ -101,7 +122,7 @@ public partial class Pak : IDisposable
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    /// <exception cref="global::GBX.NET.PAK.Exceptions.NotAPakException">Stream is not Pak-formatted.</exception>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Pak> ParseAsync(Stream stream, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
@@ -191,10 +212,25 @@ public partial class Pak : IDisposable
             }
         }
 
+        ApplyKeySalt(keyForHeader);
+
         var iv = await r.ReadUInt64Async(cancellationToken);
         var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
+    }
+
+    private void ApplyKeySalt(byte[] encryptionKey)
+    {
+        if (KeySalt is not { } salt)
+        {
+            return;
+        }
+
+        for (var i = 0; i < 16; i++)
+        {
+            encryptionKey[i] ^= salt[i];
+        }
     }
 
     /// <summary>
@@ -206,7 +242,7 @@ public partial class Pak : IDisposable
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task. The task result contains the parsed Pak format.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="filePath"/> is null.</exception>
-    /// <exception cref="NotAPakException">Stream is not Pak-formatted.</exception>
+    /// <exception cref="global::GBX.NET.PAK.Exceptions.NotAPakException">Stream is not Pak-formatted.</exception>
     public static async Task<Pak> ParseAsync(string filePath, byte[]? key = null, KeyType keyType = KeyType.BaseKey, CancellationToken cancellationToken = default)
     {
         var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
@@ -234,7 +270,7 @@ public partial class Pak : IDisposable
 
         if (Version >= 14)
         {
-            await r.ReadBytesAsync(16, cancellationToken); // unused
+            GbxHeadersChecksum = await r.ReadUInt128Async(cancellationToken);
 
             if (Version >= 16)
             {
@@ -244,7 +280,7 @@ public partial class Pak : IDisposable
 
         if (Version >= 3)
         {
-            await r.ReadBytesAsync(16, cancellationToken); // unused
+            PackMask = await r.ReadUInt128Async(cancellationToken);
 
             if (Version == 6)
             {
@@ -314,7 +350,7 @@ public partial class Pak : IDisposable
         {
             var folderIndex = await r.ReadInt32Async(cancellationToken); // index into folders
             var name = (await r.ReadStringAsync(cancellationToken)).Replace('\\', Path.DirectorySeparatorChar); // should this replacement really happen?
-            var u01 = await r.ReadInt32Async(cancellationToken);
+            var u01 = await r.ReadUInt32Async(cancellationToken);
             var uncompressedSize = await r.ReadInt32Async(cancellationToken);
             var compressedSize = await r.ReadInt32Async(cancellationToken);
             var offset = await r.ReadUInt32Async(cancellationToken);
@@ -329,7 +365,7 @@ public partial class Pak : IDisposable
                 .Select(f => f.Name.TrimEnd('\\')));
             var filePath = Path.Combine(folderPath, name);
 
-            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags);
+            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags, u01);
             files[filePath] = file;
         }
 
@@ -369,20 +405,23 @@ public partial class Pak : IDisposable
 
         var newStream = stream;
 
-        if (file.IsEncrypted)
+        if (file.IsEncrypted && IsDataEncrypted)
         {
             var ivBuffer = new byte[8];
             stream.ReadExactly(ivBuffer);
             var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
-            if (key is null)
+            if (key is null && IsDataPrivate)
             {
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, key, iv, Version);
+            var keyForData = key is null ? new byte[16] : (byte[])key.Clone();
+            ApplyKeySalt(keyForData);
 
-            encryptionInitializer = new EncryptionInitializer(blowfish);
+            var blowfish = new BlowfishStream(newStream, keyForData, iv, Version, counterMode: file.UsesCounterMode && Version >= 11);
+
+            encryptionInitializer = new EncryptionInitializer(blowfish, Version);
 
             newStream = blowfish;
         }
@@ -395,7 +434,7 @@ public partial class Pak : IDisposable
         {
             newStream = Version >= 18 ? 
                 new LZ4Stream(newStream, file.UncompressedSize) : 
-                new NativeZlibStream(newStream, CompressionMode.Decompress);
+                new NativeZlibStream(newStream, CompressionMode.Decompress, leaveOpen: true);
         }
 
         // Only wrap in NonDisposingStream when newStream IS the underlying pak stream (no wrappers
@@ -406,7 +445,7 @@ public partial class Pak : IDisposable
     }
 
     /// <summary>
-    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="NotAGbxException"/> is thrown.
+    /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="global::GBX.NET.Exceptions.NotAGbxException"/> is thrown.
     /// </summary>
     /// <param name="file"></param>
     /// <param name="settings"></param>
@@ -417,6 +456,13 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, IDictionary<string, string>? fileHashes = default, CancellationToken cancellationToken = default)
     {
+        if (Version == 3 && settings.GameVersion == GameVersion.Unspecified)
+        {
+            // Legacy card ID 0x030C0000 was later reused for a lightmap media block.
+            // TMU stores the same card under its older 0x240B6000 ID, also inside other files.
+            settings = settings with { GameVersion = GameVersion.TMF };
+        }
+
         using var stream = OpenFile(file, out var encryptionInitializer);
 
         if (!file.DontUseDummyWrite)

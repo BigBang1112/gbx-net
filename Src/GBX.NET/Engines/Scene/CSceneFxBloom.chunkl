@@ -1,0 +1,20 @@
+CSceneFxBloom 0x0A03B000
+- inherits: CSceneFxCompo
+
+0x000
+  int BlurSize
+  float
+  float
+  float Intensity
+
+0x001 [TMU]
+  int BlurSize
+  float
+  float
+  float
+  float Intensity
+
+0x002 [TMF] // bloom settings and data
+  int BlurSize = 7
+  float Intensity = 1f
+  CSceneFxBloomData[] Datas (deprec)

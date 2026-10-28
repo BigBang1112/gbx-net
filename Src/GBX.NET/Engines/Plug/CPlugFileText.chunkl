@@ -1,2 +1,5 @@
 CPlugFileText 0x09041000
 - inherits: CPlugFile
+
+archive
+  string Text

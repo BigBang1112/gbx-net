@@ -1,23 +1,23 @@
 CGameCampaignPlayerScores 0x030EA000
 
-0x001
- id CampaignId
- boolbyte U01
- if U01
-  systemtime? U02
-  byte U03
- systemtime? U04
- TransactionalNatural U05
- SGameModeScores[] GameModeScores
+0x001 [TMF, MP3, TMT, MP4]
+  id CampaignId
+  boolbyte U01
+  if U01
+    systemtime? U02
+    byte U03
+  systemtime? U04
+  TransactionalNatural U05
+  SGameModeScores[] GameModeScores
 
 archive SGameModeScores
- int
- TransactionalNatural
+  int
+  TransactionalNatural
 
 archive TransactionalNatural
- boolbyte U01
- if U01
-  int U02
-  int Value
-  int U03
-  bool U04
+  boolbyte U01
+  if U01
+    int U02
+    int Value
+    int U03
+    bool U04

@@ -1,0 +1,8 @@
+CMwCmdExpBoolBin 0x01054000
+- inherits: CMwCmdExpBool
+
+0x0103B000 [TMU, TMF]
+
+0x000 [TMU, TMF]
+  CMwCmdExp Value1
+  CMwCmdExp Value2

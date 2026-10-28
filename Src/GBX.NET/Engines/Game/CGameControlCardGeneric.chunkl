@@ -1,0 +1,55 @@
+CGameControlCardGeneric 0x030BD000
+- inherits: CGameControlCard
+
+0x000 [TMU]
+  int Type
+
+0x001
+  LocalData Data
+
+0x002 [TMU] // legacy own data
+  LocalData Data
+
+0x003
+  versionb
+  LocalData Data (version: Version)
+
+0x004
+  versionb = 2
+  LocalData Data (version: Version)
+
+0x005
+  versionb = 3
+  LocalData Data (version: Version)
+
+0x006
+  versionb = 4
+  LocalData Data (version: Version)
+
+archive LocalData
+  bool UseOwnData
+  if UseOwnData
+    string U01
+    string U02
+    string U03
+    v4+
+      string U04
+      string U05
+      string U06
+      string U07
+    string U08
+    string U09
+    string U10
+    string U11
+    v2+
+      string U12
+      string U13
+      string U14
+    int U15
+    int U16
+    int U17
+    v3+
+      int U18
+      int U19
+      int U20
+    vec3 U21

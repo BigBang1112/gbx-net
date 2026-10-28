@@ -1,0 +1,5 @@
+CGameManialink3dStyle 0x03181000
+
+0x000 [MP4] // Mood
+  version
+  CGameManialink3dMood Mood

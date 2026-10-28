@@ -1,24 +1,31 @@
 CPlugTriggerAction 0x09104000
 
 archive
- v5+
-  int
- v4+
-  float
-  float
-  float
-  float
- v3+
-  int
- v2+
-  int
- v1+
-  int
-  int
- float
- float
- float
- float
- float
- float
- id
+  v5+
+    int U01
+  v4-
+    U01 = 1
+  v4+
+    float EndYaw
+    Vec3 EndPos
+  v3+
+    int U06
+  v2+
+    int ActionIndex
+  v1+
+    int<EType> Type
+    int U09
+  v0+
+    float StartYaw
+    Vec3 StartPos
+    float Radius = 1f
+    float Height = 1f
+    id U16
+
+enum EType
+  Capsule
+  Time
+  Cylinder
+  CylinderObject
+  Mesh
+  CapsuleObject

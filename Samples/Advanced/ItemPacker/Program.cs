@@ -17,20 +17,21 @@ var logger = LoggerFactory.Create(builder =>
 }).CreateLogger<Program>();
 
 var itemFileName = args[0];
+var itemDirectory = Path.GetDirectoryName(itemFileName) ?? Environment.CurrentDirectory;
 
 var itemGbx = Gbx.Parse<CGameItemModel>(itemFileName, new() { Logger = logger });
 var itemNode = itemGbx.Node;
 
-if (itemNode.PhyModelCustom is CGameObjectPhyModel phyModel)
+if (itemNode.PhyModelCustom is CGameObjectPhyModel { MoveShape: not null } phyModel)
 {
-    var shape = Gbx.ParseNode<CPlugSurface>(Path.Combine(Path.GetDirectoryName(itemFileName), phyModel.MoveShape), new() { Logger = logger });
+    var shape = Gbx.ParseNode<CPlugSurface>(Path.Combine(itemDirectory, phyModel.MoveShape), new() { Logger = logger });
     phyModel.MoveShapeFid = shape;
     phyModel.MoveShape = null;
 }
 
-if (itemNode.VisModelCustom is CGameObjectVisModel visModel)
+if (itemNode.VisModelCustom is CGameObjectVisModel { Mesh: not null } visModel)
 {
-    var mesh = Gbx.ParseNode<CPlugSolid2Model>(Path.Combine(Path.GetDirectoryName(itemFileName), visModel.Mesh), new() { Logger = logger });
+    var mesh = Gbx.ParseNode<CPlugSolid2Model>(Path.Combine(itemDirectory, visModel.Mesh), new() { Logger = logger });
     visModel.MeshShaded = mesh;
     visModel.Mesh = null;
 }

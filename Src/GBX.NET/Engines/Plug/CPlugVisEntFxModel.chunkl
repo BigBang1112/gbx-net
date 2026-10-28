@@ -1,14 +1,12 @@
 CPlugVisEntFxModel 0x09115000
 
-0x000
- version
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CFuncKeysReal (external)
- CFuncKeysReal (external)
- float
- float
- float
- GxLightBall
+0x000 [MP4.v0, TM2020.v1] // Entity particles, elimination curves and tactical light
+  version
+  CPlugParticleEmitterModel Part_DeactivatedShot
+  CPlugParticleEmitterModel Part_Deactivated
+  CPlugParticleEmitterModel Part_TeleportUnspawn
+  CPlugParticleEmitterModel Part_TeleportSpawn
+  PlugCurve EliminatedTeleportIntens (version: Version - 1)
+  PlugCurve EliminatedHighlight (version: Version - 1)
+  vec3 EliminatedHighlightRgb = (1, 0.8f, 0.4f)
+  GxLightBall TacticalLight

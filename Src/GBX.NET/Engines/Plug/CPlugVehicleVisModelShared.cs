@@ -5,6 +5,18 @@ public partial class CPlugVehicleVisModelShared
     private VisualVehicle[]? visualVehicles;
     public VisualVehicle[] VisualVehicles { get => visualVehicles ?? []; set => visualVehicles = value; }
 
+    public partial class Chunk090E8025 : IVersionable
+    {
+        public int Version { get; set; }
+
+        public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            var count = n.VisualVehicles.FirstOrDefault()?.VisualWheels.Length ?? 0;
+            rw.ArrayId(ref n.wheelNames, count);
+        }
+    }
+
     public partial class Chunk090E8006
     {
         public override void Read(CPlugVehicleVisModelShared n, GbxReader r)

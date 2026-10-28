@@ -1,1579 +1,1547 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
 
-0x000
- float
- float SteerRadiusMin
- float SteerRadiusCoef
- float MaxSpeed
- float AbsorbingValKi
- float AbsorbingValKa
- float AbsorbingValMin
- float AbsorbingValMax
- float AbsorbingValRest
- float RelSpeedMultCoef
- float
- float DebugAbsorbCoef
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy steering and dampers
+  float
+  float SteerRadiusMin = 1f
+  float SteerRadiusCoef = 0.5f
+  float MaxSpeed = 55.555557f
+  float DamperKi
+  float DamperKa
+  float DamperLengthMin
+  float DamperLengthMax
+  float DamperLengthRest
+  float RelSpeedMultCoef
+  float
+  float DebugAbsorbCoef
 
-0x001
- id Name
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  id Name
 
-0x002
- float Mass
- float CMAftForce
- float CMDownUp
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // mass and center of mass
+  float Mass = 800f
+  float CenterOfMassZNormed
+  float CenterOfMassY
 
-0x004
- bool IsFakeEngine
+0x004 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  bool IsFakeEngine
 
-0x005
- float GravityCoef
+0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // GroundGravityCoef
+  float GroundGravityCoef = 1f
 
 0x006
- float
- float
- float
- float
+  float
+  float
+  float
+  float
 
-0x007
- float SteerSpeed
+0x007 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerSpeed = 20f
 
-0x008
- float ReverseMaxSpeed
- float TurboBoost
+0x008 [TM10, TMPU]
+  float ReverseMaxSpeed = 13.888889f
+  float TurboYellowAccelCoef = 3f
 
-0x009
- float BrakeBase
+0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float BrakeBase = 20f
 
 0x00A
- float LinearFluidFrictionCoef
- float AngularFluidFrictionCoef1
+  float LinearFluidFrictionCoef = 0.1f
+  float AirAngularFluidFrictionCoef1 = 0.5f
 
-0x00B
- float InertiaMass
- Vec3 InertiaHalfDiag
+0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float InertiaMass = 1.0f
+  Vec3 InertiaHalfDiag = (0.5f, 0.5f, 0.5f)
 
 0x00C
- bool
+  bool
 
-0x00D
- int TireMaterial
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int TireMaterial = 9
 
-0x00E
- int<EShockModel> ShockModel
+0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // DamperModel
+  int DamperModel = 2
 
-0x010
- int<ESteerModel> SteerModel
- float SteerGroundTorque
+0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // gameplay model and steering torque
+  int GameplayModel = 6
+  float SteerGroundTorque = 0.01f
 
 0x011
- float
- float
- float
- float
- float
- float
- float
- float
- float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
 0x012
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundImpactVolume
- float SoundBodyImpact_Hard_Threshold
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundImpactVolume
+  float SoundBodyImpact_Hard_Threshold
 
-0x013
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+0x013 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
 
-0x014
- float
- float
+0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
 
 0x015
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundSkidConcreteVolume
- float SoundImpactVolume
- float SoundBodyImpact_Hard_Threshold
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundSkidConcreteVolume
+  float SoundImpactVolume
+  float SoundBodyImpact_Hard_Threshold
 
-0x016
- float DisplaySteerRadiusMin
- float DisplaySteerRadiusCoef
+0x016 [TM10, TMPU, TMSX]
+  float DisplaySteerRadiusMin
+  float DisplaySteerRadiusCoef
 
-0x017
- float DecrepitudeImpactVal
- float DecrepitudeCoef
- float VibrationPeriodSpeedCoef
- float
- float
- float
- float
- float
+0x017 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float DecrepitudeImpactVal
+  float DecrepitudeCoef
+  float VibrationPeriodSpeedCoef
+  float
+  float
+  float
+  float
+  float
 
-0x018
- float LinearFluidFrictionCoef
- float AngularFluidFrictionCoef1
- float AngularFluidFrictionCoef2
+0x018 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // fluid friction
+  float LinearFluidFrictionCoef
+  float AirAngularFluidFrictionCoef1
+  float AirAngularFluidFrictionCoef2 = 1f
 
-0x019
- float BodyFrictionCoef
- float BodyFrictionCoef_Metal
- float BodyRestCoef_Metal
- float BodyRestCoef
- float WheelFrictionCoef_Concrete
- float WheelRestCoef_Concrete
- float WheelFrictionCoef_Metal
- float WheelRestCoef_Metal
+0x019 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float BodyFrictionCoef_Concrete = 0.8f
+  float BodyFrictionCoef_Metal = 0.4f
+  float BodyRestCoef_Metal
+  float BodyRestCoef_Concrete
+  float WheelFrictionCoef_Concrete
+  float WheelRestCoef_Concrete
+  float WheelFrictionCoef_Metal
+  float WheelRestCoef_Metal
 
-0x01A
- float
+0x01A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float
 
-0x01B
- float
+0x01B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float
 
-0x01D
- float GravityCoefAir
- float RolloverAxial
+0x01D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float AirGravityCoef = 1f
+  float RolloverAxial
 
-0x01E
- int AirControlDuration
+0x01E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  int AirControlDuration
 
-0x01F
- float
- float
- float
+0x01F [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+  float
+  float
 
-0x020
- float SteerAngleMax
- float SlipAngleForceMax
- float SlipAngleForceCoef1
- float SlipAngleForceCoef2
+0x020 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerAngleMax = 0.5235988f
+  float SlipAngleForceMax = 0.08726647f
+  float SlipAngleForceCoef1 = 10f
+  float SlipAngleForceCoef2 = 0.01f
 
 0x021
- float
+  float
 
 0x022
- float
- float
+  float
+  float
 
-0x023
- float AngularSpeedYImpulseScale
- float SteerLowSpeed
+0x023 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float AngularSpeedImpulseScale = 1f
+  float SteerLowSpeed = 20f
 
-0x024
- CFuncKeysReal AccelCurve
+0x024 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal AccelCurve
 
-0x026
- float LateralSlopeAdherenceMin
- float LateralSlopeAdherenceMax
- float AxialSlopeAdherenceMin
- float AxialSlopeAdherenceMax
+0x026 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LateralSlopeAdherenceMin
+  float LateralSlopeAdherenceMax
+  float AxialSlopeAdherenceMin
+  float AxialSlopeAdherenceMax
 
-0x027
- float SteerGroundTorqueSlippingCoef
- float MaxSideFrictionBlendCoef
+0x027 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerGroundTorqueSlippingCoef
+  float MaxSideFrictionBlendCoef
 
-0x028
- float
- CFuncKeysReal MaxSideFriction
- float MaxSideFrictionSliding
- float
- float GroundSlowDownBase
- float AbsorbTension
+0x028 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float
+  CFuncKeysReal MaxSideFriction
+  float MaxSideFrictionSliding = 0.6f
+  float
+  float GroundSlowDownBase = 1f
+  float DamperTension = 5f
 
-0x029
- float SideFriction1
- CFuncKeysReal RolloverLateral
+0x029 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float SideFriction1 = -1f
+  CFuncKeysReal RolloverLateral
 
-0x02A
- CFuncKeysReal LateralContactSlowDown
+0x02A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal LateralContactSlowDown
 
-0x02B
- CFuncKeysReal SteerSlowDown
- float SideFriction2
- float RubberBallElasticity
- int SteerSlowDownFadeInDuration
+0x02B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal SteerSlowDown
+  float SideFriction2
+  float RubberBallElasticity
+  int SteerSlowDownFadeInDuration
 
-0x02C
- CFuncKeysReal RolloverLateralFromAngle
- float MaxAngularSpeedYAirControl
- float BrakeCoef
- float BrakeMax
- float BrakeMaxDynamic
- float GroundSlowDownCoef
+0x02C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal RolloverLateralFromAngle
+  float AirControlMaxAngularSpeedY = 3.1415927f
+  float BrakeCoef
+  float BrakeMax = 500f
+  float BrakeMaxDynamic = 500f
+  float GroundSlowDownCoef
 
-0x02D
- int SteerSlowDownFadeOutDuration
+0x02D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  int SteerSlowDownFadeOutDuration
 
-0x02E
- float SteerSlowDownCoef
- float
+0x02E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float SteerSlowDownCoef
+  float
 
-0x02F
- int TurboDuration
+0x02F [TM10, TMPU]
+  int TurboYellowAccelCoefDuration = 1000
 
-0x030
- CFuncKeysReal SteerDriveTorque // encryption trick here
+0x030 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal SteerDriveTorque // encryption trick here
 
-0x031
- float LimitToMaxSpeedForce
- float SlopeSpeedGainLimit
+0x031 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LimitToMaxSpeedForce = 10f
+  float SlopeSpeedGainLimit
 
-0x032
- float SoundEngineVolume
- float SoundSkidSandVolume
- float SoundSkidConcreteVolume
- float SoundImpactVolume
- float SoundWheelImpact_Hard_Threshold
- float SoundWheelImpact_Soft_Threshold
- float SoundBodyImpact_Hard_Threshold
- float SoundBodyImpact_Soft_Threshold
+0x032 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  float SoundEngineVolume
+  float SoundSkidSandVolume
+  float SoundSkidConcreteVolume
+  float SoundImpactVolume
+  float SoundWheelImpact_Hard_Threshold
+  float SoundWheelImpact_Soft_Threshold
+  float SoundBodyImpact_Hard_Threshold
+  float SoundBodyImpact_Soft_Threshold
 
-0x033
- float AngularSpeedClamp
+0x033 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float AngularSpeedClamp = 100f
 
-0x034
- float LinearSpeed2PositiveDeltaMax
+0x034 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float LinearSpeed2PositiveDeltaMax = 10000f
 
-0x035
- bool NoSteerSlowDownWhenSlipping
+0x035 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  bool NoSteerSlowDownWhenSlipping
 
-0x036
- float M4LateralFrictionSquareForce
- float M4LateralFrictionTorque
- float M4LateralFrictionForce
- CFuncKeysReal M4SteerRadiusFromSpeed
+0x036 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M4LateralFrictionSquareForce = 1f
+  float M4LateralFrictionTorque = 1f
+  float M4LateralFrictionForce = 1f
+  CFuncKeysReal M4SteerRadiusFromSpeed
 
-0x037
- CFuncKeysReal M4MaxFrictionTorqueFromSpeed
+0x037 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M4MaxFrictionTorqueFromSpeed
 
-0x038
- float M4MaxFrictionTorqueWhenSlippingCoef
- CFuncKeysReal M4MaxFrictionForceFromSpeed
- float M4MaxFrictionForceWhenSlipping
- float M4SteerRadiusWhenSlippingCoef
+0x038 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M4MaxFrictionTorqueWhenSlippingCoef = 1f
+  CFuncKeysReal M4MaxFrictionForceFromSpeed
+  float M4MaxFrictionForceWhenSlipping = 1f
+  float M4SteerRadiusWhenSlippingCoef = 1f
 
-0x039
- float M4LateralFrictionSquareTorque
- float
+0x039 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4LateralFrictionSquareTorque
+  float
 
-0x03A
- float M4SlipAngleSpeed
- float M4SteerRadiusCoefFromSlipAngle
+0x03A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4SlipAngleSpeed = 0.005f
+  float M4SteerRadiusCoefFromSlipAngle = 0.3f
 
-0x03B
- float M4LeaveSlippingSpeed
+0x03B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4LeaveSlippingSpeed = 1f
 
-0x03C
- float M4SteerAngleWhenSlippingMax
+0x03C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M4SteerAngleWhenSlippingMax = 0.7853982f
 
-0x03D
- CFuncKeysReal M5SlippingAccelCurve
+0x03D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SlippingAccelCurve
 
-0x03E
- int M5LateralConstantSlowDownDuration
+0x03E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5LateralConstantSlowDownDuration = 500
 
-0x03F
- CFuncKeysReal M5SteerCoefFromSpeed
+0x03F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SteerCoefFromSpeed
 
-0x040
- CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
+0x040 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M5SmoothInputSteerDurationFromSpeed
 
-0x041
- float M5MaxAxialRolloverTorque
- int M5KeepSlidingAccelDuration
+0x041 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M5MaxAxialRolloverTorque = 20f
+  int M5KeepSlidingAccelDuration
 
-0x042
- int M5KeepSteerSlowDownDurarion
+0x042 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5KeepSteerSlowDownDurarion = 1
 
-0x043
- int M5KeepNoSteerSlowDownWhenSlippingDuration
+0x043 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int M5KeepNoSteerSlowDownWhenSlippingDuration
 
-0x044
- float M5AccelSlipCoefMax
+0x044 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M5AccelSlipCoefMax = 1f
 
 0x045
- float  WaterGravity
- float
- float
- float  WaterReboundMinHSpeed
- float
+  float  WaterGravity = 1.0f
+  float
+  float
+  float  WaterReboundMinHSpeed = 55.555557f
+  float
 
-0x046
- float WaterGravity
- float WaterReboundMinHSpeed
- float WaterBumpMinSpeed
- CFuncKeysReal WaterBumpSlowDownFromSpeedRatio
- CFuncKeysReal WaterFrictionFromSpeed
- CFuncKeysReal WaterReboundFromSpeedRatio
+0x046 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float WaterGravity
+  float WaterReboundMinHSpeed
+  float WaterBumpMinSpeed = 50f
+  CFuncKeysReal WaterBumpSlowDownFromSpeedRatio
+  CFuncKeysReal WaterFrictionFromSpeed
+  CFuncKeysReal WaterReboundFromSpeedRatio
 
-0x047
- float WaterAngularFriction
+0x047 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float WaterAngularFriction = 0.1f
 
-0x048
- CFuncKeysReal WaterSplashFromSpeed
+0x048 [TMSX, TMNESWC]
+  CFuncKeysReal WaterSplashFromSpeed
 
-0x049
- CFuncKeysReal ModulationFromWheelCompression
+0x049 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal ModulationFromWheelCompression
 
 0x04A
- float
- float M6InertialMass
-
-0x04D
- float M6ForceEpsilon
-
-0x04E
- float M6InertialTorqueModualtionX
- float M6InertialTorqueModulationZ
-
-0x04F
- float M6MaxSpeed4Burnout
- CFuncKeysReal M6BurnoutRadius
-
-0x051
- float M6BurnoutFricMod
-
-0x052
- CFuncKeysReal M6RolloverLateralFromSpeedRatio
-
-0x053
- float M6BurnoutCenterForceCoeff2
-
-0x056
- float M6BurnoutRpmAcc
- float M6AirRpmAcc
- float M6AirRpmDeadening
-
-0x057
- float[] M6RpmWantedOnGearUp
-
-0x058
- float M6RpmLossCoefOnGearUp
-
-0x059
- float M6RpmGainCoefOnGearDown
- float M6SpeedLimitPositiveForTakeOffFront
- float M6RpmGainOnTakeOff
- float M6RpmLossOnTakeOffFinished
-
-0x05A
- float M6SpeedLimitPositiveForTakeOffRear
- float M6SpeedLimitNegForTakeOffFront
- float M6SpeedLimitNegTakeOffRear
-
-0x05B
- CFuncKeysReal BrakeHeatSpeedFromFBrake
- float BrakeCoolingSpeed
-
-0x05C
- float M6BrakeMaxRear
- float M6BrakeMaxDynamicRear
-
-0x05D
- float M6InertialMass
- float M6MaxDiffBtwnPropulsionAndSpeed
- CFuncKeysReal AccelCurveRearGear
- CFuncKeysReal M6BurnoutLateralSpeed
- float M6BurnoutLateralSpeedCoeff
- float M6MinSpeed4Burnout
- float M6BurnoutSteerCoeff
- float M6BurnoutCenterForceCoeff
- float M6BurnoutRadiusMax
- float M6BurnoutLateralSpeedMax
- float M6BurnoutSteerCoeff2
- float M6BurnoutSteerCoeff3
- float M6BrakeModulationWhenSlipping
- int M6BurnoutDuration
- float M6BurnoutAccMod
- float M6AfterBurnoutAccMod
- int M6AfterBurnoutDuration
- float M6FrictionModulationWhenSlipNBrake
- float M6BrakeSmokeIntensity
- float M6BurnoutSmokeVelocity
- float M6BurnoutSmokeIntensity
- CFuncKeysReal M6BurnoutRolloverFromSpeed
- CFuncKeysReal M6DonutRolloverFromSpeed
- float M6MaxDiffBtwGroundNormal
- float M6BurnoutWheelAngularRotation
- float M6MaxPosAngle4Burnout
- float M6MaxNegAngle4Burnout
- float M6AfterBurnoutImpulse
- float M6MaxRpm
- float[] M6GearRatio
- float[] M6MaxRPM
- float[] M6MinRPM
- int SteerDurationBeforeSteerSlowDown
-
-0x05E
- CFuncKeysReal AirControlZCoefFromAngularSpeed
-
-0x05F
- float WaterAngularFrictionSq
-
-0x060
- float ReverseMaxSpeed
- float TurboBoost
- float Turbo2Boost
- int TurboDuration
- int Turbo2Duration
-
-0x061
- CFuncKeysReal VisualSteerAngleFromSpeed
-
-0x062
- float
-
-0x063
- float
-
-0x064
- float
-
-0x065
- float
-
-0x066
- float
-
-0x06A
- float
- float
-
-0x06E
- float
-
-0x072
- float
- float
- float
- int
-
-0x077
- float
- float
- float
- float
- CFuncKeysReal
-
-0x078
- float
-
-0x079
- bool
- CFuncKeysReal
- CFuncKeysReal
- float
-
-0x07D
- int
- float
- float
-
-0x082
- bool
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
-
-0x084
- float
- float
- float
-
-0x085
- bool
- float
- float
- float
- float
- float
-
-0x086
- float
- float
-
-0x088
- float
-
-0x089
- version
- Keys (version: Version - 10)
- v2-
-  CFuncKeysReal
- v2+
-  float?
-  float?
-  float?
-  float?
-  v4+
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   float?
-   v6+
-    float?
-    v7+
-     bool?
-     v8+
-      Keys (version: Version - 10)
-      Keys (version: Version - 10)
-      v9+
-       Keys (version: Version - 10)
-
-0x08A
- version
- float
- float
- float
- float
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- Keys (version: Version - 8)
- v1+
-  v3-
-   float?
-   float?
-  v4+
-   Keys (version: Version - 8)
-   Keys (version: Version - 8)
-  v3+
-   int?
-   v5=
-    float?
-   v6+
-    Keys (version: Version - 8)
-    v7+
-     bool?
-
-0x08B
- version
- v2-
-  float?
- v10-
-  float?
-  CFuncKeysReal
- v9-
   float
- v8-
-  CFuncKeysReal
- float
- v9-
+  float M6InertialMass = 5f
+
+0x04D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6ForceEpsilon = 0.01f
+
+0x04E [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6InertialTorqueModualtionX = 0.1f
+  float M6InertialTorqueModulationZ = 0.1f
+
+0x04F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M6MaxSpeed4Burnout = 10f
+  CFuncKeysReal M6BurnoutRadius
+
+0x051 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutFricMod = 0.01f
+
+0x052 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal M6RolloverLateralFromSpeedRatio
+
+0x053 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutCenterForceCoeff2 = 0.2f
+
+0x056 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BurnoutRpmAcc = 5000f
+  float M6AirRpmAcc = 12000f
+  float M6AirRpmDeadening = 8000f
+
+0x057 [TMSX, TMNESWC, VSK5, TMF]
+  float[] M6RpmWantedOnGearUp
+
+0x058 [TMSX, TMNESWC, VSK5, TMF]
+  float M6RpmLossCoefOnGearUp = 10000f
+
+0x059 [TMSX, TMNESWC, VSK5, TMF]
+  float M6RpmGainCoefOnGearDown = 7000f
+  float M6SpeedLimitPositiveForTakeOffFront = 10f
+  float M6RpmGainOnTakeOff = 10000f
+  float M6RpmLossOnTakeOffFinished = 4000f
+
+0x05A [TMSX, TMNESWC, VSK5, TMF]
+  float M6SpeedLimitPositiveForTakeOffRear = 2f
+  float M6SpeedLimitNegForTakeOffFront = -2f
+  float M6SpeedLimitNegTakeOffRear = -10f
+
+0x05B [TMSX, TMNESWC, VSK5, TMF]
+  CFuncKeysReal BrakeHeatSpeedFromFBrake
+  float BrakeCoolingSpeed
+
+0x05C [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BrakeMaxRear = 100f
+  float M6BrakeMaxDynamicRear = 50f
+
+0x05D [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  float M6InertialMass
+  float M6MaxDiffBtwnPropulsionAndSpeed = 200f
+  CFuncKeysReal AccelCurveRear
+  CFuncKeysReal M6BurnoutLateralSpeed
+  float M6BurnoutLateralSpeedCoeff = 1f
+  float M6MinSpeed4Burnout = 3f
+  float M6BurnoutSteerCoeff = 6f
+  float M6BurnoutCenterForceCoeff = 1f
+  float M6BurnoutRadiusMax = 20f
+  float M6BurnoutLateralSpeedMax = 10f
+  float M6BurnoutSteerCoeff2 = 2f
+  float M6BurnoutSteerCoeff3 = 0.5f
+  float M6BrakeModulationWhenSlipping = 0.5f
+  int M6BurnoutDuration = 1000
+  float M6BurnoutAccMod = 0.5f
+  float M6AfterBurnoutAccMod = 4f
+  int M6AfterBurnoutDuration = 500
+  float M6FrictionModulationWhenSlipNBrake = 0.2f
+  float M6BrakeSmokeIntensity = 1f
+  float M6BurnoutSmokeVelocity = 1f
+  float M6BurnoutSmokeIntensity = 5f
+  CFuncKeysReal M6BurnoutRolloverFromSpeed
+  CFuncKeysReal M6DonutRolloverFromSpeed
+  float M6MaxDiffBtwGroundNormal = 0.35f
+  float M6BurnoutWheelAngularRotation = 150f
+  float M6MaxPosAngle4Burnout = 1.7453f
+  float M6MaxNegAngle4Burnout = 0.785f
+  float M6AfterBurnoutImpulse = 10f
+  float M6MaxRpm
+  float[] EngineGearRatios
+  float[] EngineAutoGearMaxRPMs
+  float[] EngineAutoGearMinRPMs
+  int SteerDurationBeforeSteerSlowDown
+
+0x05E [TMSX, TMNESWC, VSK5, TMF]
+  CFuncKeysReal AirControlZCoefFromAngularSpeed
+
+0x05F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float WaterAngularFrictionSq = 0.2f
+
+0x060 [TMSX, TMNESWC, VSK5, TMF]
+  float ReverseMaxSpeed
+  float TurboYellowAccelCoef
+  float TurboRedAccelCoef = 3f
+  int TurboYellowAccelCoefDuration
+  int TurboRedAccelCoefDuration = 1000
+
+0x061 [TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CFuncKeysReal VisualSteerAngleFromSpeed
+
+0x062 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BrakeMaxFront = 0.05f
+
+0x063 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float M6BrakeMaxDynamicFront = 20f
+
+0x064 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   float
- v10-
-  CFuncKeysReal
- v1+
+
+0x065 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x066 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float
+
+0x06A [MP3, TMT, MP4, TM2020]
+  float LinearSpeedClamp = 277.77777f
+  float
+
+0x06E [MP3, TMT, MP4, TM2020]
+  float DamperOffset
+
+0x072 [MP3, TMT, MP4, TM2020] // steering angle and drive model
+  float
+  float
+  float InputSteerAngleMaxDeg = 30f
+  int DriveModel
+
+0x077 [MP3, TMT, MP4]
+  float
+  float
+  float BrakeTorqueCoef = 1f
+  float AccelTorqueCoef = 1f
+  CFuncKeysReal Drifting_InputSteerRadiusFromSpeed
+
+0x078 [MP3, TMT, MP4, TM2020]
+  float SteerTorqueZMax = 1000f
+
+0x079 [MP3, TMT, MP4]
   bool
- v3+
+  CFuncKeysReal
+  CFuncKeysReal
+  float
+
+0x07D [MP3, TMT, MP4, TM2020]
+  int InputBrakeSwitchCountMax = 4
+  float Normal_InputSteerAngleSmoothSpeed_OverSteer = 4.0f
+  float
+
+0x082 [MP3, TMT, MP4]
+  bool
+  CFuncKeysReal Drifting_VehicleLateralForce_FromVehicleLateralSpeed
+  CFuncKeysReal Drifting_BackCoefIntensityFromSpeed
+  CFuncKeysReal Drifting_WheelLateralForce_FromWheelLateralSpeed
+  CFuncKeysReal Drifting_BackCoefFromSlipAngle
+
+0x084 [MP3, TMT, MP4, TM2020] // drifting back coefficient smoothing
+  float Drifting_BackCoefSmoothSpeed_Steer = 3f
+  float Drifting_BackCoefSmoothSpeed_StopSteer = 1f
+  float Drifting_BackCoefSmoothSpeed_CounterSteer = 3f
+
+0x085 [MP3, TMT, MP4, TM2020] // body contact envelope
+  bool NormalEnv
+  float
+  float NormalEnvBody_FlatZoneYMin = 0.2f
+  float NormalEnvBody_FlatZoneYMax = 0.6f
+  float NormalEnvBody_HalfSizeX = 0.2f
+  float NormalEnvBody_HalfSizeZ = 1.7f
+
+0x086 [MP3, TMT, MP4, TM2020] // wheel width
+  float
+  float NormalEnvWheel_WidthCoef1 = 0.5f
+
+0x088 [MP3, TMT, MP4, TM2020] // MaxDistPerStep
+  float MaxDistPerStep = 0.3f
+
+0x089 [MP3.v6, TMT.v7, MP4.v9, TM2020.v10] // drag force and adherence
+  version
+  PlugCurve DragForceFromFrontSpeed (version: Version - 10)
+  v2-
+    CFuncKeysReal
+  v2+
+    float? AdherenceVel_VelYMin
+    float? AdherenceVel_VelYMax = 10f
+    float? AdherenceVel_VelHMin = 130f
+    float? AdherenceVel_VelHMax = 230f
+    v4+
+      float? AdherenceAngleMinDeg = 45f
+      float? AdherenceAngleMaxDeg = 80f
+      float? AdherenceAngleMinDeg_Roll = 40f
+      float? AdherenceAngleMaxDeg_Roll = 60f
+      float?
+      float? AdherenceMin_ForTorque = 0.3f
+      float? AdherenceMin_ForDragForce = 1f
+      float? AdherenceVelMax = 1f
+      float? AdherenceAntiSteerUpCoef = 1f
+      float?
+      float? AdherenceAngleMinDeg_AntiSteerUp = 80f
+      v6+
+        float? AdherenceAccelDirYCoef
+        v7+
+          bool? AdherenceUseMaxForAccel
+          v8+
+            PlugCurve AccelCurveTargetSpeedTruck (version: Version - 10)
+            PlugCurve TargetSpeedFromSpeedTruck (version: Version - 10)
+            v9+
+              PlugCurve TargetSpeedFromSpeedTruckRear (version: Version - 10)
+
+0x08A [MP3.v2, TMT.v7, MP4.v7, TM2020.v8] // input smoothing and steering
+  version
+  float InputGasSmoothSpeed = 5f
+  float InputBrakeSmoothSpeed = 5f
+  float Normal_InputSteerAngleSmoothSpeed_Steer = 5f
+  float Normal_InputSteerAngleSmoothSpeedReset = 2f
+  PlugCurve Normal_InputSteerRadiusFromSpeed (version: Version - 8)
+  PlugCurve Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer (version: Version - 8)
+  PlugCurve Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer (version: Version - 8)
+  PlugCurve Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer (version: Version - 8)
+  v1+
+    v3-
+      float?
+      float?
+    v4+
+      PlugCurve Normal_InputSteerSensitivityFromSpeed (version: Version - 8)
+      PlugCurve Drifting_InputSteerSensitivityFromSpeed (version: Version - 8)
+    v3+
+      int? InputSteerAlgo
+      v5=
+        float?
+      v6+
+        PlugCurve InputSteerPowFromSpeed (version: Version - 8)
+        v7+
+          bool? InputRawGasBrake
+
+0x08B [MP3.v22, TMT.v23, MP4.v34, TM2020.v37] // ground forces, drifting and magnetic grip
+  version
+  v2-
+    float?
+  v10-
+    float?
+    CFuncKeysReal
   v9-
-   float
-   float
- v4+
-  Keys (version: Version - 37)
-  v5+
-   v9-
-    int
-    int
-   v9+
-    Keys (version: Version - 37)
-    v13+
-     v22-
+    float
+  v8-
+    CFuncKeysReal
+  float Rollover
+  v9-
+    float
+  v10-
+    CFuncKeysReal
+  v1+
+    bool UseRealGroundReferential = true
+  v3+
+    v9-
       float
-     v22+
-      Keys (version: Version - 37)
-     float
-   v6+
-    Keys (version: Version - 37)
-    v7+
-     float
-     v10+
-      Keys (version: Version - 37)
-      Keys (version: Version - 37)
-      Keys (version: Version - 37)
-      v11+
-       float
-       float
-       float
-       float
-       float
-       Keys (version: Version - 37)
-       v12+
-        float
-        v14+
-         Keys (version: Version - 37)
-         v15+
-          Keys (version: Version - 37)
-          v16+
-           Keys (version: Version - 37)
-           v17+
-            int
-            v18+
-             int
-             v19+
-              Keys (version: Version - 37)
-              v20+
-               float
-               float
-               float
-               v21+
-                int
-                int
-                int
-                v23+
-                 bool
-                 float
-                 float
-                 Keys (version: Version - 37)
-                 v24+
-                  int
-                  v25+
-                   bool
-                   float
-                   v26+
-                    float
-                    v27+
-                     v33-
-                      float
-                      float
-                      float
-                      CFuncKeysReal
-                     v28+
-                      v33-
-                       CFuncKeysReal
-                      v29+
-                       int
-                       float
-                       float
-                       v33-
-                        v30+
-                         CFuncKeysReal
-                        v31+
-                         CFuncKeysReal
-                        v32+
-                         float
-                         CFuncKeysReal
-                       v35+
-                        bool
-                        v36+
-                         bool
-                         Keys (version: Version - 37)
-                         CFuncKeysReal
-
-0x08C
- version
- v2+
-  throw
- float
- float
- float
- float
- v1+
-  float?
-
-0x08D
- version
- v7+
-  throw
- float
- bool
- v2+
-  bool?
- v1+
-  float?
-  float?
- v3=
-  float?
-  float?
- v4+
-  float
- v5+
-  bool? U09
-  v5=
-   U09 = false
-
-0x08E
- version
- v5+
-  throw
- CPlugCamControlModel[]_deprec (external)
- v1+
-  CPlugCamControlModel[]_deprec (external)
-  v2+
-   CPlugCamControlModel (external)
-   v3+
-    CPlugCamControlModel (external)
-    v4+
-     CPlugCamControlModel[] (external)
-
-0x094
- version
- v6+
-  throw
- float
- Keys (version: Version - 3)
- int
- float
- Keys (version: Version - 3)
- int
- v1+
-  int?
-  int?
-  v2+
-   float?
-   Keys (version: Version - 3)
-   int?
-   int?
-   v3=
-    int?
-   v4+
-    int
-
-0x095
- version
- v8+
-  throw
- int
- float
- Keys (version: Version - 1)
- bool
- float
- float
- float
- v1+
-  int?
-  v2+
-   int?
-   Keys (version: Version - 1)
-   Keys (version: Version - 1)
-   v3+
-    Keys (version: Version - 1)
-    v4+
-     int?
-     v5+
-      int?
-      int?
-      Keys (version: Version - 1)
-      int?
-      v6+
-       Keys (version: Version - 1)
-
-0x096
- version
- v6+
-  throw
- float
- float
- float
- float
- float
- float
- float
- float
- float
- v2+
-  float?
- float
- float
- float
- float
- float
- float
- float[] EngineGearRatios
- float[] EngineAutoGearMaxRPMs
- float[] EngineAutoGearMinRPMs
- v3+
-  float
+      float
   v4+
-   bool
-   v5+
-    float
-
-0x097
- version
- float
- float
- float
- float
- float
- float
- bool
- v2+
-  CMwNod
-
-0x098
- version
- float
- int
- float
- float
- int
- float
- float
- float
- v2+
-  bool
-
-0x099
- version
- CMwNod
-
-0x09A
- version
- CPlugVehicleGearBox (external)
-
-0x09B
- version
- float
- float
- float
- float
- float
- float
- int
- int
- int
- v1+
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  float?
-  v2+
-   float?
-   v3+
-    float?
-    float?
-    float?
-    float?
-    float?
-    float?
-    float?
-    v4+
-     Keys
-
-0x09C
- version
- v17-
-  float?
- v18+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- float?
- float?
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- Keys (version: Version - 21)
- Keys (version: Version - 21)
- v1+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v2+
-  float?
- v3=
-  float?
- v4+
-  CFuncKeysReal
-  v5+
-   float?
-   Keys (version: Version - 21)
-   float?
-   float?
-   float?
-   v6+
-    float?
-    v7+
-     int?
-     Keys (version: Version - 21)
-     v8+
-      Keys (version: Version - 21)
-      v9+
-       float?
-       v10+
-        float?
-        v11+
-         Keys (version: Version - 21)
-         Keys (version: Version - 21)
-         v12+
-          Keys (version: Version - 21)
-          v13+
-           Keys (version: Version - 21)
-           v15+
-            float?
-            v16+
-             float?
-             v19+
-              Keys (version: Version - 21)
-              v20+
-               float?
-
-0x09D
- version
- v0=
-  bool?
-  float?
-  float?
-  float
-  float
-  bool?
-  float
-  float
- v1+
-  v20-
-   Keys (version: Version - 21)
-   float?
-   Keys (version: Version - 21)
-   float?
-   float?
-  float
-  float
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v2+
-  v20-
-   Keys (version: Version - 21)
- v3+
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v4+
-  float?
-  float?
- v5+
-  float?
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  v20-
-   Keys (version: Version - 21)
- v6+
-  Keys (version: Version - 21)
- v7-
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
-  Keys (version: Version - 21)
- v8+
-  float?
-  Keys (version: Version - 21)
- v9+
-  float?
-  float?
-  float?
- v10+
-  Keys (version: Version - 21)
- v11+
-  float?
- v12+
-  Keys (version: Version - 21)
- v13+
-  Keys (version: Version - 21)
- v14+
-  Keys (version: Version - 21)
- v15+
-  float?
-  float?
- v16+
-  float?
- v17+
-  float?
- v18+
-  Keys (version: Version - 21)
- v19+
-  float?
- v20+
-  CPlugDynaWaterModel
-
-0x09E
- version
- float
- float
- float
- v1+
-  float?
-  v2+
-   int?
-   float?
-   v3+
-    float?
-    v4+
-     float?
-     Keys (version: Version - 8)
-     v6-
-      float?
-     v7+
-      Keys
-     v5+
-      float?
-      v6+
-       float?
-       float?
-
-0x09F
- version
- Keys (version: Version - 14)
- float
- float
- float
- v1+
-  float?
-  v2+
-   Keys (version: Version - 14)
-   v3+
-    Keys (version: Version - 14)
-    v4+
-     float?
-     float?
-     float?
-     float?
-     float?
-     float?
-     v5+
-      float?
-      v6+
-       Keys (version: Version - 14)
-       v7+
-        float?
-        Keys (version: Version - 14)
-        Keys (version: Version - 14)
-        float?
-        v8+
-         float?
-         float?
-         float?
-         float?
-         v9+
-          vec3?
-          vec3?
-          v10+
-           Keys (version: Version - 14)
-           v11+
-            Keys (version: Version - 14)
-            v12+
-             bool?
-             v13+
-              int?
-              int?
-              int?
-              int?
-              int?
-
-0x0A0
- version
- v1+
-  float
-  float
-  float
-  float
-  float
-  v2+
-   float
-   float
-   float
-   float
-   float
-
-0x0A1
- version
- Keys
- Keys
- float
- float
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
-
-0x0A2
- version
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
- Keys (version: Version - 2)
-
-0x0A3
- version
- float
- float
- int
- int
- v1+
-  float
-  v2+
-   float
-   float
-   float
-   float
-   v3+
-    float
-    v4+
-     CFuncKeysReal
-     float
-     int
-     int
-     int
-     v5+
-      int
-      CFuncKeysReal
-      CFuncKeysReal
-      Keys (version: Version - 13)
-      Keys (version: Version - 13)
-      v6+
-       int
-       v7+
+    PlugCurve SteerSlowDownFromSpeed (version: Version - 37)
+    v5+
+      v9-
         int
-        v8+
-         int
-         v9+
+        int
+      v9+
+        PlugCurve AntiWallHitDurationInc_FromLateralContactRelSpeed (version: Version - 37)
+        v13+
+          v21-
+            float
+          v22+
+            PlugCurve AntiWallHitAccelCoefFromSpeed (version: Version - 37)
+          float AntiWallHitSpeedTransfertCoef = 0.1f
+      v6+
+        PlugCurve EngineSlowDownFromSpeed (version: Version - 37)
+        v7+
+          float
+          v10+
+            PlugCurve Normal_WheelLateralForce_FromWheelLateralSpeed (version: Version - 37)
+            PlugCurve Normal_VehicleBrakeForce_FromVehicleBrakeSpeed (version: Version - 37)
+            PlugCurve Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed (version: Version - 37)
+            v11+
+              float Drifting_VehicleLateralSpeedMin = 5f
+              float Drifting_VehicleBrakeSpeedMin = 1f
+              float Drifting_TransfertForceCoef = 1f
+              float Normal_VehicleLateralSpeedMax = 10f
+              float Normal_VehicleBrakeSpeedMax = 3f
+              PlugCurve ImpulseDamperReduceCoef_FromLocalVelY (version: Version - 37)
+              v12+
+                float ReverseMaxSpeed
+                v14+
+                  PlugCurve AirFrictionFromSpeed_Variable (version: Version - 37)
+                  v15+
+                    PlugCurve AirFrictionFromSpeed (version: Version - 37)
+                    v16+
+                      PlugCurve AntiWallHitForceFromSpeed (version: Version - 37)
+                      v17+
+                        int AntiWallHitDurationMax = 500
+                        v18+
+                          int Drifting_BackCoefDisableDurationAfterLanding = 1000
+                          v19+
+                            PlugCurve GroundSlowDownFromSpeed (version: Version - 37)
+                            v20+
+                              float GroundAngularFluidFrictionSpeedMin
+                              float GroundAngularFluidFrictionCoef1
+                              float GroundAngularFluidFrictionCoef2
+                              v21+
+                                int KeepContactDuration = 50
+                                int WheelKeepContactDuration = 200
+                                int KeepDragForceDuration
+                                v23+
+                                  bool Magnetic = true
+                                  float MagneticForce = 9.81f
+                                  float MagneticGravity = 0.3333f
+                                  PlugCurve MagneticSuperDragForceFromSpeedKmh (version: Version - 37)
+                                  v24+
+                                    int MagneticKeepContactDuration = 400
+                                    v25+
+                                      bool MagneticHackEnabled
+                                      float MagneticHackSpeedOffset_Val = 3f
+                                      v26+
+                                        float MagneticHackAccelCoef_Val = 1.1f
+                                        v27+
+                                          v33-
+                                            float
+                                            float
+                                            float
+                                            CFuncKeysReal
+                                          v28+
+                                            v33-
+                                              CFuncKeysReal
+                                            v29+
+                                              int TurboBrakeDuration = 1000
+                                              float TurboBrakeCoef = 2f
+                                              float TurboBrakeMinSpeedZKmh = 10f
+                                              v33-
+                                                v30+
+                                                  CFuncKeysReal
+                                                v31+
+                                                  CFuncKeysReal
+                                                v32+
+                                                  float
+                                                  CFuncKeysReal
+                                              v35+
+                                                float = 1500f
+                                                v36+
+                                                  bool
+                                                  PlugCurve (version: Version - 37)
+                                                  CFuncKeysReal
+
+0x08C [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // collision response
+  version
+  float ImpulseGroundWheelRestCoef = -0.8f
+  float ImpulseGroundBodyRestCoef = -0.8f
+  float ImpulseRestCoef
+  float ImpulseFriction
+  v1+
+    float? ImpulseRotationCoef = 1.0f
+
+0x08D [MP3.v4, TMT.v4, MP4.v6, TM2020.v6] // damper contact and post-jump orientation
+  version
+  float DamperKeepContactDuration = 10.0f
+  bool DamperForceAllways
+  v2+
+    bool? DamperForceSmoothStop
+  v1+
+    float? AfterJumpOrientationForceDuration = 10.0f
+    float? AfterJumpOrientationForceCoef
+  v3=
+    float?
+    float?
+  v4+
+    float AfterJumpOrientationAngularSpeedThreshold = 0.01f
+  v5+
+    bool? MagneticHackDamperForceAllways = true
+    v5=
+      MagneticHackDamperForceAllways = false
+
+0x08E [MP3.v0, TMT.v1, MP4.v3, TM2020.v4] // camera models
+  version
+  CPlugCamControlModel[] CameraModels (deprec)
+  v1+
+    CPlugCamControlModel[] CameraModels_Console (deprec)
+    v2+
+      CPlugCamControlModel CamModelRear
+      v3+
+        CPlugCamControlModel CamModelIronSight
+        v4+
+          CPlugCamControlModel[]
+
+0x094 [MP3.v1, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
+  version
+  float TurboYellowAccelCoef
+  PlugCurve TurboYellowConstantFromSpeed (version: Version - 5)
+  int TurboYellowAccelCoefDuration
+  float TurboRedAccelCoef
+  PlugCurve TurboRedConstantFromSpeed (version: Version - 5)
+  int TurboRedAccelCoefDuration
+  v1+
+    int? TurboYellowConstantDuration = 1000
+    int? TurboRedConstantDuration = 1000
+    v2+
+      float? TurboCheatAccelCoef = 3f
+      PlugCurve TurboCheatConstantFromSpeed (version: Version - 5)
+      int? TurboCheatAccelCoefDuration = 1000
+      int? TurboCheatConstantDuration = 1000
+      v3=
+        int?
+      v4+
+        int
+
+0x095 [MP3.v0, TMT.v0, MP4.v0, TM2020.v7] // air control
+  version
+  int AirControlDuration
+  float AirControlMaxAngularSpeedY
+  PlugCurve AirControlZCoefFromAngularSpeed (version: Version - 7)
+  bool AirControlNewModel7
+  float AirControlYKeepFrictionCoef
+  float AirControlYStopFrictionCoef = 5f
+  float AirControlXStopFrictionCoef = 5f
+  v1+
+    int?
+    v2+
+      int?
+      PlugCurve (version: Version - 7)
+      PlugCurve (version: Version - 7)
+      v3+
+        PlugCurve (version: Version - 7)
+        v4+
+          int?
+          v5+
+            int?
+            int?
+            PlugCurve (version: Version - 7)
+            int?
+            v6+
+              PlugCurve (version: Version - 7)
+
+0x096 [MP3.v5, TMT.v5, MP4.v5, TM2020.v5] // engine and gear ratios
+  version
+  float EngineMaxRPM = 11000f
+  float EngineIdleRPM = 2500f
+  float
+  float DeclutchingDuration = 0.225f
+  float
+  float
+  float
+  float
+  float TakeOffBoost = 5f
+  v2+
+    float?
+  float
+  float
+  float
+  float
+  float
+  float
+  float[] EngineGearRatios
+  float[] EngineAutoGearMaxRPMs
+  float[] EngineAutoGearMinRPMs
+  v3+
+    float
+    v4+
+      bool TakeOffBoost_Enable
+      v5+
+        float TakeOffBoost_MaxRPMCoef = 1f
+
+0x097 [MP3.v1, TMT.v2, MP4.v2, TM2020.v2] // contact materials
+  version
+  float BodyFrictionCoef_Concrete
+  float BodyFrictionCoef_Metal
+  float BodyRestCoef_Metal
+  float BodyRestCoef_Concrete
+  float WheelRestCoef_Concrete
+  float WheelRestCoef_Metal
+  bool NoBodyBottomFriction
+  v2+
+    CMwRefBuffer Materials
+
+0x098 [TMT.v2, MP4.v2, TM2020.v2] // aerial forces
+  version
+  float AerialForce_AngleMinDeg = 80f
+  int AerialForce_Duration = 150
+  float AerialForce_Base = 0.6f
+  float AerialForce_VelYMin = 0.5f
+  int AerialMove_Duration = 50
+  float AerialMove_Dist = 0.2f
+  float AerialMove_SpeedMin = 5f
+  float AerialMove_SpeedMax = 10f
+  v2+
+    bool AerialMove_UseVehicleUp
+
+0x099 [TMT, MP4, TM2020] // Shape
+  version
+  CPlugVehicleCarPhyShape Shape
+
+0x09A [TMT, MP4, TM2020] // GearBox
+  version
+  CPlugVehicleGearBox GearBox
+
+0x09B [TMT.v3, MP4.v3, TM2020.v5] // jump, catch-up and big-car settings
+  version
+  float JumpClassicImpulseY = 25.0f
+  float JumpClassicImpulseZ = 15.0f
+  float JumpProgressiveImpulseY = 10.0f
+  float JumpProgressiveImpulseZ = 6.0f
+  float JumpProgressiveForceY = 0.5f
+  float JumpProgressiveForceZ = 0.2f
+  int JumpClassicDuration = 300
+  int JumpProgressiveDuration = 150
+  int JumpCooldown = 2000
+  v1+
+    float? CatchUpSpeed0
+    float? CatchUpSpeed1
+    float? CatchUpSpeed2
+    float? CatchUpSpeed3
+    float? CatchUpSpeed4
+    float? CatchUpAccelFactor0
+    float? CatchUpAccelFactor1
+    float? CatchUpAccelFactor2
+    float? CatchUpAccelFactor3
+    float? UltraCatchUpAccelFactor0
+    float? UltraCatchUpAccelFactor1
+    float? UltraCatchUpAccelFactor2
+    float? UltraCatchUpAccelFactor3
+    v2+
+      float? FrictionFactor
+      v3+
+        float? BigCarAccelCoef = 1.5f
+        float? BigCarGravityCoef = 1.5f
+        float? BigCarControlCoef = 1.5f
+        float? BigCarScale = 1.5f
+        vec3? HookPos
+        v4+
+          PlugCurve (version: Version - 5)
+0x09C [MP4.v20, TM2020.v21]
+  version
+  v17-
+    float?
+  v18+
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+  float?
+  float?
+  CFuncKeysReal
+  CFuncKeysReal
+  CFuncKeysReal
+  PlugCurve (version: Version - 21)
+  PlugCurve (version: Version - 21)
+  v1+
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+  v2+
+    float?
+  v3=
+    float?
+  v4+
+    CFuncKeysReal
+    v5+
+      float?
+      PlugCurve (version: Version - 21)
+      float?
+      float?
+      float?
+      v6+
+        float?
+        v7+
+          int?
+          PlugCurve (version: Version - 21)
+          v8+
+            PlugCurve (version: Version - 21)
+            v9+
+              float?
+              v10+
+                float?
+                v11+
+                  PlugCurve (version: Version - 21)
+                  PlugCurve (version: Version - 21)
+                  v12+
+                    PlugCurve (version: Version - 21)
+                    v13+
+                      PlugCurve (version: Version - 21)
+                      v15+
+                        float?
+                        v16+
+                          float?
+                          v19+
+                            PlugCurve (version: Version - 21)
+                            v20+
+                              float?
+
+0x09D [MP4.v19, TM2020.v21]
+  version
+  v0=
+    bool?
+    float?
+    float?
+    float
+    float
+    bool?
+    float
+    float
+  v1+
+    v19-
+      PlugCurve (version: Version - 21)
+      float?
+      PlugCurve (version: Version - 21)
+      float?
+      float?
+    float
+    float
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+  v2+
+    v19-
+      PlugCurve (version: Version - 21)
+  v3+
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+  v4+
+    float?
+    float?
+  v5+
+    float?
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    v19-
+      PlugCurve (version: Version - 21)
+  v6+
+    PlugCurve (version: Version - 21)
+  v7-
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+    PlugCurve (version: Version - 21)
+  v8+
+    float?
+    PlugCurve (version: Version - 21)
+  v9+
+    float?
+    float?
+    float?
+  v10+
+    PlugCurve (version: Version - 21)
+  v11+
+    float?
+  v12+
+    PlugCurve (version: Version - 21)
+  v13+
+    PlugCurve (version: Version - 21)
+  v14+
+    PlugCurve (version: Version - 21)
+  v15+
+    float?
+    float?
+  v16+
+    float?
+  v17+
+    float?
+  v18+
+    PlugCurve (version: Version - 21)
+  v19+
+    float?
+  v20+
+    CPlugDynaWaterModel*
+
+0x09E [MP4.v5, TM2020.v8]
+  version
+  float
+  float
+  float
+  v1+
+    float?
+    v2+
+      int?
+      float?
+      v3+
+        float?
+        v4+
+          float?
+          PlugCurve (version: Version - 8)
+          v6-
+            float?
+          v7+
+            PlugCurve (version: Version - 8)
+          v5+
+            float?
+            v6+
+              float?
+              float?
+
+0x09F [MP4.v13, TM2020.v14]
+  version
+  PlugCurve (version: Version - 14)
+  float
+  float
+  float
+  v1+
+    float?
+    v2+
+      PlugCurve (version: Version - 14)
+      v3+
+        PlugCurve (version: Version - 14)
+        v4+
+          float?
+          float?
+          float?
+          float?
+          float?
+          float?
+          v5+
+            float?
+            v6+
+              PlugCurve (version: Version - 14)
+              v7+
+                float?
+                PlugCurve (version: Version - 14)
+                PlugCurve (version: Version - 14)
+                float?
+                v8+
+                  float?
+                  float?
+                  float?
+                  float?
+                  v9+
+                    vec3?
+                    vec3?
+                    v10+
+                      PlugCurve (version: Version - 14)
+                      v11+
+                        PlugCurve (version: Version - 14)
+                        v12+
+                          bool?
+                          v13+
+                            int?
+                            int?
+                            int?
+                            int?
+                            int?
+
+0x0A0 [MP4.v1, TM2020.v2]
+  version
+  v1+
+    float
+    float
+    float
+    float
+    float
+    v2+
+      float
+      float
+      float
+      float
+      float
+
+0x0A1 [TM2020.v2]
+  version
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  float
+  float
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  float
+  float
+  float
+  float
+  float
+  PlugCurve (version: Version - 2)
+0x0A2 [TM2020.v2]
+  version
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+  PlugCurve (version: Version - 2)
+
+0x0A3 [TM2020.v13]
+  version
+  float
+  float
+  int
+  int
+  v1+
+    float
+    v2+
+      float
+      float
+      float
+      float
+      v3+
+        float
+        v4+
+          CFuncKeysReal
           float
           int
-          v10+
-           int
-           v11+
-            float
-            v12+
-             Keys (version: Version - 13)
-             Keys (version: Version - 13)
+          int
+          int
+          v5+
+            int
+            CFuncKeysReal
+            CFuncKeysReal
+            PlugCurve (version: Version - 13)
+            PlugCurve (version: Version - 13)
+            v6+
+              int
+              v7+
+                int
+                v8+
+                  int
+                  v9+
+                    float
+                    int
+                    v10+
+                      int
+                      v11+
+                        float
+                        v12+
+                          PlugCurve (version: Version - 13)
+                          PlugCurve (version: Version - 13)
 
-0x0A4
- version
- float
- v1+
+0x0A4 [TM2020.v18]
+  version
   float
- v2+
+  v1+
+    float
+  v2+
+    int
+  v3+
+    int
+    PlugCurve (version: Version - 14)
+    float
+    float
+  v4+
+    float
+    int
+    float
+  v5+
+    PlugCurve (version: Version - 14)
+  v6+
+    PlugCurve (version: Version - 14)
+  v7+
+    PlugCurve (version: Version - 14)
+    int
+  v8+
+    PlugCurve (version: Version - 14)
+    PlugCurve (version: Version - 14)
+  v9+
+    int
+  v10+
+    int
+  v11+
+    v16-
+      int
+      int
+      int
+  v12+
+    PlugCurve (version: Version - 14)
+  v13+
+    v16-
+      int
+  v15+
+    int
+  v16+
+    float
+  v18+
+    int
+
+0x0A5 [TM2020.v2]
+  version
+  v1-
+    int
   int
- v3+
+  v1-
+    int
   int
-  Keys (version: Version - 14)
+  v1-
+    int
+    int
+    int
+    int
   float
   float
- v4+
   float
+  float
+  float
+  float
+  v1-
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+  PlugCurve (version: Version - 1)
+  v1-
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1)
+  PlugCurve (version: Version - 1)
+
+0x0A6 [TM2020.v15]
+  version
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  int
+  int
+  int
+  v1+
+    float
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
+    float
+    PlugCurve (version: Version - 11)
+  v2+
+    float
+  v3+
+    PlugCurve (version: Version - 11)
+  v4+
+    PlugCurve (version: Version - 11)
+  v5+
+    int
+    int
+  v6+
+    v12-
+      PlugCurve (version: Version - 11)
+  v7+
+    v12-
+      PlugCurve (version: Version - 11)
+  v8+
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
+  v9+
+    PlugCurve (version: Version - 11)
+  v10+
+    PlugCurve (version: Version - 11)
+  v12+
+    v12-
+      int
+      int
+  v13+
+    int
+    int
+  v14=
+    int
+  v15+
+    PlugCurve
+0x0A7 [TM2020.v19]
+  version
+  int
+  int
   int
   float
- v5+
-  Keys (version: Version - 14)
- v6+
-  Keys (version: Version - 14)
- v7+
-  Keys (version: Version - 14)
-  int
- v8+
-  Keys (version: Version - 14)
-  Keys (version: Version - 14)
- v9+
-  int
- v10+
-  int
- v11+
-  v17-
-   int
-   int
-   int
- v12+
-  Keys (version: Version - 14)
- v13+
-  v17-
-   int
- v15+
-  int
- v16+
   float
- v18+
+  float
+  float
+  PlugCurve (version: Version - 19)
+  PlugCurve (version: Version - 19)
+  v1+
+    int
+  v2+
+    int
+    PlugCurve (version: Version - 19)
+  v3+
+    int
+  v4+
+    float
+    float
+    int
+    int
+  v5+
+    int
+    int
+  v6+
+    CFuncKeysReal
+  v7+
+    int
+  v8+
+    PlugCurve (version: Version - 19)
+  v9+
+    PlugCurve (version: Version - 19)
+    PlugCurve (version: Version - 19)
+    int
+  v10+
+    float
+    PlugCurve (version: Version - 19)
+  v11+
+    PlugCurve (version: Version - 19)
+  v12+
+    float
+    float
+  v13+
+    PlugCurve (version: Version - 19)
+  v14+
+    PlugCurve (version: Version - 19)
+    PlugCurve (version: Version - 19)
+  v15+
+    int
+  v16+
+    PlugCurve (version: Version - 19)
+  v17+
+    PlugCurve (version: Version - 19)
+  v18+
+    float
+    float
+
+0x0A8 [TM2020.v10]
+  version
+  int
+  PlugCurve (version: Version - 10)
+  v1+
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+  v2+
+    PlugCurve (version: Version - 10)
+  v3+
+    PlugCurve (version: Version - 10)
+  v4+
+    int
+  v5+
+    int
+    float
+  v6+
+    PlugCurve (version: Version - 10)
+  v7+
+    PlugCurve (version: Version - 10)
+  v8+
+    float
+    float
+  v9+
+    PlugCurve (version: Version - 10)
+
+0x0A9 [TM2020.v4]
+  version
+  int
+  int
+  PlugCurve (version: Version - 4)
+  PlugCurve (version: Version - 4)
+  v1+
+    int
+  v2+
+    int
+    float
+    PlugCurve (version: Version - 4)
+    PlugCurve (version: Version - 4)
+  v3+
+    PlugCurve (version: Version - 4)
+
+0x0AA [TM2020]
+  version
+  float
+
+0x0AB [TM2020.v1]
+  version
+  int
+  int
+  float
+  PlugCurve (version: Version - 1)
+
+0x0AC [TM2020]
+  version
   int
 
-0x0A5
- version
- v1-
+0x0AD [TM2020.v11]
+  version
+  PlugCurve (version: Version - 10)
   int
- int
- v1-
-  int
- int
- v1-
-  int
-  int
-  int
-  int
- float
- float
- float
- float
- float
- float
- v1-
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
- Keys
- v1-
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
-  Keys (version: Version - 1)
- Keys (version: Version - 1)
-
-0x0A6
- version
- Keys (version: Version - 11)
- Keys (version: Version - 11)
- Keys (version: Version - 11)
- int
- int
- int
- v1+
-  float
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
-  float
-  Keys (version: Version - 11)
- v2+
-  float
- v3+
-  Keys (version: Version - 11)
- v4+
-  Keys (version: Version - 11)
- v5+
-  int
-  int
- v6+
-  v13-
-   Keys (version: Version - 11)
- v7+
-  v13-
-   Keys (version: Version - 11)
- v8+
-  Keys (version: Version - 11)
-  Keys (version: Version - 11)
- v9+
-  Keys (version: Version - 11)
- v10+
-  Keys (version: Version - 11)
- v12+
-  v13-
-   int
-   int
- v13+
-  int
-  int
- v14=
-  int
- v15+
-  Keys
-
-0x0A7
- version
- int
- int
- int
- float
- float
- float
- float
- Keys (version: Version - 19)
- Keys (version: Version - 19)
- v1+
-  int
- v2+
-  int
-  Keys (version: Version - 19)
- v3+
-  int
- v4+
-  float
   float
   int
-  int
- v5+
-  int
-  int
- v6+
   CFuncKeysReal
- v7+
-  int
- v8+
-  Keys (version: Version - 19)
- v9+
-  Keys (version: Version - 19)
-  Keys (version: Version - 19)
-  int
- v10+
-  float
-  Keys (version: Version - 19)
- v11+
-  Keys (version: Version - 19)
- v12+
-  float
-  float
- v13+
-  Keys (version: Version - 19)
- v14+
-  Keys (version: Version - 19)
-  Keys (version: Version - 19)
- v15+
-  int
- v16+
-  Keys (version: Version - 19)
- v17+
-  Keys (version: Version - 19)
- v18+
-  float
-  float
-
-0x0A8
- version
- int
- Keys (version: Version - 10)
- v1+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v2+
-  Keys (version: Version - 10)
- v3+
-  Keys (version: Version - 10)
- v4+
-  int
- v5+
-  int
-  float
- v6+
-  Keys (version: Version - 10)
- v7+
-  Keys (version: Version - 10)
- v8+
-  float
-  float
- v9+
-  Keys (version: Version - 10)
-
-0x0A9
- version
- int
- int
- Keys (version: Version - 4)
- Keys (version: Version - 4)
- v1+
-  int
- v2+
-  int
-  float
-  Keys (version: Version - 4)
-  Keys (version: Version - 4)
- v3+
-  Keys (version: Version - 4)
-
-0x0AA
- version
- float
-
-0x0AB
- version
- int
- int
- float
- Keys (version: Version - 1)
-
-0x0AC
- version
- int
-
-0x0AD
- version
- Keys (version: Version - 10)
- int
- float
- int
- CFuncKeysReal
- int
- int
- int
- int
- CFuncKeysReal
- Keys (version: Version - 10)
- int
- int
- CFuncKeysReal
- Keys (version: Version - 10)
- CFuncKeysReal
- v1+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v2+
   int
   int
   int
- v3+
-  Keys (version: Version - 10)
-  Keys (version: Version - 10)
- v4+
-  Keys (version: Version - 10)
-  float
- v5+
-  float
- v6+
-  Keys (version: Version - 10)
- v7+
+  int
   CFuncKeysReal
-  CFuncKeysReal
- v8+
-  Keys (version: Version - 10)
- v9+
-  float
- v11+
+  PlugCurve (version: Version - 10)
   int
+  int
+  CFuncKeysReal
+  PlugCurve (version: Version - 10)
+  CFuncKeysReal
+  v1+
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+  v2+
+    int
+    int
+    int
+  v3+
+    PlugCurve (version: Version - 10)
+    PlugCurve (version: Version - 10)
+  v4+
+    PlugCurve (version: Version - 10)
+    float
+  v5+
+    float
+  v6+
+    PlugCurve (version: Version - 10)
+  v7+
+    CFuncKeysReal
+    CFuncKeysReal
+  v8+
+    PlugCurve (version: Version - 10)
+  v9+
+    float
+  v11+
+    int
 
-0x0AE
- version
- int
- Keys (version: Version - 2)
- v1+
+0x0AE [TM2020.v2]
+  version
+  int
+  PlugCurve (version: Version - 2)
+  v1+
+    float
+
+0x0AF [TM2020] // inline legacy gameplay curves and forces
+  version
+  PlugCurve MaxSideFriction
+  float MaxSideFrictionSliding
+  float GroundSlowDownBase
+  float DamperTension
+  float SideFriction1
+  PlugCurve RolloverLateral
+  PlugCurve LateralContactSlowDown
+  PlugCurve SteerSlowDown
+  PlugCurve RolloverLateralFromAngle
+  float AirControlMaxAngularSpeedY
+  float BrakeCoef
+  float BrakeMax
+  float BrakeMaxDynamic
+  float GroundSlowDownCoef
+  PlugCurve SteerDriveTorque
+  float M4LateralFrictionSquareForce
+  float M4LateralFrictionTorque
+  float M4LateralFrictionForce
+  PlugCurve M4SteerRadiusFromSpeed
+  PlugCurve M4MaxFrictionTorqueFromSpeed
+  float M4MaxFrictionTorqueWhenSlippingCoef
+  PlugCurve M4MaxFrictionForceFromSpeed
+  float M4MaxFrictionForceWhenSlipping
+  float M4SteerRadiusWhenSlippingCoef
+  PlugCurve M5SlippingAccelCurve
+  PlugCurve M5SteerCoefFromSpeed
+  PlugCurve M5SmoothInputSteerDurationFromSpeed
   float
-
-0x0AF
- version
- Keys
- float
- float
- float
- float
- Keys
- Keys
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
- float
- float
- float
- Keys
- Keys
- float
- Keys
- float
- float
- Keys
- Keys
- Keys
- float
- float
- float
- Keys
- Keys
- Keys
- Keys
- float
- Keys
- Keys
- float
- float
- Keys
- Keys
- Keys
- float
- float
- float
- float
- float
- float
- float
- float
- float
- int
- float
- float
- int
- float
- float
- float
- float
- Keys
- Keys
- float
- float
- float
- float
- float
- Keys
- float
- float
- Keys
- int
- Keys
- Keys
- float
- Keys
- Keys
- Keys
- Keys
-
-0x0B0
- version
- float
- v1+
+  float WaterReboundMinHSpeed
+  float WaterBumpMinSpeed
+  PlugCurve WaterBumpSlowDownFromSpeedRatio
+  PlugCurve WaterFrictionFromSpeed
+  PlugCurve WaterReboundFromSpeedRatio
+  PlugCurve ModulationFromWheelCompression
+  float M6MaxSpeed4Burnout
+  PlugCurve M6BurnoutRadius
+  PlugCurve M6RolloverLateralFromSpeedRatio
+  float M6InertialMass
+  float M6MaxDiffBtwnPropulsionAndSpeed
+  PlugCurve AccelCurve
+  PlugCurve AccelCurveRear
+  PlugCurve M6BurnoutLateralSpeed
+  float M6BurnoutLateralSpeedCoeff
+  float M6MinSpeed4Burnout
+  float M6BurnoutSteerCoeff
+  float M6BurnoutCenterForceCoeff
+  float M6BurnoutRadiusMax
+  float M6BurnoutLateralSpeedMax
+  float M6BurnoutSteerCoeff2
+  float M6BurnoutSteerCoeff3
+  float M6BrakeModulationWhenSlipping
+  int M6BurnoutDuration
+  float M6BurnoutAccMod
+  float M6AfterBurnoutAccMod
+  int M6AfterBurnoutDuration
+  float M6FrictionModulationWhenSlipNBrake
+  float M6BrakeSmokeIntensity
+  float M6BurnoutSmokeVelocity
+  float M6BurnoutSmokeIntensity
+  PlugCurve M6BurnoutRolloverFromSpeed
+  PlugCurve M6DonutRolloverFromSpeed
+  float M6MaxDiffBtwGroundNormal
+  float M6BurnoutWheelAngularRotation
+  float M6MaxPosAngle4Burnout
+  float M6MaxNegAngle4Burnout
+  float M6AfterBurnoutImpulse
+  PlugCurve VisualSteerAngleFromSpeed
+  float BrakeTorqueCoef
+  float AccelTorqueCoef
+  PlugCurve Drifting_InputSteerRadiusFromSpeed
+  int
+  PlugCurve
+  PlugCurve
   float
+  PlugCurve Drifting_VehicleLateralForce_FromVehicleLateralSpeed
+  PlugCurve Drifting_BackCoefIntensityFromSpeed
+  PlugCurve Drifting_WheelLateralForce_FromWheelLateralSpeed
+  PlugCurve Drifting_BackCoefFromSlipAngle
 
-enum EShockModel
- Demo01
- Demo02
- Demo03
-
-enum ESteerModel
- Steer01
- Steer02
- Steer03
- Steer04
- Steer05
- Steer06
-
-archive Keys
+0x0B0 [TM2020.v1]
+  version
+  float
+  v1+
+    float

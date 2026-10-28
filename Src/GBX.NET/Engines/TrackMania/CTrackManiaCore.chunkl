@@ -1,0 +1,6 @@
+CTrackManiaCore 0x24013000
+- inherits: CGameManiaTitleCore
+
+0x000 (skippable) [MP4]
+  version
+  CTrackManiaResource Resource

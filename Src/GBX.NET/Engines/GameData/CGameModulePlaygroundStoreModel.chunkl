@@ -1,0 +1,40 @@
+CGameModulePlaygroundStoreModel 0x2E018000
+- inherits: CGameModulePlaygroundModel
+
+0x000 (skippable) // actions, items, titles and power-up images
+  version = 1
+  int ActionCount (local, write: "n.Actions?.Length ?? 0")
+  int ActionDataCount (local, write: "n.Actions?.Length ?? 0")
+  Action[ActionDataCount] Actions
+  int ItemCount (local, write: "n.Items?.Length ?? 0")
+  int ItemDataCount (local, write: "n.Items?.Length ?? 0")
+  Item[ItemDataCount] Items
+  string Title
+  string Subtitle
+  CGameModulePlaygroundModel.ImageRef PowerUpImageLvl1
+  CGameModulePlaygroundModel.ImageRef PowerUpImageLvl2
+  CGameModulePlaygroundModel.ImageRef PowerUpImageLvl3
+  CGameModulePlaygroundModel.ImageRef PowerUpImageLvl4
+  CGameModulePlaygroundModel.ImageRef PowerUpImageLvl5
+
+archive Action
+  string Ref
+  if Ref == null || Ref == ""
+    CGameActionModel Model
+  bool HasLevels
+  if HasLevels
+    int[] U01
+  else
+    int U02
+  string U03
+  string U04
+  string Url
+
+archive Item
+  string Ref
+  if Ref == null || Ref == ""
+    CGameItemModel Model
+  int U01
+  string U02
+  string U03
+  string Url

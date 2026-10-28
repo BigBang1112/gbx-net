@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>gbx</AssemblyName>
+        <FileHashesSource>$(MSBuildProjectDirectory)/../../Resources/FileHashes.txt</FileHashesSource>
+        <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">true</PublishSingleFile>
+        <EnableCompressionInSingleFile Condition="'$(PublishSingleFile)' == 'true' and '$(EnableCompressionInSingleFile)' == ''">true</EnableCompressionInSingleFile>
+        <PublishTrimmed Condition="'$(PublishTrimmed)' == ''">true</PublishTrimmed>
+        <TrimMode Condition="'$(TrimMode)' == ''">partial</TrimMode>
+        <TrimmerRemoveSymbols Condition="'$(TrimmerRemoveSymbols)' == ''">true</TrimmerRemoveSymbols>
+        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
+
+        <PackAsTool Condition="'$(_IsPublishing)' != 'true'">true</PackAsTool>
+        <ToolCommandName>gbx</ToolCommandName>
+        <PackageId>GBX.NET.CLI</PackageId>
+        <Title>GBX.NET.CLI</Title>
+        <Version>0.1.0</Version>
+        <Authors>BigBang1112</Authors>
+        <Description>A command-line interface for inspecting and transforming Gbx files with GBX.NET.</Description>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReleaseNotes>
+- A tool for parsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
+        </PackageReleaseNotes>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+        <EmbeddedResource Include="$(FileHashesSource)" Link="Resources/FileHashes.txt" LogicalName="GbxCLI.FileHashes.txt.gz" />
+        <InternalsVisibleTo Include="GbxCLI.Tests" />
+        <AssemblyMetadata Include="CliDistribution" Value=".NET tool" Condition="'$(PackAsTool)' == 'true'" />
+        <AssemblyMetadata Include="CliDistribution" Value="standalone" Condition="'$(PackAsTool)' != 'true'" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="5.9.0" />
+        <PackageReference Include="Spectre.Console" Version="0.57.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET.PAK\GBX.NET.PAK.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET.Builders\GBX.NET.Builders.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(PublishTrimmed)' == 'true'">
+        <!-- Inspection and C# scripts access model members that static analysis cannot discover. -->
+        <TrimmerRootAssembly Include="gbx;GBX.NET;GBX.NET.PAK;GBX.NET.LZO;GBX.NET.ZLib;GBX.NET.Crypto;GBX.NET.Hashing;TmEssentials" />
+        <!-- Scripts generate calls to runtime helpers and APIs unused by the compiled CLI. -->
+        <TrimmerRootAssembly Include="System.Private.CoreLib;System.Runtime;System.Linq;System.Collections.Immutable" />
+        <!-- Keep the default ScriptOptions references available to code compiled at runtime. -->
+        <TrimmerRootAssembly Include="System.Collections;System.Collections.Concurrent;System.Console" />
+        <TrimmerRootAssembly Include="System.Diagnostics.Debug;System.Diagnostics.Process;System.Diagnostics.StackTrace;System.Globalization" />
+        <TrimmerRootAssembly Include="System.IO;System.IO.FileSystem;System.IO.FileSystem.Primitives" />
+        <TrimmerRootAssembly Include="System.Reflection;System.Reflection.Extensions;System.Reflection.Primitives" />
+        <TrimmerRootAssembly Include="System.Runtime.Extensions;System.Runtime.InteropServices" />
+        <TrimmerRootAssembly Include="System.Text.Encoding;System.Text.Encoding.CodePages;System.Text.Encoding.Extensions;System.Text.RegularExpressions" />
+        <TrimmerRootAssembly Include="System.Threading;System.Threading.Tasks;System.Threading.Tasks.Parallel;System.Threading.Thread;System.ValueTuple" />
+    </ItemGroup>
+
+    <Import Project="Build/CompressedFileHashes.targets" />
+
+</Project>

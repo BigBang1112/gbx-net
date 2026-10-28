@@ -1,20 +1,20 @@
 CGameLeague 0x0308E000
 
-0x001
- string Path
- string Name
- string Description
- string Login
- byte
- string FlagUrl
+0x001 [TMF, MP3, TMT]
+  string Path
+  string Name
+  string Description
+  string Login
+  byte
+  string FlagUrl
 
-0x002
- version
- string
- string
- string Name
- string Path
- string Description
- string Login
- byte
- string FlagUrl
+0x002 [MP4, TM2020]
+  version
+  string
+  string
+  string Name
+  string Path
+  string Description
+  string Login
+  byte
+  string FlagUrl

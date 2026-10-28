@@ -1,3 +1,106 @@
 CPlugVehicleVisModel 0x090E7000
 
-0x000
+0x000 [MP3.v2, TMT.v6, MP4.v9, TM2020.v18] // Shared model, sounds and geometry
+  version
+  CPlugVehicleVisModelShared Shared
+  CPlugSolid
+  CPlugSolid
+  CPlugSolid
+  v5+
+    int SurfVersion = 1 [TM2020 = 2]
+  SoundSet Sounds = empty
+  v1+
+    float DefaultDamperMinLen = -2
+    float DefaultWheelOffsetY
+  v9+
+    float DefaultSparkleRelSpeedThreshold = 20
+    float DefaultSparkleScale = 1
+  v3+
+    CPlugVehicleVisGeomModel GeomModel // Damage surfaces use SurfVersion, or 0 before version 5.
+  v12..17
+    CPlugVFXFile
+  v17+
+    CPlugFxSystem FxSystem
+
+0x001 [TMT.v6, MP4.v6, TM2020.v10] // Sound events
+  version
+  SoundEventSet SoundEvents = empty
+
+0x002 [TMT.v5, MP4.v5, TM2020.v5] // Impact sounds
+  version
+  float SoundWheelImpact_Hard_ThresholdKmh = 115.2f // Before version 5, stored in metres per second.
+  float SoundWheelImpact_Soft_ThresholdKmh = 21.599998f
+  float SoundBodyImpact_Hard_ThresholdKmh = 144
+  float SoundBodyImpact_Soft_ThresholdKmh = 21.599998f
+  v1..3
+    CFuncKeysReal
+  v2..3
+    CFuncKeysReal
+  v3+
+    CPlugAudioEnvironment AudioEnvironmentForFirstPerson
+  v4+
+    vec3 SoundImpactWheelFrontPos = (0, -0.5f, 1.5f)
+    vec3 SoundImpactWheelBackPos = (0, -0.5f, -1.5f)
+
+archive SoundSet
+  CPlugLocatedSound Horn
+  CPlugLocatedSound WheelSurfaceLeft
+  CPlugLocatedSound Engine
+  CPlugLocatedSound Turbo
+  CPlugLocatedSound WheelSurfaceRight
+  CPlugLocatedSound Brakes
+  CPlugLocatedSound BodySurface_Deprecated
+  CPlugLocatedSound GearChange
+  CPlugLocatedSound BrakeLights
+  CPlugLocatedSound Roar
+  CPlugLocatedSound Vibrations
+  v2+
+    CPlugLocatedSound Sparkles
+  v6+
+    CPlugLocatedSound FreeWheeling
+  v8+
+    CPlugLocatedSound WaterWake
+  v13+
+    CPlugLocatedSound U01
+    CPlugLocatedSound U02
+  v14+
+    CPlugLocatedSound U03
+  v15+
+    CPlugLocatedSound U04
+  v16+
+    CPlugLocatedSound U05
+    CPlugLocatedSound U06
+
+archive SoundEventSet
+  CPlugLocatedSound GlassSmash
+  v1+
+    CPlugLocatedSound BodyImpact
+  v2+
+    CPlugLocatedSound BackFire
+  v3+
+    CPlugLocatedSound WheelLand
+  v0..3
+    WheelJump = WheelLand
+  v4+
+    CPlugLocatedSound WheelJump
+    CPlugLocatedSound BodyPartDetached
+    CPlugLocatedSound BodyPartImpact
+  v5+
+    CPlugLocatedSound TurboStart
+    CPlugLocatedSound HelicoRelease
+  v6+
+    CPlugLocatedSound BeginFreeWheeling
+    CPlugLocatedSound EndFreeWheeling
+  v7+
+    CPlugLocatedSound U01
+    CPlugLocatedSound U02
+  v8+
+    CPlugLocatedSound U03
+    CPlugLocatedSound U04
+  v9+
+    CPlugLocatedSound U05
+    CPlugLocatedSound U06
+  v10+
+    CPlugLocatedSound U07
+    CPlugLocatedSound U08
+    CPlugLocatedSound U09

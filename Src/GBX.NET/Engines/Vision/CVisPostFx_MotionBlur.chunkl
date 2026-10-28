@@ -1,0 +1,49 @@
+CVisPostFx_MotionBlur 0x0C031000
+- inherits: CSceneFxCompo
+
+0x000 // legacy blur parameters
+  Technique = 0
+  int
+  int
+
+0x001 [TM10] // legacy technique and blur parameters
+  int Technique
+  if Technique == 0
+    int
+    int
+  if Technique == 1
+    float
+
+0x004 // legacy motion length shader
+  CMwNod T2_Fid_PHlsl_MotionLenCmp
+  CMwNod
+
+0x005 [TMU, TMF] // legacy motion settings
+  int Technique
+  int = 8
+  int = 1000
+  float = 0.9f
+  float T2_MotionScale = 1f
+  float T2_MotionMaxLen = 0.1f
+  bool T2_DelayShadows = true
+
+0x006 [TMU, TMF] // T2_Fid_PHlsl_MotionLenCmp
+  CMwNod T2_Fid_PHlsl_MotionLenCmp
+
+0x007 // legacy depth bitmap and shader
+  CMwNod T3_BitmapDepth
+  CMwNod T3_PHlsl_MotionBlur
+
+0x008 // Technique
+  int Technique
+
+0x009 // motion settings
+  float T2_MotionScale
+  float T2_MotionMaxLen
+  bool T2_DelayShadows
+
+0x00A // depth and motion bitmaps and shader
+  version
+  CMwNod T3_BitmapDepth
+  CMwNod T3_BitmapMotion
+  CMwNod T3_PHlsl_MotionBlur

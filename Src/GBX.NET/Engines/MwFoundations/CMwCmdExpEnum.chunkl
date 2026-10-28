@@ -1,0 +1,6 @@
+CMwCmdExpEnum 0x01059000
+- inherits: CMwCmdExp
+
+0x000 [TMU, TMF]
+  int EnumValue
+  uint ParamId

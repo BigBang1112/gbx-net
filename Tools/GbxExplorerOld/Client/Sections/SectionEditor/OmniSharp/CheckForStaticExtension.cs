@@ -98,7 +98,7 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             return default;
         }
 
-        public static bool IsFoundUnder<TParent>(this SyntaxNode node, Func<TParent, SyntaxNode> childGetter)
+        public static bool IsFoundUnder<TParent>(this SyntaxNode node, Func<TParent, SyntaxNode?> childGetter)
            where TParent : SyntaxNode
         {
             var ancestor = node.GetAncestor<TParent>();
@@ -113,10 +113,10 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             return node.GetAncestorsOrThis<SyntaxNode>().Contains(child);
         }
 
-        public static TNode GetAncestor<TNode>(this SyntaxNode node)
+        public static TNode? GetAncestor<TNode>(this SyntaxNode node)
            where TNode : SyntaxNode
         {
-            var current = node.Parent;
+            SyntaxNode? current = node.Parent;
             while (current != null)
             {
                 if (current is TNode tNode)
@@ -130,15 +130,15 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             return null;
         }
 
-        private static SyntaxNode GetParent(this SyntaxNode node)
+        private static SyntaxNode? GetParent(this SyntaxNode node)
         {
             return node is IStructuredTriviaSyntax trivia ? trivia.ParentTrivia.Token.Parent : node.Parent;
         }
 
-        public static TNode FirstAncestorOrSelfUntil<TNode>(this SyntaxNode node, Func<SyntaxNode, bool> predicate)
+        public static TNode? FirstAncestorOrSelfUntil<TNode>(this SyntaxNode node, Func<SyntaxNode, bool> predicate)
             where TNode : SyntaxNode
         {
-            for (var current = node; current != null; current = current.GetParent())
+            for (SyntaxNode? current = node; current != null; current = current.GetParent())
             {
                 if (current is TNode tnode)
                 {
@@ -154,16 +154,16 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             return default;
         }
 
-        public static TNode GetAncestorOrThis<TNode>(this SyntaxNode node)
+        public static TNode? GetAncestorOrThis<TNode>(this SyntaxNode node)
                 where TNode : SyntaxNode
         {
-            return node?.GetAncestorsOrThis<TNode>().FirstOrDefault();
+            return node.GetAncestorsOrThis<TNode>().FirstOrDefault();
         }
 
         public static IEnumerable<TNode> GetAncestorsOrThis<TNode>(this SyntaxNode node)
             where TNode : SyntaxNode
         {
-            var current = node;
+            SyntaxNode? current = node;
             while (current != null)
             {
                 if (current is TNode tNode)

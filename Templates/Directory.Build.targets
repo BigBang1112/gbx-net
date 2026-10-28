@@ -1,0 +1,13 @@
+<Project>
+
+    <!-- Build templates against this checkout, including packages not yet published. -->
+    <ItemGroup Condition="'$(UseLocalTemplateReferences)' != 'false'">
+        <_TemplateLocalPackageReference Include="@(PackageReference)">
+            <LocalProjectPath Condition="Exists('$(MSBuildThisFileDirectory)../Src/%(Identity)/%(Identity).csproj')">$(MSBuildThisFileDirectory)../Src/%(Identity)/%(Identity).csproj</LocalProjectPath>
+        </_TemplateLocalPackageReference>
+        <_TemplateLocalPackageReference Remove="@(_TemplateLocalPackageReference->WithMetadataValue('LocalProjectPath', ''))" />
+        <ProjectReference Include="@(_TemplateLocalPackageReference->'%(LocalProjectPath)')" RemoveMetadata="Version;LocalProjectPath" />
+        <PackageReference Remove="@(_TemplateLocalPackageReference)" />
+    </ItemGroup>
+
+</Project>

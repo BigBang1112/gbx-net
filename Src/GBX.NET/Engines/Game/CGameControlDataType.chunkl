@@ -1,0 +1,10 @@
+CGameControlDataType 0x0309C000
+
+0x000
+  string Name
+  CGameControlCard CardTemplate
+
+0x001 [TMU]
+  string Name
+  uint ClassId
+  CGameControlCard CardTemplate

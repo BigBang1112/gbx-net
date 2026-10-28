@@ -1,0 +1,83 @@
+CGameMenuFrame 0x0300B000
+- inherits: CControlFrame
+
+0x000 // legacy sounds
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  float
+  float
+  float
+  float
+
+0x001 // legacy sounds and scene
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  CMwNod FrameScene
+  float
+  float
+  float
+  float
+
+0x002 // legacy sounds, scene and hide script
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  CMwNod FrameScene
+  CMwCmdBlockMain OnHideScript
+  float
+  float
+  float
+  float
+
+0x003 // legacy sounds, scene and scripts
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  CMwNod FrameScene
+  CMwCmdBlockMain OnShowScript
+  CMwCmdBlockMain OnHideScript
+  float
+  float
+  float
+  float
+
+0x004 // legacy sounds, scene and scripts
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  CMwNod FrameScene
+  CMwCmdBlockMain OnBeforeShowScript
+  CMwCmdBlockMain OnShowScript
+  CMwCmdBlockMain OnHideScript
+  float
+  float
+  float
+  float
+
+0x005 [TMU] // sounds and scene
+  CPlugSound UpDownSound
+  CPlugSound ShowSound
+  CMwNod FrameScene
+  float
+  float
+  float
+  float
+
+0x006 [TMU] // AutoBackButtonId
+  id AutoBackButtonId = "CardBack"
+
+0x007 [TMU]
+  float
+  float
+
+0x008 // AllowBgCamera
+  bool AllowBgCamera = true
+
+0x009 // NavigationDepth_Manialink3d_Unused
+  version
+  int NavigationDepth_Manialink3d_Unused
+
+archive MenuFrameInstanceData
+  version = 1
+  CMwCmdBlockMain OnBeforeShowScript
+  CMwCmdBlockMain OnShowScript
+  CMwCmdBlockMain OnHideScript
+  v1+ (archive)
+    id AutoBackButtonId = "CardBack"

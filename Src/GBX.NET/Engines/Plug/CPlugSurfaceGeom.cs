@@ -42,17 +42,14 @@ public partial class CPlugSurfaceGeom
 
     public partial class Chunk0900F004
     {
-        public string? U01;
-        public BoxAligned U02;
-
         public override void ReadWrite(CPlugSurfaceGeom n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.BoxAligned(ref U02);
+            rw.BoxAligned(ref n.boundingBox);
 
             if (rw.Reader is not null)
             {
-                rw.Reader.Settings.EncryptionInitializer?.Initialize(BitConverter.GetBytes(U02.X - U02.X2), 0, 4);
+                rw.Reader.Settings.EncryptionInitializer?.Initialize(BitConverter.GetBytes(n.BoundingBox.X - n.BoundingBox.X2), 0, 4);
 
                 n.Surf = CPlugSurface.ReadSurf(rw.Reader, surfVersion: 0);
                 n.SurfaceId = (CPlugSurface.MaterialId)rw.Reader.ReadInt16();

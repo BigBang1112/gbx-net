@@ -1,0 +1,58 @@
+CGameCtnPainterSetting 0x03048000
+
+0x000 [TMU] // legacy materials, fade bitmaps and scenes
+  CPlugMaterial MaterialPaint
+  CPlugBitmap BitmapBrushFade
+  CPlugBitmap BitmapStickerFade
+  CPlugMaterial MaterialLayerBlend
+  CMwNod[] ScenesFids
+  vec2
+  vec2
+  vec2
+  vec2
+  vec2
+
+0x001 [TMU] // Camera
+  CGameControlCameraOrbital3d Camera
+
+0x002 [TMU] // ImageSubObjectAllIcon
+  CPlugFileImg ImageSubObjectAllIcon
+
+0x003 [TMU] // icon and mouse wheel deltas
+  CPlugFileImg ImageSubObjectAllIcon
+  float MouseZDeltaRot
+  float MouseZDeltaScale
+
+0x004 [TMU] // camera bottom clipping
+  bool CameraBottomClipGeometry
+  float CameraBottomIn_m1p1
+
+0x005 [TMU] // remapping skin and folder
+  CPlugGameSkin Remapping
+  string RemapFolder
+
+0x006 // scenes
+  CMwNod[] ScenesFids
+  vec2
+  vec2
+  vec2
+  vec2
+  vec2
+
+0x007 // materials
+  CPlugMaterial MaterialPaint
+  CPlugMaterial MaterialFillColor
+  CPlugMaterial MaterialLayerBlend
+  CPlugMaterial MaterialLayerModulate
+
+0x008 // fade bitmaps
+  CPlugBitmap BitmapBrushFade
+  CPlugBitmap BitmapStickerFade
+
+0x009 // FxBloom_FidFuncIntensAtHdrNorm
+  CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
+
+0x00A // raster mask shaders
+  version
+  CPlugShader ShaderRasterRgbMask
+  CPlugShader ShaderRasterAlphaMask

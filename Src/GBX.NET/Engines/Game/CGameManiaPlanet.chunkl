@@ -1,0 +1,28 @@
+CGameManiaPlanet 0x03013000
+- inherits: CGameCtnApp
+
+0x000 [MP4] // ManiaTitlesFolder
+  version
+  string ManiaTitlesFolder
+
+0x001 [MP4]
+  version
+  bool
+
+0x002 [MP4] // cover flow description
+  version = 2
+  v0=
+    CMwNod
+    string
+  v1=
+    CMwNod
+    CPlugGameSkin
+    string
+  v2+
+    CGameCoverFlowDesc CoverFlowDesc
+
+0x003 [MP4] // default title background and style sheet
+  version = 1
+  CMwNod TitleMainDefaultBgFid
+  v1+
+    CControlStyleSheet DefaultStyleSheet

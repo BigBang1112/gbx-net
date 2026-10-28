@@ -1,0 +1,251 @@
+CPlugCharVisModel 0x090C7000
+
+0x000
+  CMwRefBuffer
+  id
+
+0x001
+  version = 1
+  CPlugParticleEmitterModel Particle_JumpPad
+  v1+
+    CPlugParticleEmitterModel Particle_Deprecated_InjuredLight
+
+0x002
+  version
+  CPlugSound[] (deprec)
+
+0x003 [MP4.v31, TM2020.v33]
+  version
+  v9-
+    int
+  float WalkViewBobOffsetPos
+  float WalkViewBobOffsetRoll
+  v8-
+    float
+  v13+
+    int WalkImpactBodyDelay
+  v9-
+    int
+  float RunViewBobOffsetPos
+  float RunViewBobOffsetRoll
+  v8-
+    float
+  v1+
+    id
+  v2+
+    float JumpViewOffsetPos
+    float JumpViewOffsetAngle
+    int JumpViewOffsetDuration1
+    int JumpViewOffsetDuration2
+    float LandViewOffsetPos
+    float LandViewOffsetAngle
+    int LandViewOffsetDuration1
+    int LandViewOffsetDuration2
+  v3+
+    int HurtViewOffsetDuration
+    float HurtViewOffsetPos
+    float HurtViewOffsetAngle
+  v4+
+    vec3 HurtFlashColor
+    float
+  if Version >= 5 && Version < 18
+    int
+    float
+    float
+  v6=
+    CPlugMaterial
+  v7+
+    CPlugBeamEmitterModel AttractorModel
+    v20-
+      float
+  v8+
+    vec3 AttractorRelPos
+  v9+
+    PlugCurve WalkViewBobAmountFromVel (version: Version - 33)
+    PlugCurve RunViewBobAmountFromVel (version: Version - 33)
+    PlugCurve WalkStepDistFromVel (version: Version - 33)
+    PlugCurve RunStepDistFromVel (version: Version - 33)
+  v10+
+    float WalkViewBobOffsetPitch
+    float RunViewBobOffsetPitch
+    float ViewBobRollWalkCyclePhase
+    float ViewBobPitchStepPhase
+  v11+
+    PlugCurve WalkStepDistFromVel_Snow (version: Version - 33)
+    PlugCurve RunStepDistFromVel_Snow (version: Version - 33)
+  v12+
+    float StrafeSmoothingPeriod
+    float StrafeMaxRollAngle
+  v14=
+    bool
+  v16+
+    PlugCurve WalkStepBodyVolumeFromVel (version: Version - 33)
+    PlugCurve RunStepBodyVolumeFromVel (version: Version - 33)
+  v17+
+    PlugCurve LandVolumeFromVel (version: Version - 33)
+  v19+
+    vec3 WalkStepSoundOffset
+  v20+
+    PlugCurve SwimStepDistFromVel (version: Version - 33)
+    PlugCurve SwimStepBodyVolumeFromVel (version: Version - 33)
+    PlugCurve SwimStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve WalkStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve RunStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve SwimmingVolumeFromVel (version: Version - 33)
+    PlugCurve SwimmingPitchFromVel (version: Version - 33)
+  v22+
+    PlugCurve SlideSurfgVolumeFromVel (version: Version - 33)
+    PlugCurve SlideSurfPitchFromVel (version: Version - 33)
+  v23+
+    PlugCurve JumpVolumeFromVel (version: Version - 33)
+    PlugCurve JumpPitchFromVel (version: Version - 33)
+  v24+
+    PlugCurve WallJumpVolumeFromVel (version: Version - 33)
+    PlugCurve WallJumpPitchFromVel (version: Version - 33)
+  v25+
+    PlugCurve SwimStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve SwimStepImpactPitchFromVel (version: Version - 33)
+    PlugCurve WalkStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve WalkStepImpactPitchFromVel (version: Version - 33)
+    PlugCurve RunStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve RunStepImpactPitchFromVel (version: Version - 33)
+  v26+
+    CMwNod AudioEnvironmentForFirstPerson
+  v27+
+    PlugCurve WalkViewBobAmountFromVel_Rushing (version: Version - 33)
+  v28+
+    CPlugBeamEmitterModel GrapnelModel
+  v29+
+    int
+  v30+
+    float GrapnelReturnSpeed
+  v31+
+    CPlugSolid2Model NullMesh
+  v32+
+    CMwNod
+    CMwNod
+
+0x004
+  version = 4
+  v1=
+    string
+  if Version == 2 || Version == 3
+    CMwNod
+  v3=
+    CMwNod
+  if Version < 2 || Version >= 4
+    int = 3
+    CMwNod[3]
+
+0x005
+  version
+  CMwRefBuffer
+
+0x006 [MP4.v1]
+  version
+  v0=
+    string
+  v1+
+    CMwNod DummySkinnable
+
+0x007 [MP4.v18]
+  version
+  CPlugSound Sound_Notice_Jump
+  CPlugSound Sound_Notice_JumpChain1
+  CPlugSound Sound_Notice_JumpChain2
+  CPlugSound Sound_Notice_WallJump
+  CPlugSound Sound_Notice_DoubleJump
+  CPlugSound Sound_Notice_Land
+  CPlugSound Sound_Notice_Spawn
+  CPlugSound Sound_Notice_InjuredLight
+  CPlugSound Sound_Notice_InjuredEliminatedShot
+  CPlugSound Sound_Notice_InjuredEliminated
+  CPlugSound Sound_Notice_Fire
+  CPlugSound Sound_Notice_JumpPadSmall
+  CPlugSound Sound_Notice_Attractor
+  CPlugSound Sound_Notice_GestureTaunt
+  CPlugSound Sound_Notice_Turbo
+  CPlugSound Sound_Notice_SpeedUp
+  CPlugSound Sound_Notice_FreeWheeling
+  v5+
+    CPlugSound Sound_Notice_BulletHit
+  v6+
+    CPlugSound Sound_Notice_BackFlipJump
+  v6+
+    CPlugSound Sound_Notice_FrontFlipJump
+  v8+
+    CPlugSound Sound_Notice_ZoomIn
+  v8+
+    CPlugSound Sound_Notice_ZoomOut
+  v9+
+    CPlugSound Sound_Notice_MissingStamina
+  v3+
+    CPlugSound Sound_EvolutionChange
+  v1+
+    CPlugSound Sound_WalkBody
+  v1+
+    CPlugSound Sound_RunBody
+  v2+
+    CPlugSound Sound_Breathe
+  v4+
+    CPlugSound Sound_EvolutionInProgress
+  v7+
+    CPlugSound Sound_Gliding
+  v10+
+    CPlugSound Sound_Notice_GesturePointTo
+  v11+
+    CPlugSound Sound_Notice_JumpPadMed
+  v11+
+    CPlugSound Sound_Notice_JumpPadBig
+  v12+
+    CPlugSound Sound_SwimBody
+  v12+
+    CPlugSound Sound_Swimming
+  v13+
+    CPlugSound Sound_Attractor
+  v14+
+    CPlugSound Sound_Slide
+  v15+
+    CPlugSound Sound_WalkBodySilent
+  v16+
+    CPlugSound Sound_Notice_TechJump
+  v17+
+    CPlugSound Sound_Notice_TeleportSpawn
+  v17+
+    CPlugSound Sound_Notice_TeleportUnspawn
+  v18+
+    CPlugSound Sound_Notice_FallDamage
+
+0x008 [MP4.v5]
+  version
+  CPlugParticleMaterialImpactModel JumpMaterialImpact
+  CPlugParticleMaterialImpactModel LandMaterialImpact
+  CPlugParticleMaterialImpactModel WalkStepMaterialImpact
+  CPlugParticleEmitterModel Particle_JumpPad
+  CPlugParticleEmitterModel Particle_Turbo
+  CPlugParticleEmitterModel Particle_SpeedUp
+  CPlugParticleEmitterModel Particle_Deprecated_InjuredLight
+  CPlugParticleEmitterModel Particle_Deactivated
+  CPlugParticleEmitterModel Particle_DeactivatedShot
+  CPlugParticleEmitterModel Particle_Spawn
+  v1+
+    CPlugParticleEmitterModel Particle_EvolutionInProgress
+  v2+
+    CPlugParticleEmitterModel Particle_EvolutionChange
+  v3+
+    CPlugParticleEmitterModel Particle_ShieldDestroyed
+  v4+
+    CPlugParticleEmitterModel Particle_ShieldDestroyed_Mesh
+  v5+
+    CPlugParticleEmitterModel Particle_TeleportSpawn
+    CPlugParticleEmitterModel Particle_TeleportUnspawn
+
+0x009 [MP4.v1]
+  version
+  CPlugShieldModel ShieldModel
+  v1+
+    CPlugSolid2Model ParagliderMesh
+
+0x00A [MP4]
+  version
+  int AimingAfterFireDurationMs

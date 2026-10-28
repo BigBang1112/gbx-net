@@ -1,0 +1,7 @@
+CPlugCharPhyRecoilModel 0x090E0000 // View recoil applied after firing a bullet model.
+
+0x000 [MP4, TM2020] // recoil
+  id BulletModelId // matched against the fired bullet model ID
+  int Duration = 150 (time) // length of the recoil impulse
+  float FovScale = 1.04f // field of view multiplier at the impulse peak
+  float ViewKick // subtracted from the view rotation at the impulse peak

@@ -39,8 +39,8 @@ public abstract class GbxHeader
         return Parse(fs, settings, out node);
     }
 
-    internal bool Write(GbxWriter writer, IClass? node, GbxWriteSettings settings)
+    internal bool Write(GbxWriter writer, IClass? node)
     {
-        return new GbxHeaderWriter(this, writer, settings).Write(node);
+        return new GbxHeaderWriter(this, writer).Write(node);
     }
 }

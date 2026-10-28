@@ -1,2 +1,61 @@
 CConstructionChallengeVsk 0x21080000
 - inherits: CGameCtnChallenge
+
+0x000 [VSK5] // Course
+  CVskCourse Course
+
+0x001 [VSK5] // Meteo
+  CMwNod Meteo
+
+0x002 [VSK5] // Traffic
+  CVskTraffic Traffic
+
+0x004 [VSK5] // race rules
+  int TimeLimit
+  bool NoPenalty
+  bool InflictPenalty
+  bool FinishFirst
+
+0x009 (skippable) [VSK5] // wind shifts and AIs
+  bool RandomWindShift
+  byte NbAIs
+
+0x00A [VSK5] // race kind, wind and weather
+  byte = 255
+  id
+  byte RulesType
+  byte
+  byte WindDir
+  byte WindStrength
+  byte Weather
+  byte
+  byte StartDelay
+  int StartDayTime
+  int WindShiftAngle
+  int WindShiftDur
+
+0x00B [VSK5] // IgnoreCollectionMeteo
+  bool IgnoreCollectionMeteo
+
+0x00C (skippable) [VSK5]
+  int
+
+0x00D (skippable) [VSK5] // StartLowTideTime
+  int StartLowTideTime
+
+0x00E (skippable) [VSK5] // AILevel
+  byte AILevel
+
+0x011 [VSK5] // shifts and solo seeds
+  byte
+  bool SmallShifts
+  int
+  int SoloWindShiftSeed
+  int SoloPuffLullSeed
+
+0x012 [VSK5] // rules and sails
+  bool NoRules
+  bool StartSailUp
+
+0x013 (skippable) [VSK5] // StartWithPenalty
+  bool StartWithPenalty

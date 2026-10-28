@@ -1,0 +1,47 @@
+CGameCtnChallengeTrafficElemDesc 0x0316E000
+
+0x000 // legacy traffic element
+  ident TrafficObject = empty
+  id PathId = empty
+  int ModelVersion = 6
+  if ModelVersion < 5
+    LegacyTrafficObject LegacyModel (version: ModelVersion)
+    Model = null
+  else
+    CPlugTrafficObjectParams Model
+    int Faction
+    if ModelVersion >= 6
+      int TimeOffset (time)
+    else
+      TimeOffset = default
+  ElemId = PathId
+
+0x001 [TMT.v1] // traffic element
+  version
+  id ElemId = empty
+  ident TrafficObject = empty
+  id PathId = empty
+  int ModelVersion = 6
+  if ModelVersion < 5
+    LegacyTrafficObject LegacyModel (version: ModelVersion)
+    Model = null
+  else
+    CPlugTrafficObjectParams Model
+    int Faction
+    if ModelVersion >= 6
+      int TimeOffset (time)
+    else
+      TimeOffset = default
+  v1+
+    packdesc PackDesc
+
+archive LegacyTrafficObject
+  float U01
+  int U02
+  int U03
+  v2+
+    int U04
+  v3+
+    iso4 U05
+  v4+
+    int U06

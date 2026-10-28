@@ -7,11 +7,30 @@
 
 Welcome to GBX.NET 2!
 
-A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 400+ Gbx classes.
+A general purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania, written in C#/.NET. It supports high performance serialization and deserialization of 500+ Gbx classes.
 
 GBX.NET is not just a library that can read or write Gbx files, but also **a modding platform** that connects all Nadeo games together. It is exceptionally useful for bulk Gbx data processing, for example, when you want to fix broken sign locator URLs on hundreds of maps.
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via Discord DM: `bigbang1112`
+
+<!-- gbx-comparison:start -->
+### Benchmark
+
+**0.0266 ms** for **A01-Race**, **159 ms** for **Deep Dip 2** on average with GBX.NET.
+
+Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.
+
+| Map | GBX.NET | gbx-py | gbx-ts | ManiaPlanetSharp |
+| --- | ---: | ---: | ---: | ---: |
+| A01-Race | **0.0266 ms** | 11.9 ms (partial) | 2.14 ms | 14.6 ms (partial) |
+| Canyon A01 | **0.349 ms** | 51 ms (partial) | 26.5 ms (partial) | 24.9 ms (partial) |
+| Deep Dip 2 | **159 ms** | 12.7 s (partial) | 701 ms (partial) | 2.37 s (partial) |
+
+**Parsing coverage differs.** `(partial)` means skipped chunks or an unfinished body, not equivalent full parsing. Passing the runner's checks does not prove exhaustive coverage, so these timings are not a like-for-like speedup.
+
+Measured 2026-10-14 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64), with 15 samples per case after warmup. [Methodology, parsing limitations, versions, and reusable runner](Benchmarks/README.md#cross-library-map-comparison).
+
+<!-- gbx-comparison:end -->
 
 ### Navigation
 
@@ -87,7 +106,7 @@ Here are some of the known file types to start with:
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes
 | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) / [CGameUserProfile](Src/GBX.NET/Engines/Game/CGameUserProfile.chunkl) | Yes | Yes
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
-| ScriptCache.Gbx | [CScriptTraitsMetadata](Src/GBX.NET/Engines/Script/CScriptTraitsMetadata.chunkl) | Yes | Yes
+| ScriptCache.Gbx | [CScriptTraitsPersistent](Src/GBX.NET/Engines/Script/CScriptTraitsPersistent.chunkl) | Yes | Yes
 | Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.chunkl) | Yes | Yes
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
@@ -470,29 +489,24 @@ Console.WriteLine(gbx.Node.BuildVersion);
 
 ### Game Version Interfaces!
 
-Interfaces (short name of Game Version Interfaces) is a new *upcoming* feature of GBX.NET 2 where you can scope the Gbx classes for specific Trackmania/Shootmania games to hide unrelated properties and avoid large amount of null checks. These null checks will be done for you behind the scenes and will throw exceptions if they are "exceptional" for the game version you pick.
+Game Version Interfaces scope Gbx classes to specific Trackmania/Shootmania games, hiding unrelated properties. Required nullable-backed members are checked behind the scenes and throw exceptions when their values are missing for the selected contract.
 
 Currently, it is split into 3 ideas:
-- Chunk Game Version Specification *(partially available now)*
+- Chunk Game Version Specification
   - Every `CMwNod` has a member `GameVersion` that can guess from which game the Gbx file is, or where it could be supported.
-- Generated Game Version Interfaces *(still WIP)*
-- Generated Builders *(still WIP)*
+- Generated Game Version Interfaces, based on the layouts' game metadata
+- [Generated Builders](Docs/NodeBuilders.md) in the `GBX.NET.Builders` package, available where a supported creation recipe can be established
 
-Since 2.0.1, the experimentation of Game Version Interfaces started on the `CGameCtnChallenge` and `CGameCtnBlock` classes. Example:
+Create a node with the selected game's chunks and defaults (requires the `GBX.NET.Builders` package):
 
 ```cs
-using GBX.NET;
-using GBX.NET.Engines.Game;
-using GBX.NET.Interfaces.Game;
-
-var map = Gbx.ParseNode<CGameCtnChallenge, IGameCtnChallengeTMF>();
-
-foreach (var block in map.GetBlocks())
-{
-    Console.WriteLine(block.Name);
-    // Console.WriteLine(block.Color); -- block color is not available in TMF
-}
+var clip = CGameCtnMediaClip.Create()
+    .WithName("Intro")
+    .ForTMF()
+    .Build();
 ```
+
+`Build()` returns the concrete node. `BuildInterface()` returns the selected game's interface. `ForTM2()` and `ForSM()` are aliases for `ForMP4()`. See [Generated node builders](Docs/NodeBuilders.md) for references, partial customizations, and recipe diagnostics.
 
 ## Optimization
 
@@ -604,12 +618,19 @@ You can also create a `nuget.config` file in your solution directory and put the
 
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
 
+## Benchmarks
+
+The [benchmark project](Benchmarks/README.md) measures source generator speed and Gbx fixture reads and writes, including compressed and uncompressed bodies.
+
+The [cross-library map comparison](Benchmarks/README.md#cross-library-map-comparison) includes the reusable runner, setup, and parsing limitations for the [results near the top](#benchmark).
+
 ## License
 
 GBX.NET 2 is licensed under multiple licenses, depending on the part of the project. Here are the licenses and their directories:
 
 - MIT License
   - **Src/GBX.NET**
+  - Src/GBX.NET.Builders
   - Src/GBX.NET.PAK
   - Src/GBX.NET.Crypto
   - Src/GBX.NET.Hashing

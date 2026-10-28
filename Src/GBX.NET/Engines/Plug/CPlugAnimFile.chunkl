@@ -1,61 +1,631 @@
 CPlugAnimFile 0x090B0000
 
-0x003
- version
- v9-
-  int SkelVersion
-  int
-  int
-  int
-  int TimingFixedPeriodVersion
-  int
-  v3+
-   int SkelEditionVersion
-   v4+
-    int ClipFlagsVersion
-    int
-    int
-    int GraphVersion
-    v5+
-     int
-     v6+
-      int
-      v8+
-       int SkelEditionStateVersion
-       int
-  v0=
-   int
-   int
-  CPlugSkel[] (version: n.SkelVersion)
-  CPlugAnimSkelJointGroup[]
-  v3+
-   CPlugAnimSkelEdition[]
-  CPlugAnimClip[]
-  v4+
-   CPlugAnimPoseGroup[]
-   CPlugAnimPoseGrid[]
-   CPlugAnimGraph[]
-   CPlugAnimGraphStack[]
-   v5+
-    CPlugAnimVariantGroup[]
-    v6+
-     CPlugAnimSpotModel[]
-     v8+
-      CPlugAnimSkelEditionPose[]
-  v0=
-   int
+0x003 [MP3.v9, TMT.v9, MP4.v11, TM2020.v24]
+  version
+  v9-
+    int SkelVersion
+    int JointGroupVersion
+    int LegacyRootMotionVersion
+    int BakedVersion
+    int TimingFixedPeriodVersion
+    int ClipVersion
+    v3+
+      int SkelEditionVersion
+      v4+
+        int ClipFlagsVersion
+        int PoseGroupVersion
+        int PoseGridVersion
+        int GraphVersion
+        v5+
+          int VariantGroupVersion
+          v6+
+            int SpotVersion
+            v8+
+              int SkelEditionStateVersion
+              int LegacyEditionVersion
+    v0=
+      int LegacyVersion1
+      int LegacyVersion2
+    CPlugSkel[] Skels (version: n.SkelVersion)
+    LegacyJointGroup[] JointGroups (version: n.JointGroupVersion)
+    v6-
+      LegacyRootMotion[] LegacyRootMotions (version: n.TimingFixedPeriodVersion)
+    LegacyBaked[] BakedClips (version: n.BakedVersion)
+    v3+
+      LegacyEdition[] EditionClips (version: n.SkelEditionVersion)
+    LegacyClip[] LegacyClips (version: n.ClipVersion)
+    v4+
+      LegacyPoseGroup[] LegacyPoseGroups
+      LegacyPoseGrid[] LegacyPoseGrids (version: n.PoseGridVersion)
+      LegacyGraph[] LegacyGraphs (version: n.GraphVersion)
+      LegacyGraphStack[] LegacyGraphStacks (version: n.GraphVersion)
+      v5+
+        CPlugAnimVariantGroup[] VariantGroups
+        v6+
+          CPlugAnimSpotModel[] Spots (version: n.SpotVersion)
+          v8+
+            CPlugAnimSkelEditionPose[] EditionPoses
+    v0=
+      int LegacyData
+    v9+
+      string ImportString
+      string UpdateString
+  v10+
+    v13+
+      int GraphVersion = 63
+    v19-
+      VariableVersion = GraphVersion
+    v20+
+      int VariableVersion = 55
+    v20-
+      v11+
+        CPlugSkel*[] Skels
+      CPlugAnimClip[] Clips
+    v21+
+      string[] ResourceNames
+      Resource[] SkelResources
+      Resource[] ClipResources
+    CPlugAnimVariantGroup[] VariantGroups
+    CPlugAnimPoseGroup[] PoseGroups
+    CPlugAnimPoseGrid[] PoseGrids
+    CPlugAnimGraphStack[] GraphStacks
+    v17+
+      v20-
+        CMwNod[] JointGroupNodes
+      v21+
+        Resource[] JointGroupResources
+    v22+
+      Resource[] BakedResources
+    v23+
+      Resource[] LegacyResources1
+    v24+
+      Resource[] LegacyResources2
+    int SpotVersion
+    CPlugAnimSpotModel[] Spots (version: n.SpotVersion)
+    string ImportString
+    string UpdateString
+    v19+
+      string
+    v13+
+      GraphRoot[] Graphs (version: n.GraphVersion)
+    v14=
+      uint
+    v15+
+      uint[] ClassIds
+
+archive Resource
+  id Name
+  bool UseFile
+  CMwNod Value
+
+archive GraphRoot (contextual)
+  if v < 17
+    throw (type: NotSupportedException, message: Unsupported early animation graph root)
+  GraphNodeBase Base (version: n.VariableVersion)
+  GraphNode[] Children (version: v)
+  CPlugVFXFile.Mapping[] Mappings
+  CPlugFxSystem.Variable[] Variables (version: n.VariableVersion)
+  v33+
+    GraphIdValue[] IdValues
+  v35+
+    string[] Strings
+  v40..47
+    byte U01
+    string U02
+  v49+
+    string U03
+  v51+
+    byte U04
+
+archive GraphNode (contextual)
+  int Type = -1
+  if Type == 13
+    GraphRoot Group (version: v)
+  else if Type == 7 || Type == 10 || Type == 11 || Type == 14 || Type == 16 || Type == 17 || Type == 19 || Type == 24 || Type == 26
+    GraphNodeBase Base (version: n.VariableVersion)
+  else if Type == 2
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphReference Reference (version: v)
+  else if Type == 1
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphAnimation Animation (version: v)
+  else if Type == 8
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphEvent Event (version: v)
+  else if Type == 3
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphAnimation3 Animation3 (version: v)
+  else if Type == 9
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphWeights Weights (version: v)
+  else if Type == 20
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphExpression Expression (version: v)
+  else if Type == 0
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphInput Input (version: v)
+  else if Type == 4
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphBlend Blend (version: v)
+  else if Type == 5
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphValue Value (version: v)
+  else if Type == 6 || Type == 22 || Type == 34
+    GraphNodeBase Base (version: n.VariableVersion)
+    id U01
+    if Type == 6
+      id U02
+      id U03
+  else if Type == 18
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphVariable Variable (version: v)
+  else if Type == 21
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphIds Ids (version: v)
+  else if Type == 23
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphCondition Condition (version: v)
+  else if Type == 25
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphStrings Text (version: v)
+  else if Type == 15
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphAction Action
+  else if Type == 28
+    GraphNodeBase Base (version: n.VariableVersion)
+    id U01
+    v52+
+      string U04
+  else if Type == 12
+    GraphNodeBase Base (version: n.VariableVersion)
+    GraphStateMachine StateMachine (version: v)
+  else if Type != -1
+    throw (type: NotSupportedException, message: Unsupported animation graph node type)
+
+archive GraphNodeBase
+  id Name
+  v9-
+    int U01
+  v3..39
+    int U02
+  v8+
+    vec2 Position
   v9+
-   string
-   string
- v10+
+    int U03
+  v55+
+    byte U04
+    byte U05
+    int U06
+
+archive GraphIdValue
+  id Name
+  int Value
+
+archive GraphReference
+  id U01
+  id U02
+  v2+
+    int U03
+  v5+
+    string U04
+  v40..47
+    byte U05
+    string U06
+  v50+
+    int U07
+
+archive GraphAnimation
+  id Name
+  string U01
+  v1+
+    float U02
+    float U03
+    float U04
+  v6+
+    int U05
+  v38+
+    byte U06
+    byte U07
+  v39+
+    byte U08
+  v40..47
+    byte U09
+    string U10
+  v43+
+    float U11
+    float U12
+    float U13
+  v62+
+    float U14 = 1f
+
+archive GraphEvent
+  id U01
+  v15+
+    id U02
+  v20+
+    string U03
+    string U04
+  v22+
+    int U05
+  v29+
+    byte U06
+  v41+
+    int U07
+  v44+
+    string U08
+    int U09
+
+archive GraphAnimation3
+  id Name
+  string U01
+  v1+
+    float U02
+    float U03
+    float U04
+  v6+
+    int U05
+  v25..38
+    int U06
+  v38+
+    byte U07
+  v39+
+    byte U08
+  v40..47
+    byte U09
+    string U10
+  v43+
+    float U11
+    float U12
+    float U13
+
+archive GraphWeights
   v11+
-   CPlugSkel[]
-  CPlugAnimClip[]
-  CPlugAnimVariantGroup[]
-  CPlugAnimPoseGroup[]
-  CPlugAnimPoseGrid[]
-  CPlugAnimGraphStack[]
-  int
-  CPlugAnimSpotModel[]
-  string
-  string
+    string U01
+  v13+
+    int Count = 2 (write: "v >= 37 ? Values?.Length ?? 0 : Count")
+  v34+
+    int U02
+  v37+
+    int U03 = 1
+    float[Count] Values
+
+archive GraphExpression
+  id Name
+  string U01
+  v18=
+    string U02
+  v23+
+    string U03
+  v26+
+    int U04
+  v36+
+    int U05
+  v40..47
+    byte U06
+    string U07
+  v42+
+    int U08
+
+archive GraphInput
+  id U01
+  id U02
+  int U03
+  int U04
+  int U05
+  v40..47
+    byte U06
+    string U07
+
+archive GraphBlend
+  id U01
+  id U02
+  id U03
+  v25+
+    int U04 = 1
+  v55+
+    byte U05
+    string U06
+    string U07
+    v58-
+      string U08
+    string U09
+  v57+
+    int U10
+    string U11
+  v57=
+    string U12
+    byte U13
+
+archive GraphValue
+  id Name
+  v47+
+    int U01
+
+archive GraphVariable
+  v30-
+    byte U01
+    int U02
+    int U03
+    string U04
+  v31+
+    id Name
+    v53-
+      id U05
+    v32+
+      v53-
+        id U06
+        id U07
+      int U08
+      id U09
+      int U10
+      byte U11
+      v53+
+        id U12
+        int U13
+      v54+
+        id U14
+      v61+
+        int U15
+      v62+
+        float U16 = 1f
+
+archive GraphIds
+  id[] Names
+  v20-
+    id U01
+    string U02
+  string U03
+  v22+
+    int U04
+    int U05
+
+archive GraphCondition
+  string U01
+  v27+
+    id U02
+  v28+
+    byte U03
+  v56+
+    byte U04
+    byte U05 = 1
+
+archive GraphStrings
+  id Name
+  v30+
+    string U01
+  string U02
+  string U03
+  v40..47
+    byte U04
+    string U05
+
+archive GraphAction
+  string U01
+  int U02
+  int U03
+  int U04
+  int U05
+
+archive GraphStateMachine (contextual)
+  GraphState[] States (version: v)
+  GraphTransition[] Transitions
+  int U01
+  v14+
+    int U02
+
+archive GraphState (contextual)
+  id Name
+  int U01
+  int U02
+  GraphRoot Root (version: v)
+  int U03
+  v12+
+    bool HasCondition
+    if HasCondition
+      string Condition
+      int U04
+      uint U05
+      uint U06
+
+archive GraphTransition
+  int U01
+  int U02
+  string U03
+  int U04
+  uint U05
+  uint U06
+  int U07
+  int U08
+
+archive LegacyJointGroup
+  int SkelIndex
+  ushort[] OldJointIndexs
+  id Name
+  v1+
+    float[] JointWeights
+  v2+
+    id[] JointNames
+
+archive LegacyRootMotion
+  CPlugAnimSkelBaked.TimingFixedPeriod Timing (version: v)
+  RootMotionFrame[] Frames
+
+archive RootMotionFrame
+  vec3 Translation
+  float Yaw
+
+archive LegacyBaked (contextual)
+  CPlugAnimSkelBaked.TimingFixedPeriod Timing (version: n.TimingFixedPeriodVersion)
+  int JointGroupIndex
+  transquat[] LocalJointsData
+  v1=
+    int U01
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.ClipFlagsVersion)
+  v4+
+    RootMotionFrame[] RootMotionFrames
+  v5+
+    id[] FloatChannelIds
+    float[] FloatChannelData
+
+archive LegacyClip (contextual)
+  id Name
+  int BakedIndex
+  if n.HasLegacyRootMotion
+    int U01
+  v2+
+    int EditionIndex
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.ClipFlagsVersion)
+
+archive LegacyEdition (contextual)
+  int SkelIndex
+
+archive LegacyPoseGroup
+  id Name
+  int JointGroupIndex
+  int PoseCount
+  transquat[] U01
+  vec2[] PoseCoords
+  id[] PoseNames
+  bool IsDifference
+  id DifferenceFromClip
+
+archive LegacyPoseGrid (contextual)
+  id Name
+  int JointGroupIndex
+  v0=
+    int PoseCount
+    transquat[PoseCount * 9] LegacyJointOffsets
+  v1+
+    transquat[] LegacyJointOffsets // replaced by JointOffsets
+  if n.GraphVersion == 0
+    transquat[] U01
+  if n.GraphVersion >= 6
+    transquat[] RefPoseJoints // joint group indices select RefPoseGlobalJoints
+  v0=
+    float X0
+    float X2
+    float Y0
+    float Y2
+  v1+
+    float[] Xs
+    float[] Ys
+    transquat[] JointOffsets
+
+archive LegacyGraph
+  v3+
+    id Name
+  LegacyGraphState[] States (version: v)
+  id DefaultState
+  v1+
+    int DefaultStateIndex
+  v2..12
+    LegacyGraphExtraState[] ExtraStates (version: v)
+  v13+
+    LegacyGraphTransition[] Transitions (version: v)
+
+archive LegacyGraphState
+  id Name
+  v1-
+    bool U01
+  LegacyAnimNode Node (version: v)
+  LegacyAnimNode RootMotionNode (version: v)
+  v12-
+    int TransitionType
+    int TransitionDuration
+    int TransitionFlags
+    LegacyGraphCondition[] Conditions
+    id OnFinishState
+    bool U02
+  v8=
+    int RootYawMode
+  v9+
+    int RootYawMode
+    float RootYawSpeed = 360
+    v10+
+      float RootYawOffset
+
+archive LegacyGraphExtraState
+  id Name
+  LegacyAnimNode Node (version: v)
+  LegacyAnimNode RootMotionNode (version: v)
+  int TransitionType
+  int TransitionDuration
+  int TransitionFlags
+  v3-
+    id SourceState
+  v4+
+    id[] SourceStates
+  id DestinationState
+
+archive LegacyGraphTransition
+  int Type
+  int Duration
+  int Flags
+  id DestinationState
+  LegacyGraphCondition[] Conditions
+  id[] SourceStates
+  int Trigger
+
+archive LegacyGraphCondition
+  int Type
+  id Name
+
+archive LegacyAnimNode
+  int Type = -1
+  if Type == 0
+    id ClipName
+    v11+
+      int Flags
+  else if Type == 1
+    int3 U01
+    LegacyAnimBlendEntry[] BlendEntries (version: v)
+    v5..6
+      LegacyAnimClip[] LegacyBlendClips (version: v)
+  else if Type == 2 || Type == 3
+    LegacyAnimClip[] Clips (version: v)
+  else if Type == 4
+    id U02
+  else if Type == 6
+    float[] Xs
+    float[] Ys
+    LegacyAnimClip[] Clips (version: v)
+    string U03
+    string U04
+  else if Type != -1 && Type != 5
+    throw (type: NotSupportedException, message: Unsupported legacy animation node type)
+
+archive LegacyAnimClip
+  id ClipName
+  v11+
+    int Flags
+
+archive LegacyAnimBlendEntry
+  LegacyAnimClip Clip (version: v)
+  float U01
+  float U02
+  float U03
+  float U04
+  int U05
+  v9-
+    float RootYawOffset
+  v8-
+    float RootYawSpeed = 360
+  id U06
+  v9+
+    int RootYawMode = 4
+    float RootYawSpeed = 360
+    v10+
+      float RootYawOffset
+
+archive LegacyGraphStack
+  id Name
+  int[] GraphIndices
+  v12+
+    LegacyInputActionDelay[] InputActionDelays
+
+archive LegacyInputActionDelay
+  int Delay
+  int Type
+  id Name

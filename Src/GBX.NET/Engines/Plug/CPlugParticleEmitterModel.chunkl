@@ -1,37 +1,46 @@
 CPlugParticleEmitterModel 0x090B3000
 
-0x000
- CPlugParticleEmitterSubModel[]_deprec ParticleEmitterSubModels (external)
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CPlugParticleEmitterSubModel[] ParticleEmitterSubModels (deprec)
 
-0x001
- id
+0x001 [MP3, TMT, MP4, TM2020]
+  id
 
-0x002
- version
- bool IsSplashMode
- v3+
-  float ShadowMapTexelSize
-
-0x003
- version
- string[]
-
-0x004
- version
- v1-
+0x002 [MP3.v0, TMT.v0, MP4.v4, TM2020.v4]
+  version
+  bool IsSplashMode
   v1=
-   bool U01
-   if U01
-    data[40]
- v2+
-  v2=
-   data[12]
-  float
-  int
-  float
-  int
-  float
-  float
-  bool
-  int
-  bool
+    data[4]
+  v3=
+    data[24]
+  v3+
+    float ShadowMapTexelSize
+
+0x003 [MP3, TMT, MP4, TM2020]
+  version
+  string[]
+
+0x004 [MP4.v3, TM2020.v6] // vortex emitter
+  version
+  v1=
+    bool EnableVortexEmitter
+  v1-
+    if Version == 0 || EnableVortexEmitter
+      data[40]
+  v2+
+    v2=
+      data[12]
+    float Radius
+    int VortexCountPerCircle
+    float Strength
+    int LifeTime
+    float Coef
+    float Randomness
+    v4-
+      bool
+    int EmitPeriod
+    bool EnableVortexEmitter
+  v4+
+    vec3 CircleNormal
+  v6+
+    float Lod_cPixelMin

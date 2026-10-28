@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using Microsoft.Extensions.Logging;
+
+namespace GBX.NET;
 
 public readonly record struct GbxWriteSettings
 {
@@ -13,4 +15,6 @@ public readonly record struct GbxWriteSettings
     /// Closes the stream after writing is finished. Default is <see langword="false"/>.
     /// </summary>
     public bool CloseStream { get; init; }
+
+    public ILogger? Logger { get; init; }
 }

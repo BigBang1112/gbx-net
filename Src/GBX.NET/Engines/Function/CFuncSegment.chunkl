@@ -1,0 +1,12 @@
+CFuncSegment 0x05037000 // A function with separate incoming and outgoing values and tangents at each key.
+- inherits: CFunc
+
+0x000 [TMU, TMF, MP4] // Keys
+  Key[] Keys
+
+archive Key
+  float X
+  float ValueIn
+  float TangentIn
+  float ValueOut
+  float TangentOut

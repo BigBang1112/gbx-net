@@ -1,0 +1,30 @@
+CPlugMusic 0x0901C000
+- inherits: CPlugMusicType
+
+0x000 // legacy sound file
+  CMwNod
+
+0x001
+  bool
+  bool
+
+0x002
+  id
+
+0x003 // legacy sound file
+  CMwNod
+  bool
+
+0x004 [TMU] // legacy sound files buffer
+  CMwRefBuffer
+
+0x005 // legacy sound files
+  CPlugFileSnd[] (deprec)
+
+0x006 // RootFolder
+  version
+  string RootFolder
+
+0x007 // Settings
+  version
+  CPlugFileText* Settings

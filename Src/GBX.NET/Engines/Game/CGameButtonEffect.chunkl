@@ -1,0 +1,9 @@
+CGameButtonEffect 0x03016000
+- inherits: CControlEffect
+
+0x001 [TM10, TMPU] // highlight colors and flash
+  vec3 HighlightColor
+  float
+  vec3 HighlightColor2
+  float
+  bool Flash

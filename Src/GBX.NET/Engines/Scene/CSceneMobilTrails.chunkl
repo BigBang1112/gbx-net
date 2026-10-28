@@ -1,0 +1,15 @@
+CSceneMobilTrails 0x0A06D000
+- inherits: CSceneMobil
+- game: TM10, TMPU, TMSX
+
+0x000 // legacy shader and quad count
+  CPlugShader TrailShader
+  int QuadMaxCount = 200
+
+0x001 [TM10, TMPU, TMSX] // shader, quad count and minimum distance
+  CPlugShader TrailShader
+  int QuadMaxCount
+  float MinDist
+
+0x002 [TMSX] // TrailDistRatio
+  float TrailDistRatio = 1f

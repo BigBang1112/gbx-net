@@ -1,0 +1,8 @@
+CMwCmdExpNumParam 0x01048000
+- inherits: CMwCmdExpNum
+
+0x01046000 [TMU, TMF] // Type
+
+0x001 [TMU, TMF]
+  CMwCmdExpClassParam.ParamArchive Parameter
+  int

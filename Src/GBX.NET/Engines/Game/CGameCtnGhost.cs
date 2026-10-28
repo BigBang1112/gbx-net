@@ -1,4 +1,4 @@
-﻿using GBX.NET.Inputs;
+using GBX.NET.Inputs;
 using System.Buffers.Binary;
 using System.Collections.Immutable;
 
@@ -6,80 +6,18 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
 {
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03092000>]
-    [AppliedWithChunk<Chunk03092003>]
-    [AppliedWithChunk<Chunk03092006>]
-    [AppliedWithChunk<Chunk0309200D>]
-    [AppliedWithChunk<Chunk03092015>]
-    [AppliedWithChunk<Chunk03092017>]
-    public string? GhostNickname { get; set; }
-
-    [SupportsFormatting]
-    [AppliedWithChunk<Chunk03092000>(sinceVersion: 8)]
-    public string? GhostClubTag { get; set; }
-
-    [AppliedWithChunk<Chunk0309200E>]
-    public Id? GhostUid { get; set; }
-
-    private TimeInt32 eventsDuration;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public TimeInt32 EventsDuration { get => eventsDuration; set => eventsDuration = value; }
-
-    private string? validate_ExeVersion;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public string? Validate_ExeVersion { get => validate_ExeVersion; set => validate_ExeVersion = value; }
-
-    private uint validate_ExeChecksum;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public uint Validate_ExeChecksum { get => validate_ExeChecksum; set => validate_ExeChecksum = value; }
-
-    private int validate_OsKind;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int Validate_OsKind { get => validate_OsKind; set => validate_OsKind = value; }
-
-    private int validate_CpuKind;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int Validate_CpuKind { get => validate_CpuKind; set => validate_CpuKind = value; }
-
-    private string? validate_RaceSettings;
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public string? Validate_RaceSettings { get => validate_RaceSettings; set => validate_RaceSettings = value; }
+    private Id? ghostUid;
+    public partial Id? GhostUid { get => ghostUid; set => ghostUid = value; }
 
     private ImmutableArray<IInput> inputs = [];
+    /// <remarks>Applied with: 0x011, 0x019, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     public ImmutableArray<IInput> Inputs { get => inputs; set => inputs = value; }
 
-    private bool steeringWheelSensitivity;
-    [AppliedWithChunk<Chunk03092025>]
-    public bool SteeringWheelSensitivity { get => steeringWheelSensitivity; set => steeringWheelSensitivity = value; }
-
-    private string? validate_TitleId;
-    [AppliedWithChunk<Chunk03092028>]
-    public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
-
-    private Checksum256? validate_TitleChecksum;
-    [AppliedWithChunk<Chunk03092028>]
-    public Checksum256? Validate_TitleChecksum { get => validate_TitleChecksum; set => validate_TitleChecksum = value; }
-
-    private int? validate_ValidationSeed;
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
-    public int? Validate_ValidationSeed { get => validate_ValidationSeed; set => validate_ValidationSeed = value; }
+    [Obsolete("Use GhostCountryPath instead.")]
+    public string? GhostZone { get => GhostCountryPath; set => GhostCountryPath = value; }
 
     public string GhostVersionString
     {
@@ -172,22 +110,19 @@ public partial class CGameCtnGhost
 
     public partial class Chunk0309200E
     {
-        public override void Read(CGameCtnGhost n, GbxReader r)
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            n.GhostUid = r.ReadId();
-        }
+            if (rw.Reader is not null)
+            {
+                n.GhostUid = rw.Reader.ReadId();
+            }
 
-        public override void Write(CGameCtnGhost n, GbxWriter w)
-        {
-            w.Write(n.GhostUid.GetValueOrDefault());
+            rw.Writer?.Write(n.GhostUid.GetValueOrDefault());
         }
     }
 
     public partial class Chunk03092011
     {
-        public int U01;
-        public int U02;
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.TimeInt32(ref n.eventsDuration);
@@ -201,7 +136,7 @@ public partial class CGameCtnGhost
         internal void ReadWriteInputs(CGameCtnGhost n, GbxReaderWriter rw)
         {
             // CInputEventsStore::Archive
-            rw.Int32(ref U01); // always 0 now
+            rw.Int32(ref n.inputStoreVersion); // always 0 now
 
             if (rw.Reader is not null)
             {
@@ -217,8 +152,8 @@ public partial class CGameCtnGhost
             // SGameGhostValidationData
             rw.String(ref n.validate_ExeVersion);
             rw.UInt32(ref n.validate_ExeChecksum);
-            rw.Int32(ref n.validate_OsKind);
-            rw.Int32(ref n.validate_CpuKind);
+            rw.EnumInt32<EKindOs>(ref n.validate_OsKind);
+            rw.EnumInt32<EKindCpu>(ref n.validate_CpuKind);
             rw.String(ref n.validate_RaceSettings);
             //
         }
@@ -228,7 +163,7 @@ public partial class CGameCtnGhost
             Span<string> inputNames = r.ReadArrayId();
 
             var numInputs = r.ReadInt32();
-            U02 = r.ReadInt32(); // CountLimit?
+            n.InputCountLimit = r.ReadInt32();
 
             if (numInputs == 0)
             {
@@ -271,7 +206,7 @@ public partial class CGameCtnGhost
             w.WriteListId(inputNames);
 
             w.Write(n.inputs.Length);
-            w.Write(U02);
+            w.Write(n.InputCountLimit);
 
             foreach (var input in n.inputs)
             {
@@ -300,6 +235,106 @@ public partial class CGameCtnGhost
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.Int32(n.checkpoints?.Length ?? 0);
+        }
+    }
+
+    public partial class Chunk0309201B : IVersionable
+    {
+        public int Version { get; set; } = 2;
+
+        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version is < 0 or > 2)
+            {
+                throw new VersionNotSupportedException(Version);
+            }
+
+            var count = 0;
+            if (Version == 2)
+            {
+                count = ReadWriteCheckpointCount(n, rw);
+            }
+            else
+            {
+                rw.TimeInt32Nullable(ref n.raceTime);
+            }
+
+            if (Version == 0)
+            {
+                rw.Int32(ref n.stuntScore);
+                rw.Int32(ref n.respawns, defaultValue: -1);
+            }
+            else
+            {
+                // Earlier chunks can contain -1; do not convert their values while reading.
+                var score = rw.Writer is null ? (ushort)0
+                    : n.stuntScore == -1 ? ushort.MaxValue : checked((ushort)(n.stuntScore ?? 0));
+                n.stuntScore = rw.UInt16(score);
+                var storedRespawns = rw.Writer is null || n.respawns is null or -1
+                    ? ushort.MaxValue : checked((ushort)n.respawns.Value);
+                var respawns = rw.UInt16(storedRespawns);
+                n.respawns = respawns == ushort.MaxValue ? -1 : respawns;
+            }
+
+            if (Version == 2)
+            {
+                rw.TimeInt32Nullable(ref n.raceTime);
+            }
+            else
+            {
+                count = ReadWriteCheckpointCount(n, rw);
+            }
+
+            if (rw.Reader is not null)
+            {
+                n.checkpoints = new Checkpoint[count];
+            }
+
+            // Version 1 stores differences backwards from the race time.
+            var previousTime = Version == 1 ? n.raceTime?.TotalMilliseconds ?? -1 : 0;
+            if (Version == 1 && previousTime == 0) previousTime = -1;
+
+            for (var i = 0; i < count; i++)
+            {
+                var index = Version == 1 ? count - i - 1 : i;
+                var checkpoint = n.checkpoints![index] ??= new Checkpoint();
+                var time = checkpoint.Time?.TotalMilliseconds ?? -1;
+
+                if (Version == 0)
+                {
+                    checkpoint.Time = rw.TimeInt32Nullable(checkpoint.Time);
+                }
+                else
+                {
+                    var delta = rw.Int32(unchecked(Version == 1 ? previousTime - time : time - previousTime));
+                    previousTime = unchecked(Version == 1 ? previousTime - delta : previousTime + delta);
+                    checkpoint.Time = previousTime == -1 ? null : TimeInt32.FromMilliseconds(previousTime);
+                }
+            }
+
+            if (Version == 2)
+            {
+                rw.TimeInt32Nullable(ref n.raceStartTime);
+            }
+            else if (rw.Reader is not null)
+            {
+                n.raceStartTime = null;
+            }
+        }
+
+        private int ReadWriteCheckpointCount(CGameCtnGhost n, GbxReaderWriter rw)
+        {
+            var count = rw.Writer is null ? 0 : n.checkpoints?.Length ?? 0;
+            count = Version == 0 ? rw.Int32(count) : rw.UInt16(checked((ushort)count));
+
+            if (count < 0 || (Version >= 1 && count > 10000))
+            {
+                throw new LengthLimitException(count);
+            }
+
+            return count;
         }
     }
 
@@ -334,61 +369,94 @@ public partial class CGameCtnGhost
         }
     }
 
-    public partial class Chunk03092028
-    {
-        public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
-        {
-            if (n.EventsDuration == TimeInt32.Zero)
-            {
-                return;
-            }
-
-            rw.String(ref n.validate_TitleId);
-            rw.Checksum256(ref n.validate_TitleChecksum);
-        }
-    }
-
     public partial class Chunk0309202D
     {
-        private readonly Chunk03092019 chunk019 = new();
-
-        public int U01;
-        public int U02; // same as 02A
-        public int U03; // same as 02A
-        public int U04;
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.hasInputs);
 
-            if (U01 >= 1)
+            if (n.HasInputs >= 1)
             {
                 throw new Exception("Inputs stored separately");
-                //chunk019.ReadWriteInputs(n, rw);
             }
 
             rw.String(ref n.validate_ExeVersion);
             rw.UInt32(ref n.validate_ExeChecksum);
-            rw.Int32(ref n.validate_OsKind);
-            rw.Int32(ref n.validate_CpuKind);
+            rw.EnumInt32<EKindOs>(ref n.validate_OsKind);
+            rw.EnumInt32<EKindCpu>(ref n.validate_CpuKind);
             rw.UnixTime(ref n.walltimeStartTimestamp);
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);
             rw.Checksum256(ref n.validate_TitleChecksum);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.UInt32(ref n.validate_GameRules);
+            rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
             rw.Int32(ref n.validate_ValidationSeed);
-            rw.Int32(ref U04);
+            rw.Int32(ref n.simulationFlags);
             rw.String(ref n.validate_RaceSettings);
         }
+    }
+
+    public partial class SettingsInfos
+    {
+        [Obsolete("Use MouseAccelEnabled instead.")]
+        public bool U04 { get => MouseAccelEnabled; set => MouseAccelEnabled = value; }
+
+        [Obsolete("Use MouseAccelQuantity instead.")]
+        public float U05 { get => MouseAccelQuantity; set => MouseAccelQuantity = value; }
+
+        [Obsolete("Use MouseSensitivities instead.")]
+        public float[]? U08 { get => MouseSensitivities; set => MouseSensitivities = value; }
+
+        [Obsolete("Use ScreenWidth, ScreenHeight and Time instead.")]
+        public Int3 U10
+        {
+            get => new(ScreenWidth, ScreenHeight, Time.TotalMilliseconds);
+            set
+            {
+                ScreenWidth = value.X;
+                ScreenHeight = value.Y;
+                Time = new TimeInt32(value.Z);
+            }
+        }
+
+        [Obsolete("Use MouseSensitivitiesEnableSpecific instead.")]
+        public bool U06 { get => MouseSensitivitiesEnableSpecific; set => MouseSensitivitiesEnableSpecific = value; }
+
+        [Obsolete("Use MouseScaleY instead.")]
+        public float U07 { get => MouseScaleY; set => MouseScaleY = value; }
+
+        [Obsolete("Use MouseScaleFreeLook instead.")]
+        public float U11 { get => MouseScaleFreeLook; set => MouseScaleFreeLook = value; }
     }
 
     public partial class Checkpoint
     {
         public override string ToString()
         {
-            return $"{Time.ToTmString()} ({(Speed.HasValue ? $"{Speed}km/h, " : "")}{StuntsScore} pts.)";
+            var details = new List<string>(3);
+
+            if (CheckpointId.HasValue)
+                details.Add($"ID: {CheckpointId.Value}");
+
+            if (Speed.HasValue)
+                details.Add($"{Speed.Value}km/h");
+
+            if (StuntsScore.HasValue)
+                details.Add($"{StuntsScore.Value} pts.");
+
+            return details.Count > 0
+                ? $"{Time.ToTmString()} ({string.Join(", ", details)})"
+                : Time.ToTmString();
         }
+    }
+
+    public partial class SSticker
+    {
+        [Obsolete("Use Name instead.")]
+        public string? U01 { get => Name; set => Name = value; }
+
+        [Obsolete("Use Slot instead.")]
+        public string? U02 { get => Slot; set => Slot = value; }
     }
 
     public override bool IsGameVersion(GameVersion version, bool strict = false)

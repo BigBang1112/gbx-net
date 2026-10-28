@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnBlock : IClassVersion<CGameCtnBlock>
+public partial interface IGameCtnBlock : IClassVersion<CGameCtnBlock>
 {
     string Name { get; set; }
     Int3 Coord { get; set; }

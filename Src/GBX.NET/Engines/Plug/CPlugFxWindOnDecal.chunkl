@@ -1,2 +1,13 @@
 CPlugFxWindOnDecal 0x090D9000
 - inherits: CPlug
+
+0x000 // wind settings
+  int
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float

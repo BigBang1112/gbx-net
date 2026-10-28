@@ -1,0 +1,10 @@
+CPlugFxLensDirtGen 0x090CB000
+
+0x000 // atlas, count, screen size and intensity ranges
+  version
+  id AtlasId
+  int Count
+  float ScreenSizeYMin
+  float ScreenSizeYMax
+  float Intens_Min
+  float Intens_Max

@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "BulkParseTest": {
-      "commandName": "Project",
-      "commandLineArgs": "\"D:\\GbxTools\\Dataset\\TMF\\Stadium\\Media\\Texture\""
-    }
-  }
-}

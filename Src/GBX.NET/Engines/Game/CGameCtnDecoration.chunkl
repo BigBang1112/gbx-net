@@ -4,50 +4,72 @@ CGameCtnDecoration 0x03038000
 0x000 (header, struct: SMoodRemaping)
 
 0x001 (header, struct: SLightMap) // LightMap
- versionb version
- int // CHmsLightMap Tech
+  versionb
+  int // CHmsLightMap Tech
 
-0x011 // DecoSize
- CGameCtnDecorationSize DecoSize (external)
+0x001 [TM10, TMPU] // legacy DecoAudio sounds and musics
 
-0x012 // DecoAudio
- CGameCtnDecorationAudio DecoAudio (external)
+0x002 [TM10, TMPU] // legacy scene and size
+  CMwNod
+  int3
 
-0x013 // DecoMood
- CGameCtnDecorationMood DecoMood (external)
+0x003 [TM10, TMPU] // legacy DecoSize edition zone
 
-0x014 // DecoratorSolidWarp
- CPlugDecoratorSolid DecoratorSolidWarp (external)
+0x004 [TM10, TMPU] // legacy DecoAudio SoundAttenuationInEditor
 
-0x015 // TerrainModifierCovered
- CGameCtnDecorationTerrainModifier TerrainModifierCovered (external)
+0x006 [TM10, TMPU] // legacy DecoMood location and sun times
 
-0x016 // TerrainModifierBase
- CGameCtnDecorationTerrainModifier TerrainModifierBase (external)
+0x007 [TMPU] // legacy DecoAudio environments
 
-0x017
- version
- id? DecorationZoneFrontierId
- v1+
-  bool IsWaterOutsidePlayField
+0x008 (skippable) // legacy DecoSize BaseHeightBase
 
-0x018
- version
- CPlugGameSkin VehicleFxSkin (external)
- string VehicleFxFolder
+0x009 // legacy DecoSize size and scene
 
-0x019
- version
- CGameCtnDecorationAudio DecoAudio (external)
- v1+
-  CPlugSound DecoAudioAmbient (external)
+0x00C // legacy DecoMood remapping
 
-0x01A
- version
- CGameCtnDecorationMaterialModifiers DecoMaterialModifiers
+0x00F // legacy DecoMood shadows
 
-0x01B
- version
- CGameCtnChallenge DecoMap (external)
- v1+
-  CMwNod DecoMapLightMap (external) // Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
+0x011 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoSize
+  CGameCtnDecorationSize DecoSize
+
+0x012 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // DecoAudio
+  CGameCtnDecorationAudio DecoAudio
+
+0x013 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoMood
+  CGameCtnDecorationMood DecoMood
+
+0x014 [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // DecoratorSolidWarp
+  CPlugDecoratorSolid DecoratorSolidWarp
+
+0x015 [TMU, VSK5, TMF, MP3, TMT, MP4] // TerrainModifierCovered
+  CGameCtnDecorationTerrainModifier TerrainModifierCovered
+
+0x016 [TMU, VSK5, TMF, MP3, TMT, MP4] // TerrainModifierBase
+  CGameCtnDecorationTerrainModifier TerrainModifierBase
+
+0x017 [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
+  version
+  id? DecorationZoneFrontierId
+  v1+
+    bool IsWaterOutsidePlayField
+
+0x018 [MP3.v0, TMT.v0, MP4.v0, TM2020.v2]
+  version
+  CPlugGameSkin VehicleFxSkin
+  string VehicleFxFolder
+
+0x019 [TMT.v1, MP4.v1, TM2020.v1]
+  version
+  CGameCtnDecorationAudio DecoAudio
+  v1+
+    CPlugSound DecoAudioAmbient
+
+0x01A [MP4, TM2020]
+  version
+  CGameCtnDecorationMaterialModifiers DecoMaterialModifiers
+
+0x01B [TM2020.v1]
+  version
+  CGameCtnChallenge DecoMap
+  v1+
+    CMwNod DecoMapLightMap // Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside

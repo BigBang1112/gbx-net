@@ -1,0 +1,5 @@
+CPlugBeamEmitterModel 0x090B4000
+
+0x002 [MP4]
+  version
+  CPlugBeamEmitterSubModel[] SubModels

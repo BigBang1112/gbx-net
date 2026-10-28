@@ -1,0 +1,14 @@
+CVisionResourceFile 0x0C012000
+
+0x002 [TMF] // depth and deferred rendering resources
+  CMwNod PhlslBlurHV_DepthTest
+  CMwNod ShaderDeferredOccZCmp
+  CMwNod ShaderDeferredShadowPssm
+  CMwNod BitmapDeferredZ
+  CMwNod BitmapDeferredFaceNormalInC
+
+0x00C [MP4] // FolderShaderBench
+  string FolderShaderBench
+
+0x01D [MP4] // named shaders and resources
+  CPlugModelShading.FidId[] Resources

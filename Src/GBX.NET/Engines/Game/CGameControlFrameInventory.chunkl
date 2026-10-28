@@ -1,0 +1,2 @@
+CGameControlFrameInventory 0x030F1000
+- inherits: CControlFrame

@@ -1,1 +1,15 @@
 CControlLayout 0x0700C000
+
+0x000
+  int AlignVertical
+  int AlignHorizontal
+  float PaddingVertical
+  float PaddingHorizontal
+
+0x001 [TMU, TMF, MP4, TM2020]
+  int AlignVertical
+  int AlignHorizontal
+  float PaddingVertical
+  float PaddingHorizontal
+  float RatioVertical
+  float RatioHorizontal

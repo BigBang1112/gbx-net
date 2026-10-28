@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <AssemblyName>ManiaPlanetSharp</AssemblyName>
+        <RootNamespace>ManiaPlanetSharp</RootNamespace>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DefineConstants>$(DefineConstants);HACKY_OBJECT_MODEL_DETECTION</DefineConstants>
+        <IsPackable>false</IsPackable>
+        <UpstreamSource>../../.deps/ManiaPlanetSharp/src/ManiaPlanetSharp</UpstreamSource>
+    </PropertyGroup>
+    <!-- Compile the pinned sources without the upstream Windows-only post-build copy. -->
+    <ItemGroup>
+        <Compile Include="$(UpstreamSource)/**/*.cs"
+                 Exclude="$(UpstreamSource)/bin/**;$(UpstreamSource)/obj/**;$(UpstreamSource)/ManiaExchange/**" />
+        <EmbeddedResource Include="$(UpstreamSource)/Properties/Resources.resx"
+                          LogicalName="ManiaPlanetSharp.Properties.Resources.resources" />
+        <PackageReference Include="SharpCompress" Version="0.37.2" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
+        <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    </ItemGroup>
+    <Target Name="CheckSourceCheckout" BeforeTargets="PrepareForBuild">
+        <Error Condition="!Exists('$(UpstreamSource)/ManiaPlanetSharp.csproj')"
+               Text="Run Benchmarks/Comparison/setup.ps1 to download the pinned ManiaPlanetSharp sources." />
+    </Target>
+</Project>

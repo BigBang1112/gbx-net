@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnBlockTM2020 : IGameCtnBlockMP4
+public partial interface IGameCtnBlockTM2020 : IGameCtnBlockMP4
 {
     bool IsFree { get; set; }
     Vec3? AbsolutePositionInMap { get; set; }

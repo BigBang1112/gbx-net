@@ -5,18 +5,18 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugSolid2Model
 {
     private ShadedGeom[]? shadedGeoms;
-    private CPlugVisual[]? visuals;
+    private NodeRefList<CPlugVisual>? visuals;
     private string[]? materialIds;
-    private External<CPlugMaterial>[]? materials;
-    private CPlugSkel? skel;
+    private NodeRefList<CPlugMaterial>? materials;
+
     private float[]? lodMaxDistAtFov90;
     private int visCstType;
     private PreLightGen? preLightGenerator;
     private DateTime? fileWriteTime;
     private string? materialsFolderName;
     private Light[]? lights;
-    private CPlugMaterialUserInst[]? materialInsts;
-    private CPlugLightUserModel[]? lightUserModels;
+    private NodeRefList<CPlugMaterialUserInst>? materialInsts;
+    private NodeRefList<CPlugLightUserModel>? lightUserModels;
     private LightInst[]? lightInsts;
     private int damageZone;
     private uint flags;
@@ -26,22 +26,22 @@ public partial class CPlugSolid2Model
     private byte[]? fileImageBytes;
 
     public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
-    public CPlugVisual[]? Visuals { get => visuals; set => visuals = value; }
-    public CPlugSkel? Skel { get => skel; set => skel = value; }
+    public NodeRefList<CPlugVisual>? Visuals { get => visuals; set => visuals = value; }
+    public CPlugSkel? Skel { get => skelRef?.Resolve(); set => NodeRef.SetEmbedded(ref skelRef, value); }
     public float[]? LodMaxDistAtFov90 { get => lodMaxDistAtFov90; set => lodMaxDistAtFov90 = value; }
     public int VisCstType { get => visCstType; set => visCstType = value; }
     public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
     public DateTime? FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
     public string? MaterialsFolderName { get => materialsFolderName; set => materialsFolderName = value; }
     public Light[]? Lights { get => lights; set => lights = value; }
-    public CPlugLightUserModel[]? LightUserModels { get => lightUserModels; set => lightUserModels = value; }
+    public NodeRefList<CPlugLightUserModel>? LightUserModels { get => lightUserModels; set => lightUserModels = value; }
     public LightInst[]? LightInsts { get => lightInsts; set => lightInsts = value; }
     public int DamageZone { get => damageZone; set => damageZone = value; }
     public uint Flags { get => flags; set => flags = value; }
 
     public string[]? MaterialIds { get => materialIds; set => materialIds = value; }
-    public External<CPlugMaterial>[]? Materials { get => materials; set => materials = value; }
-    public CPlugMaterialUserInst[]? MaterialInsts { get => materialInsts; set => materialInsts = value; }
+    public NodeRefList<CPlugMaterial>? Materials { get => materials; set => materials = value; }
+    public NodeRefList<CPlugMaterialUserInst>? MaterialInsts { get => materialInsts; set => materialInsts = value; }
     public Material[]? CustomMaterials { get => customMaterials; set => customMaterials = value; }
 
     public BoxAligned[]? Boxes { get => boxes; set => boxes = value; }
@@ -86,7 +86,7 @@ public partial class CPlugSolid2Model
         public int? U11;
         public int[]? U12;
         public int? U13;
-        public CMwNod? U14;
+
         public float? U15;
         public float? U16;
         public string? U17;
@@ -101,7 +101,7 @@ public partial class CPlugSolid2Model
 
             if (Version >= 6)
             {
-                rw.ArrayNodeRef_deprec<CPlugVisual>(ref n.visuals!);
+                rw.ListNodeRef_deprec<CPlugVisual>(ref n.visuals!);
             }
 
             rw.ArrayId(ref n.materialIds!); // MaterialIds
@@ -110,10 +110,10 @@ public partial class CPlugSolid2Model
 
             if (materialCount == 0)
             {
-                rw.ArrayNodeRef_deprec<CPlugMaterial>(ref n.materials!);
+                rw.ListNodeRef_deprec<CPlugMaterial>(ref n.materials!);
             }
 
-            rw.NodeRef<CPlugSkel>(ref n.skel);
+            rw.NodeRef(ref n.skelRef);
 
             if (Version >= 1)
             {
@@ -154,12 +154,12 @@ public partial class CPlugSolid2Model
 
                                         if (Version < 16)
                                         {
-                                            rw.ArrayNodeRef<CPlugMaterialUserInst>(ref n.materialInsts!);
+                                            rw.ListNodeRef<CPlugMaterialUserInst>(ref n.materialInsts!);
                                         }
 
                                         if (Version >= 10)
                                         {
-                                            rw.ArrayNodeRef<CPlugLightUserModel>(ref n.lightUserModels!);
+                                            rw.ListNodeRef<CPlugLightUserModel>(ref n.lightUserModels!);
                                             rw.ArrayReadableWritable<LightInst>(ref n.lightInsts!);
 
                                             if (Version >= 11)
@@ -231,7 +231,7 @@ public partial class CPlugSolid2Model
 
                                                                                     if (Version >= 25)
                                                                                     {
-                                                                                        rw.NodeRef(ref U14);
+                                                                                        rw.NodeRef(ref U14Ref);
                                                                                         rw.Single(ref U15);
                                                                                         rw.Single(ref U16);
 
@@ -255,7 +255,20 @@ public partial class CPlugSolid2Model
                                                                                                         rw.Int32(0);
                                                                                                     }
 
-                                                                                                    rw.Array<(int, int, int, int, int)>(ref U19);
+                                                                                                    // ValueTuple<int, int, int, int, int> has padding; the wire record is five Int32s.
+                                                                                                    var count = rw.Int32(U19?.Length ?? 0);
+                                                                                                    if (rw.Reader is not null)
+                                                                                                    {
+                                                                                                        U19 = new (int, int, int, int, int)[count];
+                                                                                                    }
+                                                                                                    for (var i = 0; i < count; i++)
+                                                                                                    {
+                                                                                                        rw.Int32(ref U19![i].Item1);
+                                                                                                        rw.Int32(ref U19[i].Item2);
+                                                                                                        rw.Int32(ref U19[i].Item3);
+                                                                                                        rw.Int32(ref U19[i].Item4);
+                                                                                                        rw.Int32(ref U19[i].Item5);
+                                                                                                    }
                                                                                                 }
                                                                                             }
                                                                                         }

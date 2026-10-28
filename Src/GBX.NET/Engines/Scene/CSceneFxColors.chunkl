@@ -1,0 +1,63 @@
+CSceneFxColors 0x0A034000
+- inherits: CSceneFxCompo
+
+0x002 [TMU] // saturation, brightness, contrast and hue bitmap
+  CPlugBitmap BitmapSbch
+  if BitmapSbch != null
+    vec2 BitmapTcScale
+    vec2 BitmapTcPeriod
+    vec2[4] BitmapRanges
+
+0x005 [TMU] // legacy color materials
+  CMwNod MaterialColors
+  CMwNod
+
+0x008 [TMU] // legacy parameters
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  Param
+  Param
+
+0x009 [TMU] // parameters
+  Param
+  Param
+  Param
+
+0x00A // intensities
+  float CloudsIntensity
+  float UserIntensity
+
+0x00B // ShaderAutoSaturateWithLight
+  CPlugShaderApply ShaderAutoSaturateWithLight
+
+0x00C // BitmapDepth
+  CPlugBitmap BitmapDepth
+
+0x00D // MaterialColors
+  CMwNod MaterialColors
+
+0x00E (skippable) // ShaderColorGrading
+  CMwNod ShaderColorGrading
+
+archive Param
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12

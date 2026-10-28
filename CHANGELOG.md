@@ -1,5 +1,37 @@
 # Changelog
 
+## [GBX.NET 2.5.0](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.0) - 2026-10-28
+
+- **Added 250+ new Gbx classes** and updated existing ones
+- **Discovered 4500+ member names** across class and archive layouts
+- Reworked node references to preserve external file and resource descriptors for any node
+  - Added `NodeRef<T>`, `NodeRefList<T>`, and `References` views with lazy resolution
+  - Deprecated older `External<T>` APIs
+  - Node collections now use `NodeRefList<T>`
+- Finally implemented `CMwNod.DeepClone()` for cloning nodes
+- Added support for `Action.Gbx` and `Crystal.Gbx`
+- Added generated Game Version Interfaces
+- Reworked class source generator
+  - Uses syntax trees over symbols, which improves build time
+  - Better handling of partial classes, chunk versions, and game-specific defaults
+  - Uses new ChunkL spec
+- Added `AppliedWithArchiveAttribute`
+- Unchanged map embedded data are now reused when writing
+- Fixed validation ghost sample data
+- Fixed lightmaps without frames
+- Fixed issues with TMUnlimiter 1.3 maps
+
+GBX.NET.Builders 2.5.0
+- Added generated fluent node builders with game-specific chunks and defaults
+
+GBX.NET.PAK 2.4.5
+- Added Blowfish counter mode support
+- Fixed some class ID unwrapping issues
+- Fixed a few LZ4 decompression issues
+
+GBX.NET.CLI
+- A tool for parsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
+
 ## [GBX.NET 2.4.5](https://github.com/BigBang1112/gbx-net/releases/tag/v2.4.5) - 2026-09-17
 
 - Added block skin and flag support for TM1.0 (by greffmaster)

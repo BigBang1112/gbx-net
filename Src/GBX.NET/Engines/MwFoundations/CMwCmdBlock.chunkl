@@ -1,4 +1,14 @@
 CMwCmdBlock 0x01030000
+- inherits: CMwCmdScript
 
-0x004
- CMwCmdScript[] Cmds
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF]
+  CMwCmdScript[] Cmds
+  BlockVariable[] Variables
+  BlockVariable[] ContextVariables
+
+archive BlockVariable
+  string Name
+  bool U01
+  int Type = 9
+  if Type == 4 || Type == 5
+    uint ClassId

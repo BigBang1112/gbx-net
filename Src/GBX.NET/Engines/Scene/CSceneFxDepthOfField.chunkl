@@ -1,0 +1,41 @@
+CSceneFxDepthOfField 0x0A077000
+- inherits: CSceneFxCompo
+
+0x000 // legacy focus and blur settings
+  float FocusZ = 10f
+  float Intensity = 0.7f
+  int TexSizeN = 2
+  int BlurSizeN = 7
+  int TexSizeF = 1
+  int BlurSizeF = 7
+  float OverlapF = 0.5f
+  bool IsAlphaInHomo = true
+  float BlurRatio = 2f
+  float BlurAmp = 1.01f
+
+0x001 (base: 0x000) // legacy technique and blur size
+  base
+  int Technique
+  int BlurSize = 11
+
+0x002 (base: 0x001) // legacy focus and shader
+  base
+  float FocusRange = 2f
+  CMwNod FidMrtDOF_BlurAtDepth
+
+0x003 (base: 0x001) [TMU, TMF] // focus range
+  base
+  float FocusRange
+
+0x004 [TMU, TMF] // FidMrtDOF_BlurAtDepth
+  CMwNod FidMrtDOF_BlurAtDepth
+
+0x005
+  float
+  float
+  float
+  int
+
+0x006
+  CMwNod
+  CMwNod

@@ -1,0 +1,57 @@
+CControlEntry 0x07009000
+- inherits: CControlText
+
+0x003
+  CPlugFont
+  vec2
+  vec4
+  CPlugSound
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  int MaxLength = -1
+
+0x004
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  int MaxLength = -1
+
+0x005
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  int MaxLength = -1
+  int Type
+
+0x006
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  int MaxLength = -1
+  int Type
+  float ClipLength = -1f (inherited)
+
+0x007
+  int MaxLine = -1 (inherited)
+
+0x008 [TMU]
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  int Type
+  int TextMode = 3 (inherited)
+  int MaxLength = -1
+  float ClipLength = -1f (inherited)
+  int MaxLine = -1 (inherited)
+
+0x009 [TMU]
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  bool SelectAllOnFocusGained
+
+0x00A
+  int Type
+  int MaxLength = -1
+
+0x00B
+  version
+  bool SetValueOnFocusLost = true
+  bool IsPassword
+  bool IsNewPassword
+  bool SelectAllOnFocusGained

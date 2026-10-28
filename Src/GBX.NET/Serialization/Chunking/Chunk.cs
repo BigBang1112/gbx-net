@@ -36,6 +36,7 @@ public abstract class Chunk : IReadableWritableChunk
 
     public virtual bool Ignore => false;
     public virtual GameVersion GameVersion => GameVersion.Unspecified;
+    public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences() => [];
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, GbxReaderWriter rw)
@@ -61,6 +62,8 @@ public abstract class Chunk : IReadableWritableChunk
     [Experimental("GBXNET10001")]
 #endif
     public abstract Chunk DeepClone();
+
+    internal virtual void DeepCloneFields(Chunk clone, DeepCloneContext context) { }
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]

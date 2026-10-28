@@ -1,0 +1,8 @@
+CMwCmdAffectParam 0x01033000
+- inherits: CMwCmdInst
+
+0x001 [TMU, TMF]
+  CMwCmdExpClassParam.ParamArchive Parameter
+  CMwCmdExp Value
+  int
+  int

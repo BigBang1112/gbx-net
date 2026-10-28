@@ -1,0 +1,76 @@
+CControlTimeLine2 0x07022000
+- inherits: CControlBase
+
+0x000 [TMU] // legacy sizes, ruler colors and shaders
+  float Width
+  float Height
+  float TrackHeight
+  float RulerHeight
+  float TimeCursorWidth
+  float TimeCursorHeight
+  vec4 RulerLinesColorBig
+  vec4 RulerLinesColorSmall
+  vec4 TrackSeparationColor
+  vec4 TimeCursorLineColor
+  float
+  float
+  float
+  float
+  float
+  float
+  CPlugShaderGeneric
+  CPlugShaderGeneric
+  CPlugShaderGeneric
+  CPlugShaderGeneric
+
+0x001 [TMU] // BlockHeight
+  float BlockHeight
+
+0x002 [TMU] // legacy key size and shaders
+  float KeyWidth
+  float KeyHeight
+  CPlugShaderGeneric
+  CPlugShaderGeneric
+  CPlugShaderGeneric
+
+0x003 [TMU] // key highlight size
+  float KeyHighLightWidth
+  float KeyHighLightHeight
+
+0x004 [TMU] // legacy dead zone shader
+  CPlugShaderGeneric
+
+0x005 [TMU] // TrackCount
+  int TrackCount
+
+0x006 // sizes and colors
+  version = 2
+  float Width
+  float Height
+  float TrackHeight
+  float RulerHeight
+  float TimeCursorWidth
+  float TimeCursorHeight
+  int TrackCount
+  float KeyHighLightWidth
+  float KeyHighLightHeight
+  float BlockHeight
+  float KeyWidth
+  float KeyHeight
+  if Version == 0
+    KeyHighLightWidth = 0.03f
+    KeyWidth = 0.03f
+  vec4 DeadZoneColor
+  vec4 BlockHighLightColor
+  vec4 KeyColor
+  vec4 KeyHighLightColor
+  vec4 BgColor
+  vec4 RulerBgColor
+  vec4
+  vec4 RulerLinesColorBig
+  vec4 RulerLinesColorSmall
+  vec4 TrackSeparationColor
+  vec4 TimeCursorLineColor
+  v2+
+    bool
+    bool

@@ -1,0 +1,5 @@
+CPlugBitmapRenderOverlay 0x0909E000
+- inherits: CPlugBitmapRender
+
+0x000 // IsOverlaySelfBlur
+  bool IsOverlaySelfBlur

@@ -1,0 +1,2 @@
+CMwCmdAffectIdentString 0x01075000
+- inherits: CMwCmdAffectIdent

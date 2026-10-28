@@ -1,0 +1,45 @@
+CGameManialink3dMood 0x0317E000
+
+0x000 [TM2020] // lighting, clouds, fog and sky images
+  version = 1
+  vec3 LAmbient_LinearRgb
+  vec3 LDir0_LinearRgb
+  float LDir0_Intens
+  float LDir0_DirTheta
+  float LDir0_DirPhi
+  vec3 LDir1_LinearRgb
+  float LDir1_Intens
+  float LDir1_DirTheta
+  float LDir1_DirPhi
+  vec3 LBall_LinearRgb
+  float LBall_Intens
+  float LBall_Radius
+  vec3 CloudsRgbMinLinear
+  vec3 CloudsRgbMaxLinear
+  vec3 FogColorSrgb
+  CPlugFileImg FidImageSkyGradientV
+  v1+
+    CPlugFileImg FidImageCloudsMinMaxDayTime
+    bool
+
+0x0316F000 [MP4] // lighting, clouds, fog and sky images (legacy ID)
+  version = 1
+  vec3 LAmbient_LinearRgb
+  vec3 LDir0_LinearRgb
+  float LDir0_Intens
+  float LDir0_DirTheta
+  float LDir0_DirPhi
+  vec3 LDir1_LinearRgb
+  float LDir1_Intens
+  float LDir1_DirTheta
+  float LDir1_DirPhi
+  vec3 LBall_LinearRgb
+  float LBall_Intens
+  float LBall_Radius
+  vec3 CloudsRgbMinLinear
+  vec3 CloudsRgbMaxLinear
+  vec3 FogColorSrgb
+  CPlugFileImg FidImageSkyGradientV
+  v1+
+    CPlugFileImg FidImageCloudsMinMaxDayTime
+    bool

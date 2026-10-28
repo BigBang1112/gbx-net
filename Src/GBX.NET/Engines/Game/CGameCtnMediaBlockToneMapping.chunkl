@@ -2,19 +2,39 @@ CGameCtnMediaBlockToneMapping 0x03127000
 - inherits: CGameCtnMediaBlock
 
 0x000
- list<Key> Keys
+  Key[] Keys (version: 0, list)
 
 0x001 (base: 0x000)
+  Key[] Keys (version: 1, list)
 
 0x002 (base: 0x000)
+  Key[] Keys (version: 2, list)
 
 0x003 (base: 0x000)
+  Key[] Keys (version: 3, list)
 
-0x004 (base: 0x000)
+0x004 (base: 0x000) [TMT, MP4, TM2020]
+  Key[] Keys (version: 4, list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Exposure
- float MaxHDR
- float LightTrailScale
- int
+  float Time (time)
+  v3=
+    bool U02
+  float ExposureBias
+  v3-
+    float U03
+  v1+
+    float MaxHDR
+  v2..3
+    float U04
+  v4+
+    float LightTrailScale = 8
+  v3+
+    int<EFilmCurve> FilmCurve
+
+enum EFilmCurve
+  Disable
+  Preset1
+  Preset2
+  Preset3
+  Preset4

@@ -1,5 +1,21 @@
 CPlugTreeGenerator 0x09051000
 - inherits: CPlug
 
-0x000
- uint
+property bool IsSaveGenerated
+  get = (Flags & 1) != 0
+  set
+    if value
+      Flags = Flags | 1
+    else
+      Flags = Flags & 0xFFFFFFFE
+
+property bool IsToKeepInSaveAsRelease
+  get = (Flags & 2) != 0
+  set
+    if value
+      Flags = Flags | 2
+    else
+      Flags = Flags & 0xFFFFFFFD
+
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // Flags
+  datauint Flags = 2

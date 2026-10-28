@@ -9,9 +9,13 @@
 <CPlugTreeValueRenderer Value="Val"></CPlugTreeValueRenderer>
 
 @code {
+    private KeyValuePair<float, CPlugTree> Pair => Value is KeyValuePair<float, CPlugTree> pair
+        ? pair
+        : throw new InvalidOperationException("Expected a CPlugTree key-value pair.");
+
     public float Key
     {
-        get => ((KeyValuePair<float, CPlugTree>)Value).Key;
+        get => Pair.Key;
         set
         {
             var key = Key;
@@ -21,7 +25,7 @@
                 return;
             }
 
-            var val = ((KeyValuePair<float, CPlugTree>)Value).Value;
+            var val = Pair.Value;
 
             dict.Remove(key);
             dict.Add(value, val);
@@ -30,5 +34,5 @@
         }
     }
 
-    public CPlugTree Val => ((KeyValuePair<float, CPlugTree>)Value).Value;
+    public CPlugTree Val => Pair.Value;
 }

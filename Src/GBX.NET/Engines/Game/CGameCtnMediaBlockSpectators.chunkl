@@ -1,10 +1,10 @@
 CGameCtnMediaBlockSpectators 0x030EB000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- list<Key> Keys
+0x000 [TM2020.v1]
+  version
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float Spectators
+  float Time (time)
+  float Spectators

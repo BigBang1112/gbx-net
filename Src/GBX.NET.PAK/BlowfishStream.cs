@@ -14,14 +14,21 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
     private int totalIndex;
     private readonly byte[] memoryBuffer;
     private readonly int version;
+    private readonly bool counterMode;
+    private readonly byte[] keyStream = new byte[8];
 
-    public BlowfishStream(Stream stream, byte[] key, ulong iv, int version)
+    public BlowfishStream(Stream stream, byte[] key, ulong iv, int version) : this(stream, key, iv, version, counterMode: false)
+    {
+    }
+
+    public BlowfishStream(Stream stream, byte[] key, ulong iv, int version, bool counterMode)
     {
         this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
         blowfish = new Blowfish(key, version >= 18 ? BlowfishTrick.LittleEndianPak18 : BlowfishTrick.LittleEndian);
         this.iv = iv;
         memoryBuffer = new byte[8];
         this.version = version;
+        this.counterMode = counterMode;
     }
 
     public override bool CanRead => stream.CanRead;
@@ -50,6 +57,11 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
         if (!CanRead)
         {
             throw new NotSupportedException("Stream is not readable.");
+        }
+
+        if (counterMode)
+        {
+            return await ReadCounterModeAsync(buffer, cancellationToken).ConfigureAwait(false);
         }
 
         if (totalIndex == 0)
@@ -120,6 +132,60 @@ public partial class BlowfishStream : Stream, IEncryptionInitializer
 
             buffer.Span[i] = memoryBuffer[bufferIndex & 7];
             bufferIndex++;
+            totalIndex++;
+        }
+
+        return buffer.Length;
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    private async ValueTask<int> ReadCounterModeAsync(Memory<byte> buffer, CancellationToken cancellationToken)
+    {
+        for (int i = 0; i < buffer.Length; i++)
+        {
+            if (totalIndex % 8 == 0)
+            {
+                var read = 0;
+                while (read < 8)
+                {
+                    var r = await stream.ReadAsync(memoryBuffer.AsMemory(read, 8 - read), cancellationToken).ConfigureAwait(false);
+
+                    if (r == 0)
+                    {
+                        break;
+                    }
+
+                    read += r;
+                }
+
+                if (read < 8)
+                {
+                    return i;
+                }
+
+                // Native code processes 256-byte chunks. The counter starts after the IV,
+                // advances by the chunk size per chunk and by one per block within a chunk.
+                var block = (ulong)totalIndex / 8;
+                var counter = iv + 8 + block / 32 * 0x100 + block % 32;
+                BinaryPrimitives.WriteUInt64LittleEndian(keyStream, counter);
+
+                // The counter cipher runs opposite to the chained cipher.
+                if (version >= 18)
+                {
+                    blowfish.Decrypt(keyStream.AsSpan());
+                }
+                else
+                {
+                    blowfish.Encrypt(keyStream.AsSpan());
+                }
+
+                for (var j = 0; j < 8; j++)
+                {
+                    memoryBuffer[j] ^= keyStream[j];
+                }
+            }
+
+            buffer.Span[i] = memoryBuffer[totalIndex & 7];
             totalIndex++;
         }
 

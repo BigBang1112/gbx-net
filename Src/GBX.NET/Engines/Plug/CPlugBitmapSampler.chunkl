@@ -1,20 +1,64 @@
 CPlugBitmapSampler 0x0907E000
 - inherits: CPlug
 
-0x002
- id Name
- CPlugBitmap Bitmap (external)
- uint
- float
+0x000 // legacy filtering and texture addressing
+  CPlugBitmap Bitmap
+  int<ETexFilter> WantedFiltering = ETexFilter.Trilinear
+  int<ETexAddress> TexAddressU
+  int<ETexAddress> TexAddressV
+  float MipMapLodBias
 
-0x005 (base: 0x002)
+0x001 // legacy sampler state
+  CPlugBitmap Bitmap
+  datauint LegacyFlags = 0x605 [TM10 = 5, TMPU = 5] // Packed sampler flags in the legacy bit layout.
+  float MipMapLodBias
 
-0x006 (base: 0x002)
+0x002 (base: 0x001) [TM10, TMPU] // named legacy sampler state
+  id Name
+  base
 
-0x007 (base: 0x002)
+0x003 (base: 0x001)
+  id Name
+  base
 
-0x008 (base: 0x002)
+0x004 (base: 0x003)
 
-0x00B (base: 0x008)
- version
- base
+0x005 (base: 0x002) [TMSX]
+
+0x006 (base: 0x002) [TMNESWC]
+
+0x007 (base: 0x002) [TMU, VSK5]
+
+0x008 (base: 0x002) [TMF]
+  base
+  if (LegacyFlags & 0x18) == 0x18 || (LegacyFlags & 0x60) == 0x60 || (LegacyFlags & 0x1800) == 0x1800
+    datauint BorderColor // Packed ARGB border color.
+
+0x009 (base: 0x003)
+  base
+  if (LegacyFlags & 0x18) == 0x18 || (LegacyFlags & 0x60) == 0x60 || (LegacyFlags & 0x1800) == 0x1800
+    datauint BorderColor
+
+0x00A (base: 0x009)
+
+0x00B [TMT, MP4, TM2020] // sampler state
+  version
+  id Name
+  CPlugBitmap Bitmap
+  datauint Flags = 0x1C018005 // Packed sampler flags with three bits per filtering or address mode.
+  float MipMapLodBias
+  if (Flags & 0x70) == 0x30 || (Flags & 0x380) == 0x180 || (Flags & 0x1C00) == 0xC00
+    datauint BorderColor
+
+enum ETexFilter
+  Point
+  Bilinear
+  Trilinear
+  Anisotropic
+  AnisoPoint
+
+enum ETexAddress
+  Wrap
+  Mirror
+  Clamp
+  Border

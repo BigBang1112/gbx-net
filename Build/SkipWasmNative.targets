@@ -1,0 +1,11 @@
+<Project>
+
+  <!-- These properties require native relinking, which needs the wasm-tools workload. -->
+  <PropertyGroup Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
+    <WasmBuildNative>false</WasmBuildNative>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <InvariantTimezone>false</InvariantTimezone>
+    <BlazorEnableTimeZoneSupport>true</BlazorEnableTimeZoneSupport>
+  </PropertyGroup>
+
+</Project>

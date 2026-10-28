@@ -1,0 +1,149 @@
+CGameModulePlaygroundScoresTableModel 0x2E017000
+- inherits: CGameModulePlaygroundModel
+
+0x000 (skippable) [MP4.v3] // score table settings
+  version = 4
+  v3-
+    bool UseTeams
+    bool DisplayTeamScores
+    string Title
+    bool UsePlayerDarkening
+    bool UseSettings
+    bool SortSpectatorsLast
+    bool SortDisconnectedLast
+    bool DisplayLocalPlayerInfo
+    bool DisplayServerName
+    bool DisplayColumnLegends
+    int ColumnCount
+    int LineCount
+    float ColumnMargin
+    CGameModulePlaygroundModel.ImageRef GameModeIcon
+    CGameModulePlaygroundModel.ImageRef SmStormBackground
+    CGameModulePlaygroundModel.ImageRef TmStadiumBackground
+    CGameModulePlaygroundModel.ImageRef TmCanyonBackground
+    CGameModulePlaygroundModel.ImageRef TmValleyBackground
+    v3+
+      CGameModulePlaygroundModel.ImageRef TmLagoonBackground
+    CGameModulePlaygroundModel.ImageRef SmHeaderTeam1Bg
+    CGameModulePlaygroundModel.ImageRef SmHeaderTeam2Bg
+    CGameModulePlaygroundModel.ImageRef TmHeaderTeam1Bg
+    CGameModulePlaygroundModel.ImageRef TmHeaderTeam2Bg
+    CGameModulePlaygroundModel.ImageRef SmPlayerCardSquareQuad
+    CGameModulePlaygroundModel.ImageRef SmPlayerCardBackgroundQuad
+    CGameModulePlaygroundModel.ImageRef SmPlayerCardBackgroundQuadRevert
+    CGameModulePlaygroundModel.ImageRef TmPlayerCardSquareQuad
+    CGameModulePlaygroundModel.ImageRef TmPlayerCardBackgroundQuad
+    CGameModulePlaygroundModel.ImageRef TmPlayerCardBackgroundQuadRevert
+    CGameModulePlaygroundModel.ImageRef Echelon1
+    CGameModulePlaygroundModel.ImageRef Echelon2
+    CGameModulePlaygroundModel.ImageRef Echelon3
+    CGameModulePlaygroundModel.ImageRef Echelon4
+    CGameModulePlaygroundModel.ImageRef Echelon5
+    CGameModulePlaygroundModel.ImageRef Echelon6
+    CGameModulePlaygroundModel.ImageRef Echelon7
+    CGameModulePlaygroundModel.ImageRef Echelon8
+    CGameModulePlaygroundModel.ImageRef Echelon9
+    CGameModulePlaygroundModel.ImageRef Echelon1Rev
+    CGameModulePlaygroundModel.ImageRef Echelon2Rev
+    CGameModulePlaygroundModel.ImageRef Echelon3Rev
+    CGameModulePlaygroundModel.ImageRef Echelon4Rev
+    CGameModulePlaygroundModel.ImageRef Echelon5Rev
+    CGameModulePlaygroundModel.ImageRef Echelon6Rev
+    CGameModulePlaygroundModel.ImageRef Echelon7Rev
+    CGameModulePlaygroundModel.ImageRef Echelon8Rev
+    CGameModulePlaygroundModel.ImageRef Echelon9Rev
+    string HeaderStyle
+    string PlayerInfoLocalRankStyle
+    string PlayerCardLocalRankStyle
+    float HeaderScale
+    float PlayerInfoLocalRankScale
+    float PlayerCardLocalRankScale
+    string DefaultTeam1Name
+    string DefaultTeam2Name
+  Column[] Columns (version: Version)
+
+0x001 (skippable) // score table appearance
+  version = 1
+  if Version > 1
+    throw
+  bool UseTeams
+  bool DisplayTeamScores
+  string Title
+  bool UsePlayerDarkening
+  bool UseSettings
+  bool SortSpectatorsLast
+  bool SortDisconnectedLast
+  bool DisplayLocalPlayerInfo
+  bool DisplayServerName
+  bool DisplayColumnLegends
+  int ColumnCount
+  int LineCount
+  float ColumnMargin
+  CGameModulePlaygroundModel.ImageRef GameModeIcon
+  CGameModulePlaygroundModel.ImageRef SmStormBackground
+  CGameModulePlaygroundModel.ImageRef TmStadiumBackground
+  CGameModulePlaygroundModel.ImageRef TmCanyonBackground
+  CGameModulePlaygroundModel.ImageRef TmValleyBackground
+  CGameModulePlaygroundModel.ImageRef SmHeaderTeam1Bg
+  CGameModulePlaygroundModel.ImageRef SmHeaderTeam2Bg
+  CGameModulePlaygroundModel.ImageRef TmHeaderTeam1Bg
+  CGameModulePlaygroundModel.ImageRef TmHeaderTeam2Bg
+  CGameModulePlaygroundModel.ImageRef SmPlayerCardSquareQuad
+  CGameModulePlaygroundModel.ImageRef SmPlayerCardBackgroundQuad
+  CGameModulePlaygroundModel.ImageRef SmPlayerCardBackgroundQuadRevert
+  CGameModulePlaygroundModel.ImageRef TmPlayerCardSquareQuad
+  CGameModulePlaygroundModel.ImageRef TmPlayerCardBackgroundQuad
+  CGameModulePlaygroundModel.ImageRef TmPlayerCardBackgroundQuadRevert
+  CGameModulePlaygroundModel.ImageRef Echelon1
+  CGameModulePlaygroundModel.ImageRef Echelon2
+  CGameModulePlaygroundModel.ImageRef Echelon3
+  CGameModulePlaygroundModel.ImageRef Echelon4
+  CGameModulePlaygroundModel.ImageRef Echelon5
+  CGameModulePlaygroundModel.ImageRef Echelon6
+  CGameModulePlaygroundModel.ImageRef Echelon7
+  CGameModulePlaygroundModel.ImageRef Echelon8
+  CGameModulePlaygroundModel.ImageRef Echelon9
+  CGameModulePlaygroundModel.ImageRef Echelon1Rev
+  CGameModulePlaygroundModel.ImageRef Echelon2Rev
+  CGameModulePlaygroundModel.ImageRef Echelon3Rev
+  CGameModulePlaygroundModel.ImageRef Echelon4Rev
+  CGameModulePlaygroundModel.ImageRef Echelon5Rev
+  CGameModulePlaygroundModel.ImageRef Echelon6Rev
+  CGameModulePlaygroundModel.ImageRef Echelon7Rev
+  CGameModulePlaygroundModel.ImageRef Echelon8Rev
+  CGameModulePlaygroundModel.ImageRef Echelon9Rev
+  string HeaderStyle
+  string PlayerInfoLocalRankStyle
+  string PlayerCardLocalRankStyle
+  float HeaderScale
+  float PlayerInfoLocalRankScale
+  float PlayerCardLocalRankScale
+  string DefaultTeam1Name
+  string DefaultTeam2Name
+  CGameModulePlaygroundModel.ImageRef TmNextBackground
+  CGameModulePlaygroundModel.ImageRef TmNextHeader
+  CGameModulePlaygroundModel.ImageRef TmNextFooter
+  CGameModulePlaygroundModel.ImageRef TmNextFooterMedal
+  CGameModulePlaygroundModel.ImageRef RankGold
+  CGameModulePlaygroundModel.ImageRef RankGoldEffects
+  CGameModulePlaygroundModel.ImageRef RankSilver
+  CGameModulePlaygroundModel.ImageRef RankSilverEffects
+  CGameModulePlaygroundModel.ImageRef RankBronze
+  CGameModulePlaygroundModel.ImageRef RankNormal
+  CGameModulePlaygroundModel.ImageRef SmallMedalGold
+  CGameModulePlaygroundModel.ImageRef SmallMedalSilver
+  CGameModulePlaygroundModel.ImageRef SmallMedalBronze
+  CGameModulePlaygroundModel.ImageRef SmallMedalNadeo
+  v1+
+    CGameModulePlaygroundModel.ImageRef ArrowBack
+
+archive Column
+  int Type
+  string Legend
+  v2+
+    string Name
+  string Style
+  float Width
+  string U01
+  float U02
+  int U03

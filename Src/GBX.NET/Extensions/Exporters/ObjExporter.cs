@@ -176,9 +176,9 @@ internal static class ObjExporter
             }
 
             string materialName;
-            if (t.ShaderFile is not null)
+            if (t.References.Shader.File is not null)
             {
-                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+                materialName = GbxPath.GetFileNameWithoutExtension(t.References.Shader.File.FilePath);
             }
             else if (t.Shader is not null)
             {
@@ -321,9 +321,9 @@ internal static class ObjExporter
             }
 
             string materialName;
-            if (t.ShaderFile is not null)
+            if (t.References.Shader.File is not null)
             {
-                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+                materialName = GbxPath.GetFileNameWithoutExtension(t.References.Shader.File.FilePath);
             }
             else if (t.Shader is not null)
             {
@@ -350,7 +350,7 @@ internal static class ObjExporter
                 if (visual.VertexStreams.Count > 0)
                 {
                     var vStream = visual.VertexStreams[0];
-                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index], null, null, null, null, null);
+                    v = new CPlugVisual3D.Vertex(vStream.Positions?[index] ?? new(), vStream.Normals?[index]);
                 }
                 else
                 {
@@ -408,7 +408,7 @@ internal static class ObjExporter
         var positionsDict = mergeVerticesDigitThreshold.HasValue
             ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
 
-        if (solid.Visuals is null || solid.Visuals.Length == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
+        if (solid.Visuals is null || solid.Visuals.Count == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
         {
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
@@ -522,14 +522,14 @@ internal static class ObjExporter
             {
                 continue;
             }
-            
+
             if (visual.IndexBuffer is null)
             {
                 continue;
             }
 
             var materialName = GetMaterialName(solid, geom.MaterialIndex);
-            
+
             objWriter.WriteLine("g {0}", materialName);
             objWriter.WriteLine("usemtl {0}", materialName);
 
@@ -542,12 +542,12 @@ internal static class ObjExporter
                 {
                     continue;
                 }
-                
+
                 if (triangleCounter % 3 == 0)
                 {
                     objWriter.Write('f');
                 }
-                
+
                 var v = positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
@@ -581,13 +581,13 @@ internal static class ObjExporter
         {
             return customMaterials[materialIndex].MaterialUserInst?.Link ?? "Unknown";
         }
-        
-        if (solid.Materials is { Length: > 0 } materialsArray)
+
+        if (solid.Materials is { Count: > 0 } materialsArray)
         {
-            return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
+            return GbxPath.GetFileNameWithoutExtension(materialsArray.Get(materialIndex).File?.FilePath) ?? "Unknown";
         }
 
-        if (solid.MaterialInsts is { Length: > 0 } materialInsts)
+        if (solid.MaterialInsts is { Count: > 0 } materialInsts)
         {
             return materialInsts[materialIndex].Link ?? "Unknown";
         }

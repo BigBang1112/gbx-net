@@ -1,0 +1,336 @@
+CControlTrackManiaScores 0x030CE000
+- inherits: CControlFrame
+- game: TMNESWC
+
+0x000 // legacy styles and layout
+  CControlStyle StyleLineTitle
+  CControlStyle StyleLine
+  CControlStyle StyleLineHighlight
+  float MinLineHeight = 0.01f
+  float MaxLineHeight = 0.2f
+  bool WithAvatars = true
+  bool WithStatus = true
+  bool WithTwoColumns = true
+  bool WithWinner = true
+  bool WithLadderScores = true
+  float TeamMode_SizeIconWinners = 0.15f
+  float TeamMode_SizeIconLosers = 0.1f
+  int TeamMode_ColumnCount = 6
+  int TeamMode_RowCount = 2
+
+0x001 // legacy styles, layout and column widths
+  CControlStyle StyleLineTitle
+  CControlStyle StyleLine
+  CControlStyle StyleLineHighlight
+  CFuncEnum ReadyFuncEnum
+  CMwNod
+  float MinLineHeight
+  float MaxLineHeight
+  bool WithAvatars
+  bool WithStatus
+  bool WithReady = true
+  bool WithTwoColumns
+  bool WithWinner
+  bool WithLadderScores
+  float TeamMode_SizeIconWinners
+  float TeamMode_SizeIconLosers
+  int TeamMode_ColumnCount
+  int TeamMode_RowCount
+  float ReadyIconWidth
+  float LadderIconWidth = 3f
+  float PosWidth = 4.5f
+  float ScoreWidth = 7f
+  float NbCheckpointsWidth = 9f
+  float TimeWidth = 10f
+  float LadderScoreWidth = 6f
+  bool CenterPos = true
+  bool CenterPts = true
+  bool CenterChkpts = true
+  bool CenterTime = true
+  bool CenterName
+  bool CenterLadder
+  bool
+
+0x002 // legacy styles, layout, column widths and scrolling
+  CControlStyle StyleLineTitle
+  CControlStyle StyleLine
+  CControlStyle StyleLineHighlight
+  CFuncEnum ReadyFuncEnum
+  CMwNod
+  float MinLineHeight
+  float MaxLineHeight
+  bool WithAvatars
+  bool WithStatus
+  bool WithReady
+  bool WithTwoColumns
+  bool WithWinner
+  bool WithLadderScores
+  bool TeamMode_DivSize
+  float TeamMode_ScoreShiftX
+  float TeamMode_SizeIconWinners
+  float TeamMode_SizeIconLosers
+  int TeamMode_ColumnCount
+  int TeamMode_RowCount
+  int TeamMode_RowByTeamCount = 2
+  float ReadyIconWidth
+  float LadderIconWidth
+  float PosWidth
+  float ScoreWidth
+  float NbCheckpointsWidth
+  float TimeWidth
+  float LadderScoreWidth
+  float
+  bool CenterPos
+  bool CenterPts
+  bool CenterChkpts
+  bool CenterTime
+  bool CenterName
+  bool CenterLadder
+  bool
+  bool ScrollingFrameNotContinuous = true
+  bool ScrollingUseAvatar = true
+  bool ScrollingUseVehicle = true
+  bool ScrollingUseHorn = true
+  float ScrollingSpeed = 0.0002f
+  float ScrollingVehicleDrawRectYAdd
+  float ScrollingVehicleFrustrumCenterYShiftRatio = -0.3f
+  float ScrollingVehicleFrustrumHalfDiagYShiftRatio = -0.2f
+  float ScrollingVehicleLength = 4.4f
+  float ScrollingVehicleShift = 0.015f
+  float ScrollingAvatarSize = 0.18f
+  float ScrollingBlankSize = 0.01f
+  float ScrollingClipLength = 0.4f
+  float ScrollingLineHeigth = 0.06f
+  float ScrollingDistance = 0.1f
+  float ScrollingNotContinuousSpeed = 0.004f
+  float ScrollingNotContinuousSpeed
+  float ScrollingPauseThresholdShift = 0.01f
+  int ScrollingPauseDuration = 1000
+
+0x003 // legacy styles, layout, column widths and scrolling
+  CControlStyle StyleLineTitle
+  CControlStyle StyleLine
+  CControlStyle StyleLineHighlight
+  CFuncEnum ReadyFuncEnum
+  CMwNod
+  float MinLineHeight
+  float MaxLineHeight
+  bool WithAvatars
+  bool WithStatus
+  bool WithReady
+  bool WithTwoColumns
+  bool WithWinner
+  bool WithLadderScores
+  bool TeamMode_DivSize
+  float TeamMode_ScoreShiftX
+  float TeamMode_SizeIconWinners
+  float TeamMode_SizeIconLosers
+  int TeamMode_ColumnCount
+  int TeamMode_RowCount
+  int TeamMode_RowByTeamCount
+  float ReadyIconWidth
+  float LadderIconWidth
+  float PosWidth
+  float ScoreWidth
+  float NbCheckpointsWidth
+  float TimeWidth
+  float StuntsScoreWidth = 5f
+  float LadderScoreWidth
+  float
+  bool CenterPos
+  bool CenterPts
+  bool CenterChkpts
+  bool CenterTime
+  bool CenterName
+  bool CenterLadder
+  bool
+  bool ScrollingFrameNotContinuous
+  bool ScrollingUseAvatar
+  bool ScrollingUseVehicle
+  bool ScrollingUseHorn
+  float ScrollingSpeed
+  float ScrollingVehicleDrawRectYAdd
+  float ScrollingVehicleFrustrumCenterYShiftRatio
+  float ScrollingVehicleFrustrumHalfDiagYShiftRatio
+  float ScrollingVehicleLength
+  float ScrollingVehicleShift
+  float ScrollingAvatarSize
+  float ScrollingBlankSize
+  float ScrollingClipLength
+  float ScrollingLineHeigth
+  float ScrollingDistance
+  float ScrollingNotContinuousSpeed
+  float ScrollingNotContinuousSpeed
+  float ScrollingPauseThresholdShift
+  int ScrollingPauseDuration
+
+0x004 // legacy layout and column widths
+  float MinLineHeight
+  float MaxLineHeight
+  bool WithAvatars
+  bool WithStatus
+  bool WithReady
+  bool WithTwoColumns
+  bool WithWinner
+  bool WithLadderScores
+  bool TeamMode_DivSize
+  float TeamMode_ScoreShiftX
+  float TeamMode_SizeIconWinners
+  float TeamMode_SizeIconLosers
+  int TeamMode_ColumnCount
+  int TeamMode_RowCount
+  int TeamMode_RowByTeamCount
+  float ReadyIconWidth
+  float PosWidth
+  float ScoreWidth
+  float NbCheckpointsWidth
+  float TimeWidth
+  float StuntsScoreWidth
+  float LadderScoreWidth
+  float
+  float LadderIconWidth
+  bool CenterPos
+  bool CenterPts
+  bool CenterChkpts
+  bool CenterTime
+  bool CenterName
+  bool CenterLadder
+  bool
+
+0x005 // legacy styles
+  id StyleLineTitleId
+  if StyleLineTitleId == ""
+    CControlStyle StyleLineTitle
+  id StyleLineId
+  if StyleLineId == ""
+    CControlStyle StyleLine
+  id StyleLineHighlightId
+  if StyleLineHighlightId == ""
+    CControlStyle StyleLineHighlight
+  id ReadyFuncEnumId
+  if ReadyFuncEnumId == ""
+    CFuncEnum ReadyFuncEnum
+  id
+  if U01 == ""
+    CMwNod
+
+0x006 [TMNESWC] // scrolling
+  bool ScrollingFrameNotContinuous
+  bool ScrollingUseAvatar
+  bool ScrollingUseVehicle
+  bool ScrollingUseHorn
+  float ScrollingSpeed
+  float ScrollingVehicleDrawRectYAdd
+  float ScrollingVehicleFrustrumCenterYShiftRatio
+  float ScrollingVehicleFrustrumHalfDiagYShiftRatio
+  float ScrollingVehicleLength
+  float ScrollingVehicleShift
+  float ScrollingAvatarSize
+  float ScrollingBlankSize
+  float ScrollingClipLength
+  float ScrollingLineHeigth
+  float ScrollingDistance
+  float ScrollingNotContinuousSpeed
+  float ScrollingNotContinuousSpeed
+  float ScrollingPauseThresholdShift
+  int ScrollingPauseDuration
+
+0x007 [TMNESWC] // styles
+  id StyleLineTitleId
+  if StyleLineTitleId == ""
+    CControlStyle StyleLineTitle
+  id StyleLineId
+  if StyleLineId == ""
+    CControlStyle StyleLine
+  id StyleLineHighlightId
+  if StyleLineHighlightId == ""
+    CControlStyle StyleLineHighlight
+  id ReadyFuncEnumId
+  if ReadyFuncEnumId == ""
+    CFuncEnum ReadyFuncEnum
+  id
+  if U01 == ""
+    CMwNod
+  id StyleListLineId
+  if StyleListLineId == ""
+    CControlStyle StyleListLine
+
+0x008 [TMNESWC] // fame column
+  float FameWidth = 4f
+  float FameIconWidth = 3f
+  CPlugBitmap FameStarBitmap
+
+0x009 // legacy spectator icon
+  float SpectatorIconWidth = 6f
+  CMwNod
+
+0x00A [TMNESWC] // LadderBitmap
+  CPlugBitmap LadderBitmap
+
+0x00B [TMNESWC] // spectator column
+  float
+  float SpectatorIconWidth
+  id SpectatorEnumId
+  if SpectatorEnumId == ""
+    CFuncEnum SpectatorEnum
+
+0x00C [TMNESWC] // spectator, fame and ladder icons
+  bool WithSpecIcon = true
+  bool WithSpecCount = true
+  bool WithFameIcon = true
+  bool WithFamePoints = true
+  bool WithLadderIcon = true
+
+0x00D [TMNESWC] // AlternativeOnClickPlayer
+  bool AlternativeOnClickPlayer
+
+0x00E [TMNESWC] // WithSpecPlayers
+  bool WithSpecPlayers = true
+
+0x00F [TMNESWC] // TeamMode_UseTitlePos
+  bool TeamMode_UseTitlePos = true
+
+0x010 [TMNESWC] // OnlyArrivedPlayers
+  bool OnlyArrivedPlayers
+
+0x011 [TMNESWC] // race score and order
+  bool UseRaceScore
+  bool UseRaceOrder
+
+0x012 [TMNESWC] // layout and column widths
+  float MinLineHeight
+  float MaxLineHeight
+  bool WithAvatars
+  bool WithStatus
+  bool WithReady
+  bool WithTwoColumns
+  bool WithWinner
+  bool WithLadderScores
+  bool TeamMode_DivSize
+  float TeamMode_ScoreShiftX
+  float TeamMode_SizeIconWinners
+  float TeamMode_SizeIconLosers
+  int TeamMode_ColumnCount
+  int TeamMode_RowCount
+  int TeamMode_RowByTeamCount
+  float ReadyIconWidth
+  float PosWidth
+  float ScoreWidth
+  float NbCheckpointsWidth
+  float TimeWidth
+  float StuntsScoreWidth
+  float LadderScoreWidth
+  float
+  float LadderIconWidth
+  bool CenterPos
+  bool CenterPts
+  bool CenterChkpts
+  bool CenterTime
+  bool CenterName
+  bool CenterLadder
+  bool CenterSpectator = true
+  bool CenterFame = true
+
+0x013 [TMNESWC] // points with time and race time
+  bool UsePtsAndTime
+  bool UseRaceTime

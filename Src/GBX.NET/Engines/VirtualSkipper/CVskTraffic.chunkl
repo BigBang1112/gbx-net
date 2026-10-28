@@ -1,0 +1,4 @@
+CVskTraffic 0x21066000
+
+0x000 [VSK5] // Paths
+  CVskTrafficPath[] Paths (deprec)

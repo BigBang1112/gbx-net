@@ -126,8 +126,8 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
                 Document document,
                 int caretPosition,
                 CompletionTrigger trigger = default,
-                ImmutableHashSet<string> roles = null,
-                OptionSet options = null,
+                ImmutableHashSet<string>? roles = null,
+                OptionSet? options = null,
                 CancellationToken cancellationToken = default);
         
         public async Task<CompletionResponse> Handle(CompletionRequest request, Document document)

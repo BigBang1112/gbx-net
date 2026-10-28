@@ -1,48 +1,120 @@
 CPlugVehiclePhyModel 0x090EA000
 
-0x002
- CMwRefBuffer RefBuffer (external)
+0x000 [MP3] // wheel roles
+  CPlugVehicleWheelPhyModel[] Wheels
 
-0x003
- CPlugVehiclePhyTunings Tunings (external)
+0x001 // legacy simplified car shape
+  boxaligned SimplifiedCarShapeBox
+  bool UseSimplifiedCarModel
+  float GroundY
+  float FrontWheelZ
+  float BackWheelZ
+  float FrontWheelX
+  float BackWheelX
+  float FrontWheelRadius
+  float BackWheelRadius
+  float FrontWheelHalfWidth
+  float BackWheelHalfWidth
 
-0x008
- version
- CPlugVehicleCarPhyShape PhyShape
- v1+
-  OccupantSlot[] OccupantSlots (version: Version)
- v6+
-  vec3[]
-  v10+
-   v13-
-    int
-   v12+
-    int
+0x002 [MP3, MP4]
+  CMwRefBuffer RefBuffer
 
-0x009
- version
- v1-
-  CMwRefBuffer
-  CMwRefBuffer (external)
+0x003 [MP3, MP4, TM2020]
+  CPlugVehiclePhyTunings Tunings
+
+0x004 [MP3] // OffsetX
+  float OffsetX
+
+0x005 [MP3] // SurfSolid
+  CPlugSolid SurfSolid
+
+0x006 [MP3.v3] // car collision response
+  version = 3
+  boxaligned CarVsCarShapeBox
+  v1+
+    bool DoCreateForcesInCollisionResponse
+    bool UsePenetration_InSpringCompute
+    float SmallCollisionSpringStiffness
+    v3+
+      float BigCollisionSpringStiffness
+    bool UseRelVel_InSpringCompute
+    float ImpactRelVelDtCoeff
+    bool DoLimitPenetration
+    float PenetrationDepthMax
+    bool DoApplyFriction
+    float FrictionCoeff
+    v2+
+      float PlayerAgstTrafficMinRelVelToPhysicallize
+      float TrafficAgstTrafficMinRelVelToPhysicallize
+
+0x007 [MP3] // simplified car shape
+  version
+  boxaligned SimplifiedCarShapeBox
+  bool UseSimplifiedCarModel
+  float GroundY
+  float FrontWheelZ
+  float BackWheelZ
+  float FrontWheelX
+  float BackWheelX
+  float FrontWheelRadius
+  float BackWheelRadius
+  float FrontWheelHalfWidth
+  float BackWheelHalfWidth
+  vec4[]
+
+0x008 [MP4.v9, TM2020.v14]
+  version
+  CPlugVehicleCarPhyShape PhyShape
+  v1+
+    OccupantSlot[] OccupantSlots
+  v6+
+    vec3[]
+    v10+
+      v13-
+        int
+      v12+
+        int
+
+0x009 [TM2020.v1]
+  version
+  v1-
+    CMwRefBuffer
+    CMwRefBuffer
 
 archive OccupantSlot
- byte U01
- v2+
-  id U02
+  byte U01
+  v2+
+    id U02
   v3+
-   vec3 U03
-   v4+
+    vec3 U03
+  v4..12
     bool U04
     if U04
-     int U05
-     float U06
-     int U07
-     int U08
-     v5+
-      bool U09
-      v7+
-       byte U10
-       v8+
+      int U05
+      float U06
+      int U07
+      int U08
+      v5+
+        bool U09
+      v7..11
+        byte U10
+      v8+
         bool U11
         float U12
-     
+      v9+
+        float U13
+        float U14
+        CPlugCurveSimpleNod U15 (direct)
+  v13+
+    int // discarded
+    bool U04
+    bool U11
+    float U12
+    float U06
+    bool U09
+    float U13
+    float U14
+    int U05
+    CPlugCurveSimpleNod U18
+    float U16
+    float U17

@@ -1,2 +1,22 @@
 CMwCmdBlockMain 0x01067000
 - inherits: CMwCmdBlock
+
+0x003
+  int
+  CMwNod[]
+  CMwNod[]
+  id
+
+0x004
+  int
+  CMwNod[] Methods
+  CMwNod[]
+  CMwNod[]
+  id
+
+0x005 [TMU, TMF]
+  id
+  int
+  CMwNod[] Methods
+  CMwNod[]
+  CMwNod[]

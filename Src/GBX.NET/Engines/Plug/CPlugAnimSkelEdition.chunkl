@@ -1,1 +1,64 @@
 CPlugAnimSkelEdition 0x09134000
+
+0x000 // editable animation
+  version
+  int FlagsVersion
+  CPlugSkel* Skel
+
+archive
+
+archive Layer
+  JointTrack[] JointTracks
+
+archive JointTrack
+  id Name
+  Curve[4] Rotation
+  Curve[4] Translation
+  Curve[2] Extra
+
+archive Curve
+  int Type
+  if Type == 1
+    RealCurve Real
+  if Type == 2
+    BoolCurve Bool
+  if Type == 3
+    QuatCurve Quat
+  if Type < 0 || Type > 3
+    throw
+
+archive RealCurve
+  float Value
+  int KeyCount (local, write: "Keys?.Length ?? 0")
+  ushort Version
+  RealKey[KeyCount] Keys
+
+archive BoolCurve
+  bool Value
+  int KeyCount (local, write: "Keys?.Length ?? 0")
+  ushort Version
+  BoolKey[KeyCount] Keys
+
+archive QuatCurve
+  quat Value
+  int KeyCount (local, write: "Keys?.Length ?? 0")
+  ushort Version
+  QuatKey[KeyCount] Keys
+
+archive RealKey
+  float Time
+  float Value
+  float Tension
+  float Continuity
+  float Bias
+
+archive BoolKey
+  float Time
+  bool Value
+
+archive QuatKey
+  float Time
+  quat Value
+  float Tension
+  float Continuity
+  float Bias

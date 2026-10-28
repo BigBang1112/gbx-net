@@ -1,0 +1,2 @@
+CMwCmdAffectParamBool 0x01078000
+- inherits: CMwCmdAffectParam

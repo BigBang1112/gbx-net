@@ -1,5 +1,5 @@
 ﻿CScriptTraitsMetadata 0x11002000
 
-0x000
+0x000 [MP3.v2, TMT.v2, MP4.v5, TM2020.v6]
 
-0x11001000 (base: 0x000)
+0x11001000 (base: 0x000) [MP3, TMT]

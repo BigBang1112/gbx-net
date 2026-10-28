@@ -1,0 +1,26 @@
+CControlColorChooser 0x0701E000
+- inherits: CControlFrame
+
+0x000 // legacy square size
+  float
+
+0x001 [TMU, MP4] // ColorChooserShader
+  CPlugShader ColorChooserShader
+
+0x002 [TMU, MP4] // ColorChooserSize
+  vec2 ColorChooserSize
+
+0x003 [TMU, MP4] // StyleType
+  int StyleType
+
+0x004 [TM2020]
+  version
+  int StyleType
+  vec2 ColorChooserSize
+  float
+  float
+  vec4
+  vec4
+  float
+  float
+  float

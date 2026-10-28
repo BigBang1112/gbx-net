@@ -1,0 +1,9 @@
+CControlPager 0x07030000
+- inherits: CControlFrame
+
+0x000 // page counter, navigation buttons and styles
+
+0x001 // StackPageCountText
+  string StackPageCountText
+
+0x002 // QuadPageCounter

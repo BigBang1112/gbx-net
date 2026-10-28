@@ -1,0 +1,13 @@
+CPlugMusicType 0x09037000
+- inherits: CPlugSound
+- abstract
+
+0x000
+  datauint
+
+0x001
+  float
+
+0x002
+  float
+  bool IsLooping

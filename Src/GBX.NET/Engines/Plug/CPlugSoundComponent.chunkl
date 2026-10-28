@@ -1,0 +1,14 @@
+CPlugSoundComponent 0x0908F000
+
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // volume and pitch from speed (RPM in legacy games)
+  CMwNod PlugFile // CPlugFileSnd
+  float MinVolume
+  float MaxVolume = 1f
+  float FadeInStartSpeedKmh = 30f [TMSX = 0f, TMNESWC = 0f, VSK5 = 0f, TMF = 0f]
+  float FadeInEndSpeedKmh = 100f [TMSX = 2000f, TMNESWC = 2000f, VSK5 = 2000f, TMF = 2000f]
+  float FadeOutStartSpeedKmh = 10000f [TMSX = 8000f, TMNESWC = 8000f, VSK5 = 8000f, TMF = 8000f]
+  float FadeOutEndSpeedKmh = 10000f
+  float MinPitch = 0.8f [TMSX = 0.5f, TMNESWC = 0.5f, VSK5 = 0.5f, TMF = 0.5f]
+  float MaxPitch = 1.2f [TMSX = 2f, TMNESWC = 2f, VSK5 = 2f, TMF = 2f]
+  float PitchShiftStartSpeedKmh = 50f [TMSX = 1000f, TMNESWC = 1000f, VSK5 = 1000f, TMF = 1000f]
+  float PitchShiftEndSpeedKmh = 300f [TMSX = 9000f, TMNESWC = 9000f, VSK5 = 9000f, TMF = 9000f]

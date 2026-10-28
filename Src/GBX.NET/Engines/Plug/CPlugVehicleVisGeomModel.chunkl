@@ -1,0 +1,24 @@
+CPlugVehicleVisGeomModel 0x09114000
+
+// Geometry embedded in CPlugVehicleVisModel.
+archive
+  v3+
+    CPlugSolid2Model Mesh
+    bool U01
+    DamagePart[4] DamageParts (version: SurfVersion)
+    GlassModel[5] Glass
+    vec3[9] U02
+  v7+
+    string MeshRefPath
+    if MeshRefPath == "" || MeshRefPath == null
+      CPlugSolid2Model MeshRef
+
+archive DamagePart
+  CPlugSolid2Model Mesh
+  CPlugDynaModel Dyna // Followed by inline GmSurf, selected by its type ID and the inherited surface version.
+
+archive GlassModel
+  ushort[] Indices = empty
+  vec3[] Vertices = empty
+  id GlassId
+  id RigidPartId

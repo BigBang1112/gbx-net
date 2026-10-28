@@ -1,8 +1,39 @@
 CScene2d 0x0A002000
 - inherits: CScene
 
-0x000
- rect Overlay
- CSceneSector Sector
+0x000 [TM10, TMPU, TMSX, TMNESWC]
+  rect Overlay
+  CSceneSector Sector
 
-0x003 (ignore)
+0x001
+  rect Overlay
+  CSceneSector Sector
+  CSceneObject[] (deprec)
+  CSceneLayout.SceneLoc[]
+  CSceneObject[] Cameras (deprec)
+  CSceneLayout.SceneLoc[] CameraLocations
+
+0x002 [TMU]
+  rect Overlay
+  CSceneSector Sector
+  CSceneObject[] (deprec)
+  CSceneLayout.SceneLoc[]
+  CSceneObject[] Cameras (deprec)
+  CSceneLayout.SceneLoc[] CameraLocations
+  CSceneLight[] Lights (deprec)
+  CSceneLayout.SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  CSceneLayout.SceneLoc[] SoundLocations
+
+0x003 [TMF, MP3, TMT, MP4, TM2020]
+  rect Overlay
+  CSceneSector Sector
+  version = 1
+  CSceneLayout.SceneMobil[] Mobils
+  CSceneLayout.SceneLoc[] MobilLocations
+  CSceneObject[] Cameras (deprec)
+  CSceneLayout.SceneLoc[] CameraLocations
+  CSceneLight[] Lights (deprec)
+  CSceneLayout.SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  CSceneLayout.SceneLoc[] SoundLocations

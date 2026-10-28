@@ -1,0 +1,20 @@
+CTrackManiaControlCheckPointList 0x2406E000
+- inherits: CControlFrame
+
+0x000 // legacy line styles
+  CControlStyle
+  CControlStyle
+  CControlStyle
+
+0x001 [TMU] // line styles
+  StyleSheetElem
+  StyleSheetElem
+  StyleSheetElem
+
+0x002 // CardModel
+  CControlFrame CardModel
+
+archive StyleSheetElem
+  id Id
+  if Id == ""
+    CControlStyle Style

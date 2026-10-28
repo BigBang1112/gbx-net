@@ -1,6 +1,6 @@
 ﻿@using GBX.NET
 
-@inherits ValueRenderer
+@inherits IntegerValueRenderer<uint>
 @attribute [AppliesForType(typeof(uint))]
 
 @if (Value is null)
@@ -16,7 +16,7 @@ else if (Value is uint val)
 {
     var cannotWrite = Property?.CannotWrite() == true;
 
-    <input type="text" @bind="Val" disabled="@cannotWrite" style="min-width: 4ch; width: @(val.ToString().Length)ch;" oninput="onInputText(this)" />
+    <input type="text" @bind="FormattedValue" disabled="@cannotWrite" style="min-width: 4ch; width: @(FormattedValue?.Length)ch;" oninput="onInputText(this)" />
 
     if (!cannotWrite && IsNullable)
     {

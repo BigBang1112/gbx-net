@@ -1,0 +1,35 @@
+CSceneVehicleCarMarksModelSub 0x0A082000
+
+0x000 // legacy mark dimensions and material
+  float SampleMinDist = 2f
+  float Width = 0.3f
+  float GroundOffset = 0.1f
+  float TexVPerMeter = 1f
+  CPlugMaterial Material
+
+0x001 // mark dimensions and conditions
+  bool LegacyFlag // Discarded by the native mark generator
+  float SampleMinDist
+  float Width
+  float GroundOffset
+  float TexVPerMeter
+  float FadeDist = 1f
+  float Alpha = 1f
+  float WidthCoefForceX
+  bool CondGroundContact = true
+  bool CondSliding = true
+  byte CondMaterialId = 28
+  float CondForceXGreaterThan
+  CPlugMaterial Material
+
+0x002 (base: 0x001) // longitudinal force conditions
+  base
+  float WidthCoefForceZ
+  float CondForceZGreaterThan
+
+0x003 (base: 0x002) [TMT, MP4, TM2020] // width and opacity limits
+  base
+  float WidthMax = 50f
+  float AlphaCoefForceX
+  float AlphaCoefForceZ
+  float AlphaMax = 1f

@@ -1,0 +1,15 @@
+CGameSkinnedNod 0x0305F000
+- inherits: CGameNod
+
+0x000
+  version
+  CPlugGameSkin GameSkin
+  CMwNod BaseNod
+
+0x001
+  version
+  Remap[] Remaps
+
+archive Remap
+  CMwNod File
+  string Name

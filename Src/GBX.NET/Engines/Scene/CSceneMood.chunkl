@@ -1,0 +1,11 @@
+CSceneMood 0x0A042000
+
+0x000 [TMNESWC, TMU]
+  id
+  MoodLight[] Lights
+
+archive MoodLight
+  CSceneLight Light
+  id
+  if Light != null && Light.Light != null && Light.Light.MainGxLight is GBX.NET.Engines.Graphic.GxLightNotAmbient
+    iso4 Location

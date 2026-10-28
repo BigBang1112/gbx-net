@@ -1,0 +1,2 @@
+CMwCmdAffectIdentEnum 0x010A5000
+- inherits: CMwCmdAffectIdent

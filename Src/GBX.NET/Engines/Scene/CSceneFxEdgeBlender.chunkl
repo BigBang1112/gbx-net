@@ -1,0 +1,16 @@
+CSceneFxEdgeBlender 0x0A07D000
+- inherits: CSceneFxCompo
+
+0x000 // legacy shaders
+  CMwNod ShaderEdgeDetect
+  CMwNod ShaderEdgeGutter
+
+0x001 // edge and gutter settings
+  float EdgeDotMax
+  float EdgeDepthMax
+  float GutterWeight
+  int GutterPassCount
+
+0x002 // shaders
+  CMwNod ShaderEdgeDetect
+  CMwNod ShaderEdgeGutter

@@ -1,0 +1,18 @@
+CControlEffectMotion 0x07011000
+- inherits: CControlEffect
+
+0x000 [TMSX, TMU] // particle emitter and envelope
+  CMwNod ParticleEmitterModel
+  id
+  CFuncEnvelope Envelope
+  float Period
+
+0x001 [TMSX, TMU] // envelope, intensity, speed and charge time
+  float EnveloppePosStart = 1f
+  float EnveloppePosCharged = 1f
+  float IntensityStart = 1f
+  float IntensityCharged = 1f
+  float SpeedStart = 1f
+  float SpeedCharged = 1f
+  vec3 SpeedDirection = (1, 0, 0)
+  float ChargeTime = 0.5f

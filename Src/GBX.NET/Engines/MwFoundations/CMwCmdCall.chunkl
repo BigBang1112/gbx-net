@@ -1,0 +1,8 @@
+CMwCmdCall 0x01034000
+- inherits: CMwCmdInst
+
+0x000
+  CMwCmdExpClassParam.OldParamArchive OldParameter
+
+0x001 [TMU, TMF]
+  CMwCmdExpClassParam.ParamArchive Parameter

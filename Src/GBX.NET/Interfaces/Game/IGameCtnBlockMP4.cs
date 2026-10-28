@@ -1,8 +1,8 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnBlockMP4 : IGameCtnBlock
+public partial interface IGameCtnBlockMP4 : IGameCtnBlock
 {
-    byte Variant { get; set; }
+    new byte Variant { get; set; }
     byte SubVariant { get; set; }
     bool IsClip { get; set; }
     CGameWaypointSpecialProperty? WaypointSpecialProperty { get; set; }

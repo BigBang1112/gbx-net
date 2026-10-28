@@ -1,145 +1,234 @@
 CSceneLayout 0x0A003000
 - inherits: CScene
 
-0x00C
- int
+0x000 [TM10, TMPU, TMSX, TMNESWC] // Sectors
+  CSceneSector[] Sectors
 
-0x010
- float CameraFarZ
- vec3 CameraClearColor
+0x001 [TM10, TMPU, TMSX, TMNESWC] // Gates
+  CSceneGate[] Gates
 
-0x014
- int
- bool
- box
- iso4
+0x004 [TM10, TMPU, TMSX, TMNESWC] // legacy locations
+  OldSceneObjectLoc[] LegacyLocations
 
-0x017 (ignore)
+0x005 [TM10, TMPU, TMSX, TMNESWC] // Paths
+  CScenePath[] Paths (deprec)
 
-0x018
- CSceneSector[]_deprec Sectors
- version
- SceneMobil[] Scene
- SceneLoc[] SceneLocations
- CSceneObject[]_deprec
- SceneLoc[]
- CSceneLight[]_deprec Lights (external)
- SceneLoc[] LightLocations
- CSceneObject[]_deprec Sounds
- SceneLoc[] SoundLocations
- CSceneObject[]_deprec Locations
- SceneLoc[] LocationLocations
- CSceneObject[]_deprec Fields
- SceneLoc[] FieldLocations
- CSceneGate[]_deprec Gates
- CScenePath[]_deprec Paths
- CSceneTrafficGraph TrafficGraph
- CSceneTrafficPath[]_deprec TrafficPaths
- CSceneFxNod SceneFxNod (external)
+0x007 [TM10, TMPU]
+  int = -1
+  iso4
 
-0x019
- int
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+0x008 [TM10, TMPU, TMSX, TMNESWC] // legacy fields
+  OldSceneObject[] LegacyFields
 
-0x01B
- CSceneSector[]_deprec Sectors
- version
- SceneMobil[] Scene
- SceneLoc[] SceneLocations
- CSceneObject[]_deprec
- SceneLoc[] 
- CSceneLight[]_deprec Lights
- SceneLoc[] LightLocations
- CSceneObject[]_deprec Sounds
- SceneLoc[] SoundLocations
- CSceneObject[]_deprec Locations
- SceneLoc[] LocationLocations
- int
- int
- CSceneFxNod SceneFxNod (external)
+0x009 [TM10, TMPU, TMSX, TMNESWC] // legacy sounds
+  OldSceneObjectLoc[] LegacySounds
 
-0x01C
- version
- v2-
-  CSceneObject[]_deprec Objects
-  iso4[] ObjectLocations
- v3+
-  Unknown2[]
-  Unknown3[] (version: Version)
- CSceneConfig
- v1-
-  CPlugWeatherModel[]_deprec WeatherModels (external)
- v2+
-  CPlugWeatherModel WeatherModel (external)
- uint[]
- CPlugBitmap BitmapWaterFog (external)
- CPlugBitmap BitmapCubeReflectHardSpecA (external)
- CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
- v0=
-  CSceneLocation[]
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float CameraFarZ
- float
- float
- float
- CSceneFxNod SceneFxNod (external)
+0x00C [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
+  int
+
+0x00E (empty) [TM10, TMPU, TMSX, TMNESWC] // legacy portal links, written empty
+
+0x00F [TM10, TMPU, TMSX, TMNESWC] // traffic
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+
+0x010 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
+  float CameraFarZ
+  vec3 CameraClearColor
+
+0x011 [TM10, TMPU] // SceneFx
+  CSceneFx SceneFx
+
+0x012 [TM10, TMPU, TMSX, TMNESWC] // moods
+  CSceneMood[] Moods (deprec)
+  int
+
+0x013 [TMSX] // SceneFx and pools
+  CSceneFx SceneFx
+  CMwNod[] SceneFxPools
+
+0x014 [TMSX, TMNESWC, TMU, VSK5, TMF]
+  int
+  bool
+  box
+  iso4
+
+0x015 [TMNESWC] // SceneFxNod
+  CSceneFxNod SceneFxNod
+
+0x016
+  CSceneSector[] Sectors (deprec)
+  CSceneGate[] Gates (deprec)
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod
+
+0x017 [TMU, VSK5]
+  CSceneSector[] Sectors (deprec)
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CSceneGate[] Gates (deprec)
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod
+
+0x018 [TMF.v1]
+  CSceneSector[] Sectors (deprec)
+  version
+  SceneMobil[] Scene
+  SceneLoc[] SceneLocations
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CSceneGate[] Gates (deprec)
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod
+
+0x019 [MP3, TMT]
+  int
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x01B [MP3.v1, TMT.v1]
+  CSceneSector[] Sectors (deprec)
+  version
+  SceneMobil[] Scene
+  SceneLoc[] SceneLocations
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  int
+  int
+  CSceneFxNod SceneFxNod
+
+0x01C [MP4.v2, TM2020.v5]
+  version
+  v2-
+    CSceneObject[] Objects (deprec)
+    iso4[] ObjectLocations
+  v3+
+    Unknown2[]
+    Unknown3[]
+  CSceneConfig
+  v1-
+    CPlugWeatherModel[] WeatherModels (deprec)
+  v2+
+    CPlugWeatherModel WeatherModel
+  uint[]
+  CPlugBitmap BitmapWaterFog
+  CPlugBitmap BitmapCubeReflectHardSpecA
+  CPlugBitmap BitmapCubeReflectHdrAlpha2
+  v0=
+    CSceneLocation[]
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float CameraFarZ
+  float
+  float
+  float
+  CSceneFxNod SceneFxNod
 
 archive SceneMobil
- int U01
- if U01 == -2
-  CMwNod Mobil
+  int U01
+  if U01 == -2
+    CMwNod Mobil
 
 archive SceneLoc
- CMwNod
- iso4
+  CMwNod
+  iso4
 
 archive Unknown
- CMwNod
- id
- int
- CMwNod
- id
- int
- iso4
- iso4
+  CMwNod
+  id
+  int
+  CMwNod
+  id
+  int
+  iso4
+  iso4
 
 archive Unknown2
- id
- transquat
- int
- CPlugBitmap (external)
- CPlugBitmap (external)
- CPlugBitmap (external)
- GxLight
- int
+  id
+  transquat
+  int
+  CPlugBitmap
+  CPlugBitmap
+  CPlugBitmap
+  GxLight
+  int
 
 archive Unknown3
- id
- transquat
- short
- ulong
- CPlugSolid (external)
- v4+
-  CPlugSolid2Model
-  v5+
-   CPlugPrefab
+  id
+  transquat
+  short
+  ulong
+  CPlugSolid
+  v4+
+    CPlugSolid2Model
+    v5+
+      CPlugPrefab
+
+archive OldSceneObjectLoc
+  CSceneObject Object
+  CSceneSector Sector
+  iso4 Location
+
+archive OldSceneObject
+  CSceneObject Object
+  CSceneSector Sector

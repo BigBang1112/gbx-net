@@ -1,10 +1,223 @@
 CHmsLightMap 0x06021000
+- inherits: CMwNod
 
-0x001
- CPlugPointsInSphereOpt (external)
+0x000 [TMU, VSK5]
+  CMwNod
+  CMwNod
+  CMwNod[10]
+  CMwNod
 
-0x002
- CMwNod (external)
+0x001 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CPlugPointsInSphereOpt PointsInSphereOpt
 
-0x003
- CHmsLightMapMood (external)
+0x002 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CMwNod
+
+0x003 [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  CHmsLightMapMood Mood
+
+0x004 [TMF]
+  CMwNod
+  CMwNod
+  CMwNod[12]
+  CMwNod
+
+0x005
+  CMwNod
+
+0x006
+  CPlugBitmap[3] BitmapLightSumBumpLegacy
+
+0x007
+  CMwNod[5]
+
+0x008
+  bool ClampDir_PosY = false
+
+0x009
+  bool UseHDR = false
+  if UseHDR
+    CompressMode = ECompressMode.Scale_sRGB_DXT1
+  else
+    CompressMode = ECompressMode.Ldr_DXT1
+
+0x00A // Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node
+  CMwNod
+  CMwNod
+  CMwNod[16]
+  CMwNod
+
+0x00B
+  CMwNod[7]
+
+0x00C
+  CPlugBitmap BitmapSM_ColorPeeled
+  CPlugBitmap BitmapLM_ILightInput
+  CPlugBitmap BitmapLM_ILightDir
+
+0x00D
+  CPlugBitmap BitmapSM_ColorPeeled
+  CPlugBitmap BitmapLM_ILightInput
+  CPlugBitmap BitmapLM_ILightDir
+  uint // Discarded by the native reader
+
+0x00E [MP3, TMT, TM2020]
+  bool ClampAmb_PosY = false
+  bool ClampDir_PosY
+
+0x00F [MP3, TMT, TM2020]
+  CPlugBitmap BitmapSM_ColorPeeled
+  CPlugBitmap BitmapLM_ILightInput
+  CPlugBitmap BitmapLM_ILightDir
+  uint
+  uint
+
+0x010 [MP3, TMT]
+  CMwNod
+  CMwNod
+  CMwNod[18]
+  CMwNod
+
+0x011
+  CMwNod[8]
+
+0x012
+  bool SRGB = true // Native member: sRGB
+  CMwNod
+
+0x013 [MP3, TMT, TM2020]
+  CPlugBitmapArray BitmapArrayLightSH
+
+0x014 [MP3, TMT, TM2020]
+  CPlugBitmapArray BitmapLightSumBump
+
+0x015
+  CMwNod[9]
+
+0x016 [MP3, TMT]
+  CMwNod[10]
+
+0x017 [MP3, TMT, TM2020]
+  bool UseHDR
+  bool SRGB
+  int<ECompressMode> CompressMode = ECompressMode.Ldr_DXT1
+
+0x018
+  CPlugBitmap BitmapSprite3x3_Light
+  CPlugBitmap BitmapSprite_PosAndRadius
+  CPlugBitmap BitmapSprite_ILightDir
+  CMwNod[3]
+
+0x019 [MP3, TMT, TM2020]
+  CPlugBitmap BitmapShadow
+  CPlugBitmap
+
+0x01A
+  CMwNod[3]
+
+0x01B
+  CMwNod
+  CPlugBitmap BitmapLM_LListUV
+  CMwNod[2]
+
+0x01C
+  bool StoreLDir0Legacy
+  if StoreLDir0Legacy
+    StoreLDir0 = EStoreLDir0.HalfPlusHalfCos
+  else
+    StoreLDir0 = EStoreLDir0.Sinc
+
+0x01D [MP3, TMT, TM2020]
+  bool IsSpriteLDirInAlpha = false
+
+0x01E
+  CMwNod[11]
+
+0x01F [MP3, TMT]
+  CMwNod
+
+0x020
+  CPlugBitmap BitmapLM_LListW
+  CMwNod[3]
+
+0x021
+  CPlugBitmap BitmapLM_LListUV
+  CPlugBitmap BitmapLM_LListW
+  CMwNod[5]
+
+0x022 [MP3, TMT, TM2020]
+  CMwNod
+
+0x023 [MP3, TMT, TM2020]
+  CPlugBitmap BitmapSM_DepthToPeel
+
+0x024 [MP3, TMT, TM2020]
+  CPlugBitmap BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
+
+0x025 [MP3, TMT, TM2020]
+  int<EStoreLDir0> StoreLDir0 = EStoreLDir0.Sinc
+
+0x026
+  CPlugBitmap BitmapLM_LocalDirect
+
+0x027 [MP3, TMT, TM2020]
+  bool BackgroundUseClouds = false
+  uint GameTimerSeconds = 250
+
+0x028 [MP3, TMT, TM2020]
+  CPlugBitmap BitmapLM_LListUV
+  CPlugBitmap BitmapLM_LListW
+  CPlugBitmap BitmapLM_LocalDirect
+  CMwNod[3]
+
+0x029 [MP3.v1, TMT.v1, TM2020.v7]
+  version
+  CMwNod // Obsolete FID reference
+  v1+
+    CMwNod
+  v2+
+    CMwNod
+  v3+
+    CMwNod
+  v4+
+    CMwNod
+  v5+
+    CMwNod
+  v6+
+    CPlugBitmap BitmapProbeGridAmbSV
+  v7+
+    CPlugBitmap BitmapProbeGridAmbSV_Spread1
+
+0x02A [MP3.v2, TMT.v2]
+  version = 5 // MP4 and TM2020 retain read support through v5
+  CMwNod // CPlugFilePHlsl
+  v1+
+    CMwNod // CPlugFilePHlsl
+  v2+
+    CMwNod[3] // CPlugFilePHlsl
+  v3+
+    uint
+  v4+
+    CMwNod
+  v5+
+    CPlugFileGPU
+
+0x02B [MP3.v1, TMT.v1, TM2020.v1]
+  version
+  CPlugBitmap BitmapSprite3x3_Light
+  CPlugBitmap BitmapSprite_PosAndRadius
+  CPlugBitmap BitmapSprite_ILightDir
+  v1+
+    CMwNod
+  CMwNod[4]
+
+enum ECompressMode
+  Ldr_DXT1
+  sRGB_Hyper_DXT1
+  Hyper_sRGB_DXT1
+  Scale_sRGB_DXT1
+
+enum EStoreLDir0
+  Sinc
+  HalfPlusHalfCos // Native label: 0.5+0.5*Cos
+  Full

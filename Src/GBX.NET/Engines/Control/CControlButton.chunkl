@@ -1,0 +1,62 @@
+CControlButton 0x07007000
+- inherits: CControlText
+
+0x000
+  CPlugFont
+  vec2
+  vec4
+  CPlugSound
+  CMwCmdBlockMain ActionScript
+
+0x001
+  CMwCmdBlockMain ActionScript
+
+0x002
+  string Label
+
+0x003
+  CPlugShader[4]
+
+0x004
+  CFuncEnum Icons
+
+0x005 [TMU]
+  string Label
+  int DisplayType
+  CMwCmdBlockMain ActionScript
+
+0x006
+  id IconsId
+  if IconsId == ""
+    CFuncEnum Icons
+
+0x007
+  id IconsId
+  if IconsId == ""
+    CFuncEnum Icons
+  int SubIconIndexOff
+  SubIconIndexOn = SubIconIndexOff
+
+0x008 [TMU]
+  CPlugSound ActionSound
+
+0x009 [TMU]
+  float ClipLength = -1f (inherited)
+
+0x00A [TMU]
+  int TextMode = 3 (inherited)
+
+0x00B [TMU]
+  id IconsId
+  if IconsId == ""
+    CFuncEnum Icons
+  int SubIconIndexOff
+  int SubIconIndexOn
+
+0x00C [TMU]
+  id
+
+0x00D [TM2020]
+  version
+  int DisplayType
+  string Label

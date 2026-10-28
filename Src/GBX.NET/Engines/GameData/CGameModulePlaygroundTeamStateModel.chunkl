@@ -1,0 +1,84 @@
+CGameModulePlaygroundTeamStateModel 0x2E022000
+- inherits: CGameModulePlaygroundModel
+
+0x000 (skippable) // layout, visibility, colors and images
+  version = 6
+  float SizeX (inherited)
+  float SizeY (inherited)
+  float GlobalScale
+  int PlayerPerTeam
+  vec2 FirstPlayerPosition
+  v6+
+    byte PlayerCardsAlign
+  vec2 NextPlayerPositionOffset
+  bool ShowTeamNames
+  bool ShowTeamEmblems
+  bool ShowTeamScores
+  bool ShowTeamBackgrounds
+  bool UseCustomTeamBackground
+  CGameModulePlaygroundModel.ImageRef CustomTeamBackground
+  bool ShowPlayerNames
+  bool ShowPlayerAvatars
+  v4+
+    bool ShowPlayerEchelons = true
+  bool ShowPlayerManiaStars
+  bool ShowPlayerTools
+  bool ShowPlayerTags
+  bool ShowPlayerScores
+  bool ShowPlayerRoundScores
+  v2+
+    float PlayerGaugesHeight = 6
+  bool ShowAllyArmorGauges
+  bool ShowAllyWeaponGauges
+  bool ShowAllyStaminaGauges
+  bool ShowEnemyTeam
+  bool ShowEnemyArmorGauges
+  bool ShowEnemyWeaponGauges
+  bool ShowEnemyStaminaGauges
+  bool UseCustomActiveBackground
+  bool UseCustomInactiveBackground
+  v3+
+    bool UseCustomActiveColor
+    vec4 ActiveColor = (1, 1, 1, 1)
+    float ActiveColorOpacity = 0.66f
+  vec4 InactiveColor
+  float InactiveColorOpacity
+  CGameModulePlaygroundModel.ImageRef CustomActiveBackground
+  CGameModulePlaygroundModel.ImageRef CustomInactiveBackground
+  CGameModulePlaygroundModel.ImageRef Team2Emblem
+  CGameModulePlaygroundModel.ImageRef Team2Outline
+  v2+
+    bool Team2UseDefaultColors = true
+  vec4 Team2PrimaryColor
+  float Team2PrimaryColorOpacity
+  vec4 Team2SecondaryColor
+  float Team2SecondaryColorOpacity
+  CGameModulePlaygroundModel.ImageRef Team1Emblem
+  CGameModulePlaygroundModel.ImageRef Team1Outline
+  v2+
+    bool Team1UseDefaultColors = true
+  vec4 Team1PrimaryColor
+  float Team1PrimaryColorOpacity
+  vec4 Team1SecondaryColor
+  float Team1SecondaryColorOpacity
+  v4+
+    CGameModulePlaygroundModel.ImageRef Echelon1Image
+    CGameModulePlaygroundModel.ImageRef Echelon2Image
+    CGameModulePlaygroundModel.ImageRef Echelon3Image
+    CGameModulePlaygroundModel.ImageRef Echelon4Image
+    CGameModulePlaygroundModel.ImageRef Echelon5Image
+    CGameModulePlaygroundModel.ImageRef Echelon6Image
+    CGameModulePlaygroundModel.ImageRef Echelon7Image
+    CGameModulePlaygroundModel.ImageRef Echelon8Image
+    CGameModulePlaygroundModel.ImageRef Echelon9Image
+    CGameModulePlaygroundModel.ImageRef Echelon1RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon2RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon3RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon4RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon5RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon6RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon7RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon8RevImage
+    CGameModulePlaygroundModel.ImageRef Echelon9RevImage
+  v5+
+    bool UseCustomInactiveColor

@@ -1,6 +1,6 @@
 CPlugFogVolume 0x090D4000
 - inherits: CPlug
 
-0x001
- version
- id
+0x001 [MP3, TMT, MP4, TM2020]
+  version
+  id

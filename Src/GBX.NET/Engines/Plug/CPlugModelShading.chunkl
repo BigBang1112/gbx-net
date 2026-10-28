@@ -1,0 +1,51 @@
+CPlugModelShading 0x0900E000
+
+0x000 // custom textures
+  version
+  FidId[] CustomTextures
+
+0x001 // dyna materials
+  version
+  FidId[] MaterialsDyna0
+
+0x002 // static materials and remap
+  version = 3
+  FidId[] MaterialsStatic
+  v1+
+    CMwNod MaterialRemapFid
+  v2+
+    CMwNod MaterialFid_StaticScreen_Parallax
+  v3+
+    CMwNod MaterialFid_StaticScreen
+
+0x003 // character materials
+  version = 2
+  FidId[] MaterialsChar
+  v1+
+    CMwNod MaterialFid_Char_Shield
+    CMwNod MaterialFid_Char_Teleport
+    CMwNod LightFid_Char_FakeShadowProj
+  v2+
+    CMwNod MaterialFid_Char_ActionMakerOtherFrames
+    CMwNod MaterialFid_Char_ShowEnergy
+
+0x004 // vehicle materials
+  version = 5
+  FidId[] MaterialsVehicle
+  v1=
+    CMwNod
+  v3+
+    CMwNod MaterialFid_Vehicle_Teleport
+  v4+
+    CMwNod MaterialFid_Vehicle_Shield
+  v5+
+    CMwNod BitmapFid_CarDecalStadium_BaseColorOp
+    CMwNod BitmapFid_CarDecalStadium_RoughMetal
+
+0x005 // menu box materials
+  version
+  FidId[] MaterialsMenuBox3d
+
+archive FidId
+  id Id
+  CMwNod Fid

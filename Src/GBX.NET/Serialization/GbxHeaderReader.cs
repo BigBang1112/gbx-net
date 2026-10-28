@@ -18,11 +18,11 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         using var _ = logger?.BeginScope("Header");
 
         var basic = GbxHeaderBasic.Parse(reader);
-        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {UnknownByte}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.UnknownByte);
+        logger?.LogDebug("Basic: {Version} {Format} {RefTableCompression} {BodyCompression} {Mode}", basic.Version, basic.Format, basic.CompressionOfRefTable, basic.CompressionOfBody, basic.Mode);
 
         var classId = ReadClassId(reader);
 
-        node = ClassManager.New(classId);
+        node = ClassManager.New(classId, Settings.GameVersion);
 
         GbxHeader header;
 
@@ -33,7 +33,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         }
         else
         {
-            header = ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
+            header = ClassManager.NewHeader(basic, classId, Settings.GameVersion) ?? new GbxHeaderUnknown(basic, classId);
             logger?.LogInformation("Known class!");
         }
 

@@ -1,0 +1,71 @@
+CGameCtnApp 0x030D3000
+- inherits: CGameApp
+
+0x000 [TMU, MP4] // Resources
+  CGameResources Resources
+
+0x001 // legacy files
+  CMwNod[]
+
+0x002 // legacy campaign
+  CGameCtnCampaign
+
+0x003 // legacy campaigns
+  CGameCtnCampaign
+  CGameCtnCampaign
+
+0x004 // legacy campaigns
+  CGameCtnCampaign
+  CGameCtnCampaign
+  CGameCtnCampaign
+
+0x005 // legacy campaigns
+  CGameCtnCampaign
+  CGameCtnCampaign
+  CGameCtnCampaign
+  CGameCtnCampaign
+
+0x006 [TMU] // legacy official campaigns
+  CGameCtnCampaign[] BaseOfficialCampaigns (deprec)
+
+0x007 [TMU, MP4] // Advertising
+  CMwNod Advertising
+
+0x008
+  CMwNod
+
+0x009 [TMU]
+  CGameItemModel
+
+0x00A
+  CPlugFileText
+
+0x00B [TMU]
+  CPlugFileText*
+
+0x00C [TMU, MP4]
+  CMwNod[]
+  CMwNod[]
+
+0x00D
+  CPlugFileText*
+
+0x00E [MP4] // MenuBackground_MustLoopIntro
+  bool MenuBackground_MustLoopIntro
+
+0x00F [MP4] // legacy official campaign folder and names
+  int CampaignCount (local, write: 0)
+  string
+  string[CampaignCount]
+
+0x010 [MP4] // AdditionalSkinsFids
+  CMwNod[] AdditionalSkinsFids
+
+0x011
+  CMwNod
+
+0x012 [MP4]
+  id
+
+0x013 [MP4]
+  CMwNod

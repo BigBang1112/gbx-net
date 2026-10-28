@@ -1,17 +1,17 @@
 CPlugEntRecordData 0x0911F000 // Entity data in a timeline.
 
-0x000
+0x000 [MP4.v5, TM2020.v11]
 
 archive EntRecordDesc
- uint ClassId
- int
- int
- int
- data
- int
+  uint ClassId
+  int StateSize // byte size of one recorded state
+  int SceneUIdOffset = -1 // byte offset of the scene UID within a state
+  int StateArchiveVersion = -1 // version passed to the state serializer
+  data InitialState // state that a newly recorded entity starts from
+  int U05 // discarded, written as 0
 
 archive NoticeRecordDesc
- int
- int
- v4+
-  uint? ClassId
+  int NoticeArchiveVersion = -1 // version passed to the notice serializer
+  int NoticeType = -1
+  v4+
+    uint? ClassId

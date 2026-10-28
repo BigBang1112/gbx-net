@@ -1,32 +1,59 @@
 CControlList 0x0700F000
-- inherits: CControlContainer
+- inherits: CControlFrame
 
-0x007
- int
- int
- int
- int
- int
- int
- int
- Unknown[]
-
-0x00A
- float
- float
- float
- int
- bool
- id
- if U06 == null || U06 == ""
+0x000 [TM10] // legacy list layout and columns
+  int NbColumns
+  int NbLinesPerPage
+  float LinesHeight
   CMwNod
- float
- float
- bool
+  string
+  int ColumnCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
+  int
+  Column[ColumnCount] Columns
+
+0x001 [TMPU] // legacy list layout and columns
+  int NbColumns
+  int NbLinesPerPage
+  int FastPageStep
+  float LinesHeight
+  int ColumnCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnWidthCount (local, write: "n.Columns?.Length ?? 0")
+  int ColumnNodCount (local, write: "n.Columns?.Length ?? 0")
+  Column[ColumnCount] Columns
+
+0x007 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  Unknown[]
+
+0x00A [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
+  float
+  float
+  float
+  int
+  bool
+  id
+  if U06 == null || U06 == ""
+    CMwNod
+  float
+  float
+  bool
+
+archive Column
+  string
+  float
+  CMwNod
 
 archive Unknown
- string
- float
- CMwNod
- id
- bool
+  string
+  float
+  CMwNod
+  id
+  bool

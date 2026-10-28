@@ -1,17 +1,16 @@
 CGameCtnMediaBlockScenery 0x03188000
 - inherits: CGameCtnMediaBlock
 
-0x000
- version
- list<Key> Keys (version: Version)
+0x000 [TMT, MP4, TM2020]
+  version
+  Key[] Keys (list)
 
-0x001
- version
- int
- CPlugDataTape DataTape
- 
+0x001 [TMT, MP4, TM2020]
+  version
+  int CapturableCount // Passed to ImportCapturables(DataTape, CapturableCount).
+  CPlugDataTape DataTape
+
 archive Key (inherits: IKey)
- timefloat Time
- float
- float
- float
+  float Time (time)
+  float VortexRadius = -1
+  vec2 VortexCenterXZ // World X/Z coordinates, stored in the vector's X/Y components.

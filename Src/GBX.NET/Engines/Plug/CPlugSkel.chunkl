@@ -1,21 +1,101 @@
 CPlugSkel 0x090BA000
 
-0x000
+0x000 [MP3.v12, TMT.v12, MP4.v14, TM2020.v20] // skeleton
+  version
 
 archive
+  id Name = ""
+  ushort JointCount (local, write: "checked((ushort)(Joints?.Length ?? 0))")
+  Joint[JointCount] Joints = empty (version: v)
+  v2+
+    bool HasSetup (local, write: "SkelSetup != null")
+    if HasSetup
+      Setup SkelSetup (version: v)
+  v6+
+    Socket[] Sockets = empty (version: v)
+  v9+
+    bool HasExtraJoints (local, write: "AdditionalJoints != null")
+    if HasExtraJoints
+      ExtraJoints AdditionalJoints
+  v10+
+    v15-
+      int[] U03 // Legacy animation LOD data discarded by newer games.
+    v16+
+      data AnimLodIndexs // Animation LOD index for each joint.
+  v13+
+    data U04
+  v14=
+    int JointExprVersion
+    JointExpr[] JointExprs = empty
+  v19+
+    data U07
+  v20+
+    iso4[] U08
+  v17+
+    byte AnimLodCount = 1
+    float[] AnimLodDistances
 
 archive Joint
- id Name
- short ParentIndex
- v14-
-  quat GlobalJoint
-  vec3
- v1+
-  iso4
+  id Name
+  short ParentIndex
+  v14-
+    quat LocalRotation
+    vec3 LocalTranslation
+  v1+
+    iso4 GlobalTransform
 
 archive Socket
- id Name
- short
- iso4
+  id Name
+  short JointIndex
+  iso4 LocalTransform
 
 archive JointExpr
+  int U01
+  id U02
+  id U03
+  id U04
+
+archive Setup
+  IK2[] InverseKinematics (version: v)
+  JointInfo[] JointInfos
+  v10-
+    int U01
+  v3+
+    int[] GlobalTargets
+  v5+
+    v11-
+      int U02 = -1
+    v12+
+      ushort U03 = 0xFFFF
+  v7+
+    v10-
+      int U04
+  v8+
+    v11-
+      int U05 = -1
+    v12+
+      ushort U06 = 0xFFFF
+    v10-
+      int U07
+
+archive IK2
+  v11-
+    int U01
+    int U02
+    int U03
+  v12+
+    ushort U04
+    ushort U05
+    ushort U06
+
+archive JointInfo
+  int U01
+  int U02
+  int U03
+  datauint Flags // Upper-body and parent-length flags.
+
+archive ExtraJoints
+  id[] Names
+  int[] U01
+  int[] U02
+  quat[] U03

@@ -1,45 +1,78 @@
 CPlugVehicleVisEmitterModel 0x090E6000
 
-0x002
- bool
+0x000 // Legacy single model and translation
+  int
+  CPlugParticleEmitterModel ParticleEmitterModel1
+  ParticleEmitterModel2 = ParticleEmitterModel1
 
-0x003
- float
- float
- float
- float
- float
- float
+  int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
+  int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
+  int MaterialGroupIndex = -1
+  bool OnlyWhenSliding
+  bool UseOwnerLoc [TMF = true, VSK5 = true] // Obsolete owner transform flag.
+  bool IsEventMode // Obsolete event emission flag.
+  vec3 Translation (local, write: Loc.Translation)
+  Loc = (1, 0, 0, 0, 1, 0, 0, 0, 1, Translation.X, Translation.Y, Translation.Z)
+  float EmitIntensity = 1
+  vec3 EmitIntensityBySpeed // Coefficients for absolute local velocity components.
+  float EmitIntensityOnTurbo
+  vec3 EmitSpeed // Base local particle velocity.
+  vec3 EmitSpeedBySpeed // Coefficients for local vehicle velocity.
+  vec3 EmitSpeedBySpeedOnTurbo
 
-0x004
- int
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- CPlugParticleEmitterModel (external)
- int
- int
- int
- bool
- bool
- bool
- iso4
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
- float
+0x001 // Legacy single model and transform
+  int
+  CPlugParticleEmitterModel ParticleEmitterModel1
+  ParticleEmitterModel2 = ParticleEmitterModel1
 
-0x005
- bool
+  int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
+  int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
+  int MaterialGroupIndex = -1
+  bool OnlyWhenSliding
+  bool UseOwnerLoc [TMF = true, VSK5 = true] // Obsolete owner transform flag.
+  bool IsEventMode // Obsolete event emission flag.
+  iso4 Loc = Iso4.Identity
+  Position = Loc.Translation
+  float EmitIntensity = 1
+  vec3 EmitIntensityBySpeed // Coefficients for absolute local velocity components.
+  float EmitIntensityOnTurbo
+  vec3 EmitSpeed // Base local particle velocity.
+  vec3 EmitSpeedBySpeed // Coefficients for local vehicle velocity.
+  vec3 EmitSpeedBySpeedOnTurbo
 
-0x006
- CPlugParticleEmitterModel (external)
+0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020] // OrientWithVelocity
+  bool OrientWithVelocity
+
+0x003 [VSK5, TMF, MP3, TMT, MP4, TM2020] // Position and rotation
+  vec3 Position
+  vec3 PitchYawRoll // Radians
+
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020] // Quality models and emission settings
+  int
+  CPlugParticleEmitterModel ParticleEmitterModel0 // Visual quality index 0.
+  CPlugParticleEmitterModel ParticleEmitterModel1 // Visual quality index 1.
+  CPlugParticleEmitterModel ParticleEmitterModel2 // Visual quality index 2.
+  int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
+  int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
+  int MaterialGroupIndex = -1
+  bool OnlyWhenSliding
+  bool UseOwnerLoc [TMF = true, VSK5 = true] // Obsolete owner transform flag.
+  bool IsEventMode // Obsolete event emission flag.
+  iso4 Loc = Iso4.Identity
+  Position = Loc.Translation
+  float EmitIntensity = 1
+  vec3 EmitIntensityBySpeed // Coefficients for absolute local velocity components.
+  float EmitIntensityOnTurbo
+  vec3 EmitSpeed // Base local particle velocity.
+  vec3 EmitSpeedBySpeed // Coefficients for local vehicle velocity.
+  vec3 EmitSpeedBySpeedOnTurbo
+
+0x005 [VSK5, TMF, MP3, TMT, MP4, TM2020] // OnlyWhenAllWheelsSliding
+  bool OnlyWhenAllWheelsSliding
+
+0x006 [MP3, TMT, MP4, TM2020] // ParticleEmitterModelShoot
+  CPlugParticleEmitterModel ParticleEmitterModelShoot // Used when rendering videos.
+
+0x007 [TM2020] // Additional emission flag
+  version
+  bool

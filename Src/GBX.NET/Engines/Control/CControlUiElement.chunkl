@@ -1,0 +1,5 @@
+CControlUiElement 0x07004000
+- inherits: CControlForm
+
+0x000 [TMU, TMF] // Resources
+  CMwNod Resources

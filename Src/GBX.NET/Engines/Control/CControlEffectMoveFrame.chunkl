@@ -1,0 +1,11 @@
+CControlEffectMoveFrame 0x07025000
+- inherits: CControlEffect
+
+0x000 [TMU] // inversion, period and shift
+  bool IsInverse
+  float Period
+  vec2 DefaultShift
+  vec2[]
+
+0x001 [TMU] // AngleFrom
+  vec3 AngleFrom

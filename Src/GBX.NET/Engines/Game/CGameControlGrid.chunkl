@@ -1,0 +1,32 @@
+CGameControlGrid 0x030B9000
+- inherits: CControlGrid
+
+0x000 [TMU]
+  int MaxPerColumn = 10
+  int MaxPerRow = 1
+  int FastNextPageCount = 10
+  int FastPreviousPageCount = 10
+  CControlButton ButtonNextPage
+  CControlButton ButtonPreviousPage
+  CControlButton ButtonFastNextPage
+  CControlButton ButtonFastPreviousPage
+  CControlEntry EntryPageCounter
+
+0x001 [TMU]
+  CControlButton ButtonFirstPage
+  CControlButton ButtonLastPage
+
+0x002 [TMU]
+  bool ForceHideArrows
+
+0x003 [TMU]
+  bool ForceHidePageCounter
+
+0x004
+  CControlBase BaseLocalData
+  bool HaveLocalData
+  bool HideLocalDataIfNone = true
+
+0x005
+  bool HaveLocalData
+  bool HideLocalDataIfNone

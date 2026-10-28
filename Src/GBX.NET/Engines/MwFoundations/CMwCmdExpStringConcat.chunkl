@@ -1,0 +1,8 @@
+CMwCmdExpStringConcat 0x00105100
+- inherits: CMwCmdExpString
+
+0x0104E000 [TMF]
+
+0x00105100 [TMF]
+  CMwCmdExp Value1
+  CMwCmdExp Value2

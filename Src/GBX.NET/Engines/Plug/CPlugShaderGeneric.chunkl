@@ -1,11 +1,26 @@
 CPlugShaderGeneric 0x09004000
 - inherits: CPlugShader
 
-0x001
- data[88]
+0x000
+  SMaterial Material
+
+0x001 [TM10, TMPU]
+  SMaterial Material (version: 1)
 
 0x002
- data[88]
+  SMaterial Material (version: 2)
 
-0x003
- data[88]
+0x003 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  SMaterial Material (version: 3)
+
+archive SMaterial
+  vec3 AmbientRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]
+  vec3 DiffuseRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]
+  float DiffuseAlpha [TM10 = 1f, TMPU = 1f, TMSX = 1f, TMNESWC = 1f, VSK5 = 1f, TMF = 1f]
+  vec3 SpecularRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]
+  float SpecularExp [TM10 = 20f, TMPU = 20f, TMSX = 20f, TMNESWC = 20f, VSK5 = 20f, TMF = 20f]
+  vec3 EmissiveRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]
+  vec3 EmissiveModifier
+  vec3 WireRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]
+  float WireAlpha [TM10 = 1f, TMPU = 1f, TMSX = 1f, TMNESWC = 1f, VSK5 = 1f, TMF = 1f]
+  datauint Flags = 0x800 [TM10 = 5, TMPU = 5, TMSX = 5, TMNESWC = 5, VSK5 = 5, TMF = 5] // Preserve serialized bits before native readers upgrade legacy lighting flags and clear runtime flags.

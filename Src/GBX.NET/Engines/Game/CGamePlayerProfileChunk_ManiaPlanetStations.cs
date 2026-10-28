@@ -3,11 +3,10 @@
 public partial class CGamePlayerProfileChunk_ManiaPlanetStations
 {
     private GameStationDesc[]? stations;
-    [AppliedWithChunk<Chunk03180002>]
-    public GameStationDesc[]? Stations { get => stations; set => stations = value; }
+    public partial GameStationDesc[]? Stations { get => stations; set => stations = value; }
 
     private bool hasSeenWelcomePage;
-    public bool HasSeenWelcomePage { get => hasSeenWelcomePage; set => hasSeenWelcomePage = value; }
+    public partial bool HasSeenWelcomePage { get => hasSeenWelcomePage; set => hasSeenWelcomePage = value; }
 
     public partial class Chunk03180002 : IVersionable
     {

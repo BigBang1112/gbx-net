@@ -1,9 +1,12 @@
 ﻿using GBX.NET.Components;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
 internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, GbxWriter writer)
 {
+    private readonly ILogger? logger = writer.Logger;
+
     internal bool Write(bool rawBody)
     {
         return rawBody ? WriteUsingRefTableData() : WriteUsingNodeDictionary();
@@ -14,12 +17,18 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
         var numExternalNodes = refTable.Files.Count + refTable.Resources.Count;
         writer.Write(numExternalNodes);
 
+        logger?.LogDebug("Number of external nodes: {NumExternalNodes}", numExternalNodes);
+
         if (numExternalNodes == 0)
         {
             return true;
         }
 
+        using var _ = logger?.BeginScope("RefTable");
+
         writer.Write(refTable.AncestorLevel);
+
+        logger?.LogDebug("Ancestor level: {AncestorLevel}", refTable.AncestorLevel);
 
         var root = new Dir();
 
@@ -40,7 +49,7 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
             fileDirDict[file] = dir;
         }
 
-        root.Write(writer);
+        root.Write(writer, logger);
 
         var dirIndexDict = new Dictionary<Dir, int>();
 
@@ -51,6 +60,8 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
 
         foreach (var file in refTable.Files)
         {
+            logger?.LogInformation("External file: {File}, Flags: {Flags}, UseFile: {UseFile}", file.FilePath, file.Flags, file.UseFile);
+
             writer.Write(file.Flags);
             writer.Write(Path.GetFileName(file.FilePath));
             writer.Write(file.NodeIndex);
@@ -66,6 +77,8 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
 
         foreach (var resource in refTable.Resources)
         {
+            logger?.LogInformation("External resource: Index: {ResourceIndex}, Flags: {Flags}, UseFile: {UseFile}", resource.ResourceIndex, resource.Flags, resource.UseFile);
+
             writer.Write(resource.Flags);
             writer.Write(resource.ResourceIndex);
             writer.Write(resource.NodeIndex);
@@ -87,12 +100,18 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
 
         writer.Write(externalNodesCount);
 
+        logger?.LogDebug("Number of external nodes: {NumExternalNodes}", externalNodesCount);
+
         if (externalNodesCount == 0)
         {
             return true;
         }
 
+        using var _ = logger?.BeginScope("RefTable");
+
         writer.Write(refTable.AncestorLevel);
+
+        logger?.LogDebug("Ancestor level: {AncestorLevel}", refTable.AncestorLevel);
 
         var root = new Dir();
 
@@ -113,7 +132,7 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
             fileDirDict[file] = dir;
         }
 
-        root.Write(writer);
+        root.Write(writer, logger);
 
         var dirIndexDict = new Dictionary<Dir, int>();
 
@@ -136,9 +155,11 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
             switch (node)
             {
                 case GbxRefTableResource resource:
+                    logger?.LogInformation("External resource: {Resource}", resource);
                     writer.Write(resource.ResourceIndex);
                     break;
                 case GbxRefTableFile file:
+                    logger?.LogInformation("External file: {File}", file);
                     writer.Write(Path.GetFileName(file.FilePath));
                     break;
                 default:
@@ -185,14 +206,18 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
             return subDir.InsertPath(parts, partIndex + 1, subDir);
         }
 
-        public void Write(GbxWriter writer)
+        public void Write(GbxWriter writer, ILogger? logger, string path = "")
         {
             writer.Write(Children.Count);
 
             foreach (var dir in Children)
             {
                 writer.Write(dir.Name);
-                dir.Write(writer);
+
+                var subPath = Path.Combine(path, dir.Name);
+                logger?.LogTrace("Dir: {Dir}", subPath);
+
+                dir.Write(writer, logger, subPath);
             }
         }
 

@@ -1,0 +1,12 @@
+CGameControlCardNetOnlineEvent 0x030DB000
+- inherits: CGameControlCard
+
+0x000 // legacy resources
+  CMwNod
+  CMwNod
+  CMwNod
+
+0x001 // legacy resource
+  CMwNod
+
+0x002 (empty) [TMU, TMF]

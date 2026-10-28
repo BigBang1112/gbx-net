@@ -1,28 +1,28 @@
 CSceneVehicleCarMarksSamples 0x0A083000
 
-0x002
- uint[] Stops
+0x002 [MP3, TMT, MP4, TM2020]
+  uint[] Stops
 
-0x003
- string Name
+0x003 [MP3, TMT, MP4, TM2020]
+  string Name
 
-0x004
- bool Disabled
+0x004 [MP3, TMT, MP4, TM2020]
+  bool Disabled
 
-0x006
- version
- v1+
-  throw
- Sample[] Samples
+0x006 [MP3, TMT, MP4, TM2020]
+  version
+  v1+
+    throw
+  Sample[] Samples
 
 archive Sample // SSceneVehicleCarkMarkSample typo lol
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int
+  int

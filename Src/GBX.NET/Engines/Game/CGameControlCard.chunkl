@@ -1,0 +1,14 @@
+CGameControlCard 0x0309A000
+- inherits: CControlFrame
+
+0x000
+  bool UseDelays
+
+0x001
+  bool UseDelays
+  bool
+
+0x002 [TMU]
+  bool UseDelays
+  bool
+  bool

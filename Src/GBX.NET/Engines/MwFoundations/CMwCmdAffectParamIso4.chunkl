@@ -1,0 +1,2 @@
+CMwCmdAffectParamIso4 0x0107B000
+- inherits: CMwCmdAffectParam

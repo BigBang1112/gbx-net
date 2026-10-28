@@ -1,0 +1,18 @@
+CGameModulePlaygroundModel 0x2E012000
+- inherits: CGameModuleModelCommon
+- abstract
+
+0x000 (skippable) // size, icon and manialink code
+  version = 1
+  float SizeX
+  float SizeY
+  string
+  if U01 == null || U01 == ""
+    CPlugFileImg Icon
+  int
+  CPlugFileText ManialinkCode
+
+archive ImageRef
+  string Path
+  if Path == null || Path == ""
+    CPlugFileImg Image

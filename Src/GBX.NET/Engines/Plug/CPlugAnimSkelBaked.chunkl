@@ -1,0 +1,32 @@
+CPlugAnimSkelBaked 0x09132000
+
+0x000 [TM2020.v8] // baked animation
+  version
+  int FlagsVersion
+  int TimingVersion
+  TimingFixedPeriod Timing (version: n.TimingVersion)
+  CPlugAnimSkelJointGroup JointGroup
+  v6-
+    transquat[] LocalJointsData
+  v7+
+    data PackedLocalJointsData
+  v1=
+    int LegacyData
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.FlagsVersion)
+  v4+
+    CPlugAnimFile.RootMotionFrame[] RootMotionFrames
+  v5+
+    v7-
+      id[] FloatChannelIds
+      float[] FloatChannelData
+  v6+
+    ulong Hash
+
+archive TimingFixedPeriod
+  int FrameCount // cFrame
+  bool Looping
+  v0=
+    float Duration
+  v1+
+    int FramePeriod

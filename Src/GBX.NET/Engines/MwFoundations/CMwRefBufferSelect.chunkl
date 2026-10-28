@@ -1,0 +1,8 @@
+CMwRefBufferSelect 0x010C1000
+
+0x000
+  CMwNod[] Nods (deprec)
+  int
+
+0x001
+  id

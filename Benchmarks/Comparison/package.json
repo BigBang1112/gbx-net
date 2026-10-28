@@ -1,0 +1,13 @@
+{
+  "name": "gbx-library-comparison",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "benchmark": "node run.mjs",
+    "test": "node --test report.test.mjs"
+  },
+  "dependencies": {
+    "gbx": "1.0.0-rc12",
+    "lzo-ts": "0.2.3"
+  }
+}

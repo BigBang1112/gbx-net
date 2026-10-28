@@ -1,0 +1,18 @@
+CScriptSetting 0x11000000
+
+archive
+  string Name
+  if v == 0
+    int Type
+    if Type == 0
+      bool Boolean
+    if Type == 1
+      int Integer
+    if Type == 2
+      float Real
+    if Type == 3
+      string Text
+    if Type < 0 || Type > 3
+      throw
+  else
+    ScriptSettingValue TypedValue (version: v - 1)

@@ -1,0 +1,17 @@
+CPlugVehicleVisStyleRandomGroup 0x09147000
+
+0x000 [MP4.v1, TM2020.v4] // weighted vehicle colors
+  version
+  id Name
+  v1+
+    string MatchName
+  v4+
+    float GroupProba
+  v3-
+    GroupProba = 1f
+  SPlugVehicleVisStyle[] Styles
+
+archive SPlugVehicleVisStyle
+  uint Color // Packed RGBA color; legacy versions use a different alpha scale
+  v2+
+    float Proba = 1f

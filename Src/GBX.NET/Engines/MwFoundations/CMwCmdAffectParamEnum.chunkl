@@ -1,0 +1,2 @@
+CMwCmdAffectParamEnum 0x0107A000
+- inherits: CMwCmdAffectParam

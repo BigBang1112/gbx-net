@@ -1,0 +1,5 @@
+CMwCmdExpClassIdent 0x01057000
+- inherits: CMwCmdExpClass
+
+0x000 [TMU, TMF] // Ident
+  string Ident

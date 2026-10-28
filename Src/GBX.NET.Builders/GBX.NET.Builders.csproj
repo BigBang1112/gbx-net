@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageId>GBX.NET.Builders</PackageId>
+        <VersionPrefix>2.5.0</VersionPrefix>
+        <Authors>BigBang1112</Authors>
+        <Description>Generated fluent builders that create GBX.NET nodes for a selected game version.</Description>
+        <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageIcon>logo_icon_outline.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>gbx, builder, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
+        <PackageReleaseNotes>
+- Added generated fluent node builders with game-specific chunks and defaults
+        </PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\Generated\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
+        <LangVersion>14</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
+        <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <NoWarn>1591</NoWarn>
+
+        <!-- Emit only builders. GBX.NET emits the nodes and game version interfaces. -->
+        <GbxGeneratorTarget>Builders</GbxGeneratorTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../Media/logo_icon_outline.png" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <Import Project="../GBX.NET/GBX.NET.Usings.props" />
+
+    <ItemGroup>
+        <Using Include="GBX.NET.Builders" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <CompilerVisibleProperty Include="GbxGeneratorTarget" />
+        <AdditionalFiles Include="../GBX.NET/Engines/*/*.chunkl" />
+        <!-- The generator reads the handwritten node, chunk and interface declarations. -->
+        <AdditionalFiles Include="../GBX.NET/**/*.cs" Exclude="../GBX.NET/bin/**;../GBX.NET/obj/**;../GBX.NET/Generated/**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+        <ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
+</Project>

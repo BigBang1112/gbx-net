@@ -1,0 +1,7 @@
+CGameControlCardManager 0x0309B000
+
+0x000
+  CGameControlDataType[] DataTypes (deprec)
+
+0x001 [TMU]
+  CGameControlDataType[] DataTypes (deprec)

@@ -1,0 +1,2 @@
+CGameControlCardMessage 0x030C2000
+- inherits: CGameControlCard

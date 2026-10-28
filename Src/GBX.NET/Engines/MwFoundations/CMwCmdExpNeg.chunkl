@@ -1,0 +1,5 @@
+CMwCmdExpNeg 0x01044000
+- inherits: CMwCmdExpNum
+
+0x000 [TMU, TMF] // Value
+  CMwCmdExp Value

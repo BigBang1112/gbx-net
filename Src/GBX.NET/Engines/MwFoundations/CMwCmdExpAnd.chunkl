@@ -1,0 +1,6 @@
+CMwCmdExpAnd 0x0103A000
+- inherits: CMwCmdExpBool
+
+0x000 [TMU, TMF]
+  CMwCmdExp Value1
+  CMwCmdExp Value2

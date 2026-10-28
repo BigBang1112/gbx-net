@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnChallengeTMF : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMF : IGameCtnChallenge
 {
     IEnumerable<IGameCtnBlockTMF> GetBlocks();
     void ComputeCrc32();

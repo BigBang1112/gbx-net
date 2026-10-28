@@ -1,0 +1,37 @@
+CControlQuad 0x0701B000
+- inherits: CControlBase
+
+0x000
+  vec2 Size = (-1, -1)
+
+0x001
+  vec2 Size = (-1, -1)
+  bool
+  vec2
+
+0x002
+  vec2 Size = (-1, -1)
+  int GradientDir = 2
+
+0x003 [TMU]
+  vec2 Size = (-1, -1)
+  int GradientDir = 2
+  bool IsLines
+  bool IsFill
+
+0x004
+  int GradientDir = 2
+  bool IsLines
+  bool IsFill
+
+0x005
+  vec2 Size = (-1, -1)
+
+0x006
+  id IconId
+
+0x007
+  version
+  id IconId
+  vec3 IconVertexColors = (1, 1, 1)
+  float IconVertexAlpha = 1f

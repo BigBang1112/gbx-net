@@ -1,0 +1,24 @@
+CControlSlider 0x0700B000
+- inherits: CControlBase
+
+0x000 // legacy slider sound and bar size
+  CPlugSound SliderSound
+  float SliderBarWidth
+  float SliderBarHeight
+  float
+
+0x001 // legacy shaders
+  CPlugShader
+  CPlugShader
+  CPlugShader
+  CPlugShader
+
+0x002 [TMU] // Axis
+  int Axis
+
+0x003 [TMU] // bar and cursor icons
+  id IconIdBar
+  id IconIdCursor
+
+0x004
+  bool

@@ -1,0 +1,23 @@
+CPlugFxLensFlareArray 0x090C1000
+- inherits: CPlug
+
+0x000 // bitmap and lens flares
+  version
+  CPlugBitmap Bitmap
+  LensFlare[] LensFlares
+
+0x001 (skippable) // lens dirt generators
+  version = 1
+  CPlugFxLensDirtGen[] LensDirtGens (direct)
+  v1+
+    float
+    float
+
+archive LensFlare
+  id Name
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05
+  float U06

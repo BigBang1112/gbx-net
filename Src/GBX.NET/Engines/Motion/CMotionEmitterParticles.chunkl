@@ -1,0 +1,70 @@
+CMotionEmitterParticles 0x08058000
+- inherits: CMotionManaged
+
+0x001 [TMU] // particle emission parameters
+  CMwNod EmitterModel
+  bool IsActive
+  bool UseOwnerLoc = true
+  EmitParams Params
+
+0x002 (base: 0x001) [TMF] // IsEventMode
+  base
+  bool IsEventMode
+
+0x0804F000 // legacy emitter model
+  CMwNod EmitterModel
+  bool IsActive
+  float
+  float
+  float
+
+0x0804F001 (base: 0x0804F000) // legacy emission parameters
+  base
+  bool UseOwnerLoc
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x0804F002 (base: 0x0804F001) // legacy emission parameters
+  base
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x0804F003 [TMSX] // emission parameters
+  CMwNod EmitterModel
+  bool IsActive
+  bool UseOwnerLoc
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+archive EmitParams
+  version = 1
+  v1= (archive)
+    mat3 U01 = Mat3.Identity
+    vec3 U02
+    vec3 U03 = (1, 1, 1)
+    vec3 U04
+    vec3 U05 = (1, 1, 1)
+    float U06 = 1f

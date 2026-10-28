@@ -1,0 +1,8 @@
+CControlFrameStyled 0x07026000
+- inherits: CControlFrame
+
+0x000
+  CMwRefBuffer LegacyStyleBuffer
+
+0x001 [TMU, MP4]
+  CControlStyleSheet StyleSheet

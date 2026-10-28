@@ -1,0 +1,96 @@
+CPlugFontBitmap 0x0904E000
+- inherits: CPlugFont
+
+0x001 [TM10] // legacy bitmap and letters
+  CPlugBitmap LegacyBitmap
+  int FontHeight
+  int FontAscent
+  OldLetter[] OldLetters
+  bool
+
+0x002 [TMPU]
+  CPlugBitmap LegacyBitmap
+  bool
+  int FontHeight
+  int FontAscent
+  OldLetter[] OldLetters
+
+0x003 [TMU]
+  int FontHeight
+  int FontAscent
+  Letter[] Letters
+  Page[] Pages
+
+0x004 [TMU, MP4, TM2020]
+  RemapPage[] RemapPages
+  ushort[] RemapLetters
+
+0x005 [TMU]
+  int KerningCount (local, write: "n.Kernings?.Length ?? 0")
+  if KerningCount > 0
+    int KerningCapacity
+    Kerning[KerningCount] Kernings
+
+0x006 [TMU, MP4, TM2020]
+  rect Bounds = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue)
+
+0x007
+  int FontHeight
+  int FontAscent
+  Letter[] Letters
+  CPlugMaterial CustomMaterialModel
+  if CustomMaterialModel != null
+    CMwNod[] PageTextures
+  else
+    Page[] Pages
+
+0x008 [MP4, TM2020]
+  CPlugFontBitmap FallbackFont
+
+0x009 [MP4.v1, TM2020.v1]
+  version
+  int FontHeight
+  int FontAscent
+  Letter[] Letters
+  bool HasCustomMaterial = true
+  if HasCustomMaterial
+    CPlugMaterial CustomMaterialModel
+    v1+
+      bool HasTextureDataRefs
+    if HasTextureDataRefs
+      string[] PageTextureDataRefs
+    else
+      CMwNod[] PageTextures
+  else
+    Page[] Pages
+
+archive Letter
+  int CodePoint
+  rect Uv
+  short Advance
+  short OffsetX
+  short Width
+  short OffsetY
+  short Height
+  short PageIndex
+
+archive OldLetter
+  int U01
+  rect Uv
+  short Advance
+  short U02
+
+archive Page
+  bool IsFile
+  CMwNod Shader
+
+archive RemapPage
+  int U01
+  int U02
+  int U03
+  int U04
+
+archive Kerning
+  uint Key
+  short Adjustment
+  short U01

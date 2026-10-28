@@ -1,6 +1,7 @@
 ﻿using NationsConverterWeb;
 using Spectre.Console;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 
 namespace GBX.NET.Tool.CLI;
 
@@ -64,7 +65,14 @@ internal sealed class ToolUpdateChecker
             catch (Exception ex)
             {
                 AnsiConsole.MarkupLine("[red]Failed to parse update information.[/]");
-                AnsiConsole.WriteException(ex);
+                if (RuntimeFeature.IsDynamicCodeSupported)
+                {
+                    AnsiConsole.WriteException(ex);
+                }
+                else
+                {
+                    AnsiConsole.WriteLine(ex.ToString());
+                }
             }
 
             AnsiConsole.WriteLine();

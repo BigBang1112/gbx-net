@@ -1,0 +1,21 @@
+CGamePlaygroundControlScores 0x030F3000
+- inherits: CControlFrame
+
+0x000
+  int ListLineCount = 8
+  int ListColumnCount = 2
+  CControlFrame CardModelPlayer
+
+0x001
+  int ListLineCount = 8
+  int ListColumnCount = 2
+  float HorizontalMargin = 0.1f
+  float VerticalMargin = 0.1f
+  float CenterMargin
+  bool
+  bool LabelHelpEnabled
+  bool LabelMessageEnabled
+  CControlFrame CardModelPlayer
+
+0x002
+  bool IsCentered = true

@@ -21,18 +21,29 @@ public partial class CMwNod : IClass
     private ChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet(this);
 
+    public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences() => [];
+
     internal virtual void Read(GbxReaderWriter rw)
+    {
+        Read(rw, firstChunkId: null);
+    }
+
+    internal void Read(GbxReaderWriter rw, uint? firstChunkId)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
-        r.TryInitializeDecryption(this);
+        if (!firstChunkId.HasValue)
+        {
+            r.TryInitializeDecryption(this);
+        }
 
         var prevChunkId = default(uint?);
         var maxSkippableChunkSize = r.Settings.MaxSkippableChunkSize ?? MaxSkippableChunkSize;
 
         while (true)
         {
-            var rawChunkId = r.ReadHexUInt32();
+            var rawChunkId = firstChunkId ?? r.ReadHexUInt32();
+            firstChunkId = null;
 
             if (!OnRawChunkIdRead(rawChunkId))
             {
@@ -324,34 +335,72 @@ public partial class CMwNod : IClass
                 continue;
             }
 
-            w.WriteChunkId(chunk.Id);
+            var rawChunkId = w.WriteChunkId(chunk.Id);
 
             var chunkW = w;
             var chunkRw = rw;
 
             var ms = default(MemoryStream);
+            var stopwatch = default(Stopwatch);
 
-            if (chunk is ISkippableChunk skippable)
+            if (chunk is ISkippableChunk skippable && skippable is not CGameCtnChallenge.Chunk03043055 { TMUnlimiterChunk: not null })
             {
-                if (skippable is CGameCtnChallenge.Chunk03043055 { TMUnlimiterChunk: not null } unlimiterChunk)
-                {
-                    unlimiterChunk.ReadWrite(this, chunkRw);
-                    continue;
-                }
-
                 w.WriteHexUInt32(SKIP);
 
                 if (skippable.Data is not null)
                 {
+                    if (w.Logger is not null)
+                    {
+                        var kind = skippable is SkippableChunk ? "unknown skippable" : "skippable";
+
+                        if (chunk.Id == rawChunkId)
+                        {
+                            w.Logger.LogDebug("0x{ChunkId:X8} ({Kind}, size: {Size}, stored data)", chunk.Id, kind, skippable.Data.Length);
+                        }
+                        else
+                        {
+                            w.Logger.LogDebug("0x{ChunkId:X8} ({Kind}, size: {Size}, stored data, raw: 0x{RawChunkId:X8})", chunk.Id, kind, skippable.Data.Length, rawChunkId);
+                        }
+                    }
+
                     w.Write(skippable.Data.Length);
                     w.Write(skippable.Data);
                     continue;
                 }
 
+                if (w.Logger is not null)
+                {
+                    if (chunk.Id == rawChunkId)
+                    {
+                        w.Logger.LogDebug("0x{ChunkId:X8} (skippable)", chunk.Id);
+                    }
+                    else
+                    {
+                        w.Logger.LogDebug("0x{ChunkId:X8} (skippable, raw: 0x{RawChunkId:X8})", chunk.Id, rawChunkId);
+                    }
+                }
+
                 ms = new MemoryStream();
-                chunkW = new GbxWriter(ms);
+                chunkW = new GbxWriter(ms, w.Settings with { CloseStream = false });
                 chunkW.LoadFrom(w);
                 chunkRw = new GbxReaderWriter(chunkW);
+            }
+            // Unskippable chunk, including a TMUnlimiter 0x055 chunk written without the skippable header
+            else if (w.Logger is not null)
+            {
+                if (chunk.Id == rawChunkId)
+                {
+                    w.Logger.LogDebug("0x{ChunkId:X8}", chunk.Id);
+                }
+                else
+                {
+                    w.Logger.LogDebug("0x{ChunkId:X8} (raw: 0x{RawChunkId:X8})", chunk.Id, rawChunkId);
+                }
+            }
+
+            if (w.Logger?.IsEnabled(LogLevel.Trace) == true)
+            {
+                stopwatch = Stopwatch.StartNew();
             }
 
             switch (chunk)
@@ -372,7 +421,21 @@ public partial class CMwNod : IClass
                 w.Write((uint)ms.Length);
                 ms.WriteTo(w.BaseStream);
                 w.LoadFrom(chunkW);
+
+                if (w.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+                {
+                    stopwatch.Stop();
+                    w.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms, size: {Size})", chunk.Id, stopwatch.Elapsed.TotalMilliseconds, ms.Length);
+                }
+
                 ms.Dispose();
+                continue;
+            }
+
+            if (w.Logger?.IsEnabled(LogLevel.Trace) == true && stopwatch is not null)
+            {
+                stopwatch.Stop();
+                w.Logger.LogTrace("0x{ChunkId:X8} DONE ({Elapsed}ms)", chunk.Id, stopwatch.Elapsed.TotalMilliseconds);
             }
         }
 
@@ -401,21 +464,28 @@ public partial class CMwNod : IClass
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    public virtual CMwNod DeepClone()
-    {
-        var clone = (CMwNod)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
-    }
+    public virtual CMwNod DeepClone() => new DeepCloneContext().CloneNode(this);
 
 #if NET8_0_OR_GREATER
     [Experimental("GBXNET10001")]
 #endif
-    IClass IClass.DeepClone()
+    IClass IClass.DeepClone() => DeepClone();
+
+    internal CMwNod CreateCloneShell() => (CMwNod)MemberwiseClone();
+
+    internal virtual void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
-        var clone = (IClass)MemberwiseClone();
-        DeepCloneChunks(clone);
-        return clone;
+        if (chunks is null)
+        {
+            return;
+        }
+
+        clone.chunks = new ChunkSet(clone);
+
+        foreach (var chunk in chunks)
+        {
+            clone.chunks.Add(context.CloneChunk(chunk));
+        }
     }
 
 #if NET8_0_OR_GREATER
@@ -427,7 +497,12 @@ public partial class CMwNod : IClass
         {
             return;
         }
-        
+
+        if (dest is CMwNod destNode)
+        {
+            destNode.chunks = new ChunkSet(destNode);
+        }
+
         foreach (var chunk in chunks)
         {
             var chunkClone = chunk.DeepClone();
@@ -492,8 +567,7 @@ public partial class CMwNod : IClass
 
     public Gbx ToGbx(GbxHeaderBasic headerBasic)
     {
-        var classId = ClassManager.GetId(GetType()) ?? throw new Exception("Class ID not found.");
-        var header = ClassManager.NewHeader(headerBasic, classId) ?? throw new Exception("Header cannot be created.");
+        var header = ClassManager.NewHeader(headerBasic, this) ?? throw new Exception("Header cannot be created.");
         return ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created.");
     }
 

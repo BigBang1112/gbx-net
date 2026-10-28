@@ -50,15 +50,15 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
 
         static CompletionItemExtensions()
         {
-            _symbolCompletionItemType = typeof(CompletionItem).GetTypeInfo().Assembly.GetType(SymbolCompletionItem);
-            _getSymbolsAsync = _symbolCompletionItemType.GetMethod(GetSymbolsAsync, BindingFlags.Public | BindingFlags.Static);
+            _symbolCompletionItemType = typeof(CompletionItem).GetTypeInfo().Assembly.GetType(SymbolCompletionItem) ?? throw new MissingMemberException(SymbolCompletionItem);
+            _getSymbolsAsync = _symbolCompletionItemType.GetMethod(GetSymbolsAsync, BindingFlags.Public | BindingFlags.Static) ?? throw new MissingMethodException(SymbolCompletionItem, GetSymbolsAsync);
 
-            _getProviderName = typeof(CompletionItem).GetProperty(ProviderName, BindingFlags.NonPublic | BindingFlags.Instance);
+            _getProviderName = typeof(CompletionItem).GetProperty(ProviderName, BindingFlags.NonPublic | BindingFlags.Instance) ?? throw new MissingMemberException(nameof(CompletionItem), ProviderName);
 
-            _getChangeAsync = typeof(Microsoft.CodeAnalysis.Completion.CompletionService).GetMethod(nameof(GetChangeAsync), BindingFlags.NonPublic | BindingFlags.Instance);
+            _getChangeAsync = typeof(Microsoft.CodeAnalysis.Completion.CompletionService).GetMethod(nameof(GetChangeAsync), BindingFlags.NonPublic | BindingFlags.Instance) ?? throw new MissingMethodException(nameof(Microsoft.CodeAnalysis.Completion.CompletionService), nameof(GetChangeAsync));
         }
 
-        internal static string GetProviderName(this CompletionItem item) => (string)_getProviderName.GetValue(item);
+        internal static string GetProviderName(this CompletionItem item) => (string?)_getProviderName.GetValue(item) ?? string.Empty;
 
         public static bool IsObjectCreationCompletionItem(this CompletionItem item) => GetProviderName(item) == ObjectCreationCompletionProvider;
 
@@ -76,8 +76,10 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             }
 
             // if the completion provider encoded symbols into Properties, we can return them
-            if (properties.TryGetValue(SymbolName, out string symbolNameValue)
-                && properties.TryGetValue(SymbolKind, out string symbolKindValue)
+            if (properties.TryGetValue(SymbolName, out string? symbolNameValue)
+                && properties.TryGetValue(SymbolKind, out string? symbolKindValue)
+                && symbolNameValue is not null
+                && symbolKindValue is not null
                 && int.Parse(symbolKindValue) is int symbolKindInt)
             {
 #pragma warning disable RS1024 // Compare symbols correctly: service is deprecated, not going to change behavior now.
@@ -98,8 +100,18 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             char? commitCharacter = null,
             bool disallowAddingImports = false,
             CancellationToken cancellationToken = default)
-            => (Task<CompletionChange>)_getChangeAsync.Invoke(completionService, new object[] { document, item, completionListSpan, commitCharacter, disallowAddingImports, cancellationToken });
+            => (Task<CompletionChange>?)_getChangeAsync.Invoke(completionService, new object?[] { document, item, completionListSpan, commitCharacter, disallowAddingImports, cancellationToken }) ?? throw new InvalidOperationException("Completion change was not created.");
 
-        public static bool TryGetInsertionText(this CompletionItem completionItem, out string insertionText) => completionItem.Properties.TryGetValue(InsertionText, out insertionText);
+        public static bool TryGetInsertionText(this CompletionItem completionItem, out string insertionText)
+        {
+            if (completionItem.Properties.TryGetValue(InsertionText, out var value) && value is not null)
+            {
+                insertionText = value;
+                return true;
+            }
+
+            insertionText = string.Empty;
+            return false;
+        }
     }
 }

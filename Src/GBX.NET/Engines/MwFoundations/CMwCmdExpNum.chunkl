@@ -1,0 +1,9 @@
+CMwCmdExpNum 0x01046000
+- inherits: CMwCmdExp
+
+0x000 [TMU, TMF]
+  int Type
+  if Type == 0
+    int Integer
+  if Type == 1
+    float Real

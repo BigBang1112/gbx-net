@@ -1,27 +1,27 @@
 CGamePlayerOfficialScores 0x03095000
 
 0x000
- TransactionalNatural GlobalScore
- FilteredPlayerRank[] FilteredPlayerRanks
+  TransactionalNatural GlobalScore
+  FilteredPlayerRank[] FilteredPlayerRanks
 
-0x001
- TransactionalNatural GlobalScore
- boolbyte U02
- if U02
-  systemtime? U03
-  byte U04
- systemtime? U05
- FilteredPlayerRank[] FilteredPlayerRanks
+0x001 [TMF, MP3, TMT, MP4]
+  TransactionalNatural GlobalScore
+  boolbyte U02
+  if U02
+    systemtime? U03
+    byte U04
+  systemtime? U05
+  FilteredPlayerRank[] FilteredPlayerRanks
 
 archive FilteredPlayerRank
- string Zone
- bool
- CGameHighScore Score
+  string Zone
+  bool
+  CGameHighScore Score
 
 archive TransactionalNatural
- boolbyte U01
- if U01
-  int U02
-  int Value
-  int U03
-  bool U04
+  boolbyte U01
+  if U01
+    int U02
+    int Value
+    int U03
+    bool U04

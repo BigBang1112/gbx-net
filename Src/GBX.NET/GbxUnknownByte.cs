@@ -1,10 +1,11 @@
-﻿namespace GBX.NET;
+namespace GBX.NET;
 
+[Obsolete("Use GbxMode instead.")]
 public enum GbxUnknownByte : byte
 {
     Unspecified,
     /// <summary>
-    /// E(arly access).
+    /// E(ditor).
     /// </summary>
     E = (byte)'E',
     /// <summary>

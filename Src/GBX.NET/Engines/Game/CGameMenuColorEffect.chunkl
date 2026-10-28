@@ -1,0 +1,22 @@
+CGameMenuColorEffect 0x03019000
+- inherits: CControlEffect
+
+0x000 [TMU, TMF]
+  ColorBeam[] ColorBeams
+  if ColorBeams != null && ColorBeams.Length > 0
+    float LastInterWidth
+  int PeriodMs
+  bool IsBeamColorEvolving
+  bool IsBeamMoving
+  bool IsMoveHalf
+  bool IsMoveInverse
+  bool IsColorEvolveHalf
+  bool IsColorEvolveInverse
+  bool ForceFirstColorWord
+  bool ForceNoMove
+
+archive ColorBeam
+  CMwNod Color
+  int ColorPeriodMs
+  float BeamWidth
+  float InterWidth

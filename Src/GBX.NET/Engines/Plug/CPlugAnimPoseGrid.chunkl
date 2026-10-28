@@ -1,1 +1,26 @@
 CPlugAnimPoseGrid 0x09136000
+
+0x000 [TM2020.v3] // pose grid
+  version
+  id Name
+  CPlugAnimSkelJointGroup ChannelGroup
+  v0=
+    int PoseCount
+    transquat[PoseCount * 9] LegacyJointOffsets
+    float X0
+    float X2
+    float Y0
+    float Y2
+  v1..2
+    transquat[] // overwritten by LegacyJointOffsets
+  v1=
+    transquat[] RefPoseJoints // channel group joint indices select RefPoseGlobalJoints
+  v2+
+    quat[] RefPoseGlobalJoints
+  v1+
+    float[] Xs
+    float[] Ys
+  v1..2
+    transquat[] LegacyJointOffsets
+  v3+
+    quat[] JointOffsets

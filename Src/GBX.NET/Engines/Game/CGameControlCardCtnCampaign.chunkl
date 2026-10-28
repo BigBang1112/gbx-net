@@ -1,0 +1,2 @@
+CGameControlCardCtnCampaign 0x030D6000
+- inherits: CGameControlCard

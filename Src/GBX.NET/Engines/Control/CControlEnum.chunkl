@@ -1,0 +1,77 @@
+CControlEnum 0x0700A000
+- inherits: CControlText
+
+0x000 // legacy style font, sizes, looping and sound
+  CPlugFont Font
+  float
+  float
+  float
+  float
+  float
+  float
+  bool IsLooping
+  CPlugSound EnumSound
+
+0x001 // legacy display type and solids
+  int
+  int DisplayType
+  CPlugSolid[]
+
+0x002 // legacy display type and solids
+  int DisplayType
+  CPlugSolid[]
+
+0x003 // legacy list shader and icon width
+  int
+  if U01 == 1
+    CPlugShader EnumListShader
+    CPlugShader EnumListShader
+    int
+    float EnumIconWidth
+
+0x004 // legacy list shaders and icon sizes
+  int
+  if U01 == 1
+    CPlugShader EnumListShader
+    CPlugShader EnumListShader
+    int
+    float EnumIconWidth
+    float
+    float
+
+0x005 // legacy list shaders and icon sizes
+  int
+  CPlugShader EnumListShader
+  CPlugShader EnumListShader
+  int
+  float EnumIconWidth
+  float
+  float
+
+0x006 // legacy looping
+  bool IsLooping
+  int
+
+0x007 // legacy looping, display type and enum
+  bool IsLooping
+  int
+  int DisplayType
+  CFuncEnum FuncEnum
+
+0x008 // legacy looping, display and text modes and enum
+  bool IsLooping
+  int
+  int DisplayType
+  int TextMode (inherited)
+  CFuncEnum FuncEnum
+
+0x009 [TMU] // looping, display and text modes, enum and clip length
+  bool IsLooping
+  int
+  int DisplayType
+  int TextMode (inherited)
+  CFuncEnum FuncEnum
+  float ClipLength (inherited)
+
+0x00A [TMU]
+  id[]

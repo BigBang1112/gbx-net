@@ -1,1 +1,19 @@
 CPlugAnimSkelJointGroup 0x09133000
+
+0x000 [TM2020.v4]
+  version
+  v1-
+    CPlugSkel* Skel
+    ushort[] JointIndices
+  id Name
+  v1+
+    int JointCount (write: "JointWeights?.Length ?? 0")
+    float[JointCount] JointWeights
+  v2+
+    v3-
+      int LegacyNameCount
+    id[JointCount] JointNames
+  v4+
+    int2[] Ranges
+  v3+
+    ulong Hash

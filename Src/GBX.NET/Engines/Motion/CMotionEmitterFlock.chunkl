@@ -1,0 +1,17 @@
+CMotionEmitterFlock 0x0804F000
+- inherits: CMotionManaged
+
+0x000 [MP3.v2]
+  version
+  float Radius = 10f
+  float Power = 2f
+  int SpawnCount = 5
+  bool IsRepulsor
+  v2+
+    bool IsLandingArea = true
+  v1-
+    IsLandingArea = !IsRepulsor && SpawnCount >= 1
+
+0x001 [MP3.v1] // FlockModel
+  version
+  CPlugFlockModel FlockModel

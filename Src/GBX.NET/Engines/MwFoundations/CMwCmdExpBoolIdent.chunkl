@@ -1,0 +1,7 @@
+CMwCmdExpBoolIdent 0x0103C000
+- inherits: CMwCmdExpBool
+
+0x0103B000 [TMU, TMF]
+
+0x000 [TMU, TMF] // Ident
+  string Ident

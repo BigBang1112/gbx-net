@@ -2,41 +2,22 @@
 
 public partial class CPlugCurveSimpleNod
 {
-    private int version2;
+    private PlugCurve curve = new();
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09185000>]
-    public int Version2 { get => version2; set => version2 = value; }
+    public PlugCurve Curve { get => curve; set => curve = value; }
 
-    private int count;
-    [AppliedWithChunk<Chunk09185000>]
-    public int Count { get => count; set => count = value; }
-
-    public partial class Chunk09185000 : IVersionable
+    [Obsolete("Use Curve.Version instead.")]
+    public int Version2
     {
-        public int Version { get; set; }
+        get => Curve.Version;
+        set => Curve.Version = value;
+    }
 
-        public byte U01;
-        public int U02;
-        public short U03;
-        public ulong[]? U04;
-
-        public override void ReadWrite(CPlugCurveSimpleNod n, GbxReaderWriter rw)
-        {
-            rw.VersionInt32(this);
-            rw.Int32(ref n.version2);
-            rw.Int32(ref n.count);
-            if (n.Version2 == 1)
-            {
-                rw.Byte(ref U01);
-            }
-            if (n.Version2 == 2)
-            {
-                rw.Int32(ref U02);
-            }
-            if (n.Version2 >= 3)
-            {
-                rw.Int16(ref U03);
-            }
-            rw.Array(ref U04, n.count);
-        }
+    [Obsolete("Use Curve.Count instead.")]
+    public int Count
+    {
+        get => Curve.Count;
+        set => Curve.Count = value;
     }
 }

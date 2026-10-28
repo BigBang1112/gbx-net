@@ -7,10 +7,10 @@ public partial class CPlugSurface
     private int surfVersion;
     public int SurfVersion { get => surfVersion; set => surfVersion = value; }
 
-    private CPlugSkel? skel;
-    public CPlugSkel? Skel { get => skel; set => skel = value; }
+    public CPlugSkel? Skel { get => skelRef?.Resolve(); set => NodeRef.SetEmbedded(ref skelRef, value); }
 
     private SurfMaterial[] materials = [];
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0900C000>]
     [AppliedWithChunk<Chunk0900C003>]
     public SurfMaterial[] Materials { get => materials; set => materials = value; }
@@ -40,12 +40,12 @@ public partial class CPlugSurface
 
             if (rw.Reader is not null)
             {
-                n.Surf = ReadSurf(rw.Reader, Version == 1 ? 1 : n.surfVersion);
+                n.Surf = ReadSurf(rw.Reader, Version < 2 ? 0 : n.surfVersion, primitiveMaterialIndices: true);
             }
 
             if (rw.Writer is not null)
             {
-                WriteSurf(n.Surf, rw.Writer, Version == 1 ? 1 : n.surfVersion);
+                WriteSurf(n.Surf, rw.Writer, Version < 2 ? 0 : n.surfVersion, primitiveMaterialIndices: true);
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
@@ -70,7 +70,7 @@ public partial class CPlugSurface
 
             if (Version >= 1)
             {
-                rw.NodeRef<CPlugSkel>(ref n.skel);
+                rw.NodeRef(ref n.skelRef);
             }
 
             if (Version >= 5)
@@ -97,7 +97,7 @@ public partial class CPlugSurface
     // 18 - Voxel
     // 19 - Diggable
 
-    internal static ISurf ReadSurf(GbxReader r, int surfVersion)
+    internal static ISurf ReadSurf(GbxReader r, int surfVersion, bool primitiveMaterialIndices = false)
     {
         var surfId = r.ReadInt32();
         if (surfId == -1)
@@ -126,7 +126,15 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Unknown surf type: " + surfId)
         };
 
-        surf.Read(r, surfVersion);
+        if (surf is Compound compound)
+        {
+            compound.Read(r, surfVersion, primitiveMaterialIndices);
+        }
+        else
+        {
+            // Modern surface archives store primitive indices even when compound joints are absent.
+            surf.Read(r, primitiveMaterialIndices && surf is Sphere or Ellipsoid or Box ? Math.Max(1, surfVersion) : surfVersion);
+        }
 
         if (surfVersion >= 2)
         {
@@ -136,7 +144,7 @@ public partial class CPlugSurface
         return surf;
     }
 
-    internal static void WriteSurf(ISurf? surf, GbxWriter w, int surfVersion)
+    internal static void WriteSurf(ISurf? surf, GbxWriter w, int surfVersion, bool primitiveMaterialIndices = false)
     {
         if (surf is null)
         {
@@ -165,7 +173,14 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Unknown surf type: " + surf.GetType().Name)
         });
 
-        surf.Write(w, surfVersion);
+        if (surf is Compound compound)
+        {
+            compound.Write(w, surfVersion, primitiveMaterialIndices);
+        }
+        else
+        {
+            surf.Write(w, primitiveMaterialIndices && surf is Sphere or Ellipsoid or Box ? Math.Max(1, surfVersion) : surfVersion);
+        }
 
         if (surfVersion >= 2)
         {
@@ -175,19 +190,16 @@ public partial class CPlugSurface
 
     public sealed partial class SurfMaterial
     {
-        private CPlugMaterial? material;
-        public CPlugMaterial? Material { get => materialFile?.GetNode(ref material) ?? material; set => material = value; }
-        private Components.GbxRefTableFile? materialFile;
-        public Components.GbxRefTableFile? MaterialFile { get => materialFile; set => materialFile = value; }
-        public CPlugMaterial? GetMaterial(GbxReadSettings settings = default, bool exceptions = false) => materialFile?.GetNode(ref material, settings, exceptions) ?? material;
+
+        public CPlugMaterial? Material { get => materialRef?.Resolve(); set => NodeRef.SetEmbedded(ref materialRef, value); }
 
         public MaterialId? SurfaceId { get; set; }
 
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(material is not null || materialFile is not null))
+            if (rw.Boolean((materialRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
             {
-                rw.NodeRef<CPlugMaterial>(ref material, ref materialFile);
+                rw.NodeRef(ref materialRef);
             }
             else
             {
@@ -403,7 +415,7 @@ public partial class CPlugSurface
                     Vertices = r.ReadArray<Vec3>();
                     Triangles = r.ReadArray<Triangle>(); // GmSurfMeshTri
                     break;
-            } 
+            }
         }
 
         public void Write(GbxWriter w, int version = 0)
@@ -459,12 +471,17 @@ public partial class CPlugSurface
 
         public void Read(GbxReader r, int version = 0)
         {
+            Read(r, version, primitiveMaterialIndices: false);
+        }
+
+        internal void Read(GbxReader r, int version, bool primitiveMaterialIndices)
+        {
             var surfCount = r.ReadInt32();
             Surfs = new ISurf?[surfCount];
 
             for (var i = 0; i < surfCount; i++)
             {
-                Surfs[i] = ReadSurf(r, version);
+                Surfs[i] = ReadSurf(r, version, primitiveMaterialIndices);
             }
 
             SurfLocs = r.ReadArray<Iso4>(surfCount);
@@ -477,11 +494,16 @@ public partial class CPlugSurface
 
         public void Write(GbxWriter w, int version = 0)
         {
+            Write(w, version, primitiveMaterialIndices: false);
+        }
+
+        internal void Write(GbxWriter w, int version, bool primitiveMaterialIndices)
+        {
             w.Write(Surfs.Length);
 
             foreach (var surf in Surfs)
             {
-                WriteSurf(surf, w, version);
+                WriteSurf(surf, w, version, primitiveMaterialIndices);
             }
 
             foreach (var surfLoc in SurfLocs)

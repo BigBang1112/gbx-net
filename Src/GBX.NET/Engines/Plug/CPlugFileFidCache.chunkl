@@ -1,0 +1,29 @@
+CPlugFileFidCache 0x09049000
+- inherits: CPlugFileFidContainer
+
+archive
+  version
+  v3..5 (archive)
+    v4+ (archive)
+      uint Crc
+    string RootEnumFullName
+    int FolderDescCount (local, write: "FolderDescs?.Length ?? 0")
+    FolderDesc[FolderDescCount] FolderDescs
+    FileDesc[] FileDescs
+    ulong
+    ulong[FolderDescCount]
+    data Data
+
+archive FolderDesc
+  int ParentFolderIndex
+  string Name
+
+archive FileDesc
+  int FolderIndex
+  string Name
+  int U01
+  int U02
+  int U03
+  int U04
+  uint ClassId
+  ulong U05

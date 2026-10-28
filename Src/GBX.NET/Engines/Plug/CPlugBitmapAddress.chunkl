@@ -1,31 +1,121 @@
 CPlugBitmapAddress 0x09047000
 - inherits: CPlugBitmapSampler
 
-0x002
- int // SBitmapElemToPack array?
+property bool UseBitmapTcScale
+  get = (AddressFlags & 0x1000) != 0
+  set
+    if value
+      AddressFlags = AddressFlags | 0x1000
+    else
+      AddressFlags = AddressFlags & 0xFFFFEFFF
 
-0x004
- int
- byte
- int
- bool
- bool
- bool
+property bool DirectTransfo
+  get = (AddressFlags & 0x200000) != 0
+  set
+    if value
+      AddressFlags = AddressFlags | 0x200000
+    else
+      AddressFlags = AddressFlags & 0xFFDFFFFF
 
-0x005 (base: 0x004)
+0x000 // legacy Bitmap
+  CPlugBitmap Bitmap (inherited)
 
-0x007
- uint
- int
- byte
- if U03 == 1
-  box? UVTransfoIso3
- if U03 == 2
-  mat4? UVTransfoMat4
+0x001 // legacy filtering and UV generation
+  int TexCoordIndex
+  bool HasIso3 (local, write: "TransfoIso3 is not null")
+  if HasIso3
+    TransfoIso3 = Iso3.Identity
+  else
+    TransfoIso3 = null
+  UVTransfoMat4 = null
+  int<CPlugBitmapSampler.ETexFilter> WantedFiltering (inherited)
+  int<CPlugBitmap.EGxUVGenerate> GenerateUV
+  bool AreUVProjected
+  int<CPlugBitmapSampler.ETexAddress> TexAddressU (inherited)
+  int<CPlugBitmapSampler.ETexAddress> TexAddressV (inherited)
+  bool
+  bool
+  float MipMapLodBias (inherited)
+  if GenerateUV != CPlugBitmap.EGxUVGenerate.NoGenerate && GenerateUV != CPlugBitmap.EGxUVGenerate.MapTexel && GenerateUV != CPlugBitmap.EGxUVGenerate.Tex3AsPosPrCamera
+    TexCoordIndex = -1
 
-0x008
- int
- float
+0x002 [TM10, TMPU] // legacy map effects
+  SMapFxDescOld[] MapFxDescs
 
-0x009
- float BumpEnvScale
+0x003 // legacy filtering and UV transforms
+  int TexCoordIndex
+  byte TransformFlags (local, write: "(byte)((TransfoIso3 is not null ? 1 : 0) | (UVTransfoMat4 is not null ? 2 : 0))")
+  if (TransformFlags & 1) != 0
+    TransfoIso3 = Iso3.Identity
+  else
+    TransfoIso3 = null
+  if (TransformFlags & 2) != 0
+    UVTransfoMat4 = Mat4.Identity
+  else
+    UVTransfoMat4 = null
+  int<CPlugBitmapSampler.ETexFilter> WantedFiltering (inherited)
+  int<CPlugBitmap.EGxUVGenerate> GenerateUV
+  bool AreUVProjected
+  int<CPlugBitmapSampler.ETexAddress> TexAddressU (inherited)
+  int<CPlugBitmapSampler.ETexAddress> TexAddressV (inherited)
+  bool
+  bool
+  float MipMapLodBias (inherited)
+  if GenerateUV != CPlugBitmap.EGxUVGenerate.NoGenerate && GenerateUV != CPlugBitmap.EGxUVGenerate.MapTexel && GenerateUV != CPlugBitmap.EGxUVGenerate.Tex3AsPosPrCamera
+    TexCoordIndex = -1
+
+0x004 // legacy UV generation and transform presence
+  int TexCoordIndex
+  byte TransformFlags (local, write: "(byte)((TransfoIso3 is not null ? 1 : 0) | (UVTransfoMat4 is not null ? 2 : 0))")
+  if (TransformFlags & 1) != 0
+    TransfoIso3 = Iso3.Identity
+  else
+    TransfoIso3 = null
+  if (TransformFlags & 2) != 0
+    UVTransfoMat4 = Mat4.Identity
+  else
+    UVTransfoMat4 = null
+  int<CPlugBitmap.EGxUVGenerate> GenerateUV
+  bool AreUVProjected
+  bool
+  bool
+  if GenerateUV != CPlugBitmap.EGxUVGenerate.NoGenerate && GenerateUV != CPlugBitmap.EGxUVGenerate.MapTexel && GenerateUV != CPlugBitmap.EGxUVGenerate.Tex3AsPosPrCamera
+    TexCoordIndex = -1
+
+0x005 (base: 0x004) [TM10, TMPU] // legacy UV transforms
+  base
+  if TransfoIso3 != null
+    iso3? TransfoIso3
+  if UVTransfoMat4 != null
+    mat4? UVTransfoMat4
+
+0x006 // legacy UV generation and transforms
+  datauint AddressFlags = 0xF8000 // Separate from the inherited sampler flags.
+  int TexCoordIndex
+  byte TransformFlags (local, write: "(byte)((TransfoIso3 is not null ? 1 : 0) | (UVTransfoMat4 is not null ? 2 : 0))")
+  if GenerateUV != CPlugBitmap.EGxUVGenerate.NoGenerate && GenerateUV != CPlugBitmap.EGxUVGenerate.MapTexel && GenerateUV != CPlugBitmap.EGxUVGenerate.Tex3AsPosPrCamera
+    TexCoordIndex = -1
+  if (TransformFlags & 1) != 0
+    iso3? TransfoIso3
+  else
+    TransfoIso3 = null
+  if (TransformFlags & 2) != 0
+    mat4? UVTransfoMat4
+  else
+    UVTransfoMat4 = null
+
+0x007 (base: 0x006) [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // UV generation and transforms
+
+0x008 [TMSX, TMNESWC] // legacy map effects and bump scale
+  SMapFxDescOld[] MapFxDescs
+  float BumpEnvScale = 1
+
+0x009 [TMU, VSK5, TMF, MP3, TMT] // BumpEnvScale
+  float BumpEnvScale = 1
+
+archive SMapFxDescOld
+  int U01
+  int U02
+  int U03
+  int U04
+  int U05

@@ -1,53 +1,104 @@
 CPlugTree 0x0904F000
 - inherits: CPlug
 
-0x006 [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- list<CPlugTree>_deprec Children = empty
+property bool HasModel
+  get = ModelSolid != null
 
-0x00C [TM10, TMSX]
- int // could be array of Ids
- if U01 > 0
-  throw
+property bool IsCustomBBox
+  get = (Flags & 0x80000) != 0
+  set
+    if value
+      Flags = Flags | 0x80000
+    else
+      Flags = Flags & 0xFFFFFFFFFFF7FFFF
 
-0x00D (demonstration) [TM10, TMSX, TMNESWC, TMF, TMT, MP4]
- id Name
- id
+0x006 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // Children
+  CPlugTree[] Children = empty (deprec, list)
 
-0x011 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // FuncTree
- CFuncTree FuncTree (external)
+0x00C [TM10, TMPU, TMSX] // NodParameterIds
+  id[] NodParameterIds = empty
 
-0x015 (demonstration) [TM10] // flags+location, TM1.0
- datauint Flags
- Flags = Flags & 0x1FFFF
- if (Flags & 4) != 0
-  Iso4? Location
+0x00D (demonstration: partial) [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // plug ID and model
+  id PlugId = empty
+  CPlugSolid ModelSolid
+  if HasModel
+    id ModelPlugId
 
-0x016 [TM10, TMSX, TMNESWC, TMF, TMT, MP4] // properties
- CPlugVisual Visual
- CPlug Shader (external)
- CPlug Surface
- CPlugTreeGenerator Generator
+0x00E // legacy visual, shader and surface
+  if HasModel
+    return
+  CPlugVisual Visual
+  CPlug Shader
+  CPlug Surface
 
-0x017
- CPlugVisual
+0x010 // legacy flags and location
+  datauint<ulong> Flags
+  Flags = Flags & 0x1FFFFF // Later readers retain 21 bits; TMF and earlier retain 17
+  if (Flags & 4) != 0
+    Iso4? Location
+  Flags = (Flags ^ 0x4000) | 0xA800
 
-0x018 (demonstration) // flags+location, unused
- dataulong Flags
- if (Flags & 4) != 0
-  Iso4? Location
- Flags = Flags | 0x2800
- // Flags = Flags | 0x8000 (if Bucr3IsR)
+0x011 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // FuncTree
+  CFuncTree FuncTree
 
-0x019 (demonstration) [TMSX] // flags+location, TMSX
- datauint Flags
- if (Flags & 4) != 0
-  Iso4? Location
- Flags = Flags | 0x2800
- // Flags = Flags | 0x8000 (if Bucr3IsR)
+0x012 // legacy visual, shader, surface and generator
+  if HasModel
+    return
+  CPlugVisual Visual
+  CPlug Shader
+  CPlug Surface
+  CPlugTreeGenerator Generator
 
-0x01A (demonstration) [TMNESWC, TMF, TMT, MP4] // flags+location, latest
- datauint Flags
- if (Flags & 4) != 0
-  Iso4? Location
- Flags = Flags | 0x2000
- // Flags = Flags | 0x8000 (if Bucr3IsR)
+0x013 // legacy flags and location, inverted shadow caster
+  datauint<ulong> Flags
+  Flags = Flags & 0x1FFFFF
+  if (Flags & 4) != 0
+    Iso4? Location
+  Flags = (Flags ^ 0x4000) | 0x2800
+  if rw.Reader != null && rw.Reader.IsRelease
+    Flags = Flags | 0x8000
+
+0x015 [TM10, TMPU] // legacy flags and location
+  datauint<ulong> Flags = 0x1E80A [TM10 = 0x1E00A, TMPU = 0x1E00A, TMSX = 0x1E00A]
+  Flags = Flags & 0x1FFFFF
+  if (Flags & 4) != 0
+    Iso4? Location = Iso4.Identity
+  Flags = Flags | 0x2800
+  if rw.Reader != null && rw.Reader.IsRelease
+    Flags = Flags | 0x8000
+
+0x016 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // visual, shader or material, surface and generator
+  if HasModel
+    return
+  CPlugVisual Visual
+  CPlug Shader
+  CPlug Surface
+  CPlugTreeGenerator Generator
+
+0x017 [TMSX, TMNESWC] // RefBuffer
+  CMwRefBuffer RefBuffer
+
+0x018 // legacy 64-bit flags and location
+  dataulong Flags
+  Flags = Flags & 0x1FFFFF
+  if (Flags & 4) != 0
+    Iso4? Location
+  Flags = Flags | 0x2800
+  if rw.Reader != null && rw.Reader.IsRelease
+    Flags = Flags | 0x8000
+
+0x019 [TMSX] // legacy flags and location
+  datauint<ulong> Flags
+  if (Flags & 4) != 0
+    Iso4? Location
+  Flags = Flags | 0x2800
+  if rw.Reader != null && rw.Reader.IsRelease
+    Flags = Flags | 0x8000
+
+0x01A [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // flags and location
+  datauint<ulong> Flags
+  if (Flags & 4) != 0
+    Iso4? Location
+  Flags = Flags | 0x2000
+  if rw.Reader != null && rw.Reader.IsRelease
+    Flags = Flags | 0x8000

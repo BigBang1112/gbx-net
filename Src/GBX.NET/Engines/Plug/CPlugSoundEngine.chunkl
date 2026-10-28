@@ -1,0 +1,30 @@
+CPlugSoundEngine 0x0908E000
+- inherits: CPlugSound
+
+0x000 [TMU, TMF, MP4, TM2020]
+  CPlugSoundComponent[] Components
+
+0x001
+  float MaxRpm = 11000f
+
+0x002 [TMU, TMF, MP4, TM2020]
+  float MaxRpm = 11000f
+  CFuncKeysReal Volume_Speed (direct)
+  CFuncKeysReal Volume_Distance (direct)
+  CFuncKeysReal Volume_Rpm (direct)
+  CFuncKeysReal Volume_Accel (direct)
+  CFuncKeysReal Alpha_Speed (direct)
+  CFuncKeysReal Alpha_Distance (direct)
+  CFuncKeysReal Alpha_Rpm (direct)
+  CFuncKeysReal Alpha_Accel (direct)
+
+0x003 [TM2020] // curves stored inline
+  float MaxRpm = 11000f
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve
+  PlugCurve

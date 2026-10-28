@@ -1,0 +1,14 @@
+CPlugParticleImpactModel 0x090B6000
+
+0x000 [MP4.v3]
+  version
+  CPlugSound Sound
+  CPlugParticleEmitterModel ParticleEmitterModel
+  CPlugDecalModel DecalModel
+  v1+
+    float
+  v2+
+    id
+    float = 1
+  v3+
+    float = 1

@@ -16,6 +16,9 @@ public partial class CGameCtnGhost
     /// </summary>
     public partial class PlayerInputData
     {
+        [Obsolete("Use StartTime instead.")]
+        public int U01 { get => StartTime.TotalMilliseconds; set => StartTime = new TimeInt32(value); }
+
         public enum EVersion
         {
             _2017_07_07 = 7,

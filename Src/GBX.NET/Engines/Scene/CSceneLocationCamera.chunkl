@@ -1,0 +1,25 @@
+CSceneLocationCamera 0x0A036000
+- inherits: CSceneLocation
+
+0x000
+  bool IsOrthographic
+  boxaligned Frustum
+
+0x001 [TMU]
+  float = 60
+  float = 60
+  float = 3
+  float = 0.5f
+  float = 1500
+
+0x002 [MP4]
+  rect FovRect = (-1, -1, 1, 1)
+
+0x003 [MP4]
+  versionb
+  float = 60
+  float = 60
+  float = 3
+  float
+  float = 0.5f
+  float = 1500

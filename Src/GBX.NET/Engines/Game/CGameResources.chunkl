@@ -1,0 +1,418 @@
+CGameResources 0x0302D000
+
+0x000 [TMU, MP4] // sounds and musics
+  NamedNod[] Sounds
+  NamedNod[] Musics
+
+0x003 [TMU, MP4] // ReplayInterfaceFid
+  bool HasReplayInterfaceFid
+  if HasReplayInterfaceFid
+    CMwNod ReplayInterfaceFid
+
+0x004 [TMU, MP4] // InterfaceEditorFid
+  bool HasInterfaceEditorFid
+  if HasInterfaceEditorFid
+    CMwNod InterfaceEditorFid
+
+0x005 [TMU, MP4] // InterfacePuzzleFid
+  bool HasInterfacePuzzleFid
+  if HasInterfacePuzzleFid
+    CMwNod InterfacePuzzleFid
+
+0x007 [TMU, MP4] // RaceInterfaceFid
+  bool HasRaceInterfaceFid
+  if HasRaceInterfaceFid
+    CMwNod RaceInterfaceFid
+
+0x028 [MP4] // RaceNetInterfaceFid
+  bool HasRaceNetInterfaceFid
+  if HasRaceNetInterfaceFid
+    CMwNod RaceNetInterfaceFid
+
+0x02C [MP4] // InterfaceEditorSimpleFid
+  bool HasInterfaceEditorSimpleFid
+  if HasInterfaceEditorSimpleFid
+    CMwNod InterfaceEditorSimpleFid
+
+0x02E [MP4] // InterfaceBlockEditorFid
+  bool HasInterfaceBlockEditorFid
+  if HasInterfaceBlockEditorFid
+    CMwNod InterfaceBlockEditorFid
+
+0x008 [TMU, MP4] // DefaultAvatarBitmapFid
+  CMwNod DefaultAvatarBitmapFid
+  CMwNod
+
+0x006 // legacy interface font, background and styles
+  CPlugFont InterfaceFont
+  CMwNod InterfaceBg
+  CMwNod ShaderActiveAvailable
+  CMwNod ShaderInactiveAvailable
+  CMwNod ShaderActiveUnavailable
+  CMwNod ShaderInactiveUnavailable
+  CMwNod ArticleStyle
+  CMwNod ArticleIconStyle
+
+0x009 [TMU, TMF, MP4] // interface font, background, styles and directory icon
+  CPlugFont InterfaceFont
+  CMwNod InterfaceBg
+  CMwNod ShaderActiveAvailable
+  CMwNod ShaderInactiveAvailable
+  CMwNod ShaderActiveUnavailable
+  CMwNod ShaderInactiveUnavailable
+  CMwNod ArticleStyle
+  CMwNod ArticleIconStyle
+  bool HasDirectoryIconFid (local, write: "n.DirectoryIconFid is not null")
+  if HasDirectoryIconFid
+    CMwNod DirectoryIconFid
+
+0x00D // legacy painter setting fids
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod[]
+
+0x00F [TMU, MP4] // MediaTrackerInterfaceFid
+  CMwNod MediaTrackerInterfaceFid
+  CMwNod
+
+0x010 [TMU, MP4] // StyleSheetFid
+  CMwNod StyleSheetFid
+
+0x012 [TMU, MP4] // EmptyChallengeCustomMusicFid
+  CMwNod EmptyChallengeCustomMusicFid
+
+0x015 [TMU, TMF] // legacy MediaTracker resources
+  CMwNod
+  CMwNod DefaultMTColorGradingImageFid
+  CMwNod DefaultMTBlockBitmapFid
+  CMwNod DefaultMTBlockSoundFid
+
+0x016 [TMU, MP4] // PainterSetting
+  CGameCtnPainterSetting PainterSetting
+
+0x017 // legacy hymn fids
+  CMwNod[]
+
+0x018 [TMU, TMF] // UnknownFlagBitmap
+  CMwNod UnknownFlagBitmap
+
+0x019 [TMU, MP4] // DefaultLeagueLogoBitmapFid
+  CMwNod DefaultLeagueLogoBitmapFid
+  CMwNod
+
+0x01A [TMU, MP4]
+  CMwNod
+
+0x01B [TMU, MP4] // HymnsFolder
+  string HymnsFolder
+
+0x01C [TMU, TMF] // legacy interface resources
+  CMwNod
+  CMwNod
+
+0x01D [TMU, TMF] // legacy interface resources
+  CMwNod
+  CMwNod
+
+0x01E [TMU, MP4] // DefaultOnlineNewsIconBitmapFid
+  CMwNod DefaultOnlineNewsIconBitmapFid
+  CMwNod
+
+0x01F [TMU, TMF] // legacy interface resources
+  CMwNod
+  CMwNod
+
+0x020 [TMU, MP4] // FolderGlobalEnvBanners
+  string FolderGlobalEnvBanners
+
+0x021 [TMU, MP4] // PodiumScene
+  CMwNod PodiumScene
+
+0x022 [TMU, MP4] // MenuBackgroundsFolder
+  string MenuBackgroundsFolder
+
+0x023 [TMU, MP4] // DefaultTagBitmapFid
+  CMwNod DefaultTagBitmapFid
+
+0x024 // legacy file
+  CMwNod
+
+0x025 (empty)
+
+0x026 [MP4] // DefaultMusicFid
+  CMwNod DefaultMusicFid
+
+0x027 [MP4] // DefaultSkillScoreComputerFid
+  CMwNod DefaultSkillScoreComputerFid
+
+0x029 [TMF] // legacy menu resources
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+
+0x02A [TMF] // menu remapping and resource folders
+  CMwNod MenusRemapping
+  string
+  string
+
+0x02B [MP4] // ImageTurboRoulette
+  CMwNod ImageTurboRoulette
+
+0x02D [MP4] // SceneFxNodRoot
+  CMwNod SceneFxNodRoot
+
+0x030 [MP4] // editor model sprites and material
+  CMwNod EditorModelSpritesBitmapFid
+  CMwNod EditorModelDefaultMaterialFid
+
+0x031 [MP4] // StoryInterfaceFid
+  version
+  CMwNod StoryInterfaceFid
+
+0x032 [MP4]
+  CMwNod
+
+0x033 [MP4] // audio balances
+  version = 1
+  CPlugAudioBalance AudioBalance_Base
+  CPlugAudioBalance AudioBalance_Menus
+  CPlugAudioBalance
+  CPlugAudioBalance AudioBalance_Editor
+  CPlugAudioBalance
+  CPlugAudioBalance
+  CPlugAudioBalance
+  CPlugAudioBalance
+  CPlugAudioBalance
+  CPlugAudioBalance
+  CPlugAudioBalance
+
+0x034 [MP4] // editor animation interfaces
+  version = 2
+  CMwNod EditorAnimInterfaceFid
+  v1+
+    CMwNod EditorClassInterfaceFid
+  v2+
+    CMwNod EditorAnimCharInterfaceFid
+
+0x035 [MP4] // default transition clips
+  version
+  CMwNod DefaultTransitionInClipFid
+  CMwNod DefaultTransitionOutClipFid
+
+0x036 [MP4] // stations, cards and menu resources
+  version = 19
+  CMwNod PluginsMenuOverlayFid
+  v1+
+    CMwNod
+  v2+
+    CMwNod StationGoldFid
+    CMwNod StationSilverFid
+    CMwNod StationBronzeFid
+    CPlugGameSkin StationGameSkin
+  v3+
+    CMwNod CardStationSummaryFid
+  v4+
+    CMwNod StyleDefaultTitleLogos
+  v5+
+    CMwNod PlanetSolidFid
+  v6+
+    CMwNod CardPlanetMenu1Fid
+    CMwNod CardPlanetMenu2Fid
+  v7+
+    CMwNod StationServerFid
+    CMwNod CardPlanetServerSummaryFid
+  v8+
+    CMwNod CardStationMainFid
+    CMwNod CardPlanetServerMainFid
+  v9+
+    CMwNod CardPlanetServerRackSummaryFid
+  v10+
+    CMwNod MenuManialink3dFid
+  if Version >= 10 && Version < 14
+    CMwNod
+  if Version >= 11 && Version < 14
+    CMwNod
+  v12+
+    CMwNod MenuManialink3d_BaseStyleFid
+  if Version >= 13 && Version < 18
+    CMwNod
+  v15+
+    CMwNod MenuManialink3d_StationsStyleFid
+  v16+
+    CMwNod SystemMenuFid
+  v17+
+    CMwNod ManiaPlanetMenuMusic
+  v19+
+    CMwNod StyleUrlLink
+
+0x037 [MP4] // TitleTemplateFolder
+  version
+  string TitleTemplateFolder
+
+0x038 [MP4] // off zone shaders and menu sky
+  version = 2
+  CMwNod OffZoneSurfaceShaderFid
+  CMwNod OffZoneLayerShaderFid
+  v1=
+    CPlugBitmap BitmapCubeMenuManiaPlanet3d
+    CMwNod MaterialSkyDomeMenu
+  v2+
+    CMwNod BitmapCubeMenuManiaPlanet3d
+    CMwNod MaterialSkyDomeMenu
+
+0x039 [MP4] // menu manialink 3d resources
+  version
+  CPlugModelShading.FidId[] MenuManialink3dResources
+
+0x03A [MP4] // team logo and emblems
+  version
+  CMwNod DefaultTeamLogoBitmapFid
+  CPlugBitmap BitmapTeamEmblems
+
+0x03B [MP4] // EditorItemInterfaceFid
+  version
+  CMwNod EditorItemInterfaceFid
+
+0x03C [MP4] // menus, dialogs and overlays
+  version = 1
+  CMwNod MenusFid
+  CMwNod DialogsFid
+  CMwNod BasicDialogsFid
+  CMwNod SystemDialogsFid
+  CMwNod ManialinkBrowserOverlayFid
+  CMwNod ProgressOverlayFid
+  CMwNod SystemOverlayFid
+  CMwNod InGameDialogsFid
+  v1+
+    CMwNod InterfaceEditorInventoryModelFid
+
+0x03D [MP4] // EditorManialinkInterfaceFid
+  version
+  CMwNod EditorManialinkInterfaceFid
+
+0x03E [MP4] // default media tracker resources
+  version
+  CMwNod DefaultMTColorGradingImageFid
+  CMwNod DefaultMTDecal2dBitmapFid
+  CMwNod DefaultMTBlockBitmapFid
+  CMwNod DefaultMTBlockSoundFid
+
+0x03F [MP4] // module editor
+  version = 1
+  CMwNod EditorModuleInterfaceFid
+  v1+
+    CMwNod DefaultEditorModuleFid
+
+0x040 [MP4] // EditorAnimSetInterfaceFid
+  version
+  CMwNod EditorAnimSetInterfaceFid
+
+0x041 [MP4] // vehicle editor
+  version = 1
+  CMwNod EditorVehicleInterfaceFid
+  v1+
+    CMwNod DefaultEditorVehicleFid
+
+0x042 [MP4] // module scripts
+  version = 1
+  CMwNod ModuleMenuBaseScriptFid
+  CMwNod ModuleMenuServerBrowserScriptFid
+  CMwNod ModulePlaygroundStoreScriptFid
+  CMwNod ModulePlaygroundInventoryScriptFid
+  v1+
+    CMwNod ModulePlaygroundSpeedMeterScriptFid
+
+0x043 [MP4] // EditorPixelCheckerImageFid
+  version
+  CMwNod EditorPixelCheckerImageFid
+
+0x044 [MP4] // MaterialsLibrariesFid
+  version
+  CMwNod MaterialsLibrariesFid
+
+0x045 [MP4.v1, TM2020.v3] // mesh editor
+  version = 1
+  CMwNod DefaultEditorMeshFid
+  v1=
+    CMwNod
+  v3+
+    CMwNod
+    string
+
+0x046 [MP4] // DefaultEditorEditorFid
+  version
+  CMwNod DefaultEditorEditorFid
+
+0x047 [MP4] // default playground modules
+  version
+  CMwNod ModulePlaygroundDefaultHudFid
+  CMwNod ModulePlaygroundDefaultInventoryFid
+  CMwNod ModulePlaygroundDefaultStoreFid
+  CMwNod ModulePlaygroundDefaultChronoFid
+  CMwNod ModulePlaygroundDefaultScoresTableFid
+  CMwNod ModulePlaygroundDefaultSpeedMeterFid
+  CMwNod ModulePlaygroundDefaultPlayerStateFid
+  CMwNod ModulePlaygroundDefaultTeamStateFid
+  CMwNod
+  CMwNod
+  CMwNod ModulePlaygroundFullPlayerStateFid
+
+0x048 [TM2020.v7] // traffic, animation and icon shooter resources
+  version = 7
+  v0=
+    CMwNod
+  v1+
+    string TrafficFolder
+    string AdnFolder
+  v2..3
+    string
+  v3+
+    CMwNod IconShooterMoodFid
+    CMwNod IconShooterSceneLayoutFid
+    v7+
+      CMwNod IconShooterDefaultSettingsFid
+  v4+
+    CMwNod
+  v5=
+    string
+
+0x049 [TM2020] // DefaultEditorMediaTrackerFid
+  version
+  CMwNod DefaultEditorMediaTrackerFid
+
+0x04A [TM2020] // DefaultEditorSkinFid
+  version
+  CMwNod DefaultEditorSkinFid
+
+0x04B
+  version
+  ResourceData[] ResourceDataEntries
+
+0x04C [TM2020]
+  version
+  CMwNod
+
+0x04D [TM2020.v1] // word dictionary source
+  version = 1
+  CMwNod BadWordDict
+
+0x04E [TM2020.v1] // compiled word dictionary
+  version = 1
+  data CompiledWordDictionary
+
+0x04F [TM2020]
+  version
+  CMwNod
+
+archive NamedNod
+  id Name
+  CMwNod Node
+
+archive ResourceData
+  string Name

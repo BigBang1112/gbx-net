@@ -1,0 +1,9 @@
+CControlOverlay 0x07013000
+- inherits: CControlBase
+
+0x000 (empty)
+
+0x001 [TMNESWC, TMU] // overlay scene
+  CSceneLayout
+  float
+  float

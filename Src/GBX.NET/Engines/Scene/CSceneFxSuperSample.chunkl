@@ -1,0 +1,22 @@
+CSceneFxSuperSample 0x0A035000
+- inherits: CSceneFxCompo
+
+0x000 [TMU]
+  int
+  int
+  bool
+  bool
+  float
+  CMwNod
+
+0x001
+  bool
+  bool
+
+0x002
+  CMwNod
+
+0x003
+  version
+  CMwNod
+  CMwNod

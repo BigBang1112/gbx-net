@@ -33,32 +33,45 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     CMwNod? NodeRef(CMwNod? value = default);
     void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value);
-    [return: NotNullIfNotNull(nameof(value))]
-    CMwNod? NodeRef(CMwNod? value, ref Components.GbxRefTableFile? file);
-    void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file);
+    void NodeRef<T>(NodeRef<T> reference) where T : CMwNod?;
+    void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod?;
 
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new();
     void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0) where T : IReadableWritable, new();
+    T? ReadableWritable<T, TNode>(T? value, TNode node, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T? value, TNode node, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new();
@@ -66,6 +79,16 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, int length, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    [return: NotNullIfNotNull(nameof(value))]
+    T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
+    /// <summary>Reads or writes an array of rows. A null length uses an Int32 length prefix for that dimension.</summary>
+    void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, IWritable, new();
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
     void ArrayReadableWritable_deprec<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new();
@@ -146,7 +169,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         versionable.Version = Int32(versionable.Version);
 
         // Should be handled in separate read and write methods with ReadVersion and WriteVersion
-        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
+        (Reader?.Logger ?? Writer?.Logger)?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void VersionByte(IVersionable versionable)
@@ -155,7 +178,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         versionable.Version = Byte(versionable.Version);
 
         // Should be handled in separate read and write methods with ReadVersion and WriteVersion
-        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
+        (Reader?.Logger ?? Writer?.Logger)?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void Dispose()
@@ -297,32 +320,34 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value) => value = NodeRef(value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public CMwNod? NodeRef(CMwNod? value, ref Components.GbxRefTableFile? file)
-    {
-        if (Reader is not null) value = (CMwNod?)Reader.ReadNodeRef(out file);
-        Writer?.WriteNodeRef(value, file);
-        return value;
-    }
-
-    public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file) => value = NodeRef(value, ref file);
-
-    [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(value, length);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef_deprec(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef_deprec(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(value, length);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef_deprec(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef_deprec(ref value);
 
     [return: NotNullIfNotNull(nameof(value))]
@@ -340,6 +365,24 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0)
         where T : IReadableWritable, new() => value = ReadableWritable(value, version);
+
+    public T? ReadableWritable<T, TNode>(T? value, TNode node, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        if (Reader is not null)
+        {
+            value = Reader.ReadReadable<T, TNode>(node, version);
+        }
+
+        Writer?.WriteWritable(value ?? new T(), node, version);
+
+        return value;
+    }
+
+    public void ReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T? value, TNode node, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ReadableWritable(value, node, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new()
@@ -426,6 +469,70 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ArrayReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, bool byteLengthPrefix = false, int version = 0)
         where T : IReadableWritable, new() => value = ArrayReadableWritable(value, byteLengthPrefix, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        if (length < 0 || length > 0x10000000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
+        }
+
+        if (Reader is not null)
+        {
+            value = new T[length];
+            for (var i = 0; i < length; i++)
+            {
+                value[i] = Reader.ReadReadable<T, TNode>(node, version);
+            }
+        }
+
+        if (Writer is not null)
+        {
+            for (var i = 0; i < length; i++)
+            {
+                Writer.WriteWritable<T, TNode>(i < (value?.Length ?? 0) ? value![i] : new T(), node, version);
+            }
+        }
+
+        return value;
+    }
+
+    public void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, int length, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ArrayReadableWritable(value, node, length, version);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public T[]? ArrayReadableWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        var length = value?.Length ?? 0;
+        length = byteLengthPrefix ? Byte((byte)length) : Int32(length);
+        return ArrayReadableWritable(value, node, length, version);
+    }
+
+    public void ArrayReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ArrayReadableWritable(value, node, byteLengthPrefix, version);
+
+    public T[][]? JaggedArrayReadableWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+    {
+        if (Reader is not null)
+        {
+            value = Reader.ReadJaggedArrayReadable<T>(innerLength, outerLength, version);
+        }
+
+        Writer?.WriteJaggedArrayWritable(value, innerLength, outerLength, version);
+        return value;
+    }
+
+    public void JaggedArrayReadableWritable<T>(ref T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0)
+        where T : IReadable, IWritable, new()
+        => value = JaggedArrayReadableWritable(value, innerLength, outerLength, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable_deprec<T>(T[]? value = default, bool byteLengthPrefix = false, int version = 0) where T : IReadableWritable, new()

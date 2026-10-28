@@ -1,0 +1,5 @@
+CControlEffectSwitchStyle 0x07003000
+- inherits: CControlEffect
+
+0x000 [TM10, TMPU, TMU] // FocusedStyle
+  CControlStyle FocusedStyle

@@ -1,0 +1,7 @@
+CPlugTrafficZoneSquares 0x090D2000
+
+0x000 [TMT] // zone squares
+  id ZoneId = empty
+  int3[] Squares
+  vec3 SquareSize
+  float BaseHeight

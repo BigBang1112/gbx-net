@@ -1,47 +1,52 @@
 CPlugCustomBeamModel 0x09107000
 
 archive
- string BulletName
- CPlugBeamEmitterSubModel[]_deprec
- CPlugParticleEmitterSubModel[]_deprec
- id
- id
- id
- v1+
-  float
-  float
-  float
-  v2+
-   bool
-   bool
-   v3+
-    bool
-    v4+
-     float
-     float
-     v5+
-      int LaserDamage
-      v6+
-       float LaserRadiusDamage
-       v7+
-        float BulletVsRadius
-        v8+
-         vec3 VisualOffsetFirstPerson
-         byte BeamType
-         v9+
-          float LaserDispersionAngle
-          v10+
-           bool DamageAttenuationWithDist
-           float
-           int
-           v11+
-            CFuncKeysReal DamageAttenuationFromDist
-            v12+
-             float MaxDistance
-             byte
-             float LaserRadius
-             v13+
-              float BlowRadius
-              float BlowValue
-              v14+
-               bool LaserShowAdvancedCrosshair
+  string BulletName
+  CPlugBeamEmitterSubModel[] U01 (deprec)
+  CPlugParticleEmitterSubModel[] U02 (deprec)
+  id FireSound // sound library ID copied to CPlugBulletModel.SoundFire
+  id ReloadingSound // sound library ID copied to CPlugBulletModel.SoundReloading
+  id ExplosionSound // sound library ID copied to the first explosion impact sound
+  v1+
+    float FireSoundVolume = -1 // negative keeps the library sound volume
+    float ReloadingSoundVolume = -1
+    float ExplosionSoundVolume = -1
+    v2+
+      bool ShowPlayerExplosion = true // same bullet field as CPlugCustomBulletModel.BulletShowPlayerExplosion
+      bool U10 = true
+      v3+
+        bool ModifyFOV = true // same bullet field as CPlugCustomBulletModel.BulletModifyFOV
+        v4+
+          float TriLaserRadiusAtOneMeter_Zoom0
+          float TriLaserRadiusAtOneMeter_Zoom1
+          v5+
+            int LaserDamage
+            v6+
+              float LaserRadiusDamage
+              v7+
+                float BulletVsRadius
+                v8+
+                  vec3 VisualOffsetFirstPerson
+                  byte<ECustomBeamType> BeamType
+                  v9+
+                    float LaserDispersionAngle
+                    v10+
+                      bool DamageAttenuationWithDist
+                      float U14 // discarded
+                      int U15 // discarded
+                      v11+
+                        PlugCurve DamageAttenuationFromDist (version: v - 15)
+                        v12+
+                          float MaxDistance = 50
+                          byte U16
+                          float LaserRadius
+                          v13+
+                            float BlowRadius
+                            float BlowValue
+                            v14+
+                              bool LaserShowAdvancedCrosshair = true
+
+enum ECustomBeamType
+  Laser
+  Beam
+  Slash

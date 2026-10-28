@@ -1,83 +1,241 @@
-﻿using GBX.NET.Components;
-
 namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockInfoVariant
 {
-    public CGameCtnBlockInfoMobil[][]? Mobils { get; set; }
-
-    private CPlugSolid? helperSolidFid;
-    [AppliedWithChunk<Chunk0315B005>]
-    public CPlugSolid? HelperSolidFid { get => helperSolidFidFile?.GetNode(ref helperSolidFid) ?? helperSolidFid; set => helperSolidFid = value; }
-    private GbxRefTableFile? helperSolidFidFile;
-    public GbxRefTableFile? HelperSolidFidFile { get => helperSolidFidFile; set => helperSolidFidFile = value; }
-    public CPlugSolid? GetHelperSolidFid(GbxReadSettings settings = default, bool exceptions = false) => helperSolidFidFile?.GetNode(ref helperSolidFid, settings, exceptions) ?? helperSolidFid;
-
-    private CPlugSolid? facultativeHelperSolidFid;
-    [AppliedWithChunk<Chunk0315B005>]
-    public CPlugSolid? FacultativeHelperSolidFid { get => facultativeHelperSolidFidFile?.GetNode(ref facultativeHelperSolidFid) ?? facultativeHelperSolidFid; set => facultativeHelperSolidFid = value; }
-    private GbxRefTableFile? facultativeHelperSolidFidFile;
-    public GbxRefTableFile? FacultativeHelperSolidFidFile { get => facultativeHelperSolidFidFile; set => facultativeHelperSolidFidFile = value; }
-    public CPlugSolid? GetFacultativeHelperSolidFid(GbxReadSettings settings = default, bool exceptions = false) => facultativeHelperSolidFidFile?.GetNode(ref facultativeHelperSolidFid, settings, exceptions) ?? facultativeHelperSolidFid;
-
-    public partial class Chunk0315B005 : IVersionable
+    public bool IsObsoleteVariant
     {
-        public int Version { get; set; }
+        get => IsFlagBitSet(0);
+        set => SetFlagBit(0, value);
+    }
 
-        public CSceneMobil? U01;
-        public CSceneMobil? U02;
-        public int U03;
+    public bool IsFakeReplacement
+    {
+        get => IsFlagBitSet(1);
+        set => SetFlagBit(1, value);
+    }
 
-        public override void Read(CGameCtnBlockInfoVariant n, GbxReader r)
+    public bool AutoChangeVariantOff
+    {
+        get => IsFlagBitSet(2);
+        set => SetFlagBit(2, value);
+    }
+
+    public bool DontPlaySound1
+    {
+        get => IsFlagBitSet(3);
+        set => SetFlagBit(3, value);
+    }
+
+    public bool DontPlaySound2
+    {
+        get => IsFlagBitSet(4);
+        set => SetFlagBit(4, value);
+    }
+
+    public bool IsNoPillarBelowVariant
+    {
+        get => IsFlagBitSet(5);
+        set => SetFlagBit(5, value);
+    }
+
+    [Obsolete("Use FlockEmitter instead.")]
+    public FlockEmitterState? FlockEmmiter
+    {
+        get => FlockEmitter;
+        set => FlockEmitter = value;
+    }
+
+    private bool IsFlagBitSet(int bit) => (Flags & (1 << bit)) != 0;
+
+    private void SetFlagBit(int bit, bool value)
+    {
+        Flags = (ushort)(value ? Flags | (1 << bit) : Flags & ~(1 << bit));
+    }
+
+    public partial class PlacedPillarParam
+    {
+        [Obsolete("Use BlockInfo instead.")]
+        public CMwNod? U01
         {
-            Version = r.ReadInt32();
-
-            n.Mobils = new CGameCtnBlockInfoMobil[r.ReadInt32()][];
-            for (var i = 0; i < n.Mobils.Length; i++)
-            {
-                n.Mobils[i] = r.ReadArrayNodeRef<CGameCtnBlockInfoMobil>()!;
-            }
-
-            if (Version < 2)
-            {
-                U01 = r.ReadNodeRef<CSceneMobil>();
-                U02 = r.ReadNodeRef<CSceneMobil>();
-                return;
-            }
-
-            n.helperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.helperSolidFidFile); // HelperSolidFid?
-            n.facultativeHelperSolidFid = r.ReadNodeRef<CPlugSolid>(out n.facultativeHelperSolidFidFile); // FacultativeHelperSolidFid?
-
-            if (Version >= 3)
-            {
-                U03 = r.ReadInt32();
-            }
+            get => BlockInfo;
+            set => BlockInfo = (CGameCtnBlockInfo?)value;
         }
 
-        public override void Write(CGameCtnBlockInfoVariant n, GbxWriter w)
+        [Obsolete("Use Offset.X instead.")]
+        public int U02
         {
-            w.Write(Version);
+            get => Offset.X;
+            set => Offset = Offset with { X = value };
+        }
 
-            w.Write(n.Mobils?.Length ?? 0);
-            for (var i = 0; i < n.Mobils?.Length; i++)
-            {
-                w.WriteArrayNodeRef(n.Mobils[i]);
-            }
+        [Obsolete("Use Offset.Y instead.")]
+        public int U03
+        {
+            get => Offset.Y;
+            set => Offset = Offset with { Y = value };
+        }
 
-            if (Version < 2)
-            {
-                w.WriteNodeRef(U01);
-                w.WriteNodeRef(U02);
-                return;
-            }
+        [Obsolete("Use Offset.Z instead.")]
+        public int U04
+        {
+            get => Offset.Z;
+            set => Offset = Offset with { Z = value };
+        }
 
-            w.WriteNodeRef(n.helperSolidFid, n.helperSolidFidFile);
-            w.WriteNodeRef(n.facultativeHelperSolidFid, n.facultativeHelperSolidFidFile);
+        [Obsolete("Use Dir instead.")]
+        public int U05
+        {
+            get => (int)Dir;
+            set => Dir = (ECardinalDir)value;
+        }
+    }
 
-            if (Version >= 3)
-            {
-                w.Write(U03);
-            }
+    public partial class ReplacedPillarParam
+    {
+        [Obsolete("Use BlockInfo instead.")]
+        public CMwNod? U01
+        {
+            get => BlockInfo;
+            set => BlockInfo = (CGameCtnBlockInfo?)value;
+        }
+
+        [Obsolete("Use Offset2D.X instead.")]
+        public int U02
+        {
+            get => Offset2D.X;
+            set => Offset2D = Offset2D with { X = value };
+        }
+
+        [Obsolete("Use Offset2D.Y instead.")]
+        public int U03
+        {
+            get => Offset2D.Y;
+            set => Offset2D = Offset2D with { Y = value };
+        }
+
+        [Obsolete("Use Offset2D.Z instead.")]
+        public int U04
+        {
+            get => Offset2D.Z;
+            set => Offset2D = Offset2D with { Z = value };
+        }
+
+        [Obsolete("Use MultiDir instead.")]
+        public int U05
+        {
+            get => (int)MultiDir;
+            set => MultiDir = (EMultiDir)value;
+        }
+
+        [Obsolete("Use IsOnFlyingBase instead.")]
+        public byte U06
+        {
+            get => IsOnFlyingBase ? (byte)1 : (byte)0;
+            set => IsOnFlyingBase = value != 0;
+        }
+    }
+
+    public partial class WaterVolume
+    {
+        [Obsolete("Use Boxes instead.")]
+        public BoxInt3[]? U01
+        {
+            get => Boxes;
+            set => Boxes = value;
+        }
+
+        [Obsolete("Use Offset.X instead.")]
+        public float U02
+        {
+            get => Offset.X;
+            set => Offset = Offset with { X = value };
+        }
+
+        [Obsolete("Use Offset.Y instead.")]
+        public float U03
+        {
+            get => Offset.Y;
+            set => Offset = Offset with { Y = value };
+        }
+
+        [Obsolete("Use Offset.Z instead.")]
+        public float U04
+        {
+            get => Offset.Z;
+            set => Offset = Offset with { Z = value };
+        }
+
+        [Obsolete("Use RotationY instead.")]
+        public float U05
+        {
+            get => RotationY;
+            set => RotationY = value;
+        }
+
+        [Obsolete("Use BoxSize.X instead.")]
+        public float U06
+        {
+            get => BoxSize.X;
+            set => BoxSize = BoxSize with { X = value };
+        }
+
+        [Obsolete("Use BoxSize.Y instead.")]
+        public float U07
+        {
+            get => BoxSize.Y;
+            set => BoxSize = BoxSize with { Y = value };
+        }
+
+        [Obsolete("Use BoxSize.Z instead.")]
+        public float U08
+        {
+            get => BoxSize.Z;
+            set => BoxSize = BoxSize with { Z = value };
+        }
+
+        [Obsolete("Use WaterId instead.")]
+        public string? U09
+        {
+            get => WaterId;
+            set => WaterId = value;
+        }
+    }
+
+    public partial class FlockEmitterState
+    {
+        [Obsolete("Use Radius instead.")]
+        public float U01
+        {
+            get => Radius;
+            set => Radius = value;
+        }
+
+        [Obsolete("Use Power instead.")]
+        public float U02
+        {
+            get => Power;
+            set => Power = value;
+        }
+
+        [Obsolete("Use SpawnCount instead.")]
+        public int U03
+        {
+            get => SpawnCount;
+            set => SpawnCount = value;
+        }
+
+        [Obsolete("Use IsRepulsor instead.")]
+        public bool U04
+        {
+            get => IsRepulsor;
+            set => IsRepulsor = value;
+        }
+
+        [Obsolete("Use IsLandingArea instead.")]
+        public bool U05
+        {
+            get => IsLandingArea;
+            set => IsLandingArea = value;
         }
     }
 }

@@ -1,50 +1,50 @@
-CPlugVehicleCarPhyShape 0x0910E000
+CPlugVehicleCarPhyShape 0x0910E000 // Vehicle collision shapes and wheel placement.
 
-0x000
- version
- float U01
- CPlugSolid U02
- v1+
-  if U02 == null
-   CPlugSurface MoveShape (external)
- CPlugVehicleWheelPhyModel[] U04
- boxaligned U05
- bool U06
- float U07
- float U08
- float U09
- float U10
- float U11
- float U12
- float U13
- float U14
- float U15
- vec4[] U16
- boxaligned CarVsCarShapeBox
- bool U18
- bool U19
- float U20
- float U21
- bool U22
- float U23
- bool U24
- float U25
- bool U26
- float U27
- float U28
- float U29
- v2+
-  float U30
-  float U31
-  float U32
+0x000 [MP4.v6, TM2020.v6] // shape
+  version
+  float OffsetX
+  CPlugSolid SurfSolid
+  v1+
+    if SurfSolid == null
+      CPlugSurface MoveShape
+  CPlugVehicleWheelPhyModel[] Wheels
+  boxaligned VehicleBBox = (0, 0, 0, -1, -1, -1)
+  bool UseSimplifiedCarModel = true
+  float GroundY
+  float FrontWheelZ = 1
+  float BackWheelZ = -1
+  float FrontWheelX = 1
+  float BackWheelX = 1
+  float FrontWheelRadius = 0.5f
+  float BackWheelRadius = 0.5f
+  float FrontWheelHalfWidth = 0.5f
+  float BackWheelHalfWidth = 0.5f
+  vec4[] VolumeSpheres
+  boxaligned CarVsCarShape_Box = (0, 0.6f, 0.1f, 1, 0.6f, 2.1f)
+  bool U18 // always saved as 0
+  bool U19 // always saved as 0
+  float U20 // always saved as 0
+  float U21 // always saved as 0
+  bool U22 // always saved as 0
+  float U23 // always saved as 0
+  bool U24 // always saved as 0
+  float U25 = 0.05f // car vs car collision
+  bool U26 // always saved as 0
+  float U27 // always saved as 0
+  float U28 // always saved as 0
+  float U29 // always saved as 0
+  v2+
+    float U30 = 50 // car vs car collision
+    float U31 = 1.5f // car vs car collision
+    float U32 = 0.01f // car vs car collision
   v3+
-   string U33
-   if U33 == null || U33 == ""
-    CPlugSurface U34
-   v4+
-    vec3[] U35
-    v5+
-     CPlugSurface U36
-     v6+
-      CPlugSurface U37
-      CPlugSurface U38
+    string U33
+    if U33 == null || U33 == ""
+      CPlugSurface U34
+  v4+
+    vec3[] U35 // up to 6
+  v5+
+    CPlugSurface CarVsCarShape
+  v6+
+    CPlugSurface HitShape
+    CPlugSurface WaterShape

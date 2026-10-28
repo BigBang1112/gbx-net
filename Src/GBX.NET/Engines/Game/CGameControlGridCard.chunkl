@@ -1,0 +1,34 @@
+CGameControlGridCard 0x030BA000
+- inherits: CGameControlGrid
+
+0x001
+  CGameControlCardManager CardManager
+
+0x002
+  CGameControlCardManager CardManager
+  bool FillWithDefault
+  string DefaultCardName = "Empty"
+  uint DefaultCardClassId = 0xFFFFFFFF
+
+0x003
+  CGameControlCardManager CardManager
+  bool FillWithDefault
+  string DefaultCardName
+  uint DefaultCardClassId
+  bool PushByColumns
+
+0x004 [TMU]
+  CGameControlCardManager CardManager
+  bool FillWithDefault
+  string DefaultCardName
+  uint DefaultCardClassId
+  bool PushByColumns
+  bool CacheAtCreation = true
+
+0x005
+  bool LeftToRight = true
+  bool UpToDown = true
+
+0x006
+  version
+  bool AreCardsReadOnly

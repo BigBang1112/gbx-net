@@ -1,0 +1,8 @@
+CMwCmdFor 0x01035000
+- inherits: CMwCmdInst
+
+0x000 [TMU, TMF]
+  string VariableName
+  CMwCmdExp Min
+  CMwCmdExp Max
+  CMwCmdBlock Block

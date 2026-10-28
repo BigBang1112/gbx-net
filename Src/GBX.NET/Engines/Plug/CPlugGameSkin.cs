@@ -2,6 +2,7 @@
 
 public partial class CPlugGameSkin
 {
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090F4001>]
     public Fid[]? CustomizableFids2 { get; set; }
 
@@ -13,12 +14,10 @@ public partial class CPlugGameSkin
             r.ReadInt32(); // CustomizableNames count thats not used in loop
             for (var i = 0; i < n.CustomizableFids.Length; i++)
             {
-                n.CustomizableFids[i] = new Fid
-                {
-                    Node = r.ReadNodeRef<CMwNod>(out var nodeFile),
-                    Name = r.ReadString(),
-                    NodeFile = nodeFile,
-                };
+                var fid = new Fid();
+                r.ReadNodeRef(fid.References.Node);
+                fid.Name = r.ReadString();
+                n.CustomizableFids[i] = fid;
             }
         }
 
@@ -36,7 +35,7 @@ public partial class CPlugGameSkin
             for (var i = 0; i < count; i++)
             {
                 var fid = n.CustomizableFids[i];
-                w.WriteNodeRef(fid.Node, fid.NodeFile);
+                w.WriteNodeRef(fid.References.Node);
                 w.Write(fid.Name);
             }
         }
@@ -50,12 +49,10 @@ public partial class CPlugGameSkin
             r.ReadInt32(); // CustomizableNames count thats not used in loop
             for (var i = 0; i < n.CustomizableFids2.Length; i++)
             {
-                n.CustomizableFids2[i] = new Fid
-                {
-                    Node = r.ReadNodeRef<CMwNod>(out var nodeFile),
-                    Name = r.ReadString(),
-                    NodeFile = nodeFile,
-                };
+                var fid = new Fid();
+                r.ReadNodeRef(fid.References.Node);
+                fid.Name = r.ReadString();
+                n.CustomizableFids2[i] = fid;
             }
         }
 
@@ -73,7 +70,7 @@ public partial class CPlugGameSkin
             for (var i = 0; i < count; i++)
             {
                 var fid = n.CustomizableFids2[i];
-                w.WriteNodeRef(fid.Node, fid.NodeFile);
+                w.WriteNodeRef(fid.References.Node);
                 w.Write(fid.Name);
             }
         }
@@ -83,17 +80,14 @@ public partial class CPlugGameSkin
     {
         private uint classId;
         private string name = "";
-        private CMwNod? node;
+
         private string directory = "";
         private bool mipMaps;
 
         public uint ClassId { get => classId; set => classId = value; }
         public string Name { get => name; set => name = value; }
 
-        public CMwNod? Node { get => nodeFile?.GetNode(ref node) ?? node; set => node = value; }
-        private Components.GbxRefTableFile? nodeFile;
-        public Components.GbxRefTableFile? NodeFile { get => nodeFile; set => nodeFile = value; }
-        public CMwNod? GetNode(GbxReadSettings settings = default, bool exceptions = false) => nodeFile?.GetNode(ref node, settings, exceptions) ?? node;
+        public CMwNod? Node { get => nodeRef?.Resolve(); set => NodeRef.SetEmbedded(ref nodeRef, value); }
 
         public string Directory { get => directory; set => directory = value; }
         public bool MipMaps { get => mipMaps; set => mipMaps = value; }
@@ -105,9 +99,13 @@ public partial class CPlugGameSkin
 
             if (version >= 3)
             {
-                if (rw.Boolean(node is not null))
+                if (rw.Boolean((nodeRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
                 {
-                    rw.NodeRef(ref node, ref nodeFile);
+                    rw.NodeRef(ref nodeRef);
+                }
+                else
+                {
+                    rw.String(ref directory!);
                 }
             }
             else

@@ -1,15 +1,34 @@
 CPlugSoundSurface 0x0905E000
 - inherits: CPlugSound
 
-0x000 (ignore)
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // legacy impact, texture and skid sounds by material
+  float EdMaxSpeedKmh = 500f
+  int Count (local, write: "n.MaterialSounds?.Length ?? 0")
+  MaterialSound[Count] MaterialSounds (version: 0)
 
-0x002
- version
- float
- float
- float
- float
- v2+
-  bool
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF] // impact attenuation
+  float BigImpactAttenuation = 1.2f
+  float SmallImpactAttenuation = 0.8f
 
-0x003 (ignore)
+0x002 [MP3.v2, TMT.v2, MP4.v2, TM2020.v2] // impact attenuation and mode
+  version
+  float BigImpactAttenuation = 1.2f
+  float SmallImpactAttenuation = 0.8f
+  float = 0.02f
+  float = 0.2f
+  v2+
+    bool ImpactOnlyMode
+
+0x003 (demonstration: partial) [TMT.v1, MP4.v1, TM2020.v1] // texture and skid sounds by material
+  version
+  float EdMaxSpeedKmh = 500f
+  int Count (local, write: "n.MaterialSounds?.Length ?? 0")
+  MaterialSound[Count] MaterialSounds (version: 1)
+  CFuncKeysReal SkidVolumeFromIntensity (direct)
+
+archive MaterialSound // Array index corresponds to CPlugSurface.MaterialId.
+  v0=
+    CPlugFileSnd SmallImpact
+    CPlugFileSnd BigImpact
+  CPlugSoundComponent Texture
+  CPlugSoundComponent Skid

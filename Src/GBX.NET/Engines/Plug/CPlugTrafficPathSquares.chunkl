@@ -1,0 +1,13 @@
+CPlugTrafficPathSquares 0x090D0000
+
+0x000 [TMT] // path squares
+  id PathId = empty
+  int3[] Squares
+  vec3 SquareSize
+  float BaseHeight
+
+0x001 (base: 0x000) [TMT.v1]
+  version
+  base
+  v0=
+    int

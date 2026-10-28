@@ -273,7 +273,7 @@
 09160000 CPlugPlacementPatch PlacementPatch.Gbx
 09180000 CPlugClouds FuncClouds.Gbx
 09181000 CPlugDayTime FuncDayTime.Gbx
-09182000 CPlugCloudsParam FuncCloudsParam.Gbx
+09182000 CPlugCloudsParam FuncCloudsParam.Gbx PlugCloudsParam.Gbx
 09183000 CPlugCloudsSolids FuncCloudsSolids.Gbx
 09185000 CPlugCurveSimpleNod FuncKeysReals.Gbx
 09187000 NPlugItemPlacement_SClass ItemPlacementClass.Gbx

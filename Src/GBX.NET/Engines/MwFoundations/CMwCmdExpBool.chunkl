@@ -1,0 +1,5 @@
+CMwCmdExpBool 0x0103B000
+- inherits: CMwCmdExp
+
+0x000 [TMU, TMF] // Bool
+  bool Bool

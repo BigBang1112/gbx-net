@@ -1,0 +1,6 @@
+CGameRace 0x03073000
+- inherits: CGamePlayground
+
+0x000 [TMU, TMF]
+  id
+  CMwNod InterfaceFid

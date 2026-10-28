@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Interfaces.Game;
 
-public interface IGameCtnChallengeTMSX : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMSX : IGameCtnChallenge
 {
     IEnumerable<IGameCtnBlockTMSX> GetBlocks();
     IGameCtnBlockTMSX? GetBlock(Int3 pos);

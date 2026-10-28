@@ -285,11 +285,11 @@ public partial class CPlugEntRecordData : IReadableWritable
         while (hasNextElem)
         {
             var type = r.ReadInt32();
-            var u01 = r.ReadInt32();
-            var u02 = r.ReadInt32(); // start?
-            var u03 = r.ReadInt32(); // end? ghostLengthFinish ms
+            var sceneUId = r.ReadInt32();
+            var beginTime = r.ReadTimeInt32();
+            var endTime = r.ReadTimeInt32();
 
-            var u04 = version >= 6 ? r.ReadInt32() : u01;
+            var u04 = version >= 6 ? r.ReadInt32() : sceneUId;
 
             var desc = entRecordDescs[type];
             List<EntRecordDelta> samples;
@@ -318,9 +318,9 @@ public partial class CPlugEntRecordData : IReadableWritable
             yield return new EntRecordListElem
             {
                 Type = type,
-                U01 = u01,
-                U02 = u02,
-                U03 = u03,
+                SceneUId = sceneUId,
+                BeginTime = beginTime,
+                EndTime = endTime,
                 U04 = u04,
                 Samples = samples,
                 Samples2 = samples2
@@ -432,9 +432,9 @@ public partial class CPlugEntRecordData : IReadableWritable
             var elem = entList[i];
 
             w.Write(elem.Type);
-            w.Write(elem.U01);
-            w.Write(elem.U02);
-            w.Write(elem.U03);
+            w.Write(elem.SceneUId);
+            w.Write(elem.BeginTime);
+            w.Write(elem.EndTime);
 
             if (version >= 6)
             {
@@ -524,8 +524,8 @@ public partial class CPlugEntRecordData : IReadableWritable
         {
             yield return new()
             {
-                U01 = r.ReadInt32(),
-                U02 = r.ReadInt32(),
+                Type = r.ReadInt32(),
+                Time = r.ReadTimeInt32(),
                 Data = r.ReadData()
             };
         }
@@ -536,8 +536,8 @@ public partial class CPlugEntRecordData : IReadableWritable
         foreach (var elem in bulkNoticeList)
         {
             w.Write(true, asByte: true);
-            w.Write(elem.U01);
-            w.Write(elem.U02);
+            w.Write(elem.Type);
+            w.Write(elem.Time);
             w.WriteData(elem.Data);
         }
         w.Write(false, asByte: true);
@@ -579,11 +579,13 @@ public partial class CPlugEntRecordData : IReadableWritable
             });
         }
 
+        var classId = version >= 8 ? r.ReadUInt32() : default(uint?);
         var period = version >= 10 ? r.ReadInt32() : default(int?);
 
         return new CustomModulesDeltaList
         {
             Deltas = deltas,
+            ClassId = classId,
             Period = period
         };
     }
@@ -627,6 +629,11 @@ public partial class CPlugEntRecordData : IReadableWritable
         }
         w.Write(false, asByte: true);
 
+        if (version >= 8)
+        {
+            w.Write(deltaList.ClassId ?? uint.MaxValue);
+        }
+
         if (version >= 10)
         {
             w.Write(deltaList.Period ?? 0);
@@ -635,6 +642,18 @@ public partial class CPlugEntRecordData : IReadableWritable
 
     public partial class EntRecordDesc
     {
+        [Obsolete("Use StateSize instead.")]
+        public int U01 { get => StateSize; set => StateSize = value; }
+
+        [Obsolete("Use SceneUIdOffset instead.")]
+        public int U02 { get => SceneUIdOffset; set => SceneUIdOffset = value; }
+
+        [Obsolete("Use StateArchiveVersion instead.")]
+        public int U03 { get => StateArchiveVersion; set => StateArchiveVersion = value; }
+
+        [Obsolete("Use InitialState instead.")]
+        public byte[]? U04 { get => InitialState; set => InitialState = value; }
+
         public override string ToString()
         {
             var name = ClassManager.GetName(classId);
@@ -646,27 +665,43 @@ public partial class CPlugEntRecordData : IReadableWritable
 
     public partial class NoticeRecordDesc
     {
+        [Obsolete("Use NoticeArchiveVersion instead.")]
+        public int U01 { get => NoticeArchiveVersion; set => NoticeArchiveVersion = value; }
+
+        [Obsolete("Use NoticeType instead.")]
+        public int U02 { get => NoticeType; set => NoticeType = value; }
+
         public override string ToString()
         {
             if (classId is null)
             {
-                return $"{U01}, {U02}";
+                return $"type {NoticeType}, version {NoticeArchiveVersion}";
             }
 
             var name = ClassManager.GetName(classId.Value);
             return string.IsNullOrEmpty(name)
-                ? $"0x{classId:X8} {U01}, {U02}"
-                : $"{name} (0x{classId:X8}) {U01}, {U02}";
+                ? $"0x{classId:X8} type {NoticeType}, version {NoticeArchiveVersion}"
+                : $"{name} (0x{classId:X8}) type {NoticeType}, version {NoticeArchiveVersion}";
         }
     }
 
     public sealed class EntRecordListElem
     {
         public int Type { get; set; }
-        public int U01 { get; set; }
-        public int U02 { get; set; }
-        public int U03 { get; set; }
+        public int SceneUId { get; set; }
+        public TimeInt32 BeginTime { get; set; }
+        public TimeInt32 EndTime { get; set; }
         public int U04 { get; set; }
+
+        [Obsolete("Use SceneUId instead.")]
+        public int U01 { get => SceneUId; set => SceneUId = value; }
+
+        [Obsolete("Use BeginTime instead.")]
+        public int U02 { get => BeginTime.TotalMilliseconds; set => BeginTime = new(value); }
+
+        [Obsolete("Use EndTime instead.")]
+        public int U03 { get => EndTime.TotalMilliseconds; set => EndTime = new(value); }
+
         public List<EntRecordDelta> Samples { get; set; } = [];
         public List<EntRecordDelta2> Samples2 { get; set; } = [];
     }
@@ -705,14 +740,21 @@ public partial class CPlugEntRecordData : IReadableWritable
 
     public class NoticeRecordListElem
     {
-        public int U01 { get; set; }
-        public int U02 { get; set; }
+        public int Type { get; set; }
+        public TimeInt32 Time { get; set; }
         public byte[] Data { get; set; } = [];
+
+        [Obsolete("Use Type instead.")]
+        public int U01 { get => Type; set => Type = value; }
+
+        [Obsolete("Use Time instead.")]
+        public int U02 { get => Time.TotalMilliseconds; set => Time = new(value); }
     }
 
     public class CustomModulesDeltaList
     {
         public List<CustomModulesDelta> Deltas { get; set; } = [];
+        public uint? ClassId { get; set; }
         public int? Period { get; set; }
     }
 

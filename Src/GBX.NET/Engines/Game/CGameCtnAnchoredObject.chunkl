@@ -1,41 +1,88 @@
 CGameCtnAnchoredObject 0x03101000
-- chunk_Chunk03101002: Unexpected syntax
 
-0x002
- version
- ident ItemModel = empty
- vec3 YawPitchRoll
- byte3 BlockUnitCoord
- id AnchorTreeId
- vec3 AbsolutePositionInMap
- CGameWaypointSpecialProperty WaypointSpecialProperty
- v4-
-  int
- v4+
-  short Flags
-  v5+
-   vec3 PivotPosition
-   v6+
-    float Scale
+0x000 // Legacy item placement
+  ident ItemModel = empty
+  byte<Direction> Dir
+  AdditionalDir = 0
+  switch Dir
+    case Direction.North
+      YawPitchRoll = (0, YawPitchRoll.Y, YawPitchRoll.Z)
+    case Direction.East
+      YawPitchRoll = (-1.5707964f, YawPitchRoll.Y, YawPitchRoll.Z)
+    case Direction.South
+      YawPitchRoll = (-3.1415927f, YawPitchRoll.Y, YawPitchRoll.Z)
+    case Direction.West
+      YawPitchRoll = (1.5707964f, YawPitchRoll.Y, YawPitchRoll.Z)
+    default
+      throw
+  byte3 BlockUnitCoord
+  byte
+
+0x001 // AnchorTreeId
+  id AnchorTreeId
+
+0x002 [MP3.v5, TMT.v6, MP4.v7, TM2020.v8] // Item placement
+  version
+  ident ItemModel = empty
+  v1-
+    byte<Direction> Dir
+    v1=
+      byte AdditionalDir
+    v0=
+      AdditionalDir = 0
+    switch Dir
+      case Direction.North
+        YawPitchRoll = (AdditionalDir * 0.2617994f, YawPitchRoll.Y, YawPitchRoll.Z)
+      case Direction.East
+        YawPitchRoll = (-1.5707964f + AdditionalDir * 0.2617994f, YawPitchRoll.Y, YawPitchRoll.Z)
+      case Direction.South
+        YawPitchRoll = (-3.1415927f + AdditionalDir * 0.2617994f, YawPitchRoll.Y, YawPitchRoll.Z)
+      case Direction.West
+        YawPitchRoll = (1.5707964f + AdditionalDir * 0.2617994f, YawPitchRoll.Y, YawPitchRoll.Z)
+      default
+        throw
+  v2+
+    vec3 YawPitchRoll
+  byte3 BlockUnitCoord
+  id AnchorTreeId
+  vec3 AbsolutePositionInMap
+  CGameWaypointSpecialProperty WaypointSpecialProperty
+  v3+
+    v4-
+      int PivotIndex = -1
+  v4+
+    short Flags
+    v5+
+      vec3 PivotPosition
+    v6+
+      float Scale = 1
     v7+
-     if (Flags & 4) != 0
-      packdesc PackDesc
-     v8+
-      vec3?
-      vec3?
+      if (Flags & 4) != 0
+        packdesc PackDesc
+    v8+
+      boxaligned BoundingBox = (0, 0, 0, -1, -1, -1)
 
-0x004 (skippable)
- version
- int = -1
+0x003 (skippable) // legacy script metadata
 
-0x005 (skippable, ignore)
+0x004 (skippable) [MP3, TMT, MP4, TM2020] // BotPathIndex
+  version
+  int BotPathIndex = -1
+
+0x005 (skippable) [TM2020.v1] // ScriptParameters
+  version
+  v1+
+    byte ScriptTraitsVersion = 4
+  ScriptParameter[] ScriptParameters (version: Version >= 1 ? ScriptTraitsVersion : -1)
+
+archive ScriptParameter
+  string Name
 
 enum EPhaseOffset
- None
- One8th
- Two8th
- Three8th
- Four8th
- Five8th
- Six8th
- Seven8th
+  None
+  One8th
+  Two8th
+  Three8th
+  Four8th
+  Five8th
+  Six8th
+  Seven8th

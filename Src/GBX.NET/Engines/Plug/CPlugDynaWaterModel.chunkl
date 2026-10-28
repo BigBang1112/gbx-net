@@ -1,17 +1,18 @@
 CPlugDynaWaterModel 0x0915F000
 
-0x000
- version
- float
- float
- float
- Keys
- Keys
- Keys
- float
- Keys
- float
- v3+
-  CPlugSurface
+0x000 [TM2020.v3] // Water physics model
+  version
 
-archive Keys
+// Version 2 stores inline GmSurf geometry.
+archive
+  float Gravity
+  float U02 = 10
+  float U03 = 1
+  PlugCurve U04 (version: v - 1)
+  PlugCurve U05 (version: v - 1)
+  PlugCurve U06 (version: v - 1)
+  float U07 = 1
+  PlugCurve U08 (version: v - 1)
+  float U09 = 1
+  v3+
+    CPlugSurface Surface

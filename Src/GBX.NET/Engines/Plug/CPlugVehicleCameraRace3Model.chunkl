@@ -1,175 +1,186 @@
 CPlugVehicleCameraRace3Model 0x090EF000
 - inherits: CPlugCamControlModel
 
-0x000
- float
- float
- float
- int
- int
- int
- float
- float
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- float
- int
- int
- float
- float
- float
- int
- int
- float
- int
- int
- float
- float
- int
- int
- float
- float
- float
- float
- float
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
+0x000 [MP3, TMT] // legacy camera smoothing and response curves
+  float SlerpSpeed = 5.0f
+  float Up = 2.0f
+  float Far = 4.0f
+  int FlyDurationBeforeFlyingBehavior = 1
+  int InputNoSteerDurationBeforeReset = 150
+  int InputSteerDurationBeforeBurnoutShowView = 2000
+  float MinSpeed = 30.0f
+  float MinSpeed2 = 10.0f
+  float SlerpTargetPosNormalBehaviorDelta = 1.0f
+  int SlerpTargetPosNormalBehaviorTimeUp = 2000
+  int SlerpTargetPosNormalBehaviorTimeDown = 2000
+  float SlerpTargetPosFlyingDelta = 1.0f
+  int SlerpTargetPosFlyingTimeUp = 2000
+  int SlerpTargetPosFlyingTimeDown = 2000
+  float SlerpTargetPosDelta = 1.0f
+  int SlerpTargetPosTimeUp = 2000
+  int SlerpTargetPosTimeDown = 1000
+  float SlerpTargetCamUpDelta = 1.0f
+  int SlerpTargetCamUpTimeUp = 2000
+  int SlerpTargetCamUpTimeDown = 2000
+  float SlerpSpeedFlyingBehavior = 3.0f
+  float SlerpSpeedDelta = 1.0f
+  int SlerpSpeedTimeUp = 1000
+  int SlerpSpeedTimeDown = 1000
+  float SlerpSpeedCamUp = 4.0f
+  float SlerpSpeedCamUpFlyingBehavior = 1.0f
+  float SlerpSpeedCamUpDelta = 1.0f
+  int SlerpSpeedCamUpTimeUp = 1000
+  int SlerpSpeedCamUpTimeDown = 1000
+  float StateFlyingLookAtFactorDelta = -0.2f
+  int StateFlyingLookAtFactorTimeUp = 3000
+  int StateFlyingLookAtFactorTimeDown = 2500
+  float StateFlyingLookAtStep = 0.2f
+  float StateFlyingRadiusDelta = 3.0f
+  int StateFlyingRadiusTimeUp = 3000
+  int StateFlyingRadiusTimeDown = 2500
+  float ConstantFlyingLookDownFactor = 0.3f
+  float FlyingLookDownFactorKi = 1.5f
+  float FlyingLookDownFactorKa = 0.7f
+  float RadiusDamperKi = 10.0f
+  float RadiusDamperKa = 5.0f
+  float InputGasFarDelta = 1.0f
+  int InputGasFarTimeUp = 2000
+  int InputGasFarTimeDown = 1000
+  float InputBrakeFarDelta = -0.7f
+  int InputBrakeFarTimeUp = 750
+  int InputBrakeFarTimeDown = 1000
+  float InputSteerFarDelta = -0.8f
+  int InputSteerFarTimeUp = 2000
+  int InputSteerFarTimeDown = 1500
+  float EventTurboFovDelta = 10.5f
+  int EventTurboFovTimeUp = 1000
+  int EventTurboFovTimeDown = 1400
+  float EventTurboFarDelta = -0.6f
+  int EventTurboFarTimeUp = 1000
+  int EventTurboFarTimeDown = 1400
+  float EventChangeGearFarDelta = -0.35f
+  int EventChangeGearFarTimeUp = 500
+  int EventChangeGearFarTimeDown = 2000
+  float EventBurningLookAtFactorDelta = -0.4f
+  int EventBurningLookAtFactorTimeUp = 2000
+  int EventBurningLookAtFactorTimeDown = 1500
+  float EventBurningRadiusDelta = 1.0f
+  int EventBurningRadiusTimeUp = 2000
+  int EventBurningRadiusTimeDown = 1500
+  CFuncKeysReal SlerpSpeedModulationFromSpeed
+  CFuncKeysReal LookAtFactorFromUpSpeedRatio
+  CFuncKeysReal FlyingLookDownFactorFromSpeedRatio
+  FlyDurationBeforeFlyingBehavior = 100
 
-0x001
- float
+0x001 [MP3, TMT, MP4, TM2020]
+  float
 
-0x002
- float
- float
+0x002 [MP3, TMT, MP4, TM2020] // look-at factor and field of view
+  float LookAtFactor = 0.5f
+  float DefaultFov = 90f
 
-0x003
- bool
- bool
+0x003 [MP3, TMT, MP4, TM2020] // wheel-plane tracking and fixed up direction
+  bool FollowWheelsPlane
+  bool ForceUpV010
 
-0x004
- id
+0x004 [MP3, TMT, MP4, TM2020]
+  id
 
-0x005
- version
- float
- float
- float
- int
- int
- int
- float
- float
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- float
- int
- int
- float
- float
- float
- int
- int
- float
- int
- int
- float
- float
- int
- int
- float
- float
- float
- float
- float
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- v2+
-  CFuncKeysReal
+0x005 [MP4.v5, TM2020.v8] // camera smoothing and response curves
+  version
+  float SlerpSpeed
+  float Up
+  float Far
+  int FlyDurationBeforeFlyingBehavior
+  int InputNoSteerDurationBeforeReset
+  int InputSteerDurationBeforeBurnoutShowView
+  float MinSpeed
+  float MinSpeed2
+  float SlerpTargetPosNormalBehaviorDelta
+  int SlerpTargetPosNormalBehaviorTimeUp
+  int SlerpTargetPosNormalBehaviorTimeDown
+  float SlerpTargetPosFlyingDelta
+  int SlerpTargetPosFlyingTimeUp
+  int SlerpTargetPosFlyingTimeDown
+  float SlerpTargetPosDelta
+  int SlerpTargetPosTimeUp
+  int SlerpTargetPosTimeDown
+  float SlerpTargetCamUpDelta
+  int SlerpTargetCamUpTimeUp
+  int SlerpTargetCamUpTimeDown
+  float SlerpSpeedFlyingBehavior
+  float SlerpSpeedDelta
+  int SlerpSpeedTimeUp
+  int SlerpSpeedTimeDown
+  float SlerpSpeedCamUp
+  float SlerpSpeedCamUpFlyingBehavior
+  float SlerpSpeedCamUpDelta
+  int SlerpSpeedCamUpTimeUp
+  int SlerpSpeedCamUpTimeDown
+  float StateFlyingLookAtFactorDelta
+  int StateFlyingLookAtFactorTimeUp
+  int StateFlyingLookAtFactorTimeDown
+  float StateFlyingLookAtStep
+  float StateFlyingRadiusDelta
+  int StateFlyingRadiusTimeUp
+  int StateFlyingRadiusTimeDown
+  float ConstantFlyingLookDownFactor
+  float FlyingLookDownFactorKi
+  float FlyingLookDownFactorKa
+  float RadiusDamperKi
+  float RadiusDamperKa
+  float InputGasFarDelta
+  int InputGasFarTimeUp
+  int InputGasFarTimeDown
+  float InputBrakeFarDelta
+  int InputBrakeFarTimeUp
+  int InputBrakeFarTimeDown
+  float InputSteerFarDelta
+  int InputSteerFarTimeUp
+  int InputSteerFarTimeDown
+  float EventTurboFovDelta
+  int EventTurboFovTimeUp
+  int EventTurboFovTimeDown
+  float EventTurboFarDelta
+  int EventTurboFarTimeUp
+  int EventTurboFarTimeDown
+  float EventChangeGearFarDelta
+  int EventChangeGearFarTimeUp
+  int EventChangeGearFarTimeDown
+  float EventBurningLookAtFactorDelta
+  int EventBurningLookAtFactorTimeUp
+  int EventBurningLookAtFactorTimeDown
+  float EventBurningRadiusDelta
+  int EventBurningRadiusTimeUp
+  int EventBurningRadiusTimeDown
+  PlugCurve SlerpSpeedModulationFromSpeed (version: Version - 8)
+  PlugCurve LookAtFactorFromUpSpeedRatio (version: Version - 8)
+  PlugCurve FlyingLookDownFactorFromSpeedRatio (version: Version - 8)
+  v2+
+    PlugCurve DeltaRadiusFromSpeedKmh (version: Version - 8)
   v3+
-   float
-   v5+
-    float
-    float
-    float
-    v6+
-     float
-     int
-     int
-     float
-     int
-     int
-     float
-     int
-     int
+    float VehiclePitchCoef
+  v5+
+    float HelicopterCameraSlerpRoll = 0.8f
+    float AirSpawn_VelY0
+    float AirSpawn_VelY1 = 40f
+  v6+
+    float = -20f
+    int = 750
+    int = 1250
+    float = -0.5f
+    int = 750
+    int = 1250
+    float = -0.5f
+    int = 750
+    int = 1250
+  v7+
+    float = 0.5f
+    int = 750
+    int = 1250
+    float = 0.5f
+    int = 750
+    int = 1250
+    float = 0.5f
+    int = 750
+    int = 1250

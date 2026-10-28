@@ -196,11 +196,8 @@
 
         using var scope = Logger.BeginScope("{fileName}", fileName);
 
-        var remap = ClassIdRemapMode.Latest;  
-
         if (IsOldTm)
         {
-            remap = ClassIdRemapMode.Id2006;
             Logger.LogInformation("Export adjusted to old TM games.");
         }
 
