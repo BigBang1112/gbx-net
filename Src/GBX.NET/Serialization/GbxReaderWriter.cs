@@ -169,7 +169,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         versionable.Version = Int32(versionable.Version);
 
         // Should be handled in separate read and write methods with ReadVersion and WriteVersion
-        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
+        (Reader?.Logger ?? Writer?.Logger)?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void VersionByte(IVersionable versionable)
@@ -178,7 +178,7 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         versionable.Version = Byte(versionable.Version);
 
         // Should be handled in separate read and write methods with ReadVersion and WriteVersion
-        Reader?.Logger?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
+        (Reader?.Logger ?? Writer?.Logger)?.LogTrace("Chunk/Archive version: {Version}", versionable.Version);
     }
 
     public void Dispose()

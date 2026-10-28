@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
+using Microsoft.Extensions.Logging;
 
 #if NET6_0_OR_GREATER
 using System.Buffers;
@@ -238,6 +239,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     internal bool IsRelease { get; set; } = true;
 
     internal GbxWriteSettings Settings { get; }
+    internal ILogger? Logger => Settings.Logger;
     internal GbxRefTable? ReferenceTable { get; set; }
     private Dictionary<GbxRefTableNode, GbxRefTableNode>? importedRefs;
 
@@ -1043,9 +1045,16 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             return;
         }
 
+        WriteNodeContent(value);
+    }
+
+    private void WriteNodeContent(IClass node)
+    {
         rw ??= new GbxReaderWriter(this);
 
-        value.ReadWrite(rw);
+        using var _ = Logger?.BeginScope("{ClassName}", ClassManager.GetName(node.GetType()));
+
+        node.ReadWrite(rw);
     }
 
     public void WriteMetaRef<T>(T? value) where T : IClass
@@ -1066,9 +1075,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         WriteHexUInt32(classId);
 
-        rw ??= new GbxReaderWriter(this);
-
-        value.ReadWrite(rw);
+        WriteNodeContent(value);
     }
 
     public void Write(TimeInt32 value)
@@ -2265,7 +2272,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write(0);
 
         using var ms = new MemoryStream();
-        using var wBuffer = new GbxWriter(ms);
+        using var wBuffer = new GbxWriter(ms, Settings with { CloseStream = false });
         using var _ = new Encapsulation(wBuffer);
 
         action(wBuffer);
@@ -2291,39 +2298,31 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteData(value.Data);
     }
 
-    internal void WriteChunkId(uint chunkId)
+    /// <returns>The raw chunk ID that was written.</returns>
+    internal uint WriteChunkId(uint chunkId)
     {
-        if (ClassIdRemapMode == ClassIdRemapMode.Latest)
+        var rawChunkId = ClassIdRemapMode switch
         {
-            WriteHexUInt32(chunkId);
-            return;
-        }
+            ClassIdRemapMode.Latest => chunkId,
+            ClassIdRemapMode.Id2008 when (chunkId & 0xFFFFF000) == 0x2E001000 => 0x0301A000 | (chunkId & 0xFFF),
+            _ => ClassManager.Unwrap(chunkId)
+        };
 
-        if (ClassIdRemapMode == ClassIdRemapMode.Id2008 && (chunkId & 0xFFFFF000) == 0x2E001000)
-        {
-            WriteHexUInt32(0x0301A000 | (chunkId & 0xFFF));
-            return;
-        }
-
-        var unwrappedChunkId = ClassManager.Unwrap(chunkId);
-        WriteHexUInt32(unwrappedChunkId);
+        WriteHexUInt32(rawChunkId);
+        return rawChunkId;
     }
 
-    internal void WriteClassId(uint classId)
+    /// <returns>The raw class ID that was written.</returns>
+    internal uint WriteClassId(uint classId)
     {
-        if (ClassIdRemapMode == ClassIdRemapMode.Latest)
+        var rawClassId = ClassIdRemapMode switch
         {
-            WriteHexUInt32(classId);
-            return;
-        }
+            ClassIdRemapMode.Latest => classId,
+            ClassIdRemapMode.Id2008 when classId == 0x2E001000 => 0x0301A000u,
+            _ => ClassManager.Unwrap(classId)
+        };
 
-        if (ClassIdRemapMode == ClassIdRemapMode.Id2008 && classId == 0x2E001000)
-        {
-            WriteHexUInt32(0x0301A000);
-            return;
-        }
-
-        var unwrappedClassId = ClassManager.Unwrap(classId);
-        WriteHexUInt32(unwrappedClassId);
+        WriteHexUInt32(rawClassId);
+        return rawClassId;
     }
 }

@@ -32,7 +32,7 @@ public class GbxRoundTripTests
         using var saved = new MemoryStream();
 
         // Act
-        original.Save(saved);
+        original.Save(saved, WriteSettings);
         saved.Position = 0;
         var reparsed = await Parse(saved, async);
 
@@ -53,17 +53,19 @@ public class GbxRoundTripTests
         original.ClassIdRemapMode = ClassIdRemapMode.Latest;
         original.BodyCompression = compression;
         using var firstSave = new MemoryStream();
-        original.Save(firstSave);
+        original.Save(firstSave, WriteSettings);
         firstSave.Position = 0;
         var reparsed = await Parse(firstSave, async);
         using var secondSave = new MemoryStream();
 
         // Act
-        reparsed.Save(secondSave);
+        reparsed.Save(secondSave, WriteSettings);
 
         // Assert
         await Assert.That(secondSave.ToArray()).IsEquivalentTo(firstSave.ToArray(), CollectionOrdering.Matching);
     }
+
+    private static GbxWriteSettings WriteSettings => new() { Logger = new TestLogger() };
 
     private static async Task<Gbx> Parse(Stream stream, bool async)
     {

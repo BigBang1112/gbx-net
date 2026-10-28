@@ -1,4 +1,6 @@
 using GBX.NET.Components;
+using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 
@@ -46,11 +48,14 @@ public partial class GbxWriter
             return;
         }
 
+        var nodeIndex = default(int?);
+
         if (encapsulation is null)
         {
             if ((descriptor is not null && NodeDict.TryGetValue(descriptor, out int index))
                 || (descriptor is null && value is not null && NodeDict.TryGetValue(value, out index)))
             {
+                Logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index, descriptor ?? (object?)value);
                 Write(index);
                 return;
             }
@@ -58,11 +63,13 @@ public partial class GbxWriter
             var key = descriptor ?? (object?)value ?? throw new InvalidOperationException("Descriptor or value is null.");
 
             index = RegisterNodeReference(key);
+            nodeIndex = index;
 
             Write(index);
 
             if (descriptor is not null)
             {
+                Logger?.LogDebug("NodeRef #{Index}: {ExternalNode}", index, descriptor);
                 return;
             }
         }
@@ -79,11 +86,21 @@ public partial class GbxWriter
             throw new ClassWriteNotSupportedException(classId);
         }
 
-        WriteClassId(classId);
+        var rawClassId = WriteClassId(classId);
 
-        rw ??= new GbxReaderWriter(this);
+        if (Logger is not null)
+        {
+            if (classId == rawClassId)
+            {
+                Logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName})", nodeIndex, classId, ClassManager.GetName(classId));
+            }
+            else
+            {
+                Logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", nodeIndex, classId, ClassManager.GetName(classId), rawClassId);
+            }
+        }
 
-        value.ReadWrite(rw);
+        WriteNodeContent(value);
     }
 
     internal int RegisterNodeReference(object value)

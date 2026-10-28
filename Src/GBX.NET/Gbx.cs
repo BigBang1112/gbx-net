@@ -451,6 +451,10 @@ public partial class Gbx : IGbx
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
+        var logger = settings.Logger;
+        logger?.LogInformation("Gbx Save (IMPLICIT)");
+        logger?.LogDebug("File path: {FilePath}", (stream as FileStream)?.Name);
+
         var packDescVersion = settings.PackDescVersion ?? PackDescVersion.GetValueOrDefault(3);
         var deprecVersion = DeprecVersion.GetValueOrDefault(10);
         var classIdRemapMode = settings.ClassIdRemapMode ?? ClassIdRemapMode;
@@ -474,9 +478,12 @@ public partial class Gbx : IGbx
 
         var bodyUncompressedMs = default(MemoryStream);
 
+        var numNodes = default(int);
+
         if (hasRawBodyData)
         {
-            writer.Write(Header.NumNodes);
+            numNodes = Header.NumNodes;
+            writer.Write(numNodes);
         }
         else if (Node is not null)
         {
@@ -493,7 +500,8 @@ public partial class Gbx : IGbx
 
             Body.WriteUncompressed(Node, bodyWriter);
 
-            writer.Write(bodyWriter.NodeDict.Count);
+            numNodes = bodyWriter.NodeDict.Count;
+            writer.Write(numNodes);
             writer.LoadFrom(bodyWriter);
 
             bodyUncompressedMs.Position = 0;
@@ -507,9 +515,17 @@ public partial class Gbx : IGbx
             throw new Exception("Node cannot be null for a known header, as the node contains the header chunk definitions.");
         }
 
+        logger?.LogDebug("Number of nodes: {NumNodes}", numNodes);
+
+        if (numNodes > short.MaxValue)
+        {
+            logger?.LogWarning("Number of nodes {NumNodes} exceeds 32767, which may cause the game to ignore the Gbx.", numNodes);
+        }
+
         if (outputRefTable is null)
         {
             writer.Write(0); // number of external nodes
+            logger?.LogDebug("Number of external nodes: {NumExternalNodes}", 0);
         }
         else
         {
@@ -524,6 +540,15 @@ public partial class Gbx : IGbx
         {
             Body.Write(writer, bodyUncompressedMs, Header.Basic.CompressionOfBody);
             bodyUncompressedMs.Dispose();
+        }
+
+        if (logger is not null)
+        {
+            logger.LogDebug("Id version: {IdVersion}", writer.IdVersion);
+            logger.LogDebug("PackDesc version: {PackDescVersion}", writer.PackDescVersion);
+            logger.LogDebug("Deprec version: {DeprecVersion}", writer.DeprecVersion);
+            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", writer.ClassIdRemapMode);
+            logger.LogInformation(Header is GbxHeaderUnknown ? "Unknown Gbx completed." : "Known Gbx completed.");
         }
     }
 

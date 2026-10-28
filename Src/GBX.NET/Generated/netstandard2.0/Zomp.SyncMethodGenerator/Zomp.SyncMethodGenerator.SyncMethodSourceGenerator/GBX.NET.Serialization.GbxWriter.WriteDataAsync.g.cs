@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
+using Microsoft.Extensions.Logging;
 
 namespace GBX.NET.Serialization;
 public sealed partial class GbxWriter

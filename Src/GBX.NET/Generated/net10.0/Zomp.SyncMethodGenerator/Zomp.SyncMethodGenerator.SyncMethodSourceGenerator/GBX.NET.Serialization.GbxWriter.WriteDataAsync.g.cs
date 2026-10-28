@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using GBX.NET.Components;
 using System.Collections.Immutable;
+using Microsoft.Extensions.Logging;
 using System.Buffers;
 
 namespace GBX.NET.Serialization;
