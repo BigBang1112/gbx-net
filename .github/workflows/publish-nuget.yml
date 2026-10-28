@@ -43,8 +43,9 @@ jobs:
         Templates/GBX.NET.Templates.csproj
       push-to-custom-feeds: true
       custom-feed-urls: https://nuget.gbx.tools/v3/index.json
-      release-description: ${{ inputs.optional_description }}
       send-discord-message: ${{ github.event_name == 'push' || inputs.notify_discord }}
+      discord-top-lines: ${{ inputs.optional_description }}
+      discord-bottom-lines: "Explorer: <https://explorer.gbx.tools>"
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
