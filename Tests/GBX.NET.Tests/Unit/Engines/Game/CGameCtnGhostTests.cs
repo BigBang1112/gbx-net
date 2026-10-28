@@ -199,7 +199,7 @@ public class CGameCtnGhostTests
     [Arguments(120100, int.MaxValue, int.MaxValue)]
     public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime, int cpuKind, int osKind)
     {
-        const int gameRules = unchecked((int)0xFEDCBA98);
+        const uint gameRules = 0xFEDCBA98;
         var payload = Payload(w =>
         {
             w.Write(gameRules);

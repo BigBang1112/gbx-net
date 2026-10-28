@@ -456,7 +456,7 @@ public partial class CGameCtnGhostBuilder : CGameCtnGhostBuilderBase<CGameCtnGho
         public TM2020 WithSpawnLandmarkId(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetSpawnLandmarkIdAssignment(), value, SupportedGames8);
         public TM2020 WithValidate_GameMode(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeAssignment(), value, SupportedGames8);
         public TM2020 WithValidate_GameModeCustomData(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameModeCustomDataAssignment(), value, SupportedGames8);
-        public TM2020 WithValidate_GameRules(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, SupportedGames8);
+        public TM2020 WithValidate_GameRules(uint value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_GameRulesAssignment(), value, SupportedGames8);
         public TM2020 WithValidate_RaceStartTime(TimeInt32? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_RaceStartTimeAssignment(), value, SupportedGames8);
         public TM2020 WithValidate_ScopeId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeIdAssignment(), value, SupportedGames8);
         public TM2020 WithValidate_ScopeType(global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnGhostBuilderAssignments.GetValidate_ScopeTypeAssignment(), value, SupportedGames8);

@@ -386,6 +386,9 @@ internal static class EngineWriter
                 if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "formatted")))
                     code.Line("[SupportsFormatting]");
 
+                if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "hex")))
+                    code.Line("[Hexadecimal]");
+
                 if (partialProperty is not null)
                 {
                     PartialProperty(code, partialProperty);

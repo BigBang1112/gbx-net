@@ -213,7 +213,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   string Validate_GameModeCustomData
 
 0x02A (skippable) [TM2020] // validation game rules and race start time
-  int Validate_GameRules = 1 // packed gameplay settings, also serialized in 0x02D
+  uint Validate_GameRules = 1 (hex) // packed gameplay settings, including multi-bit fields; also serialized in 0x02D
   int? Validate_RaceStartTime (time) // simulation time, also serialized in 0x02D
 
 0x02B (skippable) [TM2020.v1] // race result TM2020
@@ -243,7 +243,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   unixtime? WalltimeEndTimestamp
   string Validate_TitleId
   checksum256? Validate_TitleChecksum
-  int Validate_GameRules
+  uint Validate_GameRules (hex)
   int? Validate_RaceStartTime (time)
   int? Validate_ValidationSeed
   int SimulationFlags // bit 0 is SteeringWheelSensitivity

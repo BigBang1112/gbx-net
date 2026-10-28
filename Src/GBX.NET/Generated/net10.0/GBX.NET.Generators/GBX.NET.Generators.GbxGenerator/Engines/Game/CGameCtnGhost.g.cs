@@ -608,14 +608,15 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.validate_GameModeCustomData = value;
     }
 
-    private int validate_GameRules = 1;
+    private uint validate_GameRules = 1;
     /// <summary>
-    /// packed gameplay settings, also serialized in 0x02D
+    /// packed gameplay settings, including multi-bit fields; also serialized in 0x02D
     /// </summary>
     /// <remarks>Applied with: 0x02A, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202A>]
     [AppliedWithChunk<Chunk0309202D>]
-    public int Validate_GameRules
+    [Hexadecimal]
+    public uint Validate_GameRules
     {
         get => this.validate_GameRules;
         set => this.validate_GameRules = value;
@@ -1875,7 +1876,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.validate_GameRules);
+            rw.UInt32(ref n.validate_GameRules);
             rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
         }
     }

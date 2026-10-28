@@ -200,6 +200,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     private ulong lightmapCacheUid;
     /// <remarks>Applied with: 0x003 v8+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(8)]
+    [Hexadecimal]
     public ulong LightmapCacheUid
     {
         get => this.lightmapCacheUid;

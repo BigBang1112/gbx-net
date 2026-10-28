@@ -3383,6 +3383,39 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_HexOnAnyFieldOccurrence_AddsPropertyAttributeAndCompiles()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Serialization;
+            public partial class GbxReaderWriter
+            {
+                public void UInt32(ref uint value) { }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              uint GameRules = 1
+              uint DecimalValue
+            0x002
+              uint GameRules (hex)
+            archive Metadata
+              uint Flags (hex)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var properties = Engine(result).GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText is "GameRules" or "DecimalValue" or "Flags")
+            .ToDictionary(x => x.Identifier.ValueText);
+        await Assert.That(properties["GameRules"].AttributeLists.SelectMany(x => x.Attributes)
+            .Count(x => x.Name.ToString() == "Hexadecimal")).IsEqualTo(1);
+        await Assert.That(properties["Flags"].AttributeLists.SelectMany(x => x.Attributes)
+            .Count(x => x.Name.ToString() == "Hexadecimal")).IsEqualTo(1);
+        await Assert.That(properties["DecimalValue"].AttributeLists.SelectMany(x => x.Attributes)
+            .Any(x => x.Name.ToString() == "Hexadecimal")).IsFalse();
+    }
+
+    [Test]
     public async Task Generate_PartialComputedProperties_MergesChunkMetadataAndCompiles()
     {
         const string source = """

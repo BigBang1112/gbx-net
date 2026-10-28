@@ -165,7 +165,7 @@ public partial interface IGameCtnGhostTM2020 : IGameCtnGhost, global::GBX.NET.In
     int? SpawnLandmarkId { get; set; }
     string? Validate_GameMode { get; set; }
     string? Validate_GameModeCustomData { get; set; }
-    int Validate_GameRules { get; set; }
+    uint Validate_GameRules { get; set; }
     TimeInt32? Validate_RaceStartTime { get; set; }
     string? Validate_ScopeId { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType Validate_ScopeType { get; set; }

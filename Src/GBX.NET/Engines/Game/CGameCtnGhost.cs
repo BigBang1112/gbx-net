@@ -388,7 +388,7 @@ public partial class CGameCtnGhost
             rw.UnixTime(ref n.walltimeEndTimestamp);
             rw.String(ref n.validate_TitleId);
             rw.Checksum256(ref n.validate_TitleChecksum);
-            rw.Int32(ref n.validate_GameRules);
+            rw.UInt32(ref n.validate_GameRules);
             rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
             rw.Int32(ref n.validate_ValidationSeed);
             rw.Int32(ref n.simulationFlags);
