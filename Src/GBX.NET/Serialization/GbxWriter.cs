@@ -190,7 +190,7 @@ public partial interface IGbxWriter : IDisposable
 /// </summary>
 public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 {
-    internal const int MaxDataSize = 0x10000000; // ~268MB
+    internal const int MaxDataSize = 0x20000000; // 512 MB
 
     private static readonly Encoding encoding = Encoding.UTF8;
 
@@ -384,10 +384,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
                 var length = encoding.GetByteCount(value);
 
-                if (length > 0x10000000) // ~268MB
-                {
-                    throw new LengthLimitException(length);
-                }
+                EnsureValidLength(length);
 
                 Write(length);
 
@@ -2117,7 +2114,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteListWritable(value, byteLengthPrefix, version);
     }
 
-    private void EnsureValidLength(int length)
+    internal void EnsureValidLength(int length)
     {
         if (length < 0)
         {

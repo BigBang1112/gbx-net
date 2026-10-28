@@ -5,8 +5,9 @@ namespace GBX.NET;
 public readonly record struct GbxReadSettings
 {
     /// <summary>
-    /// Maximum allowed size for arrays, lists, and other data structures. Default is 256 MB, but for backend it is recommended to set it to a lower value, like 16 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
+    /// Maximum allowed size for arrays, lists, and other data structures. Default is 512 MB, but for backend it is recommended to set it to a lower value, like 16 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
     /// </summary>
+    /// <remarks>Null uses the default limit of 536870912. Set a larger value, up to <see cref="int.MaxValue"/>, to allow larger data structures.</remarks>
     public int? MaxDataSize { get; init; }
     
     /// <summary>
@@ -15,12 +16,12 @@ public readonly record struct GbxReadSettings
     public int? MaxUserDataSize { get; init; }
 
     /// <summary>
-    /// Maximum allowed size for uncompressed body. Default is 256 MB, but for backend it is recommended to set it to a lower value, like 64 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
+    /// Maximum allowed size for uncompressed body. Default is 512 MB, but for backend it is recommended to set it to a lower value, like 64 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
     /// </summary>
     public int? MaxUncompressedBodySize { get; init; }
 
     /// <summary>
-    /// Maximum allowed size for compressed body. Default is 256 MB, but for backend it is recommended to set it to a lower value, like 32 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
+    /// Maximum allowed size for compressed body. Default is 512 MB, but for backend it is recommended to set it to a lower value, like 32 MB, to prevent potential DoS attacks with maliciously crafted Gbx files.
     /// </summary>
     public int? MaxCompressedBodySize { get; init; }
 
