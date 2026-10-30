@@ -1,3 +1,4 @@
+using GBX.NET.Engines.Game;
 using System.Text.RegularExpressions;
 
 namespace GBX.NET.Tests.Integration;
@@ -41,6 +42,25 @@ public partial class GbxGameVersionFixtureTests
         var gbx = Gbx.Parse(TestFiles.Gbx("CGameCtnGhost", fileName));
 
         await Assert.That(gbx.Node!.GameVersion).IsEqualTo(game);
+    }
+
+    [Test]
+    [Arguments("CGameCtnChallenge MP3 001.Map.Gbx", GameVersion.MP3)]
+    [Arguments("CGameCtnChallenge TMT 001.Map.Gbx", GameVersion.TMT)]
+    public async Task GameVersionDifferentiatesMapsByTitle(string fileName, GameVersion game)
+    {
+        var gbx = Gbx.Parse(TestFiles.Gbx("CGameCtnChallenge", fileName));
+
+        await Assert.That(gbx.Node!.GameVersion).IsEqualTo(game);
+    }
+
+    [Test]
+    public async Task GameVersionUsesTheTurboTitleWhenChunksFitBothGames()
+    {
+        var gbx = Gbx.Parse<CGameCtnChallenge>(TestFiles.Gbx("CGameCtnChallenge", "CGameCtnChallenge MP3 001.Map.Gbx"));
+        gbx.Node.TitleId = "TMTurbo@nadeolabs";
+
+        await Assert.That(gbx.Node.GameVersion).IsEqualTo(GameVersion.TMT);
     }
 
     [GeneratedRegex(@"^\S+ (?<game>[A-Z][A-Z0-9]+) \d+\.")]

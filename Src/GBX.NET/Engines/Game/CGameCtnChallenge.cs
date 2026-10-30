@@ -809,6 +809,22 @@ public partial class CGameCtnChallenge :
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="random"/> is null.</exception>
     public string GenerateMapUid(Random random) => MapUid = MapUtils.GenerateMapUid(random);
 
+    public override GameVersion GameVersion
+    {
+        get
+        {
+            var version = base.GameVersion;
+
+            // MP3 and TMT maps can share all chunks, but only Turbo saves under its own title
+            if ((version & GameVersion.MP3) != 0 && (version & GameVersion.TMT) != 0 && TitleId is not null)
+            {
+                return version & ~(TitleId == "TMTurbo@nadeolabs" ? GameVersion.MP3 : GameVersion.TMT);
+            }
+
+            return version;
+        }
+    }
+
     public string CreateHeaderXml()
     {
         if (IsGameVersion(GameVersion.TMSX, strict: true)) return CreateHeaderXml(GameVersion.TMSX);
