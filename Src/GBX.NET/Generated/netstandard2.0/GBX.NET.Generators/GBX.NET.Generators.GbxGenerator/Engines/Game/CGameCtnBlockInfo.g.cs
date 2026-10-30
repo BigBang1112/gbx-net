@@ -86,21 +86,21 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref pillarRef, value);
     }
 
-    private NodeRefList<CGameCtnBlockUnitInfo?>? groundBlockUnitInfos;
+    private NodeRefList<CGameCtnBlockUnitInfo>? groundBlockUnitInfos;
     /// <remarks>Applied with: 0x005, 0x01D body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
-    public NodeRefList<CGameCtnBlockUnitInfo?>? GroundBlockUnitInfos
+    public NodeRefList<CGameCtnBlockUnitInfo>? GroundBlockUnitInfos
     {
         get => groundBlockUnitInfos;
         set => groundBlockUnitInfos = value;
     }
 
-    private NodeRefList<CGameCtnBlockUnitInfo?>? airBlockUnitInfos;
+    private NodeRefList<CGameCtnBlockUnitInfo>? airBlockUnitInfos;
     /// <remarks>Applied with: 0x005, 0x01D body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
-    public NodeRefList<CGameCtnBlockUnitInfo?>? AirBlockUnitInfos
+    public NodeRefList<CGameCtnBlockUnitInfo>? AirBlockUnitInfos
     {
         get => airBlockUnitInfos;
         set => airBlockUnitInfos = value;
@@ -548,8 +548,8 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         private readonly CGameCtnBlockInfo owner;
         internal NodeRefView(CGameCtnBlockInfo owner) => this.owner = owner;
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => NodeRef.GetOrCreate(ref owner.pillarRef);
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? GroundBlockUnitInfos => owner.groundBlockUnitInfos?.References;
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? AirBlockUnitInfos => owner.airBlockUnitInfos?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? GroundBlockUnitInfos => owner.groundBlockUnitInfos?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? AirBlockUnitInfos => owner.airBlockUnitInfos?.References;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? GroundMobils => owner.groundMobils is { } rows ? Array.ConvertAll(rows, static row => row?.References) : null;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? AirMobils => owner.airMobils is { } rows ? Array.ConvertAll(rows, static row => row?.References) : null;
         public NodeRef<CSceneMobil> GroundHelperMobil => NodeRef.GetOrCreate(ref owner.groundHelperMobilRef);
@@ -734,9 +734,9 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameCtnBlockInfo 0x005 chunk (legacy block units and mobils)
+    /// CGameCtnBlockInfo 0x005 chunk (block units and mobils)
     /// </summary>
-    [Chunk(0x0304E005, "legacy block units and mobils")]
+    [Chunk(0x0304E005, "block units and mobils")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
     {
@@ -768,8 +768,8 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             rw.EnumInt32<ESelection>(ref n.selection);
             rw.Int32(ref U01);
             rw.NodeRef(ref n.pillarRef);
-            n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo?>(n.groundBlockUnitInfos);
-            n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo?>(n.airBlockUnitInfos);
+            n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.groundBlockUnitInfos);
+            n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.airBlockUnitInfos);
             n.groundMobils = rw.JaggedArrayNodeRef<CSceneMobil>(n.groundMobils);
             n.airMobils = rw.JaggedArrayNodeRef<CSceneMobil>(n.airMobils);
             rw.Byte(ref U02);
@@ -1086,9 +1086,9 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameCtnBlockInfo 0x01D chunk (legacy block units)
+    /// CGameCtnBlockInfo 0x01D chunk (block units)
     /// </summary>
-    [Chunk(0x0304E01D, "legacy block units")]
+    [Chunk(0x0304E01D, "block units")]
     public partial class Chunk0304E01D : Chunk<CGameCtnBlockInfo>
     {
         public override uint Id => 0x0304E01D;
@@ -1114,15 +1114,15 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             rw.Boolean(ref n.isPillar);
             rw.Int32(ref U04);
             rw.NodeRef(ref n.pillarRef);
-            n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo?>(n.groundBlockUnitInfos);
-            n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo?>(n.airBlockUnitInfos);
+            n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.groundBlockUnitInfos);
+            n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.airBlockUnitInfos);
         }
     }
 
     /// <summary>
-    /// CGameCtnBlockInfo 0x01E chunk (legacy block info mobils)
+    /// CGameCtnBlockInfo 0x01E chunk (block info mobils)
     /// </summary>
-    [Chunk(0x0304E01E, "legacy block info mobils")]
+    [Chunk(0x0304E01E, "block info mobils")]
     public partial class Chunk0304E01E : Chunk<CGameCtnBlockInfo>
     {
         public override uint Id => 0x0304E01E;

@@ -56,9 +56,9 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     }
 
     /// <summary>
-    /// CGameCtnMediaBlockImage 0x000 chunk
+    /// CGameCtnMediaBlockImage 0x000 chunk (effect and image)
     /// </summary>
-    [Chunk(0x030A5000)]
+    [Chunk(0x030A5000, "effect and image")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030A5000 : Chunk<CGameCtnMediaBlockImage>
     {

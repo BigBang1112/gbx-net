@@ -182,8 +182,8 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         internal NodeRefView(CGameCtnBlockInfoClip owner) => this.owner = owner;
         public NodeRef<CGameCtnCollector> LegacySymmetricalClip => NodeRef.GetOrCreate(ref owner.legacySymmetricalClipRef);
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => ((CGameCtnBlockInfo)owner).References.Pillar;
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? GroundMobils => ((CGameCtnBlockInfo)owner).References.GroundMobils;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? AirMobils => ((CGameCtnBlockInfo)owner).References.AirMobils;
         public NodeRef<CSceneMobil> GroundHelperMobil => ((CGameCtnBlockInfo)owner).References.GroundHelperMobil;
