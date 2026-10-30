@@ -35,11 +35,11 @@ public partial class CPlugAnimGraph : CMwNod, IClass
     /// CPlugAnimGraph 0x000 chunk (graph)
     /// </summary>
     [Chunk(0x0912B000, "graph")]
-    [ChunkGameVersion(GameVersion.TM2020, 13)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 13, 13)]
     public partial class Chunk0912B000 : Chunk<CPlugAnimGraph>, IVersionable
     {
         public override uint Id => 0x0912B000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk0912B000() : this(GameVersion.Unspecified)
@@ -48,7 +48,7 @@ public partial class CPlugAnimGraph : CMwNod, IClass
 
         public Chunk0912B000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 13;
             }

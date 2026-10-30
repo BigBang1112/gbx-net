@@ -77,6 +77,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public MP3 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameActionModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);

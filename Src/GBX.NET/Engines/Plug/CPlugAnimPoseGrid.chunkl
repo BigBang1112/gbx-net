@@ -1,6 +1,6 @@
 CPlugAnimPoseGrid 0x09136000
 
-0x000 [TM2020.v3] // pose grid
+0x000 [MP4.v2, TM2020.v3] // pose grid
   version
   id Name
   CPlugAnimSkelJointGroup ChannelGroup

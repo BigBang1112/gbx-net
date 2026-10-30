@@ -620,6 +620,53 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_RetiredChunks_StayQualifiedButLeaveTheGameRecipe()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        var legacy = Example.Create().ForTM10().WithValue(7).Build();
+                        var modern = Example.Create().ForMP4().WithValue(8).Build();
+                        var latest = Example.Create().ForTM2020().WithValue(9).Build();
+                        return legacy.Chunks.Count == 3
+                            && modern.Chunks.Count == 1 && modern.GetChunk<Chunk03043002>() is null && modern.GetChunk<Chunk03043003>() is null
+                            && latest.Chunks.Count == 2 && latest.GetChunk<Chunk03043002>() is not null && latest.GetChunk<Chunk03043003>() is null
+                            && (new Chunk03043002().GameVersion & GBX.NET.GameVersion.MP4) != 0;
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4, TM2020]
+              int Value
+            0x002 (retired: MP4) [TM10, MP4, TM2020]
+            0x003 (retired: MP4 | TM2020) [TM10, MP4, TM2020]
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    [Arguments("TM2021")]
+    [Arguments("TMF")]
+    [Arguments("MP4 | TM2021")]
+    public async Task Generate_RetiredGameOutsideTheQualifiers_ReportsInvalidMetadata(string games)
+    {
+        var (result, _) = RunGame("", new Text("Engines/Game/Example.chunkl", $"""
+            Example 0x03043000
+            0x001 (retired: {games}) [TM10, MP4]
+              int Value
+            """));
+
+        await Assert.That(result.Diagnostics.Single(static d => d.Id == "GBXNETGEN300").GetMessage()).Contains("Chunk Chunk03043001 retires");
+    }
+
+    [Test]
     public async Task Generate_GameBuilders_OmitsNodesThatCannotBeWritten()
     {
         var (result, compilation) = RunGame("""

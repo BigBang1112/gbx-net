@@ -15,22 +15,27 @@ public partial class CGameActionModel : global::GBX.NET.Interfaces.GameData.IGam
         get => Script;
         set => Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3>.Anim
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3>.Anim
     {
         get => Anim;
         set => Anim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT>.Anim
-    {
-        get => Anim;
-        set => Anim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers5<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT>.Script
+    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3>.Script
     {
         get => Script;
         set => Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>.Anim
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT>.Anim
+    {
+        get => Anim;
+        set => Anim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT>.Script
+    {
+        get => Script;
+        set => Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4>.Anim
     {
         get => Anim;
         set => Anim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -40,7 +45,7 @@ public partial class CGameActionModel : global::GBX.NET.Interfaces.GameData.IGam
         get => BulletModels_Nadeo is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(GetBulletModels_NadeoInterfaceReferences, true, "BulletModels_Nadeo");
         set => BulletModels_Nadeo = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers5<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4>.Script
+    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4>.Script
     {
         get => Script;
         set => Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -50,7 +55,7 @@ public partial class CGameActionModel : global::GBX.NET.Interfaces.GameData.IGam
         get => ShieldModel;
         set => ShieldModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>.Anim
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020>.Anim
     {
         get => Anim;
         set => Anim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -65,7 +70,7 @@ public partial class CGameActionModel : global::GBX.NET.Interfaces.GameData.IGam
         get => CompatBullet_Nadeo;
         set => CompatBullet_Nadeo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers5<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020>.Script
+    global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020>.Script
     {
         get => Script;
         set => Script = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

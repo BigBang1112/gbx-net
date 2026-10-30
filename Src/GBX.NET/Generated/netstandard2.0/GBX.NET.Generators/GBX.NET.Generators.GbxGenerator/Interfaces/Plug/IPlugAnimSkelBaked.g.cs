@@ -3,20 +3,31 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimSkelBakedMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked where T0 : class
+{
+    new T0? JointGroup { get; set; }
+}
 public partial interface IPlugAnimSkelBaked : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked>
 {
     global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags { get; set; }
     int FlagsVersion { get; set; }
-    ulong Hash { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? JointGroup { get; set; }
-    byte[]? PackedLocalJointsData { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? RootMotionFrames { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? Timing { get; set; }
     int TimingVersion { get; set; }
 }
 
-public partial interface IPlugAnimSkelBakedTM2020 : IPlugAnimSkelBaked
+public partial interface IPlugAnimSkelBakedMP4 : IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? JointGroup { get; set; }
+    float[]? FloatChannelData { get; set; }
+    string[]? FloatChannelIds { get; set; }
+    TransQuat[]? LocalJointsData { get; set; }
+}
+
+public partial interface IPlugAnimSkelBakedTM2020 : IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020>
+{
+    ulong Hash { get; set; }
+    byte[]? PackedLocalJointsData { get; set; }
 }
 

@@ -543,11 +543,11 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     /// CGameCtnChallengeParameters 0x00D chunk (RaceValidateGhost)
     /// </summary>
     [Chunk(0x0305B00D, "RaceValidateGhost")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305B00D : Chunk<CGameCtnChallengeParameters>
     {
         public override uint Id => 0x0305B00D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

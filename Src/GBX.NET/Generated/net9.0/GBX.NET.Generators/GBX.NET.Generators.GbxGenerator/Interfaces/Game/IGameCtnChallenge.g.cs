@@ -6,23 +6,12 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
-    NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
-{
     global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks { get; set; }
     string? ChallengeScript { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
-{
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers4<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+public interface IGameCtnChallengeMembers2<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
 {
     IReadOnlyList<T0>? AnchoredObjects
     {
@@ -87,7 +76,7 @@ public interface IGameCtnChallengeMembers4<T0, T1, T2, T3, T4> : global::GBX.NET
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers5<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
+public interface IGameCtnChallengeMembers3<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
 {
     global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers { get; set; }
     IReadOnlyList<T0>? BakedBlocks
@@ -108,7 +97,7 @@ public interface IGameCtnChallengeMembers5<T0, T1> : global::GBX.NET.Interfaces.
     global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers6<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
+public interface IGameCtnChallengeMembers4<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
 {
     new T0? BlockStock
     {
@@ -122,7 +111,7 @@ public interface IGameCtnChallengeMembers6<T0, T1> : global::GBX.NET.Interfaces.
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers5 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     global::TmEssentials.TimeInt32? AuthorTime { get; set; }
     global::TmEssentials.TimeInt32? BronzeTime { get; set; }
@@ -131,7 +120,7 @@ public interface IGameCtnChallengeMembers7 : global::GBX.NET.Interfaces.Game.IGa
     global::TmEssentials.TimeInt32? SilverTime { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers8<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+public interface IGameCtnChallengeMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
 {
     new IReadOnlyList<T0>? Blocks
     {
@@ -140,7 +129,7 @@ public interface IGameCtnChallengeMembers8<T0> : global::GBX.NET.Interfaces.Game
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     uint Crc32 { get; set; }
     bool CreatedWithSimpleEditor { get; set; }
@@ -148,7 +137,7 @@ public interface IGameCtnChallengeMembers9 : global::GBX.NET.Interfaces.Game.IGa
     global::GBX.NET.Checksum128? HashedPassword { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers10<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+public interface IGameCtnChallengeMembers8<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
 {
     T0? ClipGlobal
     {
@@ -157,28 +146,28 @@ public interface IGameCtnChallengeMembers10<T0> : global::GBX.NET.Interfaces.Gam
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers11 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers12 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers10 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     int Cost { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers13 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers11 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     string? Password { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers14 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers12 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     int? AuthorScore { get; set; }
     bool HasClones { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers15<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
+public interface IGameCtnChallengeMembers13<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
 {
     T0? ClipGroupEndRace
     {
@@ -200,23 +189,23 @@ public interface IGameCtnChallengeMembers15<T0, T1> : global::GBX.NET.Interfaces
     Vec2 MapCoordTarget { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers16 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers14 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
     new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers17 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers15 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     string? Xml { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers18 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers16 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     List<Int3>? Checkpoints { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers19 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers17 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     bool IsLapRace { get; set; }
     PackDesc? ModPackDesc { get; set; }
@@ -224,13 +213,13 @@ public interface IGameCtnChallengeMembers19 : global::GBX.NET.Interfaces.Game.IG
     int NbLaps { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers20 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers18 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     UInt128 PackMask { get; set; }
     byte[]? Thumbnail { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnChallengeMembers21 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+public interface IGameCtnChallengeMembers19 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
     string? Comments { get; set; }
     bool HasCustomCamThumbnail { get; set; }
@@ -264,50 +253,53 @@ public partial interface IGameCtnChallenge : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Int3 Size { get; set; }
 }
 
-public partial interface IGameCtnChallengeTM10 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>
+public partial interface IGameCtnChallengeTM10 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>
 {
 }
 
-public partial interface IGameCtnChallengeTMPU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13
+public partial interface IGameCtnChallengeTMPU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11
 {
 }
 
-public partial interface IGameCtnChallengeTMS : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
+public partial interface IGameCtnChallengeTMS : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
     global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMO : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
+public partial interface IGameCtnChallengeTMO : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
 }
 
-public partial interface IGameCtnChallengeTMSX : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
+public partial interface IGameCtnChallengeTMSX : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
 }
 
-public partial interface IGameCtnChallengeTMNESWC : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
+public partial interface IGameCtnChallengeTMNESWC : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
 }
 
-public partial interface IGameCtnChallengeTMU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeTMU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
 }
 
-public partial interface IGameCtnChallengeVSK5 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeVSK5 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
 }
 
-public partial interface IGameCtnChallengeTMF : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeTMF : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
 }
 
-public partial interface IGameCtnChallengeMP3 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeMP3 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
+    NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMT : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeTMT : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT>? TrafficElemDescs
     {
@@ -326,12 +318,12 @@ public partial interface IGameCtnChallengeTMT : IGameCtnChallenge, global::GBX.N
     }
 }
 
-public partial interface IGameCtnChallengeMP4 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeMP4 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
     global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? SubMapsInfos { get; set; }
 }
 
-public partial interface IGameCtnChallengeTM2020 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
+public partial interface IGameCtnChallengeTM2020 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
     global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? BlockOctree { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>? ClipGroups

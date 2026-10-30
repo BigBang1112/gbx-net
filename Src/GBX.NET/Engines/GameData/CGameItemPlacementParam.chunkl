@@ -19,7 +19,7 @@ CGameItemPlacementParam 0x2E020000
   vec3[] PivotPositions
   quat[] PivotRotations
 
-0x003 (skippable) // legacy PlacementClass
+0x003 (skippable, retired: TM2020) [TM2020.v3] // legacy PlacementClass
   version
 
 0x004 (skippable) [TM2020] // magnet locations

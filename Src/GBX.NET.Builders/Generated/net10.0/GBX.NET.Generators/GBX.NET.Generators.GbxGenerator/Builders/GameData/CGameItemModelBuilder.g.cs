@@ -166,8 +166,6 @@ public abstract class CGameItemModelBuilderMembers10<TSelf> : CGameItemModelBuil
     public TSelf WithActions(params global::GBX.NET.Engines.GameData.CGameActionModel[] values) => WithActions(new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(values));
     public TSelf WithActions(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel> values) => WithActions(values.ToArray());
     public TSelf WithDefaultCam(global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDefaultCamAssignment(), value, SupportedGames9);
-    public TSelf WithItemGroupElements(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemGroupElementsAssignment(), value, SupportedGames9);
-    public TSelf WithItemGroupElements(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemGroupElements(values.ToArray());
     public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, SupportedGames9);
 }
 public abstract class CGameItemModelBuilderMembers11<TSelf> : CGameItemModelBuilderMembers10<TSelf> where TSelf : CGameItemModelBuilderMembers11<TSelf>
@@ -439,9 +437,6 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00201E(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00201F(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002020(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002021() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002023() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002024() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002025() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002026() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002027() { Version = 0 });
@@ -454,7 +449,6 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001012() { Version = 0 });
@@ -638,6 +632,8 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public TMT WithAudioEnvironmentInCarReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarReferenceAssignment(), value, SupportedGames6);
         public TMT WithAudioEnvironmentInCar(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? value) => WithAudioEnvironmentInCar(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithItemGroupElements(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemGroupElementsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+        public TMT WithItemGroupElements(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemGroupElements(values.ToArray());
         public TMT WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dTMT? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameItemModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
@@ -653,6 +649,8 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public MP4 WithAudioEnvironmentInCarReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarReferenceAssignment(), value, SupportedGames6);
         public MP4 WithAudioEnvironmentInCar(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value) => WithAudioEnvironmentInCar(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithItemGroupElements(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemGroupElementsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+        public MP4 WithItemGroupElements(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemGroupElements(values.ToArray());
         public MP4 WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dMP4? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameItemModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe9(GameVersion.MP4), GameVersion.MP4);

@@ -35,6 +35,10 @@ public partial interface IGameCtnMediaBlockTimeTMF : IGameCtnMediaBlockTime, glo
 {
 }
 
+public partial interface IGameCtnMediaBlockTimeMP3 : IGameCtnMediaBlockTime, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP3
+{
+}
+
 public partial interface IGameCtnMediaBlockTimeMP4 : IGameCtnMediaBlockTime, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
 {
 }

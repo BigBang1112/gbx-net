@@ -110,6 +110,12 @@ public partial class CPlugAnimFileBuilder : CPlugAnimFileBuilderBase<CPlugAnimFi
         public MP4 WithClips(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetClipsAssignment(), value, GameVersion.MP4);
         public MP4 WithClips(params global::GBX.NET.Engines.Plug.CPlugAnimClip[] values) => WithClips(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>(values));
         public MP4 WithClips(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimClip> values) => WithClips(values.ToArray());
+        public MP4 WithClips(params global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4[] values) => WithClips(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4>(values, false));
+        public MP4 WithClips(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4> values) => WithClips(values.ToArray());
+        public MP4 WithGraphStacks(params global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4[] values) => base.WithGraphStacks(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4>(values, false));
+        public MP4 WithGraphStacks(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4> values) => WithGraphStacks(values.ToArray());
+        public MP4 WithPoseGrids(params global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4[] values) => base.WithPoseGrids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4>(values, false));
+        public MP4 WithPoseGrids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4> values) => WithPoseGrids(values.ToArray());
         public MP4 WithSkels(params global::GBX.NET.Engines.Plug.CPlugSkel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimFileBuilderAssignments.GetSkelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
         public MP4 WithSkels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSkel> values) => WithSkels(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4 BuildInterface() => Build();

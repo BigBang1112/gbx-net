@@ -172,11 +172,16 @@ public partial class CPlugAnimPoseGrid : CMwNod, IClass
     /// CPlugAnimPoseGrid 0x000 chunk (pose grid)
     /// </summary>
     [Chunk(0x09136000, "pose grid")]
-    [ChunkGameVersion(GameVersion.TM2020, 3)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk09136000 : Chunk<CPlugAnimPoseGrid>, IVersionable
     {
         public override uint Id => 0x09136000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public TransQuat[]? U01;
 
@@ -186,7 +191,11 @@ public partial class CPlugAnimPoseGrid : CMwNod, IClass
 
         public Chunk09136000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

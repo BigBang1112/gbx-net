@@ -7,16 +7,14 @@ public abstract class CPlugAnimSkelJointGroupBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CPlugAnimSkelJointGroupBuilderBase() { }
     private protected CPlugAnimSkelJointGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
-    public TSelf WithHash(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.TM2020;
     public TSelf WithJointCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointCountAssignment(), value, SupportedGames1);
     public TSelf WithJointNames(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointNamesAssignment(), value, SupportedGames1);
     public TSelf WithJointNames(IEnumerable<string> values) => WithJointNames(values.ToArray());
     public TSelf WithJointWeights(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetJointWeightsAssignment(), value, SupportedGames1);
     public TSelf WithJointWeights(IEnumerable<float> values) => WithJointWeights(values.ToArray());
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
-    public TSelf WithRanges(params Int2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, SupportedGames1);
-    public TSelf WithRanges(IEnumerable<Int2> values) => WithRanges(values.ToArray());
 }
 public partial class CPlugAnimSkelJointGroupBuilder : CPlugAnimSkelJointGroupBuilderBase<CPlugAnimSkelJointGroupBuilder>
 {
@@ -26,10 +24,24 @@ public partial class CPlugAnimSkelJointGroupBuilder : CPlugAnimSkelJointGroupBui
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup.Chunk09133000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimSkelJointGroupBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state) : base(state) { }
+        public MP4 WithLegacyNameCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetLegacyNameCountAssignment(), value, GameVersion.MP4);
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup Build() => BuildNode(CPlugAnimSkelJointGroupBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node);
+    }
     public partial class TM2020 : CPlugAnimSkelJointGroupBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> state) : base(state) { }
+        public TM2020 WithHash(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetHashAssignment(), value, SupportedGames2);
+        public TM2020 WithRanges(params Int2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelJointGroupBuilderAssignments.GetRangesAssignment(), value, SupportedGames2);
+        public TM2020 WithRanges(IEnumerable<Int2> values) => WithRanges(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup Build() => BuildNode(CPlugAnimSkelJointGroupBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node);

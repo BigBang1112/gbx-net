@@ -1,6 +1,6 @@
 CPlugAnimSkelEdition 0x09134000
 
-0x000 // editable animation
+0x000 [MP4.v11] // editable animation
   version
   int FlagsVersion
   CPlugSkel* Skel

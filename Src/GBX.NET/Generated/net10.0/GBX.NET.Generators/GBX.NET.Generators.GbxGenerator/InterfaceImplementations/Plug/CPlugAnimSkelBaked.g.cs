@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimSkelBaked : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020
+public partial class CPlugAnimSkelBaked : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020
 {
 }

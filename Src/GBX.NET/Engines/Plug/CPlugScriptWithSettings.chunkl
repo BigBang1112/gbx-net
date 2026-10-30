@@ -1,6 +1,6 @@
 CPlugScriptWithSettings 0x09083000
 
-0x000 [TMT, MP4, TM2020] // script and settings
+0x000 [MP3, TMT, MP4, TM2020] // script and settings
   CPlugFileTextScript* Script
   int SettingCount (local, write: "n.Settings?.Length ?? 0")
   int SettingsVersion

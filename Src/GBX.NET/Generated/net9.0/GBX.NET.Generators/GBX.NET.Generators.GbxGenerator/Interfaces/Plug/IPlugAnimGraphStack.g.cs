@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimGraphStackMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack where T0 : class
+{
+    new IReadOnlyList<T0>? Graphs
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).Graphs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraph, T0>(((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).GetGraphsInterfaceReferences, true, "Graphs");
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).Graphs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, T0>(value, false));
+    }
+}
 public partial interface IPlugAnimGraphStack : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraph>? Graphs
@@ -14,12 +23,11 @@ public partial interface IPlugAnimGraphStack : IClassVersion<global::GBX.NET.Eng
     string? Name { get; set; }
 }
 
-public partial interface IPlugAnimGraphStackTM2020 : IPlugAnimGraphStack
+public partial interface IPlugAnimGraphStackMP4 : IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>? Graphs
-    {
-        get => ((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).Graphs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>(((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).GetGraphsInterfaceReferences, true, "Graphs");
-        set => ((global::GBX.NET.Engines.Plug.CPlugAnimGraphStack)this).Graphs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>(value, false));
-    }
+}
+
+public partial interface IPlugAnimGraphStackTM2020 : IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>
+{
 }
 

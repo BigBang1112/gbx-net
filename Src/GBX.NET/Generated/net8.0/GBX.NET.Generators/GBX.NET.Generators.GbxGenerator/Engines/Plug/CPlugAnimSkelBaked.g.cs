@@ -159,11 +159,16 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     /// CPlugAnimSkelBaked 0x000 chunk (baked animation)
     /// </summary>
     [Chunk(0x09132000, "baked animation")]
-    [ChunkGameVersion(GameVersion.TM2020, 8)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 8)]
     public partial class Chunk09132000 : Chunk<CPlugAnimSkelBaked>, IVersionable
     {
         public override uint Id => 0x09132000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09132000() : this(GameVersion.Unspecified)
@@ -172,7 +177,11 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
 
         public Chunk09132000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 8;
             }

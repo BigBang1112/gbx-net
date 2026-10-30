@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimPoseGrid : global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020
+public partial class CPlugAnimPoseGrid : global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020
 {
 }

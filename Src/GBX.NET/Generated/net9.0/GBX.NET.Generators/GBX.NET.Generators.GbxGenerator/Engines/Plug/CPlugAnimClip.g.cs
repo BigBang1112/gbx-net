@@ -91,11 +91,11 @@ public partial class CPlugAnimClip : CMwNod, IClass
     /// CPlugAnimClip 0x000 chunk (animation clip)
     /// </summary>
     [Chunk(0x09135000, "animation clip")]
-    [ChunkGameVersion(GameVersion.TM2020, 3)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 3)]
     public partial class Chunk09135000 : Chunk<CPlugAnimClip>, IVersionable
     {
         public override uint Id => 0x09135000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk09135000() : this(GameVersion.Unspecified)
@@ -104,7 +104,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
 
         public Chunk09135000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

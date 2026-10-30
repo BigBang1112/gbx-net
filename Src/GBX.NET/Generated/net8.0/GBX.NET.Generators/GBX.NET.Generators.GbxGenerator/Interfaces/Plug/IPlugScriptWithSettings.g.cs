@@ -11,6 +11,10 @@ public partial interface IPlugScriptWithSettings : IClassVersion<global::GBX.NET
     int SettingsVersion { get; set; }
 }
 
+public partial interface IPlugScriptWithSettingsMP3 : IPlugScriptWithSettings
+{
+}
+
 public partial interface IPlugScriptWithSettingsTMT : IPlugScriptWithSettings
 {
 }

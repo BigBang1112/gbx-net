@@ -82,11 +82,11 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     /// CPlugScriptWithSettings 0x000 chunk (script and settings)
     /// </summary>
     [Chunk(0x09083000, "script and settings")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09083000 : Chunk<CPlugScriptWithSettings>
     {
         public override uint Id => 0x09083000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

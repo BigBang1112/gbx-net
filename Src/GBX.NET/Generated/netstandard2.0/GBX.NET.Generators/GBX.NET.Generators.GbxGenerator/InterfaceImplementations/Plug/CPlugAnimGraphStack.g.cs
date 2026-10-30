@@ -3,14 +3,19 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimGraphStack : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020
+public partial class CPlugAnimGraphStack : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraph>? global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack.Graphs
     {
         get => Graphs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraph>(GetGraphsInterfaceReferences, true, "Graphs");
         set => Graphs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraph>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>? global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020.Graphs
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>? global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>.Graphs
+    {
+        get => Graphs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>(GetGraphsInterfaceReferences, true, "Graphs");
+        set => Graphs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>? global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>.Graphs
     {
         get => Graphs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>(GetGraphsInterfaceReferences, true, "Graphs");
         set => Graphs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>(value, false));

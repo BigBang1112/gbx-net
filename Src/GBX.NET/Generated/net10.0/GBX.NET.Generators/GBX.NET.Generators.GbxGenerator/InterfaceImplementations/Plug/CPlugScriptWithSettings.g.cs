@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugScriptWithSettings : global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettings, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020
+public partial class CPlugScriptWithSettings : global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettings, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4, global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020
 {
 }

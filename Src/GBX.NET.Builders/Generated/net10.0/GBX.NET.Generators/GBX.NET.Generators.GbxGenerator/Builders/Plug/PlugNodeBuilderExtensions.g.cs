@@ -75,6 +75,14 @@ public static class CPlugAnimSkelBakedBuilderExtensions
     }
 }
 
+public static class CPlugAnimSkelEditionBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelEditionBuilder Create() => new();
+    }
+}
+
 public static class CPlugAnimSkelJointGroupBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup)

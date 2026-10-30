@@ -3,14 +3,19 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimSkelBaked : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020
+public partial class CPlugAnimSkelBaked : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked.JointGroup
     {
         get => JointGroup;
         set => JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020.JointGroup
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4? global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4>.JointGroup
+    {
+        get => JointGroup;
+        set => JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020>.JointGroup
     {
         get => JointGroup;
         set => JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

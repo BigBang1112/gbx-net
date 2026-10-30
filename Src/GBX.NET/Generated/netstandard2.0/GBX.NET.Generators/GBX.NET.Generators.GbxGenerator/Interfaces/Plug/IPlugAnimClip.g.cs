@@ -3,17 +3,27 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimClipMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimClip where T0 : class
+{
+    new T0? Baked { get; set; }
+}
 public partial interface IPlugAnimClip : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimClip>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked? Baked { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEdition? Edition { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags { get; set; }
     int FlagsVersion { get; set; }
     string? Name { get; set; }
 }
 
-public partial interface IPlugAnimClipTM2020 : IPlugAnimClip
+public partial interface IPlugAnimClipMP4 : IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020? Baked { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEditionMP4? Edition { get; set; }
+}
+
+public partial interface IPlugAnimClipTM2020 : IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020>
+{
+    new global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition { get; set; }
 }
 

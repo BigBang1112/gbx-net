@@ -7,7 +7,7 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CPlugScriptWithSettingsBuilderBase() { }
     private protected CPlugScriptWithSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithScript(global::GBX.NET.Engines.Plug.CPlugFileTextScript? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, SupportedGames1);
     public TSelf WithScriptReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, SupportedGames1);
     public TSelf WithSettingTypeVersion(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingTypeVersionAssignment(), value, SupportedGames1);
@@ -23,11 +23,19 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000());
         return node;
     }
+    public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP3 : CPlugScriptWithSettingsBuilderBase<MP3>
+    {
+        internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP3 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugScriptWithSettings Build() => BuildNode(CPlugScriptWithSettingsBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node);
+    }
     public partial class TMT : CPlugScriptWithSettingsBuilderBase<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) : base(state) { }

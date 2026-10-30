@@ -7,11 +7,9 @@ public abstract class CPlugAnimPoseGridBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CPlugAnimPoseGridBuilderBase() { }
     private protected CPlugAnimPoseGridBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithChannelGroup(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetChannelGroupAssignment(), value, SupportedGames1);
     public TSelf WithChannelGroupReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetChannelGroupReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithJointOffsets(params Quat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetJointOffsetsAssignment(), value, SupportedGames1);
-    public TSelf WithJointOffsets(IEnumerable<Quat> values) => WithJointOffsets(values.ToArray());
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
     public TSelf WithRefPoseGlobalJoints(params Quat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetRefPoseGlobalJointsAssignment(), value, SupportedGames1);
     public TSelf WithRefPoseGlobalJoints(IEnumerable<Quat> values) => WithRefPoseGlobalJoints(values.ToArray());
@@ -28,11 +26,26 @@ public partial class CPlugAnimPoseGridBuilder : CPlugAnimPoseGridBuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid.Chunk09136000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimPoseGridBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid> state) : base(state) { }
+        public MP4 WithChannelGroup(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4? value) => base.WithChannelGroup(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithLegacyJointOffsets(params TransQuat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetLegacyJointOffsetsAssignment(), value, GameVersion.MP4);
+        public MP4 WithLegacyJointOffsets(IEnumerable<TransQuat> values) => WithLegacyJointOffsets(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid Build() => BuildNode(CPlugAnimPoseGridBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid node);
+    }
     public partial class TM2020 : CPlugAnimPoseGridBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid> state) : base(state) { }
         public TM2020 WithChannelGroup(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? value) => base.WithChannelGroup(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithJointOffsets(params Quat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimPoseGridBuilderAssignments.GetJointOffsetsAssignment(), value, GameVersion.TM2020);
+        public TM2020 WithJointOffsets(IEnumerable<Quat> values) => WithJointOffsets(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid Build() => BuildNode(CPlugAnimPoseGridBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid node);

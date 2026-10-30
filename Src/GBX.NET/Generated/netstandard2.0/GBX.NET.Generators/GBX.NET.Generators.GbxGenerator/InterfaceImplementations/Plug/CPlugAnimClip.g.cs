@@ -3,14 +3,29 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimClip : global::GBX.NET.Interfaces.Plug.IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipTM2020
+public partial class CPlugAnimClip : global::GBX.NET.Interfaces.Plug.IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimClipTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked? global::GBX.NET.Interfaces.Plug.IPlugAnimClip.Baked
     {
         get => Baked;
         set => Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimClipTM2020.Baked
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEdition? global::GBX.NET.Interfaces.Plug.IPlugAnimClip.Edition
+    {
+        get => Edition;
+        set => Edition = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4? global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4>.Baked
+    {
+        get => Baked;
+        set => Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEditionMP4? global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4.Edition
+    {
+        get => Edition;
+        set => Edition = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020>.Baked
     {
         get => Baked;
         set => Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
