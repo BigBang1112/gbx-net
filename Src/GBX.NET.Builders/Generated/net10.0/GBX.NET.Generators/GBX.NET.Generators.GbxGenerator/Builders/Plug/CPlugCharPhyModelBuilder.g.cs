@@ -9,6 +9,15 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> : NodeBuilder<global::
     private protected CPlugCharPhyModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4;
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, SupportedGames3);
+    public TSelf WithSmoothing(params global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, SupportedGames3);
+    public TSelf WithSmoothing(IEnumerable<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel> values) => WithSmoothing(values.ToArray());
+    public TSelf WithSmoothingVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, SupportedGames3);
+}
+public abstract class CPlugCharPhyModelBuilderMembers1<TSelf> : CPlugCharPhyModelBuilderBase<TSelf> where TSelf : CPlugCharPhyModelBuilderMembers1<TSelf>
+{
+    private protected CPlugCharPhyModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
     public TSelf WithGrapnelAfterGrapnelFrictionDuration(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetGrapnelAfterGrapnelFrictionDurationAssignment(), value, SupportedGames2);
     public TSelf WithGrapnelAimControlEndJump(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetGrapnelAimControlEndJumpAssignment(), value, SupportedGames2);
     public TSelf WithGrapnelAutoJump(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetGrapnelAutoJumpAssignment(), value, SupportedGames2);
@@ -50,7 +59,6 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> : NodeBuilder<global::
     public TSelf WithJetPackTakeOffImpulse(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetJetPackTakeOffImpulseAssignment(), value, SupportedGames2);
     public TSelf WithJetPackVersion2(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetJetPackVersion2Assignment(), value, SupportedGames2);
     public TSelf WithJetPackYForceFromYSpeed(PlugCurve? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetJetPackYForceFromYSpeedAssignment(), value, SupportedGames2);
-    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetNameAssignment(), value, SupportedGames2);
     public TSelf WithPowerBootsAccelCurveFromVelKmh(PlugCurve? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsAccelCurveFromVelKmhAssignment(), value, SupportedGames2);
     public TSelf WithPowerBootsAccelEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsAccelEnabledAssignment(), value, SupportedGames2);
     public TSelf WithPowerBootsCooldown(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsCooldownAssignment(), value, SupportedGames2);
@@ -63,13 +71,42 @@ public abstract class CPlugCharPhyModelBuilderBase<TSelf> : NodeBuilder<global::
     public TSelf WithPowerBootsSuperJump(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsSuperJumpAssignment(), value, SupportedGames2);
     public TSelf WithPowerBootsSuperJumpCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsSuperJumpCoefAssignment(), value, SupportedGames2);
     public TSelf WithPowerBootsWalkOnWaterEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetPowerBootsWalkOnWaterEnabledAssignment(), value, SupportedGames2);
-    public TSelf WithSmoothing(params global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingAssignment(), value, SupportedGames2);
-    public TSelf WithSmoothing(IEnumerable<global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel> values) => WithSmoothing(values.ToArray());
-    public TSelf WithSmoothingVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSmoothingVersionAssignment(), value, SupportedGames2);
 }
 public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPlugCharPhyModelBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugCharPhyModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyModel();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900D(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900E() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C900F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9010(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9011(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9012(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9013(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9014(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9015(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9016(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9017(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9018(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9019(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901A() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901C(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901D(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C901F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9020(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9022(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9023(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9024(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9025(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9026(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9027(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9028(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9029(game));
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugCharPhyModel CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyModel();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9000());
@@ -109,7 +146,7 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9031(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugCharPhyModel CreateRecipe1(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugCharPhyModel CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyModel();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9000());
@@ -155,11 +192,19 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyModel.Chunk090C9038() { Version = 0 });
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class MP4 : CPlugCharPhyModelBuilderBase<MP4>
+    public partial class TMT : CPlugCharPhyModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyModel Build() => BuildNode(CPlugCharPhyModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
+    }
+    public partial class MP4 : CPlugCharPhyModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
         public MP4 WithSniperTurretAmmoGain(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSniperTurretAmmoGainAssignment(), value, SupportedGames1);
@@ -167,14 +212,14 @@ public partial class CPlugCharPhyModelBuilder : CPlugCharPhyModelBuilderBase<CPl
         public MP4 WithSniperTurretDuration(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSniperTurretDurationAssignment(), value, SupportedGames1);
         public MP4 WithSniperTurretEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyModelBuilderAssignments.GetSniperTurretEnabledAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhyModel Build() => BuildNode(CPlugCharPhyModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyModel Build() => BuildNode(CPlugCharPhyModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
     }
-    public partial class TM2020 : CPlugCharPhyModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugCharPhyModelBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyModel> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhyModel Build() => BuildNode(CPlugCharPhyModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyModel Build() => BuildNode(CPlugCharPhyModelBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyModel node);
     }
 }

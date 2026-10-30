@@ -30,7 +30,7 @@ CControlQuad 0x0701B000
 0x006 [MP4, TM2020]
   id IconId
 
-0x007 [MP4.v0, TM2020.v0]
+0x007 [MP4, TM2020]
   version
   id IconId
   vec3 IconVertexColors = (1, 1, 1)

@@ -22,7 +22,7 @@ CGameManialink3dMood 0x0317E000
     CPlugFileImg FidImageCloudsMinMaxDayTime
     bool
 
-0x0316F000 [TMT.v0, MP4] // lighting, clouds, fog and sky images (legacy ID)
+0x0316F000 [TMT, MP4] // lighting, clouds, fog and sky images (legacy ID)
   version = 1
   vec3 LAmbient_LinearRgb
   vec3 LDir0_LinearRgb

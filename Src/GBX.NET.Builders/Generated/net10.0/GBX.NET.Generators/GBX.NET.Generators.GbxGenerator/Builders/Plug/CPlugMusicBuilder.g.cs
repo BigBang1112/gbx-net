@@ -50,6 +50,7 @@ public abstract class CPlugMusicBuilderMembers3<TSelf> : CPlugMusicBuilderMember
     public TSelf WithAdditionalDopplerFactor(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetAdditionalDopplerFactorAssignment(), value, SupportedGames6);
     public TSelf WithAdditionalRolloffFactor(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetAdditionalRolloffFactorAssignment(), value, SupportedGames6);
     public TSelf WithAdditionalRoomRolloffFactor(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetAdditionalRoomRolloffFactorAssignment(), value, SupportedGames6);
+    public TSelf WithIsLooping(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMusicTypeBuilderAssignments.GetIsLoopingAssignment(), value, SupportedGames6);
     public TSelf WithMaxDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetMaxDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMPU | GameVersion.TMT);
     public TSelf WithMinDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetMinDistanceAssignment(), value, SupportedGames6);
 }
@@ -92,6 +93,9 @@ public abstract class CPlugMusicBuilderMembers6<TSelf> : CPlugMusicBuilderMember
     private protected CPlugMusicBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMusic> state) : base(state) { }
     public TSelf WithPanAngleDeg(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetPanAngleDegAssignment(), value, SupportedGames4);
     public TSelf WithRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetRadiusAssignment(), value, SupportedGames4);
+    public TSelf WithRootFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMusicBuilderAssignments.GetRootFolderAssignment(), value, SupportedGames4);
+    public TSelf WithSettings(global::GBX.NET.Engines.Plug.CPlugFileText? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMusicBuilderAssignments.GetSettingsAssignment(), value, SupportedGames4);
+    public TSelf WithSettingsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileText> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMusicBuilderAssignments.GetSettingsReferenceAssignment(), value, SupportedGames4);
     public TSelf WithVolumeFormSpeedKmh(global::GBX.NET.Engines.Function.CFuncKeysReal? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetVolumeFormSpeedKmhAssignment(), value, SupportedGames4);
     public TSelf WithVolumeFormSpeedKmhReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilderAssignments.GetVolumeFormSpeedKmhReferenceAssignment(), value, SupportedGames4);
 }
@@ -100,6 +104,10 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
     private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugMusic();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusicType.Chunk09037002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A009());
@@ -110,6 +118,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
     private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugMusic();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A009());
@@ -124,24 +133,13 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A002());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A009());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00B());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMusic();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00C());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00D());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe4(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugMusic();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
@@ -154,9 +152,11 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe5(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugMusic CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugMusic();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C006() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMusic.Chunk0901C007() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00E(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSound.Chunk0901A00F(game));
@@ -211,7 +211,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMusic> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMusicTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
     public partial class VSK5 : CPlugMusicBuilderMembers4<VSK5>
@@ -225,7 +225,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMusic> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMusicTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
     public partial class MP3 : CPlugMusicBuilderMembers5<MP3>
@@ -241,7 +241,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         public MP3 WithPitchFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? value) => base.WithPitchFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithVolumeFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? value) => base.WithVolumeFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMusicMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
     public partial class TMT : CPlugMusicBuilderMembers6<TMT>
@@ -253,7 +253,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         public TMT WithVolumeFormSpeedKmh(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value) => base.WithVolumeFormSpeedKmh(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithVolumeFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value) => base.WithVolumeFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMusicTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
     public partial class MP4 : CPlugMusicBuilderMembers6<MP4>
@@ -265,7 +265,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         public MP4 WithVolumeFormSpeedKmh(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithVolumeFormSpeedKmh(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithVolumeFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithVolumeFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMusicMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
     public partial class TM2020 : CPlugMusicBuilderMembers6<TM2020>
@@ -277,7 +277,7 @@ public partial class CPlugMusicBuilder : CPlugMusicBuilderBase<CPlugMusicBuilder
         public TM2020 WithVolumeFormSpeedKmh(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithVolumeFormSpeedKmh(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithVolumeFromDistance(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithVolumeFromDistance(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMusicTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugMusic Build() => BuildNode(CPlugMusicBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMusic node);
     }
 }

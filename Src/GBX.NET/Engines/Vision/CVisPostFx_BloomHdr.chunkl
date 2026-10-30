@@ -24,7 +24,7 @@ CVisPostFx_BloomHdr 0x0C032000
   CMwNod FidShaderBloomSelectFilterDown4
   CFuncKeysReal
 
-0x004 [TM2020.v0] // ShaderHorizonBlur
+0x004 [TM2020] // ShaderHorizonBlur
   version
   CMwNod ShaderHorizonBlur
 

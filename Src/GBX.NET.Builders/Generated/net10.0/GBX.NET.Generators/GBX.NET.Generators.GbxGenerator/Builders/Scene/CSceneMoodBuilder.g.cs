@@ -7,7 +7,7 @@ public abstract class CSceneMoodBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CSceneMoodBuilderBase() { }
     private protected CSceneMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
-    public TSelf WithLights(params global::GBX.NET.Engines.Scene.CSceneMood.MoodLight[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMoodBuilderAssignments.GetLightsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMU);
+    public TSelf WithLights(params global::GBX.NET.Engines.Scene.CSceneMood.MoodLight[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMoodBuilderAssignments.GetLightsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithLights(IEnumerable<global::GBX.NET.Engines.Scene.CSceneMood.MoodLight> values) => WithLights(values.ToArray());
 }
 public partial class CSceneMoodBuilder : CSceneMoodBuilderBase<CSceneMoodBuilder>
@@ -18,8 +18,38 @@ public partial class CSceneMoodBuilder : CSceneMoodBuilderBase<CSceneMoodBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMood.Chunk0A042000());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public partial class TM10 : CSceneMoodBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class TMPU : CSceneMoodBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class TMSX : CSceneMoodBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
     public partial class TMNESWC : CSceneMoodBuilderBase<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
@@ -32,6 +62,34 @@ public partial class CSceneMoodBuilder : CSceneMoodBuilderBase<CSceneMoodBuilder
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
         public global::GBX.NET.Interfaces.Scene.ISceneMoodTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class VSK5 : CSceneMoodBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class TMF : CSceneMoodBuilderBase<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class TMT : CSceneMoodBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
+    }
+    public partial class MP4 : CSceneMoodBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneMoodMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneMood Build() => BuildNode(CSceneMoodBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMood node);
     }
 }

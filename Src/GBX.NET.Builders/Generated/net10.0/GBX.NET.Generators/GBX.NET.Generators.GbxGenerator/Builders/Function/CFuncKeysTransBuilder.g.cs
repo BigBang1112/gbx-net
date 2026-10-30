@@ -13,7 +13,7 @@ public abstract class CFuncKeysTransBuilderBase<TSelf> : NodeBuilder<global::GBX
 public abstract class CFuncKeysTransBuilderMembers1<TSelf> : CFuncKeysTransBuilderBase<TSelf> where TSelf : CFuncKeysTransBuilderMembers1<TSelf>
 {
     private protected CFuncKeysTransBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
-    public TSelf WithTrans(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysTransBuilderAssignments.GetTransAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithTrans(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncKeysTransBuilderAssignments.GetTransAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithTrans(IEnumerable<Vec3> values) => WithTrans(values.ToArray());
 }
 public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeysTransBuilder>
@@ -21,6 +21,8 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     private static global::GBX.NET.Engines.Function.CFuncKeysTrans CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncKeysTrans();
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeysTrans.Chunk05003000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeysTrans.Chunk05003001());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003());
         return node;
@@ -28,8 +30,6 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     private static global::GBX.NET.Engines.Function.CFuncKeysTrans CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncKeysTrans();
-        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeysTrans.Chunk05003000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeysTrans.Chunk05003001());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002001());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncKeys.Chunk05002003());
         return node;
@@ -47,28 +47,28 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CFuncKeysTransBuilderBase<TM10>
+    public partial class TM10 : CFuncKeysTransBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
-    public partial class TMPU : CFuncKeysTransBuilderBase<TMPU>
+    public partial class TMPU : CFuncKeysTransBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
-    public partial class TMSX : CFuncKeysTransBuilderBase<TMSX>
+    public partial class TMSX : CFuncKeysTransBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
-    public partial class TMNESWC : CFuncKeysTransBuilderBase<TMNESWC>
+    public partial class TMNESWC : CFuncKeysTransBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC BuildInterface() => Build();
@@ -79,38 +79,38 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
     public partial class VSK5 : CFuncKeysTransBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
     public partial class TMF : CFuncKeysTransBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
     public partial class MP3 : CFuncKeysTransBuilderBase<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
-    public partial class TMT : CFuncKeysTransBuilderBase<TMT>
+    public partial class TMT : CFuncKeysTransBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
-    public partial class MP4 : CFuncKeysTransBuilderBase<MP4>
+    public partial class MP4 : CFuncKeysTransBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4 BuildInterface() => Build();
@@ -121,7 +121,7 @@ public partial class CFuncKeysTransBuilder : CFuncKeysTransBuilderBase<CFuncKeys
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncKeysTrans> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncKeysTransTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Function.CFuncKeysTrans Build() => BuildNode(CFuncKeysTransBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncKeysTrans node);
     }
 }

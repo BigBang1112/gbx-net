@@ -15,7 +15,7 @@ CControlScriptEditor 0x07034000
 0x001 [TMT, MP4, TM2020] // ShowLineNumbers
   bool ShowLineNumbers
 
-0x002 [TMT.v0, MP4.v0, TM2020.v0] // syntax colors
+0x002 [TMT, MP4, TM2020] // syntax colors
   version
   vec4 KeywordColor
   vec4 OperatorColor

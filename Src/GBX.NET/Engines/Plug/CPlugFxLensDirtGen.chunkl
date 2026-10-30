@@ -1,6 +1,6 @@
 CPlugFxLensDirtGen 0x090CB000
 
-0x000 [TMT.v0, MP4.v0, TM2020.v0] // atlas, count, screen size and intensity ranges
+0x000 [TMT, MP4, TM2020] // atlas, count, screen size and intensity ranges
   version
   id AtlasId
   int Count

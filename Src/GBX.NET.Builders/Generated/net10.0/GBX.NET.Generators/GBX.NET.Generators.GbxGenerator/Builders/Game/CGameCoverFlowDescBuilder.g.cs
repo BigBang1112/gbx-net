@@ -7,7 +7,7 @@ public abstract class CGameCoverFlowDescBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CGameCoverFlowDescBuilderBase() { }
     private protected CGameCoverFlowDescBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithBoxesGroup_RelLoc(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetBoxesGroup_RelLocAssignment(), value, SupportedGames1);
     public TSelf WithCameras(params global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCoverFlowDescBuilderAssignments.GetCamerasAssignment(), value, SupportedGames1);
     public TSelf WithCameras(IEnumerable<global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera> values) => WithCameras(values.ToArray());
@@ -36,15 +36,26 @@ public partial class CGameCoverFlowDescBuilder : CGameCoverFlowDescBuilderBase<C
     private static global::GBX.NET.Engines.Game.CGameCoverFlowDesc CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCoverFlowDesc();
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F000() { Version = 5 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F002() { Version = 4 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F003() { Version = 1 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F004() { Version = 4 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F000(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F002(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Chunk0316F004(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CGameCoverFlowDescBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state) : base(state) { }
+        public TMT WithGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? value) => base.WithGameSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithStyle(global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Game.CGameManialink3dStyle?)null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCoverFlowDesc Build() => BuildNode(CGameCoverFlowDescBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node);
+    }
     public partial class MP4 : CGameCoverFlowDescBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state) : base(state) { }
@@ -52,6 +63,15 @@ public partial class CGameCoverFlowDescBuilder : CGameCoverFlowDescBuilderBase<C
         public MP4 WithStyle(global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Game.CGameManialink3dStyle?)null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCoverFlowDesc Build() => BuildNode(CGameCoverFlowDescBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node);
+    }
+    public partial class TM2020 : CGameCoverFlowDescBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> state) : base(state) { }
+        public TM2020 WithGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value) => base.WithGameSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithStyle(global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Game.CGameManialink3dStyle?)null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCoverFlowDesc Build() => BuildNode(CGameCoverFlowDescBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCoverFlowDesc node);
     }
 }

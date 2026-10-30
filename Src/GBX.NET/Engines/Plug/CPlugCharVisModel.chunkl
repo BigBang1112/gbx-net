@@ -246,6 +246,6 @@ CPlugCharVisModel 0x090C7000
   v1+
     CPlugSolid2Model ParagliderMesh
 
-0x00A [TMT.v0, MP4, TM2020.v0]
+0x00A [TMT, MP4, TM2020]
   version
   int AimingAfterFireDurationMs

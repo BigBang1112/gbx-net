@@ -66,7 +66,7 @@ public abstract class CGameCtnMacroBlockInfoBuilderMembers4<TSelf> : CGameCtnMac
     public TSelf WithIconQuarterRotationY(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, SupportedGames3);
     public TSelf WithIconUseAutoRender(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, SupportedGames3);
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames3);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames3);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames3);
     public TSelf WithObjectNeighbourPairsLegacy(params Int2[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMacroBlockInfoBuilderAssignments.GetObjectNeighbourPairsLegacyAssignment(), value, SupportedGames3);
     public TSelf WithObjectNeighbourPairsLegacy(IEnumerable<Int2> values) => WithObjectNeighbourPairsLegacy(values.ToArray());
@@ -98,6 +98,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -107,6 +108,8 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -118,6 +121,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -128,6 +132,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -137,11 +142,22 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
@@ -154,7 +170,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D000());
@@ -181,7 +197,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe7(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D000());
@@ -208,7 +224,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe8(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo CreateRecipe9(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.Chunk0310D000());
@@ -256,6 +272,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TM10 WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TM10 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
@@ -266,6 +283,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMPU WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMPU WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
@@ -277,6 +295,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
@@ -285,6 +304,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     public partial class TMNESWC : CGameCtnMacroBlockInfoBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
@@ -301,9 +321,10 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
     public partial class VSK5 : CGameCtnMacroBlockInfoBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> state) : base(state) { }
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class TMF : CGameCtnMacroBlockInfoBuilderMembers3<TMF>
@@ -315,7 +336,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMF WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
         public TMF WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class MP3 : CGameCtnMacroBlockInfoBuilderMembers4<MP3>
@@ -326,7 +347,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public MP3 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? value) => base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? value) => base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class TMT : CGameCtnMacroBlockInfoBuilderMembers5<TMT>
@@ -337,7 +358,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TMT WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? value) => base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? value) => base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class MP4 : CGameCtnMacroBlockInfoBuilderMembers5<MP4>
@@ -348,7 +369,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public MP4 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value) => base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value) => base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
     public partial class TM2020 : CGameCtnMacroBlockInfoBuilderMembers5<TM2020>
@@ -365,7 +386,7 @@ public partial class CGameCtnMacroBlockInfoBuilder : CGameCtnMacroBlockInfoBuild
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames6);
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames6);
         public global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo Build() => BuildNode(CGameCtnMacroBlockInfoBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node);
     }
 }

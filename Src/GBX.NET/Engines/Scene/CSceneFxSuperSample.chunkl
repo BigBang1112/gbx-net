@@ -16,7 +16,7 @@ CSceneFxSuperSample 0x0A035000
 0x002
   CMwNod
 
-0x003 [TMT.v0, MP4.v0]
+0x003 [TMT, MP4]
   version
   CMwNod
   CMwNod

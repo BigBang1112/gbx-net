@@ -9,7 +9,7 @@ CControlContainer 0x07002000
     int
     Child[] Childs = empty
 
-0x006 [TMT.v0, MP4.v0, TM2020.v0]
+0x006 [TMT, MP4, TM2020]
   version
   bool IsClippingContainer
 

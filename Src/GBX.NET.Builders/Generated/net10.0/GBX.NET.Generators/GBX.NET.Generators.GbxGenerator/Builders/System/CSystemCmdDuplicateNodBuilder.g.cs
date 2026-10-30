@@ -13,12 +13,6 @@ public partial class CSystemCmdDuplicateNodBuilder : CSystemCmdDuplicateNodBuild
     private static global::GBX.NET.Engines.System.CSystemCmdDuplicateNod CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.System.CSystemCmdDuplicateNod();
-        node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpClass.Chunk01056000());
-        return node;
-    }
-    private static global::GBX.NET.Engines.System.CSystemCmdDuplicateNod CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.System.CSystemCmdDuplicateNod();
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemCmdDuplicateNod.Chunk0B00F000());
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpClass.Chunk01056000());
         return node;
@@ -41,7 +35,7 @@ public partial class CSystemCmdDuplicateNodBuilder : CSystemCmdDuplicateNodBuild
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.System.CSystemCmdDuplicateNod> state) : base(state) { }
         public global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMPU BuildInterface() => Build();
-        public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
+        public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemCmdDuplicateNod node);
     }
     public partial class TMSX : CSystemCmdDuplicateNodBuilderBase<TMSX>
@@ -62,7 +56,7 @@ public partial class CSystemCmdDuplicateNodBuilder : CSystemCmdDuplicateNodBuild
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.System.CSystemCmdDuplicateNod> state) : base(state) { }
         public global::GBX.NET.Interfaces.System.ISystemCmdDuplicateNodTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.System.CSystemCmdDuplicateNod Build() => BuildNode(CSystemCmdDuplicateNodBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemCmdDuplicateNod node);
     }
     public partial class VSK5 : CSystemCmdDuplicateNodBuilderBase<VSK5>

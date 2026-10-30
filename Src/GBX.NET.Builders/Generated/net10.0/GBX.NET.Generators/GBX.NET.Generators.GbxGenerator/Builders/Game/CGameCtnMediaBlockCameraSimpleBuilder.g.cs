@@ -7,7 +7,7 @@ public abstract class CGameCtnMediaBlockCameraSimpleBuilderBase<TSelf> : NodeBui
 {
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase() { }
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithKeys(List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetKeysAssignment(), value, SupportedGames1);
     public TSelf WithKeys(params global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key[] values) => WithKeys(new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>(values));
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key> values) => WithKeys(values.ToArray());
@@ -28,12 +28,22 @@ public partial class CGameCtnMediaBlockCameraSimpleBuilder : CGameCtnMediaBlockC
         return node;
     }
     public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMT : CGameCtnMediaBlockCameraSimpleBuilderBase<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple Build() => BuildNode(CGameCtnMediaBlockCameraSimpleBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple node);
+    }
+    public partial class MP4 : CGameCtnMediaBlockCameraSimpleBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple Build() => BuildNode(CGameCtnMediaBlockCameraSimpleBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple node);
     }
     public partial class TM2020 : CGameCtnMediaBlockCameraSimpleBuilderBase<TM2020>

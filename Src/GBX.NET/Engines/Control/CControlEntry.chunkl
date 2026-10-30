@@ -49,7 +49,7 @@ CControlEntry 0x07009000
   int Type
   int MaxLength = -1
 
-0x00B [TMT.v0, MP4.v0, TM2020.v0]
+0x00B [TMT, MP4, TM2020]
   version
   bool SetValueOnFocusLost = true
   bool IsPassword

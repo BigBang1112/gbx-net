@@ -116,7 +116,7 @@ CGameManiaTitle 0x03001000
     string
     string
 
-0x00A [MP4, TM2020.v0]
+0x00A [MP4, TM2020]
   version
   CPlugSound[] Music
 

@@ -17,10 +17,16 @@ internal static class CPlugBitmapRenderWaterBuilderAssignments
     private static NodeBuilderProperty<BoxAligned>? cached3;
     internal static NodeBuilderProperty<BoxAligned> GetFrustumAssignment() => cached3 ??= new("Frustum", new Action<object, BoxAligned>(Assign3));
     private static void Assign3(object node, BoxAligned value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).Frustum = value;
-    private static NodeBuilderProperty<bool>? cached4;
-    internal static NodeBuilderProperty<bool> GetIsOrthographicAssignment() => cached4 ??= new("IsOrthographic", new Action<object, bool>(Assign4));
-    private static void Assign4(object node, bool value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).IsOrthographic = value;
-    private static NodeBuilderProperty<float>? cached5;
-    internal static NodeBuilderProperty<float> GetMirrorScaleYAssignment() => cached5 ??= new("MirrorScaleY", new Action<object, float>(Assign5));
-    private static void Assign5(object node, float value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).MirrorScaleY = value;
+    private static NodeBuilderProperty<int>? cached4;
+    internal static NodeBuilderProperty<int> GetInvisibleSleepPeriodAssignment() => cached4 ??= new("InvisibleSleepPeriod", new Action<object, int>(Assign4));
+    private static void Assign4(object node, int value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).InvisibleSleepPeriod = value;
+    private static NodeBuilderProperty<bool>? cached5;
+    internal static NodeBuilderProperty<bool> GetIsOrthographicAssignment() => cached5 ??= new("IsOrthographic", new Action<object, bool>(Assign5));
+    private static void Assign5(object node, bool value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).IsOrthographic = value;
+    private static NodeBuilderProperty<int>? cached6;
+    internal static NodeBuilderProperty<int> GetMaxUpdatePeriodAssignment() => cached6 ??= new("MaxUpdatePeriod", new Action<object, int>(Assign6));
+    private static void Assign6(object node, int value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).MaxUpdatePeriod = value;
+    private static NodeBuilderProperty<float>? cached7;
+    internal static NodeBuilderProperty<float> GetMirrorScaleYAssignment() => cached7 ??= new("MirrorScaleY", new Action<object, float>(Assign7));
+    private static void Assign7(object node, float value) => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater)node).MirrorScaleY = value;
 }

@@ -29,6 +29,6 @@ CGameControlGridCard 0x030BA000
   bool LeftToRight = true
   bool UpToDown = true
 
-0x006 [MP4.v0, TM2020.v0]
+0x006 [MP4, TM2020]
   version
   bool AreCardsReadOnly

@@ -70,7 +70,7 @@ CGameMenuFrame 0x0300B000
 0x008 [TMF, TMT, MP4, TM2020] // AllowBgCamera
   bool AllowBgCamera = true
 
-0x009 [TMT.v0, MP4.v0, TM2020.v0] // NavigationDepth_Manialink3d_Unused
+0x009 [TMT, MP4, TM2020] // NavigationDepth_Manialink3d_Unused
   version
   int NavigationDepth_Manialink3d_Unused
 

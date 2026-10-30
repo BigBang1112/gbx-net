@@ -181,7 +181,7 @@ CControlStyle 0x07017000
 0x01E [TMF]
   id ButtonDefaultIconId
 
-0x01F [TMT.v0, MP4, TM2020.v0]
+0x01F [TMT, MP4, TM2020]
   version
   CPlugSound ActionSound
   CPlugSound ActionBackSound

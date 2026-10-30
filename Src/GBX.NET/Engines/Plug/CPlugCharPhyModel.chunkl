@@ -14,7 +14,7 @@ CPlugCharPhyModel 0x090C9000
   v2+
     bool
 
-0x00E [TMT.v0, MP4, TM2020] // jump
+0x00E [TMT, MP4, TM2020] // jump
   version
   bool
   bool
@@ -315,7 +315,7 @@ CPlugCharPhyModel 0x090C9000
     bool
     int
 
-0x01A [TMT.v0, MP4, TM2020] // jump
+0x01A [TMT, MP4, TM2020] // jump
   version
   bool
   float

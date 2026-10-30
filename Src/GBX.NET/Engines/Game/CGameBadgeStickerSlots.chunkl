@@ -1,6 +1,6 @@
 CGameBadgeStickerSlots 0x031D6000
 
-0x000 [TMT.v0, MP4.v0, TM2020.v0]
+0x000 [TMT, MP4, TM2020]
   version
   StickerSlot[] StickerSlots
   StickerMeshSlotLocation[] StickerMeshSlotLocations

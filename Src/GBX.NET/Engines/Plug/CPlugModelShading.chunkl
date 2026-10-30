@@ -1,10 +1,10 @@
 CPlugModelShading 0x0900E000
 
-0x000 [TMT.v0, MP4.v0, TM2020.v0] // custom textures
+0x000 [TMT, MP4, TM2020] // custom textures
   version
   FidId[] CustomTextures
 
-0x001 [TMT.v0, MP4.v0, TM2020.v0] // dyna materials
+0x001 [TMT, MP4, TM2020] // dyna materials
   version
   FidId[] MaterialsDyna0
 
@@ -42,7 +42,7 @@ CPlugModelShading 0x0900E000
     CMwNod BitmapFid_CarDecalStadium_BaseColorOp
     CMwNod BitmapFid_CarDecalStadium_RoughMetal
 
-0x005 [TMT.v0, MP4.v0, TM2020.v0] // menu box materials
+0x005 [TMT, MP4, TM2020] // menu box materials
   version
   FidId[] MaterialsMenuBox3d
 

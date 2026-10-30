@@ -107,7 +107,7 @@ public abstract class CGameCtnBlockInfoRoadBuilderMembers6<TSelf> : CGameCtnBloc
     public TSelf WithIntroInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoAssignment(), value, SupportedGames3);
     public TSelf WithIntroInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetIntroInfoReferenceAssignment(), value, SupportedGames3);
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames3);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames3);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames3);
     public TSelf WithPodiumInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, SupportedGames3);
     public TSelf WithPodiumInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoReferenceAssignment(), value, SupportedGames3);
@@ -156,6 +156,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -170,6 +171,8 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -187,6 +190,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -203,6 +207,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -212,11 +217,28 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
@@ -236,7 +258,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
@@ -268,7 +290,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe7(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
@@ -300,7 +322,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe8(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe9(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
@@ -331,7 +353,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe9(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad CreateRecipe10(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad.Chunk03052000());
@@ -391,6 +413,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TM10 WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TM10 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TM10 WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10 BuildInterface() => Build();
@@ -410,6 +433,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TMPU WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMPU WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMPU WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU BuildInterface() => Build();
@@ -430,6 +454,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX BuildInterface() => Build();
@@ -446,6 +471,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TMNESWC WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC>(values, false));
         public TMNESWC WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMNESWC WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC BuildInterface() => Build();
@@ -478,10 +504,11 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public VSK5 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5>(values, false));
         public VSK5 WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5> values) => WithGroundBlockUnitInfos(values.ToArray());
         public VSK5 WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMF : CGameCtnBlockInfoRoadBuilderMembers5<TMF>
@@ -502,7 +529,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TMF WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithSlope(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF? value) => base.WithSlope(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class MP3 : CGameCtnBlockInfoRoadBuilderMembers9<MP3>
@@ -519,7 +546,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public MP3 WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TMT : CGameCtnBlockInfoRoadBuilderMembers9<TMT>
@@ -541,7 +568,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TMT WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class MP4 : CGameCtnBlockInfoRoadBuilderMembers8<MP4>
@@ -558,7 +585,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public MP4 WithSound1(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSound1(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe9(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
     public partial class TM2020 : CGameCtnBlockInfoRoadBuilderMembers8<TM2020>
@@ -592,7 +619,7 @@ public partial class CGameCtnBlockInfoRoadBuilder : CGameCtnBlockInfoRoadBuilder
         public TM2020 WithSound1(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSound1(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad Build() => BuildNode(CGameCtnBlockInfoRoadBuilder.CreateRecipe10(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad node);
     }
 }

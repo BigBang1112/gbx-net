@@ -12,7 +12,7 @@ CGameEditorModel 0x2E01B000
   v4+
     bool AutoCreateTooltipsFromBindings
 
-0x001 (skippable) [MP4.v0, TM2020.v0]
+0x001 (skippable) [MP4, TM2020]
   version
   int128
   int
@@ -27,7 +27,7 @@ CGameEditorModel 0x2E01B000
   version
   BindingContext[] BindingContexts
 
-0x004 [MP4.v0, TM2020.v0] // main and sub plugin text sets
+0x004 [MP4, TM2020] // main and sub plugin text sets
   version
   CGameManiaAppTextSet MainPluginTextSet
   SubPlugin[] SubPlugins

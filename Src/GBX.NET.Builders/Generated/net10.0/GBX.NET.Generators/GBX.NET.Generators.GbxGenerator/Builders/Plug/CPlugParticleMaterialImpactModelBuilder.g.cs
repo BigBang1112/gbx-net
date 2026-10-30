@@ -7,7 +7,7 @@ public abstract class CPlugParticleMaterialImpactModelBuilderBase<TSelf> : NodeB
 {
     private protected CPlugParticleMaterialImpactModelBuilderBase() { }
     private protected CPlugParticleMaterialImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) : base(state) { }
-    public TSelf WithMaterialImpacts(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4);
+    public TSelf WithMaterialImpacts(NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleMaterialImpactModelBuilderAssignments.GetMaterialImpactsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TSelf WithMaterialImpacts(params global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?[] values) => WithMaterialImpacts(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>(values));
     public TSelf WithMaterialImpacts(IEnumerable<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?> values) => WithMaterialImpacts(values.ToArray());
 }
@@ -19,9 +19,20 @@ public partial class CPlugParticleMaterialImpactModelBuilder : CPlugParticleMate
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel.Chunk090B7000(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugParticleMaterialImpactModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) : base(state) { }
+        public TMT WithMaterialImpacts(params global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?[] values) => base.WithMaterialImpacts(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?>(values, true));
+        public TMT WithMaterialImpacts(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?> values) => WithMaterialImpacts(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel Build() => BuildNode(CPlugParticleMaterialImpactModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node);
+    }
     public partial class MP4 : CPlugParticleMaterialImpactModelBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) : base(state) { }
@@ -29,6 +40,15 @@ public partial class CPlugParticleMaterialImpactModelBuilder : CPlugParticleMate
         public MP4 WithMaterialImpacts(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?> values) => WithMaterialImpacts(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel Build() => BuildNode(CPlugParticleMaterialImpactModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node);
+    }
+    public partial class TM2020 : CPlugParticleMaterialImpactModelBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel> state) : base(state) { }
+        public TM2020 WithMaterialImpacts(params global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?[] values) => base.WithMaterialImpacts(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?>(values, true));
+        public TM2020 WithMaterialImpacts(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?> values) => WithMaterialImpacts(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel Build() => BuildNode(CPlugParticleMaterialImpactModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node);
     }
 }

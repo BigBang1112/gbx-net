@@ -225,24 +225,12 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     /// CPlugSoundEngine2 0x000 chunk
     /// </summary>
     [Chunk(0x09029000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09029000 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09029000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09029000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

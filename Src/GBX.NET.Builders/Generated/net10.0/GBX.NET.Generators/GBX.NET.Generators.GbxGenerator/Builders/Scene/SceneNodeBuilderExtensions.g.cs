@@ -27,6 +27,22 @@ public static class CSceneFxBloomDataBuilderExtensions
     }
 }
 
+public static class CSceneFxBlurBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxBlur)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxBlurBuilder Create() => new();
+    }
+}
+
+public static class CSceneFxCameraBlendBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxCameraBlend)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxCameraBlendBuilder Create() => new();
+    }
+}
+
 public static class CSceneFxColorsBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Scene.CSceneFxColors)
@@ -48,6 +64,22 @@ public static class CSceneFxDistor2dBuilderExtensions
     extension(global::GBX.NET.Engines.Scene.CSceneFxDistor2d)
     {
         public static global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilder Create() => new();
+    }
+}
+
+public static class CSceneFxEdgeBlenderBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxEdgeBlender)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxEdgeBlenderBuilder Create() => new();
+    }
+}
+
+public static class CSceneFxHeadTrackBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Scene.CSceneFxHeadTrack)
+    {
+        public static global::GBX.NET.Builders.Engines.Scene.CSceneFxHeadTrackBuilder Create() => new();
     }
 }
 

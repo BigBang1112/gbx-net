@@ -1,6 +1,6 @@
 CGameManiaAppTextSet 0x2E029000
 
-0x000 [MP4.v0, TM2020.v0] // main script and manialinks
+0x000 [MP4, TM2020] // main script and manialinks
   version
   CPlugFileTextScript MainScript
   Manialink[] Manialinks

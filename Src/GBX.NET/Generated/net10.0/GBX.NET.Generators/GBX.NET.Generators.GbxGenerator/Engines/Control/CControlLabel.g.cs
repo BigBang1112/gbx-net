@@ -301,24 +301,12 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x008 skippable chunk
     /// </summary>
     [Chunk(0x07006008)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07006008 : SkippableChunk<CControlLabel>, IVersionable
     {
         public override uint Id => 0x07006008;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk07006008() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk07006008(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

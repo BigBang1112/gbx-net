@@ -3,15 +3,11 @@
 
 namespace GBX.NET.Interfaces.Game;
 
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameManialink3dMoodMembers1 : global::GBX.NET.Interfaces.Game.IGameManialink3dMood
-{
-    global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageCloudsMinMaxDayTime { get; set; }
-}
 public partial interface IGameManialink3dMood : IClassVersion<global::GBX.NET.Engines.Game.CGameManialink3dMood>
 {
     Vec3 CloudsRgbMaxLinear { get; set; }
     Vec3 CloudsRgbMinLinear { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageCloudsMinMaxDayTime { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? FidImageSkyGradientV { get; set; }
     Vec3 FogColorSrgb { get; set; }
     Vec3 LAmbient_LinearRgb { get; set; }
@@ -32,11 +28,11 @@ public partial interface IGameManialink3dMoodTMT : IGameManialink3dMood
 {
 }
 
-public partial interface IGameManialink3dMoodMP4 : IGameManialink3dMood, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMembers1
+public partial interface IGameManialink3dMoodMP4 : IGameManialink3dMood
 {
 }
 
-public partial interface IGameManialink3dMoodTM2020 : IGameManialink3dMood, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMembers1
+public partial interface IGameManialink3dMoodTM2020 : IGameManialink3dMood
 {
 }
 

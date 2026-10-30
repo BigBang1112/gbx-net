@@ -6,7 +6,7 @@ CPlugSoundMood 0x0901B000
   int EventPeriodCount (local, write: n.Events.Length)
   Event[EventCount] Events
 
-0x001 [TMT.v0, MP4, TM2020]
+0x001 [TMT, MP4, TM2020]
   version
   CPlugFileSnd InsideFileSnd
 

@@ -1,7 +1,7 @@
 CPlugFxLensFlareArray 0x090C1000
 - inherits: CPlug
 
-0x000 [TMT.v0, MP4.v0, TM2020.v0] // bitmap and lens flares
+0x000 [TMT, MP4, TM2020] // bitmap and lens flares
   version
   CPlugBitmap Bitmap
   LensFlare[] LensFlares

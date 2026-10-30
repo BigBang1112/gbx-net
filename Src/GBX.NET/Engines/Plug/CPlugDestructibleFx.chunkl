@@ -25,7 +25,7 @@ CPlugDestructibleFx 0x090D6000
   v5+
     CPlugParticleEmitterModel
 
-0x001 [TM2020.v0]
+0x001 [TM2020]
   version
   int = 200
   float

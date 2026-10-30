@@ -34,7 +34,7 @@ CGameMenu 0x03009000
 0x008 [TMU, VSK5, TMF, TMT, MP4, TM2020] // GridStep
   vec2 GridStep
 
-0x009 [TMT.v0, TM2020.v0] // frustum and menu order
+0x009 [TMT, TM2020] // frustum and menu order
   version
   bool IsOrthographic
   boxaligned Frustum
@@ -52,7 +52,7 @@ CGameMenu 0x03009000
   float BackgroundCameraNearZ
   float BackgroundCameraFarZ
 
-0x00C [TMT.v0, TM2020.v0] // sounds
+0x00C [TMT, TM2020] // sounds
   version
   CMwNod
   CPlugSound SoundDisplayed

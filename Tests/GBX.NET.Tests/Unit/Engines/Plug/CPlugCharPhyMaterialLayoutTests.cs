@@ -52,7 +52,7 @@ public class CPlugCharPhyMaterialLayoutTests
         await Assert.That(chunk.U17).IsEqualTo(0.6f);
         await Assert.That(node.GroundBlowCoef).IsEqualTo(0.7f);
         await Assert.That(chunk.U19).IsEqualTo(0.9f);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
     }
 
     [Test]

@@ -171,7 +171,7 @@ CGameResources 0x0302D000
   CMwNod EditorModelSpritesBitmapFid
   CMwNod EditorModelDefaultMaterialFid
 
-0x031 [MP4, TM2020.v0] // StoryInterfaceFid
+0x031 [MP4, TM2020] // StoryInterfaceFid
   version
   CMwNod StoryInterfaceFid
 
@@ -200,7 +200,7 @@ CGameResources 0x0302D000
   v2+
     CMwNod EditorAnimCharInterfaceFid
 
-0x035 [MP4, TM2020.v0] // default transition clips
+0x035 [MP4, TM2020] // default transition clips
   version
   CMwNod DefaultTransitionInClipFid
   CMwNod DefaultTransitionOutClipFid
@@ -251,7 +251,7 @@ CGameResources 0x0302D000
   v19+
     CMwNod StyleUrlLink
 
-0x037 [MP4, TM2020.v0] // TitleTemplateFolder
+0x037 [MP4, TM2020] // TitleTemplateFolder
   version
   string TitleTemplateFolder
 
@@ -266,16 +266,16 @@ CGameResources 0x0302D000
     CMwNod BitmapCubeMenuManiaPlanet3d
     CMwNod MaterialSkyDomeMenu
 
-0x039 [MP4, TM2020.v0] // menu manialink 3d resources
+0x039 [MP4, TM2020] // menu manialink 3d resources
   version
   CPlugModelShading.FidId[] MenuManialink3dResources
 
-0x03A [MP4, TM2020.v0] // team logo and emblems
+0x03A [MP4, TM2020] // team logo and emblems
   version
   CMwNod DefaultTeamLogoBitmapFid
   CPlugBitmap BitmapTeamEmblems
 
-0x03B [MP4, TM2020.v0] // EditorItemInterfaceFid
+0x03B [MP4, TM2020] // EditorItemInterfaceFid
   version
   CMwNod EditorItemInterfaceFid
 
@@ -292,11 +292,11 @@ CGameResources 0x0302D000
   v1+
     CMwNod InterfaceEditorInventoryModelFid
 
-0x03D [MP4, TM2020.v0] // EditorManialinkInterfaceFid
+0x03D [MP4, TM2020] // EditorManialinkInterfaceFid
   version
   CMwNod EditorManialinkInterfaceFid
 
-0x03E [MP4, TM2020.v0] // default media tracker resources
+0x03E [MP4, TM2020] // default media tracker resources
   version
   CMwNod DefaultMTColorGradingImageFid
   CMwNod DefaultMTDecal2dBitmapFid
@@ -309,7 +309,7 @@ CGameResources 0x0302D000
   v1+
     CMwNod DefaultEditorModuleFid
 
-0x040 [MP4, TM2020.v0] // EditorAnimSetInterfaceFid
+0x040 [MP4, TM2020] // EditorAnimSetInterfaceFid
   version
   CMwNod EditorAnimSetInterfaceFid
 
@@ -328,11 +328,11 @@ CGameResources 0x0302D000
   v1+
     CMwNod ModulePlaygroundSpeedMeterScriptFid
 
-0x043 [MP4, TM2020.v0] // EditorPixelCheckerImageFid
+0x043 [MP4, TM2020] // EditorPixelCheckerImageFid
   version
   CMwNod EditorPixelCheckerImageFid
 
-0x044 [MP4, TM2020.v0] // MaterialsLibrariesFid
+0x044 [MP4, TM2020] // MaterialsLibrariesFid
   version
   CMwNod MaterialsLibrariesFid
 
@@ -345,11 +345,11 @@ CGameResources 0x0302D000
     CMwNod
     string
 
-0x046 [MP4, TM2020.v0] // DefaultEditorEditorFid
+0x046 [MP4, TM2020] // DefaultEditorEditorFid
   version
   CMwNod DefaultEditorEditorFid
 
-0x047 [MP4, TM2020.v0] // default playground modules
+0x047 [MP4, TM2020] // default playground modules
   version
   CMwNod ModulePlaygroundDefaultHudFid
   CMwNod ModulePlaygroundDefaultInventoryFid

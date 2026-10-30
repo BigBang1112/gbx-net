@@ -7,13 +7,16 @@ public abstract class CGameEditorModelBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGameEditorModelBuilderBase() { }
     private protected CGameEditorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithAutoCreateTooltipsFromBindings(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoCreateTooltipsFromBindingsAssignment(), value, SupportedGames1);
     public TSelf WithAutoGenerateHelp(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoGenerateHelpAssignment(), value, SupportedGames1);
     public TSelf WithBindingContexts(params global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetBindingContextsAssignment(), value, SupportedGames1);
     public TSelf WithBindingContexts(IEnumerable<global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext> values) => WithBindingContexts(values.ToArray());
     public TSelf WithEditorType(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetEditorTypeAssignment(), value, SupportedGames1);
-    public TSelf WithMediaFolder(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMediaFolderAssignment(), value, SupportedGames1);
+    public TSelf WithMainPluginTextSet(global::GBX.NET.Engines.GameData.CGameManiaAppTextSet? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMainPluginTextSetAssignment(), value, SupportedGames1);
+    public TSelf WithMainPluginTextSetReference(NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMainPluginTextSetReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithSubPlugins(params global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetSubPluginsAssignment(), value, SupportedGames1);
+    public TSelf WithSubPlugins(IEnumerable<global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin> values) => WithSubPlugins(values.ToArray());
 }
 public partial class CGameEditorModelBuilder : CGameEditorModelBuilderBase<CGameEditorModelBuilder>
 {
@@ -21,16 +24,36 @@ public partial class CGameEditorModelBuilder : CGameEditorModelBuilderBase<CGame
     {
         var node = new global::GBX.NET.Engines.GameData.CGameEditorModel();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B000(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B001() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B004() { Version = 0 });
+        return node;
+    }
+    private static global::GBX.NET.Engines.GameData.CGameEditorModel CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B005() { Version = 0 });
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CGameEditorModelBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state) : base(state) { }
+        public MP4 WithMainPluginTextSet(global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetMP4? value) => base.WithMainPluginTextSet(value is null ? (global::GBX.NET.Engines.GameData.CGameManiaAppTextSet?)null : value is global::GBX.NET.Engines.GameData.CGameManiaAppTextSet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.GameData.IGameEditorModelMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.GameData.CGameEditorModel Build() => BuildNode(CGameEditorModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameEditorModel node);
+    }
     public partial class TM2020 : CGameEditorModelBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state) : base(state) { }
+        public TM2020 WithMainPluginTextSet(global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetTM2020? value) => base.WithMainPluginTextSet(value is null ? (global::GBX.NET.Engines.GameData.CGameManiaAppTextSet?)null : value is global::GBX.NET.Engines.GameData.CGameManiaAppTextSet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMediaFolder(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMediaFolderAssignment(), value, GameVersion.TM2020);
         public global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameEditorModel Build() => BuildNode(CGameEditorModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameEditorModel Build() => BuildNode(CGameEditorModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameEditorModel node);
     }
 }

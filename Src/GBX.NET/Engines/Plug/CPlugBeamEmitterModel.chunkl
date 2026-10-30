@@ -1,5 +1,5 @@
 CPlugBeamEmitterModel 0x090B4000
 
-0x002 [TMT.v0, MP4, TM2020.v0]
+0x002 [TMT, MP4, TM2020]
   version
   CPlugBeamEmitterSubModel[] SubModels

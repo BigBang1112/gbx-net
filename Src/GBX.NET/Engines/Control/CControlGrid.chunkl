@@ -26,7 +26,7 @@ CControlGrid 0x07015000
   float HorizontalSkewOffset
   float VerticalSkewOffset
 
-0x006 [TMT.v0, MP4.v0, TM2020.v0]
+0x006 [TMT, MP4, TM2020]
   version
   bool PagedGrid_Enable
   int PagedGrid_FastPageStep = 10

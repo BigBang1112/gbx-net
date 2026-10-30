@@ -5,30 +5,65 @@ namespace GBX.NET.Builders.Engines.Game;
 
 internal static class CGameMenuBuilderAssignments
 {
-    private static NodeBuilderProperty<float>? cached0;
-    internal static NodeBuilderProperty<float> GetBackgroundCameraFovAssignment() => cached0 ??= new("BackgroundCameraFov", new Action<object, float>(Assign0));
-    private static void Assign0(object node, float value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundCameraFov = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached1;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetBackgroundSceneAssignment() => cached1 ??= new("BackgroundScene", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign1));
-    private static void Assign1(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundScene = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached1Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetBackgroundSceneReferenceAssignment() => cached1Reference ??= new("BackgroundScene", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign1Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
-    private static void Assign1Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.BackgroundScene.CopyFrom(value);
-    private static NodeBuilderProperty<BoxAligned>? cached2;
-    internal static NodeBuilderProperty<BoxAligned> GetFrustumAssignment() => cached2 ??= new("Frustum", new Action<object, BoxAligned>(Assign2));
-    private static void Assign2(object node, BoxAligned value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).Frustum = value;
-    private static NodeBuilderProperty<Vec2>? cached3;
-    internal static NodeBuilderProperty<Vec2> GetGridStepAssignment() => cached3 ??= new("GridStep", new Action<object, Vec2>(Assign3));
-    private static void Assign3(object node, Vec2 value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).GridStep = value;
-    private static NodeBuilderProperty<bool>? cached4;
-    internal static NodeBuilderProperty<bool> GetIsOrthographicAssignment() => cached4 ??= new("IsOrthographic", new Action<object, bool>(Assign4));
-    private static void Assign4(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).IsOrthographic = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlStyleSheet?>? cached5;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlStyleSheet?> GetStyleSheetAssignment() => cached5 ??= new("StyleSheet", new Action<object, global::GBX.NET.Engines.Control.CControlStyleSheet?>(Assign5));
-    private static void Assign5(object node, global::GBX.NET.Engines.Control.CControlStyleSheet? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).StyleSheet = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>? cached5Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>> GetStyleSheetReferenceAssignment() => cached5Reference ??= new("StyleSheet", new Action<object, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>(Copy1));
-    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.StyleSheet.CopyFrom(value);
-    private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> Copy0(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> Copy1(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>(); copy.CopyFrom(value); return copy; }
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?>? cached0;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?> GetBackgroundBitmapUnderlayAssignment() => cached0 ??= new("BackgroundBitmapUnderlay", new Action<object, global::GBX.NET.Engines.Plug.CPlugBitmap?>(Assign0));
+    private static void Assign0(object node, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundBitmapUnderlay = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>? cached0Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>> GetBackgroundBitmapUnderlayReferenceAssignment() => cached0Reference ??= new("BackgroundBitmapUnderlay", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Assign0Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Copy0));
+    private static void Assign0Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.BackgroundBitmapUnderlay.CopyFrom(value);
+    private static NodeBuilderProperty<float>? cached1;
+    internal static NodeBuilderProperty<float> GetBackgroundCameraFarZAssignment() => cached1 ??= new("BackgroundCameraFarZ", new Action<object, float>(Assign1));
+    private static void Assign1(object node, float value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundCameraFarZ = value;
+    private static NodeBuilderProperty<float>? cached2;
+    internal static NodeBuilderProperty<float> GetBackgroundCameraFovAssignment() => cached2 ??= new("BackgroundCameraFov", new Action<object, float>(Assign2));
+    private static void Assign2(object node, float value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundCameraFov = value;
+    private static NodeBuilderProperty<float>? cached3;
+    internal static NodeBuilderProperty<float> GetBackgroundCameraNearZAssignment() => cached3 ??= new("BackgroundCameraNearZ", new Action<object, float>(Assign3));
+    private static void Assign3(object node, float value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundCameraNearZ = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetBackgroundSceneAssignment() => cached4 ??= new("BackgroundScene", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).BackgroundScene = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached4Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetBackgroundSceneReferenceAssignment() => cached4Reference ??= new("BackgroundScene", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy1));
+    private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.BackgroundScene.CopyFrom(value);
+    private static NodeBuilderProperty<BoxAligned>? cached5;
+    internal static NodeBuilderProperty<BoxAligned> GetFrustumAssignment() => cached5 ??= new("Frustum", new Action<object, BoxAligned>(Assign5));
+    private static void Assign5(object node, BoxAligned value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).Frustum = value;
+    private static NodeBuilderProperty<Vec2>? cached6;
+    internal static NodeBuilderProperty<Vec2> GetGridStepAssignment() => cached6 ??= new("GridStep", new Action<object, Vec2>(Assign6));
+    private static void Assign6(object node, Vec2 value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).GridStep = value;
+    private static NodeBuilderProperty<bool>? cached7;
+    internal static NodeBuilderProperty<bool> GetIsOrthographicAssignment() => cached7 ??= new("IsOrthographic", new Action<object, bool>(Assign7));
+    private static void Assign7(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).IsOrthographic = value;
+    private static NodeBuilderProperty<int>? cached8;
+    internal static NodeBuilderProperty<int> GetMenuOrderAssignment() => cached8 ??= new("MenuOrder", new Action<object, int>(Assign8));
+    private static void Assign8(object node, int value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).MenuOrder = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached9;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetSoundDisplayedAssignment() => cached9 ??= new("SoundDisplayed", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign9));
+    private static void Assign9(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).SoundDisplayed = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached9Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetSoundDisplayedReferenceAssignment() => cached9Reference ??= new("SoundDisplayed", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign9Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy2));
+    private static void Assign9Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.SoundDisplayed.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached10;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetSoundHiddenAssignment() => cached10 ??= new("SoundHidden", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign10));
+    private static void Assign10(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).SoundHidden = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached10Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetSoundHiddenReferenceAssignment() => cached10Reference ??= new("SoundHidden", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign10Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy2));
+    private static void Assign10Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.SoundHidden.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached11;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetSoundPageChangedAssignment() => cached11 ??= new("SoundPageChanged", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign11));
+    private static void Assign11(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).SoundPageChanged = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached11Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetSoundPageChangedReferenceAssignment() => cached11Reference ??= new("SoundPageChanged", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign11Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy2));
+    private static void Assign11Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.SoundPageChanged.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlStyleSheet?>? cached12;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Control.CControlStyleSheet?> GetStyleSheetAssignment() => cached12 ??= new("StyleSheet", new Action<object, global::GBX.NET.Engines.Control.CControlStyleSheet?>(Assign12));
+    private static void Assign12(object node, global::GBX.NET.Engines.Control.CControlStyleSheet? value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).StyleSheet = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>? cached12Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>> GetStyleSheetReferenceAssignment() => cached12Reference ??= new("StyleSheet", new Action<object, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>(Assign12Reference), new Func<NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>>(Copy3));
+    private static void Assign12Reference(object node, NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => ((global::GBX.NET.Engines.Game.CGameMenu)node).References.StyleSheet.CopyFrom(value);
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> Copy1(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> Copy2(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> Copy3(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet>(); copy.CopyFrom(value); return copy; }
 }

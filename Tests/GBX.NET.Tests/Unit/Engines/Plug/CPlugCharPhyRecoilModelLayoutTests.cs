@@ -27,7 +27,7 @@ public class CPlugCharPhyRecoilModelLayoutTests
         await Assert.That(node.Duration).IsEqualTo(TimeInt32.FromMilliseconds(200));
         await Assert.That(node.FovScale).IsEqualTo(1.1f);
         await Assert.That(node.ViewKick).IsEqualTo(0.05f);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
     }
 
     [Test]

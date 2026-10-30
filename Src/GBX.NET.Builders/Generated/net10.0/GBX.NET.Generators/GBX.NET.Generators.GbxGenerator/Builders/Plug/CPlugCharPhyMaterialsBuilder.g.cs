@@ -7,26 +7,60 @@ public abstract class CPlugCharPhyMaterialsBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CPlugCharPhyMaterialsBuilderBase() { }
     private protected CPlugCharPhyMaterialsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
-    public TSelf WithMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
+    public TSelf WithMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial[] values) => WithMaterials(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>(values));
     public TSelf WithMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial> values) => WithMaterials(values.ToArray());
+}
+public abstract class CPlugCharPhyMaterialsBuilderMembers1<TSelf> : CPlugCharPhyMaterialsBuilderBase<TSelf> where TSelf : CPlugCharPhyMaterialsBuilderMembers1<TSelf>
+{
+    private protected CPlugCharPhyMaterialsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
+    public TSelf WithMaterialIndices(params int[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialIndicesAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    public TSelf WithMaterialIndices(IEnumerable<int> values) => WithMaterialIndices(values.ToArray());
 }
 public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilderBase<CPlugCharPhyMaterialsBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugCharPhyMaterialsBuilderMembers1<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
+        public TMT WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT[] values) => base.WithMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT>(values, false));
+        public TMT WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT> values) => WithMaterials(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build() => BuildNode(CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);
+    }
+    public partial class MP4 : CPlugCharPhyMaterialsBuilderMembers1<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
+        public MP4 WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4[] values) => base.WithMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4>(values, false));
+        public MP4 WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4> values) => WithMaterials(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build() => BuildNode(CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);
+    }
     public partial class TM2020 : CPlugCharPhyMaterialsBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) : base(state) { }
         public TM2020 WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020[] values) => base.WithMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>(values, false));
         public TM2020 WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020> values) => WithMaterials(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build() => BuildNode(CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build() => BuildNode(CPlugCharPhyMaterialsBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node);
     }
 }

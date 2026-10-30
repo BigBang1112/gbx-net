@@ -41,7 +41,7 @@ CControlLabel 0x07006000
   CPlugBitmap Bitmap
   bool DontDrawText
 
-0x008 (skippable) [TMT.v0, MP4, TM2020]
+0x008 (skippable) [TMT, MP4, TM2020]
   version
   vec4 ImageColor = (1, 1, 1, 1)
 

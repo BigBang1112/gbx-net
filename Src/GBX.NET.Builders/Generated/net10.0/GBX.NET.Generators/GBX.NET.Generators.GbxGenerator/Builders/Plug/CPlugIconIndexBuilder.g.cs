@@ -16,14 +16,30 @@ public partial class CPlugIconIndexBuilder : CPlugIconIndexBuilderBase<CPlugIcon
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003());
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugIconIndexBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugIconIndex> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugIconIndexTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugIconIndex Build() => BuildNode(CPlugIconIndexBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIconIndex node);
+    }
     public partial class MP4 : CPlugIconIndexBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugIconIndex> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugIconIndexMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIconIndex Build() => BuildNode(CPlugIconIndexBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIconIndex node);
+    }
+    public partial class TM2020 : CPlugIconIndexBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugIconIndex> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugIconIndexTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugIconIndex Build() => BuildNode(CPlugIconIndexBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugIconIndex node);
     }
 }

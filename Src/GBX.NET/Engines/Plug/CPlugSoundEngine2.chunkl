@@ -1,7 +1,7 @@
 CPlugSoundEngine2 0x09029000
 - inherits: CPlugSound
 
-0x000 [TMT.v0, MP4, TM2020]
+0x000 [TMT, MP4, TM2020]
   version
   string Loops_Folder
 

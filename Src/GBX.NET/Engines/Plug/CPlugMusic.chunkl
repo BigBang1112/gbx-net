@@ -21,10 +21,10 @@ CPlugMusic 0x0901C000
 0x005 // legacy sound files
   CPlugFileSnd[] (deprec)
 
-0x006 [TMT.v0, MP4.v0, TM2020.v0] // RootFolder
+0x006 [TMT, MP4, TM2020] // RootFolder
   version
   string RootFolder
 
-0x007 [TMT.v0, MP4.v0, TM2020.v0] // Settings
+0x007 [TMT, MP4, TM2020] // Settings
   version
   CPlugFileText* Settings

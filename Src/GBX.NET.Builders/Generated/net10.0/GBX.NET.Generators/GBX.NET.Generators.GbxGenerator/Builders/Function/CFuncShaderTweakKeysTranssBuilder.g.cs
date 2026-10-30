@@ -34,6 +34,7 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     private static global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss();
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss.Chunk05033000());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004());
         return node;
     }
@@ -41,7 +42,7 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     {
         var node = new global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss();
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss.Chunk05033000());
-        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005());
         return node;
     }
     private static global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss CreateRecipe3(GameVersion game)
@@ -95,7 +96,7 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
     }
     public partial class VSK5 : CFuncShaderTweakKeysTranssBuilderMembers1<VSK5>
@@ -109,7 +110,7 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
     }
     public partial class MP3 : CFuncShaderTweakKeysTranssBuilderMembers2<MP3>
@@ -123,14 +124,14 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
     }
     public partial class MP4 : CFuncShaderTweakKeysTranssBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
     }
     public partial class TM2020 : CFuncShaderTweakKeysTranssBuilderMembers2<TM2020>

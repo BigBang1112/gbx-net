@@ -7,7 +7,7 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameMenuColorEffectBuilderBase() { }
     private protected CGameMenuColorEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithColorBeams(params global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, SupportedGames1);
     public TSelf WithColorBeams(IEnumerable<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam> values) => WithColorBeams(values.ToArray());
     public TSelf WithForceFirstColorWord(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, SupportedGames1);
@@ -29,8 +29,29 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000());
         return node;
     }
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public partial class TMSX : CGameMenuColorEffectBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
+    public partial class TMNESWC : CGameMenuColorEffectBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
     public partial class TMU : CGameMenuColorEffectBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
@@ -38,11 +59,32 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
         public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
     }
+    public partial class VSK5 : CGameMenuColorEffectBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
     public partial class TMF : CGameMenuColorEffectBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
+    public partial class TMT : CGameMenuColorEffectBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
+    }
+    public partial class MP4 : CGameMenuColorEffectBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build() => BuildNode(CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenuColorEffect node);
     }
 }

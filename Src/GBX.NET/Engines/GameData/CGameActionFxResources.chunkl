@@ -1,22 +1,22 @@
 CGameActionFxResources 0x2E00A000
 
-0x000 [TMT.v0, MP4.v0, TM2020.v0]
+0x000 [TMT, MP4, TM2020]
   version
   string ParticleEmitterSubModels_Continuous
   string ParticleEmitterSubModels_Splash
 
-0x001 [TMT.v0, MP4.v0, TM2020.v0]
+0x001 [TMT, MP4, TM2020]
   version
   CMwRefBuffer BulletModelsLibrary
 
-0x002 [MP4.v0, TM2020.v0]
+0x002 [MP4, TM2020]
   version
   string AudioFxLibraryFolder
 
-0x003 [TMT.v0, MP4.v0, TM2020.v0]
+0x003 [TMT, MP4, TM2020]
   version
   string MeshFolder
 
-0x004 [TMT.v0, MP4.v0, TM2020.v0]
+0x004 [TMT, MP4, TM2020]
   version
   string BeamEmitterSubModels

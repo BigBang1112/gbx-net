@@ -7,29 +7,41 @@ public abstract class CGameCtnPainterSettingBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CGameCtnPainterSettingBuilderBase() { }
     private protected CGameCtnPainterSettingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMU;
-    public TSelf WithBitmapBrushFade(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapBrushFadeAssignment(), value, SupportedGames1);
-    public TSelf WithBitmapBrushFadeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapBrushFadeReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithBitmapStickerFade(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapStickerFadeAssignment(), value, SupportedGames1);
-    public TSelf WithBitmapStickerFadeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapStickerFadeReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithCamera(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraAssignment(), value, SupportedGames1);
-    public TSelf WithCameraReference(NodeRef<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithCameraBottomClipGeometry(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraBottomClipGeometryAssignment(), value, SupportedGames1);
-    public TSelf WithCameraBottomIn_m1p1(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraBottomIn_m1p1Assignment(), value, SupportedGames1);
-    public TSelf WithImageSubObjectAllIcon(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetImageSubObjectAllIconAssignment(), value, SupportedGames1);
-    public TSelf WithImageSubObjectAllIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetImageSubObjectAllIconReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialLayerBlend(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerBlendAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialLayerBlendReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerBlendReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialPaint(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialPaintAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialPaintReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialPaintReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithMouseZDeltaRot(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMouseZDeltaRotAssignment(), value, SupportedGames1);
-    public TSelf WithMouseZDeltaScale(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMouseZDeltaScaleAssignment(), value, SupportedGames1);
-    public TSelf WithRemapFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemapFolderAssignment(), value, SupportedGames1);
-    public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemappingAssignment(), value, SupportedGames1);
-    public TSelf WithRemappingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemappingReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithScenesFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetScenesFidsAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMU;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
+    public TSelf WithBitmapBrushFade(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapBrushFadeAssignment(), value, SupportedGames2);
+    public TSelf WithBitmapBrushFadeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapBrushFadeReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithBitmapStickerFade(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapStickerFadeAssignment(), value, SupportedGames2);
+    public TSelf WithBitmapStickerFadeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetBitmapStickerFadeReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithCamera(global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraAssignment(), value, SupportedGames2);
+    public TSelf WithCameraReference(NodeRef<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithCameraBottomClipGeometry(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraBottomClipGeometryAssignment(), value, SupportedGames2);
+    public TSelf WithCameraBottomIn_m1p1(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetCameraBottomIn_m1p1Assignment(), value, SupportedGames2);
+    public TSelf WithImageSubObjectAllIcon(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetImageSubObjectAllIconAssignment(), value, SupportedGames2);
+    public TSelf WithImageSubObjectAllIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetImageSubObjectAllIconReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialLayerBlend(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerBlendAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialLayerBlendReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerBlendReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialPaint(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialPaintAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialPaintReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialPaintReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMouseZDeltaRot(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMouseZDeltaRotAssignment(), value, SupportedGames2);
+    public TSelf WithMouseZDeltaScale(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMouseZDeltaScaleAssignment(), value, SupportedGames2);
+    public TSelf WithRemapFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemapFolderAssignment(), value, SupportedGames2);
+    public TSelf WithRemapping(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemappingAssignment(), value, SupportedGames2);
+    public TSelf WithRemappingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetRemappingReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithScenesFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetScenesFidsAssignment(), value, SupportedGames2);
     public TSelf WithScenesFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithScenesFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithScenesFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithScenesFids(values.ToArray());
+}
+public abstract class CGameCtnPainterSettingBuilderMembers1<TSelf> : CGameCtnPainterSettingBuilderBase<TSelf> where TSelf : CGameCtnPainterSettingBuilderMembers1<TSelf>
+{
+    private protected CGameCtnPainterSettingBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> state) : base(state) { }
+    public TSelf WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormAssignment(), value, SupportedGames1);
+    public TSelf WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialFillColor(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialFillColorAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialFillColorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialFillColorReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialLayerModulate(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerModulateAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialLayerModulateReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetMaterialLayerModulateReferenceAssignment(), value, SupportedGames1);
 }
 public partial class CGameCtnPainterSettingBuilder : CGameCtnPainterSettingBuilderBase<CGameCtnPainterSettingBuilder>
 {
@@ -44,7 +56,31 @@ public partial class CGameCtnPainterSettingBuilder : CGameCtnPainterSettingBuild
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048005());
         return node;
     }
+    private static global::GBX.NET.Engines.Game.CGameCtnPainterSetting CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnPainterSetting();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk03048009());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnPainterSetting CreateRecipe2(GameVersion game)
+    {
+        var node = CreateRecipe1(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnPainterSetting.Chunk0304800A() { Version = 0 });
+        return node;
+    }
     public TMU ForTMU() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMU : CGameCtnPainterSettingBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> state) : base(state) { }
@@ -56,6 +92,44 @@ public partial class CGameCtnPainterSettingBuilder : CGameCtnPainterSettingBuild
         public TMU WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnPainterSetting Build() => BuildNode(CGameCtnPainterSettingBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnPainterSetting node);
+    }
+    public partial class MP4 : CGameCtnPainterSettingBuilderMembers1<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> state) : base(state) { }
+        public MP4 WithBitmapBrushFade(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapBrushFade(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapStickerFade(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapStickerFade(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithCamera(global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP4? value) => base.WithCamera(value is null ? (global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d?)null : value is global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value) => base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialFillColor(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterialFillColor(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialLayerBlend(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterialLayerBlend(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialLayerModulate(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterialLayerModulate(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialPaint(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterialPaint(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnPainterSetting Build() => BuildNode(CGameCtnPainterSettingBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnPainterSetting node);
+    }
+    public partial class TM2020 : CGameCtnPainterSettingBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnPainterSetting> state) : base(state) { }
+        public TM2020 WithBitmapBrushFade(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapBrushFade(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapStickerFade(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapStickerFade(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithCamera(global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTM2020? value) => base.WithCamera(value is null ? (global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d?)null : value is global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value) => base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialFillColor(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterialFillColor(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialLayerBlend(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterialLayerBlend(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialLayerModulate(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterialLayerModulate(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialPaint(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterialPaint(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value) => base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithShaderRasterAlphaMask(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetShaderRasterAlphaMaskAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderRasterAlphaMaskReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetShaderRasterAlphaMaskReferenceAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderRasterAlphaMask(global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? value) => WithShaderRasterAlphaMask(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithShaderRasterRgbMask(global::GBX.NET.Engines.Plug.CPlugShader? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetShaderRasterRgbMaskAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderRasterRgbMaskReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnPainterSettingBuilderAssignments.GetShaderRasterRgbMaskReferenceAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderRasterRgbMask(global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? value) => WithShaderRasterRgbMask(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameCtnPainterSetting Build() => BuildNode(CGameCtnPainterSettingBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnPainterSetting node);
     }
 }

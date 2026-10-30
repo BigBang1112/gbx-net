@@ -74,6 +74,7 @@ public abstract class CGameItemModelBuilderMembers5<TSelf> : CGameItemModelBuild
     public TSelf WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
     public TSelf WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
     public TSelf WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
 }
 public abstract class CGameItemModelBuilderMembers6<TSelf> : CGameItemModelBuilderMembers3<TSelf> where TSelf : CGameItemModelBuilderMembers6<TSelf>
 {
@@ -129,7 +130,7 @@ public abstract class CGameItemModelBuilderMembers8<TSelf> : CGameItemModelBuild
     public TSelf WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames5);
     public TSelf WithItemTypeE(global::GBX.NET.Engines.GameData.CGameItemModel.EItemType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemTypeEAssignment(), value, SupportedGames5);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames5);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames5);
     public TSelf WithPhyModelCustom(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPhyModelCustomAssignment(), value, SupportedGames5);
     public TSelf WithPhyModelCustomReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPhyModelCustomReferenceAssignment(), value, SupportedGames5);
@@ -187,6 +188,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002003());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -200,6 +202,8 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002001());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002003());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -219,6 +223,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -239,6 +244,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00200C());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00200D());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00200E());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -284,6 +290,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002010());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002011());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002012());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -485,6 +492,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithLowQualitySolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? value) => base.WithLowQualitySolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMaterialDetails(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? value) => base.WithMaterialDetails(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMaterialGlass(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? value) => base.WithMaterialGlass(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -499,6 +507,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
         public TMNESWC WithDecoratorSolid(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC? value) => base.WithDecoratorSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithLowQualitySolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? value) => base.WithLowQualitySolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMaterialDetails(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? value) => base.WithMaterialDetails(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMaterialGlass(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? value) => base.WithMaterialGlass(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -542,6 +551,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public VSK5 WithDecoratorSolid(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5? value) => base.WithDecoratorSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithFrontLight(global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? value) => base.WithFrontLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugLight?)null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithFrontLightSmall(global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? value) => base.WithFrontLightSmall(value is null ? (global::GBX.NET.Engines.Plug.CPlugLight?)null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithLowQualitySolid(global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? value) => base.WithLowQualitySolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMaterialDetails(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value) => base.WithMaterialDetails(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMaterialGlass(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value) => base.WithMaterialGlass(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

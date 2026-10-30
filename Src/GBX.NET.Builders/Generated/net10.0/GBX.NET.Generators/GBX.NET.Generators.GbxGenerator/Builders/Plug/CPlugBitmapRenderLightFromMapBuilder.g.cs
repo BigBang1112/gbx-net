@@ -12,6 +12,7 @@ public abstract class CPlugBitmapRenderLightFromMapBuilderBase<TSelf> : NodeBuil
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithIVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, SupportedGames1);
     public TSelf WithIVIdRef(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, SupportedGames1);
     public TSelf WithSVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, SupportedGames1);
@@ -61,6 +62,20 @@ public abstract class CPlugBitmapRenderLightFromMapBuilderMembers6<TSelf> : CPlu
     public TSelf WithRemapMin_DayAmb(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightFromMapBuilderAssignments.GetRemapMin_DayAmbAssignment(), value, SupportedGames3);
     public TSelf WithRemapMin_DayDir(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightFromMapBuilderAssignments.GetRemapMin_DayDirAssignment(), value, SupportedGames3);
     public TSelf WithRemapMin_Night(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightFromMapBuilderAssignments.GetRemapMin_NightAssignment(), value, SupportedGames3);
+}
+public abstract class CPlugBitmapRenderLightFromMapBuilderMembers7<TSelf> : CPlugBitmapRenderLightFromMapBuilderMembers6<TSelf> where TSelf : CPlugBitmapRenderLightFromMapBuilderMembers7<TSelf>
+{
+    private protected CPlugBitmapRenderLightFromMapBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap> state) : base(state) { }
+    public TSelf WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, SupportedGames4);
+    public TSelf WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithBitmapClearUV(Vec2? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, SupportedGames4);
+    public TSelf WithBitmapLightHistory(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightFromMapBuilderAssignments.GetBitmapLightHistoryAssignment(), value, SupportedGames6);
+    public TSelf WithBitmapLightHistoryReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderLightFromMapBuilderAssignments.GetBitmapLightHistoryReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithClearColor(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, SupportedGames4);
+    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, SupportedGames5);
+    public TSelf WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, SupportedGames5);
 }
 public partial class CPlugBitmapRenderLightFromMapBuilder : CPlugBitmapRenderLightFromMapBuilderBase<CPlugBitmapRenderLightFromMapBuilder>
 {
@@ -132,6 +147,7 @@ public partial class CPlugBitmapRenderLightFromMapBuilder : CPlugBitmapRenderLig
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap.Chunk09021001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap.Chunk09021002() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
@@ -250,52 +266,31 @@ public partial class CPlugBitmapRenderLightFromMapBuilder : CPlugBitmapRenderLig
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap Build() => BuildNode(CPlugBitmapRenderLightFromMapBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap node);
     }
-    public partial class TMT : CPlugBitmapRenderLightFromMapBuilderMembers6<TMT>
+    public partial class TMT : CPlugBitmapRenderLightFromMapBuilderMembers7<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap> state) : base(state) { }
-        public TMT WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, SupportedGames4);
-        public TMT WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, SupportedGames4);
-        public TMT WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMT WithBitmapClearUV(Vec2? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, SupportedGames4);
-        public TMT WithClearColor(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, SupportedGames4);
-        public TMT WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public TMT WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public TMT WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, SupportedGames5);
-        public TMT WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, SupportedGames5);
+        public TMT WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithBitmapLightHistory(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLightHistory(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap Build() => BuildNode(CPlugBitmapRenderLightFromMapBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap node);
     }
-    public partial class MP4 : CPlugBitmapRenderLightFromMapBuilderMembers6<MP4>
+    public partial class MP4 : CPlugBitmapRenderLightFromMapBuilderMembers7<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap> state) : base(state) { }
-        public MP4 WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, SupportedGames4);
-        public MP4 WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, SupportedGames4);
-        public MP4 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithBitmapClearUV(Vec2? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, SupportedGames4);
-        public MP4 WithClearColor(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, SupportedGames4);
-        public MP4 WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public MP4 WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public MP4 WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, SupportedGames5);
-        public MP4 WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, SupportedGames5);
+        public MP4 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLightHistory(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLightHistory(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap Build() => BuildNode(CPlugBitmapRenderLightFromMapBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap node);
     }
-    public partial class TM2020 : CPlugBitmapRenderLightFromMapBuilderMembers6<TM2020>
+    public partial class TM2020 : CPlugBitmapRenderLightFromMapBuilderMembers7<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap> state) : base(state) { }
-        public TM2020 WithBitmapClear(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearAssignment(), value, SupportedGames4);
-        public TM2020 WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, SupportedGames4);
-        public TM2020 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithBitmapClearUV(Vec2? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, SupportedGames4);
-        public TM2020 WithClearColor(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, SupportedGames4);
-        public TM2020 WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public TM2020 WithRenderFlags2(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlags2Assignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-        public TM2020 WithRenderPath(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathAssignment(), value, SupportedGames5);
-        public TM2020 WithRenderPathFails(global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderPathFailsAssignment(), value, SupportedGames5);
+        public TM2020 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapLightHistory(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLightHistory(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap Build() => BuildNode(CPlugBitmapRenderLightFromMapBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);

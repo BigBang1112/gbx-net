@@ -339,24 +339,12 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x004 chunk (ShaderHorizonBlur)
     /// </summary>
     [Chunk(0x0C032004, "ShaderHorizonBlur")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0C032004 : Chunk<CVisPostFx_BloomHdr>, IVersionable
     {
         public override uint Id => 0x0C032004;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0C032004() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0C032004(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

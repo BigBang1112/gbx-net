@@ -13,6 +13,6 @@ CGameManiaTitleCore 0x03012000
   v1+
     string ModeScriptFolderName
 
-0x002 [TMT.v0, MP4.v0, TM2020.v0]
+0x002 [TMT, MP4, TM2020]
   version
   bool WithLocalMultiplayer

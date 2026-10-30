@@ -1,11 +1,11 @@
 CGameManiaPlanet 0x03013000
 - inherits: CGameCtnApp
 
-0x000 [TMT.v0, MP4, TM2020.v0] // ManiaTitlesFolder
+0x000 [TMT, MP4, TM2020] // ManiaTitlesFolder
   version
   string ManiaTitlesFolder
 
-0x001 [MP4, TM2020.v0]
+0x001 [MP4, TM2020]
   version
   bool
 

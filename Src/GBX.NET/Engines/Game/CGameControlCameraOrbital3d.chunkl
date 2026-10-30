@@ -61,7 +61,7 @@ CGameControlCameraOrbital3d 0x0306E000
 0x009 [TMT, MP4, TM2020] // ZoomKeySensitivity
   float ZoomKeySensitivity
 
-0x00A [TMT.v0, MP4, TM2020.v0] // target location, orbit, occlusion and sensitivities
+0x00A [TMT, MP4, TM2020] // target location, orbit, occlusion and sensitivities
   version
   iso4 RelativeTargetLocation
   vec3 RadiusScale

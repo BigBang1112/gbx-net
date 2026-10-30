@@ -52,7 +52,7 @@ CGameCtnPainterSetting 0x03048000
 0x009 [MP4, TM2020] // FxBloom_FidFuncIntensAtHdrNorm
   CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
 
-0x00A [TM2020.v0] // raster mask shaders
+0x00A [TM2020] // raster mask shaders
   version
   CPlugShader ShaderRasterRgbMask
   CPlugShader ShaderRasterAlphaMask
