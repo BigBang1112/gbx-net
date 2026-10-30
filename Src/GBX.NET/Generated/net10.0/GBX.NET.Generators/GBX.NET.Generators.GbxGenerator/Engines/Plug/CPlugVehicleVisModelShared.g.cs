@@ -448,7 +448,12 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E801E : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801E;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugMaterial>? U01Ref;
@@ -781,7 +786,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E801F : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 14 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 19 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugParticleEmitterModel>? U01Ref;
@@ -1197,7 +1209,12 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8020 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8020;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -1264,7 +1281,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8021 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8021;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CFuncKeysReal>? U01Ref;
@@ -1432,7 +1456,13 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     public partial class Chunk090E8022 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8022;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugLocatedSound>? U01Ref;

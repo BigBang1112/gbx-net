@@ -3921,7 +3921,12 @@ public partial class CGameResources : CMwNod, IClass
     public partial class Chunk0302D045 : Chunk<CGameResources>, IVersionable
     {
         public override uint Id => 0x0302D045;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;

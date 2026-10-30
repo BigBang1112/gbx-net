@@ -414,7 +414,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     public partial class Chunk03053006 : Chunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053006;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk03053006() : this(GameVersion.Unspecified)
@@ -515,7 +520,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     public partial class Chunk03053008 : SkippableChunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053008;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk03053008() : this(GameVersion.Unspecified)

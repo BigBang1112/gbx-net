@@ -319,7 +319,12 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     public partial class Chunk03060002 : Chunk<CGameCtnMediaShootParams>, IVersionable
     {
         public override uint Id => 0x03060002;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk03060002() : this(GameVersion.Unspecified)

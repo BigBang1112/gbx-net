@@ -220,7 +220,12 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     public partial class Chunk090B3002 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3002;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public byte[]? U01;
         public byte[]? U02;
@@ -315,7 +320,12 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     public partial class Chunk090B3004 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3004;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public byte[]? U01;
         public byte[]? U02;

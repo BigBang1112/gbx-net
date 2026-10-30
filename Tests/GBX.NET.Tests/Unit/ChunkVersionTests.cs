@@ -25,6 +25,18 @@ public class ChunkVersionTests
     }
 
     [Test]
+    [Arguments(0, GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [Arguments(2, GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [Arguments(3, GameVersion.TM2020)]
+    [Arguments(9, GameVersion.TM2020)]
+    public async Task GameVersion_OlderChunkVersions_StayValidUpToEachGamesMaximum(int version, GameVersion expected)
+    {
+        var chunk = new GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092000 { Version = version };
+
+        await Assert.That(chunk.GameVersion).IsEqualTo(expected);
+    }
+
+    [Test]
     [Arguments(0x03122003u, 24)]
     [Arguments(0x0303600Cu, 3)]
     [Arguments(0x03078005u, 2)]

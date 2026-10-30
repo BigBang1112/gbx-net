@@ -815,7 +815,12 @@ public partial class CPlugSound : CPlugAudio, IClass
     public partial class Chunk0901A00F : Chunk<CPlugSound>, IVersionable
     {
         public override uint Id => 0x0901A00F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 8 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;

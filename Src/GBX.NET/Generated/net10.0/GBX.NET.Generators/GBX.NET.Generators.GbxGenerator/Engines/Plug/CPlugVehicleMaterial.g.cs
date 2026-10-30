@@ -707,7 +707,13 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     public partial class Chunk090F1010 : Chunk<CPlugVehicleMaterial>, IVersionable
     {
         public override uint Id => 0x090F1010;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 14 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U21;
         public float U22;

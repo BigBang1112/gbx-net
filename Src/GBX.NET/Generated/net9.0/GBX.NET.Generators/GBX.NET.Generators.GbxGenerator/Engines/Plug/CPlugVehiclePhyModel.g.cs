@@ -616,7 +616,12 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     public partial class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA008;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 9 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 14 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public Vec3[]? U01;
         public int U02;

@@ -90,7 +90,7 @@ public class CGameCtnMediaShootParamsLayoutTests
         var chunk = new CGameCtnMediaShootParams.Chunk03060002(GameVersion.TM2020);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
         await RoundTrip(payload, rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(version);
         await Assert.That((int)node.MotionBlur).IsEqualTo(motionBlur);

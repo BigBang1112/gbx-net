@@ -235,7 +235,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     public partial class Chunk0903A00F : SkippableChunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A00F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -437,7 +442,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     public partial class Chunk0903A014 : Chunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A014;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public CBuffer[]? U01;
 
@@ -484,7 +494,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     public partial class Chunk0903A015 : Chunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A015;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public string? U02;

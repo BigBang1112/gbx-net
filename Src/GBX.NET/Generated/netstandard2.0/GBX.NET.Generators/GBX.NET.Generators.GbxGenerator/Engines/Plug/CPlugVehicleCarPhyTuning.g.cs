@@ -6309,7 +6309,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED089 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED089;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 10 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CFuncKeysReal>? U01Ref;
@@ -6437,7 +6444,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED08A : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08A;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float? U01;
         public float? U02;
@@ -6534,7 +6547,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED08B : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08B;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 22 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 23 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 34 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 37 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float? U01;
         public float? U02;
@@ -7010,7 +7030,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED08D : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float? U01;
         public float? U02;
@@ -7095,7 +7120,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED08E : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08E;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public NodeRefList<CPlugCamControlModel>? U01;
@@ -7188,7 +7220,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED094 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED094;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int? U01;
         public int U02;
@@ -7270,7 +7308,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED095 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED095;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int? U01;
         public int? U02;
@@ -7483,7 +7526,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED097 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED097;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk090ED097() : this(GameVersion.Unspecified)
@@ -7650,7 +7698,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED09B : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09B;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public PlugCurve? U01;
 
@@ -7741,7 +7794,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED09C : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09C;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 20 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 21 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float? U01;
         public PlugCurve? U02;
@@ -8010,7 +8068,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED09D : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09D;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 19 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 21 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public bool? U01;
         public float? U02;
@@ -8321,7 +8384,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED09E : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09E;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -8439,7 +8507,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED09F : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09F;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 13 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 14 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public PlugCurve? U01;
         public float U02;
@@ -8634,7 +8707,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     public partial class Chunk090ED0A0 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0A0;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;

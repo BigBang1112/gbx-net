@@ -110,7 +110,12 @@ public partial class CPlugGpuCompileCache : CMwNod, IClass
     public partial class Chunk09053007 : Chunk<CPlugGpuCompileCache>, IVersionable
     {
         public override uint Id => 0x09053007;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.TMT | GameVersion.MP4,
+            <= 10 => GameVersion.MP4,
+            _ => GameVersion.TMT | GameVersion.MP4,
+        };
         public int Version { get; set; }
 
         public Chunk09053007() : this(GameVersion.Unspecified)
@@ -159,7 +164,13 @@ public partial class CPlugGpuCompileCache : CMwNod, IClass
     public partial class Chunk09053008 : Chunk<CPlugGpuCompileCache>, IVersionable
     {
         public override uint Id => 0x09053008;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 10 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 18 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public int U02;

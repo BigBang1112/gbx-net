@@ -117,7 +117,7 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 0x00D [MP3, TMT, MP4, TM2020] // description
   string Description
 
-0x00E [MP3, TMT, MP4] // icon render
+0x00E [MP3, TMT, MP4, TM2020] // icon render
   bool IconUseAutoRender
   int IconQuarterRotationY
 

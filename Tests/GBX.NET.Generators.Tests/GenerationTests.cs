@@ -1409,6 +1409,40 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_GamesWithDifferentChunkVersions_DropsGamesOnlyPastTheirMaximum()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+
+            0x001 [TM10.v1, TMF, MP4.v3, TM2020.v3]
+              version
+
+            0x002 [MP4.v2, TM2020.v2]
+              version
+
+            0x003 [MP4, TM2020]
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
+        var switchLines = classes.Single(x => x.Identifier.ValueText == "Chunk03043001").ToString().Split('\n').Select(static x => x.Trim()).ToArray();
+        var start = Array.IndexOf(switchLines, "public override GameVersion GameVersion => Version switch");
+        await Assert.That(start).IsGreaterThanOrEqualTo(0);
+        await Assert.That(switchLines[(start + 1)..(start + 6)]).IsEquivalentTo(
+        [
+            "{",
+            "<= 1 => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "<= 3 => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "_ => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "};"
+        ], TUnit.Assertions.Enums.CollectionOrdering.Matching);
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043002").ToString()).DoesNotContain("Version switch");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043003").ToString()).DoesNotContain("Version switch");
+    }
+
+    [Test]
     [Arguments("version")]
     [Arguments("versionb")]
     public async Task Generate_VersionDefaultsWithExplicitChunkVersions_PreservesFallbackAndCompatibilityLimit(string keyword)

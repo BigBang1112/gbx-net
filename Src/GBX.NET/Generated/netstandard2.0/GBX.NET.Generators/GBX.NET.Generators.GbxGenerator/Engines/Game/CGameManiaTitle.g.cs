@@ -489,7 +489,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     public partial class Chunk03001000 : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x03001000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.MP4,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -596,7 +601,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     public partial class Chunk03001001 : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x03001001;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 16 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 17 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -1085,7 +1095,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     public partial class Chunk03001008 : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x03001008;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CGameCtnChallenge>? U01Ref;
@@ -1251,7 +1266,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     public partial class Chunk0300100B : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x0300100B;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -1367,7 +1387,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     public partial class Chunk0300100C : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x0300100C;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0300100C() : this(GameVersion.Unspecified)

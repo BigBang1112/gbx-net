@@ -515,7 +515,12 @@ public partial class CPlugTurret : CMwNod, IClass
     public partial class Chunk0910F000 : Chunk<CPlugTurret>, IVersionable
     {
         public override uint Id => 0x0910F000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 19 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 20 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public int U02;

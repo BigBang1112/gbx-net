@@ -374,7 +374,13 @@ public partial class CPlugVisual : CPlug, IClass
     public partial class Chunk0900600F : Chunk0900600E, IVersionable
     {
         public override uint Id => 0x0900600F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0900600F() : this(GameVersion.Unspecified)

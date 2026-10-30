@@ -30,7 +30,7 @@ public class CPlugSoundEngine2LayoutTests
         await Assert.That(node.RpmMaxFromEngine).IsEqualTo(9000f);
         await Assert.That(node.RpmGamma).IsEqualTo(1.5f);
         await AssertLowPassFilters(node);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
     }
 
     [Test]

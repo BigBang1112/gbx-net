@@ -901,7 +901,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     public partial class Chunk0312C001 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0312C001() : this(GameVersion.Unspecified)
@@ -994,7 +999,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     public partial class Chunk0312C003 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C003;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U02;
         public string[]? U03;

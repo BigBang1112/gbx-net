@@ -93,7 +93,12 @@ public partial class CPlugImageArray : CMwNod, IClass
     public partial class Chunk0914C000 : Chunk<CPlugImageArray>, IVersionable
     {
         public override uint Id => 0x0914C000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
 

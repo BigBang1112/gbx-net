@@ -558,7 +558,13 @@ public partial class CPlugAnimFile : CMwNod, IClass
     public partial class Chunk090B0003 : Chunk<CPlugAnimFile>, IVersionable
     {
         public override uint Id => 0x090B0003;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 9 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 11 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 24 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U01;
         public uint U02;

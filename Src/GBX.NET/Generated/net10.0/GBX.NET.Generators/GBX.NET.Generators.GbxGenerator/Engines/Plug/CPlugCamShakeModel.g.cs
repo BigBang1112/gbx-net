@@ -39,7 +39,12 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
     public partial class Chunk0910B000 : Chunk<CPlugCamShakeModel>, IVersionable
     {
         public override uint Id => 0x0910B000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0910B000() : this(GameVersion.Unspecified)

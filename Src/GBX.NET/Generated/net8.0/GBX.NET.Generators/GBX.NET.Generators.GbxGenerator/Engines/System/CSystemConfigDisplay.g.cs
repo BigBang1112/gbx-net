@@ -2382,7 +2382,13 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     public partial class Chunk0B013036 : SkippableChunk<CSystemConfigDisplay>, IVersionable
     {
         public override uint Id => 0x0B013036;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public int U02;

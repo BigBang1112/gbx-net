@@ -242,7 +242,12 @@ public partial class CGameEditorModel : CMwNod, IClass
     public partial class Chunk2E01B003 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk2E01B003() : this(GameVersion.Unspecified)

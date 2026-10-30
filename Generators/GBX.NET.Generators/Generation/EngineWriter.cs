@@ -730,6 +730,32 @@ internal static class EngineWriter
         return type + ".Empty";
     }
 
+    private static void WriteGameVersion(CodeWriter code, ChunkModel chunk)
+    {
+        var qualifiers = chunk.Declaration.VersionQualifiers;
+        var games = Games(qualifiers);
+        var versions = qualifiers.Where(static x => x.MaxVersion.HasValue).Select(static x => x.MaxVersion!.Value).Distinct().OrderBy(static x => x).ToArray();
+
+        if (!chunk.Scope.HasVersion || versions.Length < 2)
+        {
+            code.Line("public override GameVersion GameVersion => " + games + ";");
+            return;
+        }
+
+        code.Open("public override GameVersion GameVersion => Version switch");
+
+        // A game supports every version up to its maximum. Games without a known maximum stay possible.
+        foreach (var version in versions)
+        {
+            code.Line("<= " + version + " => " + Games(qualifiers.Where(x => (x.MaxVersion ?? version) >= version)) + ",");
+        }
+
+        code.Line("_ => " + games + ",");
+        code.Close(";");
+
+        static string Games(IEnumerable<VersionQualifier> qualifiers) => string.Join(" | ", qualifiers.Select(static x => "GameVersion." + x.Label));
+    }
+
     private static void Chunk(CodeWriter code, LayoutModel layout, ChunkModel chunk, IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes)
     {
         RequirePartial(chunk.Scope.Existing);
@@ -790,7 +816,7 @@ internal static class EngineWriter
 
         if (chunk.Declaration.VersionQualifiers.Count > 0 && !SyntaxOverlap.Has(chunk.Scope.Existing, "GameVersion"))
         {
-            code.Line("public override GameVersion GameVersion => " + string.Join(" | ", chunk.Declaration.VersionQualifiers.Select(static x => "GameVersion." + x.Label)) + ";");
+            WriteGameVersion(code, chunk);
         }
 
         var demonstration = LayoutModel.Has(chunk.Declaration.Attributes, "demonstration");

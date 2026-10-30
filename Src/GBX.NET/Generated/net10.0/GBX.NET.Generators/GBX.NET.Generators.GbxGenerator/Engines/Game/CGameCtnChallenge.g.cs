@@ -1132,7 +1132,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class HeaderChunk03043002 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043002;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 10 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 11 => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 13 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public byte U02;
         public int U05;
@@ -1186,7 +1195,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class HeaderChunk03043003 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043003;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 11 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public uint U01;
         public int U02;
@@ -1301,7 +1318,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class HeaderChunk03043004 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043004;
-        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 10001 => GameVersion.VSK5,
+            _ => GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public HeaderChunk03043004() : this(GameVersion.Unspecified)
@@ -1871,7 +1896,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304301F;
-        public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
 
         public Chunk0304301F() : this(GameVersion.Unspecified)
         {
@@ -2350,7 +2380,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043040;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
 
         public Chunk03043040() : this(GameVersion.Unspecified)
         {
@@ -2979,7 +3015,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043057 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043057;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public RecordedBotPath[]? U01;
 
@@ -3097,7 +3138,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043059 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043059;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public int U02;

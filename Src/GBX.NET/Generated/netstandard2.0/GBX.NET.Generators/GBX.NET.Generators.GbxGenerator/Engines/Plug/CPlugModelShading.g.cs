@@ -421,7 +421,13 @@ public partial class CPlugModelShading : CMwNod, IClass
     public partial class Chunk0900E004 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E004;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;

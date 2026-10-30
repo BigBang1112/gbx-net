@@ -1227,7 +1227,13 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     public partial class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x06022015;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk06022015() : this(GameVersion.Unspecified)
@@ -1386,7 +1392,14 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x0602201A;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 15 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public bool U01;
         public int U02;

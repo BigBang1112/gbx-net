@@ -127,7 +127,12 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     public partial class Chunk09115000 : Chunk<CPlugVisEntFxModel>, IVersionable
     {
         public override uint Id => 0x09115000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09115000() : this(GameVersion.Unspecified)

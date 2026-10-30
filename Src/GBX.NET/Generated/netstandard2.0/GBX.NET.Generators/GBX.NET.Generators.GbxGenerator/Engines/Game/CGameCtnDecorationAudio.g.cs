@@ -478,7 +478,13 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public partial class Chunk03039003 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039003;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugCurveSimpleNod>? U01Ref;
@@ -685,7 +691,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     public partial class Chunk03039004 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039004;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk03039004() : this(GameVersion.Unspecified)

@@ -32,6 +32,17 @@ public partial class GbxGameVersionFixtureTests
         await Assert.That(gbx.Node!.GameVersion).HasFlag(game);
     }
 
+    [Test]
+    [Arguments("CGameCtnGhost MP3 001.Ghost.Gbx", GameVersion.MP3)]
+    [Arguments("CGameCtnGhost MP4 001.Ghost.Gbx", GameVersion.MP4)]
+    [Arguments("CGameCtnGhost TM2020 001.Ghost.Gbx", GameVersion.TM2020)]
+    public async Task GameVersionDifferentiatesGhostsByChunkVersions(string fileName, GameVersion game)
+    {
+        var gbx = Gbx.Parse(TestFiles.Gbx("CGameCtnGhost", fileName));
+
+        await Assert.That(gbx.Node!.GameVersion).IsEqualTo(game);
+    }
+
     [GeneratedRegex(@"^\S+ (?<game>[A-Z][A-Z0-9]+) \d+\.")]
     private static partial Regex FixtureName();
 }

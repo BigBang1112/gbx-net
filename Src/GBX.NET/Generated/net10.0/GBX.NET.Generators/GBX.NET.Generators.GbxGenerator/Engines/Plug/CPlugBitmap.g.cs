@@ -2029,7 +2029,12 @@ public partial class CPlugBitmap : CPlug, IClass
     public partial class Chunk09011030 : Chunk<CPlugBitmap>, IVersionable
     {
         public override uint Id => 0x09011030;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09011030() : this(GameVersion.Unspecified)
@@ -2183,7 +2188,12 @@ public partial class CPlugBitmap : CPlug, IClass
     public partial class Chunk09011034 : Chunk<CPlugBitmap>, IVersionable
     {
         public override uint Id => 0x09011034;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09011034() : this(GameVersion.Unspecified)

@@ -110,7 +110,14 @@ public partial class CPlugGameSkin : CMwNod, IClass
     public partial class HeaderChunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4000;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public bool U01;
         public string? U02;
@@ -258,7 +265,13 @@ public partial class CPlugGameSkin : CMwNod, IClass
     public partial class Chunk090F4004 : Chunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4004;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+            <= 4 => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+            <= 5 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+            _ => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+        };
         public int Version { get; set; }
         public bool U01;
         public string? U02;

@@ -66,7 +66,12 @@ public partial class CSystemDependenciesList : CMwNod, IClass
     public partial class Chunk0B010000 : Chunk<CSystemDependenciesList>, IVersionable
     {
         public override uint Id => 0x0B010000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0B010000() : this(GameVersion.Unspecified)

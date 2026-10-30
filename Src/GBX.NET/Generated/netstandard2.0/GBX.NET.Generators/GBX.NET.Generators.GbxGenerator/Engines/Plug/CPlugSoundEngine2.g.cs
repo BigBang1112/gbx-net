@@ -258,7 +258,12 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     public partial class Chunk09029001 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029001;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public PlugCurve? U01;
         public PlugCurve? U02;
@@ -360,7 +365,12 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     public partial class Chunk09029002 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029002;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public PlugCurve? U01;
         public PlugCurve? U02;

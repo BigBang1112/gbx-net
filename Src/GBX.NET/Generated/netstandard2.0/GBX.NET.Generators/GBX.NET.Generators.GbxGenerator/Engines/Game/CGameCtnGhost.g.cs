@@ -822,7 +822,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public partial class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public int[]? U02;
@@ -1419,7 +1424,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public partial class Chunk0309201B : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309201B;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
 
         public Chunk0309201B() : this(GameVersion.Unspecified)
         {
@@ -1473,7 +1483,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public partial class Chunk0309201D : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309201D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0309201D() : this(GameVersion.Unspecified)
@@ -1693,7 +1708,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public partial class Chunk03092025 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092025;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
 
         public Chunk03092025() : this(GameVersion.Unspecified)
         {
@@ -2008,6 +2028,23 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.String(ref n.skinCustomization);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnGhost 0xFFE skippable chunk (TICK)
+    /// </summary>
+    [Chunk(0x03092FFE, "TICK")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk03092FFE : SkippableChunk<CGameCtnGhost>
+    {
+        public override uint Id => 0x03092FFE;
+        public override bool Ignore => true;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
         }
     }
 
@@ -2743,6 +2780,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         0x0309202C => new Chunk0309202C(),
         0x0309202D => new Chunk0309202D(),
         0x0309202E => new Chunk0309202E(),
+        0x03092FFE => new Chunk03092FFE(),
         _ => base.NewChunk(chunkId),
     };
 }

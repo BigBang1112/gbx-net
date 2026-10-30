@@ -35,7 +35,7 @@ public class CPlugVehicleCameraHelicoModelLayoutTests
         await Assert.That(chunk.U27!.Values![0].Y).IsEqualTo(8f);
         await Assert.That(chunk.U30).IsEqualTo(500);
         await Assert.That(chunk.U31).IsEqualTo(600);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
     }
 
     [Test]

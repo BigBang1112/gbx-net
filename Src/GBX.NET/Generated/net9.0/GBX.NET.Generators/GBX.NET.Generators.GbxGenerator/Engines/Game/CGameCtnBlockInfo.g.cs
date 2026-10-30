@@ -1166,7 +1166,13 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public partial class Chunk0304E020 : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E020;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0304E020() : this(GameVersion.Unspecified)
@@ -1464,7 +1470,13 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public partial class Chunk0304E02A : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02A;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0304E02A() : this(GameVersion.Unspecified)
@@ -1643,7 +1655,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public partial class Chunk0304E02F : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02F;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0304E02F() : this(GameVersion.Unspecified)

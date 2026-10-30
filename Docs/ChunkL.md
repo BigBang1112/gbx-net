@@ -177,7 +177,7 @@ If both games write the chunk, list both:
 
 Add a `.vN` suffix only when the payload serializer or a Gbx sample establishes the highest observed chunk version for that game. For example, `[MP3.v3, MP4.v5]` records payload versions 3 and 5. **The `GetChunkInfo` mask is not the chunk version**, so a return value of `3` does not imply `[MP3.v3]`. When the payload version is unknown or the chunk is unversioned, use `[MP3]`.
 
-The qualifiers generate `ChunkGameVersion` metadata and the chunk's `GameVersion` flags. They do not control serialization by game or archive mode. Read the payload's version with `version` or `versionb` when needed, and document release or editor exclusions separately. If write support has not been verified, leave the game's qualifier unset rather than inferring it from a readable layout.
+The qualifiers generate `ChunkGameVersion` metadata and the chunk's `GameVersion` flags. When the listed versions differ, `GameVersion` depends on the chunk's current version: a game stays valid for every version up to its maximum, so `[MP4.v2, TM2020.v9]` gives both games for v2 and below, and only TM2020 for v3 to v9. Qualifiers without a version stay valid, and a version above every maximum gives all listed games. They do not control serialization by game or archive mode. Read the payload's version with `version` or `versionb` when needed, and document release or editor exclusions separately. If write support has not been verified, leave the game's qualifier unset rather than inferring it from a readable layout.
 
 ## References
 

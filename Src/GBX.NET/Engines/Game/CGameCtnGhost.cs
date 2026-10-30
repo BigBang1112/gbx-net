@@ -459,18 +459,19 @@ public partial class CGameCtnGhost
         public string? U02 { get => Slot; set => Slot = value; }
     }
 
-    public override bool IsGameVersion(GameVersion version, bool strict = false)
+    public override GameVersion GameVersion
     {
-        if (!base.IsGameVersion(version, strict))
+        get
         {
-            return false;
-        }
+            var version = base.GameVersion;
 
-        if (version == (GameVersion.MP4 | GameVersion.TM2020))
-        {
-            return Chunks.Any(static x => x is Chunk03092029);
-        }
+            // MP4 ghosts have no chunks of their own, but they stop at version 2 of this chunk
+            if ((version & GameVersion.MP4) != 0 && Chunks.Get<Chunk03092000>() is { Version: <= 2 })
+            {
+                return version & ~GameVersion.TM2020;
+            }
 
-        return true;
+            return version;
+        }
     }
 }

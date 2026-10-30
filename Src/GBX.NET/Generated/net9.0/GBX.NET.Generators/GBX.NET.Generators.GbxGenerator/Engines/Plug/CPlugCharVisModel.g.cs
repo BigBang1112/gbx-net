@@ -1484,7 +1484,13 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     public partial class Chunk090C7003 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7003;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 27 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 31 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 33 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -2243,7 +2249,12 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     public partial class Chunk090C7009 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7009;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk090C7009() : this(GameVersion.Unspecified)

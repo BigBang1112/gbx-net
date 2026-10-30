@@ -1197,7 +1197,14 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public partial class Chunk2E002019 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002019;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 16 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk2E002019() : this(GameVersion.Unspecified)
@@ -1551,7 +1558,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public partial class Chunk2E00201E : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E00201E;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 5 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U01;
         public int U02;
@@ -1625,7 +1638,14 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public partial class Chunk2E00201F : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E00201F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 3 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 13 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U01;
         public string? U02;
@@ -1775,7 +1795,12 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public partial class Chunk2E002020 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002020;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U01;
 
@@ -1857,11 +1882,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// CGameItemModel 0x021 chunk
     /// </summary>
     [Chunk(0x2E002021)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002021 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002021;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1926,11 +1951,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// CGameItemModel 0x023 chunk
     /// </summary>
     [Chunk(0x2E002023)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002023 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002023;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
         public int U02;
@@ -1960,11 +1985,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// CGameItemModel 0x024 skippable chunk
     /// </summary>
     [Chunk(0x2E002024)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002024 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002024;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec2[]? U01;
 

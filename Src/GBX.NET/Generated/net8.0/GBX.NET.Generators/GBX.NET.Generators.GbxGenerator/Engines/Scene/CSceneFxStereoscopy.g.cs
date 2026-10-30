@@ -149,7 +149,12 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     public partial class Chunk0A043002 : Chunk<CSceneFxStereoscopy>, IVersionable
     {
         public override uint Id => 0x0A043002;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0A043002() : this(GameVersion.Unspecified)

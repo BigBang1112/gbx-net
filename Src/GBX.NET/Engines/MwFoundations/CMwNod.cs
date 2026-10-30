@@ -513,7 +513,7 @@ public partial class CMwNod : IClass
     /// <summary>
     /// The version of the game where this node should be accepted without a game crash.
     /// </summary>
-    public GameVersion GameVersion
+    public virtual GameVersion GameVersion
     {
         get
         {
@@ -548,7 +548,7 @@ public partial class CMwNod : IClass
     /// <param name="version">Game version flags.</param>
     /// <param name="strict">If enabled, checks for the exact flag match (if accepted in MP4 and TM2020, only <c>MP4 | TM2020</c> will return true).</param>
     /// <returns>True if matches, false if not.</returns>
-    public virtual bool IsGameVersion(GameVersion version, bool strict = false)
+    public bool IsGameVersion(GameVersion version, bool strict = false)
     {
         return strict
             ? GameVersion == version

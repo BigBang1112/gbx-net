@@ -90,7 +90,12 @@ public partial class CGameVehicleModel : CMwNod, IClass
     public partial class Chunk2E01C000 : Chunk<CGameVehicleModel>, IVersionable
     {
         public override uint Id => 0x2E01C000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;

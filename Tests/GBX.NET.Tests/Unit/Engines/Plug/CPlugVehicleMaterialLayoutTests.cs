@@ -42,7 +42,7 @@ public class CPlugVehicleMaterialLayoutTests
         await Assert.That(chunk.U30).IsEqualTo(4);
         await Assert.That(chunk.U31!.Values![0].Y).IsEqualTo(14f);
         await Assert.That(chunk.U32).IsEqualTo(5);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
     }
 
     [Test]

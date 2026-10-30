@@ -1369,7 +1369,13 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public partial class Chunk090CD001 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD001;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 65 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 79 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 86 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U01;
         public float U02;
@@ -1949,7 +1955,12 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public partial class Chunk090CD003 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD003;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugSound>? U01Ref;
@@ -2153,7 +2164,12 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public partial class Chunk090CD006 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD006;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -2265,7 +2281,12 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public partial class Chunk090CD007 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD007;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 7 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk090CD007() : this(GameVersion.Unspecified)
@@ -2394,7 +2415,12 @@ public partial class CPlugBulletModel : CMwNod, IClass
     public partial class Chunk090CD009 : Chunk<CPlugBulletModel>, IVersionable
     {
         public override uint Id => 0x090CD009;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
 
