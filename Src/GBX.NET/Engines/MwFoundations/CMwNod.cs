@@ -552,7 +552,7 @@ public partial class CMwNod : IClass
     {
         return strict
             ? GameVersion == version
-            : (GameVersion & version) == version;
+            : version != GameVersion.Unspecified && (GameVersion & version) == version;
     }
 
     /// <summary>

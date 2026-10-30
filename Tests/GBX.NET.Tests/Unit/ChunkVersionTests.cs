@@ -37,6 +37,20 @@ public class ChunkVersionTests
     }
 
     [Test]
+    public async Task IsGameVersion_Unspecified_OnlyMatchesStrictlyOnANodeWithoutAGame()
+    {
+        var node = new GBX.NET.Engines.Game.CGameCtnGhost();
+        var nodeWithGame = new GBX.NET.Engines.Game.CGameCtnGhost();
+        nodeWithGame.CreateChunk<GBX.NET.Engines.Game.CGameCtnGhost.Chunk03092029>();
+
+        await Assert.That(node.IsGameVersion(GameVersion.Unspecified)).IsFalse();
+        await Assert.That(node.IsGameVersion(GameVersion.Unspecified, strict: true)).IsTrue();
+        await Assert.That(nodeWithGame.IsGameVersion(GameVersion.Unspecified)).IsFalse();
+        await Assert.That(nodeWithGame.IsGameVersion(GameVersion.Unspecified, strict: true)).IsFalse();
+        await Assert.That(nodeWithGame.IsGameVersion(GameVersion.TM2020)).IsTrue();
+    }
+
+    [Test]
     [Arguments(0x03122003u, 24)]
     [Arguments(0x0303600Cu, 3)]
     [Arguments(0x03078005u, 2)]
