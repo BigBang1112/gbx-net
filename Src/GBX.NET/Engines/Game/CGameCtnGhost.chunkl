@@ -254,6 +254,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x0304F001 (skippable, ignore, not-remapped) [TMF] // TMCP
 
+0xFFE (skippable, ignore, not-remapped) [TM2020] // TICK
+
 property TimeSpan? WalltimeDuration
   get = WalltimeEndTimestamp - WalltimeStartTimestamp
 
