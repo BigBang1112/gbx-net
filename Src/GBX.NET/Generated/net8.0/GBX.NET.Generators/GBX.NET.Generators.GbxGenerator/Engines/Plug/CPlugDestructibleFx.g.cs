@@ -204,14 +204,30 @@ public partial class CPlugDestructibleFx : CMwNod, IClass
     /// CPlugDestructibleFx 0x001 chunk
     /// </summary>
     [Chunk(0x090D6001)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk090D6001 : Chunk<CPlugDestructibleFx>, IVersionable
     {
         public override uint Id => 0x090D6001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01 = 200;
+        public int U01;
         public float U02;
         public float U03;
         public float U04;
+
+        public Chunk090D6001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090D6001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+
+            U01 = 200;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -226,6 +242,11 @@ public partial class CPlugDestructibleFx : CMwNod, IClass
         public override void ReadWrite(CPlugDestructibleFx n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);

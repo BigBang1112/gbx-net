@@ -142,11 +142,11 @@ public partial class CVisionResourceFile : CMwNod, IClass
     /// CVisionResourceFile 0x00C chunk (FolderShaderBench)
     /// </summary>
     [Chunk(0x0C01200C, "FolderShaderBench")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0C01200C : Chunk<CVisionResourceFile>
     {
         public override uint Id => 0x0C01200C;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -163,11 +163,11 @@ public partial class CVisionResourceFile : CMwNod, IClass
     /// CVisionResourceFile 0x01D chunk (named shaders and resources)
     /// </summary>
     [Chunk(0x0C01201D, "named shaders and resources")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0C01201D : Chunk<CVisionResourceFile>
     {
         public override uint Id => 0x0C01201D;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

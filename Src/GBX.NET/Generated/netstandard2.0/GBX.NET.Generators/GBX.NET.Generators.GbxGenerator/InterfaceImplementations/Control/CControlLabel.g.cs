@@ -5,6 +5,11 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControlLabel, global::GBX.NET.Interfaces.Control.IControlLabelTM10, global::GBX.NET.Interfaces.Control.IControlLabelTMPU, global::GBX.NET.Interfaces.Control.IControlLabelTMSX, global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC, global::GBX.NET.Interfaces.Control.IControlLabelTMU, global::GBX.NET.Interfaces.Control.IControlLabelVSK5, global::GBX.NET.Interfaces.Control.IControlLabelTMF, global::GBX.NET.Interfaces.Control.IControlLabelMP3, global::GBX.NET.Interfaces.Control.IControlLabelTMT, global::GBX.NET.Interfaces.Control.IControlLabelMP4, global::GBX.NET.Interfaces.Control.IControlLabelTM2020
 {
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Control.IControlLabelTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlLabelTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -19,6 +24,11 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Control.IControlLabelTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Control.IControlLabelTMPU.LegacyStyle
     {
@@ -35,6 +45,16 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Control.IControlLabelTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Control.IControlLabelTMSX.LegacyStyle
     {
         get => LegacyStyle;
@@ -49,6 +69,16 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC.LegacyStyle
     {
@@ -90,6 +120,16 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Control.IControlLabelVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlLabelVSK5.LegacyStyle
     {
         get => LegacyStyle;
@@ -104,6 +144,11 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutTMF? global::GBX.NET.Interfaces.Control.IControlLabelTMF.Layout
     {
@@ -140,6 +185,16 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Control.IControlLabelTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Control.IControlLabelTMT.LegacyStyle
     {
         get => LegacyStyle;
@@ -154,6 +209,11 @@ public partial class CControlLabel : global::GBX.NET.Interfaces.Control.IControl
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.Bitmap
+    {
+        get => Bitmap;
+        set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.Control.IControlLabelMP4.Layout
     {

@@ -1,5 +1,5 @@
 CGameControlCardCtnReplayRecordInfo 0x030C8000
 - inherits: CGameControlCard
 
-0x000 [TMU, MP4] // ShortName
+0x000 [TMU, MP4, TM2020] // ShortName
   bool ShortName

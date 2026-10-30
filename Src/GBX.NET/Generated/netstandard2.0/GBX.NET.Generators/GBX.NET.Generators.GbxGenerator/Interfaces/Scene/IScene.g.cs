@@ -6,12 +6,12 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneMembers1 : global::GBX.NET.Interfaces.Scene.IScene
 {
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
+    global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneMembers2 : global::GBX.NET.Interfaces.Scene.IScene
 {
-    global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneMembers3<T0> : global::GBX.NET.Interfaces.Scene.IScene where T0 : class
@@ -22,11 +22,11 @@ public partial interface IScene : IClassVersion<global::GBX.NET.Engines.Scene.CS
 {
 }
 
-public partial interface ISceneTM10 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1
+public partial interface ISceneTM10 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers2
 {
 }
 
-public partial interface ISceneTMPU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1
+public partial interface ISceneTMPU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers2
 {
 }
 
@@ -38,23 +38,23 @@ public partial interface ISceneTMNESWC : IScene, global::GBX.NET.Interfaces.Scen
 {
 }
 
-public partial interface ISceneTMU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>
+public partial interface ISceneTMU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMU>
 {
 }
 
-public partial interface ISceneVSK5 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>
+public partial interface ISceneVSK5 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>
 {
 }
 
-public partial interface ISceneTMF : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>
+public partial interface ISceneTMF : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>
 {
 }
 
-public partial interface ISceneMP3 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>
+public partial interface ISceneMP3 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>
 {
 }
 
-public partial interface ISceneTMT : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>
+public partial interface ISceneTMT : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>
 {
 }
 

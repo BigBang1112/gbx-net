@@ -10,10 +10,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Control.IControlGridTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlGridTM10.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTM10>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Control.IControlGridTM10.Motion
     {
@@ -30,10 +40,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Control.IControlGridTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Control.IControlGridTMPU.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMPU>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMPU? global::GBX.NET.Interfaces.Control.IControlGridTMPU.Motion
     {
@@ -50,10 +70,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Control.IControlGridTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Control.IControlGridTMSX.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMSX>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMSX? global::GBX.NET.Interfaces.Control.IControlGridTMSX.Motion
     {
@@ -70,10 +100,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Control.IControlGridTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Control.IControlGridTMNESWC.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Control.IControlGridTMNESWC.Motion
     {
@@ -100,7 +140,7 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlGridTMU.MainLayout
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMU>.MainLayout
     {
         get => MainLayout;
         set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -120,10 +160,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Control.IControlGridVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlGridVSK5.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutVSK5>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Control.IControlGridVSK5.Motion
     {
@@ -150,6 +200,11 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMF? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Motion.IMotionTMF? global::GBX.NET.Interfaces.Control.IControlGridTMF.Motion
     {
         get => Motion;
@@ -175,10 +230,20 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Control.IControlGridTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Control.IControlGridTMT.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMT>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMT? global::GBX.NET.Interfaces.Control.IControlGridTMT.Motion
     {
@@ -200,6 +265,11 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Motion.IMotionMP4? global::GBX.NET.Interfaces.Control.IControlGridMP4.Motion
     {
         get => Motion;
@@ -219,6 +289,11 @@ public partial class CControlGrid : global::GBX.NET.Interfaces.Control.IControlG
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>.MainLayout
+    {
+        get => MainLayout;
+        set => MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTM2020? global::GBX.NET.Interfaces.Control.IControlGridTM2020.Motion
     {

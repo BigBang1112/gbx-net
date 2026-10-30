@@ -102,7 +102,7 @@ public partial interface IPlugSoundGaugeMP3 : IPlugSoundGauge, global::GBX.NET.I
 {
 }
 
-public partial interface IPlugSoundGaugeTMT : IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT
+public partial interface IPlugSoundGaugeTMT : IPlugSoundGauge, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundGaugeMembers1
 {
 }
 

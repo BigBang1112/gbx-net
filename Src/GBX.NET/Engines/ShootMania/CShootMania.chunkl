@@ -1,7 +1,7 @@
 CShootMania 0x2D000000
 - inherits: CGameManiaTitleCore
 
-0x000 [MP4.v3, TM2020.v3]
+0x000 [TMT.v3, MP4.v3, TM2020.v3]
   version
   CScene2d ArenaInterfaceUI
   v1-
@@ -11,7 +11,7 @@ CShootMania 0x2D000000
   v3+
     CSmArenaResource ArenaResources
 
-0x001
+0x001 [MP4.v0, TM2020.v0]
   version
   float
 

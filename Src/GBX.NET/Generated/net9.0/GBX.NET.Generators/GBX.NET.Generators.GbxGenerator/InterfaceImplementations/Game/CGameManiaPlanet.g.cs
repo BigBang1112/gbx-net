@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020
+public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM10, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMPU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMSX, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMNESWC, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetVSK5, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMT, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020
 {
 }

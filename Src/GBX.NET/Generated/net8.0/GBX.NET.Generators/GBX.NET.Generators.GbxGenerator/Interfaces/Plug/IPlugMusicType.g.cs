@@ -16,10 +16,12 @@ public partial interface IPlugMusicType : IClassVersion<global::GBX.NET.Engines.
 
 public partial interface IPlugMusicTypeTM10 : IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10
 {
+    new bool IsLooping { get; set; }
 }
 
 public partial interface IPlugMusicTypeTMPU : IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU
 {
+    new bool IsLooping { get; set; }
 }
 
 public partial interface IPlugMusicTypeTMSX : IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX

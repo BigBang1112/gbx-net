@@ -3,11 +3,6 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IMwCmdBlockMainMembers1 : global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain
-{
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Methods { get; set; }
-}
 public partial interface IMwCmdBlockMain : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,6 +12,7 @@ public partial interface IMwCmdBlockMain : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Methods { get; set; }
 }
 
 public partial interface IMwCmdBlockMainTM10 : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10
@@ -35,7 +31,7 @@ public partial interface IMwCmdBlockMainTMNESWC : IMwCmdBlockMain, global::GBX.N
 {
 }
 
-public partial interface IMwCmdBlockMainTMU : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainMembers1
+public partial interface IMwCmdBlockMainTMU : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU
 {
 }
 
@@ -43,7 +39,7 @@ public partial interface IMwCmdBlockMainVSK5 : IMwCmdBlockMain, global::GBX.NET.
 {
 }
 
-public partial interface IMwCmdBlockMainTMF : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainMembers1
+public partial interface IMwCmdBlockMainTMF : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF
 {
 }
 

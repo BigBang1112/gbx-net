@@ -7,11 +7,39 @@ public partial interface IGameApp : IClassVersion<global::GBX.NET.Engines.Game.C
 {
 }
 
+public partial interface IGameAppTM10 : IGameApp
+{
+}
+
+public partial interface IGameAppTMPU : IGameApp
+{
+}
+
+public partial interface IGameAppTMSX : IGameApp
+{
+}
+
+public partial interface IGameAppTMNESWC : IGameApp
+{
+}
+
 public partial interface IGameAppTMU : IGameApp
 {
 }
 
+public partial interface IGameAppVSK5 : IGameApp
+{
+}
+
 public partial interface IGameAppTMF : IGameApp
+{
+}
+
+public partial interface IGameAppTMT : IGameApp
+{
+}
+
+public partial interface IGameAppMP4 : IGameApp
 {
 }
 

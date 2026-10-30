@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4
+public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugDecalModel? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel.DecalModel
     {
@@ -20,17 +20,47 @@ public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.
         get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.DecalModel
+    global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.DecalModel
     {
         get => DecalModel;
         set => DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.ParticleEmitterModel
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ParticleEmitterModel
     {
         get => ParticleEmitterModel;
         set => ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4.Sound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound
+    {
+        get => Sound;
+        set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.DecalModel
+    {
+        get => DecalModel;
+        set => DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleEmitterModel
+    {
+        get => ParticleEmitterModel;
+        set => ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound
+    {
+        get => Sound;
+        set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.DecalModel
+    {
+        get => DecalModel;
+        set => DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleEmitterModel
+    {
+        get => ParticleEmitterModel;
+        set => ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound
     {
         get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

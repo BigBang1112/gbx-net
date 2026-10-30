@@ -5,12 +5,12 @@ CSceneFxEdgeBlender 0x0A07D000
   CMwNod ShaderEdgeDetect
   CMwNod ShaderEdgeGutter
 
-0x001 // edge and gutter settings
+0x001 [TMT, MP4, TM2020] // edge and gutter settings
   float EdgeDotMax
   float EdgeDepthMax
   float GutterWeight
   int GutterPassCount
 
-0x002 // shaders
+0x002 [TMT, MP4, TM2020] // shaders
   CMwNod ShaderEdgeDetect
   CMwNod ShaderEdgeGutter

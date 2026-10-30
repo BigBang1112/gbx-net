@@ -10,7 +10,19 @@ public partial interface ISceneFxBloomData : IClassVersion<global::GBX.NET.Engin
     float HighInvExponent { get; set; }
 }
 
+public partial interface ISceneFxBloomDataVSK5 : ISceneFxBloomData
+{
+}
+
 public partial interface ISceneFxBloomDataTMF : ISceneFxBloomData
+{
+}
+
+public partial interface ISceneFxBloomDataTMT : ISceneFxBloomData
+{
+}
+
+public partial interface ISceneFxBloomDataMP4 : ISceneFxBloomData
 {
 }
 

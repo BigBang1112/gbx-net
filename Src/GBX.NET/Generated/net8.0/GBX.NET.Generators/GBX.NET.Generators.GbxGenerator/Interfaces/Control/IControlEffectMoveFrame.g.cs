@@ -18,7 +18,35 @@ public partial interface IControlEffectMoveFrame : IClassVersion<global::GBX.NET
     float Period { get; set; }
 }
 
+public partial interface IControlEffectMoveFrameTMSX : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+{
+}
+
+public partial interface IControlEffectMoveFrameTMNESWC : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC
+{
+}
+
 public partial interface IControlEffectMoveFrameTMU : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTMU
+{
+}
+
+public partial interface IControlEffectMoveFrameVSK5 : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectVSK5
+{
+}
+
+public partial interface IControlEffectMoveFrameTMF : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTMF
+{
+}
+
+public partial interface IControlEffectMoveFrameTMT : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTMT
+{
+}
+
+public partial interface IControlEffectMoveFrameMP4 : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectMP4
+{
+}
+
+public partial interface IControlEffectMoveFrameTM2020 : IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectTM2020
 {
 }
 

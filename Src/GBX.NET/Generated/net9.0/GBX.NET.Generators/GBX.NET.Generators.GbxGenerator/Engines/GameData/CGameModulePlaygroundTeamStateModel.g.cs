@@ -715,10 +715,28 @@ public partial class CGameModulePlaygroundTeamStateModel : CGameModulePlayground
     /// CGameModulePlaygroundTeamStateModel 0x000 skippable chunk (layout, visibility, colors and images)
     /// </summary>
     [Chunk(0x2E022000, "layout, visibility, colors and images")]
+    [ChunkGameVersion(GameVersion.MP4, 6)]
     public partial class Chunk2E022000 : SkippableChunk<CGameModulePlaygroundTeamStateModel>, IVersionable
     {
         public override uint Id => 0x2E022000;
-        public int Version { get; set; } = 6;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk2E022000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E022000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 6;
+            }
+            else
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -729,6 +747,11 @@ public partial class CGameModulePlaygroundTeamStateModel : CGameModulePlayground
         public override void ReadWrite(CGameModulePlaygroundTeamStateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(6, 6))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.SizeX = rw.Single(n.SizeX);
             n.SizeY = rw.Single(n.SizeY);
             rw.Single(ref n.globalScale);

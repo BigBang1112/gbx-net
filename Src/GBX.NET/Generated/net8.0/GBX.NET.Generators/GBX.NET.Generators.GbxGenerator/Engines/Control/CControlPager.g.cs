@@ -43,9 +43,11 @@ public partial class CControlPager : CControlFrame, IClass
     /// CControlPager 0x000 chunk (page counter, navigation buttons and styles)
     /// </summary>
     [Chunk(0x07030000, "page counter, navigation buttons and styles")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07030000 : Chunk<CControlPager>
     {
         public override uint Id => 0x07030000;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -61,9 +63,11 @@ public partial class CControlPager : CControlFrame, IClass
     /// CControlPager 0x001 chunk (StackPageCountText)
     /// </summary>
     [Chunk(0x07030001, "StackPageCountText")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07030001 : Chunk<CControlPager>
     {
         public override uint Id => 0x07030001;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -80,9 +84,11 @@ public partial class CControlPager : CControlFrame, IClass
     /// CControlPager 0x002 chunk (QuadPageCounter)
     /// </summary>
     [Chunk(0x07030002, "QuadPageCounter")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07030002 : Chunk<CControlPager>
     {
         public override uint Id => 0x07030002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

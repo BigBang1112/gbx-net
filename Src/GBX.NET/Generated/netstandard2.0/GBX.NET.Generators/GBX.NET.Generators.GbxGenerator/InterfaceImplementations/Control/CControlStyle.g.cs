@@ -470,22 +470,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -510,12 +510,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -565,22 +565,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -605,12 +605,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -660,22 +660,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -700,12 +700,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -745,22 +745,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -775,12 +775,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -789,6 +789,21 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
     {
         get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ActionBackSound
+    {
+        get => ActionBackSound;
+        set => ActionBackSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.ButtonDefaultIcons
+    {
+        get => ButtonDefaultIcons;
+        set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>.DefaultShader
     {
@@ -820,22 +835,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -850,12 +865,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -865,7 +880,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.ActionBackSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ActionBackSound
     {
         get => ActionBackSound;
         set => ActionBackSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -910,22 +925,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -940,12 +955,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -954,6 +969,21 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
     {
         get => SliderSound;
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ActionBackSound
+    {
+        get => ActionBackSound;
+        set => ActionBackSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers6<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.ButtonDefaultIcons
+    {
+        get => ButtonDefaultIcons;
+        set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>.DefaultShader
     {
@@ -985,22 +1015,22 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => EnumSound;
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterial
     {
         get => FocusAreaMaterial;
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialFocused
     {
         get => FocusAreaMaterialFocused;
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialReadOnly
     {
         get => FocusAreaMaterialReadOnly;
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.FocusAreaMaterialSelected
     {
         get => FocusAreaMaterialSelected;
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -1015,12 +1045,12 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.SliderBarIcons
     {
         get => SliderBarIcons;
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers14<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers15<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.SliderCursorIcons
     {
         get => SliderCursorIcons;
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

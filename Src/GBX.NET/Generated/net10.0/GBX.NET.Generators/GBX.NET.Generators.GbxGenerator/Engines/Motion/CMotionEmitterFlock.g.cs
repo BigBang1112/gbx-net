@@ -99,11 +99,11 @@ public partial class CMotionEmitterFlock : CMotionManaged, IClass
     /// CMotionEmitterFlock 0x000 chunk
     /// </summary>
     [Chunk(0x0804F000)]
-    [ChunkGameVersion(GameVersion.MP3, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 2, 2)]
     public partial class Chunk0804F000 : Chunk<CMotionEmitterFlock>, IVersionable
     {
         public override uint Id => 0x0804F000;
-        public override GameVersion GameVersion => GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
 
         public Chunk0804F000() : this(GameVersion.Unspecified)
@@ -112,7 +112,7 @@ public partial class CMotionEmitterFlock : CMotionManaged, IClass
 
         public Chunk0804F000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 2;
             }
@@ -156,11 +156,11 @@ public partial class CMotionEmitterFlock : CMotionManaged, IClass
     /// CMotionEmitterFlock 0x001 chunk (FlockModel)
     /// </summary>
     [Chunk(0x0804F001, "FlockModel")]
-    [ChunkGameVersion(GameVersion.MP3, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 1, 1)]
     public partial class Chunk0804F001 : Chunk<CMotionEmitterFlock>, IVersionable
     {
         public override uint Id => 0x0804F001;
-        public override GameVersion GameVersion => GameVersion.MP3;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
 
         public Chunk0804F001() : this(GameVersion.Unspecified)
@@ -169,7 +169,7 @@ public partial class CMotionEmitterFlock : CMotionManaged, IClass
 
         public Chunk0804F001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 1;
             }

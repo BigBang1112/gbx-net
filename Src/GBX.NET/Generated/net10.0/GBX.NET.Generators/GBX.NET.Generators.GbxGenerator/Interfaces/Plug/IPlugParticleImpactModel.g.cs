@@ -3,6 +3,25 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleImpactModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel where T0 : class where T1 : class where T2 : class
+{
+    new T0? DecalModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).DecalModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? ParticleEmitterModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).ParticleEmitterModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? Sound
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).Sound);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IPlugParticleImpactModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugDecalModel? DecalModel
@@ -22,22 +41,15 @@ public partial interface IPlugParticleImpactModel : IClassVersion<global::GBX.NE
     }
 }
 
-public partial interface IPlugParticleImpactModelMP4 : IPlugParticleImpactModel
+public partial interface IPlugParticleImpactModelTMT : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4? DecalModel
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).DecalModel);
-        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModel
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).ParticleEmitterModel);
-        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).Sound);
-        set => ((global::GBX.NET.Engines.Plug.CPlugParticleImpactModel)this).Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IPlugParticleImpactModelMP4 : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+{
+}
+
+public partial interface IPlugParticleImpactModelTM2020 : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+{
 }
 

@@ -17,7 +17,7 @@ public partial interface ITrackManiaControlMatchSettingsCard : IClassVersion<glo
 public partial interface ITrackManiaControlMatchSettingsCardTM10 : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +26,7 @@ public partial interface ITrackManiaControlMatchSettingsCardTM10 : ITrackManiaCo
 public partial interface ITrackManiaControlMatchSettingsCardTMPU : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +35,7 @@ public partial interface ITrackManiaControlMatchSettingsCardTMPU : ITrackManiaCo
 public partial interface ITrackManiaControlMatchSettingsCardTMSX : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,7 +44,7 @@ public partial interface ITrackManiaControlMatchSettingsCardTMSX : ITrackManiaCo
 public partial interface ITrackManiaControlMatchSettingsCardTMNESWC : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -62,7 +62,7 @@ public partial interface ITrackManiaControlMatchSettingsCardTMU : ITrackManiaCon
 public partial interface ITrackManiaControlMatchSettingsCardVSK5 : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -89,7 +89,7 @@ public partial interface ITrackManiaControlMatchSettingsCardMP3 : ITrackManiaCon
 public partial interface ITrackManiaControlMatchSettingsCardTMT : ITrackManiaControlMatchSettingsCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }

@@ -145,11 +145,11 @@ public partial class CGameMenuScaleEffect : CControlEffect, IClass
     /// CGameMenuScaleEffect 0x000 chunk (border scales and letter scaling)
     /// </summary>
     [Chunk(0x03032000, "border scales and letter scaling")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03032000 : Chunk<CGameMenuScaleEffect>
     {
         public override uint Id => 0x03032000;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -174,11 +174,11 @@ public partial class CGameMenuScaleEffect : CControlEffect, IClass
     /// CGameMenuScaleEffect 0x001 chunk (decalage and hiding before effect)
     /// </summary>
     [Chunk(0x03032001, "decalage and hiding before effect")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03032001 : Chunk<CGameMenuScaleEffect>
     {
         public override uint Id => 0x03032001;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -196,11 +196,11 @@ public partial class CGameMenuScaleEffect : CControlEffect, IClass
     /// CGameMenuScaleEffect 0x002 chunk (ReCenter)
     /// </summary>
     [Chunk(0x03032002, "ReCenter")]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03032002 : Chunk<CGameMenuScaleEffect>
     {
         public override uint Id => 0x03032002;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

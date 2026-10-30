@@ -1,5 +1,5 @@
 CPlugShieldEmitterModel 0x090CC000
 
-0x000
+0x000 [TMT.v0, MP4.v0, TM2020.v0]
   version
   CPlugMaterial Material

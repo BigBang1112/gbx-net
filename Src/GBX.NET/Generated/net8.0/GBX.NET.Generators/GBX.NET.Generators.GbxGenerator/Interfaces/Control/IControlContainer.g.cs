@@ -17,6 +17,11 @@ public interface IControlContainerMembers2<T0> : global::GBX.NET.Interfaces.Cont
         set => ((global::GBX.NET.Engines.Control.CControlContainer)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlContainerMembers3 : global::GBX.NET.Interfaces.Control.IControlContainer
+{
+    bool IsClippingContainer { get; set; }
+}
 public partial interface IControlContainer : IClassVersion<global::GBX.NET.Engines.Control.CControlContainer>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -38,7 +43,11 @@ public partial interface IControlContainer : IClassVersion<global::GBX.NET.Engin
 
 public partial interface IControlContainerTM10 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTM10, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -58,7 +67,11 @@ public partial interface IControlContainerTM10 : IControlContainer, global::GBX.
 
 public partial interface IControlContainerTMPU : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMPU, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -78,7 +91,11 @@ public partial interface IControlContainerTMPU : IControlContainer, global::GBX.
 
 public partial interface IControlContainerTMSX : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMSX, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -98,7 +115,11 @@ public partial interface IControlContainerTMSX : IControlContainer, global::GBX.
 
 public partial interface IControlContainerTMNESWC : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -142,7 +163,11 @@ public partial interface IControlContainerTMU : IControlContainer, global::GBX.N
 
 public partial interface IControlContainerVSK5 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlContainerMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -204,9 +229,13 @@ public partial interface IControlContainerMP3 : IControlContainer, global::GBX.N
     }
 }
 
-public partial interface IControlContainerTMT : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlContainerMembers1
+public partial interface IControlContainerTMT : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlContainerMembers1, global::GBX.NET.Interfaces.Control.IControlContainerMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlContainer)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlContainer)this).LegacyStyle);
@@ -224,7 +253,7 @@ public partial interface IControlContainerTMT : IControlContainer, global::GBX.N
     }
 }
 
-public partial interface IControlContainerMP4 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlContainerMembers1
+public partial interface IControlContainerMP4 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlContainerMembers1, global::GBX.NET.Interfaces.Control.IControlContainerMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -248,7 +277,7 @@ public partial interface IControlContainerMP4 : IControlContainer, global::GBX.N
     }
 }
 
-public partial interface IControlContainerTM2020 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlContainerMembers1
+public partial interface IControlContainerTM2020 : IControlContainer, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlContainerMembers1, global::GBX.NET.Interfaces.Control.IControlContainerMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

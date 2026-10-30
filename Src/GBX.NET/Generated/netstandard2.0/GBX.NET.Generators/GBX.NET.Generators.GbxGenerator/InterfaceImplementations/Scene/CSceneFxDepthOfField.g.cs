@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxDepthOfField : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMF
+public partial class CSceneFxDepthOfField : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTM10, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMF, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMT, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMP4, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTM2020
 {
 }

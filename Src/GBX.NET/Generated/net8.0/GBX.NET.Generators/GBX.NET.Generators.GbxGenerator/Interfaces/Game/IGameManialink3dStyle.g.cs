@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameManialink3dStyleMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameManialink3dStyle where T0 : class
+{
+    new T0? Mood
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameManialink3dStyle)this).Mood);
+        set => ((global::GBX.NET.Engines.Game.CGameManialink3dStyle)this).Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IGameManialink3dStyle : IClassVersion<global::GBX.NET.Engines.Game.CGameManialink3dStyle>
 {
     global::GBX.NET.Interfaces.Game.IGameManialink3dMood? Mood
@@ -12,12 +21,15 @@ public partial interface IGameManialink3dStyle : IClassVersion<global::GBX.NET.E
     }
 }
 
-public partial interface IGameManialink3dStyleMP4 : IGameManialink3dStyle
+public partial interface IGameManialink3dStyleTMT : IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTMT>
 {
-    new global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4? Mood
-    {
-        get => (global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameManialink3dStyle)this).Mood);
-        set => ((global::GBX.NET.Engines.Game.CGameManialink3dStyle)this).Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
+}
+
+public partial interface IGameManialink3dStyleMP4 : IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4>
+{
+}
+
+public partial interface IGameManialink3dStyleTM2020 : IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020>
+{
 }
 

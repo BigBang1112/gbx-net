@@ -54,7 +54,11 @@ public partial interface ITrackManiaMatchSettingsControlGridTM10 : ITrackManiaMa
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);
@@ -79,7 +83,11 @@ public partial interface ITrackManiaMatchSettingsControlGridTMPU : ITrackManiaMa
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);
@@ -104,7 +112,11 @@ public partial interface ITrackManiaMatchSettingsControlGridTMSX : ITrackManiaMa
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);
@@ -129,7 +141,11 @@ public partial interface ITrackManiaMatchSettingsControlGridTMNESWC : ITrackMani
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);
@@ -176,14 +192,18 @@ public partial interface ITrackManiaMatchSettingsControlGridTMU : ITrackManiaMat
     }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5
+public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);
@@ -201,7 +221,7 @@ public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMa
     }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridTMF : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMF
+public partial interface ITrackManiaMatchSettingsControlGridTMF : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript
     {
@@ -251,10 +271,14 @@ public partial interface ITrackManiaMatchSettingsControlGridMP3 : ITrackManiaMat
     }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridTMT : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT
+public partial interface ITrackManiaMatchSettingsControlGridTMT : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaMatchSettingsControlGrid)this).LegacyStyle);

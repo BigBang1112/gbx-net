@@ -28,7 +28,7 @@ CHmsLightMapMood 0x06023000
   float = 0
   float = 0
 
-0x004 [MP3, TMT, TM2020]
+0x004 [MP3, TMT, MP4.v0, TM2020]
   version
   float MaxHDR
   float BounceFactor

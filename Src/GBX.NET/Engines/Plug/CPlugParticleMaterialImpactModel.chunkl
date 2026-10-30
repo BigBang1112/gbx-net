@@ -1,6 +1,6 @@
 CPlugParticleMaterialImpactModel 0x090B7000
 
-0x000 [MP4.v1]
+0x000 [TMT.v1, MP4.v1, TM2020.v1]
   version
   CPlugParticleImpactModel?[] MaterialImpacts (deprec)
   v1+

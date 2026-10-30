@@ -10,6 +10,11 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Game.IGameMenuFrameTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Game.IGameMenuFrameTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -25,10 +30,25 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMPU.CreateScript
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMPU.LegacyStyle
     {
@@ -45,10 +65,25 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMSX.CreateScript
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMSX.LegacyStyle
     {
@@ -65,10 +100,25 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMNESWC.CreateScript
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMNESWC.LegacyStyle
     {
@@ -84,6 +134,16 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.CreateScript
     {
@@ -110,12 +170,12 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.ShowSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>.ShowSound
     {
         get => ShowSound;
         set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMU.UpDownSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>.UpDownSound
     {
         get => UpDownSound;
         set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -124,6 +184,11 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Game.IGameMenuFrameVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Game.IGameMenuFrameVSK5.LegacyStyle
     {
@@ -139,6 +204,16 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMF.CreateScript
     {
@@ -165,6 +240,16 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleMP3? global::GBX.NET.Interfaces.Game.IGameMenuFrameMP3.LegacyStyle
     {
         get => LegacyStyle;
@@ -180,6 +265,11 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Game.IGameMenuFrameTMT.LegacyStyle
     {
         get => LegacyStyle;
@@ -194,6 +284,16 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.Game.IGameMenuFrameMP4.Layout
     {
@@ -215,6 +315,16 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? global::GBX.NET.Interfaces.Game.IGameMenuFrameTM2020.Layout
     {
         get => Layout;
@@ -229,5 +339,15 @@ public partial class CGameMenuFrame : global::GBX.NET.Interfaces.Game.IGameMenuF
     {
         get => Motion;
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ShowSound
+    {
+        get => ShowSound;
+        set => ShowSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameMenuFrameMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.UpDownSound
+    {
+        get => UpDownSound;
+        set => UpDownSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

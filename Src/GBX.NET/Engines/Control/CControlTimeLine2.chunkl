@@ -1,7 +1,7 @@
 CControlTimeLine2 0x07022000
 - inherits: CControlBase
 
-0x000 [TMU] // legacy sizes, ruler colors and shaders
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy sizes, ruler colors and shaders
   float Width
   float Height
   float TrackHeight
@@ -23,27 +23,27 @@ CControlTimeLine2 0x07022000
   CPlugShaderGeneric
   CPlugShaderGeneric
 
-0x001 [TMU] // BlockHeight
+0x001 [TMSX, TMNESWC, TMU, VSK5, TMF] // BlockHeight
   float BlockHeight
 
-0x002 [TMU] // legacy key size and shaders
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy key size and shaders
   float KeyWidth
   float KeyHeight
   CPlugShaderGeneric
   CPlugShaderGeneric
   CPlugShaderGeneric
 
-0x003 [TMU] // key highlight size
+0x003 [TMSX, TMNESWC, TMU, VSK5, TMF] // key highlight size
   float KeyHighLightWidth
   float KeyHighLightHeight
 
-0x004 [TMU] // legacy dead zone shader
+0x004 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy dead zone shader
   CPlugShaderGeneric
 
-0x005 [TMU] // TrackCount
+0x005 [TMSX, TMNESWC, TMU, VSK5, TMF] // TrackCount
   int TrackCount
 
-0x006 // sizes and colors
+0x006 [TMT.v2, MP4.v2, TM2020.v2] // sizes and colors
   version = 2
   float Width
   float Height

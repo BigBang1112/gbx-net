@@ -68,11 +68,11 @@ public partial class CHmsZoneOverlay : CHmsZone, IClass
     /// CHmsZoneOverlay 0x000 chunk
     /// </summary>
     [Chunk(0x06009000)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk06009000 : Chunk<CHmsZoneOverlay>
     {
         public override uint Id => 0x06009000;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
         public bool U01;
         public float U02;
         public float U03;
@@ -103,11 +103,11 @@ public partial class CHmsZoneOverlay : CHmsZone, IClass
     /// CHmsZoneOverlay 0x001 chunk
     /// </summary>
     [Chunk(0x06009001)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06009001 : Chunk<CHmsZoneOverlay>
     {
         public override uint Id => 0x06009001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public Rect U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

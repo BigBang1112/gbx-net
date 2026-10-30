@@ -3,6 +3,36 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlGridMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlGrid where T0 : class
+{
+    float ForceColumnsUniformWidth { get; set; }
+    float[]? ForceColumnsWidths { get; set; }
+    float ForceRowsUniformHeight { get; set; }
+    T0? MainLayout
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).MainLayout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlGridMembers2 : global::GBX.NET.Interfaces.Control.IControlGrid
+{
+    float HorizontalSkewOffset { get; set; }
+    float VerticalSkewOffset { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlGridMembers3 : global::GBX.NET.Interfaces.Control.IControlGrid
+{
+    bool PackEmptyRows { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlGridMembers4 : global::GBX.NET.Interfaces.Control.IControlGrid
+{
+    bool PagedGrid_Enable { get; set; }
+    int PagedGrid_FastPageStep { get; set; }
+    int PagedGrid_NbLinesPerPage { get; set; }
+}
 public partial interface IControlGrid : IClassVersion<global::GBX.NET.Engines.Control.CControlGrid>, global::GBX.NET.Interfaces.Control.IControlContainer
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,14 +44,18 @@ public partial interface IControlGrid : IClassVersion<global::GBX.NET.Engines.Co
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlGridTM10 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTM10
+public partial interface IControlGridTM10 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTM10, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTM10>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -39,14 +73,18 @@ public partial interface IControlGridTM10 : IControlGrid, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlGridTMPU : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMPU
+public partial interface IControlGridTMPU : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMPU, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMPU>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -64,14 +102,18 @@ public partial interface IControlGridTMPU : IControlGrid, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlGridTMSX : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMSX
+public partial interface IControlGridTMSX : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMSX, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMSX>, global::GBX.NET.Interfaces.Control.IControlGridMembers3
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -89,14 +131,18 @@ public partial interface IControlGridTMSX : IControlGrid, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlGridTMNESWC : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMNESWC
+public partial interface IControlGridTMNESWC : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMNESWC, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC>, global::GBX.NET.Interfaces.Control.IControlGridMembers3
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -114,16 +160,13 @@ public partial interface IControlGridTMNESWC : IControlGrid, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlGridTMU : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMU
+public partial interface IControlGridTMU : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMU, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMU>, global::GBX.NET.Interfaces.Control.IControlGridMembers3
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    float ForceColumnsUniformWidth { get; set; }
-    float[]? ForceColumnsWidths { get; set; }
-    float ForceRowsUniformHeight { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
@@ -133,11 +176,6 @@ public partial interface IControlGridTMU : IControlGrid, global::GBX.NET.Interfa
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlLayoutTMU? MainLayout
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).MainLayout);
-        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).MainLayout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
     {
@@ -149,17 +187,20 @@ public partial interface IControlGridTMU : IControlGrid, global::GBX.NET.Interfa
         get => ((global::GBX.NET.Engines.Control.CControlGrid)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlGrid)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    bool PackEmptyRows { get; set; }
 }
 
-public partial interface IControlGridVSK5 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerVSK5
+public partial interface IControlGridVSK5 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerVSK5, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutVSK5>, global::GBX.NET.Interfaces.Control.IControlGridMembers3
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -177,7 +218,7 @@ public partial interface IControlGridVSK5 : IControlGrid, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlGridTMF : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMF
+public partial interface IControlGridTMF : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMF, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>, global::GBX.NET.Interfaces.Control.IControlGridMembers2, global::GBX.NET.Interfaces.Control.IControlGridMembers3
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript
     {
@@ -227,10 +268,14 @@ public partial interface IControlGridMP3 : IControlGrid, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlGridTMT : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMT
+public partial interface IControlGridTMT : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTMT, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTMT>, global::GBX.NET.Interfaces.Control.IControlGridMembers2, global::GBX.NET.Interfaces.Control.IControlGridMembers3, global::GBX.NET.Interfaces.Control.IControlGridMembers4
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlGrid)this).LegacyStyle);
@@ -248,7 +293,7 @@ public partial interface IControlGridTMT : IControlGrid, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlGridMP4 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerMP4
+public partial interface IControlGridMP4 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerMP4, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>, global::GBX.NET.Interfaces.Control.IControlGridMembers2, global::GBX.NET.Interfaces.Control.IControlGridMembers3, global::GBX.NET.Interfaces.Control.IControlGridMembers4
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
@@ -273,7 +318,7 @@ public partial interface IControlGridMP4 : IControlGrid, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlGridTM2020 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTM2020
+public partial interface IControlGridTM2020 : IControlGrid, global::GBX.NET.Interfaces.Control.IControlContainerTM2020, global::GBX.NET.Interfaces.Control.IControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>, global::GBX.NET.Interfaces.Control.IControlGridMembers2, global::GBX.NET.Interfaces.Control.IControlGridMembers3, global::GBX.NET.Interfaces.Control.IControlGridMembers4
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout

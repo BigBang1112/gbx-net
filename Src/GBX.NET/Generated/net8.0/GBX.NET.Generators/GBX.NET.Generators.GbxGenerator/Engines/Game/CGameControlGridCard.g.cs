@@ -220,11 +220,11 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
     /// CGameControlGridCard 0x004 chunk
     /// </summary>
     [Chunk(0x030BA004)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030BA004 : Chunk<CGameControlGridCard>
     {
         public override uint Id => 0x030BA004;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -246,9 +246,11 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
     /// CGameControlGridCard 0x005 chunk
     /// </summary>
     [Chunk(0x030BA005)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030BA005 : Chunk<CGameControlGridCard>
     {
         public override uint Id => 0x030BA005;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -266,10 +268,24 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
     /// CGameControlGridCard 0x006 chunk
     /// </summary>
     [Chunk(0x030BA006)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk030BA006 : Chunk<CGameControlGridCard>, IVersionable
     {
         public override uint Id => 0x030BA006;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk030BA006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk030BA006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -280,6 +296,11 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
         public override void ReadWrite(CGameControlGridCard n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.areCardsReadOnly);
         }
     }

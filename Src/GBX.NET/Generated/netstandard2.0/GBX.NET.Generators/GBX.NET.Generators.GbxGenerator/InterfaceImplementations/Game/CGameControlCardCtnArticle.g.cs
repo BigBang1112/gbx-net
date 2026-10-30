@@ -10,6 +10,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -29,6 +34,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMPU.LegacyStyle
     {
@@ -50,6 +60,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMSX.LegacyStyle
     {
         get => LegacyStyle;
@@ -69,6 +84,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMNESWC.LegacyStyle
     {
@@ -114,6 +134,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleVSK5.LegacyStyle
     {
@@ -169,6 +194,11 @@ public partial class CGameControlCardCtnArticle : global::GBX.NET.Interfaces.Gam
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Game.IGameControlCardCtnArticleTMT.LegacyStyle
     {

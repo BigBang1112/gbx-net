@@ -11,7 +11,7 @@ CPlugCharPhyMaterial 0x090CA000 // Character physics properties of one surface m
   bool U08 // discarded
   bool U09
 
-0x001 [MP4.v11, TM2020.v11] // material
+0x001 [TMT.v11, MP4.v11, TM2020.v11] // material
   version = 11
   byte<CPlugSurface.MaterialId> SurfaceMaterialId
   v2-

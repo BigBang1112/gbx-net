@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilParticlesFXMembers1 : global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFX
+{
+    float SplashStrength { get; set; }
+}
 public partial interface ISceneMobilParticlesFX : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX>, global::GBX.NET.Interfaces.Scene.ISceneMobil
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,26 +19,25 @@ public partial interface ISceneMobilParticlesFX : IClassVersion<global::GBX.NET.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface ISceneMobilParticlesFXTM10 : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10
+public partial interface ISceneMobilParticlesFXTM10 : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
-    float SplashStrength { get; set; }
 }
 
-public partial interface ISceneMobilParticlesFXTMPU : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU
+public partial interface ISceneMobilParticlesFXTMPU : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilParticlesFXTMSX : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
+public partial interface ISceneMobilParticlesFXTMSX : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilParticlesFXTMNESWC : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC
+public partial interface ISceneMobilParticlesFXTMNESWC : ISceneMobilParticlesFX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }

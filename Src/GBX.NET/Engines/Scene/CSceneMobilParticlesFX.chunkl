@@ -178,7 +178,7 @@ CSceneMobilParticlesFX 0x0A080000
   float
   bool
 
-0x006 [TM10] // particle parameters
+0x006 [TM10, TMPU, TMSX, TMNESWC] // particle parameters
   int
   float
   float
@@ -223,5 +223,5 @@ CSceneMobilParticlesFX 0x0A080000
   float
   bool
 
-0x007 [TM10] // SplashStrength
+0x007 [TM10, TMPU, TMSX, TMNESWC] // SplashStrength
   float SplashStrength

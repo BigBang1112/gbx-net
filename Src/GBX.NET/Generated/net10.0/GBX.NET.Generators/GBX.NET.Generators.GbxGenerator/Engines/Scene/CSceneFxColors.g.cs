@@ -148,11 +148,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x002 chunk (saturation, brightness, contrast and hue bitmap)
     /// </summary>
     [Chunk(0x0A034002, "saturation, brightness, contrast and hue bitmap")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A034002 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -176,11 +176,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x005 chunk (legacy color materials)
     /// </summary>
     [Chunk(0x0A034005, "legacy color materials")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A034005 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034005;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -220,11 +220,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x008 chunk (legacy parameters)
     /// </summary>
     [Chunk(0x0A034008, "legacy parameters")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A034008 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034008;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -279,11 +279,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x009 chunk (parameters)
     /// </summary>
     [Chunk(0x0A034009, "parameters")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A034009 : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A034009;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public Param? U01;
         public Param? U02;
         public Param? U03;
@@ -308,9 +308,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x00A chunk (intensities)
     /// </summary>
     [Chunk(0x0A03400A, "intensities")]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A03400A : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A03400A;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -328,9 +330,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x00B chunk (ShaderAutoSaturateWithLight)
     /// </summary>
     [Chunk(0x0A03400B, "ShaderAutoSaturateWithLight")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A03400B : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A03400B;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -347,9 +351,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x00C chunk (BitmapDepth)
     /// </summary>
     [Chunk(0x0A03400C, "BitmapDepth")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A03400C : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A03400C;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -366,9 +372,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x00D chunk (MaterialColors)
     /// </summary>
     [Chunk(0x0A03400D, "MaterialColors")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A03400D : Chunk<CSceneFxColors>
     {
         public override uint Id => 0x0A03400D;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -385,9 +393,11 @@ public partial class CSceneFxColors : CSceneFxCompo, IClass
     /// CSceneFxColors 0x00E skippable chunk (ShaderColorGrading)
     /// </summary>
     [Chunk(0x0A03400E, "ShaderColorGrading")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A03400E : SkippableChunk<CSceneFxColors>
     {
         public override uint Id => 0x0A03400E;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

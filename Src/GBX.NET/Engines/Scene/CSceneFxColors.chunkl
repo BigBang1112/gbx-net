@@ -1,18 +1,18 @@
 CSceneFxColors 0x0A034000
 - inherits: CSceneFxCompo
 
-0x002 [TMU] // saturation, brightness, contrast and hue bitmap
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // saturation, brightness, contrast and hue bitmap
   CPlugBitmap BitmapSbch
   if BitmapSbch != null
     vec2 BitmapTcScale
     vec2 BitmapTcPeriod
     vec2[4] BitmapRanges
 
-0x005 [TMU] // legacy color materials
+0x005 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy color materials
   CMwNod MaterialColors
   CMwNod
 
-0x008 [TMU] // legacy parameters
+0x008 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy parameters
   float
   float
   float
@@ -27,25 +27,25 @@ CSceneFxColors 0x0A034000
   Param
   Param
 
-0x009 [TMU] // parameters
+0x009 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // parameters
   Param
   Param
   Param
 
-0x00A // intensities
+0x00A [VSK5, TMF, TMT, MP4, TM2020] // intensities
   float CloudsIntensity
   float UserIntensity
 
-0x00B // ShaderAutoSaturateWithLight
+0x00B [TMT, MP4, TM2020] // ShaderAutoSaturateWithLight
   CPlugShaderApply ShaderAutoSaturateWithLight
 
-0x00C // BitmapDepth
+0x00C [TMT, MP4, TM2020] // BitmapDepth
   CPlugBitmap BitmapDepth
 
-0x00D // MaterialColors
+0x00D [TMT, MP4] // MaterialColors
   CMwNod MaterialColors
 
-0x00E (skippable) // ShaderColorGrading
+0x00E (skippable) [TMT, MP4] // ShaderColorGrading
   CMwNod ShaderColorGrading
 
 archive Param

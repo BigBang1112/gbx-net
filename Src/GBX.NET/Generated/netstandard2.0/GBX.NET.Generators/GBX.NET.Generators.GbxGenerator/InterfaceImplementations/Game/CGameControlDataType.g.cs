@@ -3,14 +3,24 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlDataType : global::GBX.NET.Interfaces.Game.IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU
+public partial class CGameControlDataType : global::GBX.NET.Interfaces.Game.IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameControlCard? global::GBX.NET.Interfaces.Game.IGameControlDataType.CardTemplate
     {
         get => CardTemplate;
         set => CardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCard node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameControlCardTMU? global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU.CardTemplate
+    global::GBX.NET.Interfaces.Game.IGameControlCardTMU? global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardTMU>.CardTemplate
+    {
+        get => CardTemplate;
+        set => CardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCard node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameControlCardMP4? global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardMP4>.CardTemplate
+    {
+        get => CardTemplate;
+        set => CardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCard node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameControlCardTM2020? global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardTM2020>.CardTemplate
     {
         get => CardTemplate;
         set => CardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCard node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

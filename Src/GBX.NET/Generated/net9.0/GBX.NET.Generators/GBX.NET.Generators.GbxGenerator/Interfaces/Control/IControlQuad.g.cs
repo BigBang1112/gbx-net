@@ -3,6 +3,29 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers1 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    string? IconId { get; set; }
+    float IconVertexAlpha { get; set; }
+    Vec3 IconVertexColors { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers2 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    Vec2 Size { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers3 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    int GradientDir { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers4 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    bool IsFill { get; set; }
+    bool IsLines { get; set; }
+}
 public partial interface IControlQuad : IClassVersion<global::GBX.NET.Engines.Control.CControlQuad>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,7 +39,11 @@ public partial interface IControlQuad : IClassVersion<global::GBX.NET.Engines.Co
 
 public partial interface IControlQuadTM10 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -34,9 +61,13 @@ public partial interface IControlQuadTM10 : IControlQuad, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlQuadTMPU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
+public partial interface IControlQuadTMPU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMPU, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -54,9 +85,13 @@ public partial interface IControlQuadTMPU : IControlQuad, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlQuadTMSX : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
+public partial interface IControlQuadTMSX : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMSX, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -74,9 +109,13 @@ public partial interface IControlQuadTMSX : IControlQuad, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
+public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -94,11 +133,8 @@ public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMU, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    int GradientDir { get; set; }
-    bool IsFill { get; set; }
-    bool IsLines { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
@@ -119,12 +155,15 @@ public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfa
         get => ((global::GBX.NET.Engines.Control.CControlQuad)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlQuad)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlQuad)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    Vec2 Size { get; set; }
 }
 
-public partial interface IControlQuadVSK5 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
+public partial interface IControlQuadVSK5 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -188,7 +227,11 @@ public partial interface IControlQuadMP3 : IControlQuad, global::GBX.NET.Interfa
 
 public partial interface IControlQuadTMT : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMT
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlQuad)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlQuad)this).LegacyStyle);
@@ -206,7 +249,7 @@ public partial interface IControlQuadTMT : IControlQuad, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlQuadMembers1, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -230,7 +273,7 @@ public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlQuadTM2020 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlQuadTM2020 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlQuadMembers1, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

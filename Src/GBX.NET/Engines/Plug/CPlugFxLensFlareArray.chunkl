@@ -1,12 +1,12 @@
 CPlugFxLensFlareArray 0x090C1000
 - inherits: CPlug
 
-0x000 // bitmap and lens flares
+0x000 [TMT.v0, MP4.v0, TM2020.v0] // bitmap and lens flares
   version
   CPlugBitmap Bitmap
   LensFlare[] LensFlares
 
-0x001 (skippable) // lens dirt generators
+0x001 (skippable) [TMT.v1, MP4.v1, TM2020.v1] // lens dirt generators
   version = 1
   CPlugFxLensDirtGen[] LensDirtGens (direct)
   v1+

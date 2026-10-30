@@ -168,9 +168,11 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x002 chunk
     /// </summary>
     [Chunk(0x07006002)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk07006002 : Chunk<CControlLabel>
     {
         public override uint Id => 0x07006002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -250,11 +252,11 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x006 chunk
     /// </summary>
     [Chunk(0x07006006)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk07006006 : Chunk<CControlLabel>
     {
         public override uint Id => 0x07006006;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -276,9 +278,11 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x007 chunk
     /// </summary>
     [Chunk(0x07006007)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk07006007 : Chunk<CControlLabel>
     {
         public override uint Id => 0x07006007;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -297,12 +301,24 @@ public partial class CControlLabel : CControlText, IClass
     /// CControlLabel 0x008 skippable chunk
     /// </summary>
     [Chunk(0x07006008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
     public partial class Chunk07006008 : SkippableChunk<CControlLabel>, IVersionable
     {
         public override uint Id => 0x07006008;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk07006008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07006008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

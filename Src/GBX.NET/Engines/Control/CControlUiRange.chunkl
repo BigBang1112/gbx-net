@@ -1,17 +1,17 @@
 CControlUiRange 0x07014000
 - inherits: CControlBase
 
-0x000
+0x000 [TMF, TMT, MP4, TM2020]
   id IconId
 
-0x001
+0x001 [TMT, MP4, TM2020]
   bool CenteredBar
 
 0x002
   id
   id
 
-0x003
+0x003 [TMT.v4, MP4.v4, TM2020.v4]
   version = 4
   v1+
     bool DrawBackground

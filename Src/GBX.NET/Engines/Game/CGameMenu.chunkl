@@ -13,28 +13,28 @@ CGameMenu 0x03009000
   CMwNod
   int
 
-0x002 // legacy style sheet buffer
+0x002 [TM10, TMPU] // legacy style sheet buffer
   CMwRefBuffer
 
-0x003 [TMU] // frames, main frame index and music
+0x003 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // frames, main frame index and music
 
-0x004 [TMU] // legacy background scene and camera field of view
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // legacy background scene and camera field of view
   CMwNod BackgroundScene
   float BackgroundCameraFov
 
-0x005 [TMU] // legacy frustum
+0x005 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // legacy frustum
   bool IsOrthographic
   boxaligned Frustum
 
-0x006 [TMU] // legacy scene, camera and frame locations
+0x006 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy scene, camera and frame locations
 
-0x007 [TMU] // StyleSheet
+0x007 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // StyleSheet
   CControlStyleSheet StyleSheet
 
-0x008 [TMU] // GridStep
+0x008 [TMU, VSK5, TMF, TMT, MP4, TM2020] // GridStep
   vec2 GridStep
 
-0x009 // frustum and menu order
+0x009 [TMT.v0, TM2020.v0] // frustum and menu order
   version
   bool IsOrthographic
   boxaligned Frustum
@@ -45,14 +45,14 @@ CGameMenu 0x03009000
   CMwNod BackgroundScene
   float BackgroundCameraFov
 
-0x00B // background bitmap, scene and camera
+0x00B [TMF, TMT, MP4] // background bitmap, scene and camera
   CPlugBitmap BackgroundBitmapUnderlay
   CMwNod BackgroundScene
   float BackgroundCameraFov
   float BackgroundCameraNearZ
   float BackgroundCameraFarZ
 
-0x00C // sounds
+0x00C [TMT.v0, TM2020.v0] // sounds
   version
   CMwNod
   CPlugSound SoundDisplayed

@@ -52,12 +52,24 @@ public partial class CPlugBeamEmitterModel : CMwNod, IClass
     /// CPlugBeamEmitterModel 0x002 chunk
     /// </summary>
     [Chunk(0x090B4002)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
     public partial class Chunk090B4002 : Chunk<CPlugBeamEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B4002;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090B4002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090B4002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -1,7 +1,7 @@
 CSceneFxSuperSample 0x0A035000
 - inherits: CSceneFxCompo
 
-0x000 [TMU]
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   int
   int
   bool
@@ -9,14 +9,14 @@ CSceneFxSuperSample 0x0A035000
   float
   CMwNod
 
-0x001
+0x001 [VSK5, TMF, TMT, MP4, TM2020]
   bool
   bool
 
 0x002
   CMwNod
 
-0x003
+0x003 [TMT.v0, MP4.v0]
   version
   CMwNod
   CMwNod

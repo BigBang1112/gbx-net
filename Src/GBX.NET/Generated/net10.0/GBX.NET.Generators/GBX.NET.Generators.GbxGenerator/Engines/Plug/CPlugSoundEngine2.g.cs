@@ -225,12 +225,24 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     /// CPlugSoundEngine2 0x000 chunk
     /// </summary>
     [Chunk(0x09029000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
     public partial class Chunk09029000 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk09029000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09029000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -254,11 +266,11 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     /// CPlugSoundEngine2 0x001 chunk
     /// </summary>
     [Chunk(0x09029001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 5)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 5)]
     public partial class Chunk09029001 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public PlugCurve? U01;
         public PlugCurve? U02;
@@ -273,7 +285,7 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
         public Chunk09029001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 3;
             }
@@ -356,11 +368,11 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     /// CPlugSoundEngine2 0x002 chunk
     /// </summary>
     [Chunk(0x09029002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 6)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 6)]
     public partial class Chunk09029002 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public PlugCurve? U01;
         public PlugCurve? U02;
@@ -372,7 +384,7 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
         public Chunk09029002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 4;
             }
@@ -424,11 +436,11 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
     /// CPlugSoundEngine2 0x003 chunk
     /// </summary>
     [Chunk(0x09029003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 4)]
     public partial class Chunk09029003 : Chunk<CPlugSoundEngine2>, IVersionable
     {
         public override uint Id => 0x09029003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float[]? U01;
 
@@ -438,7 +450,7 @@ public partial class CPlugSoundEngine2 : CPlugSound, IClass
 
         public Chunk09029003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

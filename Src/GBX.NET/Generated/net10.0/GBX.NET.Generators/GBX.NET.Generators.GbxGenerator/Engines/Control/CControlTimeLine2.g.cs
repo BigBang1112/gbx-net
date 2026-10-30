@@ -261,11 +261,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x000 chunk (legacy sizes, ruler colors and shaders)
     /// </summary>
     [Chunk(0x07022000, "legacy sizes, ruler colors and shaders")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022000 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022000;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public float U01;
         public float U02;
         public float U03;
@@ -365,11 +365,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x001 chunk (BlockHeight)
     /// </summary>
     [Chunk(0x07022001, "BlockHeight")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022001 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -386,11 +386,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x002 chunk (legacy key size and shaders)
     /// </summary>
     [Chunk(0x07022002, "legacy key size and shaders")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022002 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         private NodeRef<CPlugShaderGeneric>? U01Ref;
         public CPlugShaderGeneric? U01
@@ -453,11 +453,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x003 chunk (key highlight size)
     /// </summary>
     [Chunk(0x07022003, "key highlight size")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022003 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -475,11 +475,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x004 chunk (legacy dead zone shader)
     /// </summary>
     [Chunk(0x07022004, "legacy dead zone shader")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022004 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022004;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         private NodeRef<CPlugShaderGeneric>? U01Ref;
         public CPlugShaderGeneric? U01
@@ -518,11 +518,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x005 chunk (TrackCount)
     /// </summary>
     [Chunk(0x07022005, "TrackCount")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07022005 : Chunk<CControlTimeLine2>
     {
         public override uint Id => 0x07022005;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -539,13 +539,31 @@ public partial class CControlTimeLine2 : CControlBase, IClass
     /// CControlTimeLine2 0x006 chunk (sizes and colors)
     /// </summary>
     [Chunk(0x07022006, "sizes and colors")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2)]
     public partial class Chunk07022006 : Chunk<CControlTimeLine2>, IVersionable
     {
         public override uint Id => 0x07022006;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
         public Vec4 U01;
         public bool U02;
         public bool U03;
+
+        public Chunk07022006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07022006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -559,6 +577,11 @@ public partial class CControlTimeLine2 : CControlBase, IClass
         public override void ReadWrite(CControlTimeLine2 n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.width);
             rw.Single(ref n.height);
             rw.Single(ref n.trackHeight);

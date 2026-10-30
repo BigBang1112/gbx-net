@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Vision;
 
-public partial class CVisPostFx_MotionBlur : global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTM10, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMF
+public partial class CVisPostFx_MotionBlur : global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTM10, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMPU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMSX, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMF, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTMT, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMP4, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurTM2020
 {
 }

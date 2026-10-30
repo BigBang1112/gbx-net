@@ -3,14 +3,39 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdSleep : global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMU
+public partial class CMwCmdSleep : global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMF
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNum? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep.Time
     {
         get => Time;
         set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepTMU.Time
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTM10? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTM10>.Time
+    {
+        get => Time;
+        set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMPU? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMPU>.Time
+    {
+        get => Time;
+        set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMSX? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMSX>.Time
+    {
+        get => Time;
+        set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMNESWC? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMNESWC>.Time
+    {
+        get => Time;
+        set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU>.Time
+    {
+        get => Time;
+        set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMF? global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMF>.Time
     {
         get => Time;
         set => Time = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

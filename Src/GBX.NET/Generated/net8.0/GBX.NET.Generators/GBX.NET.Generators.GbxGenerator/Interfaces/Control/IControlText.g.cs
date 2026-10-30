@@ -3,6 +3,13 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlTextMembers1 : global::GBX.NET.Interfaces.Control.IControlText
+{
+    float ClipLength { get; set; }
+    int MaxLine { get; set; }
+    int TextMode { get; set; }
+}
 public partial interface IControlText : IClassVersion<global::GBX.NET.Engines.Control.CControlText>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,7 +23,11 @@ public partial interface IControlText : IClassVersion<global::GBX.NET.Engines.Co
 
 public partial interface IControlTextTM10 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -36,7 +47,11 @@ public partial interface IControlTextTM10 : IControlText, global::GBX.NET.Interf
 
 public partial interface IControlTextTMPU : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -56,7 +71,11 @@ public partial interface IControlTextTMPU : IControlText, global::GBX.NET.Interf
 
 public partial interface IControlTextTMSX : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -76,7 +95,11 @@ public partial interface IControlTextTMSX : IControlText, global::GBX.NET.Interf
 
 public partial interface IControlTextTMNESWC : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -120,7 +143,11 @@ public partial interface IControlTextTMU : IControlText, global::GBX.NET.Interfa
 
 public partial interface IControlTextVSK5 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -138,7 +165,7 @@ public partial interface IControlTextVSK5 : IControlText, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlTextTMF : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMF
+public partial interface IControlTextTMF : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMF, global::GBX.NET.Interfaces.Control.IControlTextMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
     {
@@ -182,9 +209,13 @@ public partial interface IControlTextMP3 : IControlText, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlTextTMT : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMT
+public partial interface IControlTextTMT : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlTextMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlText)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlText)this).LegacyStyle);
@@ -202,7 +233,7 @@ public partial interface IControlTextTMT : IControlText, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlTextMP4 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlTextMP4 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlTextMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -226,7 +257,7 @@ public partial interface IControlTextMP4 : IControlText, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlTextTM2020 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlTextTM2020 : IControlText, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlTextMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

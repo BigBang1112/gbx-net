@@ -25,11 +25,11 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
     /// CSceneFxSuperSample 0x000 chunk
     /// </summary>
     [Chunk(0x0A035000)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A035000 : Chunk<CSceneFxSuperSample>
     {
         public override uint Id => 0x0A035000;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
         public int U02;
         public bool U03;
@@ -83,9 +83,11 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
     /// CSceneFxSuperSample 0x001 chunk
     /// </summary>
     [Chunk(0x0A035001)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A035001 : Chunk<CSceneFxSuperSample>
     {
         public override uint Id => 0x0A035001;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 
@@ -148,9 +150,11 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
     /// CSceneFxSuperSample 0x003 chunk
     /// </summary>
     [Chunk(0x0A035003)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 0, 0)]
     public partial class Chunk0A035003 : Chunk<CSceneFxSuperSample>, IVersionable
     {
         public override uint Id => 0x0A035003;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -183,6 +187,18 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
             yield break;
         }
 
+        public Chunk0A035003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A035003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -194,6 +210,11 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
         public override void ReadWrite(CSceneFxSuperSample n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
         }

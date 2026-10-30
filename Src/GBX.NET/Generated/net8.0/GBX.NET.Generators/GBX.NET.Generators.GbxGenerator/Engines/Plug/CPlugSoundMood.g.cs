@@ -66,11 +66,11 @@ public partial class CPlugSoundMood : CPlugSound, IClass
     /// CPlugSoundMood 0x000 chunk
     /// </summary>
     [Chunk(0x0901B000)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901B000 : Chunk<CPlugSoundMood>
     {
         public override uint Id => 0x0901B000;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -89,12 +89,24 @@ public partial class CPlugSoundMood : CPlugSound, IClass
     /// CPlugSoundMood 0x001 chunk
     /// </summary>
     [Chunk(0x0901B001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
     public partial class Chunk0901B001 : Chunk<CPlugSoundMood>, IVersionable
     {
         public override uint Id => 0x0901B001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0901B001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901B001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

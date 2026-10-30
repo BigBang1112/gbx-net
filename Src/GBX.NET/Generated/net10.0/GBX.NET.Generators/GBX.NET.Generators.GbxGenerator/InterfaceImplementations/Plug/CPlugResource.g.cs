@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugResource : global::GBX.NET.Interfaces.Plug.IPlugResource, global::GBX.NET.Interfaces.Plug.IPlugResourceMP4
+public partial class CPlugResource : global::GBX.NET.Interfaces.Plug.IPlugResource, global::GBX.NET.Interfaces.Plug.IPlugResourceTMT, global::GBX.NET.Interfaces.Plug.IPlugResourceMP4, global::GBX.NET.Interfaces.Plug.IPlugResourceTM2020
 {
 }

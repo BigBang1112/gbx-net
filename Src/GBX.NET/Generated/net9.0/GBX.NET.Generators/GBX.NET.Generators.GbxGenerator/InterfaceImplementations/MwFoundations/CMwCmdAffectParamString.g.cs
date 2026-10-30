@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdAffectParamString : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamString, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMF
+public partial class CMwCmdAffectParamString : global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamString, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamStringTMF
 {
 }

@@ -3,6 +3,17 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameManiaTitleCoreMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameManiaTitleCore where T0 : class
+{
+    T0? CollectionCommon
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameManiaTitleCore)this).CollectionCommon);
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitleCore)this).CollectionCommon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    string? ModeScriptFolderName { get; set; }
+    bool WithLocalMultiplayer { get; set; }
+}
 public partial interface IGameManiaTitleCore : IClassVersion<global::GBX.NET.Engines.Game.CGameManiaTitleCore>, global::GBX.NET.Interfaces.Game.IGameNod
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,15 +57,15 @@ public partial interface IGameManiaTitleCoreMP3 : IGameManiaTitleCore, global::G
 {
 }
 
-public partial interface IGameManiaTitleCoreTMT : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTMT
+public partial interface IGameManiaTitleCoreTMT : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT>
 {
 }
 
-public partial interface IGameManiaTitleCoreMP4 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodMP4
+public partial interface IGameManiaTitleCoreMP4 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>
 {
 }
 
-public partial interface IGameManiaTitleCoreTM2020 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTM2020
+public partial interface IGameManiaTitleCoreTM2020 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTM2020, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020>
 {
 }
 

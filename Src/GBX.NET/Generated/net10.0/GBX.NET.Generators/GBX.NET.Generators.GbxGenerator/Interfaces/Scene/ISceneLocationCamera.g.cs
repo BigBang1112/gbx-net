@@ -3,6 +3,17 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLocationCameraMembers1 : global::GBX.NET.Interfaces.Scene.ISceneLocationCamera
+{
+    BoxAligned Frustum { get; set; }
+    bool IsOrthographic { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLocationCameraMembers2 : global::GBX.NET.Interfaces.Scene.ISceneLocationCamera
+{
+    Rect FovRect { get; set; }
+}
 public partial interface ISceneLocationCamera : IClassVersion<global::GBX.NET.Engines.Scene.CSceneLocationCamera>, global::GBX.NET.Interfaces.Scene.ISceneLocation
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -32,7 +43,7 @@ public partial interface ISceneLocationCameraTMPU : ISceneLocationCamera, global
     }
 }
 
-public partial interface ISceneLocationCameraTMSX : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMSX
+public partial interface ISceneLocationCameraTMSX : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMSX, global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
     {
@@ -41,7 +52,7 @@ public partial interface ISceneLocationCameraTMSX : ISceneLocationCamera, global
     }
 }
 
-public partial interface ISceneLocationCameraTMNESWC : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC
+public partial interface ISceneLocationCameraTMNESWC : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
     {
@@ -86,7 +97,7 @@ public partial interface ISceneLocationCameraMP3 : ISceneLocationCamera, global:
     }
 }
 
-public partial interface ISceneLocationCameraTMT : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMT
+public partial interface ISceneLocationCameraTMT : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMT, global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion
     {
@@ -95,9 +106,8 @@ public partial interface ISceneLocationCameraTMT : ISceneLocationCamera, global:
     }
 }
 
-public partial interface ISceneLocationCameraMP4 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationMP4
+public partial interface ISceneLocationCameraMP4 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationMP4, global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMembers2
 {
-    Rect FovRect { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionMP4?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
@@ -105,7 +115,7 @@ public partial interface ISceneLocationCameraMP4 : ISceneLocationCamera, global:
     }
 }
 
-public partial interface ISceneLocationCameraTM2020 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTM2020
+public partial interface ISceneLocationCameraTM2020 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTM2020, global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMembers2
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion
     {

@@ -15,7 +15,11 @@ public partial interface IGameCharacterModel : IClassVersion<global::GBX.NET.Eng
         get => (global::GBX.NET.Interfaces.Plug.IPlugCharPhyModel?)(object?)(((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).PhysicsModel);
         set => ((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).PhysicsModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel { get; set; }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferSelect? VisualModel
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferSelect?)(object?)(((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).VisualModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).VisualModel = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCharacterModelTM2020 : IGameCharacterModel
@@ -30,5 +34,6 @@ public partial interface IGameCharacterModelTM2020 : IGameCharacterModel
         get => (global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTM2020?)(object?)(((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).PhysicsModel);
         set => ((global::GBX.NET.Engines.GameData.CGameCharacterModel)this).PhysicsModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    new global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel { get; set; }
 }
 

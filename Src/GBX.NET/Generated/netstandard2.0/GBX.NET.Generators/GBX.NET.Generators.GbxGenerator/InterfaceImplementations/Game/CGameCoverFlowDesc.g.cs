@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4
+public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugGameSkin? global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc.GameSkin
     {
@@ -15,12 +15,32 @@ public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameC
         get => Style;
         set => Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4.GameSkin
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT>.GameSkin
     {
         get => GameSkin;
         set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4.Style
+    global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT>.Style
+    {
+        get => Style;
+        set => Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4>.GameSkin
+    {
+        get => GameSkin;
+        set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4>.Style
+    {
+        get => Style;
+        set => Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020>.GameSkin
+    {
+        get => GameSkin;
+        set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020? global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020>.Style
     {
         get => Style;
         set => Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

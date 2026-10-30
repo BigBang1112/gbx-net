@@ -49,11 +49,11 @@ public partial class CControlEffectSwitchStyle : CControlEffect, IClass
     /// CControlEffectSwitchStyle 0x000 chunk (FocusedStyle)
     /// </summary>
     [Chunk(0x07003000, "FocusedStyle")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT)]
     public partial class Chunk07003000 : Chunk<CControlEffectSwitchStyle>
     {
         public override uint Id => 0x07003000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

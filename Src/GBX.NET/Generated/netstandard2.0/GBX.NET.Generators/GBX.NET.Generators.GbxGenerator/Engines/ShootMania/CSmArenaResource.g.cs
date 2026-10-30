@@ -99,11 +99,11 @@ public partial class CSmArenaResource : CMwNod, IClass
     /// CSmArenaResource 0x000 chunk
     /// </summary>
     [Chunk(0x2D020000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2D020000 : Chunk<CSmArenaResource>
     {
         public override uint Id => 0x2D020000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -120,11 +120,11 @@ public partial class CSmArenaResource : CMwNod, IClass
     /// CSmArenaResource 0x001 chunk
     /// </summary>
     [Chunk(0x2D020001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2D020001 : Chunk<CSmArenaResource>
     {
         public override uint Id => 0x2D020001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -141,12 +141,24 @@ public partial class CSmArenaResource : CMwNod, IClass
     /// CSmArenaResource 0x002 chunk
     /// </summary>
     [Chunk(0x2D020002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
     public partial class Chunk2D020002 : Chunk<CSmArenaResource>, IVersionable
     {
         public override uint Id => 0x2D020002;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2D020002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2D020002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

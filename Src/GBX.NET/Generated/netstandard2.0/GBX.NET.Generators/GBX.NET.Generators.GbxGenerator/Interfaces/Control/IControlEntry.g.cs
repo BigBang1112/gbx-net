@@ -3,6 +3,24 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers1 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool IsPassword { get; set; }
+    int MaxLength { get; set; }
+    bool SetValueOnFocusLost { get; set; }
+    int Type { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers2 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool IsNewPassword { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers3 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool SelectAllOnFocusGained { get; set; }
+}
 public partial interface IControlEntry : IClassVersion<global::GBX.NET.Engines.Control.CControlEntry>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,60 +32,55 @@ public partial interface IControlEntry : IClassVersion<global::GBX.NET.Engines.C
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlEntryTM10 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlEntryTM10 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMPU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlEntryTMPU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMSX : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlEntryTMSX : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMU
+public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    bool IsPassword { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
-    int MaxLength { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    bool SelectAllOnFocusGained { get; set; }
-    bool SetValueOnFocusLost { get; set; }
-    int Type { get; set; }
 }
 
-public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMF : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlEntryTMF : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -83,15 +96,15 @@ public partial interface IControlEntryMP3 : IControlEntry, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTMT : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlEntryTMT : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -99,7 +112,7 @@ public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEntryTM2020 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM2020
+public partial interface IControlEntryTM2020 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

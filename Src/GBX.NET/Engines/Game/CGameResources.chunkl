@@ -1,6 +1,6 @@
 CGameResources 0x0302D000
 
-0x000 [TMU, MP4] // sounds and musics
+0x000 [TMU, MP4, TM2020] // sounds and musics
   NamedNod[] Sounds
   NamedNod[] Musics
 
@@ -9,7 +9,7 @@ CGameResources 0x0302D000
   if HasReplayInterfaceFid
     CMwNod ReplayInterfaceFid
 
-0x004 [TMU, MP4] // InterfaceEditorFid
+0x004 [TMU, MP4, TM2020] // InterfaceEditorFid
   bool HasInterfaceEditorFid
   if HasInterfaceEditorFid
     CMwNod InterfaceEditorFid
@@ -29,7 +29,7 @@ CGameResources 0x0302D000
   if HasRaceNetInterfaceFid
     CMwNod RaceNetInterfaceFid
 
-0x02C [MP4] // InterfaceEditorSimpleFid
+0x02C [MP4, TM2020] // InterfaceEditorSimpleFid
   bool HasInterfaceEditorSimpleFid
   if HasInterfaceEditorSimpleFid
     CMwNod InterfaceEditorSimpleFid
@@ -39,7 +39,7 @@ CGameResources 0x0302D000
   if HasInterfaceBlockEditorFid
     CMwNod InterfaceBlockEditorFid
 
-0x008 [TMU, MP4] // DefaultAvatarBitmapFid
+0x008 [TMU, MP4, TM2020] // DefaultAvatarBitmapFid
   CMwNod DefaultAvatarBitmapFid
   CMwNod
 
@@ -53,7 +53,7 @@ CGameResources 0x0302D000
   CMwNod ArticleStyle
   CMwNod ArticleIconStyle
 
-0x009 [TMU, TMF, MP4] // interface font, background, styles and directory icon
+0x009 [TMU, TMF, MP4, TM2020] // interface font, background, styles and directory icon
   CPlugFont InterfaceFont
   CMwNod InterfaceBg
   CMwNod ShaderActiveAvailable
@@ -77,10 +77,10 @@ CGameResources 0x0302D000
   CMwNod MediaTrackerInterfaceFid
   CMwNod
 
-0x010 [TMU, MP4] // StyleSheetFid
+0x010 [TMU, MP4, TM2020] // StyleSheetFid
   CMwNod StyleSheetFid
 
-0x012 [TMU, MP4] // EmptyChallengeCustomMusicFid
+0x012 [TMU, MP4, TM2020] // EmptyChallengeCustomMusicFid
   CMwNod EmptyChallengeCustomMusicFid
 
 0x015 [TMU, TMF] // legacy MediaTracker resources
@@ -89,7 +89,7 @@ CGameResources 0x0302D000
   CMwNod DefaultMTBlockBitmapFid
   CMwNod DefaultMTBlockSoundFid
 
-0x016 [TMU, MP4] // PainterSetting
+0x016 [TMU, MP4, TM2020] // PainterSetting
   CGameCtnPainterSetting PainterSetting
 
 0x017 // legacy hymn fids
@@ -98,14 +98,14 @@ CGameResources 0x0302D000
 0x018 [TMU, TMF] // UnknownFlagBitmap
   CMwNod UnknownFlagBitmap
 
-0x019 [TMU, MP4] // DefaultLeagueLogoBitmapFid
+0x019 [TMU, MP4, TM2020] // DefaultLeagueLogoBitmapFid
   CMwNod DefaultLeagueLogoBitmapFid
   CMwNod
 
-0x01A [TMU, MP4]
+0x01A [TMU, MP4, TM2020]
   CMwNod
 
-0x01B [TMU, MP4] // HymnsFolder
+0x01B [TMU, MP4, TM2020] // HymnsFolder
   string HymnsFolder
 
 0x01C [TMU, TMF] // legacy interface resources
@@ -116,7 +116,7 @@ CGameResources 0x0302D000
   CMwNod
   CMwNod
 
-0x01E [TMU, MP4] // DefaultOnlineNewsIconBitmapFid
+0x01E [TMU, MP4, TM2020] // DefaultOnlineNewsIconBitmapFid
   CMwNod DefaultOnlineNewsIconBitmapFid
   CMwNod
 
@@ -124,16 +124,16 @@ CGameResources 0x0302D000
   CMwNod
   CMwNod
 
-0x020 [TMU, MP4] // FolderGlobalEnvBanners
+0x020 [TMU, MP4, TM2020] // FolderGlobalEnvBanners
   string FolderGlobalEnvBanners
 
-0x021 [TMU, MP4] // PodiumScene
+0x021 [TMU, MP4, TM2020] // PodiumScene
   CMwNod PodiumScene
 
-0x022 [TMU, MP4] // MenuBackgroundsFolder
+0x022 [TMU, MP4, TM2020] // MenuBackgroundsFolder
   string MenuBackgroundsFolder
 
-0x023 [TMU, MP4] // DefaultTagBitmapFid
+0x023 [TMU, MP4, TM2020] // DefaultTagBitmapFid
   CMwNod DefaultTagBitmapFid
 
 0x024 // legacy file
@@ -141,10 +141,10 @@ CGameResources 0x0302D000
 
 0x025 (empty)
 
-0x026 [MP4] // DefaultMusicFid
+0x026 [MP4, TM2020] // DefaultMusicFid
   CMwNod DefaultMusicFid
 
-0x027 [MP4] // DefaultSkillScoreComputerFid
+0x027 [MP4, TM2020] // DefaultSkillScoreComputerFid
   CMwNod DefaultSkillScoreComputerFid
 
 0x029 [TMF] // legacy menu resources
@@ -161,24 +161,24 @@ CGameResources 0x0302D000
   string
   string
 
-0x02B [MP4] // ImageTurboRoulette
+0x02B [MP4, TM2020] // ImageTurboRoulette
   CMwNod ImageTurboRoulette
 
-0x02D [MP4] // SceneFxNodRoot
+0x02D [MP4, TM2020] // SceneFxNodRoot
   CMwNod SceneFxNodRoot
 
-0x030 [MP4] // editor model sprites and material
+0x030 [MP4, TM2020] // editor model sprites and material
   CMwNod EditorModelSpritesBitmapFid
   CMwNod EditorModelDefaultMaterialFid
 
-0x031 [MP4] // StoryInterfaceFid
+0x031 [MP4, TM2020.v0] // StoryInterfaceFid
   version
   CMwNod StoryInterfaceFid
 
-0x032 [MP4]
+0x032 [MP4, TM2020]
   CMwNod
 
-0x033 [MP4] // audio balances
+0x033 [MP4, TM2020.v1] // audio balances
   version = 1
   CPlugAudioBalance AudioBalance_Base
   CPlugAudioBalance AudioBalance_Menus
@@ -192,7 +192,7 @@ CGameResources 0x0302D000
   CPlugAudioBalance
   CPlugAudioBalance
 
-0x034 [MP4] // editor animation interfaces
+0x034 [MP4, TM2020.v2] // editor animation interfaces
   version = 2
   CMwNod EditorAnimInterfaceFid
   v1+
@@ -200,12 +200,12 @@ CGameResources 0x0302D000
   v2+
     CMwNod EditorAnimCharInterfaceFid
 
-0x035 [MP4] // default transition clips
+0x035 [MP4, TM2020.v0] // default transition clips
   version
   CMwNod DefaultTransitionInClipFid
   CMwNod DefaultTransitionOutClipFid
 
-0x036 [MP4] // stations, cards and menu resources
+0x036 [MP4, TM2020.v19] // stations, cards and menu resources
   version = 19
   CMwNod PluginsMenuOverlayFid
   v1+
@@ -251,11 +251,11 @@ CGameResources 0x0302D000
   v19+
     CMwNod StyleUrlLink
 
-0x037 [MP4] // TitleTemplateFolder
+0x037 [MP4, TM2020.v0] // TitleTemplateFolder
   version
   string TitleTemplateFolder
 
-0x038 [MP4] // off zone shaders and menu sky
+0x038 [MP4, TM2020.v2] // off zone shaders and menu sky
   version = 2
   CMwNod OffZoneSurfaceShaderFid
   CMwNod OffZoneLayerShaderFid
@@ -266,20 +266,20 @@ CGameResources 0x0302D000
     CMwNod BitmapCubeMenuManiaPlanet3d
     CMwNod MaterialSkyDomeMenu
 
-0x039 [MP4] // menu manialink 3d resources
+0x039 [MP4, TM2020.v0] // menu manialink 3d resources
   version
   CPlugModelShading.FidId[] MenuManialink3dResources
 
-0x03A [MP4] // team logo and emblems
+0x03A [MP4, TM2020.v0] // team logo and emblems
   version
   CMwNod DefaultTeamLogoBitmapFid
   CPlugBitmap BitmapTeamEmblems
 
-0x03B [MP4] // EditorItemInterfaceFid
+0x03B [MP4, TM2020.v0] // EditorItemInterfaceFid
   version
   CMwNod EditorItemInterfaceFid
 
-0x03C [MP4] // menus, dialogs and overlays
+0x03C [MP4, TM2020.v1] // menus, dialogs and overlays
   version = 1
   CMwNod MenusFid
   CMwNod DialogsFid
@@ -292,34 +292,34 @@ CGameResources 0x0302D000
   v1+
     CMwNod InterfaceEditorInventoryModelFid
 
-0x03D [MP4] // EditorManialinkInterfaceFid
+0x03D [MP4, TM2020.v0] // EditorManialinkInterfaceFid
   version
   CMwNod EditorManialinkInterfaceFid
 
-0x03E [MP4] // default media tracker resources
+0x03E [MP4, TM2020.v0] // default media tracker resources
   version
   CMwNod DefaultMTColorGradingImageFid
   CMwNod DefaultMTDecal2dBitmapFid
   CMwNod DefaultMTBlockBitmapFid
   CMwNod DefaultMTBlockSoundFid
 
-0x03F [MP4] // module editor
+0x03F [MP4, TM2020.v1] // module editor
   version = 1
   CMwNod EditorModuleInterfaceFid
   v1+
     CMwNod DefaultEditorModuleFid
 
-0x040 [MP4] // EditorAnimSetInterfaceFid
+0x040 [MP4, TM2020.v0] // EditorAnimSetInterfaceFid
   version
   CMwNod EditorAnimSetInterfaceFid
 
-0x041 [MP4] // vehicle editor
+0x041 [MP4, TM2020.v1] // vehicle editor
   version = 1
   CMwNod EditorVehicleInterfaceFid
   v1+
     CMwNod DefaultEditorVehicleFid
 
-0x042 [MP4] // module scripts
+0x042 [MP4, TM2020.v1] // module scripts
   version = 1
   CMwNod ModuleMenuBaseScriptFid
   CMwNod ModuleMenuServerBrowserScriptFid
@@ -328,11 +328,11 @@ CGameResources 0x0302D000
   v1+
     CMwNod ModulePlaygroundSpeedMeterScriptFid
 
-0x043 [MP4] // EditorPixelCheckerImageFid
+0x043 [MP4, TM2020.v0] // EditorPixelCheckerImageFid
   version
   CMwNod EditorPixelCheckerImageFid
 
-0x044 [MP4] // MaterialsLibrariesFid
+0x044 [MP4, TM2020.v0] // MaterialsLibrariesFid
   version
   CMwNod MaterialsLibrariesFid
 
@@ -345,11 +345,11 @@ CGameResources 0x0302D000
     CMwNod
     string
 
-0x046 [MP4] // DefaultEditorEditorFid
+0x046 [MP4, TM2020.v0] // DefaultEditorEditorFid
   version
   CMwNod DefaultEditorEditorFid
 
-0x047 [MP4] // default playground modules
+0x047 [MP4, TM2020.v0] // default playground modules
   version
   CMwNod ModulePlaygroundDefaultHudFid
   CMwNod ModulePlaygroundDefaultInventoryFid

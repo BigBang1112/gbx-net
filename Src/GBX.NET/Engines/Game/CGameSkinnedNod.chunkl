@@ -1,12 +1,12 @@
 CGameSkinnedNod 0x0305F000
 - inherits: CGameNod
 
-0x000
+0x000 [TMT.v0, MP4.v0, TM2020.v0]
   version
   CPlugGameSkin GameSkin
   CMwNod BaseNod
 
-0x001
+0x001 [TMT.v0, MP4.v0, TM2020.v0]
   version
   Remap[] Remaps
 

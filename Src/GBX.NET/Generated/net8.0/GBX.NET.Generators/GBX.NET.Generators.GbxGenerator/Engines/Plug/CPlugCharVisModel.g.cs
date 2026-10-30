@@ -1480,11 +1480,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x003 chunk
     /// </summary>
     [Chunk(0x090C7003)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 31, 33)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 27, 31, 33)]
     public partial class Chunk090C7003 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7003;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -1544,7 +1544,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
         public Chunk090C7003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 27;
+            }
+            else if (gameVersion == GameVersion.MP4)
             {
                 Version = 31;
             }
@@ -1931,11 +1935,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x006 chunk
     /// </summary>
     [Chunk(0x090C7006)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk090C7006 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7006;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
 
@@ -1945,7 +1949,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
         public Chunk090C7006(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -1982,11 +1986,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x007 chunk
     /// </summary>
     [Chunk(0x090C7007)]
-    [ChunkGameVersion(GameVersion.MP4, 18)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 18, 18, 18)]
     public partial class Chunk090C7007 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7007;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk090C7007() : this(GameVersion.Unspecified)
@@ -1995,7 +1999,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
         public Chunk090C7007(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 18;
             }
@@ -2159,11 +2163,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x008 chunk
     /// </summary>
     [Chunk(0x090C7008)]
-    [ChunkGameVersion(GameVersion.MP4, 5)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 5)]
     public partial class Chunk090C7008 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7008;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk090C7008() : this(GameVersion.Unspecified)
@@ -2172,7 +2176,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
         public Chunk090C7008(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -2235,11 +2239,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x009 chunk
     /// </summary>
     [Chunk(0x090C7009)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 1)]
     public partial class Chunk090C7009 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7009;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk090C7009() : this(GameVersion.Unspecified)
@@ -2248,7 +2252,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
         public Chunk090C7009(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2281,12 +2289,24 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x00A chunk
     /// </summary>
     [Chunk(0x090C700A)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
     public partial class Chunk090C700A : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C700A;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090C700A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C700A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

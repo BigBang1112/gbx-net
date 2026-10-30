@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlUiRangeMembers1 : global::GBX.NET.Interfaces.Control.IControlUiRange
+{
+    string? IconId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlUiRangeMembers2 : global::GBX.NET.Interfaces.Control.IControlUiRange
+{
+    float BackgroundMargin { get; set; }
+    float BlockOverlapRatio { get; set; }
+    bool CenteredBar { get; set; }
+    bool DrawBackground { get; set; }
+    bool DrawBlockBackground { get; set; }
+}
 public partial interface IControlUiRange : IClassVersion<global::GBX.NET.Engines.Control.CControlUiRange>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,7 +30,7 @@ public partial interface IControlUiRange : IClassVersion<global::GBX.NET.Engines
 
 public partial interface IControlUiRangeTM10 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -24,7 +38,7 @@ public partial interface IControlUiRangeTM10 : IControlUiRange, global::GBX.NET.
 
 public partial interface IControlUiRangeTMPU : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -32,7 +46,7 @@ public partial interface IControlUiRangeTMPU : IControlUiRange, global::GBX.NET.
 
 public partial interface IControlUiRangeTMSX : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -40,7 +54,7 @@ public partial interface IControlUiRangeTMSX : IControlUiRange, global::GBX.NET.
 
 public partial interface IControlUiRangeTMNESWC : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -56,13 +70,13 @@ public partial interface IControlUiRangeTMU : IControlUiRange, global::GBX.NET.I
 
 public partial interface IControlUiRangeVSK5 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiRangeTMF : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMF
+public partial interface IControlUiRangeTMF : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMF, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -78,15 +92,15 @@ public partial interface IControlUiRangeMP3 : IControlUiRange, global::GBX.NET.I
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiRangeTMT : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMT
+public partial interface IControlUiRangeTMT : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers1, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers2
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiRangeMP4 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlUiRangeMP4 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers1, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -94,7 +108,7 @@ public partial interface IControlUiRangeMP4 : IControlUiRange, global::GBX.NET.I
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiRangeTM2020 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlUiRangeTM2020 : IControlUiRange, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers1, global::GBX.NET.Interfaces.Control.IControlUiRangeMembers2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

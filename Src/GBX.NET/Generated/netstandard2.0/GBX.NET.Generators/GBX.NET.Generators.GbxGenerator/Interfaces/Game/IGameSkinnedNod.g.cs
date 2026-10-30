@@ -3,6 +3,13 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameSkinnedNodMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameSkinnedNod where T0 : class
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? BaseNod { get; set; }
+    T0? GameSkin { get; set; }
+    global::GBX.NET.Engines.Game.CGameSkinnedNod.Remap[]? Remaps { get; set; }
+}
 public partial interface IGameSkinnedNod : IClassVersion<global::GBX.NET.Engines.Game.CGameSkinnedNod>, global::GBX.NET.Interfaces.Game.IGameNod
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,15 +53,15 @@ public partial interface IGameSkinnedNodMP3 : IGameSkinnedNod, global::GBX.NET.I
 {
 }
 
-public partial interface IGameSkinnedNodTMT : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodTMT
+public partial interface IGameSkinnedNodTMT : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>
 {
 }
 
-public partial interface IGameSkinnedNodMP4 : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodMP4
+public partial interface IGameSkinnedNodMP4 : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>
 {
 }
 
-public partial interface IGameSkinnedNodTM2020 : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodTM2020
+public partial interface IGameSkinnedNodTM2020 : IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameNodTM2020, global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>
 {
 }
 

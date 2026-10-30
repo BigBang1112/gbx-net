@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCardGenericMembers1 : global::GBX.NET.Interfaces.Game.IGameControlCardGeneric
+{
+    int Type { get; set; }
+}
 public partial interface IGameControlCardGeneric : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCardGeneric>, global::GBX.NET.Interfaces.Game.IGameControlCard
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,7 +22,7 @@ public partial interface IGameControlCardGeneric : IClassVersion<global::GBX.NET
 public partial interface IGameControlCardGenericTM10 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +31,7 @@ public partial interface IGameControlCardGenericTM10 : IGameControlCardGeneric, 
 public partial interface IGameControlCardGenericTMPU : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +40,7 @@ public partial interface IGameControlCardGenericTMPU : IGameControlCardGeneric, 
 public partial interface IGameControlCardGenericTMSX : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,13 +49,13 @@ public partial interface IGameControlCardGenericTMSX : IGameControlCardGeneric, 
 public partial interface IGameControlCardGenericTMNESWC : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlCardGenericTMU : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMU
+public partial interface IGameControlCardGenericTMU : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMU, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
     global::GBX.NET.Engines.Game.CGameControlCardGeneric.LocalData? Data { get; set; }
@@ -58,13 +63,12 @@ public partial interface IGameControlCardGenericTMU : IGameControlCardGeneric, g
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    int Type { get; set; }
 }
 
 public partial interface IGameControlCardGenericVSK5 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -91,13 +95,13 @@ public partial interface IGameControlCardGenericMP3 : IGameControlCardGeneric, g
 public partial interface IGameControlCardGenericTMT : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlCardGenericMP4 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardMP4
+public partial interface IGameControlCardGenericMP4 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardMP4, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
@@ -106,7 +110,7 @@ public partial interface IGameControlCardGenericMP4 : IGameControlCardGeneric, g
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlCardGenericTM2020 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020
+public partial interface IGameControlCardGenericTM2020 : IGameControlCardGeneric, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020, global::GBX.NET.Interfaces.Game.IGameControlCardGenericMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

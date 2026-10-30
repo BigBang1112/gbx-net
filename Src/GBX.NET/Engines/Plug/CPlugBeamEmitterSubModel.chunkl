@@ -1,6 +1,6 @@
 CPlugBeamEmitterSubModel 0x09105000
 
-0x001 [MP4.v11] // beam geometry
+0x001 [TMT.v11, MP4.v11, TM2020.v11] // beam geometry
   version
   float UVScale
   int CylinderSideCount
@@ -64,7 +64,7 @@ CPlugBeamEmitterSubModel 0x09105000
     float FadeTimeOffset
     float FadeTimeScale
 
-0x002 [MP4.v1] // material and radius
+0x002 [TMT.v1, MP4.v1, TM2020.v1] // material and radius
   version
   v2+
     bool
@@ -77,7 +77,7 @@ CPlugBeamEmitterSubModel 0x09105000
   v1+
     id
 
-0x003 [MP4.v4] // laser appearance
+0x003 [MP4.v4, TM2020.v4] // laser appearance
   version
   float
   float
@@ -110,7 +110,7 @@ CPlugBeamEmitterSubModel 0x09105000
       data[16]
     bool EnableCenterLaser
 
-0x004 [MP4.v3] // sharp and bloom appearance
+0x004 [MP4.v3, TM2020.v3] // sharp and bloom appearance
   version
   float SharpIntensity
   float SharpScale

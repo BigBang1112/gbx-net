@@ -1,19 +1,19 @@
 CGamePlaygroundControlMessages 0x03137000
 - inherits: CControlFrame
 
-0x000
+0x000 [TMT, MP4, TM2020]
   CControlContainer MessageModel
   int LineCount = 5
   float LineHeight = 0.1f
   int MinDuration
   int DisplayDuration = 5000
 
-0x001
+0x001 [TMT, MP4, TM2020]
   float LastMessageBaseScale = 1f
   int ShowEffectDuration = 300
   float ShowEffectScale = 1.15f
   int HideEffectDuration = 300
   float HideEffectScale
 
-0x002
+0x002 [TMT, MP4, TM2020]
   float RatioElimination = 1.25f

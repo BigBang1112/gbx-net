@@ -1,6 +1,6 @@
 CGamePlayerProfile 0x0308C000
 
-0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey)
+0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey) [TM10]
   string OnlineLogin
   string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 
@@ -809,13 +809,13 @@ CGamePlayerProfile 0x0308C000
 0x240B5004 (not-remapped) [TMU, VSK5, TMF]
   CGameCtnChallenge[]
 
-0x240B5006 (not-remapped) [TMU, VSK5, TMF]
+0x240B5006 (not-remapped) [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF]
   ChallengeOpponent[] ChallengeOpponents
 
 0x240B5007 (not-remapped) [TMU, VSK5, TMF]
   CampaignUnlock[] CampaignUnlocks
 
-0x240B5009 (not-remapped) [TMF]
+0x240B5009 (not-remapped) [TM10, TMPU, TMSX, TMNESWC, TMF]
   bool U01
   bool U02
   int U03
@@ -835,7 +835,7 @@ CGamePlayerProfile 0x0308C000
 0x240B500B (not-remapped) [TMF]
   CGameCtnCampaign[] CustomCampaigns (deprec)
 
-0x240B500C (not-remapped) [TMF]
+0x240B500C (not-remapped) [TM10, TMF]
   ident[]
 
 0x240B500D (not-remapped) [TMF]
@@ -843,33 +843,33 @@ CGamePlayerProfile 0x0308C000
   bool
   bool
 
-0x240B500E (not-remapped) [TMF]
+0x240B500E (skippable, not-remapped) [TMF]
   int
   int
 
-0x240B500F (not-remapped) [TMF]
+0x240B500F (not-remapped) [TMPU, TMF]
   int[]
 
 0x240B5010 (not-remapped) [TMF]
   bool ClickedOnShare
 
-0x240B5011 (not-remapped) [TMF]
+0x240B5011 (not-remapped) [TMPU, TMSX, TMNESWC, TMF]
   int[]
 
-0x240B5012 (not-remapped) [TMF]
+0x240B5012 (skippable, not-remapped) [TMF]
   bool
 
-0x240B5013 (not-remapped) [TMF]
+0x240B5013 (skippable, not-remapped) [TMPU, TMSX, TMNESWC, TMF]
   bool
   bool
   bool
   bool
   bool
 
-0x240B5014 (not-remapped) [TMF]
+0x240B5014 (not-remapped) [TMPU, TMSX, TMNESWC, TMF]
   int
 
-0x240B5015 (not-remapped) [TMF]
+0x240B5015 (skippable, not-remapped) [TMF]
   SoloChallengesCurrentPage[]
 
 archive VehicleProfile

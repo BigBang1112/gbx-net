@@ -99,10 +99,24 @@ public partial class CGameActionFxResources : CMwNod, IClass
     /// CGameActionFxResources 0x000 chunk
     /// </summary>
     [Chunk(0x2E00A000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk2E00A000 : Chunk<CGameActionFxResources>, IVersionable
     {
         public override uint Id => 0x2E00A000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E00A000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00A000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -113,6 +127,11 @@ public partial class CGameActionFxResources : CMwNod, IClass
         public override void ReadWrite(CGameActionFxResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.particleEmitterSubModels_Continuous);
             rw.String(ref n.particleEmitterSubModels_Splash);
         }
@@ -122,10 +141,24 @@ public partial class CGameActionFxResources : CMwNod, IClass
     /// CGameActionFxResources 0x001 chunk
     /// </summary>
     [Chunk(0x2E00A001)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk2E00A001 : Chunk<CGameActionFxResources>, IVersionable
     {
         public override uint Id => 0x2E00A001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E00A001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00A001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -136,6 +169,11 @@ public partial class CGameActionFxResources : CMwNod, IClass
         public override void ReadWrite(CGameActionFxResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.bulletModelsLibraryRef);
         }
     }
@@ -144,10 +182,24 @@ public partial class CGameActionFxResources : CMwNod, IClass
     /// CGameActionFxResources 0x002 chunk
     /// </summary>
     [Chunk(0x2E00A002)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk2E00A002 : Chunk<CGameActionFxResources>, IVersionable
     {
         public override uint Id => 0x2E00A002;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E00A002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00A002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -158,6 +210,11 @@ public partial class CGameActionFxResources : CMwNod, IClass
         public override void ReadWrite(CGameActionFxResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.audioFxLibraryFolder);
         }
     }
@@ -166,10 +223,24 @@ public partial class CGameActionFxResources : CMwNod, IClass
     /// CGameActionFxResources 0x003 chunk
     /// </summary>
     [Chunk(0x2E00A003)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk2E00A003 : Chunk<CGameActionFxResources>, IVersionable
     {
         public override uint Id => 0x2E00A003;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E00A003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00A003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -180,6 +251,11 @@ public partial class CGameActionFxResources : CMwNod, IClass
         public override void ReadWrite(CGameActionFxResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.meshFolder);
         }
     }
@@ -188,10 +264,24 @@ public partial class CGameActionFxResources : CMwNod, IClass
     /// CGameActionFxResources 0x004 chunk
     /// </summary>
     [Chunk(0x2E00A004)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk2E00A004 : Chunk<CGameActionFxResources>, IVersionable
     {
         public override uint Id => 0x2E00A004;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E00A004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00A004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -202,6 +292,11 @@ public partial class CGameActionFxResources : CMwNod, IClass
         public override void ReadWrite(CGameActionFxResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.beamEmitterSubModels);
         }
     }

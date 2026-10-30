@@ -3,14 +3,39 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdFor : global::GBX.NET.Interfaces.MwFoundations.IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMF
+public partial class CMwCmdFor : global::GBX.NET.Interfaces.MwFoundations.IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMF
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock? global::GBX.NET.Interfaces.MwFoundations.IMwCmdFor.Block
     {
         get => Block;
         set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10>.Block
+    {
+        get => Block;
+        set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU>.Block
+    {
+        get => Block;
+        set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX>.Block
+    {
+        get => Block;
+        set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC>.Block
+    {
+        get => Block;
+        set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>.Block
+    {
+        get => Block;
+        set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5? global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5>.Block
     {
         get => Block;
         set => Block = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnPainterSetting : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU
+public partial class CGameCtnPainterSetting : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMP4, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTM2020
 {
 }

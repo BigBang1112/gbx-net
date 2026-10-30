@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameButtonEffect : global::GBX.NET.Interfaces.Game.IGameButtonEffect, global::GBX.NET.Interfaces.Game.IGameButtonEffectTM10, global::GBX.NET.Interfaces.Game.IGameButtonEffectTMPU
+public partial class CGameButtonEffect : global::GBX.NET.Interfaces.Game.IGameButtonEffect, global::GBX.NET.Interfaces.Game.IGameButtonEffectTM10, global::GBX.NET.Interfaces.Game.IGameButtonEffectTMPU, global::GBX.NET.Interfaces.Game.IGameButtonEffectTMSX
 {
 }

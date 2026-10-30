@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Vision;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IVisionResourceFileMembers1 : global::GBX.NET.Interfaces.Vision.IVisionResourceFile
+{
+    string? FolderShaderBench { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources { get; set; }
+}
 public partial interface IVisionResourceFile : IClassVersion<global::GBX.NET.Engines.Vision.CVisionResourceFile>
 {
 }
@@ -16,9 +22,15 @@ public partial interface IVisionResourceFileTMF : IVisionResourceFile
     global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderDeferredShadowPssm { get; set; }
 }
 
-public partial interface IVisionResourceFileMP4 : IVisionResourceFile
+public partial interface IVisionResourceFileTMT : IVisionResourceFile, global::GBX.NET.Interfaces.Vision.IVisionResourceFileMembers1
 {
-    string? FolderShaderBench { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources { get; set; }
+}
+
+public partial interface IVisionResourceFileMP4 : IVisionResourceFile, global::GBX.NET.Interfaces.Vision.IVisionResourceFileMembers1
+{
+}
+
+public partial interface IVisionResourceFileTM2020 : IVisionResourceFile, global::GBX.NET.Interfaces.Vision.IVisionResourceFileMembers1
+{
 }
 

@@ -3,14 +3,34 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020
+public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM10, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMPU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMSX, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMNESWC, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU, global::GBX.NET.Interfaces.Game.IGameManiaPlanetVSK5, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMT, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020
 {
-    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4.CoverFlowDesc
+    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT, global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT>.CoverFlowDesc
     {
         get => CoverFlowDesc;
         set => CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4.DefaultStyleSheet
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT, global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT>.DefaultStyleSheet
+    {
+        get => DefaultStyleSheet;
+        set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4, global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>.CoverFlowDesc
+    {
+        get => CoverFlowDesc;
+        set => CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4, global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>.DefaultStyleSheet
+    {
+        get => DefaultStyleSheet;
+        set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020, global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020>.CoverFlowDesc
+    {
+        get => CoverFlowDesc;
+        set => CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020, global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020>.DefaultStyleSheet
     {
         get => DefaultStyleSheet;
         set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

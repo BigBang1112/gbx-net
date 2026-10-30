@@ -10,7 +10,7 @@ CControlLabel 0x07006000
   string Label
   DontDrawText = true
 
-0x002
+0x002 [TM10, TMPU]
   string Label
   bool DontDrawText
 
@@ -28,7 +28,7 @@ CControlLabel 0x07006000
   int MaxLine = -1 (inherited)
   float ClipLength = -1f (inherited)
 
-0x006 [TMU]
+0x006 [TMSX, TMNESWC, TMU, VSK5]
   string Label
   CPlugBitmap Bitmap
   bool DontDrawText
@@ -36,12 +36,12 @@ CControlLabel 0x07006000
   float ClipLength = -1f (inherited)
   int TextMode = 3 (inherited)
 
-0x007
+0x007 [TMF, TMT, MP4]
   string Label
   CPlugBitmap Bitmap
   bool DontDrawText
 
-0x008 (skippable) [MP4, TM2020]
+0x008 (skippable) [TMT.v0, MP4, TM2020]
   version
   vec4 ImageColor = (1, 1, 1, 1)
 

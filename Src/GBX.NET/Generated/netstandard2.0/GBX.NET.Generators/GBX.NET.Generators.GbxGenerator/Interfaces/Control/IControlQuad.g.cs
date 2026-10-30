@@ -3,6 +3,29 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers1 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    string? IconId { get; set; }
+    float IconVertexAlpha { get; set; }
+    Vec3 IconVertexColors { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers2 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    Vec2 Size { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers3 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    int GradientDir { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlQuadMembers4 : global::GBX.NET.Interfaces.Control.IControlQuad
+{
+    bool IsFill { get; set; }
+    bool IsLines { get; set; }
+}
 public partial interface IControlQuad : IClassVersion<global::GBX.NET.Engines.Control.CControlQuad>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,51 +39,47 @@ public partial interface IControlQuad : IClassVersion<global::GBX.NET.Engines.Co
 
 public partial interface IControlQuadTM10 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadTMPU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
+public partial interface IControlQuadTMPU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMPU, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadTMSX : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
+public partial interface IControlQuadTMSX : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMSX, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
+public partial interface IControlQuadTMNESWC : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+public partial interface IControlQuadTMU : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMU, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    int GradientDir { get; set; }
-    bool IsFill { get; set; }
-    bool IsLines { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    Vec2 Size { get; set; }
 }
 
-public partial interface IControlQuadVSK5 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
+public partial interface IControlQuadVSK5 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlQuadMembers2, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -84,13 +103,13 @@ public partial interface IControlQuadMP3 : IControlQuad, global::GBX.NET.Interfa
 
 public partial interface IControlQuadTMT : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTMT
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlQuadMembers1, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -98,7 +117,7 @@ public partial interface IControlQuadMP4 : IControlQuad, global::GBX.NET.Interfa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlQuadTM2020 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlQuadTM2020 : IControlQuad, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlQuadMembers1, global::GBX.NET.Interfaces.Control.IControlQuadMembers3, global::GBX.NET.Interfaces.Control.IControlQuadMembers4
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

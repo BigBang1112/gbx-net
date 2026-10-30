@@ -13,7 +13,7 @@ CSceneFxDepthOfField 0x0A077000
   float BlurRatio = 2f
   float BlurAmp = 1.01f
 
-0x001 (base: 0x000) // legacy technique and blur size
+0x001 (base: 0x000) [TM10, TMPU] // legacy technique and blur size
   base
   int Technique
   int BlurSize = 11
@@ -23,19 +23,19 @@ CSceneFxDepthOfField 0x0A077000
   float FocusRange = 2f
   CMwNod FidMrtDOF_BlurAtDepth
 
-0x003 (base: 0x001) [TMU, TMF] // focus range
+0x003 (base: 0x001) [TMSX, TMNESWC, TMU, VSK5, TMF] // focus range
   base
   float FocusRange
 
-0x004 [TMU, TMF] // FidMrtDOF_BlurAtDepth
+0x004 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // FidMrtDOF_BlurAtDepth
   CMwNod FidMrtDOF_BlurAtDepth
 
-0x005
+0x005 [TMT, MP4, TM2020]
   float
   float
   float
   int
 
-0x006
+0x006 [TMT, MP4, TM2020]
   CMwNod
   CMwNod

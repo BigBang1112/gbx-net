@@ -14,7 +14,27 @@ public partial interface IMwCmdAffectParamClass : IClassVersion<global::GBX.NET.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IMwCmdAffectParamClassTM10 : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTM10
+{
+}
+
+public partial interface IMwCmdAffectParamClassTMPU : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTMPU
+{
+}
+
+public partial interface IMwCmdAffectParamClassTMSX : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTMSX
+{
+}
+
+public partial interface IMwCmdAffectParamClassTMNESWC : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTMNESWC
+{
+}
+
 public partial interface IMwCmdAffectParamClassTMU : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTMU
+{
+}
+
+public partial interface IMwCmdAffectParamClassVSK5 : IMwCmdAffectParamClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamVSK5
 {
 }
 

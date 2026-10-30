@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlDataType : global::GBX.NET.Interfaces.Game.IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU
+public partial class CGameControlDataType : global::GBX.NET.Interfaces.Game.IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020
 {
 }

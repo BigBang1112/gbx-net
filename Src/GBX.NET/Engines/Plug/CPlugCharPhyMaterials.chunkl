@@ -1,6 +1,6 @@
 CPlugCharPhyMaterials 0x090FB000
 
-0x000
+0x000 [TMT, MP4]
   int[] MaterialIndices
   CPlugCharPhyMaterial[] Materials (deprec)
 

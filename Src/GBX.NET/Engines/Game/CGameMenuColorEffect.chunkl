@@ -1,7 +1,7 @@
 CGameMenuColorEffect 0x03019000
 - inherits: CControlEffect
 
-0x000 [TMU, TMF]
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4]
   ColorBeam[] ColorBeams
   if ColorBeams != null && ColorBeams.Length > 0
     float LastInterWidth

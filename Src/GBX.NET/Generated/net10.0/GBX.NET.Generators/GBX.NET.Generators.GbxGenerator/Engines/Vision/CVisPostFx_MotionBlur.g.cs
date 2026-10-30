@@ -355,10 +355,24 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     /// CVisPostFx_MotionBlur 0x00A chunk (depth and motion bitmaps and shader)
     /// </summary>
     [Chunk(0x0C03100A, "depth and motion bitmaps and shader")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0C03100A : Chunk<CVisPostFx_MotionBlur>, IVersionable
     {
         public override uint Id => 0x0C03100A;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0C03100A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0C03100A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -369,6 +383,11 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
         public override void ReadWrite(CVisPostFx_MotionBlur n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.t3_BitmapDepthRef);
             rw.NodeRef(ref n.t3_BitmapMotionRef);
             rw.NodeRef(ref n.t3_PHlsl_MotionBlurRef);

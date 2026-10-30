@@ -1,7 +1,7 @@
 CGameModulePlaygroundThrottleModel 0x2E004000
 - inherits: CGameModulePlaygroundModel
 
-0x000 (skippable)
+0x000 (skippable) [MP4.v1]
   version = 1
   float
   float

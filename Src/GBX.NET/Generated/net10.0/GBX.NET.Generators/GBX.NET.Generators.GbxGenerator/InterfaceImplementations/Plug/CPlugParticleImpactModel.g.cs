@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4
+public partial class CPlugParticleImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020
 {
 }

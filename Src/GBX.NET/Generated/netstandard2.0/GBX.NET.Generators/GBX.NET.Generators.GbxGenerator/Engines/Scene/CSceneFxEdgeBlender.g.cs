@@ -123,9 +123,11 @@ public partial class CSceneFxEdgeBlender : CSceneFxCompo, IClass
     /// CSceneFxEdgeBlender 0x001 chunk (edge and gutter settings)
     /// </summary>
     [Chunk(0x0A07D001, "edge and gutter settings")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A07D001 : Chunk<CSceneFxEdgeBlender>
     {
         public override uint Id => 0x0A07D001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -145,9 +147,11 @@ public partial class CSceneFxEdgeBlender : CSceneFxCompo, IClass
     /// CSceneFxEdgeBlender 0x002 chunk (shaders)
     /// </summary>
     [Chunk(0x0A07D002, "shaders")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A07D002 : Chunk<CSceneFxEdgeBlender>
     {
         public override uint Id => 0x0A07D002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

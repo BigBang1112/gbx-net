@@ -25,9 +25,11 @@ public partial class CPlugFxWindOnDecal : CPlug, IClass
     /// CPlugFxWindOnDecal 0x000 chunk (wind settings)
     /// </summary>
     [Chunk(0x090D9000, "wind settings")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090D9000 : Chunk<CPlugFxWindOnDecal>
     {
         public override uint Id => 0x090D9000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
         public float U02;
         public float U03;

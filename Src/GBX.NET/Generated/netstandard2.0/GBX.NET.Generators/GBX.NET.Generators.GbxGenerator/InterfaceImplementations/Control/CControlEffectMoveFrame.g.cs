@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectMoveFrame : global::GBX.NET.Interfaces.Control.IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMU
+public partial class CControlEffectMoveFrame : global::GBX.NET.Interfaces.Control.IControlEffectMoveFrame, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMSX, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMU, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameVSK5, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMF, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMT, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameMP4, global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTM2020
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugGpuCompileCache : global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCache, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTM2020
+public partial class CPlugGpuCompileCache : global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCache, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTMT, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheMP4, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTM2020
 {
 }

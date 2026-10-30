@@ -56,9 +56,11 @@ public partial class CPlugBitmapRenderCamera : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderCamera 0x001 skippable chunk
     /// </summary>
     [Chunk(0x09089001)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09089001 : SkippableChunk<CPlugBitmapRenderCamera>
     {
         public override uint Id => 0x09089001;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -77,9 +79,11 @@ public partial class CPlugBitmapRenderCamera : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderCamera 0x002 skippable chunk
     /// </summary>
     [Chunk(0x09089002)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09089002 : SkippableChunk<CPlugBitmapRenderCamera>
     {
         public override uint Id => 0x09089002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public uint U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -98,9 +102,11 @@ public partial class CPlugBitmapRenderCamera : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderCamera 0x003 skippable chunk (PlaneY_Offset)
     /// </summary>
     [Chunk(0x09089003, "PlaneY_Offset")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09089003 : SkippableChunk<CPlugBitmapRenderCamera>
     {
         public override uint Id => 0x09089003;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

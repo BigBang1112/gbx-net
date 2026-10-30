@@ -109,11 +109,11 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x000 skippable chunk (editor type, help and legacy main plugin)
     /// </summary>
     [Chunk(0x2E01B000, "editor type, help and legacy main plugin")]
-    [ChunkGameVersion(GameVersion.TM2020, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 4)]
     public partial class Chunk2E01B000 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public CPlugFileText? U01;
         public string? U02;
@@ -124,7 +124,7 @@ public partial class CGameEditorModel : CMwNod, IClass
 
         public Chunk2E01B000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -178,12 +178,26 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x001 skippable chunk
     /// </summary>
     [Chunk(0x2E01B001)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk2E01B001 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Int128 U01;
         public int U02;
+
+        public Chunk2E01B001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01B001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -196,6 +210,11 @@ public partial class CGameEditorModel : CMwNod, IClass
         public override void ReadWrite(CGameEditorModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int128(ref U01);
             rw.Int32(ref U02);
         }
@@ -231,11 +250,11 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x003 skippable chunk (binding contexts)
     /// </summary>
     [Chunk(0x2E01B003, "binding contexts")]
-    [ChunkGameVersion(GameVersion.TM2020, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 2)]
     public partial class Chunk2E01B003 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B003;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk2E01B003() : this(GameVersion.Unspecified)
@@ -244,7 +263,11 @@ public partial class CGameEditorModel : CMwNod, IClass
 
         public Chunk2E01B003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -272,10 +295,24 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x004 chunk (main and sub plugin text sets)
     /// </summary>
     [Chunk(0x2E01B004, "main and sub plugin text sets")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk2E01B004 : Chunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E01B004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01B004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -286,6 +323,11 @@ public partial class CGameEditorModel : CMwNod, IClass
         public override void ReadWrite(CGameEditorModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.mainPluginTextSetRef);
             rw.ArrayReadableWritable<SubPlugin>(ref n.subPlugins!, version: Version);
         }

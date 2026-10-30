@@ -5,4 +5,9 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugMusicType : global::GBX.NET.Interfaces.Plug.IPlugMusicType, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM10, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMPU, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMSX, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMU, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeVSK5, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMF, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP3, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMT, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP4, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM2020
 {
+    bool global::GBX.NET.Interfaces.Plug.IPlugSound.IsLooping
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugSound)this).IsLooping;
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).IsLooping = value;
+    }
 }

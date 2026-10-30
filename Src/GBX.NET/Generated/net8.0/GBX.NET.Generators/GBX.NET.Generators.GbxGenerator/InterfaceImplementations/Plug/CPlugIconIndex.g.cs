@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugIconIndex : global::GBX.NET.Interfaces.Plug.IPlugIconIndex, global::GBX.NET.Interfaces.Plug.IPlugIconIndexMP4
+public partial class CPlugIconIndex : global::GBX.NET.Interfaces.Plug.IPlugIconIndex, global::GBX.NET.Interfaces.Plug.IPlugIconIndexTMT, global::GBX.NET.Interfaces.Plug.IPlugIconIndexMP4, global::GBX.NET.Interfaces.Plug.IPlugIconIndexTM2020
 {
 }

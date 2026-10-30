@@ -62,11 +62,11 @@ public partial class CSystemDependenciesList : CMwNod, IClass
     /// CSystemDependenciesList 0x000 chunk (dependency folders and files)
     /// </summary>
     [Chunk(0x0B010000, "dependency folders and files")]
-    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
     public partial class Chunk0B010000 : Chunk<CSystemDependenciesList>, IVersionable
     {
         public override uint Id => 0x0B010000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk0B010000() : this(GameVersion.Unspecified)
@@ -75,7 +75,11 @@ public partial class CSystemDependenciesList : CMwNod, IClass
 
         public Chunk0B010000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

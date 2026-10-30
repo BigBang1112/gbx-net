@@ -31,11 +31,31 @@ public partial interface ISceneGate : IClassVersion<global::GBX.NET.Engines.Scen
     }
 }
 
+public partial interface ISceneGateTM10 : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTM10>
+{
+}
+
+public partial interface ISceneGateTMPU : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMPU>
+{
+}
+
+public partial interface ISceneGateTMSX : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMSX>
+{
+}
+
 public partial interface ISceneGateTMNESWC : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC>
 {
 }
 
 public partial interface ISceneGateTMU : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMU>
+{
+}
+
+public partial interface ISceneGateVSK5 : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalVSK5>
+{
+}
+
+public partial interface ISceneGateTMF : ISceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateMembers1<global::GBX.NET.Interfaces.Hms.IHmsPortalTMF>
 {
 }
 

@@ -23,6 +23,10 @@ public partial interface ISmArenaResource : IClassVersion<global::GBX.NET.Engine
     global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? Resources { get; set; }
 }
 
+public partial interface ISmArenaResourceTMT : ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
+{
+}
+
 public partial interface ISmArenaResourceMP4 : ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
 {
 }

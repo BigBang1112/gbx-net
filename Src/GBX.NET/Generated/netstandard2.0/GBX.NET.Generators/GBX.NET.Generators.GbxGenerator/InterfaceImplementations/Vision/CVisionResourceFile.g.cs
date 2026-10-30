@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Vision;
 
-public partial class CVisionResourceFile : global::GBX.NET.Interfaces.Vision.IVisionResourceFile, global::GBX.NET.Interfaces.Vision.IVisionResourceFileTMF, global::GBX.NET.Interfaces.Vision.IVisionResourceFileMP4
+public partial class CVisionResourceFile : global::GBX.NET.Interfaces.Vision.IVisionResourceFile, global::GBX.NET.Interfaces.Vision.IVisionResourceFileTMF, global::GBX.NET.Interfaces.Vision.IVisionResourceFileTMT, global::GBX.NET.Interfaces.Vision.IVisionResourceFileMP4, global::GBX.NET.Interfaces.Vision.IVisionResourceFileTM2020
 {
 }

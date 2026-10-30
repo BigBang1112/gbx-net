@@ -4,25 +4,7 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugFontBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class where T1 : class
-{
-    T0? CustomMaterialModel
-    {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
-        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    T1? FallbackFont
-    {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
-        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    bool HasCustomMaterial { get; set; }
-    bool HasTextureDataRefs { get; set; }
-    string[]? PageTextureDataRefs { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? PageTextures { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugFontBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
+public interface IPlugFontBitmapMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
 {
     T0? LegacyBitmap
     {
@@ -32,13 +14,37 @@ public interface IPlugFontBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.I
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter[]? OldLetters { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFontBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
+{
+    T0? CustomMaterialModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? PageTextures { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFontBitmapMembers3 : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap
 {
     Rect Bounds { get; set; }
+    int KerningCapacity { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning[]? Kernings { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? Letters { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? Pages { get; set; }
     ushort[]? RemapLetters { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? RemapPages { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFontBitmapMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class
+{
+    T0? FallbackFont
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    bool HasCustomMaterial { get; set; }
+    bool HasTextureDataRefs { get; set; }
+    string[]? PageTextureDataRefs { get; set; }
 }
 public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
 {
@@ -46,25 +52,43 @@ public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines
     int FontHeight { get; set; }
 }
 
-public partial interface IPlugFontBitmapTM10 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
+public partial interface IPlugFontBitmapTM10 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
 {
 }
 
-public partial interface IPlugFontBitmapTMPU : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
+public partial interface IPlugFontBitmapTMPU : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
+{
+}
+
+public partial interface IPlugFontBitmapTMSX : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
+{
+}
+
+public partial interface IPlugFontBitmapTMNESWC : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
 {
 }
 
 public partial interface IPlugFontBitmapTMU : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
 {
-    int KerningCapacity { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning[]? Kernings { get; set; }
 }
 
-public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
+public partial interface IPlugFontBitmapVSK5 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
 {
 }
 
-public partial interface IPlugFontBitmapTM2020 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
+public partial interface IPlugFontBitmapTMF : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3
+{
+}
+
+public partial interface IPlugFontBitmapTMT : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers4<global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMT>
+{
+}
+
+public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers4<global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>
+{
+}
+
+public partial interface IPlugFontBitmapTM2020 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers3, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers4<global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>
 {
 }
 

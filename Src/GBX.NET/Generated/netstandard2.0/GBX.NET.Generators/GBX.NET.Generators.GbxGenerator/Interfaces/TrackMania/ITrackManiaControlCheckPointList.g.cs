@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaControlCheckPointListMembers1<T0> : global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointList where T0 : class
+{
+    T0? CardModel { get; set; }
+}
 public partial interface ITrackManiaControlCheckPointList : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaControlCheckPointList>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,7 +22,7 @@ public partial interface ITrackManiaControlCheckPointList : IClassVersion<global
 public partial interface ITrackManiaControlCheckPointListTM10 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +31,7 @@ public partial interface ITrackManiaControlCheckPointListTM10 : ITrackManiaContr
 public partial interface ITrackManiaControlCheckPointListTMPU : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +40,7 @@ public partial interface ITrackManiaControlCheckPointListTMPU : ITrackManiaContr
 public partial interface ITrackManiaControlCheckPointListTMSX : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,7 +49,7 @@ public partial interface ITrackManiaControlCheckPointListTMSX : ITrackManiaContr
 public partial interface ITrackManiaControlCheckPointListTMNESWC : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -62,13 +67,13 @@ public partial interface ITrackManiaControlCheckPointListTMU : ITrackManiaContro
 public partial interface ITrackManiaControlCheckPointListVSK5 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlCheckPointListTMF : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMF
+public partial interface ITrackManiaControlCheckPointListTMF : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTMF>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
@@ -86,16 +91,16 @@ public partial interface ITrackManiaControlCheckPointListMP3 : ITrackManiaContro
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlCheckPointListTMT : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMT
+public partial interface ITrackManiaControlCheckPointListTMT : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTMT>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlCheckPointListMP4 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameMP4
+public partial interface ITrackManiaControlCheckPointListMP4 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameMP4>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
@@ -104,7 +109,7 @@ public partial interface ITrackManiaControlCheckPointListMP4 : ITrackManiaContro
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlCheckPointListTM2020 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTM2020
+public partial interface ITrackManiaControlCheckPointListTM2020 : ITrackManiaControlCheckPointList, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTM2020>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

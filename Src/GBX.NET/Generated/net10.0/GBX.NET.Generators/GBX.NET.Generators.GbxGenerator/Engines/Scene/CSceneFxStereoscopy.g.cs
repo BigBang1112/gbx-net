@@ -102,9 +102,11 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     /// CSceneFxStereoscopy 0x000 chunk (legacy anaglyph shaders)
     /// </summary>
     [Chunk(0x0A043000, "legacy anaglyph shaders")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A043000 : Chunk<CSceneFxStereoscopy>
     {
         public override uint Id => 0x0A043000;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -143,11 +145,11 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     /// CSceneFxStereoscopy 0x002 chunk (anaglyph, interlaced and debug shaders)
     /// </summary>
     [Chunk(0x0A043002, "anaglyph, interlaced and debug shaders")]
-    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1)]
     public partial class Chunk0A043002 : Chunk<CSceneFxStereoscopy>, IVersionable
     {
         public override uint Id => 0x0A043002;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk0A043002() : this(GameVersion.Unspecified)
@@ -156,7 +158,11 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
 
         public Chunk0A043002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

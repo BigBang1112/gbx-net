@@ -16,6 +16,22 @@ public interface IGameControlCameraOrbital3dMembers2 : global::GBX.NET.Interface
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameControlCameraOrbital3dMembers3 : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d
 {
+    Iso4 RelativeTargetLocation { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraOrbital3dMembers4 : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d
+{
+    bool UseAutoRadiusFromTargets { get; set; }
+}
+public partial interface IGameControlCameraOrbital3d : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
+{
+    new global::GBX.NET.GameVersion GameVersion { get; }
+    new bool IsGameVersion(global::GBX.NET.GameVersion version, bool strict = false);
+    new bool CanBeGameVersion(global::GBX.NET.GameVersion version);
+    new global::GBX.NET.Gbx ToGbx(global::GBX.NET.Components.GbxHeaderBasic headerBasic);
+    new global::GBX.NET.Gbx ToGbx();
+    new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
+    new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     float FovKeySensitivity { get; set; }
     float Latitude { get; set; }
     float LatitudeMax { get; set; }
@@ -32,52 +48,40 @@ public interface IGameControlCameraOrbital3dMembers3 : global::GBX.NET.Interface
     Vec2 RotateSpeed { get; set; }
     float WheelSensitivity { get; set; }
 }
-public partial interface IGameControlCameraOrbital3d : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
-{
-    new global::GBX.NET.GameVersion GameVersion { get; }
-    new bool IsGameVersion(global::GBX.NET.GameVersion version, bool strict = false);
-    new bool CanBeGameVersion(global::GBX.NET.GameVersion version);
-    new global::GBX.NET.Gbx ToGbx(global::GBX.NET.Components.GbxHeaderBasic headerBasic);
-    new global::GBX.NET.Gbx ToGbx();
-    new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
-    new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-}
 
-public partial interface IGameControlCameraOrbital3dTMSX : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dTMSX : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX
 {
 }
 
-public partial interface IGameControlCameraOrbital3dTMNESWC : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dTMNESWC : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2
 {
 }
 
-public partial interface IGameControlCameraOrbital3dTMU : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dTMU : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2
 {
 }
 
-public partial interface IGameControlCameraOrbital3dVSK5 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dVSK5 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers4
 {
 }
 
-public partial interface IGameControlCameraOrbital3dTMF : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dTMF : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers4
 {
 }
 
-public partial interface IGameControlCameraOrbital3dMP3 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dMP3 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1
 {
 }
 
-public partial interface IGameControlCameraOrbital3dTMT : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1
+public partial interface IGameControlCameraOrbital3dTMT : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers4
 {
 }
 
-public partial interface IGameControlCameraOrbital3dMP4 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
+public partial interface IGameControlCameraOrbital3dMP4 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers4
 {
-    Iso4 RelativeTargetLocation { get; set; }
-    bool UseAutoRadiusFromTargets { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTM2020 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1
+public partial interface IGameControlCameraOrbital3dTM2020 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers4
 {
 }
 

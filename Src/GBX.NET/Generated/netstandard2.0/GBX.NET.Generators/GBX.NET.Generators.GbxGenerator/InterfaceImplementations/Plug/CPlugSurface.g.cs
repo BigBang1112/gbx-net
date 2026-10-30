@@ -3,9 +3,34 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMU, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020
+public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM10, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMPU, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMSX, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMU, global::GBX.NET.Interfaces.Plug.IPlugSurfaceVSK5, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMF, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTM10? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTM10>.Geom
+    {
+        get => Geom;
+        set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMPU? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMPU>.Geom
+    {
+        get => Geom;
+        set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMSX? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMSX>.Geom
+    {
+        get => Geom;
+        set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMNESWC>.Geom
+    {
+        get => Geom;
+        set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU>.Geom
+    {
+        get => Geom;
+        set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5>.Geom
     {
         get => Geom;
         set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

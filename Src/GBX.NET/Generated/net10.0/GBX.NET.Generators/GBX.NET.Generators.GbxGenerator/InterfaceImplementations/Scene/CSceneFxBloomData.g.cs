@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxBloomData : global::GBX.NET.Interfaces.Scene.ISceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF
+public partial class CSceneFxBloomData : global::GBX.NET.Interfaces.Scene.ISceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4
 {
 }

@@ -101,7 +101,7 @@ public partial interface IControlTrackManiaScoresTMNESWC : IControlTrackManiaSco
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? FameStarBitmap { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? LadderBitmap { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }

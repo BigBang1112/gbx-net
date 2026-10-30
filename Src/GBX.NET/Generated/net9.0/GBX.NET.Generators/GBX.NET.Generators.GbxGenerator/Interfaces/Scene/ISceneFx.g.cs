@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxMembers1 : global::GBX.NET.Interfaces.Scene.ISceneFx
+{
+    bool WantPreLoad { get; set; }
+}
 public partial interface ISceneFx : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFx>
 {
 }
@@ -11,11 +16,35 @@ public partial interface ISceneFxTM10 : ISceneFx
 {
 }
 
+public partial interface ISceneFxTMPU : ISceneFx
+{
+}
+
+public partial interface ISceneFxTMSX : ISceneFx
+{
+}
+
+public partial interface ISceneFxTMNESWC : ISceneFx
+{
+}
+
 public partial interface ISceneFxTMU : ISceneFx
 {
 }
 
-public partial interface ISceneFxTMF : ISceneFx
+public partial interface ISceneFxVSK5 : ISceneFx
+{
+}
+
+public partial interface ISceneFxTMF : ISceneFx, global::GBX.NET.Interfaces.Scene.ISceneFxMembers1
+{
+}
+
+public partial interface ISceneFxTMT : ISceneFx, global::GBX.NET.Interfaces.Scene.ISceneFxMembers1
+{
+}
+
+public partial interface ISceneFxMP4 : ISceneFx, global::GBX.NET.Interfaces.Scene.ISceneFxMembers1
 {
 }
 

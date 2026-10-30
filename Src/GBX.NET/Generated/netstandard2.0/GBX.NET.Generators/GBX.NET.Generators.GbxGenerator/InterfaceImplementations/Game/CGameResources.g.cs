@@ -5,37 +5,77 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameResources : global::GBX.NET.Interfaces.Game.IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesTMU, global::GBX.NET.Interfaces.Game.IGameResourcesTMF, global::GBX.NET.Interfaces.Game.IGameResourcesMP4, global::GBX.NET.Interfaces.Game.IGameResourcesTM2020
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU? global::GBX.NET.Interfaces.Game.IGameResourcesTMU.PainterSetting
+    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU? global::GBX.NET.Interfaces.Game.IGameResourcesMembers3<global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTMU>.PainterSetting
     {
         get => PainterSetting;
         set => PainterSetting = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Base
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.AudioBalance_Base
     {
         get => AudioBalance_Base;
         set => AudioBalance_Base = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Editor
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.AudioBalance_Editor
     {
         get => AudioBalance_Editor;
         set => AudioBalance_Editor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.AudioBalance_Menus
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.AudioBalance_Menus
     {
         get => AudioBalance_Menus;
         set => AudioBalance_Menus = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.BitmapCubeMenuManiaPlanet3d
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.BitmapCubeMenuManiaPlanet3d
     {
         get => BitmapCubeMenuManiaPlanet3d;
         set => BitmapCubeMenuManiaPlanet3d = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.BitmapTeamEmblems
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.BitmapTeamEmblems
     {
         get => BitmapTeamEmblems;
         set => BitmapTeamEmblems = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMP4.StationGameSkin
+    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers3<global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMP4>.PainterSetting
+    {
+        get => PainterSetting;
+        set => PainterSetting = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.StationGameSkin
+    {
+        get => StationGameSkin;
+        set => StationGameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.AudioBalance_Base
+    {
+        get => AudioBalance_Base;
+        set => AudioBalance_Base = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.AudioBalance_Editor
+    {
+        get => AudioBalance_Editor;
+        set => AudioBalance_Editor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.AudioBalance_Menus
+    {
+        get => AudioBalance_Menus;
+        set => AudioBalance_Menus = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.BitmapCubeMenuManiaPlanet3d
+    {
+        get => BitmapCubeMenuManiaPlanet3d;
+        set => BitmapCubeMenuManiaPlanet3d = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.BitmapTeamEmblems
+    {
+        get => BitmapTeamEmblems;
+        set => BitmapTeamEmblems = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers3<global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingTM2020>.PainterSetting
+    {
+        get => PainterSetting;
+        set => PainterSetting = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPainterSetting node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? global::GBX.NET.Interfaces.Game.IGameResourcesMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.StationGameSkin
     {
         get => StationGameSkin;
         set => StationGameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

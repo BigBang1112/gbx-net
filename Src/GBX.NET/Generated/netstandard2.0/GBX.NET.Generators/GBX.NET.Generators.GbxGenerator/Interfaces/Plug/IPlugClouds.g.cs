@@ -4,17 +4,26 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugCloudsMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugClouds where T0 : class
+public interface IPlugCloudsMembers1 : global::GBX.NET.Interfaces.Plug.IPlugClouds
+{
+    Vec2[]? PointHeights { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCloudsMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugClouds where T0 : class
 {
     float BottomFarZ { get; set; }
     float BottomNearZ { get; set; }
     int HeightCenter { get; set; }
     Vec2 HeightCenterXZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
     int Lighting { get; set; }
     IReadOnlyList<T0>? SolidFids { get; set; }
     float SpeedScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCloudsMembers3 : global::GBX.NET.Interfaces.Plug.IPlugClouds
+{
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
 }
 public partial interface IPlugClouds : IClassVersion<global::GBX.NET.Engines.Plug.CPlugClouds>, global::GBX.NET.Interfaces.Function.IFunc
 {
@@ -25,22 +34,28 @@ public partial interface IPlugClouds : IClassVersion<global::GBX.NET.Engines.Plu
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    Vec2[]? PointHeights { get; set; }
 }
 
-public partial interface IPlugCloudsTMNESWC : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMNESWC
+public partial interface IPlugCloudsTMNESWC : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1
 {
 }
 
-public partial interface IPlugCloudsTMU : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>
+public partial interface IPlugCloudsTMU : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers3
 {
 }
 
-public partial interface IPlugCloudsVSK5 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>
+public partial interface IPlugCloudsVSK5 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers3
 {
 }
 
-public partial interface IPlugCloudsTMF : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>
+public partial interface IPlugCloudsTMF : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers3
 {
+}
+
+public partial interface IPlugCloudsTM2020 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers3
+{
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsParamTM2020? CloudsParam { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialModelToForce { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsSolidsTM2020? Solids { get; set; }
 }
 

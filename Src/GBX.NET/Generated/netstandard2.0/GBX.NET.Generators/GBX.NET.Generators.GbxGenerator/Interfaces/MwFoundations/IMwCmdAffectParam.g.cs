@@ -9,7 +9,27 @@ public partial interface IMwCmdAffectParam : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value { get; set; }
 }
 
+public partial interface IMwCmdAffectParamTM10 : IMwCmdAffectParam
+{
+}
+
+public partial interface IMwCmdAffectParamTMPU : IMwCmdAffectParam
+{
+}
+
+public partial interface IMwCmdAffectParamTMSX : IMwCmdAffectParam
+{
+}
+
+public partial interface IMwCmdAffectParamTMNESWC : IMwCmdAffectParam
+{
+}
+
 public partial interface IMwCmdAffectParamTMU : IMwCmdAffectParam
+{
+}
+
+public partial interface IMwCmdAffectParamVSK5 : IMwCmdAffectParam
 {
 }
 

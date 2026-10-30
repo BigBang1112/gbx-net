@@ -85,9 +85,11 @@ public partial class CControlUiRange : CControlBase, IClass
     /// CControlUiRange 0x000 chunk
     /// </summary>
     [Chunk(0x07014000)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07014000 : Chunk<CControlUiRange>
     {
         public override uint Id => 0x07014000;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -104,9 +106,11 @@ public partial class CControlUiRange : CControlBase, IClass
     /// CControlUiRange 0x001 chunk
     /// </summary>
     [Chunk(0x07014001)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07014001 : Chunk<CControlUiRange>
     {
         public override uint Id => 0x07014001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -147,10 +151,28 @@ public partial class CControlUiRange : CControlBase, IClass
     /// CControlUiRange 0x003 chunk
     /// </summary>
     [Chunk(0x07014003)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 4)]
     public partial class Chunk07014003 : Chunk<CControlUiRange>, IVersionable
     {
         public override uint Id => 0x07014003;
-        public int Version { get; set; } = 4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk07014003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07014003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+            else
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -161,6 +183,10 @@ public partial class CControlUiRange : CControlBase, IClass
         public override void ReadWrite(CControlUiRange n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(4, 4))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 1)
             {

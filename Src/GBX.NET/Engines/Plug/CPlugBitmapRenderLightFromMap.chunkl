@@ -21,6 +21,6 @@ CPlugBitmapRenderLightFromMap 0x09021000
   float RemapMin_DayDir
   float RemapMax_DayDir
 
-0x002 // BitmapLightHistory
+0x002 [TMT.v0, MP4.v0, TM2020.v0] // BitmapLightHistory
   version
   CPlugBitmap BitmapLightHistory

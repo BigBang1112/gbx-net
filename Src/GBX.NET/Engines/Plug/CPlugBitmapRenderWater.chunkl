@@ -22,11 +22,11 @@ CPlugBitmapRenderWater 0x09087000
   base
   float MirrorScaleY
 
-0x004 (base: 0x003)
+0x004 (base: 0x003) [TM10]
   base
   bool
 
-0x005 (skippable) [TMU] // frustum, clip plane, margin and mirror scale
+0x005 (skippable) [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // frustum, clip plane, margin and mirror scale
   bool IsOrthographic
   boxaligned Frustum
   iso4
@@ -35,14 +35,14 @@ CPlugBitmapRenderWater 0x09087000
   float FMargin
   float MirrorScaleY
 
-0x006 (skippable) [TMU] // FogMaxDepth
+0x006 (skippable) [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020] // FogMaxDepth
   float FogMaxDepth
 
 0x007 (skippable) // split sky and depth bitmaps
   CPlugBitmap BitmapSplitSky
   CPlugBitmap BitmapDepth
 
-0x008 (skippable) // update periods
+0x008 (skippable) [TM2020.v1] // update periods
   version = 1
   int MaxUpdatePeriod
   v1+

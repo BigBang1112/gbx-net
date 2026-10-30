@@ -69,10 +69,12 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
     /// CGameManiaTitleCore 0x000 chunk
     /// </summary>
     [Chunk(0x03012000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2)]
     public partial class Chunk03012000 : Chunk<CGameManiaTitleCore>, IVersionable
     {
         public override uint Id => 0x03012000;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         private NodeRef<CPlugFont>? U01Ref;
         public CPlugFont? U01
@@ -95,6 +97,22 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
             yield break;
         }
 
+        public Chunk03012000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03012000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -105,6 +123,11 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
         public override void ReadWrite(CGameManiaTitleCore n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.collectionCommonRef);
 
             if (Version == 1)
@@ -118,10 +141,12 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
     /// CGameManiaTitleCore 0x001 chunk
     /// </summary>
     [Chunk(0x03012001)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk03012001 : Chunk<CGameManiaTitleCore>, IVersionable
     {
         public override uint Id => 0x03012001;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -144,6 +169,22 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
             yield break;
         }
 
+        public Chunk03012001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03012001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -154,6 +195,11 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
         public override void ReadWrite(CGameManiaTitleCore n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
@@ -167,10 +213,24 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
     /// CGameManiaTitleCore 0x002 chunk
     /// </summary>
     [Chunk(0x03012002)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk03012002 : Chunk<CGameManiaTitleCore>, IVersionable
     {
         public override uint Id => 0x03012002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03012002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03012002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -181,6 +241,11 @@ public partial class CGameManiaTitleCore : CGameNod, IClass
         public override void ReadWrite(CGameManiaTitleCore n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.withLocalMultiplayer);
         }
     }

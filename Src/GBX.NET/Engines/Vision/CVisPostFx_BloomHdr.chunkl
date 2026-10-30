@@ -1,7 +1,7 @@
 CVisPostFx_BloomHdr 0x0C032000
 - inherits: CSceneFxCompo
 
-0x000 // downsampling and blur settings
+0x000 [TM2020] // downsampling and blur settings
   float
   int DownCount
   int BlurSizeDown1_2x2
@@ -14,21 +14,21 @@ CVisPostFx_BloomHdr 0x0C032000
   CMwNod ShaderDistorGetDepthIntens
   CMwNod ShaderDistorAtDepth
 
-0x002 // distortion shaders
+0x002 [TM2020] // distortion shaders
   CMwNod ShaderDistorImageSpace
   CMwNod ShaderDistorGetDepthIntens
   CMwNod ShaderDistorAtDepth
 
-0x003 // select filter shaders
+0x003 [TM2020] // select filter shaders
   CMwNod FidShaderBloomSelectFilterDown2
   CMwNod FidShaderBloomSelectFilterDown4
   CFuncKeysReal
 
-0x004 // ShaderHorizonBlur
+0x004 [TM2020.v0] // ShaderHorizonBlur
   version
   CMwNod ShaderHorizonBlur
 
-0x005 // final, streak and editor shaders
+0x005 [TM2020.v2] // final, streak and editor shaders
   version = 1
   v1+
     CMwNod ShaderBloomFinal

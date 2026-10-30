@@ -10,6 +10,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -29,6 +34,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMPU.LegacyStyle
     {
@@ -50,6 +60,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMSX.LegacyStyle
     {
         get => LegacyStyle;
@@ -69,6 +84,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMNESWC.LegacyStyle
     {
@@ -115,6 +135,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListVSK5.LegacyStyle
     {
         get => LegacyStyle;
@@ -129,6 +154,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlFrameTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTMF>.CardModel
+    {
+        get => CardModel;
+        set => CardModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlFrame node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMF.CreateScript
     {
@@ -170,6 +200,16 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlFrameTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTMT>.CardModel
+    {
+        get => CardModel;
+        set => CardModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlFrame node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTMT.LegacyStyle
     {
         get => LegacyStyle;
@@ -184,6 +224,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlFrameMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameMP4>.CardModel
+    {
+        get => CardModel;
+        set => CardModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlFrame node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMP4.Layout
     {
@@ -204,6 +249,11 @@ public partial class CTrackManiaControlCheckPointList : global::GBX.NET.Interfac
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlFrameTM2020? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListMembers1<global::GBX.NET.Interfaces.Control.IControlFrameTM2020>.CardModel
+    {
+        get => CardModel;
+        set => CardModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlFrame node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCheckPointListTM2020.Layout
     {

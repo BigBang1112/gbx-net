@@ -3,22 +3,37 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF
+public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMU, global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF, global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>.SolidFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>.SolidFids
     {
         get => SolidFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>(GetSolidFidsInterfaceReferences, true, "SolidFids");
         set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>.SolidFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>.SolidFids
     {
         get => SolidFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(GetSolidFidsInterfaceReferences, true, "SolidFids");
         set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>.SolidFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers2<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>.SolidFids
     {
         get => SolidFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(GetSolidFidsInterfaceReferences, true, "SolidFids");
         set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsParamTM2020? global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020.CloudsParam
+    {
+        get => CloudsParam;
+        set => CloudsParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCloudsParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020.MaterialModelToForce
+    {
+        get => MaterialModelToForce;
+        set => MaterialModelToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsSolidsTM2020? global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020.Solids
+    {
+        get => Solids;
+        set => Solids = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCloudsSolids node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? GetSolidFidsInterfaceReferences() => SolidFids;
 }

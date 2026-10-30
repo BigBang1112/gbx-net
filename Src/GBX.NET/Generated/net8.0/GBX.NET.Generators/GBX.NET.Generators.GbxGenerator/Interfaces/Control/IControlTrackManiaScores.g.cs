@@ -153,7 +153,11 @@ public partial interface IControlTrackManiaScoresTMNESWC : IControlTrackManiaSco
         get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlTrackManiaScores)this).LadderBitmap);
         set => ((global::GBX.NET.Engines.Control.CControlTrackManiaScores)this).LadderBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlTrackManiaScores)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlTrackManiaScores)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlTrackManiaScores)this).LegacyStyle);

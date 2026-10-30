@@ -3,6 +3,36 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlTimeLine2Members1 : global::GBX.NET.Interfaces.Control.IControlTimeLine2
+{
+    float BlockHeight { get; set; }
+    float Height { get; set; }
+    float KeyHeight { get; set; }
+    float KeyHighLightHeight { get; set; }
+    float KeyHighLightWidth { get; set; }
+    float KeyWidth { get; set; }
+    float RulerHeight { get; set; }
+    Vec4 RulerLinesColorBig { get; set; }
+    Vec4 RulerLinesColorSmall { get; set; }
+    float TimeCursorHeight { get; set; }
+    Vec4 TimeCursorLineColor { get; set; }
+    float TimeCursorWidth { get; set; }
+    int TrackCount { get; set; }
+    float TrackHeight { get; set; }
+    Vec4 TrackSeparationColor { get; set; }
+    float Width { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlTimeLine2Members2 : global::GBX.NET.Interfaces.Control.IControlTimeLine2
+{
+    Vec4 BgColor { get; set; }
+    Vec4 BlockHighLightColor { get; set; }
+    Vec4 DeadZoneColor { get; set; }
+    Vec4 KeyColor { get; set; }
+    Vec4 KeyHighLightColor { get; set; }
+    Vec4 RulerBgColor { get; set; }
+}
 public partial interface IControlTimeLine2 : IClassVersion<global::GBX.NET.Engines.Control.CControlTimeLine2>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,7 +46,7 @@ public partial interface IControlTimeLine2 : IClassVersion<global::GBX.NET.Engin
 
 public partial interface IControlTimeLine2TM10 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -24,61 +54,45 @@ public partial interface IControlTimeLine2TM10 : IControlTimeLine2, global::GBX.
 
 public partial interface IControlTimeLine2TMPU : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TMSX : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
+public partial interface IControlTimeLine2TMSX : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMSX, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TMNESWC : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
+public partial interface IControlTimeLine2TMNESWC : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TMU : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+public partial interface IControlTimeLine2TMU : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMU, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1
 {
-    float BlockHeight { get; set; }
-    float Height { get; set; }
-    float KeyHeight { get; set; }
-    float KeyHighLightHeight { get; set; }
-    float KeyHighLightWidth { get; set; }
-    float KeyWidth { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    float RulerHeight { get; set; }
-    Vec4 RulerLinesColorBig { get; set; }
-    Vec4 RulerLinesColorSmall { get; set; }
-    float TimeCursorHeight { get; set; }
-    Vec4 TimeCursorLineColor { get; set; }
-    float TimeCursorWidth { get; set; }
-    int TrackCount { get; set; }
-    float TrackHeight { get; set; }
-    Vec4 TrackSeparationColor { get; set; }
-    float Width { get; set; }
 }
 
-public partial interface IControlTimeLine2VSK5 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
+public partial interface IControlTimeLine2VSK5 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TMF : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMF
+public partial interface IControlTimeLine2TMF : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMF, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -94,15 +108,15 @@ public partial interface IControlTimeLine2MP3 : IControlTimeLine2, global::GBX.N
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TMT : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMT
+public partial interface IControlTimeLine2TMT : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members2
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2MP4 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlTimeLine2MP4 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -110,7 +124,7 @@ public partial interface IControlTimeLine2MP4 : IControlTimeLine2, global::GBX.N
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlTimeLine2TM2020 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlTimeLine2TM2020 : IControlTimeLine2, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members1, global::GBX.NET.Interfaces.Control.IControlTimeLine2Members2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

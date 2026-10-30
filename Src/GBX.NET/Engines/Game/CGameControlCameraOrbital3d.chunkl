@@ -55,13 +55,13 @@ CGameControlCameraOrbital3d 0x0306E000
 0x007 [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float DefaultRadius
 
-0x008 [MP4] // UseAutoRadiusFromTargets
+0x008 [VSK5, TMF, TMT, MP4, TM2020] // UseAutoRadiusFromTargets
   bool UseAutoRadiusFromTargets
 
-0x009 [MP4] // ZoomKeySensitivity
+0x009 [TMT, MP4, TM2020] // ZoomKeySensitivity
   float ZoomKeySensitivity
 
-0x00A [MP4] // target location, orbit, occlusion and sensitivities
+0x00A [TMT.v0, MP4, TM2020.v0] // target location, orbit, occlusion and sensitivities
   version
   iso4 RelativeTargetLocation
   vec3 RadiusScale

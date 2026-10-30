@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugParticleMaterialImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4
+public partial class CPlugParticleMaterialImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? GetMaterialImpactsInterfaceReferences() => MaterialImpacts;
 }

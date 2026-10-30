@@ -114,11 +114,11 @@ public partial class CPlugIconIndex : CMwNod, IClass
     /// CPlugIconIndex 0x003 chunk
     /// </summary>
     [Chunk(0x09093003)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09093003 : Chunk09093002
     {
         public override uint Id => 0x09093003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

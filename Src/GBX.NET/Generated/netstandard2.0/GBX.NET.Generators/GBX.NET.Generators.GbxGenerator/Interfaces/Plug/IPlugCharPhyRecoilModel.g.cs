@@ -11,6 +11,10 @@ public partial interface IPlugCharPhyRecoilModel : IClassVersion<global::GBX.NET
     float ViewKick { get; set; }
 }
 
+public partial interface IPlugCharPhyRecoilModelTMT : IPlugCharPhyRecoilModel
+{
+}
+
 public partial interface IPlugCharPhyRecoilModelMP4 : IPlugCharPhyRecoilModel
 {
 }

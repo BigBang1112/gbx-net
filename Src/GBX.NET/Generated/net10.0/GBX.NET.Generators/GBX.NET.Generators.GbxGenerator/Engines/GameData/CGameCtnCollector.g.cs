@@ -435,22 +435,22 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// CGameCtnCollector 0x004 chunk (icon)
     /// </summary>
     [Chunk(0x2E001004, "icon")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class HeaderChunk2E001004 : HeaderChunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001004;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
     }
 
     /// <summary>
     /// CGameCtnCollector 0x006 chunk (lightmap compute time)
     /// </summary>
     [Chunk(0x2E001006, "lightmap compute time")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMT | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class HeaderChunk2E001006 : HeaderChunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001006;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMT | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

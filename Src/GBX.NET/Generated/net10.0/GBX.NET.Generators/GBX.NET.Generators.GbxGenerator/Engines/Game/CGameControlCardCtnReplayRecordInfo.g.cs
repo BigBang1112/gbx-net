@@ -35,11 +35,11 @@ public partial class CGameControlCardCtnReplayRecordInfo : CGameControlCard, ICl
     /// CGameControlCardCtnReplayRecordInfo 0x000 chunk (ShortName)
     /// </summary>
     [Chunk(0x030C8000, "ShortName")]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030C8000 : Chunk<CGameControlCardCtnReplayRecordInfo>
     {
         public override uint Id => 0x030C8000;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

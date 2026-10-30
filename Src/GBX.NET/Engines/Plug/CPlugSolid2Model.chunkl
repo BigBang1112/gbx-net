@@ -1,6 +1,6 @@
 CPlugSolid2Model 0x090BB000
 
-0x000 (header, struct: SHeaderFileVersion) // file version
+0x000 (header, struct: SHeaderFileVersion) [TMT, MP4, TM2020] // file version
   int FileVersion
 
 0x000 (demonstration: partial) [MP3.v10, TMT.v13, MP4.v20, TM2020.v37]

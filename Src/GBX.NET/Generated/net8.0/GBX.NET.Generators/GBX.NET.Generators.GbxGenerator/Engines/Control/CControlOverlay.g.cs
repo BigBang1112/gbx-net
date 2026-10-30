@@ -43,11 +43,11 @@ public partial class CControlOverlay : CControlBase, IClass
     /// CControlOverlay 0x001 chunk (overlay scene)
     /// </summary>
     [Chunk(0x07013001, "overlay scene")]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT)]
     public partial class Chunk07013001 : Chunk<CControlOverlay>
     {
         public override uint Id => 0x07013001;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT;
 
         private NodeRef<CSceneLayout>? U01Ref;
         public CSceneLayout? U01

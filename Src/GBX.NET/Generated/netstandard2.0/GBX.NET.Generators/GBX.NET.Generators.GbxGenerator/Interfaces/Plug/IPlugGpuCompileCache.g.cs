@@ -3,18 +3,31 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGpuCompileCacheMembers1 : global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCache
+{
+    ulong[]? Hashes { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? Includes { get; set; }
+}
 public partial interface IPlugGpuCompileCache : IClassVersion<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache>
 {
     global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? Data { get; set; }
     string? EntryPoint { get; set; }
-    bool HasSlots { get; set; }
-    ulong[]? Hashes { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? Includes { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? Slots { get; set; }
     int Type { get; set; }
 }
 
-public partial interface IPlugGpuCompileCacheTM2020 : IPlugGpuCompileCache
+public partial interface IPlugGpuCompileCacheTMT : IPlugGpuCompileCache
 {
+    global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]? LegacyHashes { get; set; }
+}
+
+public partial interface IPlugGpuCompileCacheMP4 : IPlugGpuCompileCache, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheMembers1
+{
+}
+
+public partial interface IPlugGpuCompileCacheTM2020 : IPlugGpuCompileCache, global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheMembers1
+{
+    bool HasSlots { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? Slots { get; set; }
 }
 

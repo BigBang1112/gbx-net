@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCoverFlowDescMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc where T0 : class where T1 : class
+{
+    new T0? GameSkin { get; set; }
+    new T1? Style { get; set; }
+}
 public partial interface IGameCoverFlowDesc : IClassVersion<global::GBX.NET.Engines.Game.CGameCoverFlowDesc>
 {
     Iso4 BoxesGroup_RelLoc { get; set; }
@@ -23,9 +29,15 @@ public partial interface IGameCoverFlowDesc : IClassVersion<global::GBX.NET.Engi
     float TransitionRotateAngleDegPrev { get; set; }
 }
 
-public partial interface IGameCoverFlowDescMP4 : IGameCoverFlowDesc
+public partial interface IGameCoverFlowDescTMT : IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? GameSkin { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? Style { get; set; }
+}
+
+public partial interface IGameCoverFlowDescMP4 : IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4>
+{
+}
+
+public partial interface IGameCoverFlowDescTM2020 : IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020>
+{
 }
 

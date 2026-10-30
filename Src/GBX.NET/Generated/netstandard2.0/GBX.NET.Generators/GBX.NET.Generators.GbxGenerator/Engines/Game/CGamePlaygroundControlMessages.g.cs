@@ -157,9 +157,11 @@ public partial class CGamePlaygroundControlMessages : CControlFrame, IClass
     /// CGamePlaygroundControlMessages 0x000 chunk
     /// </summary>
     [Chunk(0x03137000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03137000 : Chunk<CGamePlaygroundControlMessages>
     {
         public override uint Id => 0x03137000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -180,9 +182,11 @@ public partial class CGamePlaygroundControlMessages : CControlFrame, IClass
     /// CGamePlaygroundControlMessages 0x001 chunk
     /// </summary>
     [Chunk(0x03137001)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03137001 : Chunk<CGamePlaygroundControlMessages>
     {
         public override uint Id => 0x03137001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -203,9 +207,11 @@ public partial class CGamePlaygroundControlMessages : CControlFrame, IClass
     /// CGamePlaygroundControlMessages 0x002 chunk
     /// </summary>
     [Chunk(0x03137002)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03137002 : Chunk<CGamePlaygroundControlMessages>
     {
         public override uint Id => 0x03137002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -101,9 +101,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     /// CPlugSolid2Model 0x000 chunk (file version)
     /// </summary>
     [Chunk(0x090BB000, "file version")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class HeaderChunk090BB000 : HeaderChunk<CPlugSolid2Model>
     {
         public override uint Id => 0x090BB000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

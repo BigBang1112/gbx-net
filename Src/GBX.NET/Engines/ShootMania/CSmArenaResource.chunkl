@@ -1,12 +1,12 @@
 CSmArenaResource 0x2D020000
 
-0x000 [MP4, TM2020]
+0x000 [TMT, MP4, TM2020]
   CMwRefBuffer RefBuffer
 
-0x001 [MP4, TM2020]
+0x001 [TMT, MP4, TM2020]
   Resource[] Resources
 
-0x002 [MP4, TM2020]
+0x002 [TMT.v0, MP4, TM2020]
   version
   float AdditionalListenerDistanceNbSquares = 3f
 

@@ -10,7 +10,27 @@ public partial interface IMwCmdExpVec3 : IClassVersion<global::GBX.NET.Engines.M
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Exp3 { get; set; }
 }
 
+public partial interface IMwCmdExpVec3TM10 : IMwCmdExpVec3
+{
+}
+
+public partial interface IMwCmdExpVec3TMPU : IMwCmdExpVec3
+{
+}
+
+public partial interface IMwCmdExpVec3TMSX : IMwCmdExpVec3
+{
+}
+
+public partial interface IMwCmdExpVec3TMNESWC : IMwCmdExpVec3
+{
+}
+
 public partial interface IMwCmdExpVec3TMU : IMwCmdExpVec3
+{
+}
+
+public partial interface IMwCmdExpVec3VSK5 : IMwCmdExpVec3
 {
 }
 

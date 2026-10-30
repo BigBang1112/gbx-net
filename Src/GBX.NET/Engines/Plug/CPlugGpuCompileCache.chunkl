@@ -1,10 +1,10 @@
 CPlugGpuCompileCache 0x09053000
 
-0x007 // legacy compile data
+0x007 [TMT.v5, MP4.v10] // legacy compile data
   version = 12
   CompileData Data (version: Version)
 
-0x008 [TM2020.v18] // compiled shader
+0x008 [TMT.v5, MP4.v10, TM2020.v18] // compiled shader
   version
   int
   v15+
@@ -49,7 +49,7 @@ CPlugGpuCompileCache 0x09053000
   v14+
     CompileData Data (version: Version)
 
-0x009 [TM2020.v2]
+0x009 [MP4.v2, TM2020.v2]
   version
   v1+
     int

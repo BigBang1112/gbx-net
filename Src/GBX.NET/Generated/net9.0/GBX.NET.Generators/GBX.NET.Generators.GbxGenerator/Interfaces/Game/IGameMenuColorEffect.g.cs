@@ -25,11 +25,31 @@ public partial interface IGameMenuColorEffect : IClassVersion<global::GBX.NET.En
     int PeriodMs { get; set; }
 }
 
+public partial interface IGameMenuColorEffectTMSX : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+{
+}
+
+public partial interface IGameMenuColorEffectTMNESWC : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC
+{
+}
+
 public partial interface IGameMenuColorEffectTMU : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMU
 {
 }
 
+public partial interface IGameMenuColorEffectVSK5 : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectVSK5
+{
+}
+
 public partial interface IGameMenuColorEffectTMF : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMF
+{
+}
+
+public partial interface IGameMenuColorEffectTMT : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMT
+{
+}
+
+public partial interface IGameMenuColorEffectMP4 : IGameMenuColorEffect, global::GBX.NET.Interfaces.Control.IControlEffectMP4
 {
 }
 

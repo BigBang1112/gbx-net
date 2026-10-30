@@ -1,11 +1,11 @@
 CPlugSoundEngine2 0x09029000
 - inherits: CPlugSound
 
-0x000 [MP4, TM2020]
+0x000 [TMT.v0, MP4, TM2020]
   version
   string Loops_Folder
 
-0x001 [MP4.v3, TM2020.v5]
+0x001 [TMT.v3, MP4.v3, TM2020.v5]
   version
   float RpmMaxFromEngine = 10000f
   v4-
@@ -33,7 +33,7 @@ CPlugSoundEngine2 0x09029000
   v4+
     LowPassFilter[3] LowPassFilters
 
-0x002 [MP4.v4, TM2020.v6]
+0x002 [TMT.v4, MP4.v4, TM2020.v6]
   version
   AudioMotor[3] AudioMotors (version: Version)
   v5-
@@ -45,7 +45,7 @@ CPlugSoundEngine2 0x09029000
   v0=
     CFuncKeysReal (direct)
 
-0x003 [MP4.v4, TM2020.v4]
+0x003 [TMT.v4, MP4.v4, TM2020.v4]
   version
   SubEmitter[3] SubEmitters (version: Version)
   v1+

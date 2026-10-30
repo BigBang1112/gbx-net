@@ -17,7 +17,7 @@ public partial interface IGameControlCardNetOnlineEvent : IClassVersion<global::
 public partial interface IGameControlCardNetOnlineEventTM10 : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +26,7 @@ public partial interface IGameControlCardNetOnlineEventTM10 : IGameControlCardNe
 public partial interface IGameControlCardNetOnlineEventTMPU : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +35,7 @@ public partial interface IGameControlCardNetOnlineEventTMPU : IGameControlCardNe
 public partial interface IGameControlCardNetOnlineEventTMSX : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,7 +44,7 @@ public partial interface IGameControlCardNetOnlineEventTMSX : IGameControlCardNe
 public partial interface IGameControlCardNetOnlineEventTMNESWC : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -62,7 +62,7 @@ public partial interface IGameControlCardNetOnlineEventTMU : IGameControlCardNet
 public partial interface IGameControlCardNetOnlineEventVSK5 : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -89,7 +89,7 @@ public partial interface IGameControlCardNetOnlineEventMP3 : IGameControlCardNet
 public partial interface IGameControlCardNetOnlineEventTMT : IGameControlCardNetOnlineEvent, global::GBX.NET.Interfaces.Game.IGameControlCardTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }

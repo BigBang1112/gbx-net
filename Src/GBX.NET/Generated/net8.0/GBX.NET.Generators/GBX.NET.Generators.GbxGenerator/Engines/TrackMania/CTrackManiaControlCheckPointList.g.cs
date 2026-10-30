@@ -120,11 +120,11 @@ public partial class CTrackManiaControlCheckPointList : CControlFrame, IClass
     /// CTrackManiaControlCheckPointList 0x001 chunk (line styles)
     /// </summary>
     [Chunk(0x2406E001, "line styles")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2406E001 : Chunk<CTrackManiaControlCheckPointList>
     {
         public override uint Id => 0x2406E001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public StyleSheetElem? U01;
         public StyleSheetElem? U02;
         public StyleSheetElem? U03;
@@ -149,9 +149,11 @@ public partial class CTrackManiaControlCheckPointList : CControlFrame, IClass
     /// CTrackManiaControlCheckPointList 0x002 chunk (CardModel)
     /// </summary>
     [Chunk(0x2406E002, "CardModel")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2406E002 : Chunk<CTrackManiaControlCheckPointList>
     {
         public override uint Id => 0x2406E002;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

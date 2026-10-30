@@ -4,27 +4,27 @@ CPlugMusic 0x0901C000
 0x000 // legacy sound file
   CMwNod
 
-0x001
+0x001 [TM10, TMPU]
   bool
   bool
 
-0x002
+0x002 [TM10, TMPU]
   id
 
-0x003 // legacy sound file
+0x003 [TM10, TMPU] // legacy sound file
   CMwNod
   bool
 
-0x004 [TMU] // legacy sound files buffer
+0x004 [TMSX, TMNESWC, TMU, VSK5, TMF] // legacy sound files buffer
   CMwRefBuffer
 
 0x005 // legacy sound files
   CPlugFileSnd[] (deprec)
 
-0x006 // RootFolder
+0x006 [TMT.v0, MP4.v0, TM2020.v0] // RootFolder
   version
   string RootFolder
 
-0x007 // Settings
+0x007 [TMT.v0, MP4.v0, TM2020.v0] // Settings
   version
   CPlugFileText* Settings

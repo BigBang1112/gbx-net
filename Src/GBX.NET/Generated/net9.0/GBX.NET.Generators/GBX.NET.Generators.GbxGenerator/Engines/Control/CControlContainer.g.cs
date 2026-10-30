@@ -127,10 +127,24 @@ public partial class CControlContainer : CControlBase, IClass
     /// CControlContainer 0x006 chunk
     /// </summary>
     [Chunk(0x07002006)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk07002006 : Chunk<CControlContainer>, IVersionable
     {
         public override uint Id => 0x07002006;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk07002006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07002006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -141,6 +155,11 @@ public partial class CControlContainer : CControlBase, IClass
         public override void ReadWrite(CControlContainer n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.isClippingContainer);
         }
     }

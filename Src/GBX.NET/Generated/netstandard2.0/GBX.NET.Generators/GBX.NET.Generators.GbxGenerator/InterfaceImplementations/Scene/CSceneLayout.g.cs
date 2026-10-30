@@ -5,7 +5,17 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMU, global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020
 {
-    global::GBX.NET.Interfaces.Scene.ISceneFxTM10? global::GBX.NET.Interfaces.Scene.ISceneLayoutTM10.SceneFx
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTM10>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTM10, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10>.Gates
+    {
+        get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTM10>(GetGatesInterfaceReferences, true, "Gates");
+        set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTM10>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneMoodTM10>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3<global::GBX.NET.Interfaces.Scene.ISceneMoodTM10>.Moods
+    {
+        get => Moods is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTM10>(GetMoodsInterfaceReferences, true, "Moods");
+        set => Moods = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTM10>(value, false));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneFxTM10? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxTM10>.SceneFx
     {
         get => SceneFx;
         set => SceneFx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -15,42 +25,72 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTM10, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTM10>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMPU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMPU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU>.Gates
+    {
+        get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMPU>(GetGatesInterfaceReferences, true, "Gates");
+        set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMPU>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3<global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU>.Moods
+    {
+        get => Moods is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU>(GetMoodsInterfaceReferences, true, "Moods");
+        set => Moods = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU>(value, false));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMPU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxTMPU>.SceneFx
+    {
+        get => SceneFx;
+        set => SceneFx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU>.Sectors
     {
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMPU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMPU>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMSX>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMSX, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX>.Gates
+    {
+        get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMSX>(GetGatesInterfaceReferences, true, "Gates");
+        set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMSX>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3<global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX>.Moods
+    {
+        get => Moods is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX>(GetMoodsInterfaceReferences, true, "Moods");
+        set => Moods = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX>(value, false));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMSX? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxTMSX>.SceneFx
+    {
+        get => SceneFx;
+        set => SceneFx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX>.Sectors
     {
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMSX, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMSX>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>.Gates
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC>.Gates
     {
         get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>(GetGatesInterfaceReferences, true, "Gates");
         set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC.Moods
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3<global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>.Moods
     {
         get => Moods is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>(GetMoodsInterfaceReferences, true, "Moods");
         set => Moods = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMood>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -60,32 +100,32 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMNESWC>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers11<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Fields
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Fields
     {
         get => Fields is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(GetFieldsInterfaceReferences, true, "Fields");
         set => Fields = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneGateTMU>.Gates
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU>.Gates
     {
         get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMU>(GetGatesInterfaceReferences, true, "Gates");
         set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Lights
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Lights
     {
         get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMU>(GetLightsInterfaceReferences, true, "Lights");
         set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Locations
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Locations
     {
         get => Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(GetLocationsInterfaceReferences, true, "Locations");
         set => Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -95,32 +135,37 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMU>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>.Sounds
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMU, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMU>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers11<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Fields
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Fields
     {
         get => Fields is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(GetFieldsInterfaceReferences, true, "Fields");
         set => Fields = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Lights
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>.Gates
+    {
+        get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateVSK5>(GetGatesInterfaceReferences, true, "Gates");
+        set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateVSK5>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Lights
     {
         get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>(GetLightsInterfaceReferences, true, "Lights");
         set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Locations
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Locations
     {
         get => Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(GetLocationsInterfaceReferences, true, "Locations");
         set => Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -130,32 +175,37 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Sounds
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers11<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Fields
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers8<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Fields
     {
         get => Fields is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(GetFieldsInterfaceReferences, true, "Fields");
         set => Fields = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Lights
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneGateTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMF, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>.Gates
+    {
+        get => Gates is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMF>(GetGatesInterfaceReferences, true, "Gates");
+        set => Gates = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneGate, global::GBX.NET.Interfaces.Scene.ISceneGateTMF>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Lights
     {
         get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMF>(GetLightsInterfaceReferences, true, "Lights");
         set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Locations
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Locations
     {
         get => Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(GetLocationsInterfaceReferences, true, "Locations");
         set => Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -165,27 +215,27 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Sounds
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>.TrafficGraph
+    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneGateTMF, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>.TrafficGraph
     {
         get => TrafficGraph;
         set => TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Lights
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Lights
     {
         get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightMP3>(GetLightsInterfaceReferences, true, "Lights");
         set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Locations
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Locations
     {
         get => Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>(GetLocationsInterfaceReferences, true, "Locations");
         set => Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -195,22 +245,22 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Sounds
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Lights
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Lights
     {
         get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMT>(GetLightsInterfaceReferences, true, "Lights");
         set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Locations
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Locations
     {
         get => Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>(GetLocationsInterfaceReferences, true, "Locations");
         set => Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -220,7 +270,7 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>(GetSectorsInterfaceReferences, true, "Sectors");
         set => Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers12<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Sounds
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>(value, false));
@@ -245,7 +295,7 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => Objects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>(GetObjectsInterfaceReferences, true, "Objects");
         set => Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -270,7 +320,7 @@ public partial class CSceneLayout : global::GBX.NET.Interfaces.Scene.ISceneLayou
         get => BitmapWaterFog;
         set => BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers9<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>.SceneFxNod
+    global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers7<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>.SceneFxNod
     {
         get => SceneFxNod;
         set => SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

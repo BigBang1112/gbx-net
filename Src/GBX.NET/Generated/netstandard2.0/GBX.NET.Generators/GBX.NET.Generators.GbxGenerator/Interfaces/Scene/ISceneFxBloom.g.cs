@@ -3,6 +3,17 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxBloomMembers1 : global::GBX.NET.Interfaces.Scene.ISceneFxBloom
+{
+    int BlurSize { get; set; }
+    float Intensity { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxBloomMembers2<T0> : global::GBX.NET.Interfaces.Scene.ISceneFxBloom where T0 : class
+{
+    IReadOnlyList<T0>? Datas { get; set; }
+}
 public partial interface ISceneFxBloom : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxBloom>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -12,16 +23,37 @@ public partial interface ISceneFxBloom : IClassVersion<global::GBX.NET.Engines.S
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    int BlurSize { get; set; }
-    float Intensity { get; set; }
 }
 
-public partial interface ISceneFxBloomTMU : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+public partial interface ISceneFxBloomTM10 : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
 {
 }
 
-public partial interface ISceneFxBloomTMF : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
+public partial interface ISceneFxBloomTMPU : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? Datas { get; set; }
+}
+
+public partial interface ISceneFxBloomTMSX : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX
+{
+}
+
+public partial interface ISceneFxBloomTMU : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers1
+{
+}
+
+public partial interface ISceneFxBloomVSK5 : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5>
+{
+}
+
+public partial interface ISceneFxBloomTMF : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>
+{
+}
+
+public partial interface ISceneFxBloomTMT : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT>
+{
+}
+
+public partial interface ISceneFxBloomMP4 : ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4>
+{
 }
 

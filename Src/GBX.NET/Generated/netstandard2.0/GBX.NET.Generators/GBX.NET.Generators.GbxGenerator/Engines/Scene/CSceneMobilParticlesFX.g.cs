@@ -636,11 +636,11 @@ public partial class CSceneMobilParticlesFX : CSceneMobil, IClass
     /// CSceneMobilParticlesFX 0x006 chunk (particle parameters)
     /// </summary>
     [Chunk(0x0A080006, "particle parameters")]
-    [ChunkGameVersion(GameVersion.TM10)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A080006 : Chunk<CSceneMobilParticlesFX>
     {
         public override uint Id => 0x0A080006;
-        public override GameVersion GameVersion => GameVersion.TM10;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
         public int U01;
         public float U02;
         public float U03;
@@ -785,11 +785,11 @@ public partial class CSceneMobilParticlesFX : CSceneMobil, IClass
     /// CSceneMobilParticlesFX 0x007 chunk (SplashStrength)
     /// </summary>
     [Chunk(0x0A080007, "SplashStrength")]
-    [ChunkGameVersion(GameVersion.TM10)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A080007 : Chunk<CSceneMobilParticlesFX>
     {
         public override uint Id => 0x0A080007;
-        public override GameVersion GameVersion => GameVersion.TM10;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

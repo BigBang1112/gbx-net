@@ -3,26 +3,104 @@
 
 namespace GBX.NET.Interfaces.Game;
 
-public partial interface IGameMenu : IClassVersion<global::GBX.NET.Engines.Game.CGameMenu>
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers1 : global::GBX.NET.Interfaces.Game.IGameMenu
 {
     float BackgroundCameraFov { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? BackgroundScene { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers2 : global::GBX.NET.Interfaces.Game.IGameMenu
+{
     BoxAligned Frustum { get; set; }
-    Vec2 GridStep { get; set; }
     bool IsOrthographic { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheet? StyleSheet
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameMenu where T0 : class
+{
+    T0? BackgroundBitmapUnderlay
     {
-        get => (global::GBX.NET.Interfaces.Control.IControlStyleSheet?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).StyleSheet);
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).BackgroundBitmapUnderlay);
+        set => ((global::GBX.NET.Engines.Game.CGameMenu)this).BackgroundBitmapUnderlay = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float BackgroundCameraFarZ { get; set; }
+    float BackgroundCameraNearZ { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers4<T0> : global::GBX.NET.Interfaces.Game.IGameMenu where T0 : class
+{
+    T0? StyleSheet
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).StyleSheet);
         set => ((global::GBX.NET.Engines.Game.CGameMenu)this).StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
-
-public partial interface IGameMenuTMU : IGameMenu
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameMenu where T0 : class
 {
-    new global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU? StyleSheet
+    int MenuOrder { get; set; }
+    T0? SoundDisplayed
     {
-        get => (global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).StyleSheet);
-        set => ((global::GBX.NET.Engines.Game.CGameMenu)this).StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).SoundDisplayed);
+        set => ((global::GBX.NET.Engines.Game.CGameMenu)this).SoundDisplayed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    T0? SoundHidden
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).SoundHidden);
+        set => ((global::GBX.NET.Engines.Game.CGameMenu)this).SoundHidden = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? SoundPageChanged
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameMenu)this).SoundPageChanged);
+        set => ((global::GBX.NET.Engines.Game.CGameMenu)this).SoundPageChanged = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameMenuMembers6 : global::GBX.NET.Interfaces.Game.IGameMenu
+{
+    Vec2 GridStep { get; set; }
+}
+public partial interface IGameMenu : IClassVersion<global::GBX.NET.Engines.Game.CGameMenu>
+{
+}
+
+public partial interface IGameMenuTM10 : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2
+{
+}
+
+public partial interface IGameMenuTMPU : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2
+{
+}
+
+public partial interface IGameMenuTMSX : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMSX>
+{
+}
+
+public partial interface IGameMenuTMNESWC : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMNESWC>
+{
+}
+
+public partial interface IGameMenuTMU : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
+}
+
+public partial interface IGameMenuVSK5 : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetVSK5>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
+}
+
+public partial interface IGameMenuTMF : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMF>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
+}
+
+public partial interface IGameMenuTMT : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT>, global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
+}
+
+public partial interface IGameMenuMP4 : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers1, global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
+}
+
+public partial interface IGameMenuTM2020 : IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuMembers2, global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020>, global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Game.IGameMenuMembers6
+{
 }
 

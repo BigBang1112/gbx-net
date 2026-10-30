@@ -148,9 +148,11 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x002 chunk
     /// </summary>
     [Chunk(0x0701B002)]
+    [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0701B002 : Chunk<CControlQuad>
     {
         public override uint Id => 0x0701B002;
+        public override GameVersion GameVersion => GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -168,11 +170,11 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x003 chunk
     /// </summary>
     [Chunk(0x0701B003)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0701B003 : Chunk<CControlQuad>
     {
         public override uint Id => 0x0701B003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -192,9 +194,11 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x004 chunk
     /// </summary>
     [Chunk(0x0701B004)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701B004 : Chunk<CControlQuad>
     {
         public override uint Id => 0x0701B004;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -232,9 +236,11 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x006 chunk
     /// </summary>
     [Chunk(0x0701B006)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701B006 : Chunk<CControlQuad>
     {
         public override uint Id => 0x0701B006;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -251,10 +257,24 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x007 chunk
     /// </summary>
     [Chunk(0x0701B007)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk0701B007 : Chunk<CControlQuad>, IVersionable
     {
         public override uint Id => 0x0701B007;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0701B007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0701B007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -265,6 +285,11 @@ public partial class CControlQuad : CControlBase, IClass
         public override void ReadWrite(CControlQuad n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.iconId);
             rw.Vec3(ref n.iconVertexColors);
             rw.Single(ref n.iconVertexAlpha);

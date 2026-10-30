@@ -16,7 +16,27 @@ public partial interface IMwCmdIf : IClassVersion<global::GBX.NET.Engines.MwFoun
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlock? IfBlock { get; set; }
 }
 
+public partial interface IMwCmdIfTM10 : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10>
+{
+}
+
+public partial interface IMwCmdIfTMPU : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU>
+{
+}
+
+public partial interface IMwCmdIfTMSX : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX>
+{
+}
+
+public partial interface IMwCmdIfTMNESWC : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC>
+{
+}
+
 public partial interface IMwCmdIfTMU : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
+{
+}
+
+public partial interface IMwCmdIfVSK5 : IMwCmdIf, global::GBX.NET.Interfaces.MwFoundations.IMwCmdIfMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5>
 {
 }
 

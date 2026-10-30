@@ -1,9 +1,9 @@
 CPlugCharPhyModel 0x090C9000
 
-0x000 [MP4, TM2020]
+0x000 [TMT, MP4, TM2020]
   id Name
 
-0x00D [MP4.v2, TM2020.v2]
+0x00D [TMT.v2, MP4.v2, TM2020.v2]
   version
   float
   float
@@ -14,7 +14,7 @@ CPlugCharPhyModel 0x090C9000
   v2+
     bool
 
-0x00E [MP4, TM2020] // jump
+0x00E [TMT.v0, MP4, TM2020] // jump
   version
   bool
   bool
@@ -22,7 +22,7 @@ CPlugCharPhyModel 0x090C9000
   float
   float
 
-0x00F [MP4.v4, TM2020.v5] // run
+0x00F [TMT.v4, MP4.v4, TM2020.v5] // run
   version
   PlugCurve (version: Version - 5)
   PlugCurve (version: Version - 5)
@@ -40,7 +40,7 @@ CPlugCharPhyModel 0x090C9000
   v4+
     bool
 
-0x010 [MP4.v1, TM2020.v3]
+0x010 [TMT.v1, MP4.v1, TM2020.v3]
   version
   PlugCurve (version: Version - 3)
   PlugCurve (version: Version - 3)
@@ -52,7 +52,7 @@ CPlugCharPhyModel 0x090C9000
     PlugCurve (version: Version - 3)
     PlugCurve (version: Version - 3)
 
-0x011 [MP4.v12, TM2020.v16]
+0x011 [TMT.v9, MP4.v12, TM2020.v16]
   version
   PlugCurve (version: Version - 15)
   v1+
@@ -86,7 +86,7 @@ CPlugCharPhyModel 0x090C9000
   v16+
     string[]
 
-0x012 [MP4.v26, TM2020.v28] // walk
+0x012 [TMT.v25, MP4.v26, TM2020.v28] // walk
   version
   PlugCurve (version: Version - 28)
   PlugCurve (version: Version - 28)
@@ -161,7 +161,7 @@ CPlugCharPhyModel 0x090C9000
     int
     PlugCurve (version: Version - 28)
 
-0x013 [MP4.v6, TM2020.v7] // sneak
+0x013 [TMT.v6, MP4.v6, TM2020.v7] // sneak
   version
   v2-
     CMwNod
@@ -178,7 +178,7 @@ CPlugCharPhyModel 0x090C9000
   v5=
     float
 
-0x014 [MP4.v9, TM2020.v10] // attractor
+0x014 [TMT.v9, MP4.v9, TM2020.v10] // attractor
   version
   CMwNod
   CMwNod
@@ -225,7 +225,7 @@ CPlugCharPhyModel 0x090C9000
   v9+
     PlugCurve (version: Version - 10)
 
-0x015 [MP4.v1, TM2020.v2]
+0x015 [TMT.v1, MP4.v1, TM2020.v2]
   version
   PlugCurve (version: Version - 2)
   v0=
@@ -233,7 +233,7 @@ CPlugCharPhyModel 0x090C9000
   v1+
     PlugCurve (version: Version - 2)
 
-0x016 [MP4.v2, TM2020.v3] // swim
+0x016 [TMT.v2, MP4.v2, TM2020.v3] // swim
   version
   v2+
     bool
@@ -245,7 +245,7 @@ CPlugCharPhyModel 0x090C9000
   float
   bool
 
-0x017 [MP4.v6, TM2020.v7] // swim
+0x017 [TMT.v6, MP4.v6, TM2020.v7] // swim
   version
   v6+
     bool
@@ -269,7 +269,7 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x018 [MP4.v3, TM2020.v4] // sneak
+0x018 [TMT.v3, MP4.v3, TM2020.v4] // sneak
   version
   PlugCurve (version: Version - 4)
   v0=
@@ -282,7 +282,7 @@ CPlugCharPhyModel 0x090C9000
   v3+
     CPlugSurface
 
-0x019 [MP4.v10, TM2020.v11] // wall jump
+0x019 [TMT.v10, MP4.v10, TM2020.v11] // wall jump
   version
   bool
   bool
@@ -315,7 +315,7 @@ CPlugCharPhyModel 0x090C9000
     bool
     int
 
-0x01A [MP4, TM2020] // jump
+0x01A [TMT.v0, MP4, TM2020] // jump
   version
   bool
   float
@@ -375,7 +375,7 @@ CPlugCharPhyModel 0x090C9000
     int
     int
 
-0x01C [MP4.v21, TM2020.v22] // stamina
+0x01C [TMT.v20, MP4.v21, TM2020.v22] // stamina
   version
   ushort
   v1-
@@ -443,7 +443,7 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x01D [MP4.v4, TM2020.v5] // gliding
+0x01D [TMT.v4, MP4.v4, TM2020.v5] // gliding
   version
   v4+
     bool
@@ -460,7 +460,7 @@ CPlugCharPhyModel 0x090C9000
     PlugCurve (version: Version - 5)
     PlugCurve (version: Version - 5)
 
-0x01F [MP4.v6, TM2020.v7] // air control
+0x01F [TMT.v6, MP4.v6, TM2020.v7] // air control
   version
   v4+
     bool
@@ -476,13 +476,13 @@ CPlugCharPhyModel 0x090C9000
     int
     int
 
-0x020 [MP4.v2, TM2020.v2]
+0x020 [TMT.v2, MP4.v2, TM2020.v2]
   version
   float
   v2+
     bool
 
-0x022 [MP4.v6, TM2020.v7]
+0x022 [TMT.v6, MP4.v6, TM2020.v7]
   version
   float
   v4-
@@ -509,7 +509,7 @@ CPlugCharPhyModel 0x090C9000
   v6+
     bool
 
-0x023 [MP4.v6, TM2020.v8]
+0x023 [TMT.v3, MP4.v6, TM2020.v8]
   version
   float
   PlugCurve (version: Version - 8)
@@ -538,7 +538,7 @@ CPlugCharPhyModel 0x090C9000
   v7+
     float
 
-0x024 [MP4.v1, TM2020.v2]
+0x024 [TMT.v1, MP4.v1, TM2020.v2]
   version
   v0=
     CMwRefBuffer
@@ -547,7 +547,7 @@ CPlugCharPhyModel 0x090C9000
   v2+
     CPlugCharPhyMaterial[]
 
-0x025 [MP4.v1, TM2020.v1]
+0x025 [TMT.v1, MP4.v1, TM2020.v1]
   version
   int
   float
@@ -556,14 +556,14 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x026 [MP4.v2, TM2020.v3]
+0x026 [TMT.v2, MP4.v2, TM2020.v3]
   version
   bool
   PlugCurve (version: Version - 3)
   v1+
     float
 
-0x027 [MP4.v10, TM2020.v11] // slide surf
+0x027 [TMT.v10, MP4.v10, TM2020.v11] // slide surf
   version
   bool
   PlugCurve (version: Version - 11)
@@ -592,7 +592,7 @@ CPlugCharPhyModel 0x090C9000
   v10+
     PlugCurve (version: Version - 11)
 
-0x028 [MP4.v5, TM2020.v6] // attractor
+0x028 [TMT.v5, MP4.v5, TM2020.v6] // attractor
   version
   float
   float
@@ -622,7 +622,7 @@ CPlugCharPhyModel 0x090C9000
   v5+
     bool
 
-0x029 [MP4.v1, TM2020.v1]
+0x029 [TMT.v1, MP4.v1, TM2020.v1]
   version
   CPlugSurface
   int

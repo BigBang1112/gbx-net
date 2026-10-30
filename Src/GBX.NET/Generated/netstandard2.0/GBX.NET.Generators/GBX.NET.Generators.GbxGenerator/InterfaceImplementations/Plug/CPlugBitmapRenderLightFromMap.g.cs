@@ -5,4 +5,19 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugBitmapRenderLightFromMap : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapLightHistory
+    {
+        get => BitmapLightHistory;
+        set => BitmapLightHistory = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapLightHistory
+    {
+        get => BitmapLightHistory;
+        set => BitmapLightHistory = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapLightHistory
+    {
+        get => BitmapLightHistory;
+        set => BitmapLightHistory = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

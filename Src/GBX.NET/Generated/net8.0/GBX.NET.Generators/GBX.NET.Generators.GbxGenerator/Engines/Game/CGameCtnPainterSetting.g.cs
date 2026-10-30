@@ -292,11 +292,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x001 chunk (Camera)
     /// </summary>
     [Chunk(0x03048001, "Camera")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048001 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -313,11 +313,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x002 chunk (ImageSubObjectAllIcon)
     /// </summary>
     [Chunk(0x03048002, "ImageSubObjectAllIcon")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048002 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -334,11 +334,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x003 chunk (icon and mouse wheel deltas)
     /// </summary>
     [Chunk(0x03048003, "icon and mouse wheel deltas")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048003 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -357,11 +357,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x004 chunk (camera bottom clipping)
     /// </summary>
     [Chunk(0x03048004, "camera bottom clipping")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048004 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048004;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -379,11 +379,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x005 chunk (remapping skin and folder)
     /// </summary>
     [Chunk(0x03048005, "remapping skin and folder")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048005 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048005;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -401,9 +401,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x006 chunk (scenes)
     /// </summary>
     [Chunk(0x03048006, "scenes")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048006 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048006;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public Vec2 U01;
         public Vec2 U02;
         public Vec2 U03;
@@ -435,9 +437,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x007 chunk (materials)
     /// </summary>
     [Chunk(0x03048007, "materials")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048007 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048007;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -457,9 +461,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x008 chunk (fade bitmaps)
     /// </summary>
     [Chunk(0x03048008, "fade bitmaps")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048008 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048008;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -477,9 +483,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x009 chunk (FxBloom_FidFuncIntensAtHdrNorm)
     /// </summary>
     [Chunk(0x03048009, "FxBloom_FidFuncIntensAtHdrNorm")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03048009 : Chunk<CGameCtnPainterSetting>
     {
         public override uint Id => 0x03048009;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -496,10 +504,24 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x00A chunk (raster mask shaders)
     /// </summary>
     [Chunk(0x0304800A, "raster mask shaders")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0304800A : Chunk<CGameCtnPainterSetting>, IVersionable
     {
         public override uint Id => 0x0304800A;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0304800A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0304800A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -510,6 +532,11 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
         public override void ReadWrite(CGameCtnPainterSetting n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.shaderRasterRgbMaskRef);
             rw.NodeRef(ref n.shaderRasterAlphaMaskRef);
         }

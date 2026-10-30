@@ -10,6 +10,22 @@ public partial interface IMwCmdExpNum : IClassVersion<global::GBX.NET.Engines.Mw
     int Type { get; set; }
 }
 
+public partial interface IMwCmdExpNumTM10 : IMwCmdExpNum
+{
+}
+
+public partial interface IMwCmdExpNumTMPU : IMwCmdExpNum
+{
+}
+
+public partial interface IMwCmdExpNumTMSX : IMwCmdExpNum
+{
+}
+
+public partial interface IMwCmdExpNumTMNESWC : IMwCmdExpNum
+{
+}
+
 public partial interface IMwCmdExpNumTMU : IMwCmdExpNum
 {
 }

@@ -42,7 +42,7 @@ CVisPostFx_MotionBlur 0x0C031000
   float T2_MotionMaxLen
   bool T2_DelayShadows
 
-0x00A // depth and motion bitmaps and shader
+0x00A [TM2020.v0] // depth and motion bitmaps and shader
   version
   CMwNod T3_BitmapDepth
   CMwNod T3_BitmapMotion

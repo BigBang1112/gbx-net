@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.System;
 
-public partial class CSystemDependenciesList : global::GBX.NET.Interfaces.System.ISystemDependenciesList, global::GBX.NET.Interfaces.System.ISystemDependenciesListTM2020
+public partial class CSystemDependenciesList : global::GBX.NET.Interfaces.System.ISystemDependenciesList, global::GBX.NET.Interfaces.System.ISystemDependenciesListMP4, global::GBX.NET.Interfaces.System.ISystemDependenciesListTM2020
 {
 }

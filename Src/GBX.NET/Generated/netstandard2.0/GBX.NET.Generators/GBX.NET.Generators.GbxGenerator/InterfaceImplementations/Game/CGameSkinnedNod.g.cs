@@ -5,4 +5,19 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameSkinnedNod : global::GBX.NET.Interfaces.Game.IGameSkinnedNod, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTM10, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMPU, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMSX, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMNESWC, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMU, global::GBX.NET.Interfaces.Game.IGameSkinnedNodVSK5, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMF, global::GBX.NET.Interfaces.Game.IGameSkinnedNodMP3, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMT, global::GBX.NET.Interfaces.Game.IGameSkinnedNodMP4, global::GBX.NET.Interfaces.Game.IGameSkinnedNodTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>.GameSkin
+    {
+        get => GameSkin;
+        set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.GameSkin
+    {
+        get => GameSkin;
+        set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? global::GBX.NET.Interfaces.Game.IGameSkinnedNodMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>.GameSkin
+    {
+        get => GameSkin;
+        set => GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

@@ -1,5 +1,5 @@
 CPlugBitmapRenderOverlay 0x0909E000
 - inherits: CPlugBitmapRender
 
-0x000 // IsOverlaySelfBlur
+0x000 [TMT, MP4, TM2020] // IsOverlaySelfBlur
   bool IsOverlaySelfBlur

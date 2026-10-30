@@ -14,7 +14,7 @@ CPlugCharVisModel 0x090C7000
   version
   CPlugSound[] (deprec)
 
-0x003 [MP4.v31, TM2020.v33]
+0x003 [TMT.v27, MP4.v31, TM2020.v33]
   version
   v9-
     int
@@ -141,14 +141,14 @@ CPlugCharVisModel 0x090C7000
   version
   CMwRefBuffer
 
-0x006 [MP4.v1]
+0x006 [TMT.v1, MP4.v1, TM2020.v1]
   version
   v0=
     string
   v1+
     CMwNod DummySkinnable
 
-0x007 [MP4.v18]
+0x007 [TMT.v18, MP4.v18, TM2020.v18]
   version
   CPlugSound Sound_Notice_Jump
   CPlugSound Sound_Notice_JumpChain1
@@ -216,7 +216,7 @@ CPlugCharVisModel 0x090C7000
   v18+
     CPlugSound Sound_Notice_FallDamage
 
-0x008 [MP4.v5]
+0x008 [TMT.v5, MP4.v5, TM2020.v5]
   version
   CPlugParticleMaterialImpactModel JumpMaterialImpact
   CPlugParticleMaterialImpactModel LandMaterialImpact
@@ -240,12 +240,12 @@ CPlugCharVisModel 0x090C7000
     CPlugParticleEmitterModel Particle_TeleportSpawn
     CPlugParticleEmitterModel Particle_TeleportUnspawn
 
-0x009 [MP4.v1]
+0x009 [TMT.v0, MP4.v1, TM2020.v1]
   version
   CPlugShieldModel ShieldModel
   v1+
     CPlugSolid2Model ParagliderMesh
 
-0x00A [MP4]
+0x00A [TMT.v0, MP4, TM2020.v0]
   version
   int AimingAfterFireDurationMs

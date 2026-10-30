@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectCombined : global::GBX.NET.Interfaces.Control.IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMU
+public partial class CControlEffectCombined : global::GBX.NET.Interfaces.Control.IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMU, global::GBX.NET.Interfaces.Control.IControlEffectCombinedVSK5, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMF, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMT, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMP4
 {
 }

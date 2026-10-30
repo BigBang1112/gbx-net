@@ -3,6 +3,36 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxColorsMembers1 : global::GBX.NET.Interfaces.Scene.ISceneFxColors
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialColors { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxColorsMembers2<T0> : global::GBX.NET.Interfaces.Scene.ISceneFxColors where T0 : class
+{
+    Vec2[]? BitmapRanges { get; set; }
+    T0? BitmapSbch { get; set; }
+    Vec2 BitmapTcPeriod { get; set; }
+    Vec2 BitmapTcScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxColorsMembers3 : global::GBX.NET.Interfaces.Scene.ISceneFxColors
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? ShaderColorGrading { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxColorsMembers4<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneFxColors where T0 : class where T1 : class
+{
+    T0? BitmapDepth { get; set; }
+    T1? ShaderAutoSaturateWithLight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxColorsMembers5 : global::GBX.NET.Interfaces.Scene.ISceneFxColors
+{
+    float CloudsIntensity { get; set; }
+    float UserIntensity { get; set; }
+}
 public partial interface ISceneFxColors : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxColors>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -12,15 +42,45 @@ public partial interface ISceneFxColors : IClassVersion<global::GBX.NET.Engines.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    Vec2[]? BitmapRanges { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapSbch { get; set; }
-    Vec2 BitmapTcPeriod { get; set; }
-    Vec2 BitmapTcScale { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? MaterialColors { get; set; }
 }
 
-public partial interface ISceneFxColorsTMU : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+public partial interface ISceneFxColorsTM10 : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? BitmapSbch { get; set; }
+}
+
+public partial interface ISceneFxColorsTMPU : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU
+{
+}
+
+public partial interface ISceneFxColorsTMSX : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
+{
+}
+
+public partial interface ISceneFxColorsTMNESWC : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
+{
+}
+
+public partial interface ISceneFxColorsTMU : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+{
+}
+
+public partial interface ISceneFxColorsVSK5 : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers5
+{
+}
+
+public partial interface ISceneFxColorsTMF : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers5
+{
+}
+
+public partial interface ISceneFxColorsTMT : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers3, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers5
+{
+}
+
+public partial interface ISceneFxColorsMP4 : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers3, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers5
+{
+}
+
+public partial interface ISceneFxColorsTM2020 : ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020>, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers5
+{
 }
 

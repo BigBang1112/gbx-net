@@ -1,14 +1,14 @@
 CPlugModelShading 0x0900E000
 
-0x000 // custom textures
+0x000 [TMT.v0, MP4.v0, TM2020.v0] // custom textures
   version
   FidId[] CustomTextures
 
-0x001 // dyna materials
+0x001 [TMT.v0, MP4.v0, TM2020.v0] // dyna materials
   version
   FidId[] MaterialsDyna0
 
-0x002 // static materials and remap
+0x002 [TM2020.v3] // static materials and remap
   version = 3
   FidId[] MaterialsStatic
   v1+
@@ -18,7 +18,7 @@ CPlugModelShading 0x0900E000
   v3+
     CMwNod MaterialFid_StaticScreen
 
-0x003 // character materials
+0x003 [TMT.v2, MP4.v2, TM2020.v2] // character materials
   version = 2
   FidId[] MaterialsChar
   v1+
@@ -29,7 +29,7 @@ CPlugModelShading 0x0900E000
     CMwNod MaterialFid_Char_ActionMakerOtherFrames
     CMwNod MaterialFid_Char_ShowEnergy
 
-0x004 // vehicle materials
+0x004 [TMT.v2, MP4.v4, TM2020.v5] // vehicle materials
   version = 5
   FidId[] MaterialsVehicle
   v1=
@@ -42,7 +42,7 @@ CPlugModelShading 0x0900E000
     CMwNod BitmapFid_CarDecalStadium_BaseColorOp
     CMwNod BitmapFid_CarDecalStadium_RoughMetal
 
-0x005 // menu box materials
+0x005 [TMT.v0, MP4.v0, TM2020.v0] // menu box materials
   version
   FidId[] MaterialsMenuBox3d
 

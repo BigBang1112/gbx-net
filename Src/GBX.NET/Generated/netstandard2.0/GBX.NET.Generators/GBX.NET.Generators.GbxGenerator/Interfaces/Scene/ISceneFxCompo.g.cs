@@ -18,11 +18,35 @@ public partial interface ISceneFxCompoTM10 : ISceneFxCompo, global::GBX.NET.Inte
 {
 }
 
+public partial interface ISceneFxCompoTMPU : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMPU
+{
+}
+
+public partial interface ISceneFxCompoTMSX : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMSX
+{
+}
+
+public partial interface ISceneFxCompoTMNESWC : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMNESWC
+{
+}
+
 public partial interface ISceneFxCompoTMU : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMU
 {
 }
 
+public partial interface ISceneFxCompoVSK5 : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxVSK5
+{
+}
+
 public partial interface ISceneFxCompoTMF : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
+{
+}
+
+public partial interface ISceneFxCompoTMT : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMT
+{
+}
+
+public partial interface ISceneFxCompoMP4 : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxMP4
 {
 }
 

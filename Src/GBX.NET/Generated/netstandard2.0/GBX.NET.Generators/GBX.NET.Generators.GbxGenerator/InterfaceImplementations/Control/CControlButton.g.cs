@@ -5,6 +5,21 @@ namespace GBX.NET.Engines.Control;
 
 public partial class CControlButton : global::GBX.NET.Interfaces.Control.IControlButton, global::GBX.NET.Interfaces.Control.IControlButtonTM10, global::GBX.NET.Interfaces.Control.IControlButtonTMPU, global::GBX.NET.Interfaces.Control.IControlButtonTMSX, global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC, global::GBX.NET.Interfaces.Control.IControlButtonTMU, global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Control.IControlButtonMP3, global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Control.IControlButtonMP4, global::GBX.NET.Interfaces.Control.IControlButtonTM2020
 {
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM10? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM10>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Control.IControlButtonTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Control.IControlButtonTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -19,6 +34,21 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMPU? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Control.IControlButtonTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Control.IControlButtonTMPU.LegacyStyle
     {
@@ -35,6 +65,26 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
     }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMSX? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Control.IControlButtonTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Control.IControlButtonTMSX.LegacyStyle
     {
         get => LegacyStyle;
@@ -49,6 +99,26 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC.LegacyStyle
     {
@@ -65,17 +135,17 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.ActionScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU>.ActionScript
     {
         get => ActionScript;
         set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>.ActionSound
     {
         get => ActionSound;
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlButtonTMU.Icons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMU>.Icons
     {
         get => Icons;
         set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -100,6 +170,26 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Control.IControlButtonVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlButtonVSK5.LegacyStyle
     {
         get => LegacyStyle;
@@ -114,6 +204,21 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>.ActionScript
+    {
+        get => ActionScript;
+        set => ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutTMF? global::GBX.NET.Interfaces.Control.IControlButtonTMF.Layout
     {
@@ -150,6 +255,21 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Control.IControlButtonTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Control.IControlButtonTMT.LegacyStyle
     {
         get => LegacyStyle;
@@ -164,6 +284,16 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.Control.IControlButtonMP4.Layout
     {
@@ -184,6 +314,16 @@ public partial class CControlButton : global::GBX.NET.Interfaces.Control.IContro
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ActionSound
+    {
+        get => ActionSound;
+        set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.Icons
+    {
+        get => Icons;
+        set => Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? global::GBX.NET.Interfaces.Control.IControlButtonTM2020.Layout
     {

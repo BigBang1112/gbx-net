@@ -3,12 +3,27 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxBloom : global::GBX.NET.Interfaces.Scene.ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMU, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF
+public partial class CSceneFxBloom : global::GBX.NET.Interfaces.Scene.ISceneFxBloom, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTM10, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMU, global::GBX.NET.Interfaces.Scene.ISceneFxBloomVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF, global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMT, global::GBX.NET.Interfaces.Scene.ISceneFxBloomMP4
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF.Datas
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5>.Datas
+    {
+        get => Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5>(GetDatasInterfaceReferences, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataVSK5>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>.Datas
     {
         get => Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(GetDatasInterfaceReferences, true, "Datas");
         set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT>.Datas
+    {
+        get => Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT>(GetDatasInterfaceReferences, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMT>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4>.Datas
+    {
+        get => Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4>(GetDatasInterfaceReferences, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataMP4>(value, false));
     }
     internal NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? GetDatasInterfaceReferences() => Datas;
 }

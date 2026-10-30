@@ -55,13 +55,31 @@ public partial class CGameModulePlaygroundInventoryModel : CGameModulePlayground
     /// CGameModulePlaygroundInventoryModel 0x000 skippable chunk (title, capacity and categories)
     /// </summary>
     [Chunk(0x2E016000, "title, capacity and categories")]
+    [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk2E016000 : SkippableChunk<CGameModulePlaygroundInventoryModel>, IVersionable
     {
         public override uint Id => 0x2E016000;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
         public int U01;
         public int U02;
         public int U03;
+
+        public Chunk2E016000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E016000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -75,6 +93,11 @@ public partial class CGameModulePlaygroundInventoryModel : CGameModulePlayground
         public override void ReadWrite(CGameModulePlaygroundInventoryModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.title);
             rw.Int32(ref n.slotCapacity);
             rw.Int32(ref U01);

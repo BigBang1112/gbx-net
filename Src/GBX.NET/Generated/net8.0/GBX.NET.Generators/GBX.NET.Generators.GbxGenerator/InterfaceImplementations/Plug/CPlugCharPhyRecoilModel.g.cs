@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCharPhyRecoilModel : global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModel, global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelTM2020
+public partial class CPlugCharPhyRecoilModel : global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModel, global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelTMT, global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelTM2020
 {
 }

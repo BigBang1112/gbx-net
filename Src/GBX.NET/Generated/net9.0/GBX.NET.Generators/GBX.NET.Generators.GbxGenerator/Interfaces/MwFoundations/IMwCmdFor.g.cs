@@ -24,7 +24,27 @@ public partial interface IMwCmdFor : IClassVersion<global::GBX.NET.Engines.MwFou
     string? VariableName { get; set; }
 }
 
+public partial interface IMwCmdForTM10 : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10>
+{
+}
+
+public partial interface IMwCmdForTMPU : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU>
+{
+}
+
+public partial interface IMwCmdForTMSX : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX>
+{
+}
+
+public partial interface IMwCmdForTMNESWC : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC>
+{
+}
+
 public partial interface IMwCmdForTMU : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
+{
+}
+
+public partial interface IMwCmdForVSK5 : IMwCmdFor, global::GBX.NET.Interfaces.MwFoundations.IMwCmdForMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5>
 {
 }
 

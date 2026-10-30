@@ -49,11 +49,11 @@ public partial class CMwCmdSleep : CMwCmdInst, IClass
     /// CMwCmdSleep 0x000 chunk (Time)
     /// </summary>
     [Chunk(0x01082000, "Time")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk01082000 : Chunk<CMwCmdSleep>
     {
         public override uint Id => 0x01082000;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

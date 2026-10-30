@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneMood : global::GBX.NET.Interfaces.Scene.ISceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMoodTMU
+public partial class CSceneMood : global::GBX.NET.Interfaces.Scene.ISceneMood, global::GBX.NET.Interfaces.Scene.ISceneMoodTM10, global::GBX.NET.Interfaces.Scene.ISceneMoodTMPU, global::GBX.NET.Interfaces.Scene.ISceneMoodTMSX, global::GBX.NET.Interfaces.Scene.ISceneMoodTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMoodTMU, global::GBX.NET.Interfaces.Scene.ISceneMoodVSK5, global::GBX.NET.Interfaces.Scene.ISceneMoodTMF, global::GBX.NET.Interfaces.Scene.ISceneMoodTMT, global::GBX.NET.Interfaces.Scene.ISceneMoodMP4
 {
 }

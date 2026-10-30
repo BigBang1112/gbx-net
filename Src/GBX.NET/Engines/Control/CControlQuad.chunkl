@@ -9,17 +9,17 @@ CControlQuad 0x0701B000
   bool
   vec2
 
-0x002
+0x002 [TMPU]
   vec2 Size = (-1, -1)
   int GradientDir = 2
 
-0x003 [TMU]
+0x003 [TMSX, TMNESWC, TMU, VSK5]
   vec2 Size = (-1, -1)
   int GradientDir = 2
   bool IsLines
   bool IsFill
 
-0x004
+0x004 [MP4, TM2020]
   int GradientDir = 2
   bool IsLines
   bool IsFill
@@ -27,10 +27,10 @@ CControlQuad 0x0701B000
 0x005
   vec2 Size = (-1, -1)
 
-0x006
+0x006 [MP4, TM2020]
   id IconId
 
-0x007
+0x007 [MP4.v0, TM2020.v0]
   version
   id IconId
   vec3 IconVertexColors = (1, 1, 1)

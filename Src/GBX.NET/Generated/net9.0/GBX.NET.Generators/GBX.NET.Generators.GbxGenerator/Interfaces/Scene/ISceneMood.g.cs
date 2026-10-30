@@ -8,11 +8,39 @@ public partial interface ISceneMood : IClassVersion<global::GBX.NET.Engines.Scen
     global::GBX.NET.Engines.Scene.CSceneMood.MoodLight[]? Lights { get; set; }
 }
 
+public partial interface ISceneMoodTM10 : ISceneMood
+{
+}
+
+public partial interface ISceneMoodTMPU : ISceneMood
+{
+}
+
+public partial interface ISceneMoodTMSX : ISceneMood
+{
+}
+
 public partial interface ISceneMoodTMNESWC : ISceneMood
 {
 }
 
 public partial interface ISceneMoodTMU : ISceneMood
+{
+}
+
+public partial interface ISceneMoodVSK5 : ISceneMood
+{
+}
+
+public partial interface ISceneMoodTMF : ISceneMood
+{
+}
+
+public partial interface ISceneMoodTMT : ISceneMood
+{
+}
+
+public partial interface ISceneMoodMP4 : ISceneMood
 {
 }
 

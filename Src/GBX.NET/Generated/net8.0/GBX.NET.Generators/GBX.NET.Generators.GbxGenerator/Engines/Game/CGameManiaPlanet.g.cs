@@ -87,12 +87,24 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
     /// CGameManiaPlanet 0x000 chunk (ManiaTitlesFolder)
     /// </summary>
     [Chunk(0x03013000, "ManiaTitlesFolder")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
     public partial class Chunk03013000 : Chunk<CGameManiaPlanet>, IVersionable
     {
         public override uint Id => 0x03013000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03013000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03013000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -116,13 +128,25 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
     /// CGameManiaPlanet 0x001 chunk
     /// </summary>
     [Chunk(0x03013001)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
     public partial class Chunk03013001 : Chunk<CGameManiaPlanet>, IVersionable
     {
         public override uint Id => 0x03013001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
+
+        public Chunk03013001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03013001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -147,12 +171,12 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
     /// CGameManiaPlanet 0x002 chunk (cover flow description)
     /// </summary>
     [Chunk(0x03013002, "cover flow description")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, -1, 2)]
     public partial class Chunk03013002 : Chunk<CGameManiaPlanet>, IVersionable
     {
         public override uint Id => 0x03013002;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -195,6 +219,22 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
             yield break;
         }
 
+        public Chunk03013002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03013002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -209,7 +249,7 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
         public override void ReadWrite(CGameManiaPlanet n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > global::System.Math.Max(2, 2))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -238,12 +278,28 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
     /// CGameManiaPlanet 0x003 chunk (default title background and style sheet)
     /// </summary>
     [Chunk(0x03013003, "default title background and style sheet")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, -1, 1)]
     public partial class Chunk03013003 : Chunk<CGameManiaPlanet>, IVersionable
     {
         public override uint Id => 0x03013003;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk03013003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03013003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -254,7 +310,7 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
         public override void ReadWrite(CGameManiaPlanet n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > global::System.Math.Max(1, 1))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

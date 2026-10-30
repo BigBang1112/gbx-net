@@ -3,6 +3,13 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleImpactModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel where T0 : class where T1 : class where T2 : class
+{
+    new T0? DecalModel { get; set; }
+    new T1? ParticleEmitterModel { get; set; }
+    new T2? Sound { get; set; }
+}
 public partial interface IPlugParticleImpactModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugDecalModel? DecalModel { get; set; }
@@ -10,10 +17,15 @@ public partial interface IPlugParticleImpactModel : IClassVersion<global::GBX.NE
     global::GBX.NET.Interfaces.Plug.IPlugSound? Sound { get; set; }
 }
 
-public partial interface IPlugParticleImpactModelMP4 : IPlugParticleImpactModel
+public partial interface IPlugParticleImpactModelTMT : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4? DecalModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound { get; set; }
+}
+
+public partial interface IPlugParticleImpactModelMP4 : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+{
+}
+
+public partial interface IPlugParticleImpactModelTM2020 : IPlugParticleImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+{
 }
 

@@ -1,6 +1,6 @@
 CTrackManiaControlScores 0x240BF000
 - inherits: CControlFrame
 
-0x000 [TMU, TMF]
+0x000 [TMU, VSK5, TMF]
   bool WithSpecPlayers
   bool OnlyArrivedPlayers

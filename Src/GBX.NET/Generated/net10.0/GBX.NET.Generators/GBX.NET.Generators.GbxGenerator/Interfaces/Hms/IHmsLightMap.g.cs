@@ -7,7 +7,6 @@ namespace GBX.NET.Interfaces.Hms;
 public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
 {
     bool BackgroundUseClouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
     T0? BitmapLM_ILightDir
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapLM_ILightDir);
@@ -33,7 +32,6 @@ public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsL
         get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapLM_LocalDirect);
         set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapLM_LocalDirect = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
     T0? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGeom_BBoxInvHDiag_ThroughBounce);
@@ -79,7 +77,35 @@ public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsL
     bool UseHDR { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IHmsLightMapMembers2<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class where T1 : class
+public interface IHmsLightMapMembers2<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
+{
+    T0? BitmapProbeGridAmbSV
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV);
+        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? BitmapProbeGridAmbSV_Spread1
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV_Spread1);
+        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV_Spread1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers3<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
+{
+    T0? BitmapArrayLightSH
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapArrayLightSH);
+        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapArrayLightSH = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? BitmapLightSumBump
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapLightSumBump);
+        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapLightSumBump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers4<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class where T1 : class
 {
     new T0? Mood
     {
@@ -106,41 +132,33 @@ public partial interface IHmsLightMap : IClassVersion<global::GBX.NET.Engines.Hm
     }
 }
 
-public partial interface IHmsLightMapTMU : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>
+public partial interface IHmsLightMapTMU : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>
 {
 }
 
-public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
+public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
 {
 }
 
-public partial interface IHmsLightMapTMF : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>
+public partial interface IHmsLightMapTMF : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>
 {
 }
 
-public partial interface IHmsLightMapMP3 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>
+public partial interface IHmsLightMapMP3 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
+}
+
+public partial interface IHmsLightMapTMT : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>
 {
 }
 
-public partial interface IHmsLightMapTMT : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>
+public partial interface IHmsLightMapMP4 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>
 {
 }
 
-public partial interface IHmsLightMapMP4 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>
+public partial interface IHmsLightMapTM2020 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>
 {
-}
-
-public partial interface IHmsLightMapTM2020 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>
-{
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV);
-        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV_Spread1
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV_Spread1);
-        set => ((global::GBX.NET.Engines.Hms.CHmsLightMap)this).BitmapProbeGridAmbSV_Spread1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }
 

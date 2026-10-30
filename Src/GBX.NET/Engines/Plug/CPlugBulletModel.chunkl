@@ -1,6 +1,6 @@
 CPlugBulletModel 0x090CD000
 
-0x001 [MP4.v79, TM2020.v86]
+0x001 [TMT.v65, MP4.v79, TM2020.v86]
   version
   v30+
     int BulletType
@@ -207,7 +207,7 @@ CPlugBulletModel 0x090CD000
   v85+
     int
 
-0x003 [MP4.v7, TM2020.v8]
+0x003 [TMT.v7, MP4.v7, TM2020.v8]
   version
   CPlugSound SoundFire
   v2-
@@ -228,7 +228,7 @@ CPlugBulletModel 0x090CD000
     PlugCurve SoundFireVolumeFromRemainingAmmo (version: Version - 8)
     PlugCurve SoundFirePitchFromRemainingAmmo (version: Version - 8)
 
-0x005 [MP4.v2, TM2020.v2]
+0x005 [TMT.v2, MP4.v2, TM2020.v2]
   version
   CPlugParticleEmitterModel ParticleModelAlive
   v1-
@@ -238,7 +238,7 @@ CPlugBulletModel 0x090CD000
     v1-
       CPlugParticleEmitterModel
 
-0x006 [MP4.v6, TM2020.v6]
+0x006 [TMT.v4, MP4.v6, TM2020.v6]
   version
   v3-
     bool
@@ -255,7 +255,7 @@ CPlugBulletModel 0x090CD000
   v5=
     CPlugBeamEmitterModel
 
-0x007 [MP4.v8, TM2020.v8]
+0x007 [TMT.v7, MP4.v8, TM2020.v8]
   version
   bool Sm_AutoAim
   float Sm_AimIntertia
@@ -275,14 +275,14 @@ CPlugBulletModel 0x090CD000
   v8+
     float Sm_Recoil
 
-0x008 [MP4.v1, TM2020.v1]
+0x008 [TMT.v1, MP4.v1, TM2020.v1]
   version
   CPlugParticleMaterialImpactModel ImpactBounce
   CPlugParticleMaterialImpactModel ExplosionBullet
   v1+
     CPlugParticleMaterialImpactModel ExplosionSurface
 
-0x009 [MP4.v4, TM2020.v5]
+0x009 [TMT.v4, MP4.v4, TM2020.v5]
   version
   CPlugBitmap BitmapCrosshair
   v1+

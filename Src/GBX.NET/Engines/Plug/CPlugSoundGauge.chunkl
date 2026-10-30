@@ -1,7 +1,7 @@
 CPlugSoundGauge 0x09052000
 - inherits: CPlugSound
 
-0x000 [MP4.v2, TM2020.v3]
+0x000 [TMT.v2, MP4.v2, TM2020.v3]
   version
   CPlugFileSnd FileSndFilling
   CPlugFileSnd FileSndEmptying
@@ -18,7 +18,7 @@ CPlugSoundGauge 0x09052000
     CPlugFileSnd FileSndOnStartFilling
     CPlugFileSnd FileSndOnStartEmptying
 
-0x001 [MP4.v5, TM2020.v6]
+0x001 [TMT.v5, MP4.v5, TM2020.v6]
   version
   float FastRate = 0.5f
   v2+

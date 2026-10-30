@@ -49,10 +49,24 @@ public partial class CPlugShieldEmitterModel : CMwNod, IClass
     /// CPlugShieldEmitterModel 0x000 chunk
     /// </summary>
     [Chunk(0x090CC000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk090CC000 : Chunk<CPlugShieldEmitterModel>, IVersionable
     {
         public override uint Id => 0x090CC000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090CC000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CC000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -63,6 +77,11 @@ public partial class CPlugShieldEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugShieldEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.materialRef);
         }
     }

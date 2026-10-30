@@ -1,6 +1,6 @@
 CGameRace 0x03073000
 - inherits: CGamePlayground
 
-0x000 [TMU, TMF]
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, MP4]
   id
   CMwNod InterfaceFid

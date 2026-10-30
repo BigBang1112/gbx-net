@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020
+public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugBulletModel.BeamVisualModel
     {
@@ -75,122 +75,212 @@ public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBul
         get => SoundReloading;
         set => SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.BeamVisualModel
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.BeamVisualModel
     {
         get => BeamVisualModel;
         set => BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapCrosshair
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.BitmapCrosshair
     {
         get => BitmapCrosshair;
         set => BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapCrosshairTriLaser
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.BitmapCrosshairTriLaser
     {
         get => BitmapCrosshairTriLaser;
         set => BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapLasersight
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.BitmapLasersight
     {
         get => BitmapLasersight;
         set => BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionBullet
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ExplosionBullet
     {
         get => ExplosionBullet;
         set => ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ExplosionSurface
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ExplosionSurface
     {
         get => ExplosionSurface;
         set => ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Icon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Icon
     {
         get => Icon;
         set => Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4.ImpactBounce
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ImpactBounce
     {
         get => ImpactBounce;
         set => ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleModelAlive
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ParticleModelAlive
     {
         get => ParticleModelAlive;
         set => ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleModelFire
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ParticleModelFire
     {
         get => ParticleModelFire;
         set => ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundAlive
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundAlive
     {
         get => SoundAlive;
         set => SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundFire
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundFire
     {
         get => SoundFire;
         set => SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundGauge
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundGauge
     {
         get => SoundGauge;
         set => SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundReloading
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundReloading
     {
         get => SoundReloading;
         set => SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapCrosshair
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BeamVisualModel
+    {
+        get => BeamVisualModel;
+        set => BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapCrosshair
     {
         get => BitmapCrosshair;
         set => BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapCrosshairTriLaser
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapCrosshairTriLaser
     {
         get => BitmapCrosshairTriLaser;
         set => BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapLasersight
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.BitmapLasersight
     {
         get => BitmapLasersight;
         set => BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Icon
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ExplosionBullet
+    {
+        get => ExplosionBullet;
+        set => ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ExplosionSurface
+    {
+        get => ExplosionSurface;
+        set => ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Icon
     {
         get => Icon;
         set => Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleModelAlive
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ImpactBounce
+    {
+        get => ImpactBounce;
+        set => ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleModelAlive
     {
         get => ParticleModelAlive;
         set => ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleModelFire
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleModelFire
     {
         get => ParticleModelFire;
         set => ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundAlive
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundAlive
     {
         get => SoundAlive;
         set => SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundFire
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundFire
     {
         get => SoundFire;
         set => SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundGauge
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundGauge
     {
         get => SoundGauge;
         set => SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundReloading
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundReloading
+    {
+        get => SoundReloading;
+        set => SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BeamVisualModel
+    {
+        get => BeamVisualModel;
+        set => BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapCrosshair
+    {
+        get => BitmapCrosshair;
+        set => BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapCrosshairTriLaser
+    {
+        get => BitmapCrosshairTriLaser;
+        set => BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.BitmapLasersight
+    {
+        get => BitmapLasersight;
+        set => BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ExplosionBullet
+    {
+        get => ExplosionBullet;
+        set => ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ExplosionSurface
+    {
+        get => ExplosionSurface;
+        set => ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Icon
+    {
+        get => Icon;
+        set => Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ImpactBounce
+    {
+        get => ImpactBounce;
+        set => ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleModelAlive
+    {
+        get => ParticleModelAlive;
+        set => ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleModelFire
+    {
+        get => ParticleModelFire;
+        set => ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundAlive
+    {
+        get => SoundAlive;
+        set => SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundFire
+    {
+        get => SoundFire;
+        set => SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundGauge
+    {
+        get => SoundGauge;
+        set => SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundReloading
     {
         get => SoundReloading;
         set => SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

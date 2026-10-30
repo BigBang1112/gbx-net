@@ -30,7 +30,7 @@ public partial interface ITrackManiaMatchSettingsControlGrid : IClassVersion<glo
 public partial interface ITrackManiaMatchSettingsControlGridTM10 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -39,7 +39,7 @@ public partial interface ITrackManiaMatchSettingsControlGridTM10 : ITrackManiaMa
 public partial interface ITrackManiaMatchSettingsControlGridTMPU : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -48,7 +48,7 @@ public partial interface ITrackManiaMatchSettingsControlGridTMPU : ITrackManiaMa
 public partial interface ITrackManiaMatchSettingsControlGridTMSX : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -57,7 +57,7 @@ public partial interface ITrackManiaMatchSettingsControlGridTMSX : ITrackManiaMa
 public partial interface ITrackManiaMatchSettingsControlGridTMNESWC : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMNESWC, global::GBX.NET.Interfaces.Control.IControlLabelTMNESWC>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -72,16 +72,16 @@ public partial interface ITrackManiaMatchSettingsControlGridTMU : ITrackManiaMat
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5
+public partial interface ITrackManiaMatchSettingsControlGridVSK5 : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridTMF : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMF
+public partial interface ITrackManiaMatchSettingsControlGridTMF : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
@@ -99,10 +99,10 @@ public partial interface ITrackManiaMatchSettingsControlGridMP3 : ITrackManiaMat
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaMatchSettingsControlGridTMT : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT
+public partial interface ITrackManiaMatchSettingsControlGridTMT : ITrackManiaMatchSettingsControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }

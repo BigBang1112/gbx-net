@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaControlPlayerInfoCardMembers1 : global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCard
+{
+    bool ShowBasedTimeInfosInRounds { get; set; }
+}
 public partial interface ITrackManiaControlPlayerInfoCard : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard>, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCard
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -21,7 +26,11 @@ public partial interface ITrackManiaControlPlayerInfoCardTM10 : ITrackManiaContr
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -46,7 +55,11 @@ public partial interface ITrackManiaControlPlayerInfoCardTMPU : ITrackManiaContr
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -71,7 +84,11 @@ public partial interface ITrackManiaControlPlayerInfoCardTMSX : ITrackManiaContr
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -96,7 +113,11 @@ public partial interface ITrackManiaControlPlayerInfoCardTMNESWC : ITrackManiaCo
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -114,7 +135,7 @@ public partial interface ITrackManiaControlPlayerInfoCardTMNESWC : ITrackManiaCo
     }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMU
+public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
     {
@@ -141,17 +162,20 @@ public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaContro
         get => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    bool ShowBasedTimeInfosInRounds { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5
+public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript);
         set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -169,7 +193,7 @@ public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaContr
     }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMF : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMF
+public partial interface ITrackManiaControlPlayerInfoCardTMF : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript
     {
@@ -219,10 +243,14 @@ public partial interface ITrackManiaControlPlayerInfoCardMP3 : ITrackManiaContro
     }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMT : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMT
+public partial interface ITrackManiaControlPlayerInfoCardTMT : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard)this).LegacyStyle);
@@ -240,7 +268,7 @@ public partial interface ITrackManiaControlPlayerInfoCardTMT : ITrackManiaContro
     }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardMP4
+public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
@@ -265,7 +293,7 @@ public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaContro
     }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTM2020 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM2020
+public partial interface ITrackManiaControlPlayerInfoCardTM2020 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM2020, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout

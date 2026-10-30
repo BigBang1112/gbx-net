@@ -1,7 +1,7 @@
 CGameManiaTitle 0x03001000
 - inherits: CGameNod
 
-0x000 [MP4.v6]
+0x000 [TMT.v5, MP4.v6, TM2020.v5]
   version
   string Name
   string Desc
@@ -19,7 +19,7 @@ CGameManiaTitle 0x03001000
   v6+
     string DownloadUrl
 
-0x001 [MP4.v16, TM2020.v17]
+0x001 [TMT.v16, MP4.v16, TM2020.v17]
   version
   CMwNod MenuBg
   v2=
@@ -61,7 +61,7 @@ CGameManiaTitle 0x03001000
   v17+
     CMwNod
 
-0x002 [MP4.v3]
+0x002 [TMT.v3, MP4.v3, TM2020.v3]
   version
   CGameManiaTitleCore TitleCore
   v2=
@@ -69,7 +69,7 @@ CGameManiaTitle 0x03001000
   v3+
     datauint
 
-0x003 [MP4.v2]
+0x003 [TMT.v2, MP4.v2, TM2020.v2]
   version
   CGameCtnCollection[] Collections
   v2+
@@ -81,21 +81,21 @@ CGameManiaTitle 0x03001000
   v3+
     CMwNod
 
-0x005 [MP4.v2]
+0x005 [TMT.v2, MP4.v2, TM2020.v2]
   version
   CMwNod SkinnedBoxCase
   v1-
     CMwNod
     CMwNod
 
-0x006 [MP4]
+0x006 [TMT, MP4, TM2020]
   ident VehicleIdent
 
 0x007
   version
   string MenuMainManialinkUrl
 
-0x008 [MP4.v2, TM2020.v3]
+0x008 [TMT.v2, MP4.v2, TM2020.v3]
   version
   v1-
     CGameCtnChallenge
@@ -116,11 +116,11 @@ CGameManiaTitle 0x03001000
     string
     string
 
-0x00A [MP4]
+0x00A [MP4, TM2020.v0]
   version
   CPlugSound[] Music
 
-0x00B [MP4.v6]
+0x00B [TMT.v1, MP4.v6, TM2020.v6]
   version
   v1-
     CMwNod
@@ -140,7 +140,7 @@ CGameManiaTitle 0x03001000
       ScoreContext[] ScoreContexts
       Campaign[] Campaigns
 
-0x00C [MP4.v1]
+0x00C [TMT.v0, MP4.v1, TM2020.v1]
   version
   CMwNod SplitScreenPlaylist
   CMwNod SplitScreenMode

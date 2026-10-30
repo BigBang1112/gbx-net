@@ -177,11 +177,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x001 chunk
     /// </summary>
     [Chunk(0x07015001)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07015001 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 
@@ -206,9 +206,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x002 chunk
     /// </summary>
     [Chunk(0x07015002)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk07015002 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -225,11 +227,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x003 chunk
     /// </summary>
     [Chunk(0x07015003)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07015003 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -247,9 +249,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x004 chunk
     /// </summary>
     [Chunk(0x07015004)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk07015004 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015004;
+        public override GameVersion GameVersion => GameVersion.TMF;
         public bool U01;
         public bool U02;
 
@@ -271,9 +275,11 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x005 chunk
     /// </summary>
     [Chunk(0x07015005)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07015005 : Chunk<CControlGrid>
     {
         public override uint Id => 0x07015005;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -291,10 +297,24 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x006 chunk
     /// </summary>
     [Chunk(0x07015006)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk07015006 : Chunk<CControlGrid>, IVersionable
     {
         public override uint Id => 0x07015006;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk07015006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07015006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -305,6 +325,11 @@ public partial class CControlGrid : CControlContainer, IClass
         public override void ReadWrite(CControlGrid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.pagedGrid_Enable);
             rw.Int32(ref n.pagedGrid_FastPageStep);
             rw.Int32(ref n.pagedGrid_NbLinesPerPage);

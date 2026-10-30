@@ -3,13 +3,25 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBeamEmitterModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel where T0 : class
+{
+    new IReadOnlyList<T0>? SubModels { get; set; }
+}
 public partial interface IPlugBeamEmitterModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>? SubModels { get; set; }
 }
 
-public partial interface IPlugBeamEmitterModelMP4 : IPlugBeamEmitterModel
+public partial interface IPlugBeamEmitterModelTMT : IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>? SubModels { get; set; }
+}
+
+public partial interface IPlugBeamEmitterModelMP4 : IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>
+{
+}
+
+public partial interface IPlugBeamEmitterModelTM2020 : IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>
+{
 }
 

@@ -35,11 +35,11 @@ public partial class CFuncKeysTrans : CFuncKeys, IClass
     /// CFuncKeysTrans 0x000 chunk (Trans)
     /// </summary>
     [Chunk(0x05003000, "Trans")]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05003000 : Chunk<CFuncKeysTrans>
     {
         public override uint Id => 0x05003000;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -56,11 +56,11 @@ public partial class CFuncKeysTrans : CFuncKeys, IClass
     /// CFuncKeysTrans 0x001 chunk
     /// </summary>
     [Chunk(0x05003001)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05003001 : Chunk<CFuncKeysTrans>
     {
         public override uint Id => 0x05003001;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

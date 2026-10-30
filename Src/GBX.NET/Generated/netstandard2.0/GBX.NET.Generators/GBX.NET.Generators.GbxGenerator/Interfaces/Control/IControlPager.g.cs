@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlPagerMembers1 : global::GBX.NET.Interfaces.Control.IControlPager
+{
+    string? StackPageCountText { get; set; }
+}
 public partial interface IControlPager : IClassVersion<global::GBX.NET.Engines.Control.CControlPager>, global::GBX.NET.Interfaces.Control.IControlFrame
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,7 +22,7 @@ public partial interface IControlPager : IClassVersion<global::GBX.NET.Engines.C
 public partial interface IControlPagerTM10 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +31,7 @@ public partial interface IControlPagerTM10 : IControlPager, global::GBX.NET.Inte
 public partial interface IControlPagerTMPU : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +40,7 @@ public partial interface IControlPagerTMPU : IControlPager, global::GBX.NET.Inte
 public partial interface IControlPagerTMSX : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,7 +49,7 @@ public partial interface IControlPagerTMSX : IControlPager, global::GBX.NET.Inte
 public partial interface IControlPagerTMNESWC : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -62,13 +67,13 @@ public partial interface IControlPagerTMU : IControlPager, global::GBX.NET.Inter
 public partial interface IControlPagerVSK5 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlPagerTMF : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMF
+public partial interface IControlPagerTMF : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMF, global::GBX.NET.Interfaces.Control.IControlPagerMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
@@ -86,16 +91,16 @@ public partial interface IControlPagerMP3 : IControlPager, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlPagerTMT : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMT
+public partial interface IControlPagerTMT : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTMT, global::GBX.NET.Interfaces.Control.IControlPagerMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlPagerMP4 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameMP4
+public partial interface IControlPagerMP4 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameMP4, global::GBX.NET.Interfaces.Control.IControlPagerMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
@@ -104,7 +109,7 @@ public partial interface IControlPagerMP4 : IControlPager, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlPagerTM2020 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTM2020
+public partial interface IControlPagerTM2020 : IControlPager, global::GBX.NET.Interfaces.Control.IControlFrameTM2020, global::GBX.NET.Interfaces.Control.IControlPagerMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

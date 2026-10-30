@@ -15,6 +15,11 @@ public partial class CGameCharacterModel : global::GBX.NET.Interfaces.GameData.I
         get => PhysicsModel;
         set => PhysicsModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferSelect? global::GBX.NET.Interfaces.GameData.IGameCharacterModel.VisualModel
+    {
+        get => VisualModel;
+        set => VisualModel = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? global::GBX.NET.Interfaces.GameData.IGameCharacterModelTM2020.Objects
     {
         get => Objects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(GetObjectsInterfaceReferences, true, "Objects");

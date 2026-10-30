@@ -546,11 +546,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     /// CGameControlCamera 0x00C chunk
     /// </summary>
     [Chunk(0x0306B00C)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306B00C : Chunk0306B00B
     {
         public override uint Id => 0x0306B00C;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

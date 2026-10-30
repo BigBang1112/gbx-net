@@ -1,7 +1,7 @@
 CGameModulePlaygroundHudModel 0x2E019000
 - inherits: CGameModuleModelCommon
 
-0x000 (skippable) // manialink and module slots
+0x000 (skippable) [MP4.v9] // manialink and module slots
   version = 9
   CPlugFileText Manialink
   Slot Inventory

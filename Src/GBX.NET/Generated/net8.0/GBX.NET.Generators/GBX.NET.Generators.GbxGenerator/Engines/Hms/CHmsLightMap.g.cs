@@ -929,11 +929,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x00E chunk
     /// </summary>
     [Chunk(0x0602100E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602100E : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x0602100E;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -951,11 +951,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x00F chunk
     /// </summary>
     [Chunk(0x0602100F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602100F : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x0602100F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public uint U01;
         public uint U02;
 
@@ -1135,11 +1135,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x013 chunk
     /// </summary>
     [Chunk(0x06021013)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021013 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021013;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1156,11 +1156,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x014 chunk
     /// </summary>
     [Chunk(0x06021014)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021014 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021014;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1216,11 +1216,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x016 chunk
     /// </summary>
     [Chunk(0x06021016)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk06021016 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021016;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         public NodeRefList<CMwNod>? U01;
 
@@ -1257,11 +1257,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x017 chunk
     /// </summary>
     [Chunk(0x06021017)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021017 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021017;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1322,11 +1322,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x019 chunk
     /// </summary>
     [Chunk(0x06021019)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021019 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021019;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         private NodeRef<CPlugBitmap>? U01Ref;
         public CPlugBitmap? U01
@@ -1490,11 +1490,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x01D chunk
     /// </summary>
     [Chunk(0x0602101D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602101D : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x0602101D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1674,11 +1674,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x022 chunk
     /// </summary>
     [Chunk(0x06021022)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021022 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021022;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -1717,11 +1717,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x023 chunk
     /// </summary>
     [Chunk(0x06021023)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021023 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021023;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1738,11 +1738,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x024 chunk
     /// </summary>
     [Chunk(0x06021024)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021024 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021024;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1759,11 +1759,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x025 chunk
     /// </summary>
     [Chunk(0x06021025)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021025 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021025;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1799,11 +1799,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x027 chunk
     /// </summary>
     [Chunk(0x06021027)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021027 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021027;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1821,11 +1821,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x028 chunk
     /// </summary>
     [Chunk(0x06021028)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021028 : Chunk<CHmsLightMap>
     {
         public override uint Id => 0x06021028;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         public NodeRefList<CMwNod>? U01;
 
@@ -1865,11 +1865,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x029 chunk
     /// </summary>
     [Chunk(0x06021029)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, 1, 1, 7)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 7, 7)]
     public partial class Chunk06021029 : Chunk<CHmsLightMap>, IVersionable
     {
         public override uint Id => 0x06021029;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -1951,7 +1951,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             {
                 Version = 1;
             }
-            else if (gameVersion == GameVersion.TM2020)
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 7;
             }
@@ -2161,11 +2161,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x02B chunk
     /// </summary>
     [Chunk(0x0602102B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, 1, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0602102B : Chunk<CHmsLightMap>, IVersionable
     {
         public override uint Id => 0x0602102B;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -2202,7 +2202,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public Chunk0602102B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

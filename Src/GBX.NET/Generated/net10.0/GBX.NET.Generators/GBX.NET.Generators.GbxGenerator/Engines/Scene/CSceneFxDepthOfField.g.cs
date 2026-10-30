@@ -243,9 +243,11 @@ public partial class CSceneFxDepthOfField : CSceneFxCompo, IClass
     /// CSceneFxDepthOfField 0x001 chunk (legacy technique and blur size)
     /// </summary>
     [Chunk(0x0A077001, "legacy technique and blur size")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0A077001 : Chunk0A077000
     {
         public override uint Id => 0x0A077001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -285,11 +287,11 @@ public partial class CSceneFxDepthOfField : CSceneFxCompo, IClass
     /// CSceneFxDepthOfField 0x003 chunk (focus range)
     /// </summary>
     [Chunk(0x0A077003, "focus range")]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A077003 : Chunk0A077001
     {
         public override uint Id => 0x0A077003;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -307,11 +309,11 @@ public partial class CSceneFxDepthOfField : CSceneFxCompo, IClass
     /// CSceneFxDepthOfField 0x004 chunk (FidMrtDOF_BlurAtDepth)
     /// </summary>
     [Chunk(0x0A077004, "FidMrtDOF_BlurAtDepth")]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A077004 : Chunk<CSceneFxDepthOfField>
     {
         public override uint Id => 0x0A077004;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -328,9 +330,11 @@ public partial class CSceneFxDepthOfField : CSceneFxCompo, IClass
     /// CSceneFxDepthOfField 0x005 chunk
     /// </summary>
     [Chunk(0x0A077005)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A077005 : Chunk<CSceneFxDepthOfField>
     {
         public override uint Id => 0x0A077005;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01;
         public float U02;
         public float U03;
@@ -358,9 +362,11 @@ public partial class CSceneFxDepthOfField : CSceneFxCompo, IClass
     /// CSceneFxDepthOfField 0x006 chunk
     /// </summary>
     [Chunk(0x0A077006)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A077006 : Chunk<CSceneFxDepthOfField>
     {
         public override uint Id => 0x0A077006;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

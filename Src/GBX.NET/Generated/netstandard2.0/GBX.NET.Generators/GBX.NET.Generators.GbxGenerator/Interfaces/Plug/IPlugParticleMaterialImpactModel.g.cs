@@ -3,13 +3,25 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleMaterialImpactModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel where T0 : class
+{
+    new IReadOnlyList<T0?>? MaterialImpacts { get; set; }
+}
 public partial interface IPlugParticleMaterialImpactModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel?>? MaterialImpacts { get; set; }
 }
 
-public partial interface IPlugParticleMaterialImpactModelMP4 : IPlugParticleMaterialImpactModel
+public partial interface IPlugParticleMaterialImpactModelTMT : IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?>? MaterialImpacts { get; set; }
+}
+
+public partial interface IPlugParticleMaterialImpactModelMP4 : IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4>
+{
+}
+
+public partial interface IPlugParticleMaterialImpactModelTM2020 : IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020>
+{
 }
 

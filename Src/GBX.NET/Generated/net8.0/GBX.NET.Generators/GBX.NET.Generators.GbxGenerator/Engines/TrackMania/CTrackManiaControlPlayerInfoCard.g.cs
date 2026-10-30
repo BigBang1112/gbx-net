@@ -35,11 +35,11 @@ public partial class CTrackManiaControlPlayerInfoCard : CTrackManiaControlCard, 
     /// CTrackManiaControlPlayerInfoCard 0x000 chunk
     /// </summary>
     [Chunk(0x2408C000)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2408C000 : Chunk<CTrackManiaControlPlayerInfoCard>
     {
         public override uint Id => 0x2408C000;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -51,11 +51,11 @@ public partial class CTrackManiaControlPlayerInfoCard : CTrackManiaControlCard, 
     /// CTrackManiaControlPlayerInfoCard 0x001 chunk (ShowBasedTimeInfosInRounds)
     /// </summary>
     [Chunk(0x2408C001, "ShowBasedTimeInfosInRounds")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2408C001 : Chunk<CTrackManiaControlPlayerInfoCard>
     {
         public override uint Id => 0x2408C001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

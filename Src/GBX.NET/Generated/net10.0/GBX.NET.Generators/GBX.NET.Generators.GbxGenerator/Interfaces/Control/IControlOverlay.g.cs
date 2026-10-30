@@ -16,7 +16,11 @@ public partial interface IControlOverlay : IClassVersion<global::GBX.NET.Engines
 
 public partial interface IControlOverlayTM10 : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);
@@ -36,7 +40,11 @@ public partial interface IControlOverlayTM10 : IControlOverlay, global::GBX.NET.
 
 public partial interface IControlOverlayTMPU : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);
@@ -56,7 +64,11 @@ public partial interface IControlOverlayTMPU : IControlOverlay, global::GBX.NET.
 
 public partial interface IControlOverlayTMSX : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);
@@ -76,7 +88,11 @@ public partial interface IControlOverlayTMSX : IControlOverlay, global::GBX.NET.
 
 public partial interface IControlOverlayTMNESWC : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);
@@ -120,7 +136,11 @@ public partial interface IControlOverlayTMU : IControlOverlay, global::GBX.NET.I
 
 public partial interface IControlOverlayVSK5 : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);
@@ -184,7 +204,11 @@ public partial interface IControlOverlayMP3 : IControlOverlay, global::GBX.NET.I
 
 public partial interface IControlOverlayTMT : IControlOverlay, global::GBX.NET.Interfaces.Control.IControlBaseTMT
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlOverlay)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlOverlay)this).LegacyStyle);

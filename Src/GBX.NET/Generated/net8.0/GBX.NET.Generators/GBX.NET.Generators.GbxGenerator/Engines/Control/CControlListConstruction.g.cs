@@ -71,9 +71,11 @@ public partial class CControlListConstruction : CControlList, IClass
     /// CControlListConstruction 0x000 chunk (legacy styles)
     /// </summary>
     [Chunk(0x24009000, "legacy styles")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk24009000 : Chunk<CControlListConstruction>
     {
         public override uint Id => 0x24009000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -91,9 +93,11 @@ public partial class CControlListConstruction : CControlList, IClass
     /// CControlListConstruction 0x001 chunk (legacy layout)
     /// </summary>
     [Chunk(0x24009001, "legacy layout")]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk24009001 : Chunk<CControlListConstruction>
     {
         public override uint Id => 0x24009001;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
         public bool U01;
         public float U02;
         public float U03;
@@ -124,9 +128,11 @@ public partial class CControlListConstruction : CControlList, IClass
     /// CControlListConstruction 0x002 chunk (legacy layout)
     /// </summary>
     [Chunk(0x24009002, "legacy layout")]
+    [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk24009002 : Chunk<CControlListConstruction>
     {
         public override uint Id => 0x24009002;
+        public override GameVersion GameVersion => GameVersion.TMNESWC;
         public int U01;
         public int U02;
         public float U03;
@@ -154,11 +160,11 @@ public partial class CControlListConstruction : CControlList, IClass
     /// CControlListConstruction 0x003 chunk (styles)
     /// </summary>
     [Chunk(0x24009003, "styles")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk24009003 : Chunk<CControlListConstruction>
     {
         public override uint Id => 0x24009003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -17,7 +17,7 @@ CGameControlGridCard 0x030BA000
   uint DefaultCardClassId
   bool PushByColumns
 
-0x004 [TMU]
+0x004 [TMU, MP4, TM2020]
   CGameControlCardManager CardManager
   bool FillWithDefault
   string DefaultCardName
@@ -25,10 +25,10 @@ CGameControlGridCard 0x030BA000
   bool PushByColumns
   bool CacheAtCreation = true
 
-0x005
+0x005 [MP4, TM2020]
   bool LeftToRight = true
   bool UpToDown = true
 
-0x006
+0x006 [MP4.v0, TM2020.v0]
   version
   bool AreCardsReadOnly

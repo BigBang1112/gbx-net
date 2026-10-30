@@ -135,11 +135,29 @@ public partial class CGameModulePlaygroundHudModel : CGameModuleModelCommon, ICl
     /// CGameModulePlaygroundHudModel 0x000 skippable chunk (manialink and module slots)
     /// </summary>
     [Chunk(0x2E019000, "manialink and module slots")]
+    [ChunkGameVersion(GameVersion.MP4, 9)]
     public partial class Chunk2E019000 : SkippableChunk<CGameModulePlaygroundHudModel>, IVersionable
     {
         public override uint Id => 0x2E019000;
-        public int Version { get; set; } = 9;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
         public string[]? U01;
+
+        public Chunk2E019000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E019000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 9;
+            }
+            else
+            {
+                Version = 9;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -151,6 +169,11 @@ public partial class CGameModulePlaygroundHudModel : CGameModuleModelCommon, ICl
         public override void ReadWrite(CGameModulePlaygroundHudModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(9, 9))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<CPlugFileText>(ref n.manialink, version: Version);
             rw.ReadableWritable<Slot>(ref n.inventory, version: Version);
             rw.ReadableWritable<Slot>(ref n.store, version: Version);

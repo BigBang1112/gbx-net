@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlLayout : global::GBX.NET.Interfaces.Control.IControlLayout, global::GBX.NET.Interfaces.Control.IControlLayoutTMU, global::GBX.NET.Interfaces.Control.IControlLayoutTMF, global::GBX.NET.Interfaces.Control.IControlLayoutMP4, global::GBX.NET.Interfaces.Control.IControlLayoutTM2020
+public partial class CControlLayout : global::GBX.NET.Interfaces.Control.IControlLayout, global::GBX.NET.Interfaces.Control.IControlLayoutTM10, global::GBX.NET.Interfaces.Control.IControlLayoutTMPU, global::GBX.NET.Interfaces.Control.IControlLayoutTMSX, global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC, global::GBX.NET.Interfaces.Control.IControlLayoutTMU, global::GBX.NET.Interfaces.Control.IControlLayoutVSK5, global::GBX.NET.Interfaces.Control.IControlLayoutTMF, global::GBX.NET.Interfaces.Control.IControlLayoutTMT, global::GBX.NET.Interfaces.Control.IControlLayoutMP4, global::GBX.NET.Interfaces.Control.IControlLayoutTM2020
 {
 }

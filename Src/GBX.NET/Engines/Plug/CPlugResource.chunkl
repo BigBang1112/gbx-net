@@ -1,4 +1,4 @@
 CPlugResource 0x090BE000
 
-0x000 [MP4] // named resources
+0x000 [TMT, MP4, TM2020] // named resources
   CPlugModelShading.FidId[] Resources

@@ -59,10 +59,24 @@ public partial class CGameManiaAppTextSet : CMwNod, IClass
     /// CGameManiaAppTextSet 0x000 chunk (main script and manialinks)
     /// </summary>
     [Chunk(0x2E029000, "main script and manialinks")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
     public partial class Chunk2E029000 : Chunk<CGameManiaAppTextSet>, IVersionable
     {
         public override uint Id => 0x2E029000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E029000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E029000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -73,6 +87,11 @@ public partial class CGameManiaAppTextSet : CMwNod, IClass
         public override void ReadWrite(CGameManiaAppTextSet n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.mainScriptRef);
             rw.ArrayReadableWritable<Manialink>(ref n.manialinks!, version: Version);
         }

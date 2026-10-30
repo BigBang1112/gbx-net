@@ -1,6 +1,6 @@
 CGameEditorModel 0x2E01B000
 
-0x000 (skippable) [TM2020.v4] // editor type, help and legacy main plugin
+0x000 (skippable) [MP4.v4, TM2020.v4] // editor type, help and legacy main plugin
   version = 4
   int EditorType
   v2-
@@ -12,7 +12,7 @@ CGameEditorModel 0x2E01B000
   v4+
     bool AutoCreateTooltipsFromBindings
 
-0x001 (skippable)
+0x001 (skippable) [MP4.v0, TM2020.v0]
   version
   int128
   int
@@ -23,11 +23,11 @@ CGameEditorModel 0x2E01B000
   int SubPluginNameCount (local, write: "U01?.Length ?? 0")
   LegacySubPlugin[SubPluginNameCount]
 
-0x003 (skippable) [TM2020.v2] // binding contexts
+0x003 (skippable) [MP4.v1, TM2020.v2] // binding contexts
   version
   BindingContext[] BindingContexts
 
-0x004 // main and sub plugin text sets
+0x004 [MP4.v0, TM2020.v0] // main and sub plugin text sets
   version
   CGameManiaAppTextSet MainPluginTextSet
   SubPlugin[] SubPlugins

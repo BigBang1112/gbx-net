@@ -1,7 +1,7 @@
 CMwCmdExpNum 0x01046000
 - inherits: CMwCmdExp
 
-0x000 [TMU, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF]
   int Type
   if Type == 0
     int Integer

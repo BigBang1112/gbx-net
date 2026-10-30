@@ -3,6 +3,14 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameManiaPlanetMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameManiaPlanet where T0 : class where T1 : class
+{
+    T0? CoverFlowDesc { get; set; }
+    T1? DefaultStyleSheet { get; set; }
+    string? ManiaTitlesFolder { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid { get; set; }
+}
 public partial interface IGameManiaPlanet : IClassVersion<global::GBX.NET.Engines.Game.CGameManiaPlanet>, global::GBX.NET.Interfaces.Game.IGameCtnApp
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,7 +22,27 @@ public partial interface IGameManiaPlanet : IClassVersion<global::GBX.NET.Engine
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IGameManiaPlanetTM10 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTM10
+{
+}
+
+public partial interface IGameManiaPlanetTMPU : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMPU
+{
+}
+
+public partial interface IGameManiaPlanetTMSX : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMSX
+{
+}
+
+public partial interface IGameManiaPlanetTMNESWC : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMNESWC
+{
+}
+
 public partial interface IGameManiaPlanetTMU : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMU
+{
+}
+
+public partial interface IGameManiaPlanetVSK5 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppVSK5
 {
 }
 
@@ -22,15 +50,15 @@ public partial interface IGameManiaPlanetTMF : IGameManiaPlanet, global::GBX.NET
 {
 }
 
-public partial interface IGameManiaPlanetMP4 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4
+public partial interface IGameManiaPlanetTMT : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTMT, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT, global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT>
 {
-    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? CoverFlowDesc { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? DefaultStyleSheet { get; set; }
-    string? ManiaTitlesFolder { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid { get; set; }
 }
 
-public partial interface IGameManiaPlanetTM2020 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020
+public partial interface IGameManiaPlanetMP4 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4, global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>
+{
+}
+
+public partial interface IGameManiaPlanetTM2020 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMembers1<global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020, global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020>
 {
 }
 

@@ -222,9 +222,11 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x000 chunk (downsampling and blur settings)
     /// </summary>
     [Chunk(0x0C032000, "downsampling and blur settings")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0C032000 : Chunk<CVisPostFx_BloomHdr>
     {
         public override uint Id => 0x0C032000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -269,9 +271,11 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x002 chunk (distortion shaders)
     /// </summary>
     [Chunk(0x0C032002, "distortion shaders")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0C032002 : Chunk<CVisPostFx_BloomHdr>
     {
         public override uint Id => 0x0C032002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -290,9 +294,11 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x003 chunk (select filter shaders)
     /// </summary>
     [Chunk(0x0C032003, "select filter shaders")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0C032003 : Chunk<CVisPostFx_BloomHdr>
     {
         public override uint Id => 0x0C032003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         private NodeRef<CFuncKeysReal>? U01Ref;
         public CFuncKeysReal? U01
@@ -333,10 +339,24 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x004 chunk (ShaderHorizonBlur)
     /// </summary>
     [Chunk(0x0C032004, "ShaderHorizonBlur")]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0C032004 : Chunk<CVisPostFx_BloomHdr>, IVersionable
     {
         public override uint Id => 0x0C032004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0C032004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0C032004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -347,6 +367,11 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
         public override void ReadWrite(CVisPostFx_BloomHdr n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.shaderHorizonBlurRef);
         }
     }
@@ -355,10 +380,28 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
     /// CVisPostFx_BloomHdr 0x005 chunk (final, streak and editor shaders)
     /// </summary>
     [Chunk(0x0C032005, "final, streak and editor shaders")]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk0C032005 : Chunk<CVisPostFx_BloomHdr>, IVersionable
     {
         public override uint Id => 0x0C032005;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0C032005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0C032005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -369,6 +412,10 @@ public partial class CVisPostFx_BloomHdr : CSceneFxCompo, IClass
         public override void ReadWrite(CVisPostFx_BloomHdr n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 1)
             {

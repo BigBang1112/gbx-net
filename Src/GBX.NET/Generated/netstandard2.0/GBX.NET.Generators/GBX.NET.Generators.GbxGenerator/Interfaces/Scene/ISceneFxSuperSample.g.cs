@@ -14,7 +14,43 @@ public partial interface ISceneFxSuperSample : IClassVersion<global::GBX.NET.Eng
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface ISceneFxSuperSampleTM10 : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
+{
+}
+
+public partial interface ISceneFxSuperSampleTMPU : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU
+{
+}
+
+public partial interface ISceneFxSuperSampleTMSX : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX
+{
+}
+
+public partial interface ISceneFxSuperSampleTMNESWC : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMNESWC
+{
+}
+
 public partial interface ISceneFxSuperSampleTMU : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+{
+}
+
+public partial interface ISceneFxSuperSampleVSK5 : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoVSK5
+{
+}
+
+public partial interface ISceneFxSuperSampleTMF : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
+{
+}
+
+public partial interface ISceneFxSuperSampleTMT : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT
+{
+}
+
+public partial interface ISceneFxSuperSampleMP4 : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4
+{
+}
+
+public partial interface ISceneFxSuperSampleTM2020 : ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020
 {
 }
 

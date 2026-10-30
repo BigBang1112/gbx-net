@@ -188,9 +188,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x005 chunk
     /// </summary>
     [Chunk(0x07009005)]
+    [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk07009005 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009005;
+        public override GameVersion GameVersion => GameVersion.TM10;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -210,9 +212,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x006 chunk
     /// </summary>
     [Chunk(0x07009006)]
+    [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk07009006 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009006;
+        public override GameVersion GameVersion => GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -252,11 +256,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x008 chunk
     /// </summary>
     [Chunk(0x07009008)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk07009008 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009008;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -279,11 +283,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x009 chunk
     /// </summary>
     [Chunk(0x07009009)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk07009009 : Chunk<CControlEntry>
     {
         public override uint Id => 0x07009009;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -302,9 +306,11 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x00A chunk
     /// </summary>
     [Chunk(0x0700900A)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700900A : Chunk<CControlEntry>
     {
         public override uint Id => 0x0700900A;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -322,10 +328,24 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x00B chunk
     /// </summary>
     [Chunk(0x0700900B)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk0700900B : Chunk<CControlEntry>, IVersionable
     {
         public override uint Id => 0x0700900B;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0700900B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0700900B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -336,6 +356,11 @@ public partial class CControlEntry : CControlText, IClass
         public override void ReadWrite(CControlEntry n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.setValueOnFocusLost);
             rw.Boolean(ref n.isPassword);
             rw.Boolean(ref n.isNewPassword);

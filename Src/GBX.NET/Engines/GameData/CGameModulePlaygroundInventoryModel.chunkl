@@ -1,7 +1,7 @@
 CGameModulePlaygroundInventoryModel 0x2E016000
 - inherits: CGameModulePlaygroundModel
 
-0x000 (skippable) // title, capacity and categories
+0x000 (skippable) [MP4.v1] // title, capacity and categories
   version = 1
   string Title
   int SlotCapacity

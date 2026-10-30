@@ -60,7 +60,7 @@ public partial interface IShootManiaMP3 : IShootMania, global::GBX.NET.Interface
 {
 }
 
-public partial interface IShootManiaTMT : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT
+public partial interface IShootManiaTMT : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT, global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT>
 {
 }
 

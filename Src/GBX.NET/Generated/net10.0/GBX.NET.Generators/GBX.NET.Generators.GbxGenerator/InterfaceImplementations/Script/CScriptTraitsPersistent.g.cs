@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Script;
 
-public partial class CScriptTraitsPersistent : global::GBX.NET.Interfaces.Script.IScriptTraitsPersistent, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP3, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP4, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentTM2020
+public partial class CScriptTraitsPersistent : global::GBX.NET.Interfaces.Script.IScriptTraitsPersistent, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP3, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentTMT, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP4, global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentTM2020
 {
 }

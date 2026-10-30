@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameMenuColorEffect : global::GBX.NET.Interfaces.Game.IGameMenuColorEffect, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMU, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMF
+public partial class CGameMenuColorEffect : global::GBX.NET.Interfaces.Game.IGameMenuColorEffect, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMSX, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMU, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectVSK5, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMF, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMT, global::GBX.NET.Interfaces.Game.IGameMenuColorEffectMP4
 {
 }

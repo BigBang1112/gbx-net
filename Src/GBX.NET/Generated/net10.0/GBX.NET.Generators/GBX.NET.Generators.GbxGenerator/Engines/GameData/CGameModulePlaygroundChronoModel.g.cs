@@ -35,10 +35,28 @@ public partial class CGameModulePlaygroundChronoModel : CGameModulePlaygroundMod
     /// CGameModulePlaygroundChronoModel 0x000 skippable chunk (size and text size)
     /// </summary>
     [Chunk(0x2E01E000, "size and text size")]
+    [ChunkGameVersion(GameVersion.MP4, 2)]
     public partial class Chunk2E01E000 : SkippableChunk<CGameModulePlaygroundChronoModel>, IVersionable
     {
         public override uint Id => 0x2E01E000;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk2E01E000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01E000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -49,6 +67,11 @@ public partial class CGameModulePlaygroundChronoModel : CGameModulePlaygroundMod
         public override void ReadWrite(CGameModulePlaygroundChronoModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.SizeX = rw.Single(n.SizeX);
             n.SizeY = rw.Single(n.SizeY);
 

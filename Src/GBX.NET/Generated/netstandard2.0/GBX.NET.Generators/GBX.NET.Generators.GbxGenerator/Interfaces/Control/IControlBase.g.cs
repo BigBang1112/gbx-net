@@ -9,20 +9,15 @@ public interface IControlBaseMembers1<T0> : global::GBX.NET.Interfaces.Control.I
     new T0? LegacyStyle { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers2 : global::GBX.NET.Interfaces.Control.IControlBase
+public interface IControlBaseMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new T0? Layout { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlBaseMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
 {
     T0? Style { get; set; }
     string? StyleId { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlBaseMembers4<T0> : global::GBX.NET.Interfaces.Control.IControlBase where T0 : class
-{
-    new T0? Layout { get; set; }
 }
 public partial interface IControlBase : IClassVersion<global::GBX.NET.Engines.Control.CControlBase>, global::GBX.NET.Interfaces.Scene.ISceneToy
 {
@@ -40,67 +35,68 @@ public partial interface IControlBase : IClassVersion<global::GBX.NET.Engines.Co
     string? StackText { get; set; }
 }
 
-public partial interface IControlBaseTM10 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM10, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM10>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2
+public partial interface IControlBaseTM10 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM10, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM10>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTM10>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMPU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMPU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMPU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2
+public partial interface IControlBaseTMPU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMPU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMPU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMPU>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMSX : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMSX, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
+public partial interface IControlBaseTMSX : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMSX, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMSX>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMNESWC : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMNESWC, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
+public partial interface IControlBaseTMNESWC : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMNESWC, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTMU>
+public partial interface IControlBaseTMU : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMU, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMU>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMU>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseVSK5 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyVSK5, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
+public partial interface IControlBaseVSK5 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyVSK5, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutVSK5>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMF : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMF, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>
+public partial interface IControlBaseTMF : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMF, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMF>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMF>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseMP3 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP3, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP3>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP3>
+public partial interface IControlBaseMP3 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP3, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP3>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP3>
 {
+    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTMT : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMT, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMT>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
+public partial interface IControlBaseTMT : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTMT, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMT>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTMT>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseMP4 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP4, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>
+public partial interface IControlBaseMP4 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyMP4, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutMP4>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleMP4>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlBaseTM2020 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM2020, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers4<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>
+public partial interface IControlBaseTM2020 : IControlBase, global::GBX.NET.Interfaces.Scene.ISceneToyTM2020, global::GBX.NET.Interfaces.Control.IControlBaseMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers2<global::GBX.NET.Interfaces.Control.IControlLayoutTM2020>, global::GBX.NET.Interfaces.Control.IControlBaseMembers3<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
     new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink { get; set; }

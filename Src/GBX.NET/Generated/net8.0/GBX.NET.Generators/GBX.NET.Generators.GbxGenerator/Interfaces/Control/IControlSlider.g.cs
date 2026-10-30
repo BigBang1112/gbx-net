@@ -3,6 +3,17 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlSliderMembers1 : global::GBX.NET.Interfaces.Control.IControlSlider
+{
+    int Axis { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlSliderMembers2 : global::GBX.NET.Interfaces.Control.IControlSlider
+{
+    string? IconIdBar { get; set; }
+    string? IconIdCursor { get; set; }
+}
 public partial interface IControlSlider : IClassVersion<global::GBX.NET.Engines.Control.CControlSlider>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,9 +25,13 @@ public partial interface IControlSlider : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlSliderTM10 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTM10
+public partial interface IControlSliderTM10 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTM10, global::GBX.NET.Interfaces.Control.IControlSliderMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -34,9 +49,13 @@ public partial interface IControlSliderTM10 : IControlSlider, global::GBX.NET.In
     }
 }
 
-public partial interface IControlSliderTMPU : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
+public partial interface IControlSliderTMPU : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMPU, global::GBX.NET.Interfaces.Control.IControlSliderMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -54,9 +73,13 @@ public partial interface IControlSliderTMPU : IControlSlider, global::GBX.NET.In
     }
 }
 
-public partial interface IControlSliderTMSX : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
+public partial interface IControlSliderTMSX : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMSX, global::GBX.NET.Interfaces.Control.IControlSliderMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -74,9 +97,13 @@ public partial interface IControlSliderTMSX : IControlSlider, global::GBX.NET.In
     }
 }
 
-public partial interface IControlSliderTMNESWC : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
+public partial interface IControlSliderTMNESWC : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC, global::GBX.NET.Interfaces.Control.IControlSliderMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -94,11 +121,8 @@ public partial interface IControlSliderTMNESWC : IControlSlider, global::GBX.NET
     }
 }
 
-public partial interface IControlSliderTMU : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMU
+public partial interface IControlSliderTMU : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMU, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
-    int Axis { get; set; }
-    string? IconIdBar { get; set; }
-    string? IconIdCursor { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
@@ -121,9 +145,13 @@ public partial interface IControlSliderTMU : IControlSlider, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlSliderVSK5 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
+public partial interface IControlSliderVSK5 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseVSK5, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -141,7 +169,7 @@ public partial interface IControlSliderVSK5 : IControlSlider, global::GBX.NET.In
     }
 }
 
-public partial interface IControlSliderTMF : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMF
+public partial interface IControlSliderTMF : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMF, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
     {
@@ -185,9 +213,13 @@ public partial interface IControlSliderMP3 : IControlSlider, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlSliderTMT : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMT
+public partial interface IControlSliderTMT : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlSlider)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlSlider)this).LegacyStyle);
@@ -205,7 +237,7 @@ public partial interface IControlSliderTMT : IControlSlider, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlSliderMP4 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlSliderMP4 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -229,7 +261,7 @@ public partial interface IControlSliderMP4 : IControlSlider, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlSliderTM2020 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlSliderTM2020 : IControlSlider, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlSliderMembers1, global::GBX.NET.Interfaces.Control.IControlSliderMembers2
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

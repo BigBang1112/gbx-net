@@ -62,11 +62,11 @@ public partial class CMwCmdProc : CMwCmdInst, IClass
     /// CMwCmdProc 0x002 chunk
     /// </summary>
     [Chunk(0x01097002)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk01097002 : Chunk<CMwCmdProc>
     {
         public override uint Id => 0x01097002;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

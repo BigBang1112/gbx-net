@@ -49,12 +49,24 @@ public partial class CGameManialink3dStyle : CMwNod, IClass
     /// CGameManialink3dStyle 0x000 chunk (Mood)
     /// </summary>
     [Chunk(0x03181000, "Mood")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
     public partial class Chunk03181000 : Chunk<CGameManialink3dStyle>, IVersionable
     {
         public override uint Id => 0x03181000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03181000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03181000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

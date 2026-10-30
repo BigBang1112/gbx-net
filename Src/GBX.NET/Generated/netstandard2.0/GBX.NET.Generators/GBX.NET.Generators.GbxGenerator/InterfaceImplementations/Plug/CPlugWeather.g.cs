@@ -605,6 +605,11 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         get => BitmapSkyGradV;
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020>.Clouds
+    {
+        get => Clouds;
+        set => Clouds = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugClouds node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.EmitterInFog
     {
         get => EmitterInFog;

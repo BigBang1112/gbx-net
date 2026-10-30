@@ -15,13 +15,13 @@ CControlEntry 0x07009000
   bool IsPassword
   int MaxLength = -1
 
-0x005
+0x005 [TM10]
   bool SetValueOnFocusLost = true
   bool IsPassword
   int MaxLength = -1
   int Type
 
-0x006
+0x006 [TMPU]
   bool SetValueOnFocusLost = true
   bool IsPassword
   int MaxLength = -1
@@ -31,7 +31,7 @@ CControlEntry 0x07009000
 0x007
   int MaxLine = -1 (inherited)
 
-0x008 [TMU]
+0x008 [TMSX, TMNESWC, TMU, VSK5]
   bool SetValueOnFocusLost = true
   bool IsPassword
   int Type
@@ -40,16 +40,16 @@ CControlEntry 0x07009000
   float ClipLength = -1f (inherited)
   int MaxLine = -1 (inherited)
 
-0x009 [TMU]
+0x009 [TMU, VSK5, TMF]
   bool SetValueOnFocusLost = true
   bool IsPassword
   bool SelectAllOnFocusGained
 
-0x00A
+0x00A [TMF, TMT, MP4, TM2020]
   int Type
   int MaxLength = -1
 
-0x00B
+0x00B [TMT.v0, MP4.v0, TM2020.v0]
   version
   bool SetValueOnFocusLost = true
   bool IsPassword

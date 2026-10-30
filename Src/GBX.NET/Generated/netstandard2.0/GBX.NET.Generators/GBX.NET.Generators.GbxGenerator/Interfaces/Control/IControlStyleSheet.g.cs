@@ -9,6 +9,14 @@ public interface IControlStyleSheetMembers1<T0, T1> : global::GBX.NET.Interfaces
     new T0? Buffer { get; set; }
     new T1? MasterStyle { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleSheetMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlStyleSheet where T0 : class
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides { get; set; }
+    T0? PagerIconStyle { get; set; }
+    T0? PagerTextBackgroundStyle { get; set; }
+    T0? PagerTextStyle { get; set; }
+}
 public partial interface IControlStyleSheet : IClassVersion<global::GBX.NET.Engines.Control.CControlStyleSheet>
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? Buffer { get; set; }
@@ -17,15 +25,35 @@ public partial interface IControlStyleSheet : IClassVersion<global::GBX.NET.Engi
     global::GBX.NET.Interfaces.Control.IControlStyle? MasterStyle { get; set; }
 }
 
+public partial interface IControlStyleSheetTMSX : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX, global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
+{
+}
+
+public partial interface IControlStyleSheetTMNESWC : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC, global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
+{
+}
+
 public partial interface IControlStyleSheetTMU : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU, global::GBX.NET.Interfaces.Control.IControlStyleTMU>
 {
 }
 
-public partial interface IControlStyleSheetMP4 : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4, global::GBX.NET.Interfaces.Control.IControlStyleMP4>
+public partial interface IControlStyleSheetVSK5 : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerIconStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextBackgroundStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextStyle { get; set; }
+}
+
+public partial interface IControlStyleSheetTMF : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Control.IControlStyleTMF>
+{
+}
+
+public partial interface IControlStyleSheetTMT : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT, global::GBX.NET.Interfaces.Control.IControlStyleTMT>, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
+{
+}
+
+public partial interface IControlStyleSheetMP4 : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4, global::GBX.NET.Interfaces.Control.IControlStyleMP4>, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers2<global::GBX.NET.Interfaces.Control.IControlStyleMP4>
+{
+}
+
+public partial interface IControlStyleSheetTM2020 : IControlStyleSheet, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020, global::GBX.NET.Interfaces.Control.IControlStyleTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleSheetMembers2<global::GBX.NET.Interfaces.Control.IControlStyleTM2020>
+{
 }
 

@@ -1,7 +1,7 @@
 CPlugFxWindOnDecal 0x090D9000
 - inherits: CPlug
 
-0x000 // wind settings
+0x000 [TMT, MP4, TM2020] // wind settings
   int
   float
   float

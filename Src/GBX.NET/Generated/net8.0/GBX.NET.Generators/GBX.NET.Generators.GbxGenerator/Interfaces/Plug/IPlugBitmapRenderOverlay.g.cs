@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderOverlayMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlay
+{
+    bool IsOverlaySelfBlur { get; set; }
+}
 public partial interface IPlugBitmapRenderOverlay : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,15 +51,15 @@ public partial interface IPlugBitmapRenderOverlayMP3 : IPlugBitmapRenderOverlay,
 {
 }
 
-public partial interface IPlugBitmapRenderOverlayTMT : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT
+public partial interface IPlugBitmapRenderOverlayTMT : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderOverlayMP4 : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4
+public partial interface IPlugBitmapRenderOverlayMP4 : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderOverlayTM2020 : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020
+public partial interface IPlugBitmapRenderOverlayTM2020 : IPlugBitmapRenderOverlay, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderOverlayMembers1
 {
 }
 

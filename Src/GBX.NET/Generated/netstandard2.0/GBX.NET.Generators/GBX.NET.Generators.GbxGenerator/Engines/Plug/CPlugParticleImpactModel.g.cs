@@ -73,11 +73,11 @@ public partial class CPlugParticleImpactModel : CMwNod, IClass
     /// CPlugParticleImpactModel 0x000 chunk
     /// </summary>
     [Chunk(0x090B6000)]
-    [ChunkGameVersion(GameVersion.MP4, 3)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3)]
     public partial class Chunk090B6000 : Chunk<CPlugParticleImpactModel>, IVersionable
     {
         public override uint Id => 0x090B6000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public string? U02;
@@ -90,7 +90,7 @@ public partial class CPlugParticleImpactModel : CMwNod, IClass
 
         public Chunk090B6000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

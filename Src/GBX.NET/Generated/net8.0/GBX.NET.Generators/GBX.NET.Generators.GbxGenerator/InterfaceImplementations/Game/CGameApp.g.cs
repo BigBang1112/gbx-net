@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameApp : global::GBX.NET.Interfaces.Game.IGameApp, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameAppTMF, global::GBX.NET.Interfaces.Game.IGameAppTM2020
+public partial class CGameApp : global::GBX.NET.Interfaces.Game.IGameApp, global::GBX.NET.Interfaces.Game.IGameAppTM10, global::GBX.NET.Interfaces.Game.IGameAppTMPU, global::GBX.NET.Interfaces.Game.IGameAppTMSX, global::GBX.NET.Interfaces.Game.IGameAppTMNESWC, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameAppVSK5, global::GBX.NET.Interfaces.Game.IGameAppTMF, global::GBX.NET.Interfaces.Game.IGameAppTMT, global::GBX.NET.Interfaces.Game.IGameAppMP4, global::GBX.NET.Interfaces.Game.IGameAppTM2020
 {
 }

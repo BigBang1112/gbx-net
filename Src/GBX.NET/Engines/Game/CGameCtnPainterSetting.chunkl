@@ -12,26 +12,26 @@ CGameCtnPainterSetting 0x03048000
   vec2
   vec2
 
-0x001 [TMU] // Camera
+0x001 [TMU, MP4, TM2020] // Camera
   CGameControlCameraOrbital3d Camera
 
-0x002 [TMU] // ImageSubObjectAllIcon
+0x002 [TMU, MP4, TM2020] // ImageSubObjectAllIcon
   CPlugFileImg ImageSubObjectAllIcon
 
-0x003 [TMU] // icon and mouse wheel deltas
+0x003 [TMU, MP4, TM2020] // icon and mouse wheel deltas
   CPlugFileImg ImageSubObjectAllIcon
   float MouseZDeltaRot
   float MouseZDeltaScale
 
-0x004 [TMU] // camera bottom clipping
+0x004 [TMU, MP4, TM2020] // camera bottom clipping
   bool CameraBottomClipGeometry
   float CameraBottomIn_m1p1
 
-0x005 [TMU] // remapping skin and folder
+0x005 [TMU, MP4, TM2020] // remapping skin and folder
   CPlugGameSkin Remapping
   string RemapFolder
 
-0x006 // scenes
+0x006 [MP4, TM2020] // scenes
   CMwNod[] ScenesFids
   vec2
   vec2
@@ -39,20 +39,20 @@ CGameCtnPainterSetting 0x03048000
   vec2
   vec2
 
-0x007 // materials
+0x007 [MP4, TM2020] // materials
   CPlugMaterial MaterialPaint
   CPlugMaterial MaterialFillColor
   CPlugMaterial MaterialLayerBlend
   CPlugMaterial MaterialLayerModulate
 
-0x008 // fade bitmaps
+0x008 [MP4, TM2020] // fade bitmaps
   CPlugBitmap BitmapBrushFade
   CPlugBitmap BitmapStickerFade
 
-0x009 // FxBloom_FidFuncIntensAtHdrNorm
+0x009 [MP4, TM2020] // FxBloom_FidFuncIntensAtHdrNorm
   CFuncKeysReal FxBloom_FidFuncIntensAtHdrNorm
 
-0x00A // raster mask shaders
+0x00A [TM2020.v0] // raster mask shaders
   version
   CPlugShader ShaderRasterRgbMask
   CPlugShader ShaderRasterAlphaMask

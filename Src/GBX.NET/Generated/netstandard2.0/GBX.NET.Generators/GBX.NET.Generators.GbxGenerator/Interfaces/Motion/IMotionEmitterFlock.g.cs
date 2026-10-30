@@ -3,6 +3,16 @@
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionEmitterFlockMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionEmitterFlock where T0 : class
+{
+    T0? FlockModel { get; set; }
+    bool IsLandingArea { get; set; }
+    bool IsRepulsor { get; set; }
+    float Power { get; set; }
+    float Radius { get; set; }
+    int SpawnCount { get; set; }
+}
 public partial interface IMotionEmitterFlock : IClassVersion<global::GBX.NET.Engines.Motion.CMotionEmitterFlock>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -35,17 +45,11 @@ public partial interface IMotionEmitterFlockTMF : IMotionEmitterFlock, global::G
 {
 }
 
-public partial interface IMotionEmitterFlockMP3 : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3
+public partial interface IMotionEmitterFlockMP3 : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterFlockMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3? FlockModel { get; set; }
-    bool IsLandingArea { get; set; }
-    bool IsRepulsor { get; set; }
-    float Power { get; set; }
-    float Radius { get; set; }
-    int SpawnCount { get; set; }
 }
 
-public partial interface IMotionEmitterFlockTMT : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT
+public partial interface IMotionEmitterFlockTMT : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterFlockMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT>
 {
 }
 

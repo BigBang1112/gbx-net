@@ -6,12 +6,12 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMoodMembers1 : global::GBX.NET.Interfaces.Plug.IPlugSoundMood
 {
-    global::GBX.NET.Engines.Plug.CPlugFileSnd? InsideFileSnd { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugSoundMood.Event[]? Events { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMoodMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSoundMood
 {
-    global::GBX.NET.Engines.Plug.CPlugSoundMood.Event[]? Events { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileSnd? InsideFileSnd { get; set; }
 }
 public partial interface IPlugSoundMood : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSoundMood>, global::GBX.NET.Interfaces.Plug.IPlugSound
 {
@@ -24,31 +24,31 @@ public partial interface IPlugSoundMood : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IPlugSoundMoodTM10 : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10
+public partial interface IPlugSoundMoodTM10 : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodTMPU : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU
+public partial interface IPlugSoundMoodTMPU : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodTMSX : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX
+public partial interface IPlugSoundMoodTMSX : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodTMNESWC : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC
+public partial interface IPlugSoundMoodTMNESWC : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodTMU : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers2
+public partial interface IPlugSoundMoodTMU : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodVSK5 : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5
+public partial interface IPlugSoundMoodVSK5 : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
-public partial interface IPlugSoundMoodTMF : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers2
+public partial interface IPlugSoundMoodTMF : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1
 {
 }
 
@@ -56,7 +56,7 @@ public partial interface IPlugSoundMoodMP3 : IPlugSoundMood, global::GBX.NET.Int
 {
 }
 
-public partial interface IPlugSoundMoodTMT : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT
+public partial interface IPlugSoundMoodTMT : IPlugSoundMood, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMoodMembers2
 {
 }
 

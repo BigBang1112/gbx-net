@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBeamEmitterModel : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4
+public partial class CPlugBeamEmitterModel : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? GetSubModelsInterfaceReferences() => SubModels;
 }

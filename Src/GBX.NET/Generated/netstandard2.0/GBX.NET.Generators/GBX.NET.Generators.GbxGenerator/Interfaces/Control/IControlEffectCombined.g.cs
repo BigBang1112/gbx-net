@@ -24,7 +24,27 @@ public partial interface IControlEffectCombinedTMSX : IControlEffectCombined, gl
 {
 }
 
+public partial interface IControlEffectCombinedTMNESWC : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>
+{
+}
+
 public partial interface IControlEffectCombinedTMU : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>
+{
+}
+
+public partial interface IControlEffectCombinedVSK5 : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
+{
+}
+
+public partial interface IControlEffectCombinedTMF : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>
+{
+}
+
+public partial interface IControlEffectCombinedTMT : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
+{
+}
+
+public partial interface IControlEffectCombinedMP4 : IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
 {
 }
 

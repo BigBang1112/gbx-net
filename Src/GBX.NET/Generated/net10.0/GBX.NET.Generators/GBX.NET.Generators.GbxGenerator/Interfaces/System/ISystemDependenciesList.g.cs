@@ -9,6 +9,10 @@ public partial interface ISystemDependenciesList : IClassVersion<global::GBX.NET
     global::GBX.NET.Engines.System.CSystemDependenciesList.Folder[]? Folders { get; set; }
 }
 
+public partial interface ISystemDependenciesListMP4 : ISystemDependenciesList
+{
+}
+
 public partial interface ISystemDependenciesListTM2020 : ISystemDependenciesList
 {
 }

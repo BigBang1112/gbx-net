@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlScriptEditorMembers1 : global::GBX.NET.Interfaces.Control.IControlScriptEditor
+{
+    Vec4 ClassNameColor { get; set; }
+    Vec4 CommentColor { get; set; }
+    Vec4 ConstantColor { get; set; }
+    Vec4 DirectiveColor { get; set; }
+    Vec4 IdentColor { get; set; }
+    Vec4 KeywordColor { get; set; }
+    Vec4 OperatorColor { get; set; }
+    Vec4 OthersColor { get; set; }
+    bool ShowLineNumbers { get; set; }
+    Vec4 UnexpectedColor { get; set; }
+}
 public partial interface IControlScriptEditor : IClassVersion<global::GBX.NET.Engines.Control.CControlScriptEditor>, global::GBX.NET.Interfaces.Control.IControlBase
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -16,7 +30,7 @@ public partial interface IControlScriptEditor : IClassVersion<global::GBX.NET.En
 
 public partial interface IControlScriptEditorTM10 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -24,7 +38,7 @@ public partial interface IControlScriptEditorTM10 : IControlScriptEditor, global
 
 public partial interface IControlScriptEditorTMPU : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -32,7 +46,7 @@ public partial interface IControlScriptEditorTMPU : IControlScriptEditor, global
 
 public partial interface IControlScriptEditorTMSX : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -40,7 +54,7 @@ public partial interface IControlScriptEditorTMSX : IControlScriptEditor, global
 
 public partial interface IControlScriptEditorTMNESWC : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -56,7 +70,7 @@ public partial interface IControlScriptEditorTMU : IControlScriptEditor, global:
 
 public partial interface IControlScriptEditorVSK5 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -78,15 +92,15 @@ public partial interface IControlScriptEditorMP3 : IControlScriptEditor, global:
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlScriptEditorTMT : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTMT
+public partial interface IControlScriptEditorTMT : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTMT, global::GBX.NET.Interfaces.Control.IControlScriptEditorMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlScriptEditorMP4 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseMP4
+public partial interface IControlScriptEditorMP4 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseMP4, global::GBX.NET.Interfaces.Control.IControlScriptEditorMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -94,7 +108,7 @@ public partial interface IControlScriptEditorMP4 : IControlScriptEditor, global:
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlScriptEditorTM2020 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
+public partial interface IControlScriptEditorTM2020 : IControlScriptEditor, global::GBX.NET.Interfaces.Control.IControlBaseTM2020, global::GBX.NET.Interfaces.Control.IControlScriptEditorMembers1
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

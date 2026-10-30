@@ -69,10 +69,24 @@ public partial class CPlugFxLensFlareArray : CPlug, IClass
     /// CPlugFxLensFlareArray 0x000 chunk (bitmap and lens flares)
     /// </summary>
     [Chunk(0x090C1000, "bitmap and lens flares")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
     public partial class Chunk090C1000 : Chunk<CPlugFxLensFlareArray>, IVersionable
     {
         public override uint Id => 0x090C1000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090C1000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C1000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -83,6 +97,11 @@ public partial class CPlugFxLensFlareArray : CPlug, IClass
         public override void ReadWrite(CPlugFxLensFlareArray n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.bitmapRef);
             rw.ArrayReadableWritable<LensFlare>(ref n.lensFlares!, version: Version);
         }
@@ -92,12 +111,30 @@ public partial class CPlugFxLensFlareArray : CPlug, IClass
     /// CPlugFxLensFlareArray 0x001 skippable chunk (lens dirt generators)
     /// </summary>
     [Chunk(0x090C1001, "lens dirt generators")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk090C1001 : SkippableChunk<CPlugFxLensFlareArray>, IVersionable
     {
         public override uint Id => 0x090C1001;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
         public float U01;
         public float U02;
+
+        public Chunk090C1001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C1001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -110,6 +147,11 @@ public partial class CPlugFxLensFlareArray : CPlug, IClass
         public override void ReadWrite(CPlugFxLensFlareArray n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayNode<CPlugFxLensDirtGen>(ref n.lensDirtGens!);
 
             if (Version >= 1)

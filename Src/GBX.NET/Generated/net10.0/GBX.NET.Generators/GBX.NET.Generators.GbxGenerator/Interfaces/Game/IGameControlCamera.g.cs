@@ -64,7 +64,7 @@ public partial interface IGameControlCameraMP3 : IGameControlCamera
 {
 }
 
-public partial interface IGameControlCameraTMT : IGameControlCamera
+public partial interface IGameControlCameraTMT : IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers2
 {
 }
 
@@ -72,7 +72,7 @@ public partial interface IGameControlCameraMP4 : IGameControlCamera, global::GBX
 {
 }
 
-public partial interface IGameControlCameraTM2020 : IGameControlCamera
+public partial interface IGameControlCameraTM2020 : IGameControlCamera, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraMembers2
 {
 }
 
