@@ -7,7 +7,7 @@ public abstract class CHmsPortalBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
 {
     private protected CHmsPortalBuilderBase() { }
     private protected CHmsPortalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithCanPassThrough(bool value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, SupportedGames1);
     public TSelf WithCanSeeThrough(bool value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, SupportedGames1);
     public TSelf WithDirectOcclusion(int value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, SupportedGames1);
@@ -44,6 +44,9 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public partial class TM10 : CHmsPortalBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) : base(state) { }
@@ -105,6 +108,13 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) : base(state) { }
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build() => BuildNode(CHmsPortalBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
+    }
+    public partial class MP4 : CHmsPortalBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Hms.IHmsPortalMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Hms.CHmsPortal Build() => BuildNode(CHmsPortalBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsPortal node);
     }
 }

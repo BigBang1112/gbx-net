@@ -484,7 +484,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     /// CGameControlCameraOrbital3d 0x00A chunk (target location, orbit, occlusion and sensitivities)
     /// </summary>
     [Chunk(0x0306E00A, "target location, orbit, occlusion and sensitivities")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306E00A : Chunk<CGameControlCameraOrbital3d>, IVersionable
     {
         public override uint Id => 0x0306E00A;
@@ -493,18 +493,6 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         public bool U01;
         public bool U02;
         public float U03;
-
-        public Chunk0306E00A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0306E00A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

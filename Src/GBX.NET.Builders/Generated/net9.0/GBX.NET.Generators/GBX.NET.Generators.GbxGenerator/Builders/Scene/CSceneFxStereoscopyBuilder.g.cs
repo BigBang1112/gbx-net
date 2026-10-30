@@ -7,7 +7,24 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CSceneFxStereoscopyBuilderBase() { }
     private protected CSceneFxStereoscopyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMT;
+}
+public abstract class CSceneFxStereoscopyBuilderMembers1<TSelf> : CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CSceneFxStereoscopyBuilderMembers1<TSelf>
+{
+    private protected CSceneFxStereoscopyBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+    public TSelf WithPHlsl_AnaglyphFullColor(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphFullColorAssignment(), value, SupportedGames2);
+    public TSelf WithPHlsl_AnaglyphFullColorReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphFullColorReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithPHlsl_AnaglyphHalfColor(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphHalfColorAssignment(), value, SupportedGames2);
+    public TSelf WithPHlsl_AnaglyphHalfColorReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphHalfColorReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, SupportedGames2);
+}
+public abstract class CSceneFxStereoscopyBuilderMembers2<TSelf> : CSceneFxStereoscopyBuilderMembers1<TSelf> where TSelf : CSceneFxStereoscopyBuilderMembers2<TSelf>
+{
+    private protected CSceneFxStereoscopyBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+    public TSelf WithPHlsl_AnaglyphLinear(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphLinearAssignment(), value, SupportedGames3);
+    public TSelf WithPHlsl_AnaglyphLinearReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetPHlsl_AnaglyphLinearReferenceAssignment(), value, SupportedGames3);
     public TSelf WithShader_DebugBlend(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, SupportedGames1);
     public TSelf WithShader_DebugBlendReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, SupportedGames1);
     public TSelf WithShader_Interlaced(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, SupportedGames1);
@@ -18,15 +35,88 @@ public partial class CSceneFxStereoscopyBuilder : CSceneFxStereoscopyBuilderBase
     private static global::GBX.NET.Engines.Scene.CSceneFxStereoscopy CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxStereoscopy CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxStereoscopy CreateRecipe2(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxStereoscopy CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002(game));
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CSceneFxStereoscopyBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
+    public partial class TMPU : CSceneFxStereoscopyBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
+    public partial class TMSX : CSceneFxStereoscopyBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
+    public partial class TMF : CSceneFxStereoscopyBuilderMembers1<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
+    public partial class TMT : CSceneFxStereoscopyBuilderMembers2<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
+    public partial class MP4 : CSceneFxStereoscopyBuilderMembers2<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
+    }
     public partial class TM2020 : CSceneFxStereoscopyBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) : base(state) { }
+        public TM2020 WithShader_DebugBlend(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, SupportedGames1);
+        public TM2020 WithShader_DebugBlendReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, SupportedGames1);
+        public TM2020 WithShader_Interlaced(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, SupportedGames1);
+        public TM2020 WithShader_InterlacedReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedReferenceAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build() => BuildNode(CSceneFxStereoscopyBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node);
     }
 }

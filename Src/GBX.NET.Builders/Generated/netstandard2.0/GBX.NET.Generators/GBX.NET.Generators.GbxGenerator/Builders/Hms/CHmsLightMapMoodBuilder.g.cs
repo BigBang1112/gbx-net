@@ -8,7 +8,7 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> : NodeBuilder<global::G
     private protected CHmsLightMapMoodBuilderBase() { }
     private protected CHmsLightMapMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithAmbientRange(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, SupportedGames1);
     public TSelf WithDirectionalScale(float value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, SupportedGames1);
 }
@@ -78,11 +78,11 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build() => BuildNode(CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
-    public partial class MP4 : CHmsLightMapMoodBuilderBase<MP4>
+    public partial class MP4 : CHmsLightMapMoodBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build() => BuildNode(CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build() => BuildNode(CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
     public partial class TM2020 : CHmsLightMapMoodBuilderMembers1<TM2020>

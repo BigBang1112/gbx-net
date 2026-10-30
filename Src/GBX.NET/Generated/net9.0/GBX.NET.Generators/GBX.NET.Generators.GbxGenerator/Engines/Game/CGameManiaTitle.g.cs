@@ -1218,24 +1218,12 @@ public partial class CGameManiaTitle : CGameNod, IClass
     /// CGameManiaTitle 0x00A chunk
     /// </summary>
     [Chunk(0x0300100A)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0300100A : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x0300100A;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0300100A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0300100A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

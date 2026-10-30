@@ -43,6 +43,11 @@ public abstract class CPlugBitmapRenderCameraBuilderMembers4<TSelf> : CPlugBitma
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, SupportedGames2);
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames2);
 }
+public abstract class CPlugBitmapRenderCameraBuilderMembers5<TSelf> : CPlugBitmapRenderCameraBuilderMembers4<TSelf> where TSelf : CPlugBitmapRenderCameraBuilderMembers5<TSelf>
+{
+    private protected CPlugBitmapRenderCameraBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera> state) : base(state) { }
+    public TSelf WithPlaneY_Offset(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderCameraBuilderAssignments.GetPlaneY_OffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+}
 public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBuilderBase<CPlugBitmapRenderCameraBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe0(GameVersion game)
@@ -78,12 +83,29 @@ public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBui
     }
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe2(game);
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera.Chunk09089001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600D());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera.Chunk09089001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600B());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600E());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe5(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
@@ -91,9 +113,11 @@ public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBui
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
         return node;
     }
-    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera.Chunk09089002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera.Chunk09089003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
@@ -165,7 +189,7 @@ public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBui
         public VSK5 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
     public partial class TMF : CPlugBitmapRenderCameraBuilderMembers4<TMF>
@@ -174,7 +198,7 @@ public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBui
         public TMF WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
     public partial class MP3 : CPlugBitmapRenderCameraBuilderBase<MP3>
@@ -185,34 +209,34 @@ public partial class CPlugBitmapRenderCameraBuilder : CPlugBitmapRenderCameraBui
         public MP3 WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames2);
         public MP3 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? value) => WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
-    public partial class TMT : CPlugBitmapRenderCameraBuilderMembers4<TMT>
+    public partial class TMT : CPlugBitmapRenderCameraBuilderMembers5<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera> state) : base(state) { }
         public TMT WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
-    public partial class MP4 : CPlugBitmapRenderCameraBuilderMembers4<MP4>
+    public partial class MP4 : CPlugBitmapRenderCameraBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera> state) : base(state) { }
         public MP4 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
-    public partial class TM2020 : CPlugBitmapRenderCameraBuilderMembers4<TM2020>
+    public partial class TM2020 : CPlugBitmapRenderCameraBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera> state) : base(state) { }
         public TM2020 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera Build() => BuildNode(CPlugBitmapRenderCameraBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera node);
     }
 }

@@ -8,20 +8,130 @@ public abstract class CSceneFxSuperSampleBuilderBase<TSelf> : NodeBuilder<global
     private protected CSceneFxSuperSampleBuilderBase() { }
     private protected CSceneFxSuperSampleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
 }
+public abstract class CSceneFxSuperSampleBuilderMembers1<TSelf> : CSceneFxSuperSampleBuilderBase<TSelf> where TSelf : CSceneFxSuperSampleBuilderMembers1<TSelf>
+{
+    private protected CSceneFxSuperSampleBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+    public TSelf WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
+}
 public partial class CSceneFxSuperSampleBuilder : CSceneFxSuperSampleBuilderBase<CSceneFxSuperSampleBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxSuperSample();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxSuperSample();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxSuperSample.Chunk0A035000());
         return node;
     }
+    private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe3(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxSuperSample.Chunk0A035001());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe4(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxSuperSample CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxSuperSample.Chunk0A035003() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CSceneFxSuperSampleBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TMPU : CSceneFxSuperSampleBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TMSX : CSceneFxSuperSampleBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TMNESWC : CSceneFxSuperSampleBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
     public partial class TMU : CSceneFxSuperSampleBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
         public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class VSK5 : CSceneFxSuperSampleBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TMF : CSceneFxSuperSampleBuilderMembers1<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TMT : CSceneFxSuperSampleBuilderMembers1<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class MP4 : CSceneFxSuperSampleBuilderMembers1<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
+    }
+    public partial class TM2020 : CSceneFxSuperSampleBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxSuperSample> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxSuperSample Build() => BuildNode(CSceneFxSuperSampleBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxSuperSample node);
     }
 }

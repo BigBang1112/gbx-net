@@ -706,7 +706,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x00E chunk (jump)
     /// </summary>
     [Chunk(0x090C900E, "jump")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C900E : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C900E;
@@ -717,18 +717,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public int U03;
         public float U04;
         public float U05;
-
-        public Chunk090C900E() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090C900E(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2289,7 +2277,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01A chunk (jump)
     /// </summary>
     [Chunk(0x090C901A, "jump")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, -1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C901A : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901A;
@@ -2299,18 +2287,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U02;
         public float U03;
         public float U04;
-
-        public Chunk090C901A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090C901A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

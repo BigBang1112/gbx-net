@@ -1554,24 +1554,12 @@ public partial class CControlStyle : CPlug, IClass
     /// CControlStyle 0x01F chunk
     /// </summary>
     [Chunk(0x0701701F)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701701F : Chunk<CControlStyle>, IVersionable
     {
         public override uint Id => 0x0701701F;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0701701F() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0701701F(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

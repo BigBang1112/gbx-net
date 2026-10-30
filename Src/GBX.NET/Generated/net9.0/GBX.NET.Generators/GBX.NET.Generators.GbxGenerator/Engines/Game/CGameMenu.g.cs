@@ -487,24 +487,12 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x009 chunk (frustum and menu order)
     /// </summary>
     [Chunk(0x03009009, "frustum and menu order")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk03009009 : Chunk<CGameMenu>, IVersionable
     {
         public override uint Id => 0x03009009;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk03009009() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03009009(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -576,7 +564,7 @@ public partial class CGameMenu : CMwNod, IClass
     /// CGameMenu 0x00C chunk (sounds)
     /// </summary>
     [Chunk(0x0300900C, "sounds")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk0300900C : Chunk<CGameMenu>, IVersionable
     {
         public override uint Id => 0x0300900C;
@@ -602,18 +590,6 @@ public partial class CGameMenu : CMwNod, IClass
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
-        }
-
-        public Chunk0300900C() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0300900C(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

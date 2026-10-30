@@ -8,8 +8,8 @@ public abstract class CHmsLightMapBuilderBase<TSelf> : NodeBuilder<global::GBX.N
     private protected CHmsLightMapBuilderBase() { }
     private protected CHmsLightMapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithMood(global::GBX.NET.Engines.Hms.CHmsLightMapMood? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodAssignment(), value, SupportedGames1);
     public TSelf WithMoodReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapMood> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetMoodReferenceAssignment(), value, SupportedGames1);
     public TSelf WithPointsInSphereOpt(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetPointsInSphereOptAssignment(), value, SupportedGames1);
@@ -56,6 +56,14 @@ public abstract class CHmsLightMapBuilderMembers1<TSelf> : CHmsLightMapBuilderBa
     public TSelf WithStoreLDir0(global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetStoreLDir0Assignment(), value, SupportedGames2);
     public TSelf WithUseHDR(bool value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetUseHDRAssignment(), value, SupportedGames2);
 }
+public abstract class CHmsLightMapBuilderMembers2<TSelf> : CHmsLightMapBuilderMembers1<TSelf> where TSelf : CHmsLightMapBuilderMembers2<TSelf>
+{
+    private protected CHmsLightMapBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
+    public TSelf WithBitmapProbeGridAmbSV(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, SupportedGames3);
+    public TSelf WithBitmapProbeGridAmbSVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, SupportedGames3);
+    public TSelf WithBitmapProbeGridAmbSV_Spread1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1ReferenceAssignment(), value, SupportedGames3);
+}
 public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapBuilder>
 {
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe0(GameVersion game)
@@ -69,13 +77,19 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
     }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe1(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMap();
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021004());
         return node;
     }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe2(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMap();
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100F());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021010());
@@ -103,11 +117,30 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021016());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021017());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021019());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602101D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021022());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021023());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021024());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021025());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021027());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021028());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021029(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602102B(game));
         return node;
     }
     private static global::GBX.NET.Engines.Hms.CHmsLightMap CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMap();
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021003());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk0602100F());
         node.Chunks.Add(new global::GBX.NET.Engines.Hms.CHmsLightMap.Chunk06021013());
@@ -185,11 +218,13 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
     public partial class TMT : CHmsLightMapBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
+        public TMT WithBitmapArrayLightSH(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTMT? value) => base.WithBitmapArrayLightSH(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapLM_ILightDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLM_ILightDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapLM_ILightInput(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLM_ILightInput(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapLM_LListUV(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLM_LListUV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapLM_LListW(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLM_LListW(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapLM_LocalDirect(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapLM_LocalDirect(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithBitmapLightSumBump(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTMT? value) => base.WithBitmapLightSumBump(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapSM_ColorPeeled(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapSM_ColorPeeled(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapSM_DepthToPeel(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapSM_DepthToPeel(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -203,30 +238,44 @@ public partial class CHmsLightMapBuilder : CHmsLightMapBuilderBase<CHmsLightMapB
         public global::GBX.NET.Engines.Hms.CHmsLightMap Build() => BuildNode(CHmsLightMapBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
-    public partial class MP4 : CHmsLightMapBuilderBase<MP4>
+    public partial class MP4 : CHmsLightMapBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
+        public MP4 WithBitmapArrayLightSH(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayMP4? value) => base.WithBitmapArrayLightSH(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLM_ILightDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLM_ILightDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLM_ILightInput(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLM_ILightInput(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLM_LListUV(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLM_LListUV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLM_LListW(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLM_LListW(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLM_LocalDirect(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapLM_LocalDirect(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapLightSumBump(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayMP4? value) => base.WithBitmapLightSumBump(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapProbeGridAmbSV(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapProbeGridAmbSV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapProbeGridAmbSV_Spread1(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSM_ColorPeeled(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSM_ColorPeeled(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSM_DepthToPeel(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSM_DepthToPeel(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapShadow(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapShadow(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSprite3x3_Light(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSprite3x3_Light(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSprite_ILightDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSprite_ILightDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSprite_PosAndRadius(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSprite_PosAndRadius(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithMood(global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4? value) => base.WithMood(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapMood?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithPointsInSphereOpt(global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4? value) => base.WithPointsInSphereOpt(value is null ? (global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt?)null : value is global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMap Build() => BuildNode(CHmsLightMapBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMap node);
     }
-    public partial class TM2020 : CHmsLightMapBuilderMembers1<TM2020>
+    public partial class TM2020 : CHmsLightMapBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMap> state) : base(state) { }
+        public TM2020 WithBitmapArrayLightSH(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020? value) => base.WithBitmapArrayLightSH(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapLM_ILightDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLM_ILightDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapLM_ILightInput(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLM_ILightInput(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapLM_LListUV(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLM_LListUV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapLM_LListW(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLM_LListW(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapLM_LocalDirect(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapLM_LocalDirect(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapLightSumBump(global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020? value) => base.WithBitmapLightSumBump(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapArray?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapProbeGeom_BBoxInvHDiag_ThroughBounce(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVAssignment(), value, SupportedGames3);
-        public TM2020 WithBitmapProbeGridAmbSVReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSVReferenceAssignment(), value, SupportedGames3);
-        public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => WithBitmapProbeGridAmbSV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1Assignment(), value, SupportedGames3);
-        public TM2020 WithBitmapProbeGridAmbSV_Spread1Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapBuilderAssignments.GetBitmapProbeGridAmbSV_Spread1ReferenceAssignment(), value, SupportedGames3);
-        public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => WithBitmapProbeGridAmbSV_Spread1(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapProbeGridAmbSV(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapProbeGridAmbSV(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapProbeGridAmbSV_Spread1(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapProbeGridAmbSV_Spread1(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapSM_ColorPeeled(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapSM_ColorPeeled(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapSM_DepthToPeel(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapSM_DepthToPeel(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithBitmapShadow(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapShadow(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

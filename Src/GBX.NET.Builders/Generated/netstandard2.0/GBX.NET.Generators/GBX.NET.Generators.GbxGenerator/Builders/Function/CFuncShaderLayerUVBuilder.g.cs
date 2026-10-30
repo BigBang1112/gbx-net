@@ -8,20 +8,61 @@ public abstract class CFuncShaderLayerUVBuilderBase<TSelf> : NodeBuilder<global:
     private protected CFuncShaderLayerUVBuilderBase() { }
     private protected CFuncShaderLayerUVBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT;
+    public TSelf WithAmplitude(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAmplitudeAssignment(), value, SupportedGames1);
     public TSelf WithAutoCreateMotion(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, SupportedGames1);
-    public TSelf WithLayerName(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetLayerNameAssignment(), value, SupportedGames1);
+    public TSelf WithBase(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetBaseAssignment(), value, SupportedGames1);
+    public TSelf WithEnablePingPong(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnablePingPongAssignment(), value, SupportedGames1);
+    public TSelf WithEnableSmooth(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableSmoothAssignment(), value, SupportedGames1);
+    public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetFlagsAssignment(), value, SupportedGames1);
+    public TSelf WithLayerName(string value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetLayerNameAssignment(), value, SupportedGames1);
     public TSelf WithPeriod(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, SupportedGames1);
     public TSelf WithPhase(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, SupportedGames1);
+    public TSelf WithSignalType(global::GBX.NET.Engines.Function.CFuncShaderLayerUV.EType value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetSignalTypeAssignment(), value, SupportedGames1);
 }
 public abstract class CFuncShaderLayerUVBuilderMembers1<TSelf> : CFuncShaderLayerUVBuilderBase<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers1<TSelf>
 {
     private protected CFuncShaderLayerUVBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithAngleEnd(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAngleEndAssignment(), value, SupportedGames2);
+    public TSelf WithAngleStart(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAngleStartAssignment(), value, SupportedGames2);
+    public TSelf WithNbSubTexture(int value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetNbSubTextureAssignment(), value, SupportedGames2);
+    public TSelf WithNbSubTexturePerLine(int value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetNbSubTexturePerLineAssignment(), value, SupportedGames2);
+    public TSelf WithOffset(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetOffsetAssignment(), value, SupportedGames2);
+    public TSelf WithScale(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetScaleAssignment(), value, SupportedGames2);
 }
 public abstract class CFuncShaderLayerUVBuilderMembers2<TSelf> : CFuncShaderLayerUVBuilderMembers1<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers2<TSelf>
 {
     private protected CFuncShaderLayerUVBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
-    public TSelf WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    public TSelf WithBitmapCopy(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetBitmapCopyAssignment(), value, SupportedGames3);
+    public TSelf WithBitmapCopyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetBitmapCopyReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithEnableBlending(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableBlendingAssignment(), value, SupportedGames3);
+    public TSelf WithEnableMipMapping(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableMipMappingAssignment(), value, SupportedGames3);
+    public TSelf WithEnableSmoothBlend(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableSmoothBlendAssignment(), value, SupportedGames3);
+}
+public abstract class CFuncShaderLayerUVBuilderMembers3<TSelf> : CFuncShaderLayerUVBuilderMembers1<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers3<TSelf>
+{
+    private protected CFuncShaderLayerUVBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+    public TSelf WithInputValId(string? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, SupportedGames4);
+    public TSelf WithNbSubTexturePerColumn(int value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetNbSubTexturePerColumnAssignment(), value, SupportedGames4);
+    public TSelf WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithTopToBottom(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetTopToBottomAssignment(), value, SupportedGames4);
+}
+public abstract class CFuncShaderLayerUVBuilderMembers4<TSelf> : CFuncShaderLayerUVBuilderMembers3<TSelf> where TSelf : CFuncShaderLayerUVBuilderMembers4<TSelf>
+{
+    private protected CFuncShaderLayerUVBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+    public TSelf WithBitmapCopy(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetBitmapCopyAssignment(), value, SupportedGames3);
+    public TSelf WithBitmapCopyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetBitmapCopyReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithEnableBlending(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableBlendingAssignment(), value, SupportedGames3);
+    public TSelf WithEnableMipMapping(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableMipMappingAssignment(), value, SupportedGames3);
+    public TSelf WithEnableSmoothBlend(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetEnableSmoothBlendAssignment(), value, SupportedGames3);
+    public TSelf WithWriteFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetWriteFlagsAssignment(), value, SupportedGames5);
+    public TSelf WithWriteW(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetWriteWAssignment(), value, SupportedGames5);
+    public TSelf WithWriteX(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetWriteXAssignment(), value, SupportedGames5);
+    public TSelf WithWriteY(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetWriteYAssignment(), value, SupportedGames5);
+    public TSelf WithWriteZ(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetWriteZAssignment(), value, SupportedGames5);
 }
 public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<CFuncShaderLayerUVBuilder>
 {
@@ -81,6 +122,26 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
         var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015015());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015016());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015017());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Function.CFuncShaderLayerUV CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncShaderLayerUV();
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk0501500D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015015());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015017());
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005());
         return node;
@@ -98,81 +159,98 @@ public partial class CFuncShaderLayerUVBuilder : CFuncShaderLayerUVBuilderBase<C
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CFuncShaderLayerUVBuilderBase<TM10>
+    public partial class TM10 : CFuncShaderLayerUVBuilderMembers2<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TM10 WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMPU : CFuncShaderLayerUVBuilderMembers1<TMPU>
+    public partial class TMPU : CFuncShaderLayerUVBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMPU WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMSX : CFuncShaderLayerUVBuilderMembers1<TMSX>
+    public partial class TMSX : CFuncShaderLayerUVBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMSX WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMNESWC : CFuncShaderLayerUVBuilderMembers1<TMNESWC>
+    public partial class TMNESWC : CFuncShaderLayerUVBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMNESWC WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMU : CFuncShaderLayerUVBuilderMembers1<TMU>
+    public partial class TMU : CFuncShaderLayerUVBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMU WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class VSK5 : CFuncShaderLayerUVBuilderMembers1<VSK5>
+    public partial class VSK5 : CFuncShaderLayerUVBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public VSK5 WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithRandomizePhase(bool value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMF : CFuncShaderLayerUVBuilderMembers2<TMF>
+    public partial class TMF : CFuncShaderLayerUVBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMF WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class MP3 : CFuncShaderLayerUVBuilderMembers2<MP3>
+    public partial class MP3 : CFuncShaderLayerUVBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public MP3 WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TMT : CFuncShaderLayerUVBuilderMembers2<TMT>
+    public partial class TMT : CFuncShaderLayerUVBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TMT WithAngle(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+        public TMT WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class MP4 : CFuncShaderLayerUVBuilderMembers2<MP4>
+    public partial class MP4 : CFuncShaderLayerUVBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public MP4 WithAngle(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+        public MP4 WithBitmapCopy(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapCopy(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
-    public partial class TM2020 : CFuncShaderLayerUVBuilderMembers2<TM2020>
+    public partial class TM2020 : CFuncShaderLayerUVBuilderMembers3<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderLayerUV> state) : base(state) { }
+        public TM2020 WithAngle(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderLayerUVBuilderAssignments.GetAngleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         public global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Function.CFuncShaderLayerUV Build() => BuildNode(CFuncShaderLayerUVBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderLayerUV node);
     }
 }

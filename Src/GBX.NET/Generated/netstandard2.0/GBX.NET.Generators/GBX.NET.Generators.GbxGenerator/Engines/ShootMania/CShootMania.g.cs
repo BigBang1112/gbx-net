@@ -152,25 +152,13 @@ public partial class CShootMania : CGameManiaTitleCore, IClass
     /// CShootMania 0x001 chunk
     /// </summary>
     [Chunk(0x2D000001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2D000001 : Chunk<CShootMania>, IVersionable
     {
         public override uint Id => 0x2D000001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-
-        public Chunk2D000001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2D000001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

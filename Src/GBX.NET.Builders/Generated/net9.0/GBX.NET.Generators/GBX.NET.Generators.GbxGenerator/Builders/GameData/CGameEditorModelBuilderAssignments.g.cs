@@ -17,8 +17,19 @@ internal static class CGameEditorModelBuilderAssignments
     private static NodeBuilderProperty<int>? cached3;
     internal static NodeBuilderProperty<int> GetEditorTypeAssignment() => cached3 ??= new("EditorType", new Action<object, int>(Assign3));
     private static void Assign3(object node, int value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).EditorType = value;
-    private static NodeBuilderProperty<string?>? cached4;
-    internal static NodeBuilderProperty<string?> GetMediaFolderAssignment() => cached4 ??= new("MediaFolder", new Action<object, string?>(Assign4));
-    private static void Assign4(object node, string? value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).MediaFolder = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet?>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet?> GetMainPluginTextSetAssignment() => cached4 ??= new("MainPluginTextSet", new Action<object, global::GBX.NET.Engines.GameData.CGameManiaAppTextSet?>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.GameData.CGameManiaAppTextSet? value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).MainPluginTextSet = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>>? cached4Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>> GetMainPluginTextSetReferenceAssignment() => cached4Reference ??= new("MainPluginTextSet", new Action<object, NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>, NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>>(Copy1));
+    private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet> value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).References.MainPluginTextSet.CopyFrom(value);
+    private static NodeBuilderProperty<string?>? cached5;
+    internal static NodeBuilderProperty<string?> GetMediaFolderAssignment() => cached5 ??= new("MediaFolder", new Action<object, string?>(Assign5));
+    private static void Assign5(object node, string? value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).MediaFolder = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]?>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]?> GetSubPluginsAssignment() => cached6 ??= new("SubPlugins", new Action<object, global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]?>(Assign6), new Func<global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]?, global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]?>(Copy2));
+    private static void Assign6(object node, global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]? value) => ((global::GBX.NET.Engines.GameData.CGameEditorModel)node).SubPlugins = value;
     private static global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? Copy0(global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value) => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[])value.Clone();
+    private static NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet> Copy1(NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet> value) { var copy = new NodeRef<global::GBX.NET.Engines.GameData.CGameManiaAppTextSet>(); copy.CopyFrom(value); return copy; }
+    private static global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]? Copy2(global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]? value) => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[])value.Clone();
 }

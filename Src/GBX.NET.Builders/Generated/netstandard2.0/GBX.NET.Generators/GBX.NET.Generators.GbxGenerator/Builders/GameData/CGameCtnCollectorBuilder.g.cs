@@ -49,7 +49,7 @@ public abstract class CGameCtnCollectorBuilderMembers4<TSelf> : CGameCtnCollecto
     public TSelf WithIconQuarterRotationY(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, SupportedGames3);
     public TSelf WithIconUseAutoRender(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, SupportedGames3);
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames3);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames3);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames3);
     public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithSkinDirectory(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, SupportedGames3);
@@ -66,6 +66,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -75,6 +76,8 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -86,6 +89,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -96,6 +100,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -105,11 +110,22 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
         return node;
     }
     private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
+        return node;
+    }
+    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
@@ -122,7 +138,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
@@ -138,7 +154,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe7(GameVersion game)
+    private static global::GBX.NET.Engines.GameData.CGameCtnCollector CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameCtnCollector();
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
@@ -175,6 +191,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TM10 WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TM10 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
@@ -185,6 +202,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TMPU WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMPU WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
@@ -196,6 +214,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
@@ -204,6 +223,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     public partial class TMNESWC : CGameCtnCollectorBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
@@ -220,9 +240,10 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
     public partial class VSK5 : CGameCtnCollectorBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class TMF : CGameCtnCollectorBuilderMembers3<TMF>
@@ -234,28 +255,28 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TMF WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
         public TMF WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class MP3 : CGameCtnCollectorBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class TMT : CGameCtnCollectorBuilderMembers5<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class MP4 : CGameCtnCollectorBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCtnCollector> state) : base(state) { }
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
     public partial class TM2020 : CGameCtnCollectorBuilderMembers5<TM2020>
@@ -268,7 +289,7 @@ public partial class CGameCtnCollectorBuilder : CGameCtnCollectorBuilderBase<CGa
         public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames5);
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.GameData.CGameCtnCollector Build() => BuildNode(CGameCtnCollectorBuilder.CreateRecipe8(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameCtnCollector node);
     }
 }

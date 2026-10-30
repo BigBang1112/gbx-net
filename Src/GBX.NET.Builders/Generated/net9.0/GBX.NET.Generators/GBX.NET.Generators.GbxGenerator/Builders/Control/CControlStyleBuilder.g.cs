@@ -12,8 +12,8 @@ public abstract class CControlStyleBuilderBase<TSelf> : NodeBuilder<global::GBX.
     private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames6 = GameVersion.MP4;
-    private protected const GameVersion SupportedGames7 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames7 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames8 = GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX;
     private protected const GameVersion SupportedGames9 = GameVersion.TM10 | GameVersion.TMPU;
     private protected const GameVersion SupportedGames10 = GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX;
@@ -53,12 +53,12 @@ public abstract class CControlStyleBuilderBase<TSelf> : NodeBuilder<global::GBX.
 public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilderBase<TSelf> where TSelf : CControlStyleBuilderMembers1<TSelf>
 {
     private protected CControlStyleBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-    public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames7);
-    public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames7);
-    public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames7);
-    public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames7);
-    public TSelf WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames7);
-    public TSelf WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames7);
+    public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames6);
+    public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames6);
+    public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames6);
+    public TSelf WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames6);
 }
 public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilderBase<TSelf> where TSelf : CControlStyleBuilderMembers2<TSelf>
 {
@@ -140,13 +140,13 @@ public abstract class CControlStyleBuilderMembers6<TSelf> : CControlStyleBuilder
 public abstract class CControlStyleBuilderMembers7<TSelf> : CControlStyleBuilderMembers6<TSelf> where TSelf : CControlStyleBuilderMembers7<TSelf>
 {
     private protected CControlStyleBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-    public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames7);
-    public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames7);
-    public TSelf WithButtonDefaultIconId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconIdAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
-    public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames7);
-    public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames7);
-    public TSelf WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames7);
-    public TSelf WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames7);
+    public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames6);
+    public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithButtonDefaultIconId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames6);
+    public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames6);
+    public TSelf WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames6);
 }
 public abstract class CControlStyleBuilderMembers8<TSelf> : CControlStyleBuilderMembers5<TSelf> where TSelf : CControlStyleBuilderMembers8<TSelf>
 {
@@ -159,6 +159,12 @@ public abstract class CControlStyleBuilderMembers8<TSelf> : CControlStyleBuilder
     public TSelf WithLineGradientColor0(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor0Assignment(), value, SupportedGames4);
     public TSelf WithLineGradientColor1(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor1Assignment(), value, SupportedGames4);
     public TSelf WithSkew(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSkewAssignment(), value, SupportedGames4);
+}
+public abstract class CControlStyleBuilderMembers9<TSelf> : CControlStyleBuilderMembers7<TSelf> where TSelf : CControlStyleBuilderMembers9<TSelf>
+{
+    private protected CControlStyleBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+    public TSelf WithActionBackSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundAssignment(), value, SupportedGames7);
+    public TSelf WithActionBackSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundReferenceAssignment(), value, SupportedGames7);
 }
 public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlStyleBuilder>
 {
@@ -267,7 +273,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
     }
     private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe6(GameVersion game)
     {
-        var node = CreateRecipe7(game);
+        var node = CreateRecipe5(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F() { Version = 0 });
         return node;
     }
@@ -286,6 +292,7 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F() { Version = 0 });
         return node;
     }
     public TM10 ForTM10() => new(state.Snapshot());
@@ -428,14 +435,14 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
     public partial class TMU : CControlStyleBuilderMembers6<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-        public TMU WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames7);
-        public TMU WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames7);
+        public TMU WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames6);
+        public TMU WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames6);
         public TMU WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? value) => WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames7);
-        public TMU WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames7);
+        public TMU WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames6);
+        public TMU WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames6);
         public TMU WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMU? value) => WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames7);
-        public TMU WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames7);
+        public TMU WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames6);
+        public TMU WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames6);
         public TMU WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMU? value) => base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMU? value) => base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? value) => base.WithEntrySound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -461,14 +468,14 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
     public partial class VSK5 : CControlStyleBuilderMembers6<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-        public VSK5 WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames7);
-        public VSK5 WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames7);
+        public VSK5 WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, SupportedGames6);
+        public VSK5 WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, SupportedGames6);
         public VSK5 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? value) => WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames7);
-        public VSK5 WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames7);
+        public VSK5 WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, SupportedGames6);
+        public VSK5 WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, SupportedGames6);
         public VSK5 WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? value) => WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames7);
-        public VSK5 WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames7);
+        public VSK5 WithButtonIconHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, SupportedGames6);
+        public VSK5 WithButtonIconWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, SupportedGames6);
         public VSK5 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? value) => base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? value) => base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? value) => base.WithEntrySound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -541,9 +548,12 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Engines.Control.CControlStyle Build() => BuildNode(CControlStyleBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMT : CControlStyleBuilderMembers6<TMT>
+    public partial class TMT : CControlStyleBuilderMembers9<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+        public TMT WithActionBackSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithActionBackSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMT? value) => base.WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? value) => base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? value) => base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithEntrySound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -561,15 +571,13 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public TMT WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMT? value) => base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlStyleTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlStyle Build() => BuildNode(CControlStyleBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Control.CControlStyle Build() => BuildNode(CControlStyleBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class MP4 : CControlStyleBuilderMembers7<MP4>
+    public partial class MP4 : CControlStyleBuilderMembers9<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-        public MP4 WithActionBackSound(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundAssignment(), value, SupportedGames6);
-        public MP4 WithActionBackSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundReferenceAssignment(), value, SupportedGames6);
-        public MP4 WithActionBackSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => WithActionBackSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithActionBackSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithActionBackSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP4? value) => base.WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? value) => base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -588,12 +596,15 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public MP4 WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP4? value) => base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlStyleMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlStyle Build() => BuildNode(CControlStyleBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Control.CControlStyle Build() => BuildNode(CControlStyleBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TM2020 : CControlStyleBuilderMembers6<TM2020>
+    public partial class TM2020 : CControlStyleBuilderMembers9<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+        public TM2020 WithActionBackSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithActionBackSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? value) => base.WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? value) => base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? value) => base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithEntrySound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

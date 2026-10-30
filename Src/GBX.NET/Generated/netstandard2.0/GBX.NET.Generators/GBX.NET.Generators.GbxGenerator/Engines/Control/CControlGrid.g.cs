@@ -297,24 +297,12 @@ public partial class CControlGrid : CControlContainer, IClass
     /// CControlGrid 0x006 chunk
     /// </summary>
     [Chunk(0x07015006)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07015006 : Chunk<CControlGrid>, IVersionable
     {
         public override uint Id => 0x07015006;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk07015006() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk07015006(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

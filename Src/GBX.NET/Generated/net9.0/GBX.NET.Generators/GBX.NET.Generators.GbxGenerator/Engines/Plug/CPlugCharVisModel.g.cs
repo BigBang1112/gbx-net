@@ -2289,24 +2289,12 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x00A chunk
     /// </summary>
     [Chunk(0x090C700A)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C700A : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C700A;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090C700A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090C700A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

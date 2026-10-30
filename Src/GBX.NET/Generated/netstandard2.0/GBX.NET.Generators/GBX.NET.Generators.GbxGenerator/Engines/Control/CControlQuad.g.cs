@@ -257,24 +257,12 @@ public partial class CControlQuad : CControlBase, IClass
     /// CControlQuad 0x007 chunk
     /// </summary>
     [Chunk(0x0701B007)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701B007 : Chunk<CControlQuad>, IVersionable
     {
         public override uint Id => 0x0701B007;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0701B007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0701B007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

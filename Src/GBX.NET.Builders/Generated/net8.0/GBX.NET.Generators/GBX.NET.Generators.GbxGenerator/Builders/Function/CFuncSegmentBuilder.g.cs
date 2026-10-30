@@ -7,7 +7,7 @@ public abstract class CFuncSegmentBuilderBase<TSelf> : NodeBuilder<global::GBX.N
 {
     private protected CFuncSegmentBuilderBase() { }
     private protected CFuncSegmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
-    public TSelf WithKeys(params global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMU);
+    public TSelf WithKeys(params global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncSegment.Key> values) => WithKeys(values.ToArray());
 }
 public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentBuilder>
@@ -18,11 +18,29 @@ public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentB
         node.Chunks.Add(new global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000());
         return node;
     }
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public partial class TMSX : CFuncSegmentBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSegmentTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
+    }
+    public partial class TMNESWC : CFuncSegmentBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSegmentTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
+    }
     public partial class TMU : CFuncSegmentBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
@@ -30,11 +48,25 @@ public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentB
         public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
     }
+    public partial class VSK5 : CFuncSegmentBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSegmentVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
+    }
     public partial class TMF : CFuncSegmentBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
         public global::GBX.NET.Interfaces.Function.IFuncSegmentTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
+    }
+    public partial class TMT : CFuncSegmentBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Function.IFuncSegmentTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Function.CFuncSegment Build() => BuildNode(CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncSegment node);
     }
     public partial class MP4 : CFuncSegmentBuilderBase<MP4>

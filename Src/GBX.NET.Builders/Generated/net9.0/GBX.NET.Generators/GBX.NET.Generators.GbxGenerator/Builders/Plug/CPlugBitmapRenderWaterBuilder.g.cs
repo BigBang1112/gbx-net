@@ -11,7 +11,8 @@ public abstract class CPlugBitmapRenderWaterBuilderBase<TSelf> : NodeBuilder<glo
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames5 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames6 = GameVersion.TM2020;
     public TSelf WithIVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdMaskAssignment(), value, SupportedGames1);
     public TSelf WithIVIdRef(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetIVIdRefAssignment(), value, SupportedGames1);
     public TSelf WithSVIdMask(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetSVIdMaskAssignment(), value, SupportedGames1);
@@ -24,6 +25,11 @@ public abstract class CPlugBitmapRenderWaterBuilderMembers1<TSelf> : CPlugBitmap
     public TSelf WithBitmapClearReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearReferenceAssignment(), value, SupportedGames3);
     public TSelf WithBitmapClearUV(Vec2? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetBitmapClearUVAssignment(), value, SupportedGames3);
     public TSelf WithClearColor(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetClearColorAssignment(), value, SupportedGames3);
+    public TSelf WithClipPlaneHeight(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetClipPlaneHeightAssignment(), value, SupportedGames3);
+    public TSelf WithFMargin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFMarginAssignment(), value, SupportedGames3);
+    public TSelf WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFrustumAssignment(), value, SupportedGames3);
+    public TSelf WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames3);
+    public TSelf WithMirrorScaleY(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetMirrorScaleYAssignment(), value, SupportedGames3);
 }
 public abstract class CPlugBitmapRenderWaterBuilderMembers2<TSelf> : CPlugBitmapRenderWaterBuilderMembers1<TSelf> where TSelf : CPlugBitmapRenderWaterBuilderMembers2<TSelf>
 {
@@ -35,7 +41,8 @@ public abstract class CPlugBitmapRenderWaterBuilderMembers3<TSelf> : CPlugBitmap
 {
     private protected CPlugBitmapRenderWaterBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater> state) : base(state) { }
     public TSelf WithFogCustomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetFogCustomFarZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithFogMaxDepth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFogMaxDepthAssignment(), value, SupportedGames5);
+    public TSelf WithRenderFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderFlagsAssignment(), value, SupportedGames5);
 }
 public abstract class CPlugBitmapRenderWaterBuilderMembers4<TSelf> : CPlugBitmapRenderWaterBuilderMembers3<TSelf> where TSelf : CPlugBitmapRenderWaterBuilderMembers4<TSelf>
 {
@@ -49,6 +56,7 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087004());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086006());
         return node;
@@ -56,6 +64,7 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086009());
@@ -64,6 +73,8 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087006());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
@@ -79,35 +90,38 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
     }
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe4(GameVersion game)
     {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600E());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe6(GameVersion game)
+    {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087006());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600B());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600D());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe5(GameVersion game)
-    {
-        var node = CreateRecipe2(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600E());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe6(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086010());
         return node;
     }
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater.Chunk09087008(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
@@ -168,15 +182,9 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater> state) : base(state) { }
         public TMU WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithClipPlaneHeight(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetClipPlaneHeightAssignment(), value, SupportedGames5);
-        public TMU WithFMargin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFMarginAssignment(), value, SupportedGames5);
-        public TMU WithFogMaxDepth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFogMaxDepthAssignment(), value, SupportedGames5);
-        public TMU WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetFrustumAssignment(), value, SupportedGames5);
-        public TMU WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames5);
-        public TMU WithMirrorScaleY(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetMirrorScaleYAssignment(), value, SupportedGames5);
         public TMU WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMU? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater node);
     }
     public partial class VSK5 : CPlugBitmapRenderWaterBuilderMembers4<VSK5>
@@ -194,7 +202,7 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
         public TMF WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater node);
     }
     public partial class MP3 : CPlugBitmapRenderWaterBuilderBase<MP3>
@@ -205,7 +213,7 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
         public MP3 WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames2);
         public MP3 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? value) => WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater node);
     }
     public partial class TMT : CPlugBitmapRenderWaterBuilderMembers4<TMT>
@@ -214,7 +222,7 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
         public TMT WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater node);
     }
     public partial class MP4 : CPlugBitmapRenderWaterBuilderMembers4<MP4>
@@ -223,13 +231,15 @@ public partial class CPlugBitmapRenderWaterBuilder : CPlugBitmapRenderWaterBuild
         public MP4 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater node);
     }
     public partial class TM2020 : CPlugBitmapRenderWaterBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater> state) : base(state) { }
         public TM2020 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithInvisibleSleepPeriod(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetInvisibleSleepPeriodAssignment(), value, SupportedGames6);
+        public TM2020 WithMaxUpdatePeriod(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderWaterBuilderAssignments.GetMaxUpdatePeriodAssignment(), value, SupportedGames6);
         public TM2020 WithRenderSub(global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? value) => base.WithRenderSub(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater Build() => BuildNode(CPlugBitmapRenderWaterBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);

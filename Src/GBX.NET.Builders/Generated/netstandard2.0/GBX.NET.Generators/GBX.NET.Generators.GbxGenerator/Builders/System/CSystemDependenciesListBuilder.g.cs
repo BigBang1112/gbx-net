@@ -7,7 +7,7 @@ public abstract class CSystemDependenciesListBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CSystemDependenciesListBuilderBase() { }
     private protected CSystemDependenciesListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithFiles(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.System.CSystemDependenciesListBuilderAssignments.GetFilesAssignment(), value, SupportedGames1);
     public TSelf WithFiles(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithFiles(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithFiles(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithFiles(values.ToArray());
@@ -22,7 +22,17 @@ public partial class CSystemDependenciesListBuilder : CSystemDependenciesListBui
         node.Chunks.Add(new global::GBX.NET.Engines.System.CSystemDependenciesList.Chunk0B010000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CSystemDependenciesListBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state) : base(state) { }
+        public global::GBX.NET.Interfaces.System.ISystemDependenciesListMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.System.CSystemDependenciesList Build() => BuildNode(CSystemDependenciesListBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.System.CSystemDependenciesList node);
+    }
     public partial class TM2020 : CSystemDependenciesListBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.System.CSystemDependenciesList> state) : base(state) { }

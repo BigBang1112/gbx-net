@@ -182,25 +182,13 @@ public partial class CControlScriptEditor : CControlBase, IClass
     /// CControlScriptEditor 0x002 chunk (syntax colors)
     /// </summary>
     [Chunk(0x07034002, "syntax colors")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07034002 : Chunk<CControlScriptEditor>, IVersionable
     {
         public override uint Id => 0x07034002;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec4 U01;
-
-        public Chunk07034002() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk07034002(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -7,7 +7,7 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CGameManialink3dMoodBuilderBase() { }
     private protected CGameManialink3dMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithCloudsRgbMaxLinear(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, SupportedGames1);
     public TSelf WithCloudsRgbMinLinear(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, SupportedGames1);
     public TSelf WithFidImageCloudsMinMaxDayTime(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, SupportedGames1);
@@ -42,10 +42,18 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000() { Version = 1 });
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CGameManialink3dMoodBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManialink3dMood Build() => BuildNode(CGameManialink3dMoodBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManialink3dMood node);
+    }
     public partial class MP4 : CGameManialink3dMoodBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) : base(state) { }

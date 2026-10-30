@@ -8,4 +8,10 @@ internal static class CSceneLocationCameraBuilderAssignments
     private static NodeBuilderProperty<Rect>? cached0;
     internal static NodeBuilderProperty<Rect> GetFovRectAssignment() => cached0 ??= new("FovRect", new Action<object, Rect>(Assign0));
     private static void Assign0(object node, Rect value) => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)node).FovRect = value;
+    private static NodeBuilderProperty<BoxAligned>? cached1;
+    internal static NodeBuilderProperty<BoxAligned> GetFrustumAssignment() => cached1 ??= new("Frustum", new Action<object, BoxAligned>(Assign1));
+    private static void Assign1(object node, BoxAligned value) => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)node).Frustum = value;
+    private static NodeBuilderProperty<bool>? cached2;
+    internal static NodeBuilderProperty<bool> GetIsOrthographicAssignment() => cached2 ??= new("IsOrthographic", new Action<object, bool>(Assign2));
+    private static void Assign2(object node, bool value) => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)node).IsOrthographic = value;
 }

@@ -3,6 +3,14 @@
 
 namespace GBX.NET.Engines.GameData;
 
+public static class CGameActionFxResourcesBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameActionFxResources)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameActionFxResourcesBuilder Create() => new();
+    }
+}
+
 public static class CGameActionModelBuilderExtensions
 {
     extension(global::GBX.NET.Engines.GameData.CGameActionModel)
@@ -91,11 +99,91 @@ public static class CGameItemPlacementParamBuilderExtensions
     }
 }
 
+public static class CGameManiaAppTextSetBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameManiaAppTextSet)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameManiaAppTextSetBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundAltimeterModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundAltimeterModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundAltimeterModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundChronoModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundChronoModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundChronoModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundHudModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundHudModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundHudModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundInventoryModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundInventoryModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundInventoryModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundPlayerStateModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundPlayerStateModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundPlayerStateModelBuilder Create() => new();
+    }
+}
+
 public static class CGameModulePlaygroundScoresTableModelBuilderExtensions
 {
     extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel)
     {
         public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundScoresTableModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundSpeedMeterModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundSpeedMeterModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundSpeedMeterModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundStoreModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundStoreModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundStoreModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundTeamStateModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundTeamStateModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundTeamStateModelBuilder Create() => new();
+    }
+}
+
+public static class CGameModulePlaygroundThrottleModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.GameData.CGameModulePlaygroundThrottleModel)
+    {
+        public static global::GBX.NET.Builders.Engines.GameData.CGameModulePlaygroundThrottleModelBuilder Create() => new();
     }
 }
 

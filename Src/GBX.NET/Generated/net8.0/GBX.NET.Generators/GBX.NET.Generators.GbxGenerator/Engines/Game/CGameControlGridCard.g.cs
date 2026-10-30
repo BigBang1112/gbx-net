@@ -268,24 +268,12 @@ public partial class CGameControlGridCard : CGameControlGrid, IClass
     /// CGameControlGridCard 0x006 chunk
     /// </summary>
     [Chunk(0x030BA006)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030BA006 : Chunk<CGameControlGridCard>, IVersionable
     {
         public override uint Id => 0x030BA006;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk030BA006() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk030BA006(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

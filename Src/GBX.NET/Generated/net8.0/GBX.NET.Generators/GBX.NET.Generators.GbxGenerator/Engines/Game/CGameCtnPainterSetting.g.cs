@@ -504,24 +504,12 @@ public partial class CGameCtnPainterSetting : CMwNod, IClass
     /// CGameCtnPainterSetting 0x00A chunk (raster mask shaders)
     /// </summary>
     [Chunk(0x0304800A, "raster mask shaders")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0304800A : Chunk<CGameCtnPainterSetting>, IVersionable
     {
         public override uint Id => 0x0304800A;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0304800A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0304800A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

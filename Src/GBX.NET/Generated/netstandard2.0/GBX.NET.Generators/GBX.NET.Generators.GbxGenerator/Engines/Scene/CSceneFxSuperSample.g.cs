@@ -150,7 +150,7 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
     /// CSceneFxSuperSample 0x003 chunk
     /// </summary>
     [Chunk(0x0A035003)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A035003 : Chunk<CSceneFxSuperSample>, IVersionable
     {
         public override uint Id => 0x0A035003;
@@ -185,18 +185,6 @@ public partial class CSceneFxSuperSample : CSceneFxCompo, IClass
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
-        }
-
-        public Chunk0A035003() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0A035003(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
-            {
-                Version = 0;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

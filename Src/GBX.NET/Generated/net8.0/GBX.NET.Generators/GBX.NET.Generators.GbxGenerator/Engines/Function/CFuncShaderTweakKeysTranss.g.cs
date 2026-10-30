@@ -12,9 +12,39 @@ public partial class CFuncShaderTweakKeysTranss : CFuncShader, IClass
 
     internal override uint GetId() => Id;
 
+    private NodeRefList<CFuncKeysTrans?>? boneKeys;
+    /// <summary>
+    /// One per bone, null for zero translation
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk05033000>]
+    public NodeRefList<CFuncKeysTrans?>? BoneKeys
+    {
+        get => boneKeys;
+        set => boneKeys = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncShaderTweakKeysTranss owner;
+        internal NodeRefView(CFuncShaderTweakKeysTranss owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CFuncKeysTrans?>>? BoneKeys => owner.boneKeys?.References;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (boneKeys is not null)
+        {
+            for (var i = 0; i < boneKeys.Count; i++) yield return new("BoneKeys" + "[" + i + "]", boneKeys.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CFuncShaderTweakKeysTranss)clone).boneKeys = context.Clone(this.boneKeys)!;
     }
 
     public CFuncShaderTweakKeysTranss()
@@ -22,43 +52,23 @@ public partial class CFuncShaderTweakKeysTranss : CFuncShader, IClass
     }
 
     /// <summary>
-    /// CFuncShaderTweakKeysTranss 0x000 chunk
+    /// CFuncShaderTweakKeysTranss 0x000 chunk (BoneKeys)
     /// </summary>
-    [Chunk(0x05033000)]
+    [Chunk(0x05033000, "BoneKeys")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05033000 : Chunk<CFuncShaderTweakKeysTranss>
     {
         public override uint Id => 0x05033000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
-        public NodeRefList<CMwNod>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk05033000 owner;
-            internal NodeRefView(Chunk05033000 owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            if (U01 is not null)
-            {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
-            }
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05033000)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CFuncShaderTweakKeysTranss n, GbxReaderWriter rw)
         {
-            U01 = rw.ListNodeRef<CMwNod>(U01);
+            n.boneKeys = rw.ListNodeRef<CFuncKeysTrans?>(n.boneKeys);
         }
     }
 

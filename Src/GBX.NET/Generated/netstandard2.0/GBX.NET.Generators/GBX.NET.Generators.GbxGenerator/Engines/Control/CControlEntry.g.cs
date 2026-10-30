@@ -328,24 +328,12 @@ public partial class CControlEntry : CControlText, IClass
     /// CControlEntry 0x00B chunk
     /// </summary>
     [Chunk(0x0700900B)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700900B : Chunk<CControlEntry>, IVersionable
     {
         public override uint Id => 0x0700900B;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0700900B() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0700900B(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

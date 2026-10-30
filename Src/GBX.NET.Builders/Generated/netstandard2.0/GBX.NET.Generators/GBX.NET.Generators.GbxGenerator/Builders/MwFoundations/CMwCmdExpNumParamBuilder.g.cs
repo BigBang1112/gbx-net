@@ -7,31 +7,77 @@ public abstract class CMwCmdExpNumParamBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CMwCmdExpNumParamBuilderBase() { }
     private protected CMwCmdExpNumParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
-    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF | GameVersion.TMU);
+    public TSelf WithParameter(global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMwCmdExpNumParamBuilder : CMwCmdExpNumParamBuilderBase<CMwCmdExpNumParamBuilder>
 {
     private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam();
+        node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01048001());
+        return node;
+    }
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam();
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01046000());
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam.Chunk01048001());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TM10 : CMwCmdExpNumParamBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
+    public partial class TMPU : CMwCmdExpNumParamBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
+    public partial class TMSX : CMwCmdExpNumParamBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
+    public partial class TMNESWC : CMwCmdExpNumParamBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
     public partial class TMU : CMwCmdExpNumParamBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
+    }
+    public partial class VSK5 : CMwCmdExpNumParamBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
     }
     public partial class TMF : CMwCmdExpNumParamBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumParamTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam Build() => BuildNode(CMwCmdExpNumParamBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumParam node);
     }
 }

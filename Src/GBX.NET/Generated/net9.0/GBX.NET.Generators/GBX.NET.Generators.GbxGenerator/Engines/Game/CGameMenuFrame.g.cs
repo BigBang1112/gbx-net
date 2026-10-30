@@ -437,24 +437,12 @@ public partial class CGameMenuFrame : CControlFrame, IClass
     /// CGameMenuFrame 0x009 chunk (NavigationDepth_Manialink3d_Unused)
     /// </summary>
     [Chunk(0x0300B009, "NavigationDepth_Manialink3d_Unused")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0300B009 : Chunk<CGameMenuFrame>, IVersionable
     {
         public override uint Id => 0x0300B009;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0300B009() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0300B009(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

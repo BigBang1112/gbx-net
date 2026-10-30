@@ -15,8 +15,7 @@ public abstract class CGamePlayerProfileBuilderBase<TSelf> : NodeBuilder<global:
     private protected const GameVersion SupportedGames6 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5;
     private protected const GameVersion SupportedGames7 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5;
     private protected const GameVersion SupportedGames8 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames9 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames10 = GameVersion.TMF | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames9 = GameVersion.TMF | GameVersion.VSK5;
 }
 public abstract class CGamePlayerProfileBuilderMembers1<TSelf> : CGamePlayerProfileBuilderBase<TSelf> where TSelf : CGamePlayerProfileBuilderMembers1<TSelf>
 {
@@ -37,6 +36,8 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
     private protected CGamePlayerProfileBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
     public TSelf WithBindingsForCompatConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigAssignment(), value, SupportedGames3);
     public TSelf WithBindingsForCompatConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, SupportedGames3);
+    public TSelf WithChallengeOpponents(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent> values) => WithChallengeOpponents(values.ToArray());
     public TSelf WithNickName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNickNameAssignment(), value, SupportedGames4);
     public TSelf WithUnlockAllCheat(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUnlockAllCheatAssignment(), value, SupportedGames4);
 }
@@ -69,41 +70,39 @@ public abstract class CGamePlayerProfileBuilderMembers6<TSelf> : CGamePlayerProf
     public TSelf WithCurrentSoloPlaylistName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistNameAssignment(), value, SupportedGames8);
     public TSelf WithCurrentSoloPlaylistPath(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCurrentSoloPlaylistPathAssignment(), value, SupportedGames8);
     public TSelf WithLoginValidated(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLoginValidatedAssignment(), value, SupportedGames8);
-    public TSelf WithOnlineLogin(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, SupportedGames8);
+    public TSelf WithOnlineLogin(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
     public TSelf WithRememberOnlinePassword(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetRememberOnlinePasswordAssignment(), value, SupportedGames8);
 }
 public abstract class CGamePlayerProfileBuilderMembers7<TSelf> : CGamePlayerProfileBuilderMembers6<TSelf> where TSelf : CGamePlayerProfileBuilderMembers7<TSelf>
 {
     private protected CGamePlayerProfileBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
-    public TSelf WithAutoConnect(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAutoConnectAssignment(), value, SupportedGames10);
-    public TSelf WithBindingsConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigAssignment(), value, SupportedGames10);
-    public TSelf WithBindingsConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigReferenceAssignment(), value, SupportedGames10);
-    public TSelf WithCampaignUnlocks(params global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, SupportedGames9);
+    public TSelf WithAutoConnect(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetAutoConnectAssignment(), value, SupportedGames9);
+    public TSelf WithBindingsConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigAssignment(), value, SupportedGames9);
+    public TSelf WithBindingsConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsConfigReferenceAssignment(), value, SupportedGames9);
+    public TSelf WithCampaignUnlocks(params global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithCampaignUnlocks(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock> values) => WithCampaignUnlocks(values.ToArray());
-    public TSelf WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, SupportedGames9);
-    public TSelf WithChallengeOpponents(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent> values) => WithChallengeOpponents(values.ToArray());
-    public TSelf WithEnableChat(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableChatAssignment(), value, SupportedGames10);
-    public TSelf WithInboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetInboxMessagesAssignment(), value, SupportedGames10);
+    public TSelf WithEnableChat(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableChatAssignment(), value, SupportedGames9);
+    public TSelf WithInboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetInboxMessagesAssignment(), value, SupportedGames9);
     public TSelf WithInboxMessages(params global::GBX.NET.Engines.Game.CGameNetOnlineMessage[] values) => WithInboxMessages(new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(values));
     public TSelf WithInboxMessages(IEnumerable<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> values) => WithInboxMessages(values.ToArray());
-    public TSelf WithIsShowPlayerGhost(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetIsShowPlayerGhostAssignment(), value, SupportedGames10);
-    public TSelf WithLadderMode(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLadderModeAssignment(), value, SupportedGames10);
+    public TSelf WithIsShowPlayerGhost(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetIsShowPlayerGhostAssignment(), value, SupportedGames9);
+    public TSelf WithLadderMode(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLadderModeAssignment(), value, SupportedGames9);
     public TSelf WithMaxPlayerCount(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxPlayerCountAssignment(), value, GameVersion.TMF | GameVersion.TMPU | GameVersion.VSK5);
-    public TSelf WithMaxSpectatorCount(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxSpectatorCountAssignment(), value, SupportedGames10);
-    public TSelf WithMultiLocalProfileHeaders(params global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMultiLocalProfileHeadersAssignment(), value, SupportedGames10);
+    public TSelf WithMaxSpectatorCount(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMaxSpectatorCountAssignment(), value, SupportedGames9);
+    public TSelf WithMultiLocalProfileHeaders(params global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMultiLocalProfileHeadersAssignment(), value, SupportedGames9);
     public TSelf WithMultiLocalProfileHeaders(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader> values) => WithMultiLocalProfileHeaders(values.ToArray());
-    public TSelf WithNetworkGameMode(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNetworkGameModeAssignment(), value, SupportedGames10);
-    public TSelf WithOutboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOutboxMessagesAssignment(), value, SupportedGames10);
+    public TSelf WithNetworkGameMode(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetNetworkGameModeAssignment(), value, SupportedGames9);
+    public TSelf WithOutboxMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOutboxMessagesAssignment(), value, SupportedGames9);
     public TSelf WithOutboxMessages(params global::GBX.NET.Engines.Game.CGameNetOnlineMessage[] values) => WithOutboxMessages(new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(values));
     public TSelf WithOutboxMessages(IEnumerable<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> values) => WithOutboxMessages(values.ToArray());
-    public TSelf WithReadMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReadMessagesAssignment(), value, SupportedGames10);
+    public TSelf WithReadMessages(NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetReadMessagesAssignment(), value, SupportedGames9);
     public TSelf WithReadMessages(params global::GBX.NET.Engines.Game.CGameNetOnlineMessage[] values) => WithReadMessages(new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(values));
     public TSelf WithReadMessages(IEnumerable<global::GBX.NET.Engines.Game.CGameNetOnlineMessage> values) => WithReadMessages(values.ToArray());
-    public TSelf WithServerComment(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerCommentAssignment(), value, SupportedGames10);
-    public TSelf WithShowAdvancedServerSettings(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowAdvancedServerSettingsAssignment(), value, SupportedGames10);
-    public TSelf WithUpdatedAt(DateTime? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUpdatedAtAssignment(), value, SupportedGames10);
-    public TSelf WithVehicleNetQuality(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleNetQualityAssignment(), value, SupportedGames10);
-    public TSelf WithVehicleProfiles(params global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleProfilesAssignment(), value, SupportedGames10);
+    public TSelf WithServerComment(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetServerCommentAssignment(), value, SupportedGames9);
+    public TSelf WithShowAdvancedServerSettings(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetShowAdvancedServerSettingsAssignment(), value, SupportedGames9);
+    public TSelf WithUpdatedAt(DateTime? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetUpdatedAtAssignment(), value, SupportedGames9);
+    public TSelf WithVehicleNetQuality(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleNetQualityAssignment(), value, SupportedGames9);
+    public TSelf WithVehicleProfiles(params global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetVehicleProfilesAssignment(), value, SupportedGames9);
     public TSelf WithVehicleProfiles(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile> values) => WithVehicleProfiles(values.ToArray());
 }
 public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<CGamePlayerProfileBuilder>
@@ -111,6 +110,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
     private static global::GBX.NET.Engines.Game.CGamePlayerProfile CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGamePlayerProfile();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.HeaderChunk0308C000());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C000());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C005());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C006());
@@ -118,6 +118,9 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C009());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C00A());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C00C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B500C());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfile CreateRecipe1(GameVersion game)
@@ -138,6 +141,12 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01C());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B500F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5014());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfile CreateRecipe2(GameVersion game)
@@ -161,11 +170,34 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C028());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C029());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C02A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5014());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfile CreateRecipe3(GameVersion game)
     {
-        var node = CreateRecipe2(game);
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfile();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C016());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C01F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C023());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C025());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C027());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C028());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C029());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C02A());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C02B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C02C());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C02D());
@@ -176,6 +208,11 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C032());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C033());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk0308C034());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGamePlayerProfile.Chunk240B5014());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGamePlayerProfile CreateRecipe4(GameVersion game)
@@ -294,6 +331,8 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
         public TM10 WithBindingsForCompatConfig(global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10? value) => base.WithBindingsForCompatConfig(value is null ? (global::GBX.NET.Engines.Input.CInputBindingsConfig?)null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithOnlineLogin(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+        public TM10 WithOnlineSupportKey(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.TM10);
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfile Build() => BuildNode(CGamePlayerProfileBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfile node);
@@ -330,9 +369,9 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public TMU WithBindingsForCompatConfig(global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigAssignment(), value, SupportedGames3);
         public TMU WithBindingsForCompatConfigReference(NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetBindingsForCompatConfigReferenceAssignment(), value, SupportedGames3);
         public TMU WithBindingsForCompatConfig(global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMU? value) => WithBindingsForCompatConfig(value is null ? (global::GBX.NET.Engines.Input.CInputBindingsConfig?)null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithCampaignUnlocks(params global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, SupportedGames9);
+        public TMU WithCampaignUnlocks(params global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetCampaignUnlocksAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
         public TMU WithCampaignUnlocks(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock> values) => WithCampaignUnlocks(values.ToArray());
-        public TMU WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, SupportedGames9);
+        public TMU WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetChallengeOpponentsAssignment(), value, SupportedGames3);
         public TMU WithChallengeOpponents(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent> values) => WithChallengeOpponents(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfile Build() => BuildNode(CGamePlayerProfileBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);

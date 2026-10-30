@@ -40,7 +40,7 @@ public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPl
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build() => BuildNode(CPlugFogVolumeBoxBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build() => BuildNode(CPlugFogVolumeBoxBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node);
     }
     public partial class MP4 : CPlugFogVolumeBoxBuilderBase<MP4>

@@ -69,24 +69,12 @@ public partial class CPlugFxLensFlareArray : CPlug, IClass
     /// CPlugFxLensFlareArray 0x000 chunk (bitmap and lens flares)
     /// </summary>
     [Chunk(0x090C1000, "bitmap and lens flares")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C1000 : Chunk<CPlugFxLensFlareArray>, IVersionable
     {
         public override uint Id => 0x090C1000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090C1000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090C1000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

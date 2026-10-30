@@ -67,6 +67,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TM10 : CFuncShaderTweakKeysTranssBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TM10 WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TM10 WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TM10 WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TM10 WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?>(values, true));
+        public TM10 WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -74,6 +79,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMPU : CFuncShaderTweakKeysTranssBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMPU WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMPU WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMPU WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMPU WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?>(values, true));
+        public TMPU WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -81,6 +91,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMSX : CFuncShaderTweakKeysTranssBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMSX WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMSX WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMSX WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?>(values, true));
+        public TMSX WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -88,6 +103,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMNESWC : CFuncShaderTweakKeysTranssBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMNESWC WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMNESWC WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMNESWC WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?>(values, true));
+        public TMNESWC WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -95,6 +115,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMU : CFuncShaderTweakKeysTranssBuilderMembers1<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMU WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMU WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMU WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?>(values, true));
+        public TMU WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -102,6 +127,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class VSK5 : CFuncShaderTweakKeysTranssBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public VSK5 WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public VSK5 WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public VSK5 WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public VSK5 WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?>(values, true));
+        public VSK5 WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -109,6 +139,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMF : CFuncShaderTweakKeysTranssBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMF WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMF WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMF WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMF WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?>(values, true));
+        public TMF WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -123,6 +158,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class TMT : CFuncShaderTweakKeysTranssBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public TMT WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMT WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public TMT WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public TMT WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?>(values, true));
+        public TMT WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);
@@ -130,6 +170,11 @@ public partial class CFuncShaderTweakKeysTranssBuilder : CFuncShaderTweakKeysTra
     public partial class MP4 : CFuncShaderTweakKeysTranssBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss> state) : base(state) { }
+        public MP4 WithBoneKeys(NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncShaderTweakKeysTranssBuilderAssignments.GetBoneKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public MP4 WithBoneKeys(params global::GBX.NET.Engines.Function.CFuncKeysTrans?[] values) => WithBoneKeys(new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(values));
+        public MP4 WithBoneKeys(IEnumerable<global::GBX.NET.Engines.Function.CFuncKeysTrans?> values) => WithBoneKeys(values.ToArray());
+        public MP4 WithBoneKeys(params global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?[] values) => WithBoneKeys(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?>(values, true));
+        public MP4 WithBoneKeys(IEnumerable<global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?> values) => WithBoneKeys(values.ToArray());
         public global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss Build() => BuildNode(CFuncShaderTweakKeysTranssBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss node);

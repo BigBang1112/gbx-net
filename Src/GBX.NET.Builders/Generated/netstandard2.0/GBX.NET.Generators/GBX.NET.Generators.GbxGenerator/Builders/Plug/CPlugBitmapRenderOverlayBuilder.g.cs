@@ -43,6 +43,11 @@ public abstract class CPlugBitmapRenderOverlayBuilderMembers4<TSelf> : CPlugBitm
     public TSelf WithRenderSub(global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubAssignment(), value, SupportedGames2);
     public TSelf WithRenderSubReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderBuilderAssignments.GetRenderSubReferenceAssignment(), value, SupportedGames2);
 }
+public abstract class CPlugBitmapRenderOverlayBuilderMembers5<TSelf> : CPlugBitmapRenderOverlayBuilderMembers4<TSelf> where TSelf : CPlugBitmapRenderOverlayBuilderMembers5<TSelf>
+{
+    private protected CPlugBitmapRenderOverlayBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay> state) : base(state) { }
+    public TSelf WithIsOverlaySelfBlur(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderOverlayBuilderAssignments.GetIsOverlaySelfBlurAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+}
 public partial class CPlugBitmapRenderOverlayBuilder : CPlugBitmapRenderOverlayBuilderBase<CPlugBitmapRenderOverlayBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay CreateRecipe0(GameVersion game)
@@ -94,6 +99,7 @@ public partial class CPlugBitmapRenderOverlayBuilder : CPlugBitmapRenderOverlayB
     private static global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay.Chunk0909E000());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk09086008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBitmapRender.Chunk0908600A());
@@ -188,7 +194,7 @@ public partial class CPlugBitmapRenderOverlayBuilder : CPlugBitmapRenderOverlayB
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay Build() => BuildNode(CPlugBitmapRenderOverlayBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay node);
     }
-    public partial class TMT : CPlugBitmapRenderOverlayBuilderMembers4<TMT>
+    public partial class TMT : CPlugBitmapRenderOverlayBuilderMembers5<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay> state) : base(state) { }
         public TMT WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -197,7 +203,7 @@ public partial class CPlugBitmapRenderOverlayBuilder : CPlugBitmapRenderOverlayB
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay Build() => BuildNode(CPlugBitmapRenderOverlayBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay node);
     }
-    public partial class MP4 : CPlugBitmapRenderOverlayBuilderMembers4<MP4>
+    public partial class MP4 : CPlugBitmapRenderOverlayBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay> state) : base(state) { }
         public MP4 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -206,7 +212,7 @@ public partial class CPlugBitmapRenderOverlayBuilder : CPlugBitmapRenderOverlayB
         public global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay Build() => BuildNode(CPlugBitmapRenderOverlayBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay node);
     }
-    public partial class TM2020 : CPlugBitmapRenderOverlayBuilderMembers4<TM2020>
+    public partial class TM2020 : CPlugBitmapRenderOverlayBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapRenderOverlay> state) : base(state) { }
         public TM2020 WithBitmapClear(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapClear(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

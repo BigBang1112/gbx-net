@@ -228,29 +228,13 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     /// CGameManialink3dMood 0x000 chunk (lighting, clouds, fog and sky images (legacy ID))
     /// </summary>
     [Chunk(0x0316F000, "lighting, clouds, fog and sky images (legacy ID)")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 0, -1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0316F000 : Chunk<CGameManialink3dMood>, IVersionable
     {
         public override uint Id => 0x0316F000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
         public bool U01;
-
-        public Chunk0316F000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0316F000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-            else
-            {
-                Version = 1;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -262,7 +246,7 @@ public partial class CGameManialink3dMood : CMwNod, IClass
         public override void ReadWrite(CGameManialink3dMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > global::System.Math.Max(0, 1))
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

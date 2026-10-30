@@ -73,7 +73,7 @@ public abstract class CGameCtnDecorationBuilderMembers5<TSelf> : CGameCtnDecorat
     public TSelf WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames5);
     public TSelf WithIsWaterOutsidePlayField(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationBuilderAssignments.GetIsWaterOutsidePlayFieldAssignment(), value, SupportedGames5);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames5);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames5);
     public TSelf WithSkinDirectory(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, SupportedGames5);
     public TSelf WithVehicleFxFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationBuilderAssignments.GetVehicleFxFolderAssignment(), value, SupportedGames5);
@@ -105,6 +105,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -120,6 +121,8 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038004());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038006());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038007());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -134,6 +137,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038013());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -148,6 +152,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038012());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038013());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038014());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -181,14 +186,13 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038014());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038015());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038016());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe6(GameVersion game)
@@ -200,32 +204,27 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038014());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038015());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038016());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038017(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038018(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E());
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecoration();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038012());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038013());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038014());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038015());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038016());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038017(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038018(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038019(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
@@ -250,7 +249,6 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038017(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038018(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038019(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk0303801A() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
@@ -265,6 +263,31 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe9(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecoration();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038011());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038013());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038014());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038015());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038016());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038017(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038018(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038019(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk0303801A() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100D());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001010(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecoration CreateRecipe10(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnDecoration();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnDecoration.Chunk03038011());
@@ -309,6 +332,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TM10 WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TM10 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
@@ -319,6 +343,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMPU WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMPU WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
@@ -339,6 +364,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
@@ -352,6 +378,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMNESWC WithDecoMood(global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC? value) => base.WithDecoMood(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationMood?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithDecoSize(global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC? value) => base.WithDecoSize(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationSize?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationSize node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithDecoratorSolidWarp(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC? value) => base.WithDecoratorSolidWarp(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithNbAvailableMax(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, SupportedGames9);
         public TMNESWC WithNbAvailableMin(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, SupportedGames9);
         public TMNESWC WithNeedUnlock(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, SupportedGames9);
@@ -386,6 +413,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public VSK5 WithDecoMood(global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5? value) => base.WithDecoMood(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationMood?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithDecoSize(global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5? value) => base.WithDecoSize(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationSize?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationSize node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithDecoratorSolidWarp(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5? value) => base.WithDecoratorSolidWarp(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithNbAvailableMax(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, SupportedGames9);
         public VSK5 WithNbAvailableMin(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, SupportedGames9);
         public VSK5 WithNeedUnlock(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, SupportedGames9);
@@ -393,7 +421,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public VSK5 WithTerrainModifierBase(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5? value) => base.WithTerrainModifierBase(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5? value) => base.WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class TMF : CGameCtnDecorationBuilderMembers4<TMF>
@@ -415,7 +443,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMF WithTerrainModifierBase(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF? value) => base.WithTerrainModifierBase(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF? value) => base.WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class MP3 : CGameCtnDecorationBuilderMembers5<MP3>
@@ -433,7 +461,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public MP3 WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3? value) => WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithVehicleFxSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? value) => base.WithVehicleFxSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class TMT : CGameCtnDecorationBuilderMembers6<TMT>
@@ -452,7 +480,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TMT WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT? value) => WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithVehicleFxSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? value) => base.WithVehicleFxSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class MP4 : CGameCtnDecorationBuilderMembers7<MP4>
@@ -471,7 +499,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public MP4 WithTerrainModifierCovered(global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4? value) => WithTerrainModifierCovered(value is null ? (global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier?)null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithVehicleFxSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value) => base.WithVehicleFxSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe9(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
     public partial class TM2020 : CGameCtnDecorationBuilderMembers7<TM2020>
@@ -495,7 +523,7 @@ public partial class CGameCtnDecorationBuilder : CGameCtnDecorationBuilderBase<C
         public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames10);
         public TM2020 WithVehicleFxSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value) => base.WithVehicleFxSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnDecoration Build() => BuildNode(CGameCtnDecorationBuilder.CreateRecipe10(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecoration node);
     }
 }

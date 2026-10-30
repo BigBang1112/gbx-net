@@ -7,8 +7,8 @@ public abstract class CGameControlCameraBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CGameControlCameraBuilderBase() { }
     private protected CGameControlCameraBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCamera> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameControlCameraBuilderMembers1<TSelf> : CGameControlCameraBuilderBase<TSelf> where TSelf : CGameControlCameraBuilderMembers1<TSelf>
@@ -131,11 +131,11 @@ public partial class CGameControlCameraBuilder : CGameControlCameraBuilderBase<C
         public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCamera node);
     }
-    public partial class TMT : CGameControlCameraBuilderBase<TMT>
+    public partial class TMT : CGameControlCameraBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCamera> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCamera node);
     }
     public partial class MP4 : CGameControlCameraBuilderMembers2<MP4>
@@ -145,11 +145,11 @@ public partial class CGameControlCameraBuilder : CGameControlCameraBuilderBase<C
         public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCamera node);
     }
-    public partial class TM2020 : CGameControlCameraBuilderBase<TM2020>
+    public partial class TM2020 : CGameControlCameraBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCamera> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameControlCameraTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameControlCamera Build() => BuildNode(CGameControlCameraBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCamera node);
     }
 }

@@ -7,7 +7,7 @@ public abstract class CGameControlCardManagerBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CGameControlCardManagerBuilderBase() { }
     private protected CGameControlCardManagerBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardManager> state) : base(state) { }
-    public TSelf WithDataTypes(NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCardManagerBuilderAssignments.GetDataTypesAssignment(), value, GameVersion.TMU);
+    public TSelf WithDataTypes(NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCardManagerBuilderAssignments.GetDataTypesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMU);
     public TSelf WithDataTypes(params global::GBX.NET.Engines.Game.CGameControlDataType[] values) => WithDataTypes(new NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>(values));
     public TSelf WithDataTypes(IEnumerable<global::GBX.NET.Engines.Game.CGameControlDataType> values) => WithDataTypes(values.ToArray());
 }
@@ -20,6 +20,10 @@ public partial class CGameControlCardManagerBuilder : CGameControlCardManagerBui
         return node;
     }
     public TMU ForTMU() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMU : CGameControlCardManagerBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardManager> state) : base(state) { }
@@ -27,6 +31,24 @@ public partial class CGameControlCardManagerBuilder : CGameControlCardManagerBui
         public TMU WithDataTypes(IEnumerable<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU> values) => WithDataTypes(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCardManager Build() => BuildNode(CGameControlCardManagerBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardManager node);
+    }
+    public partial class MP4 : CGameControlCardManagerBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardManager> state) : base(state) { }
+        public MP4 WithDataTypes(params global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4[] values) => base.WithDataTypes(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>(values, false));
+        public MP4 WithDataTypes(IEnumerable<global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4> values) => WithDataTypes(values.ToArray());
+        public global::GBX.NET.Interfaces.Game.IGameControlCardManagerMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameControlCardManager Build() => BuildNode(CGameControlCardManagerBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardManager node);
+    }
+    public partial class TM2020 : CGameControlCardManagerBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardManager> state) : base(state) { }
+        public TM2020 WithDataTypes(params global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020[] values) => base.WithDataTypes(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>(values, false));
+        public TM2020 WithDataTypes(IEnumerable<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020> values) => WithDataTypes(values.ToArray());
+        public global::GBX.NET.Interfaces.Game.IGameControlCardManagerTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameControlCardManager Build() => BuildNode(CGameControlCardManagerBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameControlCardManager node);
     }
 }

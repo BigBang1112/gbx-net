@@ -7,7 +7,7 @@ public abstract class CPlugCharPhyRecoilModelBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CPlugCharPhyRecoilModelBuilderBase() { }
     private protected CPlugCharPhyRecoilModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithBulletModelId(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyRecoilModelBuilderAssignments.GetBulletModelIdAssignment(), value, SupportedGames1);
     public TSelf WithDuration(TimeInt32 value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyRecoilModelBuilderAssignments.GetDurationAssignment(), value, SupportedGames1);
     public TSelf WithFovScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyRecoilModelBuilderAssignments.GetFovScaleAssignment(), value, SupportedGames1);
@@ -21,10 +21,18 @@ public partial class CPlugCharPhyRecoilModelBuilder : CPlugCharPhyRecoilModelBui
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel.Chunk090E0000());
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugCharPhyRecoilModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhyRecoilModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel Build() => BuildNode(CPlugCharPhyRecoilModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel node);
+    }
     public partial class MP4 : CPlugCharPhyRecoilModelBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyRecoilModel> state) : base(state) { }

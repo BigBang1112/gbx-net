@@ -9,8 +9,8 @@ public abstract class CGameControlCameraTrackManiaRaceBuilderBase<TSelf> : NodeB
     private protected CGameControlCameraTrackManiaRaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithInterpolate(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, SupportedGames1);
     public TSelf WithIsUpLinked(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, SupportedGames1);
     public TSelf WithLocation(Iso4 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, SupportedGames1);
@@ -112,19 +112,15 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C());
         return node;
     }
     private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe5(GameVersion game)
     {
-        var node = CreateRecipe6(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C());
-        return node;
-    }
-    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe6(GameVersion game)
-    {
         var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C());
         return node;
     }
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -241,9 +237,20 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class TMT : CGameControlCameraTrackManiaRaceBuilderMembers1<TMT>
+    public partial class TMT : CGameControlCameraTrackManiaRaceBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+        public TMT WithCarCameraAlign(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, SupportedGames2);
+        public TMT WithCarCameraDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, SupportedGames2);
+        public TMT WithCarCameraHeight(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, SupportedGames2);
+        public TMT WithCarCameraTargetDistance(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraTargetDistanceAssignment(), value, SupportedGames2);
+        public TMT WithConeAperture(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeApertureAssignment(), value, SupportedGames2);
+        public TMT WithConeMaxSpeed(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMaxSpeedAssignment(), value, SupportedGames2);
+        public TMT WithConeMinSpeed(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMinSpeedAssignment(), value, SupportedGames2);
+        public TMT WithIsSegmentCast(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetIsSegmentCastAssignment(), value, SupportedGames2);
+        public TMT WithSegmentCastLength(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastLengthAssignment(), value, SupportedGames2);
+        public TMT WithSegmentCastMinDist(float value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastMinDistAssignment(), value, SupportedGames2);
+        public TMT WithUseSpeedDir(bool value) => Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetUseSpeedDirAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
@@ -255,11 +262,11 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class TM2020 : CGameControlCameraTrackManiaRaceBuilderBase<TM2020>
+    public partial class TM2020 : CGameControlCameraTrackManiaRaceBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build() => BuildNode(CGameControlCameraTrackManiaRaceBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
 }

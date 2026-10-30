@@ -7,7 +7,7 @@ public abstract class CControlEffectMoveFrameBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CControlEffectMoveFrameBuilderBase() { }
     private protected CControlEffectMoveFrameBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAngleFrom(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMoveFrameBuilderAssignments.GetAngleFromAssignment(), value, SupportedGames1);
     public TSelf WithDefaultShift(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMoveFrameBuilderAssignments.GetDefaultShiftAssignment(), value, SupportedGames1);
     public TSelf WithIsInverse(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMoveFrameBuilderAssignments.GetIsInverseAssignment(), value, SupportedGames1);
@@ -22,12 +22,70 @@ public partial class CControlEffectMoveFrameBuilder : CControlEffectMoveFrameBui
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlEffectMoveFrame.Chunk07025001());
         return node;
     }
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMSX : CControlEffectMoveFrameBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class TMNESWC : CControlEffectMoveFrameBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
     public partial class TMU : CControlEffectMoveFrameBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
         public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class VSK5 : CControlEffectMoveFrameBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class TMF : CControlEffectMoveFrameBuilderBase<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class TMT : CControlEffectMoveFrameBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class MP4 : CControlEffectMoveFrameBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
+    }
+    public partial class TM2020 : CControlEffectMoveFrameBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMoveFrame> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlEffectMoveFrameTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMoveFrame Build() => BuildNode(CControlEffectMoveFrameBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMoveFrame node);
     }
 }

@@ -211,3 +211,11 @@ public static class CTrackManiaRaceNetTimeAttackBuilderExtensions
     }
 }
 
+public static class CTrackManiaResourceBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.TrackMania.CTrackManiaResource)
+    {
+        public static global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaResourceBuilder Create() => new();
+    }
+}
+

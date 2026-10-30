@@ -16,12 +16,6 @@ public partial class CMwCmdAffectIdentNumBuilder : CMwCmdAffectIdentNumBuilderBa
     private static global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum();
-        node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdent.Chunk01032000());
-        return node;
-    }
-    private static global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum CreateRecipe1(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum();
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum.Chunk01074000());
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdent.Chunk01032000());
         return node;
@@ -65,7 +59,7 @@ public partial class CMwCmdAffectIdentNumBuilder : CMwCmdAffectIdentNumBuilderBa
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentNumTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum Build() => BuildNode(CMwCmdAffectIdentNumBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum Build() => BuildNode(CMwCmdAffectIdentNumBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum node);
     }
     public partial class VSK5 : CMwCmdAffectIdentNumBuilderBase<VSK5>
@@ -79,7 +73,7 @@ public partial class CMwCmdAffectIdentNumBuilder : CMwCmdAffectIdentNumBuilderBa
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentNumTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum Build() => BuildNode(CMwCmdAffectIdentNumBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum Build() => BuildNode(CMwCmdAffectIdentNumBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectIdentNum node);
     }
 }

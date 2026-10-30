@@ -147,6 +147,14 @@ public static class CPlugBitmapApplyArrayBuilderExtensions
     }
 }
 
+public static class CPlugBitmapArrayBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugBitmapArray)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugBitmapArrayBuilder Create() => new();
+    }
+}
+
 public static class CPlugBitmapAtlasBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas)
@@ -347,6 +355,14 @@ public static class CPlugCloudsParamBuilderExtensions
     }
 }
 
+public static class CPlugCloudsSolidsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugCloudsSolids)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugCloudsSolidsBuilder Create() => new();
+    }
+}
+
 public static class CPlugCrystalBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugCrystal)
@@ -475,6 +491,22 @@ public static class CPlugFxHdrScales_Tech3BuilderExtensions
     }
 }
 
+public static class CPlugFxLensDirtGenBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugFxLensDirtGen)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugFxLensDirtGenBuilder Create() => new();
+    }
+}
+
+public static class CPlugFxLensFlareArrayBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugFxLensFlareArray)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugFxLensFlareArrayBuilder Create() => new();
+    }
+}
+
 public static class CPlugFxLightningBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugFxLightning)
@@ -488,6 +520,14 @@ public static class CPlugFxSystemBuilderExtensions
     extension(global::GBX.NET.Engines.Plug.CPlugFxSystem)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilder Create() => new();
+    }
+}
+
+public static class CPlugFxWindOnDecalBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilder Create() => new();
     }
 }
 
@@ -592,6 +632,14 @@ public static class CPlugMediaClipListBuilderExtensions
     extension(global::GBX.NET.Engines.Plug.CPlugMediaClipList)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugMediaClipListBuilder Create() => new();
+    }
+}
+
+public static class CPlugModelShadingBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugModelShading)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugModelShadingBuilder Create() => new();
     }
 }
 
@@ -776,6 +824,14 @@ public static class CPlugShaderPassBuilderExtensions
     extension(global::GBX.NET.Engines.Plug.CPlugShaderPass)
     {
         public static global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilder Create() => new();
+    }
+}
+
+public static class CPlugShieldEmitterModelBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugShieldEmitterModel)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugShieldEmitterModelBuilder Create() => new();
     }
 }
 

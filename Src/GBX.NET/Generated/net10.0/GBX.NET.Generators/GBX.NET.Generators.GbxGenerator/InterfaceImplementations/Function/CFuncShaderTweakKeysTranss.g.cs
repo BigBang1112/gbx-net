@@ -5,4 +5,5 @@ namespace GBX.NET.Engines.Function;
 
 public partial class CFuncShaderTweakKeysTranss : global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTM10, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMF, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP3, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMT, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP4, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTM2020
 {
+    internal NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? GetBoneKeysInterfaceReferences() => BoneKeys;
 }

@@ -7,19 +7,66 @@ public abstract class CSceneFxColorsBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CSceneFxColorsBuilderBase() { }
     private protected CSceneFxColorsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.MP4 | GameVersion.TMT;
+}
+public abstract class CSceneFxColorsBuilderMembers1<TSelf> : CSceneFxColorsBuilderBase<TSelf> where TSelf : CSceneFxColorsBuilderMembers1<TSelf>
+{
+    private protected CSceneFxColorsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
     public TSelf WithBitmapRanges(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapRangesAssignment(), value, SupportedGames1);
     public TSelf WithBitmapRanges(IEnumerable<Vec2> values) => WithBitmapRanges(values.ToArray());
     public TSelf WithBitmapSbch(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapSbchAssignment(), value, SupportedGames1);
     public TSelf WithBitmapSbchReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapSbchReferenceAssignment(), value, SupportedGames1);
     public TSelf WithBitmapTcPeriod(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapTcPeriodAssignment(), value, SupportedGames1);
     public TSelf WithBitmapTcScale(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapTcScaleAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialColors(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialColorsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsReferenceAssignment(), value, SupportedGames1);
+}
+public abstract class CSceneFxColorsBuilderMembers2<TSelf> : CSceneFxColorsBuilderMembers1<TSelf> where TSelf : CSceneFxColorsBuilderMembers2<TSelf>
+{
+    private protected CSceneFxColorsBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+    public TSelf WithMaterialColors(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsAssignment(), value, SupportedGames4);
+    public TSelf WithMaterialColorsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsReferenceAssignment(), value, SupportedGames4);
+}
+public abstract class CSceneFxColorsBuilderMembers3<TSelf> : CSceneFxColorsBuilderMembers1<TSelf> where TSelf : CSceneFxColorsBuilderMembers3<TSelf>
+{
+    private protected CSceneFxColorsBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+    public TSelf WithCloudsIntensity(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetCloudsIntensityAssignment(), value, SupportedGames2);
+    public TSelf WithUserIntensity(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetUserIntensityAssignment(), value, SupportedGames2);
+}
+public abstract class CSceneFxColorsBuilderMembers4<TSelf> : CSceneFxColorsBuilderMembers3<TSelf> where TSelf : CSceneFxColorsBuilderMembers4<TSelf>
+{
+    private protected CSceneFxColorsBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+    public TSelf WithMaterialColors(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsAssignment(), value, SupportedGames4);
+    public TSelf WithMaterialColorsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
+}
+public abstract class CSceneFxColorsBuilderMembers5<TSelf> : CSceneFxColorsBuilderMembers4<TSelf> where TSelf : CSceneFxColorsBuilderMembers5<TSelf>
+{
+    private protected CSceneFxColorsBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+    public TSelf WithBitmapDepth(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapDepthAssignment(), value, SupportedGames3);
+    public TSelf WithBitmapDepthReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapDepthReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithShaderAutoSaturateWithLight(global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderAutoSaturateWithLightAssignment(), value, SupportedGames3);
+    public TSelf WithShaderAutoSaturateWithLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderAutoSaturateWithLightReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithShaderColorGrading(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderColorGradingAssignment(), value, SupportedGames5);
+    public TSelf WithShaderColorGradingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderColorGradingReferenceAssignment(), value, SupportedGames5);
 }
 public partial class CSceneFxColorsBuilder : CSceneFxColorsBuilderBase<CSceneFxColorsBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxColors();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxColors();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A034002());
@@ -28,13 +75,136 @@ public partial class CSceneFxColorsBuilder : CSceneFxColorsBuilderBase<CSceneFxC
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A034009());
         return node;
     }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe3(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400A());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe4(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe6(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400D());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxColors CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxColors();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A034002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A034009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400A());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxColors.Chunk0A03400C());
+        return node;
+    }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
-    public partial class TMU : CSceneFxColorsBuilderBase<TMU>
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CSceneFxColorsBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMPU : CSceneFxColorsBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMSX : CSceneFxColorsBuilderMembers2<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public TMSX WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMNESWC : CSceneFxColorsBuilderMembers2<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public TMNESWC WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMU : CSceneFxColorsBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
         public TMU WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class VSK5 : CSceneFxColorsBuilderMembers3<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public VSK5 WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithMaterialColors(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsAssignment(), value, SupportedGames4);
+        public VSK5 WithMaterialColorsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetMaterialColorsReferenceAssignment(), value, SupportedGames4);
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMF : CSceneFxColorsBuilderMembers4<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public TMF WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TMT : CSceneFxColorsBuilderMembers5<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public TMT WithBitmapDepth(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapDepth(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithShaderAutoSaturateWithLight(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT? value) => base.WithShaderAutoSaturateWithLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class MP4 : CSceneFxColorsBuilderMembers5<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public MP4 WithBitmapDepth(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapDepth(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithShaderAutoSaturateWithLight(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4? value) => base.WithShaderAutoSaturateWithLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
+    }
+    public partial class TM2020 : CSceneFxColorsBuilderMembers3<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxColors> state) : base(state) { }
+        public TM2020 WithBitmapDepth(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapDepthAssignment(), value, SupportedGames3);
+        public TM2020 WithBitmapDepthReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetBitmapDepthReferenceAssignment(), value, SupportedGames3);
+        public TM2020 WithBitmapDepth(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => WithBitmapDepth(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapSbch(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapSbch(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithShaderAutoSaturateWithLight(global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderAutoSaturateWithLightAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderAutoSaturateWithLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxColorsBuilderAssignments.GetShaderAutoSaturateWithLightReferenceAssignment(), value, SupportedGames3);
+        public TM2020 WithShaderAutoSaturateWithLight(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020? value) => WithShaderAutoSaturateWithLight(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxColors Build() => BuildNode(CSceneFxColorsBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxColors node);
     }
 }

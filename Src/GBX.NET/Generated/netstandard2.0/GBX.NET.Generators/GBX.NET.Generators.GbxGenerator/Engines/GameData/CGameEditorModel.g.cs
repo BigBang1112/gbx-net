@@ -178,7 +178,7 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x001 skippable chunk
     /// </summary>
     [Chunk(0x2E01B001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E01B001 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B001;
@@ -186,18 +186,6 @@ public partial class CGameEditorModel : CMwNod, IClass
         public int Version { get; set; }
         public Int128 U01;
         public int U02;
-
-        public Chunk2E01B001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2E01B001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -295,24 +283,12 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x004 chunk (main and sub plugin text sets)
     /// </summary>
     [Chunk(0x2E01B004, "main and sub plugin text sets")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E01B004 : Chunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B004;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk2E01B004() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2E01B004(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

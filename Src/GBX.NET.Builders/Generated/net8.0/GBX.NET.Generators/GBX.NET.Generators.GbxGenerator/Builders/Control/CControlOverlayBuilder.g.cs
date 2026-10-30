@@ -58,6 +58,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     private static global::GBX.NET.Engines.Control.CControlOverlay CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlOverlay();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlOverlay.Chunk07013001());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
@@ -80,25 +81,21 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
         return node;
     }
     private static global::GBX.NET.Engines.Control.CControlOverlay CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlOverlay();
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlOverlay.Chunk07013001());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
@@ -106,20 +103,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     private static global::GBX.NET.Engines.Control.CControlOverlay CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlOverlay();
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
-        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Control.CControlOverlay CreateRecipe5(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Control.CControlOverlay();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlOverlay.Chunk07013001());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
@@ -146,6 +130,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     public partial class TM10 : CControlOverlayBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public TM10 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM10? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM10? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -158,6 +143,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     public partial class TMPU : CControlOverlayBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public TMPU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -170,6 +156,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     public partial class TMSX : CControlOverlayBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public TMSX WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -185,6 +172,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
     public partial class TMNESWC : CControlOverlayBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public TMNESWC WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -194,7 +182,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values) => WithObjectLink(values.ToArray());
         public TMNESWC WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class TMU : CControlOverlayBuilderMembers2<TMU>
@@ -210,12 +198,13 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
         public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class VSK5 : CControlOverlayBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public VSK5 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -225,7 +214,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class TMF : CControlOverlayBuilderMembers2<TMF>
@@ -241,7 +230,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class MP3 : CControlOverlayBuilderMembers2<MP3>
@@ -253,19 +242,20 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe5(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class TMT : CControlOverlayBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlOverlay> state) : base(state) { }
+        public TMT WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMT? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMT? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class MP4 : CControlOverlayBuilderMembers2<MP4>
@@ -278,7 +268,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
     public partial class TM2020 : CControlOverlayBuilderMembers2<TM2020>
@@ -289,7 +279,7 @@ public partial class CControlOverlayBuilder : CControlOverlayBuilderBase<CContro
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlOverlayTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Control.CControlOverlay Build() => BuildNode(CControlOverlayBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlOverlay node);
     }
 }

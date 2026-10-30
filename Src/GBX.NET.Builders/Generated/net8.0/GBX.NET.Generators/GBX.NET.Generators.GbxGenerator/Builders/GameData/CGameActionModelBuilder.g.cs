@@ -87,6 +87,7 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public TMT WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? value) => base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithLegacyInventoryValues(params int[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyInventoryValuesAssignment(), value, GameVersion.TMT);
         public TMT WithLegacyInventoryValues(IEnumerable<int> values) => WithLegacyInventoryValues(values.ToArray());
+        public TMT WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTMT? value) => base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build() => BuildNode(CGameActionModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
