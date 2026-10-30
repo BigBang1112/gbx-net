@@ -29,6 +29,7 @@ public interface IGameItemModelMembers2 : global::GBX.NET.Interfaces.GameData.IG
     bool DisableLightmap { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModel { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModelEdition { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemType { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameItemModelMembers3<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class

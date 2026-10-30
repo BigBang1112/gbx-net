@@ -2639,11 +2639,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// CGameCtnChallenge 0x04D skippable chunk (traffic paths, elements and zones)
     /// </summary>
     [Chunk(0x0304304D, "traffic paths, elements and zones")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 2, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 2, 2)]
     public partial class Chunk0304304D : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304304D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
 
         public Chunk0304304D() : this(GameVersion.Unspecified)
@@ -2652,7 +2652,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public Chunk0304304D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 2;
             }

@@ -91,7 +91,7 @@ public class CGameCtnChallengeIgnoredChunkTests
         {
             await Assert.That(node.TrafficZoneSquares).IsNull();
         }
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4);
     }
 
     [Test]

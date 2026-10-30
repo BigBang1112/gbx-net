@@ -578,9 +578,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// CGameItemModel 0x000 chunk (item type)
     /// </summary>
     [Chunk(0x2E002000, "item type")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class HeaderChunk2E002000 : HeaderChunk<CGameItemModel>
     {
         public override uint Id => 0x2E002000;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -597,9 +599,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// CGameItemModel 0x001 chunk (file version)
     /// </summary>
     [Chunk(0x2E002001, "file version")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class HeaderChunk2E002001 : HeaderChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002001;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -611,6 +615,10 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
         }
     }
 

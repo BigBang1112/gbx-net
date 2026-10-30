@@ -1,0 +1,37 @@
+using System.Text.RegularExpressions;
+
+namespace GBX.NET.Tests.Integration;
+
+[Category("Integration")]
+public partial class GbxGameVersionFixtureTests
+{
+    public static IEnumerable<(string FilePath, GameVersion Game)> Fixtures()
+    {
+        foreach (var filePath in TestFiles.GbxFixtures())
+        {
+            var match = FixtureName().Match(Path.GetFileName(filePath));
+            if (match.Success && Enum.TryParse<GameVersion>(match.Groups["game"].Value, out var game))
+            {
+                yield return (filePath, game);
+            }
+        }
+    }
+
+    [Test]
+    [MethodDataSource(nameof(Fixtures))]
+    public async Task GameVersionIncludesTheGameFromTheFileName(string filePath, GameVersion game)
+    {
+        // Arrange
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+
+        // Act
+        var gbx = Gbx.Parse(TestFiles.Gbx(filePath), settings);
+
+        // Assert
+        await Assert.That(gbx.Node).IsNotNull();
+        await Assert.That(gbx.Node!.GameVersion).HasFlag(game);
+    }
+
+    [GeneratedRegex(@"^\S+ (?<game>[A-Z][A-Z0-9]+) \d+\.")]
+    private static partial Regex FixtureName();
+}

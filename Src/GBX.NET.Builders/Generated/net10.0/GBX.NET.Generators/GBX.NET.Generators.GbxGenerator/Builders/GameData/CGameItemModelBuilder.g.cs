@@ -176,6 +176,7 @@ public abstract class CGameItemModelBuilderMembers11<TSelf> : CGameItemModelBuil
     public TSelf WithEntityModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelReferenceAssignment(), value, SupportedGames8);
     public TSelf WithEntityModelEdition(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionAssignment(), value, SupportedGames8);
     public TSelf WithEntityModelEditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionReferenceAssignment(), value, SupportedGames8);
+    public TSelf WithItemType(global::GBX.NET.Engines.GameData.CGameItemModel.EItemType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemTypeAssignment(), value, SupportedGames8);
 }
 public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItemModelBuilder>
 {
@@ -390,6 +391,8 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     private static global::GBX.NET.Engines.GameData.CGameItemModel CreateRecipe9(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameItemModel();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.HeaderChunk2E002000());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.HeaderChunk2E002001() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00200C());
@@ -421,6 +424,8 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     private static global::GBX.NET.Engines.GameData.CGameItemModel CreateRecipe10(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.GameData.CGameItemModel();
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.HeaderChunk2E002000());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.HeaderChunk2E002001() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002008());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E00200C());

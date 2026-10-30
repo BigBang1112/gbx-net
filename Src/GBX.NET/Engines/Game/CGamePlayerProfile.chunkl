@@ -1,6 +1,6 @@
 CGamePlayerProfile 0x0308C000
 
-0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey) [TM10]
+0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey) [TM10, TMF, MP3, MP4]
   string OnlineLogin
   string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
 

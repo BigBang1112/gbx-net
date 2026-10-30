@@ -1087,11 +1087,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x000 chunk
     /// </summary>
     [Chunk(0x0308C000)]
-    [ChunkGameVersion(GameVersion.TM10)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4)]
     public partial class HeaderChunk0308C000 : HeaderChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C000;
-        public override GameVersion GameVersion => GameVersion.TM10;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

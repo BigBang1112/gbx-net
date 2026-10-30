@@ -286,7 +286,7 @@ CGameCtnChallenge 0x03043000 // A map.
   string ObjectiveTextSilver
   string ObjectiveTextBronze
 
-0x04D (skippable) [MP3.v2, TMT.v2] // traffic paths, elements and zones
+0x04D (skippable) [MP3.v2, TMT.v2, MP4.v2] // traffic paths, elements and zones
   version
   block (encapsulated)
     CPlugSpline3D[] TrafficPathSplines (deprec)

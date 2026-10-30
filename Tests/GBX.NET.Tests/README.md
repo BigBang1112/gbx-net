@@ -31,7 +31,7 @@ dotnet test --project Tests/GBX.NET.Tests/GBX.NET.Tests.csproj
 
 The first save can normalize the game's encoding, so the original file bytes don't have to match.
 
-- Name fixtures `<Class> <Game> <NNN>.<Extension>.Gbx`, for example `CGameCtnChallenge TMF 004.Challenge.Gbx`.
+- Name fixtures `<Class> <Game> <NNN>.<Extension>.Gbx`, for example `CGameCtnChallenge TMF 004.Challenge.Gbx`. The parsed node's `GameVersion` must include `<Game>`.
 - Replays are skipped until `CGameCtnReplayRecord.IsWriteSupported` is true.
 - Surfaces also need expected geometry in `GmSurfTests.Fixtures()`.
 
