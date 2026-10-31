@@ -12,16 +12,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private string? dirName;
     /// <remarks>Applied with: 0x000 header chunk, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>]
     [AppliedWithChunk<Chunk090F4004>]
     [AppliedWithChunk<Chunk090F4005>]
-    public string? DirName
-    {
-        get => this.dirName;
-        set => this.dirName = value;
-    }
+    public partial string? DirName { get; set; }
 
     private string? painterTextureName;
     /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+, 0x005 v1+ body chunks</remarks>
@@ -67,14 +62,37 @@ public partial class CPlugGameSkin : CMwNod, IClass
         set => this.dirNameAlt = value;
     }
 
-    private Fid[]? customizableFids;
+    private bool disableSkinAddition;
+    /// <summary>
+    /// disables adding skins in the skin chooser
+    /// </summary>
+    /// <remarks>Applied with: 0x000 v5+ header chunk, 0x004 v5+, 0x005 v5+ body chunks</remarks>
+    [AppliedWithChunk<HeaderChunk090F4000>(5)]
+    [AppliedWithChunk<Chunk090F4004>(5)]
+    [AppliedWithChunk<Chunk090F4005>(5)]
+    public bool DisableSkinAddition
+    {
+        get => this.disableSkinAddition;
+        set => this.disableSkinAddition = value;
+    }
+
+    private string? packSubFolder;
+    /// <summary>
+    /// subfolder within extracted skin packs
+    /// </summary>
+    /// <remarks>Applied with: 0x000 v6+ header chunk, 0x004 v6+, 0x005 v6+ body chunks</remarks>
+    [AppliedWithChunk<HeaderChunk090F4000>(6)]
+    [AppliedWithChunk<Chunk090F4004>(6)]
+    [AppliedWithChunk<Chunk090F4005>(6)]
+    public string? PackSubFolder
+    {
+        get => this.packSubFolder;
+        set => this.packSubFolder = value;
+    }
+
     /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090F4004>]
-    public Fid[]? CustomizableFids
-    {
-        get => this.customizableFids;
-        set => this.customizableFids = value;
-    }
+    public partial Fid[]? CustomizableFids { get; set; }
 
     private HeaderFid[]? customizableFilePaths;
     /// <remarks>Applied with: 0x005 body chunk</remarks>
@@ -88,14 +106,16 @@ public partial class CPlugGameSkin : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugGameSkin)clone).dirName = context.Clone(this.dirName)!;
         ((CPlugGameSkin)clone).painterTextureName = context.Clone(this.painterTextureName)!;
         ((CPlugGameSkin)clone).painterSceneId = context.Clone(this.painterSceneId)!;
         ((CPlugGameSkin)clone).headerFids = context.CloneArray(this.headerFids)!;
         ((CPlugGameSkin)clone).dirNameAlt = context.Clone(this.dirNameAlt)!;
-        ((CPlugGameSkin)clone).customizableFids = context.CloneArray(this.customizableFids)!;
+        ((CPlugGameSkin)clone).disableSkinAddition = context.Clone(this.disableSkinAddition)!;
+        ((CPlugGameSkin)clone).packSubFolder = context.Clone(this.packSubFolder)!;
         ((CPlugGameSkin)clone).customizableFilePaths = context.CloneArray(this.customizableFilePaths)!;
-        ((CPlugGameSkin)clone).CustomizableFids2 = context.CloneArray(this.CustomizableFids2)!;
+        ((CPlugGameSkin)clone).customizableFids = context.CloneArray(this.customizableFids)!;
+        ((CPlugGameSkin)clone).dirName = context.Clone(this.dirName)!;
+        ((CPlugGameSkin)clone).CustomizableSounds = context.CloneArray(this.CustomizableSounds)!;
     }
 
     public CPlugGameSkin()
@@ -103,26 +123,24 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugGameSkin 0x000 chunk
+    /// CPlugGameSkin 0x000 chunk (skin directories and remapping paths)
     /// </summary>
-    [Chunk(0x090F4000)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 5, 5, 5, 8)]
+    [Chunk(0x090F4000, "skin directories and remapping paths")]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 4, 4, 5, 5, 5, 8)]
     public partial class HeaderChunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4000;
         public override GameVersion GameVersion => Version switch
         {
-            <= 2 => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
-            <= 4 => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
             <= 5 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
             <= 8 => GameVersion.TM2020,
-            _ => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public bool U01;
-        public string? U02;
-        public int U03;
-        public byte U04;
+        public int U01;
+        public byte U02;
 
         public HeaderChunk090F4000() : this(GameVersion.Unspecified)
         {
@@ -130,11 +148,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
         public HeaderChunk090F4000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMSX)
+            if (gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC)
             {
                 Version = 2;
             }
-            else if (gameVersion == GameVersion.TMF)
+            else if (gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
             {
                 Version = 4;
             }
@@ -146,6 +164,12 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 8;
             }
+            else
+            {
+                Version = 8;
+            }
+
+            U01 = 1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -154,14 +178,12 @@ public partial class CPlugGameSkin : CMwNod, IClass
             ((HeaderChunk090F4000)clone).Version = context.Clone(this.Version)!;
             ((HeaderChunk090F4000)clone).U01 = context.Clone(this.U01)!;
             ((HeaderChunk090F4000)clone).U02 = context.Clone(this.U02)!;
-            ((HeaderChunk090F4000)clone).U03 = context.Clone(this.U03)!;
-            ((HeaderChunk090F4000)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
-            if (Version > 8)
+            if (Version > global::System.Math.Max(8, 8))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -182,19 +204,19 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
                 if (Version >= 5)
                 {
-                    rw.Boolean(ref U01);
+                    rw.Boolean(ref n.disableSkinAddition);
 
                     if (Version >= 6)
                     {
-                        rw.String(ref U02);
+                        rw.String(ref n.packSubFolder);
 
                         if (Version >= 7)
                         {
-                            rw.Int32(ref U03);
+                            rw.Int32(ref U01);
 
                             if (Version >= 8)
                             {
-                                rw.Byte(ref U04);
+                                rw.Byte(ref U02);
                             }
                         }
                     }
@@ -204,9 +226,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugGameSkin 0x000 chunk
+    /// CPlugGameSkin 0x000 chunk (legacy texture remappings)
     /// </summary>
-    [Chunk(0x090F4000)]
+    [Chunk(0x090F4000, "legacy texture remappings")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F4000 : Chunk<CPlugGameSkin>
     {
@@ -220,9 +242,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugGameSkin 0x001 chunk
+    /// CPlugGameSkin 0x001 chunk (legacy sound remappings)
     /// </summary>
-    [Chunk(0x090F4001)]
+    [Chunk(0x090F4001, "legacy sound remappings")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F4001 : Chunk<CPlugGameSkin>
     {
@@ -236,9 +258,23 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugGameSkin 0x003 chunk
+    /// CPlugGameSkin 0x002 chunk (legacy typed remappings)
     /// </summary>
-    [Chunk(0x090F4003)]
+    [Chunk(0x090F4002, "legacy typed remappings")]
+    public partial class Chunk090F4002 : Chunk<CPlugGameSkin>
+    {
+        public override uint Id => 0x090F4002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CPlugGameSkin 0x003 chunk (painter settings)
+    /// </summary>
+    [Chunk(0x090F4003, "painter settings")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F4003 : Chunk<CPlugGameSkin>
     {
@@ -258,9 +294,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugGameSkin 0x004 chunk
+    /// CPlugGameSkin 0x004 chunk (skin directories and remapping references)
     /// </summary>
-    [Chunk(0x090F4004)]
+    [Chunk(0x090F4004, "skin directories and remapping references")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 2, 4, 4, 4, 5, 5, 5)]
     public partial class Chunk090F4004 : Chunk<CPlugGameSkin>, IVersionable
     {
@@ -273,10 +309,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
             _ => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
         };
         public int Version { get; set; }
-        public bool U01;
-        public string? U02;
-        public int U03;
-        public byte U04;
+        public int U01;
+        public byte U02;
 
         public Chunk090F4004() : this(GameVersion.Unspecified)
         {
@@ -300,6 +334,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 8;
             }
+
+            U01 = 1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -308,8 +344,6 @@ public partial class CPlugGameSkin : CMwNod, IClass
             ((Chunk090F4004)clone).Version = context.Clone(this.Version)!;
             ((Chunk090F4004)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F4004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090F4004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090F4004)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
@@ -336,19 +370,19 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
                 if (Version >= 5)
                 {
-                    rw.Boolean(ref U01);
+                    rw.Boolean(ref n.disableSkinAddition);
 
                     if (Version >= 6)
                     {
-                        rw.String(ref U02);
+                        rw.String(ref n.packSubFolder);
 
                         if (Version >= 7)
                         {
-                            rw.Int32(ref U03);
+                            rw.Int32(ref U01);
 
                             if (Version >= 8)
                             {
-                                rw.Byte(ref U04);
+                                rw.Byte(ref U02);
                             }
                         }
                     }
@@ -367,10 +401,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public override uint Id => 0x090F4005;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
-        public string? U02;
-        public int U03;
-        public byte U04;
+        public int U01;
+        public byte U02;
 
         public Chunk090F4005() : this(GameVersion.Unspecified)
         {
@@ -386,6 +418,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 8;
             }
+
+            U01 = 1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -394,8 +428,6 @@ public partial class CPlugGameSkin : CMwNod, IClass
             ((Chunk090F4005)clone).Version = context.Clone(this.Version)!;
             ((Chunk090F4005)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F4005)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090F4005)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090F4005)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
@@ -423,22 +455,22 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.Boolean(ref U01);
+                rw.Boolean(ref n.disableSkinAddition);
             }
 
             if (Version >= 6)
             {
-                rw.String(ref U02);
+                rw.String(ref n.packSubFolder);
             }
 
             if (Version >= 7)
             {
-                rw.Int32(ref U03);
+                rw.Int32(ref U01);
             }
 
             if (Version >= 8)
             {
-                rw.Byte(ref U04);
+                rw.Byte(ref U02);
             }
         }
     }
@@ -459,11 +491,14 @@ public partial class CPlugGameSkin : CMwNod, IClass
             set => this.name = value;
         }
 
-        private string? directory;
-        public string? Directory
+        private string? path;
+        /// <summary>
+        /// file or folder path relative to game data
+        /// </summary>
+        public string? Path
         {
-            get => this.directory;
-            set => this.directory = value;
+            get => this.path;
+            set => this.path = value;
         }
 
         private bool mipMaps;
@@ -485,7 +520,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         {
             ((HeaderFid)clone).classId = context.Clone(this.classId)!;
             ((HeaderFid)clone).name = context.Clone(this.name)!;
-            ((HeaderFid)clone).directory = context.Clone(this.directory)!;
+            ((HeaderFid)clone).path = context.Clone(this.path)!;
             ((HeaderFid)clone).mipMaps = context.Clone(this.mipMaps)!;
         }
 
@@ -493,7 +528,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         {
             rw.UInt32(ref this.classId);
             rw.String(ref this.name);
-            rw.String(ref this.directory);
+            rw.String(ref this.path);
 
             if (v >= 2)
             {
@@ -544,7 +579,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
             ((Fid)clone).nodeRef = context.Clone(this.nodeRef)!;
             ((Fid)clone).classId = context.Clone(this.classId)!;
             ((Fid)clone).name = context.Clone(this.name)!;
-            ((Fid)clone).directory = context.Clone(this.directory)!;
+            ((Fid)clone).path = context.Clone(this.path)!;
             ((Fid)clone).mipMaps = context.Clone(this.mipMaps)!;
         }
 
@@ -565,6 +600,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     {
         0x090F4000 => new Chunk090F4000(),
         0x090F4001 => new Chunk090F4001(),
+        0x090F4002 => new Chunk090F4002(),
         0x090F4003 => new Chunk090F4003(),
         0x090F4004 => new Chunk090F4004(),
         0x090F4005 => new Chunk090F4005(),

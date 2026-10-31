@@ -6110,6 +6110,7 @@ public static partial class ClassManager
         0x090F2000 => new global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty.Chunk090F2000(),
         0x090F4000 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4000(),
         0x090F4001 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4001(),
+        0x090F4002 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4002(),
         0x090F4003 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4003(),
         0x090F4004 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4004(),
         0x090F4005 => new global::GBX.NET.Engines.Plug.CPlugGameSkin.Chunk090F4005(),

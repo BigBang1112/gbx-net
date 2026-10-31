@@ -91,7 +91,7 @@ public class LegacyClassIdentityTests
             fid.ReadWrite(rw, 4);
             await Assert.That(reader.ReadInt32()).IsEqualTo(0x11223344);
         }
-        await Assert.That(fid.Directory).IsEqualTo("Menu\\Menu\\");
+        await Assert.That(fid.Path).IsEqualTo("Menu\\Menu\\");
         await Assert.That(fid.MipMaps).IsTrue();
         using var saved = new MemoryStream();
         using (var writer = new GbxWriter(saved))

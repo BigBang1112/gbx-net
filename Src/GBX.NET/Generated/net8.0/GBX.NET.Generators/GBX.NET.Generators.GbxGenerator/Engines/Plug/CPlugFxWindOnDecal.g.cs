@@ -12,9 +12,113 @@ public partial class CPlugFxWindOnDecal : CPlug, IClass
 
     internal override uint GetId() => Id;
 
+    private float amplitude = 0.1f;
+    /// <summary>
+    /// maximum sideways displacement
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float Amplitude
+    {
+        get => this.amplitude;
+        set => this.amplitude = value;
+    }
+
+    private float oscillationBlend = 0.5f;
+    /// <summary>
+    /// weight of the first oscillation; the second uses 1 minus this value
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float OscillationBlend
+    {
+        get => this.oscillationBlend;
+        set => this.oscillationBlend = value;
+    }
+
+    private float oscillationFrequency1 = 0.5f;
+    /// <summary>
+    /// cycles per second, slowed down for taller sprites
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float OscillationFrequency1
+    {
+        get => this.oscillationFrequency1;
+        set => this.oscillationFrequency1 = value;
+    }
+
+    private float oscillationFrequency2 = 1.88f;
+    /// <summary>
+    /// cycles per second, slowed down for taller sprites
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float OscillationFrequency2
+    {
+        get => this.oscillationFrequency2;
+        set => this.oscillationFrequency2 = value;
+    }
+
+    private float spatialVariation;
+    /// <summary>
+    /// strength of position-dependent amplitude modulation, from 0 to 1
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float SpatialVariation
+    {
+        get => this.spatialVariation;
+        set => this.spatialVariation = value;
+    }
+
+    private float spatialPeriod = 10f;
+    /// <summary>
+    /// distance over which the wind intensity pattern repeats
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float SpatialPeriod
+    {
+        get => this.spatialPeriod;
+        set => this.spatialPeriod = value;
+    }
+
+    private float windSpeed = 1f;
+    /// <summary>
+    /// speed of the wind intensity pattern
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float WindSpeed
+    {
+        get => this.windSpeed;
+        set => this.windSpeed = value;
+    }
+
+    private float windDirection = 0.125f;
+    /// <summary>
+    /// in turns; 0 points along +Z and 0.25 along +X
+    /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090D9000>]
+    public float WindDirection
+    {
+        get => this.windDirection;
+        set => this.windDirection = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugFxWindOnDecal)clone).amplitude = context.Clone(this.amplitude)!;
+        ((CPlugFxWindOnDecal)clone).oscillationBlend = context.Clone(this.oscillationBlend)!;
+        ((CPlugFxWindOnDecal)clone).oscillationFrequency1 = context.Clone(this.oscillationFrequency1)!;
+        ((CPlugFxWindOnDecal)clone).oscillationFrequency2 = context.Clone(this.oscillationFrequency2)!;
+        ((CPlugFxWindOnDecal)clone).spatialVariation = context.Clone(this.spatialVariation)!;
+        ((CPlugFxWindOnDecal)clone).spatialPeriod = context.Clone(this.spatialPeriod)!;
+        ((CPlugFxWindOnDecal)clone).windSpeed = context.Clone(this.windSpeed)!;
+        ((CPlugFxWindOnDecal)clone).windDirection = context.Clone(this.windDirection)!;
     }
 
     public CPlugFxWindOnDecal()
@@ -26,45 +130,34 @@ public partial class CPlugFxWindOnDecal : CPlug, IClass
     /// </summary>
     [Chunk(0x090D9000, "wind settings")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk090D9000 : Chunk<CPlugFxWindOnDecal>
+    public partial class Chunk090D9000 : Chunk<CPlugFxWindOnDecal>, IVersionable
     {
         public override uint Id => 0x090D9000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090D9000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090D9000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090D9000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090D9000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090D9000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090D9000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090D9000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090D9000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090D9000)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090D9000)clone).Version = context.Clone(this.Version)!;
         }
 
         public override void ReadWrite(CPlugFxWindOnDecal n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref n.amplitude);
+            rw.Single(ref n.oscillationBlend);
+            rw.Single(ref n.oscillationFrequency1);
+            rw.Single(ref n.oscillationFrequency2);
+            rw.Single(ref n.spatialVariation);
+            rw.Single(ref n.spatialPeriod);
+            rw.Single(ref n.windSpeed);
+            rw.Single(ref n.windDirection);
         }
     }
 

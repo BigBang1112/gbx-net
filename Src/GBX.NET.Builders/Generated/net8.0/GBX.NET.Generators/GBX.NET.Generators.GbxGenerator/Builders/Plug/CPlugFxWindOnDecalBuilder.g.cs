@@ -7,13 +7,22 @@ public abstract class CPlugFxWindOnDecalBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugFxWindOnDecalBuilderBase() { }
     private protected CPlugFxWindOnDecalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> state) : base(state) { }
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    public TSelf WithAmplitude(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetAmplitudeAssignment(), value, SupportedGames1);
+    public TSelf WithOscillationBlend(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetOscillationBlendAssignment(), value, SupportedGames1);
+    public TSelf WithOscillationFrequency1(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetOscillationFrequency1Assignment(), value, SupportedGames1);
+    public TSelf WithOscillationFrequency2(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetOscillationFrequency2Assignment(), value, SupportedGames1);
+    public TSelf WithSpatialPeriod(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetSpatialPeriodAssignment(), value, SupportedGames1);
+    public TSelf WithSpatialVariation(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetSpatialVariationAssignment(), value, SupportedGames1);
+    public TSelf WithWindDirection(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetWindDirectionAssignment(), value, SupportedGames1);
+    public TSelf WithWindSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxWindOnDecalBuilderAssignments.GetWindSpeedAssignment(), value, SupportedGames1);
 }
 public partial class CPlugFxWindOnDecalBuilder : CPlugFxWindOnDecalBuilderBase<CPlugFxWindOnDecalBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal();
-        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal.Chunk090D9000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal.Chunk090D9000() { Version = 0 });
         return node;
     }
     public TMT ForTMT() => new(state.Snapshot());

@@ -5,6 +5,14 @@ namespace GBX.NET.Interfaces.Plug;
 
 public partial interface IPlugFxWindOnDecal : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal>
 {
+    float Amplitude { get; set; }
+    float OscillationBlend { get; set; }
+    float OscillationFrequency1 { get; set; }
+    float OscillationFrequency2 { get; set; }
+    float SpatialPeriod { get; set; }
+    float SpatialVariation { get; set; }
+    float WindDirection { get; set; }
+    float WindSpeed { get; set; }
 }
 
 public partial interface IPlugFxWindOnDecalTMT : IPlugFxWindOnDecal
