@@ -86,11 +86,11 @@ public class NodeRefTests
         var root = new CGameItemModel();
         var child = new CGameItemModel { EntityModelEdition = root };
         child.CreateChunk<CGameItemModel.Chunk2E002019>().Version = 15;
-        root.NadeoSkinFids = [root, child, child, null, null];
+        root.NadeoSkinsFids = [root, child, child, null, null];
         root.CreateChunk<CGameItemModel.Chunk2E002008>();
         var table = new GbxRefTable();
-        root.NadeoSkinFids!.Get(3).Descriptor = new GbxRefTableFile(table, 0, true, "unresolved.Gbx");
-        root.NadeoSkinFids.Get(4).Descriptor = new GbxRefTableResource(table, 4, true, 42);
+        root.NadeoSkinsFids!.Get(3).Descriptor = new GbxRefTableFile(table, 0, true, "unresolved.Gbx");
+        root.NadeoSkinsFids.Get(4).Descriptor = new GbxRefTableResource(table, 4, true, 42);
 
         using var stream = new MemoryStream();
         root.ToGbx(GbxHeaderBasic.Create(compressionOfBody: compression)).Save(stream);
@@ -98,14 +98,14 @@ public class NodeRefTests
         var parsed = asynchronous ? await Gbx.ParseAsync(stream) : Gbx.Parse(stream);
         var restored = (CGameItemModel)parsed.Node!;
         await Assert.That(parsed.Header.NumNodes).IsEqualTo(4);
-        await Assert.That(restored.NadeoSkinFids![0]).IsSameReferenceAs(restored);
-        await Assert.That(restored.NadeoSkinFids[1]).IsSameReferenceAs(restored.NadeoSkinFids[2]);
-        var restoredChild = (CGameItemModel)restored.NadeoSkinFids[1]!;
+        await Assert.That(restored.NadeoSkinsFids![0]).IsSameReferenceAs(restored);
+        await Assert.That(restored.NadeoSkinsFids[1]).IsSameReferenceAs(restored.NadeoSkinsFids[2]);
+        var restoredChild = (CGameItemModel)restored.NadeoSkinsFids[1]!;
         await Assert.That(restoredChild.EntityModelEdition).IsSameReferenceAs(restored);
-        await Assert.That(restored.NadeoSkinFids.Get(3).File!.FilePath).IsEqualTo("unresolved.Gbx");
-        await Assert.That(restored.NadeoSkinFids.Get(4).Resource!.ResourceIndex).IsEqualTo(42);
-        await Assert.That(restored.NadeoSkinFids.Get(3).State).IsEqualTo(NodeRefState.Unresolved);
-        await Assert.That(restored.NadeoSkinFids.Get(4).State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(restored.NadeoSkinsFids.Get(3).File!.FilePath).IsEqualTo("unresolved.Gbx");
+        await Assert.That(restored.NadeoSkinsFids.Get(4).Resource!.ResourceIndex).IsEqualTo(42);
+        await Assert.That(restored.NadeoSkinsFids.Get(3).State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(restored.NadeoSkinsFids.Get(4).State).IsEqualTo(NodeRefState.Unresolved);
 
         using var rewritten = new MemoryStream();
         parsed.Save(rewritten);
@@ -389,10 +389,10 @@ public class NodeRefTests
     [Test]
     public async Task References_CollectionView_ExposesLiveReadOnlyHandlesWithoutResolving()
     {
-        var owner = new CGameItemModel();
+        var owner = new CGameItemModel { NadeoSkinsFids = null };
         var view = owner.References;
-        await Assert.That(view.NadeoSkinFids).IsNull();
-        await Assert.That(owner.NadeoSkinFids).IsNull();
+        await Assert.That(view.NadeoSkinsFids).IsNull();
+        await Assert.That(owner.NadeoSkinsFids).IsNull();
 
         var calls = 0;
         var table = new GbxRefTable();
@@ -400,10 +400,10 @@ public class NodeRefTests
         var file = table.CreateFile("unloaded.Gbx");
         var nodes = new NodeRefList<CMwNod?> { null, null };
         nodes.Get(0).Descriptor = file;
-        owner.NadeoSkinFids = nodes;
-        var handles = view.NadeoSkinFids!;
+        owner.NadeoSkinsFids = nodes;
+        var handles = view.NadeoSkinsFids!;
 
-        await Assert.That(view.NadeoSkinFids).IsSameReferenceAs(handles);
+        await Assert.That(view.NadeoSkinsFids).IsSameReferenceAs(handles);
         await Assert.That(handles[0]).IsSameReferenceAs(nodes.Get(0));
         await Assert.That(handles[0].File).IsSameReferenceAs(file);
         var stored = handles.ToArray();
@@ -427,12 +427,12 @@ public class NodeRefTests
         handles[0].Descriptor = file;
         await Assert.That(nodes.Get(0).File).IsSameReferenceAs(file);
 
-        owner.NadeoSkinFids = new NodeRefList<CMwNod?> { null };
-        await Assert.That(view.NadeoSkinFids![0]).IsSameReferenceAs(owner.NadeoSkinFids.Get(0));
-        await Assert.That(view.NadeoSkinFids).IsNotSameReferenceAs(handles);
+        owner.NadeoSkinsFids = new NodeRefList<CMwNod?> { null };
+        await Assert.That(view.NadeoSkinsFids![0]).IsSameReferenceAs(owner.NadeoSkinsFids.Get(0));
+        await Assert.That(view.NadeoSkinsFids).IsNotSameReferenceAs(handles);
         await Assert.That(handles.Count).IsEqualTo(2);
-        owner.NadeoSkinFids = null;
-        await Assert.That(view.NadeoSkinFids).IsNull();
+        owner.NadeoSkinsFids = null;
+        await Assert.That(view.NadeoSkinsFids).IsNull();
         await Assert.That(calls).IsEqualTo(0);
     }
 
@@ -478,12 +478,12 @@ public class NodeRefTests
         await Assert.That(first.File).IsSameReferenceAs(file);
         await Assert.That(list.Get(0)).IsNotSameReferenceAs(first);
 
-        var owner = new CGameItemModel { NadeoSkinFids = list };
-        var captured = owner.NadeoSkinFids;
-        owner.NadeoSkinFids = new NodeRefList<CMwNod?> { null };
+        var owner = new CGameItemModel { NadeoSkinsFids = list };
+        var captured = owner.NadeoSkinsFids;
+        owner.NadeoSkinsFids = new NodeRefList<CMwNod?> { null };
         await Assert.That(captured).IsSameReferenceAs(list);
-        await Assert.That(owner.EnumerateReferences().Single(x => x.Key == "NadeoSkinFids[0]").Value)
-            .IsSameReferenceAs(owner.NadeoSkinFids.Get(0));
+        await Assert.That(owner.EnumerateReferences().Single(x => x.Key == "NadeoSkinsFids[0]").Value)
+            .IsSameReferenceAs(owner.NadeoSkinsFids.Get(0));
     }
 
     [Test]

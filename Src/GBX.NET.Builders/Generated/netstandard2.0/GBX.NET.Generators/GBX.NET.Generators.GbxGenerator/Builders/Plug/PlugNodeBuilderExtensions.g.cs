@@ -1051,6 +1051,14 @@ public static class CPlugTurretBuilderExtensions
     }
 }
 
+public static class CPlugTurretObjectParamsBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Plug.CPlugTurretObjectParams)
+    {
+        public static global::GBX.NET.Builders.Engines.Plug.CPlugTurretObjectParamsBuilder Create() => new();
+    }
+}
+
 public static class CPlugVFXFileBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Plug.CPlugVFXFile)

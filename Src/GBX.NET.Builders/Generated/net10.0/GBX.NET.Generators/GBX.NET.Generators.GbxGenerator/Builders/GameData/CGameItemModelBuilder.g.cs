@@ -14,14 +14,17 @@ public abstract class CGameItemModelBuilderBase<TSelf> : NodeBuilder<global::GBX
     private protected const GameVersion SupportedGames5 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames6 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT;
     private protected const GameVersion SupportedGames7 = GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames8 = GameVersion.MP4 | GameVersion.TM2020;
-    private protected const GameVersion SupportedGames9 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames10 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames11 = GameVersion.TM10 | GameVersion.TMPU;
-    private protected const GameVersion SupportedGames12 = GameVersion.TM2020;
-    private protected const GameVersion SupportedGames13 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames14 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames15 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames8 = GameVersion.MP3 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames9 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames10 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames11 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames12 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames13 = GameVersion.TM10 | GameVersion.TMPU;
+    private protected const GameVersion SupportedGames14 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames15 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames16 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames17 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames18 = GameVersion.TMT;
     public TSelf WithCatalogPosition(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCatalogPositionAssignment(), value, SupportedGames1);
     public TSelf WithIdent(global::GBX.NET.Ident value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIdentAssignment(), value, SupportedGames1);
     public TSelf WithIsInternal(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsInternalAssignment(), value, SupportedGames1);
@@ -35,9 +38,9 @@ public abstract class CGameItemModelBuilderMembers1<TSelf> : CGameItemModelBuild
     public TSelf WithCameras(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetCamerasAssignment(), value, SupportedGames3);
     public TSelf WithCameras(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithCameras(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithCameras(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithCameras(values.ToArray());
-    public TSelf WithNadeoSkinFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetNadeoSkinFidsAssignment(), value, SupportedGames3);
-    public TSelf WithNadeoSkinFids(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithNadeoSkinFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
-    public TSelf WithNadeoSkinFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithNadeoSkinFids(values.ToArray());
+    public TSelf WithNadeoSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetNadeoSkinsFidsAssignment(), value, SupportedGames3);
+    public TSelf WithNadeoSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithNadeoSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
+    public TSelf WithNadeoSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithNadeoSkinsFids(values.ToArray());
     public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, SupportedGames3);
 }
 public abstract class CGameItemModelBuilderMembers2<TSelf> : CGameItemModelBuilderMembers1<TSelf> where TSelf : CGameItemModelBuilderMembers2<TSelf>
@@ -51,15 +54,15 @@ public abstract class CGameItemModelBuilderMembers2<TSelf> : CGameItemModelBuild
 public abstract class CGameItemModelBuilderMembers3<TSelf> : CGameItemModelBuilderBase<TSelf> where TSelf : CGameItemModelBuilderMembers3<TSelf>
 {
     private protected CGameItemModelBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-    public TSelf WithCopperPrice(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, SupportedGames10);
-    public TSelf WithLowQualitySolid(global::GBX.NET.Engines.Plug.CPlugSolid? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLowQualitySolidAssignment(), value, SupportedGames10);
-    public TSelf WithLowQualitySolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLowQualitySolidReferenceAssignment(), value, SupportedGames10);
-    public TSelf WithNbAvailableMax(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, SupportedGames10);
-    public TSelf WithNbAvailableMin(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, SupportedGames10);
-    public TSelf WithNeedUnlock(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, SupportedGames10);
-    public TSelf WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, SupportedGames10);
-    public TSelf WithVehicle(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVehicleAssignment(), value, SupportedGames10);
-    public TSelf WithVehicleReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVehicleReferenceAssignment(), value, SupportedGames10);
+    public TSelf WithCopperPrice(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, SupportedGames12);
+    public TSelf WithLowQualitySolid(global::GBX.NET.Engines.Plug.CPlugSolid? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLowQualitySolidAssignment(), value, SupportedGames12);
+    public TSelf WithLowQualitySolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLowQualitySolidReferenceAssignment(), value, SupportedGames12);
+    public TSelf WithNbAvailableMax(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMaxAssignment(), value, SupportedGames12);
+    public TSelf WithNbAvailableMin(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNbAvailableMinAssignment(), value, SupportedGames12);
+    public TSelf WithNeedUnlock(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNeedUnlockAssignment(), value, SupportedGames12);
+    public TSelf WithSkinKind(global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinKindAssignment(), value, SupportedGames12);
+    public TSelf WithVehicle(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVehicleAssignment(), value, SupportedGames12);
+    public TSelf WithVehicleReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVehicleReferenceAssignment(), value, SupportedGames12);
 }
 public abstract class CGameItemModelBuilderMembers4<TSelf> : CGameItemModelBuilderMembers2<TSelf> where TSelf : CGameItemModelBuilderMembers4<TSelf>
 {
@@ -69,8 +72,8 @@ public abstract class CGameItemModelBuilderMembers4<TSelf> : CGameItemModelBuild
 public abstract class CGameItemModelBuilderMembers5<TSelf> : CGameItemModelBuilderMembers3<TSelf> where TSelf : CGameItemModelBuilderMembers5<TSelf>
 {
     private protected CGameItemModelBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-    public TSelf WithGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGameSkinAssignment(), value, SupportedGames11);
-    public TSelf WithGameSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGameSkinReferenceAssignment(), value, SupportedGames11);
+    public TSelf WithGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGameSkinAssignment(), value, SupportedGames13);
+    public TSelf WithGameSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGameSkinReferenceAssignment(), value, SupportedGames13);
     public TSelf WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
     public TSelf WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
     public TSelf WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
@@ -83,15 +86,15 @@ public abstract class CGameItemModelBuilderMembers6<TSelf> : CGameItemModelBuild
     public TSelf WithCameras(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithCameras(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithCameras(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithCameras(values.ToArray());
     public TSelf WithDefaultCamIndex(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDefaultCamIndexAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithMaterialDetails(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialDetailsAssignment(), value, SupportedGames13);
-    public TSelf WithMaterialDetailsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialDetailsReferenceAssignment(), value, SupportedGames13);
-    public TSelf WithMaterialGlass(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialGlassAssignment(), value, SupportedGames13);
-    public TSelf WithMaterialGlassReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialGlassReferenceAssignment(), value, SupportedGames13);
-    public TSelf WithMaterialSkin(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialSkinAssignment(), value, SupportedGames13);
-    public TSelf WithMaterialSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialSkinReferenceAssignment(), value, SupportedGames13);
-    public TSelf WithNadeoSkinFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetNadeoSkinFidsAssignment(), value, SupportedGames3);
-    public TSelf WithNadeoSkinFids(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithNadeoSkinFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
-    public TSelf WithNadeoSkinFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithNadeoSkinFids(values.ToArray());
+    public TSelf WithMaterialDetails(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialDetailsAssignment(), value, SupportedGames15);
+    public TSelf WithMaterialDetailsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialDetailsReferenceAssignment(), value, SupportedGames15);
+    public TSelf WithMaterialGlass(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialGlassAssignment(), value, SupportedGames15);
+    public TSelf WithMaterialGlassReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialGlassReferenceAssignment(), value, SupportedGames15);
+    public TSelf WithMaterialSkin(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialSkinAssignment(), value, SupportedGames15);
+    public TSelf WithMaterialSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialSkinReferenceAssignment(), value, SupportedGames15);
+    public TSelf WithNadeoSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetNadeoSkinsFidsAssignment(), value, SupportedGames3);
+    public TSelf WithNadeoSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithNadeoSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
+    public TSelf WithNadeoSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithNadeoSkinsFids(values.ToArray());
     public TSelf WithParentCollectorId(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetParentCollectorIdAssignment(), value, SupportedGames3);
 }
 public abstract class CGameItemModelBuilderMembers7<TSelf> : CGameItemModelBuilderMembers6<TSelf> where TSelf : CGameItemModelBuilderMembers7<TSelf>
@@ -99,19 +102,39 @@ public abstract class CGameItemModelBuilderMembers7<TSelf> : CGameItemModelBuild
     private protected CGameItemModelBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
     public TSelf WithDecoratorSolid(global::GBX.NET.Engines.Plug.CPlugDecoratorSolid? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDecoratorSolidAssignment(), value, SupportedGames7);
     public TSelf WithDecoratorSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDecoratorSolidReferenceAssignment(), value, SupportedGames7);
-    public TSelf WithForcedSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetForcedSkinsFidsAssignment(), value, SupportedGames14);
+    public TSelf WithForcedSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetForcedSkinsFidsAssignment(), value, SupportedGames16);
     public TSelf WithForcedSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithForcedSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithForcedSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithForcedSkinsFids(values.ToArray());
-    public TSelf WithMaterialPilot(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialPilotAssignment(), value, SupportedGames14);
-    public TSelf WithMaterialPilotReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialPilotReferenceAssignment(), value, SupportedGames14);
-    public TSelf WithStemBumpMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemBumpMaterialAssignment(), value, SupportedGames14);
-    public TSelf WithStemBumpMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemBumpMaterialReferenceAssignment(), value, SupportedGames14);
-    public TSelf WithStemMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemMaterialAssignment(), value, SupportedGames14);
-    public TSelf WithStemMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemMaterialReferenceAssignment(), value, SupportedGames14);
+    public TSelf WithMaterialPilot(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialPilotAssignment(), value, SupportedGames16);
+    public TSelf WithMaterialPilotReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialPilotReferenceAssignment(), value, SupportedGames16);
+    public TSelf WithStemBumpMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemBumpMaterialAssignment(), value, SupportedGames16);
+    public TSelf WithStemBumpMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemBumpMaterialReferenceAssignment(), value, SupportedGames16);
+    public TSelf WithStemMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemMaterialAssignment(), value, SupportedGames16);
+    public TSelf WithStemMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetStemMaterialReferenceAssignment(), value, SupportedGames16);
 }
-public abstract class CGameItemModelBuilderMembers8<TSelf> : CGameItemModelBuilderMembers4<TSelf> where TSelf : CGameItemModelBuilderMembers8<TSelf>
+public abstract class CGameItemModelBuilderMembers8<TSelf> : CGameItemModelBuilderMembers7<TSelf> where TSelf : CGameItemModelBuilderMembers8<TSelf>
 {
     private protected CGameItemModelBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
+    public TSelf WithBannerProfileFid(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetBannerProfileFidAssignment(), value, SupportedGames17);
+    public TSelf WithBannerProfileFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetBannerProfileFidReferenceAssignment(), value, SupportedGames17);
+    public TSelf WithFrontLight(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightAssignment(), value, SupportedGames17);
+    public TSelf WithFrontLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightReferenceAssignment(), value, SupportedGames17);
+    public TSelf WithFrontLightSmall(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightSmallAssignment(), value, SupportedGames17);
+    public TSelf WithFrontLightSmallReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightSmallReferenceAssignment(), value, SupportedGames17);
+    public TSelf WithGroundPoint(Vec3 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGroundPointAssignment(), value, SupportedGames4);
+    public TSelf WithOrbitalCenterHeightFromGround(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetOrbitalCenterHeightFromGroundAssignment(), value, SupportedGames4);
+    public TSelf WithOrbitalRadiusBase(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetOrbitalRadiusBaseAssignment(), value, SupportedGames4);
+    public TSelf WithPainterGroundMargin(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPainterGroundMarginAssignment(), value, SupportedGames4);
+    public TSelf WithProjFront(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjFrontAssignment(), value, SupportedGames17);
+    public TSelf WithProjFrontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjFrontReferenceAssignment(), value, SupportedGames17);
+    public TSelf WithProjShadow(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjShadowAssignment(), value, SupportedGames17);
+    public TSelf WithProjShadowReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjShadowReferenceAssignment(), value, SupportedGames17);
+    public TSelf WithRearLight(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetRearLightAssignment(), value, SupportedGames17);
+    public TSelf WithRearLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetRearLightReferenceAssignment(), value, SupportedGames17);
+}
+public abstract class CGameItemModelBuilderMembers9<TSelf> : CGameItemModelBuilderMembers4<TSelf> where TSelf : CGameItemModelBuilderMembers9<TSelf>
+{
+    private protected CGameItemModelBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
     public TSelf WithArchetypeFid(global::GBX.NET.Engines.GameData.CGameItemModel? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetArchetypeFidAssignment(), value, SupportedGames5);
     public TSelf WithArchetypeFidReference(NodeRef<global::GBX.NET.Engines.GameData.CGameItemModel> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetArchetypeFidReferenceAssignment(), value, SupportedGames5);
     public TSelf WithArchetypeRef(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetArchetypeRefAssignment(), value, SupportedGames5);
@@ -123,60 +146,51 @@ public abstract class CGameItemModelBuilderMembers8<TSelf> : CGameItemModelBuild
     public TSelf WithDescription(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDescriptionAssignment(), value, SupportedGames5);
     public TSelf WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
     public TSelf WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
-    public TSelf WithIconFid(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIconFidAssignment(), value, SupportedGames5);
     public TSelf WithIconQuarterRotationY(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconQuarterRotationYAssignment(), value, SupportedGames5);
+    public TSelf WithIconRef(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIconRefAssignment(), value, SupportedGames5);
     public TSelf WithIconUseAutoRender(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconUseAutoRenderAssignment(), value, SupportedGames5);
     public TSelf WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
     public TSelf WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames5);
-    public TSelf WithItemTypeE(global::GBX.NET.Engines.GameData.CGameItemModel.EItemType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemTypeEAssignment(), value, SupportedGames5);
+    public TSelf WithItemType(global::GBX.NET.Engines.GameData.CGameItemModel.EItemType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemTypeAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyCubeCenter(Vec3 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyCubeCenterAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyCubeSize(Vec3 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyCubeSizeAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyFlyVOffset(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyFlyVOffsetAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyFlyVStep(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyFlyVStepAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyGridOffset(Vec3 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyGridOffsetAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyGridSnapHStep(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyGridSnapHStepAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyGridSnapVStep(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyGridSnapVStepAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyPivotPositions(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyPivotPositionsAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyPivotPositions(IEnumerable<Vec3> values) => WithLegacyPivotPositions(values.ToArray());
+    public TSelf WithLegacyPivotSnapDistance(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyPivotSnapDistanceAssignment(), value, SupportedGames5);
     public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames5);
     public TSelf WithPhyModelCustom(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPhyModelCustomAssignment(), value, SupportedGames5);
     public TSelf WithPhyModelCustomReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPhyModelCustomReferenceAssignment(), value, SupportedGames5);
     public TSelf WithSkinDirectory(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetSkinDirectoryAssignment(), value, SupportedGames5);
+    public TSelf WithTrafficParams(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTrafficParamsAssignment(), value, SupportedGames5);
+    public TSelf WithTrafficParamsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTrafficParamsReferenceAssignment(), value, SupportedGames5);
     public TSelf WithVisModelCustom(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVisModelCustomAssignment(), value, SupportedGames5);
     public TSelf WithVisModelCustomReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVisModelCustomReferenceAssignment(), value, SupportedGames5);
     public TSelf WithWaypointType(global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetWaypointTypeAssignment(), value, SupportedGames5);
 }
-public abstract class CGameItemModelBuilderMembers9<TSelf> : CGameItemModelBuilderMembers7<TSelf> where TSelf : CGameItemModelBuilderMembers9<TSelf>
-{
-    private protected CGameItemModelBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-    public TSelf WithBannerProfileFid(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetBannerProfileFidAssignment(), value, SupportedGames15);
-    public TSelf WithBannerProfileFidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetBannerProfileFidReferenceAssignment(), value, SupportedGames15);
-    public TSelf WithFrontLight(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightAssignment(), value, SupportedGames15);
-    public TSelf WithFrontLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightReferenceAssignment(), value, SupportedGames15);
-    public TSelf WithFrontLightSmall(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightSmallAssignment(), value, SupportedGames15);
-    public TSelf WithFrontLightSmallReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetFrontLightSmallReferenceAssignment(), value, SupportedGames15);
-    public TSelf WithGroundPoint(Vec3 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetGroundPointAssignment(), value, SupportedGames4);
-    public TSelf WithOrbitalCenterHeightFromGround(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetOrbitalCenterHeightFromGroundAssignment(), value, SupportedGames4);
-    public TSelf WithOrbitalRadiusBase(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetOrbitalRadiusBaseAssignment(), value, SupportedGames4);
-    public TSelf WithPainterGroundMargin(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPainterGroundMarginAssignment(), value, SupportedGames4);
-    public TSelf WithProjFront(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjFrontAssignment(), value, SupportedGames15);
-    public TSelf WithProjFrontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjFrontReferenceAssignment(), value, SupportedGames15);
-    public TSelf WithProjShadow(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjShadowAssignment(), value, SupportedGames15);
-    public TSelf WithProjShadowReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetProjShadowReferenceAssignment(), value, SupportedGames15);
-    public TSelf WithRearLight(global::GBX.NET.Engines.Plug.CPlugLight? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetRearLightAssignment(), value, SupportedGames15);
-    public TSelf WithRearLightReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugLight> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetRearLightReferenceAssignment(), value, SupportedGames15);
-}
-public abstract class CGameItemModelBuilderMembers10<TSelf> : CGameItemModelBuilderMembers8<TSelf> where TSelf : CGameItemModelBuilderMembers10<TSelf>
+public abstract class CGameItemModelBuilderMembers10<TSelf> : CGameItemModelBuilderMembers9<TSelf> where TSelf : CGameItemModelBuilderMembers10<TSelf>
 {
     private protected CGameItemModelBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-    public TSelf WithActions(NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetActionsAssignment(), value, SupportedGames9);
-    public TSelf WithActions(params global::GBX.NET.Engines.GameData.CGameActionModel[] values) => WithActions(new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(values));
+    public TSelf WithActions(params global::GBX.NET.Engines.GameData.CGameActionModel[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetActionsAssignment(), value, SupportedGames11);
     public TSelf WithActions(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel> values) => WithActions(values.ToArray());
-    public TSelf WithDefaultCam(global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDefaultCamAssignment(), value, SupportedGames9);
-    public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, SupportedGames9);
+    public TSelf WithDefaultCam(global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDefaultCamAssignment(), value, SupportedGames11);
+    public TSelf WithProdState(global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetProdStateAssignment(), value, SupportedGames11);
+    public TSelf WithSkinDirNameCustom(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetSkinDirNameCustomAssignment(), value, SupportedGames11);
 }
 public abstract class CGameItemModelBuilderMembers11<TSelf> : CGameItemModelBuilderMembers10<TSelf> where TSelf : CGameItemModelBuilderMembers11<TSelf>
 {
     private protected CGameItemModelBuilderMembers11(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-    public TSelf WithDisableLightmap(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDisableLightmapAssignment(), value, SupportedGames8);
-    public TSelf WithEntityModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelAssignment(), value, SupportedGames8);
-    public TSelf WithEntityModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelReferenceAssignment(), value, SupportedGames8);
-    public TSelf WithEntityModelEdition(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionAssignment(), value, SupportedGames8);
-    public TSelf WithEntityModelEditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionReferenceAssignment(), value, SupportedGames8);
-    public TSelf WithItemType(global::GBX.NET.Engines.GameData.CGameItemModel.EItemType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemTypeAssignment(), value, SupportedGames8);
+    public TSelf WithDisableLightmap(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDisableLightmapAssignment(), value, SupportedGames10);
+    public TSelf WithEntityModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelAssignment(), value, SupportedGames10);
+    public TSelf WithEntityModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelReferenceAssignment(), value, SupportedGames10);
+    public TSelf WithEntityModelEdition(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionAssignment(), value, SupportedGames10);
+    public TSelf WithEntityModelEditionReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetEntityModelEditionReferenceAssignment(), value, SupportedGames10);
 }
 public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItemModelBuilder>
 {
@@ -440,6 +454,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002025() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002026() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002027() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameItemModel.Chunk2E002028());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
@@ -526,7 +541,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
     }
-    public partial class TMU : CGameItemModelBuilderMembers9<TMU>
+    public partial class TMU : CGameItemModelBuilderMembers8<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
         public TMU WithBannerProfileFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBannerProfileFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -549,7 +564,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe4(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
     }
-    public partial class VSK5 : CGameItemModelBuilderMembers9<VSK5>
+    public partial class VSK5 : CGameItemModelBuilderMembers8<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
         public VSK5 WithBannerProfileFid(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBannerProfileFid(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -574,7 +589,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
     }
-    public partial class TMF : CGameItemModelBuilderMembers9<TMF>
+    public partial class TMF : CGameItemModelBuilderMembers8<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
         public TMF WithAudioEnvironmentInCar(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarAssignment(), value, SupportedGames6);
@@ -605,7 +620,7 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
     }
-    public partial class MP3 : CGameItemModelBuilderMembers8<MP3>
+    public partial class MP3 : CGameItemModelBuilderMembers9<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
         public MP3 WithArchetypeFid(global::GBX.NET.Interfaces.GameData.IGameItemModelMP3? value) => base.WithArchetypeFid(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -617,7 +632,12 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public MP3 WithDecoratorSolid(global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3? value) => WithDecoratorSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecoratorSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithDefaultCamIndex(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetDefaultCamIndexAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public MP3 WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP3? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithLegacyIcon(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyIconAssignment(), value, SupportedGames8);
+        public MP3 WithLegacyIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyIconReferenceAssignment(), value, SupportedGames8);
+        public MP3 WithLegacyTriggerShape(Iso4 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyTriggerShapeAssignment(), value, SupportedGames8);
         public MP3 WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dMP3? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithTurretParams(global::GBX.NET.Engines.Plug.CPlugTurretObjectParams? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTurretParamsAssignment(), value, SupportedGames8);
+        public MP3 WithTurretParamsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTurretObjectParams> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTurretParamsReferenceAssignment(), value, SupportedGames8);
         public global::GBX.NET.Interfaces.GameData.IGameItemModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
@@ -625,8 +645,6 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     public partial class TMT : CGameItemModelBuilderMembers10<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-        public TMT WithActions(params global::GBX.NET.Interfaces.GameData.IGameActionModelTMT[] values) => base.WithActions(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTMT>(values, false));
-        public TMT WithActions(IEnumerable<global::GBX.NET.Interfaces.GameData.IGameActionModelTMT> values) => WithActions(values.ToArray());
         public TMT WithArchetypeFid(global::GBX.NET.Interfaces.GameData.IGameItemModelTMT? value) => base.WithArchetypeFid(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithAudioEnvironmentInCar(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarAssignment(), value, SupportedGames6);
         public TMT WithAudioEnvironmentInCarReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarReferenceAssignment(), value, SupportedGames6);
@@ -634,7 +652,17 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
         public TMT WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithItemGroupElements(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemGroupElementsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         public TMT WithItemGroupElements(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemGroupElements(values.ToArray());
+        public TMT WithLegacyIcon(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyIconAssignment(), value, SupportedGames8);
+        public TMT WithLegacyIconReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyIconReferenceAssignment(), value, SupportedGames8);
+        public TMT WithLegacyInventoryOccupation(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyInventoryOccupationAssignment(), value, SupportedGames18);
+        public TMT WithLegacyItemClipIdCount(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyItemClipIdCountAssignment(), value, SupportedGames18);
+        public TMT WithLegacyItemClipIndexCount(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyItemClipIndexCountAssignment(), value, SupportedGames18);
+        public TMT WithLegacyTriggerShape(Iso4 value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetLegacyTriggerShapeAssignment(), value, SupportedGames8);
         public TMT WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dTMT? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithTrafficParams(global::GBX.NET.Interfaces.Plug.IPlugTrafficObjectParamsTMT? value) => base.WithTrafficParams(value is null ? (global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams?)null : value is global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithTurretParams(global::GBX.NET.Engines.Plug.CPlugTurretObjectParams? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTurretParamsAssignment(), value, SupportedGames8);
+        public TMT WithTurretParamsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugTurretObjectParams> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetTurretParamsReferenceAssignment(), value, SupportedGames8);
+        public TMT WithTurretParams(global::GBX.NET.Interfaces.Plug.IPlugTurretObjectParamsTMT? value) => WithTurretParams(value is null ? (global::GBX.NET.Engines.Plug.CPlugTurretObjectParams?)null : value is global::GBX.NET.Engines.Plug.CPlugTurretObjectParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameItemModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameItemModel node);
@@ -642,13 +670,16 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     public partial class MP4 : CGameItemModelBuilderMembers11<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-        public MP4 WithActions(params global::GBX.NET.Interfaces.GameData.IGameActionModelMP4[] values) => base.WithActions(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>(values, false));
-        public MP4 WithActions(IEnumerable<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4> values) => WithActions(values.ToArray());
         public MP4 WithArchetypeFid(global::GBX.NET.Interfaces.GameData.IGameItemModelMP4? value) => base.WithArchetypeFid(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithAudioEnvironmentInCar(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarAssignment(), value, SupportedGames6);
         public MP4 WithAudioEnvironmentInCarReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetAudioEnvironmentInCarReferenceAssignment(), value, SupportedGames6);
         public MP4 WithAudioEnvironmentInCar(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value) => WithAudioEnvironmentInCar(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithItemClipShapePoints(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemClipShapePointsAssignment(), value, SupportedGames9);
+        public MP4 WithItemClipShapePoints(IEnumerable<Vec2> values) => WithItemClipShapePoints(values.ToArray());
+        public MP4 WithItemClipType(global::GBX.NET.Engines.GameData.CGameItemModel.EItemClipType value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemClipTypeAssignment(), value, SupportedGames9);
+        public MP4 WithItemClips(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemClipsAssignment(), value, SupportedGames9);
+        public MP4 WithItemClips(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemClips(values.ToArray());
         public MP4 WithItemGroupElements(params global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemGroupElementsAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
         public MP4 WithItemGroupElements(IEnumerable<global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement> values) => WithItemGroupElements(values.ToArray());
         public MP4 WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dMP4? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -659,22 +690,34 @@ public partial class CGameItemModelBuilder : CGameItemModelBuilderBase<CGameItem
     public partial class TM2020 : CGameItemModelBuilderMembers11<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameItemModel> state) : base(state) { }
-        public TM2020 WithActions(params global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020[] values) => base.WithActions(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(values, false));
-        public TM2020 WithActions(IEnumerable<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020> values) => WithActions(values.ToArray());
         public TM2020 WithArchetypeFid(global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020? value) => base.WithArchetypeFid(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithDefaultPlacement(global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTM2020? value) => base.WithDefaultPlacement(value is null ? (global::GBX.NET.Engines.GameData.CGameItemPlacementParam?)null : value is global::GBX.NET.Engines.GameData.CGameItemPlacementParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithDefaultSkinName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, SupportedGames12);
-        public TM2020 WithIconPhase01(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, SupportedGames12);
-        public TM2020 WithMaterialModifier(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialModifierAssignment(), value, SupportedGames12);
-        public TM2020 WithMaterialModifierReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialModifierReferenceAssignment(), value, SupportedGames12);
+        public TM2020 WithDefaultSkinName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetDefaultSkinNameAssignment(), value, SupportedGames14);
+        public TM2020 WithIconMacroBlockInfo(global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIconMacroBlockInfoAssignment(), value, SupportedGames14);
+        public TM2020 WithIconMacroBlockInfoReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIconMacroBlockInfoReferenceAssignment(), value, SupportedGames14);
+        public TM2020 WithIconMacroBlockInfo(global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020? value) => WithIconMacroBlockInfo(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo?)null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithIconPhase01(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconPhase01Assignment(), value, SupportedGames14);
+        public TM2020 WithIntroClipList(global::GBX.NET.Engines.Plug.CPlugMediaClipList? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIntroClipListAssignment(), value, SupportedGames14);
+        public TM2020 WithIntroClipListReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMediaClipList> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIntroClipListReferenceAssignment(), value, SupportedGames14);
+        public TM2020 WithIntroClipList(global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? value) => WithIntroClipList(value is null ? (global::GBX.NET.Engines.Plug.CPlugMediaClipList?)null : value is global::GBX.NET.Engines.Plug.CPlugMediaClipList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithIsFoundation(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetIsFoundationAssignment(), value, SupportedGames14);
+        public TM2020 WithItemFlags(global::GBX.NET.Engines.GameData.CGameItemModel.EItemFlags value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetItemFlagsAssignment(), value, SupportedGames14);
+        public TM2020 WithMaterialModifier(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialModifierAssignment(), value, SupportedGames14);
+        public TM2020 WithMaterialModifierReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetMaterialModifierReferenceAssignment(), value, SupportedGames14);
         public TM2020 WithMaterialModifier(global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? value) => WithMaterialModifier(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithModelKitDb(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, SupportedGames12);
-        public TM2020 WithModelKitDbReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, SupportedGames12);
-        public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames12);
-        public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames12);
+        public TM2020 WithModelKitDb(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbAssignment(), value, SupportedGames14);
+        public TM2020 WithModelKitDbReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReferenceAssignment(), value, SupportedGames14);
+        public TM2020 WithModelKitDbRelease(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseAssignment(), value, SupportedGames14);
+        public TM2020 WithModelKitDbReleaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetModelKitDbReleaseReferenceAssignment(), value, SupportedGames14);
+        public TM2020 WithPodiumClipList(global::GBX.NET.Engines.Plug.CPlugMediaClipList? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPodiumClipListAssignment(), value, SupportedGames14);
+        public TM2020 WithPodiumClipListReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMediaClipList> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPodiumClipListReferenceAssignment(), value, SupportedGames14);
+        public TM2020 WithPodiumClipList(global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? value) => WithPodiumClipList(value is null ? (global::GBX.NET.Engines.Plug.CPlugMediaClipList?)null : value is global::GBX.NET.Engines.Plug.CPlugMediaClipList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithPositions(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPositionsAssignment(), value, SupportedGames14);
+        public TM2020 WithPositions(IEnumerable<Vec3> values) => WithPositions(values.ToArray());
+        public TM2020 WithPositionsYaw(float value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetPositionsYawAssignment(), value, SupportedGames14);
         public TM2020 WithRaceInterfaceFid(global::GBX.NET.Interfaces.Scene.IScene2dTM2020? value) => base.WithRaceInterfaceFid(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithVFX(global::GBX.NET.Engines.Plug.CPlugVFXFile? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVFXAssignment(), value, SupportedGames12);
-        public TM2020 WithVFXReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVFXFile> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVFXReferenceAssignment(), value, SupportedGames12);
+        public TM2020 WithVFX(global::GBX.NET.Engines.Plug.CPlugVFXFile? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVFXAssignment(), value, SupportedGames14);
+        public TM2020 WithVFXReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugVFXFile> value) => SetReference(global::GBX.NET.Builders.Engines.GameData.CGameItemModelBuilderAssignments.GetVFXReferenceAssignment(), value, SupportedGames14);
         public TM2020 WithVFX(global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020? value) => WithVFX(value is null ? (global::GBX.NET.Engines.Plug.CPlugVFXFile?)null : value is global::GBX.NET.Engines.Plug.CPlugVFXFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameItemModel Build() => BuildNode(CGameItemModelBuilder.CreateRecipe10(GameVersion.TM2020), GameVersion.TM2020);

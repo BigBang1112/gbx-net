@@ -12,6 +12,7 @@ public class CGameItemModelChunkTests
 {
     [Test]
     [Arguments(CGameItemModel.EItemType.Undefined, 0, true)]
+    [Arguments(CGameItemModel.EItemType.Undefined, 1, true)]
     [Arguments(CGameItemModel.EItemType.Undefined, 2, true)]
     [Arguments(CGameItemModel.EItemType.Undefined, 3, true)]
     [Arguments(CGameItemModel.EItemType.Undefined, 4, true)]
@@ -32,6 +33,7 @@ public class CGameItemModelChunkTests
     [Arguments(CGameItemModel.EItemType.Block, 8, false)]
     [Arguments(CGameItemModel.EItemType.Block, 13, false)]
     [Arguments(CGameItemModel.EItemType.Block, 15, false)]
+    [Arguments(CGameItemModel.EItemType.Block, 16, false)]
     public async Task ReadWrite_Chunk2E002019_ReadsNativeLayoutAtItemTypeAndVersionBoundaries(CGameItemModel.EItemType itemType, int version, bool legacyModels)
     {
         var refTable = new GbxRefTable();
@@ -48,6 +50,7 @@ public class CGameItemModelChunkTests
                 writer.Write(1);
                 writer.Write(2);
             }
+            if (version == 1) writer.Write(-1);
             if (version >= 3) writer.WriteIdAsString("Weapon");
             if (version >= 4) writer.Write(-1);
             if (version >= 5) writer.Write(-1);
@@ -56,6 +59,7 @@ public class CGameItemModelChunkTests
             if (version >= 8) writer.Write(3);
             if (version >= 13) writer.Write(-1);
             if (version >= 15) writer.Write(4);
+            if (version >= 16) writer.Write(-1);
             writer.Write(0x11223344);
         }
 

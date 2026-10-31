@@ -12,9 +12,10 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
     internal override uint GetId() => Id;
 
-    private EItemType itemType;
-    /// <remarks>Applied with: 0x000 header chunk</remarks>
+    private EItemType itemType = EItemType.Vehicle;
+    /// <remarks>Applied with: 0x000 header chunk, 0x015 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E002000>]
+    [AppliedWithChunk<Chunk2E002015>]
     public EItemType ItemType
     {
         get => this.itemType;
@@ -58,7 +59,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref lowQualitySolidRef, value);
     }
 
-    private int defaultCamIndex;
+    private int defaultCamIndex = -1;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002006>]
     public int DefaultCamIndex
@@ -100,13 +101,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref materialDetailsRef, value);
     }
 
-    private NodeRefList<CMwNod?>? nadeoSkinFids;
+    private NodeRefList<CMwNod?>? nadeoSkinsFids;
     /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002008>]
-    public NodeRefList<CMwNod?>? NadeoSkinFids
+    public NodeRefList<CMwNod?>? NadeoSkinsFids
     {
-        get => nadeoSkinFids;
-        set => nadeoSkinFids = value;
+        get => nadeoSkinsFids;
+        set => nadeoSkinsFids = value;
     }
 
     private NodeRefList<CMwNod>? cameras;
@@ -194,7 +195,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.orbitalCenterHeightFromGround = value;
     }
 
-    private float orbitalRadiusBase;
+    private float orbitalRadiusBase = -1;
     /// <remarks>Applied with: 0x00F, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk2E00200F>]
     [AppliedWithChunk<Chunk2E002012>]
@@ -258,7 +259,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref projFrontRef, value);
     }
 
-    private float orbitalPreviewAngle;
+    private float orbitalPreviewAngle = 0.15f;
     /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public float OrbitalPreviewAngle
@@ -276,13 +277,22 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref audioEnvironmentInCarRef, value);
     }
 
-    private EItemType itemTypeE;
-    /// <remarks>Applied with: 0x015 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E002015>]
-    public EItemType ItemTypeE
+    private NodeRef<CMwNod>? defaultSkinFidRef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002016>]
+    public CMwNod? DefaultSkinFid
     {
-        get => this.itemTypeE;
-        set => this.itemTypeE = value;
+        get => defaultSkinFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultSkinFidRef, value);
+    }
+
+    private bool freePlacement;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002017>]
+    public bool FreePlacement
+    {
+        get => this.freePlacement;
+        set => this.freePlacement = value;
     }
 
     private NodeRef<CMwNod>? phyModelCustomRef;
@@ -303,6 +313,15 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref visModelCustomRef, value);
     }
 
+    private NodeRef<CMwNod>? visualModelRef;
+    /// <remarks>Applied with: 0x019 v1-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002019>(1, 1)]
+    public CMwNod? VisualModel
+    {
+        get => visualModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visualModelRef, value);
+    }
+
     private string? defaultWeaponName;
     /// <remarks>Applied with: 0x019 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(3)]
@@ -312,13 +331,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.defaultWeaponName = value;
     }
 
-    private NodeRefList<CGameActionModel>? actions;
+    private CGameActionModel[]? actions;
     /// <remarks>Applied with: 0x019 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(6)]
-    public NodeRefList<CGameActionModel>? Actions
+    public CGameActionModel[]? Actions
     {
-        get => actions;
-        set => actions = value;
+        get => this.actions;
+        set => this.actions = value;
     }
 
     private EDefaultCam defaultCam;
@@ -369,6 +388,24 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref materialModifierRef, value);
     }
 
+    private NodeRef<CPlugTrafficObjectParams>? trafficParamsRef;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201A>]
+    public CPlugTrafficObjectParams? TrafficParams
+    {
+        get => trafficParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficParamsRef, value);
+    }
+
+    private NodeRef<CPlugTurretObjectParams>? turretParamsRef;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201B>]
+    public CPlugTurretObjectParams? TurretParams
+    {
+        get => turretParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref turretParamsRef, value);
+    }
+
     private NodeRef<CGameItemPlacementParam>? defaultPlacementRef;
     /// <remarks>Applied with: 0x01C v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201C>(5)]
@@ -376,6 +413,115 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         get => defaultPlacementRef?.Resolve();
         set => NodeRef.SetEmbedded(ref defaultPlacementRef, value);
+    }
+
+    private Vec3[]? legacyPivotPositions;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>]
+    public Vec3[]? LegacyPivotPositions
+    {
+        get => this.legacyPivotPositions;
+        set => this.legacyPivotPositions = value;
+    }
+
+    private Vec3 legacyCubeCenter;
+    /// <remarks>Applied with: 0x01C v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(1)]
+    public Vec3 LegacyCubeCenter
+    {
+        get => this.legacyCubeCenter;
+        set => this.legacyCubeCenter = value;
+    }
+
+    private Vec3 legacyCubeSize;
+    /// <remarks>Applied with: 0x01C v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(1)]
+    public Vec3 LegacyCubeSize
+    {
+        get => this.legacyCubeSize;
+        set => this.legacyCubeSize = value;
+    }
+
+    private float legacyGridSnapHStep;
+    /// <remarks>Applied with: 0x01C v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(2)]
+    public float LegacyGridSnapHStep
+    {
+        get => this.legacyGridSnapHStep;
+        set => this.legacyGridSnapHStep = value;
+    }
+
+    private float legacyGridSnapVStep;
+    /// <remarks>Applied with: 0x01C v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(2)]
+    public float LegacyGridSnapVStep
+    {
+        get => this.legacyGridSnapVStep;
+        set => this.legacyGridSnapVStep = value;
+    }
+
+    private Vec3 legacyGridOffset;
+    /// <remarks>Applied with: 0x01C v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(2)]
+    public Vec3 LegacyGridOffset
+    {
+        get => this.legacyGridOffset;
+        set => this.legacyGridOffset = value;
+    }
+
+    private float legacyFlyVStep;
+    /// <remarks>Applied with: 0x01C v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(3)]
+    public float LegacyFlyVStep
+    {
+        get => this.legacyFlyVStep;
+        set => this.legacyFlyVStep = value;
+    }
+
+    private float legacyFlyVOffset;
+    /// <remarks>Applied with: 0x01C v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(3)]
+    public float LegacyFlyVOffset
+    {
+        get => this.legacyFlyVOffset;
+        set => this.legacyFlyVOffset = value;
+    }
+
+    private float legacyPivotSnapDistance = -1;
+    /// <remarks>Applied with: 0x01C v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201C>(4)]
+    public float LegacyPivotSnapDistance
+    {
+        get => this.legacyPivotSnapDistance;
+        set => this.legacyPivotSnapDistance = value;
+    }
+
+    private short legacyPlacementFlags = 1;
+    /// <remarks>Applied with: 0x01D, 0x01F v0-2 body chunks</remarks>
+    [AppliedWithChunk<Chunk2E00201D>]
+    [AppliedWithChunk<Chunk2E00201F>(0, 2)]
+    public short LegacyPlacementFlags
+    {
+        get => this.legacyPlacementFlags;
+        set => this.legacyPlacementFlags = value;
+    }
+
+    private string? legacyVisModelName;
+    /// <remarks>Applied with: 0x01E v0-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201E>(0, 2)]
+    public string? LegacyVisModelName
+    {
+        get => this.legacyVisModelName;
+        set => this.legacyVisModelName = value;
+    }
+
+    private string? legacyPhyModelName;
+    /// <remarks>Applied with: 0x01E v0-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201E>(0, 2)]
+    public string? LegacyPhyModelName
+    {
+        get => this.legacyPhyModelName;
+        set => this.legacyPhyModelName = value;
     }
 
     private string? archetypeRef;
@@ -396,13 +542,67 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref archetypeFidRef, value);
     }
 
-    private EWaypointType waypointType;
+    private string? skinDirNameCustom;
+    /// <remarks>Applied with: 0x01E v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201E>(6)]
+    public string? SkinDirNameCustom
+    {
+        get => this.skinDirNameCustom;
+        set => this.skinDirNameCustom = value;
+    }
+
+    private string? legacyInventoryName;
+    /// <remarks>Applied with: 0x01F v5-6 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(5, 6)]
+    public string? LegacyInventoryName
+    {
+        get => this.legacyInventoryName;
+        set => this.legacyInventoryName = value;
+    }
+
+    private string? legacyInventoryDescription;
+    /// <remarks>Applied with: 0x01F v5-6 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(5, 6)]
+    public string? LegacyInventoryDescription
+    {
+        get => this.legacyInventoryDescription;
+        set => this.legacyInventoryDescription = value;
+    }
+
+    private int legacyInventoryItemClass;
+    /// <remarks>Applied with: 0x01F v5-6 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(5, 6)]
+    public int LegacyInventoryItemClass
+    {
+        get => this.legacyInventoryItemClass;
+        set => this.legacyInventoryItemClass = value;
+    }
+
+    private int legacyInventoryOccupation = 1000;
+    /// <remarks>Applied with: 0x01F v4-6 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(4, 6)]
+    public int LegacyInventoryOccupation
+    {
+        get => this.legacyInventoryOccupation;
+        set => this.legacyInventoryOccupation = value;
+    }
+
+    private EWaypointType waypointType = EWaypointType.None;
     /// <remarks>Applied with: 0x01F body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201F>]
     public EWaypointType WaypointType
     {
         get => this.waypointType;
         set => this.waypointType = value;
+    }
+
+    private Iso4 legacyTriggerShape = Iso4.Identity;
+    /// <remarks>Applied with: 0x01F v2-7 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(2, 7)]
+    public Iso4 LegacyTriggerShape
+    {
+        get => this.legacyTriggerShape;
+        set => this.legacyTriggerShape = value;
     }
 
     private bool disableLightmap;
@@ -414,13 +614,49 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.disableLightmap = value;
     }
 
-    private string? iconFid;
+    private EItemFlags itemFlags;
+    /// <remarks>Applied with: 0x01F v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(11)]
+    public EItemFlags ItemFlags
+    {
+        get => this.itemFlags;
+        set => this.itemFlags = value;
+    }
+
+    private NodeRef<CPlugMediaClipList>? podiumClipListRef;
+    /// <remarks>Applied with: 0x01F v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(12)]
+    public CPlugMediaClipList? PodiumClipList
+    {
+        get => podiumClipListRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref podiumClipListRef, value);
+    }
+
+    private NodeRef<CPlugMediaClipList>? introClipListRef;
+    /// <remarks>Applied with: 0x01F v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk2E00201F>(12)]
+    public CPlugMediaClipList? IntroClipList
+    {
+        get => introClipListRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref introClipListRef, value);
+    }
+
+    private string? iconRef;
     /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002020>]
-    public string? IconFid
+    public string? IconRef
     {
-        get => this.iconFid;
-        set => this.iconFid = value;
+        get => this.iconRef;
+        set => this.iconRef = value;
+    }
+
+    private NodeRef<CPlugFileImg>? legacyIconRef;
+    /// <remarks>Applied with: 0x020 v0-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002020>(0, 1)]
+    public CPlugFileImg? LegacyIcon
+    {
+        get => legacyIconRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyIconRef, value);
     }
 
     private ItemGroupElement[]? itemGroupElements;
@@ -430,6 +666,90 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         get => this.itemGroupElements;
         set => this.itemGroupElements = value;
+    }
+
+    private int legacyItemClipIdCount;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002022>]
+    public int LegacyItemClipIdCount
+    {
+        get => this.legacyItemClipIdCount;
+        set => this.legacyItemClipIdCount = value;
+    }
+
+    private int legacyItemClipIndexCount;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002022>]
+    public int LegacyItemClipIndexCount
+    {
+        get => this.legacyItemClipIndexCount;
+        set => this.legacyItemClipIndexCount = value;
+    }
+
+    private EItemClipType itemClipType;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002023>]
+    public EItemClipType ItemClipType
+    {
+        get => this.itemClipType;
+        set => this.itemClipType = value;
+    }
+
+    private ItemGroupElement[]? itemClips;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002023>]
+    public ItemGroupElement[]? ItemClips
+    {
+        get => this.itemClips;
+        set => this.itemClips = value;
+    }
+
+    private Vec2[]? itemClipShapePoints;
+    /// <remarks>Applied with: 0x024 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002024>]
+    public Vec2[]? ItemClipShapePoints
+    {
+        get => this.itemClipShapePoints;
+        set => this.itemClipShapePoints = value;
+    }
+
+    private bool isFoundation;
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002025>]
+    public bool IsFoundation
+    {
+        get => this.isFoundation;
+        set => this.isFoundation = value;
+    }
+
+    private Vec3[]? positions;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002026>]
+    public Vec3[]? Positions
+    {
+        get => this.positions;
+        set => this.positions = value;
+    }
+
+    private float positionsYaw;
+    /// <summary>
+    /// shared yaw for Positions, in radians
+    /// </summary>
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002027>]
+    public float PositionsYaw
+    {
+        get => this.positionsYaw;
+        set => this.positionsYaw = value;
+    }
+
+    private NodeRef<CGameCtnMacroBlockInfo>? iconMacroBlockInfoRef;
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E002028>]
+    public CGameCtnMacroBlockInfo? IconMacroBlockInfo
+    {
+        get => iconMacroBlockInfoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconMacroBlockInfoRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -444,7 +764,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugMaterial> MaterialSkin => NodeRef.GetOrCreate(ref owner.materialSkinRef);
         public NodeRef<CPlugMaterial> MaterialGlass => NodeRef.GetOrCreate(ref owner.materialGlassRef);
         public NodeRef<CPlugMaterial> MaterialDetails => NodeRef.GetOrCreate(ref owner.materialDetailsRef);
-        public IReadOnlyList<NodeRef<CMwNod?>>? NadeoSkinFids => owner.nadeoSkinFids?.References;
+        public IReadOnlyList<NodeRef<CMwNod?>>? NadeoSkinsFids => owner.nadeoSkinsFids?.References;
         public IReadOnlyList<NodeRef<CMwNod>>? Cameras => owner.cameras?.References;
         public NodeRef<CPlugDecoratorSolid> DecoratorSolid => NodeRef.GetOrCreate(ref owner.decoratorSolidRef);
         public NodeRef<CPlugMaterial> StemMaterial => NodeRef.GetOrCreate(ref owner.stemMaterialRef);
@@ -458,15 +778,22 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugLight> ProjShadow => NodeRef.GetOrCreate(ref owner.projShadowRef);
         public NodeRef<CPlugLight> ProjFront => NodeRef.GetOrCreate(ref owner.projFrontRef);
         public NodeRef<CPlugAudioEnvironment> AudioEnvironmentInCar => NodeRef.GetOrCreate(ref owner.audioEnvironmentInCarRef);
+        public NodeRef<CMwNod> DefaultSkinFid => NodeRef.GetOrCreate(ref owner.defaultSkinFidRef);
         public NodeRef<CMwNod> PhyModelCustom => NodeRef.GetOrCreate(ref owner.phyModelCustomRef);
         public NodeRef<CMwNod> VisModelCustom => NodeRef.GetOrCreate(ref owner.visModelCustomRef);
-        public IReadOnlyList<NodeRef<CGameActionModel>>? Actions => owner.actions?.References;
+        public NodeRef<CMwNod> VisualModel => NodeRef.GetOrCreate(ref owner.visualModelRef);
         public NodeRef<CMwNod> EntityModelEdition => NodeRef.GetOrCreate(ref owner.entityModelEditionRef);
         public NodeRef<CMwNod> EntityModel => NodeRef.GetOrCreate(ref owner.entityModelRef);
         public NodeRef<CPlugVFXFile> VFX => NodeRef.GetOrCreate(ref owner.vFXRef);
         public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => NodeRef.GetOrCreate(ref owner.materialModifierRef);
+        public NodeRef<CPlugTrafficObjectParams> TrafficParams => NodeRef.GetOrCreate(ref owner.trafficParamsRef);
+        public NodeRef<CPlugTurretObjectParams> TurretParams => NodeRef.GetOrCreate(ref owner.turretParamsRef);
         public NodeRef<CGameItemPlacementParam> DefaultPlacement => NodeRef.GetOrCreate(ref owner.defaultPlacementRef);
         public NodeRef<CGameItemModel> ArchetypeFid => NodeRef.GetOrCreate(ref owner.archetypeFidRef);
+        public NodeRef<CPlugMediaClipList> PodiumClipList => NodeRef.GetOrCreate(ref owner.podiumClipListRef);
+        public NodeRef<CPlugMediaClipList> IntroClipList => NodeRef.GetOrCreate(ref owner.introClipListRef);
+        public NodeRef<CPlugFileImg> LegacyIcon => NodeRef.GetOrCreate(ref owner.legacyIconRef);
+        public NodeRef<CGameCtnMacroBlockInfo> IconMacroBlockInfo => NodeRef.GetOrCreate(ref owner.iconMacroBlockInfoRef);
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
@@ -482,9 +809,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         yield return new("MaterialSkin", NodeRef.GetOrCreate(ref materialSkinRef));
         yield return new("MaterialGlass", NodeRef.GetOrCreate(ref materialGlassRef));
         yield return new("MaterialDetails", NodeRef.GetOrCreate(ref materialDetailsRef));
-        if (nadeoSkinFids is not null)
+        if (nadeoSkinsFids is not null)
         {
-            for (var i = 0; i < nadeoSkinFids.Count; i++) yield return new("NadeoSkinFids" + "[" + i + "]", nadeoSkinFids.Get(i));
+            for (var i = 0; i < nadeoSkinsFids.Count; i++) yield return new("NadeoSkinsFids" + "[" + i + "]", nadeoSkinsFids.Get(i));
         }
         if (cameras is not null)
         {
@@ -505,18 +832,22 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         yield return new("ProjShadow", NodeRef.GetOrCreate(ref projShadowRef));
         yield return new("ProjFront", NodeRef.GetOrCreate(ref projFrontRef));
         yield return new("AudioEnvironmentInCar", NodeRef.GetOrCreate(ref audioEnvironmentInCarRef));
+        yield return new("DefaultSkinFid", NodeRef.GetOrCreate(ref defaultSkinFidRef));
         yield return new("PhyModelCustom", NodeRef.GetOrCreate(ref phyModelCustomRef));
         yield return new("VisModelCustom", NodeRef.GetOrCreate(ref visModelCustomRef));
-        if (actions is not null)
-        {
-            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
-        }
+        yield return new("VisualModel", NodeRef.GetOrCreate(ref visualModelRef));
         yield return new("EntityModelEdition", NodeRef.GetOrCreate(ref entityModelEditionRef));
         yield return new("EntityModel", NodeRef.GetOrCreate(ref entityModelRef));
         yield return new("VFX", NodeRef.GetOrCreate(ref vFXRef));
         yield return new("MaterialModifier", NodeRef.GetOrCreate(ref materialModifierRef));
+        yield return new("TrafficParams", NodeRef.GetOrCreate(ref trafficParamsRef));
+        yield return new("TurretParams", NodeRef.GetOrCreate(ref turretParamsRef));
         yield return new("DefaultPlacement", NodeRef.GetOrCreate(ref defaultPlacementRef));
         yield return new("ArchetypeFid", NodeRef.GetOrCreate(ref archetypeFidRef));
+        yield return new("PodiumClipList", NodeRef.GetOrCreate(ref podiumClipListRef));
+        yield return new("IntroClipList", NodeRef.GetOrCreate(ref introClipListRef));
+        yield return new("LegacyIcon", NodeRef.GetOrCreate(ref legacyIconRef));
+        yield return new("IconMacroBlockInfo", NodeRef.GetOrCreate(ref iconMacroBlockInfoRef));
         yield break;
     }
 
@@ -532,7 +863,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         ((CGameItemModel)clone).materialSkinRef = context.Clone(this.materialSkinRef)!;
         ((CGameItemModel)clone).materialGlassRef = context.Clone(this.materialGlassRef)!;
         ((CGameItemModel)clone).materialDetailsRef = context.Clone(this.materialDetailsRef)!;
-        ((CGameItemModel)clone).nadeoSkinFids = context.Clone(this.nadeoSkinFids)!;
+        ((CGameItemModel)clone).nadeoSkinsFids = context.Clone(this.nadeoSkinsFids)!;
         ((CGameItemModel)clone).cameras = context.Clone(this.cameras)!;
         ((CGameItemModel)clone).decoratorSolidRef = context.Clone(this.decoratorSolidRef)!;
         ((CGameItemModel)clone).stemMaterialRef = context.Clone(this.stemMaterialRef)!;
@@ -551,27 +882,58 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         ((CGameItemModel)clone).projFrontRef = context.Clone(this.projFrontRef)!;
         ((CGameItemModel)clone).orbitalPreviewAngle = context.Clone(this.orbitalPreviewAngle)!;
         ((CGameItemModel)clone).audioEnvironmentInCarRef = context.Clone(this.audioEnvironmentInCarRef)!;
-        ((CGameItemModel)clone).itemTypeE = context.Clone(this.itemTypeE)!;
+        ((CGameItemModel)clone).defaultSkinFidRef = context.Clone(this.defaultSkinFidRef)!;
+        ((CGameItemModel)clone).freePlacement = context.Clone(this.freePlacement)!;
         ((CGameItemModel)clone).phyModelCustomRef = context.Clone(this.phyModelCustomRef)!;
         ((CGameItemModel)clone).visModelCustomRef = context.Clone(this.visModelCustomRef)!;
+        ((CGameItemModel)clone).visualModelRef = context.Clone(this.visualModelRef)!;
         ((CGameItemModel)clone).defaultWeaponName = context.Clone(this.defaultWeaponName)!;
-        ((CGameItemModel)clone).actions = context.Clone(this.actions)!;
+        ((CGameItemModel)clone).actions = context.CloneArray(this.actions)!;
         ((CGameItemModel)clone).defaultCam = context.Clone(this.defaultCam)!;
         ((CGameItemModel)clone).entityModelEditionRef = context.Clone(this.entityModelEditionRef)!;
         ((CGameItemModel)clone).entityModelRef = context.Clone(this.entityModelRef)!;
         ((CGameItemModel)clone).vFXRef = context.Clone(this.vFXRef)!;
         ((CGameItemModel)clone).materialModifierRef = context.Clone(this.materialModifierRef)!;
+        ((CGameItemModel)clone).trafficParamsRef = context.Clone(this.trafficParamsRef)!;
+        ((CGameItemModel)clone).turretParamsRef = context.Clone(this.turretParamsRef)!;
         ((CGameItemModel)clone).defaultPlacementRef = context.Clone(this.defaultPlacementRef)!;
+        ((CGameItemModel)clone).legacyPivotPositions = context.CloneArray(this.legacyPivotPositions)!;
+        ((CGameItemModel)clone).legacyCubeCenter = context.Clone(this.legacyCubeCenter)!;
+        ((CGameItemModel)clone).legacyCubeSize = context.Clone(this.legacyCubeSize)!;
+        ((CGameItemModel)clone).legacyGridSnapHStep = context.Clone(this.legacyGridSnapHStep)!;
+        ((CGameItemModel)clone).legacyGridSnapVStep = context.Clone(this.legacyGridSnapVStep)!;
+        ((CGameItemModel)clone).legacyGridOffset = context.Clone(this.legacyGridOffset)!;
+        ((CGameItemModel)clone).legacyFlyVStep = context.Clone(this.legacyFlyVStep)!;
+        ((CGameItemModel)clone).legacyFlyVOffset = context.Clone(this.legacyFlyVOffset)!;
+        ((CGameItemModel)clone).legacyPivotSnapDistance = context.Clone(this.legacyPivotSnapDistance)!;
+        ((CGameItemModel)clone).legacyPlacementFlags = context.Clone(this.legacyPlacementFlags)!;
+        ((CGameItemModel)clone).legacyVisModelName = context.Clone(this.legacyVisModelName)!;
+        ((CGameItemModel)clone).legacyPhyModelName = context.Clone(this.legacyPhyModelName)!;
         ((CGameItemModel)clone).archetypeRef = context.Clone(this.archetypeRef)!;
         ((CGameItemModel)clone).archetypeFidRef = context.Clone(this.archetypeFidRef)!;
+        ((CGameItemModel)clone).skinDirNameCustom = context.Clone(this.skinDirNameCustom)!;
+        ((CGameItemModel)clone).legacyInventoryName = context.Clone(this.legacyInventoryName)!;
+        ((CGameItemModel)clone).legacyInventoryDescription = context.Clone(this.legacyInventoryDescription)!;
+        ((CGameItemModel)clone).legacyInventoryItemClass = context.Clone(this.legacyInventoryItemClass)!;
+        ((CGameItemModel)clone).legacyInventoryOccupation = context.Clone(this.legacyInventoryOccupation)!;
         ((CGameItemModel)clone).waypointType = context.Clone(this.waypointType)!;
+        ((CGameItemModel)clone).legacyTriggerShape = context.Clone(this.legacyTriggerShape)!;
         ((CGameItemModel)clone).disableLightmap = context.Clone(this.disableLightmap)!;
-        ((CGameItemModel)clone).iconFid = context.Clone(this.iconFid)!;
+        ((CGameItemModel)clone).itemFlags = context.Clone(this.itemFlags)!;
+        ((CGameItemModel)clone).podiumClipListRef = context.Clone(this.podiumClipListRef)!;
+        ((CGameItemModel)clone).introClipListRef = context.Clone(this.introClipListRef)!;
+        ((CGameItemModel)clone).iconRef = context.Clone(this.iconRef)!;
+        ((CGameItemModel)clone).legacyIconRef = context.Clone(this.legacyIconRef)!;
         ((CGameItemModel)clone).itemGroupElements = context.CloneArray(this.itemGroupElements)!;
-    }
-
-    public CGameItemModel()
-    {
+        ((CGameItemModel)clone).legacyItemClipIdCount = context.Clone(this.legacyItemClipIdCount)!;
+        ((CGameItemModel)clone).legacyItemClipIndexCount = context.Clone(this.legacyItemClipIndexCount)!;
+        ((CGameItemModel)clone).itemClipType = context.Clone(this.itemClipType)!;
+        ((CGameItemModel)clone).itemClips = context.CloneArray(this.itemClips)!;
+        ((CGameItemModel)clone).itemClipShapePoints = context.CloneArray(this.itemClipShapePoints)!;
+        ((CGameItemModel)clone).isFoundation = context.Clone(this.isFoundation)!;
+        ((CGameItemModel)clone).positions = context.CloneArray(this.positions)!;
+        ((CGameItemModel)clone).positionsYaw = context.Clone(this.positionsYaw)!;
+        ((CGameItemModel)clone).iconMacroBlockInfoRef = context.Clone(this.iconMacroBlockInfoRef)!;
     }
 
     /// <summary>
@@ -623,9 +985,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x000 chunk
+    /// CGameItemModel 0x000 chunk (Vehicle)
     /// </summary>
-    [Chunk(0x2E002000)]
+    [Chunk(0x2E002000, "Vehicle")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E002000 : Chunk<CGameItemModel>
     {
@@ -873,7 +1235,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            n.nadeoSkinFids = rw.ListNodeRef<CMwNod?>(n.nadeoSkinFids);
+            n.nadeoSkinsFids = rw.ListNodeRef<CMwNod?>(n.nadeoSkinsFids);
         }
     }
 
@@ -963,9 +1325,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x00D chunk
+    /// CGameItemModel 0x00D chunk (ForcedSkinsFids)
     /// </summary>
-    [Chunk(0x2E00200D)]
+    [Chunk(0x2E00200D, "ForcedSkinsFids")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E00200D : Chunk<CGameItemModel>
     {
@@ -1032,9 +1394,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x010 chunk
+    /// CGameItemModel 0x010 chunk (BannerProfileFid)
     /// </summary>
-    [Chunk(0x2E002010)]
+    [Chunk(0x2E002010, "BannerProfileFid")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E002010 : Chunk<CGameItemModel>
     {
@@ -1107,9 +1469,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x013 chunk
+    /// CGameItemModel 0x013 chunk (AudioEnvironmentInCar)
     /// </summary>
-    [Chunk(0x2E002013)]
+    [Chunk(0x2E002013, "AudioEnvironmentInCar")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk2E002013 : Chunk<CGameItemModel>
     {
@@ -1169,9 +1531,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x015 chunk (ItemTypeE)
+    /// CGameItemModel 0x015 chunk (ItemType)
     /// </summary>
-    [Chunk(0x2E002015, "ItemTypeE")]
+    [Chunk(0x2E002015, "ItemType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002015 : Chunk<CGameItemModel>
     {
@@ -1185,7 +1547,48 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.EnumInt32<EItemType>(ref n.itemTypeE);
+            rw.EnumInt32<EItemType>(ref n.itemType);
+        }
+    }
+
+    /// <summary>
+    /// CGameItemModel 0x016 chunk (DefaultSkinFid)
+    /// </summary>
+    [Chunk(0x2E002016, "DefaultSkinFid")]
+    public partial class Chunk2E002016 : Chunk<CGameItemModel>
+    {
+        public override uint Id => 0x2E002016;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.defaultSkinFidRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameItemModel 0x017 chunk (FreePlacement)
+    /// </summary>
+    [Chunk(0x2E002017, "FreePlacement")]
+    public partial class Chunk2E002017 : Chunk<CGameItemModel>, IVersionable
+    {
+        public override uint Id => 0x2E002017;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E002017)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Boolean(ref n.freePlacement);
         }
     }
 
@@ -1206,6 +1609,27 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E002019 owner;
+            internal NodeRefView(Chunk2E002019 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         public Chunk2E002019() : this(GameVersion.Unspecified)
         {
@@ -1235,6 +1659,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002019)clone).Version = context.Clone(this.Version)!;
+            ((Chunk2E002019)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1270,6 +1695,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 }
             }
 
+            if (Version == 1)
+            {
+                rw.NodeRef(ref n.visualModelRef);
+            }
+
             if (Version >= 3)
             {
                 rw.Id(ref n.defaultWeaponName);
@@ -1301,7 +1731,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
             if (Version >= 6)
             {
-                n.actions = rw.ListNodeRef<CGameActionModel>(n.actions);
+                rw.ArrayNode<CGameActionModel>(ref n.actions!);
             }
 
             if (Version >= 7)
@@ -1333,92 +1763,53 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             {
                 rw.NodeRef(ref n.materialModifierRef);
             }
+
+            if (Version >= 16)
+            {
+                rw.NodeRef(ref U01Ref);
+            }
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x01A chunk
+    /// CGameItemModel 0x01A chunk (TrafficParams)
     /// </summary>
-    [Chunk(0x2E00201A)]
+    [Chunk(0x2E00201A, "TrafficParams")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00201A : Chunk<CGameItemModel>
     {
         public override uint Id => 0x2E00201A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod>? U01Ref;
-        public CMwNod? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk2E00201A owner;
-            internal NodeRefView(Chunk2E00201A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E00201A)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.trafficParamsRef);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x01B chunk
+    /// CGameItemModel 0x01B chunk (TurretParams)
     /// </summary>
-    [Chunk(0x2E00201B)]
+    [Chunk(0x2E00201B, "TurretParams")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk2E00201B : Chunk<CGameItemModel>
     {
         public override uint Id => 0x2E00201B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
-        private NodeRef<CMwNod>? U01Ref;
-        public CMwNod? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk2E00201B owner;
-            internal NodeRefView(Chunk2E00201B owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E00201B)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.turretParamsRef);
         }
     }
 
@@ -1432,21 +1823,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public override uint Id => 0x2E00201C;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Vec3[]? U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
 
         public Chunk2E00201C() : this(GameVersion.Unspecified)
         {
@@ -1464,21 +1840,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E00201C)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E00201C)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk2E00201C)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E00201C)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk2E00201C)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk2E00201C)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk2E00201C)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk2E00201C)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk2E00201C)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk2E00201C)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk2E00201C)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk2E00201C)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk2E00201C)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk2E00201C)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk2E00201C)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk2E00201C)clone).U15 = context.Clone(this.U15)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1495,33 +1856,27 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 return;
             }
 
-            rw.Array<Vec3>(ref U01!);
+            rw.Array<Vec3>(ref n.legacyPivotPositions!);
 
             if (Version >= 1)
             {
-                rw.Single(ref U02);
-                rw.Single(ref U03);
-                rw.Single(ref U04);
-                rw.Single(ref U05);
-                rw.Single(ref U06);
-                rw.Single(ref U07);
+                rw.Vec3(ref n.legacyCubeCenter);
+                rw.Vec3(ref n.legacyCubeSize);
 
                 if (Version >= 2)
                 {
-                    rw.Single(ref U08);
-                    rw.Single(ref U09);
-                    rw.Single(ref U10);
-                    rw.Single(ref U11);
-                    rw.Single(ref U12);
+                    rw.Single(ref n.legacyGridSnapHStep);
+                    rw.Single(ref n.legacyGridSnapVStep);
+                    rw.Vec3(ref n.legacyGridOffset);
 
                     if (Version >= 3)
                     {
-                        rw.Single(ref U13);
-                        rw.Single(ref U14);
+                        rw.Single(ref n.legacyFlyVStep);
+                        rw.Single(ref n.legacyFlyVOffset);
 
                         if (Version >= 4)
                         {
-                            rw.Single(ref U15);
+                            rw.Single(ref n.legacyPivotSnapDistance);
                         }
                     }
                 }
@@ -1530,23 +1885,21 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x01D chunk
+    /// CGameItemModel 0x01D chunk (legacy placement flags)
     /// </summary>
-    [Chunk(0x2E00201D)]
+    [Chunk(0x2E00201D, "legacy placement flags")]
     public partial class Chunk2E00201D : Chunk<CGameItemModel>
     {
         public override uint Id => 0x2E00201D;
-        public short U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E00201D)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.Int16(ref U01);
+            rw.Int16(ref n.legacyPlacementFlags);
         }
     }
 
@@ -1566,8 +1919,27 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public string? U01;
-        public int U02;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E00201E owner;
+            internal NodeRefView(Chunk2E00201E owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         public Chunk2E00201E() : this(GameVersion.Unspecified)
         {
@@ -1593,8 +1965,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E00201E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E00201E)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E00201E)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E00201E)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1603,6 +1974,12 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version <= 2)
+            {
+                rw.String(ref n.legacyVisModelName);
+                rw.String(ref n.legacyPhyModelName);
             }
 
             if (Version >= 2)
@@ -1618,11 +1995,11 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
                     if (Version >= 6)
                     {
-                        rw.String(ref U01);
+                        rw.String(ref n.skinDirNameCustom);
 
                         if (Version >= 7)
                         {
-                            rw.Int32(ref U02);
+                            rw.NodeRef(ref U01Ref);
                         }
                     }
                 }
@@ -1647,42 +2024,25 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public string? U01;
-        public string? U02;
-        public int? U03;
-        public int? U04;
-        public short? U05;
-        public Iso4 U06;
 
-        private NodeRef<CMwNod>? U07Ref;
-        public CMwNod? U07
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
         {
-            get => U07Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U07Ref, value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
-        public byte? U08;
-
-        private NodeRef<CPlugMediaClipList>? U09Ref;
-        public CPlugMediaClipList? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-        public int? U10;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk2E00201F owner;
             internal NodeRefView(Chunk2E00201F owner) => this.owner = owner;
-            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CPlugMediaClipList> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1714,16 +2074,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E00201F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E00201F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E00201F)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E00201F)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk2E00201F)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk2E00201F)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk2E00201F)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk2E00201F)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk2E00201F)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk2E00201F)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk2E00201F)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk2E00201F)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1738,51 +2089,48 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             {
                 if (Version >= 5)
                 {
-                    rw.String(ref U01);
-                    rw.String(ref U02);
-                    rw.Int32(ref U03);
+                    rw.String(ref n.legacyInventoryName);
+                    rw.String(ref n.legacyInventoryDescription);
+                    rw.Int32(ref n.legacyInventoryItemClass);
                 }
 
                 if (Version >= 4)
                 {
-                    rw.Int32(ref U04);
+                    rw.Int32(ref n.legacyInventoryOccupation);
                 }
 
                 if (Version <= 2)
                 {
-                    rw.Int16(ref U05);
+                    rw.Int16(ref n.legacyPlacementFlags);
                 }
             }
 
             rw.EnumInt32<EWaypointType>(ref n.waypointType);
 
-            if (Version <= 7)
+            if (Version >= 2 && Version <= 7)
             {
-                rw.Iso4(ref U06);
+                rw.Iso4(ref n.legacyTriggerShape);
             }
 
             if (Version >= 6)
             {
                 rw.Boolean(ref n.disableLightmap);
+            }
 
-                if (Version >= 9)
-                {
-                    if (Version <= 12)
-                    {
-                        rw.NodeRef(ref U07Ref);
-                    }
+            if (Version >= 9 && Version <= 12)
+            {
+                rw.NodeRef(ref U01Ref);
+            }
 
-                    if (Version >= 11)
-                    {
-                        rw.Byte(ref U08);
+            if (Version >= 11)
+            {
+                rw.EnumByte<EItemFlags>(ref n.itemFlags);
+            }
 
-                        if (Version >= 12)
-                        {
-                            rw.NodeRef(ref U09Ref);
-                            rw.Int32(ref U10);
-                        }
-                    }
-                }
+            if (Version >= 12)
+            {
+                rw.NodeRef(ref n.podiumClipListRef);
+                rw.NodeRef(ref n.introClipListRef);
             }
         }
     }
@@ -1802,32 +2150,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public string? U01;
-
-        private NodeRef<CMwNod>? U02Ref;
-        /// <summary>
-        /// CPlugFileImg
-        /// </summary>
-        public CMwNod? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-        public bool U03;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk2E002020 owner;
-            internal NodeRefView(Chunk2E002020 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield break;
-        }
+        public bool U01;
 
         public Chunk2E002020() : this(GameVersion.Unspecified)
         {
@@ -1850,8 +2173,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk2E002020)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E002020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E002020)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk2E002020)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1862,18 +2183,19 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
+            rw.String(ref n.iconRef);
+
             if (Version <= 1)
             {
-                rw.String(ref U01);
-                rw.NodeRef(ref U02Ref);
-                return;
+                if (n.IconRef== null || n.IconRef== "")
+                {
+                    rw.NodeRef(ref n.legacyIconRef);
+                }
             }
-
-            rw.String(ref n.iconFid);
 
             if (Version >= 3)
             {
-                rw.Boolean(ref U03, asByte: true);
+                rw.Boolean(ref U01, asByte: true);
             }
         }
     }
@@ -1908,28 +2230,24 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CGameItemModel 0x022 skippable chunk
+    /// CGameItemModel 0x022 skippable chunk (legacy item clip counts)
     /// </summary>
-    [Chunk(0x2E002022)]
+    [Chunk(0x2E002022, "legacy item clip counts")]
     [ChunkGameVersion(GameVersion.TMT)]
     public partial class Chunk2E002022 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002022;
         public override GameVersion GameVersion => GameVersion.TMT;
         public int Version { get; set; }
-        public int U01;
-        public string[]? U02;
-        public int U03;
-        public ushort[]? U04;
+        public int U01 = 10;
+        public int U02 = 10;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002022)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E002022)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E002022)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk2E002022)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk2E002022)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk2E002022)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1941,31 +2259,27 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             }
 
             rw.Int32(ref U01);
-            rw.ArrayId(ref U02!);
-            rw.Int32(ref U03);
-            rw.Array<ushort>(ref U04!);
+            rw.Int32(ref n.legacyItemClipIdCount);
+            rw.Int32(ref U02);
+            rw.Int32(ref n.legacyItemClipIndexCount);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x023 chunk
+    /// CGameItemModel 0x023 chunk (item clips)
     /// </summary>
-    [Chunk(0x2E002023)]
+    [Chunk(0x2E002023, "item clips")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002023 : Chunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002023;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public byte U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002023)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E002023)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E002023)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -1976,28 +2290,26 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Byte(ref U01);
-            rw.Int32(ref U02);
+            rw.EnumByte<EItemClipType>(ref n.itemClipType);
+            rw.ArrayReadableWritable<ItemGroupElement>(ref n.itemClips!, version: Version);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x024 skippable chunk
+    /// CGameItemModel 0x024 skippable chunk (ItemClipShapePoints)
     /// </summary>
-    [Chunk(0x2E002024)]
+    [Chunk(0x2E002024, "ItemClipShapePoints")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002024 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002024;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public Vec2[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002024)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E002024)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -2008,27 +2320,25 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Array<Vec2>(ref U01!);
+            rw.Array<Vec2>(ref n.itemClipShapePoints!);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x025 skippable chunk
+    /// CGameItemModel 0x025 skippable chunk (IsFoundation)
     /// </summary>
-    [Chunk(0x2E002025)]
+    [Chunk(0x2E002025, "IsFoundation")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002025 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002025;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002025)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E002025)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -2039,27 +2349,25 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.isFoundation);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x026 skippable chunk
+    /// CGameItemModel 0x026 skippable chunk (Positions)
     /// </summary>
-    [Chunk(0x2E002026)]
+    [Chunk(0x2E002026, "Positions")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002026 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002026;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public Vec3[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002026)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E002026)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -2070,27 +2378,25 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Array<Vec3>(ref U01!);
+            rw.Array<Vec3>(ref n.positions!);
         }
     }
 
     /// <summary>
-    /// CGameItemModel 0x027 skippable chunk
+    /// CGameItemModel 0x027 skippable chunk (PositionsYaw)
     /// </summary>
-    [Chunk(0x2E002027)]
+    [Chunk(0x2E002027, "PositionsYaw")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002027 : SkippableChunk<CGameItemModel>, IVersionable
     {
         public override uint Id => 0x2E002027;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002027)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E002027)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
@@ -2101,13 +2407,37 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
+            rw.Single(ref n.positionsYaw);
+        }
+    }
+
+    /// <summary>
+    /// CGameItemModel 0x028 skippable chunk (IconMacroBlockInfo)
+    /// </summary>
+    [Chunk(0x2E002028, "IconMacroBlockInfo")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk2E002028 : SkippableChunk<CGameItemModel>
+    {
+        public override uint Id => 0x2E002028;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.Encapsulated(rw =>
+            {
+                rw.NodeRef(ref n.iconMacroBlockInfoRef);
+            });
         }
     }
 
     public partial class ItemGroupElement : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Iso4 location;
+        private Iso4 location = Iso4.Identity;
         public Iso4 Location
         {
             get => this.location;
@@ -2213,6 +2543,24 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         Dispenser,
     }
 
+    public enum EItemClipType
+    {
+        None,
+        Complex,
+        Rectangular,
+        Triangular,
+        Square,
+        Hexagonal,
+        Octogonal,
+        Circular,
+    }
+
+    public enum EItemFlags
+    {
+        None,
+        DisableAutoCreateSound = 2,
+    }
+
     public enum EDefaultCam
     {
         None,
@@ -2266,6 +2614,8 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         0x2E002013 => new Chunk2E002013(),
         0x2E002014 => new Chunk2E002014(),
         0x2E002015 => new Chunk2E002015(),
+        0x2E002016 => new Chunk2E002016(),
+        0x2E002017 => new Chunk2E002017(),
         0x2E002019 => new Chunk2E002019(),
         0x2E00201A => new Chunk2E00201A(),
         0x2E00201B => new Chunk2E00201B(),
@@ -2281,6 +2631,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         0x2E002025 => new Chunk2E002025(),
         0x2E002026 => new Chunk2E002026(),
         0x2E002027 => new Chunk2E002027(),
+        0x2E002028 => new Chunk2E002028(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -2,6 +2,11 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameItemModel
 {
+    public CGameItemModel()
+    {
+        NadeoSkinsFids = new CMwNod?[7];
+        DefaultPlacement = new();
+    }
 
     internal override IHeaderChunk? NewHeaderChunk(uint chunkId)
     {

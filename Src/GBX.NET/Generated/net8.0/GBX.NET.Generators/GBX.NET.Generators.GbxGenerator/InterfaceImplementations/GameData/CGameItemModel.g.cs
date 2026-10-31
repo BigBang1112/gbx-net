@@ -5,10 +5,4 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameItemModel : global::GBX.NET.Interfaces.GameData.IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameItemModelTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelTMU, global::GBX.NET.Interfaces.GameData.IGameItemModelVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? global::GBX.NET.Interfaces.GameData.IGameCtnCollector.IconFid
-    {
-        get => ((global::GBX.NET.Engines.GameData.CGameCtnCollector)this).IconFid;
-        set => ((global::GBX.NET.Engines.GameData.CGameCtnCollector)this).IconFid = value;
-    }
-    internal NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? GetActionsInterfaceReferences() => Actions;
 }

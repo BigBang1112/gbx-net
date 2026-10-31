@@ -4,48 +4,68 @@
 namespace GBX.NET.Interfaces.GameData;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers1<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+public interface IGameItemModelMembers1 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams? TrafficParams { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    global::GBX.NET.Engines.Plug.CPlugFileImg? LegacyIcon { get; set; }
+    Iso4 LegacyTriggerShape { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers3<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
 {
     T0? ArchetypeFid { get; set; }
     string? ArchetypeRef { get; set; }
     T1? DefaultPlacement { get; set; }
     string? DefaultWeaponName { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
+    string? IconRef { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemType { get; set; }
+    Vec3 LegacyCubeCenter { get; set; }
+    Vec3 LegacyCubeSize { get; set; }
+    float LegacyFlyVOffset { get; set; }
+    float LegacyFlyVStep { get; set; }
+    Vec3 LegacyGridOffset { get; set; }
+    float LegacyGridSnapHStep { get; set; }
+    float LegacyGridSnapVStep { get; set; }
+    Vec3[]? LegacyPivotPositions { get; set; }
+    float LegacyPivotSnapDistance { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
     global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers4 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     bool DisableLightmap { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModel { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModelEdition { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemType { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers3<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers5<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     T0? GameSkin { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers4<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+public interface IGameItemModelMembers6<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
 {
     T0? LowQualitySolid { get; set; }
     T1? Vehicle { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers5<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers7<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     new T0? RaceInterfaceFid { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers6<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers8<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     T0? AudioEnvironmentInCar { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers7<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers9<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ForcedSkinsFids { get; set; }
     T0? MaterialPilot { get; set; }
@@ -53,41 +73,42 @@ public interface IGameItemModelMembers7<T0> : global::GBX.NET.Interfaces.GameDat
     T0? StemMaterial { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers8<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers10<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     T0? DecoratorSolid { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers9<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers11<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
 {
     T0? MaterialDetails { get; set; }
     T0? MaterialGlass { get; set; }
     T0? MaterialSkin { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers10 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers12 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     int DefaultCamIndex { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers11 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers13 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinsFids { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers12 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers14 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? ItemGroupElements { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers13<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+public interface IGameItemModelMembers15 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
-    IReadOnlyList<T0>? Actions { get; set; }
+    global::GBX.NET.Engines.GameData.CGameActionModel[]? Actions { get; set; }
     global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam DefaultCam { get; set; }
+    string? SkinDirNameCustom { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers14<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+public interface IGameItemModelMembers16<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
 {
     T0? BannerProfileFid { get; set; }
     T1? FrontLight { get; set; }
@@ -97,7 +118,7 @@ public interface IGameItemModelMembers14<T0, T1> : global::GBX.NET.Interfaces.Ga
     T1? RearLight { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers15 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers17 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     Vec3 GroundPoint { get; set; }
     float OrbitalCenterHeightFromGround { get; set; }
@@ -105,7 +126,7 @@ public interface IGameItemModelMembers15 : global::GBX.NET.Interfaces.GameData.I
     float PainterGroundMargin { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameItemModelMembers16 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+public interface IGameItemModelMembers18 : global::GBX.NET.Interfaces.GameData.IGameItemModel
 {
     float OrbitalPreviewAngle { get; set; }
 }
@@ -121,53 +142,65 @@ public partial interface IGameItemModel : IClassVersion<global::GBX.NET.Engines.
     global::GBX.NET.Interfaces.Scene.IScene2d? RaceInterfaceFid { get; set; }
 }
 
-public partial interface IGameItemModelTM10 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTM10>
+public partial interface IGameItemModelTM10 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTM10>
 {
 }
 
-public partial interface IGameItemModelTMPU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMPU>
+public partial interface IGameItemModelTMPU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMPU>
 {
 }
 
-public partial interface IGameItemModelTMSX : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11
+public partial interface IGameItemModelTMSX : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13
 {
 }
 
-public partial interface IGameItemModelTMNESWC : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11
+public partial interface IGameItemModelTMNESWC : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13
 {
 }
 
-public partial interface IGameItemModelTMU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMU, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
+public partial interface IGameItemModelTMU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMU, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTMU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Plug.IPlugLightTMU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17
 {
 }
 
-public partial interface IGameItemModelVSK5 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelVSK5 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
 }
 
-public partial interface IGameItemModelTMF : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugLightTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelTMF : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugLightTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
 }
 
-public partial interface IGameItemModelMP3 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelMP3 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
-    new string? IconFid { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugTurretObjectParams? TurretParams { get; set; }
 }
 
-public partial interface IGameItemModelTMT : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelTMT : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
-    new string? IconFid { get; set; }
+    int LegacyInventoryOccupation { get; set; }
+    int LegacyItemClipIdCount { get; set; }
+    int LegacyItemClipIndexCount { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugTrafficObjectParamsTMT? TrafficParams { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugTurretObjectParamsTMT? TurretParams { get; set; }
 }
 
-public partial interface IGameItemModelMP4 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelMP4 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
-    new string? IconFid { get; set; }
+    Vec2[]? ItemClipShapePoints { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EItemClipType ItemClipType { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? ItemClips { get; set; }
 }
 
-public partial interface IGameItemModelTM2020 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers16
+public partial interface IGameItemModelTM2020 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Scene.IScene2dTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers17, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers18
 {
-    new string? IconFid { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020? IconMacroBlockInfo { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? IntroClipList { get; set; }
+    bool IsFoundation { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EItemFlags ItemFlags { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? PodiumClipList { get; set; }
+    Vec3[]? Positions { get; set; }
+    float PositionsYaw { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020? VFX { get; set; }
 }
 

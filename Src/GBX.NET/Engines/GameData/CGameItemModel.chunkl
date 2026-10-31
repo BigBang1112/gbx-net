@@ -2,12 +2,12 @@ CGameItemModel 0x2E002000
 - inherits: CGameCtnCollector
 
 0x000 (header, struct: SHeaderItemModelDesc) [MP4, TM2020] // item type
-  int<EItemType> ItemType
+  int<EItemType> ItemType = EItemType.Vehicle
 
 0x001 (header, struct: SHeaderFileVersion) [MP4, TM2020] // file version
   version
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF] // Vehicle
   CSceneMobil Vehicle
 
 0x001 [TM10, TMPU]
@@ -28,7 +28,7 @@ CGameItemModel 0x2E002000
   CMwNod
 
 0x006 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3] // DefaultCamIndex
-  int DefaultCamIndex
+  int DefaultCamIndex = -1
 
 0x007 [TMSX] // old materials
   CPlugMaterial MaterialSkin
@@ -36,7 +36,7 @@ CGameItemModel 0x2E002000
   CPlugMaterial MaterialDetails
 
 0x008 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
-  CMwNod?[] NadeoSkinFids
+  CMwNod?[] NadeoSkinsFids
 
 0x009 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // Cameras
   CMwNod[] Cameras (deprec)
@@ -51,7 +51,7 @@ CGameItemModel 0x2E002000
 0x00C [TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // race interface fid
   CScene2d RaceInterfaceFid
 
-0x00D (ForcedSkinsFids) [TMNESWC, TMU, VSK5, TMF]
+0x00D [TMNESWC, TMU, VSK5, TMF] // ForcedSkinsFids
   CMwNod[] ForcedSkinsFids
 
 0x00E [TMNESWC] // StadiumCar materials
@@ -66,7 +66,7 @@ CGameItemModel 0x2E002000
   float OrbitalCenterHeightFromGround
   float OrbitalRadiusBase
 
-0x010 (BannerProfileFid) [TMU, VSK5, TMF]
+0x010 [TMU, VSK5, TMF] // BannerProfileFid
   CPlugBitmap BannerProfileFid
 
 0x011 [TMU, VSK5, TMF] // materials
@@ -84,17 +84,24 @@ CGameItemModel 0x2E002000
   vec3 GroundPoint
   float PainterGroundMargin
   float OrbitalCenterHeightFromGround
-  float OrbitalRadiusBase
-  float OrbitalPreviewAngle
+  float OrbitalRadiusBase = -1
+  float OrbitalPreviewAngle = 0.15f
 
-0x013 (AudioEnvironmentInCar) [TMF, MP3, TMT, MP4]
+0x013 [TMF, MP3, TMT, MP4] // AudioEnvironmentInCar
   CPlugAudioEnvironment AudioEnvironmentInCar
 
 0x014
   CMwNod
 
-0x015 [MP3, TMT, MP4, TM2020] // ItemTypeE
-  int<EItemType> ItemTypeE
+0x015 [MP3, TMT, MP4, TM2020] // ItemType
+  int<EItemType> ItemType
+
+0x016 // DefaultSkinFid
+  CMwNod DefaultSkinFid
+
+0x017 // FreePlacement
+  version
+  bool FreePlacement
 
 0x019 [MP3.v4, TMT.v7, MP4.v12, TM2020.v16] // model
   version
@@ -110,6 +117,8 @@ CGameItemModel 0x2E002000
     v11-
       CMwNod PhyModelCustom
       CMwNod VisModelCustom
+  v1=
+    CMwNod VisualModel
   v3+
     id DefaultWeaponName
   v4+
@@ -123,7 +132,7 @@ CGameItemModel 0x2E002000
     else
       CMwNod VisModelCustom
   v6+
-    CGameActionModel[] Actions
+    CGameActionModel[] Actions (direct)
   v7+
     int<EDefaultCam> DefaultCam
   v8+
@@ -136,122 +145,123 @@ CGameItemModel 0x2E002000
     CPlugVFXFile VFX
   v15+
     CPlugGameSkinAndFolder MaterialModifier
+  v16+
+    CMwNod
 
-0x01A [MP3, TMT, MP4, TM2020]
-  CMwNod
+0x01A [MP3, TMT, MP4, TM2020] // TrafficParams
+  CPlugTrafficObjectParams TrafficParams
 
-0x01B [MP3, TMT]
-  CMwNod
+0x01B [MP3, TMT] // TurretParams
+  CPlugTurretObjectParams TurretParams
 
 0x01C [MP3.v5, TMT.v5, MP4.v5, TM2020.v5] // default placement
   version
   v5+
     CGameItemPlacementParam DefaultPlacement
     return
-  vec3[]
+  vec3[] LegacyPivotPositions
   v1+
-    float
-    float
-    float
-    float
-    float
-    float
+    vec3 LegacyCubeCenter
+    vec3 LegacyCubeSize
     v2+
-      float
-      float
-      float
-      float
-      float
+      float LegacyGridSnapHStep
+      float LegacyGridSnapVStep
+      vec3 LegacyGridOffset
       v3+
-        float
-        float
+        float LegacyFlyVStep
+        float LegacyFlyVOffset
         v4+
-          float
+          float LegacyPivotSnapDistance = -1
 
-0x01D
-  short
+0x01D // legacy placement flags
+  short LegacyPlacementFlags = 1
 
 0x01E [MP3.v5, TMT.v6, MP4.v6, TM2020.v7]
   version
+  v2-
+    string LegacyVisModelName
+    string LegacyPhyModelName
   v2+
     string ArchetypeRef
     v5+
       if ArchetypeRef == null || ArchetypeRef == ""
         CGameItemModel ArchetypeFid
       v6+
-        string // SkinDirNameCustom
+        string SkinDirNameCustom
         v7+
-          int // -1
+          CMwNod
 
 0x01F [MP3.v3, TMT.v4, MP4.v8, TM2020.v13]
   version
   v6-
     v5+
-      string?
-      string?
-      int?
+      string LegacyInventoryName
+      string LegacyInventoryDescription
+      int LegacyInventoryItemClass
     v4+
-      int?
+      int LegacyInventoryOccupation = 1000
     v2-
-      short?
-  int<EWaypointType> WaypointType
-  v7-
-    iso4
+      short LegacyPlacementFlags
+  int<EWaypointType> WaypointType = EWaypointType.None
+  v2..7
+    iso4 LegacyTriggerShape = Iso4.Identity
   v6+
     bool DisableLightmap
-    v9+
-      v12-
-        CMwNod
-      v11+
-        byte?
-        v12+
-          CPlugMediaClipList
-          int?
+  v9..12
+    CMwNod
+  v11+
+    byte<EItemFlags> ItemFlags
+  v12+
+    CPlugMediaClipList PodiumClipList
+    CPlugMediaClipList IntroClipList
 
 0x020 [MP3.v1, TMT.v1, MP4.v3, TM2020.v3]
   version
+  string IconRef
   v1-
-    string
-    CMwNod // CPlugFileImg
-    return
-  string IconFid
+    if IconRef == null || IconRef == ""
+      CPlugFileImg LegacyIcon
   v3+
-    boolbyte // ArticlePtr? xD
+    boolbyte
 
 0x021 (retired: TM2020) [TMT, MP4, TM2020]
   version
   ItemGroupElement[] ItemGroupElements
 
-0x022 (skippable) [TMT]
+0x022 (skippable) [TMT] // legacy item clip counts
   version
-  int
-  id[]
-  int
-  ushort[]
+  int = 10
+  int LegacyItemClipIdCount
+  int = 10
+  int LegacyItemClipIndexCount
 
-0x023 (retired: TM2020) [MP4, TM2020]
+0x023 (retired: TM2020) [MP4, TM2020] // item clips
   version
-  byte
-  int
+  byte<EItemClipType> ItemClipType
+  ItemGroupElement[] ItemClips
 
-0x024 (skippable, retired: TM2020) [MP4, TM2020]
+0x024 (skippable, retired: TM2020) [MP4, TM2020] // ItemClipShapePoints
   version
-  vec2[]
+  vec2[] ItemClipShapePoints
 
-0x025 (skippable) [TM2020]
+0x025 (skippable) [TM2020] // IsFoundation
   version
-  bool
+  bool IsFoundation
 
-0x026 (skippable) [TM2020]
+0x026 (skippable) [TM2020] // Positions
   version
-  vec3[]
+  vec3[] Positions
 
-0x027 (skippable) [TM2020]
+0x027 (skippable) [TM2020] // PositionsYaw
   version
-  float
+  float PositionsYaw // shared yaw for Positions, in radians
+
+0x028 (skippable) [TM2020] // IconMacroBlockInfo
+  block (encapsulated)
+    CGameCtnMacroBlockInfo IconMacroBlockInfo
 
 archive ItemGroupElement
-  iso4 Location
+  iso4 Location = Iso4.Identity
   string ItemRef
   if ItemRef == null || ItemRef == ""
     CGameItemModel Item
@@ -278,6 +288,20 @@ enum EWaypointType
   None
   StartFinish
   Dispenser
+
+enum EItemClipType
+  None
+  Complex
+  Rectangular
+  Triangular
+  Square
+  Hexagonal
+  Octogonal
+  Circular
+
+enum EItemFlags
+  None
+  DisableAutoCreateSound = 2
 
 enum EDefaultCam
   None
