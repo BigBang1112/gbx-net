@@ -28,4 +28,11 @@ public partial class CPlugLight
         get => GetFlag(EFlags.SceneLightOnlyWhenTreeVisible);
         set => SetFlag(EFlags.SceneLightOnlyWhenTreeVisible, value);
     }
+
+    [AppliedWithChunk<Chunk0901D004>]
+    public bool SceneLightAlwaysActive
+    {
+        get => GetFlag(EFlags.SceneLightAlwaysActive);
+        set => SetFlag(EFlags.SceneLightAlwaysActive, value);
+    }
 }

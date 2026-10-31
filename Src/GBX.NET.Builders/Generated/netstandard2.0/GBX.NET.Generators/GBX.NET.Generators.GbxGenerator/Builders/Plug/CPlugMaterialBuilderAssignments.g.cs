@@ -5,31 +5,90 @@ namespace GBX.NET.Builders.Engines.Plug;
 
 internal static class CPlugMaterialBuilderAssignments
 {
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>? cached0;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?> GetCustomMaterialAssignment() => cached0 ??= new("CustomMaterial", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>(Assign0));
-    private static void Assign0(object node, global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).CustomMaterial = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>? cached0Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>> GetCustomMaterialReferenceAssignment() => cached0Reference ??= new("CustomMaterial", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>(Assign0Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>(Copy0));
-    private static void Assign0Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.CustomMaterial.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>? cached1;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?> GetDeviceMaterialsAssignment() => cached1 ??= new("DeviceMaterials", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>(Assign1), new Func<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>(Copy1));
-    private static void Assign1(object node, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).DeviceMaterials = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>? cached2;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId> GetGameplayIdAssignment() => cached2 ??= new("GameplayId", new Action<object, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>(Assign2));
-    private static void Assign2(object node, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).GameplayId = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlug?>? cached3;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlug?> GetShaderAssignment() => cached3 ??= new("Shader", new Action<object, global::GBX.NET.Engines.Plug.CPlug?>(Assign3));
-    private static void Assign3(object node, global::GBX.NET.Engines.Plug.CPlug? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).Shader = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlug>>? cached3Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlug>> GetShaderReferenceAssignment() => cached3Reference ??= new("Shader", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlug>>(Assign3Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlug>, NodeRef<global::GBX.NET.Engines.Plug.CPlug>>(Copy2));
-    private static void Assign3Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.Shader.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>? cached4;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?> GetShadingAssignment() => cached4 ??= new("Shading", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>(Assign4));
-    private static void Assign4(object node, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).Shading = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>? cached5;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId> GetSurfaceIdAssignment() => cached5 ??= new("SurfaceId", new Action<object, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>(Assign5));
-    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).SurfaceId = value;
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>(); copy.CopyFrom(value); return copy; }
-    private static global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? Copy1(global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[])value.Clone();
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlug> Copy2(NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlug>(); copy.CopyFrom(value); return copy; }
+    private static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>?>? cached0;
+    internal static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>?> GetColorTargetTablesAssignment() => cached0 ??= new("ColorTargetTables", new Action<object, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>?>(Assign0), new Func<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>?, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>?>(Copy0));
+    private static void Assign0(object node, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).ColorTargetTables = value;
+    private static NodeBuilderProperty<string[]?>? cached1;
+    internal static NodeBuilderProperty<string[]?> GetDefaultSkippedBitmapLayersAssignment() => cached1 ??= new("DefaultSkippedBitmapLayers", new Action<object, string[]?>(Assign1), new Func<string[]?, string[]?>(Copy1));
+    private static void Assign1(object node, string[]? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).DefaultSkippedBitmapLayers = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>? cached2;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?> GetDeviceMaterialsAssignment() => cached2 ??= new("DeviceMaterials", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>(Assign2), new Func<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>(Copy2));
+    private static void Assign2(object node, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).DeviceMaterials = value;
+    private static NodeBuilderProperty<uint>? cached3;
+    internal static NodeBuilderProperty<uint> GetFlagsAssignment() => cached3 ??= new("Flags", new Action<object, uint>(Assign3));
+    private static void Assign3(object node, uint value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).Flags = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId> GetGameplayIdAssignment() => cached4 ??= new("GameplayId", new Action<object, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).GameplayId = value;
+    private static NodeBuilderProperty<float>? cached5;
+    internal static NodeBuilderProperty<float> GetGrassFencesStepSizeAssignment() => cached5 ??= new("GrassFencesStepSize", new Action<object, float>(Assign5));
+    private static void Assign5(object node, float value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).GrassFencesStepSize = value;
+    private static NodeBuilderProperty<int>? cached6;
+    internal static NodeBuilderProperty<int> GetGrassFencesStepSizeCountAssignment() => cached6 ??= new("GrassFencesStepSizeCount", new Action<object, int>(Assign6));
+    private static void Assign6(object node, int value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).GrassFencesStepSizeCount = value;
+    private static NodeBuilderProperty<byte>? cached7;
+    internal static NodeBuilderProperty<byte> GetLegacySurfaceMaterialTypeAssignment() => cached7 ??= new("LegacySurfaceMaterialType", new Action<object, byte>(Assign7));
+    private static void Assign7(object node, byte value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).LegacySurfaceMaterialType = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>? cached8;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?> GetMaterialCustomAssignment() => cached8 ??= new("MaterialCustom", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>(Assign8));
+    private static void Assign8(object node, global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).MaterialCustom = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>? cached8Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>> GetMaterialCustomReferenceAssignment() => cached8Reference ??= new("MaterialCustom", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>(Assign8Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>(Copy3));
+    private static void Assign8Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.MaterialCustom.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialFx?>? cached9;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialFx?> GetMaterialFxAssignment() => cached9 ??= new("MaterialFx", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterialFx?>(Assign9));
+    private static void Assign9(object node, global::GBX.NET.Engines.Plug.CPlugMaterialFx? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).MaterialFx = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>>? cached9Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>> GetMaterialFxReferenceAssignment() => cached9Reference ??= new("MaterialFx", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>>(Assign9Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>>(Copy4));
+    private static void Assign9Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.MaterialFx.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached10;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialModelAssignment() => cached10 ??= new("MaterialModel", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign10));
+    private static void Assign10(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).MaterialModel = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached10Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialModelReferenceAssignment() => cached10Reference ??= new("MaterialModel", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign10Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy5));
+    private static void Assign10Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.MaterialModel.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex?>? cached11;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex?> GetMaterialVertexIndexAssignment() => cached11 ??= new("MaterialVertexIndex", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex?>(Assign11));
+    private static void Assign11(object node, global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).MaterialVertexIndex = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>>? cached11Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>> GetMaterialVertexIndexReferenceAssignment() => cached11Reference ??= new("MaterialVertexIndex", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>>(Assign11Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>>(Copy6));
+    private static void Assign11Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.MaterialVertexIndex.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray?>? cached12;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray?> GetMaterialWaterArrayAssignment() => cached12 ??= new("MaterialWaterArray", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray?>(Assign12));
+    private static void Assign12(object node, global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).MaterialWaterArray = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>>? cached12Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>> GetMaterialWaterArrayReferenceAssignment() => cached12Reference ??= new("MaterialWaterArray", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>>(Assign12Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>>(Copy7));
+    private static void Assign12Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray> value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).References.MaterialWaterArray.CopyFrom(value);
+    private static NodeBuilderProperty<float>? cached13;
+    internal static NodeBuilderProperty<float> GetPreLightGenScaleAssignment() => cached13 ??= new("PreLightGenScale", new Action<object, float>(Assign13));
+    private static void Assign13(object node, float value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).PreLightGenScale = value;
+    private static NodeBuilderProperty<float>? cached14;
+    internal static NodeBuilderProperty<float> GetScreenAspectRatioAssignment() => cached14 ??= new("ScreenAspectRatio", new Action<object, float>(Assign14));
+    private static void Assign14(object node, float value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).ScreenAspectRatio = value;
+    private static NodeBuilderProperty<bool>? cached15;
+    internal static NodeBuilderProperty<bool> GetScreenSkinEnabledAssignment() => cached15 ??= new("ScreenSkinEnabled", new Action<object, bool>(Assign15));
+    private static void Assign15(object node, bool value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).ScreenSkinEnabled = value;
+    private static NodeBuilderProperty<string?>? cached16;
+    internal static NodeBuilderProperty<string?> GetScreenSkinNameFilterAssignment() => cached16 ??= new("ScreenSkinNameFilter", new Action<object, string?>(Assign16));
+    private static void Assign16(object node, string? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).ScreenSkinNameFilter = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>? cached17;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?> GetShadingAssignment() => cached17 ??= new("Shading", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>(Assign17));
+    private static void Assign17(object node, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).Shading = value;
+    private static NodeBuilderProperty<ushort>? cached18;
+    internal static NodeBuilderProperty<ushort> GetSurfaceFlagsAssignment() => cached18 ??= new("SurfaceFlags", new Action<object, ushort>(Assign18));
+    private static void Assign18(object node, ushort value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).SurfaceFlags = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>? cached19;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId> GetSurfaceIdAssignment() => cached19 ??= new("SurfaceId", new Action<object, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>(Assign19));
+    private static void Assign19(object node, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).SurfaceId = value;
+    private static NodeBuilderProperty<string[]?>? cached20;
+    internal static NodeBuilderProperty<string[]?> GetWaterIdsAssignment() => cached20 ??= new("WaterIds", new Action<object, string[]?>(Assign20), new Func<string[]?, string[]?>(Copy1));
+    private static void Assign20(object node, string[]? value) => ((global::GBX.NET.Engines.Plug.CPlugMaterial)node).WaterIds = value;
+    private static NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>? Copy0(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>? value) => value is null ? null! : NodeBuilderReferences.CopyList(value);
+    private static string[]? Copy1(string[]? value) => value is null ? null! : (string[])value.Clone();
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? Copy2(global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[])value.Clone();
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> Copy3(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> Copy4(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> Copy5(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex> Copy6(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray> Copy7(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray>(); copy.CopyFrom(value); return copy; }
 }

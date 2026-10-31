@@ -5,49 +5,94 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugMaterial : global::GBX.NET.Interfaces.Plug.IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialCustom
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialModel
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialCustom
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialModel
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialCustom
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU>.MaterialModel
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialCustom
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialModel
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020>.CustomMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialCustom
     {
-        get => CustomMaterial;
-        set => CustomMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialModel
+    {
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialCustom
+    {
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialModel
+    {
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialCustom
+    {
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialModel
+    {
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialCustom
+    {
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialModel
+    {
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialCustom
+    {
+        get => MaterialCustom;
+        set => MaterialCustom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers5<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialModel
+    {
+        get => MaterialModel;
+        set => MaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

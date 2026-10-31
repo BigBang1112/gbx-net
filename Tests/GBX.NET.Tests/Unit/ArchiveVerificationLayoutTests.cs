@@ -50,9 +50,10 @@ public class ArchiveVerificationLayoutTests
     }
 
     [Test]
-    [Arguments(0)]
-    [Arguments(1)]
-    public async Task MaterialSurface_VersionZeroStillContainsPackedSurfaceFlags(int version)
+    [Arguments(0, false)]
+    [Arguments(1, false)]
+    [Arguments(1, true)]
+    public async Task MaterialSurface_VersionZeroStillContainsPackedSurfaceFlags(int version, bool screenSkinEnabled)
     {
         var payload = Payload(w =>
         {
@@ -62,8 +63,8 @@ public class ArchiveVerificationLayoutTests
             w.Write((short)0x4567);
             if (version >= 1)
             {
-                w.Write(17);
-                w.Write(23);
+                w.Write(1.75f);
+                w.Write(screenSkinEnabled ? 1 : 0); // Boolean stored as Int32.
                 w.Write(3);
                 w.Write(Encoding.UTF8.GetBytes("abc"));
             }
@@ -72,8 +73,11 @@ public class ArchiveVerificationLayoutTests
         var chunk = new CPlugMaterial.Chunk09079017();
 
         await Verify(payload, rw => chunk.ReadWrite(node, rw));
-        await Assert.That(chunk.U03).IsEqualTo((short)0x4567);
+        await Assert.That(node.SurfaceFlags).IsEqualTo((ushort)0x4567);
         await Assert.That((int)node.SurfaceId).IsEqualTo(2);
+        await Assert.That(node.ScreenAspectRatio).IsEqualTo(version >= 1 ? 1.75f : -1f);
+        await Assert.That(node.ScreenSkinEnabled).IsEqualTo(screenSkinEnabled);
+        if (version >= 1) await Assert.That(node.ScreenSkinNameFilter).IsEqualTo("abc");
     }
 
     [Test]
@@ -97,7 +101,7 @@ public class ArchiveVerificationLayoutTests
         var chunk = new CPlugMaterial.Chunk09079015();
 
         await Verify(payload, rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.Shader).IsTypeOf<CPlugMaterial>();
+        await Assert.That(node.MaterialModel).IsTypeOf<CPlugMaterial>();
     }
 
     [Test]

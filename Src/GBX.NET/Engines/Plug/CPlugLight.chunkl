@@ -2,14 +2,14 @@ CPlugLight 0x0901D000
 - inherits: CPlug
 
 0x000 [TM10, TMPU]
-  GxLight Light
+  GxLight GxLightModel
   CFuncLight FuncLight
   CPlugBitmap BitmapFlare
   CPlugBitmap BitmapProjector
 
 0x002 (base: 0x000) [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4]
   base
-  int<EFlags> Flags
+  int<EFlags> Flags = EFlags.NightOnly
 
 0x003 [TM2020.v1]
   version
@@ -19,14 +19,10 @@ CPlugLight 0x0901D000
   v1+
     id AnimTimerName
 
-0x004 [TM2020]
+0x004 (base: 0x002) [TM2020] // light and color target table
   version
-  GxLight Light
-  int
-  int
-  int
-  int
-  int
+  base
+  CPlugMaterialColorTargetTable* ColorTargetTable
 
 enum EFlags
   None
@@ -34,3 +30,4 @@ enum EFlags
   ReflectByGround
   DuplicateGxLight = 4
   SceneLightOnlyWhenTreeVisible = 8
+  SceneLightAlwaysActive = 16

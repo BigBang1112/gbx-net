@@ -26,29 +26,39 @@ internal static class CPlugLightBuilderAssignments
     private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>? cached4Reference;
     internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>> GetBitmapProjectorReferenceAssignment() => cached4Reference ??= new("BitmapProjector", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Copy0));
     private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.BitmapProjector.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugLight.EFlags>? cached5;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugLight.EFlags> GetFlagsAssignment() => cached5 ??= new("Flags", new Action<object, global::GBX.NET.Engines.Plug.CPlugLight.EFlags>(Assign5));
-    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugLight.EFlags value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).Flags = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncLight?>? cached6;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncLight?> GetFuncLightAssignment() => cached6 ??= new("FuncLight", new Action<object, global::GBX.NET.Engines.Function.CFuncLight?>(Assign6));
-    private static void Assign6(object node, global::GBX.NET.Engines.Function.CFuncLight? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).FuncLight = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>? cached6Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>> GetFuncLightReferenceAssignment() => cached6Reference ??= new("FuncLight", new Action<object, NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>, NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>(Copy1));
-    private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.FuncLight.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?>? cached7;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?> GetImageAnimAssignment() => cached7 ??= new("ImageAnim", new Action<object, global::GBX.NET.Engines.Plug.CPlugFileImg?>(Assign7));
-    private static void Assign7(object node, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).ImageAnim = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>? cached7Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>> GetImageAnimReferenceAssignment() => cached7Reference ??= new("ImageAnim", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Assign7Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Copy2));
-    private static void Assign7Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.ImageAnim.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable?>? cached5;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable?> GetColorTargetTableAssignment() => cached5 ??= new("ColorTargetTable", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable?>(Assign5));
+    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).ColorTargetTable = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>>? cached5Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>> GetColorTargetTableReferenceAssignment() => cached5Reference ??= new("ColorTargetTable", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>>(Copy1));
+    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.ColorTargetTable.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugLight.EFlags>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugLight.EFlags> GetFlagsAssignment() => cached6 ??= new("Flags", new Action<object, global::GBX.NET.Engines.Plug.CPlugLight.EFlags>(Assign6));
+    private static void Assign6(object node, global::GBX.NET.Engines.Plug.CPlugLight.EFlags value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).Flags = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncLight?>? cached7;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncLight?> GetFuncLightAssignment() => cached7 ??= new("FuncLight", new Action<object, global::GBX.NET.Engines.Function.CFuncLight?>(Assign7));
+    private static void Assign7(object node, global::GBX.NET.Engines.Function.CFuncLight? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).FuncLight = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>? cached7Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>> GetFuncLightReferenceAssignment() => cached7Reference ??= new("FuncLight", new Action<object, NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>(Assign7Reference), new Func<NodeRef<global::GBX.NET.Engines.Function.CFuncLight>, NodeRef<global::GBX.NET.Engines.Function.CFuncLight>>(Copy2));
+    private static void Assign7Reference(object node, NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.FuncLight.CopyFrom(value);
     private static NodeBuilderProperty<global::GBX.NET.Engines.Graphic.GxLight?>? cached8;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Graphic.GxLight?> GetLightAssignment() => cached8 ??= new("Light", new Action<object, global::GBX.NET.Engines.Graphic.GxLight?>(Assign8));
-    private static void Assign8(object node, global::GBX.NET.Engines.Graphic.GxLight? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).Light = value;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Graphic.GxLight?> GetGxLightModelAssignment() => cached8 ??= new("GxLightModel", new Action<object, global::GBX.NET.Engines.Graphic.GxLight?>(Assign8));
+    private static void Assign8(object node, global::GBX.NET.Engines.Graphic.GxLight? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).GxLightModel = value;
     private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>? cached8Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>> GetLightReferenceAssignment() => cached8Reference ??= new("Light", new Action<object, NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>(Assign8Reference), new Func<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>, NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>(Copy3));
-    private static void Assign8Reference(object node, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.Light.CopyFrom(value);
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>> GetGxLightModelReferenceAssignment() => cached8Reference ??= new("GxLightModel", new Action<object, NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>(Assign8Reference), new Func<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>, NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>(Copy3));
+    private static void Assign8Reference(object node, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.GxLightModel.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?>? cached9;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?> GetImageAnimAssignment() => cached9 ??= new("ImageAnim", new Action<object, global::GBX.NET.Engines.Plug.CPlugFileImg?>(Assign9));
+    private static void Assign9(object node, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).ImageAnim = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>? cached9Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>> GetImageAnimReferenceAssignment() => cached9Reference ??= new("ImageAnim", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Assign9Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Copy4));
+    private static void Assign9Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).References.ImageAnim.CopyFrom(value);
+    private static NodeBuilderProperty<bool>? cached10;
+    internal static NodeBuilderProperty<bool> GetSceneLightAlwaysActiveAssignment() => cached10 ??= new("SceneLightAlwaysActive", new Action<object, bool>(Assign10));
+    private static void Assign10(object node, bool value) => ((global::GBX.NET.Engines.Plug.CPlugLight)node).SceneLightAlwaysActive = value;
     private static NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Function.CFuncLight> Copy1(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncLight>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> Copy2(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable> Copy1(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Function.CFuncLight> Copy2(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncLight>(); copy.CopyFrom(value); return copy; }
     private static NodeRef<global::GBX.NET.Engines.Graphic.GxLight> Copy3(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) { var copy = new NodeRef<global::GBX.NET.Engines.Graphic.GxLight>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> Copy4(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(value); return copy; }
 }

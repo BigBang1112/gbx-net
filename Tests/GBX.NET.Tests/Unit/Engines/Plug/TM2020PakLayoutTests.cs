@@ -104,9 +104,9 @@ public class TM2020PakLayoutTests
         var table = new CPlugMaterialColorTargetTable();
 
         await Verify(payload, rw => table.ReadWrite(rw));
-        await Assert.That(table.Colors!.Length).IsEqualTo(1);
-        await Assert.That(table.Colors[0].Colors1![1]).IsEqualTo(0x55667788);
-        await Assert.That(table.Colors[0].Colors2![0]).IsEqualTo(0x12345678);
+        await Assert.That(table.ColorTargets!.Length).IsEqualTo(1);
+        await Assert.That(table.ColorTargets[0].Colors[1]).IsEqualTo(0x55667788);
+        await Assert.That(table.ColorTargets[0].ColorBlindColors[0]).IsEqualTo(0x12345678);
     }
 
     [Test]

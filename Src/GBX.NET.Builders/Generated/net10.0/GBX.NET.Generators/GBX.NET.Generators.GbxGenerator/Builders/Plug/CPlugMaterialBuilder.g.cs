@@ -7,38 +7,57 @@ public abstract class CPlugMaterialBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CPlugMaterialBuilderBase() { }
     private protected CPlugMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM2020;
+    public TSelf WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDeviceMaterialsAssignment(), value, SupportedGames1);
+    public TSelf WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values) => WithDeviceMaterials(values.ToArray());
+    public TSelf WithMaterialFx(global::GBX.NET.Engines.Plug.CPlugMaterialFx? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialFxAssignment(), value, SupportedGames1);
+    public TSelf WithMaterialFxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialFx> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialFxReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithSurfaceFlags(ushort value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceFlagsAssignment(), value, SupportedGames1);
+    public TSelf WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceIdAssignment(), value, SupportedGames1);
 }
 public abstract class CPlugMaterialBuilderMembers1<TSelf> : CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMaterialBuilderMembers1<TSelf>
 {
     private protected CPlugMaterialBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-    public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, SupportedGames1);
-    public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithLegacySurfaceMaterialType(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetLegacySurfaceMaterialTypeAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CPlugMaterialBuilderMembers2<TSelf> : CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMaterialBuilderMembers2<TSelf>
 {
     private protected CPlugMaterialBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-    public TSelf WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDeviceMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values) => WithDeviceMaterials(values.ToArray());
+    public TSelf WithMaterialCustom(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialCustomAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialCustomReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialCustomReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialModel(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialModelAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialModelReferenceAssignment(), value, SupportedGames2);
 }
 public abstract class CPlugMaterialBuilderMembers3<TSelf> : CPlugMaterialBuilderMembers2<TSelf> where TSelf : CPlugMaterialBuilderMembers3<TSelf>
 {
     private protected CPlugMaterialBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-    public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, SupportedGames1);
-    public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    public TSelf WithFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
 }
 public abstract class CPlugMaterialBuilderMembers4<TSelf> : CPlugMaterialBuilderMembers3<TSelf> where TSelf : CPlugMaterialBuilderMembers4<TSelf>
 {
     private protected CPlugMaterialBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-    public TSelf WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShadingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    public TSelf WithDefaultSkippedBitmapLayers(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDefaultSkippedBitmapLayersAssignment(), value, SupportedGames3);
+    public TSelf WithDefaultSkippedBitmapLayers(IEnumerable<string> values) => WithDefaultSkippedBitmapLayers(values.ToArray());
+    public TSelf WithPreLightGenScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetPreLightGenScaleAssignment(), value, SupportedGames3);
+}
+public abstract class CPlugMaterialBuilderMembers5<TSelf> : CPlugMaterialBuilderMembers4<TSelf> where TSelf : CPlugMaterialBuilderMembers5<TSelf>
+{
+    private protected CPlugMaterialBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
+    public TSelf WithMaterialVertexIndex(global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialVertexIndexAssignment(), value, SupportedGames4);
+    public TSelf WithMaterialVertexIndexReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial_VertexIndex> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialVertexIndexReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShadingAssignment(), value, SupportedGames4);
+    public TSelf WithWaterIds(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetWaterIdsAssignment(), value, SupportedGames4);
+    public TSelf WithWaterIds(IEnumerable<string> values) => WithWaterIds(values.ToArray());
 }
 public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMaterialBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe0(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004());
@@ -46,7 +65,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009());
@@ -55,7 +74,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe2(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A());
@@ -64,7 +83,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe3(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D());
@@ -89,7 +108,7 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     }
     private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe6(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010());
@@ -116,32 +135,36 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugMaterialBuilderMembers2<TM10>
+    public partial class TM10 : CPlugMaterialBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMPU : CPlugMaterialBuilderMembers2<TMPU>
+    public partial class TMPU : CPlugMaterialBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMSX : CPlugMaterialBuilderMembers1<TMSX>
+    public partial class TMSX : CPlugMaterialBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TMSX WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithLegacySurfaceMaterialType(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetLegacySurfaceMaterialTypeAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMNESWC : CPlugMaterialBuilderMembers1<TMNESWC>
+    public partial class TMNESWC : CPlugMaterialBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TMNESWC WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLegacySurfaceMaterialType(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetLegacySurfaceMaterialTypeAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
@@ -149,9 +172,9 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     public partial class TMU : CPlugMaterialBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TMU WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, SupportedGames1);
-        public TMU WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, SupportedGames1);
-        public TMU WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU? value) => WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithLegacySurfaceMaterialType(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetLegacySurfaceMaterialTypeAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public TMU WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
@@ -159,9 +182,9 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     public partial class VSK5 : CPlugMaterialBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public VSK5 WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, SupportedGames1);
-        public VSK5 WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, SupportedGames1);
-        public VSK5 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? value) => WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLegacySurfaceMaterialType(byte value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetLegacySurfaceMaterialTypeAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public VSK5 WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
@@ -169,42 +192,55 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     public partial class TMF : CPlugMaterialBuilderMembers3<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TMF WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class MP3 : CPlugMaterialBuilderMembers3<MP3>
+    public partial class MP3 : CPlugMaterialBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public MP3 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMT : CPlugMaterialBuilderMembers3<TMT>
+    public partial class TMT : CPlugMaterialBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TMT WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class MP4 : CPlugMaterialBuilderMembers4<MP4>
+    public partial class MP4 : CPlugMaterialBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public MP4 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TM2020 : CPlugMaterialBuilderMembers4<TM2020>
+    public partial class TM2020 : CPlugMaterialBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public TM2020 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? value) => base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM2020 WithGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGameplayIdAssignment(), value, SupportedGames2);
-        public TM2020 WithShader(global::GBX.NET.Engines.Plug.CPlug? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderAssignment(), value, SupportedGames2);
-        public TM2020 WithShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderReferenceAssignment(), value, SupportedGames2);
+        public TM2020 WithColorTargetTables(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetColorTargetTablesAssignment(), value, SupportedGames5);
+        public TM2020 WithColorTargetTables(params global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable[] values) => WithColorTargetTables(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable>(values));
+        public TM2020 WithColorTargetTables(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable> values) => WithColorTargetTables(values.ToArray());
+        public TM2020 WithGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGameplayIdAssignment(), value, SupportedGames5);
+        public TM2020 WithGrassFencesStepSize(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGrassFencesStepSizeAssignment(), value, SupportedGames5);
+        public TM2020 WithGrassFencesStepSizeCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGrassFencesStepSizeCountAssignment(), value, SupportedGames5);
+        public TM2020 WithMaterialCustom(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? value) => base.WithMaterialCustom(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialWaterArray(global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialWaterArrayAssignment(), value, SupportedGames5);
+        public TM2020 WithMaterialWaterArrayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetMaterialWaterArrayReferenceAssignment(), value, SupportedGames5);
+        public TM2020 WithScreenAspectRatio(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetScreenAspectRatioAssignment(), value, SupportedGames5);
+        public TM2020 WithScreenSkinEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetScreenSkinEnabledAssignment(), value, SupportedGames5);
+        public TM2020 WithScreenSkinNameFilter(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetScreenSkinNameFilterAssignment(), value, SupportedGames5);
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build() => BuildNode(CPlugMaterialBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
