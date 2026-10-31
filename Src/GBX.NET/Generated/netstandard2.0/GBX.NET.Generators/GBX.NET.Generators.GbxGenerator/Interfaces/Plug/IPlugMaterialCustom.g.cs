@@ -4,50 +4,83 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugMaterialCustomMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom
+public interface IPlugMaterialCustomMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom where T0 : class
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
+    T0? BitmapShadowOpacity { get; set; }
+    float LightThroughRatioBounce { get; set; }
+    int VSplitIndexSemantic { get; set; }
+    float VisibleMaxDist { get; set; }
+    float VisibleMinScreenHeight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialCustomMembers2 : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.CBuffer[]? ConstantBuffers { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.DefineNat[]? DefineNats { get; set; }
+    int IndexCountPerVertex { get; set; }
+    string? SubTextureNamePxz { get; set; }
+    string? SubTextureNamePy { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialCustomMembers3 : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.VisibleFilterData? VisibleFilter { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialCustomMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom where T0 : class
+{
+    new IReadOnlyList<T0?>? FuncShaders { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialCustomMembers5 : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? BitmapSkips { get; set; }
 }
 public partial interface IPlugMaterialCustom : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs1 { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs2 { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? Textures { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? Bitmaps { get; set; }
+    ulong Flags { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader?>? FuncShaders { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxColors { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxReals { get; set; }
+    ulong ShaderRequirements { get; set; }
 }
 
-public partial interface IPlugMaterialCustomTMSX : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomTMSX : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>
 {
 }
 
-public partial interface IPlugMaterialCustomTMNESWC : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomTMNESWC : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>
 {
 }
 
-public partial interface IPlugMaterialCustomTMU : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomTMU : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMU>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomVSK5 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomVSK5 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomTMF : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomTMF : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomMP3 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomMP3 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomTMT : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomTMT : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomMP4 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomMP4 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
 }
 
-public partial interface IPlugMaterialCustomTM2020 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
+public partial interface IPlugMaterialCustomTM2020 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers5
 {
+    string? SubTextureNamePyH2 { get; set; }
+    string? SubTextureNamePyX2 { get; set; }
 }
 

@@ -83,9 +83,9 @@ public class TM2020PakLayoutTests
         var buffer = new CPlugMaterialCustom.CBuffer { IsDataAbsent = absent };
 
         await Verify(payload, rw => buffer.ReadWrite(rw, version));
-        await Assert.That(buffer.DataSize).IsEqualTo(3);
+        await Assert.That(buffer.ByteSize).IsEqualTo(3);
         await Assert.That(buffer.IsDataAbsent).IsEqualTo(absent);
-        await Assert.That(buffer.U02?.Length ?? 0).IsEqualTo(version >= 1 && absent ? 0 : 3);
+        await Assert.That(buffer.Data?.Length ?? 0).IsEqualTo(version >= 1 && absent ? 0 : 3);
     }
 
     [Test]
