@@ -5,4 +5,14 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugMaterialUserInst : global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasMP4>.TextureAtlas
+    {
+        get => TextureAtlas;
+        set => TextureAtlas = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasTM2020>.TextureAtlas
+    {
+        get => TextureAtlas;
+        set => TextureAtlas = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

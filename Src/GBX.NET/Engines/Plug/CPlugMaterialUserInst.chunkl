@@ -1,10 +1,10 @@
 CPlugMaterialUserInst 0x090FD000
 
-0x000 [MP3.v4, TMT.v6, MP4.v9, TM2020.v11]
+0x000 [MP3.v4, TMT.v6, MP4.v9, TM2020.v11] // material and shader parameters
   version
   v11+
     boolbyte IsUsingGameMaterial
-  id MaterialName
+  id Name
   id Model
   string BaseTexture
   byte<CPlugSurface.MaterialId> SurfacePhysicId
@@ -23,27 +23,33 @@ CPlugMaterialUserInst 0x090FD000
         id Link
     v2+
       Cst[] Csts
-      int[] Color
+      int[] CstValues // raw 32-bit values shared by the shader constants
       v3+
         UvAnim[] UvAnims
         v4+
-          id[]
+          id[] VisibleIds
           v6+
             UserTexture[] UserTextures
             v7+
               id HidingGroup
 
-0x001 [MP4.v5, TM2020.v5]
+0x001 [MP4.v5, TM2020.v5] // texture atlas and tiling
   version
-  CPlugBitmapAtlas
+  CPlugBitmapAtlas TextureAtlas
+  v1=
+    bool
+    float TextureSizeInMeters = 1
   v2=
-    throw
+    int<ETexAddress> TilingU
+    int<ETexAddress> TilingV
+    float TextureSizeInMeters
+    float
   v3+
     int<ETexAddress> TilingU
     int<ETexAddress> TilingV
     float TextureSizeInMeters
     v4+
-      int?
+      int
       v5+
         bool IsNatural
 
@@ -58,18 +64,18 @@ enum ETexAddress
   Border
 
 archive Cst
-  id
-  id
-  int
+  id Name
+  id Type
+  int ValueCount // number of 32-bit words in CstValues
 
 archive UvAnim
-  id
-  id
-  float
-  ulong
+  id Layer
+  id Type
+  float Period
+  ulong Data // ScaleU/ScaleV or Count/CountX/CountY, depending on Type
   v5+
-    id
+    id InputVal
 
 archive UserTexture
-  int
+  int Layer
   string Texture

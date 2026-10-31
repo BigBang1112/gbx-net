@@ -21,13 +21,13 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         set => this.isUsingGameMaterial = value;
     }
 
-    private string? materialName;
+    private string? name;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>]
-    public string? MaterialName
+    public string? Name
     {
-        get => this.materialName;
-        set => this.materialName = value;
+        get => this.name;
+        set => this.name = value;
     }
 
     private string? model;
@@ -84,13 +84,16 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         set => this.csts = value;
     }
 
-    private int[]? color;
+    private int[]? cstValues;
+    /// <summary>
+    /// raw 32-bit values shared by the shader constants
+    /// </summary>
     /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(2)]
-    public int[]? Color
+    public int[]? CstValues
     {
-        get => this.color;
-        set => this.color = value;
+        get => this.cstValues;
+        set => this.cstValues = value;
     }
 
     private UvAnim[]? uvAnims;
@@ -100,6 +103,15 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     {
         get => this.uvAnims;
         set => this.uvAnims = value;
+    }
+
+    private string[]? visibleIds;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090FD000>(4)]
+    public string[]? VisibleIds
+    {
+        get => this.visibleIds;
+        set => this.visibleIds = value;
     }
 
     private UserTexture[]? userTextures;
@@ -120,9 +132,27 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         set => this.hidingGroup = value;
     }
 
+    private NodeRef<CPlugBitmapAtlas>? textureAtlasRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk090FD001>]
+    public CPlugBitmapAtlas? TextureAtlas
+    {
+        get => textureAtlasRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref textureAtlasRef, value);
+    }
+
+    private float textureSizeInMeters = 1;
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090FD001>(1)]
+    public float TextureSizeInMeters
+    {
+        get => this.textureSizeInMeters;
+        set => this.textureSizeInMeters = value;
+    }
+
     private ETexAddress tilingU;
-    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090FD001>(3)]
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090FD001>(2)]
     public ETexAddress TilingU
     {
         get => this.tilingU;
@@ -130,21 +160,12 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private ETexAddress tilingV;
-    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090FD001>(3)]
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090FD001>(2)]
     public ETexAddress TilingV
     {
         get => this.tilingV;
         set => this.tilingV = value;
-    }
-
-    private float textureSizeInMeters;
-    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090FD001>(3)]
-    public float TextureSizeInMeters
-    {
-        get => this.textureSizeInMeters;
-        set => this.textureSizeInMeters = value;
     }
 
     private bool isNatural;
@@ -156,24 +177,40 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         set => this.isNatural = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugMaterialUserInst owner;
+        internal NodeRefView(CPlugMaterialUserInst owner) => this.owner = owner;
+        public NodeRef<CPlugBitmapAtlas> TextureAtlas => NodeRef.GetOrCreate(ref owner.textureAtlasRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("TextureAtlas", NodeRef.GetOrCreate(ref textureAtlasRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugMaterialUserInst)clone).isUsingGameMaterial = context.Clone(this.isUsingGameMaterial)!;
-        ((CPlugMaterialUserInst)clone).materialName = context.Clone(this.materialName)!;
+        ((CPlugMaterialUserInst)clone).name = context.Clone(this.name)!;
         ((CPlugMaterialUserInst)clone).model = context.Clone(this.model)!;
         ((CPlugMaterialUserInst)clone).baseTexture = context.Clone(this.baseTexture)!;
         ((CPlugMaterialUserInst)clone).surfacePhysicId = context.Clone(this.surfacePhysicId)!;
         ((CPlugMaterialUserInst)clone).surfaceGameplayId = context.Clone(this.surfaceGameplayId)!;
         ((CPlugMaterialUserInst)clone).link = context.Clone(this.link)!;
         ((CPlugMaterialUserInst)clone).csts = context.CloneArray(this.csts)!;
-        ((CPlugMaterialUserInst)clone).color = context.CloneArray(this.color)!;
+        ((CPlugMaterialUserInst)clone).cstValues = context.CloneArray(this.cstValues)!;
         ((CPlugMaterialUserInst)clone).uvAnims = context.CloneArray(this.uvAnims)!;
+        ((CPlugMaterialUserInst)clone).visibleIds = context.CloneArray(this.visibleIds)!;
         ((CPlugMaterialUserInst)clone).userTextures = context.CloneArray(this.userTextures)!;
         ((CPlugMaterialUserInst)clone).hidingGroup = context.Clone(this.hidingGroup)!;
+        ((CPlugMaterialUserInst)clone).textureAtlasRef = context.Clone(this.textureAtlasRef)!;
+        ((CPlugMaterialUserInst)clone).textureSizeInMeters = context.Clone(this.textureSizeInMeters)!;
         ((CPlugMaterialUserInst)clone).tilingU = context.Clone(this.tilingU)!;
         ((CPlugMaterialUserInst)clone).tilingV = context.Clone(this.tilingV)!;
-        ((CPlugMaterialUserInst)clone).textureSizeInMeters = context.Clone(this.textureSizeInMeters)!;
         ((CPlugMaterialUserInst)clone).isNatural = context.Clone(this.isNatural)!;
     }
 
@@ -182,9 +219,9 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugMaterialUserInst 0x000 chunk
+    /// CPlugMaterialUserInst 0x000 chunk (material and shader parameters)
     /// </summary>
-    [Chunk(0x090FD000)]
+    [Chunk(0x090FD000, "material and shader parameters")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 6, 9, 11)]
     public partial class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
@@ -198,7 +235,6 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public string[]? U01;
 
         public Chunk090FD000() : this(GameVersion.Unspecified)
         {
@@ -228,7 +264,6 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090FD000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090FD000)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
@@ -244,7 +279,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
                 rw.Boolean(ref n.isUsingGameMaterial, asByte: true);
             }
 
-            rw.Id(ref n.materialName);
+            rw.Id(ref n.name);
             rw.Id(ref n.model);
             rw.String(ref n.baseTexture);
             rw.EnumByte<CPlugSurface.MaterialId>(ref n.surfacePhysicId);
@@ -285,7 +320,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
                 if (Version >= 2)
                 {
                     rw.ArrayReadableWritable<Cst>(ref n.csts!, version: Version);
-                    rw.Array<int>(ref n.color!);
+                    rw.Array<int>(ref n.cstValues!);
 
                     if (Version >= 3)
                     {
@@ -293,7 +328,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
                         if (Version >= 4)
                         {
-                            rw.ArrayId(ref U01!);
+                            rw.ArrayId(ref n.visibleIds!);
 
                             if (Version >= 6)
                             {
@@ -312,37 +347,18 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugMaterialUserInst 0x001 chunk
+    /// CPlugMaterialUserInst 0x001 chunk (texture atlas and tiling)
     /// </summary>
-    [Chunk(0x090FD001)]
+    [Chunk(0x090FD001, "texture atlas and tiling")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 5)]
     public partial class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
         public override uint Id => 0x090FD001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CPlugBitmapAtlas>? U01Ref;
-        public CPlugBitmapAtlas? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-        public int? U02;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090FD001 owner;
-            internal NodeRefView(Chunk090FD001 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmapAtlas> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
+        public bool U01;
+        public float U02;
+        public int U03;
 
         public Chunk090FD001() : this(GameVersion.Unspecified)
         {
@@ -360,8 +376,9 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090FD001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090FD001)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090FD001)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090FD001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090FD001)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
@@ -372,11 +389,20 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.textureAtlasRef);
+
+            if (Version == 1)
+            {
+                rw.Boolean(ref U01);
+                rw.Single(ref n.textureSizeInMeters);
+            }
 
             if (Version == 2)
             {
-                throw new NotSupportedException();
+                rw.EnumInt32<ETexAddress>(ref n.tilingU);
+                rw.EnumInt32<ETexAddress>(ref n.tilingV);
+                rw.Single(ref n.textureSizeInMeters);
+                rw.Single(ref U02);
             }
 
             if (Version >= 3)
@@ -387,7 +413,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.Int32(ref U02);
+                    rw.Int32(ref U03);
 
                     if (Version >= 5)
                     {
@@ -431,25 +457,28 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
     public partial class Cst : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? name;
+        public string? Name
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.name;
+            set => this.name = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? @type;
+        public string? Type
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.@type;
+            set => this.@type = value;
         }
 
-        private int u03;
-        public int U03
+        private int valueCount;
+        /// <summary>
+        /// number of 32-bit words in CstValues
+        /// </summary>
+        public int ValueCount
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.valueCount;
+            set => this.valueCount = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -462,16 +491,16 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Cst)clone).u01 = context.Clone(this.u01)!;
-            ((Cst)clone).u02 = context.Clone(this.u02)!;
-            ((Cst)clone).u03 = context.Clone(this.u03)!;
+            ((Cst)clone).name = context.Clone(this.name)!;
+            ((Cst)clone).@type = context.Clone(this.@type)!;
+            ((Cst)clone).valueCount = context.Clone(this.valueCount)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
-            rw.Id(ref this.u02);
-            rw.Int32(ref this.u03);
+            rw.Id(ref this.name);
+            rw.Id(ref this.@type);
+            rw.Int32(ref this.valueCount);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -489,39 +518,42 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
     public partial class UvAnim : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
+        private string? layer;
+        public string? Layer
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.layer;
+            set => this.layer = value;
         }
 
-        private string? u02;
-        public string? U02
+        private string? @type;
+        public string? Type
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.@type;
+            set => this.@type = value;
         }
 
-        private float u03;
-        public float U03
+        private float period;
+        public float Period
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.period;
+            set => this.period = value;
         }
 
-        private ulong u04;
-        public ulong U04
+        private ulong data;
+        /// <summary>
+        /// ScaleU/ScaleV or Count/CountX/CountY, depending on Type
+        /// </summary>
+        public ulong Data
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.data;
+            set => this.data = value;
         }
 
-        private string? u05;
-        public string? U05
+        private string? inputVal;
+        public string? InputVal
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.inputVal;
+            set => this.inputVal = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -534,23 +566,23 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((UvAnim)clone).u01 = context.Clone(this.u01)!;
-            ((UvAnim)clone).u02 = context.Clone(this.u02)!;
-            ((UvAnim)clone).u03 = context.Clone(this.u03)!;
-            ((UvAnim)clone).u04 = context.Clone(this.u04)!;
-            ((UvAnim)clone).u05 = context.Clone(this.u05)!;
+            ((UvAnim)clone).layer = context.Clone(this.layer)!;
+            ((UvAnim)clone).@type = context.Clone(this.@type)!;
+            ((UvAnim)clone).period = context.Clone(this.period)!;
+            ((UvAnim)clone).data = context.Clone(this.data)!;
+            ((UvAnim)clone).inputVal = context.Clone(this.inputVal)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Id(ref this.u01);
-            rw.Id(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.UInt64(ref this.u04);
+            rw.Id(ref this.layer);
+            rw.Id(ref this.@type);
+            rw.Single(ref this.period);
+            rw.UInt64(ref this.data);
 
             if (v >= 5)
             {
-                rw.Id(ref this.u05);
+                rw.Id(ref this.inputVal);
             }
         }
 
@@ -569,11 +601,11 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
     public partial class UserTexture : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int layer;
+        public int Layer
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.layer;
+            set => this.layer = value;
         }
 
         private string? texture;
@@ -593,13 +625,13 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((UserTexture)clone).u01 = context.Clone(this.u01)!;
+            ((UserTexture)clone).layer = context.Clone(this.layer)!;
             ((UserTexture)clone).texture = context.Clone(this.texture)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
+            rw.Int32(ref this.layer);
             rw.String(ref this.texture);
         }
 

@@ -4,10 +4,15 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugMaterialUserInstMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst
+public interface IPlugMaterialUserInstMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst where T0 : class
 {
     string? HidingGroup { get; set; }
     bool IsNatural { get; set; }
+    T0? TextureAtlas
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugMaterialUserInst)this).TextureAtlas);
+        set => ((global::GBX.NET.Engines.Plug.CPlugMaterialUserInst)this).TextureAtlas = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float TextureSizeInMeters { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV { get; set; }
@@ -20,13 +25,14 @@ public interface IPlugMaterialUserInstMembers2 : global::GBX.NET.Interfaces.Plug
 public partial interface IPlugMaterialUserInst : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>
 {
     string? BaseTexture { get; set; }
-    int[]? Color { get; set; }
+    int[]? CstValues { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? Csts { get; set; }
     string? Link { get; set; }
-    string? MaterialName { get; set; }
     string? Model { get; set; }
+    string? Name { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfacePhysicId { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? UvAnims { get; set; }
+    string[]? VisibleIds { get; set; }
 }
 
 public partial interface IPlugMaterialUserInstMP3 : IPlugMaterialUserInst
@@ -37,11 +43,11 @@ public partial interface IPlugMaterialUserInstTMT : IPlugMaterialUserInst, globa
 {
 }
 
-public partial interface IPlugMaterialUserInstMP4 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
+public partial interface IPlugMaterialUserInstMP4 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasMP4>, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
 {
 }
 
-public partial interface IPlugMaterialUserInstTM2020 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
+public partial interface IPlugMaterialUserInstTM2020 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasTM2020>, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
 {
     bool IsUsingGameMaterial { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId SurfaceGameplayId { get; set; }
