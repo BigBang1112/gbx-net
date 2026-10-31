@@ -465,6 +465,12 @@ public partial class CGameCtnGhost
         {
             var version = base.GameVersion;
 
+            // Turbo and MP4 share chunk versions, but the validation data identifies Turbo.
+            if ((version & GameVersion.TMT) != 0 && Validate_ExeVersion?.StartsWith("TrackmaniaTurbo", StringComparison.Ordinal) == true)
+            {
+                return GameVersion.TMT;
+            }
+
             // MP4 ghosts have no chunks of their own, but they stop at version 2 of this chunk
             if ((version & GameVersion.MP4) != 0 && Chunks.Get<Chunk03092000>() is { Version: <= 2 })
             {

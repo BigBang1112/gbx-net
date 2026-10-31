@@ -35,6 +35,7 @@ public partial class GbxGameVersionFixtureTests
 
     [Test]
     [Arguments("CGameCtnGhost MP3 001.Ghost.Gbx", GameVersion.MP3)]
+    [Arguments("CGameCtnGhost TMT 001.Ghost.Gbx", GameVersion.TMT)]
     [Arguments("CGameCtnGhost MP4 001.Ghost.Gbx", GameVersion.MP4)]
     [Arguments("CGameCtnGhost TM2020 001.Ghost.Gbx", GameVersion.TM2020)]
     public async Task GameVersionDifferentiatesGhostsByChunkVersions(string fileName, GameVersion game)
