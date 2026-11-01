@@ -677,7 +677,7 @@ CGamePlayerProfile 0x0308C000
   int VehicleNetQuality
   int LadderMode = 1
   string OnlineLogin
-  int EncryptedPasswordLength
+  int EncryptedPasswordLength (local, write: "n.EncryptedPassword?.Length ?? 0")
   if EncryptedPasswordLength != 0
     checksum128 CryptedPassword
     data[EncryptedPasswordLength] EncryptedPassword
@@ -935,7 +935,7 @@ archive DeprecatedBuddy
     systemtime U05
 
 archive CryptedPasswordData
-  int EncryptedPasswordLength
+  int EncryptedPasswordLength (local, write: "EncryptedPassword?.Length ?? 0")
   if EncryptedPasswordLength != 0
     checksum128 Checksum
     data[EncryptedPasswordLength] EncryptedPassword

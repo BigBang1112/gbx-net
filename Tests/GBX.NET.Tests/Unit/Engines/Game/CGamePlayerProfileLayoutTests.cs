@@ -353,12 +353,46 @@ public class CGamePlayerProfileLayoutTests
         await Assert.That(node.OnlineSupportKeyHexa).IsEqualTo("support key");
         await Assert.That(node.LastUsedMSAddress).IsEqualTo("server");
         await Assert.That(node.LoginValidated).IsTrue();
-        await Assert.That(node.EncryptedPasswordLength).IsEqualTo(passwordLength);
+        await Assert.That(node.EncryptedPassword?.Length ?? 0).IsEqualTo(passwordLength);
         if (passwordLength > 0)
         {
             await Assert.That(node.EncryptedPassword).IsEquivalentTo(cipher);
         }
         await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload);
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(4)]
+    public async Task ReadWrite_CryptedPasswordArchive_DerivesByteCountFromData(int passwordLength)
+    {
+        var cipher = new byte[] { 0xC0, 0xDE, 0xFE, 0xED };
+        var digest = Enumerable.Range(1, 16).Select(x => (byte)x).ToArray();
+        var archive = new CGamePlayerProfile.CryptedPasswordData
+        {
+            EncryptedPassword = passwordLength == 0 ? null : cipher,
+            Checksum = new Checksum128(digest)
+        };
+        var payload = Payload(w =>
+        {
+            w.Write(passwordLength);
+            if (passwordLength > 0)
+            {
+                w.Write(digest);
+                w.Write(cipher);
+            }
+        });
+
+        await Assert.That(Write(rw => archive.ReadWrite(rw))).IsEquivalentTo(payload);
+
+        var restored = new CGamePlayerProfile.CryptedPasswordData();
+        Read(payload, rw => restored.ReadWrite(rw));
+        await Assert.That(restored.EncryptedPassword?.Length ?? 0).IsEqualTo(passwordLength);
+        if (passwordLength > 0)
+        {
+            await Assert.That(restored.EncryptedPassword).IsEquivalentTo(cipher);
+            await Assert.That(restored.Checksum).IsEqualTo(archive.Checksum);
+        }
     }
 
     [Test]

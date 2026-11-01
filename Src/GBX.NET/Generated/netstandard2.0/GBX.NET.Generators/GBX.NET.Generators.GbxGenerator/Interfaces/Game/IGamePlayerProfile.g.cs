@@ -138,7 +138,6 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     int DynamicLoadScreenIndex { get; set; }
     bool EnableUnlimitedHorns { get; set; }
     byte[]? EncryptedPassword { get; set; }
-    int EncryptedPasswordLength { get; set; }
     bool HasLeagueCache { get; set; }
     string? HornName { get; set; }
     string? LastUsedMSAddress { get; set; }

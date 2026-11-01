@@ -823,15 +823,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.menuInternetView = value;
     }
 
-    private int encryptedPasswordLength;
-    /// <remarks>Applied with: 0x069 body chunk</remarks>
-    [AppliedWithChunk<Chunk0308C069>]
-    public int EncryptedPasswordLength
-    {
-        get => this.encryptedPasswordLength;
-        set => this.encryptedPasswordLength = value;
-    }
-
     private Checksum128 cryptedPassword;
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
@@ -1060,7 +1051,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).playerTags = context.CloneArray(this.playerTags)!;
         ((CGamePlayerProfile)clone).tagDisplayList = context.CloneArray(this.tagDisplayList)!;
         ((CGamePlayerProfile)clone).menuInternetView = context.Clone(this.menuInternetView)!;
-        ((CGamePlayerProfile)clone).encryptedPasswordLength = context.Clone(this.encryptedPasswordLength)!;
         ((CGamePlayerProfile)clone).cryptedPassword = context.Clone(this.cryptedPassword)!;
         ((CGamePlayerProfile)clone).encryptedPassword = context.CloneArray(this.encryptedPassword)!;
         ((CGamePlayerProfile)clone).onlineSupportKeyHexa = context.Clone(this.onlineSupportKeyHexa)!;
@@ -4099,12 +4089,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             rw.Int32(ref n.vehicleNetQuality);
             rw.Int32(ref n.ladderMode);
             rw.String(ref n.onlineLogin);
-            rw.Int32(ref n.encryptedPasswordLength);
+            var encryptedPasswordLength = rw.Int32((rw.Writer is null ? default : (n.EncryptedPassword?.Length?? 0)));
 
-            if (n.EncryptedPasswordLength!= 0)
+            if (encryptedPasswordLength!= 0)
             {
                 rw.Checksum128(ref n.cryptedPassword);
-                rw.Data(ref n.encryptedPassword!, n.EncryptedPasswordLength);
+                rw.Data(ref n.encryptedPassword!, encryptedPasswordLength);
             }
 
             rw.String(ref n.onlineValidationKeyHexa);
@@ -5795,13 +5785,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
     public partial class CryptedPasswordData : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int encryptedPasswordLength;
-        public int EncryptedPasswordLength
-        {
-            get => this.encryptedPasswordLength;
-            set => this.encryptedPasswordLength = value;
-        }
-
         private Checksum128 checksum;
         public Checksum128 Checksum
         {
@@ -5826,19 +5809,18 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((CryptedPasswordData)clone).encryptedPasswordLength = context.Clone(this.encryptedPasswordLength)!;
             ((CryptedPasswordData)clone).checksum = context.Clone(this.checksum)!;
             ((CryptedPasswordData)clone).encryptedPassword = context.CloneArray(this.encryptedPassword)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.encryptedPasswordLength);
+            var encryptedPasswordLength = rw.Int32((rw.Writer is null ? default : (EncryptedPassword?.Length?? 0)));
 
-            if (EncryptedPasswordLength!= 0)
+            if (encryptedPasswordLength!= 0)
             {
                 rw.Checksum128(ref this.checksum);
-                rw.Data(ref this.encryptedPassword!, EncryptedPasswordLength);
+                rw.Data(ref this.encryptedPassword!, encryptedPasswordLength);
             }
         }
 

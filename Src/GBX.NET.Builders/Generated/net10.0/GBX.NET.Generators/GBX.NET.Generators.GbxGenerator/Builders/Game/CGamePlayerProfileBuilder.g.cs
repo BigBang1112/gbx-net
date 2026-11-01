@@ -431,7 +431,6 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public TMF WithEnableUnlimitedHorns(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEnableUnlimitedHornsAssignment(), value, SupportedGames5);
         public TMF WithEncryptedPassword(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordAssignment(), value, SupportedGames5);
         public TMF WithEncryptedPassword(IEnumerable<byte> values) => WithEncryptedPassword(values.ToArray());
-        public TMF WithEncryptedPasswordLength(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetEncryptedPasswordLengthAssignment(), value, SupportedGames5);
         public TMF WithHasLeagueCache(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHasLeagueCacheAssignment(), value, SupportedGames5);
         public TMF WithHornName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetHornNameAssignment(), value, SupportedGames5);
         public TMF WithInboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF[] values) => base.WithInboxMessages(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(values, false));
