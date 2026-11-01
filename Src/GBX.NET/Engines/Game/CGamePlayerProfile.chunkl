@@ -2,7 +2,7 @@ CGamePlayerProfile 0x0308C000
 
 0x000 (header, struct: SNetPlayerProfileHeaderOnlineSupportKey) [TM10, TMF, MP3, MP4]
   string OnlineLogin
-  string OnlineSupportKey // Has AllowUnprintableStrings around it, so it can contain any odd character.
+  data OnlineSupportKey
 
 0x000 [TM10]
   string ProfileName
@@ -680,7 +680,7 @@ CGamePlayerProfile 0x0308C000
   int EncryptedPasswordLength (local, write: "n.EncryptedPassword?.Length ?? 0")
   if EncryptedPasswordLength != 0
     checksum128 CryptedPassword
-    data[EncryptedPasswordLength] EncryptedPassword
+    data[EncryptedPasswordLength] EncryptedPassword (method: DecryptPassword, protected)
   string OnlineValidationKeyHexa // Hexadecimal encrypted validation key, not an RSA key.
   string OnlineSupportKeyHexa // Hexadecimal encrypted support key.
   bool LoginValidated
@@ -752,7 +752,7 @@ CGamePlayerProfile 0x0308C000
   string OnlineLogin
   string OnlinePassword
   string OnlineValidationCode
-  string OnlineSupportKey
+  data OnlineSupportKey
   bool LoginValidated
   bool RememberOnlinePassword
   string LastUsedMSAddress

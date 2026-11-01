@@ -33,14 +33,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.onlineLogin = value;
     }
 
-    private string? onlineSupportKey;
-    /// <summary>
-    /// Has AllowUnprintableStrings around it, so it can contain any odd character.
-    /// </summary>
+    private byte[]? onlineSupportKey;
     /// <remarks>Applied with: 0x000 header chunk, 0x078 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk0308C000>]
     [AppliedWithChunk<Chunk0308C078>]
-    public string? OnlineSupportKey
+    public byte[]? OnlineSupportKey
     {
         get => this.onlineSupportKey;
         set => this.onlineSupportKey = value;
@@ -835,6 +832,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     private byte[]? encryptedPassword;
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method(nameof(DecryptPassword), Protected = true)]
     public byte[]? EncryptedPassword
     {
         get => this.encryptedPassword;
@@ -984,7 +982,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerProfile)clone).onlineLogin = context.Clone(this.onlineLogin)!;
-        ((CGamePlayerProfile)clone).onlineSupportKey = context.Clone(this.onlineSupportKey)!;
+        ((CGamePlayerProfile)clone).onlineSupportKey = context.CloneArray(this.onlineSupportKey)!;
         ((CGamePlayerProfile)clone).profileName = context.Clone(this.profileName)!;
         ((CGamePlayerProfile)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfile)clone).profileId = context.Clone(this.profileId)!;
@@ -1091,7 +1089,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.String(ref n.onlineLogin);
-            rw.String(ref n.onlineSupportKey);
+            rw.Data(ref n.onlineSupportKey);
         }
     }
 
@@ -4496,7 +4494,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             rw.String(ref n.onlineLogin);
             rw.String(ref n.onlinePassword);
             rw.String(ref n.onlineValidationCode);
-            rw.String(ref n.onlineSupportKey);
+            rw.Data(ref n.onlineSupportKey);
             rw.Boolean(ref n.loginValidated);
             rw.Boolean(ref n.rememberOnlinePassword);
             rw.String(ref n.lastUsedMSAddress);

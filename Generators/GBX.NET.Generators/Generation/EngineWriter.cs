@@ -108,7 +108,10 @@ internal static class EngineWriter
             Documentation(code, property.TrailingComment?.Text);
             AppliedWithChunkAttributes(code, layout, property.Name, layouts);
             if (layout.Scope.FindField(property.Name) is { } field)
+            {
                 GameDefaultAttributesWriter.Write(code, field);
+                MethodAttributes(code, field);
+            }
 
             if (partialProperty is not null)
             {
@@ -330,11 +333,13 @@ internal static class EngineWriter
                 if (partialProperty is not null)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     PartialProperty(code, partialProperty);
                 }
                 else if (!hasExisting)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     code.Line("public int Version { get; set; }" + (initial is null ? "" : " = " + initial + ";"));
                 }
                 continue;
@@ -345,6 +350,7 @@ internal static class EngineWriter
                 if (partialProperty is not null)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     PartialProperty(code, partialProperty);
                 }
                 else if (!hasExisting)
@@ -389,6 +395,8 @@ internal static class EngineWriter
                 if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "hex")))
                     code.Line("[Hexadecimal]");
 
+                MethodAttributes(code, field);
+
                 if (partialProperty is not null)
                 {
                     PartialProperty(code, partialProperty);
@@ -404,6 +412,25 @@ internal static class EngineWriter
                 }
             }
 
+        }
+    }
+
+    private static void MethodAttributes(CodeWriter code, FieldModel field)
+    {
+        var methods = field.Occurrences
+            .SelectMany(static occurrence => occurrence.Attributes?.Entries.Where(static x => x.Name == "method")
+                .Select(attribute => (Name: attribute.Value, Protected: LayoutModel.Has(occurrence.Attributes, "protected"))) ?? [])
+            .GroupBy(static x => x.Name, StringComparer.Ordinal);
+
+        foreach (var method in methods)
+        {
+            if (string.IsNullOrWhiteSpace(method.Key) || !SyntaxFacts.IsValidIdentifier(method.Key!))
+            {
+                throw new InvalidOperationException("The method flag requires a method name.");
+            }
+
+            var protection = method.Any(static x => x.Protected) ? ", Protected = true" : "";
+            code.Line($"[Method(nameof({method.Key}){protection})]");
         }
     }
 
@@ -439,6 +466,7 @@ internal static class EngineWriter
             Documentation(code, field.Declaration.TrailingComment?.Text);
             if (!chunk && ReferenceEquals(scope, layout.Scope)) AppliedWithChunkAttributes(code, layout, field.Name, layouts);
             GameDefaultAttributesWriter.Write(code, field);
+            if (!chunk || scalar || partialProperty is not null) MethodAttributes(code, field);
             if (partialProperty is not null) PartialProperty(code, partialProperty);
             else if (!scalar && chunk) code.Line($"public {type} {property};");
             else

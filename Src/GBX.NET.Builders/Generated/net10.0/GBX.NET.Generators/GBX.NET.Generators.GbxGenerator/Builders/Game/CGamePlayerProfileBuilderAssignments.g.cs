@@ -155,9 +155,9 @@ internal static class CGamePlayerProfileBuilderAssignments
     private static NodeBuilderProperty<int?>? cached47;
     internal static NodeBuilderProperty<int?> GetOnlineRemainingNickNamesChangesCountAssignment() => cached47 ??= new("OnlineRemainingNickNamesChangesCount", new Action<object, int?>(Assign47));
     private static void Assign47(object node, int? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).OnlineRemainingNickNamesChangesCount = value;
-    private static NodeBuilderProperty<string?>? cached48;
-    internal static NodeBuilderProperty<string?> GetOnlineSupportKeyAssignment() => cached48 ??= new("OnlineSupportKey", new Action<object, string?>(Assign48));
-    private static void Assign48(object node, string? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).OnlineSupportKey = value;
+    private static NodeBuilderProperty<byte[]?>? cached48;
+    internal static NodeBuilderProperty<byte[]?> GetOnlineSupportKeyAssignment() => cached48 ??= new("OnlineSupportKey", new Action<object, byte[]?>(Assign48), new Func<byte[]?, byte[]?>(Copy5));
+    private static void Assign48(object node, byte[]? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).OnlineSupportKey = value;
     private static NodeBuilderProperty<string?>? cached49;
     internal static NodeBuilderProperty<string?> GetOnlineSupportKeyHexaAssignment() => cached49 ??= new("OnlineSupportKeyHexa", new Action<object, string?>(Assign49));
     private static void Assign49(object node, string? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).OnlineSupportKeyHexa = value;

@@ -39,7 +39,8 @@ public abstract class CGamePlayerProfileBuilderMembers3<TSelf> : CGamePlayerProf
 public abstract class CGamePlayerProfileBuilderMembers4<TSelf> : CGamePlayerProfileBuilderMembers2<TSelf> where TSelf : CGamePlayerProfileBuilderMembers4<TSelf>
 {
     private protected CGamePlayerProfileBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
-    public TSelf WithOnlineSupportKey(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+    public TSelf WithOnlineSupportKey(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+    public TSelf WithOnlineSupportKey(IEnumerable<byte> values) => WithOnlineSupportKey(values.ToArray());
 }
 public abstract class CGamePlayerProfileBuilderMembers5<TSelf> : CGamePlayerProfileBuilderMembers1<TSelf> where TSelf : CGamePlayerProfileBuilderMembers5<TSelf>
 {
@@ -351,7 +352,8 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfile> state) : base(state) { }
         public TM10 WithBindingsForCompatConfig(global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10? value) => base.WithBindingsForCompatConfig(value is null ? (global::GBX.NET.Engines.Input.CInputBindingsConfig?)null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithOnlineLogin(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
-        public TM10 WithOnlineSupportKey(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+        public TM10 WithOnlineSupportKey(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+        public TM10 WithOnlineSupportKey(IEnumerable<byte> values) => WithOnlineSupportKey(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfile Build() => BuildNode(CGamePlayerProfileBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfile node);
@@ -449,7 +451,8 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public TMF WithMenuInternetView(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuInternetViewAssignment(), value, SupportedGames5);
         public TMF WithMenuLeagueFilter(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetMenuLeagueFilterAssignment(), value, SupportedGames5);
         public TMF WithOnlineRemainingNickNamesChangesCount(int? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, SupportedGames5);
-        public TMF WithOnlineSupportKey(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+        public TMF WithOnlineSupportKey(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF);
+        public TMF WithOnlineSupportKey(IEnumerable<byte> values) => WithOnlineSupportKey(values.ToArray());
         public TMF WithOnlineSupportKeyHexa(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineSupportKeyHexaAssignment(), value, SupportedGames5);
         public TMF WithOnlineValidationKeyHexa(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetOnlineValidationKeyHexaAssignment(), value, SupportedGames5);
         public TMF WithOutboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF[] values) => base.WithOutboxMessages(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(values, false));

@@ -179,6 +179,14 @@
         </span>
     }
 
+    @if (Property is not null && Owner is not null)
+    {
+        @foreach (var method in Property.GetCustomAttributes<MethodAttribute>(inherit: true))
+        {
+            <PropertyMethod Owner="Owner" MethodName="@method.MethodName" Protected="method.Protected" Value="value" />
+        }
+    }
+
     @if (appliedWithChunkAttThatApply.Any())
     {
         var counterGroup = 0;

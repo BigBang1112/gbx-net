@@ -1,6 +1,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
+using GBX.NET.Serialization.Chunking;
 using System.Text;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
@@ -8,6 +9,43 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 [Category("Unit")]
 public class CGamePlayerProfileLayoutTests
 {
+    [Test]
+    [Arguments(false, false)]
+    [Arguments(false, true)]
+    [Arguments(true, false)]
+    [Arguments(true, true)]
+    public async Task ReadWrite_OnlineSupportKey_PreservesRawBytes(bool body, bool empty)
+    {
+        byte[] key = empty ? [] : [0x00, 0x80, 0xFF, 0xC3, 0x28, 0xED, 0xA0, 0x80];
+        var payload = Payload(w =>
+        {
+            String(w, "login");
+            if (body)
+            {
+                String(w, "password");
+                String(w, "validation code");
+            }
+            w.Write(key.Length);
+            w.Write(key);
+            if (body)
+            {
+                w.Write(1); // LoginValidated.
+                w.Write(1); // RememberOnlinePassword.
+                String(w, "server");
+                String(w, "path");
+            }
+        });
+        var node = new CGamePlayerProfile();
+        Chunk<CGamePlayerProfile> chunk = body
+            ? new CGamePlayerProfile.Chunk0308C078()
+            : new CGamePlayerProfile.HeaderChunk0308C000();
+        Read(payload, rw => chunk.ReadWrite(node, rw));
+
+        await Assert.That(node.OnlineLogin).IsEqualTo("login");
+        await Assert.That(node.OnlineSupportKey).IsEquivalentTo(key, CollectionOrdering.Matching);
+        await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload, CollectionOrdering.Matching);
+    }
+
     [Test]
     public async Task ReadWrite_PlayerTags_PreserveConsultationFlagsAndDisplayOrder()
     {

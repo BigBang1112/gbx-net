@@ -12,7 +12,7 @@ public interface IGamePlayerProfileMembers1 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileMembers2 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
 {
-    string? OnlineSupportKey { get; set; }
+    byte[]? OnlineSupportKey { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileMembers3 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile

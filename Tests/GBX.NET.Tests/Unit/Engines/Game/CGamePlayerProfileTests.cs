@@ -1,10 +1,25 @@
 using GBX.NET.Engines.Game;
+using GBX.NET.Attributes;
+using System.Reflection;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
 
 [Category("Unit")]
 public class CGamePlayerProfileTests
 {
+    [Test]
+    public async Task EncryptedPassword_MethodAttribute_IdentifiesParameterlessDecryptMethod()
+    {
+        var property = typeof(CGamePlayerProfile).GetProperty(nameof(CGamePlayerProfile.EncryptedPassword))!;
+        var attribute = property.GetCustomAttributes<MethodAttribute>().Single();
+        var method = typeof(CGamePlayerProfile).GetMethod(attribute.MethodName, Type.EmptyTypes)!;
+
+        await Assert.That(attribute.MethodName).IsEqualTo(nameof(CGamePlayerProfile.DecryptPassword));
+        await Assert.That(attribute.Protected).IsTrue();
+        await Assert.That(method.ReturnType).IsEqualTo(typeof(string));
+        await Assert.That(method.Invoke(new CGamePlayerProfile(), null)).IsEqualTo(string.Empty);
+    }
+
     [Test]
     [Arguments("password", "5F4DCC3B5AA765D61D8327DEB882CF99", "2F2CBF482DC817B2")]
     [Arguments("A longer password: příliš žluťoučký 🏁", "5F13EF132CF9B2E195932A2317238D8A", "1E33837C429ED793B5E34B506454E2F83B29CF63E960714CF9FAEF8237E633E62AD64A7C593D3F8A562E0AD388AC0C")]

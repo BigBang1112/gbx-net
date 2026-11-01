@@ -164,10 +164,6 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 8;
             }
-            else
-            {
-                Version = 8;
-            }
 
             U01 = 1;
         }
@@ -183,7 +179,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
-            if (Version > global::System.Math.Max(8, 8))
+            if (Version > 8)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

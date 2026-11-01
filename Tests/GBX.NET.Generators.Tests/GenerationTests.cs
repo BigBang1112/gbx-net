@@ -3391,6 +3391,80 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_MethodFlags_MergeMultipleMethodsAcrossOccurrencesAndCompile()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public string First() => "first";
+                public int Second() => 2;
+                private int custom;
+                public partial int Custom { get => custom; set => custom = value; }
+                public partial class Metadata
+                {
+                    public int Inspect() => Data;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            property int Computed
+              get = Value
+            0x001
+              int Value (method: First, method: Second)
+              int Custom (method: Second)
+              CMwNod Target (method: First)
+              int Computed (method: Second)
+              int Plain
+            0x002
+              int Value (method: First, protected)
+            archive Metadata
+              int Data (method: Inspect, protected)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var type = compilation.GetTypeByMetadataName("GBX.NET.Engines.Game.Example")!;
+        var value = type.GetMembers("Value").OfType<IPropertySymbol>().Single();
+        var methods = value.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute")
+            .Select(x => (string)x.ConstructorArguments[0].Value!).ToArray();
+        await Assert.That(methods).IsEquivalentTo(new[] { "First", "Second" });
+        var methodAttributes = value.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+        await Assert.That(methodAttributes.Single(x => (string)x.ConstructorArguments[0].Value! == "First")
+            .NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+        await Assert.That(methodAttributes.Single(x => (string)x.ConstructorArguments[0].Value! == "Second")
+            .NamedArguments).IsEmpty();
+
+        foreach (var (property, method) in new[] { ("Custom", "Second"), ("Target", "First"), ("Computed", "Second") })
+        {
+            var attributes = type.GetMembers(property).OfType<IPropertySymbol>().Single().GetAttributes()
+                .Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+            await Assert.That(attributes).Count().IsEqualTo(1);
+            await Assert.That(attributes[0].ConstructorArguments[0].Value).IsEqualTo(method);
+        }
+
+        await Assert.That(type.GetMembers("Plain").OfType<IPropertySymbol>().Single().GetAttributes()
+            .Any(x => x.AttributeClass?.Name == "MethodAttribute")).IsFalse();
+        var data = type.GetTypeMembers("Metadata").Single().GetMembers("Data").OfType<IPropertySymbol>().Single();
+        await Assert.That(data.GetAttributes().Single(x => x.AttributeClass?.Name == "MethodAttribute")
+            .ConstructorArguments[0].Value).IsEqualTo("Inspect");
+        await Assert.That(data.GetAttributes().Single(x => x.AttributeClass?.Name == "MethodAttribute")
+            .NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+    }
+
+    [Test]
+    public async Task Generate_MethodFlagWithoutName_ReportsDiagnostic()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value (method)
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("method name"));
+    }
+
+    [Test]
     public async Task Generate_FormattingOnAnyFieldOccurrence_AddsAttribute()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -4381,6 +4455,11 @@ public partial class GenerationTests
             public class ChunkAttribute(uint id) : System.Attribute { }
             public class ChunkGameVersionAttribute(GBX.NET.GameVersion game, params int[] versions) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
+            [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+            public class MethodAttribute(string methodName) : System.Attribute
+            {
+                public bool Protected { get; set; }
+            }
             [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple = true)]
             public class GameVersionDefaultAttribute(GBX.NET.GameVersion game, object? defaultValue = null) : System.Attribute
             {

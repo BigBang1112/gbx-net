@@ -18,7 +18,7 @@ public abstract class CGameCtnChallengeBuilderBase<TSelf> : NodeBuilder<global::
     private protected const GameVersion SupportedGames9 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU;
     private protected const GameVersion SupportedGames10 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames11 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames12 = GameVersion.MP3 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames12 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT;
     private protected const GameVersion SupportedGames13 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames14 = GameVersion.TM2020;
     public TSelf WithAuthorLogin(string value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorLoginAssignment(), value, SupportedGames2);
@@ -168,7 +168,6 @@ public abstract class CGameCtnChallengeBuilderMembers7<TSelf> : CGameCtnChalleng
 public abstract class CGameCtnChallengeBuilderMembers8<TSelf> : CGameCtnChallengeBuilderMembers7<TSelf> where TSelf : CGameCtnChallengeBuilderMembers8<TSelf>
 {
     private protected CGameCtnChallengeBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-    public TSelf WithChallengeScript(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeScriptAssignment(), value, SupportedGames12);
     public TSelf WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficElemDescsAssignment(), value, SupportedGames12);
     public TSelf WithTrafficElemDescs(params global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc[] values) => WithTrafficElemDescs(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>(values));
     public TSelf WithTrafficElemDescs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> values) => WithTrafficElemDescs(values.ToArray());
@@ -182,9 +181,14 @@ public abstract class CGameCtnChallengeBuilderMembers8<TSelf> : CGameCtnChalleng
     public TSelf WithTrafficZoneSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares[] values) => WithTrafficZoneSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(values));
     public TSelf WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> values) => WithTrafficZoneSquares(values.ToArray());
 }
-public abstract class CGameCtnChallengeBuilderMembers9<TSelf> : CGameCtnChallengeBuilderMembers7<TSelf> where TSelf : CGameCtnChallengeBuilderMembers9<TSelf>
+public abstract class CGameCtnChallengeBuilderMembers9<TSelf> : CGameCtnChallengeBuilderMembers8<TSelf> where TSelf : CGameCtnChallengeBuilderMembers9<TSelf>
 {
     private protected CGameCtnChallengeBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public TSelf WithChallengeScript(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeScriptAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+}
+public abstract class CGameCtnChallengeBuilderMembers10<TSelf> : CGameCtnChallengeBuilderMembers7<TSelf> where TSelf : CGameCtnChallengeBuilderMembers10<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
     public TSelf WithAnimationTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnimationTriggersAssignment(), value, SupportedGames13);
     public TSelf WithAnimationTriggers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTriggerAction> values) => WithAnimationTriggers(values.ToArray());
     public TSelf WithChallengeAnimation(global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationAssignment(), value, SupportedGames13);
@@ -410,6 +414,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050() { Version = 0 });
@@ -655,7 +660,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build() => BuildNode(CGameCtnChallengeBuilder.CreateRecipe8(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class MP3 : CGameCtnChallengeBuilderMembers8<MP3>
+    public partial class MP3 : CGameCtnChallengeBuilderMembers9<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
         public MP3 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3[] values) => base.WithAnchoredObjects(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>(values, false));
@@ -677,7 +682,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build() => BuildNode(CGameCtnChallengeBuilder.CreateRecipe9(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMT : CGameCtnChallengeBuilderMembers8<TMT>
+    public partial class TMT : CGameCtnChallengeBuilderMembers9<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
         public TMT WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT[] values) => base.WithAnchoredObjects(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>(values, false));
@@ -705,7 +710,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build() => BuildNode(CGameCtnChallengeBuilder.CreateRecipe9(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class MP4 : CGameCtnChallengeBuilderMembers9<MP4>
+    public partial class MP4 : CGameCtnChallengeBuilderMembers10<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
         public MP4 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4[] values) => base.WithAnchoredObjects(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>(values, false));
@@ -728,13 +733,25 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public MP4 WithLightmapCache(global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4? value) => base.WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSubMapsInfos(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapsInfosAssignment(), value, GameVersion.MP4);
         public MP4 WithSubMapsInfos(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo> values) => WithSubMapsInfos(values.ToArray());
+        public MP4 WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficElemDescsAssignment(), value, SupportedGames12);
+        public MP4 WithTrafficElemDescs(params global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc[] values) => WithTrafficElemDescs(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>(values));
+        public MP4 WithTrafficElemDescs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> values) => WithTrafficElemDescs(values.ToArray());
+        public MP4 WithTrafficPathSplines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSplinesAssignment(), value, SupportedGames12);
+        public MP4 WithTrafficPathSplines(params global::GBX.NET.Engines.Plug.CPlugSpline3D[] values) => WithTrafficPathSplines(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>(values));
+        public MP4 WithTrafficPathSplines(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSpline3D> values) => WithTrafficPathSplines(values.ToArray());
+        public MP4 WithTrafficPathSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSquaresAssignment(), value, SupportedGames12);
+        public MP4 WithTrafficPathSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares[] values) => WithTrafficPathSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>(values));
+        public MP4 WithTrafficPathSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> values) => WithTrafficPathSquares(values.ToArray());
+        public MP4 WithTrafficZoneSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficZoneSquaresAssignment(), value, SupportedGames12);
+        public MP4 WithTrafficZoneSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares[] values) => WithTrafficZoneSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(values));
+        public MP4 WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> values) => WithTrafficZoneSquares(values.ToArray());
         public MP4 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4[] values) => base.WithZoneGenealogy(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>(values, false));
         public MP4 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4> values) => WithZoneGenealogy(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build() => BuildNode(CGameCtnChallengeBuilder.CreateRecipe10(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TM2020 : CGameCtnChallengeBuilderMembers9<TM2020>
+    public partial class TM2020 : CGameCtnChallengeBuilderMembers10<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
         public TM2020 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020[] values) => base.WithAnchoredObjects(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>(values, false));

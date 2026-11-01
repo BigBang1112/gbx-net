@@ -1,0 +1,105 @@
+@inject ILogger<PropertyMethod> Logger
+@inject IJSRuntime JS
+
+@if (invoked && !Protected)
+{
+    <span class="value element-box method-result @(failed ? "method-error" : "")" title="@MethodName">@result</span>
+}
+else
+{
+    <button type="button" class="element-box hoverable method-button" title="@(Protected ? "Copy result to clipboard" : null)" @onclick="InvokeAsync">
+        @MethodName
+    </button>
+    @if (copied)
+    {
+        <span class="value element-box method-result" role="status">(copied)</span>
+    }
+    else if (failed && Protected)
+    {
+        <span class="value element-box method-result method-error" role="status">(copy failed)</span>
+    }
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public object Owner { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public string MethodName { get; set; } = "";
+
+    [Parameter]
+    public object? Value { get; set; }
+
+    [Parameter]
+    public bool Protected { get; set; }
+
+    private object? previousOwner;
+    private object? previousValue;
+    private string? previousMethodName;
+    private bool previousProtected;
+    private bool invoked;
+    private bool failed;
+    private bool copied;
+    private string? result;
+
+    protected override void OnParametersSet()
+    {
+        if (!ReferenceEquals(Owner, previousOwner) || !Equals(Value, previousValue) || MethodName != previousMethodName || Protected != previousProtected)
+        {
+            invoked = false;
+            failed = false;
+            copied = false;
+            result = null;
+        }
+
+        previousOwner = Owner;
+        previousValue = Value;
+        previousMethodName = MethodName;
+        previousProtected = Protected;
+    }
+
+    private async Task InvokeAsync()
+    {
+        failed = false;
+
+        try
+        {
+            var method = Owner.GetType().GetMethod(MethodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.FlattenHierarchy,
+                binder: null, types: Type.EmptyTypes, modifiers: null);
+            if (method is null || method.ReturnType == typeof(void) || method.ContainsGenericParameters)
+            {
+                throw new InvalidOperationException($"{MethodName} must be a public, parameterless method that returns a value.");
+            }
+
+            var text = method.Invoke(Owner, null)?.ToString();
+            if (Protected)
+            {
+                await JS.InvokeVoidAsync("navigator.clipboard.writeText", text ?? "");
+                copied = true;
+            }
+            else
+            {
+                result = text ?? "null";
+                if (result.Length == 0) result = "(empty)";
+            }
+        }
+        catch (Exception ex)
+        {
+            var error = ex is TargetInvocationException { InnerException: { } inner } ? inner : ex;
+            if (Protected)
+            {
+                // A protected method or clipboard error may include the protected value.
+                copied = false;
+                Logger.LogError("Error copying the result of {methodName} on {ownerType}.", MethodName, Owner.GetType().Name);
+            }
+            else
+            {
+                Logger.LogError(error, "Error invoking {methodName} on {ownerType}.", MethodName, Owner.GetType().Name);
+                result = $"Error: {error.Message}";
+            }
+            failed = true;
+        }
+
+        invoked = !Protected;
+    }
+}
