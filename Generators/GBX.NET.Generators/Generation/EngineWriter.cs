@@ -419,19 +419,36 @@ internal static class EngineWriter
     {
         var methods = field.Occurrences
             .SelectMany(static occurrence => occurrence.Attributes?.Entries.Where(static x => x.Name == "method")
-                .Select(attribute => (Name: attribute.Value, Protected: LayoutModel.Has(occurrence.Attributes, "protected"))) ?? [])
-            .GroupBy(static x => x.Name, StringComparer.Ordinal);
+                .Select(attribute => (Name: attribute.Value, DeclaringType: MethodDeclaringType(occurrence.Attributes),
+                    Protected: LayoutModel.Has(occurrence.Attributes, "protected"))) ?? [])
+            .GroupBy(static x => (x.Name, x.DeclaringType));
 
         foreach (var method in methods)
         {
-            if (string.IsNullOrWhiteSpace(method.Key) || !SyntaxFacts.IsValidIdentifier(method.Key!))
+            if (string.IsNullOrWhiteSpace(method.Key.Name) || !SyntaxFacts.IsValidIdentifier(method.Key.Name!))
             {
                 throw new InvalidOperationException("The method flag requires a method name.");
             }
 
             var protection = method.Any(static x => x.Protected) ? ", Protected = true" : "";
-            code.Line($"[Method(nameof({method.Key}){protection})]");
+            var name = method.Key.DeclaringType is null ? $"nameof({method.Key.Name})" : SymbolDisplay.FormatLiteral(method.Key.Name!, true);
+            var declaringType = method.Key.DeclaringType is null ? "" : ", DeclaringTypeName = " + SymbolDisplay.FormatLiteral(method.Key.DeclaringType, true);
+            code.Line($"[Method({name}{declaringType}{protection})]");
         }
+    }
+
+    private static string? MethodDeclaringType(AttributeList? attributes)
+    {
+        if (!LayoutModel.Has(attributes, "method-type")) return null;
+
+        var value = LayoutModel.Attribute(attributes, "method-type");
+        if (value is null || SyntaxFactory.ParseExpression(value) is not LiteralExpressionSyntax { Token.Value: string name }
+            || string.IsNullOrWhiteSpace(name))
+        {
+            throw new InvalidOperationException("The method-type flag requires a quoted declaring type name.");
+        }
+
+        return name;
     }
 
     private static void ReferenceProperty(CodeWriter code, LayoutModel layout, ScopeModel scope, FieldModel field,

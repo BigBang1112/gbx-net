@@ -9,11 +9,11 @@ archive
     if LoginValidated
       string OnlineLogin
       if rw.Reader != null || RememberOnlinePassword
-        string OnlinePassword
+        string OnlinePassword (method: DecryptOnlinePassword, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
       else
         string UnrememberedPassword (local, write: "string.Empty")
-      string OnlineValidationCode
-      string OnlineSupportKey
+      string OnlineValidationCode (method: DecryptOnlineValidationCode, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
+      string OnlineSupportKey (method: DecryptOnlineSupportKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
       string LastUsedMSAddress
       string LastUsedMSPath
       string LastSessionId
@@ -23,7 +23,7 @@ archive
       int OnlineRemainingNickNamesChangesCount = -1
       int OnlinePlanets
       v1+
-        string EncryptedKeyHexa
+        string EncryptedKeyHexa (method: DecryptKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
     string RSAPrivateKey
     ulong U02
     int LegacyBuddyArchiveVersion = 5
@@ -55,18 +55,18 @@ archive
     if LoginValidated
       string OnlineLogin
       if rw.Reader != null || RememberOnlinePassword
-        string OnlinePassword
+        string OnlinePassword (method: DecryptOnlinePassword, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
       else
         string UnrememberedPassword (local, write: "string.Empty")
-      string OnlineValidationCode
-      string OnlineSupportKey
+      string OnlineValidationCode (method: DecryptOnlineValidationCode, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
+      string OnlineSupportKey (method: DecryptOnlineSupportKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
       string LastUsedMSAddress
       string LastUsedMSPath
       string LastSessionId
       string League (formatted)
       int OnlineRemainingNickNamesChangesCount = -1
       int OnlinePlanets
-      string EncryptedKeyHexa
+      string EncryptedKeyHexa (method: DecryptKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
     string RSAPrivateKey
     ulong
     v2+

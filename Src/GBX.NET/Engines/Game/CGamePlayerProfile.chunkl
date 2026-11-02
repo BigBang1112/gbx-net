@@ -501,7 +501,7 @@ CGamePlayerProfile 0x0308C000
 
 0x04C [TMF] // LeagueManager
   byte U01
-  int LeagueCacheDuration
+  int LeagueCacheDuration (time)
   bool HasLeagueCache
   if HasLeagueCache
     systemtime LeagueCacheUpdatedAt
@@ -619,7 +619,7 @@ CGamePlayerProfile 0x0308C000
   int LadderMode = 1
   string OnlineLogin
   CryptedPasswordData
-  string OnlineValidationKeyHexa
+  string OnlineValidationKeyHexa (method: DecryptOnlineValidationKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", protected)
   bool LoginValidated
   bool RememberOnlinePassword
   string LastUsedMSAddress
@@ -679,10 +679,10 @@ CGamePlayerProfile 0x0308C000
   string OnlineLogin
   int EncryptedPasswordLength (local, write: "n.EncryptedPassword?.Length ?? 0")
   if EncryptedPasswordLength != 0
-    checksum128 CryptedPassword
+    checksum128 CryptedPassword (method: DecryptPassword, protected)
     data[EncryptedPasswordLength] EncryptedPassword (method: DecryptPassword, protected)
-  string OnlineValidationKeyHexa // Hexadecimal encrypted validation key, not an RSA key.
-  string OnlineSupportKeyHexa // Hexadecimal encrypted support key.
+  string OnlineValidationKeyHexa (method: DecryptOnlineValidationKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", protected)
+  string OnlineSupportKeyHexa (method: DecryptOnlineSupportKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", protected)
   bool LoginValidated
   bool RememberOnlinePassword
   string LastUsedMSAddress

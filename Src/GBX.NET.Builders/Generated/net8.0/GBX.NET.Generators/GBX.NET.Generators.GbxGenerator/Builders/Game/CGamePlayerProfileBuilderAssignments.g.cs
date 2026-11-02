@@ -101,9 +101,9 @@ internal static class CGamePlayerProfileBuilderAssignments
     private static NodeBuilderProperty<string?>? cached29;
     internal static NodeBuilderProperty<string?> GetLastUsedMSPathAssignment() => cached29 ??= new("LastUsedMSPath", new Action<object, string?>(Assign29));
     private static void Assign29(object node, string? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).LastUsedMSPath = value;
-    private static NodeBuilderProperty<int>? cached30;
-    internal static NodeBuilderProperty<int> GetLeagueCacheDurationAssignment() => cached30 ??= new("LeagueCacheDuration", new Action<object, int>(Assign30));
-    private static void Assign30(object node, int value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).LeagueCacheDuration = value;
+    private static NodeBuilderProperty<TimeInt32>? cached30;
+    internal static NodeBuilderProperty<TimeInt32> GetLeagueCacheDurationAssignment() => cached30 ??= new("LeagueCacheDuration", new Action<object, TimeInt32>(Assign30));
+    private static void Assign30(object node, TimeInt32 value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).LeagueCacheDuration = value;
     private static NodeBuilderProperty<DateTime?>? cached31;
     internal static NodeBuilderProperty<DateTime?> GetLeagueCacheUpdatedAtAssignment() => cached31 ??= new("LeagueCacheUpdatedAt", new Action<object, DateTime?>(Assign31));
     private static void Assign31(object node, DateTime? value) => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)node).LeagueCacheUpdatedAt = value;

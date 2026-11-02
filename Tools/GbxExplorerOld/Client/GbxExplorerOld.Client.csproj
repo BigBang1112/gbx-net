@@ -42,6 +42,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\Src\GBX.NET.Crypto\GBX.NET.Crypto.csproj" />
         <ProjectReference Include="..\..\..\Src\GBX.NET.Hashing\GBX.NET.Hashing.csproj" />
         <ProjectReference Include="..\..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
         <ProjectReference Include="..\..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
@@ -97,6 +98,7 @@
         <TrimmerRootAssembly Include="BlazorMonaco" />
         <TrimmerRootAssembly Include="KellermanSoftware.Compare-NET-Objects" />
         <TrimmerRootAssembly Include="GBX.NET" />
+        <TrimmerRootAssembly Include="GBX.NET.Crypto" />
         <TrimmerRootAssembly Include="GBX.NET.Hashing" />
         <TrimmerRootAssembly Include="GBX.NET.LZO" />
         <TrimmerRootAssembly Include="GBX.NET.ZLib" />

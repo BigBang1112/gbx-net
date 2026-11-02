@@ -58,6 +58,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlinePassword", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlinePassword
     {
         get => this.onlinePassword;
@@ -68,6 +69,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlineValidationCode", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineValidationCode
     {
         get => this.onlineValidationCode;
@@ -78,6 +80,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlineSupportKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineSupportKey
     {
         get => this.onlineSupportKey;
@@ -156,6 +159,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive v1+</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive(1)]
+    [Method("DecryptKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? EncryptedKeyHexa
     {
         get => this.encryptedKeyHexa;

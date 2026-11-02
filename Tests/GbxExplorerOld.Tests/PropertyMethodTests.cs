@@ -1,10 +1,14 @@
 using GbxExplorerOld.Client.Components;
+using GBX.NET.Attributes;
+using GBX.NET.Crypto;
+using GBX.NET.Engines.Game;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.JSInterop;
+using System.Reflection;
 
 namespace GbxExplorerOld.Tests;
 
@@ -221,6 +225,76 @@ public class PropertyMethodTests
         });
     }
 
+    [Test]
+    [Arguments(nameof(CGamePlayerProfile.OnlineValidationKeyHexa), nameof(CGamePlayerProfileExtensions.DecryptOnlineValidationKey))]
+    [Arguments(nameof(CGamePlayerProfile.OnlineSupportKeyHexa), nameof(CGamePlayerProfileExtensions.DecryptOnlineSupportKey))]
+    public async Task Click_ProfileKeyAttribute_InvokesCryptoExtensionAndCopiesWithoutRevealingResult(string propertyName, string methodName)
+    {
+        var clipboard = new Clipboard();
+        using var services = CreateServices(clipboard);
+        using var renderer = new TestRenderer(services);
+        await renderer.Dispatcher.InvokeAsync(async () =>
+        {
+            var profile = new CGamePlayerProfile();
+            var property = typeof(CGamePlayerProfile).GetProperty(propertyName)!;
+            property.SetValue(profile, "00010203040506071D64EF84BA1E1150F117FE2D82CC0C58");
+            var attribute = property.GetCustomAttributes<MethodAttribute>().Single();
+            await Assert.That(attribute.MethodName).IsEqualTo(methodName);
+            await Assert.That(attribute.Protected).IsTrue();
+            await Assert.That(Type.GetType(attribute.DeclaringTypeName!, throwOnError: true)).IsEqualTo(typeof(CGamePlayerProfileExtensions));
+
+            var id = renderer.Add();
+            await renderer.Show(id, profile, attribute.MethodName, value: property.GetValue(profile),
+                isProtected: attribute.Protected, declaringTypeName: attribute.DeclaringTypeName);
+            await Assert.That(clipboard.Values).IsEmpty();
+            await renderer.Click(id);
+
+            await Assert.That(clipboard.Values).IsEquivalentTo(new[] { "SupportKey" });
+            await Assert.That(renderer.Element(id)).IsEqualTo("button");
+            await Assert.That(renderer.Text(id)).IsEqualTo(methodName);
+            await Assert.That(renderer.Content(id)).Contains("(copied)");
+        });
+    }
+
+    [Test]
+    [Arguments(nameof(CGamePlayerProfileChunk_AccountSettings.OnlinePassword), "DecryptOnlinePassword",
+        "00010203040506079DD2E057932C92C473E804E0C3B7254F", "password-123")]
+    [Arguments(nameof(CGamePlayerProfileChunk_AccountSettings.OnlineSupportKey), "DecryptOnlineSupportKey",
+        "000102030405060727F9FC270D7E739E", "12345678")]
+    [Arguments(nameof(CGamePlayerProfileChunk_AccountSettings.OnlineValidationCode), "DecryptOnlineValidationCode",
+        "00010203040506076CBB6D73FA3787C98990CCC79394A3CD", "ABC-DEFGH-IJK")]
+    [Arguments(nameof(CGamePlayerProfileChunk_AccountSettings.EncryptedKeyHexa), "DecryptKey",
+        "0001020304050607DB004DE4B223D219BDE8983151234019", "account-key-data")]
+    public async Task Click_AccountSettingsAttribute_InvokesCryptoExtensionAndCopiesWithoutRevealingResult(
+        string propertyName, string methodName, string hex, string expected)
+    {
+        var clipboard = new Clipboard();
+        using var services = CreateServices(clipboard);
+        using var renderer = new TestRenderer(services);
+        await renderer.Dispatcher.InvokeAsync(async () =>
+        {
+            var settings = new CGamePlayerProfileChunk_AccountSettings { OnlineLogin = "test.player" };
+            var property = typeof(CGamePlayerProfileChunk_AccountSettings).GetProperty(propertyName)!;
+            property.SetValue(settings, hex);
+            var attribute = property.GetCustomAttributes<MethodAttribute>().Single();
+            await Assert.That(attribute.MethodName).IsEqualTo(methodName);
+            await Assert.That(attribute.Protected).IsTrue();
+            await Assert.That(Type.GetType(attribute.DeclaringTypeName!, throwOnError: true))
+                .IsEqualTo(typeof(CGamePlayerProfileChunk_AccountSettingsExtensions));
+
+            var id = renderer.Add();
+            await renderer.Show(id, settings, attribute.MethodName, value: property.GetValue(settings),
+                isProtected: attribute.Protected, declaringTypeName: attribute.DeclaringTypeName);
+            await renderer.Click(id);
+
+            await Assert.That(clipboard.Values).IsEquivalentTo(new[] { expected });
+            await Assert.That(renderer.Element(id)).IsEqualTo("button");
+            await Assert.That(renderer.Text(id)).IsEqualTo(methodName);
+            await Assert.That(renderer.Content(id)).Contains("(copied)");
+            await Assert.That(renderer.Content(id)).DoesNotContain(expected);
+        });
+    }
+
     private static ServiceProvider CreateServices(Clipboard? clipboard = null) => new ServiceCollection()
         .AddLogging().AddSingleton<IJSRuntime>(clipboard ?? new Clipboard()).BuildServiceProvider();
 
@@ -269,11 +343,12 @@ public class PropertyMethodTests
     {
         public override Dispatcher Dispatcher { get; } = Dispatcher.CreateDefault();
         public int Add() => AssignRootComponentId(InstantiateComponent(typeof(PropertyMethod)));
-        public Task Show(int id, object owner, string methodName, object? value = null, bool isProtected = false) =>
+        public Task Show(int id, object owner, string methodName, object? value = null, bool isProtected = false, string? declaringTypeName = null) =>
             RenderRootComponentAsync(id, ParameterView.FromDictionary(new Dictionary<string, object?>
             {
                 [nameof(PropertyMethod.Owner)] = owner,
                 [nameof(PropertyMethod.MethodName)] = methodName,
+                [nameof(PropertyMethod.DeclaringTypeName)] = declaringTypeName,
                 [nameof(PropertyMethod.Protected)] = isProtected,
                 [nameof(PropertyMethod.Value)] = value
             }));

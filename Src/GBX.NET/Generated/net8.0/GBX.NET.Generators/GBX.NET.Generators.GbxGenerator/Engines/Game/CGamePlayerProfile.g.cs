@@ -565,10 +565,10 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref bindingsConfigRef, value);
     }
 
-    private int leagueCacheDuration;
+    private TimeInt32 leagueCacheDuration;
     /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
-    public int LeagueCacheDuration
+    public TimeInt32 LeagueCacheDuration
     {
         get => this.leagueCacheDuration;
         set => this.leagueCacheDuration = value;
@@ -712,6 +712,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <remarks>Applied with: 0x05D, 0x069 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C05D>]
     [AppliedWithChunk<Chunk0308C069>]
+    [Method("DecryptOnlineValidationKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineValidationKeyHexa
     {
         get => this.onlineValidationKeyHexa;
@@ -823,6 +824,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     private Checksum128 cryptedPassword;
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method(nameof(DecryptPassword), Protected = true)]
     public Checksum128 CryptedPassword
     {
         get => this.cryptedPassword;
@@ -840,11 +842,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? onlineSupportKeyHexa;
-    /// <summary>
-    /// Hexadecimal encrypted support key.
-    /// </summary>
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method("DecryptOnlineSupportKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineSupportKeyHexa
     {
         get => this.onlineSupportKeyHexa;
@@ -3338,7 +3338,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.Byte(ref U01);
-            rw.Int32(ref n.leagueCacheDuration);
+            rw.TimeInt32(ref n.leagueCacheDuration);
             rw.Boolean(ref n.hasLeagueCache);
 
             if (n.HasLeagueCache)

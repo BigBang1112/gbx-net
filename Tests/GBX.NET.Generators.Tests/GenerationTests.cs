@@ -3453,6 +3453,55 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_ExternalMethodFlags_CompileWithoutReferencingTheExternalAssembly()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public string Inspect() => "local";
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value (method: Inspect)
+            0x002
+              int Value (method: Inspect, method-type: "Optional.Handler, Optional", protected)
+            0x003
+              int Value (method: Inspect, method-type: "Optional.Handler, Optional", protected)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var property = compilation.GetTypeByMetadataName("GBX.NET.Engines.Game.Example")!
+            .GetMembers("Value").OfType<IPropertySymbol>().Single();
+        var attributes = property.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+        await Assert.That(attributes).Count().IsEqualTo(2);
+        var external = attributes.Single(x => x.NamedArguments.Any(x => x.Key == "DeclaringTypeName"));
+        await Assert.That(external.ConstructorArguments[0].Value).IsEqualTo("Inspect");
+        await Assert.That(external.NamedArguments.Single(x => x.Key == "DeclaringTypeName").Value.Value).IsEqualTo("Optional.Handler, Optional");
+        await Assert.That(external.NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("[Method(nameof(Inspect))]");
+        await Assert.That(generated).Contains("[Method(\"Inspect\", DeclaringTypeName = \"Optional.Handler, Optional\", Protected = true)]");
+    }
+
+    [Test]
+    [Arguments("method-type")]
+    [Arguments("method-type: \"\"")]
+    [Arguments("method-type: Handler")]
+    public async Task Generate_MethodTypeWithoutQuotedName_ReportsDiagnostic(string flag)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001
+              int Value (method: Inspect, {{flag}})
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("method-type"));
+    }
+
+    [Test]
     public async Task Generate_MethodFlagWithoutName_ReportsDiagnostic()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -4459,6 +4508,7 @@ public partial class GenerationTests
             public class MethodAttribute(string methodName) : System.Attribute
             {
                 public bool Protected { get; set; }
+                public string? DeclaringTypeName { get; set; }
             }
             [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple = true)]
             public class GameVersionDefaultAttribute(GBX.NET.GameVersion game, object? defaultValue = null) : System.Attribute

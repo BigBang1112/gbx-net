@@ -146,7 +146,7 @@ public class ExistingTypeAnalysisTests
         await Assert.That(types["GBX.NET.Engines.MwFoundations.CMwNod"].Attributes).Contains(x => x.Name.ToString() == "Class");
         await Assert.That(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait")).IsTrue();
         await Assert.That(types.ContainsKey("GBX.NET.Engines.Script.CScriptTraitsMetadata+ScriptTrait`1")).IsTrue();
-        await Assert.That(types["GBX.NET.Engines.Plug.CPlugMaterialCustom+Chunk0903A00A"].Methods).IsEmpty();
+        await Assert.That(types["GBX.NET.Engines.Plug.CPlugBitmapDecals+Chunk09078000"].Methods).IsEmpty();
         await Assert.That(types["GBX.NET.Engines.Plug.CPlugVertexStream+Chunk09056000"].Methods).Contains(x => x.Identifier.ValueText == "ReadWrite");
     }
 

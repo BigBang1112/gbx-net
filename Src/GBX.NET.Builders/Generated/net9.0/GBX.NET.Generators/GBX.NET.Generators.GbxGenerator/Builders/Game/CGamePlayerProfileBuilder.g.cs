@@ -439,7 +439,7 @@ public partial class CGamePlayerProfileBuilder : CGamePlayerProfileBuilderBase<C
         public TMF WithInboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF> values) => WithInboxMessages(values.ToArray());
         public TMF WithLastUsedMSAddress(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSAddressAssignment(), value, SupportedGames5);
         public TMF WithLastUsedMSPath(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLastUsedMSPathAssignment(), value, SupportedGames5);
-        public TMF WithLeagueCacheDuration(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheDurationAssignment(), value, SupportedGames5);
+        public TMF WithLeagueCacheDuration(TimeInt32 value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheDurationAssignment(), value, SupportedGames5);
         public TMF WithLeagueCacheUpdatedAt(DateTime? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeagueCacheUpdatedAtAssignment(), value, SupportedGames5);
         public TMF WithLeaguePath(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguePathAssignment(), value, SupportedGames5);
         public TMF WithLeagues(NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilderAssignments.GetLeaguesAssignment(), value, SupportedGames5);

@@ -28,6 +28,9 @@ else
     public string MethodName { get; set; } = "";
 
     [Parameter]
+    public string? DeclaringTypeName { get; set; }
+
+    [Parameter]
     public object? Value { get; set; }
 
     [Parameter]
@@ -36,6 +39,7 @@ else
     private object? previousOwner;
     private object? previousValue;
     private string? previousMethodName;
+    private string? previousDeclaringTypeName;
     private bool previousProtected;
     private bool invoked;
     private bool failed;
@@ -44,7 +48,8 @@ else
 
     protected override void OnParametersSet()
     {
-        if (!ReferenceEquals(Owner, previousOwner) || !Equals(Value, previousValue) || MethodName != previousMethodName || Protected != previousProtected)
+        if (!ReferenceEquals(Owner, previousOwner) || !Equals(Value, previousValue) || MethodName != previousMethodName
+            || DeclaringTypeName != previousDeclaringTypeName || Protected != previousProtected)
         {
             invoked = false;
             failed = false;
@@ -55,6 +60,7 @@ else
         previousOwner = Owner;
         previousValue = Value;
         previousMethodName = MethodName;
+        previousDeclaringTypeName = DeclaringTypeName;
         previousProtected = Protected;
     }
 
@@ -64,14 +70,29 @@ else
 
         try
         {
-            var method = Owner.GetType().GetMethod(MethodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.FlattenHierarchy,
+            var declaringType = DeclaringTypeName is null ? Owner.GetType() : Type.GetType(DeclaringTypeName, throwOnError: true)!;
+            var flags = BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy;
+            if (DeclaringTypeName is null) flags |= BindingFlags.Instance;
+            var method = declaringType.GetMethod(MethodName, flags,
                 binder: null, types: Type.EmptyTypes, modifiers: null);
-            if (method is null || method.ReturnType == typeof(void) || method.ContainsGenericParameters)
+            object?[]? arguments = null;
+            if (method is null && DeclaringTypeName is not null)
             {
-                throw new InvalidOperationException($"{MethodName} must be a public, parameterless method that returns a value.");
+                method = declaringType.GetMethod(MethodName, BindingFlags.Public | BindingFlags.Static,
+                    binder: null, types: [Owner.GetType()], modifiers: null);
+                if (method?.IsDefined(typeof(System.Runtime.CompilerServices.ExtensionAttribute), inherit: false) != true)
+                {
+                    method = null;
+                }
+                arguments = [Owner];
             }
 
-            var text = method.Invoke(Owner, null)?.ToString();
+            if (method is null || method.ReturnType == typeof(void) || method.ContainsGenericParameters)
+            {
+                throw new InvalidOperationException($"{MethodName} must be a public, parameterless method or an extension method on the owner that returns a value.");
+            }
+
+            var text = method.Invoke(method.IsStatic ? null : Owner, arguments)?.ToString();
             if (Protected)
             {
                 await JS.InvokeVoidAsync("navigator.clipboard.writeText", text ?? "");

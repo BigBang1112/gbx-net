@@ -183,7 +183,7 @@
     {
         @foreach (var method in Property.GetCustomAttributes<MethodAttribute>(inherit: true))
         {
-            <PropertyMethod Owner="Owner" MethodName="@method.MethodName" Protected="method.Protected" Value="value" />
+            <PropertyMethod Owner="Owner" MethodName="@method.MethodName" DeclaringTypeName="@method.DeclaringTypeName" Protected="method.Protected" Value="value" />
         }
     }
 

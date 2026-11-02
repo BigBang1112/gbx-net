@@ -142,7 +142,7 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     string? HornName { get; set; }
     string? LastUsedMSAddress { get; set; }
     string? LastUsedMSPath { get; set; }
-    int LeagueCacheDuration { get; set; }
+    TimeInt32 LeagueCacheDuration { get; set; }
     DateTime? LeagueCacheUpdatedAt { get; set; }
     string? LeaguePath { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMF>? Leagues { get; set; }
