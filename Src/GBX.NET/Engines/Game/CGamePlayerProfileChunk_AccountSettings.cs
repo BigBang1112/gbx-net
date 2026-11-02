@@ -17,8 +17,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings
     [Obsolete("Use LegacyBuddyArchiveVersion instead.")]
     public int U03 { get => LegacyBuddyArchiveVersion; set => LegacyBuddyArchiveVersion = value; }
 
-    [Obsolete("Use ReceivedMessagesSystemTime instead.")]
-    public ulong U04 { get => ReceivedMessagesSystemTime; set => ReceivedMessagesSystemTime = value; }
+    [Obsolete("Use ReceivedMessagesAt instead.")]
+    public DateTime? ReceivedMessagesSystemTime { get => ReceivedMessagesAt; set => ReceivedMessagesAt = value; }
+
+    [Obsolete("Use ReceivedMessagesAt instead.")]
+    public DateTime? U04 { get => ReceivedMessagesAt; set => ReceivedMessagesAt = value; }
 
     [Obsolete("Use BuddyArchiveVersion instead.")]
     public int U07 { get => BuddyArchiveVersion; set => BuddyArchiveVersion = value; }

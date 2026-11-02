@@ -25,16 +25,16 @@ archive
       v1+
         string EncryptedKeyHexa (method: DecryptKey, method-type: "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", protected)
     string RSAPrivateKey
-    ulong U02
+    systemtime U02
     int LegacyBuddyArchiveVersion = 5
     CGameBuddy[] Buddies (version: LegacyBuddyArchiveVersion)
-    ulong ReceivedMessagesSystemTime
+    systemtime ReceivedMessagesAt
     CGameNetOnlineMessage[] InboxMessages (deprec)
     CGameNetOnlineMessage[] ReadMessages (deprec)
     CGameNetOnlineMessage[] OutboxMessages (deprec)
     byte Flags2
   v3+
-    string U05
+    string DefaultGroupLogin
   string AvatarName (formatted)
   SPlayerTagsConfig PlayerTagsConfig
   boolbyte ReceiveNews
