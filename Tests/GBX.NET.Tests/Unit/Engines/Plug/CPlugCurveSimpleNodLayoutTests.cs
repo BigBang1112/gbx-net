@@ -59,9 +59,7 @@ public class CPlugCurveSimpleNodLayoutTests
         node.CreateChunk<CPlugCurveSimpleNod.Chunk09185000>();
         PlugCurve legacy = node;
         var model = new CPlugVisEntFxModel { EliminatedTeleportIntens = legacy, EliminatedHighlight = legacy };
-#pragma warning disable GBXNET10001
         var clone = (CPlugVisEntFxModel)model.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedNode = (CPlugCurveSimpleNod)clone.EliminatedHighlight!.Curve!;
         await Assert.That(clone.EliminatedHighlight).IsSameReferenceAs(clone.EliminatedTeleportIntens);
         await Assert.That(clonedNode.Curve).IsNotSameReferenceAs(node.Curve);

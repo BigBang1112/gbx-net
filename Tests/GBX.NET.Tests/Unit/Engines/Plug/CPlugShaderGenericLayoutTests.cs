@@ -46,9 +46,7 @@ public class CPlugShaderGenericLayoutTests
         using (var writer = new GbxWriter(saved)) writer.WriteNode(node);
         await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray(), CollectionOrdering.Matching);
 
-#pragma warning disable GBXNET10001
         var clone = (CPlugShaderGeneric)node.DeepClone();
-#pragma warning restore GBXNET10001
         clone.Material!.DiffuseAlpha = 0;
         await Assert.That(material.DiffuseAlpha).IsEqualTo(7.25f);
     }

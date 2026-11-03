@@ -203,9 +203,7 @@ public class CGameCtnMediaShootParamsLayoutTests
             VideoEncoding = new() { Version = 7, Bitrate = 8192 },
             AudioEncoding = new() { Version = 3, VbrQuality = 0.5f }
         };
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaShootParams)node.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone.MotionBlur).IsEqualTo(node.MotionBlur);
         await Assert.That(clone.Stereo3d).IsEqualTo(node.Stereo3d);

@@ -262,9 +262,7 @@ public class CGameCtnMediaTrackLayoutTests
         track.Blocks = [block, block];
         track.RepeatingSegmentStart = new TimeSingle(0.25f);
         track.RepeatingSegmentEnd = new TimeSingle(2.75f);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaTrack)track.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone.Blocks[0]).IsNotSameReferenceAs(block);
         await Assert.That(clone.Blocks[1]).IsSameReferenceAs(clone.Blocks[0]);

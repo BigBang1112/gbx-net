@@ -177,9 +177,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
         var node = new CGameCtnChallenge();
         var chunk = new CGameCtnChallenge.Chunk03043054();
         payload.Read(rw => chunk.Read(node, rw.Reader!));
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnChallenge)node.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone.EmbeddedZipData).IsNotSameReferenceAs(node.EmbeddedZipData);
         await payload.AssertRoundTrip(rw => chunk.Write(clone, rw.Writer!));

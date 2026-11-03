@@ -110,9 +110,7 @@ internal sealed class DeepCloneContext
             return (IChunk)existing;
         }
 
-#pragma warning disable GBXNET10001
         var clone = source.DeepClone();
-#pragma warning restore GBXNET10001
         Register(source, clone);
 
         if (source is Chunk chunk)

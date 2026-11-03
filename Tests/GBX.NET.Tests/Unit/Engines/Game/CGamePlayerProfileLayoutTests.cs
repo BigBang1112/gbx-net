@@ -498,9 +498,7 @@ public class CGamePlayerProfileLayoutTests
         await Assert.That(node.ProfileChunks[0].CreatedAt.HasValue).IsEqualTo(currentContainer && version >= 2);
         await Assert.That(Write(Serialize)).IsEquivalentTo(payload);
 
-#pragma warning disable GBXNET10001
         var clone = (CGamePlayerProfile)node.DeepClone();
-#pragma warning restore GBXNET10001
         var originalData = ((CGamePlayerProfileChunk_Unknown)node.ProfileChunks[1]).Data;
         var clonedData = ((CGamePlayerProfileChunk_Unknown)clone.ProfileChunks![1]).Data;
         await Assert.That(clonedData).IsEquivalentTo(originalData);

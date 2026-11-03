@@ -215,9 +215,7 @@ public class CPlugDynaWaterModelTests
         var node = new CPlugDynaWaterModel();
         var chunk = node.CreateChunk<CPlugDynaWaterModel.Chunk0915F000>();
         chunk.Version = 3;
-#pragma warning disable GBXNET10001
         var clone = (CPlugDynaWaterModel)node.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone).IsNotSameReferenceAs(node);
         await Assert.That(clone.U04).IsNotSameReferenceAs(node.U04);
         clone.U04!.Values![0] = new Vec2(2, 3);

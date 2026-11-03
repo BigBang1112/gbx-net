@@ -181,9 +181,7 @@ public class CGameCtnReplayRecordTests
             await Assert.That(replay.Ghosts![0]!.Validate_ExeVersion).IsEqualTo("Executable");
             await Assert.That(replay.Ghosts[0]!.EventsDuration).IsEqualTo(new TimeInt32(1));
         }
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.OldCutKeys2![1].SequenceEqual(records.Skip(72))).IsTrue();
         await Assert.That(clone.OldCutKeys2[0]).IsNotSameReferenceAs(replay.OldCutKeys2[0]);
         if (hasGhost) await Assert.That(clone.Ghosts![0]!.Validate_ExeVersion).IsEqualTo("Executable");
@@ -522,9 +520,7 @@ public class CGameCtnReplayRecordTests
             await Assert.That(replay.PlayersOfInterest.Value[1].GhostIndex).IsEqualTo(0);
             await Assert.That(replay.PlayersOfInterest.Value[1].Time).IsEqualTo(new TimeInt32(5678));
         }
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.PlayersOfInterest!.Value.SequenceEqual(replay.PlayersOfInterest.Value)).IsTrue();
     }
 
@@ -667,9 +663,7 @@ public class CGameCtnReplayRecordTests
             await Assert.That(info.U06).IsEqualTo(34 + i);
         }
 
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.AnchoredObjectInfos!.Count).IsEqualTo(count);
         if (count != 0)
         {
@@ -725,9 +719,7 @@ public class CGameCtnReplayRecordTests
         await Assert.That(items[1].Name).IsEqualTo("Same.Item.Gbx");
         await Assert.That(items[0].Skin.FilePath).IsEqualTo("First.Skin.zip");
         await Assert.That(items[1].Skin.FilePath).IsEqualTo("Second.Skin.zip");
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedItems = (additional ? clone.AdditionalItems : clone.Items)!;
         await Assert.That(clonedItems.SequenceEqual(items)).IsTrue();
     }
@@ -776,9 +768,7 @@ public class CGameCtnReplayRecordTests
         var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093022());
         await Assert.That(replay.CameraRecord!.Length).IsEqualTo(2);
         await Assert.That(replay.CameraRecord[1].SequenceEqual(records.Skip(recordSize))).IsTrue();
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.CameraRecord).IsNotSameReferenceAs(replay.CameraRecord);
         await Assert.That(clone.CameraRecord![1]).IsNotSameReferenceAs(replay.CameraRecord[1]);
         clone.CameraRecord[1][0] ^= 0xFF;
@@ -1041,9 +1031,7 @@ public class CGameCtnReplayRecordTests
         var replay = await ReadChunk(payload, chunk);
         var restored = recordSize == 68 ? replay.OldCutKeys![1] : replay.OldCutKeys2![1];
         await Assert.That(restored.SequenceEqual(records.Skip(recordSize))).IsTrue();
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedRecord = recordSize == 68 ? clone.OldCutKeys![1] : clone.OldCutKeys2![1];
         await Assert.That(clonedRecord.SequenceEqual(restored)).IsTrue();
         await Assert.That(clonedRecord).IsNotSameReferenceAs(restored);
@@ -1091,9 +1079,7 @@ public class CGameCtnReplayRecordTests
             new CGameCtnReplayRecord.Chunk0309300A());
         await Assert.That(replay.Tracks![0]!.Name).IsEqualTo("Legacy");
         await Assert.That(replay.Tracks[0]).IsSameReferenceAs(replay.Tracks[1]);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.Tracks![0]).IsNotSameReferenceAs(replay.Tracks[0]);
         await Assert.That(clone.Tracks[0]).IsSameReferenceAs(clone.Tracks[1]);
     }
@@ -1115,9 +1101,7 @@ public class CGameCtnReplayRecordTests
         payload.Finish();
         var replay = new CGameCtnReplayRecord();
         payload.Read(rw => new CGameCtnReplayRecord.Chunk0309300A().Read(replay, rw.Reader!));
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(loads).IsEqualTo(0);
         await Assert.That(replay.Tracks!.Get(0).File).IsSameReferenceAs(file);
         await Assert.That(clone.Tracks!.Get(0).File!.FilePath).IsEqualTo(file.FilePath);
@@ -1189,9 +1173,7 @@ public class CGameCtnReplayRecordTests
         await Assert.That(replay.BulletVisDataTape!.Header!.U01).IsEqualTo(11);
         await Assert.That(replay.CharVisDataTape!.Header!.U01).IsEqualTo(22);
         await Assert.That(replay.ArenaVisDataTape?.Header?.U01).IsEqualTo(hasArena ? 33 : (int?)null);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.BulletVisDataTape!.Header!.U01).IsEqualTo(11);
         await Assert.That(clone.CharVisDataTape!.Header!.U01).IsEqualTo(22);
         await Assert.That(clone.ArenaVisDataTape?.Header?.U01).IsEqualTo(hasArena ? 33 : (int?)null);
@@ -1215,9 +1197,7 @@ public class CGameCtnReplayRecordTests
         payload.Finish();
         var replay = new CGameCtnReplayRecord();
         payload.Read(rw => new CGameCtnReplayRecord.Chunk03093016().Read(replay, rw.Reader!));
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(loads).IsEqualTo(0);
         await Assert.That(replay.References.BulletVisDataTape.File).IsSameReferenceAs(bulletFile);
         await Assert.That(replay.References.CharVisDataTape.File).IsSameReferenceAs(charFile);
@@ -1292,9 +1272,7 @@ public class CGameCtnReplayRecordTests
         await Assert.That(replay.RecordDuration).IsEqualTo(new TimeInt32(1734));
         await Assert.That(replay.OldShowTimes!.Value.Select(x => x.Data).SequenceEqual(records)).IsTrue();
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnReplayRecord)replay.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.RecordDuration).IsEqualTo(replay.RecordDuration);
         await Assert.That(clone.OldShowTimes!.Value.SequenceEqual(replay.OldShowTimes.Value)).IsTrue();
     }

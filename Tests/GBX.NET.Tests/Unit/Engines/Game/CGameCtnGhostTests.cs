@@ -63,9 +63,7 @@ public class CGameCtnGhostTests
         await Assert.That(ghost.Validate_OsKind).IsEqualTo((CGameCtnGhost.EKindOs)osKind);
         await Assert.That(ghost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnGhost)ghost.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.InputStoreVersion).IsEqualTo(7);
         await Assert.That(clone.InputCountLimit).IsEqualTo(456);
         await Assert.That(clone.Validate_OsKind).IsEqualTo(ghost.Validate_OsKind);
