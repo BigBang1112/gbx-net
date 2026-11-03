@@ -54,7 +54,8 @@ internal static class GbxAssert
             var compressed = reader.ReadBytes(compressedSize);
             await Assert.That(compressed.Length).IsEqualTo(compressedSize);
             await Assert.That(stream.Position).IsEqualTo(stream.Length);
-            body = gbx.Body.DecodeData(compressed);
+            body = new byte[gbx.Body.UncompressedSize];
+            (Gbx.LZO ?? throw new InvalidOperationException("LZO is required to compare compressed bodies.")).Decompress(compressed, body);
         }
         else
         {

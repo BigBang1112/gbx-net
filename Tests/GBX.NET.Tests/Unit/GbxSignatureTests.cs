@@ -39,9 +39,9 @@ public class GbxSignatureTests
 
         var after = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         using var input = new MemoryStream(signed);
-        var result = Gbx.ReadSignature(input);
-        await Assert.That(result.Status).IsEqualTo(GbxSignatureStatus.Valid);
-        if (!result.IsValid)
+        var result = Gbx.Parse(input);
+        await Assert.That(result.SignatureStatus).IsEqualTo(GbxSignatureStatus.Valid);
+        if (result.Signature is null)
         {
             throw new InvalidDataException("Expected a verified signature.");
         }
@@ -72,31 +72,6 @@ public class GbxSignatureTests
         await Assert.That(parsed.Node.Tracks[0].Chunks.Contains(ChunkId)).IsFalse();
         await GbxAssert.HaveEqualSavedBytes(signed, Save(parsed));
         await Assert.That(clip.Chunks.Contains(ChunkId)).IsFalse();
-        using var unsignedInput = new MemoryStream(CreateUnknownFile(unsignedBody.ToArray(), compression));
-        await Assert.That(Gbx.ReadSignature(unsignedInput).Status).IsEqualTo(GbxSignatureStatus.Missing);
-    }
-
-    [Test]
-    [Arguments(GbxCompression.Uncompressed)]
-    [Arguments(GbxCompression.Compressed)]
-    public async Task ReadSignature_UnknownRootAndPartialReads_MatchesSyncAndAsync(GbxCompression compression)
-    {
-        using var body = new MemoryStream();
-        using (var writer = new GbxWriter(body))
-        {
-            writer.Write(new byte[] { 0xFF, 0xFE, 0xFD }); // No known node layout.
-            writer.Write(0xFACADE01u);
-        }
-        GbxSignatureChunk.TryAppend(body);
-        var file = CreateUnknownFile(body.ToArray(), compression);
-        using var syncInput = new FragmentedReadStream(file);
-        using var asyncInput = new FragmentedReadStream(file);
-
-        var syncResult = Gbx.ReadSignature(syncInput);
-        var asyncResult = await Gbx.ReadSignatureAsync(asyncInput);
-
-        await Assert.That(syncResult.Status).IsEqualTo(GbxSignatureStatus.Valid);
-        await Assert.That(asyncResult).IsEqualTo(syncResult);
     }
 
     [Test]
@@ -112,7 +87,7 @@ public class GbxSignatureTests
     {
         var file = Save(new Gbx<CGameCtnMediaClip>(new()) { BodyCompression = compression });
         using var expectedInput = new MemoryStream(file);
-        var expected = Gbx.ReadSignature(expectedInput);
+        var expected = Gbx.Parse(expectedInput);
         using Stream input = fragmented ? new FragmentedReadStream(file) : new MemoryStream(file);
 
         var gbx = async ? await Gbx.ParseAsync(input) : Gbx.Parse(input);
@@ -141,19 +116,25 @@ public class GbxSignatureTests
     }
 
     [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task Parse_SkippedChunk_StillVerifiesCoveredBytes(bool fragmented)
+    [Arguments(false, false)]
+    [Arguments(false, true)]
+    [Arguments(true, false)]
+    [Arguments(true, true)]
+    public async Task Parse_SkippedChunk_StillVerifiesCoveredBytes(bool fragmented, bool tampered)
     {
         const uint skippedId = 0x030790FE;
         var clip = new CGameCtnMediaClip();
         clip.Chunks.Add(new SkippableChunk(skippedId) { Data = [1, 2, 3, 4] });
         var file = Save(new Gbx<CGameCtnMediaClip>(clip) { BodyCompression = GbxCompression.Uncompressed });
+        if (tampered)
+        {
+            file[file.Length - GetBody(file).Length + 12] ^= 1;
+        }
         using Stream input = fragmented ? new FragmentedReadStream(file) : new MemoryStream(file);
 
         var gbx = Gbx.Parse(input, new() { SkipChunkIds = [skippedId] });
 
-        await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Valid);
+        await Assert.That(gbx.SignatureStatus).IsEqualTo(tampered ? GbxSignatureStatus.Mismatched : GbxSignatureStatus.Valid);
         await Assert.That(gbx.Node!.Chunks.Contains(skippedId)).IsFalse();
     }
 
@@ -168,7 +149,7 @@ public class GbxSignatureTests
         var position = input.Position;
 
         await Assert.That(gbx.Signature).IsNull();
-        await Assert.That(gbx.SignatureStatus).IsNull();
+        await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Unknown);
         await Assert.That(input.Position).IsEqualTo(position);
         await Assert.That(position < input.Length).IsTrue();
     }
@@ -178,20 +159,16 @@ public class GbxSignatureTests
     [Arguments(GbxCompression.Uncompressed, true)]
     [Arguments(GbxCompression.Compressed, false)]
     [Arguments(GbxCompression.Compressed, true)]
-    public async Task Parse_RetainedRawBody_ExposesSignatureForUnknownRoot(GbxCompression compression, bool headerOnly)
+    public async Task Parse_RetainedRawBody_ReportsUnknownAndPreservesBytes(GbxCompression compression, bool headerOnly)
     {
-        var file = CreateUnknownFile(CreateSignedBody(), compression);
+        var file = CreateFile(CreateSignedBody(), compression);
         using var input = new FragmentedReadStream(file);
         var gbx = headerOnly ? Gbx.ParseHeader(input, new() { ReadRawBody = true })
             : await Gbx.ParseAsync(input, new() { ReadRawBody = true });
 
         await Assert.That(gbx.Node).IsNull();
-        await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Valid);
-        if (!gbx.HasSignature)
-        {
-            throw new InvalidDataException("Expected a verified signature on the Gbx object.");
-        }
-        await Assert.That(gbx.Signature.CommitHash).IsEqualTo(SimplestGit.CommitHash);
+        await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Unknown);
+        await Assert.That(gbx.Signature).IsNull();
         await Assert.That(Save(gbx)).IsEquivalentTo(file, CollectionOrdering.Matching);
     }
 
@@ -206,6 +183,26 @@ public class GbxSignatureTests
 
         await Assert.That(gbx.Signature).IsNull();
         await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Mismatched);
+        await Assert.That(gbx.Body.Exception).IsNull();
+    }
+
+    [Test]
+    [Arguments(12, 0, GbxSignatureStatus.Malformed)]
+    [Arguments(16, 2, GbxSignatureStatus.Unsupported)]
+    [Arguments(20, -1, GbxSignatureStatus.Malformed)]
+    [Arguments(20, int.MaxValue, GbxSignatureStatus.Malformed)]
+    [Arguments(24, 0xFF, GbxSignatureStatus.Malformed)]
+    public async Task Parse_InvalidSignatureMetadata_ReportsStatus(int offset, int value, GbxSignatureStatus expected)
+    {
+        var file = Save(new Gbx<CGameCtnMediaClip>(new()) { BodyCompression = GbxCompression.Uncompressed });
+        var body = GetBody(file);
+        BinaryPrimitives.WriteInt32LittleEndian(file.AsSpan(file.Length - body.Length + offset), value);
+        using var input = new MemoryStream(file);
+
+        var gbx = Gbx.Parse(input);
+
+        await Assert.That(gbx.SignatureStatus).IsEqualTo(expected);
+        await Assert.That(gbx.Signature).IsNull();
         await Assert.That(gbx.Body.Exception).IsNull();
     }
 
@@ -238,160 +235,9 @@ public class GbxSignatureTests
     }
 
     [Test]
-    public async Task HasSignature_InterfaceGuard_ProvidesNonNullMetadataWithoutAddingAChunk()
-    {
-        using var input = new MemoryStream(Save(new Gbx<CGameCtnMediaClip>(new())));
-        IGbx gbx = Gbx.Parse(input);
-
-        if (!gbx.HasSignature)
-        {
-            throw new InvalidDataException("Expected a verified signature.");
-        }
-
-        await Assert.That(gbx.Signature.CommitHash).IsEqualTo(SimplestGit.CommitHash);
-        var node = gbx.Node ?? throw new InvalidDataException("Expected a parsed node.");
-        await Assert.That(node.Chunks.Contains(ChunkId)).IsFalse();
-    }
-
-    [Test]
     public async Task SignatureResult_ValidStatusWithoutMetadata_Throws()
     {
         await Assert.That(() => new GbxSignatureReadResult(GbxSignatureStatus.Valid)).Throws<ArgumentException>();
-    }
-
-    [Test]
-    [Arguments(0)] // Node payload.
-    [Arguments(27)] // Source metadata.
-    public async Task ReadSignature_Tampering_ReportsMismatched(int offset)
-    {
-        var body = CreateSignedBody();
-        body[offset] ^= 1;
-        using var input = new MemoryStream(CreateUnknownFile(body, GbxCompression.Uncompressed));
-
-        var result = Gbx.ReadSignature(input);
-
-        await Assert.That(result.Status).IsEqualTo(GbxSignatureStatus.Mismatched);
-        await Assert.That(result.Signature).IsNull();
-    }
-
-    [Test]
-    [Arguments(16, 2, GbxSignatureStatus.Unsupported)]
-    [Arguments(8, 1, GbxSignatureStatus.Missing)] // Broken framing cannot identify a final signature.
-    [Arguments(12, 0, GbxSignatureStatus.Malformed)]
-    [Arguments(20, -1, GbxSignatureStatus.Malformed)]
-    [Arguments(20, int.MaxValue, GbxSignatureStatus.Malformed)]
-    public async Task ReadSignature_InvalidMetadata_ReportsStatus(int offset, int value, GbxSignatureStatus expected)
-    {
-        var body = CreateSignedBody();
-        BinaryPrimitives.WriteInt32LittleEndian(body.AsSpan(3 + offset), value);
-        using var input = new MemoryStream(CreateUnknownFile(body, GbxCompression.Uncompressed));
-
-        var result = await Gbx.ReadSignatureAsync(input);
-
-        await Assert.That(result.Status).IsEqualTo(expected);
-        await Assert.That(result.Signature).IsNull();
-    }
-
-    [Test]
-    public async Task ReadSignature_IncidentalChunkId_ReportsMissing()
-    {
-        using var body = new MemoryStream();
-        using var writer = new GbxWriter(body);
-        writer.Write(ChunkId);
-        writer.Write(new byte[80]);
-        writer.Write(0xFACADE01u);
-        using var input = new MemoryStream(CreateUnknownFile(body.ToArray(), GbxCompression.Uncompressed));
-
-        await Assert.That(Gbx.ReadSignature(input).Status).IsEqualTo(GbxSignatureStatus.Missing);
-    }
-
-    [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task ReadSignature_StreamOwnership_HonorsCloseStream(bool closeStream)
-    {
-        using var input = new FragmentedReadStream(CreateUnknownFile(CreateSignedBody(), GbxCompression.Compressed));
-
-        var result = await Gbx.ReadSignatureAsync(input, new() { CloseStream = closeStream });
-
-        await Assert.That(result.Status).IsEqualTo(GbxSignatureStatus.Valid);
-        await Assert.That(input.CanRead).IsEqualTo(!closeStream);
-    }
-
-    [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task ReadSignature_BodyExceedsLimit_Throws(bool async)
-    {
-        var file = CreateUnknownFile(CreateSignedBody(), GbxCompression.Uncompressed);
-        using var input = new FragmentedReadStream(file);
-        var settings = new GbxReadSettings { MaxUncompressedBodySize = 16 };
-
-        if (async)
-        {
-            await Assert.That(async () => await Gbx.ReadSignatureAsync(input, settings)).Throws<LengthLimitException>();
-        }
-        else
-        {
-            await Assert.That(() => Gbx.ReadSignature(input, settings)).Throws<LengthLimitException>();
-        }
-    }
-
-    [Test]
-    public async Task ReadSignature_MetadataExceedsLimit_ReportsMalformed()
-    {
-        using var input = new MemoryStream(CreateUnknownFile(CreateSignedBody(), GbxCompression.Uncompressed));
-
-        var result = Gbx.ReadSignature(input, new() { MaxSkippableChunkSize = 16 });
-
-        await Assert.That(result.Status).IsEqualTo(GbxSignatureStatus.Malformed);
-    }
-
-    [Test]
-    public async Task ReadSignature_InvalidUtf8_ReportsMalformed()
-    {
-        var body = CreateSignedBody();
-        body[27] = 0xFF;
-        using var input = new MemoryStream(CreateUnknownFile(body, GbxCompression.Uncompressed));
-
-        await Assert.That(Gbx.ReadSignature(input).Status).IsEqualTo(GbxSignatureStatus.Malformed);
-    }
-
-    [Test]
-    public async Task ReadSignature_EmbeddedCompressedFile_ConsumesOnlyItsBody()
-    {
-        var file = CreateUnknownFile(CreateSignedBody(), GbxCompression.Compressed);
-        using var input = new MemoryStream();
-        input.Write(new byte[7]);
-        input.Write(file);
-        input.WriteByte(42);
-        input.Position = 7;
-
-        var result = await Gbx.ReadSignatureAsync(input);
-
-        await Assert.That(result.Status).IsEqualTo(GbxSignatureStatus.Valid);
-        await Assert.That(input.ReadByte()).IsEqualTo(42);
-    }
-
-    [Test]
-    public async Task ReadSignature_FilePath_SyncAndAsyncAgreeAndReleaseFile()
-    {
-        var filePath = Path.Combine(Path.GetTempPath(), $"gbx-signature-{Guid.NewGuid():N}.Gbx");
-        try
-        {
-            await File.WriteAllBytesAsync(filePath, CreateUnknownFile(CreateSignedBody(), GbxCompression.Compressed));
-
-            var syncResult = Gbx.ReadSignature(filePath);
-            var asyncResult = await Gbx.ReadSignatureAsync(filePath);
-
-            await Assert.That(syncResult.Status).IsEqualTo(GbxSignatureStatus.Valid);
-            await Assert.That(asyncResult).IsEqualTo(syncResult);
-            using var exclusive = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
-        }
-        finally
-        {
-            File.Delete(filePath);
-        }
     }
 
     [Test]
@@ -406,27 +252,36 @@ public class GbxSignatureTests
     }
 
     [Test]
-    public async Task TryAppend_UnchunkedBody_LeavesBodyUnchanged()
+    public async Task Write_UnchunkedBody_LeavesBodyUnchanged()
     {
         using var body = new MemoryStream();
         body.Write(new byte[64]);
 
-        await Assert.That(GbxSignatureChunk.TryAppend(body)).IsFalse();
+        await Assert.That(GbxSignatureChunk.Write(body)).IsFalse();
         await Assert.That(body.ToArray()).IsEquivalentTo(new byte[64], CollectionOrdering.Matching);
     }
 
     [Test]
-    [Arguments(GbxCompression.Uncompressed)]
-    [Arguments(GbxCompression.Compressed)]
-    public async Task Save_RawBody_PreservesSignatureAndBytes(GbxCompression compression)
+    [Arguments(GbxCompression.Uncompressed, false)]
+    [Arguments(GbxCompression.Uncompressed, true)]
+    [Arguments(GbxCompression.Compressed, false)]
+    [Arguments(GbxCompression.Compressed, true)]
+    public async Task Save_RawBody_PreservesBytesWithoutAddingSignature(GbxCompression compression, bool signed)
     {
-        var file = Save(new Gbx<CGameCtnMediaClip>(new()) { BodyCompression = compression });
+        var file = signed
+            ? Save(new Gbx<CGameCtnMediaClip>(new()) { BodyCompression = compression })
+            : CreateFile(BitConverter.GetBytes(0xFACADE01u), compression, 0x03079000u);
         using var input = new MemoryStream(file);
         var gbx = Gbx.ParseHeader(input, new() { ReadRawBody = true });
 
         var copied = Save(gbx);
 
+        await Assert.That(gbx.SignatureStatus).IsEqualTo(GbxSignatureStatus.Unknown);
+        await Assert.That(gbx.Signature).IsNull();
         await Assert.That(copied).IsEquivalentTo(file, CollectionOrdering.Matching);
+
+        using var copiedInput = new MemoryStream(copied);
+        await Assert.That(Gbx.Parse(copiedInput).SignatureStatus).IsEqualTo(signed ? GbxSignatureStatus.Valid : GbxSignatureStatus.Missing);
     }
 
     [Test]
@@ -441,20 +296,7 @@ public class GbxSignatureTests
         await GbxAssert.HaveEqualSavedBytes(original, Save(gbx));
         await Assert.That(clip.Chunks.Get(ChunkId)).IsSameReferenceAs(stale);
         using var signed = new MemoryStream(Save(gbx));
-        await Assert.That(Gbx.ReadSignature(signed).Status).IsEqualTo(GbxSignatureStatus.Valid);
-    }
-
-    [Test]
-    public async Task ReadSignatureAsync_PreCanceled_DoesNotReadAndHonorsOwnership()
-    {
-        using var input = new MemoryStream(CreateUnknownFile(CreateSignedBody(), GbxCompression.Uncompressed));
-        using var cancellation = new CancellationTokenSource();
-        cancellation.Cancel();
-
-        await Assert.That(async () => await Gbx.ReadSignatureAsync(input, cancellationToken: cancellation.Token))
-            .Throws<OperationCanceledException>();
-        await Assert.That(input.Position).IsEqualTo(0L);
-        await Assert.That(input.CanRead).IsTrue();
+        await Assert.That(Gbx.Parse(signed).SignatureStatus).IsEqualTo(GbxSignatureStatus.Valid);
     }
 
     private static byte[] Save(Gbx gbx)
@@ -468,7 +310,15 @@ public class GbxSignatureTests
     {
         using var input = new MemoryStream(file);
         var gbx = Gbx.ParseHeader(input, new() { ReadRawBody = true });
-        return gbx.Body.DecodeData(gbx.Body.RawData.ToArray());
+        var data = gbx.Body.RawData.ToArray();
+        if (gbx.Body.CompressedSize is null)
+        {
+            return data;
+        }
+
+        var body = new byte[gbx.Body.UncompressedSize];
+        (Gbx.LZO ?? throw new LzoNotDefinedException()).Decompress(data, body);
+        return body;
     }
 
     private static byte[] CreateSignedBody()
@@ -477,16 +327,16 @@ public class GbxSignatureTests
         using var writer = new GbxWriter(body);
         writer.Write(new byte[] { 0xFF, 0xFE, 0xFD });
         writer.Write(0xFACADE01u);
-        GbxSignatureChunk.TryAppend(body);
+        GbxSignatureChunk.Write(body);
         return body.ToArray();
     }
 
-    private static byte[] CreateUnknownFile(byte[] body, GbxCompression compression)
+    private static byte[] CreateFile(byte[] body, GbxCompression compression, uint classId = 0x12345000)
     {
         using var output = new MemoryStream();
         using var writer = new GbxWriter(output);
         GbxHeaderBasic.Create(compressionOfBody: compression).Write(writer);
-        writer.Write(0x12345000u);
+        writer.Write(classId);
         writer.Write(0); // User data size.
         writer.Write(1); // Root node.
         writer.Write(0); // External nodes.

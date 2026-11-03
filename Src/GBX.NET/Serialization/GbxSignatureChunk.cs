@@ -20,17 +20,16 @@ internal static class GbxSignatureChunk
     private static readonly byte[] chunkPrefixBytes = [0x00, 0x20, 0x11, 0x01, 0x50, 0x49, 0x4B, 0x53];
     private static readonly Encoding encoding = new UTF8Encoding(false, true);
 
-    internal static bool TryAppend(MemoryStream body)
+    internal static bool Write(GbxWriter writer)
     {
-        var length = checked((int)body.Length);
-        if (length < 4 || BinaryPrimitives.ReadUInt32LittleEndian(body.GetBuffer().AsSpan(length - 4)) != Facade)
+        var length = checked((int)writer.BaseStream.Length);
+        if (length < 4 || BinaryPrimitives.ReadUInt32LittleEndian(writer.BaseStream.GetBuffer().AsSpan(length - 4)) != Facade)
         {
             return false;
         }
 
         // Replace only the root terminator. Nested nodes have already been serialized.
-        body.Position = length - 4;
-        using var writer = new GbxWriter(body);
+        writer.BaseStream.Position = length - 4;
         writer.Write(Id);
         writer.Write(Skip);
         writer.Write(MinimumPayloadSize + encoding.GetByteCount(SimplestGit.CommitHash) + encoding.GetByteCount(SimplestGit.Tag));
@@ -39,8 +38,8 @@ internal static class GbxSignatureChunk
         writer.Write(SimplestGit.CommitHash);
         writer.Write(SimplestGit.Tag);
         writer.Write(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
-        writer.Write(body.Position + sizeof(long));
-        writer.Write(ComputeHash(body.GetBuffer(), checked((int)body.Position)));
+        writer.Write(writer.BaseStream.Position + sizeof(long));
+        writer.Write(ComputeHash(writer.BaseStream.GetBuffer(), checked((int)writer.BaseStream.Position)));
         writer.Write(Facade);
         return true;
     }
