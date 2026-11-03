@@ -70,8 +70,8 @@ internal static class GbxAssert
 
         if (result.Signature is { } signature)
         {
-            // Version 1 has 40 fixed bytes before the digest, plus the two UTF-8 strings.
-            var chunkStart = checked((int)signature.ByteCount - 40
+            // Version 1 has 37 fixed bytes before the digest, plus the two UTF-8 strings.
+            var chunkStart = checked((int)signature.ByteCount - 37
                 - Encoding.UTF8.GetByteCount(signature.CommitHash) - Encoding.UTF8.GetByteCount(signature.Tag));
             body = [.. body.AsSpan(0, chunkStart), .. body.AsSpan(body.Length - 4)];
         }

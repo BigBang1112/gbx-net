@@ -11,9 +11,9 @@ internal static class GbxSignatureChunk
 
     private const uint Skip = 0x534B4950;
     private const uint Facade = 0xFACADE01;
-    private const int Version = 1;
+    private const byte Version = 1;
     private const int HashSize = 32;
-    private const int MinimumPayloadSize = 60;
+    private const int MinimumPayloadSize = 57;
 
     private static readonly Encoding encoding = new UTF8Encoding(false, true);
 
@@ -45,7 +45,7 @@ internal static class GbxSignatureChunk
                 using var stream = new MemoryStream(body, start + 12, payloadSize, writable: false);
                 using var reader = new GbxReader(stream, settings with { CloseStream = false });
 
-                var version = reader.ReadInt32();
+                var version = reader.ReadByte();
                 if (version != Version)
                 {
                     return new GbxSignatureValidationResult(GbxSignatureStatus.Unsupported);
@@ -89,7 +89,7 @@ internal static class GbxSignatureChunk
 
     internal static void Read(GbxReader reader)
     {
-        var version = reader.ReadInt32();
+        var version = reader.ReadByte();
         if (version != Version)
         {
             throw new VersionNotSupportedException(version);

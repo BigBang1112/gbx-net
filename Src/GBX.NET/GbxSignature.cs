@@ -9,4 +9,4 @@ namespace GBX.NET;
 /// <param name="Timestamp">UTC save time.</param>
 /// <param name="ByteCount">Number of uncompressed body bytes hashed, including signature metadata.</param>
 /// <param name="Hash">SHA-256 digest of those bytes.</param>
-public sealed record GbxSignature(int Version, string CommitHash, string Tag, DateTimeOffset Timestamp, long ByteCount, Checksum256 Hash);
+public sealed record GbxSignature(byte Version, string CommitHash, string Tag, DateTimeOffset Timestamp, long ByteCount, Checksum256 Hash);
