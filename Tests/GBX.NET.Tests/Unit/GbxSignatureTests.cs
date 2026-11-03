@@ -57,7 +57,7 @@ public class GbxSignatureTests
         await Assert.That(BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(prefix.Length))).IsEqualTo(ChunkId);
         await Assert.That(BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(prefix.Length + 4))).IsEqualTo(0x534B4950u);
         await Assert.That(BinaryPrimitives.ReadInt32LittleEndian(body.AsSpan(prefix.Length + 8))).IsEqualTo(body.Length - prefix.Length - 16);
-        await Assert.That(BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(prefix.Length + 12))).IsEqualTo(0x4E584247u);
+        await Assert.That(BinaryPrimitives.ReadInt32LittleEndian(body.AsSpan(prefix.Length + 12))).IsEqualTo(1);
         await Assert.That(signature.ByteCount).IsEqualTo((long)body.Length - 36);
         await Assert.That(signature.Hash).IsEqualTo(new Checksum256(SHA256.HashData(body.AsSpan(0, (int)signature.ByteCount))));
         await Assert.That(BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(body.Length - 4))).IsEqualTo(0xFACADE01u);
@@ -182,11 +182,10 @@ public class GbxSignatureTests
     }
 
     [Test]
-    [Arguments(12, 0, GbxSignatureStatus.Malformed)]
-    [Arguments(16, 2, GbxSignatureStatus.Unsupported)]
-    [Arguments(20, -1, GbxSignatureStatus.Malformed)]
-    [Arguments(20, int.MaxValue, GbxSignatureStatus.Malformed)]
-    [Arguments(24, 0xFF, GbxSignatureStatus.Malformed)]
+    [Arguments(12, 2, GbxSignatureStatus.Unsupported)]
+    [Arguments(16, -1, GbxSignatureStatus.Malformed)]
+    [Arguments(16, int.MaxValue, GbxSignatureStatus.Malformed)]
+    [Arguments(20, 0xFF, GbxSignatureStatus.Malformed)]
     public async Task ValidateSignature_InvalidSignatureMetadata_ReportsStatus(int offset, int value, GbxSignatureStatus expected)
     {
         var file = Save(new Gbx<CGameCtnMediaClip>(new()) { BodyCompression = GbxCompression.Uncompressed });

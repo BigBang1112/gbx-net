@@ -11,10 +11,9 @@ internal static class GbxSignatureChunk
 
     private const uint Skip = 0x534B4950;
     private const uint Facade = 0xFACADE01;
-    private const uint Magic = 0x4E584247; // GBXN
     private const int Version = 1;
     private const int HashSize = 32;
-    private const int MinimumPayloadSize = 64;
+    private const int MinimumPayloadSize = 60;
 
     private static readonly Encoding encoding = new UTF8Encoding(false, true);
 
@@ -45,10 +44,6 @@ internal static class GbxSignatureChunk
             {
                 using var stream = new MemoryStream(body, start + 12, payloadSize, writable: false);
                 using var reader = new GbxReader(stream, settings with { CloseStream = false });
-                if (reader.ReadUInt32() != Magic)
-                {
-                    return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
-                }
 
                 var version = reader.ReadInt32();
                 if (version != Version)
@@ -94,11 +89,6 @@ internal static class GbxSignatureChunk
 
     internal static void Read(GbxReader reader)
     {
-        if (reader.ReadUInt32() != Magic)
-        {
-            throw new InvalidDataException("Invalid GBX.NET signature magic.");
-        }
-
         var version = reader.ReadInt32();
         if (version != Version)
         {
@@ -128,7 +118,6 @@ internal static class GbxSignatureChunk
         writer.Write(Id);
         writer.Write(Skip);
         writer.Write(MinimumPayloadSize + encoding.GetByteCount(SimplestGit.CommitHash) + encoding.GetByteCount(SimplestGit.Tag));
-        writer.Write(Magic);
         writer.Write(Version);
         writer.Write(SimplestGit.CommitHash);
         writer.Write(SimplestGit.Tag);
