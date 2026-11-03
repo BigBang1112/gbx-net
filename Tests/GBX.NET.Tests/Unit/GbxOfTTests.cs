@@ -44,7 +44,7 @@ public class GbxOfTTests
 
         using var saved = new MemoryStream();
         parsed.Save(saved);
-        await Assert.That(saved.ToArray()).IsEquivalentTo(stream.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(stream.ToArray(), saved.ToArray());
     }
 
     [Test]

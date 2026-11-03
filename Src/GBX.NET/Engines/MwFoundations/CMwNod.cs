@@ -53,6 +53,11 @@ public partial class CMwNod : IClass
                 return;
             }
 
+            if (r.Signature is not null)
+            {
+                throw new InvalidDataException("Signature is not the last chunk.");
+            }
+
             chunks ??= new ChunkSet(this);
 
             _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
@@ -104,7 +109,7 @@ public partial class CMwNod : IClass
                 {
                     if (chunkId == rawChunkId)
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxSignatureChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size})", chunkId, chunkSize);
                         }
@@ -115,7 +120,7 @@ public partial class CMwNod : IClass
                     }
                     else
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxSignatureChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
                         }
@@ -141,7 +146,18 @@ public partial class CMwNod : IClass
                     throw new LengthLimitException(chunkSize);
                 }
 
-                if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
+                if (chunkId == GbxSignatureChunk.Id)
+                {
+                    using var boundedStream = new BoundedStream(r.BaseStream, chunkSize);
+                    using var signatureReader = new GbxReader(boundedStream, r.Settings);
+                    GbxSignatureChunk.Read(signatureReader);
+                    if (boundedStream.Remaining > 0)
+                    {
+                        throw new InvalidDataException("Not all data was read from the signature chunk.");
+                    }
+                    r.Signature = signatureReader.Signature;
+                }
+                else if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
                     r.SkipData(chunkSize);
                 }
@@ -327,7 +343,7 @@ public partial class CMwNod : IClass
 
         foreach (var chunk in Chunks)
         {
-            if (chunk is IHeaderChunk)
+            if (chunk is IHeaderChunk || chunk.Id == GbxSignatureChunk.Id)
             {
                 continue;
             }

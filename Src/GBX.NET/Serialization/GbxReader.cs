@@ -246,6 +246,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal int? ExpectedNodeCount { get; set; }
 
+    internal GbxSignature? Signature { get; set; }
+
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
@@ -289,6 +291,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             deprecVersion = r.deprecVersion;
 
             ExpectedNodeCount = r.ExpectedNodeCount;
+            Signature = r.Signature;
         }
     }
 

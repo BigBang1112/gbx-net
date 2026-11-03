@@ -26,6 +26,9 @@ public sealed partial class GbxBody
 
     public Exception? Exception { get; internal set; }
 
+    /// <summary>Signature metadata read from the body. Use <see cref="Gbx.ValidateSignature(Stream, GbxReadSettings)"/> to verify the checksum.</summary>
+    public GbxSignature? Signature { get; internal set; }
+
     public override string ToString()
     {
         if (CompressedSize is null)
@@ -84,6 +87,7 @@ public sealed partial class GbxBody
         RawData = RawData,
         UncompressedSize = UncompressedSize,
         CompressedSize = CompressedSize,
-        Exception = Exception
+        Exception = Exception,
+        Signature = Signature
     };
 }
