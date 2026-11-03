@@ -7,7 +7,7 @@ namespace GBX.NET.Serialization;
 
 internal static class GbxSignatureChunk
 {
-    internal const uint Id = 0x01112000;
+    internal const uint Id = 0xBB111200;
 
     private const uint Skip = 0x534B4950;
     private const uint Facade = 0xFACADE01;
@@ -16,9 +16,29 @@ internal static class GbxSignatureChunk
     private const int HashSize = 32;
     private const int MinimumPayloadSize = 64;
 
-    private static readonly byte[] chunkIdBytes = [0x00, 0x20, 0x11, 0x01];
-    private static readonly byte[] chunkPrefixBytes = [0x00, 0x20, 0x11, 0x01, 0x50, 0x49, 0x4B, 0x53];
     private static readonly Encoding encoding = new UTF8Encoding(false, true);
+
+    internal static void Read(GbxReader reader)
+    {
+        if (reader.ReadUInt32() != Magic)
+        {
+            throw new InvalidDataException("Invalid GBX.NET signature magic.");
+        }
+
+        var version = reader.ReadInt32();
+        if (version != Version)
+        {
+            throw new VersionNotSupportedException(version);
+        }
+
+        var commitHash = reader.ReadString();
+        var tag = reader.ReadString();
+        var timestamp = DateTimeOffset.FromUnixTimeMilliseconds(reader.ReadInt64());
+        var byteCount = reader.ReadInt64();
+        var hash = reader.ReadChecksum256();
+
+        reader.Signature = new GbxSignature(version, commitHash, tag, timestamp, byteCount, hash);
+    }
 
     internal static bool Write(GbxWriter writer)
     {

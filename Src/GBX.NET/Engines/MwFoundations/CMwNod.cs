@@ -56,6 +56,11 @@ public partial class CMwNod : IClass
                 return;
             }
 
+            if (r.Signature is not null)
+            {
+                throw new InvalidDataException("Signature is not the last chunk.");
+            }
+
             chunks ??= new ChunkSet(this);
 
             _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
@@ -144,7 +149,11 @@ public partial class CMwNod : IClass
                     throw new LengthLimitException(chunkSize);
                 }
 
-                if (chunkId == GbxSignatureChunk.Id || r.Settings.SkipChunkIds?.Contains(chunkId) == true)
+                if (chunkId == GbxSignatureChunk.Id)
+                {
+                    GbxSignatureChunk.Read(r);
+                }
+                else if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
                     r.SkipData(chunkSize);
                 }
