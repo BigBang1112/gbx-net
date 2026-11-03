@@ -24,7 +24,7 @@ public class GbxCloneTests
 
         // Assert
         await Assert.That(clone.Node).IsNotSameReferenceAs(original.Node);
-        await Assert.That(cloneOutput.ToArray()).IsEquivalentTo(originalOutput.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(originalOutput.ToArray(), cloneOutput.ToArray());
         await GbxAssert.HaveEqualSerializedData(Gbx.Parse(originalOutput), Gbx.Parse(cloneOutput));
     }
 }

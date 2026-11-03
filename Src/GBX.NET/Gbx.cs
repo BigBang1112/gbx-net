@@ -3,9 +3,7 @@ using GBX.NET.Extensions;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 
-#if NET6_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace GBX.NET;
 
@@ -15,6 +13,8 @@ public interface IGbx
     GbxHeader Header { get; }
     GbxRefTable? RefTable { get; }
     GbxBody Body { get; }
+    GbxSignature? Signature { get; }
+    GbxSignatureStatus SignatureStatus { get; }
     GbxReadSettings ReadSettings { get; }
     CMwNod? Node { get; }
     int? IdVersion { get; set; }
@@ -110,6 +110,16 @@ public partial class Gbx : IGbx
     /// Body of the Gbx. This only handles body metadata and raw data (in case this reading method was picked).
     /// </summary>
     public GbxBody Body { get; init; }
+
+    /// <summary>
+    /// Verified signature from the file as it was read, or null when no valid signature was read.
+    /// </summary>
+    public GbxSignature? Signature => Body.SignatureResult?.Signature;
+
+    /// <summary>
+    /// Signature validation status.
+    /// </summary>
+    public GbxSignatureStatus SignatureStatus => Body.SignatureResult?.Status ?? GbxSignatureStatus.Unknown;
 
     /// <summary>
     /// Settings used to read the Gbx. They are stored just for convenience, they don't affect writing when using <see cref="Save(Stream, GbxWriteSettings)"/> or <see cref="Save(string, GbxWriteSettings)"/>.

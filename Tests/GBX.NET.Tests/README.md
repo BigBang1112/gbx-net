@@ -27,7 +27,7 @@ dotnet test --project Tests/GBX.NET.Tests/GBX.NET.Tests.csproj
 **Every `.Gbx` under `Files/Gbx/` gets roundtrip cases automatically**, with sync and async parsing and compressed and uncompressed output. Each case checks that:
 
 - parsing, saving, and parsing again keeps the object graph (deep comparison with `GbxAssert`)
-- saving again produces the same bytes as the first save
+- saving again preserves the serialized bytes outside the signature, verifies any signatures, and preserves their metadata except the save timestamp and digest
 
 The first save can normalize the game's encoding, so the original file bytes don't have to match.
 
