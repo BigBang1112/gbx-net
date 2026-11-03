@@ -47,9 +47,7 @@ public class GbxActionTests
         var path = TestFiles.Gbx("CGameActionModel", $"CGameActionModel {game} 001.Action.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
         var original = Gbx.Parse<CGameActionModel>(path, settings);
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         await GbxAssert.HaveEqualSerializedData(original, clone);
         await Assert.That(clone.Node.Anim).IsNotSameReferenceAs(original.Node.Anim);
 

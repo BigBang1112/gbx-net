@@ -24,9 +24,7 @@ public class GbxDeepCloneTests
         Gbx original = new Gbx<CGameCtnChallenge>(map);
         original.Header.NumNodes = 3;
 
-#pragma warning disable GBXNET10001
         var clonedGbx = original.DeepClone();
-#pragma warning restore GBXNET10001
         var clone = (Gbx<CGameCtnChallenge>)clonedGbx;
         var clonedBlock = clone.Node.Blocks![0];
         var clonedItem = clone.Node.AnchoredObjects![0];
@@ -68,9 +66,7 @@ public class GbxDeepCloneTests
         };
         var original = new Gbx<CGameCtnMediaClip>(clip);
 
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedTrack = clone.Node.Tracks[0];
         var clonedFirst = (CGameCtnMediaBlockGhost)clonedTrack.Blocks[0];
         var clonedSecond = (CGameCtnMediaBlockGhost)clonedTrack.Blocks[1];
@@ -95,9 +91,7 @@ public class GbxDeepCloneTests
         };
         var original = new Gbx<CGameCtnMediaClip>(clip);
 
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedTriangles = (CGameCtnMediaBlockTriangles)clone.Node.Tracks[0].Blocks[0];
         clonedTriangles.Keys[0].Positions = new Vec3[5];
 
@@ -114,9 +108,7 @@ public class GbxDeepCloneTests
             Tracks = [new CGameCtnMediaTrack { Blocks = [new CGameCtnMediaBlockText()] }]
         };
 
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaClip)original.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone).IsNotSameReferenceAs(original);
         await Assert.That(clone.Tracks[0]).IsNotSameReferenceAs(((CGameCtnMediaClip)original).Tracks[0]);
@@ -141,9 +133,7 @@ public class GbxDeepCloneTests
             ScriptMetadata = metadata
         };
 
-#pragma warning disable GBXNET10001
         var clone = new Gbx<CGameCtnChallenge>(map).DeepClone();
-#pragma warning restore GBXNET10001
 
         clone.Node.LightmapCacheData!.Data[0] = 9;
         clone.Node.ZoneGenealogyData!.Data[0] = 8;

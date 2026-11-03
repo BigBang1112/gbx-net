@@ -73,8 +73,8 @@ public interface IGbx
         where TClass : CMwNod, TVersion, new()
         where TVersion : IClassVersion<TClass>;
 
-    [Experimental("GBXNET10001")]
 #endif
+
     IGbx DeepClone();
 }
 
@@ -170,9 +170,6 @@ public partial class Gbx : IGbx
         return GbxPath.GetFileNameWithoutExtension(FilePath);
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     public virtual Gbx DeepClone()
     {
         var context = new DeepCloneContext();
@@ -182,7 +179,6 @@ public partial class Gbx : IGbx
         return clone;
     }
 
-#pragma warning disable GBXNET10001
     internal virtual Gbx CreateCloneShell() => new(Header.DeepClone(), Body.DeepClone())
     {
         FilePath = FilePath,
@@ -194,11 +190,7 @@ public partial class Gbx : IGbx
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
-#pragma warning restore GBXNET10001
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     IGbx IGbx.DeepClone() => DeepClone();
 
     /// <summary>
@@ -1009,16 +1001,12 @@ public class Gbx<
         return $"Gbx<{typeof(T).Name}> ({ClassManager.GetName(Header.ClassId)}, 0x{Header.ClassId:X8})";
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
 #if NETSTANDARD2_0
     public override Gbx DeepClone() => base.DeepClone();
 #else
     public override Gbx<T> DeepClone() => (Gbx<T>)base.DeepClone();
 #endif
 
-#pragma warning disable GBXNET10001
     internal override Gbx CreateCloneShell() => new Gbx<T>((GbxHeader<T>)Header.DeepClone(), Body.DeepClone(), Node)
     {
         FilePath = FilePath,
@@ -1029,7 +1017,6 @@ public class Gbx<
         DeprecVersion = DeprecVersion,
         ClassIdRemapMode = ClassIdRemapMode
     };
-#pragma warning restore GBXNET10001
 
     /// <summary>
     /// Implicitly casts <see cref="Gbx{T}"/> to its <see cref="Gbx{T}.Node"/>.

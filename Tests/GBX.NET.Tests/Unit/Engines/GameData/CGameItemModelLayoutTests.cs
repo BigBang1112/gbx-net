@@ -22,8 +22,8 @@ public class CGameItemModelLayoutTests
         await Assert.That(node.NadeoSkinsFids!.Count).IsEqualTo(7);
         await Assert.That(node.NadeoSkinsFids.All(x => x is null)).IsTrue();
         await Assert.That(new CGameItemModel.ItemGroupElement().Location).IsEqualTo(Iso4.Identity);
-        await Assert.That(new CGameItemModel.Chunk2E002019(GameVersion.TM2020).Version).IsEqualTo(15);
-        await Assert.That(new CGameItemModel.Chunk2E002019().Version).IsEqualTo(16);
+        await Assert.That(new CGameItemModel.Chunk2E002019(GameVersion.TM2020).Version).IsEqualTo(16);
+        await Assert.That(new CGameItemModel.Chunk2E002019().Version).IsEqualTo(0);
     }
 
     [Test]

@@ -34,9 +34,7 @@ public class CGameCtnMediaClipGroupLayoutTests
         using var writer = new GbxWriter(output);
         var chunk = new CGameCtnMediaClipGroup.Chunk0307A003();
         chunk.Write(group, writer);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaClipGroup)group.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(calls).IsEqualTo(0);
         await Assert.That(group.EnumerateReferences().Count()).IsEqualTo(2);
         await Assert.That(clone.Clips[0].References.Clip!.File!.FilePath).IsEqualTo(file.FilePath);
@@ -190,9 +188,7 @@ public class CGameCtnMediaClipGroupLayoutTests
                 new(clip, new() { Coords = [(7, 8, 9)] })
             ]
         };
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaClipGroup)group.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone.Clips[0].Clip).IsNotSameReferenceAs(clip);
         await Assert.That(clone.Clips[1].Clip).IsSameReferenceAs(clone.Clips[0].Clip);

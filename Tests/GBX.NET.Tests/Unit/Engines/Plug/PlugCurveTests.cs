@@ -168,9 +168,7 @@ public class PlugCurveTests
             Curve = new CFuncKeysReal { Xs = [1], Ys = [2] }
         };
         var model = new CPlugVisEntFxModel { EliminatedTeleportIntens = curve, EliminatedHighlight = curve };
-#pragma warning disable GBXNET10001
         var clone = (CPlugVisEntFxModel)model.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.EliminatedHighlight).IsSameReferenceAs(clone.EliminatedTeleportIntens);
         await Assert.That(clone.EliminatedHighlight).IsNotSameReferenceAs(curve);
         await Assert.That(clone.EliminatedHighlight!.Curve).IsNotSameReferenceAs(curve.Curve);

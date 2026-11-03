@@ -79,9 +79,7 @@ public class CGameCtnSolidDecalsLayoutTests
 
         if (hasData)
         {
-#pragma warning disable GBXNET10001
             var clone = (CGameCtnSolidDecals)node.DeepClone();
-#pragma warning restore GBXNET10001
             await Assert.That(clone.SceneDecals).IsNotSameReferenceAs(node.SceneDecals);
             clone.SceneDecals[0] = 0xFF;
             await Assert.That(node.SceneDecals[0]).IsEqualTo((byte)2);

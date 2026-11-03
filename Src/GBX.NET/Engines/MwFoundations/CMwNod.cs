@@ -3,9 +3,6 @@ using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text;
-#if NET8_0_OR_GREATER
-using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -470,14 +467,8 @@ public partial class CMwNod : IClass
         return true;
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     public virtual CMwNod DeepClone() => new DeepCloneContext().CloneNode(this);
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     IClass IClass.DeepClone() => DeepClone();
 
     internal CMwNod CreateCloneShell() => (CMwNod)MemberwiseClone();
@@ -497,9 +488,6 @@ public partial class CMwNod : IClass
         }
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     protected void DeepCloneChunks(IClass dest)
     {
         if (chunks is null)

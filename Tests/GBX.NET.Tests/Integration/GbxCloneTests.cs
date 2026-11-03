@@ -12,9 +12,7 @@ public class GbxCloneTests
         var original = Gbx.Parse(TestFiles.Gbx(filePath));
 
         // Act
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         using var originalOutput = new MemoryStream();
         using var cloneOutput = new MemoryStream();
         original.Save(originalOutput);

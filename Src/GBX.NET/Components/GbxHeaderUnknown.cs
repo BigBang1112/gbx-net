@@ -1,7 +1,4 @@
 ﻿using GBX.NET.Managers;
-#if NET8_0_OR_GREATER
-using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace GBX.NET.Components;
 
@@ -15,9 +12,6 @@ public sealed class GbxHeaderUnknown(GbxHeaderBasic basic, uint classId) : GbxHe
         return $"GbxHeader ({ClassManager.GetName(ClassId)}, 0x{ClassId:X8}, unknown)";
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
 #if NETSTANDARD2_0
     public override GbxHeader DeepClone()
 #else

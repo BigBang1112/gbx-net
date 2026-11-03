@@ -1,7 +1,3 @@
-#if NET8_0_OR_GREATER
-using System.Diagnostics.CodeAnalysis;
-#endif
-
 namespace GBX.NET.Components;
 
 public sealed class GbxRefTable : IDeepCloneable
@@ -322,9 +318,6 @@ public sealed class GbxRefTable : IDeepCloneable
         return new GbxRefTableWriter(this, header, writer).Write(rawBody);
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     public GbxRefTable DeepClone()
     {
         var refTable = new GbxRefTable
@@ -351,9 +344,7 @@ public sealed class GbxRefTable : IDeepCloneable
 
     object IDeepCloneable.DeepClone(DeepCloneContext context)
     {
-#pragma warning disable GBXNET10001
         var clone = DeepClone();
-#pragma warning restore GBXNET10001
         context.Register(this, clone);
         return clone;
     }

@@ -946,9 +946,7 @@ public class NodeRefTests
             var dependency = (CGameItemModel)owner.EntityModelEdition!;
             await Assert.That(dependency.EntityModelEdition).IsSameReferenceAs(owner);
             await Assert.That(dependency.References.EntityModelEdition.File!.RefTable.ReadSettings).IsEqualTo(settings);
-#pragma warning disable GBXNET10001
             var clone = (CGameItemModel)owner.DeepClone();
-#pragma warning restore GBXNET10001
             var clonedDependency = (CGameItemModel)clone.EntityModelEdition!;
             await Assert.That(clonedDependency.EntityModelEdition).IsSameReferenceAs(clone);
             await Assert.That(clonedDependency).IsNotSameReferenceAs(dependency);

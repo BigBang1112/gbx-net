@@ -83,9 +83,7 @@ public class GbxOfTTests
             BodyCompression = GbxCompression.Uncompressed
         };
 
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedChunk = (SkippableChunk)clone.Node.Chunks.Get(chunkId)!;
         clonedChunk.Data![0] = 99;
         clone.BodyCompression = GbxCompression.Compressed;
