@@ -148,7 +148,8 @@ public class CPlugGameSkinLayoutTests
     [Test]
     public async Task Defaults_MatchNativeVersionAndTrailingValues()
     {
-        await Assert.That(new CPlugGameSkin.HeaderChunk090F4000().Version).IsEqualTo(8);
+        await Assert.That(new CPlugGameSkin.HeaderChunk090F4000().Version).IsEqualTo(0);
+        await Assert.That(new CPlugGameSkin.HeaderChunk090F4000(GameVersion.TM2020).Version).IsEqualTo(8);
         await Assert.That(new CPlugGameSkin.HeaderChunk090F4000(GameVersion.TMNESWC).Version).IsEqualTo(2);
         await Assert.That(new CPlugGameSkin.HeaderChunk090F4000(GameVersion.VSK5).Version).IsEqualTo(4);
         await Assert.That(new CPlugGameSkin.HeaderChunk090F4000().U01).IsEqualTo(1);
