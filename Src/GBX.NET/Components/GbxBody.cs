@@ -29,8 +29,7 @@ public sealed partial class GbxBody
 
     public Exception? Exception { get; internal set; }
 
-    internal GbxSignatureReadResult? SignatureResult { get; set; }
-
+    public GbxSignature? Signature { get; internal init; }
 
     public override string ToString()
     {
@@ -94,6 +93,6 @@ public sealed partial class GbxBody
         UncompressedSize = UncompressedSize,
         CompressedSize = CompressedSize,
         Exception = Exception,
-        SignatureResult = SignatureResult
+        Signature = Signature
     };
 }

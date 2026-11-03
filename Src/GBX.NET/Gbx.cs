@@ -112,16 +112,6 @@ public partial class Gbx : IGbx
     public GbxBody Body { get; init; }
 
     /// <summary>
-    /// Verified signature from the file as it was read, or null when no valid signature was read.
-    /// </summary>
-    public GbxSignature? Signature => Body.SignatureResult?.Signature;
-
-    /// <summary>
-    /// Signature validation status.
-    /// </summary>
-    public GbxSignatureStatus SignatureStatus => Body.SignatureResult?.Status ?? GbxSignatureStatus.Unknown;
-
-    /// <summary>
     /// Settings used to read the Gbx. They are stored just for convenience, they don't affect writing when using <see cref="Save(Stream, GbxWriteSettings)"/> or <see cref="Save(string, GbxWriteSettings)"/>.
     /// </summary>
     public GbxReadSettings ReadSettings { get; protected set; }

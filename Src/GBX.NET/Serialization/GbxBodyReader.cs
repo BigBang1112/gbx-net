@@ -56,7 +56,8 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
                 {
                     UncompressedSize = (int)uncompressedSize,
                     CompressedSize = (int)compressedSize,
-                    RawData = rawData
+                    RawData = rawData,
+                    Signature = reader.Signature
                 };
 
             case GbxCompression.Uncompressed:
