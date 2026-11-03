@@ -1,7 +1,7 @@
 namespace GBX.NET;
 
 /// <summary>
-/// Build and save metadata from a verified GBX.NET signature. The checksum does not authenticate the writer.
+/// Build and save metadata from a GBX.NET signature. The checksum does not authenticate the writer.
 /// </summary>
 /// <param name="Version">Signature format version.</param>
 /// <param name="CommitHash">GBX.NET source commit.</param>

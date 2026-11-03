@@ -18,6 +18,80 @@ internal static class GbxSignatureChunk
 
     private static readonly Encoding encoding = new UTF8Encoding(false, true);
 
+    internal static GbxSignatureValidationResult Validate(byte[] body, GbxReadSettings settings)
+    {
+        if (body.Length < 4 || BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(body.Length - 4)) != Facade)
+        {
+            return new GbxSignatureValidationResult(GbxSignatureStatus.Missing);
+        }
+
+        // The body may contain arbitrary node data. Only a final signature chunk is relevant.
+        for (var start = body.Length - 16; start >= 0; start--)
+        {
+            if (BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(start)) != Id
+                || BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(start + 4)) != Skip)
+            {
+                continue;
+            }
+
+            var payloadSize = BinaryPrimitives.ReadInt32LittleEndian(body.AsSpan(start + 8));
+            if (payloadSize < MinimumPayloadSize || payloadSize != body.Length - start - 16
+                || payloadSize > (settings.MaxSkippableChunkSize ?? CMwNod.MaxSkippableChunkSize))
+            {
+                return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
+            }
+
+            try
+            {
+                using var stream = new MemoryStream(body, start + 12, payloadSize, writable: false);
+                using var reader = new GbxReader(stream, settings with { CloseStream = false });
+                if (reader.ReadUInt32() != Magic)
+                {
+                    return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
+                }
+
+                var version = reader.ReadInt32();
+                if (version != Version)
+                {
+                    return new GbxSignatureValidationResult(GbxSignatureStatus.Unsupported);
+                }
+
+                var commitHash = ReadString(reader);
+                var tag = ReadString(reader);
+                var timestamp = DateTimeOffset.FromUnixTimeMilliseconds(reader.ReadInt64());
+                var byteCount = reader.ReadInt64();
+                var hash = reader.ReadChecksum256();
+                if (stream.Position != stream.Length || byteCount != body.Length - HashSize - 4)
+                {
+                    return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
+                }
+
+                if (hash != new Checksum256(ComputeHash(body, (int)byteCount)))
+                {
+                    return new GbxSignatureValidationResult(GbxSignatureStatus.Mismatched);
+                }
+
+                return new GbxSignatureValidationResult(new GbxSignature(version, commitHash, tag, timestamp, byteCount, hash));
+            }
+            catch (Exception ex) when (ex is EndOfStreamException or InvalidDataException or ArgumentException or LengthLimitException)
+            {
+                return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
+            }
+        }
+
+        return new GbxSignatureValidationResult(GbxSignatureStatus.Missing);
+    }
+
+    private static string ReadString(GbxReader reader)
+    {
+        var length = reader.ReadInt32();
+        if (length < 0 || length > reader.BaseStream.Length - reader.BaseStream.Position)
+        {
+            throw new InvalidDataException("Invalid GBX.NET signature string length.");
+        }
+        return encoding.GetString(reader.ReadBytes(length));
+    }
+
     internal static void Read(GbxReader reader)
     {
         if (reader.ReadUInt32() != Magic)
@@ -42,8 +116,9 @@ internal static class GbxSignatureChunk
 
     internal static bool Write(GbxWriter writer)
     {
-        var length = checked((int)writer.BaseStream.Length);
-        if (length < 4 || BinaryPrimitives.ReadUInt32LittleEndian(writer.BaseStream.GetBuffer().AsSpan(length - 4)) != Facade)
+        var body = (MemoryStream)writer.BaseStream;
+        var length = checked((int)body.Length);
+        if (length < 4 || BinaryPrimitives.ReadUInt32LittleEndian(body.GetBuffer().AsSpan(length - 4)) != Facade)
         {
             return false;
         }
@@ -59,7 +134,7 @@ internal static class GbxSignatureChunk
         writer.Write(SimplestGit.Tag);
         writer.Write(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
         writer.Write(writer.BaseStream.Position + sizeof(long));
-        writer.Write(ComputeHash(writer.BaseStream.GetBuffer(), checked((int)writer.BaseStream.Position)));
+        writer.Write(ComputeHash(body.GetBuffer(), checked((int)body.Position)));
         writer.Write(Facade);
         return true;
     }

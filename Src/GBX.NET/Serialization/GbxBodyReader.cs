@@ -56,8 +56,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
                 {
                     UncompressedSize = (int)uncompressedSize,
                     CompressedSize = (int)compressedSize,
-                    RawData = rawData,
-                    Signature = reader.Signature
+                    RawData = rawData
                 };
 
             case GbxCompression.Uncompressed:
@@ -118,6 +117,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
         {
             if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node directly...");
             ReadMainNode(node, body, readerWriter);
+            body.Signature = reader.Signature;
             return body;
         }
 
@@ -133,6 +133,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Reading main node...");
 
         ReadMainNode(node, body, decompressedReaderWriter);
+        body.Signature = decompressedReader.Signature;
 
         if (logger is not null) LoggerExtensions.LogInformation(logger, "Main node complete.");
 

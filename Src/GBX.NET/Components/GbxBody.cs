@@ -29,7 +29,8 @@ public sealed partial class GbxBody
 
     public Exception? Exception { get; internal set; }
 
-    public GbxSignature? Signature { get; internal init; }
+    /// <summary>Signature metadata read from the body. Use <see cref="Gbx.ValidateSignature(Stream, GbxReadSettings)"/> to verify the checksum.</summary>
+    public GbxSignature? Signature { get; internal set; }
 
     public override string ToString()
     {

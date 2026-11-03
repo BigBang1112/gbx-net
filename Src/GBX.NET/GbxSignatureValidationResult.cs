@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace GBX.NET;
 
 /// <summary>Signature validation status and verified metadata.</summary>
-public sealed record GbxSignatureReadResult
+public sealed record GbxSignatureValidationResult
 {
     public GbxSignatureStatus Status { get; }
     public GbxSignature? Signature { get; }
@@ -12,7 +12,7 @@ public sealed record GbxSignatureReadResult
     [MemberNotNullWhen(true, nameof(Signature))]
     public bool IsValid => Signature is not null;
 
-    public GbxSignatureReadResult(GbxSignatureStatus status)
+    public GbxSignatureValidationResult(GbxSignatureStatus status)
     {
         if (status == GbxSignatureStatus.Valid)
         {
@@ -21,7 +21,7 @@ public sealed record GbxSignatureReadResult
         Status = status;
     }
 
-    public GbxSignatureReadResult(GbxSignature signature)
+    public GbxSignatureValidationResult(GbxSignature signature)
     {
         Signature = signature ?? throw new ArgumentNullException(nameof(signature));
         Status = GbxSignatureStatus.Valid;

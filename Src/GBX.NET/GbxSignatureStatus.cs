@@ -1,6 +1,6 @@
 namespace GBX.NET;
 
-/// <summary>Result of reading a GBX.NET signature.</summary>
+/// <summary>Result of validating a GBX.NET signature.</summary>
 public enum GbxSignatureStatus
 {
     /// <summary>The signature status is unknown (no signature read has been attempted).</summary>

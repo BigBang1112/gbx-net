@@ -13,8 +13,6 @@ public interface IGbx
     GbxHeader Header { get; }
     GbxRefTable? RefTable { get; }
     GbxBody Body { get; }
-    GbxSignature? Signature { get; }
-    GbxSignatureStatus SignatureStatus { get; }
     GbxReadSettings ReadSettings { get; }
     CMwNod? Node { get; }
     int? IdVersion { get; set; }
@@ -27,6 +25,10 @@ public interface IGbx
     void Save(string filePath, GbxWriteSettings settings = default);
 
 #if NET8_0_OR_GREATER
+    static abstract GbxSignatureValidationResult ValidateSignature(Stream stream, GbxReadSettings settings = default);
+    static abstract GbxSignatureValidationResult ValidateSignature(string filePath, GbxReadSettings settings = default);
+    static abstract Task<GbxSignatureValidationResult> ValidateSignatureAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
+    static abstract Task<GbxSignatureValidationResult> ValidateSignatureAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default);
     static abstract Gbx ParseHeader(Stream stream, GbxReadSettings settings = default);
     static abstract Gbx ParseHeader(string filePath, GbxReadSettings settings = default);
     static abstract Gbx<T> ParseHeader<T>(Stream stream, GbxReadSettings settings = default) where T : CMwNod, new();
@@ -198,6 +200,67 @@ public partial class Gbx : IGbx
     [Experimental("GBXNET10001")]
 #endif
     IGbx IGbx.DeepClone() => DeepClone();
+
+    /// <summary>
+    /// Reads and verifies the GBX.NET signature without parsing the body to a node.
+    /// </summary>
+    /// <remarks>Uncompressed bodies are read to the end of the stream.</remarks>
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    public static async Task<GbxSignatureValidationResult> ValidateSignatureAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
+        cancellationToken.ThrowIfCancellationRequested();
+
+        using var reader = new GbxReader(stream, settings with { ReadRawBody = true, SkipUserData = true });
+        try
+        {
+            var header = GbxHeader.Parse(reader, out _);
+            if (header.Basic.Format != GbxFormat.Binary
+                || header.Basic.CompressionOfRefTable != GbxCompression.Uncompressed
+                || header.Basic.CompressionOfBody is not GbxCompression.Uncompressed and not GbxCompression.Compressed)
+            {
+                return new GbxSignatureValidationResult(GbxSignatureStatus.Unsupported);
+            }
+
+            _ = GbxRefTable.Parse(reader, header, fileSystemPath: null);
+            var body = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, cancellationToken);
+            var data = body.RawData.ToArray();
+            if (body.CompressedSize.HasValue)
+            {
+                var decompressed = new byte[body.UncompressedSize];
+                (LZO ?? throw new LzoNotDefinedException()).Decompress(data, decompressed);
+                data = decompressed;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+            return GbxSignatureChunk.Validate(data, settings);
+        }
+        catch (Exception ex) when (ex is FormatNotSupportedException or VersionNotSupportedException)
+        {
+            return new GbxSignatureValidationResult(GbxSignatureStatus.Unsupported);
+        }
+        catch (Exception ex) when (ex is EndOfStreamException or InvalidDataException or NotAGbxException)
+        {
+            return new GbxSignatureValidationResult(GbxSignatureStatus.Malformed);
+        }
+    }
+
+    /// <summary>Reads and verifies the GBX.NET signature in a file.</summary>
+    public static async Task<GbxSignatureValidationResult> ValidateSignatureAsync(string filePath, GbxReadSettings settings = default, CancellationToken cancellationToken = default)
+    {
+#if !NETSTANDARD2_0
+        await
+#endif
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        return await ValidateSignatureAsync(fs, settings, cancellationToken);
+    }
+
+    /// <summary>Reads and verifies the GBX.NET signature in a file.</summary>
+    public static GbxSignatureValidationResult ValidateSignature(string filePath, GbxReadSettings settings = default)
+    {
+        using var fs = File.OpenRead(filePath);
+        return ValidateSignature(fs, settings);
+    }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<Gbx> ParseAsync(Stream stream, GbxReadSettings settings = default, CancellationToken cancellationToken = default)

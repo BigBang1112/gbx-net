@@ -62,7 +62,7 @@ internal static class GbxAssert
             body = file[headerLength..];
         }
 
-        var result = GbxSignatureChunk.Read(body, default);
+        var result = GbxSignatureChunk.Validate(body, default);
         if (body.Length >= 4 && BinaryPrimitives.ReadUInt32LittleEndian(body.AsSpan(body.Length - 4)) == 0xFACADE01)
         {
             await Assert.That(result.Status is GbxSignatureStatus.Valid or GbxSignatureStatus.Missing).IsTrue();
