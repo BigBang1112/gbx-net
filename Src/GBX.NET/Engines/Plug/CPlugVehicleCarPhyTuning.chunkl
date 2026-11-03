@@ -267,7 +267,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x039 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4LateralFrictionSquareTorque
-  float
+  float M4LateralFrictionSquareForce
 
 0x03A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4SlipAngleSpeed = 0.005f
@@ -450,7 +450,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x06A [MP3, TMT, MP4, TM2020]
   float LinearSpeedClamp = 277.77777f
-  float
+  float ChangeGearMaxSpeed
 
 0x06E [MP3, TMT, MP4, TM2020]
   float DamperOffset
@@ -479,8 +479,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x07D [MP3, TMT, MP4, TM2020]
   int InputBrakeSwitchCountMax = 4
-  float Normal_InputSteerAngleSmoothSpeed_OverSteer = 4.0f
   float
+  float Normal_InputSteerAngleSmoothSpeed_OverSteer = 4.0f
 
 0x082 [MP3, TMT, MP4]
   bool
@@ -772,26 +772,26 @@ CPlugVehicleCarPhyTuning 0x090ED000
   version
   float EngineMaxRPM = 11000f
   float EngineIdleRPM = 2500f
-  float
+  float EngineRpmAccelerationSmoothSpeed
   float DeclutchingDuration = 0.225f
-  float
-  float
-  float
-  float
+  float M6AirRpmAcc
+  float M6AirRpmDeadening
+  float M6RpmLossCoefOnGearUp
+  float M6RpmGainCoefOnGearDown
   float TakeOffBoost = 5f
   v2+
-    float?
-  float
-  float
-  float
-  float
-  float
-  float
+    float? EngineTakeOffRPMCoef
+  float M6RpmGainOnTakeOff
+  float M6RpmLossOnTakeOffFinished
+  float M6SpeedLimitPositiveForTakeOffFront
+  float M6SpeedLimitPositiveForTakeOffRear
+  float M6SpeedLimitNegForTakeOffFront
+  float M6SpeedLimitNegTakeOffRear
   float[] EngineGearRatios
   float[] EngineAutoGearMaxRPMs
   float[] EngineAutoGearMinRPMs
   v3+
-    float
+    float EngineDirectionChangeSpeedCoef
     v4+
       bool TakeOffBoost_Enable
       v5+

@@ -885,8 +885,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionSquareForce = 1f;
-    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
+    /// <remarks>Applied with: 0x036, 0x039, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
+    [AppliedWithChunk<Chunk090ED039>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4LateralFrictionSquareForce
     {
@@ -1288,8 +1289,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AirRpmAcc = 12000f;
-    /// <remarks>Applied with: 0x056 body chunk</remarks>
+    /// <remarks>Applied with: 0x056, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED056>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6AirRpmAcc
     {
         get => this.m6AirRpmAcc;
@@ -1297,8 +1299,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AirRpmDeadening = 8000f;
-    /// <remarks>Applied with: 0x056 body chunk</remarks>
+    /// <remarks>Applied with: 0x056, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED056>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6AirRpmDeadening
     {
         get => this.m6AirRpmDeadening;
@@ -1315,8 +1318,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmLossCoefOnGearUp = 10000f;
-    /// <remarks>Applied with: 0x058 body chunk</remarks>
+    /// <remarks>Applied with: 0x058, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED058>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6RpmLossCoefOnGearUp
     {
         get => this.m6RpmLossCoefOnGearUp;
@@ -1324,8 +1328,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmGainCoefOnGearDown = 7000f;
-    /// <remarks>Applied with: 0x059 body chunk</remarks>
+    /// <remarks>Applied with: 0x059, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED059>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6RpmGainCoefOnGearDown
     {
         get => this.m6RpmGainCoefOnGearDown;
@@ -1333,8 +1338,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitPositiveForTakeOffFront = 10f;
-    /// <remarks>Applied with: 0x059 body chunk</remarks>
+    /// <remarks>Applied with: 0x059, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED059>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6SpeedLimitPositiveForTakeOffFront
     {
         get => this.m6SpeedLimitPositiveForTakeOffFront;
@@ -1342,8 +1348,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmGainOnTakeOff = 10000f;
-    /// <remarks>Applied with: 0x059 body chunk</remarks>
+    /// <remarks>Applied with: 0x059, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED059>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6RpmGainOnTakeOff
     {
         get => this.m6RpmGainOnTakeOff;
@@ -1351,8 +1358,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmLossOnTakeOffFinished = 4000f;
-    /// <remarks>Applied with: 0x059 body chunk</remarks>
+    /// <remarks>Applied with: 0x059, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED059>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6RpmLossOnTakeOffFinished
     {
         get => this.m6RpmLossOnTakeOffFinished;
@@ -1360,8 +1368,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitPositiveForTakeOffRear = 2f;
-    /// <remarks>Applied with: 0x05A body chunk</remarks>
+    /// <remarks>Applied with: 0x05A, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6SpeedLimitPositiveForTakeOffRear
     {
         get => this.m6SpeedLimitPositiveForTakeOffRear;
@@ -1369,8 +1378,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitNegForTakeOffFront = -2f;
-    /// <remarks>Applied with: 0x05A body chunk</remarks>
+    /// <remarks>Applied with: 0x05A, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6SpeedLimitNegForTakeOffFront
     {
         get => this.m6SpeedLimitNegForTakeOffFront;
@@ -1378,8 +1388,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitNegTakeOffRear = -10f;
-    /// <remarks>Applied with: 0x05A body chunk</remarks>
+    /// <remarks>Applied with: 0x05A, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
+    [AppliedWithChunk<Chunk090ED096>]
     public float M6SpeedLimitNegTakeOffRear
     {
         get => this.m6SpeedLimitNegTakeOffRear;
@@ -1814,6 +1825,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => this.linearSpeedClamp;
         set => this.linearSpeedClamp = value;
+    }
+
+    private float changeGearMaxSpeed;
+    /// <remarks>Applied with: 0x06A body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED06A>]
+    public float ChangeGearMaxSpeed
+    {
+        get => this.changeGearMaxSpeed;
+        set => this.changeGearMaxSpeed = value;
     }
 
     private float damperOffset;
@@ -2939,6 +2959,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.engineIdleRPM = value;
     }
 
+    private float engineRpmAccelerationSmoothSpeed;
+    /// <remarks>Applied with: 0x096 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED096>]
+    public float EngineRpmAccelerationSmoothSpeed
+    {
+        get => this.engineRpmAccelerationSmoothSpeed;
+        set => this.engineRpmAccelerationSmoothSpeed = value;
+    }
+
     private float declutchingDuration = 0.225f;
     /// <remarks>Applied with: 0x096 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>]
@@ -2955,6 +2984,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => this.takeOffBoost;
         set => this.takeOffBoost = value;
+    }
+
+    private float? engineTakeOffRPMCoef;
+    /// <remarks>Applied with: 0x096 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED096>(2)]
+    public float? EngineTakeOffRPMCoef
+    {
+        get => this.engineTakeOffRPMCoef;
+        set => this.engineTakeOffRPMCoef = value;
+    }
+
+    private float engineDirectionChangeSpeedCoef;
+    /// <remarks>Applied with: 0x096 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED096>(3)]
+    public float EngineDirectionChangeSpeedCoef
+    {
+        get => this.engineDirectionChangeSpeedCoef;
+        set => this.engineDirectionChangeSpeedCoef = value;
     }
 
     private bool takeOffBoost_Enable;
@@ -3572,6 +3619,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxFront = context.Clone(this.m6BrakeMaxFront)!;
         ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxDynamicFront = context.Clone(this.m6BrakeMaxDynamicFront)!;
         ((CPlugVehicleCarPhyTuning)clone).linearSpeedClamp = context.Clone(this.linearSpeedClamp)!;
+        ((CPlugVehicleCarPhyTuning)clone).changeGearMaxSpeed = context.Clone(this.changeGearMaxSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).damperOffset = context.Clone(this.damperOffset)!;
         ((CPlugVehicleCarPhyTuning)clone).inputSteerAngleMaxDeg = context.Clone(this.inputSteerAngleMaxDeg)!;
         ((CPlugVehicleCarPhyTuning)clone).driveModel = context.Clone(this.driveModel)!;
@@ -3696,8 +3744,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).airControlXStopFrictionCoef = context.Clone(this.airControlXStopFrictionCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).engineMaxRPM = context.Clone(this.engineMaxRPM)!;
         ((CPlugVehicleCarPhyTuning)clone).engineIdleRPM = context.Clone(this.engineIdleRPM)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineRpmAccelerationSmoothSpeed = context.Clone(this.engineRpmAccelerationSmoothSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).declutchingDuration = context.Clone(this.declutchingDuration)!;
         ((CPlugVehicleCarPhyTuning)clone).takeOffBoost = context.Clone(this.takeOffBoost)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineTakeOffRPMCoef = context.Clone(this.engineTakeOffRPMCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).engineDirectionChangeSpeedCoef = context.Clone(this.engineDirectionChangeSpeedCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).takeOffBoost_Enable = context.Clone(this.takeOffBoost_Enable)!;
         ((CPlugVehicleCarPhyTuning)clone).takeOffBoost_MaxRPMCoef = context.Clone(this.takeOffBoost_MaxRPMCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).noBodyBottomFriction = context.Clone(this.noBodyBottomFriction)!;
@@ -5046,18 +5097,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED039;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090ED039)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m4LateralFrictionSquareTorque);
-            rw.Single(ref U01);
+            rw.Single(ref n.m4LateralFrictionSquareForce);
         }
     }
 
@@ -5979,18 +6028,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED06A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090ED06A)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.linearSpeedClamp);
-            rw.Single(ref U01);
+            rw.Single(ref n.changeGearMaxSpeed);
         }
     }
 
@@ -6173,8 +6220,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.inputBrakeSwitchCountMax);
-            rw.Single(ref n.normal_InputSteerAngleSmoothSpeed_OverSteer);
             rw.Single(ref U01);
+            rw.Single(ref n.normal_InputSteerAngleSmoothSpeed_OverSteer);
         }
     }
 
@@ -7423,19 +7470,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED096;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float? U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
 
         public Chunk090ED096() : this(GameVersion.Unspecified)
         {
@@ -7453,19 +7487,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED096)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED096)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED096)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED096)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED096)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED096)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090ED096)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090ED096)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090ED096)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090ED096)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090ED096)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090ED096)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090ED096)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090ED096)clone).U13 = context.Clone(this.U13)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -7478,32 +7499,32 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             rw.Single(ref n.engineMaxRPM);
             rw.Single(ref n.engineIdleRPM);
-            rw.Single(ref U01);
+            rw.Single(ref n.engineRpmAccelerationSmoothSpeed);
             rw.Single(ref n.declutchingDuration);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
+            rw.Single(ref n.m6AirRpmAcc);
+            rw.Single(ref n.m6AirRpmDeadening);
+            rw.Single(ref n.m6RpmLossCoefOnGearUp);
+            rw.Single(ref n.m6RpmGainCoefOnGearDown);
             rw.Single(ref n.takeOffBoost);
 
             if (Version >= 2)
             {
-                rw.Single(ref U06);
+                rw.Single(ref n.engineTakeOffRPMCoef);
             }
 
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
+            rw.Single(ref n.m6RpmGainOnTakeOff);
+            rw.Single(ref n.m6RpmLossOnTakeOffFinished);
+            rw.Single(ref n.m6SpeedLimitPositiveForTakeOffFront);
+            rw.Single(ref n.m6SpeedLimitPositiveForTakeOffRear);
+            rw.Single(ref n.m6SpeedLimitNegForTakeOffFront);
+            rw.Single(ref n.m6SpeedLimitNegTakeOffRear);
             rw.Array<float>(ref n.engineGearRatios!);
             rw.Array<float>(ref n.engineAutoGearMaxRPMs!);
             rw.Array<float>(ref n.engineAutoGearMinRPMs!);
 
             if (Version >= 3)
             {
-                rw.Single(ref U13);
+                rw.Single(ref n.engineDirectionChangeSpeedCoef);
 
                 if (Version >= 4)
                 {

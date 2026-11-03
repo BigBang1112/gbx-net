@@ -36,6 +36,7 @@ public interface IPlugVehicleCarPhyTuningMembers1 : global::GBX.NET.Interfaces.P
     PlugCurve? AntiWallHitForceFromSpeed { get; set; }
     float AntiWallHitSpeedTransfertCoef { get; set; }
     float BrakeTorqueCoef { get; set; }
+    float ChangeGearMaxSpeed { get; set; }
     bool DamperForceAllways { get; set; }
     bool? DamperForceSmoothStop { get; set; }
     float DamperKeepContactDuration { get; set; }
@@ -59,9 +60,12 @@ public interface IPlugVehicleCarPhyTuningMembers1 : global::GBX.NET.Interfaces.P
     float Drifting_VehicleLateralSpeedMin { get; set; }
     PlugCurve? Drifting_WheelLateralForce_FromWheelLateralSpeed { get; set; }
     int DriveModel { get; set; }
+    float EngineDirectionChangeSpeedCoef { get; set; }
     float EngineIdleRPM { get; set; }
     float EngineMaxRPM { get; set; }
+    float EngineRpmAccelerationSmoothSpeed { get; set; }
     PlugCurve? EngineSlowDownFromSpeed { get; set; }
+    float? EngineTakeOffRPMCoef { get; set; }
     float GroundAngularFluidFrictionCoef1 { get; set; }
     float GroundAngularFluidFrictionCoef2 { get; set; }
     float GroundAngularFluidFrictionSpeedMin { get; set; }
@@ -171,15 +175,7 @@ public interface IPlugVehicleCarPhyTuningMembers8<T0> : global::GBX.NET.Interfac
 {
     float BrakeCoolingSpeed { get; set; }
     T0? BrakeHeatSpeedFromFBrake { get; set; }
-    float M6RpmGainCoefOnGearDown { get; set; }
-    float M6RpmGainOnTakeOff { get; set; }
-    float M6RpmLossCoefOnGearUp { get; set; }
-    float M6RpmLossOnTakeOffFinished { get; set; }
     float[]? M6RpmWantedOnGearUp { get; set; }
-    float M6SpeedLimitNegForTakeOffFront { get; set; }
-    float M6SpeedLimitNegTakeOffRear { get; set; }
-    float M6SpeedLimitPositiveForTakeOffFront { get; set; }
-    float M6SpeedLimitPositiveForTakeOffRear { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleCarPhyTuningMembers9 : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuning
@@ -259,6 +255,14 @@ public interface IPlugVehicleCarPhyTuningMembers10 : global::GBX.NET.Interfaces.
     float M6MaxSpeed4Burnout { get; set; }
     float M6MinSpeed4Burnout { get; set; }
     PlugCurve? M6RolloverLateralFromSpeedRatio { get; set; }
+    float M6RpmGainCoefOnGearDown { get; set; }
+    float M6RpmGainOnTakeOff { get; set; }
+    float M6RpmLossCoefOnGearUp { get; set; }
+    float M6RpmLossOnTakeOffFinished { get; set; }
+    float M6SpeedLimitNegForTakeOffFront { get; set; }
+    float M6SpeedLimitNegTakeOffRear { get; set; }
+    float M6SpeedLimitPositiveForTakeOffFront { get; set; }
+    float M6SpeedLimitPositiveForTakeOffRear { get; set; }
     PlugCurve? ModulationFromWheelCompression { get; set; }
     bool NoSteerSlowDownWhenSlipping { get; set; }
     float TurboRedAccelCoef { get; set; }
