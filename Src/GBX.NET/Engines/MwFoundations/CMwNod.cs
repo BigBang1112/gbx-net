@@ -148,7 +148,14 @@ public partial class CMwNod : IClass
 
                 if (chunkId == GbxSignatureChunk.Id)
                 {
-                    GbxSignatureChunk.Read(r);
+                    using var boundedStream = new BoundedStream(r.BaseStream, chunkSize);
+                    using var signatureReader = new GbxReader(boundedStream, r.Settings);
+                    GbxSignatureChunk.Read(signatureReader);
+                    if (boundedStream.Remaining > 0)
+                    {
+                        throw new InvalidDataException("Not all data was read from the signature chunk.");
+                    }
+                    r.Signature = signatureReader.Signature;
                 }
                 else if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
