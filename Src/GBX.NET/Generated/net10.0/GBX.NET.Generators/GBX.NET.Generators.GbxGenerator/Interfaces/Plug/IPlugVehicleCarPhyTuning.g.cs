@@ -116,6 +116,39 @@ public interface IPlugVehicleCarPhyTuningMembers1 : global::GBX.NET.Interfaces.P
 public interface IPlugVehicleCarPhyTuningMembers2<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuning where T0 : class where T1 : class where T2 : class
 {
     PlugCurve? AccelCurveTargetSpeedTruck { get; set; }
+    PlugCurve? BoatAccelFromSpeedKmh { get; set; }
+    float BoatCharacteristicLength { get; set; }
+    PlugCurve? BoatEngineDirFollowRudderFromSpeedZKmh { get; set; }
+    float? BoatEngineDuration01 { get; set; }
+    PlugCurve? BoatEngineSteeringFromSpeedKmh { get; set; }
+    float? BoatInertiaYCoef { get; set; }
+    int? BoatIsCarrier { get; set; }
+    float? BoatPlanningAngularSpeedThreshold { get; set; }
+    PlugCurve? BoatPlanningAsternForceFromBrakeDuration { get; set; }
+    PlugCurve? BoatPlanningCoefBuildingRateFromPlanningCoefValue { get; set; }
+    float? BoatPlanningCoefDecayFromRudderInputDelta01 { get; set; }
+    float? BoatPlanningCoefDecayRate_Forward { get; set; }
+    float? BoatPlanningCoefDecayRate_TurningOrColliding { get; set; }
+    float? BoatPlanningContactVelKmhThreshold { get; set; }
+    int? BoatPlanningCooldownDuration { get; set; }
+    PlugCurve? BoatPlanningForceFromCoef { get; set; }
+    float BoatReferenceSpeed { get; set; }
+    PlugCurve? BoatReverseAccelFromSpeedKmh { get; set; }
+    PlugCurve? BoatReverseDirFollowRudderFromSpeedZKmh { get; set; }
+    PlugCurve? BoatRigthingTorqueRatioFromSpeedKmh { get; set; }
+    PlugCurve? BoatRudderAngleCoeffFromSpeedKmh { get; set; }
+    float? BoatRudderResistanceCoef { get; set; }
+    float? BoatSteeringSmoothingRatio { get; set; }
+    PlugCurve? BoatTargetAngularSpeedZFromRoll { get; set; }
+    PlugCurve? BoatWaterSteeringFromSpeedKmh { get; set; }
+    PlugCurve? BoatWheelInverseTimeToZeroFromSpeedZKmh { get; set; }
+    float? BoatWheelMaxAngle { get; set; }
+    PlugCurve? BoatWheelTimeToMaxAngleFromSpeedZKmh { get; set; }
+    float Bumper2GroundNormalImpulse { get; set; }
+    float Bumper2SurfaceNormalImpulse { get; set; }
+    float BumperGroundNormalImpulse { get; set; }
+    float BumperImpulsePositionOffset { get; set; }
+    float BumperSurfaceNormalImpulse { get; set; }
     T0? CamModelIronSight
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelIronSight);
@@ -126,16 +159,73 @@ public interface IPlugVehicleCarPhyTuningMembers2<T0, T1, T2> : global::GBX.NET.
         get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelRear);
         set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    float? CenterOfMassZ_NoWheel { get; set; }
     T1? GearBox
     {
         get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GearBox);
         set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GearBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    float? HelicoBladeMaxSpeedDeg { get; set; }
+    float? HelicoBladeRotAccelDeg { get; set; }
+    float? HelicoBladeRotDecelDeg { get; set; }
+    float? HelicoCoefCorrectedPitch { get; set; }
+    PlugCurve? HelicoCoefEngineHorizontal { get; set; }
+    PlugCurve? HelicoCoefEngineVertical { get; set; }
+    float? HelicoCoefIronSight { get; set; }
+    PlugCurve? HelicoCoefSmoothedLanding { get; set; }
+    PlugCurve? HelicoDragPitchFromPitchDeg { get; set; }
+    PlugCurve? HelicoDragRollFromRollDeg { get; set; }
+    float? HelicoFrictionCoef { get; set; }
+    float? HelicoFrictionCoefZ { get; set; }
+    float? HelicoFrictionTorqueCoef { get; set; }
+    PlugCurve? HelicoGroundAccelCoefFromGroundDist { get; set; }
+    float? HelicoGroundCheckDist { get; set; }
+    float? HelicoGroundFrictionCoef { get; set; }
+    PlugCurve? HelicoHorizontalForceCoefFromAngleDeg { get; set; }
+    float? HelicoInputSteerSmoothCoefBack { get; set; }
+    float? HelicoLandingStartDist { get; set; }
+    PlugCurve? HelicoPitchTorqueCoefFromSpeedKmh { get; set; }
+    PlugCurve? HelicoPitchTorqueFromPitchDeg { get; set; }
+    PlugCurve? HelicoRollTorqueFromRollDeg { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning.EVehicleHelicoVersion? HelicoVersion { get; set; }
+    PlugCurve? HelicoVerticalForceCoefFromAngleDeg { get; set; }
+    PlugCurve? HelicoYawTorqueCoefFromHSpeedKmh { get; set; }
+    PlugCurve? HelicoYawTorqueFromRollSteer { get; set; }
+    PlugCurve? HelicoYawTorqueFromRollSteer_CoefFromHSpeedKmh { get; set; }
+    PlugCurve? HelicoYaw_Brake_HSpeedDecFromHSpeed { get; set; }
     float MagneticHackAccelCoef_Val { get; set; }
     bool? MagneticHackDamperForceAllways { get; set; }
     bool MagneticHackEnabled { get; set; }
     float MagneticHackSpeedOffset_Val { get; set; }
     int MagneticKeepContactDuration { get; set; }
+    float? PlaneAngularFriction { get; set; }
+    Vec3? PlaneDragCoef { get; set; }
+    PlugCurve? PlaneDragMultiplierFromGroundDist { get; set; }
+    bool? PlaneEngineAuto { get; set; }
+    float? PlaneEngineTime01s { get; set; }
+    float? PlaneEngineTime10s { get; set; }
+    float? PlaneFrontWheelDamperCoef { get; set; }
+    int? PlaneLanding_Contact_BestTime { get; set; }
+    float PlaneLanding_Contact_Coef { get; set; }
+    int? PlaneLanding_Contact_WorseTime { get; set; }
+    int? PlaneLanding_End_BestTime { get; set; }
+    float PlaneLanding_End_Coef { get; set; }
+    int? PlaneLanding_End_WorseTime { get; set; }
+    float? PlaneLanding_Impacts_Coef { get; set; }
+    float? PlaneLanding_Rebounds_Coef { get; set; }
+    int? PlaneLanding_Rebounds_MaxCount { get; set; }
+    PlugCurve? PlaneLiftCoefFromStallAngleRatio { get; set; }
+    PlugCurve? PlaneLiftMultiplierFromGroundDist { get; set; }
+    float PlaneLiftPower { get; set; }
+    PlugCurve? PlanePitchControlFromSpeedKmh { get; set; }
+    float? PlanePitchGroundControlMultiplier { get; set; }
+    PlugCurve? PlaneRollControlFromSpeedKmh { get; set; }
+    float? PlaneStallAngleMaxDeg { get; set; }
+    float? PlaneStallAngleMinDeg { get; set; }
+    PlugCurve? PlaneThrustFromFrontSpeedKmh { get; set; }
+    Vec3? PlaneXDragApplicationPosOffset { get; set; }
+    PlugCurve? PlaneYawControlFromFrontSpeedKmh { get; set; }
+    PlugCurve? PlaneYawGroundControlFromFrontSpeedKmh { get; set; }
     T2? Shape
     {
         get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).Shape);
@@ -143,6 +233,16 @@ public interface IPlugVehicleCarPhyTuningMembers2<T0, T1, T2> : global::GBX.NET.
     }
     PlugCurve? TargetSpeedFromSpeedTruck { get; set; }
     PlugCurve? TargetSpeedFromSpeedTruckRear { get; set; }
+    int? TruckAccelPenaltyDuration { get; set; }
+    float TruckAxisMaxAngle { get; set; }
+    float? TruckInertiaZCoef { get; set; }
+    float? TruckLinkPosCorrectionRate { get; set; }
+    float? TruckLinkPosVelDamping { get; set; }
+    float? TruckLinkRollCenterOfMassY { get; set; }
+    PlugCurve? TruckLinkRollMultiplierFromZSpeedKmh { get; set; }
+    float TruckLinkStiffness { get; set; }
+    float TruckLinkThresholdAngle { get; set; }
+    float? TruckLinkTrailerAngularCorrectionRatio { get; set; }
     float TurboBrakeCoef { get; set; }
     int TurboBrakeDuration { get; set; }
     float TurboBrakeMinSpeedZKmh { get; set; }
@@ -499,14 +599,37 @@ public partial interface IPlugVehicleCarPhyTuningTMT : IPlugVehicleCarPhyTuning,
 
 public partial interface IPlugVehicleCarPhyTuningMP4 : IPlugVehicleCarPhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers5, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers9, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers10, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers12
 {
+    float? TruckLinkHackHeaderPositiveRollMultiplier { get; set; }
+    PlugCurve? WaterFluidFrictionDragCoefFromSpeedRatio { get; set; }
+    PlugCurve? WaterPressureDragCoefFromSpeedRatio { get; set; }
+    float WaterPressureDragFalloffPower { get; set; }
+    PlugCurve? WaterPressureDrag_AngularCoefFromSpeedRatio { get; set; }
+    PlugCurve? WaterPressureSuctionDragCoefFromSpeedRatio { get; set; }
+    float WaterPressureSuctionDragFalloffPower { get; set; }
+    float WaterViscosity { get; set; }
 }
 
 public partial interface IPlugVehicleCarPhyTuningTM2020 : IPlugVehicleCarPhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers10, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers12
 {
+    PlugCurve? AirControlXAccelCoefFromOrientation { get; set; }
+    PlugCurve? AirControlXAccelFromAngularSpeed { get; set; }
+    bool? AirControlXEnabled { get; set; }
+    PlugCurve? AirControlXLimitTorqueFromAngularSpeed { get; set; }
+    bool? AirControlXOrientationLimitEnabled { get; set; }
+    float? AirControlXOrientationThresholdDeg { get; set; }
+    bool? AirControlXYEnabled { get; set; }
+    PlugCurve? AirControlYAccelFromAngularSpeed { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? CameraModels_Alternate
     {
         get => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels_Alternate is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GetCameraModels_AlternateInterfaceReferences, true, "CameraModels_Alternate");
         set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels_Alternate = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugDynaWaterModelTM2020? DynaWaterModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugDynaWaterModelTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).DynaWaterModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).DynaWaterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    PlugCurve? TruckLinkHackHeaderPositiveRollMultiplierCurve { get; set; }
+    int TurboRouletteCycleDuration { get; set; }
 }
 

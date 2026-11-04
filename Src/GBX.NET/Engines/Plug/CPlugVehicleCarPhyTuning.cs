@@ -4,6 +4,11 @@ public partial class CPlugVehicleCarPhyTuning
 {
     public CPlugVehicleCarPhyTuning()
     {
+        InitializeHelicoCurves();
+        InitializeBoatCurves();
+        InitializeTruckCurves();
+        InitializePlaneModel();
+
         EngineGearRatios = [338f, 297f, 207f, 143f, 100f, 84f, 56f];
         EngineAutoGearMaxRPMs = [0f, 0.8125f, 0.8125f, 0.8125f, 0.8125f, 0.8125f, 1f];
         EngineAutoGearMinRPMs = [0f, 0f, 0.375f, 0.53125f, 0.5625f, 0.625f, 0.625f];
@@ -62,6 +67,26 @@ public partial class CPlugVehicleCarPhyTuning
         {
             Count = 1,
             Values = [new(0f, 1f)]
+        };
+        AirControlXAccelFromAngularSpeed = new PlugCurve
+        {
+            Count = 1,
+            Values = [new(0f, 0f)]
+        };
+        AirControlYAccelFromAngularSpeed = new PlugCurve
+        {
+            Count = 1,
+            Values = [new(0f, 0f)]
+        };
+        AirControlXLimitTorqueFromAngularSpeed = new PlugCurve
+        {
+            Count = 1,
+            Values = [new(0f, 0f)]
+        };
+        AirControlXAccelCoefFromOrientation = new PlugCurve
+        {
+            Count = 1,
+            Values = [new(0f, 0f)]
         };
         WaterReboundFromSpeedRatio = new PlugCurve
         {

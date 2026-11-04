@@ -115,6 +115,11 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         get => CameraModels_Console is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModels_ConsoleInterfaceReferences, true, "CameraModels_Console");
         set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugDynaWaterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.DynaWaterModel
+    {
+        get => DynaWaterModel;
+        set => DynaWaterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.GearBox
     {
         get => GearBox;
