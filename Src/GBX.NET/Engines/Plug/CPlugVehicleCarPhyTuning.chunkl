@@ -1,8 +1,8 @@
 CPlugVehicleCarPhyTuning 0x090ED000
 - inherits: CPlugVehiclePhyTuning
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // legacy steering and dampers
-  float
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // steering and dampers
+  float = 1f // Discarded
   float SteerRadiusMin = 1f
   float SteerRadiusCoef = 0.5f
   float MaxSpeed = 55.555557f
@@ -12,7 +12,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float DamperLengthMax
   float DamperLengthRest
   float RelSpeedMultCoef
-  float
+  float = 50f // Discarded
   float DebugAbsorbCoef
 
 0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
@@ -84,22 +84,22 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float SoundBodyImpact_Hard_Threshold
 
 0x013 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
 
 0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  float
-  float
+  float // Discarded
+  float // Discarded
 
 0x015
   float SoundEngineVolume
@@ -116,11 +116,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float DecrepitudeImpactVal
   float DecrepitudeCoef
   float VibrationPeriodSpeedCoef
-  float
-  float
-  float
-  float
-  float
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
+  float // Discarded
 
 0x018 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // fluid friction
   float LinearFluidFrictionCoef
@@ -138,10 +138,10 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float WheelRestCoef_Metal
 
 0x01A [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
-  float
+  float = 1f // Discarded
 
 0x01B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
-  float
+  float // Discarded
 
 0x01D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float AirGravityCoef = 1f
@@ -305,10 +305,10 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float M5AccelSlipCoefMax = 1f
 
 0x045
-  float  WaterGravity = 1.0f
+  float WaterGravity = 1.0f
   float
   float
-  float  WaterReboundMinHSpeed = 55.555557f
+  float WaterReboundMinHSpeed = 55.555557f
   float
 
 0x046 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
@@ -496,14 +496,14 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x085 [MP3, TMT, MP4, TM2020] // body contact envelope
   bool NormalEnv
-  float
+  float // Discarded
   float NormalEnvBody_FlatZoneYMin = 0.2f
   float NormalEnvBody_FlatZoneYMax = 0.6f
   float NormalEnvBody_HalfSizeX = 0.2f
   float NormalEnvBody_HalfSizeZ = 1.7f
 
 0x086 [MP3, TMT, MP4, TM2020] // wheel width
-  float
+  float // Discarded
   float NormalEnvWheel_WidthCoef1 = 0.5f
 
 0x088 [MP3, TMT, MP4, TM2020] // MaxDistPerStep
@@ -512,8 +512,9 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x089 [MP3.v6, TMT.v7, MP4.v9, TM2020.v10] // drag force and adherence
   version
   PlugCurve DragForceFromFrontSpeed (version: Version - 10)
-  v2-
-    CFuncKeysReal
+  v1+
+    v2-
+      CFuncKeysReal
   v2+
     float? AdherenceVel_VelYMin
     float? AdherenceVel_VelYMax = 10f
@@ -524,12 +525,12 @@ CPlugVehicleCarPhyTuning 0x090ED000
       float? AdherenceAngleMaxDeg = 80f
       float? AdherenceAngleMinDeg_Roll = 40f
       float? AdherenceAngleMaxDeg_Roll = 60f
-      float?
+      float? AdherenceMin_ForTorque
       float? AdherenceMin_ForTorque = 0.3f
       float? AdherenceMin_ForDragForce = 1f
       float? AdherenceVelMax = 1f
       float? AdherenceAntiSteerUpCoef = 1f
-      float?
+      float? AdherenceAngleMinDeg_AntiSteerUp
       float? AdherenceAngleMinDeg_AntiSteerUp = 80f
       v6+
         float? AdherenceAccelDirYCoef
@@ -553,15 +554,16 @@ CPlugVehicleCarPhyTuning 0x090ED000
   PlugCurve Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer (version: Version - 8)
   v1+
     v3-
-      float?
-      float?
+      float? Normal_InputSteerSensitivity
+      v2+
+        float? Drifting_InputSteerSensitivity
     v4+
       PlugCurve Normal_InputSteerSensitivityFromSpeed (version: Version - 8)
       PlugCurve Drifting_InputSteerSensitivityFromSpeed (version: Version - 8)
     v3+
       int? InputSteerAlgo
       v5=
-        float?
+        float? InputSteerPow
       v6+
         PlugCurve InputSteerPowFromSpeed (version: Version - 8)
         v7+
@@ -569,37 +571,37 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x08B [MP3.v22, TMT.v23, MP4.v34, TM2020.v37] // ground forces, drifting and magnetic grip
   version
-  v2-
+  v1-
     float?
-  v10-
+  v9-
     float?
     CFuncKeysReal
-  v9-
-    float
   v8-
+    float
+  v7-
     CFuncKeysReal
   float Rollover
-  v9-
+  v8-
     float
-  v10-
+  v9-
     CFuncKeysReal
   v1+
     bool UseRealGroundReferential = true
   v3+
-    v9-
+    v8-
       float
       float
   v4+
     PlugCurve SteerSlowDownFromSpeed (version: Version - 37)
     v5+
-      v9-
-        int
+      v8-
+        int AntiWallHitDurationInc
         int
       v9+
         PlugCurve AntiWallHitDurationInc_FromLateralContactRelSpeed (version: Version - 37)
         v13+
           v21-
-            float
+            float AntiWallHitAccelCoef
           v22+
             PlugCurve AntiWallHitAccelCoefFromSpeed (version: Version - 37)
           float AntiWallHitSpeedTransfertCoef = 0.1f
@@ -701,6 +703,8 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v3=
     float?
     float?
+  v3-
+    AfterJumpOrientationForceCoef = 0f
   v4+
     float AfterJumpOrientationAngularSpeedThreshold = 0.01f
   v5+
@@ -718,7 +722,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v3+
         CPlugCamControlModel CamModelIronSight
         v4+
-          CPlugCamControlModel[]
+          CPlugCamControlModel[] CameraModels_Alternate
 
 0x094 [MP3.v1, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
   version

@@ -105,6 +105,11 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         get => CameraModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModelsInterfaceReferences, true, "CameraModels");
         set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
     }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.CameraModels_Alternate
+    {
+        get => CameraModels_Alternate is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModels_AlternateInterfaceReferences, true, "CameraModels_Alternate");
+        set => CameraModels_Alternate = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.CameraModels_Console
     {
         get => CameraModels_Console is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModels_ConsoleInterfaceReferences, true, "CameraModels_Console");
@@ -126,5 +131,6 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModelsInterfaceReferences() => CameraModels;
+    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModels_AlternateInterfaceReferences() => CameraModels_Alternate;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModels_ConsoleInterfaceReferences() => CameraModels_Console;
 }

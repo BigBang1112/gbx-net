@@ -2293,6 +2293,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer = value;
     }
 
+    private float? normal_InputSteerSensitivity;
+    /// <remarks>Applied with: 0x08A v1-3 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08A>(1, 3)]
+    public float? Normal_InputSteerSensitivity
+    {
+        get => this.normal_InputSteerSensitivity;
+        set => this.normal_InputSteerSensitivity = value;
+    }
+
+    private float? drifting_InputSteerSensitivity;
+    /// <remarks>Applied with: 0x08A v2-3 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08A>(2, 3)]
+    public float? Drifting_InputSteerSensitivity
+    {
+        get => this.drifting_InputSteerSensitivity;
+        set => this.drifting_InputSteerSensitivity = value;
+    }
+
     private PlugCurve? normal_InputSteerSensitivityFromSpeed;
     /// <remarks>Applied with: 0x08A v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(4)]
@@ -2318,6 +2336,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => this.inputSteerAlgo;
         set => this.inputSteerAlgo = value;
+    }
+
+    private float? inputSteerPow;
+    /// <remarks>Applied with: 0x08A v5-5 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08A>(5, 5)]
+    public float? InputSteerPow
+    {
+        get => this.inputSteerPow;
+        set => this.inputSteerPow = value;
     }
 
     private PlugCurve? inputSteerPowFromSpeed;
@@ -2365,6 +2392,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.steerSlowDownFromSpeed = value;
     }
 
+    private int antiWallHitDurationInc;
+    /// <remarks>Applied with: 0x08B v5-8 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08B>(5, 8)]
+    public int AntiWallHitDurationInc
+    {
+        get => this.antiWallHitDurationInc;
+        set => this.antiWallHitDurationInc = value;
+    }
+
     private PlugCurve? antiWallHitDurationInc_FromLateralContactRelSpeed;
     /// <remarks>Applied with: 0x08B v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(9)]
@@ -2372,6 +2408,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => this.antiWallHitDurationInc_FromLateralContactRelSpeed;
         set => this.antiWallHitDurationInc_FromLateralContactRelSpeed = value;
+    }
+
+    private float antiWallHitAccelCoef;
+    /// <remarks>Applied with: 0x08B v13-21 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08B>(13, 21)]
+    public float AntiWallHitAccelCoef
+    {
+        get => this.antiWallHitAccelCoef;
+        set => this.antiWallHitAccelCoef = value;
     }
 
     private PlugCurve? antiWallHitAccelCoefFromSpeed;
@@ -2831,6 +2876,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => camModelIronSightRef?.Resolve();
         set => NodeRef.SetEmbedded(ref camModelIronSightRef, value);
+    }
+
+    private NodeRefList<CPlugCamControlModel>? cameraModels_Alternate;
+    /// <remarks>Applied with: 0x08E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED08E>(4)]
+    public NodeRefList<CPlugCamControlModel>? CameraModels_Alternate
+    {
+        get => cameraModels_Alternate;
+        set => cameraModels_Alternate = value;
     }
 
     private PlugCurve? turboYellowConstantFromSpeed;
@@ -3402,6 +3456,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public IReadOnlyList<NodeRef<CPlugCamControlModel>>? CameraModels_Console => owner.cameraModels_Console?.References;
         public NodeRef<CPlugCamControlModel> CamModelRear => NodeRef.GetOrCreate(ref owner.camModelRearRef);
         public NodeRef<CPlugCamControlModel> CamModelIronSight => NodeRef.GetOrCreate(ref owner.camModelIronSightRef);
+        public IReadOnlyList<NodeRef<CPlugCamControlModel>>? CameraModels_Alternate => owner.cameraModels_Alternate?.References;
         public NodeRef<CMwRefBuffer> Materials => NodeRef.GetOrCreate(ref owner.materialsRef);
         public NodeRef<CPlugVehicleCarPhyShape> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
         public NodeRef<CPlugVehicleGearBox> GearBox => NodeRef.GetOrCreate(ref owner.gearBoxRef);
@@ -3421,6 +3476,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         }
         yield return new("CamModelRear", NodeRef.GetOrCreate(ref camModelRearRef));
         yield return new("CamModelIronSight", NodeRef.GetOrCreate(ref camModelIronSightRef));
+        if (cameraModels_Alternate is not null)
+        {
+            for (var i = 0; i < cameraModels_Alternate.Count; i++) yield return new("CameraModels_Alternate" + "[" + i + "]", cameraModels_Alternate.Get(i));
+        }
         yield return new("Materials", NodeRef.GetOrCreate(ref materialsRef));
         yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
         yield return new("GearBox", NodeRef.GetOrCreate(ref gearBoxRef));
@@ -3670,15 +3729,20 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer = context.Clone(this.drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer)!;
         ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer = context.Clone(this.drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer)!;
         ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer = context.Clone(this.drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer)!;
+        ((CPlugVehicleCarPhyTuning)clone).normal_InputSteerSensitivity = context.Clone(this.normal_InputSteerSensitivity)!;
+        ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerSensitivity = context.Clone(this.drifting_InputSteerSensitivity)!;
         ((CPlugVehicleCarPhyTuning)clone).normal_InputSteerSensitivityFromSpeed = context.Clone(this.normal_InputSteerSensitivityFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerSensitivityFromSpeed = context.Clone(this.drifting_InputSteerSensitivityFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).inputSteerAlgo = context.Clone(this.inputSteerAlgo)!;
+        ((CPlugVehicleCarPhyTuning)clone).inputSteerPow = context.Clone(this.inputSteerPow)!;
         ((CPlugVehicleCarPhyTuning)clone).inputSteerPowFromSpeed = context.Clone(this.inputSteerPowFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).inputRawGasBrake = context.Clone(this.inputRawGasBrake)!;
         ((CPlugVehicleCarPhyTuning)clone).rollover = context.Clone(this.rollover)!;
         ((CPlugVehicleCarPhyTuning)clone).useRealGroundReferential = context.Clone(this.useRealGroundReferential)!;
         ((CPlugVehicleCarPhyTuning)clone).steerSlowDownFromSpeed = context.Clone(this.steerSlowDownFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).antiWallHitDurationInc = context.Clone(this.antiWallHitDurationInc)!;
         ((CPlugVehicleCarPhyTuning)clone).antiWallHitDurationInc_FromLateralContactRelSpeed = context.Clone(this.antiWallHitDurationInc_FromLateralContactRelSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).antiWallHitAccelCoef = context.Clone(this.antiWallHitAccelCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).antiWallHitAccelCoefFromSpeed = context.Clone(this.antiWallHitAccelCoefFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).antiWallHitSpeedTransfertCoef = context.Clone(this.antiWallHitSpeedTransfertCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).engineSlowDownFromSpeed = context.Clone(this.engineSlowDownFromSpeed)!;
@@ -3730,6 +3794,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).cameraModels_Console = context.Clone(this.cameraModels_Console)!;
         ((CPlugVehicleCarPhyTuning)clone).camModelRearRef = context.Clone(this.camModelRearRef)!;
         ((CPlugVehicleCarPhyTuning)clone).camModelIronSightRef = context.Clone(this.camModelIronSightRef)!;
+        ((CPlugVehicleCarPhyTuning)clone).cameraModels_Alternate = context.Clone(this.cameraModels_Alternate)!;
         ((CPlugVehicleCarPhyTuning)clone).turboYellowConstantFromSpeed = context.Clone(this.turboYellowConstantFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).turboRedConstantFromSpeed = context.Clone(this.turboRedConstantFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).turboYellowConstantDuration = context.Clone(this.turboYellowConstantDuration)!;
@@ -3795,16 +3860,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x000 chunk (legacy steering and dampers)
+    /// CPlugVehicleCarPhyTuning 0x000 chunk (steering and dampers)
     /// </summary>
-    [Chunk(0x090ED000, "legacy steering and dampers")]
+    [Chunk(0x090ED000, "steering and dampers")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090ED000 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public float U01;
-        public float U02;
+        public float U01 = 1f;
+        public float U02 = 50f;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4429,7 +4494,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED01A;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public float U01;
+        public float U01 = 1f;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -6372,8 +6437,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             get => U01Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
-        public float? U02;
-        public float? U03;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -6418,8 +6481,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090ED089)clone).Version = context.Clone(this.Version)!;
             ((Chunk090ED089)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090ED089)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED089)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -6432,9 +6493,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             rw.ReadableWritable<PlugCurve>(ref n.dragForceFromFrontSpeed, version: Version- 10);
 
-            if (Version <= 2)
+            if (Version >= 1)
             {
-                rw.NodeRef(ref U01Ref);
+                if (Version <= 2)
+                {
+                    rw.NodeRef(ref U01Ref);
+                }
             }
 
             if (Version >= 2)
@@ -6450,12 +6514,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                     rw.Single(ref n.adherenceAngleMaxDeg);
                     rw.Single(ref n.adherenceAngleMinDeg_Roll);
                     rw.Single(ref n.adherenceAngleMaxDeg_Roll);
-                    rw.Single(ref U02);
+                    rw.Single(ref n.adherenceMin_ForTorque);
                     rw.Single(ref n.adherenceMin_ForTorque);
                     rw.Single(ref n.adherenceMin_ForDragForce);
                     rw.Single(ref n.adherenceVelMax);
                     rw.Single(ref n.adherenceAntiSteerUpCoef);
-                    rw.Single(ref U03);
+                    rw.Single(ref n.adherenceAngleMinDeg_AntiSteerUp);
                     rw.Single(ref n.adherenceAngleMinDeg_AntiSteerUp);
 
                     if (Version >= 6)
@@ -6499,9 +6563,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public float? U01;
-        public float? U02;
-        public float? U03;
 
         public Chunk090ED08A() : this(GameVersion.Unspecified)
         {
@@ -6527,9 +6588,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED08A)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED08A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED08A)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED08A)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -6553,8 +6611,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 if (Version <= 3)
                 {
-                    rw.Single(ref U01);
-                    rw.Single(ref U02);
+                    rw.Single(ref n.normal_InputSteerSensitivity);
+
+                    if (Version >= 2)
+                    {
+                        rw.Single(ref n.drifting_InputSteerSensitivity);
+                    }
                 }
 
                 if (Version >= 4)
@@ -6569,7 +6631,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                     if (Version == 5)
                     {
-                        rw.Single(ref U03);
+                        rw.Single(ref n.inputSteerPow);
                     }
 
                     if (Version >= 6)
@@ -6631,12 +6693,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U08;
         public float U09;
         public int U10;
-        public int U11;
+        public float U11;
         public float U12;
         public float U13;
         public float U14;
-        public float U15;
-        public float U16;
+
+        private NodeRef<CFuncKeysReal>? U15Ref;
+        public CFuncKeysReal? U15
+        {
+            get => U15Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U15Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U16Ref;
+        public CFuncKeysReal? U16
+        {
+            get => U16Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U16Ref, value);
+        }
 
         private NodeRef<CFuncKeysReal>? U17Ref;
         public CFuncKeysReal? U17
@@ -6651,13 +6725,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             get => U18Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U18Ref, value);
         }
-
-        private NodeRef<CFuncKeysReal>? U19Ref;
-        public CFuncKeysReal? U19
-        {
-            get => U19Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U19Ref, value);
-        }
+        public float U19;
 
         private NodeRef<CFuncKeysReal>? U20Ref;
         public CFuncKeysReal? U20
@@ -6666,22 +6734,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             set => NodeRef.SetEmbedded(ref U20Ref, value);
         }
         public float U21;
+        public bool U22;
+        public PlugCurve? U23;
 
-        private NodeRef<CFuncKeysReal>? U22Ref;
-        public CFuncKeysReal? U22
+        private NodeRef<CFuncKeysReal>? U24Ref;
+        public CFuncKeysReal? U24
         {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
-        public float U23;
-        public bool U24;
-        public PlugCurve? U25;
-
-        private NodeRef<CFuncKeysReal>? U26Ref;
-        public CFuncKeysReal? U26
-        {
-            get => U26Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U26Ref, value);
+            get => U24Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U24Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -6692,12 +6752,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CFuncKeysReal> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
+            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
             public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
             public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CFuncKeysReal> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
             public NodeRef<CFuncKeysReal> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
-            public NodeRef<CFuncKeysReal> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
-            public NodeRef<CFuncKeysReal> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
+            public NodeRef<CFuncKeysReal> U24 => NodeRef.GetOrCreate(ref owner.U24Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -6705,12 +6765,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
+            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
+            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
             yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
             yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
             yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
-            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
+            yield return new("U24", NodeRef.GetOrCreate(ref U24Ref));
             yield break;
         }
 
@@ -6737,7 +6797,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 Version = 37;
             }
 
-            U23 = 1500f;
+            U21 = 1500f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -6758,18 +6818,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED08B)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090ED08B)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090ED08B)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090ED08B)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090ED08B)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED08B)clone).U15Ref = context.Clone(this.U15Ref)!;
+            ((Chunk090ED08B)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk090ED08B)clone).U17Ref = context.Clone(this.U17Ref)!;
             ((Chunk090ED08B)clone).U18Ref = context.Clone(this.U18Ref)!;
-            ((Chunk090ED08B)clone).U19Ref = context.Clone(this.U19Ref)!;
+            ((Chunk090ED08B)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090ED08B)clone).U20Ref = context.Clone(this.U20Ref)!;
             ((Chunk090ED08B)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090ED08B)clone).U22Ref = context.Clone(this.U22Ref)!;
+            ((Chunk090ED08B)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090ED08B)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090ED08B)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090ED08B)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090ED08B)clone).U26Ref = context.Clone(this.U26Ref)!;
+            ((Chunk090ED08B)clone).U24Ref = context.Clone(this.U24Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -6780,35 +6838,35 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version <= 2)
+            if (Version <= 1)
             {
                 rw.Single(ref U01);
             }
 
-            if (Version <= 10)
+            if (Version <= 9)
             {
                 rw.Single(ref U02);
                 rw.NodeRef(ref U03Ref);
             }
 
-            if (Version <= 9)
+            if (Version <= 8)
             {
                 rw.Single(ref U04);
             }
 
-            if (Version <= 8)
+            if (Version <= 7)
             {
                 rw.NodeRef(ref U05Ref);
             }
 
             rw.Single(ref n.rollover);
 
-            if (Version <= 9)
+            if (Version <= 8)
             {
                 rw.Single(ref U06);
             }
 
-            if (Version <= 10)
+            if (Version <= 9)
             {
                 rw.NodeRef(ref U07Ref);
             }
@@ -6820,7 +6878,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 3)
             {
-                if (Version <= 9)
+                if (Version <= 8)
                 {
                     rw.Single(ref U08);
                     rw.Single(ref U09);
@@ -6833,10 +6891,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                 if (Version >= 5)
                 {
-                    if (Version <= 9)
+                    if (Version <= 8)
                     {
+                        rw.Int32(ref n.antiWallHitDurationInc);
                         rw.Int32(ref U10);
-                        rw.Int32(ref U11);
                     }
 
                     if (Version >= 9)
@@ -6847,7 +6905,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                         {
                             if (Version <= 21)
                             {
-                                rw.Single(ref U12);
+                                rw.Single(ref n.antiWallHitAccelCoef);
                             }
 
                             if (Version >= 22)
@@ -6865,7 +6923,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                         if (Version >= 7)
                         {
-                            rw.Single(ref U13);
+                            rw.Single(ref U11);
 
                             if (Version >= 10)
                             {
@@ -6946,17 +7004,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                         {
                                                                                             if (Version <= 33)
                                                                                             {
+                                                                                                rw.Single(ref U12);
+                                                                                                rw.Single(ref U13);
                                                                                                 rw.Single(ref U14);
-                                                                                                rw.Single(ref U15);
-                                                                                                rw.Single(ref U16);
-                                                                                                rw.NodeRef(ref U17Ref);
+                                                                                                rw.NodeRef(ref U15Ref);
                                                                                             }
 
                                                                                             if (Version >= 28)
                                                                                             {
                                                                                                 if (Version <= 33)
                                                                                                 {
-                                                                                                    rw.NodeRef(ref U18Ref);
+                                                                                                    rw.NodeRef(ref U16Ref);
                                                                                                 }
 
                                                                                                 if (Version >= 29)
@@ -6969,30 +7027,30 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                                     {
                                                                                                         if (Version >= 30)
                                                                                                         {
-                                                                                                            rw.NodeRef(ref U19Ref);
+                                                                                                            rw.NodeRef(ref U17Ref);
                                                                                                         }
 
                                                                                                         if (Version >= 31)
                                                                                                         {
-                                                                                                            rw.NodeRef(ref U20Ref);
+                                                                                                            rw.NodeRef(ref U18Ref);
                                                                                                         }
 
                                                                                                         if (Version >= 32)
                                                                                                         {
-                                                                                                            rw.Single(ref U21);
-                                                                                                            rw.NodeRef(ref U22Ref);
+                                                                                                            rw.Single(ref U19);
+                                                                                                            rw.NodeRef(ref U20Ref);
                                                                                                         }
                                                                                                     }
 
                                                                                                     if (Version >= 35)
                                                                                                     {
-                                                                                                        rw.Single(ref U23);
+                                                                                                        rw.Single(ref U21);
 
                                                                                                         if (Version >= 36)
                                                                                                         {
-                                                                                                            rw.Boolean(ref U24);
-                                                                                                            rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 37);
-                                                                                                            rw.NodeRef(ref U26Ref);
+                                                                                                            rw.Boolean(ref U22);
+                                                                                                            rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 37);
+                                                                                                            rw.NodeRef(ref U24Ref);
                                                                                                         }
                                                                                                     }
                                                                                                 }
@@ -7139,6 +7197,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 rw.Single(ref U02);
             }
 
+            if (Version <= 3)
+            {
+                if (rw.Reader is not null)
+                {
+                    n.AfterJumpOrientationForceCoef = 0f;
+                }
+            }
+
             if (Version >= 4)
             {
                 rw.Single(ref n.afterJumpOrientationAngularSpeedThreshold);
@@ -7177,25 +7243,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         };
         public int Version { get; set; }
 
-        public NodeRefList<CPlugCamControlModel>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090ED08E owner;
-            internal NodeRefView(Chunk090ED08E owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CPlugCamControlModel>>? U01 => owner.U01?.References;
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            if (U01 is not null)
-            {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
-            }
-            yield break;
-        }
-
         public Chunk090ED08E() : this(GameVersion.Unspecified)
         {
         }
@@ -7224,7 +7271,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED08E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED08E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -7251,7 +7297,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                         if (Version >= 4)
                         {
-                            U01 = rw.ListNodeRef<CPlugCamControlModel>(U01);
+                            n.cameraModels_Alternate = rw.ListNodeRef<CPlugCamControlModel>(n.cameraModels_Alternate);
                         }
                     }
                 }

@@ -451,6 +451,8 @@ public partial interface IPlugVehicleCarPhyTuningTMF : IPlugVehicleCarPhyTuning,
 public partial interface IPlugVehicleCarPhyTuningMP3 : IPlugVehicleCarPhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers5, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers9, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers10, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers12
 {
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? CameraModels { get; set; }
+    float? Drifting_InputSteerSensitivity { get; set; }
+    float? Normal_InputSteerSensitivity { get; set; }
 }
 
 public partial interface IPlugVehicleCarPhyTuningTMT : IPlugVehicleCarPhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMT, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers5, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers9, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers10, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers12
@@ -465,5 +467,6 @@ public partial interface IPlugVehicleCarPhyTuningMP4 : IPlugVehicleCarPhyTuning,
 
 public partial interface IPlugVehicleCarPhyTuningTM2020 : IPlugVehicleCarPhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers6, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers10, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers12
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? CameraModels_Alternate { get; set; }
 }
 
