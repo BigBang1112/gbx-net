@@ -155,14 +155,14 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     public async Task ReadWrite_VersionThirtyFive_PreservesFloatInsteadOfNormalizingItToBoolean()
     {
         var node = new CPlugVehicleCarPhyTuning();
-        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED08B { Version = 35, U23 = 1500.5f };
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED08B { Version = 35, U21 = 1500.5f };
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
         using (var rw = new GbxReaderWriter(writer)) chunk.ReadWrite(node, rw);
         await Assert.That(BitConverter.ToSingle(payload.ToArray(), (int)payload.Length - 4)).IsEqualTo(1500.5f);
         var restoredChunk = new CPlugVehicleCarPhyTuning.Chunk090ED08B();
         await RoundTrip(payload, restoredChunk);
-        await Assert.That(restoredChunk.U23).IsEqualTo(1500.5f);
+        await Assert.That(restoredChunk.U21).IsEqualTo(1500.5f);
     }
 
     [Test]
