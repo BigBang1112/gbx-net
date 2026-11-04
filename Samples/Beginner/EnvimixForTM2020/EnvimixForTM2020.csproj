@@ -11,7 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Src\GBX.NET.Hashing\GBX.NET.Hashing.csproj" />
         <ProjectReference Include="..\..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
         <ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>

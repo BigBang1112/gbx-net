@@ -27,7 +27,7 @@ public class ScriptCommandTests
                 Print(File.Exists(Args[1]));
                 Print(typeof(CGameCtnChallenge).Name);
                 Print(typeof(GBX.NET.Crypto.Cry).Name);
-                Print(typeof(GBX.NET.Hashing.CRC32).Name);
+                Print(Gbx.CRC32!.Hash(System.Text.Encoding.ASCII.GetBytes("123456789")));
                 Print(typeof(GBX.NET.LZO.Lzo).Name);
                 Print(typeof(GBX.NET.ZLib.ZLib).Name);
                 """);
@@ -39,7 +39,7 @@ public class ScriptCommandTests
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
             await Assert.That(output.ToString()).IsEqualTo(string.Join(Environment.NewLine,
-                "CMwNod", "6", "True", "CGameCtnChallenge", "Cry", "CRC32", "Lzo", "ZLib", ""));
+                "CMwNod", "6", "True", "CGameCtnChallenge", "Cry", "3421780262", "Lzo", "ZLib", ""));
             await Assert.That(Gbx.Parse(destination).Node is not null).IsTrue();
             using var reopened = new FileStream(script, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
         }

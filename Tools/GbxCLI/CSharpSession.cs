@@ -38,8 +38,7 @@ internal sealed class CSharpSession
                 .WithSourceResolver(new SourceFileResolver([], directory))
                 .WithMetadataResolver(ScriptMetadataResolver.Default.WithBaseDirectory(directory))
                 .AddReferences(typeof(GBX.NET.LZO.Lzo).Assembly, typeof(GBX.NET.ZLib.ZLib).Assembly,
-                    typeof(GBX.NET.Crypto.Cry).Assembly, typeof(GBX.NET.Hashing.CRC32).Assembly,
-                    typeof(TmEssentials.TimeInt32).Assembly)
+                    typeof(GBX.NET.Crypto.Cry).Assembly, typeof(TmEssentials.TimeInt32).Assembly)
                 .AddImports("System.IO", "GBX.NET.Engines.Game", "GBX.NET.Engines.MwFoundations");
         }
     }

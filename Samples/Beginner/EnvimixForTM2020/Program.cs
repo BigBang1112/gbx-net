@@ -1,6 +1,5 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Game;
-using GBX.NET.Hashing;
 using GBX.NET.LZO;
 using System.Text;
 using TmEssentials;

@@ -12,7 +12,6 @@ COPY Src/Directory.Build.targets Src/
 COPY Tools/$APPNAME/*.csproj Tools/$APPNAME/
 COPY Src/GBX.NET/*.csproj Src/GBX.NET/
 COPY Src/GBX.NET.LZO/*.csproj Src/GBX.NET.LZO/
-COPY Src/GBX.NET.Hashing/*.csproj Src/GBX.NET.Hashing/
 COPY Generators/GBX.NET.Generators/*.csproj Generators/GBX.NET.Generators/
 RUN dotnet restore Tools/$APPNAME/$APPNAME.csproj -a $TARGETARCH
 
@@ -20,7 +19,6 @@ RUN dotnet restore Tools/$APPNAME/$APPNAME.csproj -a $TARGETARCH
 COPY Tools/$APPNAME/ Tools/$APPNAME/
 COPY Src/GBX.NET/ Src/GBX.NET/
 COPY Src/GBX.NET.LZO/ Src/GBX.NET.LZO/
-COPY Src/GBX.NET.Hashing/ Src/GBX.NET.Hashing/
 COPY Generators/GBX.NET.Generators/ Generators/GBX.NET.Generators/
 COPY Resources/ Resources/
 WORKDIR /src/Tools/$APPNAME
