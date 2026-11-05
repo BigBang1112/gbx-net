@@ -4,12 +4,347 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleVisModelSharedMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared
+public interface IPlugVehicleVisModelSharedMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+{
+    T0? MaterialBrakeDisc
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialBrakeDisc);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialBrakeDisc = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialDetails
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialDetails);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialDetails = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialGlass
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialGlass);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialGlass = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialLightRear
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialLightRear);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialLightRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialPilot
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialPilot);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialPilot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialSkin
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialSkin);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? MaterialWheels
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialWheels);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialWheels = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+{
+    T0? LegacyBrakeHeatSpeedFromFBrake
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyBrakeHeatSpeedFromFBrake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyBrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers3<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class where T1 : class where T2 : class
+{
+    float BrakeCoolingSpeed { get; set; }
+    T0? ExplosionEmitterModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExplosionEmitterModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExplosionEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float FakeShadBottom { get; set; }
+    float FakeShadTop { get; set; }
+    T0? GlassSmashParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GlassSmashParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GlassSmashParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    float ILightFront { get; set; }
+    float ILightRear { get; set; }
+    float ILightRearBrake { get; set; }
+    float ILightSelfIllum { get; set; }
+    T1? LightFront
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightFront);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightFront = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? LightFrontSmall
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightFrontSmall);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightFrontSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? LightRear
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightRear);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? MaterialGhost
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialGhost);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MaterialGhost = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ProjFront
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjFront);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjFront = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ProjShadow
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjShadow);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ProjWheelShadow
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjWheelShadow);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ProjWheelShadow = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? WaterSplashParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WaterSplashParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WaterSplashParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers4<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    T0? BackWaterWakeParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).BackWaterWakeParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).BackWaterWakeParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? EngineDistortionParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).EngineDistortionParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).EngineDistortionParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? FrontWaterWakeParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).FrontWaterWakeParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).FrontWaterWakeParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? HoveringWaterWakeParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).HoveringWaterWakeParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).HoveringWaterWakeParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<T1>? Materials
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).Materials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, T1>(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GetMaterialsInterfaceReferences, true, "Materials");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, T1>(value, false));
+    }
+    T2? NullMesh
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).NullMesh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).NullMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? OnFireParticle
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).OnFireParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).OnFireParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? PreyTrailParticle
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).PreyTrailParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).PreyTrailParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T3? SoundWaterWake
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWaterWake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWaterWake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T4? VisEntFxModel
+    {
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VisEntFxModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VisEntFxModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? WingTipVorticesParticleModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WingTipVorticesParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WingTipVorticesParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers5 : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared
 {
     global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleVisModelSharedMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+public interface IPlugVehicleVisModelSharedMembers6<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    T0? BodyMaterialImpact
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).BodyMaterialImpact);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).BodyMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ExhaustFlameModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExhaustFlameModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExhaustFlameModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ExhaustNitroModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExhaustNitroModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).ExhaustNitroModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? LightTrailParticle
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightTrailParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LightTrailParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? MeshWaterSplashParticleModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MeshWaterSplashParticleModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).MeshWaterSplashParticleModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    int SoundBodyImpact_MaskingDelay { get; set; }
+    T2? SoundBodySurface_Deprecated
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBodySurface_Deprecated);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBodySurface_Deprecated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundBrakeLights
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBrakeLights);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBrakeLights = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundBrakes
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBrakes);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundBrakes = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEngine
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEngine);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEngine = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventBackFire
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBackFire);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBackFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventBeginFreeWheeling
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBeginFreeWheeling);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBeginFreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventBodyImpact
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyImpact);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventBodyPartDetached
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyPartDetached);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyPartDetached = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventBodyPartImpact
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyPartImpact);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventBodyPartImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventEndFreeWheeling
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventEndFreeWheeling);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventEndFreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventGlassSmash
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventGlassSmash);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventGlassSmash = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventHelicoRelease
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventHelicoRelease);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventHelicoRelease = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventTurboStart
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventTurboStart);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventTurboStart = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventWheelJump
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventWheelJump);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventWheelJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundEventWheelLand
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventWheelLand);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundEventWheelLand = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundFreeWheeling
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundFreeWheeling);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundFreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundGearChange
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundGearChange);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundGearChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundHorn
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundHorn);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundHorn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundRoar
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundRoar);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundRoar = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundSparkles
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundSparkles);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundSparkles = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundTurbo
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundTurbo);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundTurbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundVibrations
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundVibrations);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundVibrations = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    int SoundWheelImpact_BackMaskingDelay { get; set; }
+    int SoundWheelImpact_FrontMaskingDelay { get; set; }
+    T2? SoundWheelSurfaceLeft
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWheelSurfaceLeft);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWheelSurfaceLeft = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? SoundWheelSurfaceRight
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWheelSurfaceRight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SoundWheelSurfaceRight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLocatedSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? SparkleParticle
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SparkleParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).SparkleParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? WheelMaterialImpact
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WheelMaterialImpact);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WheelMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<T3>? WheelParticles
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WheelParticles is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, T3>(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GetWheelParticlesInterfaceReferences, true, "WheelParticles");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).WheelParticles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, T3>(value, false));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers7<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
 {
     IReadOnlyList<T0>? VehicleEmitters
     {
@@ -18,7 +353,21 @@ public interface IPlugVehicleVisModelSharedMembers2<T0> : global::GBX.NET.Interf
     }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugVehicleVisModelSharedMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+public interface IPlugVehicleVisModelSharedMembers8<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+{
+    T0? LegacyDirtSpeedFromVehicleSpeedKmh
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyDirtSpeedFromVehicleSpeedKmh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyDirtSpeedFromVehicleSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? LegacyWaterTrailFromSpeedKmh
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyWaterTrailFromSpeedKmh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).LegacyWaterTrailFromSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers9<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
 {
     IReadOnlyList<T0>? VehicleMaterialGroups
     {
@@ -30,32 +379,35 @@ public partial interface IPlugVehicleVisModelShared : IClassVersion<global::GBX.
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedTMNESWC : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1
+public partial interface IPlugVehicleVisModelSharedTMNESWC : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers5
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedVSK5 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>
+public partial interface IPlugVehicleVisModelSharedVSK5 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers7<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedTMF : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>
+public partial interface IPlugVehicleVisModelSharedTMF : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers7<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedMP3 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>
+public partial interface IPlugVehicleVisModelSharedMP3 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3, global::GBX.NET.Interfaces.Plug.IPlugLightMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers7<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedTMT : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>
+public partial interface IPlugVehicleVisModelSharedTMT : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugLightTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers6<global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedMP4 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>
+public partial interface IPlugVehicleVisModelSharedMP4 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugLightMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers4<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers6<global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedTM2020 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>
+public partial interface IPlugVehicleVisModelSharedTM2020 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugLightTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers4<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers6<global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers9<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>
 {
+    PlugCurve? BrakeHeatSpeedFromFBrake { get; set; }
+    PlugCurve? DirtSpeedFromVehicleSpeedKmh { get; set; }
+    PlugCurve? WaterTrailFromSpeedKmh { get; set; }
     string[]? WheelNames { get; set; }
     global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? WheelSettings { get; set; }
 }

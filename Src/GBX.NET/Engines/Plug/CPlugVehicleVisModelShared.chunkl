@@ -21,9 +21,9 @@ CPlugVehicleVisModelShared 0x090E8000
   CPlugVehicleMaterialGroup[] VehicleMaterialGroups (deprec)
 
 0x013 [VSK5, TMF]
+  CFuncKeysReal LegacyDirtSpeedFromVehicleSpeedKmh
   CFuncKeysReal
-  CFuncKeysReal
-  CFuncKeysReal
+  CFuncKeysReal LegacyWaterTrailFromSpeedKmh
 
 0x014 [VSK5, TMF, MP3]
   CPlugVehicleVisEmitterModel[] VehicleEmitters (deprec)
@@ -31,26 +31,26 @@ CPlugVehicleVisModelShared 0x090E8000
 0x015 [MP3, TMT, MP4, TM2020]
 
 0x016 [MP3, TMT, MP4]
-  CFuncKeysReal
-  float
+  CFuncKeysReal LegacyBrakeHeatSpeedFromFBrake
+  float BrakeCoolingSpeed
 
 0x018 [MP3, TMT, MP4, TM2020]
-  CPlugParticleEmitterModel
+  CPlugParticleEmitterModel ExplosionEmitterModel
 
 0x01E [MP3.v2, TMT.v2, MP4.v4, TM2020.v4]
   version
-  CPlugMaterial
+  CPlugMaterial MaterialGhost
   v1+
     v2-
-      CPlugMaterial
-      CPlugMaterial
-      CPlugMaterial
-      CPlugMaterial
-      CPlugMaterial
-      CPlugMaterial
-      CPlugMaterial
+      CPlugMaterial MaterialSkin
+      CPlugMaterial MaterialGlass
+      CPlugMaterial MaterialDetails
+      CPlugMaterial MaterialPilot
+      CPlugMaterial MaterialWheels
+      CPlugMaterial MaterialLightRear
+      CPlugMaterial MaterialBrakeDisc
     v3+
-      CPlugMaterial[7]
+      CPlugMaterial[7] Materials // Skin, Glass, Details, Pilot, Wheels, LightRear, BrakeDisc. Version 2 and older use the separate material fields.
     v1-
       CPlugMaterial
       CPlugMaterial
@@ -59,54 +59,53 @@ CPlugVehicleVisModelShared 0x090E8000
       CPlugMaterial
       CPlugMaterial
       CPlugMaterial
-    CPlugLight
-    CPlugLight
-    CPlugLight
-    CPlugLight
-    CPlugLight
-    CPlugLight
-    float
-    float
+    CPlugLight LightFront
+    CPlugLight LightFrontSmall
+    CPlugLight LightRear
+    CPlugLight ProjShadow
+    CPlugLight ProjFront
+    CPlugLight ProjWheelShadow
+    float FakeShadBottom
+    float FakeShadTop
     v4+
-      CPlugSolid2Model
+      CPlugSolid2Model NullMesh
 
 0x01F [MP3.v1, TMT.v5, MP4.v14, TM2020.v19]
   version
-  CPlugParticleEmitterModel
+  CPlugParticleEmitterModel GlassSmashParticleModel
   v1+
-    CPlugParticleEmitterModel
+    CPlugParticleEmitterModel WaterSplashParticleModel
     v2+
-      CPlugParticleEmitterModel
+      CPlugParticleEmitterModel MeshWaterSplashParticleModel
       v3+
-        CPlugParticleEmitterModel
+        CPlugParticleEmitterModel ExhaustNitroModel
         v4+
-          CPlugParticleEmitterModel
+          CPlugParticleEmitterModel ExhaustFlameModel
           v5+
-            CPlugVehicleVisEmitterModel[] (deprec)
-            CPlugParticleEmitterModel
-            CPlugParticleEmitterModel
-            v6=
-              CPlugVisEntFxModel
+            CPlugVehicleVisEmitterModel[] WheelParticles (deprec)
+            CPlugParticleEmitterModel LightTrailParticle
+            CPlugParticleEmitterModel SparkleParticle
+            v6= // Emitters of an inline CPlugVisEntFxModel.
               CPlugParticleEmitterModel
               CPlugParticleEmitterModel
               CPlugParticleEmitterModel
               CPlugParticleEmitterModel
             v7+
-              CPlugVisEntFxModel
+              CPlugVisEntFxModel VisEntFxModel
               v8+
-                CPlugParticleEmitterModel
+                CPlugParticleEmitterModel PreyTrailParticle
                 v9+
-                  CPlugParticleEmitterModel
+                  CPlugParticleEmitterModel OnFireParticle
                   v10+
-                    CPlugParticleEmitterModel
+                    CPlugParticleEmitterModel FrontWaterWakeParticleModel
                     v11+
-                      CPlugParticleEmitterModel
+                      CPlugParticleEmitterModel BackWaterWakeParticleModel
                       v12+
-                        CPlugParticleEmitterModel
+                        CPlugParticleEmitterModel HoveringWaterWakeParticleModel
                         v13+
-                          CPlugParticleEmitterModel
+                          CPlugParticleEmitterModel EngineDistortionParticleModel
                           v14+
-                            CPlugParticleEmitterModel
+                            CPlugParticleEmitterModel WingTipVorticesParticleModel
   v15+
     CPlugVehicleVisEmitterModel[]
   v16+
@@ -120,22 +119,22 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x020 [MP3.v1, TMT.v1, MP4.v1, TM2020.v2]
   version
-  float
-  float
+  float ILightSelfIllum
+  float ILightRear
   v1+
-    float
-    float
+    float ILightRearBrake
+    float ILightFront
   v2+
     float
 
 0x021 [MP3.v1, TMT.v2, MP4.v3, TM2020.v5]
   version
   v4-
-    CFuncKeysReal
-    CFuncKeysReal
+    CFuncKeysReal LegacyDirtSpeedFromVehicleSpeedKmh
+    CFuncKeysReal LegacyWaterTrailFromSpeedKmh
   v5+
-    PlugCurve
-    PlugCurve
+    PlugCurve DirtSpeedFromVehicleSpeedKmh
+    PlugCurve WaterTrailFromSpeedKmh
   v1+
     v2-
       float
@@ -153,44 +152,44 @@ CPlugVehicleVisModelShared 0x090E8000
       CFuncKeysReal
     v5+
       PlugCurve
-      PlugCurve
-      float
+      PlugCurve BrakeHeatSpeedFromFBrake
+      float BrakeCoolingSpeed
 
 0x022 [TMT.v6, MP4.v7, TM2020.v12]
   version
-  CPlugLocatedSound
-  CPlugLocatedSound
-  CPlugLocatedSound
+  CPlugLocatedSound SoundEventGlassSmash
+  CPlugLocatedSound SoundEventBodyImpact
+  CPlugLocatedSound SoundEventBackFire
   v2+
-    CPlugLocatedSound
-    v2-
-      CPlugLocatedSound
-    v3+
-      CPlugLocatedSound
-      CPlugLocatedSound
-      CPlugLocatedSound
-      v4+
-        CPlugLocatedSound
-        CPlugLocatedSound
-        v5+
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          CPlugLocatedSound
-          v6+
-            CPlugLocatedSound
-            v7+
-              CPlugLocatedSound
+    CPlugLocatedSound SoundEventWheelLand
+  v2-
+    SoundEventWheelJump = SoundEventWheelLand
+  v3+
+    CPlugLocatedSound SoundEventWheelJump
+    CPlugLocatedSound SoundEventBodyPartDetached
+    CPlugLocatedSound SoundEventBodyPartImpact
+  v4+
+    CPlugLocatedSound SoundEventTurboStart
+    CPlugLocatedSound SoundEventHelicoRelease
+  v5+
+    CPlugLocatedSound SoundEventBeginFreeWheeling
+    CPlugLocatedSound SoundEventEndFreeWheeling
+  CPlugLocatedSound SoundHorn
+  CPlugLocatedSound SoundWheelSurfaceLeft
+  CPlugLocatedSound SoundEngine
+  CPlugLocatedSound SoundTurbo
+  CPlugLocatedSound SoundWheelSurfaceRight
+  CPlugLocatedSound SoundBrakes
+  CPlugLocatedSound SoundBodySurface_Deprecated
+  CPlugLocatedSound SoundGearChange
+  CPlugLocatedSound SoundBrakeLights
+  CPlugLocatedSound SoundRoar
+  CPlugLocatedSound SoundVibrations
+  CPlugLocatedSound SoundSparkles
+  v6+
+    CPlugLocatedSound SoundFreeWheeling
+  v7+
+    CPlugLocatedSound SoundWaterWake
   v8+
     CPlugLocatedSound
     CPlugLocatedSound
@@ -220,12 +219,12 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x023 [TMT.v1, MP4.v1, TM2020.v1]
   version
-  CPlugParticleMaterialImpactModel
-  CPlugParticleMaterialImpactModel
+  CPlugParticleMaterialImpactModel BodyMaterialImpact
+  CPlugParticleMaterialImpactModel WheelMaterialImpact
   v1+
-    int
-    int
-    int
+    int SoundBodyImpact_MaskingDelay
+    int SoundWheelImpact_FrontMaskingDelay
+    int SoundWheelImpact_BackMaskingDelay
     int
 
 0x024 [TM2020.v2]
@@ -262,26 +261,26 @@ archive SimulationWheel
   id Name
 
 archive VisualArm
-  VisualId
-  VisualId
-  VisualId
-  bool
-  bool
-  int
+  VisualId Visual
+  VisualId Hook1
+  VisualId Hook2
+  bool IsScale
+  bool IsRotate
+  int WheelIndex
 
 archive VisualLight
-  VisualId
-  bool
+  VisualId Visual
+  bool IsRear
 
 archive VisualWheel
-  VisualId
-  VisualId
-  VisualId
-  VisualId
+  VisualId Tire
+  VisualId Brake
+  VisualId Hub
+  VisualId Guard
   v1+
-    VisualId
-  int
-  bool
+    VisualId Shadow
+  int PhyWheelIndex
+  bool RotateY
 
 archive VisualId
   id Name

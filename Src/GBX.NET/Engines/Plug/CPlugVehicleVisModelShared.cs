@@ -193,7 +193,7 @@ public partial class CPlugVehicleVisModelShared
     {
         public override string ToString()
         {
-            return $"{Name} (U01: {U01}, U02: {U01})";
+            return $"{Name} (U01: {U01}, U02: {U02})";
         }
     }
 
@@ -211,7 +211,7 @@ public partial class CPlugVehicleVisModelShared
     {
         public override string ToString()
         {
-            return $"{U01}, {U02}, {U03} [U04: {U04}, U05: {U05}, U06: {U06}]";
+            return $"{Visual}, {Hook1}, {Hook2} [IsScale: {IsScale}, IsRotate: {IsRotate}, WheelIndex: {WheelIndex}]";
         }
     }
 
@@ -220,7 +220,7 @@ public partial class CPlugVehicleVisModelShared
     {
         public override string ToString()
         {
-            return $"{U01} [U02: {U02}]";
+            return $"{Visual} [IsRear: {IsRear}]";
         }
     }
 
@@ -229,7 +229,7 @@ public partial class CPlugVehicleVisModelShared
     {
         public override string ToString()
         {
-            return $"{U01}, {U02}, {U03}, {U04} [U05: {U05}, U06: {U06}]";
+            return $"{Tire}, {Brake}, {Hub}, {Guard} [PhyWheelIndex: {PhyWheelIndex}, RotateY: {RotateY}]";
         }
     }
 

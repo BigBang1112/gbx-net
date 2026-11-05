@@ -30,6 +30,26 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         set => vehicleMaterialGroups = value;
     }
 
+    private NodeRef<CFuncKeysReal>? legacyDirtSpeedFromVehicleSpeedKmhRef;
+    /// <remarks>Applied with: 0x013, 0x021 v0-4 body chunks</remarks>
+    [AppliedWithChunk<Chunk090E8013>]
+    [AppliedWithChunk<Chunk090E8021>(0, 4)]
+    public CFuncKeysReal? LegacyDirtSpeedFromVehicleSpeedKmh
+    {
+        get => legacyDirtSpeedFromVehicleSpeedKmhRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyDirtSpeedFromVehicleSpeedKmhRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? legacyWaterTrailFromSpeedKmhRef;
+    /// <remarks>Applied with: 0x013, 0x021 v0-4 body chunks</remarks>
+    [AppliedWithChunk<Chunk090E8013>]
+    [AppliedWithChunk<Chunk090E8021>(0, 4)]
+    public CFuncKeysReal? LegacyWaterTrailFromSpeedKmh
+    {
+        get => legacyWaterTrailFromSpeedKmhRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyWaterTrailFromSpeedKmhRef, value);
+    }
+
     private NodeRefList<CPlugVehicleVisEmitterModel>? vehicleEmitters;
     /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk090E8014>]
@@ -37,6 +57,676 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     {
         get => vehicleEmitters;
         set => vehicleEmitters = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? legacyBrakeHeatSpeedFromFBrakeRef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8016>]
+    public CFuncKeysReal? LegacyBrakeHeatSpeedFromFBrake
+    {
+        get => legacyBrakeHeatSpeedFromFBrakeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyBrakeHeatSpeedFromFBrakeRef, value);
+    }
+
+    private float brakeCoolingSpeed;
+    /// <remarks>Applied with: 0x016, 0x021 v5+ body chunks</remarks>
+    [AppliedWithChunk<Chunk090E8016>]
+    [AppliedWithChunk<Chunk090E8021>(5)]
+    public float BrakeCoolingSpeed
+    {
+        get => this.brakeCoolingSpeed;
+        set => this.brakeCoolingSpeed = value;
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? explosionEmitterModelRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8018>]
+    public CPlugParticleEmitterModel? ExplosionEmitterModel
+    {
+        get => explosionEmitterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref explosionEmitterModelRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialGhostRef;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>]
+    public CPlugMaterial? MaterialGhost
+    {
+        get => materialGhostRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialGhostRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialSkinRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialSkin
+    {
+        get => materialSkinRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSkinRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialGlassRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialGlass
+    {
+        get => materialGlassRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialGlassRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialDetailsRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialDetails
+    {
+        get => materialDetailsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialDetailsRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialPilotRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialPilot
+    {
+        get => materialPilotRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialPilotRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialWheelsRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialWheels
+    {
+        get => materialWheelsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialWheelsRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialLightRearRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialLightRear
+    {
+        get => materialLightRearRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialLightRearRef, value);
+    }
+
+    private NodeRef<CPlugMaterial>? materialBrakeDiscRef;
+    /// <remarks>Applied with: 0x01E v1-2 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1, 2)]
+    public CPlugMaterial? MaterialBrakeDisc
+    {
+        get => materialBrakeDiscRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialBrakeDiscRef, value);
+    }
+
+    private NodeRefList<CPlugMaterial>? materials;
+    /// <summary>
+    /// Skin, Glass, Details, Pilot, Wheels, LightRear, BrakeDisc. Version 2 and older use the separate material fields.
+    /// </summary>
+    /// <remarks>Applied with: 0x01E v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(3)]
+    public NodeRefList<CPlugMaterial>? Materials
+    {
+        get => materials;
+        set => materials = value;
+    }
+
+    private NodeRef<CPlugLight>? lightFrontRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? LightFront
+    {
+        get => lightFrontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightFrontRef, value);
+    }
+
+    private NodeRef<CPlugLight>? lightFrontSmallRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? LightFrontSmall
+    {
+        get => lightFrontSmallRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightFrontSmallRef, value);
+    }
+
+    private NodeRef<CPlugLight>? lightRearRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? LightRear
+    {
+        get => lightRearRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightRearRef, value);
+    }
+
+    private NodeRef<CPlugLight>? projShadowRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? ProjShadow
+    {
+        get => projShadowRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref projShadowRef, value);
+    }
+
+    private NodeRef<CPlugLight>? projFrontRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? ProjFront
+    {
+        get => projFrontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref projFrontRef, value);
+    }
+
+    private NodeRef<CPlugLight>? projWheelShadowRef;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public CPlugLight? ProjWheelShadow
+    {
+        get => projWheelShadowRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref projWheelShadowRef, value);
+    }
+
+    private float fakeShadBottom;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public float FakeShadBottom
+    {
+        get => this.fakeShadBottom;
+        set => this.fakeShadBottom = value;
+    }
+
+    private float fakeShadTop;
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(1)]
+    public float FakeShadTop
+    {
+        get => this.fakeShadTop;
+        set => this.fakeShadTop = value;
+    }
+
+    private NodeRef<CPlugSolid2Model>? nullMeshRef;
+    /// <remarks>Applied with: 0x01E v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801E>(4)]
+    public CPlugSolid2Model? NullMesh
+    {
+        get => nullMeshRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref nullMeshRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? glassSmashParticleModelRef;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>]
+    public CPlugParticleEmitterModel? GlassSmashParticleModel
+    {
+        get => glassSmashParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref glassSmashParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? waterSplashParticleModelRef;
+    /// <remarks>Applied with: 0x01F v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(1)]
+    public CPlugParticleEmitterModel? WaterSplashParticleModel
+    {
+        get => waterSplashParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterSplashParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? meshWaterSplashParticleModelRef;
+    /// <remarks>Applied with: 0x01F v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(2)]
+    public CPlugParticleEmitterModel? MeshWaterSplashParticleModel
+    {
+        get => meshWaterSplashParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshWaterSplashParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? exhaustNitroModelRef;
+    /// <remarks>Applied with: 0x01F v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(3)]
+    public CPlugParticleEmitterModel? ExhaustNitroModel
+    {
+        get => exhaustNitroModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref exhaustNitroModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? exhaustFlameModelRef;
+    /// <remarks>Applied with: 0x01F v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(4)]
+    public CPlugParticleEmitterModel? ExhaustFlameModel
+    {
+        get => exhaustFlameModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref exhaustFlameModelRef, value);
+    }
+
+    private NodeRefList<CPlugVehicleVisEmitterModel>? wheelParticles;
+    /// <remarks>Applied with: 0x01F v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(5)]
+    public NodeRefList<CPlugVehicleVisEmitterModel>? WheelParticles
+    {
+        get => wheelParticles;
+        set => wheelParticles = value;
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? lightTrailParticleRef;
+    /// <remarks>Applied with: 0x01F v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(5)]
+    public CPlugParticleEmitterModel? LightTrailParticle
+    {
+        get => lightTrailParticleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightTrailParticleRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? sparkleParticleRef;
+    /// <remarks>Applied with: 0x01F v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(5)]
+    public CPlugParticleEmitterModel? SparkleParticle
+    {
+        get => sparkleParticleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sparkleParticleRef, value);
+    }
+
+    private NodeRef<CPlugVisEntFxModel>? visEntFxModelRef;
+    /// <remarks>Applied with: 0x01F v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(7)]
+    public CPlugVisEntFxModel? VisEntFxModel
+    {
+        get => visEntFxModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visEntFxModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? preyTrailParticleRef;
+    /// <remarks>Applied with: 0x01F v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(8)]
+    public CPlugParticleEmitterModel? PreyTrailParticle
+    {
+        get => preyTrailParticleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref preyTrailParticleRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? onFireParticleRef;
+    /// <remarks>Applied with: 0x01F v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(9)]
+    public CPlugParticleEmitterModel? OnFireParticle
+    {
+        get => onFireParticleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref onFireParticleRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? frontWaterWakeParticleModelRef;
+    /// <remarks>Applied with: 0x01F v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(10)]
+    public CPlugParticleEmitterModel? FrontWaterWakeParticleModel
+    {
+        get => frontWaterWakeParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref frontWaterWakeParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? backWaterWakeParticleModelRef;
+    /// <remarks>Applied with: 0x01F v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(11)]
+    public CPlugParticleEmitterModel? BackWaterWakeParticleModel
+    {
+        get => backWaterWakeParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref backWaterWakeParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? hoveringWaterWakeParticleModelRef;
+    /// <remarks>Applied with: 0x01F v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(12)]
+    public CPlugParticleEmitterModel? HoveringWaterWakeParticleModel
+    {
+        get => hoveringWaterWakeParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hoveringWaterWakeParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? engineDistortionParticleModelRef;
+    /// <remarks>Applied with: 0x01F v13+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(13)]
+    public CPlugParticleEmitterModel? EngineDistortionParticleModel
+    {
+        get => engineDistortionParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref engineDistortionParticleModelRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? wingTipVorticesParticleModelRef;
+    /// <remarks>Applied with: 0x01F v14+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E801F>(14)]
+    public CPlugParticleEmitterModel? WingTipVorticesParticleModel
+    {
+        get => wingTipVorticesParticleModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref wingTipVorticesParticleModelRef, value);
+    }
+
+    private float iLightSelfIllum;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8020>]
+    public float ILightSelfIllum
+    {
+        get => this.iLightSelfIllum;
+        set => this.iLightSelfIllum = value;
+    }
+
+    private float iLightRear;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8020>]
+    public float ILightRear
+    {
+        get => this.iLightRear;
+        set => this.iLightRear = value;
+    }
+
+    private float iLightRearBrake;
+    /// <remarks>Applied with: 0x020 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8020>(1)]
+    public float ILightRearBrake
+    {
+        get => this.iLightRearBrake;
+        set => this.iLightRearBrake = value;
+    }
+
+    private float iLightFront;
+    /// <remarks>Applied with: 0x020 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8020>(1)]
+    public float ILightFront
+    {
+        get => this.iLightFront;
+        set => this.iLightFront = value;
+    }
+
+    private PlugCurve? dirtSpeedFromVehicleSpeedKmh;
+    /// <remarks>Applied with: 0x021 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8021>(5)]
+    public PlugCurve? DirtSpeedFromVehicleSpeedKmh
+    {
+        get => this.dirtSpeedFromVehicleSpeedKmh;
+        set => this.dirtSpeedFromVehicleSpeedKmh = value;
+    }
+
+    private PlugCurve? waterTrailFromSpeedKmh;
+    /// <remarks>Applied with: 0x021 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8021>(5)]
+    public PlugCurve? WaterTrailFromSpeedKmh
+    {
+        get => this.waterTrailFromSpeedKmh;
+        set => this.waterTrailFromSpeedKmh = value;
+    }
+
+    private PlugCurve? brakeHeatSpeedFromFBrake;
+    /// <remarks>Applied with: 0x021 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8021>(5)]
+    public PlugCurve? BrakeHeatSpeedFromFBrake
+    {
+        get => this.brakeHeatSpeedFromFBrake;
+        set => this.brakeHeatSpeedFromFBrake = value;
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventGlassSmashRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundEventGlassSmash
+    {
+        get => soundEventGlassSmashRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventGlassSmashRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventBodyImpactRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundEventBodyImpact
+    {
+        get => soundEventBodyImpactRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventBodyImpactRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventBackFireRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundEventBackFire
+    {
+        get => soundEventBackFireRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventBackFireRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventWheelLandRef;
+    /// <remarks>Applied with: 0x022 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(2)]
+    public CPlugLocatedSound? SoundEventWheelLand
+    {
+        get => soundEventWheelLandRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventWheelLandRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventWheelJumpRef;
+    /// <remarks>Applied with: 0x022 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(3)]
+    public CPlugLocatedSound? SoundEventWheelJump
+    {
+        get => soundEventWheelJumpRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventWheelJumpRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventBodyPartDetachedRef;
+    /// <remarks>Applied with: 0x022 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(3)]
+    public CPlugLocatedSound? SoundEventBodyPartDetached
+    {
+        get => soundEventBodyPartDetachedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventBodyPartDetachedRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventBodyPartImpactRef;
+    /// <remarks>Applied with: 0x022 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(3)]
+    public CPlugLocatedSound? SoundEventBodyPartImpact
+    {
+        get => soundEventBodyPartImpactRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventBodyPartImpactRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventTurboStartRef;
+    /// <remarks>Applied with: 0x022 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(4)]
+    public CPlugLocatedSound? SoundEventTurboStart
+    {
+        get => soundEventTurboStartRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventTurboStartRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventHelicoReleaseRef;
+    /// <remarks>Applied with: 0x022 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(4)]
+    public CPlugLocatedSound? SoundEventHelicoRelease
+    {
+        get => soundEventHelicoReleaseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventHelicoReleaseRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventBeginFreeWheelingRef;
+    /// <remarks>Applied with: 0x022 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(5)]
+    public CPlugLocatedSound? SoundEventBeginFreeWheeling
+    {
+        get => soundEventBeginFreeWheelingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventBeginFreeWheelingRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEventEndFreeWheelingRef;
+    /// <remarks>Applied with: 0x022 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(5)]
+    public CPlugLocatedSound? SoundEventEndFreeWheeling
+    {
+        get => soundEventEndFreeWheelingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventEndFreeWheelingRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundHornRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundHorn
+    {
+        get => soundHornRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundHornRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundWheelSurfaceLeftRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundWheelSurfaceLeft
+    {
+        get => soundWheelSurfaceLeftRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundWheelSurfaceLeftRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundEngineRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundEngine
+    {
+        get => soundEngineRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEngineRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundTurboRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundTurbo
+    {
+        get => soundTurboRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundTurboRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundWheelSurfaceRightRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundWheelSurfaceRight
+    {
+        get => soundWheelSurfaceRightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundWheelSurfaceRightRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundBrakesRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundBrakes
+    {
+        get => soundBrakesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundBrakesRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundBodySurface_DeprecatedRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundBodySurface_Deprecated
+    {
+        get => soundBodySurface_DeprecatedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundBodySurface_DeprecatedRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundGearChangeRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundGearChange
+    {
+        get => soundGearChangeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundGearChangeRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundBrakeLightsRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundBrakeLights
+    {
+        get => soundBrakeLightsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundBrakeLightsRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundRoarRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundRoar
+    {
+        get => soundRoarRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundRoarRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundVibrationsRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundVibrations
+    {
+        get => soundVibrationsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundVibrationsRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundSparklesRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>]
+    public CPlugLocatedSound? SoundSparkles
+    {
+        get => soundSparklesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundSparklesRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundFreeWheelingRef;
+    /// <remarks>Applied with: 0x022 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(6)]
+    public CPlugLocatedSound? SoundFreeWheeling
+    {
+        get => soundFreeWheelingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundFreeWheelingRef, value);
+    }
+
+    private NodeRef<CPlugLocatedSound>? soundWaterWakeRef;
+    /// <remarks>Applied with: 0x022 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8022>(7)]
+    public CPlugLocatedSound? SoundWaterWake
+    {
+        get => soundWaterWakeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundWaterWakeRef, value);
+    }
+
+    private NodeRef<CPlugParticleMaterialImpactModel>? bodyMaterialImpactRef;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8023>]
+    public CPlugParticleMaterialImpactModel? BodyMaterialImpact
+    {
+        get => bodyMaterialImpactRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bodyMaterialImpactRef, value);
+    }
+
+    private NodeRef<CPlugParticleMaterialImpactModel>? wheelMaterialImpactRef;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8023>]
+    public CPlugParticleMaterialImpactModel? WheelMaterialImpact
+    {
+        get => wheelMaterialImpactRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref wheelMaterialImpactRef, value);
+    }
+
+    private int soundBodyImpact_MaskingDelay;
+    /// <remarks>Applied with: 0x023 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8023>(1)]
+    public int SoundBodyImpact_MaskingDelay
+    {
+        get => this.soundBodyImpact_MaskingDelay;
+        set => this.soundBodyImpact_MaskingDelay = value;
+    }
+
+    private int soundWheelImpact_FrontMaskingDelay;
+    /// <remarks>Applied with: 0x023 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8023>(1)]
+    public int SoundWheelImpact_FrontMaskingDelay
+    {
+        get => this.soundWheelImpact_FrontMaskingDelay;
+        set => this.soundWheelImpact_FrontMaskingDelay = value;
+    }
+
+    private int soundWheelImpact_BackMaskingDelay;
+    /// <remarks>Applied with: 0x023 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090E8023>(1)]
+    public int SoundWheelImpact_BackMaskingDelay
+    {
+        get => this.soundWheelImpact_BackMaskingDelay;
+        set => this.soundWheelImpact_BackMaskingDelay = value;
     }
 
     private WheelSetting[]? wheelSettings;
@@ -63,7 +753,70 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         private readonly CPlugVehicleVisModelShared owner;
         internal NodeRefView(CPlugVehicleVisModelShared owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CPlugVehicleMaterialGroup>>? VehicleMaterialGroups => owner.vehicleMaterialGroups?.References;
+        public NodeRef<CFuncKeysReal> LegacyDirtSpeedFromVehicleSpeedKmh => NodeRef.GetOrCreate(ref owner.legacyDirtSpeedFromVehicleSpeedKmhRef);
+        public NodeRef<CFuncKeysReal> LegacyWaterTrailFromSpeedKmh => NodeRef.GetOrCreate(ref owner.legacyWaterTrailFromSpeedKmhRef);
         public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? VehicleEmitters => owner.vehicleEmitters?.References;
+        public NodeRef<CFuncKeysReal> LegacyBrakeHeatSpeedFromFBrake => NodeRef.GetOrCreate(ref owner.legacyBrakeHeatSpeedFromFBrakeRef);
+        public NodeRef<CPlugParticleEmitterModel> ExplosionEmitterModel => NodeRef.GetOrCreate(ref owner.explosionEmitterModelRef);
+        public NodeRef<CPlugMaterial> MaterialGhost => NodeRef.GetOrCreate(ref owner.materialGhostRef);
+        public NodeRef<CPlugMaterial> MaterialSkin => NodeRef.GetOrCreate(ref owner.materialSkinRef);
+        public NodeRef<CPlugMaterial> MaterialGlass => NodeRef.GetOrCreate(ref owner.materialGlassRef);
+        public NodeRef<CPlugMaterial> MaterialDetails => NodeRef.GetOrCreate(ref owner.materialDetailsRef);
+        public NodeRef<CPlugMaterial> MaterialPilot => NodeRef.GetOrCreate(ref owner.materialPilotRef);
+        public NodeRef<CPlugMaterial> MaterialWheels => NodeRef.GetOrCreate(ref owner.materialWheelsRef);
+        public NodeRef<CPlugMaterial> MaterialLightRear => NodeRef.GetOrCreate(ref owner.materialLightRearRef);
+        public NodeRef<CPlugMaterial> MaterialBrakeDisc => NodeRef.GetOrCreate(ref owner.materialBrakeDiscRef);
+        public IReadOnlyList<NodeRef<CPlugMaterial>>? Materials => owner.materials?.References;
+        public NodeRef<CPlugLight> LightFront => NodeRef.GetOrCreate(ref owner.lightFrontRef);
+        public NodeRef<CPlugLight> LightFrontSmall => NodeRef.GetOrCreate(ref owner.lightFrontSmallRef);
+        public NodeRef<CPlugLight> LightRear => NodeRef.GetOrCreate(ref owner.lightRearRef);
+        public NodeRef<CPlugLight> ProjShadow => NodeRef.GetOrCreate(ref owner.projShadowRef);
+        public NodeRef<CPlugLight> ProjFront => NodeRef.GetOrCreate(ref owner.projFrontRef);
+        public NodeRef<CPlugLight> ProjWheelShadow => NodeRef.GetOrCreate(ref owner.projWheelShadowRef);
+        public NodeRef<CPlugSolid2Model> NullMesh => NodeRef.GetOrCreate(ref owner.nullMeshRef);
+        public NodeRef<CPlugParticleEmitterModel> GlassSmashParticleModel => NodeRef.GetOrCreate(ref owner.glassSmashParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> WaterSplashParticleModel => NodeRef.GetOrCreate(ref owner.waterSplashParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> MeshWaterSplashParticleModel => NodeRef.GetOrCreate(ref owner.meshWaterSplashParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> ExhaustNitroModel => NodeRef.GetOrCreate(ref owner.exhaustNitroModelRef);
+        public NodeRef<CPlugParticleEmitterModel> ExhaustFlameModel => NodeRef.GetOrCreate(ref owner.exhaustFlameModelRef);
+        public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? WheelParticles => owner.wheelParticles?.References;
+        public NodeRef<CPlugParticleEmitterModel> LightTrailParticle => NodeRef.GetOrCreate(ref owner.lightTrailParticleRef);
+        public NodeRef<CPlugParticleEmitterModel> SparkleParticle => NodeRef.GetOrCreate(ref owner.sparkleParticleRef);
+        public NodeRef<CPlugVisEntFxModel> VisEntFxModel => NodeRef.GetOrCreate(ref owner.visEntFxModelRef);
+        public NodeRef<CPlugParticleEmitterModel> PreyTrailParticle => NodeRef.GetOrCreate(ref owner.preyTrailParticleRef);
+        public NodeRef<CPlugParticleEmitterModel> OnFireParticle => NodeRef.GetOrCreate(ref owner.onFireParticleRef);
+        public NodeRef<CPlugParticleEmitterModel> FrontWaterWakeParticleModel => NodeRef.GetOrCreate(ref owner.frontWaterWakeParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> BackWaterWakeParticleModel => NodeRef.GetOrCreate(ref owner.backWaterWakeParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> HoveringWaterWakeParticleModel => NodeRef.GetOrCreate(ref owner.hoveringWaterWakeParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> EngineDistortionParticleModel => NodeRef.GetOrCreate(ref owner.engineDistortionParticleModelRef);
+        public NodeRef<CPlugParticleEmitterModel> WingTipVorticesParticleModel => NodeRef.GetOrCreate(ref owner.wingTipVorticesParticleModelRef);
+        public NodeRef<CPlugLocatedSound> SoundEventGlassSmash => NodeRef.GetOrCreate(ref owner.soundEventGlassSmashRef);
+        public NodeRef<CPlugLocatedSound> SoundEventBodyImpact => NodeRef.GetOrCreate(ref owner.soundEventBodyImpactRef);
+        public NodeRef<CPlugLocatedSound> SoundEventBackFire => NodeRef.GetOrCreate(ref owner.soundEventBackFireRef);
+        public NodeRef<CPlugLocatedSound> SoundEventWheelLand => NodeRef.GetOrCreate(ref owner.soundEventWheelLandRef);
+        public NodeRef<CPlugLocatedSound> SoundEventWheelJump => NodeRef.GetOrCreate(ref owner.soundEventWheelJumpRef);
+        public NodeRef<CPlugLocatedSound> SoundEventBodyPartDetached => NodeRef.GetOrCreate(ref owner.soundEventBodyPartDetachedRef);
+        public NodeRef<CPlugLocatedSound> SoundEventBodyPartImpact => NodeRef.GetOrCreate(ref owner.soundEventBodyPartImpactRef);
+        public NodeRef<CPlugLocatedSound> SoundEventTurboStart => NodeRef.GetOrCreate(ref owner.soundEventTurboStartRef);
+        public NodeRef<CPlugLocatedSound> SoundEventHelicoRelease => NodeRef.GetOrCreate(ref owner.soundEventHelicoReleaseRef);
+        public NodeRef<CPlugLocatedSound> SoundEventBeginFreeWheeling => NodeRef.GetOrCreate(ref owner.soundEventBeginFreeWheelingRef);
+        public NodeRef<CPlugLocatedSound> SoundEventEndFreeWheeling => NodeRef.GetOrCreate(ref owner.soundEventEndFreeWheelingRef);
+        public NodeRef<CPlugLocatedSound> SoundHorn => NodeRef.GetOrCreate(ref owner.soundHornRef);
+        public NodeRef<CPlugLocatedSound> SoundWheelSurfaceLeft => NodeRef.GetOrCreate(ref owner.soundWheelSurfaceLeftRef);
+        public NodeRef<CPlugLocatedSound> SoundEngine => NodeRef.GetOrCreate(ref owner.soundEngineRef);
+        public NodeRef<CPlugLocatedSound> SoundTurbo => NodeRef.GetOrCreate(ref owner.soundTurboRef);
+        public NodeRef<CPlugLocatedSound> SoundWheelSurfaceRight => NodeRef.GetOrCreate(ref owner.soundWheelSurfaceRightRef);
+        public NodeRef<CPlugLocatedSound> SoundBrakes => NodeRef.GetOrCreate(ref owner.soundBrakesRef);
+        public NodeRef<CPlugLocatedSound> SoundBodySurface_Deprecated => NodeRef.GetOrCreate(ref owner.soundBodySurface_DeprecatedRef);
+        public NodeRef<CPlugLocatedSound> SoundGearChange => NodeRef.GetOrCreate(ref owner.soundGearChangeRef);
+        public NodeRef<CPlugLocatedSound> SoundBrakeLights => NodeRef.GetOrCreate(ref owner.soundBrakeLightsRef);
+        public NodeRef<CPlugLocatedSound> SoundRoar => NodeRef.GetOrCreate(ref owner.soundRoarRef);
+        public NodeRef<CPlugLocatedSound> SoundVibrations => NodeRef.GetOrCreate(ref owner.soundVibrationsRef);
+        public NodeRef<CPlugLocatedSound> SoundSparkles => NodeRef.GetOrCreate(ref owner.soundSparklesRef);
+        public NodeRef<CPlugLocatedSound> SoundFreeWheeling => NodeRef.GetOrCreate(ref owner.soundFreeWheelingRef);
+        public NodeRef<CPlugLocatedSound> SoundWaterWake => NodeRef.GetOrCreate(ref owner.soundWaterWakeRef);
+        public NodeRef<CPlugParticleMaterialImpactModel> BodyMaterialImpact => NodeRef.GetOrCreate(ref owner.bodyMaterialImpactRef);
+        public NodeRef<CPlugParticleMaterialImpactModel> WheelMaterialImpact => NodeRef.GetOrCreate(ref owner.wheelMaterialImpactRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -72,10 +825,79 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         {
             for (var i = 0; i < vehicleMaterialGroups.Count; i++) yield return new("VehicleMaterialGroups" + "[" + i + "]", vehicleMaterialGroups.Get(i));
         }
+        yield return new("LegacyDirtSpeedFromVehicleSpeedKmh", NodeRef.GetOrCreate(ref legacyDirtSpeedFromVehicleSpeedKmhRef));
+        yield return new("LegacyWaterTrailFromSpeedKmh", NodeRef.GetOrCreate(ref legacyWaterTrailFromSpeedKmhRef));
         if (vehicleEmitters is not null)
         {
             for (var i = 0; i < vehicleEmitters.Count; i++) yield return new("VehicleEmitters" + "[" + i + "]", vehicleEmitters.Get(i));
         }
+        yield return new("LegacyBrakeHeatSpeedFromFBrake", NodeRef.GetOrCreate(ref legacyBrakeHeatSpeedFromFBrakeRef));
+        yield return new("ExplosionEmitterModel", NodeRef.GetOrCreate(ref explosionEmitterModelRef));
+        yield return new("MaterialGhost", NodeRef.GetOrCreate(ref materialGhostRef));
+        yield return new("MaterialSkin", NodeRef.GetOrCreate(ref materialSkinRef));
+        yield return new("MaterialGlass", NodeRef.GetOrCreate(ref materialGlassRef));
+        yield return new("MaterialDetails", NodeRef.GetOrCreate(ref materialDetailsRef));
+        yield return new("MaterialPilot", NodeRef.GetOrCreate(ref materialPilotRef));
+        yield return new("MaterialWheels", NodeRef.GetOrCreate(ref materialWheelsRef));
+        yield return new("MaterialLightRear", NodeRef.GetOrCreate(ref materialLightRearRef));
+        yield return new("MaterialBrakeDisc", NodeRef.GetOrCreate(ref materialBrakeDiscRef));
+        if (materials is not null)
+        {
+            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.Get(i));
+        }
+        yield return new("LightFront", NodeRef.GetOrCreate(ref lightFrontRef));
+        yield return new("LightFrontSmall", NodeRef.GetOrCreate(ref lightFrontSmallRef));
+        yield return new("LightRear", NodeRef.GetOrCreate(ref lightRearRef));
+        yield return new("ProjShadow", NodeRef.GetOrCreate(ref projShadowRef));
+        yield return new("ProjFront", NodeRef.GetOrCreate(ref projFrontRef));
+        yield return new("ProjWheelShadow", NodeRef.GetOrCreate(ref projWheelShadowRef));
+        yield return new("NullMesh", NodeRef.GetOrCreate(ref nullMeshRef));
+        yield return new("GlassSmashParticleModel", NodeRef.GetOrCreate(ref glassSmashParticleModelRef));
+        yield return new("WaterSplashParticleModel", NodeRef.GetOrCreate(ref waterSplashParticleModelRef));
+        yield return new("MeshWaterSplashParticleModel", NodeRef.GetOrCreate(ref meshWaterSplashParticleModelRef));
+        yield return new("ExhaustNitroModel", NodeRef.GetOrCreate(ref exhaustNitroModelRef));
+        yield return new("ExhaustFlameModel", NodeRef.GetOrCreate(ref exhaustFlameModelRef));
+        if (wheelParticles is not null)
+        {
+            for (var i = 0; i < wheelParticles.Count; i++) yield return new("WheelParticles" + "[" + i + "]", wheelParticles.Get(i));
+        }
+        yield return new("LightTrailParticle", NodeRef.GetOrCreate(ref lightTrailParticleRef));
+        yield return new("SparkleParticle", NodeRef.GetOrCreate(ref sparkleParticleRef));
+        yield return new("VisEntFxModel", NodeRef.GetOrCreate(ref visEntFxModelRef));
+        yield return new("PreyTrailParticle", NodeRef.GetOrCreate(ref preyTrailParticleRef));
+        yield return new("OnFireParticle", NodeRef.GetOrCreate(ref onFireParticleRef));
+        yield return new("FrontWaterWakeParticleModel", NodeRef.GetOrCreate(ref frontWaterWakeParticleModelRef));
+        yield return new("BackWaterWakeParticleModel", NodeRef.GetOrCreate(ref backWaterWakeParticleModelRef));
+        yield return new("HoveringWaterWakeParticleModel", NodeRef.GetOrCreate(ref hoveringWaterWakeParticleModelRef));
+        yield return new("EngineDistortionParticleModel", NodeRef.GetOrCreate(ref engineDistortionParticleModelRef));
+        yield return new("WingTipVorticesParticleModel", NodeRef.GetOrCreate(ref wingTipVorticesParticleModelRef));
+        yield return new("SoundEventGlassSmash", NodeRef.GetOrCreate(ref soundEventGlassSmashRef));
+        yield return new("SoundEventBodyImpact", NodeRef.GetOrCreate(ref soundEventBodyImpactRef));
+        yield return new("SoundEventBackFire", NodeRef.GetOrCreate(ref soundEventBackFireRef));
+        yield return new("SoundEventWheelLand", NodeRef.GetOrCreate(ref soundEventWheelLandRef));
+        yield return new("SoundEventWheelJump", NodeRef.GetOrCreate(ref soundEventWheelJumpRef));
+        yield return new("SoundEventBodyPartDetached", NodeRef.GetOrCreate(ref soundEventBodyPartDetachedRef));
+        yield return new("SoundEventBodyPartImpact", NodeRef.GetOrCreate(ref soundEventBodyPartImpactRef));
+        yield return new("SoundEventTurboStart", NodeRef.GetOrCreate(ref soundEventTurboStartRef));
+        yield return new("SoundEventHelicoRelease", NodeRef.GetOrCreate(ref soundEventHelicoReleaseRef));
+        yield return new("SoundEventBeginFreeWheeling", NodeRef.GetOrCreate(ref soundEventBeginFreeWheelingRef));
+        yield return new("SoundEventEndFreeWheeling", NodeRef.GetOrCreate(ref soundEventEndFreeWheelingRef));
+        yield return new("SoundHorn", NodeRef.GetOrCreate(ref soundHornRef));
+        yield return new("SoundWheelSurfaceLeft", NodeRef.GetOrCreate(ref soundWheelSurfaceLeftRef));
+        yield return new("SoundEngine", NodeRef.GetOrCreate(ref soundEngineRef));
+        yield return new("SoundTurbo", NodeRef.GetOrCreate(ref soundTurboRef));
+        yield return new("SoundWheelSurfaceRight", NodeRef.GetOrCreate(ref soundWheelSurfaceRightRef));
+        yield return new("SoundBrakes", NodeRef.GetOrCreate(ref soundBrakesRef));
+        yield return new("SoundBodySurface_Deprecated", NodeRef.GetOrCreate(ref soundBodySurface_DeprecatedRef));
+        yield return new("SoundGearChange", NodeRef.GetOrCreate(ref soundGearChangeRef));
+        yield return new("SoundBrakeLights", NodeRef.GetOrCreate(ref soundBrakeLightsRef));
+        yield return new("SoundRoar", NodeRef.GetOrCreate(ref soundRoarRef));
+        yield return new("SoundVibrations", NodeRef.GetOrCreate(ref soundVibrationsRef));
+        yield return new("SoundSparkles", NodeRef.GetOrCreate(ref soundSparklesRef));
+        yield return new("SoundFreeWheeling", NodeRef.GetOrCreate(ref soundFreeWheelingRef));
+        yield return new("SoundWaterWake", NodeRef.GetOrCreate(ref soundWaterWakeRef));
+        yield return new("BodyMaterialImpact", NodeRef.GetOrCreate(ref bodyMaterialImpactRef));
+        yield return new("WheelMaterialImpact", NodeRef.GetOrCreate(ref wheelMaterialImpactRef));
         yield break;
     }
 
@@ -84,7 +906,83 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         base.DeepCloneFields(clone, context);
         ((CPlugVehicleVisModelShared)clone).simulationWheels = context.CloneArray(this.simulationWheels)!;
         ((CPlugVehicleVisModelShared)clone).vehicleMaterialGroups = context.Clone(this.vehicleMaterialGroups)!;
+        ((CPlugVehicleVisModelShared)clone).legacyDirtSpeedFromVehicleSpeedKmhRef = context.Clone(this.legacyDirtSpeedFromVehicleSpeedKmhRef)!;
+        ((CPlugVehicleVisModelShared)clone).legacyWaterTrailFromSpeedKmhRef = context.Clone(this.legacyWaterTrailFromSpeedKmhRef)!;
         ((CPlugVehicleVisModelShared)clone).vehicleEmitters = context.Clone(this.vehicleEmitters)!;
+        ((CPlugVehicleVisModelShared)clone).legacyBrakeHeatSpeedFromFBrakeRef = context.Clone(this.legacyBrakeHeatSpeedFromFBrakeRef)!;
+        ((CPlugVehicleVisModelShared)clone).brakeCoolingSpeed = context.Clone(this.brakeCoolingSpeed)!;
+        ((CPlugVehicleVisModelShared)clone).explosionEmitterModelRef = context.Clone(this.explosionEmitterModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialGhostRef = context.Clone(this.materialGhostRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialSkinRef = context.Clone(this.materialSkinRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialGlassRef = context.Clone(this.materialGlassRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialDetailsRef = context.Clone(this.materialDetailsRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialPilotRef = context.Clone(this.materialPilotRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialWheelsRef = context.Clone(this.materialWheelsRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialLightRearRef = context.Clone(this.materialLightRearRef)!;
+        ((CPlugVehicleVisModelShared)clone).materialBrakeDiscRef = context.Clone(this.materialBrakeDiscRef)!;
+        ((CPlugVehicleVisModelShared)clone).materials = context.Clone(this.materials)!;
+        ((CPlugVehicleVisModelShared)clone).lightFrontRef = context.Clone(this.lightFrontRef)!;
+        ((CPlugVehicleVisModelShared)clone).lightFrontSmallRef = context.Clone(this.lightFrontSmallRef)!;
+        ((CPlugVehicleVisModelShared)clone).lightRearRef = context.Clone(this.lightRearRef)!;
+        ((CPlugVehicleVisModelShared)clone).projShadowRef = context.Clone(this.projShadowRef)!;
+        ((CPlugVehicleVisModelShared)clone).projFrontRef = context.Clone(this.projFrontRef)!;
+        ((CPlugVehicleVisModelShared)clone).projWheelShadowRef = context.Clone(this.projWheelShadowRef)!;
+        ((CPlugVehicleVisModelShared)clone).fakeShadBottom = context.Clone(this.fakeShadBottom)!;
+        ((CPlugVehicleVisModelShared)clone).fakeShadTop = context.Clone(this.fakeShadTop)!;
+        ((CPlugVehicleVisModelShared)clone).nullMeshRef = context.Clone(this.nullMeshRef)!;
+        ((CPlugVehicleVisModelShared)clone).glassSmashParticleModelRef = context.Clone(this.glassSmashParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).waterSplashParticleModelRef = context.Clone(this.waterSplashParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).meshWaterSplashParticleModelRef = context.Clone(this.meshWaterSplashParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).exhaustNitroModelRef = context.Clone(this.exhaustNitroModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).exhaustFlameModelRef = context.Clone(this.exhaustFlameModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).wheelParticles = context.Clone(this.wheelParticles)!;
+        ((CPlugVehicleVisModelShared)clone).lightTrailParticleRef = context.Clone(this.lightTrailParticleRef)!;
+        ((CPlugVehicleVisModelShared)clone).sparkleParticleRef = context.Clone(this.sparkleParticleRef)!;
+        ((CPlugVehicleVisModelShared)clone).visEntFxModelRef = context.Clone(this.visEntFxModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).preyTrailParticleRef = context.Clone(this.preyTrailParticleRef)!;
+        ((CPlugVehicleVisModelShared)clone).onFireParticleRef = context.Clone(this.onFireParticleRef)!;
+        ((CPlugVehicleVisModelShared)clone).frontWaterWakeParticleModelRef = context.Clone(this.frontWaterWakeParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).backWaterWakeParticleModelRef = context.Clone(this.backWaterWakeParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).hoveringWaterWakeParticleModelRef = context.Clone(this.hoveringWaterWakeParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).engineDistortionParticleModelRef = context.Clone(this.engineDistortionParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).wingTipVorticesParticleModelRef = context.Clone(this.wingTipVorticesParticleModelRef)!;
+        ((CPlugVehicleVisModelShared)clone).iLightSelfIllum = context.Clone(this.iLightSelfIllum)!;
+        ((CPlugVehicleVisModelShared)clone).iLightRear = context.Clone(this.iLightRear)!;
+        ((CPlugVehicleVisModelShared)clone).iLightRearBrake = context.Clone(this.iLightRearBrake)!;
+        ((CPlugVehicleVisModelShared)clone).iLightFront = context.Clone(this.iLightFront)!;
+        ((CPlugVehicleVisModelShared)clone).dirtSpeedFromVehicleSpeedKmh = context.Clone(this.dirtSpeedFromVehicleSpeedKmh)!;
+        ((CPlugVehicleVisModelShared)clone).waterTrailFromSpeedKmh = context.Clone(this.waterTrailFromSpeedKmh)!;
+        ((CPlugVehicleVisModelShared)clone).brakeHeatSpeedFromFBrake = context.Clone(this.brakeHeatSpeedFromFBrake)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventGlassSmashRef = context.Clone(this.soundEventGlassSmashRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventBodyImpactRef = context.Clone(this.soundEventBodyImpactRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventBackFireRef = context.Clone(this.soundEventBackFireRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventWheelLandRef = context.Clone(this.soundEventWheelLandRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventWheelJumpRef = context.Clone(this.soundEventWheelJumpRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventBodyPartDetachedRef = context.Clone(this.soundEventBodyPartDetachedRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventBodyPartImpactRef = context.Clone(this.soundEventBodyPartImpactRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventTurboStartRef = context.Clone(this.soundEventTurboStartRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventHelicoReleaseRef = context.Clone(this.soundEventHelicoReleaseRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventBeginFreeWheelingRef = context.Clone(this.soundEventBeginFreeWheelingRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEventEndFreeWheelingRef = context.Clone(this.soundEventEndFreeWheelingRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundHornRef = context.Clone(this.soundHornRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundWheelSurfaceLeftRef = context.Clone(this.soundWheelSurfaceLeftRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundEngineRef = context.Clone(this.soundEngineRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundTurboRef = context.Clone(this.soundTurboRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundWheelSurfaceRightRef = context.Clone(this.soundWheelSurfaceRightRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundBrakesRef = context.Clone(this.soundBrakesRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundBodySurface_DeprecatedRef = context.Clone(this.soundBodySurface_DeprecatedRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundGearChangeRef = context.Clone(this.soundGearChangeRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundBrakeLightsRef = context.Clone(this.soundBrakeLightsRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundRoarRef = context.Clone(this.soundRoarRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundVibrationsRef = context.Clone(this.soundVibrationsRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundSparklesRef = context.Clone(this.soundSparklesRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundFreeWheelingRef = context.Clone(this.soundFreeWheelingRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundWaterWakeRef = context.Clone(this.soundWaterWakeRef)!;
+        ((CPlugVehicleVisModelShared)clone).bodyMaterialImpactRef = context.Clone(this.bodyMaterialImpactRef)!;
+        ((CPlugVehicleVisModelShared)clone).wheelMaterialImpactRef = context.Clone(this.wheelMaterialImpactRef)!;
+        ((CPlugVehicleVisModelShared)clone).soundBodyImpact_MaskingDelay = context.Clone(this.soundBodyImpact_MaskingDelay)!;
+        ((CPlugVehicleVisModelShared)clone).soundWheelImpact_FrontMaskingDelay = context.Clone(this.soundWheelImpact_FrontMaskingDelay)!;
+        ((CPlugVehicleVisModelShared)clone).soundWheelImpact_BackMaskingDelay = context.Clone(this.soundWheelImpact_BackMaskingDelay)!;
         ((CPlugVehicleVisModelShared)clone).wheelSettings = context.CloneArray(this.wheelSettings)!;
         ((CPlugVehicleVisModelShared)clone).wheelNames = context.CloneArray(this.wheelNames)!;
         ((CPlugVehicleVisModelShared)clone).visualVehicles = context.CloneArray(this.visualVehicles)!;
@@ -266,35 +1164,17 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090E8013 owner;
             internal NodeRefView(Chunk090E8013 owner) => this.owner = owner;
             public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -302,15 +1182,13 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090E8013)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090E8013)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090E8013)clone).U03Ref = context.Clone(this.U03Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
+            rw.NodeRef(ref n.legacyDirtSpeedFromVehicleSpeedKmhRef);
             rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref n.legacyWaterTrailFromSpeedKmhRef);
         }
     }
 
@@ -361,39 +1239,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override uint Id => 0x090E8016;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-        public float U02;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090E8016 owner;
-            internal NodeRefView(Chunk090E8016 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E8016)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090E8016)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref U01Ref);
-            rw.Single(ref U02);
+            rw.NodeRef(ref n.legacyBrakeHeatSpeedFromFBrakeRef);
+            rw.Single(ref n.brakeCoolingSpeed);
         }
     }
 
@@ -407,36 +1261,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override uint Id => 0x090E8018;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
-        public CPlugParticleEmitterModel? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090E8018 owner;
-            internal NodeRefView(Chunk090E8018 owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090E8018)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.explosionEmitterModelRef);
         }
     }
 
@@ -505,115 +1337,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
 
-        private NodeRef<CPlugMaterial>? U08Ref;
-        public CPlugMaterial? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
-
-        public NodeRefList<CPlugMaterial>? U09;
-
-        private NodeRef<CPlugMaterial>? U10Ref;
-        public CPlugMaterial? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U11Ref;
-        public CPlugMaterial? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U12Ref;
-        public CPlugMaterial? U12
-        {
-            get => U12Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U12Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U13Ref;
-        public CPlugMaterial? U13
-        {
-            get => U13Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U13Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U14Ref;
-        public CPlugMaterial? U14
-        {
-            get => U14Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U14Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U15Ref;
-        public CPlugMaterial? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
-
-        private NodeRef<CPlugMaterial>? U16Ref;
-        public CPlugMaterial? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U17Ref;
-        public CPlugLight? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U18Ref;
-        public CPlugLight? U18
-        {
-            get => U18Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U18Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U19Ref;
-        public CPlugLight? U19
-        {
-            get => U19Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U19Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U20Ref;
-        public CPlugLight? U20
-        {
-            get => U20Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U20Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U21Ref;
-        public CPlugLight? U21
-        {
-            get => U21Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
-
-        private NodeRef<CPlugLight>? U22Ref;
-        public CPlugLight? U22
-        {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
-        public float U23;
-        public float U24;
-
-        private NodeRef<CPlugSolid2Model>? U25Ref;
-        public CPlugSolid2Model? U25
-        {
-            get => U25Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U25Ref, value);
-        }
-
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
@@ -626,22 +1349,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugMaterial> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugMaterial> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
             public NodeRef<CPlugMaterial> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CPlugMaterial> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public IReadOnlyList<NodeRef<CPlugMaterial>>? U09 => owner.U09?.References;
-            public NodeRef<CPlugMaterial> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-            public NodeRef<CPlugMaterial> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CPlugMaterial> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
-            public NodeRef<CPlugMaterial> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CPlugMaterial> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CPlugMaterial> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CPlugMaterial> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CPlugLight> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CPlugLight> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CPlugLight> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
-            public NodeRef<CPlugLight> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
-            public NodeRef<CPlugLight> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public NodeRef<CPlugLight> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
-            public NodeRef<CPlugSolid2Model> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -653,25 +1360,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            if (U09 is not null)
-            {
-                for (var i = 0; i < U09.Count; i++) yield return new("U09" + "[" + i + "]", U09.Get(i));
-            }
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
-            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
-            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
-            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
-            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
             yield break;
         }
 
@@ -702,24 +1390,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E801E)clone).U05Ref = context.Clone(this.U05Ref)!;
             ((Chunk090E801E)clone).U06Ref = context.Clone(this.U06Ref)!;
             ((Chunk090E801E)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk090E801E)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk090E801E)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090E801E)clone).U10Ref = context.Clone(this.U10Ref)!;
-            ((Chunk090E801E)clone).U11Ref = context.Clone(this.U11Ref)!;
-            ((Chunk090E801E)clone).U12Ref = context.Clone(this.U12Ref)!;
-            ((Chunk090E801E)clone).U13Ref = context.Clone(this.U13Ref)!;
-            ((Chunk090E801E)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090E801E)clone).U15Ref = context.Clone(this.U15Ref)!;
-            ((Chunk090E801E)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090E801E)clone).U17Ref = context.Clone(this.U17Ref)!;
-            ((Chunk090E801E)clone).U18Ref = context.Clone(this.U18Ref)!;
-            ((Chunk090E801E)clone).U19Ref = context.Clone(this.U19Ref)!;
-            ((Chunk090E801E)clone).U20Ref = context.Clone(this.U20Ref)!;
-            ((Chunk090E801E)clone).U21Ref = context.Clone(this.U21Ref)!;
-            ((Chunk090E801E)clone).U22Ref = context.Clone(this.U22Ref)!;
-            ((Chunk090E801E)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090E801E)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090E801E)clone).U25Ref = context.Clone(this.U25Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -730,49 +1400,49 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.materialGhostRef);
 
             if (Version >= 1)
             {
                 if (Version <= 2)
                 {
+                    rw.NodeRef(ref n.materialSkinRef);
+                    rw.NodeRef(ref n.materialGlassRef);
+                    rw.NodeRef(ref n.materialDetailsRef);
+                    rw.NodeRef(ref n.materialPilotRef);
+                    rw.NodeRef(ref n.materialWheelsRef);
+                    rw.NodeRef(ref n.materialLightRearRef);
+                    rw.NodeRef(ref n.materialBrakeDiscRef);
+                }
+
+                if (Version >= 3)
+                {
+                    n.materials = rw.ListNodeRef<CPlugMaterial>(n.materials, 7);
+                }
+
+                if (Version <= 1)
+                {
+                    rw.NodeRef(ref U01Ref);
                     rw.NodeRef(ref U02Ref);
                     rw.NodeRef(ref U03Ref);
                     rw.NodeRef(ref U04Ref);
                     rw.NodeRef(ref U05Ref);
                     rw.NodeRef(ref U06Ref);
                     rw.NodeRef(ref U07Ref);
-                    rw.NodeRef(ref U08Ref);
                 }
 
-                if (Version >= 3)
-                {
-                    U09 = rw.ListNodeRef<CPlugMaterial>(U09, 7);
-                }
-
-                if (Version <= 1)
-                {
-                    rw.NodeRef(ref U10Ref);
-                    rw.NodeRef(ref U11Ref);
-                    rw.NodeRef(ref U12Ref);
-                    rw.NodeRef(ref U13Ref);
-                    rw.NodeRef(ref U14Ref);
-                    rw.NodeRef(ref U15Ref);
-                    rw.NodeRef(ref U16Ref);
-                }
-
-                rw.NodeRef(ref U17Ref);
-                rw.NodeRef(ref U18Ref);
-                rw.NodeRef(ref U19Ref);
-                rw.NodeRef(ref U20Ref);
-                rw.NodeRef(ref U21Ref);
-                rw.NodeRef(ref U22Ref);
-                rw.Single(ref U23);
-                rw.Single(ref U24);
+                rw.NodeRef(ref n.lightFrontRef);
+                rw.NodeRef(ref n.lightFrontSmallRef);
+                rw.NodeRef(ref n.lightRearRef);
+                rw.NodeRef(ref n.projShadowRef);
+                rw.NodeRef(ref n.projFrontRef);
+                rw.NodeRef(ref n.projWheelShadowRef);
+                rw.Single(ref n.fakeShadBottom);
+                rw.Single(ref n.fakeShadTop);
 
                 if (Version >= 4)
                 {
-                    rw.NodeRef(ref U25Ref);
+                    rw.NodeRef(ref n.nullMeshRef);
                 }
             }
         }
@@ -824,134 +1494,20 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CPlugParticleEmitterModel>? U05Ref;
-        public CPlugParticleEmitterModel? U05
+        public NodeRefList<CPlugVehicleVisEmitterModel>? U05;
+
+        private NodeRef<CPlugParticleEmitterModel>? U06Ref;
+        public CPlugParticleEmitterModel? U06
         {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
-        public NodeRefList<CPlugVehicleVisEmitterModel>? U06;
+        public NodeRefList<CPlugVehicleVisEmitterModel>? U07;
 
-        private NodeRef<CPlugParticleEmitterModel>? U07Ref;
-        public CPlugParticleEmitterModel? U07
-        {
-            get => U07Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U07Ref, value);
-        }
+        public NodeRefList<CPlugVehicleVisEmitterModel>? U08;
 
-        private NodeRef<CPlugParticleEmitterModel>? U08Ref;
-        public CPlugParticleEmitterModel? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
-
-        private NodeRef<CPlugVisEntFxModel>? U09Ref;
-        public CPlugVisEntFxModel? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U10Ref;
-        public CPlugParticleEmitterModel? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U11Ref;
-        public CPlugParticleEmitterModel? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U12Ref;
-        public CPlugParticleEmitterModel? U12
-        {
-            get => U12Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U12Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U13Ref;
-        public CPlugParticleEmitterModel? U13
-        {
-            get => U13Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U13Ref, value);
-        }
-
-        private NodeRef<CPlugVisEntFxModel>? U14Ref;
-        public CPlugVisEntFxModel? U14
-        {
-            get => U14Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U14Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U15Ref;
-        public CPlugParticleEmitterModel? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U16Ref;
-        public CPlugParticleEmitterModel? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U17Ref;
-        public CPlugParticleEmitterModel? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U18Ref;
-        public CPlugParticleEmitterModel? U18
-        {
-            get => U18Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U18Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U19Ref;
-        public CPlugParticleEmitterModel? U19
-        {
-            get => U19Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U19Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U20Ref;
-        public CPlugParticleEmitterModel? U20
-        {
-            get => U20Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U20Ref, value);
-        }
-
-        private NodeRef<CPlugParticleEmitterModel>? U21Ref;
-        public CPlugParticleEmitterModel? U21
-        {
-            get => U21Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
-
-        public NodeRefList<CPlugVehicleVisEmitterModel>? U22;
-
-        private NodeRef<CPlugParticleEmitterModel>? U23Ref;
-        public CPlugParticleEmitterModel? U23
-        {
-            get => U23Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U23Ref, value);
-        }
-
-        public NodeRefList<CPlugVehicleVisEmitterModel>? U24;
-
-        public NodeRefList<CPlugVehicleVisEmitterModel>? U25;
-
-        public NodeRefList<CPlugVehicleVisEmitterModel>? U26;
+        public NodeRefList<CPlugVehicleVisEmitterModel>? U09;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -962,28 +1518,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugParticleEmitterModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CPlugParticleEmitterModel> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CPlugParticleEmitterModel> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CPlugParticleEmitterModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U06 => owner.U06?.References;
-            public NodeRef<CPlugParticleEmitterModel> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CPlugParticleEmitterModel> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public NodeRef<CPlugVisEntFxModel> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CPlugParticleEmitterModel> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-            public NodeRef<CPlugParticleEmitterModel> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CPlugParticleEmitterModel> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
-            public NodeRef<CPlugParticleEmitterModel> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CPlugVisEntFxModel> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CPlugParticleEmitterModel> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CPlugParticleEmitterModel> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CPlugParticleEmitterModel> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CPlugParticleEmitterModel> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CPlugParticleEmitterModel> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
-            public NodeRef<CPlugParticleEmitterModel> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
-            public NodeRef<CPlugParticleEmitterModel> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U22 => owner.U22?.References;
-            public NodeRef<CPlugParticleEmitterModel> U23 => NodeRef.GetOrCreate(ref owner.U23Ref);
-            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U24 => owner.U24?.References;
-            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U25 => owner.U25?.References;
-            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U26 => owner.U26?.References;
+            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U05 => owner.U05?.References;
+            public NodeRef<CPlugParticleEmitterModel> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
+            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U07 => owner.U07?.References;
+            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U08 => owner.U08?.References;
+            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U09 => owner.U09?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -992,42 +1531,22 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
-            if (U06 is not null)
+            if (U05 is not null)
             {
-                for (var i = 0; i < U06.Count; i++) yield return new("U06" + "[" + i + "]", U06.Get(i));
+                for (var i = 0; i < U05.Count; i++) yield return new("U05" + "[" + i + "]", U05.Get(i));
             }
-            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
-            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
-            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
-            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            if (U22 is not null)
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
+            if (U07 is not null)
             {
-                for (var i = 0; i < U22.Count; i++) yield return new("U22" + "[" + i + "]", U22.Get(i));
+                for (var i = 0; i < U07.Count; i++) yield return new("U07" + "[" + i + "]", U07.Get(i));
             }
-            yield return new("U23", NodeRef.GetOrCreate(ref U23Ref));
-            if (U24 is not null)
+            if (U08 is not null)
             {
-                for (var i = 0; i < U24.Count; i++) yield return new("U24" + "[" + i + "]", U24.Get(i));
+                for (var i = 0; i < U08.Count; i++) yield return new("U08" + "[" + i + "]", U08.Get(i));
             }
-            if (U25 is not null)
+            if (U09 is not null)
             {
-                for (var i = 0; i < U25.Count; i++) yield return new("U25" + "[" + i + "]", U25.Get(i));
-            }
-            if (U26 is not null)
-            {
-                for (var i = 0; i < U26.Count; i++) yield return new("U26" + "[" + i + "]", U26.Get(i));
+                for (var i = 0; i < U09.Count; i++) yield return new("U09" + "[" + i + "]", U09.Get(i));
             }
             yield break;
         }
@@ -1064,28 +1583,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E801F)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk090E801F)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090E801F)clone).U04Ref = context.Clone(this.U04Ref)!;
-            ((Chunk090E801F)clone).U05Ref = context.Clone(this.U05Ref)!;
-            ((Chunk090E801F)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090E801F)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk090E801F)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk090E801F)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk090E801F)clone).U10Ref = context.Clone(this.U10Ref)!;
-            ((Chunk090E801F)clone).U11Ref = context.Clone(this.U11Ref)!;
-            ((Chunk090E801F)clone).U12Ref = context.Clone(this.U12Ref)!;
-            ((Chunk090E801F)clone).U13Ref = context.Clone(this.U13Ref)!;
-            ((Chunk090E801F)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090E801F)clone).U15Ref = context.Clone(this.U15Ref)!;
-            ((Chunk090E801F)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090E801F)clone).U17Ref = context.Clone(this.U17Ref)!;
-            ((Chunk090E801F)clone).U18Ref = context.Clone(this.U18Ref)!;
-            ((Chunk090E801F)clone).U19Ref = context.Clone(this.U19Ref)!;
-            ((Chunk090E801F)clone).U20Ref = context.Clone(this.U20Ref)!;
-            ((Chunk090E801F)clone).U21Ref = context.Clone(this.U21Ref)!;
-            ((Chunk090E801F)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090E801F)clone).U23Ref = context.Clone(this.U23Ref)!;
-            ((Chunk090E801F)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090E801F)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090E801F)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090E801F)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E801F)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk090E801F)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090E801F)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E801F)clone).U09 = context.Clone(this.U09)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -1096,70 +1598,69 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.glassSmashParticleModelRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref n.waterSplashParticleModelRef);
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(ref U03Ref);
+                    rw.NodeRef(ref n.meshWaterSplashParticleModelRef);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef(ref U04Ref);
+                        rw.NodeRef(ref n.exhaustNitroModelRef);
 
                         if (Version >= 4)
                         {
-                            rw.NodeRef(ref U05Ref);
+                            rw.NodeRef(ref n.exhaustFlameModelRef);
 
                             if (Version >= 5)
                             {
-                                U06 = rw.ListNodeRef_deprec<CPlugVehicleVisEmitterModel>(U06);
-                                rw.NodeRef(ref U07Ref);
-                                rw.NodeRef(ref U08Ref);
+                                n.wheelParticles = rw.ListNodeRef_deprec<CPlugVehicleVisEmitterModel>(n.wheelParticles);
+                                rw.NodeRef(ref n.lightTrailParticleRef);
+                                rw.NodeRef(ref n.sparkleParticleRef);
 
                                 if (Version == 6)
                                 {
-                                    rw.NodeRef(ref U09Ref);
-                                    rw.NodeRef(ref U10Ref);
-                                    rw.NodeRef(ref U11Ref);
-                                    rw.NodeRef(ref U12Ref);
-                                    rw.NodeRef(ref U13Ref);
+                                    rw.NodeRef(ref U01Ref);
+                                    rw.NodeRef(ref U02Ref);
+                                    rw.NodeRef(ref U03Ref);
+                                    rw.NodeRef(ref U04Ref);
                                 }
 
                                 if (Version >= 7)
                                 {
-                                    rw.NodeRef(ref U14Ref);
+                                    rw.NodeRef(ref n.visEntFxModelRef);
 
                                     if (Version >= 8)
                                     {
-                                        rw.NodeRef(ref U15Ref);
+                                        rw.NodeRef(ref n.preyTrailParticleRef);
 
                                         if (Version >= 9)
                                         {
-                                            rw.NodeRef(ref U16Ref);
+                                            rw.NodeRef(ref n.onFireParticleRef);
 
                                             if (Version >= 10)
                                             {
-                                                rw.NodeRef(ref U17Ref);
+                                                rw.NodeRef(ref n.frontWaterWakeParticleModelRef);
 
                                                 if (Version >= 11)
                                                 {
-                                                    rw.NodeRef(ref U18Ref);
+                                                    rw.NodeRef(ref n.backWaterWakeParticleModelRef);
 
                                                     if (Version >= 12)
                                                     {
-                                                        rw.NodeRef(ref U19Ref);
+                                                        rw.NodeRef(ref n.hoveringWaterWakeParticleModelRef);
 
                                                         if (Version >= 13)
                                                         {
-                                                            rw.NodeRef(ref U20Ref);
+                                                            rw.NodeRef(ref n.engineDistortionParticleModelRef);
 
                                                             if (Version >= 14)
                                                             {
-                                                                rw.NodeRef(ref U21Ref);
+                                                                rw.NodeRef(ref n.wingTipVorticesParticleModelRef);
                                                             }
                                                         }
                                                     }
@@ -1176,27 +1677,27 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
             if (Version >= 15)
             {
-                U22 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U22);
+                U05 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U05);
             }
 
             if (Version >= 16)
             {
-                rw.NodeRef(ref U23Ref);
+                rw.NodeRef(ref U06Ref);
             }
 
             if (Version >= 17)
             {
-                U24 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U24);
+                U07 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U07);
             }
 
             if (Version >= 18)
             {
-                U25 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U25);
+                U08 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U08);
             }
 
             if (Version >= 19)
             {
-                U26 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U26);
+                U09 = rw.ListNodeRef<CPlugVehicleVisEmitterModel>(U09);
             }
         }
     }
@@ -1217,10 +1718,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         };
         public int Version { get; set; }
         public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
 
         public Chunk090E8020() : this(GameVersion.Unspecified)
         {
@@ -1243,10 +1740,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090E8020)clone).Version = context.Clone(this.Version)!;
             ((Chunk090E8020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090E8020)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090E8020)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090E8020)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090E8020)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -1257,18 +1750,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
-            rw.Single(ref U02);
+            rw.Single(ref n.iLightSelfIllum);
+            rw.Single(ref n.iLightRear);
 
             if (Version >= 1)
             {
-                rw.Single(ref U03);
-                rw.Single(ref U04);
+                rw.Single(ref n.iLightRearBrake);
+                rw.Single(ref n.iLightFront);
             }
 
             if (Version >= 2)
             {
-                rw.Single(ref U05);
+                rw.Single(ref U01);
             }
         }
     }
@@ -1290,57 +1783,35 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-        public PlugCurve? U03;
-        public PlugCurve? U04;
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
         public float U05;
         public float U06;
         public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public int U12;
-        public int U13;
+        public int U08;
+        public int U09;
 
-        private NodeRef<CFuncKeysReal>? U14Ref;
-        public CFuncKeysReal? U14
+        private NodeRef<CFuncKeysReal>? U10Ref;
+        public CFuncKeysReal? U10
         {
-            get => U14Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U14Ref, value);
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
         }
-        public PlugCurve? U15;
-        public PlugCurve? U16;
-        public float U17;
+        public PlugCurve? U11;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090E8021 owner;
             internal NodeRefView(Chunk090E8021 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
+            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield break;
         }
 
@@ -1372,8 +1843,8 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090E8021)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090E8021)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090E8021)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090E8021)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090E8021)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090E8021)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090E8021)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090E8021)clone).U05 = context.Clone(this.U05)!;
@@ -1381,14 +1852,8 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E8021)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090E8021)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090E8021)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090E8021)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090E8021)clone).U10Ref = context.Clone(this.U10Ref)!;
             ((Chunk090E8021)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090E8021)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090E8021)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090E8021)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090E8021)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090E8021)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090E8021)clone).U17 = context.Clone(this.U17)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -1401,32 +1866,32 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
             if (Version <= 4)
             {
-                rw.NodeRef(ref U01Ref);
-                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref n.legacyDirtSpeedFromVehicleSpeedKmhRef);
+                rw.NodeRef(ref n.legacyWaterTrailFromSpeedKmhRef);
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U03, version: Version);
-                rw.ReadableWritable<PlugCurve>(ref U04, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.dirtSpeedFromVehicleSpeedKmh, version: Version);
+                rw.ReadableWritable<PlugCurve>(ref n.waterTrailFromSpeedKmh, version: Version);
             }
 
             if (Version >= 1)
             {
                 if (Version <= 2)
                 {
-                    rw.Single(ref U05);
-                    rw.Single(ref U06);
-                    rw.Single(ref U07);
-                    rw.Single(ref U08);
+                    rw.Single(ref U01);
+                    rw.Single(ref U02);
+                    rw.Single(ref U03);
+                    rw.Single(ref U04);
 
                     if (Version >= 2)
                     {
-                        rw.Single(ref U09);
-                        rw.Single(ref U10);
-                        rw.Single(ref U11);
-                        rw.Int32(ref U12);
-                        rw.Int32(ref U13);
+                        rw.Single(ref U05);
+                        rw.Single(ref U06);
+                        rw.Single(ref U07);
+                        rw.Int32(ref U08);
+                        rw.Int32(ref U09);
                     }
                 }
             }
@@ -1435,14 +1900,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             {
                 if (Version == 4)
                 {
-                    rw.NodeRef(ref U14Ref);
+                    rw.NodeRef(ref U10Ref);
                 }
 
                 if (Version >= 5)
                 {
-                    rw.ReadableWritable<PlugCurve>(ref U15, version: Version);
-                    rw.ReadableWritable<PlugCurve>(ref U16, version: Version);
-                    rw.Single(ref U17);
+                    rw.ReadableWritable<PlugCurve>(ref U11, version: Version);
+                    rw.ReadableWritable<PlugCurve>(ref n.brakeHeatSpeedFromFBrake, version: Version);
+                    rw.Single(ref n.brakeCoolingSpeed);
                 }
             }
         }
@@ -1513,27 +1978,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             get => U07Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
-
-        private NodeRef<CPlugLocatedSound>? U08Ref;
-        public CPlugLocatedSound? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U09Ref;
-        public CPlugLocatedSound? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U10Ref;
-        public CPlugLocatedSound? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
+        public int U08;
+        public int U09;
+        public int U10;
 
         private NodeRef<CPlugLocatedSound>? U11Ref;
         public CPlugLocatedSound? U11
@@ -1590,178 +2037,14 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             get => U18Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U18Ref, value);
         }
-
-        private NodeRef<CPlugLocatedSound>? U19Ref;
-        public CPlugLocatedSound? U19
-        {
-            get => U19Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U19Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U20Ref;
-        public CPlugLocatedSound? U20
-        {
-            get => U20Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U20Ref, value);
-        }
+        public int U19;
+        public int U20;
 
         private NodeRef<CPlugLocatedSound>? U21Ref;
         public CPlugLocatedSound? U21
         {
             get => U21Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U22Ref;
-        public CPlugLocatedSound? U22
-        {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U23Ref;
-        public CPlugLocatedSound? U23
-        {
-            get => U23Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U23Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U24Ref;
-        public CPlugLocatedSound? U24
-        {
-            get => U24Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U24Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U25Ref;
-        public CPlugLocatedSound? U25
-        {
-            get => U25Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U25Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U26Ref;
-        public CPlugLocatedSound? U26
-        {
-            get => U26Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U26Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U27Ref;
-        public CPlugLocatedSound? U27
-        {
-            get => U27Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U27Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U28Ref;
-        public CPlugLocatedSound? U28
-        {
-            get => U28Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U28Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U29Ref;
-        public CPlugLocatedSound? U29
-        {
-            get => U29Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U29Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U30Ref;
-        public CPlugLocatedSound? U30
-        {
-            get => U30Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U30Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U31Ref;
-        public CPlugLocatedSound? U31
-        {
-            get => U31Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U31Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U32Ref;
-        public CPlugLocatedSound? U32
-        {
-            get => U32Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U32Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U33Ref;
-        public CPlugLocatedSound? U33
-        {
-            get => U33Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U33Ref, value);
-        }
-        public int U34;
-        public int U35;
-        public int U36;
-
-        private NodeRef<CPlugLocatedSound>? U37Ref;
-        public CPlugLocatedSound? U37
-        {
-            get => U37Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U37Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U38Ref;
-        public CPlugLocatedSound? U38
-        {
-            get => U38Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U38Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U39Ref;
-        public CPlugLocatedSound? U39
-        {
-            get => U39Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U39Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U40Ref;
-        public CPlugLocatedSound? U40
-        {
-            get => U40Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U40Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U41Ref;
-        public CPlugLocatedSound? U41
-        {
-            get => U41Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U41Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U42Ref;
-        public CPlugLocatedSound? U42
-        {
-            get => U42Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U42Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U43Ref;
-        public CPlugLocatedSound? U43
-        {
-            get => U43Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U43Ref, value);
-        }
-
-        private NodeRef<CPlugLocatedSound>? U44Ref;
-        public CPlugLocatedSound? U44
-        {
-            get => U44Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U44Ref, value);
-        }
-        public int U45;
-        public int U46;
-
-        private NodeRef<CPlugLocatedSound>? U47Ref;
-        public CPlugLocatedSound? U47
-        {
-            get => U47Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U47Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1776,9 +2059,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugLocatedSound> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugLocatedSound> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
             public NodeRef<CPlugLocatedSound> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CPlugLocatedSound> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public NodeRef<CPlugLocatedSound> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CPlugLocatedSound> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
             public NodeRef<CPlugLocatedSound> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
             public NodeRef<CPlugLocatedSound> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
             public NodeRef<CPlugLocatedSound> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
@@ -1787,30 +2067,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugLocatedSound> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
             public NodeRef<CPlugLocatedSound> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
             public NodeRef<CPlugLocatedSound> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CPlugLocatedSound> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
-            public NodeRef<CPlugLocatedSound> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
             public NodeRef<CPlugLocatedSound> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public NodeRef<CPlugLocatedSound> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
-            public NodeRef<CPlugLocatedSound> U23 => NodeRef.GetOrCreate(ref owner.U23Ref);
-            public NodeRef<CPlugLocatedSound> U24 => NodeRef.GetOrCreate(ref owner.U24Ref);
-            public NodeRef<CPlugLocatedSound> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
-            public NodeRef<CPlugLocatedSound> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
-            public NodeRef<CPlugLocatedSound> U27 => NodeRef.GetOrCreate(ref owner.U27Ref);
-            public NodeRef<CPlugLocatedSound> U28 => NodeRef.GetOrCreate(ref owner.U28Ref);
-            public NodeRef<CPlugLocatedSound> U29 => NodeRef.GetOrCreate(ref owner.U29Ref);
-            public NodeRef<CPlugLocatedSound> U30 => NodeRef.GetOrCreate(ref owner.U30Ref);
-            public NodeRef<CPlugLocatedSound> U31 => NodeRef.GetOrCreate(ref owner.U31Ref);
-            public NodeRef<CPlugLocatedSound> U32 => NodeRef.GetOrCreate(ref owner.U32Ref);
-            public NodeRef<CPlugLocatedSound> U33 => NodeRef.GetOrCreate(ref owner.U33Ref);
-            public NodeRef<CPlugLocatedSound> U37 => NodeRef.GetOrCreate(ref owner.U37Ref);
-            public NodeRef<CPlugLocatedSound> U38 => NodeRef.GetOrCreate(ref owner.U38Ref);
-            public NodeRef<CPlugLocatedSound> U39 => NodeRef.GetOrCreate(ref owner.U39Ref);
-            public NodeRef<CPlugLocatedSound> U40 => NodeRef.GetOrCreate(ref owner.U40Ref);
-            public NodeRef<CPlugLocatedSound> U41 => NodeRef.GetOrCreate(ref owner.U41Ref);
-            public NodeRef<CPlugLocatedSound> U42 => NodeRef.GetOrCreate(ref owner.U42Ref);
-            public NodeRef<CPlugLocatedSound> U43 => NodeRef.GetOrCreate(ref owner.U43Ref);
-            public NodeRef<CPlugLocatedSound> U44 => NodeRef.GetOrCreate(ref owner.U44Ref);
-            public NodeRef<CPlugLocatedSound> U47 => NodeRef.GetOrCreate(ref owner.U47Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -1822,9 +2079,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
             yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
             yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
@@ -1833,30 +2087,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
             yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
             yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
-            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
             yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
-            yield return new("U23", NodeRef.GetOrCreate(ref U23Ref));
-            yield return new("U24", NodeRef.GetOrCreate(ref U24Ref));
-            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
-            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
-            yield return new("U27", NodeRef.GetOrCreate(ref U27Ref));
-            yield return new("U28", NodeRef.GetOrCreate(ref U28Ref));
-            yield return new("U29", NodeRef.GetOrCreate(ref U29Ref));
-            yield return new("U30", NodeRef.GetOrCreate(ref U30Ref));
-            yield return new("U31", NodeRef.GetOrCreate(ref U31Ref));
-            yield return new("U32", NodeRef.GetOrCreate(ref U32Ref));
-            yield return new("U33", NodeRef.GetOrCreate(ref U33Ref));
-            yield return new("U37", NodeRef.GetOrCreate(ref U37Ref));
-            yield return new("U38", NodeRef.GetOrCreate(ref U38Ref));
-            yield return new("U39", NodeRef.GetOrCreate(ref U39Ref));
-            yield return new("U40", NodeRef.GetOrCreate(ref U40Ref));
-            yield return new("U41", NodeRef.GetOrCreate(ref U41Ref));
-            yield return new("U42", NodeRef.GetOrCreate(ref U42Ref));
-            yield return new("U43", NodeRef.GetOrCreate(ref U43Ref));
-            yield return new("U44", NodeRef.GetOrCreate(ref U44Ref));
-            yield return new("U47", NodeRef.GetOrCreate(ref U47Ref));
             yield break;
         }
 
@@ -1891,9 +2122,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E8022)clone).U05Ref = context.Clone(this.U05Ref)!;
             ((Chunk090E8022)clone).U06Ref = context.Clone(this.U06Ref)!;
             ((Chunk090E8022)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk090E8022)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk090E8022)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk090E8022)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090E8022)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E8022)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090E8022)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090E8022)clone).U11Ref = context.Clone(this.U11Ref)!;
             ((Chunk090E8022)clone).U12Ref = context.Clone(this.U12Ref)!;
             ((Chunk090E8022)clone).U13Ref = context.Clone(this.U13Ref)!;
@@ -1902,35 +2133,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E8022)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk090E8022)clone).U17Ref = context.Clone(this.U17Ref)!;
             ((Chunk090E8022)clone).U18Ref = context.Clone(this.U18Ref)!;
-            ((Chunk090E8022)clone).U19Ref = context.Clone(this.U19Ref)!;
-            ((Chunk090E8022)clone).U20Ref = context.Clone(this.U20Ref)!;
+            ((Chunk090E8022)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090E8022)clone).U20 = context.Clone(this.U20)!;
             ((Chunk090E8022)clone).U21Ref = context.Clone(this.U21Ref)!;
-            ((Chunk090E8022)clone).U22Ref = context.Clone(this.U22Ref)!;
-            ((Chunk090E8022)clone).U23Ref = context.Clone(this.U23Ref)!;
-            ((Chunk090E8022)clone).U24Ref = context.Clone(this.U24Ref)!;
-            ((Chunk090E8022)clone).U25Ref = context.Clone(this.U25Ref)!;
-            ((Chunk090E8022)clone).U26Ref = context.Clone(this.U26Ref)!;
-            ((Chunk090E8022)clone).U27Ref = context.Clone(this.U27Ref)!;
-            ((Chunk090E8022)clone).U28Ref = context.Clone(this.U28Ref)!;
-            ((Chunk090E8022)clone).U29Ref = context.Clone(this.U29Ref)!;
-            ((Chunk090E8022)clone).U30Ref = context.Clone(this.U30Ref)!;
-            ((Chunk090E8022)clone).U31Ref = context.Clone(this.U31Ref)!;
-            ((Chunk090E8022)clone).U32Ref = context.Clone(this.U32Ref)!;
-            ((Chunk090E8022)clone).U33Ref = context.Clone(this.U33Ref)!;
-            ((Chunk090E8022)clone).U34 = context.Clone(this.U34)!;
-            ((Chunk090E8022)clone).U35 = context.Clone(this.U35)!;
-            ((Chunk090E8022)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk090E8022)clone).U37Ref = context.Clone(this.U37Ref)!;
-            ((Chunk090E8022)clone).U38Ref = context.Clone(this.U38Ref)!;
-            ((Chunk090E8022)clone).U39Ref = context.Clone(this.U39Ref)!;
-            ((Chunk090E8022)clone).U40Ref = context.Clone(this.U40Ref)!;
-            ((Chunk090E8022)clone).U41Ref = context.Clone(this.U41Ref)!;
-            ((Chunk090E8022)clone).U42Ref = context.Clone(this.U42Ref)!;
-            ((Chunk090E8022)clone).U43Ref = context.Clone(this.U43Ref)!;
-            ((Chunk090E8022)clone).U44Ref = context.Clone(this.U44Ref)!;
-            ((Chunk090E8022)clone).U45 = context.Clone(this.U45)!;
-            ((Chunk090E8022)clone).U46 = context.Clone(this.U46)!;
-            ((Chunk090E8022)clone).U47Ref = context.Clone(this.U47Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -1941,100 +2146,104 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref n.soundEventGlassSmashRef);
+            rw.NodeRef(ref n.soundEventBodyImpactRef);
+            rw.NodeRef(ref n.soundEventBackFireRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef(ref U04Ref);
+                rw.NodeRef(ref n.soundEventWheelLandRef);
+            }
 
-                if (Version <= 2)
+            if (Version <= 2)
+            {
+                if (rw.Reader is not null)
                 {
-                    rw.NodeRef(ref U05Ref);
+                    NodeRef.CopyFrom(ref n.soundEventWheelJumpRef, n.soundEventWheelLandRef);
                 }
+            }
 
-                if (Version >= 3)
-                {
-                    rw.NodeRef(ref U06Ref);
-                    rw.NodeRef(ref U07Ref);
-                    rw.NodeRef(ref U08Ref);
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref n.soundEventWheelJumpRef);
+                rw.NodeRef(ref n.soundEventBodyPartDetachedRef);
+                rw.NodeRef(ref n.soundEventBodyPartImpactRef);
+            }
 
-                    if (Version >= 4)
-                    {
-                        rw.NodeRef(ref U09Ref);
-                        rw.NodeRef(ref U10Ref);
+            if (Version >= 4)
+            {
+                rw.NodeRef(ref n.soundEventTurboStartRef);
+                rw.NodeRef(ref n.soundEventHelicoReleaseRef);
+            }
 
-                        if (Version >= 5)
-                        {
-                            rw.NodeRef(ref U11Ref);
-                            rw.NodeRef(ref U12Ref);
-                            rw.NodeRef(ref U13Ref);
-                            rw.NodeRef(ref U14Ref);
-                            rw.NodeRef(ref U15Ref);
-                            rw.NodeRef(ref U16Ref);
-                            rw.NodeRef(ref U17Ref);
-                            rw.NodeRef(ref U18Ref);
-                            rw.NodeRef(ref U19Ref);
-                            rw.NodeRef(ref U20Ref);
-                            rw.NodeRef(ref U21Ref);
-                            rw.NodeRef(ref U22Ref);
-                            rw.NodeRef(ref U23Ref);
-                            rw.NodeRef(ref U24Ref);
+            if (Version >= 5)
+            {
+                rw.NodeRef(ref n.soundEventBeginFreeWheelingRef);
+                rw.NodeRef(ref n.soundEventEndFreeWheelingRef);
+            }
 
-                            if (Version >= 6)
-                            {
-                                rw.NodeRef(ref U25Ref);
+            rw.NodeRef(ref n.soundHornRef);
+            rw.NodeRef(ref n.soundWheelSurfaceLeftRef);
+            rw.NodeRef(ref n.soundEngineRef);
+            rw.NodeRef(ref n.soundTurboRef);
+            rw.NodeRef(ref n.soundWheelSurfaceRightRef);
+            rw.NodeRef(ref n.soundBrakesRef);
+            rw.NodeRef(ref n.soundBodySurface_DeprecatedRef);
+            rw.NodeRef(ref n.soundGearChangeRef);
+            rw.NodeRef(ref n.soundBrakeLightsRef);
+            rw.NodeRef(ref n.soundRoarRef);
+            rw.NodeRef(ref n.soundVibrationsRef);
+            rw.NodeRef(ref n.soundSparklesRef);
 
-                                if (Version >= 7)
-                                {
-                                    rw.NodeRef(ref U26Ref);
-                                }
-                            }
-                        }
-                    }
-                }
+            if (Version >= 6)
+            {
+                rw.NodeRef(ref n.soundFreeWheelingRef);
+            }
+
+            if (Version >= 7)
+            {
+                rw.NodeRef(ref n.soundWaterWakeRef);
             }
 
             if (Version >= 8)
             {
-                rw.NodeRef(ref U27Ref);
-                rw.NodeRef(ref U28Ref);
-                rw.NodeRef(ref U29Ref);
-                rw.NodeRef(ref U30Ref);
+                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref U03Ref);
+                rw.NodeRef(ref U04Ref);
             }
 
             if (Version >= 9)
             {
-                rw.NodeRef(ref U31Ref);
-                rw.NodeRef(ref U32Ref);
-                rw.NodeRef(ref U33Ref);
+                rw.NodeRef(ref U05Ref);
+                rw.NodeRef(ref U06Ref);
+                rw.NodeRef(ref U07Ref);
             }
 
             if (Version >= 10)
             {
-                rw.Int32(ref U34);
-                rw.Int32(ref U35);
-                rw.Int32(ref U36);
-                rw.NodeRef(ref U37Ref);
-                rw.NodeRef(ref U38Ref);
-                rw.NodeRef(ref U39Ref);
+                rw.Int32(ref U08);
+                rw.Int32(ref U09);
+                rw.Int32(ref U10);
+                rw.NodeRef(ref U11Ref);
+                rw.NodeRef(ref U12Ref);
+                rw.NodeRef(ref U13Ref);
             }
 
             if (Version >= 11)
             {
-                rw.NodeRef(ref U40Ref);
-                rw.NodeRef(ref U41Ref);
-                rw.NodeRef(ref U42Ref);
-                rw.NodeRef(ref U43Ref);
-                rw.NodeRef(ref U44Ref);
-                rw.Int32(ref U45);
-                rw.Int32(ref U46);
+                rw.NodeRef(ref U14Ref);
+                rw.NodeRef(ref U15Ref);
+                rw.NodeRef(ref U16Ref);
+                rw.NodeRef(ref U17Ref);
+                rw.NodeRef(ref U18Ref);
+                rw.Int32(ref U19);
+                rw.Int32(ref U20);
             }
 
             if (Version >= 12)
             {
-                rw.NodeRef(ref U47Ref);
+                rw.NodeRef(ref U21Ref);
             }
         }
     }
@@ -2049,40 +2258,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override uint Id => 0x090E8023;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CPlugParticleMaterialImpactModel>? U01Ref;
-        public CPlugParticleMaterialImpactModel? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CPlugParticleMaterialImpactModel>? U02Ref;
-        public CPlugParticleMaterialImpactModel? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090E8023 owner;
-            internal NodeRefView(Chunk090E8023 owner) => this.owner = owner;
-            public NodeRef<CPlugParticleMaterialImpactModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CPlugParticleMaterialImpactModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield break;
-        }
+        public int U01;
 
         public Chunk090E8023() : this(GameVersion.Unspecified)
         {
@@ -2100,12 +2276,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090E8023)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090E8023)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090E8023)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090E8023)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090E8023)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090E8023)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090E8023)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090E8023)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -2116,15 +2287,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.bodyMaterialImpactRef);
+            rw.NodeRef(ref n.wheelMaterialImpactRef);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U03);
-                rw.Int32(ref U04);
-                rw.Int32(ref U05);
-                rw.Int32(ref U06);
+                rw.Int32(ref n.soundBodyImpact_MaskingDelay);
+                rw.Int32(ref n.soundWheelImpact_FrontMaskingDelay);
+                rw.Int32(ref n.soundWheelImpact_BackMaskingDelay);
+                rw.Int32(ref U01);
             }
         }
     }
@@ -2445,46 +2616,46 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
     public partial class VisualArm : IReadable, IWritable, IDeepCloneable
     {
-        private VisualId? u01;
-        public VisualId? U01
+        private VisualId? visual;
+        public VisualId? Visual
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.visual;
+            set => this.visual = value;
         }
 
-        private VisualId? u02;
-        public VisualId? U02
+        private VisualId? hook1;
+        public VisualId? Hook1
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.hook1;
+            set => this.hook1 = value;
         }
 
-        private VisualId? u03;
-        public VisualId? U03
+        private VisualId? hook2;
+        public VisualId? Hook2
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.hook2;
+            set => this.hook2 = value;
         }
 
-        private bool u04;
-        public bool U04
+        private bool isScale;
+        public bool IsScale
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.isScale;
+            set => this.isScale = value;
         }
 
-        private bool u05;
-        public bool U05
+        private bool isRotate;
+        public bool IsRotate
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.isRotate;
+            set => this.isRotate = value;
         }
 
-        private int u06;
-        public int U06
+        private int wheelIndex;
+        public int WheelIndex
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.wheelIndex;
+            set => this.wheelIndex = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2497,49 +2668,49 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((VisualArm)clone).u01 = context.Clone(this.u01)!;
-            ((VisualArm)clone).u02 = context.Clone(this.u02)!;
-            ((VisualArm)clone).u03 = context.Clone(this.u03)!;
-            ((VisualArm)clone).u04 = context.Clone(this.u04)!;
-            ((VisualArm)clone).u05 = context.Clone(this.u05)!;
-            ((VisualArm)clone).u06 = context.Clone(this.u06)!;
+            ((VisualArm)clone).visual = context.Clone(this.visual)!;
+            ((VisualArm)clone).hook1 = context.Clone(this.hook1)!;
+            ((VisualArm)clone).hook2 = context.Clone(this.hook2)!;
+            ((VisualArm)clone).isScale = context.Clone(this.isScale)!;
+            ((VisualArm)clone).isRotate = context.Clone(this.isRotate)!;
+            ((VisualArm)clone).wheelIndex = context.Clone(this.wheelIndex)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadReadable<VisualId>(version: v);
-            this.u02 = r.ReadReadable<VisualId>(version: v);
-            this.u03 = r.ReadReadable<VisualId>(version: v);
-            this.u04 = r.ReadBoolean();
-            this.u05 = r.ReadBoolean();
-            this.u06 = r.ReadInt32();
+            this.visual = r.ReadReadable<VisualId>(version: v);
+            this.hook1 = r.ReadReadable<VisualId>(version: v);
+            this.hook2 = r.ReadReadable<VisualId>(version: v);
+            this.isScale = r.ReadBoolean();
+            this.isRotate = r.ReadBoolean();
+            this.wheelIndex = r.ReadInt32();
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.WriteWritable<VisualId>(this.u01, version: v);
-            w.WriteWritable<VisualId>(this.u02, version: v);
-            w.WriteWritable<VisualId>(this.u03, version: v);
-            w.Write(this.u04);
-            w.Write(this.u05);
-            w.Write(this.u06);
+            w.WriteWritable<VisualId>(this.visual, version: v);
+            w.WriteWritable<VisualId>(this.hook1, version: v);
+            w.WriteWritable<VisualId>(this.hook2, version: v);
+            w.Write(this.isScale);
+            w.Write(this.isRotate);
+            w.Write(this.wheelIndex);
         }
     }
 
     public partial class VisualLight : IReadable, IWritable, IDeepCloneable
     {
-        private VisualId? u01;
-        public VisualId? U01
+        private VisualId? visual;
+        public VisualId? Visual
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.visual;
+            set => this.visual = value;
         }
 
-        private bool u02;
-        public bool U02
+        private bool isRear;
+        public bool IsRear
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.isRear;
+            set => this.isRear = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2552,72 +2723,72 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((VisualLight)clone).u01 = context.Clone(this.u01)!;
-            ((VisualLight)clone).u02 = context.Clone(this.u02)!;
+            ((VisualLight)clone).visual = context.Clone(this.visual)!;
+            ((VisualLight)clone).isRear = context.Clone(this.isRear)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadReadable<VisualId>(version: v);
-            this.u02 = r.ReadBoolean();
+            this.visual = r.ReadReadable<VisualId>(version: v);
+            this.isRear = r.ReadBoolean();
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.WriteWritable<VisualId>(this.u01, version: v);
-            w.Write(this.u02);
+            w.WriteWritable<VisualId>(this.visual, version: v);
+            w.Write(this.isRear);
         }
     }
 
     public partial class VisualWheel : IReadable, IWritable, IDeepCloneable
     {
-        private VisualId? u01;
-        public VisualId? U01
+        private VisualId? tire;
+        public VisualId? Tire
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.tire;
+            set => this.tire = value;
         }
 
-        private VisualId? u02;
-        public VisualId? U02
+        private VisualId? brake;
+        public VisualId? Brake
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.brake;
+            set => this.brake = value;
         }
 
-        private VisualId? u03;
-        public VisualId? U03
+        private VisualId? hub;
+        public VisualId? Hub
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.hub;
+            set => this.hub = value;
         }
 
-        private VisualId? u04;
-        public VisualId? U04
+        private VisualId? guard;
+        public VisualId? Guard
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.guard;
+            set => this.guard = value;
         }
 
-        private VisualId? u05;
-        public VisualId? U05
+        private VisualId? shadow;
+        public VisualId? Shadow
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.shadow;
+            set => this.shadow = value;
         }
 
-        private int u06;
-        public int U06
+        private int phyWheelIndex;
+        public int PhyWheelIndex
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.phyWheelIndex;
+            set => this.phyWheelIndex = value;
         }
 
-        private bool u07;
-        public bool U07
+        private bool rotateY;
+        public bool RotateY
         {
-            get => this.u07;
-            set => this.u07 = value;
+            get => this.rotateY;
+            set => this.rotateY = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2630,45 +2801,45 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((VisualWheel)clone).u01 = context.Clone(this.u01)!;
-            ((VisualWheel)clone).u02 = context.Clone(this.u02)!;
-            ((VisualWheel)clone).u03 = context.Clone(this.u03)!;
-            ((VisualWheel)clone).u04 = context.Clone(this.u04)!;
-            ((VisualWheel)clone).u05 = context.Clone(this.u05)!;
-            ((VisualWheel)clone).u06 = context.Clone(this.u06)!;
-            ((VisualWheel)clone).u07 = context.Clone(this.u07)!;
+            ((VisualWheel)clone).tire = context.Clone(this.tire)!;
+            ((VisualWheel)clone).brake = context.Clone(this.brake)!;
+            ((VisualWheel)clone).hub = context.Clone(this.hub)!;
+            ((VisualWheel)clone).guard = context.Clone(this.guard)!;
+            ((VisualWheel)clone).shadow = context.Clone(this.shadow)!;
+            ((VisualWheel)clone).phyWheelIndex = context.Clone(this.phyWheelIndex)!;
+            ((VisualWheel)clone).rotateY = context.Clone(this.rotateY)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadReadable<VisualId>(version: v);
-            this.u02 = r.ReadReadable<VisualId>(version: v);
-            this.u03 = r.ReadReadable<VisualId>(version: v);
-            this.u04 = r.ReadReadable<VisualId>(version: v);
+            this.tire = r.ReadReadable<VisualId>(version: v);
+            this.brake = r.ReadReadable<VisualId>(version: v);
+            this.hub = r.ReadReadable<VisualId>(version: v);
+            this.guard = r.ReadReadable<VisualId>(version: v);
 
             if (v >= 1)
             {
-                this.u05 = r.ReadReadable<VisualId>(version: v);
+                this.shadow = r.ReadReadable<VisualId>(version: v);
             }
 
-            this.u06 = r.ReadInt32();
-            this.u07 = r.ReadBoolean();
+            this.phyWheelIndex = r.ReadInt32();
+            this.rotateY = r.ReadBoolean();
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.WriteWritable<VisualId>(this.u01, version: v);
-            w.WriteWritable<VisualId>(this.u02, version: v);
-            w.WriteWritable<VisualId>(this.u03, version: v);
-            w.WriteWritable<VisualId>(this.u04, version: v);
+            w.WriteWritable<VisualId>(this.tire, version: v);
+            w.WriteWritable<VisualId>(this.brake, version: v);
+            w.WriteWritable<VisualId>(this.hub, version: v);
+            w.WriteWritable<VisualId>(this.guard, version: v);
 
             if (v >= 1)
             {
-                w.WriteWritable<VisualId>(this.u05, version: v);
+                w.WriteWritable<VisualId>(this.shadow, version: v);
             }
 
-            w.Write(this.u06);
-            w.Write(this.u07);
+            w.Write(this.phyWheelIndex);
+            w.Write(this.rotateY);
         }
     }
 

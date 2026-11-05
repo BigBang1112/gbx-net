@@ -12053,9 +12053,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0B0 chunk (height offsets for vehicle switching; the native code uses only their difference)
+    /// CPlugVehicleCarPhyTuning 0x0B0 chunk (height offsets for vehicle switching)
     /// </summary>
-    [Chunk(0x090ED0B0, "height offsets for vehicle switching; the native code uses only their difference")]
+    [Chunk(0x090ED0B0, "height offsets for vehicle switching")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk090ED0B0 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
