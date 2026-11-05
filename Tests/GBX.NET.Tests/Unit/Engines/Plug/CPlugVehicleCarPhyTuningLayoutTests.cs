@@ -82,6 +82,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     }
 
     [Test]
+    [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
     public async Task ReadWrite_CurveGroup_UsesInlineCurvesFromVersionTwo(int version)
@@ -99,7 +100,38 @@ public class CPlugVehicleCarPhyTuningLayoutTests
             for (var i = 0; i < 5; i++) writer.Write(3.25f + i);
             WriteCurve(writer, version >= 2);
         }
-        await RoundTrip(payload, new CPlugVehicleCarPhyTuning.Chunk090ED0A1());
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A1();
+        await RoundTrip(payload, chunk);
+        await Assert.That(chunk.U03).IsEqualTo(1.25f);
+        await Assert.That(chunk.U04).IsEqualTo(2.25f);
+        await Assert.That(chunk.U07).IsEqualTo(3.25f);
+        await Assert.That(chunk.U08).IsEqualTo(4.25f);
+        await Assert.That(chunk.U09).IsEqualTo(5.25f);
+        await Assert.That(chunk.U10).IsEqualTo(6.25f);
+        await Assert.That(chunk.U11).IsEqualTo(7.25f);
+        foreach (var curve in new[] { chunk.U01, chunk.U02, chunk.U05, chunk.U06, chunk.U12 })
+        {
+            if (version < 2) await Assert.That(curve!.Values).IsEmpty();
+            else
+            {
+                await Assert.That(curve!.Capacity).IsEqualTo(11);
+                await Assert.That(curve.Values).IsEquivalentTo(new Vec2[] { new(1.5f, 2.5f), new(3.5f, 4.5f) }, CollectionOrdering.Matching);
+            }
+        }
+    }
+
+    [Test]
+    public async Task Constructor_CurveGroup_UsesNativeScalarDefaults()
+    {
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A1(GameVersion.TM2020);
+        await Assert.That(chunk.Version).IsEqualTo(2);
+        await Assert.That(chunk.U03).IsEqualTo(0.01f);
+        await Assert.That(chunk.U04).IsEqualTo(0.01f);
+        await Assert.That(chunk.U07).IsEqualTo(0.25f);
+        await Assert.That(chunk.U08).IsEqualTo(90f);
+        await Assert.That(chunk.U09).IsEqualTo(20f);
+        await Assert.That(chunk.U10).IsEqualTo(45f);
+        await Assert.That(chunk.U11).IsEqualTo(0.01f);
     }
 
     [Test]
@@ -140,36 +172,49 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     }
 
     [Test]
+    [Arguments(10)]
+    [Arguments(11)]
     [Arguments(12)]
     [Arguments(13)]
+    [Arguments(14)]
+    [Arguments(15)]
     public async Task ReadWrite_ObsoleteCurves_EndAfterVersionTwelve(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
         {
             writer.Write(version);
-            for (var i = 0; i < 3; i++) WriteCurve(writer, inline: true);
+            for (var i = 0; i < 3; i++) WriteCurve(writer, inline: version >= 11);
             for (var i = 0; i < 3; i++) writer.Write(i + 100);
             writer.Write(1.5f);
-            WriteCurve(writer, inline: true);
-            WriteCurve(writer, inline: true);
+            WriteCurve(writer, inline: version >= 11);
+            WriteCurve(writer, inline: version >= 11);
             writer.Write(2.5f);
-            WriteCurve(writer, inline: true);
+            WriteCurve(writer, inline: version >= 11);
             writer.Write(3.5f);
-            WriteCurve(writer, inline: true);
-            WriteCurve(writer, inline: true);
+            WriteCurve(writer, inline: version >= 11);
+            WriteCurve(writer, inline: version >= 11);
             writer.Write(101);
             writer.Write(102);
-            if (version == 12)
+            if (version <= 12)
             {
-                WriteCurve(writer, inline: true);
-                WriteCurve(writer, inline: true);
+                WriteCurve(writer, inline: version >= 11);
+                WriteCurve(writer, inline: version >= 11);
             }
-            for (var i = 0; i < 4; i++) WriteCurve(writer, inline: true);
-            writer.Write(103);
-            writer.Write(104);
+            for (var i = 0; i < 4; i++) WriteCurve(writer, inline: version >= 11);
+            if (version >= 12)
+            {
+                writer.Write(103);
+                writer.Write(104);
+            }
+            if (version == 14) writer.Write(105);
+            if (version >= 15) WriteCurve(writer, inline: true);
         }
-        await RoundTrip(payload, new CPlugVehicleCarPhyTuning.Chunk090ED0A6());
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A6();
+        await RoundTrip(payload, chunk);
+        if (version >= 11) await Assert.That(chunk.U01!.Capacity).IsEqualTo(11);
+        if (version >= 15) await Assert.That(chunk.U28!.Capacity).IsEqualTo(11);
+        else await Assert.That(chunk.U28!.Values).IsEquivalentTo(new Vec2[] { new(0f, 1.07f), new(1f, 1.05f) }, CollectionOrdering.Matching);
     }
 
     [Test]
@@ -858,6 +903,273 @@ public class CPlugVehicleCarPhyTuningLayoutTests
         await Assert.That(chunk.U03).IsEqualTo(version >= 2 ? 0.1f : 0.075f);
         await Assert.That(chunk.U04).IsEqualTo(version >= 2 ? 4f : 3f);
         await Assert.That(chunk.U05).IsEqualTo(version >= 2 ? 1.5f : 1f);
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    [Arguments(2)]
+    [Arguments(3)]
+    [Arguments(4)]
+    [Arguments(5)]
+    [Arguments(6)]
+    [Arguments(7)]
+    [Arguments(8)]
+    [Arguments(9)]
+    [Arguments(10)]
+    [Arguments(11)]
+    [Arguments(12)]
+    [Arguments(13)]
+    public async Task ReadWrite_Chunk0A3_PreservesVersionedDataAndOmittedDefaults(int version)
+    {
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            writer.Write(version);
+            writer.Write(1.25f);
+            writer.Write(2.25f);
+            writer.Write(101);
+            writer.Write(102);
+            if (version >= 1) writer.Write(3.25f);
+            if (version >= 2)
+            {
+                for (var i = 0; i < 4; i++) writer.Write(4.25f + i);
+            }
+            if (version >= 3) writer.Write(8.25f);
+            if (version >= 4)
+            {
+                writer.WriteNodeRef<CFuncKeysReal>(null);
+                writer.Write(9.25f);
+                for (var i = 0; i < 3; i++) writer.Write(103 + i);
+            }
+            if (version >= 5)
+            {
+                writer.Write(106);
+                writer.WriteNodeRef<CFuncKeysReal>(null);
+                writer.WriteNodeRef<CFuncKeysReal>(null);
+                WriteCurve(writer, version >= 13);
+                WriteCurve(writer, version >= 13);
+            }
+            if (version >= 6) writer.Write(107);
+            if (version >= 7) writer.Write(108);
+            if (version >= 8) writer.Write(109);
+            if (version >= 9)
+            {
+                writer.Write(10.25f);
+                writer.Write(110);
+            }
+            if (version >= 10) writer.Write(111);
+            if (version >= 11) writer.Write(11.25f);
+            if (version >= 12)
+            {
+                WriteCurve(writer, version >= 13);
+                WriteCurve(writer, version >= 13);
+            }
+        }
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A3();
+        await RoundTrip(payload, chunk);
+        await Assert.That(chunk.U05).IsEqualTo(version >= 1 ? 3.25f : 0.45f);
+        await Assert.That(chunk.U21).IsEqualTo(version >= 6 ? 107 : 6000);
+        await Assert.That(chunk.U25).IsEqualTo(version >= 9 ? 110 : 10000);
+        await Assert.That(chunk.U27).IsEqualTo(version >= 11 ? 11.25f : 0.7f);
+        if (version < 12)
+        {
+            await Assert.That(chunk.U28!.Values).IsEquivalentTo(new Vec2[] { new(0f, 0f), new(0.05f, 0.6f), new(0.2f, 0.85f), new(1f, 1f) }, CollectionOrdering.Matching);
+        }
+        if (version >= 13)
+        {
+            await Assert.That(chunk.U19!.Capacity).IsEqualTo(11);
+            await Assert.That(chunk.U29!.Values).IsEquivalentTo(new Vec2[] { new(1.5f, 2.5f), new(3.5f, 4.5f) }, CollectionOrdering.Matching);
+        }
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    [Arguments(2)]
+    [Arguments(3)]
+    [Arguments(4)]
+    [Arguments(5)]
+    [Arguments(6)]
+    [Arguments(7)]
+    [Arguments(8)]
+    [Arguments(9)]
+    [Arguments(10)]
+    [Arguments(11)]
+    [Arguments(12)]
+    [Arguments(13)]
+    [Arguments(14)]
+    [Arguments(15)]
+    [Arguments(16)]
+    [Arguments(17)]
+    [Arguments(18)]
+    public async Task ReadWrite_Chunk0A4_PreservesSlowMotionAndCompatibilityFields(int version)
+    {
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            writer.Write(version);
+            writer.Write(0.6f);
+            if (version >= 1) writer.Write(0.2f);
+            if (version >= 2) writer.Write(12345);
+            if (version >= 3)
+            {
+                writer.Write(101);
+                WriteCurve(writer, version >= 14);
+                writer.Write(1.25f);
+                writer.Write(2.25f);
+            }
+            if (version >= 4)
+            {
+                writer.Write(3.25f);
+                writer.Write(102);
+                writer.Write(4.25f);
+            }
+            if (version >= 5) WriteCurve(writer, version >= 14);
+            if (version >= 6) WriteCurve(writer, version >= 14);
+            if (version >= 7)
+            {
+                WriteCurve(writer, version >= 14);
+                writer.Write(103);
+            }
+            if (version >= 8)
+            {
+                WriteCurve(writer, version >= 14);
+                WriteCurve(writer, version >= 14);
+            }
+            if (version >= 9) writer.Write(104);
+            if (version >= 10) writer.Write(105);
+            if (version >= 11 && version <= 16)
+            {
+                writer.Write(106);
+                writer.Write(107);
+                writer.Write(108);
+            }
+            if (version >= 12) WriteCurve(writer, version >= 14);
+            if (version >= 13 && version <= 16) writer.Write(109);
+            if (version >= 15) writer.Write(110);
+            if (version >= 16) writer.Write(5.25f);
+            if (version >= 18) writer.Write(111);
+        }
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A4();
+        var node = await RoundTrip(payload, chunk);
+        await Assert.That(node.SlowMotionTimeScaleCoef).IsEqualTo(0.6f);
+        await Assert.That(node.SlowMotionTimeScaleMin).IsEqualTo(version >= 1 ? 0.2f : 0.11111111f);
+        await Assert.That(node.SlowMotionDuration).IsEqualTo(version >= 2 ? 12345 : 10000);
+        await Assert.That(chunk.U21).IsEqualTo(version >= 15 ? 110 : 17);
+        await Assert.That(chunk.U22).IsEqualTo(version >= 16 ? 5.25f : 1f);
+        await Assert.That(chunk.U23).IsEqualTo(version >= 18 ? 111 : 1);
+        if (version >= 14)
+        {
+            await Assert.That(chunk.U02!.Capacity).IsEqualTo(11);
+            await Assert.That(chunk.U19!.Values).IsEquivalentTo(new Vec2[] { new(1.5f, 2.5f), new(3.5f, 4.5f) }, CollectionOrdering.Matching);
+        }
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    [Arguments(2)]
+    [Arguments(3)]
+    [Arguments(4)]
+    [Arguments(5)]
+    [Arguments(6)]
+    [Arguments(7)]
+    [Arguments(8)]
+    [Arguments(9)]
+    [Arguments(10)]
+    [Arguments(11)]
+    [Arguments(12)]
+    [Arguments(13)]
+    [Arguments(14)]
+    [Arguments(15)]
+    [Arguments(16)]
+    [Arguments(17)]
+    [Arguments(18)]
+    [Arguments(19)]
+    public async Task ReadWrite_ReactorBoost_PreservesVersionedFieldsAndCurveEncodings(int version)
+    {
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            writer.Write(version);
+            writer.Write(1);
+            writer.Write(101);
+            writer.Write(102);
+            for (var i = 0; i < 4; i++) writer.Write(1.25f + i);
+            WriteCurve(writer, version >= 19);
+            WriteCurve(writer, version >= 19);
+            if (version >= 1) writer.Write(103);
+            if (version >= 2)
+            {
+                writer.Write(104);
+                WriteCurve(writer, version >= 19);
+            }
+            if (version >= 3) writer.Write(105);
+            if (version >= 4)
+            {
+                writer.Write(5.25f);
+                writer.Write(6.25f);
+                writer.Write(106);
+                writer.Write(107);
+            }
+            if (version >= 5)
+            {
+                writer.Write(108);
+                writer.Write(109);
+            }
+            if (version >= 6) writer.WriteNodeRef<CFuncKeysReal>(null);
+            if (version >= 7) writer.Write(110);
+            if (version >= 8) WriteCurve(writer, version >= 19);
+            if (version >= 9)
+            {
+                WriteCurve(writer, version >= 19);
+                WriteCurve(writer, version >= 19);
+                writer.Write(111);
+            }
+            if (version >= 10)
+            {
+                writer.Write(7.25f);
+                WriteCurve(writer, version >= 19);
+            }
+            if (version >= 11) WriteCurve(writer, version >= 19);
+            if (version >= 12)
+            {
+                writer.Write(8.25f);
+                writer.Write(9.25f);
+            }
+            if (version >= 13) WriteCurve(writer, version >= 19);
+            if (version >= 14)
+            {
+                WriteCurve(writer, version >= 19);
+                WriteCurve(writer, version >= 19);
+            }
+            if (version >= 15) writer.Write(112);
+            if (version >= 16) WriteCurve(writer, version >= 19);
+            if (version >= 17) WriteCurve(writer, version >= 19);
+            if (version >= 18)
+            {
+                writer.Write(10.25f);
+                writer.Write(11.25f);
+            }
+        }
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED0A7();
+        var node = await RoundTrip(payload, chunk);
+        await Assert.That(node.ReactorBoostEnabled).IsEqualTo(1);
+        await Assert.That(node.ReactorBoostDuration).IsEqualTo(102);
+        await Assert.That(chunk.U08).IsEqualTo(version >= 1 ? 103 : 30);
+        await Assert.That(chunk.U23).IsEqualTo(version >= 9 ? 111 : 500);
+        await Assert.That(chunk.U32).IsEqualTo(version >= 15 ? 112 : 1000);
+        await Assert.That(chunk.U35).IsEqualTo(version >= 18 ? 10.25f : 0.35f);
+        if (version >= 19)
+        {
+            await Assert.That(chunk.U06!.Capacity).IsEqualTo(11);
+            await Assert.That(chunk.U34!.Values).IsEquivalentTo(new Vec2[] { new(1.5f, 2.5f), new(3.5f, 4.5f) }, CollectionOrdering.Matching);
+        }
+        if (version < 16)
+        {
+            await Assert.That(chunk.U33!.Values).IsEquivalentTo(new Vec2[] { new(0f, 0f), new(100f, 15f), new(500f, 20f) }, CollectionOrdering.Matching);
+        }
     }
 
     private static void WriteCurve(GbxWriter writer, bool inline)

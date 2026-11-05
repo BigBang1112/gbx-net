@@ -471,11 +471,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x078 [MP3, TMT, MP4, TM2020]
   float SteerTorqueZMax = 1000f
 
-0x079 [MP3, TMT, MP4]
-  bool
-  CFuncKeysReal
-  CFuncKeysReal
-  float
+0x079 [MP3, TMT, MP4] // air brake pitch control
+  bool AirBrakeEnabled
+  CFuncKeysReal AirBrakePitchTorqueFromPitchAngle
+  CFuncKeysReal AirBrakeForceFromPitchAngle
+  float AirBrakePitchDamping = 0.1f
 
 0x07D [MP3, TMT, MP4, TM2020]
   int InputBrakeSwitchCountMax = 4
@@ -1092,16 +1092,17 @@ CPlugVehicleCarPhyTuning 0x090ED000
   version
   PlugCurve (version: Version - 2)
   PlugCurve (version: Version - 2)
-  float
-  float
+  float = 0.01f
+  float = 0.01f
   PlugCurve (version: Version - 2)
   PlugCurve (version: Version - 2)
-  float
-  float
-  float
-  float
-  float
+  float = 0.25f
+  float = 90f
+  float = 20f
+  float = 45f
+  float = 0.01f
   PlugCurve (version: Version - 2)
+
 0x0A2 [TM2020.v2]
   version
   PlugCurve (version: Version - 2)
@@ -1119,22 +1120,22 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x0A3 [TM2020.v13]
   version
-  float
-  float
-  int
-  int
+  float = 0.2f
+  float = 0.8f
+  int = 1650
+  int = 3300
   v1+
-    float
+    float = 0.45f
     v2+
-      float
-      float
-      float
-      float
+      float = 6f
+      float = -6f
+      float = 0.05f
+      float = 0.5f
       v3+
-        float
+        float = 0.75f
         v4+
           CFuncKeysReal
-          float
+          float = 45f
           int
           int
           int
@@ -1145,38 +1146,38 @@ CPlugVehicleCarPhyTuning 0x090ED000
             PlugCurve (version: Version - 13)
             PlugCurve (version: Version - 13)
             v6+
-              int
+              int = 6000
               v7+
                 int
                 v8+
                   int
                   v9+
-                    float
-                    int
+                    float = 5f
+                    int = 10000
                     v10+
                       int
                       v11+
-                        float
+                        float = 0.7f
                         v12+
                           PlugCurve (version: Version - 13)
                           PlugCurve (version: Version - 13)
 
 0x0A4 [TM2020.v18]
   version
-  float
+  float SlowMotionTimeScaleCoef = 0.57f
   v1+
-    float
+    float SlowMotionTimeScaleMin = 0.11111111f
   v2+
-    int
+    int SlowMotionDuration = 10000
   v3+
     int
     PlugCurve (version: Version - 14)
-    float
-    float
+    float = 120f
+    float = 30f
   v4+
-    float
-    int
-    float
+    float = 0.5f
+    int = 200
+    float = 0.1f
   v5+
     PlugCurve (version: Version - 14)
   v6+
@@ -1193,52 +1194,52 @@ CPlugVehicleCarPhyTuning 0x090ED000
     int
   v11+
     v16-
-      int
-      int
-      int
+      int // Discarded
+      int // Discarded
+      int // Discarded
   v12+
     PlugCurve (version: Version - 14)
   v13+
     v16-
-      int
+      int // Discarded
   v15+
-    int
+    int = 17
   v16+
-    float
+    float = 1f
   v18+
-    int
+    int = 1
 
 0x0A5 [TM2020.v2]
   version
   v1-
-    int
+    int // Discarded
   int
   v1-
-    int
+    int // Discarded
   int
   v1-
-    int
-    int
-    int
-    int
-  float
-  float
-  float
-  float
-  float
-  float
+    int // Discarded
+    int // Discarded
+    int // Discarded
+    int // Discarded
+  float = 20f
+  float = 1.5f
+  float = 0.5f
+  float = 2f
+  float = 1f
+  float = 0.25f
   v1-
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
   PlugCurve (version: Version - 1)
   v1-
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
-    PlugCurve (version: Version - 1)
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
+    PlugCurve (version: Version - 1) // Discarded
   PlugCurve (version: Version - 1)
 
 0x0A6 [TM2020.v15]
@@ -1246,30 +1247,30 @@ CPlugVehicleCarPhyTuning 0x090ED000
   PlugCurve (version: Version - 11)
   PlugCurve (version: Version - 11)
   PlugCurve (version: Version - 11)
-  int
-  int
-  int
+  int = 500
+  int = 200
+  int // Discarded
   v1+
-    float
+    float = 5f
     PlugCurve (version: Version - 11)
     PlugCurve (version: Version - 11)
-    float
+    float = 45f
     PlugCurve (version: Version - 11)
   v2+
-    float
+    float = 0.2f
   v3+
     PlugCurve (version: Version - 11)
   v4+
     PlugCurve (version: Version - 11)
   v5+
-    int
-    int
+    int // Discarded
+    int // Discarded
   v6+
     v12-
-      PlugCurve (version: Version - 11)
+      PlugCurve (version: Version - 11) // Discarded
   v7+
     v12-
-      PlugCurve (version: Version - 11)
+      PlugCurve (version: Version - 11) // Discarded
   v8+
     PlugCurve (version: Version - 11)
     PlugCurve (version: Version - 11)
@@ -1279,186 +1280,187 @@ CPlugVehicleCarPhyTuning 0x090ED000
     PlugCurve (version: Version - 11)
   v12+
     v12-
-      int
-      int
+      int // Discarded
+      int // Discarded
   v13+
-    int
-    int
+    int = 400
+    int = 300
   v14=
-    int
+    int // Discarded
   v15+
     PlugCurve
+
 0x0A7 [TM2020.v19]
   version
-  int
-  int
-  int
-  float
-  float
-  float
-  float
+  int ReactorBoostEnabled
+  int // Discarded
+  int ReactorBoostDuration = 6000
+  float = 10f
+  float = 4f
+  float = 0.5f
+  float = 10f
   PlugCurve (version: Version - 19)
   PlugCurve (version: Version - 19)
   v1+
-    int
+    int = 30
   v2+
     int
     PlugCurve (version: Version - 19)
   v3+
-    int
+    int // Discarded
   v4+
-    float
-    float
-    int
-    int
+    float = 2f
+    float = 2.5f
+    int // Discarded
+    int // Discarded
   v5+
-    int
-    int
+    int = 200
+    int // Discarded
   v6+
-    CFuncKeysReal
+    CFuncKeysReal // Discarded
   v7+
-    int
+    int // Discarded
   v8+
     PlugCurve (version: Version - 19)
   v9+
     PlugCurve (version: Version - 19)
     PlugCurve (version: Version - 19)
-    int
+    int = 500
   v10+
-    float
+    float = 6f
     PlugCurve (version: Version - 19)
   v11+
     PlugCurve (version: Version - 19)
   v12+
-    float
-    float
+    float = 10f
+    float = 2f
   v13+
     PlugCurve (version: Version - 19)
   v14+
     PlugCurve (version: Version - 19)
     PlugCurve (version: Version - 19)
   v15+
-    int
+    int = 1000
   v16+
     PlugCurve (version: Version - 19)
   v17+
     PlugCurve (version: Version - 19)
   v18+
-    float
-    float
+    float = 0.35f
+    float = 3f
 
-0x0A8 [TM2020.v10]
+0x0A8 [TM2020.v10] // damage
   version
-  int
-  PlugCurve (version: Version - 10)
+  bool DamageEnabled
+  PlugCurve DamageFromWallImpactSpeed (version: Version - 10)
   v1+
-    PlugCurve (version: Version - 10)
-    PlugCurve (version: Version - 10)
+    PlugCurve AccelCoefFromDamage (version: Version - 10)
+    PlugCurve SteerCoefFromDamage (version: Version - 10)
   v2+
-    PlugCurve (version: Version - 10)
+    PlugCurve DamageFromGroundImpactSpeed (version: Version - 10)
   v3+
-    PlugCurve (version: Version - 10)
+    PlugCurve DamageSlowDownFromSpeed (version: Version - 10)
   v4+
-    int
+    int DamageLandingMinAirDuration = 100
   v5+
-    int
-    float
+    int DamageWheelImpactWindow = 100
+    float DamageWheelImpactReduction = 20f
   v6+
     PlugCurve (version: Version - 10)
   v7+
-    PlugCurve (version: Version - 10)
+    PlugCurve DamageFromWallSlideSpeed (version: Version - 10)
   v8+
-    float
-    float
+    float = 0.33333334f
+    float = 0.5f
   v9+
-    PlugCurve (version: Version - 10)
+    PlugCurve DamageWheelImpactReductionFromDelay (version: Version - 10)
 
-0x0A9 [TM2020.v4]
+0x0A9 [TM2020.v4] // landing acceleration and pre-landing forces
   version
-  int
-  int
-  PlugCurve (version: Version - 4)
-  PlugCurve (version: Version - 4)
+  bool LandingAccelEnabled
+  int LandingAccelDurationMax = 500
+  PlugCurve LandingAccelDurationInc_FromNormalContactRelSpeed (version: Version - 4)
+  PlugCurve LandingAccelCoefFromSpeed (version: Version - 4)
   v1+
-    int
+    bool PreLandingForceEnabled
   v2+
-    int
-    float
-    PlugCurve (version: Version - 4)
-    PlugCurve (version: Version - 4)
+    int PreLandingAirDurationMin = 500
+    float PreLandingRayLength = 10f
+    PlugCurve PreLandingNormalForceFromSpeed (version: Version - 4)
+    PlugCurve PreLandingForceCoefFromWheelDistDiff (version: Version - 4)
   v3+
-    PlugCurve (version: Version - 4)
+    PlugCurve PreLandingForwardForceFromSpeed (version: Version - 4)
 
-0x0AA [TM2020]
+0x0AA [TM2020] // wheel contact envelope angle
   version
-  float
+  float NormalEnvWheel_MinNormalAngle = 0.7853982f // radians
 
 0x0AB [TM2020.v1]
   version
-  int
-  int
-  float
-  PlugCurve (version: Version - 1)
+  bool WallEscapeEnabled
+  int WallEscapeDurationAfterContact = 2000 // ms
+  float WallEscapeMaxSpeed = 40f // km/h
+  PlugCurve WallEscapeAccelCoefIncFromDuration (version: Version - 1)
 
-0x0AC [TM2020]
+0x0AC [TM2020] // steering from a target yaw
   version
-  int
+  bool InputSteerFromTargetYaw
 
-0x0AD [TM2020.v11]
+0x0AD [TM2020.v11] // water floating, wheel forces in water and wetness
   version
-  PlugCurve (version: Version - 10)
-  int
-  float
-  int
-  CFuncKeysReal
-  int
-  int
-  int
-  int
-  CFuncKeysReal
-  PlugCurve (version: Version - 10)
-  int
-  int
-  CFuncKeysReal
-  PlugCurve (version: Version - 10)
-  CFuncKeysReal
+  PlugCurve WaterAngularFrictionFromAngularSpeedSq (version: Version - 10)
+  int // Discarded
+  float = 3f
+  int // Discarded
+  CFuncKeysReal // Discarded
+  int // Discarded
+  int // Discarded
+  int // Discarded
+  bool UseFluidWaterPhysics
+  CFuncKeysReal // Discarded
+  PlugCurve WaterSteerTorqueFromSteerAngle (version: Version - 10)
+  int // Discarded
+  int // Discarded
+  CFuncKeysReal // Discarded
+  PlugCurve WaterWheelUpForceFromThrottle (version: Version - 10)
+  CFuncKeysReal // Discarded
   v1+
-    PlugCurve (version: Version - 10)
-    PlugCurve (version: Version - 10)
-    PlugCurve (version: Version - 10)
-    PlugCurve (version: Version - 10)
+    PlugCurve WaterWheelUpForceCoefFromHSpeed (version: Version - 10)
+    PlugCurve WaterWheelUpForceCoefFromVSpeed (version: Version - 10)
+    PlugCurve WaterWheelDragFromSpeed (version: Version - 10)
+    PlugCurve WaterWheelSteerForceFromSpeed (version: Version - 10)
   v2+
-    int
-    int
-    int
+    bool WaterUprightEnabled
+    int WaterEnterDuration = 200 // ms
+    int WaterExitDelay = 50 // ms
   v3+
-    PlugCurve (version: Version - 10)
-    PlugCurve (version: Version - 10)
+    PlugCurve WaterUprightTorqueFromTiltAngle (version: Version - 10)
+    PlugCurve AfterWaterUprightTorqueFromAngularSpeed (version: Version - 10)
   v4+
-    PlugCurve (version: Version - 10)
-    float
+    PlugCurve WheelLateralForceCoefFromWetness (version: Version - 10)
+    float WetnessGainPerEnterDuration = 0.33333334f
   v5+
-    float
+    float WaterWheelDragWetnessPow = 3f
   v6+
-    PlugCurve (version: Version - 10)
+    PlugCurve BrakeForceCoefFromWetness (version: Version - 10)
   v7+
-    CFuncKeysReal
-    CFuncKeysReal
+    CFuncKeysReal // Discarded
+    CFuncKeysReal // Discarded
   v8+
-    PlugCurve (version: Version - 10)
+    PlugCurve WetnessDecreaseCoefFromSpeed (version: Version - 10)
   v9+
-    float
+    float WaterFluidForceImmersionPow = 5f
   v11+
-    int
+    int AfterWaterUprightDuration = 1500 // ms
 
-0x0AE [TM2020.v2]
+0x0AE [TM2020.v2] // plastic surface contacts
   version
-  int
-  PlugCurve (version: Version - 2)
+  bool PlasticContactEnabled
+  PlugCurve PlasticContactCoefFromNormalSpeed (version: Version - 2)
   v1+
-    float
+    float = 0.2f
 
-0x0AF [TM2020] // inline legacy gameplay curves and forces
+0x0AF [TM2020]
   version
   PlugCurve MaxSideFriction
   float MaxSideFrictionSliding
@@ -1487,7 +1489,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   PlugCurve M5SlippingAccelCurve
   PlugCurve M5SteerCoefFromSpeed
   PlugCurve M5SmoothInputSteerDurationFromSpeed
-  float
+  float WaterGravity
   float WaterReboundMinHSpeed
   float WaterBumpMinSpeed
   PlugCurve WaterBumpSlowDownFromSpeedRatio
@@ -1530,16 +1532,16 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float BrakeTorqueCoef
   float AccelTorqueCoef
   PlugCurve Drifting_InputSteerRadiusFromSpeed
-  int
-  PlugCurve
-  PlugCurve
-  float
+  bool AirBrakeEnabled
+  PlugCurve AirBrakePitchTorqueFromPitchAngle
+  PlugCurve AirBrakeForceFromPitchAngle
+  float AirBrakePitchDamping
   PlugCurve Drifting_VehicleLateralForce_FromVehicleLateralSpeed
   PlugCurve Drifting_BackCoefIntensityFromSpeed
   PlugCurve Drifting_WheelLateralForce_FromWheelLateralSpeed
   PlugCurve Drifting_BackCoefFromSlipAngle
 
-0x0B0 [TM2020.v1]
+0x0B0 [TM2020.v1] // height offsets for vehicle switching
   version
   float
   v1+

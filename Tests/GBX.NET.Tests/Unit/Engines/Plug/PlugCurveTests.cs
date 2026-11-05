@@ -99,7 +99,7 @@ public class PlugCurveTests
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(version);
-        payload.Writer.Write(123);
+        payload.Writer.Write(1);
         WriteCurve(payload, version >= 2, "Tuning.Func.Gbx");
         if (version >= 1) payload.Writer.Write(45.5f);
         payload.Finish();
@@ -109,15 +109,15 @@ public class PlugCurveTests
         payload.Read(rw => chunk.ReadWrite(model, rw));
         if (version < 2)
         {
-            await Assert.That(chunk.U02!.References.Curve.File!.FilePath).IsEqualTo("Tuning.Func.Gbx");
+            await Assert.That(model.PlasticContactCoefFromNormalSpeed!.References.Curve.File!.FilePath).IsEqualTo("Tuning.Func.Gbx");
         }
         else
         {
-            await Assert.That(chunk.U02!.Flags).IsEqualTo((ushort)0xFEDC);
-            await Assert.That(chunk.U02.Values!.Length).IsEqualTo(2);
+            await Assert.That(model.PlasticContactCoefFromNormalSpeed!.Flags).IsEqualTo((ushort)0xFEDC);
+            await Assert.That(model.PlasticContactCoefFromNormalSpeed.Values!.Length).IsEqualTo(2);
         }
-        await Assert.That(chunk.U01).IsEqualTo(123);
-        if (version >= 1) await Assert.That(chunk.U03).IsEqualTo(45.5f);
+        await Assert.That(model.PlasticContactEnabled).IsTrue();
+        if (version >= 1) await Assert.That(chunk.U01).IsEqualTo(45.5f);
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(model, rw));
     }
 

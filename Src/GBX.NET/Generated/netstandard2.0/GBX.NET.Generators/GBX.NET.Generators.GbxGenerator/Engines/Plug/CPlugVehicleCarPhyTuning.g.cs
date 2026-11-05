@@ -1105,9 +1105,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterGravity = 1.0f;
-    /// <remarks>Applied with: 0x045, 0x046 body chunks</remarks>
+    /// <remarks>Applied with: 0x045, 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED045>]
     [AppliedWithChunk<Chunk090ED046>]
+    [AppliedWithChunk<Chunk090ED0AF>]
     public float WaterGravity
     {
         get => this.waterGravity;
@@ -1900,6 +1901,46 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         get => this.steerTorqueZMax;
         set => this.steerTorqueZMax = value;
+    }
+
+    private bool airBrakeEnabled;
+    /// <remarks>Applied with: 0x079, 0x0AF body chunks</remarks>
+    [AppliedWithChunk<Chunk090ED079>]
+    [AppliedWithChunk<Chunk090ED0AF>]
+    public bool AirBrakeEnabled
+    {
+        get => this.airBrakeEnabled;
+        set => this.airBrakeEnabled = value;
+    }
+
+    private PlugCurve? airBrakePitchTorqueFromPitchAngle;
+    /// <remarks>Applied with: 0x079, 0x0AF body chunks</remarks>
+    [AppliedWithChunk<Chunk090ED079>]
+    [AppliedWithChunk<Chunk090ED0AF>]
+    public PlugCurve? AirBrakePitchTorqueFromPitchAngle
+    {
+        get => this.airBrakePitchTorqueFromPitchAngle;
+        set => this.airBrakePitchTorqueFromPitchAngle = value;
+    }
+
+    private PlugCurve? airBrakeForceFromPitchAngle;
+    /// <remarks>Applied with: 0x079, 0x0AF body chunks</remarks>
+    [AppliedWithChunk<Chunk090ED079>]
+    [AppliedWithChunk<Chunk090ED0AF>]
+    public PlugCurve? AirBrakeForceFromPitchAngle
+    {
+        get => this.airBrakeForceFromPitchAngle;
+        set => this.airBrakeForceFromPitchAngle = value;
+    }
+
+    private float airBrakePitchDamping = 0.1f;
+    /// <remarks>Applied with: 0x079, 0x0AF body chunks</remarks>
+    [AppliedWithChunk<Chunk090ED079>]
+    [AppliedWithChunk<Chunk090ED0AF>]
+    public float AirBrakePitchDamping
+    {
+        get => this.airBrakePitchDamping;
+        set => this.airBrakePitchDamping = value;
     }
 
     private int inputBrakeSwitchCountMax = 4;
@@ -4522,6 +4563,510 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.bumper2SurfaceNormalImpulse = value;
     }
 
+    private float slowMotionTimeScaleCoef = 0.57f;
+    /// <remarks>Applied with: 0x0A4 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A4>]
+    public float SlowMotionTimeScaleCoef
+    {
+        get => this.slowMotionTimeScaleCoef;
+        set => this.slowMotionTimeScaleCoef = value;
+    }
+
+    private float slowMotionTimeScaleMin = 0.11111111f;
+    /// <remarks>Applied with: 0x0A4 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A4>(1)]
+    public float SlowMotionTimeScaleMin
+    {
+        get => this.slowMotionTimeScaleMin;
+        set => this.slowMotionTimeScaleMin = value;
+    }
+
+    private int slowMotionDuration = 10000;
+    /// <remarks>Applied with: 0x0A4 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A4>(2)]
+    public int SlowMotionDuration
+    {
+        get => this.slowMotionDuration;
+        set => this.slowMotionDuration = value;
+    }
+
+    private int reactorBoostEnabled;
+    /// <remarks>Applied with: 0x0A7 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A7>]
+    public int ReactorBoostEnabled
+    {
+        get => this.reactorBoostEnabled;
+        set => this.reactorBoostEnabled = value;
+    }
+
+    private int reactorBoostDuration = 6000;
+    /// <remarks>Applied with: 0x0A7 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A7>]
+    public int ReactorBoostDuration
+    {
+        get => this.reactorBoostDuration;
+        set => this.reactorBoostDuration = value;
+    }
+
+    private bool damageEnabled;
+    /// <remarks>Applied with: 0x0A8 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>]
+    public bool DamageEnabled
+    {
+        get => this.damageEnabled;
+        set => this.damageEnabled = value;
+    }
+
+    private PlugCurve? damageFromWallImpactSpeed;
+    /// <remarks>Applied with: 0x0A8 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>]
+    public PlugCurve? DamageFromWallImpactSpeed
+    {
+        get => this.damageFromWallImpactSpeed;
+        set => this.damageFromWallImpactSpeed = value;
+    }
+
+    private PlugCurve? accelCoefFromDamage;
+    /// <remarks>Applied with: 0x0A8 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(1)]
+    public PlugCurve? AccelCoefFromDamage
+    {
+        get => this.accelCoefFromDamage;
+        set => this.accelCoefFromDamage = value;
+    }
+
+    private PlugCurve? steerCoefFromDamage;
+    /// <remarks>Applied with: 0x0A8 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(1)]
+    public PlugCurve? SteerCoefFromDamage
+    {
+        get => this.steerCoefFromDamage;
+        set => this.steerCoefFromDamage = value;
+    }
+
+    private PlugCurve? damageFromGroundImpactSpeed;
+    /// <remarks>Applied with: 0x0A8 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(2)]
+    public PlugCurve? DamageFromGroundImpactSpeed
+    {
+        get => this.damageFromGroundImpactSpeed;
+        set => this.damageFromGroundImpactSpeed = value;
+    }
+
+    private PlugCurve? damageSlowDownFromSpeed;
+    /// <remarks>Applied with: 0x0A8 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(3)]
+    public PlugCurve? DamageSlowDownFromSpeed
+    {
+        get => this.damageSlowDownFromSpeed;
+        set => this.damageSlowDownFromSpeed = value;
+    }
+
+    private int damageLandingMinAirDuration = 100;
+    /// <remarks>Applied with: 0x0A8 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(4)]
+    public int DamageLandingMinAirDuration
+    {
+        get => this.damageLandingMinAirDuration;
+        set => this.damageLandingMinAirDuration = value;
+    }
+
+    private int damageWheelImpactWindow = 100;
+    /// <remarks>Applied with: 0x0A8 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(5)]
+    public int DamageWheelImpactWindow
+    {
+        get => this.damageWheelImpactWindow;
+        set => this.damageWheelImpactWindow = value;
+    }
+
+    private float damageWheelImpactReduction = 20f;
+    /// <remarks>Applied with: 0x0A8 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(5)]
+    public float DamageWheelImpactReduction
+    {
+        get => this.damageWheelImpactReduction;
+        set => this.damageWheelImpactReduction = value;
+    }
+
+    private PlugCurve? damageFromWallSlideSpeed;
+    /// <remarks>Applied with: 0x0A8 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(7)]
+    public PlugCurve? DamageFromWallSlideSpeed
+    {
+        get => this.damageFromWallSlideSpeed;
+        set => this.damageFromWallSlideSpeed = value;
+    }
+
+    private PlugCurve? damageWheelImpactReductionFromDelay;
+    /// <remarks>Applied with: 0x0A8 v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A8>(9)]
+    public PlugCurve? DamageWheelImpactReductionFromDelay
+    {
+        get => this.damageWheelImpactReductionFromDelay;
+        set => this.damageWheelImpactReductionFromDelay = value;
+    }
+
+    private bool landingAccelEnabled;
+    /// <remarks>Applied with: 0x0A9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>]
+    public bool LandingAccelEnabled
+    {
+        get => this.landingAccelEnabled;
+        set => this.landingAccelEnabled = value;
+    }
+
+    private int landingAccelDurationMax = 500;
+    /// <remarks>Applied with: 0x0A9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>]
+    public int LandingAccelDurationMax
+    {
+        get => this.landingAccelDurationMax;
+        set => this.landingAccelDurationMax = value;
+    }
+
+    private PlugCurve? landingAccelDurationInc_FromNormalContactRelSpeed;
+    /// <remarks>Applied with: 0x0A9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>]
+    public PlugCurve? LandingAccelDurationInc_FromNormalContactRelSpeed
+    {
+        get => this.landingAccelDurationInc_FromNormalContactRelSpeed;
+        set => this.landingAccelDurationInc_FromNormalContactRelSpeed = value;
+    }
+
+    private PlugCurve? landingAccelCoefFromSpeed;
+    /// <remarks>Applied with: 0x0A9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>]
+    public PlugCurve? LandingAccelCoefFromSpeed
+    {
+        get => this.landingAccelCoefFromSpeed;
+        set => this.landingAccelCoefFromSpeed = value;
+    }
+
+    private bool preLandingForceEnabled;
+    /// <remarks>Applied with: 0x0A9 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(1)]
+    public bool PreLandingForceEnabled
+    {
+        get => this.preLandingForceEnabled;
+        set => this.preLandingForceEnabled = value;
+    }
+
+    private int preLandingAirDurationMin = 500;
+    /// <remarks>Applied with: 0x0A9 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(2)]
+    public int PreLandingAirDurationMin
+    {
+        get => this.preLandingAirDurationMin;
+        set => this.preLandingAirDurationMin = value;
+    }
+
+    private float preLandingRayLength = 10f;
+    /// <remarks>Applied with: 0x0A9 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(2)]
+    public float PreLandingRayLength
+    {
+        get => this.preLandingRayLength;
+        set => this.preLandingRayLength = value;
+    }
+
+    private PlugCurve? preLandingNormalForceFromSpeed;
+    /// <remarks>Applied with: 0x0A9 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(2)]
+    public PlugCurve? PreLandingNormalForceFromSpeed
+    {
+        get => this.preLandingNormalForceFromSpeed;
+        set => this.preLandingNormalForceFromSpeed = value;
+    }
+
+    private PlugCurve? preLandingForceCoefFromWheelDistDiff;
+    /// <remarks>Applied with: 0x0A9 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(2)]
+    public PlugCurve? PreLandingForceCoefFromWheelDistDiff
+    {
+        get => this.preLandingForceCoefFromWheelDistDiff;
+        set => this.preLandingForceCoefFromWheelDistDiff = value;
+    }
+
+    private PlugCurve? preLandingForwardForceFromSpeed;
+    /// <remarks>Applied with: 0x0A9 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0A9>(3)]
+    public PlugCurve? PreLandingForwardForceFromSpeed
+    {
+        get => this.preLandingForwardForceFromSpeed;
+        set => this.preLandingForwardForceFromSpeed = value;
+    }
+
+    private float normalEnvWheel_MinNormalAngle = 0.7853982f;
+    /// <summary>
+    /// radians
+    /// </summary>
+    /// <remarks>Applied with: 0x0AA body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AA>]
+    public float NormalEnvWheel_MinNormalAngle
+    {
+        get => this.normalEnvWheel_MinNormalAngle;
+        set => this.normalEnvWheel_MinNormalAngle = value;
+    }
+
+    private bool wallEscapeEnabled;
+    /// <remarks>Applied with: 0x0AB body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AB>]
+    public bool WallEscapeEnabled
+    {
+        get => this.wallEscapeEnabled;
+        set => this.wallEscapeEnabled = value;
+    }
+
+    private int wallEscapeDurationAfterContact = 2000;
+    /// <summary>
+    /// ms
+    /// </summary>
+    /// <remarks>Applied with: 0x0AB body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AB>]
+    public int WallEscapeDurationAfterContact
+    {
+        get => this.wallEscapeDurationAfterContact;
+        set => this.wallEscapeDurationAfterContact = value;
+    }
+
+    private float wallEscapeMaxSpeed = 40f;
+    /// <summary>
+    /// km/h
+    /// </summary>
+    /// <remarks>Applied with: 0x0AB body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AB>]
+    public float WallEscapeMaxSpeed
+    {
+        get => this.wallEscapeMaxSpeed;
+        set => this.wallEscapeMaxSpeed = value;
+    }
+
+    private PlugCurve? wallEscapeAccelCoefIncFromDuration;
+    /// <remarks>Applied with: 0x0AB body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AB>]
+    public PlugCurve? WallEscapeAccelCoefIncFromDuration
+    {
+        get => this.wallEscapeAccelCoefIncFromDuration;
+        set => this.wallEscapeAccelCoefIncFromDuration = value;
+    }
+
+    private bool inputSteerFromTargetYaw;
+    /// <remarks>Applied with: 0x0AC body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AC>]
+    public bool InputSteerFromTargetYaw
+    {
+        get => this.inputSteerFromTargetYaw;
+        set => this.inputSteerFromTargetYaw = value;
+    }
+
+    private PlugCurve? waterAngularFrictionFromAngularSpeedSq;
+    /// <remarks>Applied with: 0x0AD body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>]
+    public PlugCurve? WaterAngularFrictionFromAngularSpeedSq
+    {
+        get => this.waterAngularFrictionFromAngularSpeedSq;
+        set => this.waterAngularFrictionFromAngularSpeedSq = value;
+    }
+
+    private bool useFluidWaterPhysics;
+    /// <remarks>Applied with: 0x0AD body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>]
+    public bool UseFluidWaterPhysics
+    {
+        get => this.useFluidWaterPhysics;
+        set => this.useFluidWaterPhysics = value;
+    }
+
+    private PlugCurve? waterSteerTorqueFromSteerAngle;
+    /// <remarks>Applied with: 0x0AD body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>]
+    public PlugCurve? WaterSteerTorqueFromSteerAngle
+    {
+        get => this.waterSteerTorqueFromSteerAngle;
+        set => this.waterSteerTorqueFromSteerAngle = value;
+    }
+
+    private PlugCurve? waterWheelUpForceFromThrottle;
+    /// <remarks>Applied with: 0x0AD body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>]
+    public PlugCurve? WaterWheelUpForceFromThrottle
+    {
+        get => this.waterWheelUpForceFromThrottle;
+        set => this.waterWheelUpForceFromThrottle = value;
+    }
+
+    private PlugCurve? waterWheelUpForceCoefFromHSpeed;
+    /// <remarks>Applied with: 0x0AD v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(1)]
+    public PlugCurve? WaterWheelUpForceCoefFromHSpeed
+    {
+        get => this.waterWheelUpForceCoefFromHSpeed;
+        set => this.waterWheelUpForceCoefFromHSpeed = value;
+    }
+
+    private PlugCurve? waterWheelUpForceCoefFromVSpeed;
+    /// <remarks>Applied with: 0x0AD v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(1)]
+    public PlugCurve? WaterWheelUpForceCoefFromVSpeed
+    {
+        get => this.waterWheelUpForceCoefFromVSpeed;
+        set => this.waterWheelUpForceCoefFromVSpeed = value;
+    }
+
+    private PlugCurve? waterWheelDragFromSpeed;
+    /// <remarks>Applied with: 0x0AD v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(1)]
+    public PlugCurve? WaterWheelDragFromSpeed
+    {
+        get => this.waterWheelDragFromSpeed;
+        set => this.waterWheelDragFromSpeed = value;
+    }
+
+    private PlugCurve? waterWheelSteerForceFromSpeed;
+    /// <remarks>Applied with: 0x0AD v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(1)]
+    public PlugCurve? WaterWheelSteerForceFromSpeed
+    {
+        get => this.waterWheelSteerForceFromSpeed;
+        set => this.waterWheelSteerForceFromSpeed = value;
+    }
+
+    private bool waterUprightEnabled;
+    /// <remarks>Applied with: 0x0AD v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(2)]
+    public bool WaterUprightEnabled
+    {
+        get => this.waterUprightEnabled;
+        set => this.waterUprightEnabled = value;
+    }
+
+    private int waterEnterDuration = 200;
+    /// <summary>
+    /// ms
+    /// </summary>
+    /// <remarks>Applied with: 0x0AD v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(2)]
+    public int WaterEnterDuration
+    {
+        get => this.waterEnterDuration;
+        set => this.waterEnterDuration = value;
+    }
+
+    private int waterExitDelay = 50;
+    /// <summary>
+    /// ms
+    /// </summary>
+    /// <remarks>Applied with: 0x0AD v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(2)]
+    public int WaterExitDelay
+    {
+        get => this.waterExitDelay;
+        set => this.waterExitDelay = value;
+    }
+
+    private PlugCurve? waterUprightTorqueFromTiltAngle;
+    /// <remarks>Applied with: 0x0AD v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(3)]
+    public PlugCurve? WaterUprightTorqueFromTiltAngle
+    {
+        get => this.waterUprightTorqueFromTiltAngle;
+        set => this.waterUprightTorqueFromTiltAngle = value;
+    }
+
+    private PlugCurve? afterWaterUprightTorqueFromAngularSpeed;
+    /// <remarks>Applied with: 0x0AD v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(3)]
+    public PlugCurve? AfterWaterUprightTorqueFromAngularSpeed
+    {
+        get => this.afterWaterUprightTorqueFromAngularSpeed;
+        set => this.afterWaterUprightTorqueFromAngularSpeed = value;
+    }
+
+    private PlugCurve? wheelLateralForceCoefFromWetness;
+    /// <remarks>Applied with: 0x0AD v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(4)]
+    public PlugCurve? WheelLateralForceCoefFromWetness
+    {
+        get => this.wheelLateralForceCoefFromWetness;
+        set => this.wheelLateralForceCoefFromWetness = value;
+    }
+
+    private float wetnessGainPerEnterDuration = 0.33333334f;
+    /// <remarks>Applied with: 0x0AD v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(4)]
+    public float WetnessGainPerEnterDuration
+    {
+        get => this.wetnessGainPerEnterDuration;
+        set => this.wetnessGainPerEnterDuration = value;
+    }
+
+    private float waterWheelDragWetnessPow = 3f;
+    /// <remarks>Applied with: 0x0AD v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(5)]
+    public float WaterWheelDragWetnessPow
+    {
+        get => this.waterWheelDragWetnessPow;
+        set => this.waterWheelDragWetnessPow = value;
+    }
+
+    private PlugCurve? brakeForceCoefFromWetness;
+    /// <remarks>Applied with: 0x0AD v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(6)]
+    public PlugCurve? BrakeForceCoefFromWetness
+    {
+        get => this.brakeForceCoefFromWetness;
+        set => this.brakeForceCoefFromWetness = value;
+    }
+
+    private PlugCurve? wetnessDecreaseCoefFromSpeed;
+    /// <remarks>Applied with: 0x0AD v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(8)]
+    public PlugCurve? WetnessDecreaseCoefFromSpeed
+    {
+        get => this.wetnessDecreaseCoefFromSpeed;
+        set => this.wetnessDecreaseCoefFromSpeed = value;
+    }
+
+    private float waterFluidForceImmersionPow = 5f;
+    /// <remarks>Applied with: 0x0AD v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(9)]
+    public float WaterFluidForceImmersionPow
+    {
+        get => this.waterFluidForceImmersionPow;
+        set => this.waterFluidForceImmersionPow = value;
+    }
+
+    private int afterWaterUprightDuration = 1500;
+    /// <summary>
+    /// ms
+    /// </summary>
+    /// <remarks>Applied with: 0x0AD v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AD>(11)]
+    public int AfterWaterUprightDuration
+    {
+        get => this.afterWaterUprightDuration;
+        set => this.afterWaterUprightDuration = value;
+    }
+
+    private bool plasticContactEnabled;
+    /// <remarks>Applied with: 0x0AE body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AE>]
+    public bool PlasticContactEnabled
+    {
+        get => this.plasticContactEnabled;
+        set => this.plasticContactEnabled = value;
+    }
+
+    private PlugCurve? plasticContactCoefFromNormalSpeed;
+    /// <remarks>Applied with: 0x0AE body chunk</remarks>
+    [AppliedWithChunk<Chunk090ED0AE>]
+    public PlugCurve? PlasticContactCoefFromNormalSpeed
+    {
+        get => this.plasticContactCoefFromNormalSpeed;
+        set => this.plasticContactCoefFromNormalSpeed = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -4765,6 +5310,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).accelTorqueCoef = context.Clone(this.accelTorqueCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).drifting_InputSteerRadiusFromSpeed = context.Clone(this.drifting_InputSteerRadiusFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).steerTorqueZMax = context.Clone(this.steerTorqueZMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).airBrakeEnabled = context.Clone(this.airBrakeEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).airBrakePitchTorqueFromPitchAngle = context.Clone(this.airBrakePitchTorqueFromPitchAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).airBrakeForceFromPitchAngle = context.Clone(this.airBrakeForceFromPitchAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).airBrakePitchDamping = context.Clone(this.airBrakePitchDamping)!;
         ((CPlugVehicleCarPhyTuning)clone).inputBrakeSwitchCountMax = context.Clone(this.inputBrakeSwitchCountMax)!;
         ((CPlugVehicleCarPhyTuning)clone).normal_InputSteerAngleSmoothSpeed_OverSteer = context.Clone(this.normal_InputSteerAngleSmoothSpeed_OverSteer)!;
         ((CPlugVehicleCarPhyTuning)clone).drifting_VehicleLateralForce_FromVehicleLateralSpeed = context.Clone(this.drifting_VehicleLateralForce_FromVehicleLateralSpeed)!;
@@ -5055,6 +5604,60 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).bumperSurfaceNormalImpulse = context.Clone(this.bumperSurfaceNormalImpulse)!;
         ((CPlugVehicleCarPhyTuning)clone).bumper2GroundNormalImpulse = context.Clone(this.bumper2GroundNormalImpulse)!;
         ((CPlugVehicleCarPhyTuning)clone).bumper2SurfaceNormalImpulse = context.Clone(this.bumper2SurfaceNormalImpulse)!;
+        ((CPlugVehicleCarPhyTuning)clone).slowMotionTimeScaleCoef = context.Clone(this.slowMotionTimeScaleCoef)!;
+        ((CPlugVehicleCarPhyTuning)clone).slowMotionTimeScaleMin = context.Clone(this.slowMotionTimeScaleMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).slowMotionDuration = context.Clone(this.slowMotionDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).reactorBoostEnabled = context.Clone(this.reactorBoostEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).reactorBoostDuration = context.Clone(this.reactorBoostDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageEnabled = context.Clone(this.damageEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageFromWallImpactSpeed = context.Clone(this.damageFromWallImpactSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).accelCoefFromDamage = context.Clone(this.accelCoefFromDamage)!;
+        ((CPlugVehicleCarPhyTuning)clone).steerCoefFromDamage = context.Clone(this.steerCoefFromDamage)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageFromGroundImpactSpeed = context.Clone(this.damageFromGroundImpactSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageSlowDownFromSpeed = context.Clone(this.damageSlowDownFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageLandingMinAirDuration = context.Clone(this.damageLandingMinAirDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageWheelImpactWindow = context.Clone(this.damageWheelImpactWindow)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageWheelImpactReduction = context.Clone(this.damageWheelImpactReduction)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageFromWallSlideSpeed = context.Clone(this.damageFromWallSlideSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).damageWheelImpactReductionFromDelay = context.Clone(this.damageWheelImpactReductionFromDelay)!;
+        ((CPlugVehicleCarPhyTuning)clone).landingAccelEnabled = context.Clone(this.landingAccelEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).landingAccelDurationMax = context.Clone(this.landingAccelDurationMax)!;
+        ((CPlugVehicleCarPhyTuning)clone).landingAccelDurationInc_FromNormalContactRelSpeed = context.Clone(this.landingAccelDurationInc_FromNormalContactRelSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).landingAccelCoefFromSpeed = context.Clone(this.landingAccelCoefFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingForceEnabled = context.Clone(this.preLandingForceEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingAirDurationMin = context.Clone(this.preLandingAirDurationMin)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingRayLength = context.Clone(this.preLandingRayLength)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingNormalForceFromSpeed = context.Clone(this.preLandingNormalForceFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingForceCoefFromWheelDistDiff = context.Clone(this.preLandingForceCoefFromWheelDistDiff)!;
+        ((CPlugVehicleCarPhyTuning)clone).preLandingForwardForceFromSpeed = context.Clone(this.preLandingForwardForceFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).normalEnvWheel_MinNormalAngle = context.Clone(this.normalEnvWheel_MinNormalAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).wallEscapeEnabled = context.Clone(this.wallEscapeEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).wallEscapeDurationAfterContact = context.Clone(this.wallEscapeDurationAfterContact)!;
+        ((CPlugVehicleCarPhyTuning)clone).wallEscapeMaxSpeed = context.Clone(this.wallEscapeMaxSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).wallEscapeAccelCoefIncFromDuration = context.Clone(this.wallEscapeAccelCoefIncFromDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).inputSteerFromTargetYaw = context.Clone(this.inputSteerFromTargetYaw)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterAngularFrictionFromAngularSpeedSq = context.Clone(this.waterAngularFrictionFromAngularSpeedSq)!;
+        ((CPlugVehicleCarPhyTuning)clone).useFluidWaterPhysics = context.Clone(this.useFluidWaterPhysics)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterSteerTorqueFromSteerAngle = context.Clone(this.waterSteerTorqueFromSteerAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelUpForceFromThrottle = context.Clone(this.waterWheelUpForceFromThrottle)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelUpForceCoefFromHSpeed = context.Clone(this.waterWheelUpForceCoefFromHSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelUpForceCoefFromVSpeed = context.Clone(this.waterWheelUpForceCoefFromVSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelDragFromSpeed = context.Clone(this.waterWheelDragFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelSteerForceFromSpeed = context.Clone(this.waterWheelSteerForceFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterUprightEnabled = context.Clone(this.waterUprightEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterEnterDuration = context.Clone(this.waterEnterDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterExitDelay = context.Clone(this.waterExitDelay)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterUprightTorqueFromTiltAngle = context.Clone(this.waterUprightTorqueFromTiltAngle)!;
+        ((CPlugVehicleCarPhyTuning)clone).afterWaterUprightTorqueFromAngularSpeed = context.Clone(this.afterWaterUprightTorqueFromAngularSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).wheelLateralForceCoefFromWetness = context.Clone(this.wheelLateralForceCoefFromWetness)!;
+        ((CPlugVehicleCarPhyTuning)clone).wetnessGainPerEnterDuration = context.Clone(this.wetnessGainPerEnterDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterWheelDragWetnessPow = context.Clone(this.waterWheelDragWetnessPow)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeForceCoefFromWetness = context.Clone(this.brakeForceCoefFromWetness)!;
+        ((CPlugVehicleCarPhyTuning)clone).wetnessDecreaseCoefFromSpeed = context.Clone(this.wetnessDecreaseCoefFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterFluidForceImmersionPow = context.Clone(this.waterFluidForceImmersionPow)!;
+        ((CPlugVehicleCarPhyTuning)clone).afterWaterUprightDuration = context.Clone(this.afterWaterUprightDuration)!;
+        ((CPlugVehicleCarPhyTuning)clone).plasticContactEnabled = context.Clone(this.plasticContactEnabled)!;
+        ((CPlugVehicleCarPhyTuning)clone).plasticContactCoefFromNormalSpeed = context.Clone(this.plasticContactCoefFromNormalSpeed)!;
     }
 
     /// <summary>
@@ -7404,62 +8007,26 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x079 chunk
+    /// CPlugVehicleCarPhyTuning 0x079 chunk (air brake pitch control)
     /// </summary>
-    [Chunk(0x090ED079)]
+    [Chunk(0x090ED079, "air brake pitch control")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090ED079 : Chunk<CPlugVehicleCarPhyTuning>
     {
         public override uint Id => 0x090ED079;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
-        public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-        public float U04;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090ED079 owner;
-            internal NodeRefView(Chunk090ED079 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield break;
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090ED079)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED079)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090ED079)clone).U03Ref = context.Clone(this.U03Ref)!;
-            ((Chunk090ED079)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
-            rw.Single(ref U04);
+            rw.Boolean(ref n.airBrakeEnabled);
+            n.airBrakePitchTorqueFromPitchAngle = rw.ReadableWritable<PlugCurve>(n.airBrakePitchTorqueFromPitchAngle, version: -1);
+            n.airBrakeForceFromPitchAngle = rw.ReadableWritable<PlugCurve>(n.airBrakeForceFromPitchAngle, version: -1);
+            rw.Single(ref n.airBrakePitchDamping);
         }
     }
 
@@ -9138,6 +9705,127 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED09C)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090ED09C)clone).U06Ref = context.Clone(this.U06Ref)!;
         }
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 21)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version <= 17)
+            {
+                rw.Single(ref U01);
+            }
+
+            if (Version >= 18)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.helicoYawTorqueCoefFromHSpeedKmh, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.helicoYawTorqueFromRollSteer, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.helicoYawTorqueFromRollSteer_CoefFromHSpeedKmh, version: Version- 21);
+            }
+
+            rw.Single(ref n.helicoFrictionCoef);
+            rw.Single(ref n.helicoFrictionTorqueCoef);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref U04Ref);
+            rw.ReadableWritable<PlugCurve>(ref n.helicoRollTorqueFromRollDeg, version: Version- 21);
+            rw.ReadableWritable<PlugCurve>(ref n.helicoDragRollFromRollDeg, version: Version- 21);
+
+            if (Version >= 1)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.helicoPitchTorqueFromPitchDeg, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.helicoDragPitchFromPitchDeg, version: Version- 21);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Single(ref n.helicoFrictionCoefZ);
+            }
+
+            if (Version == 3)
+            {
+                rw.Single(ref U05);
+            }
+
+            if (Version >= 4)
+            {
+                rw.NodeRef(ref U06Ref);
+
+                if (Version >= 5)
+                {
+                    rw.Single(ref n.helicoGroundFrictionCoef);
+                    rw.ReadableWritable<PlugCurve>(ref n.helicoCoefSmoothedLanding, version: Version- 21);
+                    rw.Single(ref n.helicoLandingStartDist);
+                    rw.Single(ref n.helicoBladeRotAccelDeg);
+                    rw.Single(ref n.helicoBladeMaxSpeedDeg);
+
+                    if (Version >= 6)
+                    {
+                        rw.Single(ref n.helicoInputSteerSmoothCoefBack);
+
+                        if (Version >= 7)
+                        {
+                            rw.EnumInt32<EVehicleHelicoVersion>(ref n.helicoVersion);
+                            rw.ReadableWritable<PlugCurve>(ref n.helicoCoefEngineHorizontal, version: Version- 21);
+
+                            if (Version >= 8)
+                            {
+                                rw.ReadableWritable<PlugCurve>(ref n.helicoCoefEngineVertical, version: Version- 21);
+
+                                if (Version >= 9)
+                                {
+                                    rw.Single(ref n.helicoBladeRotDecelDeg);
+
+                                    if (Version >= 10)
+                                    {
+                                        rw.Single(ref n.helicoCoefCorrectedPitch);
+
+                                        if (Version >= 11)
+                                        {
+                                            rw.ReadableWritable<PlugCurve>(ref n.helicoVerticalForceCoefFromAngleDeg, version: Version- 21);
+                                            rw.ReadableWritable<PlugCurve>(ref n.helicoHorizontalForceCoefFromAngleDeg, version: Version- 21);
+
+                                            if (Version >= 12)
+                                            {
+                                                rw.ReadableWritable<PlugCurve>(ref n.helicoPitchTorqueCoefFromSpeedKmh, version: Version- 21);
+
+                                                if (Version >= 13)
+                                                {
+                                                    rw.ReadableWritable<PlugCurve>(ref n.helicoGroundAccelCoefFromGroundDist, version: Version- 21);
+
+                                                    if (Version >= 15)
+                                                    {
+                                                        rw.Single(ref n.centerOfMassZ_NoWheel);
+
+                                                        if (Version >= 16)
+                                                        {
+                                                            rw.Single(ref n.helicoGroundCheckDist);
+
+                                                            if (Version >= 19)
+                                                            {
+                                                                rw.ReadableWritable<PlugCurve>(ref n.helicoYaw_Brake_HSpeedDecFromHSpeed, version: Version- 21);
+
+                                                                if (Version >= 20)
+                                                                {
+                                                                    rw.Single(ref n.helicoCoefIronSight);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -9188,6 +9876,155 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED09D)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090ED09D)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090ED09D)clone).U05 = context.Clone(this.U05)!;
+        }
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 21)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version == 0)
+            {
+                rw.Boolean(ref U01);
+                rw.Single(ref U02);
+                rw.Single(ref U03);
+                rw.Single(ref n.boatReferenceSpeed);
+                rw.Single(ref n.waterPressureDragFalloffPower);
+                rw.Boolean(ref U04);
+                rw.Single(ref n.boatCharacteristicLength);
+                rw.Single(ref n.waterViscosity);
+                if (rw.Reader is not null)
+                {
+                    n.WaterPressureSuctionDragFalloffPower = n.WaterPressureDragFalloffPower;
+                }
+            }
+
+            if (Version >= 1)
+            {
+                if (Version <= 19)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref n.waterPressureDragCoefFromSpeedRatio, version: Version- 21);
+                    rw.Single(ref n.waterPressureDragFalloffPower);
+                    rw.ReadableWritable<PlugCurve>(ref n.waterPressureSuctionDragCoefFromSpeedRatio, version: Version- 21);
+                    rw.Single(ref n.waterPressureSuctionDragFalloffPower);
+                    rw.Single(ref n.waterViscosity);
+                }
+
+                rw.Single(ref n.boatReferenceSpeed);
+                rw.Single(ref n.boatCharacteristicLength);
+                rw.ReadableWritable<PlugCurve>(ref n.boatAccelFromSpeedKmh, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.boatWaterSteeringFromSpeedKmh, version: Version- 21);
+            }
+
+            if (Version >= 2)
+            {
+                if (Version <= 19)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref n.waterFluidFrictionDragCoefFromSpeedRatio, version: Version- 21);
+                }
+            }
+
+            if (Version >= 3)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatRigthingTorqueRatioFromSpeedKmh, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.boatTargetAngularSpeedZFromRoll, version: Version- 21);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Single(ref n.boatEngineDuration01);
+                rw.Single(ref n.boatSteeringSmoothingRatio);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.boatWheelMaxAngle);
+                rw.ReadableWritable<PlugCurve>(ref n.boatWheelTimeToMaxAngleFromSpeedZKmh, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.boatWheelInverseTimeToZeroFromSpeedZKmh, version: Version- 21);
+                rw.ReadableWritable<PlugCurve>(ref n.boatReverseAccelFromSpeedKmh, version: Version- 21);
+
+                if (Version <= 19)
+                {
+                    rw.ReadableWritable<PlugCurve>(ref n.waterPressureDrag_AngularCoefFromSpeedRatio, version: Version- 21);
+                }
+            }
+
+            if (Version >= 6)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatEngineSteeringFromSpeedKmh, version: Version- 21);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Single(ref n.boatInertiaYCoef);
+                rw.ReadableWritable<PlugCurve>(ref n.boatEngineDirFollowRudderFromSpeedZKmh, version: Version- 21);
+            }
+
+            if (Version >= 9)
+            {
+                rw.Single(ref n.boatPlanningCoefDecayRate_Forward);
+                rw.Single(ref n.boatPlanningCoefDecayRate_TurningOrColliding);
+                rw.Single(ref n.boatPlanningContactVelKmhThreshold);
+            }
+
+            if (Version >= 10)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatReverseDirFollowRudderFromSpeedZKmh, version: Version- 21);
+            }
+
+            if (Version >= 11)
+            {
+                rw.Single(ref n.boatRudderResistanceCoef);
+            }
+
+            if (Version >= 12)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatRudderAngleCoeffFromSpeedKmh, version: Version- 21);
+            }
+
+            if (Version >= 13)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatPlanningForceFromCoef, version: Version- 21);
+            }
+
+            if (Version >= 14)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatPlanningAsternForceFromBrakeDuration, version: Version- 21);
+            }
+
+            if (Version >= 15)
+            {
+                rw.Single(ref n.boatPlanningAngularSpeedThreshold);
+                rw.Int32(ref n.boatPlanningCooldownDuration);
+            }
+
+            if (Version >= 16)
+            {
+                rw.Single(ref n.boatPlanningCoefDecayFromRudderInputDelta01);
+            }
+
+            if (Version >= 17)
+            {
+                rw.Single(ref U05);
+            }
+
+            if (Version >= 18)
+            {
+                rw.ReadableWritable<PlugCurve>(ref n.boatPlanningCoefBuildingRateFromPlanningCoefValue, version: Version- 21);
+            }
+
+            if (Version >= 19)
+            {
+                rw.Int32(ref n.boatIsCarrier);
+            }
+
+            if (Version >= 20)
+            {
+                rw.NodeRef(ref n.dynaWaterModelRef);
+            }
         }
     }
 
@@ -9552,6 +10389,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 Version = 2;
             }
+
+            U03 = 0.01f;
+            U04 = 0.01f;
+            U07 = 0.25f;
+            U08 = 90f;
+            U09 = 20f;
+            U10 = 45f;
+            U11 = 0.01f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -9618,18 +10463,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U11;
         public PlugCurve? U12;
 
-        public Chunk090ED0A2() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A2(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 2;
-            }
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -9681,16 +10514,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0A3;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public int U03;
-        public int U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
+        public float U01 = 0.2f;
+        public float U02 = 0.8f;
+        public int U03 = 1650;
+        public int U04 = 3300;
+        public float U05 = 0.45f;
+        public float U06 = 6f;
+        public float U07 = -6f;
+        public float U08 = 0.05f;
+        public float U09 = 0.5f;
+        public float U10 = 0.75f;
 
         private NodeRef<CFuncKeysReal>? U11Ref;
         public CFuncKeysReal? U11
@@ -9698,7 +10531,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             get => U11Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U11Ref, value);
         }
-        public float U12;
+        public float U12 = 45f;
         public int U13;
         public int U14;
         public int U15;
@@ -9719,13 +10552,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         }
         public PlugCurve? U19;
         public PlugCurve? U20;
-        public int U21;
+        public int U21 = 6000;
         public int U22;
         public int U23;
-        public float U24;
-        public int U25;
+        public float U24 = 5f;
+        public int U25 = 10000;
         public int U26;
-        public float U27;
+        public float U27 = 0.7f;
         public PlugCurve? U28;
         public PlugCurve? U29;
 
@@ -9745,18 +10578,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
             yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
             yield break;
-        }
-
-        public Chunk090ED0A3() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A3(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 13;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -9892,44 +10713,29 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0A4;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public int U03;
-        public int U04;
-        public PlugCurve? U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public int U09;
-        public float U10;
-        public PlugCurve? U11;
+        public int U01;
+        public PlugCurve? U02;
+        public float U03 = 120f;
+        public float U04 = 30f;
+        public float U05 = 0.5f;
+        public int U06 = 200;
+        public float U07 = 0.1f;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
+        public PlugCurve? U10;
+        public int U11;
         public PlugCurve? U12;
         public PlugCurve? U13;
         public int U14;
-        public PlugCurve? U15;
-        public PlugCurve? U16;
+        public int U15;
+        public int U16;
         public int U17;
         public int U18;
-        public int U19;
+        public PlugCurve? U19;
         public int U20;
-        public int U21;
-        public PlugCurve? U22;
-        public int U23;
-        public int U24;
-        public float U25;
-        public int U26;
-
-        public Chunk090ED0A4() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A4(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 18;
-            }
-        }
+        public int U21 = 17;
+        public float U22 = 1f;
+        public int U23 = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -9958,9 +10764,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A4)clone).U21 = context.Clone(this.U21)!;
             ((Chunk090ED0A4)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090ED0A4)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090ED0A4)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090ED0A4)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090ED0A4)clone).U26 = context.Clone(this.U26)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -9971,101 +10774,101 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
+            rw.Single(ref n.slowMotionTimeScaleCoef);
 
             if (Version >= 1)
             {
-                rw.Single(ref U02);
+                rw.Single(ref n.slowMotionTimeScaleMin);
             }
 
             if (Version >= 2)
             {
-                rw.Int32(ref U03);
+                rw.Int32(ref n.slowMotionDuration);
             }
 
             if (Version >= 3)
             {
-                rw.Int32(ref U04);
-                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 14);
-                rw.Single(ref U06);
-                rw.Single(ref U07);
+                rw.Int32(ref U01);
+                rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 14);
+                rw.Single(ref U03);
+                rw.Single(ref U04);
             }
 
             if (Version >= 4)
             {
-                rw.Single(ref U08);
-                rw.Int32(ref U09);
-                rw.Single(ref U10);
+                rw.Single(ref U05);
+                rw.Int32(ref U06);
+                rw.Single(ref U07);
             }
 
             if (Version >= 5)
             {
-                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 14);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 14);
             }
 
             if (Version >= 7)
             {
-                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 14);
-                rw.Int32(ref U14);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 14);
+                rw.Int32(ref U11);
             }
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 14);
-                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 14);
             }
 
             if (Version >= 9)
             {
-                rw.Int32(ref U17);
+                rw.Int32(ref U14);
             }
 
             if (Version >= 10)
             {
-                rw.Int32(ref U18);
+                rw.Int32(ref U15);
             }
 
             if (Version >= 11)
             {
                 if (Version <= 16)
                 {
-                    rw.Int32(ref U19);
-                    rw.Int32(ref U20);
-                    rw.Int32(ref U21);
+                    rw.Int32(ref U16);
+                    rw.Int32(ref U17);
+                    rw.Int32(ref U18);
                 }
             }
 
             if (Version >= 12)
             {
-                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 14);
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 14);
             }
 
             if (Version >= 13)
             {
                 if (Version <= 16)
                 {
-                    rw.Int32(ref U23);
+                    rw.Int32(ref U20);
                 }
             }
 
             if (Version >= 15)
             {
-                rw.Int32(ref U24);
+                rw.Int32(ref U21);
             }
 
             if (Version >= 16)
             {
-                rw.Single(ref U25);
+                rw.Single(ref U22);
             }
 
             if (Version >= 18)
             {
-                rw.Int32(ref U26);
+                rw.Int32(ref U23);
             }
         }
     }
@@ -10088,12 +10891,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U06;
         public int U07;
         public int U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
+        public float U09 = 20f;
+        public float U10 = 1.5f;
+        public float U11 = 0.5f;
+        public float U12 = 2f;
+        public float U13 = 1f;
+        public float U14 = 0.25f;
         public PlugCurve? U15;
         public PlugCurve? U16;
         public PlugCurve? U17;
@@ -10105,18 +10908,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U23;
         public PlugCurve? U24;
         public PlugCurve? U25;
-
-        public Chunk090ED0A5() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A5(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 2;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -10222,15 +11013,15 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U01;
         public PlugCurve? U02;
         public PlugCurve? U03;
-        public int U04;
-        public int U05;
+        public int U04 = 500;
+        public int U05 = 200;
         public int U06;
-        public float U07;
+        public float U07 = 5f;
         public PlugCurve? U08;
         public PlugCurve? U09;
-        public float U10;
+        public float U10 = 45f;
         public PlugCurve? U11;
-        public float U12;
+        public float U12 = 0.2f;
         public PlugCurve? U13;
         public PlugCurve? U14;
         public int U15;
@@ -10243,22 +11034,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U22;
         public int U23;
         public int U24;
-        public int U25;
-        public int U26;
+        public int U25 = 400;
+        public int U26 = 300;
         public int U27;
         public PlugCurve? U28;
-
-        public Chunk090ED0A6() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A6(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 15;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -10409,74 +11188,63 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
-        public int U02;
-        public int U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public PlugCurve? U08;
-        public PlugCurve? U09;
-        public int U10;
+        public float U02 = 10f;
+        public float U03 = 4f;
+        public float U04 = 0.5f;
+        public float U05 = 10f;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
+        public int U08 = 30;
+        public int U09;
+        public PlugCurve? U10;
         public int U11;
-        public PlugCurve? U12;
-        public int U13;
-        public float U14;
-        public float U15;
-        public int U16;
+        public float U12 = 2f;
+        public float U13 = 2.5f;
+        public int U14;
+        public int U15;
+        public int U16 = 200;
         public int U17;
-        public int U18;
-        public int U19;
 
-        private NodeRef<CFuncKeysReal>? U20Ref;
-        public CFuncKeysReal? U20
+        private NodeRef<CFuncKeysReal>? U18Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U18
         {
-            get => U20Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U20Ref, value);
+            get => U18Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U18Ref, value);
         }
-        public int U21;
+        public int U19;
+        public PlugCurve? U20;
+        public PlugCurve? U21;
         public PlugCurve? U22;
-        public PlugCurve? U23;
-        public PlugCurve? U24;
-        public int U25;
-        public float U26;
-        public PlugCurve? U27;
-        public PlugCurve? U28;
-        public float U29;
-        public float U30;
+        public int U23 = 500;
+        public float U24 = 6f;
+        public PlugCurve? U25;
+        public PlugCurve? U26;
+        public float U27 = 10f;
+        public float U28 = 2f;
+        public PlugCurve? U29;
+        public PlugCurve? U30;
         public PlugCurve? U31;
-        public PlugCurve? U32;
+        public int U32 = 1000;
         public PlugCurve? U33;
-        public int U34;
-        public PlugCurve? U35;
-        public PlugCurve? U36;
-        public float U37;
-        public float U38;
+        public PlugCurve? U34;
+        public float U35 = 0.35f;
+        public float U36 = 3f;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090ED0A7 owner;
             internal NodeRefView(Chunk090ED0A7 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
+            public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
+            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
             yield break;
-        }
-
-        public Chunk090ED0A7() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0A7(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 19;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -10500,9 +11268,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A7)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090ED0A7)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090ED0A7)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090ED0A7)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A7)clone).U18Ref = context.Clone(this.U18Ref)!;
             ((Chunk090ED0A7)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090ED0A7)clone).U20Ref = context.Clone(this.U20Ref)!;
+            ((Chunk090ED0A7)clone).U20 = context.Clone(this.U20)!;
             ((Chunk090ED0A7)clone).U21 = context.Clone(this.U21)!;
             ((Chunk090ED0A7)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090ED0A7)clone).U23 = context.Clone(this.U23)!;
@@ -10519,8 +11287,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A7)clone).U34 = context.Clone(this.U34)!;
             ((Chunk090ED0A7)clone).U35 = context.Clone(this.U35)!;
             ((Chunk090ED0A7)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk090ED0A7)clone).U37 = context.Clone(this.U37)!;
-            ((Chunk090ED0A7)clone).U38 = context.Clone(this.U38)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10531,143 +11297,132 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
+            rw.Int32(ref n.reactorBoostEnabled);
             rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.reactorBoostDuration);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 19);
-            rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 19);
+            rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 19);
+            rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 19);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U10);
+                rw.Int32(ref U08);
             }
 
             if (Version >= 2)
             {
-                rw.Int32(ref U11);
-                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 19);
+                rw.Int32(ref U09);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 19);
             }
 
             if (Version >= 3)
             {
-                rw.Int32(ref U13);
+                rw.Int32(ref U11);
             }
 
             if (Version >= 4)
             {
-                rw.Single(ref U14);
-                rw.Single(ref U15);
-                rw.Int32(ref U16);
-                rw.Int32(ref U17);
+                rw.Single(ref U12);
+                rw.Single(ref U13);
+                rw.Int32(ref U14);
+                rw.Int32(ref U15);
             }
 
             if (Version >= 5)
             {
-                rw.Int32(ref U18);
-                rw.Int32(ref U19);
+                rw.Int32(ref U16);
+                rw.Int32(ref U17);
             }
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref U20Ref);
+                rw.NodeRef(ref U18Ref);
             }
 
             if (Version >= 7)
             {
-                rw.Int32(ref U21);
+                rw.Int32(ref U19);
             }
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 19);
             }
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<PlugCurve>(ref U23, version: Version- 19);
-                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 19);
-                rw.Int32(ref U25);
+                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 19);
+                rw.Int32(ref U23);
             }
 
             if (Version >= 10)
             {
-                rw.Single(ref U26);
-                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 19);
+                rw.Single(ref U24);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 19);
             }
 
             if (Version >= 11)
             {
-                rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 19);
             }
 
             if (Version >= 12)
             {
-                rw.Single(ref U29);
-                rw.Single(ref U30);
+                rw.Single(ref U27);
+                rw.Single(ref U28);
             }
 
             if (Version >= 13)
             {
-                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 19);
             }
 
             if (Version >= 14)
             {
-                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 19);
-                rw.ReadableWritable<PlugCurve>(ref U33, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U30, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 19);
             }
 
             if (Version >= 15)
             {
-                rw.Int32(ref U34);
+                rw.Int32(ref U32);
             }
 
             if (Version >= 16)
             {
-                rw.ReadableWritable<PlugCurve>(ref U35, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U33, version: Version- 19);
             }
 
             if (Version >= 17)
             {
-                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 19);
+                rw.ReadableWritable<PlugCurve>(ref U34, version: Version- 19);
             }
 
             if (Version >= 18)
             {
-                rw.Single(ref U37);
-                rw.Single(ref U38);
+                rw.Single(ref U35);
+                rw.Single(ref U36);
             }
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0A8 chunk
+    /// CPlugVehicleCarPhyTuning 0x0A8 chunk (damage)
     /// </summary>
-    [Chunk(0x090ED0A8)]
+    [Chunk(0x090ED0A8, "damage")]
     [ChunkGameVersion(GameVersion.TM2020, 10)]
     public partial class Chunk090ED0A8 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0A8;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public PlugCurve? U02;
-        public PlugCurve? U03;
-        public PlugCurve? U04;
-        public PlugCurve? U05;
-        public PlugCurve? U06;
-        public int U07;
-        public int U08;
-        public float U09;
-        public PlugCurve? U10;
-        public PlugCurve? U11;
-        public float U12;
-        public float U13;
-        public PlugCurve? U14;
+        public PlugCurve? U01;
+        public float U02;
+        public float U03;
 
         public Chunk090ED0A8() : this(GameVersion.Unspecified)
         {
@@ -10679,6 +11434,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 Version = 10;
             }
+
+            U02 = 0.33333334f;
+            U03 = 0.5f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -10688,17 +11446,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A8)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090ED0A8)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090ED0A8)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED0A8)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED0A8)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090ED0A8)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090ED0A8)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090ED0A8)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090ED0A8)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090ED0A8)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090ED0A8)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090ED0A8)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090ED0A8)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090ED0A8)clone).U14 = context.Clone(this.U14)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10709,79 +11456,69 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 10);
+            rw.Boolean(ref n.damageEnabled);
+            rw.ReadableWritable<PlugCurve>(ref n.damageFromWallImpactSpeed, version: Version- 10);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 10);
-                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.accelCoefFromDamage, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.steerCoefFromDamage, version: Version- 10);
             }
 
             if (Version >= 2)
             {
-                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.damageFromGroundImpactSpeed, version: Version- 10);
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.damageSlowDownFromSpeed, version: Version- 10);
             }
 
             if (Version >= 4)
             {
-                rw.Int32(ref U07);
+                rw.Int32(ref n.damageLandingMinAirDuration);
             }
 
             if (Version >= 5)
             {
-                rw.Int32(ref U08);
-                rw.Single(ref U09);
+                rw.Int32(ref n.damageWheelImpactWindow);
+                rw.Single(ref n.damageWheelImpactReduction);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 10);
             }
 
             if (Version >= 7)
             {
-                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.damageFromWallSlideSpeed, version: Version- 10);
             }
 
             if (Version >= 8)
             {
-                rw.Single(ref U12);
-                rw.Single(ref U13);
+                rw.Single(ref U02);
+                rw.Single(ref U03);
             }
 
             if (Version >= 9)
             {
-                rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.damageWheelImpactReductionFromDelay, version: Version- 10);
             }
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0A9 chunk
+    /// CPlugVehicleCarPhyTuning 0x0A9 chunk (landing acceleration and pre-landing forces)
     /// </summary>
-    [Chunk(0x090ED0A9)]
+    [Chunk(0x090ED0A9, "landing acceleration and pre-landing forces")]
     [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk090ED0A9 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0A9;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int U02;
-        public PlugCurve? U03;
-        public PlugCurve? U04;
-        public int U05;
-        public int U06;
-        public float U07;
-        public PlugCurve? U08;
-        public PlugCurve? U09;
-        public PlugCurve? U10;
 
         public Chunk090ED0A9() : this(GameVersion.Unspecified)
         {
@@ -10799,16 +11536,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0A9)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED0A9)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED0A9)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED0A9)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED0A9)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED0A9)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090ED0A9)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090ED0A9)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090ED0A9)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090ED0A9)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090ED0A9)clone).U10 = context.Clone(this.U10)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10819,48 +11546,46 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 4);
-            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 4);
+            rw.Boolean(ref n.landingAccelEnabled);
+            rw.Int32(ref n.landingAccelDurationMax);
+            rw.ReadableWritable<PlugCurve>(ref n.landingAccelDurationInc_FromNormalContactRelSpeed, version: Version- 4);
+            rw.ReadableWritable<PlugCurve>(ref n.landingAccelCoefFromSpeed, version: Version- 4);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U05);
+                rw.Boolean(ref n.preLandingForceEnabled);
             }
 
             if (Version >= 2)
             {
-                rw.Int32(ref U06);
-                rw.Single(ref U07);
-                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 4);
-                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 4);
+                rw.Int32(ref n.preLandingAirDurationMin);
+                rw.Single(ref n.preLandingRayLength);
+                rw.ReadableWritable<PlugCurve>(ref n.preLandingNormalForceFromSpeed, version: Version- 4);
+                rw.ReadableWritable<PlugCurve>(ref n.preLandingForceCoefFromWheelDistDiff, version: Version- 4);
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 4);
+                rw.ReadableWritable<PlugCurve>(ref n.preLandingForwardForceFromSpeed, version: Version- 4);
             }
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0AA chunk
+    /// CPlugVehicleCarPhyTuning 0x0AA chunk (wheel contact envelope angle)
     /// </summary>
-    [Chunk(0x090ED0AA)]
+    [Chunk(0x090ED0AA, "wheel contact envelope angle")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AA : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AA;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0AA)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED0AA)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10871,7 +11596,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
+            rw.Single(ref n.normalEnvWheel_MinNormalAngle);
         }
     }
 
@@ -10885,10 +11610,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED0AB;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int U02;
-        public float U03;
-        public PlugCurve? U04;
 
         public Chunk090ED0AB() : this(GameVersion.Unspecified)
         {
@@ -10906,10 +11627,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0AB)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED0AB)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED0AB)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED0AB)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED0AB)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10920,30 +11637,28 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 1);
+            rw.Boolean(ref n.wallEscapeEnabled);
+            rw.Int32(ref n.wallEscapeDurationAfterContact);
+            rw.Single(ref n.wallEscapeMaxSpeed);
+            rw.ReadableWritable<PlugCurve>(ref n.wallEscapeAccelCoefIncFromDuration, version: Version- 1);
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0AC chunk
+    /// CPlugVehicleCarPhyTuning 0x0AC chunk (steering from a target yaw)
     /// </summary>
-    [Chunk(0x090ED0AC)]
+    [Chunk(0x090ED0AC, "steering from a target yaw")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AC : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AC;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0AC)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED0AC)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -10954,112 +11669,110 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
+            rw.Boolean(ref n.inputSteerFromTargetYaw);
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0AD chunk
+    /// CPlugVehicleCarPhyTuning 0x0AD chunk (water floating, wheel forces in water and wetness)
     /// </summary>
-    [Chunk(0x090ED0AD)]
+    [Chunk(0x090ED0AD, "water floating, wheel forces in water and wetness")]
     [ChunkGameVersion(GameVersion.TM2020, 11)]
     public partial class Chunk090ED0AD : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AD;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public PlugCurve? U01;
-        public int U02;
-        public float U03;
-        public int U04;
+        public int U01;
+        public float U02;
+        public int U03;
 
-        private NodeRef<CFuncKeysReal>? U05Ref;
-        public CFuncKeysReal? U05
+        private NodeRef<CFuncKeysReal>? U04Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U04
         {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
+        public int U05;
         public int U06;
         public int U07;
-        public int U08;
-        public int U09;
 
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
+        private NodeRef<CFuncKeysReal>? U08Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U08
         {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
+            get => U08Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U08Ref, value);
         }
-        public PlugCurve? U11;
-        public int U12;
-        public int U13;
+        public int U09;
+        public int U10;
+
+        private NodeRef<CFuncKeysReal>? U11Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U11
+        {
+            get => U11Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U11Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U12Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U12
+        {
+            get => U12Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U12Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U13Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
+        public CFuncKeysReal? U13
+        {
+            get => U13Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U13Ref, value);
+        }
 
         private NodeRef<CFuncKeysReal>? U14Ref;
+        /// <summary>
+        /// Discarded
+        /// </summary>
         public CFuncKeysReal? U14
         {
             get => U14Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U14Ref, value);
         }
-        public PlugCurve? U15;
-
-        private NodeRef<CFuncKeysReal>? U16Ref;
-        public CFuncKeysReal? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
-        public PlugCurve? U17;
-        public PlugCurve? U18;
-        public PlugCurve? U19;
-        public PlugCurve? U20;
-        public int U21;
-        public int U22;
-        public int U23;
-        public PlugCurve? U24;
-        public PlugCurve? U25;
-        public PlugCurve? U26;
-        public float U27;
-        public float U28;
-        public PlugCurve? U29;
-
-        private NodeRef<CFuncKeysReal>? U30Ref;
-        public CFuncKeysReal? U30
-        {
-            get => U30Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U30Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U31Ref;
-        public CFuncKeysReal? U31
-        {
-            get => U31Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U31Ref, value);
-        }
-        public PlugCurve? U32;
-        public float U33;
-        public int U34;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090ED0AD owner;
             internal NodeRefView(Chunk090ED0AD owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
+            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
+            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
+            public NodeRef<CFuncKeysReal> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
             public NodeRef<CFuncKeysReal> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CFuncKeysReal> U30 => NodeRef.GetOrCreate(ref owner.U30Ref);
-            public NodeRef<CFuncKeysReal> U31 => NodeRef.GetOrCreate(ref owner.U31Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
+            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
+            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
+            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
             yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U30", NodeRef.GetOrCreate(ref U30Ref));
-            yield return new("U31", NodeRef.GetOrCreate(ref U31Ref));
             yield break;
         }
 
@@ -11073,6 +11786,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 Version = 11;
             }
+
+            U02 = 3f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -11082,37 +11797,17 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0AD)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090ED0AD)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090ED0AD)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED0AD)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED0AD)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk090ED0AD)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090ED0AD)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090ED0AD)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090ED0AD)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090ED0AD)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090ED0AD)clone).U08Ref = context.Clone(this.U08Ref)!;
             ((Chunk090ED0AD)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090ED0AD)clone).U10Ref = context.Clone(this.U10Ref)!;
-            ((Chunk090ED0AD)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090ED0AD)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090ED0AD)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090ED0AD)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0AD)clone).U11Ref = context.Clone(this.U11Ref)!;
+            ((Chunk090ED0AD)clone).U12Ref = context.Clone(this.U12Ref)!;
+            ((Chunk090ED0AD)clone).U13Ref = context.Clone(this.U13Ref)!;
             ((Chunk090ED0AD)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090ED0AD)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090ED0AD)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090ED0AD)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090ED0AD)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090ED0AD)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090ED0AD)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090ED0AD)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090ED0AD)clone).U22 = context.Clone(this.U22)!;
-            ((Chunk090ED0AD)clone).U23 = context.Clone(this.U23)!;
-            ((Chunk090ED0AD)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090ED0AD)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090ED0AD)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk090ED0AD)clone).U27 = context.Clone(this.U27)!;
-            ((Chunk090ED0AD)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090ED0AD)clone).U29 = context.Clone(this.U29)!;
-            ((Chunk090ED0AD)clone).U30Ref = context.Clone(this.U30Ref)!;
-            ((Chunk090ED0AD)clone).U31Ref = context.Clone(this.U31Ref)!;
-            ((Chunk090ED0AD)clone).U32 = context.Clone(this.U32)!;
-            ((Chunk090ED0AD)clone).U33 = context.Clone(this.U33)!;
-            ((Chunk090ED0AD)clone).U34 = context.Clone(this.U34)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -11123,96 +11818,94 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 10);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Int32(ref U04);
-            rw.NodeRef(ref U05Ref);
+            rw.ReadableWritable<PlugCurve>(ref n.waterAngularFrictionFromAngularSpeedSq, version: Version- 10);
+            rw.Int32(ref U01);
+            rw.Single(ref U02);
+            rw.Int32(ref U03);
+            rw.NodeRef(ref U04Ref);
+            rw.Int32(ref U05);
             rw.Int32(ref U06);
             rw.Int32(ref U07);
-            rw.Int32(ref U08);
+            rw.Boolean(ref n.useFluidWaterPhysics);
+            rw.NodeRef(ref U08Ref);
+            rw.ReadableWritable<PlugCurve>(ref n.waterSteerTorqueFromSteerAngle, version: Version- 10);
             rw.Int32(ref U09);
-            rw.NodeRef(ref U10Ref);
-            rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 10);
-            rw.Int32(ref U12);
-            rw.Int32(ref U13);
-            rw.NodeRef(ref U14Ref);
-            rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 10);
-            rw.NodeRef(ref U16Ref);
+            rw.Int32(ref U10);
+            rw.NodeRef(ref U11Ref);
+            rw.ReadableWritable<PlugCurve>(ref n.waterWheelUpForceFromThrottle, version: Version- 10);
+            rw.NodeRef(ref U12Ref);
 
             if (Version >= 1)
             {
-                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 10);
-                rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 10);
-                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 10);
-                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.waterWheelUpForceCoefFromHSpeed, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.waterWheelUpForceCoefFromVSpeed, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.waterWheelDragFromSpeed, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.waterWheelSteerForceFromSpeed, version: Version- 10);
             }
 
             if (Version >= 2)
             {
-                rw.Int32(ref U21);
-                rw.Int32(ref U22);
-                rw.Int32(ref U23);
+                rw.Boolean(ref n.waterUprightEnabled);
+                rw.Int32(ref n.waterEnterDuration);
+                rw.Int32(ref n.waterExitDelay);
             }
 
             if (Version >= 3)
             {
-                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 10);
-                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.waterUprightTorqueFromTiltAngle, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.afterWaterUprightTorqueFromAngularSpeed, version: Version- 10);
             }
 
             if (Version >= 4)
             {
-                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 10);
-                rw.Single(ref U27);
+                rw.ReadableWritable<PlugCurve>(ref n.wheelLateralForceCoefFromWetness, version: Version- 10);
+                rw.Single(ref n.wetnessGainPerEnterDuration);
             }
 
             if (Version >= 5)
             {
-                rw.Single(ref U28);
+                rw.Single(ref n.waterWheelDragWetnessPow);
             }
 
             if (Version >= 6)
             {
-                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.brakeForceCoefFromWetness, version: Version- 10);
             }
 
             if (Version >= 7)
             {
-                rw.NodeRef(ref U30Ref);
-                rw.NodeRef(ref U31Ref);
+                rw.NodeRef(ref U13Ref);
+                rw.NodeRef(ref U14Ref);
             }
 
             if (Version >= 8)
             {
-                rw.ReadableWritable<PlugCurve>(ref U32, version: Version- 10);
+                rw.ReadableWritable<PlugCurve>(ref n.wetnessDecreaseCoefFromSpeed, version: Version- 10);
             }
 
             if (Version >= 9)
             {
-                rw.Single(ref U33);
+                rw.Single(ref n.waterFluidForceImmersionPow);
             }
 
             if (Version >= 11)
             {
-                rw.Int32(ref U34);
+                rw.Int32(ref n.afterWaterUprightDuration);
             }
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0AE chunk
+    /// CPlugVehicleCarPhyTuning 0x0AE chunk (plastic surface contacts)
     /// </summary>
-    [Chunk(0x090ED0AE)]
+    [Chunk(0x090ED0AE, "plastic surface contacts")]
     [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk090ED0AE : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AE;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public PlugCurve? U02;
-        public float U03;
+        public float U01;
 
         public Chunk090ED0AE() : this(GameVersion.Unspecified)
         {
@@ -11224,6 +11917,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             {
                 Version = 2;
             }
+
+            U01 = 0.2f;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -11231,8 +11926,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0AE)clone).Version = context.Clone(this.Version)!;
             ((Chunk090ED0AE)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED0AE)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED0AE)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -11243,41 +11936,31 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
+            rw.Boolean(ref n.plasticContactEnabled);
+            rw.ReadableWritable<PlugCurve>(ref n.plasticContactCoefFromNormalSpeed, version: Version- 2);
 
             if (Version >= 1)
             {
-                rw.Single(ref U03);
+                rw.Single(ref U01);
             }
         }
     }
 
     /// <summary>
-    /// CPlugVehicleCarPhyTuning 0x0AF chunk (inline legacy gameplay curves and forces)
+    /// CPlugVehicleCarPhyTuning 0x0AF chunk
     /// </summary>
-    [Chunk(0x090ED0AF, "inline legacy gameplay curves and forces")]
+    [Chunk(0x090ED0AF)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AF : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AF;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public int U02;
-        public PlugCurve? U03;
-        public PlugCurve? U04;
-        public float U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED0AF)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED0AF)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED0AF)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED0AF)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090ED0AF)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED0AF)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -11315,7 +11998,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.ReadableWritable<PlugCurve>(ref n.m5SlippingAccelCurve, version: Version);
             rw.ReadableWritable<PlugCurve>(ref n.m5SteerCoefFromSpeed, version: Version);
             rw.ReadableWritable<PlugCurve>(ref n.m5SmoothInputSteerDurationFromSpeed, version: Version);
-            rw.Single(ref U01);
+            rw.Single(ref n.waterGravity);
             rw.Single(ref n.waterReboundMinHSpeed);
             rw.Single(ref n.waterBumpMinSpeed);
             rw.ReadableWritable<PlugCurve>(ref n.waterBumpSlowDownFromSpeedRatio, version: Version);
@@ -11358,10 +12041,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref n.brakeTorqueCoef);
             rw.Single(ref n.accelTorqueCoef);
             rw.ReadableWritable<PlugCurve>(ref n.drifting_InputSteerRadiusFromSpeed, version: Version);
-            rw.Int32(ref U02);
-            rw.ReadableWritable<PlugCurve>(ref U03, version: Version);
-            rw.ReadableWritable<PlugCurve>(ref U04, version: Version);
-            rw.Single(ref U05);
+            rw.Boolean(ref n.airBrakeEnabled);
+            rw.ReadableWritable<PlugCurve>(ref n.airBrakePitchTorqueFromPitchAngle, version: Version);
+            rw.ReadableWritable<PlugCurve>(ref n.airBrakeForceFromPitchAngle, version: Version);
+            rw.Single(ref n.airBrakePitchDamping);
             rw.ReadableWritable<PlugCurve>(ref n.drifting_VehicleLateralForce_FromVehicleLateralSpeed, version: Version);
             rw.ReadableWritable<PlugCurve>(ref n.drifting_BackCoefIntensityFromSpeed, version: Version);
             rw.ReadableWritable<PlugCurve>(ref n.drifting_WheelLateralForce_FromWheelLateralSpeed, version: Version);
