@@ -326,17 +326,18 @@ public class CPlugVehicleCarPhyTuningLayoutTests
             if (version >= 19) WriteCurve(writer, version >= 21);
             if (version >= 20) writer.Write(0.75f);
         }
-        var node = await RoundTrip(payload, new CPlugVehicleCarPhyTuning.Chunk090ED09C());
+        var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED09C();
+        var node = await RoundTrip(payload, chunk);
         await Assert.That(node.HelicoFrictionCoef).IsEqualTo((float?)-4100f);
         await Assert.That(node.HelicoFrictionTorqueCoef).IsEqualTo((float?)-6100f);
-        if (version <= 17) await Assert.That(node.HelicoYawTorqueCoefFromHSpeedKmh!.Values![0].Y).IsEqualTo(3501f);
+        if (version <= 17) await Assert.That(chunk.U01).IsEqualTo((float?)3501f);
         if (version >= 5)
         {
-            await Assert.That(node.HelicoBladeRotAccelDeg).IsEqualTo((float?)625f);
-            await Assert.That(node.HelicoBladeMaxSpeedDeg).IsEqualTo((float?)1050f);
+            await Assert.That(node.HelicoBladeRotAccelDeg).IsEqualTo((float?)(version < 14 ? 0.0625f : 625f));
+            await Assert.That(node.HelicoBladeMaxSpeedDeg).IsEqualTo((float?)(version < 14 ? 10.5f : 1050f));
         }
         if (version >= 7) await Assert.That(node.HelicoVersion).IsEqualTo((CPlugVehicleCarPhyTuning.EVehicleHelicoVersion?)CPlugVehicleCarPhyTuning.EVehicleHelicoVersion.V2);
-        if (version >= 9) await Assert.That(node.HelicoBladeRotDecelDeg).IsEqualTo((float?)312.5f);
+        if (version >= 9) await Assert.That(node.HelicoBladeRotDecelDeg).IsEqualTo((float?)(version < 14 ? 0.03125f : 312.5f));
         if (version >= 15) await Assert.That(node.CenterOfMassZ_NoWheel).IsEqualTo((float?)0.25f);
         if (version >= 21)
         {
@@ -348,7 +349,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Test]
     [Arguments(16)]
     [Arguments(17)]
-    public async Task ReadWrite_Helico_ConvertsLegacyCurveAnglesWithoutChangingTheSource(int version)
+    public async Task ReadWrite_Helico_KeepsLegacyCurveAnglesAsStored(int version)
     {
         var node = new CPlugVehicleCarPhyTuning
         {
@@ -368,7 +369,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
             reader.ReadSingle();
             for (var i = 0; i < 3; i++) reader.ReadNodeRef<CFuncKeysReal>();
             var wireCurve = reader.ReadNodeRef<CFuncKeysReal>();
-            await Assert.That(wireCurve!.Xs![0]).IsEqualTo(version < 17 ? (float)Math.PI / 2f : 90f);
+            await Assert.That(wireCurve!.Xs![0]).IsEqualTo(90f);
         }
         payload.Position = 0;
         var restored = new CPlugVehicleCarPhyTuning();
@@ -502,7 +503,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Arguments(6, true)]
     [Arguments(7, false)]
     [Arguments(7, true)]
-    public async Task ReadWrite_Boat_ConvertsSixLegacySpeedCurvesWithoutChangingTheSource(int version, bool cached)
+    public async Task ReadWrite_Boat_KeepsLegacySpeedCurvesAsStored(int version, bool cached)
     {
         PlugCurve CreateCurve()
         {
@@ -551,7 +552,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
             for (var i = 0; i < 3; i++) wireCurves.Add(reader.ReadNodeRef<CFuncKeysReal>());
             foreach (var curve in wireCurves)
             {
-                await Assert.That(curve!.Xs![0]).IsEqualTo(version < 7 ? 10f : 36f);
+                await Assert.That(curve!.Xs![0]).IsEqualTo(36f);
             }
             reader.ReadNodeRef<CFuncKeysReal>();
             var engineSteering = reader.ReadNodeRef<CFuncKeysReal>();
