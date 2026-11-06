@@ -19,6 +19,6 @@ CPlugIconIndex 0x09093000
   float
   float
 
-0x003 (base: 0x002) [MP4]
+0x003 (base: 0x002) [TMT, MP4, TM2020]
   base
   id[6]

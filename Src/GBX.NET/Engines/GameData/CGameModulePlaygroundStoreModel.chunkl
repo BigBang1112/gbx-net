@@ -1,7 +1,7 @@
 CGameModulePlaygroundStoreModel 0x2E018000
 - inherits: CGameModulePlaygroundModel
 
-0x000 (skippable) // actions, items, titles and power-up images
+0x000 (skippable) [MP4.v1] // actions, items, titles and power-up images
   version = 1
   int ActionCount (local, write: "n.Actions?.Length ?? 0")
   int ActionDataCount (local, write: "n.Actions?.Length ?? 0")

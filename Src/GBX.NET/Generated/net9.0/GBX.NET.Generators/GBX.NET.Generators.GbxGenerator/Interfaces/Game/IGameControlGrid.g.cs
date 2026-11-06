@@ -3,6 +3,57 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlGridMembers1 : global::GBX.NET.Interfaces.Game.IGameControlGrid
+{
+    bool HaveLocalData { get; set; }
+    bool HideLocalDataIfNone { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlGridMembers2<T0, T1> : global::GBX.NET.Interfaces.Game.IGameControlGrid where T0 : class where T1 : class
+{
+    T0? ButtonFastNextPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastNextPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? ButtonFastPreviousPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastPreviousPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? ButtonFirstPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFirstPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFirstPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? ButtonLastPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonLastPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonLastPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? ButtonNextPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonNextPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? ButtonPreviousPage
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonPreviousPage);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? EntryPageCounter
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).EntryPageCounter);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).EntryPageCounter = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEntry node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    int FastNextPageCount { get; set; }
+    int FastPreviousPageCount { get; set; }
+    bool ForceHideArrows { get; set; }
+    bool ForceHidePageCounter { get; set; }
+    int MaxPerColumn { get; set; }
+    int MaxPerRow { get; set; }
+}
 public partial interface IGameControlGrid : IClassVersion<global::GBX.NET.Engines.Game.CGameControlGrid>, global::GBX.NET.Interfaces.Control.IControlGrid
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -21,7 +72,11 @@ public partial interface IGameControlGridTM10 : IGameControlGrid, global::GBX.NE
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -46,7 +101,11 @@ public partial interface IGameControlGridTMPU : IGameControlGrid, global::GBX.NE
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -71,7 +130,11 @@ public partial interface IGameControlGridTMSX : IGameControlGrid, global::GBX.NE
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -96,7 +159,11 @@ public partial interface IGameControlGridTMNESWC : IGameControlGrid, global::GBX
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -114,52 +181,13 @@ public partial interface IGameControlGridTMNESWC : IGameControlGrid, global::GBX
     }
 }
 
-public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU
+public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonTMU, global::GBX.NET.Interfaces.Control.IControlEntryTMU>
 {
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastNextPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastNextPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastPreviousPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastPreviousPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFastPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFirstPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFirstPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonFirstPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonLastPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonLastPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonLastPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonNextPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonNextPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonPreviousPage
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlButtonTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonPreviousPage);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).ButtonPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEntryTMU? EntryPageCounter
-    {
-        get => (global::GBX.NET.Interfaces.Control.IControlEntryTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).EntryPageCounter);
-        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).EntryPageCounter = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEntry node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    int FastNextPageCount { get; set; }
-    int FastPreviousPageCount { get; set; }
-    bool ForceHideArrows { get; set; }
-    bool ForceHidePageCounter { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
@@ -170,8 +198,6 @@ public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    int MaxPerColumn { get; set; }
-    int MaxPerRow { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Motion);
@@ -191,7 +217,11 @@ public partial interface IGameControlGridVSK5 : IGameControlGrid, global::GBX.NE
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -262,7 +292,11 @@ public partial interface IGameControlGridMP3 : IGameControlGrid, global::GBX.NET
 public partial interface IGameControlGridTMT : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlGrid)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameControlGrid)this).LegacyStyle);
@@ -280,7 +314,7 @@ public partial interface IGameControlGridTMT : IGameControlGrid, global::GBX.NET
     }
 }
 
-public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridMP4
+public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridMP4, global::GBX.NET.Interfaces.Game.IGameControlGridMembers1, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonMP4, global::GBX.NET.Interfaces.Control.IControlEntryMP4>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
@@ -305,7 +339,7 @@ public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET
     }
 }
 
-public partial interface IGameControlGridTM2020 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM2020
+public partial interface IGameControlGridTM2020 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM2020, global::GBX.NET.Interfaces.Game.IGameControlGridMembers1, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonTM2020, global::GBX.NET.Interfaces.Control.IControlEntryTM2020>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout

@@ -14,64 +14,63 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
 
     public int Version { get; set; } = 3;
 
-    private int[]? legacyColors1;
+    private int[] legacyClassicColors = [];
     /// <remarks>Applied with: archive v0-2</remarks>
     [AppliedWithArchive(0, 2)]
-    public int[]? LegacyColors1
+    public int[] LegacyClassicColors
     {
-        get => this.legacyColors1;
-        set => this.legacyColors1 = value;
+        get => this.legacyClassicColors;
+        set => this.legacyClassicColors = value;
     }
 
-    private int[]? legacyColors2;
+    private int[] legacyClassicColorBlindColors = [];
     /// <remarks>Applied with: archive v1-2</remarks>
     [AppliedWithArchive(1, 2)]
-    public int[]? LegacyColors2
+    public int[] LegacyClassicColorBlindColors
     {
-        get => this.legacyColors2;
-        set => this.legacyColors2 = value;
+        get => this.legacyClassicColorBlindColors;
+        set => this.legacyClassicColorBlindColors = value;
     }
 
-    private int[]? legacyColors3;
+    private int[] legacyStuntColors = [];
     /// <remarks>Applied with: archive v2-2</remarks>
     [AppliedWithArchive(2, 2)]
-    public int[]? LegacyColors3
+    public int[] LegacyStuntColors
     {
-        get => this.legacyColors3;
-        set => this.legacyColors3 = value;
+        get => this.legacyStuntColors;
+        set => this.legacyStuntColors = value;
     }
 
-    private int[]? legacyColors4;
+    private int[] legacyStuntColorBlindColors = [];
     /// <remarks>Applied with: archive v2-2</remarks>
     [AppliedWithArchive(2, 2)]
-    public int[]? LegacyColors4
+    public int[] LegacyStuntColorBlindColors
     {
-        get => this.legacyColors4;
-        set => this.legacyColors4 = value;
+        get => this.legacyStuntColorBlindColors;
+        set => this.legacyStuntColorBlindColors = value;
     }
 
-    private ColorPair[]? colors;
+    private ColorPair[]? colorTargets;
+    /// <summary>
+    /// Indexed by EColorTarget
+    /// </summary>
     /// <remarks>Applied with: archive v3+</remarks>
     [AppliedWithArchive(3)]
-    public ColorPair[]? Colors
+    public ColorPair[]? ColorTargets
     {
-        get => this.colors;
-        set => this.colors = value;
+        get => this.colorTargets;
+        set => this.colorTargets = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugMaterialColorTargetTable)clone).Version = context.Clone(this.Version)!;
-        ((CPlugMaterialColorTargetTable)clone).legacyColors1 = context.CloneArray(this.legacyColors1)!;
-        ((CPlugMaterialColorTargetTable)clone).legacyColors2 = context.CloneArray(this.legacyColors2)!;
-        ((CPlugMaterialColorTargetTable)clone).legacyColors3 = context.CloneArray(this.legacyColors3)!;
-        ((CPlugMaterialColorTargetTable)clone).legacyColors4 = context.CloneArray(this.legacyColors4)!;
-        ((CPlugMaterialColorTargetTable)clone).colors = context.CloneArray(this.colors)!;
-    }
-
-    public CPlugMaterialColorTargetTable()
-    {
+        ((CPlugMaterialColorTargetTable)clone).legacyClassicColors = context.CloneArray(this.legacyClassicColors)!;
+        ((CPlugMaterialColorTargetTable)clone).legacyClassicColorBlindColors = context.CloneArray(this.legacyClassicColorBlindColors)!;
+        ((CPlugMaterialColorTargetTable)clone).legacyStuntColors = context.CloneArray(this.legacyStuntColors)!;
+        ((CPlugMaterialColorTargetTable)clone).legacyStuntColorBlindColors = context.CloneArray(this.legacyStuntColorBlindColors)!;
+        ((CPlugMaterialColorTargetTable)clone).colorTargets = context.CloneArray(this.colorTargets)!;
     }
 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -80,23 +79,58 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
 
         if (Version <= 2)
         {
-            rw.Array<int>(ref this.legacyColors1!);
+            var classicColorCount = rw.Int32((rw.Writer is null ? default : (LegacyClassicColors?.Length?? 0)));
+
+            if (classicColorCount< 0 || classicColorCount> 8)
+            {
+                throw new InvalidDataException("A color palette can contain at most eight colors .");
+            }
+
+            rw.Array<int>(ref this.legacyClassicColors!, classicColorCount);
 
             if (Version >= 1)
             {
-                rw.Array<int>(ref this.legacyColors2!);
+                var classicColorBlindCount = rw.Int32((rw.Writer is null ? default : (LegacyClassicColorBlindColors?.Length?? 0)));
+
+                if (classicColorBlindCount< 0 || classicColorBlindCount> 8)
+                {
+                    throw new InvalidDataException("A color palette can contain at most eight colors .");
+                }
+
+                rw.Array<int>(ref this.legacyClassicColorBlindColors!, classicColorBlindCount);
             }
 
             if (Version >= 2)
             {
-                rw.Array<int>(ref this.legacyColors3!);
-                rw.Array<int>(ref this.legacyColors4!);
+                var stuntColorCount = rw.Int32((rw.Writer is null ? default : (LegacyStuntColors?.Length?? 0)));
+
+                if (stuntColorCount< 0 || stuntColorCount> 8)
+                {
+                    throw new InvalidDataException("A color palette can contain at most eight colors .");
+                }
+
+                rw.Array<int>(ref this.legacyStuntColors!, stuntColorCount);
+                var stuntColorBlindCount = rw.Int32((rw.Writer is null ? default : (LegacyStuntColorBlindColors?.Length?? 0)));
+
+                if (stuntColorBlindCount< 0 || stuntColorBlindCount> 8)
+                {
+                    throw new InvalidDataException("A color palette can contain at most eight colors .");
+                }
+
+                rw.Array<int>(ref this.legacyStuntColorBlindColors!, stuntColorBlindCount);
             }
         }
 
         if (Version >= 3)
         {
-            rw.ArrayReadableWritable<ColorPair>(ref this.colors!, version: Version);
+            var colorTargetCount = rw.Int32((rw.Writer is null ? default : (ColorTargets?.Length?? 0)));
+
+            if (colorTargetCount< 0 || colorTargetCount> 13)
+            {
+                throw new InvalidDataException("A color table can contain at most thirteen targets .");
+            }
+
+            rw.ArrayReadableWritable<ColorPair>(ref this.colorTargets!, colorTargetCount, version: Version);
         }
     }
 
@@ -114,18 +148,21 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
 
     public partial class ColorPair : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int[]? colors1;
-        public int[]? Colors1
+        private int[] colors = [];
+        /// <summary>
+        /// Packed GxRGBAColor values; red occupies the low byte
+        /// </summary>
+        public int[] Colors
         {
-            get => this.colors1;
-            set => this.colors1 = value;
+            get => this.colors;
+            set => this.colors = value;
         }
 
-        private int[]? colors2;
-        public int[]? Colors2
+        private int[] colorBlindColors = [];
+        public int[] ColorBlindColors
         {
-            get => this.colors2;
-            set => this.colors2 = value;
+            get => this.colorBlindColors;
+            set => this.colorBlindColors = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -138,14 +175,28 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((ColorPair)clone).colors1 = context.CloneArray(this.colors1)!;
-            ((ColorPair)clone).colors2 = context.CloneArray(this.colors2)!;
+            ((ColorPair)clone).colors = context.CloneArray(this.colors)!;
+            ((ColorPair)clone).colorBlindColors = context.CloneArray(this.colorBlindColors)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Array<int>(ref this.colors1!);
-            rw.Array<int>(ref this.colors2!);
+            var colorCount = rw.Int32((rw.Writer is null ? default : (Colors?.Length?? 0)));
+
+            if (colorCount< 0 || colorCount> 8)
+            {
+                throw new InvalidDataException("A color palette can contain at most eight colors .");
+            }
+
+            rw.Array<int>(ref this.colors!, colorCount);
+            var colorBlindCount = rw.Int32((rw.Writer is null ? default : (ColorBlindColors?.Length?? 0)));
+
+            if (colorBlindCount< 0 || colorBlindCount> 8)
+            {
+                throw new InvalidDataException("A color palette can contain at most eight colors .");
+            }
+
+            rw.Array<int>(ref this.colorBlindColors!, colorBlindCount);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -159,5 +210,22 @@ public partial class CPlugMaterialColorTargetTable : CMwNod, IClass, IReadableWr
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EColorTarget
+    {
+        Classic,
+        Stunt,
+        Red,
+        Orange,
+        Yellow,
+        Lime,
+        Green,
+        Cyan,
+        Blue,
+        Purple,
+        Pink,
+        White,
+        Black,
     }
 }

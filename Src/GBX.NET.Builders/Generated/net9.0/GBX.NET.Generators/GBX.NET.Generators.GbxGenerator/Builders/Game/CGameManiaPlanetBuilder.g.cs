@@ -7,20 +7,89 @@ public abstract class CGameManiaPlanetBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CGameManiaPlanetBuilderBase() { }
     private protected CGameManiaPlanetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
 }
 public abstract class CGameManiaPlanetBuilderMembers1<TSelf> : CGameManiaPlanetBuilderBase<TSelf> where TSelf : CGameManiaPlanetBuilderMembers1<TSelf>
 {
     private protected CGameManiaPlanetBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+    public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
+    public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames1);
+}
+public abstract class CGameManiaPlanetBuilderMembers2<TSelf> : CGameManiaPlanetBuilderMembers1<TSelf> where TSelf : CGameManiaPlanetBuilderMembers2<TSelf>
+{
+    private protected CGameManiaPlanetBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
     public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames2);
     public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames2);
-    public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames2);
+}
+public abstract class CGameManiaPlanetBuilderMembers3<TSelf> : CGameManiaPlanetBuilderMembers2<TSelf> where TSelf : CGameManiaPlanetBuilderMembers3<TSelf>
+{
+    private protected CGameManiaPlanetBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+    public TSelf WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
+    public TSelf WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
+}
+public abstract class CGameManiaPlanetBuilderMembers4<TSelf> : CGameManiaPlanetBuilderBase<TSelf> where TSelf : CGameManiaPlanetBuilderMembers4<TSelf>
+{
+    private protected CGameManiaPlanetBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+    public TSelf WithCoverFlowDesc(global::GBX.NET.Engines.Game.CGameCoverFlowDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescAssignment(), value, SupportedGames3);
+    public TSelf WithCoverFlowDescReference(NodeRef<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithDefaultStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetAssignment(), value, SupportedGames3);
+    public TSelf WithDefaultStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithManiaTitlesFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetManiaTitlesFolderAssignment(), value, SupportedGames3);
+    public TSelf WithTitleMainDefaultBgFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidAssignment(), value, SupportedGames3);
+    public TSelf WithTitleMainDefaultBgFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidReferenceAssignment(), value, SupportedGames3);
+}
+public abstract class CGameManiaPlanetBuilderMembers5<TSelf> : CGameManiaPlanetBuilderMembers4<TSelf> where TSelf : CGameManiaPlanetBuilderMembers5<TSelf>
+{
+    private protected CGameManiaPlanetBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+    public TSelf WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    public TSelf WithAdditionalSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+    public TSelf WithAdditionalSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalSkinsFids(values.ToArray());
+    public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames2);
+    public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.VSK5);
+    public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
+    public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames1);
 }
 public partial class CGameManiaPlanetBuilder : CGameManiaPlanetBuilderBase<CGameManiaPlanetBuilder>
 {
     private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005004());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
@@ -35,19 +104,43 @@ public partial class CGameManiaPlanetBuilder : CGameManiaPlanetBuilderBase<CGame
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005006());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe1(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005006());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe2(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013000() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013002(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013000() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013001() { Version = 0 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013002() { Version = 2 });
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013003() { Version = 1 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013002(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaPlanet.Chunk03013003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C());
@@ -56,66 +149,110 @@ public partial class CGameManiaPlanetBuilder : CGameManiaPlanetBuilderBase<CGame
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Game.CGameManiaPlanet CreateRecipe3(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Game.CGameManiaPlanet();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TMU : CGameManiaPlanetBuilderMembers1<TMU>
+    public partial class TM10 : CGameManiaPlanetBuilderMembers1<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class TMPU : CGameManiaPlanetBuilderMembers1<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class TMSX : CGameManiaPlanetBuilderMembers3<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public TMSX WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>(values, false));
+        public TMSX WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class TMNESWC : CGameManiaPlanetBuilderMembers3<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public TMNESWC WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>(values, false));
+        public TMNESWC WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class TMU : CGameManiaPlanetBuilderMembers3<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
-        public TMU WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMU);
-        public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
-        public TMU WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
-        public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU[] values) => WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(values, false));
+        public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(values, false));
         public TMU WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU> values) => WithBaseOfficialCampaigns(values.ToArray());
         public TMU WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesTMU? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class VSK5 : CGameManiaPlanetBuilderMembers2<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public VSK5 WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+        public VSK5 WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
+        public VSK5 WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public VSK5 WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5[] values) => WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>(values, false));
+        public VSK5 WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public VSK5 WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.VSK5);
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
     }
     public partial class TMF : CGameManiaPlanetBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
     }
-    public partial class MP4 : CGameManiaPlanetBuilderMembers1<MP4>
+    public partial class TMT : CGameManiaPlanetBuilderMembers4<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public TMT WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT? value) => base.WithCoverFlowDesc(value is null ? (global::GBX.NET.Engines.Game.CGameCoverFlowDesc?)null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT? value) => base.WithDefaultStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
+    }
+    public partial class MP4 : CGameManiaPlanetBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
-        public MP4 WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, SupportedGames1);
-        public MP4 WithAdditionalSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
-        public MP4 WithAdditionalSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalSkinsFids(values.ToArray());
-        public MP4 WithCoverFlowDesc(global::GBX.NET.Engines.Game.CGameCoverFlowDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescAssignment(), value, SupportedGames1);
-        public MP4 WithCoverFlowDescReference(NodeRef<global::GBX.NET.Engines.Game.CGameCoverFlowDesc> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetCoverFlowDescReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? value) => WithCoverFlowDesc(value is null ? (global::GBX.NET.Engines.Game.CGameCoverFlowDesc?)null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithDefaultStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetDefaultStyleSheetReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? value) => WithDefaultStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithManiaTitlesFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetManiaTitlesFolderAssignment(), value, SupportedGames1);
-        public MP4 WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, SupportedGames1);
+        public MP4 WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? value) => base.WithCoverFlowDesc(value is null ? (global::GBX.NET.Engines.Game.CGameCoverFlowDesc?)null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? value) => base.WithDefaultStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithTitleMainDefaultBgFid(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidAssignment(), value, SupportedGames1);
-        public MP4 WithTitleMainDefaultBgFidReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaPlanetBuilderAssignments.GetTitleMainDefaultBgFidReferenceAssignment(), value, SupportedGames1);
         public global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
     }
-    public partial class TM2020 : CGameManiaPlanetBuilderBase<TM2020>
+    public partial class TM2020 : CGameManiaPlanetBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaPlanet> state) : base(state) { }
+        public TM2020 WithCoverFlowDesc(global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020? value) => base.WithCoverFlowDesc(value is null ? (global::GBX.NET.Engines.Game.CGameCoverFlowDesc?)null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithDefaultStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020? value) => base.WithDefaultStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesTM2020? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameManiaPlanet Build() => BuildNode(CGameManiaPlanetBuilder.CreateRecipe7(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaPlanet node);
     }
 }

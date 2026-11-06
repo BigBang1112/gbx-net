@@ -7,7 +7,7 @@ public abstract class CPlugParticleImpactModelBuilderBase<TSelf> : NodeBuilder<g
 {
     private protected CPlugParticleImpactModelBuilderBase() { }
     private protected CPlugParticleImpactModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithDecalModel(global::GBX.NET.Engines.Plug.CPlugDecalModel? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelAssignment(), value, SupportedGames1);
     public TSelf WithDecalModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugDecalModel> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetDecalModelReferenceAssignment(), value, SupportedGames1);
     public TSelf WithParticleEmitterModel(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugParticleImpactModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, SupportedGames1);
@@ -23,9 +23,21 @@ public partial class CPlugParticleImpactModelBuilder : CPlugParticleImpactModelB
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugParticleImpactModel.Chunk090B6000(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugParticleImpactModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) : base(state) { }
+        public TMT WithDecalModel(global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT? value) => base.WithDecalModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecalModel?)null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithParticleEmitterModel(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? value) => base.WithParticleEmitterModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugParticleImpactModel Build() => BuildNode(CPlugParticleImpactModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node);
+    }
     public partial class MP4 : CPlugParticleImpactModelBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) : base(state) { }
@@ -34,6 +46,16 @@ public partial class CPlugParticleImpactModelBuilder : CPlugParticleImpactModelB
         public MP4 WithSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleImpactModel Build() => BuildNode(CPlugParticleImpactModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node);
+    }
+    public partial class TM2020 : CPlugParticleImpactModelBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel> state) : base(state) { }
+        public TM2020 WithDecalModel(global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020? value) => base.WithDecalModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugDecalModel?)null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithParticleEmitterModel(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value) => base.WithParticleEmitterModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugParticleImpactModel Build() => BuildNode(CPlugParticleImpactModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugParticleImpactModel node);
     }
 }

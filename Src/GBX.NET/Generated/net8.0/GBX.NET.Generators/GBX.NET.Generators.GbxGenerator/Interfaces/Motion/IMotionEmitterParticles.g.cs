@@ -39,7 +39,7 @@ public partial interface IMotionEmitterParticlesTMU : IMotionEmitterParticles, g
 {
 }
 
-public partial interface IMotionEmitterParticlesVSK5 : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
+public partial interface IMotionEmitterParticlesVSK5 : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers1, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers2
 {
 }
 
@@ -52,7 +52,7 @@ public partial interface IMotionEmitterParticlesMP3 : IMotionEmitterParticles, g
 {
 }
 
-public partial interface IMotionEmitterParticlesTMT : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT
+public partial interface IMotionEmitterParticlesTMT : IMotionEmitterParticles, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers1, global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesMembers2
 {
 }
 

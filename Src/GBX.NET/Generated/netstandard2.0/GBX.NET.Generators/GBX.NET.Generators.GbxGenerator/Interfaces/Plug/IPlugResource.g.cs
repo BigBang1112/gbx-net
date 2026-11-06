@@ -8,7 +8,15 @@ public partial interface IPlugResource : IClassVersion<global::GBX.NET.Engines.P
     global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources { get; set; }
 }
 
+public partial interface IPlugResourceTMT : IPlugResource
+{
+}
+
 public partial interface IPlugResourceMP4 : IPlugResource
+{
+}
+
+public partial interface IPlugResourceTM2020 : IPlugResource
 {
 }
 

@@ -35,11 +35,11 @@ public partial class CGameControlCardCtnChallengeInfo : CGameControlCard, IClass
     /// CGameControlCardCtnChallengeInfo 0x000 chunk (LeagueNameMaxCharsCount)
     /// </summary>
     [Chunk(0x030BC000, "LeagueNameMaxCharsCount")]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030BC000 : Chunk<CGameControlCardCtnChallengeInfo>
     {
         public override uint Id => 0x030BC000;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -5,4 +5,50 @@ namespace GBX.NET.Engines.Function;
 
 public partial class CFuncShaderTweakKeysTranss : global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTM10, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMF, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP3, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTMT, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMP4, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssTM2020
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?>? global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4>.BoneKeys
+    {
+        get => BoneKeys is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?>(GetBoneKeysInterfaceReferences, false, "BoneKeys");
+        set => BoneKeys = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncKeysTrans?, global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4?>(value, true));
+    }
+    internal NodeRefList<global::GBX.NET.Engines.Function.CFuncKeysTrans?>? GetBoneKeysInterfaceReferences() => BoneKeys;
 }

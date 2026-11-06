@@ -205,12 +205,12 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
     /// CGameCoverFlowDesc 0x000 chunk (scene, skin, time and style)
     /// </summary>
     [Chunk(0x0316F000, "scene, skin, time and style")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, -1, 5)]
     public partial class Chunk0316F000 : Chunk<CGameCoverFlowDesc>, IVersionable
     {
         public override uint Id => 0x0316F000;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 5;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
         public float U01;
         public LegacyMood? U02;
         public LegacyMood? U03;
@@ -225,6 +225,22 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
         public float U12;
         public float U13;
         public float U14;
+
+        public Chunk0316F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0316F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+            else
+            {
+                Version = 5;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -249,7 +265,7 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
         public override void ReadWrite(CGameCoverFlowDesc n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 5)
+            if (Version > global::System.Math.Max(5, 5))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -335,12 +351,28 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
     /// CGameCoverFlowDesc 0x002 chunk (speeds, transitions and linear groups)
     /// </summary>
     [Chunk(0x0316F002, "speeds, transitions and linear groups")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, -1, 4)]
     public partial class Chunk0316F002 : Chunk<CGameCoverFlowDesc>, IVersionable
     {
         public override uint Id => 0x0316F002;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0316F002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0316F002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+            else
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -351,7 +383,7 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
         public override void ReadWrite(CGameCoverFlowDesc n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > global::System.Math.Max(4, 4))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -373,12 +405,28 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
     /// CGameCoverFlowDesc 0x003 chunk (linear group sounds)
     /// </summary>
     [Chunk(0x0316F003, "linear group sounds")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, -1, 1)]
     public partial class Chunk0316F003 : Chunk<CGameCoverFlowDesc>, IVersionable
     {
         public override uint Id => 0x0316F003;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0316F003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0316F003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -389,7 +437,7 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
         public override void ReadWrite(CGameCoverFlowDesc n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > global::System.Math.Max(1, 1))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -402,12 +450,12 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
     /// CGameCoverFlowDesc 0x004 chunk (cameras and group locations)
     /// </summary>
     [Chunk(0x0316F004, "cameras and group locations")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, -1, 4)]
     public partial class Chunk0316F004 : Chunk<CGameCoverFlowDesc>, IVersionable
     {
         public override uint Id => 0x0316F004;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         public NodeRefList<CMwNod>? U01;
 
@@ -428,6 +476,22 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
             yield break;
         }
 
+        public Chunk0316F004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0316F004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+            else
+            {
+                Version = 4;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -438,7 +502,7 @@ public partial class CGameCoverFlowDesc : CMwNod, IClass
         public override void ReadWrite(CGameCoverFlowDesc n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > global::System.Math.Max(4, 4))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

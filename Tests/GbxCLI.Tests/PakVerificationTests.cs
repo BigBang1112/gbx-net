@@ -16,10 +16,11 @@ public class PakVerificationTests
         {
             var path = Path.Combine(directory.FullName, "archive.pak");
             var invalidBody = CreateGbx(compressed: false);
-            BinaryPrimitives.WriteUInt32LittleEndian(invalidBody.AsSpan(invalidBody.Length - 4), 0x03085FFF);
             using (var header = new MemoryStream(invalidBody))
             {
                 _ = Gbx.ParseHeader(header);
+                // Corrupt the first body chunk before any signature metadata is read.
+                BinaryPrimitives.WriteUInt32LittleEndian(invalidBody.AsSpan((int)header.Position), 0x03085FFF);
             }
 
             await File.WriteAllBytesAsync(path, CreatePak(

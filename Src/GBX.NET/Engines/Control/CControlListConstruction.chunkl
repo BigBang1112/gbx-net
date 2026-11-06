@@ -1,23 +1,23 @@
 CControlListConstruction 0x24009000
 - inherits: CControlList
 
-0x000 // legacy styles
+0x000 [TM10, TMPU, TMSX, TMNESWC] // legacy styles
   CMwNod StyleValid
   CMwNod StyleNotValid
 
-0x001 // legacy layout
+0x001 [TMNESWC] // legacy layout
   bool
   float
   float
   int
   int
 
-0x002 // legacy layout
+0x002 [TMNESWC] // legacy layout
   int
   int
   float
   float
 
-0x003 [TMU] // styles
+0x003 [TMU, VSK5] // styles
   CMwNod StyleValid
   CMwNod StyleNotValid

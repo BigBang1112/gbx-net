@@ -379,7 +379,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC000 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 16 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public int U02;
@@ -783,7 +788,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC006 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC006;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMT | GameVersion.MP4,
+            <= 3 => GameVersion.MP4,
+            _ => GameVersion.TMT | GameVersion.MP4,
+        };
         public int Version { get; set; }
 
         public Chunk031CC006() : this(GameVersion.Unspecified)
@@ -828,7 +838,12 @@ public partial class CGameUserProfile : CMwNod, IClass
     public partial class Chunk031CC007 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC007;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk031CC007() : this(GameVersion.Unspecified)

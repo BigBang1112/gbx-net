@@ -7,7 +7,7 @@ public abstract class CControlLayoutBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CControlLayoutBuilderBase() { }
     private protected CControlLayoutBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithAlignHorizontal(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignHorizontalAssignment(), value, SupportedGames1);
     public TSelf WithAlignVertical(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetAlignVerticalAssignment(), value, SupportedGames1);
     public TSelf WithPaddingHorizontal(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlLayoutBuilderAssignments.GetPaddingHorizontalAssignment(), value, SupportedGames1);
@@ -23,12 +23,46 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlLayout.Chunk0700C001());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CControlLayoutBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
+    public partial class TMPU : CControlLayoutBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
+    public partial class TMSX : CControlLayoutBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
+    public partial class TMNESWC : CControlLayoutBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
     public partial class TMU : CControlLayoutBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
@@ -36,11 +70,25 @@ public partial class CControlLayoutBuilder : CControlLayoutBuilderBase<CControlL
         public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
     }
+    public partial class VSK5 : CControlLayoutBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
     public partial class TMF : CControlLayoutBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
         public global::GBX.NET.Interfaces.Control.IControlLayoutTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
+    }
+    public partial class TMT : CControlLayoutBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlLayout> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Control.IControlLayoutTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlLayout Build() => BuildNode(CControlLayoutBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlLayout node);
     }
     public partial class MP4 : CControlLayoutBuilderBase<MP4>

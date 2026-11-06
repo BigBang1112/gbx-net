@@ -10,6 +10,20 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnGhostTests
 {
     [Test]
+    [Arguments("TrackmaniaTurbo.3.3.0", 2, GameVersion.TMT)]
+    [Arguments(null, 2, GameVersion.TMT | GameVersion.MP4)]
+    [Arguments("", 2, GameVersion.TMT | GameVersion.MP4)]
+    [Arguments("ManiaPlanet.3.3.0", 2, GameVersion.TMT | GameVersion.MP4)]
+    [Arguments("TrackmaniaTurbo.3.3.0", 9, GameVersion.TM2020)]
+    public async Task GameVersion_ValidationExecutable_NarrowsCompatibleChunksToTurbo(string? executableVersion, int appearanceVersion, GameVersion expected)
+    {
+        var ghost = new CGameCtnGhost { Validate_ExeVersion = executableVersion };
+        ghost.CreateChunk<CGameCtnGhost.Chunk03092000>().Version = appearanceVersion;
+
+        await Assert.That(ghost.GameVersion).IsEqualTo(expected);
+    }
+
+    [Test]
     [Arguments(0x11, 0, 2, 0)]
     [Arguments(0x19, 0, 3, 2)]
     [Arguments(0x25, 0, 5, 14)]
@@ -49,9 +63,7 @@ public class CGameCtnGhostTests
         await Assert.That(ghost.Validate_OsKind).IsEqualTo((CGameCtnGhost.EKindOs)osKind);
         await Assert.That(ghost.Validate_CpuKind).IsEqualTo((CGameCtnGhost.EKindCpu)cpuKind);
         await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnGhost)ghost.DeepClone();
-#pragma warning restore GBXNET10001
         await Assert.That(clone.InputStoreVersion).IsEqualTo(7);
         await Assert.That(clone.InputCountLimit).IsEqualTo(456);
         await Assert.That(clone.Validate_OsKind).IsEqualTo(ghost.Validate_OsKind);

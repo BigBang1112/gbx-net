@@ -356,9 +356,11 @@ public partial class CPlugClouds : CFunc, IClass
     /// CPlugClouds 0x007 chunk (images, material, solids and parameters)
     /// </summary>
     [Chunk(0x09180007, "images, material, solids and parameters")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09180007 : Chunk<CPlugClouds>
     {
         public override uint Id => 0x09180007;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

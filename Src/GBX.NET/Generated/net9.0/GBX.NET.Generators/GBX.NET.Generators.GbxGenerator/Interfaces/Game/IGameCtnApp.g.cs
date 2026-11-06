@@ -4,14 +4,42 @@
 namespace GBX.NET.Interfaces.Game;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IGameCtnAppMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnApp where T0 : class
+public interface IGameCtnAppMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnApp
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnApp
+{
+    global::GBX.NET.Engines.Game.CGameResources? Resources { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnApp where T0 : class
+{
+    IReadOnlyList<T0>? BaseOfficialCampaigns
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, T0>(((global::GBX.NET.Engines.Game.CGameCtnApp)this).GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, T0>(value, false));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnApp
 {
     global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnApp where T0 : class
+{
     T0? Resources
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnApp)this).Resources);
         set => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAppMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnApp
+{
+    bool MenuBackground_MustLoopIntro { get; set; }
 }
 public partial interface IGameCtnApp : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnApp>, global::GBX.NET.Interfaces.Game.IGameApp
 {
@@ -24,26 +52,43 @@ public partial interface IGameCtnApp : IClassVersion<global::GBX.NET.Engines.Gam
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IGameCtnAppTMU : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesTMU>
+public partial interface IGameCtnAppTM10 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTM10, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers2
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>? BaseOfficialCampaigns
-    {
-        get => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(((global::GBX.NET.Engines.Game.CGameCtnApp)this).GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
-        set => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(value, false));
-    }
+}
+
+public partial interface IGameCtnAppTMPU : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMPU, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers2
+{
+}
+
+public partial interface IGameCtnAppTMSX : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMSX, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers2, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4
+{
+}
+
+public partial interface IGameCtnAppTMNESWC : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers2, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4
+{
+}
+
+public partial interface IGameCtnAppTMU : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesTMU>
+{
+}
+
+public partial interface IGameCtnAppVSK5 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppVSK5, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers2, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers6
+{
 }
 
 public partial interface IGameCtnAppTMF : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMF
 {
 }
 
-public partial interface IGameCtnAppMP4 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesMP4>
+public partial interface IGameCtnAppTMT : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTMT
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
-    bool MenuBackground_MustLoopIntro { get; set; }
 }
 
-public partial interface IGameCtnAppTM2020 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTM2020
+public partial interface IGameCtnAppMP4 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppMP4, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesMP4>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers6
+{
+}
+
+public partial interface IGameCtnAppTM2020 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTM2020, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers4, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnAppMembers6
 {
 }
 

@@ -1,5 +1,4 @@
 ﻿@inject IJSRuntime JS
-@inject ISettingsService Settings
 @inject ILogger Logger
 
 <div class="section section-import-gbx hoverable @(DraggedOver == true ? "hovered" : "")">
@@ -29,7 +28,7 @@
 
     private async Task OnChangeAsync(InputFileChangeEventArgs e)
     {
-        var files = e.GetMultipleFiles(Settings.MaxFileCountToUpload);
+        var files = e.GetMultipleFiles(int.MaxValue);
 
         if (files.Count == 1)
         {

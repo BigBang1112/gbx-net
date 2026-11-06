@@ -7,19 +7,65 @@ public abstract class CGameMenuBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CGameMenuBuilderBase() { }
     private protected CGameMenuBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT;
+    private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM2020 | GameVersion.TMT;
+}
+public abstract class CGameMenuBuilderMembers1<TSelf> : CGameMenuBuilderBase<TSelf> where TSelf : CGameMenuBuilderMembers1<TSelf>
+{
+    private protected CGameMenuBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+    public TSelf WithStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetAssignment(), value, SupportedGames2);
+    public TSelf WithStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetReferenceAssignment(), value, SupportedGames2);
+}
+public abstract class CGameMenuBuilderMembers2<TSelf> : CGameMenuBuilderBase<TSelf> where TSelf : CGameMenuBuilderMembers2<TSelf>
+{
+    private protected CGameMenuBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+    public TSelf WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetFrustumAssignment(), value, SupportedGames4);
+    public TSelf WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames4);
+}
+public abstract class CGameMenuBuilderMembers3<TSelf> : CGameMenuBuilderMembers1<TSelf> where TSelf : CGameMenuBuilderMembers3<TSelf>
+{
+    private protected CGameMenuBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+    public TSelf WithGridStep(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetGridStepAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+}
+public abstract class CGameMenuBuilderMembers4<TSelf> : CGameMenuBuilderMembers3<TSelf> where TSelf : CGameMenuBuilderMembers4<TSelf>
+{
+    private protected CGameMenuBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+    public TSelf WithBackgroundBitmapUnderlay(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundBitmapUnderlayAssignment(), value, SupportedGames3);
+    public TSelf WithBackgroundBitmapUnderlayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundBitmapUnderlayReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithBackgroundCameraFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFarZAssignment(), value, SupportedGames3);
     public TSelf WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+    public TSelf WithBackgroundCameraNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraNearZAssignment(), value, SupportedGames3);
     public TSelf WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
     public TSelf WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetFrustumAssignment(), value, SupportedGames1);
-    public TSelf WithGridStep(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetGridStepAssignment(), value, SupportedGames1);
-    public TSelf WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames1);
-    public TSelf WithStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetAssignment(), value, SupportedGames1);
-    public TSelf WithStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetReferenceAssignment(), value, SupportedGames1);
+}
+public abstract class CGameMenuBuilderMembers5<TSelf> : CGameMenuBuilderMembers3<TSelf> where TSelf : CGameMenuBuilderMembers5<TSelf>
+{
+    private protected CGameMenuBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+    public TSelf WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetFrustumAssignment(), value, SupportedGames4);
+    public TSelf WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames4);
+    public TSelf WithMenuOrder(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetMenuOrderAssignment(), value, SupportedGames5);
+    public TSelf WithSoundDisplayed(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundDisplayedAssignment(), value, SupportedGames5);
+    public TSelf WithSoundDisplayedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundDisplayedReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithSoundHidden(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundHiddenAssignment(), value, SupportedGames5);
+    public TSelf WithSoundHiddenReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundHiddenReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithSoundPageChanged(global::GBX.NET.Engines.Plug.CPlugSound? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundPageChangedAssignment(), value, SupportedGames5);
+    public TSelf WithSoundPageChangedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetSoundPageChangedReferenceAssignment(), value, SupportedGames5);
 }
 public partial class CGameMenuBuilder : CGameMenuBuilderBase<CGameMenuBuilder>
 {
     private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenu();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009005());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameMenu();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
@@ -27,16 +73,184 @@ public partial class CGameMenuBuilder : CGameMenuBuilderBase<CGameMenuBuilder>
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009005());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009006());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009007());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe2(GameVersion game)
+    {
+        var node = CreateRecipe1(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009008());
         return node;
     }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenu();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk0300900B());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenu();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009009() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk0300900B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk0300900C() { Version = 0 });
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenu();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk0300900B());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameMenu CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenu();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009007());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009008());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk03009009() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameMenu.Chunk0300900C() { Version = 0 });
+        return node;
+    }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
-    public partial class TMU : CGameMenuBuilderBase<TMU>
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CGameMenuBuilderMembers2<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TM10 WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TM10 WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TM10 WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public global::GBX.NET.Interfaces.Game.IGameMenuTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMPU : CGameMenuBuilderMembers2<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMPU WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TMPU WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TMPU WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public global::GBX.NET.Interfaces.Game.IGameMenuTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMSX : CGameMenuBuilderMembers2<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMSX WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TMSX WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TMSX WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public TMSX WithStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetAssignment(), value, SupportedGames2);
+        public TMSX WithStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetReferenceAssignment(), value, SupportedGames2);
+        public TMSX WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMSX? value) => WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMNESWC : CGameMenuBuilderMembers2<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMNESWC WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TMNESWC WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TMNESWC WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public TMNESWC WithStyleSheet(global::GBX.NET.Engines.Control.CControlStyleSheet? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetAssignment(), value, SupportedGames2);
+        public TMNESWC WithStyleSheetReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyleSheet> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetStyleSheetReferenceAssignment(), value, SupportedGames2);
+        public TMNESWC WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMNESWC? value) => WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMU : CGameMenuBuilderMembers3<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMU WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TMU WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TMU WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public TMU WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetFrustumAssignment(), value, SupportedGames4);
+        public TMU WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames4);
         public TMU WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameMenuTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class VSK5 : CGameMenuBuilderMembers3<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public VSK5 WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public VSK5 WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public VSK5 WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public VSK5 WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetFrustumAssignment(), value, SupportedGames4);
+        public VSK5 WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames4);
+        public VSK5 WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetVSK5? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMF : CGameMenuBuilderMembers4<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMF WithBackgroundBitmapUnderlay(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBackgroundBitmapUnderlay(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMF? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TMT : CGameMenuBuilderMembers5<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TMT WithBackgroundBitmapUnderlay(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundBitmapUnderlayAssignment(), value, SupportedGames3);
+        public TMT WithBackgroundBitmapUnderlayReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundBitmapUnderlayReferenceAssignment(), value, SupportedGames3);
+        public TMT WithBackgroundBitmapUnderlay(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => WithBackgroundBitmapUnderlay(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithBackgroundCameraFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFarZAssignment(), value, SupportedGames3);
+        public TMT WithBackgroundCameraFov(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraFovAssignment(), value, SupportedGames1);
+        public TMT WithBackgroundCameraNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundCameraNearZAssignment(), value, SupportedGames3);
+        public TMT WithBackgroundScene(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneAssignment(), value, SupportedGames1);
+        public TMT WithBackgroundSceneReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameMenuBuilderAssignments.GetBackgroundSceneReferenceAssignment(), value, SupportedGames1);
+        public TMT WithSoundDisplayed(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSoundDisplayed(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithSoundHidden(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSoundHidden(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithSoundPageChanged(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value) => base.WithSoundPageChanged(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class MP4 : CGameMenuBuilderMembers4<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public MP4 WithBackgroundBitmapUnderlay(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBackgroundBitmapUnderlay(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
+    }
+    public partial class TM2020 : CGameMenuBuilderMembers5<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenu> state) : base(state) { }
+        public TM2020 WithSoundDisplayed(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSoundDisplayed(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSoundHidden(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSoundHidden(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSoundPageChanged(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value) => base.WithSoundPageChanged(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithStyleSheet(global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020? value) => base.WithStyleSheet(value is null ? (global::GBX.NET.Engines.Control.CControlStyleSheet?)null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Game.IGameMenuTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameMenu Build() => BuildNode(CGameMenuBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameMenu node);
     }
 }

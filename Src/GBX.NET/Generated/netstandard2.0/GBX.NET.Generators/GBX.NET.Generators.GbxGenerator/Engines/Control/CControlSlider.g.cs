@@ -204,11 +204,11 @@ public partial class CControlSlider : CControlBase, IClass
     /// CControlSlider 0x002 chunk (Axis)
     /// </summary>
     [Chunk(0x0700B002, "Axis")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700B002 : Chunk<CControlSlider>
     {
         public override uint Id => 0x0700B002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -225,11 +225,11 @@ public partial class CControlSlider : CControlBase, IClass
     /// CControlSlider 0x003 chunk (bar and cursor icons)
     /// </summary>
     [Chunk(0x0700B003, "bar and cursor icons")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700B003 : Chunk<CControlSlider>
     {
         public override uint Id => 0x0700B003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -247,9 +247,11 @@ public partial class CControlSlider : CControlBase, IClass
     /// CControlSlider 0x004 chunk
     /// </summary>
     [Chunk(0x0700B004)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700B004 : Chunk<CControlSlider>
     {
         public override uint Id => 0x0700B004;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

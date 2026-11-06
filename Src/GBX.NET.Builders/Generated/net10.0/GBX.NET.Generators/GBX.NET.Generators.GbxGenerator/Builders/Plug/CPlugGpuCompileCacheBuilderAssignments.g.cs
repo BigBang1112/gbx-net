@@ -20,12 +20,16 @@ internal static class CPlugGpuCompileCacheBuilderAssignments
     private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?>? cached4;
     internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?> GetIncludesAssignment() => cached4 ??= new("Includes", new Action<object, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?>(Assign4), new Func<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?>(Copy1));
     private static void Assign4(object node, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).Includes = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>? cached5;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?> GetSlotsAssignment() => cached5 ??= new("Slots", new Action<object, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>(Assign5));
-    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).Slots = value;
-    private static NodeBuilderProperty<int>? cached6;
-    internal static NodeBuilderProperty<int> GetTypeAssignment() => cached6 ??= new("Type", new Action<object, int>(Assign6));
-    private static void Assign6(object node, int value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).Type = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]?>? cached5;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]?> GetLegacyHashesAssignment() => cached5 ??= new("LegacyHashes", new Action<object, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]?>(Assign5), new Func<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]?, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]?>(Copy2));
+    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]? value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).LegacyHashes = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?> GetSlotsAssignment() => cached6 ??= new("Slots", new Action<object, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>(Assign6));
+    private static void Assign6(object node, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).Slots = value;
+    private static NodeBuilderProperty<int>? cached7;
+    internal static NodeBuilderProperty<int> GetTypeAssignment() => cached7 ??= new("Type", new Action<object, int>(Assign7));
+    private static void Assign7(object node, int value) => ((global::GBX.NET.Engines.Plug.CPlugGpuCompileCache)node).Type = value;
     private static ulong[]? Copy0(ulong[]? value) => value is null ? null! : (ulong[])value.Clone();
     private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? Copy1(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[])value.Clone();
+    private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]? Copy2(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]? value) => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[])value.Clone();
 }

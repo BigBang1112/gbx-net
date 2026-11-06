@@ -6,6 +6,11 @@ namespace GBX.NET.Interfaces.Vision;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IVisPostFx_MotionBlurMembers1 : global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlur
 {
+    int Technique { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IVisPostFx_MotionBlurMembers2 : global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlur
+{
     bool T2_DelayShadows { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? T2_Fid_PHlsl_MotionLenCmp { get; set; }
     float T2_MotionMaxLen { get; set; }
@@ -20,18 +25,40 @@ public partial interface IVisPostFx_MotionBlur : IClassVersion<global::GBX.NET.E
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    int Technique { get; set; }
 }
 
-public partial interface IVisPostFx_MotionBlurTM10 : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
+public partial interface IVisPostFx_MotionBlurTM10 : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1
 {
 }
 
-public partial interface IVisPostFx_MotionBlurTMU : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1
+public partial interface IVisPostFx_MotionBlurTMPU : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU
 {
 }
 
-public partial interface IVisPostFx_MotionBlurTMF : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1
+public partial interface IVisPostFx_MotionBlurTMSX : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX
 {
+}
+
+public partial interface IVisPostFx_MotionBlurTMU : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers2
+{
+}
+
+public partial interface IVisPostFx_MotionBlurTMF : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers1, global::GBX.NET.Interfaces.Vision.IVisPostFx_MotionBlurMembers2
+{
+}
+
+public partial interface IVisPostFx_MotionBlurTMT : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT
+{
+}
+
+public partial interface IVisPostFx_MotionBlurMP4 : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4
+{
+}
+
+public partial interface IVisPostFx_MotionBlurTM2020 : IVisPostFx_MotionBlur, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? T3_BitmapDepth { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? T3_BitmapMotion { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? T3_PHlsl_MotionBlur { get; set; }
 }
 

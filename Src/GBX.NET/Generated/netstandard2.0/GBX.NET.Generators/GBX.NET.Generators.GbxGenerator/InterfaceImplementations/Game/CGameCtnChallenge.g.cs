@@ -15,297 +15,297 @@ public partial class CGameCtnChallenge : global::GBX.NET.Interfaces.Game.IGameCt
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>.Blocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>.Blocks
     {
         get => Blocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>.Blocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>.Blocks
     {
         get => Blocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMU>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMU, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>.Blocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>.Blocks
     {
         get => Blocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.AnchoredObjects
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.AnchoredObjects
     {
         get => AnchoredObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>(GetAnchoredObjectsInterfaceReferences, true, "AnchoredObjects");
         set => AnchoredObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.CarMarksBuffer
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.CarMarksBuffer
     {
         get => CarMarksBuffer is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>(GetCarMarksBufferInterfaceReferences, true, "CarMarksBuffer");
         set => CarMarksBuffer = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ClipAmbiance
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ClipAmbiance
     {
         get => ClipAmbiance;
         set => ClipAmbiance = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ClipPodium
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ClipPodium
     {
         get => ClipPodium;
         set => ClipPodium = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.LightmapCache
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.LightmapCache
     {
         get => LightmapCache;
         set => LightmapCache = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ZoneGenealogy
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.ZoneGenealogy
     {
         get => ZoneGenealogy is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>(GetZoneGenealogyInterfaceReferences, true, "ZoneGenealogy");
         set => ZoneGenealogy = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.AnchoredObjects
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.AnchoredObjects
     {
         get => AnchoredObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>(GetAnchoredObjectsInterfaceReferences, true, "AnchoredObjects");
         set => AnchoredObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.CarMarksBuffer
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.CarMarksBuffer
     {
         get => CarMarksBuffer is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>(GetCarMarksBufferInterfaceReferences, true, "CarMarksBuffer");
         set => CarMarksBuffer = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ClipAmbiance
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ClipAmbiance
     {
         get => ClipAmbiance;
         set => ClipAmbiance = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ClipPodium
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ClipPodium
     {
         get => ClipPodium;
         set => ClipPodium = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.LightmapCache
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.LightmapCache
     {
         get => LightmapCache;
         set => LightmapCache = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -325,137 +325,137 @@ public partial class CGameCtnChallenge : global::GBX.NET.Interfaces.Game.IGameCt
         get => TrafficZoneSquares is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares, global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT>(GetTrafficZoneSquaresInterfaceReferences, true, "TrafficZoneSquares");
         set => TrafficZoneSquares = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares, global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ZoneGenealogy
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.ZoneGenealogy
     {
         get => ZoneGenealogy is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>(GetZoneGenealogyInterfaceReferences, true, "ZoneGenealogy");
         set => ZoneGenealogy = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.AnchoredObjects
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.AnchoredObjects
     {
         get => AnchoredObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>(GetAnchoredObjectsInterfaceReferences, true, "AnchoredObjects");
         set => AnchoredObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>.BakedBlocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>.BakedBlocks
     {
         get => BakedBlocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(GetBakedBlocksInterfaceReferences, true, "BakedBlocks");
         set => BakedBlocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>.Blocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>.Blocks
     {
         get => Blocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.CarMarksBuffer
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.CarMarksBuffer
     {
         get => CarMarksBuffer is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>(GetCarMarksBufferInterfaceReferences, true, "CarMarksBuffer");
         set => CarMarksBuffer = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>.ChallengeAnimation
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>.ChallengeAnimation
     {
         get => ChallengeAnimation;
         set => ChallengeAnimation = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ClipAmbiance
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ClipAmbiance
     {
         get => ClipAmbiance;
         set => ClipAmbiance = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ClipPodium
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ClipPodium
     {
         get => ClipPodium;
         set => ClipPodium = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.LightmapCache
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.LightmapCache
     {
         get => LightmapCache;
         set => LightmapCache = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ZoneGenealogy
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.ZoneGenealogy
     {
         get => ZoneGenealogy is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>(GetZoneGenealogyInterfaceReferences, true, "ZoneGenealogy");
         set => ZoneGenealogy = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.AnchoredObjects
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.AnchoredObjects
     {
         get => AnchoredObjects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>(GetAnchoredObjectsInterfaceReferences, true, "AnchoredObjects");
         set => AnchoredObjects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>.BakedBlocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>.BakedBlocks
     {
         get => BakedBlocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(GetBakedBlocksInterfaceReferences, true, "BakedBlocks");
         set => BakedBlocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>.BlockStock
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>.BlockStock
     {
         get => BlockStock;
         set => BlockStock = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>.Blocks
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>.Blocks
     {
         get => Blocks is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(GetBlocksInterfaceReferences, true, "Blocks");
         set => Blocks = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.CarMarksBuffer
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.CarMarksBuffer
     {
         get => CarMarksBuffer is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>(GetCarMarksBufferInterfaceReferences, true, "CarMarksBuffer");
         set => CarMarksBuffer = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>.ChallengeAnimation
+    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>.ChallengeAnimation
     {
         get => ChallengeAnimation;
         set => ChallengeAnimation = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>.ChallengeParameters
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>.ChallengeParameters
     {
         get => ChallengeParameters;
         set => ChallengeParameters = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ClipAmbiance
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ClipAmbiance
     {
         get => ClipAmbiance;
         set => ClipAmbiance = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGlobal
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGlobal
     {
         get => ClipGlobal;
         set => ClipGlobal = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGroupEndRace
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGroupEndRace
     {
         get => ClipGroupEndRace;
         set => ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGroupInGame
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipGroupInGame
     {
         get => ClipGroupInGame;
         set => ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -465,12 +465,12 @@ public partial class CGameCtnChallenge : global::GBX.NET.Interfaces.Game.IGameCt
         get => ClipGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>(GetClipGroupsInterfaceReferences, true, "ClipGroups");
         set => ClipGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipIntro
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>.ClipIntro
     {
         get => ClipIntro;
         set => ClipIntro = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ClipPodium
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ClipPodium
     {
         get => ClipPodium;
         set => ClipPodium = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -480,12 +480,12 @@ public partial class CGameCtnChallenge : global::GBX.NET.Interfaces.Game.IGameCt
         get => LaunchedCheckpoints;
         set => LaunchedCheckpoints = value is null ? null : value is global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.LightmapCache
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.LightmapCache
     {
         get => LightmapCache;
         set => LightmapCache = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ZoneGenealogy
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.ZoneGenealogy
     {
         get => ZoneGenealogy is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>(GetZoneGenealogyInterfaceReferences, true, "ZoneGenealogy");
         set => ZoneGenealogy = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>(value, false));

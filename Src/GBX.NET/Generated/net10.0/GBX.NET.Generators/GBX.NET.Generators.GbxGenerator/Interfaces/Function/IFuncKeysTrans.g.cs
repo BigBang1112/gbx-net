@@ -19,19 +19,19 @@ public partial interface IFuncKeysTrans : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IFuncKeysTransTM10 : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTM10
+public partial interface IFuncKeysTransTM10 : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTM10, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 
-public partial interface IFuncKeysTransTMPU : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU
+public partial interface IFuncKeysTransTMPU : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 
-public partial interface IFuncKeysTransTMSX : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX
+public partial interface IFuncKeysTransTMSX : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 
-public partial interface IFuncKeysTransTMNESWC : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC
+public partial interface IFuncKeysTransTMNESWC : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 
@@ -51,11 +51,11 @@ public partial interface IFuncKeysTransMP3 : IFuncKeysTrans, global::GBX.NET.Int
 {
 }
 
-public partial interface IFuncKeysTransTMT : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMT
+public partial interface IFuncKeysTransTMT : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysTMT, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 
-public partial interface IFuncKeysTransMP4 : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysMP4
+public partial interface IFuncKeysTransMP4 : IFuncKeysTrans, global::GBX.NET.Interfaces.Function.IFuncKeysMP4, global::GBX.NET.Interfaces.Function.IFuncKeysTransMembers1
 {
 }
 

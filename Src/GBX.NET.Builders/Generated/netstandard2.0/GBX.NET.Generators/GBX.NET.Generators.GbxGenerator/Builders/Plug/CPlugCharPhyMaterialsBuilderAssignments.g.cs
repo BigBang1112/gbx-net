@@ -5,8 +5,12 @@ namespace GBX.NET.Builders.Engines.Plug;
 
 internal static class CPlugCharPhyMaterialsBuilderAssignments
 {
-    private static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>? cached0;
-    internal static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?> GetMaterialsAssignment() => cached0 ??= new("Materials", new Action<object, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>(Assign0), new Func<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>(Copy0));
-    private static void Assign0(object node, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)node).Materials = value;
-    private static NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Copy0(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => value is null ? null! : NodeBuilderReferences.CopyList(value);
+    private static NodeBuilderProperty<int[]?>? cached0;
+    internal static NodeBuilderProperty<int[]?> GetMaterialIndicesAssignment() => cached0 ??= new("MaterialIndices", new Action<object, int[]?>(Assign0), new Func<int[]?, int[]?>(Copy0));
+    private static void Assign0(object node, int[]? value) => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)node).MaterialIndices = value;
+    private static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>? cached1;
+    internal static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?> GetMaterialsAssignment() => cached1 ??= new("Materials", new Action<object, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>(Assign1), new Func<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>(Copy1));
+    private static void Assign1(object node, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)node).Materials = value;
+    private static int[]? Copy0(int[]? value) => value is null ? null! : (int[])value.Clone();
+    private static NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Copy1(NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => value is null ? null! : NodeBuilderReferences.CopyList(value);
 }

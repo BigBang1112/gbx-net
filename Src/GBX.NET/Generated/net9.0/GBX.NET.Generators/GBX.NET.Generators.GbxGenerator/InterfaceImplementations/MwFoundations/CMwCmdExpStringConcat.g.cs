@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdExpStringConcat : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringConcat, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringConcatTMF
+public partial class CMwCmdExpStringConcat : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringConcat, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringConcatTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringConcatTMF
 {
 }

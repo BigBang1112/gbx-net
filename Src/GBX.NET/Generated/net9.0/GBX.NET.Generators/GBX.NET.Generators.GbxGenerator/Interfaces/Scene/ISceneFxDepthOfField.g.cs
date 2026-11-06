@@ -3,6 +3,32 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxDepthOfFieldMembers1 : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField
+{
+    float BlurAmp { get; set; }
+    float BlurRatio { get; set; }
+    int BlurSize { get; set; }
+    int BlurSizeF { get; set; }
+    int BlurSizeN { get; set; }
+    float FocusZ { get; set; }
+    float Intensity { get; set; }
+    bool IsAlphaInHomo { get; set; }
+    float OverlapF { get; set; }
+    int Technique { get; set; }
+    int TexSizeF { get; set; }
+    int TexSizeN { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxDepthOfFieldMembers2 : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField
+{
+    float FocusRange { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxDepthOfFieldMembers3 : global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfField
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? FidMrtDOF_BlurAtDepth { get; set; }
+}
 public partial interface ISceneFxDepthOfField : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -12,27 +38,45 @@ public partial interface ISceneFxDepthOfField : IClassVersion<global::GBX.NET.En
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    float BlurAmp { get; set; }
-    float BlurRatio { get; set; }
-    int BlurSize { get; set; }
-    int BlurSizeF { get; set; }
-    int BlurSizeN { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FidMrtDOF_BlurAtDepth { get; set; }
-    float FocusRange { get; set; }
-    float FocusZ { get; set; }
-    float Intensity { get; set; }
-    bool IsAlphaInHomo { get; set; }
-    float OverlapF { get; set; }
-    int Technique { get; set; }
-    int TexSizeF { get; set; }
-    int TexSizeN { get; set; }
 }
 
-public partial interface ISceneFxDepthOfFieldTMU : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU
+public partial interface ISceneFxDepthOfFieldTM10 : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1
 {
 }
 
-public partial interface ISceneFxDepthOfFieldTMF : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
+public partial interface ISceneFxDepthOfFieldTMPU : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTMSX : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTMNESWC : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTMU : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldVSK5 : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTMF : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTMT : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldMP4 : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
+{
+}
+
+public partial interface ISceneFxDepthOfFieldTM2020 : ISceneFxDepthOfField, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020, global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMembers3
 {
 }
 

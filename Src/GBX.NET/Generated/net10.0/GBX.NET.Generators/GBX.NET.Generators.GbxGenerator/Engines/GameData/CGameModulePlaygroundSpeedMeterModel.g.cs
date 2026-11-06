@@ -355,10 +355,28 @@ public partial class CGameModulePlaygroundSpeedMeterModel : CGameModulePlaygroun
     /// CGameModulePlaygroundSpeedMeterModel 0x000 skippable chunk (meter, speed, distance and images)
     /// </summary>
     [Chunk(0x2E01F000, "meter, speed, distance and images")]
+    [ChunkGameVersion(GameVersion.MP4, 2)]
     public partial class Chunk2E01F000 : SkippableChunk<CGameModulePlaygroundSpeedMeterModel>, IVersionable
     {
         public override uint Id => 0x2E01F000;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk2E01F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -369,6 +387,11 @@ public partial class CGameModulePlaygroundSpeedMeterModel : CGameModulePlaygroun
         public override void ReadWrite(CGameModulePlaygroundSpeedMeterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.globalScale);
             rw.Single(ref n.meterSize);
             rw.Single(ref n.meterClipOffset);

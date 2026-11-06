@@ -58,6 +58,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlinePassword", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlinePassword
     {
         get => this.onlinePassword;
@@ -68,6 +69,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlineValidationCode", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineValidationCode
     {
         get => this.onlineValidationCode;
@@ -78,6 +80,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive]
+    [Method("DecryptOnlineSupportKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineSupportKey
     {
         get => this.onlineSupportKey;
@@ -156,6 +159,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// <remarks>Applied with: 0x000 body chunk, archive v1+</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     [AppliedWithArchive(1)]
+    [Method("DecryptKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileChunk_AccountSettingsExtensions, GBX.NET.Crypto", Protected = true)]
     public string? EncryptedKeyHexa
     {
         get => this.encryptedKeyHexa;
@@ -172,8 +176,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.rSAPrivateKey = value;
     }
 
-    private ulong u02;
-    public ulong U02
+    private DateTime? u02;
+    public DateTime? U02
     {
         get => this.u02;
         set => this.u02 = value;
@@ -198,13 +202,14 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.buddies = value;
     }
 
-    private ulong receivedMessagesSystemTime;
-    /// <remarks>Applied with: archive</remarks>
+    private DateTime? receivedMessagesAt;
+    /// <remarks>Applied with: 0x005 body chunk, archive</remarks>
+    [AppliedWithChunk<Chunk0312C005>]
     [AppliedWithArchive]
-    public ulong ReceivedMessagesSystemTime
+    public DateTime? ReceivedMessagesAt
     {
-        get => this.receivedMessagesSystemTime;
-        set => this.receivedMessagesSystemTime = value;
+        get => this.receivedMessagesAt;
+        set => this.receivedMessagesAt = value;
     }
 
     private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
@@ -247,11 +252,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.flags2 = value;
     }
 
-    private string? u05;
-    public string? U05
+    private string? defaultGroupLogin;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
+    public string? DefaultGroupLogin
     {
-        get => this.u05;
-        set => this.u05 = value;
+        get => this.defaultGroupLogin;
+        set => this.defaultGroupLogin = value;
     }
 
     private string? avatarName;
@@ -337,15 +344,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         get => this.trigram;
         set => this.trigram = value;
-    }
-
-    private DateTime? receivedMessagesAt;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
-    [AppliedWithChunk<Chunk0312C005>]
-    public DateTime? ReceivedMessagesAt
-    {
-        get => this.receivedMessagesAt;
-        set => this.receivedMessagesAt = value;
     }
 
     private string? broadcastLogin;
@@ -658,12 +656,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).u02 = context.Clone(this.u02)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).legacyBuddyArchiveVersion = context.Clone(this.legacyBuddyArchiveVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).buddies = context.CloneArray(this.buddies)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesSystemTime = context.Clone(this.receivedMessagesSystemTime)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).inboxMessages = context.Clone(this.inboxMessages)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).readMessages = context.Clone(this.readMessages)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).outboxMessages = context.Clone(this.outboxMessages)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).flags2 = context.Clone(this.flags2)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).u05 = context.Clone(this.u05)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).defaultGroupLogin = context.Clone(this.defaultGroupLogin)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).avatarName = context.Clone(this.avatarName)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).playerTagsConfig = context.Clone(this.playerTagsConfig)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).receiveNews = context.Clone(this.receiveNews)!;
@@ -673,7 +671,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).privacyPolicyVersion = context.Clone(this.privacyPolicyVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).age = context.Clone(this.age)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).trigram = context.Clone(this.trigram)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).broadcastLogin = context.Clone(this.broadcastLogin)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).broadcastVideoWidth = context.Clone(this.broadcastVideoWidth)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).broadcastVideoHeight = context.Clone(this.broadcastVideoHeight)!;
@@ -754,10 +751,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             }
 
             rw.String(ref this.rSAPrivateKey);
-            rw.UInt64(ref this.u02);
+            this.u02 = rw.SystemTime(this.u02);
             rw.Int32(ref this.legacyBuddyArchiveVersion);
             rw.ArrayReadableWritable<CGameBuddy>(ref this.buddies!, version: LegacyBuddyArchiveVersion);
-            rw.UInt64(ref this.receivedMessagesSystemTime);
+            this.receivedMessagesAt = rw.SystemTime(this.receivedMessagesAt);
             this.inboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.inboxMessages);
             this.readMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.readMessages);
             this.outboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.outboxMessages);
@@ -766,7 +763,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
 
         if (v >= 3)
         {
-            rw.String(ref this.u05);
+            rw.String(ref this.defaultGroupLogin);
         }
 
         rw.String(ref this.avatarName);
@@ -901,7 +898,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     public partial class Chunk0312C001 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0312C001() : this(GameVersion.Unspecified)
@@ -994,7 +996,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     public partial class Chunk0312C003 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C003;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public string? U02;
         public string[]? U03;

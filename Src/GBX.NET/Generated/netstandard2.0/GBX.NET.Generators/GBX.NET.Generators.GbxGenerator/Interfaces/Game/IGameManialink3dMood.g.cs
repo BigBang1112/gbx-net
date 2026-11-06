@@ -24,6 +24,10 @@ public partial interface IGameManialink3dMood : IClassVersion<global::GBX.NET.En
     Vec3 LDir1_LinearRgb { get; set; }
 }
 
+public partial interface IGameManialink3dMoodTMT : IGameManialink3dMood
+{
+}
+
 public partial interface IGameManialink3dMoodMP4 : IGameManialink3dMood
 {
 }

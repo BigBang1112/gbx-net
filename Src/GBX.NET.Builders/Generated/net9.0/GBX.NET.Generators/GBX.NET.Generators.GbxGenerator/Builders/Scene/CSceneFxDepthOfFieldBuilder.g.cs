@@ -7,46 +7,166 @@ public abstract class CSceneFxDepthOfFieldBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CSceneFxDepthOfFieldBuilderBase() { }
     private protected CSceneFxDepthOfFieldBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
-    public TSelf WithBlurAmp(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurAmpAssignment(), value, SupportedGames1);
-    public TSelf WithBlurRatio(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurRatioAssignment(), value, SupportedGames1);
-    public TSelf WithBlurSize(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeAssignment(), value, SupportedGames1);
-    public TSelf WithBlurSizeF(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeFAssignment(), value, SupportedGames1);
-    public TSelf WithBlurSizeN(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeNAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+}
+public abstract class CSceneFxDepthOfFieldBuilderMembers1<TSelf> : CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CSceneFxDepthOfFieldBuilderMembers1<TSelf>
+{
+    private protected CSceneFxDepthOfFieldBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
     public TSelf WithFidMrtDOF_BlurAtDepth(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthAssignment(), value, SupportedGames1);
     public TSelf WithFidMrtDOF_BlurAtDepthReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithFocusRange(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusRangeAssignment(), value, SupportedGames1);
-    public TSelf WithFocusZ(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusZAssignment(), value, SupportedGames1);
-    public TSelf WithIntensity(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIntensityAssignment(), value, SupportedGames1);
-    public TSelf WithIsAlphaInHomo(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIsAlphaInHomoAssignment(), value, SupportedGames1);
-    public TSelf WithOverlapF(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetOverlapFAssignment(), value, SupportedGames1);
-    public TSelf WithTechnique(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTechniqueAssignment(), value, SupportedGames1);
-    public TSelf WithTexSizeF(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeFAssignment(), value, SupportedGames1);
-    public TSelf WithTexSizeN(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeNAssignment(), value, SupportedGames1);
+}
+public abstract class CSceneFxDepthOfFieldBuilderMembers2<TSelf> : CSceneFxDepthOfFieldBuilderMembers1<TSelf> where TSelf : CSceneFxDepthOfFieldBuilderMembers2<TSelf>
+{
+    private protected CSceneFxDepthOfFieldBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+    public TSelf WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
+}
+public abstract class CSceneFxDepthOfFieldBuilderMembers3<TSelf> : CSceneFxDepthOfFieldBuilderBase<TSelf> where TSelf : CSceneFxDepthOfFieldBuilderMembers3<TSelf>
+{
+    private protected CSceneFxDepthOfFieldBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+    public TSelf WithBlurAmp(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurAmpAssignment(), value, SupportedGames2);
+    public TSelf WithBlurRatio(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurRatioAssignment(), value, SupportedGames2);
+    public TSelf WithBlurSize(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeAssignment(), value, SupportedGames2);
+    public TSelf WithBlurSizeF(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeFAssignment(), value, SupportedGames2);
+    public TSelf WithBlurSizeN(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetBlurSizeNAssignment(), value, SupportedGames2);
+    public TSelf WithFocusZ(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusZAssignment(), value, SupportedGames2);
+    public TSelf WithIntensity(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIntensityAssignment(), value, SupportedGames2);
+    public TSelf WithIsAlphaInHomo(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetIsAlphaInHomoAssignment(), value, SupportedGames2);
+    public TSelf WithOverlapF(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetOverlapFAssignment(), value, SupportedGames2);
+    public TSelf WithTechnique(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTechniqueAssignment(), value, SupportedGames2);
+    public TSelf WithTexSizeF(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeFAssignment(), value, SupportedGames2);
+    public TSelf WithTexSizeN(int value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetTexSizeNAssignment(), value, SupportedGames2);
+}
+public abstract class CSceneFxDepthOfFieldBuilderMembers4<TSelf> : CSceneFxDepthOfFieldBuilderMembers3<TSelf> where TSelf : CSceneFxDepthOfFieldBuilderMembers4<TSelf>
+{
+    private protected CSceneFxDepthOfFieldBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+    public TSelf WithFidMrtDOF_BlurAtDepth(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthAssignment(), value, SupportedGames1);
+    public TSelf WithFidMrtDOF_BlurAtDepthReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFidMrtDOF_BlurAtDepthReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithFocusRange(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDepthOfFieldBuilderAssignments.GetFocusRangeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CSceneFxDepthOfFieldBuilder : CSceneFxDepthOfFieldBuilderBase<CSceneFxDepthOfFieldBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077004());
         return node;
     }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe3(GameVersion game)
+    {
+        var node = CreateRecipe2(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe4(GameVersion game)
+    {
+        var node = CreateRecipe5(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDepthOfField CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDepthOfField.Chunk0A077006());
+        return node;
+    }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
-    public partial class TMU : CSceneFxDepthOfFieldBuilderBase<TMU>
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CSceneFxDepthOfFieldBuilderMembers3<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMPU : CSceneFxDepthOfFieldBuilderMembers3<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMSX : CSceneFxDepthOfFieldBuilderMembers4<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMNESWC : CSceneFxDepthOfFieldBuilderMembers4<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMU : CSceneFxDepthOfFieldBuilderMembers4<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
         public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
     }
-    public partial class TMF : CSceneFxDepthOfFieldBuilderBase<TMF>
+    public partial class VSK5 : CSceneFxDepthOfFieldBuilderMembers4<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMF : CSceneFxDepthOfFieldBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public TMF WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
         public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TMT : CSceneFxDepthOfFieldBuilderMembers2<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class MP4 : CSceneFxDepthOfFieldBuilderMembers2<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
+    }
+    public partial class TM2020 : CSceneFxDepthOfFieldBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDepthOfField> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDepthOfFieldTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDepthOfField Build() => BuildNode(CSceneFxDepthOfFieldBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDepthOfField node);
     }
 }

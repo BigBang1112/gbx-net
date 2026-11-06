@@ -8,19 +8,40 @@ public abstract class CSceneLocationCameraBuilderBase<TSelf> : NodeBuilder<globa
     private protected CSceneLocationCameraBuilderBase() { }
     private protected CSceneLocationCameraBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.TMNESWC | GameVersion.TMSX;
     public TSelf WithMotion(global::GBX.NET.Engines.Motion.CMotion? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, SupportedGames1);
     public TSelf WithMotionReference(NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, SupportedGames1);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
+}
+public abstract class CSceneLocationCameraBuilderMembers1<TSelf> : CSceneLocationCameraBuilderBase<TSelf> where TSelf : CSceneLocationCameraBuilderMembers1<TSelf>
+{
+    private protected CSceneLocationCameraBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
+    public TSelf WithFovRect(Rect value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLocationCameraBuilderAssignments.GetFovRectAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+}
+public abstract class CSceneLocationCameraBuilderMembers2<TSelf> : CSceneLocationCameraBuilderBase<TSelf> where TSelf : CSceneLocationCameraBuilderMembers2<TSelf>
+{
+    private protected CSceneLocationCameraBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
+    public TSelf WithFrustum(BoxAligned value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLocationCameraBuilderAssignments.GetFrustumAssignment(), value, SupportedGames2);
+    public TSelf WithIsOrthographic(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLocationCameraBuilderAssignments.GetIsOrthographicAssignment(), value, SupportedGames2);
 }
 public partial class CSceneLocationCameraBuilder : CSceneLocationCameraBuilderBase<CSceneLocationCameraBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe0(GameVersion game)
     {
-        var node = CreateRecipe2(game);
+        var node = CreateRecipe3(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
         return node;
     }
     private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneLocationCamera();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLocationCamera.Chunk0A036000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneLocationCamera();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLocationCamera.Chunk0A036001());
@@ -28,14 +49,22 @@ public partial class CSceneLocationCameraBuilder : CSceneLocationCameraBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
     }
-    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe2(GameVersion game)
+    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneLocationCamera();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
     }
-    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe3(GameVersion game)
+    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneLocationCamera();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLocationCamera.Chunk0A036002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneLocationCamera CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneLocationCamera();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneLocationCamera.Chunk0A036002());
@@ -73,20 +102,20 @@ public partial class CSceneLocationCameraBuilder : CSceneLocationCameraBuilderBa
         public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
-    public partial class TMSX : CSceneLocationCameraBuilderBase<TMSX>
+    public partial class TMSX : CSceneLocationCameraBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public TMSX WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMSX? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
-    public partial class TMNESWC : CSceneLocationCameraBuilderBase<TMNESWC>
+    public partial class TMNESWC : CSceneLocationCameraBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
     public partial class TMU : CSceneLocationCameraBuilderBase<TMU>
@@ -94,7 +123,7 @@ public partial class CSceneLocationCameraBuilder : CSceneLocationCameraBuilderBa
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
     public partial class VSK5 : CSceneLocationCameraBuilderBase<VSK5>
@@ -118,32 +147,31 @@ public partial class CSceneLocationCameraBuilder : CSceneLocationCameraBuilderBa
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public MP3 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionMP3? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
-    public partial class TMT : CSceneLocationCameraBuilderBase<TMT>
+    public partial class TMT : CSceneLocationCameraBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public TMT WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMT? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
-    public partial class MP4 : CSceneLocationCameraBuilderBase<MP4>
+    public partial class MP4 : CSceneLocationCameraBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
-        public MP4 WithFovRect(Rect value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneLocationCameraBuilderAssignments.GetFovRectAssignment(), value, GameVersion.MP4);
         public MP4 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionMP4? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
-    public partial class TM2020 : CSceneLocationCameraBuilderBase<TM2020>
+    public partial class TM2020 : CSceneLocationCameraBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLocationCamera> state) : base(state) { }
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneLocationCameraTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CSceneLocationCamera Build() => BuildNode(CSceneLocationCameraBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneLocationCamera node);
     }
 }

@@ -5,6 +5,7 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugAnimFile : global::GBX.NET.Interfaces.Plug.IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020
 {
+    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? GetClipsInterfaceReferences() => Clips;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GetGraphStacksInterfaceReferences() => GraphStacks;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>? GetPoseGridsInterfaceReferences() => PoseGrids;
 }

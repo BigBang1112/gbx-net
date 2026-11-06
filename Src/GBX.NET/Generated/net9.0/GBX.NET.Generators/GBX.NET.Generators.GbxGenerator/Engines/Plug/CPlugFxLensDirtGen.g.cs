@@ -85,9 +85,11 @@ public partial class CPlugFxLensDirtGen : CMwNod, IClass
     /// CPlugFxLensDirtGen 0x000 chunk (atlas, count, screen size and intensity ranges)
     /// </summary>
     [Chunk(0x090CB000, "atlas, count, screen size and intensity ranges")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090CB000 : Chunk<CPlugFxLensDirtGen>, IVersionable
     {
         public override uint Id => 0x090CB000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -99,6 +101,11 @@ public partial class CPlugFxLensDirtGen : CMwNod, IClass
         public override void ReadWrite(CPlugFxLensDirtGen n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.atlasId);
             rw.Int32(ref n.count);
             rw.Single(ref n.screenSizeYMin);

@@ -7,8 +7,8 @@ public abstract class CGameManiaTitleBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CGameManiaTitleBuilderBase() { }
     private protected CGameManiaTitleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
 }
 public abstract class CGameManiaTitleBuilderMembers1<TSelf> : CGameManiaTitleBuilderBase<TSelf> where TSelf : CGameManiaTitleBuilderMembers1<TSelf>
 {
@@ -16,6 +16,11 @@ public abstract class CGameManiaTitleBuilderMembers1<TSelf> : CGameManiaTitleBui
     public TSelf WithAnimEditor_DefaultChallenge(global::GBX.NET.Engines.Game.CGameCtnChallenge? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetAnimEditor_DefaultChallengeAssignment(), value, SupportedGames2);
     public TSelf WithAnimEditor_DefaultChallengeReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallenge> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetAnimEditor_DefaultChallengeReferenceAssignment(), value, SupportedGames2);
     public TSelf WithBoxCaseManialinkUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetBoxCaseManialinkUrlAssignment(), value, SupportedGames2);
+    public TSelf WithCollectionGroup(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCollectionGroupAssignment(), value, SupportedGames2);
+    public TSelf WithCollections(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCollectionsAssignment(), value, SupportedGames2);
+    public TSelf WithCollections(params global::GBX.NET.Engines.Game.CGameCtnCollection[] values) => WithCollections(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>(values));
+    public TSelf WithCollections(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCollection> values) => WithCollections(values.ToArray());
+    public TSelf WithDesc(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetDescAssignment(), value, SupportedGames2);
     public TSelf WithEditorMapType(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetEditorMapTypeAssignment(), value, SupportedGames2);
     public TSelf WithEditorMapTypeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetEditorMapTypeReferenceAssignment(), value, SupportedGames2);
     public TSelf WithEditorSimpleChallenges(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetEditorSimpleChallengesAssignment(), value, SupportedGames2);
@@ -23,6 +28,9 @@ public abstract class CGameManiaTitleBuilderMembers1<TSelf> : CGameManiaTitleBui
     public TSelf WithEditorSimpleChallenges(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge> values) => WithEditorSimpleChallenges(values.ToArray());
     public TSelf WithHud3dFont(global::GBX.NET.Engines.Plug.CPlugFont? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHud3dFontAssignment(), value, SupportedGames2);
     public TSelf WithHud3dFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHud3dFontReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithInfoUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetInfoUrlAssignment(), value, SupportedGames2);
+    public TSelf WithLogos(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetLogosAssignment(), value, SupportedGames2);
+    public TSelf WithLogosReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetLogosReferenceAssignment(), value, SupportedGames2);
     public TSelf WithMenuBg(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuBgAssignment(), value, SupportedGames2);
     public TSelf WithMenuBgReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuBgReferenceAssignment(), value, SupportedGames2);
     public TSelf WithMenuBgFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuBgFolderAssignment(), value, SupportedGames2);
@@ -37,9 +45,44 @@ public abstract class CGameManiaTitleBuilderMembers1<TSelf> : CGameManiaTitleBui
     public TSelf WithMenuSkyGradReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuSkyGradReferenceAssignment(), value, SupportedGames2);
     public TSelf WithMenuStyle3d(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuStyle3dAssignment(), value, SupportedGames2);
     public TSelf WithMenuStyle3dReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMenuStyle3dReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMod(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModAssignment(), value, SupportedGames2);
+    public TSelf WithModReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithModelSkinInit(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModelSkinInitAssignment(), value, SupportedGames2);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNameAssignment(), value, SupportedGames2);
+    public TSelf WithNetMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetModeAssignment(), value, SupportedGames2);
+    public TSelf WithNetModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetModeReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithNetPlaylist(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetPlaylistAssignment(), value, SupportedGames2);
+    public TSelf WithNetPlaylistReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetPlaylistReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithSkinnedBoxCase(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedBoxCaseAssignment(), value, SupportedGames2);
+    public TSelf WithSkinnedBoxCaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedBoxCaseReferenceAssignment(), value, SupportedGames2);
     public TSelf WithSkinnedLogosStyle(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedLogosStyleAssignment(), value, SupportedGames2);
     public TSelf WithSkinnedLogosStyleReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedLogosStyleReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithSoloDataPack(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloDataPackAssignment(), value, SupportedGames2);
+    public TSelf WithSoloDataPackReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloDataPackReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithSoloMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloModeAssignment(), value, SupportedGames2);
+    public TSelf WithSoloModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloModeReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithSortIndex(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSortIndexAssignment(), value, SupportedGames2);
+    public TSelf WithSplitScreenMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenModeAssignment(), value, SupportedGames2);
+    public TSelf WithSplitScreenModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenModeReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithSplitScreenPlaylist(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenPlaylistAssignment(), value, SupportedGames2);
+    public TSelf WithSplitScreenPlaylistReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenPlaylistReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStationManialinkUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetStationManialinkUrlAssignment(), value, SupportedGames2);
+    public TSelf WithTitleCore(global::GBX.NET.Engines.Game.CGameManiaTitleCore? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetTitleCoreAssignment(), value, SupportedGames2);
+    public TSelf WithTitleCoreReference(NodeRef<global::GBX.NET.Engines.Game.CGameManiaTitleCore> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetTitleCoreReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithVehicleIdent(Ident? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetVehicleIdentAssignment(), value, SupportedGames2);
+}
+public abstract class CGameManiaTitleBuilderMembers2<TSelf> : CGameManiaTitleBuilderMembers1<TSelf> where TSelf : CGameManiaTitleBuilderMembers2<TSelf>
+{
+    private protected CGameManiaTitleBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
+    public TSelf WithCampaigns(params global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCampaignsAssignment(), value, SupportedGames1);
+    public TSelf WithCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign> values) => WithCampaigns(values.ToArray());
+    public TSelf WithHudDefaultModule(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHudDefaultModuleAssignment(), value, SupportedGames1);
+    public TSelf WithHudDefaultModuleReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHudDefaultModuleReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithMusic(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMusicAssignment(), value, SupportedGames1);
+    public TSelf WithMusic(params global::GBX.NET.Engines.Plug.CPlugSound[] values) => WithMusic(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(values));
+    public TSelf WithMusic(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSound> values) => WithMusic(values.ToArray());
+    public TSelf WithScoreContexts(params global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetScoreContextsAssignment(), value, SupportedGames1);
+    public TSelf WithScoreContexts(IEnumerable<global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext> values) => WithScoreContexts(values.ToArray());
 }
 public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameManiaTitleBuilder>
 {
@@ -59,7 +102,6 @@ public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameMa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001005(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001006());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001008(game));
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100A() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100B(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100C(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
@@ -68,8 +110,32 @@ public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameMa
     private static global::GBX.NET.Engines.Game.CGameManiaTitle CreateRecipe2(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameManiaTitle();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001000(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001001(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001002(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001005(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001006());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001008(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100A() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100B(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100C(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameManiaTitle CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManiaTitle();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001000(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001001(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001002(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001003(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001005(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk03001008(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100A() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100B(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100C(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameManiaTitle.Chunk0300100D() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
         return node;
@@ -143,76 +209,48 @@ public partial class CGameManiaTitleBuilder : CGameManiaTitleBuilderBase<CGameMa
         public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
     }
-    public partial class TMT : CGameManiaTitleBuilderBase<TMT>
+    public partial class TMT : CGameManiaTitleBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
+        public TMT WithAnimEditor_DefaultChallenge(global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT? value) => base.WithAnimEditor_DefaultChallenge(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallenge?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithCollections(params global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT[] values) => base.WithCollections(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT>(values, false));
+        public TMT WithCollections(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT> values) => WithCollections(values.ToArray());
+        public TMT WithEditorSimpleChallenges(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT[] values) => base.WithEditorSimpleChallenges(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT>(values, false));
+        public TMT WithEditorSimpleChallenges(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT> values) => WithEditorSimpleChallenges(values.ToArray());
+        public TMT WithTitleCore(global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT? value) => base.WithTitleCore(value is null ? (global::GBX.NET.Engines.Game.CGameManiaTitleCore?)null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameManiaTitleTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
     }
-    public partial class MP4 : CGameManiaTitleBuilderMembers1<MP4>
+    public partial class MP4 : CGameManiaTitleBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
         public MP4 WithAnimEditor_DefaultChallenge(global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4? value) => base.WithAnimEditor_DefaultChallenge(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallenge?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithCampaigns(params global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCampaignsAssignment(), value, SupportedGames1);
-        public MP4 WithCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign> values) => WithCampaigns(values.ToArray());
-        public MP4 WithCollectionGroup(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCollectionGroupAssignment(), value, SupportedGames1);
-        public MP4 WithCollections(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetCollectionsAssignment(), value, SupportedGames1);
-        public MP4 WithCollections(params global::GBX.NET.Engines.Game.CGameCtnCollection[] values) => WithCollections(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>(values));
-        public MP4 WithCollections(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCollection> values) => WithCollections(values.ToArray());
-        public MP4 WithCollections(params global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4[] values) => WithCollections(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(values, false));
+        public MP4 WithCollections(params global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4[] values) => base.WithCollections(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(values, false));
         public MP4 WithCollections(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4> values) => WithCollections(values.ToArray());
-        public MP4 WithDesc(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetDescAssignment(), value, SupportedGames1);
-        public MP4 WithDownloadUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetDownloadUrlAssignment(), value, SupportedGames1);
+        public MP4 WithDownloadUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetDownloadUrlAssignment(), value, GameVersion.MP4);
         public MP4 WithEditorSimpleChallenges(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4[] values) => base.WithEditorSimpleChallenges(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>(values, false));
         public MP4 WithEditorSimpleChallenges(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4> values) => WithEditorSimpleChallenges(values.ToArray());
-        public MP4 WithHudDefaultModule(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHudDefaultModuleAssignment(), value, SupportedGames1);
-        public MP4 WithHudDefaultModuleReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetHudDefaultModuleReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithInfoUrl(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetInfoUrlAssignment(), value, SupportedGames1);
-        public MP4 WithLogos(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetLogosAssignment(), value, SupportedGames1);
-        public MP4 WithLogosReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetLogosReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithMod(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModAssignment(), value, SupportedGames1);
-        public MP4 WithModReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithModelSkinInit(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetModelSkinInitAssignment(), value, SupportedGames1);
-        public MP4 WithMusic(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetMusicAssignment(), value, SupportedGames1);
-        public MP4 WithMusic(params global::GBX.NET.Engines.Plug.CPlugSound[] values) => WithMusic(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(values));
-        public MP4 WithMusic(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSound> values) => WithMusic(values.ToArray());
-        public MP4 WithMusic(params global::GBX.NET.Interfaces.Plug.IPlugSoundMP4[] values) => WithMusic(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(values, false));
+        public MP4 WithMusic(params global::GBX.NET.Interfaces.Plug.IPlugSoundMP4[] values) => base.WithMusic(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(values, false));
         public MP4 WithMusic(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4> values) => WithMusic(values.ToArray());
-        public MP4 WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
-        public MP4 WithNetMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetModeAssignment(), value, SupportedGames1);
-        public MP4 WithNetModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetModeReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithNetPlaylist(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetPlaylistAssignment(), value, SupportedGames1);
-        public MP4 WithNetPlaylistReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetNetPlaylistReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithScoreContexts(params global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetScoreContextsAssignment(), value, SupportedGames1);
-        public MP4 WithScoreContexts(IEnumerable<global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext> values) => WithScoreContexts(values.ToArray());
-        public MP4 WithSkinnedBoxCase(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedBoxCaseAssignment(), value, SupportedGames1);
-        public MP4 WithSkinnedBoxCaseReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSkinnedBoxCaseReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithSoloDataPack(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloDataPackAssignment(), value, SupportedGames1);
-        public MP4 WithSoloDataPackReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloDataPackReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithSoloMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloModeAssignment(), value, SupportedGames1);
-        public MP4 WithSoloModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSoloModeReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithSortIndex(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSortIndexAssignment(), value, SupportedGames1);
-        public MP4 WithSplitScreenMode(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenModeAssignment(), value, SupportedGames1);
-        public MP4 WithSplitScreenModeReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenModeReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithSplitScreenPlaylist(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenPlaylistAssignment(), value, SupportedGames1);
-        public MP4 WithSplitScreenPlaylistReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetSplitScreenPlaylistReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithTitleCore(global::GBX.NET.Engines.Game.CGameManiaTitleCore? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetTitleCoreAssignment(), value, SupportedGames1);
-        public MP4 WithTitleCoreReference(NodeRef<global::GBX.NET.Engines.Game.CGameManiaTitleCore> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetTitleCoreReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithTitleCore(global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? value) => WithTitleCore(value is null ? (global::GBX.NET.Engines.Game.CGameManiaTitleCore?)null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithVehicleIdent(Ident? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameManiaTitleBuilderAssignments.GetVehicleIdentAssignment(), value, SupportedGames1);
+        public MP4 WithTitleCore(global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? value) => base.WithTitleCore(value is null ? (global::GBX.NET.Engines.Game.CGameManiaTitleCore?)null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameManiaTitleMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
     }
-    public partial class TM2020 : CGameManiaTitleBuilderMembers1<TM2020>
+    public partial class TM2020 : CGameManiaTitleBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManiaTitle> state) : base(state) { }
         public TM2020 WithAnimEditor_DefaultChallenge(global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020? value) => base.WithAnimEditor_DefaultChallenge(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallenge?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithCollections(params global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020[] values) => base.WithCollections(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020>(values, false));
+        public TM2020 WithCollections(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020> values) => WithCollections(values.ToArray());
         public TM2020 WithEditorSimpleChallenges(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020[] values) => base.WithEditorSimpleChallenges(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>(values, false));
         public TM2020 WithEditorSimpleChallenges(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020> values) => WithEditorSimpleChallenges(values.ToArray());
+        public TM2020 WithMusic(params global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020[] values) => base.WithMusic(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>(values, false));
+        public TM2020 WithMusic(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020> values) => WithMusic(values.ToArray());
+        public TM2020 WithTitleCore(global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020? value) => base.WithTitleCore(value is null ? (global::GBX.NET.Engines.Game.CGameManiaTitleCore?)null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameManiaTitleTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameManiaTitle Build() => BuildNode(CGameManiaTitleBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameManiaTitle node);
     }
 }

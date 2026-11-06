@@ -8,8 +8,8 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> : NodeBuilder<global::GBX.N
     private protected CPlugSurfaceBuilderBase() { }
     private protected CPlugSurfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
-    private protected const GameVersion SupportedGames2 = GameVersion.TMF | GameVersion.TMU;
-    public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
+    private protected const GameVersion SupportedGames2 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    public TSelf WithMaterials(params global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial> values) => WithMaterials(values.ToArray());
 }
 public abstract class CPlugSurfaceBuilderMembers1<TSelf> : CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceBuilderMembers1<TSelf>
@@ -38,7 +38,12 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -46,12 +51,52 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CPlugSurfaceBuilderMembers1<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+        public TM10 WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTM10? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
+    }
+    public partial class TMPU : CPlugSurfaceBuilderMembers1<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+        public TMPU WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMPU? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
+    }
+    public partial class TMSX : CPlugSurfaceBuilderMembers1<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+        public TMSX WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMSX? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
+    }
+    public partial class TMNESWC : CPlugSurfaceBuilderMembers1<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+        public TMNESWC WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMNESWC? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
+    }
     public partial class TMU : CPlugSurfaceBuilderMembers1<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
         public TMU WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
+    }
+    public partial class VSK5 : CPlugSurfaceBuilderMembers1<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+        public VSK5 WithGeom(global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5? value) => base.WithGeom(value is null ? (global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?)null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugSurfaceVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugSurface Build() => BuildNode(CPlugSurfaceBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
     public partial class TMF : CPlugSurfaceBuilderMembers1<TMF>

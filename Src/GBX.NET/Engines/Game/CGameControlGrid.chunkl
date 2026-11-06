@@ -1,7 +1,7 @@
 CGameControlGrid 0x030B9000
 - inherits: CControlGrid
 
-0x000 [TMU]
+0x000 [TMU, MP4, TM2020]
   int MaxPerColumn = 10
   int MaxPerRow = 1
   int FastNextPageCount = 10
@@ -12,14 +12,14 @@ CGameControlGrid 0x030B9000
   CControlButton ButtonFastPreviousPage
   CControlEntry EntryPageCounter
 
-0x001 [TMU]
+0x001 [TMU, MP4, TM2020]
   CControlButton ButtonFirstPage
   CControlButton ButtonLastPage
 
-0x002 [TMU]
+0x002 [TMU, MP4, TM2020]
   bool ForceHideArrows
 
-0x003 [TMU]
+0x003 [TMU, MP4, TM2020]
   bool ForceHidePageCounter
 
 0x004
@@ -27,6 +27,6 @@ CGameControlGrid 0x030B9000
   bool HaveLocalData
   bool HideLocalDataIfNone = true
 
-0x005
+0x005 [MP4, TM2020]
   bool HaveLocalData
   bool HideLocalDataIfNone

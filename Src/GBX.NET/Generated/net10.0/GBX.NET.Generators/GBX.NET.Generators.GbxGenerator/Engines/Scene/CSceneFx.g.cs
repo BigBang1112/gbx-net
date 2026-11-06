@@ -35,9 +35,11 @@ public abstract partial class CSceneFx : CMwNod, IClass
     /// CSceneFx 0x000 chunk
     /// </summary>
     [Chunk(0x0A072000)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk0A072000 : Chunk<CSceneFx>
     {
         public override uint Id => 0x0A072000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -118,9 +120,11 @@ public abstract partial class CSceneFx : CMwNod, IClass
     /// CSceneFx 0x002 chunk (WantPreLoad)
     /// </summary>
     [Chunk(0x0A072002, "WantPreLoad")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A072002 : Chunk<CSceneFx>
     {
         public override uint Id => 0x0A072002;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

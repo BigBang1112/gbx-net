@@ -45,6 +45,11 @@ public abstract class CCtnControlNetTeamInfoCardBuilderMembers2<TSelf> : CCtnCon
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStyleId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, SupportedGames2);
 }
+public abstract class CCtnControlNetTeamInfoCardBuilderMembers3<TSelf> : CCtnControlNetTeamInfoCardBuilderMembers2<TSelf> where TSelf : CCtnControlNetTeamInfoCardBuilderMembers3<TSelf>
+{
+    private protected CCtnControlNetTeamInfoCardBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
+    public TSelf WithUseDelays(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCardBuilderAssignments.GetUseDelaysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMU);
+}
 public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoCardBuilderBase<CCtnControlNetTeamInfoCardBuilder>
 {
     private static global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard CreateRecipe0(GameVersion game)
@@ -99,6 +104,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     private static global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard();
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaControlCard.Chunk2408F001());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
@@ -115,6 +121,39 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         var node = new global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard();
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard();
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaControlCard.Chunk2408F001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002006() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard();
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaControlCard.Chunk2408F001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameControlCard.Chunk0309A002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002006() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
@@ -142,6 +181,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public TM10 WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM10? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM10? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -155,6 +195,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public TMPU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -168,6 +209,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public TMSX WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -184,6 +226,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public TMNESWC WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -196,7 +239,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
         public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard node);
     }
-    public partial class TMU : CCtnControlNetTeamInfoCardBuilderMembers2<TMU>
+    public partial class TMU : CCtnControlNetTeamInfoCardBuilderMembers3<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public TMU WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -209,7 +252,6 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
         public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
         public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
         public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithUseDelays(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameControlCardBuilderAssignments.GetUseDelaysAssignment(), value, GameVersion.TMU);
         public global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard node);
@@ -218,6 +260,7 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
         public VSK5 WithCreateScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? value) => base.WithCreateScript(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
         public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
@@ -262,18 +305,21 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
     public partial class TMT : CCtnControlNetTeamInfoCardBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
+        public TMT WithIsClippingContainer(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetIsClippingContainerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+        public TMT WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMT? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMT? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe5(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard node);
     }
-    public partial class MP4 : CCtnControlNetTeamInfoCardBuilderMembers2<MP4>
+    public partial class MP4 : CCtnControlNetTeamInfoCardBuilderMembers3<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
+        public MP4 WithIsClippingContainer(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetIsClippingContainerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         public MP4 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutMP4? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionMP4? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -281,18 +327,19 @@ public partial class CCtnControlNetTeamInfoCardBuilder : CCtnControlNetTeamInfoC
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe6(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard node);
     }
-    public partial class TM2020 : CCtnControlNetTeamInfoCardBuilderMembers2<TM2020>
+    public partial class TM2020 : CCtnControlNetTeamInfoCardBuilderMembers3<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard> state) : base(state) { }
+        public TM2020 WithIsClippingContainer(bool value) => Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetIsClippingContainerAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
         public TM2020 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.TrackMania.ICtnControlNetTeamInfoCardTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard Build() => BuildNode(CCtnControlNetTeamInfoCardBuilder.CreateRecipe6(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CCtnControlNetTeamInfoCard node);
     }
 }

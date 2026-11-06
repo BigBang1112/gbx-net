@@ -35,11 +35,11 @@ public partial class CPlugResource : CMwNod, IClass
     /// CPlugResource 0x000 chunk (named resources)
     /// </summary>
     [Chunk(0x090BE000, "named resources")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BE000 : Chunk<CPlugResource>
     {
         public override uint Id => 0x090BE000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

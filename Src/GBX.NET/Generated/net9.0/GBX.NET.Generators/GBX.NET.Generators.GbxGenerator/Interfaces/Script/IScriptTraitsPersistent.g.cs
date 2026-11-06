@@ -11,6 +11,10 @@ public partial interface IScriptTraitsPersistentMP3 : IScriptTraitsPersistent
 {
 }
 
+public partial interface IScriptTraitsPersistentTMT : IScriptTraitsPersistent
+{
+}
+
 public partial interface IScriptTraitsPersistentMP4 : IScriptTraitsPersistent
 {
 }

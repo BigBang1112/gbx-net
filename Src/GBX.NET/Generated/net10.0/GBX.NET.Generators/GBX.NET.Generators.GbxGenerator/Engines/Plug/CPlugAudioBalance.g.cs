@@ -266,7 +266,12 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
     public partial class Chunk09034000 : Chunk<CPlugAudioBalance>, IVersionable
     {
         public override uint Id => 0x09034000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 9 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09034000() : this(GameVersion.Unspecified)
@@ -364,7 +369,12 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
     public partial class Chunk09034001 : Chunk<CPlugAudioBalance>, IVersionable
     {
         public override uint Id => 0x09034001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09034001() : this(GameVersion.Unspecified)

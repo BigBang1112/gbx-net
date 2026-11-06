@@ -1,6 +1,6 @@
 CGameCoverFlowDesc 0x0316F000
 
-0x000 [MP4] // scene, skin, time and style
+0x000 [TMT.v5, MP4, TM2020.v5] // scene, skin, time and style
   version = 5
   CMwNod SceneFid
   CPlugGameSkin GameSkin
@@ -36,7 +36,7 @@ CGameCoverFlowDesc 0x0316F000
     float SpeedChangeGroup
     float SpeedZ
 
-0x002 [MP4] // speeds, transitions and linear groups
+0x002 [TMT.v4, MP4, TM2020.v4] // speeds, transitions and linear groups
   version = 4
   float SpeedChangeGroup
   float SpeedZ
@@ -45,11 +45,11 @@ CGameCoverFlowDesc 0x0316F000
     float TransitionRotateAngleDegNext
   LinearGroup[] LinearGroups
 
-0x003 [MP4] // linear group sounds
+0x003 [TMT.v1, MP4, TM2020.v1] // linear group sounds
   version = 1
   LinearSoundSet[] LinearSounds
 
-0x004 [MP4] // cameras and group locations
+0x004 [TMT.v4, MP4, TM2020.v4] // cameras and group locations
   version = 4
   v1-
     CMwNod[] (deprec)

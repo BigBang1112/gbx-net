@@ -3,19 +3,39 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnApp : global::GBX.NET.Interfaces.Game.IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppTMF, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020
+public partial class CGameCtnApp : global::GBX.NET.Interfaces.Game.IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameCtnAppTM10, global::GBX.NET.Interfaces.Game.IGameCtnAppTMPU, global::GBX.NET.Interfaces.Game.IGameCtnAppTMSX, global::GBX.NET.Interfaces.Game.IGameCtnAppTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnAppTMU, global::GBX.NET.Interfaces.Game.IGameCtnAppVSK5, global::GBX.NET.Interfaces.Game.IGameCtnAppTMF, global::GBX.NET.Interfaces.Game.IGameCtnAppTMT, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4, global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>? global::GBX.NET.Interfaces.Game.IGameCtnAppTMU.BaseOfficialCampaigns
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>.BaseOfficialCampaigns
+    {
+        get => BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>(GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
+        set => BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>.BaseOfficialCampaigns
+    {
+        get => BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>(GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
+        set => BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>.BaseOfficialCampaigns
     {
         get => BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
         set => BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameResourcesTMU? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesTMU>.Resources
+    global::GBX.NET.Interfaces.Game.IGameResourcesTMU? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesTMU>.Resources
     {
         get => Resources;
         set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers1<global::GBX.NET.Interfaces.Game.IGameResourcesMP4>.Resources
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers3<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>.BaseOfficialCampaigns
+    {
+        get => BaseOfficialCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>(GetBaseOfficialCampaignsInterfaceReferences, true, "BaseOfficialCampaigns");
+        set => BaseOfficialCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesMP4>.Resources
+    {
+        get => Resources;
+        set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameResourcesTM2020? global::GBX.NET.Interfaces.Game.IGameCtnAppMembers5<global::GBX.NET.Interfaces.Game.IGameResourcesTM2020>.Resources
     {
         get => Resources;
         set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

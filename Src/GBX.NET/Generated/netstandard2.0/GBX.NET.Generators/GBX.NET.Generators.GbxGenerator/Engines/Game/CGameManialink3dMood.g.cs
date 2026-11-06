@@ -228,11 +228,11 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     /// CGameManialink3dMood 0x000 chunk (lighting, clouds, fog and sky images (legacy ID))
     /// </summary>
     [Chunk(0x0316F000, "lighting, clouds, fog and sky images (legacy ID)")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0316F000 : Chunk<CGameManialink3dMood>, IVersionable
     {
         public override uint Id => 0x0316F000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; } = 1;
         public bool U01;
 

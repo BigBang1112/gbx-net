@@ -1187,7 +1187,12 @@ public partial class CSceneLayout : CScene, IClass
     public partial class Chunk0A00301C : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A00301C;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public Unknown2[]? U01;
         public Unknown3[]? U02;

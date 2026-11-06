@@ -1,7 +1,7 @@
 CMotionEmitterParticles 0x08058000
 - inherits: CMotionManaged
 
-0x001 [TMU] // particle emission parameters
+0x001 [TMU, VSK5, TMT] // particle emission parameters
   CMwNod EmitterModel
   bool IsActive
   bool UseOwnerLoc = true

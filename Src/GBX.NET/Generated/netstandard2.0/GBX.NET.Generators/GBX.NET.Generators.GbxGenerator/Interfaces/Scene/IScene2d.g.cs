@@ -6,8 +6,7 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IScene2dMembers1<T0> : global::GBX.NET.Interfaces.Scene.IScene2d where T0 : class
 {
-    Rect Overlay { get; set; }
-    T0? Sector { get; set; }
+    new T0? Sector { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IScene2dMembers2 : global::GBX.NET.Interfaces.Scene.IScene2d
@@ -34,6 +33,8 @@ public partial interface IScene2d : IClassVersion<global::GBX.NET.Engines.Scene.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
+    Rect Overlay { get; set; }
+    global::GBX.NET.Interfaces.Scene.ISceneSector? Sector { get; set; }
 }
 
 public partial interface IScene2dTM10 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>
@@ -56,7 +57,7 @@ public partial interface IScene2dTMU : IScene2d, global::GBX.NET.Interfaces.Scen
 {
 }
 
-public partial interface IScene2dVSK5 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneVSK5
+public partial interface IScene2dVSK5 : IScene2d, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>, global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>
 {
 }
 

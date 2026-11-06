@@ -491,3 +491,11 @@ public static class CMwRefBufferBuilderExtensions
     }
 }
 
+public static class CMwRefBufferSelectBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect)
+    {
+        public static global::GBX.NET.Builders.Engines.MwFoundations.CMwRefBufferSelectBuilder Create() => new();
+    }
+}
+

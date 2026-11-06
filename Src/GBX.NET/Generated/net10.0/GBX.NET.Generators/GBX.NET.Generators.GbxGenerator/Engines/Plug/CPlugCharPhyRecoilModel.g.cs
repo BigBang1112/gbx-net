@@ -80,11 +80,11 @@ public partial class CPlugCharPhyRecoilModel : CMwNod, IClass
     /// CPlugCharPhyRecoilModel 0x000 chunk (recoil)
     /// </summary>
     [Chunk(0x090E0000, "recoil")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E0000 : Chunk<CPlugCharPhyRecoilModel>
     {
         public override uint Id => 0x090E0000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4
+public partial class CGameCoverFlowDesc : global::GBX.NET.Interfaces.Game.IGameCoverFlowDesc, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTMT, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4, global::GBX.NET.Interfaces.Game.IGameCoverFlowDescTM2020
 {
 }

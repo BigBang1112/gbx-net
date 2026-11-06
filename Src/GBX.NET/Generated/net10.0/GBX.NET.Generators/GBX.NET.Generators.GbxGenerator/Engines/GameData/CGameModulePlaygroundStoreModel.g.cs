@@ -115,10 +115,28 @@ public partial class CGameModulePlaygroundStoreModel : CGameModulePlaygroundMode
     /// CGameModulePlaygroundStoreModel 0x000 skippable chunk (actions, items, titles and power-up images)
     /// </summary>
     [Chunk(0x2E018000, "actions, items, titles and power-up images")]
+    [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk2E018000 : SkippableChunk<CGameModulePlaygroundStoreModel>, IVersionable
     {
         public override uint Id => 0x2E018000;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk2E018000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E018000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -129,6 +147,11 @@ public partial class CGameModulePlaygroundStoreModel : CGameModulePlaygroundMode
         public override void ReadWrite(CGameModulePlaygroundStoreModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             var actionCount = rw.Int32((rw.Writer is null ? default : (n.Actions?.Length?? 0)));
             var actionDataCount = rw.Int32((rw.Writer is null ? default : (n.Actions?.Length?? 0)));
             rw.ArrayReadableWritable<Action>(ref n.actions!, actionDataCount, version: Version);

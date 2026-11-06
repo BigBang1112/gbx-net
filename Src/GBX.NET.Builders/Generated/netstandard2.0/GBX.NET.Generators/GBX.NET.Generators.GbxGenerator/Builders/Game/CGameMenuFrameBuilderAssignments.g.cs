@@ -5,27 +5,33 @@ namespace GBX.NET.Builders.Engines.Game;
 
 internal static class CGameMenuFrameBuilderAssignments
 {
-    private static NodeBuilderProperty<string>? cached0;
-    internal static NodeBuilderProperty<string> GetAutoBackButtonIdAssignment() => cached0 ??= new("AutoBackButtonId", new Action<object, string>(Assign0));
-    private static void Assign0(object node, string value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).AutoBackButtonId = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached1;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetFrameSceneAssignment() => cached1 ??= new("FrameScene", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign1));
-    private static void Assign1(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).FrameScene = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached1Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetFrameSceneReferenceAssignment() => cached1Reference ??= new("FrameScene", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign1Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
-    private static void Assign1Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.FrameScene.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached2;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetShowSoundAssignment() => cached2 ??= new("ShowSound", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign2));
-    private static void Assign2(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).ShowSound = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached2Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetShowSoundReferenceAssignment() => cached2Reference ??= new("ShowSound", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign2Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy1));
-    private static void Assign2Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.ShowSound.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached3;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetUpDownSoundAssignment() => cached3 ??= new("UpDownSound", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign3));
-    private static void Assign3(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).UpDownSound = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached3Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetUpDownSoundReferenceAssignment() => cached3Reference ??= new("UpDownSound", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign3Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy1));
-    private static void Assign3Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.UpDownSound.CopyFrom(value);
+    private static NodeBuilderProperty<bool>? cached0;
+    internal static NodeBuilderProperty<bool> GetAllowBgCameraAssignment() => cached0 ??= new("AllowBgCamera", new Action<object, bool>(Assign0));
+    private static void Assign0(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).AllowBgCamera = value;
+    private static NodeBuilderProperty<string>? cached1;
+    internal static NodeBuilderProperty<string> GetAutoBackButtonIdAssignment() => cached1 ??= new("AutoBackButtonId", new Action<object, string>(Assign1));
+    private static void Assign1(object node, string value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).AutoBackButtonId = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached2;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetFrameSceneAssignment() => cached2 ??= new("FrameScene", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign2));
+    private static void Assign2(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).FrameScene = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached2Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetFrameSceneReferenceAssignment() => cached2Reference ??= new("FrameScene", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign2Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
+    private static void Assign2Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.FrameScene.CopyFrom(value);
+    private static NodeBuilderProperty<int>? cached3;
+    internal static NodeBuilderProperty<int> GetNavigationDepth_Manialink3d_UnusedAssignment() => cached3 ??= new("NavigationDepth_Manialink3d_Unused", new Action<object, int>(Assign3));
+    private static void Assign3(object node, int value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).NavigationDepth_Manialink3d_Unused = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetShowSoundAssignment() => cached4 ??= new("ShowSound", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).ShowSound = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached4Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetShowSoundReferenceAssignment() => cached4Reference ??= new("ShowSound", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy1));
+    private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.ShowSound.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?>? cached5;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugSound?> GetUpDownSoundAssignment() => cached5 ??= new("UpDownSound", new Action<object, global::GBX.NET.Engines.Plug.CPlugSound?>(Assign5));
+    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugSound? value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).UpDownSound = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? cached5Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>> GetUpDownSoundReferenceAssignment() => cached5Reference ??= new("UpDownSound", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>(Copy1));
+    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => ((global::GBX.NET.Engines.Game.CGameMenuFrame)node).References.UpDownSound.CopyFrom(value);
     private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> Copy0(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(value); return copy; }
     private static NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> Copy1(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(value); return copy; }
 }

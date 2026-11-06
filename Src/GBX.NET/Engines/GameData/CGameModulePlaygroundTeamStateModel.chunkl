@@ -1,7 +1,7 @@
 CGameModulePlaygroundTeamStateModel 0x2E022000
 - inherits: CGameModulePlaygroundModel
 
-0x000 (skippable) // layout, visibility, colors and images
+0x000 (skippable) [MP4.v6] // layout, visibility, colors and images
   version = 6
   float SizeX (inherited)
   float SizeY (inherited)

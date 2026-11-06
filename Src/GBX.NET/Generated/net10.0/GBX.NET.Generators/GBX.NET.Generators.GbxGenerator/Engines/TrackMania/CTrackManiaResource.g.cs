@@ -35,9 +35,11 @@ public partial class CTrackManiaResource : CMwNod, IClass
     /// CTrackManiaResource 0x000 chunk
     /// </summary>
     [Chunk(0x240D6000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk240D6000 : Chunk<CTrackManiaResource>
     {
         public override uint Id => 0x240D6000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

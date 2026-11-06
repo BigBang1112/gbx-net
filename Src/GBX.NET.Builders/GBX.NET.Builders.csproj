@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Builders</PackageId>
-        <VersionPrefix>2.5.0</VersionPrefix>
+        <VersionPrefix>2.5.1</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Generated fluent builders that create GBX.NET nodes for a selected game version.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,7 +11,6 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, builder, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
         <PackageReleaseNotes>
-- Added generated fluent node builders with game-specific chunks and defaults
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>

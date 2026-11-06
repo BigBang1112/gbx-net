@@ -7,7 +7,7 @@ public abstract class CMotionEmitterParticlesBuilderBase<TSelf> : NodeBuilder<gl
 {
     private protected CMotionEmitterParticlesBuilderBase() { }
     private protected CMotionEmitterParticlesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMSX | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CMotionEmitterParticlesBuilderMembers1<TSelf> : CMotionEmitterParticlesBuilderBase<TSelf> where TSelf : CMotionEmitterParticlesBuilderMembers1<TSelf>
@@ -21,7 +21,7 @@ public abstract class CMotionEmitterParticlesBuilderMembers1<TSelf> : CMotionEmi
 public abstract class CMotionEmitterParticlesBuilderMembers2<TSelf> : CMotionEmitterParticlesBuilderMembers1<TSelf> where TSelf : CMotionEmitterParticlesBuilderMembers2<TSelf>
 {
     private protected CMotionEmitterParticlesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) : base(state) { }
-    public TSelf WithParams(global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF | GameVersion.TMU);
+    public TSelf WithParams(global::GBX.NET.Engines.Motion.CMotionEmitterParticles.EmitParams? value) => Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterParticlesBuilderAssignments.GetParamsAssignment(), value, GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBuilderBase<CMotionEmitterParticlesBuilder>
 {
@@ -83,11 +83,11 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
-    public partial class VSK5 : CMotionEmitterParticlesBuilderBase<VSK5>
+    public partial class VSK5 : CMotionEmitterParticlesBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) : base(state) { }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class TMF : CMotionEmitterParticlesBuilderMembers2<TMF>
@@ -105,11 +105,11 @@ public partial class CMotionEmitterParticlesBuilder : CMotionEmitterParticlesBui
         public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
-    public partial class TMT : CMotionEmitterParticlesBuilderBase<TMT>
+    public partial class TMT : CMotionEmitterParticlesBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterParticles> state) : base(state) { }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterParticlesTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Motion.CMotionEmitterParticles Build() => BuildNode(CMotionEmitterParticlesBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterParticles node);
     }
     public partial class MP4 : CMotionEmitterParticlesBuilderBase<MP4>

@@ -1,0 +1,19 @@
+CPlugTurretObjectParams 0x090D6000
+- game: TMT
+
+0x000 [TMT.v3] // turret shooting and aiming
+  version
+  byte
+  int ShootPeriod = 1000 (time)
+  float MinShootDistance = 1
+  float MaxShootDistance = 30
+  iso4 BulletOffset = Iso4.Identity
+  v1+
+    id IdName
+  v2+
+    float BasePitch
+    float BaseYaw
+    float PitchSpeed = 100
+    float YawSpeed = 100
+  v3+
+    float HorizontalFOV = 120

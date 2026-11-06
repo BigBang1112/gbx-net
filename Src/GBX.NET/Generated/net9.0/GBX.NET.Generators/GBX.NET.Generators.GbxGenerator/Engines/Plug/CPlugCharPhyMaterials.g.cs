@@ -63,9 +63,11 @@ public partial class CPlugCharPhyMaterials : CMwNod, IClass
     /// CPlugCharPhyMaterials 0x000 chunk
     /// </summary>
     [Chunk(0x090FB000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090FB000 : Chunk<CPlugCharPhyMaterials>
     {
         public override uint Id => 0x090FB000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

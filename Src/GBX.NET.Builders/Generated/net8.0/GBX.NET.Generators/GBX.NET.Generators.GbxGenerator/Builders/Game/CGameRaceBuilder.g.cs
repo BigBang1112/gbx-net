@@ -7,7 +7,7 @@ public abstract class CGameRaceBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.
 {
     private protected CGameRaceBuilderBase() { }
     private protected CGameRaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CGameRaceBuilderMembers1<TSelf> : CGameRaceBuilderBase<TSelf> where TSelf : CGameRaceBuilderMembers1<TSelf>
@@ -58,18 +58,18 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
-    public partial class TMSX : CGameRaceBuilderBase<TMSX>
+    public partial class TMSX : CGameRaceBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameRaceTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
-    public partial class TMNESWC : CGameRaceBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameRaceBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameRaceTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
     public partial class TMU : CGameRaceBuilderMembers1<TMU>
@@ -79,11 +79,11 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
-    public partial class VSK5 : CGameRaceBuilderBase<VSK5>
+    public partial class VSK5 : CGameRaceBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameRaceVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
     public partial class TMF : CGameRaceBuilderMembers1<TMF>
@@ -107,11 +107,11 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
-    public partial class MP4 : CGameRaceBuilderBase<MP4>
+    public partial class MP4 : CGameRaceBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameRaceMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameRace Build() => BuildNode(CGameRaceBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameRace node);
     }
     public partial class TM2020 : CGameRaceBuilderBase<TM2020>

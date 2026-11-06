@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxStereoscopy : global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM2020
+public partial class CSceneFxStereoscopy : global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM10, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMF, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTMT, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMP4, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM2020
 {
 }

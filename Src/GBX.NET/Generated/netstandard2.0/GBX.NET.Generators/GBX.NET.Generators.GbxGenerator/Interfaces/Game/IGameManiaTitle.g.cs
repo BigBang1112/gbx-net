@@ -6,11 +6,24 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameManiaTitleMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameManiaTitle where T0 : class
 {
+    global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign[]? Campaigns { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? HudDefaultModule { get; set; }
+    IReadOnlyList<T0>? Music { get; set; }
+    global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext[]? ScoreContexts { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameManiaTitleMembers2<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameManiaTitle where T0 : class where T1 : class where T2 : class
+{
     T0? AnimEditor_DefaultChallenge { get; set; }
     string? BoxCaseManialinkUrl { get; set; }
+    string? CollectionGroup { get; set; }
+    IReadOnlyList<T1>? Collections { get; set; }
+    string? Desc { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EditorMapType { get; set; }
     IReadOnlyList<T0>? EditorSimpleChallenges { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFont? Hud3dFont { get; set; }
+    string? InfoUrl { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Logos { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuBg { get; set; }
     string? MenuBgFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuBgReplay { get; set; }
@@ -19,8 +32,20 @@ public interface IGameManiaTitleMembers1<T0> : global::GBX.NET.Interfaces.Game.I
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuMusic { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuSkyGrad { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuStyle3d { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Mod { get; set; }
+    int ModelSkinInit { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? NetMode { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? NetPlaylist { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SkinnedBoxCase { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SkinnedLogosStyle { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SoloDataPack { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SoloMode { get; set; }
+    int SortIndex { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenMode { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenPlaylist { get; set; }
     string? StationManialinkUrl { get; set; }
+    T2? TitleCore { get; set; }
+    Ident? VehicleIdent { get; set; }
 }
 public partial interface IGameManiaTitle : IClassVersion<global::GBX.NET.Engines.Game.CGameManiaTitle>, global::GBX.NET.Interfaces.Game.IGameNod
 {
@@ -65,38 +90,19 @@ public partial interface IGameManiaTitleMP3 : IGameManiaTitle, global::GBX.NET.I
 {
 }
 
-public partial interface IGameManiaTitleTMT : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodTMT
+public partial interface IGameManiaTitleTMT : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers2<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT>
 {
-}
-
-public partial interface IGameManiaTitleMP4 : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4>
-{
-    global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign[]? Campaigns { get; set; }
-    string? CollectionGroup { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>? Collections { get; set; }
-    string? Desc { get; set; }
-    string? DownloadUrl { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? HudDefaultModule { get; set; }
-    string? InfoUrl { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Logos { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Mod { get; set; }
-    int ModelSkinInit { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? Music { get; set; }
     new string? Name { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? NetMode { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? NetPlaylist { get; set; }
-    global::GBX.NET.Engines.Game.CGameManiaTitle.ScoreContext[]? ScoreContexts { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SkinnedBoxCase { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SoloDataPack { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SoloMode { get; set; }
-    int SortIndex { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenMode { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenPlaylist { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? TitleCore { get; set; }
-    Ident? VehicleIdent { get; set; }
 }
 
-public partial interface IGameManiaTitleTM2020 : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodTM2020, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020>
+public partial interface IGameManiaTitleMP4 : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers2<global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4>
 {
+    string? DownloadUrl { get; set; }
+    new string? Name { get; set; }
+}
+
+public partial interface IGameManiaTitleTM2020 : IGameManiaTitle, global::GBX.NET.Interfaces.Game.IGameNodTM2020, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Game.IGameManiaTitleMembers2<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020, global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020>
+{
+    new string? Name { get; set; }
 }
 

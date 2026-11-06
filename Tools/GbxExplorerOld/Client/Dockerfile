@@ -13,7 +13,6 @@ COPY Src/Directory.Build.targets Src/
 COPY Tools/GbxExplorerOld/Client/*.csproj Tools/GbxExplorerOld/Client/
 COPY Src/GBX.NET/*.csproj Src/GBX.NET/
 COPY Src/GBX.NET.LZO/*.csproj Src/GBX.NET.LZO/
-COPY Src/GBX.NET.Hashing/*.csproj Src/GBX.NET.Hashing/
 COPY Src/GBX.NET.ZLib/*.csproj Src/GBX.NET.ZLib/
 COPY Generators/GBX.NET.Generators/*.csproj Generators/GBX.NET.Generators/
 RUN dotnet restore Tools/GbxExplorerOld/Client/GbxExplorerOld.Client.csproj -a $TARGETARCH
@@ -22,7 +21,6 @@ RUN dotnet restore Tools/GbxExplorerOld/Client/GbxExplorerOld.Client.csproj -a $
 COPY Tools/GbxExplorerOld/Client/ Tools/GbxExplorerOld/Client/
 COPY Src/GBX.NET/ Src/GBX.NET/
 COPY Src/GBX.NET.LZO/ Src/GBX.NET.LZO/
-COPY Src/GBX.NET.Hashing/ Src/GBX.NET.Hashing/
 COPY Src/GBX.NET.ZLib/ Src/GBX.NET.ZLib/
 COPY Generators/GBX.NET.Generators/ Generators/GBX.NET.Generators/
 COPY Resources/ Resources/

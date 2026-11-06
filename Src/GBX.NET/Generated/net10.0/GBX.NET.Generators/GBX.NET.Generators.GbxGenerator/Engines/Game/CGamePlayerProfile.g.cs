@@ -33,14 +33,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.onlineLogin = value;
     }
 
-    private string? onlineSupportKey;
-    /// <summary>
-    /// Has AllowUnprintableStrings around it, so it can contain any odd character.
-    /// </summary>
+    private byte[]? onlineSupportKey;
     /// <remarks>Applied with: 0x000 header chunk, 0x078 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk0308C000>]
     [AppliedWithChunk<Chunk0308C078>]
-    public string? OnlineSupportKey
+    public byte[]? OnlineSupportKey
     {
         get => this.onlineSupportKey;
         set => this.onlineSupportKey = value;
@@ -568,10 +565,10 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref bindingsConfigRef, value);
     }
 
-    private int leagueCacheDuration;
+    private TimeInt32 leagueCacheDuration;
     /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
-    public int LeagueCacheDuration
+    public TimeInt32 LeagueCacheDuration
     {
         get => this.leagueCacheDuration;
         set => this.leagueCacheDuration = value;
@@ -715,6 +712,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <remarks>Applied with: 0x05D, 0x069 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C05D>]
     [AppliedWithChunk<Chunk0308C069>]
+    [Method("DecryptOnlineValidationKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineValidationKeyHexa
     {
         get => this.onlineValidationKeyHexa;
@@ -823,18 +821,10 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.menuInternetView = value;
     }
 
-    private int encryptedPasswordLength;
-    /// <remarks>Applied with: 0x069 body chunk</remarks>
-    [AppliedWithChunk<Chunk0308C069>]
-    public int EncryptedPasswordLength
-    {
-        get => this.encryptedPasswordLength;
-        set => this.encryptedPasswordLength = value;
-    }
-
     private Checksum128 cryptedPassword;
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method(nameof(DecryptPassword), Protected = true)]
     public Checksum128 CryptedPassword
     {
         get => this.cryptedPassword;
@@ -844,6 +834,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     private byte[]? encryptedPassword;
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method(nameof(DecryptPassword), Protected = true)]
     public byte[]? EncryptedPassword
     {
         get => this.encryptedPassword;
@@ -851,11 +842,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? onlineSupportKeyHexa;
-    /// <summary>
-    /// Hexadecimal encrypted support key.
-    /// </summary>
     /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
+    [Method("DecryptOnlineSupportKey", DeclaringTypeName = "GBX.NET.Crypto.CGamePlayerProfileExtensions, GBX.NET.Crypto", Protected = true)]
     public string? OnlineSupportKeyHexa
     {
         get => this.onlineSupportKeyHexa;
@@ -993,7 +982,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerProfile)clone).onlineLogin = context.Clone(this.onlineLogin)!;
-        ((CGamePlayerProfile)clone).onlineSupportKey = context.Clone(this.onlineSupportKey)!;
+        ((CGamePlayerProfile)clone).onlineSupportKey = context.CloneArray(this.onlineSupportKey)!;
         ((CGamePlayerProfile)clone).profileName = context.Clone(this.profileName)!;
         ((CGamePlayerProfile)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfile)clone).profileId = context.Clone(this.profileId)!;
@@ -1060,7 +1049,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).playerTags = context.CloneArray(this.playerTags)!;
         ((CGamePlayerProfile)clone).tagDisplayList = context.CloneArray(this.tagDisplayList)!;
         ((CGamePlayerProfile)clone).menuInternetView = context.Clone(this.menuInternetView)!;
-        ((CGamePlayerProfile)clone).encryptedPasswordLength = context.Clone(this.encryptedPasswordLength)!;
         ((CGamePlayerProfile)clone).cryptedPassword = context.Clone(this.cryptedPassword)!;
         ((CGamePlayerProfile)clone).encryptedPassword = context.CloneArray(this.encryptedPassword)!;
         ((CGamePlayerProfile)clone).onlineSupportKeyHexa = context.Clone(this.onlineSupportKeyHexa)!;
@@ -1087,9 +1075,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x000 chunk
     /// </summary>
     [Chunk(0x0308C000)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4)]
     public partial class HeaderChunk0308C000 : HeaderChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C000;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1099,7 +1089,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.String(ref n.onlineLogin);
-            rw.String(ref n.onlineSupportKey);
+            rw.Data(ref n.onlineSupportKey);
         }
     }
 
@@ -3348,7 +3338,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.Byte(ref U01);
-            rw.Int32(ref n.leagueCacheDuration);
+            rw.TimeInt32(ref n.leagueCacheDuration);
             rw.Boolean(ref n.hasLeagueCache);
 
             if (n.HasLeagueCache)
@@ -4097,12 +4087,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             rw.Int32(ref n.vehicleNetQuality);
             rw.Int32(ref n.ladderMode);
             rw.String(ref n.onlineLogin);
-            rw.Int32(ref n.encryptedPasswordLength);
+            var encryptedPasswordLength = rw.Int32((rw.Writer is null ? default : (n.EncryptedPassword?.Length?? 0)));
 
-            if (n.EncryptedPasswordLength!= 0)
+            if (encryptedPasswordLength!= 0)
             {
                 rw.Checksum128(ref n.cryptedPassword);
-                rw.Data(ref n.encryptedPassword!, n.EncryptedPasswordLength);
+                rw.Data(ref n.encryptedPassword!, encryptedPasswordLength);
             }
 
             rw.String(ref n.onlineValidationKeyHexa);
@@ -4504,7 +4494,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             rw.String(ref n.onlineLogin);
             rw.String(ref n.onlinePassword);
             rw.String(ref n.onlineValidationCode);
-            rw.String(ref n.onlineSupportKey);
+            rw.Data(ref n.onlineSupportKey);
             rw.Boolean(ref n.loginValidated);
             rw.Boolean(ref n.rememberOnlinePassword);
             rw.String(ref n.lastUsedMSAddress);
@@ -4749,11 +4739,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x006 chunk
     /// </summary>
     [Chunk(0x240B5006)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240B5006 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5006;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4791,11 +4781,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x009 chunk
     /// </summary>
     [Chunk(0x240B5009)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk240B5009 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5009;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public bool U01;
         public bool U02;
         public int U03;
@@ -4880,11 +4870,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x00C chunk
     /// </summary>
     [Chunk(0x240B500C)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMF)]
     public partial class Chunk240B500C : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500C;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMF;
         public Ident[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -4929,11 +4919,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGamePlayerProfile 0x00E chunk
+    /// CGamePlayerProfile 0x00E skippable chunk
     /// </summary>
     [Chunk(0x240B500E)]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk240B500E : Chunk<CGamePlayerProfile>
+    public partial class Chunk240B500E : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500E;
         public override GameVersion GameVersion => GameVersion.TMF;
@@ -4958,11 +4948,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x00F chunk
     /// </summary>
     [Chunk(0x240B500F)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMF)]
     public partial class Chunk240B500F : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B500F;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMF;
         public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -5002,11 +4992,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x011 chunk
     /// </summary>
     [Chunk(0x240B5011)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk240B5011 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5011;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public int[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -5022,11 +5012,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGamePlayerProfile 0x012 chunk
+    /// CGamePlayerProfile 0x012 skippable chunk
     /// </summary>
     [Chunk(0x240B5012)]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk240B5012 : Chunk<CGamePlayerProfile>
+    public partial class Chunk240B5012 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5012;
         public override GameVersion GameVersion => GameVersion.TMF;
@@ -5045,14 +5035,14 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGamePlayerProfile 0x013 chunk
+    /// CGamePlayerProfile 0x013 skippable chunk
     /// </summary>
     [Chunk(0x240B5013)]
-    [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk240B5013 : Chunk<CGamePlayerProfile>
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
+    public partial class Chunk240B5013 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5013;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public bool U01;
         public bool U02;
         public bool U03;
@@ -5083,11 +5073,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x014 chunk
     /// </summary>
     [Chunk(0x240B5014)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF)]
     public partial class Chunk240B5014 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5014;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -5103,11 +5093,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGamePlayerProfile 0x015 chunk
+    /// CGamePlayerProfile 0x015 skippable chunk
     /// </summary>
     [Chunk(0x240B5015)]
     [ChunkGameVersion(GameVersion.TMF)]
-    public partial class Chunk240B5015 : Chunk<CGamePlayerProfile>
+    public partial class Chunk240B5015 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x240B5015;
         public override GameVersion GameVersion => GameVersion.TMF;
@@ -5793,13 +5783,6 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
     public partial class CryptedPasswordData : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int encryptedPasswordLength;
-        public int EncryptedPasswordLength
-        {
-            get => this.encryptedPasswordLength;
-            set => this.encryptedPasswordLength = value;
-        }
-
         private Checksum128 checksum;
         public Checksum128 Checksum
         {
@@ -5824,19 +5807,18 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((CryptedPasswordData)clone).encryptedPasswordLength = context.Clone(this.encryptedPasswordLength)!;
             ((CryptedPasswordData)clone).checksum = context.Clone(this.checksum)!;
             ((CryptedPasswordData)clone).encryptedPassword = context.CloneArray(this.encryptedPassword)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.encryptedPasswordLength);
+            var encryptedPasswordLength = rw.Int32((rw.Writer is null ? default : (EncryptedPassword?.Length?? 0)));
 
-            if (EncryptedPasswordLength!= 0)
+            if (encryptedPasswordLength!= 0)
             {
                 rw.Checksum128(ref this.checksum);
-                rw.Data(ref this.encryptedPassword!, EncryptedPasswordLength);
+                rw.Data(ref this.encryptedPassword!, encryptedPasswordLength);
             }
         }
 

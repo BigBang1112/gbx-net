@@ -244,11 +244,11 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
     /// CPlugCharPhyMaterial 0x001 chunk (material)
     /// </summary>
     [Chunk(0x090CA001, "material")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 11, 11)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 11, 11, 11)]
     public partial class Chunk090CA001 : Chunk<CPlugCharPhyMaterial>, IVersionable
     {
         public override uint Id => 0x090CA001;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CFuncKeysReal>? U02Ref;
@@ -298,7 +298,7 @@ public partial class CPlugCharPhyMaterial : CMwNod, IClass
 
         public Chunk090CA001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 11;
             }

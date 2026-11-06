@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.TrackMania;
 
-public partial class CTrackMania : global::GBX.NET.Interfaces.TrackMania.ITrackMania, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTM2020
+public partial class CTrackMania : global::GBX.NET.Interfaces.TrackMania.ITrackMania, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTM2020
 {
 }

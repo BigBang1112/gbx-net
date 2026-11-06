@@ -7,7 +7,7 @@ public abstract class CSmArenaResourceBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CSmArenaResourceBuilderBase() { }
     private protected CSmArenaResourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithAdditionalListenerDistanceNbSquares(float value) => Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetAdditionalListenerDistanceNbSquaresAssignment(), value, SupportedGames1);
     public TSelf WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => Set(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferAssignment(), value, SupportedGames1);
     public TSelf WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => SetReference(global::GBX.NET.Builders.Engines.ShootMania.CSmArenaResourceBuilderAssignments.GetRefBufferReferenceAssignment(), value, SupportedGames1);
@@ -24,10 +24,19 @@ public partial class CSmArenaResourceBuilder : CSmArenaResourceBuilderBase<CSmAr
         node.Chunks.Add(new global::GBX.NET.Engines.ShootMania.CSmArenaResource.Chunk2D020002() { Version = 0 });
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CSmArenaResourceBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state) : base(state) { }
+        public TMT WithRefBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? value) => base.WithRefBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.ShootMania.CSmArenaResource Build() => BuildNode(CSmArenaResourceBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CSmArenaResource node);
+    }
     public partial class MP4 : CSmArenaResourceBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CSmArenaResource> state) : base(state) { }

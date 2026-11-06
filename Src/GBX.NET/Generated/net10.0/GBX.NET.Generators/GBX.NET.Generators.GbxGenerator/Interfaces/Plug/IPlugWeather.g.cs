@@ -215,7 +215,7 @@ public partial interface IPlugWeatherMP4 : IPlugWeather, global::GBX.NET.Interfa
 {
 }
 
-public partial interface IPlugWeatherTM2020 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020>
+public partial interface IPlugWeatherTM2020 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020>
 {
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? EmitterInFog
     {

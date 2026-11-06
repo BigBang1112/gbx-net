@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxDistor2d : global::GBX.NET.Interfaces.Scene.ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF
+public partial class CSceneFxDistor2d : global::GBX.NET.Interfaces.Scene.ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTM10, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMT, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMP4, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTM2020
 {
 }

@@ -188,7 +188,7 @@ public partial interface IGbxReader : IDisposable
 /// </summary>
 public sealed partial class GbxReader : BinaryReader, IGbxReader
 {
-    internal const int MaxDataSize = 0x10000000; // ~268MB
+    internal const int MaxDataSize = 0x20000000; // 512 MB
 
     private static readonly Encoding encoding = Encoding.UTF8;
 
@@ -246,6 +246,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal int? ExpectedNodeCount { get; set; }
 
+    internal GbxSignature? Signature { get; set; }
+
     public SerializationMode Mode { get; }
     public GbxFormat Format { get; private set; } = GbxFormat.Binary;
 
@@ -289,6 +291,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             deprecVersion = r.deprecVersion;
 
             ExpectedNodeCount = r.ExpectedNodeCount;
+            Signature = r.Signature;
         }
     }
 
@@ -2008,7 +2011,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     /// <param name="length">The length to validate.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if the length is negative.</exception>
     /// <exception cref="LengthLimitException">Thrown if the length exceeds the maximum allowed size.</exception>
-    private void EnsureValidLength(int length)
+    internal void EnsureValidLength(int length)
     {
         if (length < 0)
         {

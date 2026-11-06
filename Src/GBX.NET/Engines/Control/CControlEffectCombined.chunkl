@@ -1,5 +1,5 @@
 CControlEffectCombined 0x07023000
 - inherits: CControlEffect
 
-0x000 [TMSX, TMU] // Effects
+0x000 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4] // Effects
   CMwRefBuffer Effects

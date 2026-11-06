@@ -25,10 +25,12 @@ public partial class CGameModulePlaygroundAltimeterModel : CGameModulePlayground
     /// CGameModulePlaygroundAltimeterModel 0x000 skippable chunk
     /// </summary>
     [Chunk(0x2E003000)]
+    [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk2E003000 : SkippableChunk<CGameModulePlaygroundAltimeterModel>, IVersionable
     {
         public override uint Id => 0x2E003000;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
         public bool U01;
         public float U02;
         public float U03;
@@ -65,6 +67,22 @@ public partial class CGameModulePlaygroundAltimeterModel : CGameModulePlayground
         public float U34;
         public float U35;
         public float U36;
+
+        public Chunk2E003000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E003000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -111,6 +129,11 @@ public partial class CGameModulePlaygroundAltimeterModel : CGameModulePlayground
         public override void ReadWrite(CGameModulePlaygroundAltimeterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);

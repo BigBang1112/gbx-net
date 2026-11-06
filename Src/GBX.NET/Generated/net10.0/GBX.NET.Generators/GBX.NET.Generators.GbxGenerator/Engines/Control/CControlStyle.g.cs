@@ -1554,11 +1554,11 @@ public partial class CControlStyle : CPlug, IClass
     /// CControlStyle 0x01F chunk
     /// </summary>
     [Chunk(0x0701701F)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701701F : Chunk<CControlStyle>, IVersionable
     {
         public override uint Id => 0x0701701F;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

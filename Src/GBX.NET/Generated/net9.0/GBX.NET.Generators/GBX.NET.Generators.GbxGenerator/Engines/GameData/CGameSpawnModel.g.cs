@@ -79,7 +79,13 @@ public partial class CGameSpawnModel : CMwNod, IClass
     public partial class Chunk2E00E000 : Chunk<CGameSpawnModel>, IVersionable
     {
         public override uint Id => 0x2E00E000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+            <= 2 => GameVersion.TMT | GameVersion.MP4,
+            <= 3 => GameVersion.MP4,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4,
+        };
         public int Version { get; set; }
 
         public Chunk2E00E000() : this(GameVersion.Unspecified)

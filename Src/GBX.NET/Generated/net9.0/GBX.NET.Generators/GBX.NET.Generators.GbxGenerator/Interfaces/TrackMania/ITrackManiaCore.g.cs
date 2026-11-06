@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaCoreMembers1<T0> : global::GBX.NET.Interfaces.TrackMania.ITrackManiaCore where T0 : class
+{
+    T0? Resource
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CTrackManiaCore)this).Resource);
+        set => ((global::GBX.NET.Engines.TrackMania.CTrackManiaCore)this).Resource = value is null ? null : value is global::GBX.NET.Engines.TrackMania.CTrackManiaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface ITrackManiaCore : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaCore>, global::GBX.NET.Interfaces.Game.IGameManiaTitleCore
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,13 +55,12 @@ public partial interface ITrackManiaCoreMP3 : ITrackManiaCore, global::GBX.NET.I
 {
 }
 
-public partial interface ITrackManiaCoreTMT : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT
+public partial interface ITrackManiaCoreTMT : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMembers1<global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceTMT>
 {
 }
 
-public partial interface ITrackManiaCoreMP4 : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4
+public partial interface ITrackManiaCoreMP4 : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMembers1<global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceMP4>
 {
-    global::GBX.NET.Engines.TrackMania.CTrackManiaResource? Resource { get; set; }
 }
 
 public partial interface ITrackManiaCoreTM2020 : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020

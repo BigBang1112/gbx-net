@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameCtnMediaBlockCameraSimple : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimple, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTM2020
+public partial class CGameCtnMediaBlockCameraSimple : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimple, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTM2020
 {
 }

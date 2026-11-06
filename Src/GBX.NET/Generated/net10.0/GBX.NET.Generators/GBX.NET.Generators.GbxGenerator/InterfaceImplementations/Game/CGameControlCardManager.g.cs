@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCardManager : global::GBX.NET.Interfaces.Game.IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU
+public partial class CGameControlCardManager : global::GBX.NET.Interfaces.Game.IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU, global::GBX.NET.Interfaces.Game.IGameControlCardManagerMP4, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>? GetDataTypesInterfaceReferences() => DataTypes;
 }

@@ -55,9 +55,11 @@ public partial class CSceneLocationCamera : CSceneLocation, IClass
     /// CSceneLocationCamera 0x000 chunk
     /// </summary>
     [Chunk(0x0A036000)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A036000 : Chunk<CSceneLocationCamera>
     {
         public override uint Id => 0x0A036000;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -75,11 +77,11 @@ public partial class CSceneLocationCamera : CSceneLocation, IClass
     /// CSceneLocationCamera 0x001 chunk
     /// </summary>
     [Chunk(0x0A036001)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A036001 : Chunk<CSceneLocationCamera>
     {
         public override uint Id => 0x0A036001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public float U01 = 60;
         public float U02 = 60;
         public float U03 = 3;
@@ -110,11 +112,11 @@ public partial class CSceneLocationCamera : CSceneLocation, IClass
     /// CSceneLocationCamera 0x002 chunk
     /// </summary>
     [Chunk(0x0A036002)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A036002 : Chunk<CSceneLocationCamera>
     {
         public override uint Id => 0x0A036002;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -25,12 +25,30 @@ public abstract partial class CGameModuleModelCommon : CMwNod, IClass
     /// CGameModuleModelCommon 0x000 skippable chunk
     /// </summary>
     [Chunk(0x2E015000)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 2)]
     public partial class Chunk2E015000 : SkippableChunk<CGameModuleModelCommon>, IVersionable
     {
         public override uint Id => 0x2E015000;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
         public string? U01;
         public string? U02;
+
+        public Chunk2E015000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E015000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -43,6 +61,10 @@ public abstract partial class CGameModuleModelCommon : CMwNod, IClass
         public override void ReadWrite(CGameModuleModelCommon n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 2)
             {

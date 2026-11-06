@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Gbx Explorer: Debug (Edge)",
+      "type": "blazorwasm",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Tools/GbxExplorerOld/Client",
+      "browser": "edge"
+    },
+    {
+      "name": "Gbx Explorer: Watch",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "dotnet watch --launch-profile GbxExplorerOld.Client",
+      "cwd": "${workspaceFolder}/Tools/GbxExplorerOld/Client",
+      "env": {
+        "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "1"
+      }
+    },
+    {
+      "name": "Gbx Explorer: Watch (Integrated Browser)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "dotnet watch --launch-profile GbxExplorerOld.Client",
+      "cwd": "${workspaceFolder}/Tools/GbxExplorerOld/Client",
+      "env": {
+        "DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER": "1",
+        "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "1"
+      },
+      "serverReadyAction": {
+        "action": "openIntegratedBrowser",
+        "pattern": "Now listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s"
+      }
+    }
+  ]
+}

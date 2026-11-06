@@ -117,7 +117,7 @@ public class GmSurfTests
         gbx.Save(saved);
 
         // Assert
-        await Assert.That(saved.ToArray()).IsEquivalentTo(expected.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(expected.ToArray(), saved.ToArray());
     }
 
     [Test]

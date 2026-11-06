@@ -4,7 +4,16 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugBitmapRenderLightFromMapMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMap
+public interface IPlugBitmapRenderLightFromMapMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMap where T0 : class
+{
+    T0? BitmapLightHistory
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap)this).BitmapLightHistory);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightFromMap)this).BitmapLightHistory = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderLightFromMapMembers2 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMap
 {
     float CameraFarZ_ToAdd { get; set; }
     float CameraNearZ_FactorInObject { get; set; }
@@ -44,31 +53,31 @@ public partial interface IPlugBitmapRenderLightFromMapTMNESWC : IPlugBitmapRende
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapTMU : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapTMU : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapVSK5 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapVSK5 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapTMF : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapTMF : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapMP3 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapMP3 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapTMT : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapTMT : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapMP4 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapMP4 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderLightFromMapTM2020 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1
+public partial interface IPlugBitmapRenderLightFromMapTM2020 : IPlugBitmapRenderLightFromMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightFromMapMembers2
 {
 }
 

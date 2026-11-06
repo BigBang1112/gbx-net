@@ -387,14 +387,13 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new()
     {
+        Reader?.EnsureValidLength(length);
+        Writer?.EnsureValidLength(length);
+
         if (Reader is not null)
         {
             switch (length)
             {
-                case < 0:
-                    throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
-                case < 0 or > 0x10000000: // ~268MB
-                    throw new Exception($"Length is too big to handle ({length}).");
                 case 0:
                     value = [];
                     break;
@@ -475,10 +474,8 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
         where T : IReadable<TNode>, IWritable<TNode>, new()
         where TNode : CMwNod
     {
-        if (length < 0 || length > 0x10000000)
-        {
-            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
-        }
+        Reader?.EnsureValidLength(length);
+        Writer?.EnsureValidLength(length);
 
         if (Reader is not null)
         {
@@ -548,16 +545,11 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     public List<T>? ListReadableWritable<T>(List<T>? value, int length, int version = 0) where T : IReadableWritable, new()
     {
+        Reader?.EnsureValidLength(length);
+        Writer?.EnsureValidLength(length);
+
         if (Reader is not null)
         {
-            switch (length)
-            {
-                case < 0:
-                    throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
-                case < 0 or > 0x10000000: // ~268MB
-                    throw new Exception($"Length is too big to handle ({length}).");
-            }
-
             var list = new List<T>(length);
 
             for (int i = 0; i < length; i++)

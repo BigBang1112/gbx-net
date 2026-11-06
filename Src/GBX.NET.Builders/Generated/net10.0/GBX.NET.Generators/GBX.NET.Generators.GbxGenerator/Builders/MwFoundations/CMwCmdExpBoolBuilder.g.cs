@@ -7,7 +7,7 @@ public abstract class CMwCmdExpBoolBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CMwCmdExpBoolBuilderBase() { }
     private protected CMwCmdExpBoolBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
-    public TSelf WithBool(bool value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF | GameVersion.TMU);
+    public TSelf WithBool(bool value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU);
 }
 public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBoolBuilder>
 {
@@ -17,8 +17,40 @@ public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBo
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TM10 : CMwCmdExpBoolBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build() => BuildNode(CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node);
+    }
+    public partial class TMPU : CMwCmdExpBoolBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build() => BuildNode(CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node);
+    }
+    public partial class TMSX : CMwCmdExpBoolBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build() => BuildNode(CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node);
+    }
+    public partial class TMNESWC : CMwCmdExpBoolBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build() => BuildNode(CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node);
+    }
     public partial class TMU : CMwCmdExpBoolBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) : base(state) { }

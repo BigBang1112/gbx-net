@@ -55,11 +55,11 @@ public partial class CGameButtonEffect : CControlEffect, IClass
     /// CGameButtonEffect 0x001 chunk (highlight colors and flash)
     /// </summary>
     [Chunk(0x03016001, "highlight colors and flash")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk03016001 : Chunk<CGameButtonEffect>
     {
         public override uint Id => 0x03016001;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
         public float U01;
         public float U02;
 

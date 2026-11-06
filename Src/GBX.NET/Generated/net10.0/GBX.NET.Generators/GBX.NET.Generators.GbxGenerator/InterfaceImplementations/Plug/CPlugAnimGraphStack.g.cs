@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimGraphStack : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020
+public partial class CPlugAnimGraphStack : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>? GetGraphsInterfaceReferences() => Graphs;
 }

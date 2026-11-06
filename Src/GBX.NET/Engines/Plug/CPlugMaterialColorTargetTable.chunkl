@@ -3,15 +3,51 @@ CPlugMaterialColorTargetTable 0x0915E000
 archive
   version = 3
   v2- (archive)
-    int[] LegacyColors1
+    int ClassicColorCount (local, write: "LegacyClassicColors?.Length ?? 0")
+    if ClassicColorCount < 0 || ClassicColorCount > 8
+      throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+    int[ClassicColorCount] LegacyClassicColors = empty
     v1+ (archive)
-      int[] LegacyColors2
+      int ClassicColorBlindCount (local, write: "LegacyClassicColorBlindColors?.Length ?? 0")
+      if ClassicColorBlindCount < 0 || ClassicColorBlindCount > 8
+        throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+      int[ClassicColorBlindCount] LegacyClassicColorBlindColors = empty
     v2+ (archive)
-      int[] LegacyColors3
-      int[] LegacyColors4
+      int StuntColorCount (local, write: "LegacyStuntColors?.Length ?? 0")
+      if StuntColorCount < 0 || StuntColorCount > 8
+        throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+      int[StuntColorCount] LegacyStuntColors = empty
+      int StuntColorBlindCount (local, write: "LegacyStuntColorBlindColors?.Length ?? 0")
+      if StuntColorBlindCount < 0 || StuntColorBlindCount > 8
+        throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+      int[StuntColorBlindCount] LegacyStuntColorBlindColors = empty
   v3+ (archive)
-    ColorPair[] Colors
+    int ColorTargetCount (local, write: "ColorTargets?.Length ?? 0")
+    if ColorTargetCount < 0 || ColorTargetCount > 13
+      throw (type: InvalidDataException, message: A color table can contain at most thirteen targets.)
+    ColorPair[ColorTargetCount] ColorTargets // Indexed by EColorTarget
 
-archive ColorPair
-  int[] Colors1
-  int[] Colors2
+archive ColorPair // standard and color-blind palettes for one target
+  int ColorCount (local, write: "Colors?.Length ?? 0")
+  if ColorCount < 0 || ColorCount > 8
+    throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+  int[ColorCount] Colors = empty // Packed GxRGBAColor values; red occupies the low byte
+  int ColorBlindCount (local, write: "ColorBlindColors?.Length ?? 0")
+  if ColorBlindCount < 0 || ColorBlindCount > 8
+    throw (type: InvalidDataException, message: A color palette can contain at most eight colors.)
+  int[ColorBlindCount] ColorBlindColors = empty
+
+enum EColorTarget
+  Classic
+  Stunt
+  Red
+  Orange
+  Yellow
+  Lime
+  Green
+  Cyan
+  Blue
+  Purple
+  Pink
+  White
+  Black

@@ -8,25 +8,20 @@ public abstract class CPlugLightBuilderBase<TSelf> : NodeBuilder<global::GBX.NET
     private protected CPlugLightBuilderBase() { }
     private protected CPlugLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
-    public TSelf WithLight(global::GBX.NET.Engines.Graphic.GxLight? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightAssignment(), value, SupportedGames1);
-    public TSelf WithLightReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetLightReferenceAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames2 = GameVersion.TM2020;
+    public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, SupportedGames1);
+    public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithBitmapProjector(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, SupportedGames1);
+    public TSelf WithBitmapProjectorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithFuncLight(global::GBX.NET.Engines.Function.CFuncLight? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, SupportedGames1);
+    public TSelf WithFuncLightReference(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithGxLightModel(global::GBX.NET.Engines.Graphic.GxLight? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetGxLightModelAssignment(), value, SupportedGames1);
+    public TSelf WithGxLightModelReference(NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetGxLightModelReferenceAssignment(), value, SupportedGames1);
 }
 public abstract class CPlugLightBuilderMembers1<TSelf> : CPlugLightBuilderBase<TSelf> where TSelf : CPlugLightBuilderMembers1<TSelf>
 {
     private protected CPlugLightBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-    public TSelf WithBitmapFlare(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareAssignment(), value, SupportedGames2);
-    public TSelf WithBitmapFlareReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithBitmapProjector(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorAssignment(), value, SupportedGames2);
-    public TSelf WithBitmapProjectorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetBitmapProjectorReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithFuncLight(global::GBX.NET.Engines.Function.CFuncLight? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightAssignment(), value, SupportedGames2);
-    public TSelf WithFuncLightReference(NodeRef<global::GBX.NET.Engines.Function.CFuncLight> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFuncLightReferenceAssignment(), value, SupportedGames2);
-}
-public abstract class CPlugLightBuilderMembers2<TSelf> : CPlugLightBuilderMembers1<TSelf> where TSelf : CPlugLightBuilderMembers2<TSelf>
-{
-    private protected CPlugLightBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-    public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugLight.EFlags value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugLight.EFlags value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder>
 {
@@ -62,125 +57,131 @@ public partial class CPlugLightBuilder : CPlugLightBuilderBase<CPlugLightBuilder
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugLightBuilderMembers1<TM10>
+    public partial class TM10 : CPlugLightBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TM10 WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTM10? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TM10 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTM10? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTM10? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMPU : CPlugLightBuilderMembers1<TMPU>
+    public partial class TMPU : CPlugLightBuilderBase<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMPU WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMPU? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMPU WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMSX : CPlugLightBuilderMembers2<TMSX>
+    public partial class TMSX : CPlugLightBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMSX WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMSX? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMNESWC : CPlugLightBuilderMembers2<TMNESWC>
+    public partial class TMNESWC : CPlugLightBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMNESWC WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMU : CPlugLightBuilderMembers2<TMU>
+    public partial class TMU : CPlugLightBuilderMembers1<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMU WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMU? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMU? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMU WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMU? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class VSK5 : CPlugLightBuilderMembers2<VSK5>
+    public partial class VSK5 : CPlugLightBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public VSK5 WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightVSK5? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMF : CPlugLightBuilderMembers2<TMF>
+    public partial class TMF : CPlugLightBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMF WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMF? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMF? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMF? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class MP3 : CPlugLightBuilderMembers2<MP3>
+    public partial class MP3 : CPlugLightBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public MP3 WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightMP3? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP3 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightMP3? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP3 WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightMP3? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TMT : CPlugLightBuilderMembers2<TMT>
+    public partial class TMT : CPlugLightBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public TMT WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTMT? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMT WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTMT? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTMT? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class MP4 : CPlugLightBuilderMembers2<MP4>
+    public partial class MP4 : CPlugLightBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
         public MP4 WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightMP4? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightMP4? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightMP4? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugLightMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);
     }
-    public partial class TM2020 : CPlugLightBuilderBase<TM2020>
+    public partial class TM2020 : CPlugLightBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLight> state) : base(state) { }
-        public TM2020 WithAnimPeriodMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, SupportedGames3);
-        public TM2020 WithAnimPeriodMin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, SupportedGames3);
-        public TM2020 WithAnimTimerName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, SupportedGames3);
-        public TM2020 WithImageAnim(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, SupportedGames3);
-        public TM2020 WithImageAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimReferenceAssignment(), value, SupportedGames3);
-        public TM2020 WithLight(global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? value) => base.WithLight(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithAnimPeriodMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMaxAssignment(), value, SupportedGames2);
+        public TM2020 WithAnimPeriodMin(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimPeriodMinAssignment(), value, SupportedGames2);
+        public TM2020 WithAnimTimerName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetAnimTimerNameAssignment(), value, SupportedGames2);
+        public TM2020 WithBitmapFlare(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapFlare(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithBitmapProjector(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value) => base.WithBitmapProjector(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithColorTargetTable(global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetColorTargetTableAssignment(), value, SupportedGames2);
+        public TM2020 WithColorTargetTableReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetColorTargetTableReferenceAssignment(), value, SupportedGames2);
+        public TM2020 WithFuncLight(global::GBX.NET.Interfaces.Function.IFuncLightTM2020? value) => base.WithFuncLight(value is null ? (global::GBX.NET.Engines.Function.CFuncLight?)null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithGxLightModel(global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? value) => base.WithGxLightModel(value is null ? (global::GBX.NET.Engines.Graphic.GxLight?)null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithImageAnim(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimAssignment(), value, SupportedGames2);
+        public TM2020 WithImageAnimReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetImageAnimReferenceAssignment(), value, SupportedGames2);
+        public TM2020 WithSceneLightAlwaysActive(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightBuilderAssignments.GetSceneLightAlwaysActiveAssignment(), value, SupportedGames2);
         public global::GBX.NET.Interfaces.Plug.IPlugLightTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLight Build() => BuildNode(CPlugLightBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugLight node);

@@ -108,7 +108,10 @@ internal static class EngineWriter
             Documentation(code, property.TrailingComment?.Text);
             AppliedWithChunkAttributes(code, layout, property.Name, layouts);
             if (layout.Scope.FindField(property.Name) is { } field)
+            {
                 GameDefaultAttributesWriter.Write(code, field);
+                MethodAttributes(code, field);
+            }
 
             if (partialProperty is not null)
             {
@@ -330,11 +333,13 @@ internal static class EngineWriter
                 if (partialProperty is not null)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     PartialProperty(code, partialProperty);
                 }
                 else if (!hasExisting)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     code.Line("public int Version { get; set; }" + (initial is null ? "" : " = " + initial + ";"));
                 }
                 continue;
@@ -345,6 +350,7 @@ internal static class EngineWriter
                 if (partialProperty is not null)
                 {
                     GameDefaultAttributesWriter.Write(code, field);
+                    MethodAttributes(code, field);
                     PartialProperty(code, partialProperty);
                 }
                 else if (!hasExisting)
@@ -389,6 +395,8 @@ internal static class EngineWriter
                 if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "hex")))
                     code.Line("[Hexadecimal]");
 
+                MethodAttributes(code, field);
+
                 if (partialProperty is not null)
                 {
                     PartialProperty(code, partialProperty);
@@ -405,6 +413,42 @@ internal static class EngineWriter
             }
 
         }
+    }
+
+    private static void MethodAttributes(CodeWriter code, FieldModel field)
+    {
+        var methods = field.Occurrences
+            .SelectMany(static occurrence => occurrence.Attributes?.Entries.Where(static x => x.Name == "method")
+                .Select(attribute => (Name: attribute.Value, DeclaringType: MethodDeclaringType(occurrence.Attributes),
+                    Protected: LayoutModel.Has(occurrence.Attributes, "protected"))) ?? [])
+            .GroupBy(static x => (x.Name, x.DeclaringType));
+
+        foreach (var method in methods)
+        {
+            if (string.IsNullOrWhiteSpace(method.Key.Name) || !SyntaxFacts.IsValidIdentifier(method.Key.Name!))
+            {
+                throw new InvalidOperationException("The method flag requires a method name.");
+            }
+
+            var protection = method.Any(static x => x.Protected) ? ", Protected = true" : "";
+            var name = method.Key.DeclaringType is null ? $"nameof({method.Key.Name})" : SymbolDisplay.FormatLiteral(method.Key.Name!, true);
+            var declaringType = method.Key.DeclaringType is null ? "" : ", DeclaringTypeName = " + SymbolDisplay.FormatLiteral(method.Key.DeclaringType, true);
+            code.Line($"[Method({name}{declaringType}{protection})]");
+        }
+    }
+
+    private static string? MethodDeclaringType(AttributeList? attributes)
+    {
+        if (!LayoutModel.Has(attributes, "method-type")) return null;
+
+        var value = LayoutModel.Attribute(attributes, "method-type");
+        if (value is null || SyntaxFactory.ParseExpression(value) is not LiteralExpressionSyntax { Token.Value: string name }
+            || string.IsNullOrWhiteSpace(name))
+        {
+            throw new InvalidOperationException("The method-type flag requires a quoted declaring type name.");
+        }
+
+        return name;
     }
 
     private static void ReferenceProperty(CodeWriter code, LayoutModel layout, ScopeModel scope, FieldModel field,
@@ -439,6 +483,7 @@ internal static class EngineWriter
             Documentation(code, field.Declaration.TrailingComment?.Text);
             if (!chunk && ReferenceEquals(scope, layout.Scope)) AppliedWithChunkAttributes(code, layout, field.Name, layouts);
             GameDefaultAttributesWriter.Write(code, field);
+            if (!chunk || scalar || partialProperty is not null) MethodAttributes(code, field);
             if (partialProperty is not null) PartialProperty(code, partialProperty);
             else if (!scalar && chunk) code.Line($"public {type} {property};");
             else
@@ -730,6 +775,32 @@ internal static class EngineWriter
         return type + ".Empty";
     }
 
+    private static void WriteGameVersion(CodeWriter code, ChunkModel chunk)
+    {
+        var qualifiers = chunk.Declaration.VersionQualifiers;
+        var games = Games(qualifiers);
+        var versions = qualifiers.Where(static x => x.MaxVersion.HasValue).Select(static x => x.MaxVersion!.Value).Distinct().OrderBy(static x => x).ToArray();
+
+        if (!chunk.Scope.HasVersion || versions.Length < 2)
+        {
+            code.Line("public override GameVersion GameVersion => " + games + ";");
+            return;
+        }
+
+        code.Open("public override GameVersion GameVersion => Version switch");
+
+        // A game supports every version up to its maximum. Games without a known maximum stay possible.
+        foreach (var version in versions)
+        {
+            code.Line("<= " + version + " => " + Games(qualifiers.Where(x => (x.MaxVersion ?? version) >= version)) + ",");
+        }
+
+        code.Line("_ => " + games + ",");
+        code.Close(";");
+
+        static string Games(IEnumerable<VersionQualifier> qualifiers) => string.Join(" | ", qualifiers.Select(static x => "GameVersion." + x.Label));
+    }
+
     private static void Chunk(CodeWriter code, LayoutModel layout, ChunkModel chunk, IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes)
     {
         RequirePartial(chunk.Scope.Existing);
@@ -790,7 +861,7 @@ internal static class EngineWriter
 
         if (chunk.Declaration.VersionQualifiers.Count > 0 && !SyntaxOverlap.Has(chunk.Scope.Existing, "GameVersion"))
         {
-            code.Line("public override GameVersion GameVersion => " + string.Join(" | ", chunk.Declaration.VersionQualifiers.Select(static x => "GameVersion." + x.Label)) + ";");
+            WriteGameVersion(code, chunk);
         }
 
         var demonstration = LayoutModel.Has(chunk.Declaration.Attributes, "demonstration");

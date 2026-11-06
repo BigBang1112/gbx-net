@@ -1,7 +1,7 @@
 CGameModulePlaygroundChronoModel 0x2E01E000
 - inherits: CGameModulePlaygroundModel
 
-0x000 (skippable) // size and text size
+0x000 (skippable) [MP4.v2] // size and text size
   version = 2
   float SizeX (inherited)
   float SizeY (inherited)

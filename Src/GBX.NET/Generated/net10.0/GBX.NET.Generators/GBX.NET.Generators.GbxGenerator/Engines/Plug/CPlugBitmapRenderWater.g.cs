@@ -258,9 +258,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x004 chunk
     /// </summary>
     [Chunk(0x09087004)]
+    [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk09087004 : Chunk09087003
     {
         public override uint Id => 0x09087004;
+        public override GameVersion GameVersion => GameVersion.TM10;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -280,11 +282,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x005 skippable chunk (frustum, clip plane, margin and mirror scale)
     /// </summary>
     [Chunk(0x09087005, "frustum, clip plane, margin and mirror scale")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09087005 : SkippableChunk<CPlugBitmapRenderWater>
     {
         public override uint Id => 0x09087005;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public Iso4 U01;
         public uint U02;
 
@@ -311,11 +313,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x006 skippable chunk (FogMaxDepth)
     /// </summary>
     [Chunk(0x09087006, "FogMaxDepth")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09087006 : SkippableChunk<CPlugBitmapRenderWater>
     {
         public override uint Id => 0x09087006;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -352,10 +354,28 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderWater 0x008 skippable chunk (update periods)
     /// </summary>
     [Chunk(0x09087008, "update periods")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk09087008 : SkippableChunk<CPlugBitmapRenderWater>, IVersionable
     {
         public override uint Id => 0x09087008;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk09087008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09087008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -366,6 +386,11 @@ public partial class CPlugBitmapRenderWater : CPlugBitmapRender, IClass
         public override void ReadWrite(CPlugBitmapRenderWater n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.maxUpdatePeriod);
 
             if (Version >= 1)

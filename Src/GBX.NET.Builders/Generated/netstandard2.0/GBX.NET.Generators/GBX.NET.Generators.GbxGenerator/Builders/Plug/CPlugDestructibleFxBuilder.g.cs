@@ -14,6 +14,7 @@ public partial class CPlugDestructibleFxBuilder : CPlugDestructibleFxBuilderBase
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugDestructibleFx();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDestructibleFx.Chunk090D6000(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugDestructibleFx.Chunk090D6001() { Version = 0 });
         return node;
     }
     public TM2020 ForTM2020() => new(state.Snapshot());

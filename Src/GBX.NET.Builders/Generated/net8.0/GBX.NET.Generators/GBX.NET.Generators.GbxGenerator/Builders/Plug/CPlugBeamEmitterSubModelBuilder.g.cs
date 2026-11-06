@@ -7,26 +7,58 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> : NodeBuilder<g
 {
     private protected CPlugBeamEmitterSubModelBuilderBase() { }
     private protected CPlugBeamEmitterSubModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
-    public TSelf WithAdditionalMaterialPaths(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialPathsAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    public TSelf WithAdditionalMaterialPaths(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialPathsAssignment(), value, SupportedGames2);
     public TSelf WithAdditionalMaterialPaths(IEnumerable<string> values) => WithAdditionalMaterialPaths(values.ToArray());
-    public TSelf WithAdditionalMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialsAssignment(), value, SupportedGames1);
+    public TSelf WithAdditionalMaterials(NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetAdditionalMaterialsAssignment(), value, SupportedGames2);
     public TSelf WithAdditionalMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial[] values) => WithAdditionalMaterials(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(values));
     public TSelf WithAdditionalMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial> values) => WithAdditionalMaterials(values.ToArray());
-    public TSelf WithBackFace(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBackFaceAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_FadeSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_FadeSpeedAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_HalfWidth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_HalfWidthAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_InnerRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_InnerRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_NbSubDiv(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_NbSubDivAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_OutterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_OutterRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_StepSize(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_StepSizeAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithCylinders_TimeStartFade(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_TimeStartFadeAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_EndDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_EndDistanceAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_NbSpheresPerMeter(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbSpheresPerMeterAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_NbVerticalSubDiv(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbVerticalSubDivAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_Radius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_RadiusAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_Speed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_SpeedAssignment(), value, SupportedGames1);
-    public TSelf WithBeamWithSpheres_StartDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_StartDistanceAssignment(), value, SupportedGames1);
+    public TSelf WithBackFace(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBackFaceAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_FadeSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_FadeSpeedAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_HalfWidth(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_HalfWidthAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_InnerRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_InnerRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_NbSubDiv(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_NbSubDivAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_OutterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_OutterRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_StepSize(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_StepSizeAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithCylinders_TimeStartFade(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithCylinders_TimeStartFadeAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_EndDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_EndDistanceAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_NbSpheresPerMeter(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbSpheresPerMeterAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_NbVerticalSubDiv(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_NbVerticalSubDivAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_Radius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_RadiusAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_Speed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_SpeedAssignment(), value, SupportedGames2);
+    public TSelf WithBeamWithSpheres_StartDistance(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBeamWithSpheres_StartDistanceAssignment(), value, SupportedGames2);
+    public TSelf WithCylinderSideCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetCylinderSideCountAssignment(), value, SupportedGames2);
+    public TSelf WithDisplayType(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDisplayTypeAssignment(), value, SupportedGames2);
+    public TSelf WithDoubleHelix_ClockWise(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_ClockWiseAssignment(), value, SupportedGames2);
+    public TSelf WithDoubleHelix_StartAngle(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_StartAngleAssignment(), value, SupportedGames2);
+    public TSelf WithDuration(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDurationAssignment(), value, SupportedGames2);
+    public TSelf WithFadeTimeOffset(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeOffsetAssignment(), value, SupportedGames2);
+    public TSelf WithFadeTimeScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeScaleAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_CoeffLowDef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_CoeffLowDefAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_DistLOD(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_DistLODAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_InnerRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_InnerRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_MaxHelixCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_MaxHelixCountAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_OutterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_OutterRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_TurnLength(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_TurnLengthAssignment(), value, SupportedGames2);
+    public TSelf WithHelix_VerticesCountPerTurn(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_VerticesCountPerTurnAssignment(), value, SupportedGames2);
+    public TSelf WithLightningBeamCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningBeamCountAssignment(), value, SupportedGames2);
+    public TSelf WithLightningDistStep(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningDistStepAssignment(), value, SupportedGames2);
+    public TSelf WithLightningJitterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningJitterRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithLightningLenMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningLenMaxAssignment(), value, SupportedGames2);
+    public TSelf WithLightningMaxJitterDistPerStep(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningMaxJitterDistPerStepAssignment(), value, SupportedGames2);
+    public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialPath(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialPathAssignment(), value, SupportedGames2);
+    public TSelf WithMaterialsAsStrings(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialsAsStringsAssignment(), value, SupportedGames2);
+    public TSelf WithRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetRadiusAssignment(), value, SupportedGames2);
+    public TSelf WithUSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUSpeedAssignment(), value, SupportedGames2);
+    public TSelf WithUVScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUVScaleAssignment(), value, SupportedGames2);
+    public TSelf WithVSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetVSpeedAssignment(), value, SupportedGames2);
+}
+public abstract class CPlugBeamEmitterSubModelBuilderMembers1<TSelf> : CPlugBeamEmitterSubModelBuilderBase<TSelf> where TSelf : CPlugBeamEmitterSubModelBuilderMembers1<TSelf>
+{
+    private protected CPlugBeamEmitterSubModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) : base(state) { }
     public TSelf WithBloomEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnabledAssignment(), value, SupportedGames1);
     public TSelf WithBloomEnergy(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomEnergyAssignment(), value, SupportedGames1);
     public TSelf WithBloomFadeEndAtEndLife(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomFadeEndAtEndLifeAssignment(), value, SupportedGames1);
@@ -35,33 +67,9 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> : NodeBuilder<g
     public TSelf WithBloomScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomScaleAssignment(), value, SupportedGames1);
     public TSelf WithBloomShrinkOverLife(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomShrinkOverLifeAssignment(), value, SupportedGames1);
     public TSelf WithBloomStartOffset(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetBloomStartOffsetAssignment(), value, SupportedGames1);
-    public TSelf WithCylinderSideCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetCylinderSideCountAssignment(), value, SupportedGames1);
-    public TSelf WithDisplayType(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDisplayTypeAssignment(), value, SupportedGames1);
-    public TSelf WithDoubleHelix_ClockWise(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_ClockWiseAssignment(), value, SupportedGames1);
-    public TSelf WithDoubleHelix_StartAngle(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDoubleHelix_StartAngleAssignment(), value, SupportedGames1);
-    public TSelf WithDuration(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetDurationAssignment(), value, SupportedGames1);
     public TSelf WithEnableCenterLaser(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableCenterLaserAssignment(), value, SupportedGames1);
     public TSelf WithEnableTriLaser(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetEnableTriLaserAssignment(), value, SupportedGames1);
-    public TSelf WithFadeTimeOffset(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeOffsetAssignment(), value, SupportedGames1);
-    public TSelf WithFadeTimeScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetFadeTimeScaleAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_CoeffLowDef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_CoeffLowDefAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_DistLOD(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_DistLODAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_InnerRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_InnerRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_MaxHelixCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_MaxHelixCountAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_OutterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_OutterRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_TurnLength(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_TurnLengthAssignment(), value, SupportedGames1);
-    public TSelf WithHelix_VerticesCountPerTurn(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetHelix_VerticesCountPerTurnAssignment(), value, SupportedGames1);
     public TSelf WithLaserRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLaserRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithLightningBeamCount(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningBeamCountAssignment(), value, SupportedGames1);
-    public TSelf WithLightningDistStep(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningDistStepAssignment(), value, SupportedGames1);
-    public TSelf WithLightningJitterRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningJitterRadiusAssignment(), value, SupportedGames1);
-    public TSelf WithLightningLenMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningLenMaxAssignment(), value, SupportedGames1);
-    public TSelf WithLightningMaxJitterDistPerStep(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetLightningMaxJitterDistPerStepAssignment(), value, SupportedGames1);
-    public TSelf WithMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialPath(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialPathAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialsAsStrings(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetMaterialsAsStringsAssignment(), value, SupportedGames1);
-    public TSelf WithRadius(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetRadiusAssignment(), value, SupportedGames1);
     public TSelf WithSharpEnabled(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnabledAssignment(), value, SupportedGames1);
     public TSelf WithSharpEnergy(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpEnergyAssignment(), value, SupportedGames1);
     public TSelf WithSharpFadeEndAtEndLife(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpFadeEndAtEndLifeAssignment(), value, SupportedGames1);
@@ -71,9 +79,6 @@ public abstract class CPlugBeamEmitterSubModelBuilderBase<TSelf> : NodeBuilder<g
     public TSelf WithSharpShrinkOverLife(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpShrinkOverLifeAssignment(), value, SupportedGames1);
     public TSelf WithSharpStartOffset(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetSharpStartOffsetAssignment(), value, SupportedGames1);
     public TSelf WithStartOffsetAtEndLife(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetStartOffsetAtEndLifeAssignment(), value, SupportedGames1);
-    public TSelf WithUSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUSpeedAssignment(), value, SupportedGames1);
-    public TSelf WithUVScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetUVScaleAssignment(), value, SupportedGames1);
-    public TSelf WithVSpeed(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterSubModelBuilderAssignments.GetVSpeedAssignment(), value, SupportedGames1);
 }
 public partial class CPlugBeamEmitterSubModelBuilder : CPlugBeamEmitterSubModelBuilderBase<CPlugBeamEmitterSubModelBuilder>
 {
@@ -82,21 +87,48 @@ public partial class CPlugBeamEmitterSubModelBuilder : CPlugBeamEmitterSubModelB
         var node = new global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel.Chunk09105001(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel.Chunk09105002(game));
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe0(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel.Chunk09105003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel.Chunk09105004(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
-    public partial class MP4 : CPlugBeamEmitterSubModelBuilderBase<MP4>
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugBeamEmitterSubModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) : base(state) { }
+        public TMT WithAdditionalMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT[] values) => base.WithAdditionalMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>(values, false));
+        public TMT WithAdditionalMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT> values) => WithAdditionalMaterials(values.ToArray());
+        public TMT WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel Build() => BuildNode(CPlugBeamEmitterSubModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel node);
+    }
+    public partial class MP4 : CPlugBeamEmitterSubModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) : base(state) { }
         public MP4 WithAdditionalMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4[] values) => base.WithAdditionalMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(values, false));
         public MP4 WithAdditionalMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4> values) => WithAdditionalMaterials(values.ToArray());
         public MP4 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel Build() => BuildNode(CPlugBeamEmitterSubModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel Build() => BuildNode(CPlugBeamEmitterSubModelBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel node);
+    }
+    public partial class TM2020 : CPlugBeamEmitterSubModelBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> state) : base(state) { }
+        public TM2020 WithAdditionalMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020[] values) => base.WithAdditionalMaterials(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>(values, false));
+        public TM2020 WithAdditionalMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020> values) => WithAdditionalMaterials(values.ToArray());
+        public TM2020 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel Build() => BuildNode(CPlugBeamEmitterSubModelBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel node);
     }
 }

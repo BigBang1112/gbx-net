@@ -44,11 +44,11 @@ public partial class CTrackManiaControlCard : CGameControlCard, IClass
     /// CTrackManiaControlCard 0x001 chunk
     /// </summary>
     [Chunk(0x2408F001)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2408F001 : Chunk<CTrackManiaControlCard>
     {
         public override uint Id => 0x2408F001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

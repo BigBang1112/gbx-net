@@ -244,10 +244,24 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     /// CGameItemPlacementParam 0x003 skippable chunk (legacy PlacementClass)
     /// </summary>
     [Chunk(0x2E020003, "legacy PlacementClass")]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk2E020003 : SkippableChunk<CGameItemPlacementParam>, IVersionable
     {
         public override uint Id => 0x2E020003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E020003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E020003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

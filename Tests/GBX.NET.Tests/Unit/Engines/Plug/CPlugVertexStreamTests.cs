@@ -256,9 +256,7 @@ public class CPlugVertexStreamTests
             [2] = [0x55667788]
         };
         node.CreateChunk<CPlugVertexStream.Chunk09056000>().Version = 1;
-#pragma warning disable GBXNET10001
         var clone = (CPlugVertexStream)node.DeepClone();
-#pragma warning restore GBXNET10001
         clone.Positions![0] = new Vec3(4, 5, 6);
         clone.DataDecls![0].Data![0] = 7;
         clone.UVs[0][0] = new Vec2(0.75f, 1);

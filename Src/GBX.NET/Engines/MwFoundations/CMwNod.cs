@@ -3,9 +3,6 @@ using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text;
-#if NET8_0_OR_GREATER
-using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace GBX.NET.Engines.MwFoundations;
 
@@ -13,7 +10,7 @@ namespace GBX.NET.Engines.MwFoundations;
 [Class(0x01001000)]
 public partial class CMwNod : IClass
 {
-    internal const int MaxSkippableChunkSize = 0x10000000; // ~268MB
+    internal const int MaxSkippableChunkSize = 0x20000000; // 512MB
 
     private const uint SKIP = 0x534B4950;
     private const uint FACADE = 0xFACADE01;
@@ -54,6 +51,11 @@ public partial class CMwNod : IClass
             {
                 r.Logger?.LogDebug("- FACADE -");
                 return;
+            }
+
+            if (r.Signature is not null)
+            {
+                throw new InvalidDataException("Signature is not the last chunk.");
             }
 
             chunks ??= new ChunkSet(this);
@@ -107,7 +109,7 @@ public partial class CMwNod : IClass
                 {
                     if (chunkId == rawChunkId)
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxSignatureChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size})", chunkId, chunkSize);
                         }
@@ -118,7 +120,7 @@ public partial class CMwNod : IClass
                     }
                     else
                     {
-                        if (chunk is null)
+                        if (chunk is null && chunkId != GbxSignatureChunk.Id)
                         {
                             r.Logger.LogWarning("0x{ChunkId:X8} (unknown skippable, size: {Size}, raw: 0x{RawChunkId:X8})", chunkId, chunkSize, rawChunkId);
                         }
@@ -144,7 +146,18 @@ public partial class CMwNod : IClass
                     throw new LengthLimitException(chunkSize);
                 }
 
-                if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
+                if (chunkId == GbxSignatureChunk.Id)
+                {
+                    using var boundedStream = new BoundedStream(r.BaseStream, chunkSize);
+                    using var signatureReader = new GbxReader(boundedStream, r.Settings);
+                    GbxSignatureChunk.Read(signatureReader);
+                    if (boundedStream.Remaining > 0)
+                    {
+                        throw new InvalidDataException("Not all data was read from the signature chunk.");
+                    }
+                    r.Signature = signatureReader.Signature;
+                }
+                else if (r.Settings.SkipChunkIds?.Contains(chunkId) == true)
                 {
                     r.SkipData(chunkSize);
                 }
@@ -330,7 +343,7 @@ public partial class CMwNod : IClass
 
         foreach (var chunk in Chunks)
         {
-            if (chunk is IHeaderChunk)
+            if (chunk is IHeaderChunk || chunk.Id == GbxSignatureChunk.Id)
             {
                 continue;
             }
@@ -461,14 +474,8 @@ public partial class CMwNod : IClass
         return true;
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     public virtual CMwNod DeepClone() => new DeepCloneContext().CloneNode(this);
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     IClass IClass.DeepClone() => DeepClone();
 
     internal CMwNod CreateCloneShell() => (CMwNod)MemberwiseClone();
@@ -488,9 +495,6 @@ public partial class CMwNod : IClass
         }
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     protected void DeepCloneChunks(IClass dest)
     {
         if (chunks is null)
@@ -513,7 +517,7 @@ public partial class CMwNod : IClass
     /// <summary>
     /// The version of the game where this node should be accepted without a game crash.
     /// </summary>
-    public GameVersion GameVersion
+    public virtual GameVersion GameVersion
     {
         get
         {
@@ -548,11 +552,11 @@ public partial class CMwNod : IClass
     /// <param name="version">Game version flags.</param>
     /// <param name="strict">If enabled, checks for the exact flag match (if accepted in MP4 and TM2020, only <c>MP4 | TM2020</c> will return true).</param>
     /// <returns>True if matches, false if not.</returns>
-    public virtual bool IsGameVersion(GameVersion version, bool strict = false)
+    public bool IsGameVersion(GameVersion version, bool strict = false)
     {
         return strict
             ? GameVersion == version
-            : (GameVersion & version) == version;
+            : version != GameVersion.Unspecified && (GameVersion & version) == version;
     }
 
     /// <summary>

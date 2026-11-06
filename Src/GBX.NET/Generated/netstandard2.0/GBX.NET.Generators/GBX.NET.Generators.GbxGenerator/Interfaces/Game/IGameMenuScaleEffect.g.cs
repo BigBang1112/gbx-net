@@ -30,7 +30,27 @@ public partial interface IGameMenuScaleEffectTMSX : IGameMenuScaleEffect, global
 {
 }
 
+public partial interface IGameMenuScaleEffectTMNESWC : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC
+{
+}
+
 public partial interface IGameMenuScaleEffectTMU : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMU
+{
+}
+
+public partial interface IGameMenuScaleEffectVSK5 : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectVSK5
+{
+}
+
+public partial interface IGameMenuScaleEffectTMF : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMF
+{
+}
+
+public partial interface IGameMenuScaleEffectTMT : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMT
+{
+}
+
+public partial interface IGameMenuScaleEffectMP4 : IGameMenuScaleEffect, global::GBX.NET.Interfaces.Control.IControlEffectMP4
 {
 }
 

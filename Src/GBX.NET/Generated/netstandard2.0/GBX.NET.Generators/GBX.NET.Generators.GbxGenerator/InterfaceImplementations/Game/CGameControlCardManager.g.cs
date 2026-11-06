@@ -3,17 +3,27 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameControlCardManager : global::GBX.NET.Interfaces.Game.IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU
+public partial class CGameControlCardManager : global::GBX.NET.Interfaces.Game.IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU, global::GBX.NET.Interfaces.Game.IGameControlCardManagerMP4, global::GBX.NET.Interfaces.Game.IGameControlCardManagerTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataType>? global::GBX.NET.Interfaces.Game.IGameControlCardManager.DataTypes
     {
         get => DataTypes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataType>(GetDataTypesInterfaceReferences, true, "DataTypes");
         set => DataTypes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataType>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>? global::GBX.NET.Interfaces.Game.IGameControlCardManagerTMU.DataTypes
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>? global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>.DataTypes
     {
         get => DataTypes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>(GetDataTypesInterfaceReferences, true, "DataTypes");
         set => DataTypes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>? global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>.DataTypes
+    {
+        get => DataTypes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>(GetDataTypesInterfaceReferences, true, "DataTypes");
+        set => DataTypes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>? global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>.DataTypes
+    {
+        get => DataTypes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>(GetDataTypesInterfaceReferences, true, "DataTypes");
+        set => DataTypes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>(value, false));
     }
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameControlDataType>? GetDataTypesInterfaceReferences() => DataTypes;
 }

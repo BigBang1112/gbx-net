@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using GbxDiscordBot;
 using GBX.NET.Extensions;
 using GBX.NET.LZO;
-using GBX.NET.Hashing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using GbxDiscordBot.Services;
@@ -57,7 +56,6 @@ builder.ConfigureServices((context, services) =>
     services.AddHttpClient();
     services.AddSingleton<IDiscordBot, DiscordBot>();
     services.AddSingleton<ILzo, Lzo>();
-    services.AddSingleton<ICrc32, CRC32>();
 
     services.AddScoped<IGbxService, GbxService>();
     services.AddScoped<IUserService, UserService>();

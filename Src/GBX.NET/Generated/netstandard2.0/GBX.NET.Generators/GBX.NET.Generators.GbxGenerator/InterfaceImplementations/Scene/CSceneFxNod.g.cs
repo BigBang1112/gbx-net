@@ -10,12 +10,17 @@ public partial class CSceneFxNod : global::GBX.NET.Interfaces.Scene.ISceneFxNod,
         get => Fx;
         set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxTMNESWC>.Fx
+    {
+        get => Fx;
+        set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>.NodInputs
     {
         get => NodInputs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>(GetNodInputsInterfaceReferences, true, "NodInputs");
         set => NodInputs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxTMU? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTMU>.Fx
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMU? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxTMU>.Fx
     {
         get => Fx;
         set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -25,12 +30,17 @@ public partial class CSceneFxNod : global::GBX.NET.Interfaces.Scene.ISceneFxNod,
         get => NodInputs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU>(GetNodInputsInterfaceReferences, true, "NodInputs");
         set => NodInputs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMU>(value, false));
     }
+    global::GBX.NET.Interfaces.Scene.ISceneFxVSK5? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxVSK5>.Fx
+    {
+        get => Fx;
+        set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers2<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>.NodInputs
     {
         get => NodInputs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>(GetNodInputsInterfaceReferences, true, "NodInputs");
         set => NodInputs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxNod>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxTMF? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTMF>.Fx
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMF? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxTMF>.Fx
     {
         get => Fx;
         set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -45,17 +55,27 @@ public partial class CSceneFxNod : global::GBX.NET.Interfaces.Scene.ISceneFxNod,
         get => NodInput;
         set => NodInput = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Scene.ISceneFxTMT? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxTMT>.Fx
+    {
+        get => Fx;
+        set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers1<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>.NodInput
     {
         get => NodInput;
         set => NodInput = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneFxMP4? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxMP4>.Fx
+    {
+        get => Fx;
+        set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers1<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>.NodInput
     {
         get => NodInput;
         set => NodInput = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneFxTM2020? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers4<global::GBX.NET.Interfaces.Scene.ISceneFxTM2020>.Fx
+    global::GBX.NET.Interfaces.Scene.ISceneFxTM2020? global::GBX.NET.Interfaces.Scene.ISceneFxNodMembers3<global::GBX.NET.Interfaces.Scene.ISceneFxTM2020>.Fx
     {
         get => Fx;
         set => Fx = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

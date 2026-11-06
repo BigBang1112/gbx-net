@@ -161,9 +161,11 @@ public partial class CGamePlaygroundControlScores : CControlFrame, IClass
     /// CGamePlaygroundControlScores 0x001 chunk
     /// </summary>
     [Chunk(0x030F3001)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030F3001 : Chunk<CGamePlaygroundControlScores>
     {
         public override uint Id => 0x030F3001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -190,9 +192,11 @@ public partial class CGamePlaygroundControlScores : CControlFrame, IClass
     /// CGamePlaygroundControlScores 0x002 chunk
     /// </summary>
     [Chunk(0x030F3002)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030F3002 : Chunk<CGamePlaygroundControlScores>
     {
         public override uint Id => 0x030F3002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

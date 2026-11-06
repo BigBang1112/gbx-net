@@ -7,7 +7,7 @@ public abstract class CControlEffectCombinedBuilderBase<TSelf> : NodeBuilder<glo
 {
     private protected CControlEffectCombinedBuilderBase() { }
     private protected CControlEffectCombinedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMSX | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithEffects(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectCombinedBuilderAssignments.GetEffectsAssignment(), value, SupportedGames1);
     public TSelf WithEffectsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlEffectCombinedBuilderAssignments.GetEffectsReferenceAssignment(), value, SupportedGames1);
 }
@@ -20,7 +20,14 @@ public partial class CControlEffectCombinedBuilder : CControlEffectCombinedBuild
         return node;
     }
     public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public partial class TMSX : CControlEffectCombinedBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
@@ -29,12 +36,52 @@ public partial class CControlEffectCombinedBuilder : CControlEffectCombinedBuild
         public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
     }
+    public partial class TMNESWC : CControlEffectCombinedBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
+        public TMNESWC WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
+    }
     public partial class TMU : CControlEffectCombinedBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
         public TMU WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
+    }
+    public partial class VSK5 : CControlEffectCombinedBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
+        public VSK5 WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectCombinedVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
+    }
+    public partial class TMF : CControlEffectCombinedBuilderBase<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
+        public TMF WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
+    }
+    public partial class TMT : CControlEffectCombinedBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
+        public TMT WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
+    }
+    public partial class MP4 : CControlEffectCombinedBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectCombined> state) : base(state) { }
+        public MP4 WithEffects(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? value) => base.WithEffects(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectCombinedMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectCombined Build() => BuildNode(CControlEffectCombinedBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectCombined node);
     }
 }

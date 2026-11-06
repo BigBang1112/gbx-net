@@ -99,6 +99,13 @@ internal sealed class LayoutModel
         return attributes?.Entries.FirstOrDefault(x => x.Name.Replace(" - ", "-") == name)?.Value;
     }
 
+    public static IEnumerable<string> RetiredGames(AttributeList? attributes)
+    {
+        return attributes?.Entries.Where(static x => x.Name == "retired")
+            .SelectMany(static x => (x.Value ?? "").Split('|'))
+            .Select(static x => x.Trim()) ?? [];
+    }
+
     public static string? WriteExpression(AttributeList? attributes)
     {
         var value = Attribute(attributes, "write");

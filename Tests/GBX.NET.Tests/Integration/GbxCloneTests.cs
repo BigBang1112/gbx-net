@@ -12,9 +12,7 @@ public class GbxCloneTests
         var original = Gbx.Parse(TestFiles.Gbx(filePath));
 
         // Act
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         using var originalOutput = new MemoryStream();
         using var cloneOutput = new MemoryStream();
         original.Save(originalOutput);
@@ -24,7 +22,7 @@ public class GbxCloneTests
 
         // Assert
         await Assert.That(clone.Node).IsNotSameReferenceAs(original.Node);
-        await Assert.That(cloneOutput.ToArray()).IsEquivalentTo(originalOutput.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(originalOutput.ToArray(), cloneOutput.ToArray());
         await GbxAssert.HaveEqualSerializedData(Gbx.Parse(originalOutput), Gbx.Parse(cloneOutput));
     }
 }

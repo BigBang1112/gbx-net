@@ -6,7 +6,7 @@ CGamePlaygroundControlScores 0x030F3000
   int ListColumnCount = 2
   CControlFrame CardModelPlayer
 
-0x001
+0x001 [TMT, MP4, TM2020]
   int ListLineCount = 8
   int ListColumnCount = 2
   float HorizontalMargin = 0.1f
@@ -17,5 +17,5 @@ CGamePlaygroundControlScores 0x030F3000
   bool LabelMessageEnabled
   CControlFrame CardModelPlayer
 
-0x002
+0x002 [TMT, MP4, TM2020]
   bool IsCentered = true

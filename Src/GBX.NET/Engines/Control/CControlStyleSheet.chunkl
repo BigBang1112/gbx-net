@@ -1,20 +1,20 @@
 CControlStyleSheet 0x07027000
 - inherits: CPlug
 
-0x002 [TMU, MP4]
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   CControlStyle MasterStyle
 
-0x003 [TMU, MP4]
+0x003 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   CMwRefBuffer Buffer
 
 0x004
   vec4[] LegacyColors
 
-0x005 [TMU, MP4]
+0x005 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   vec3[] Colors
   float[] ColorsAlpha
 
-0x007 [MP4.v2]
+0x007 [TMT.v2, MP4.v2, TM2020.v2]
   version
   CControlStyle PagerIconStyle
   CControlStyle PagerTextStyle

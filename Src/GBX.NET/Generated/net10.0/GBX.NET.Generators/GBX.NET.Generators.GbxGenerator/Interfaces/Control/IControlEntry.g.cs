@@ -3,6 +3,24 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers1 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool IsPassword { get; set; }
+    int MaxLength { get; set; }
+    bool SetValueOnFocusLost { get; set; }
+    int Type { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers2 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool IsNewPassword { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEntryMembers3 : global::GBX.NET.Interfaces.Control.IControlEntry
+{
+    bool SelectAllOnFocusGained { get; set; }
+}
 public partial interface IControlEntry : IClassVersion<global::GBX.NET.Engines.Control.CControlEntry>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,9 +32,13 @@ public partial interface IControlEntry : IClassVersion<global::GBX.NET.Engines.C
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlEntryTM10 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlEntryTM10 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -34,9 +56,13 @@ public partial interface IControlEntryTM10 : IControlEntry, global::GBX.NET.Inte
     }
 }
 
-public partial interface IControlEntryTMPU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlEntryTMPU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -54,9 +80,13 @@ public partial interface IControlEntryTMPU : IControlEntry, global::GBX.NET.Inte
     }
 }
 
-public partial interface IControlEntryTMSX : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlEntryTMSX : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -74,9 +104,13 @@ public partial interface IControlEntryTMSX : IControlEntry, global::GBX.NET.Inte
     }
 }
 
-public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlEntryMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -94,9 +128,8 @@ public partial interface IControlEntryTMNESWC : IControlEntry, global::GBX.NET.I
     }
 }
 
-public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMU
+public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    bool IsPassword { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
@@ -107,7 +140,6 @@ public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Inter
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
         set => ((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    int MaxLength { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion
     {
         get => (global::GBX.NET.Interfaces.Motion.IMotionTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Motion);
@@ -118,14 +150,15 @@ public partial interface IControlEntryTMU : IControlEntry, global::GBX.NET.Inter
         get => ((global::GBX.NET.Engines.Control.CControlEntry)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlEntry)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlEntry)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    bool SelectAllOnFocusGained { get; set; }
-    bool SetValueOnFocusLost { get; set; }
-    int Type { get; set; }
 }
 
-public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -143,7 +176,7 @@ public partial interface IControlEntryVSK5 : IControlEntry, global::GBX.NET.Inte
     }
 }
 
-public partial interface IControlEntryTMF : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlEntryTMF : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
     {
@@ -187,9 +220,13 @@ public partial interface IControlEntryMP3 : IControlEntry, global::GBX.NET.Inter
     }
 }
 
-public partial interface IControlEntryTMT : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlEntryTMT : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEntry)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlEntry)this).LegacyStyle);
@@ -207,7 +244,7 @@ public partial interface IControlEntryTMT : IControlEntry, global::GBX.NET.Inter
     }
 }
 
-public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -231,7 +268,7 @@ public partial interface IControlEntryMP4 : IControlEntry, global::GBX.NET.Inter
     }
 }
 
-public partial interface IControlEntryTM2020 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM2020
+public partial interface IControlEntryTM2020 : IControlEntry, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlEntryMembers1, global::GBX.NET.Interfaces.Control.IControlEntryMembers2, global::GBX.NET.Interfaces.Control.IControlEntryMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

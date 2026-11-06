@@ -146,9 +146,11 @@ public partial class CTrackManiaRace : CGameRace, IClass
     /// CTrackManiaRace 0x001 chunk
     /// </summary>
     [Chunk(0x24014001)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk24014001 : Chunk<CTrackManiaRace>
     {
         public override uint Id => 0x24014001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
         public string? U01;
 
         private NodeRef<CMwNod>? U02Ref;
@@ -256,11 +258,11 @@ public partial class CTrackManiaRace : CGameRace, IClass
     /// CTrackManiaRace 0x002 chunk
     /// </summary>
     [Chunk(0x24014002)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk24014002 : Chunk<CTrackManiaRace>
     {
         public override uint Id => 0x24014002;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public int U01 = 1500;
 
         private NodeRef<CMwNod>? U02Ref;

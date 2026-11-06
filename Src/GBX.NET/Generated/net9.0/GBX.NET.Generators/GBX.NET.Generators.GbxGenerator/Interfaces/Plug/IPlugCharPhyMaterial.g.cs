@@ -19,6 +19,10 @@ public partial interface IPlugCharPhyMaterial : IClassVersion<global::GBX.NET.En
     bool WallJumpable { get; set; }
 }
 
+public partial interface IPlugCharPhyMaterialTMT : IPlugCharPhyMaterial
+{
+}
+
 public partial interface IPlugCharPhyMaterialMP4 : IPlugCharPhyMaterial
 {
 }

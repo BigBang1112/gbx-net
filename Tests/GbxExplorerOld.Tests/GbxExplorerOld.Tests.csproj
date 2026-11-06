@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>GbxExplorerOld.Client</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <ProjectReference Include="../../Src/GBX.NET.Crypto/GBX.NET.Crypto.csproj" />
+        <PackageReference Include="TUnit" Version="1.72.4" />
+        <RazorComponent Include="../../Tools/GbxExplorerOld/Client/Components/PropertyMethod.razor" Link="Components/PropertyMethod.razor" />
+    </ItemGroup>
+</Project>

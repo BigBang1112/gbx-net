@@ -16,7 +16,27 @@ public partial interface IMwCmdExpOr : IClassVersion<global::GBX.NET.Engines.MwF
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
+public partial interface IMwCmdExpOrTM10 : IMwCmdExpOr, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTM10
+{
+}
+
+public partial interface IMwCmdExpOrTMPU : IMwCmdExpOr, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMPU
+{
+}
+
+public partial interface IMwCmdExpOrTMSX : IMwCmdExpOr, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMSX
+{
+}
+
+public partial interface IMwCmdExpOrTMNESWC : IMwCmdExpOr, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMNESWC
+{
+}
+
 public partial interface IMwCmdExpOrTMU : IMwCmdExpOr, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMU
+{
+}
+
+public partial interface IMwCmdExpOrVSK5 : IMwCmdExpOr
 {
 }
 

@@ -36,7 +36,27 @@ public partial interface IControlEffectSwitchStyleTMPU : IControlEffectSwitchSty
 {
 }
 
+public partial interface IControlEffectSwitchStyleTMSX : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>
+{
+}
+
+public partial interface IControlEffectSwitchStyleTMNESWC : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>
+{
+}
+
 public partial interface IControlEffectSwitchStyleTMU : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>
+{
+}
+
+public partial interface IControlEffectSwitchStyleVSK5 : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>
+{
+}
+
+public partial interface IControlEffectSwitchStyleTMF : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMF>
+{
+}
+
+public partial interface IControlEffectSwitchStyleTMT : IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMT>
 {
 }
 

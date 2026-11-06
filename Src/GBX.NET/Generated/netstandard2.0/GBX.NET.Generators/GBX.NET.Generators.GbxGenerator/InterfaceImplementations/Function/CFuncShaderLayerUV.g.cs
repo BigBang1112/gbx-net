@@ -5,4 +5,49 @@ namespace GBX.NET.Engines.Function;
 
 public partial class CFuncShaderLayerUV : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM10, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMF, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020
 {
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapCopy
+    {
+        get => BitmapCopy;
+        set => BitmapCopy = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

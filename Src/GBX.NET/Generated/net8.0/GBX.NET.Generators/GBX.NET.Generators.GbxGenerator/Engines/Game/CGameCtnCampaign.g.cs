@@ -656,7 +656,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     public partial class Chunk03090012 : SkippableChunk<CGameCtnCampaign>, IVersionable
     {
         public override uint Id => 0x03090012;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int? U01;
         public string? U02;

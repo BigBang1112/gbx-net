@@ -3,16 +3,27 @@
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameEditorModelMembers1<T0> : global::GBX.NET.Interfaces.GameData.IGameEditorModel where T0 : class
+{
+    new T0? MainPluginTextSet { get; set; }
+}
 public partial interface IGameEditorModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameEditorModel>
 {
     bool AutoCreateTooltipsFromBindings { get; set; }
     bool AutoGenerateHelp { get; set; }
     global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? BindingContexts { get; set; }
     int EditorType { get; set; }
-    string? MediaFolder { get; set; }
+    global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSet? MainPluginTextSet { get; set; }
+    global::GBX.NET.Engines.GameData.CGameEditorModel.SubPlugin[]? SubPlugins { get; set; }
 }
 
-public partial interface IGameEditorModelTM2020 : IGameEditorModel
+public partial interface IGameEditorModelMP4 : IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelMembers1<global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetMP4>
 {
+}
+
+public partial interface IGameEditorModelTM2020 : IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelMembers1<global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetTM2020>
+{
+    string? MediaFolder { get; set; }
 }
 

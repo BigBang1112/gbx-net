@@ -1,4 +1,4 @@
 CControlTrackManiaTeamCard 0x24090000
 - inherits: CTrackManiaControlCard
 
-0x000 (empty) [TMNESWC, TMU]
+0x000 (empty) [TMNESWC, TMU, VSK5, TMF, TMT]

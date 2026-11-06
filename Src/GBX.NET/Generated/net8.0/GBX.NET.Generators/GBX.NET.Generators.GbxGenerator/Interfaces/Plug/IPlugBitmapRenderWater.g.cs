@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderWaterMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWater
+{
+    float ClipPlaneHeight { get; set; }
+    float FMargin { get; set; }
+    BoxAligned Frustum { get; set; }
+    bool IsOrthographic { get; set; }
+    float MirrorScaleY { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderWaterMembers2 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWater
+{
+    float FogMaxDepth { get; set; }
+}
 public partial interface IPlugBitmapRenderWater : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderWater>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,37 +28,31 @@ public partial interface IPlugBitmapRenderWater : IClassVersion<global::GBX.NET.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IPlugBitmapRenderWaterTM10 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10
+public partial interface IPlugBitmapRenderWaterTM10 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMPU : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU
+public partial interface IPlugBitmapRenderWaterTMPU : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMSX : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX
+public partial interface IPlugBitmapRenderWaterTMSX : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMNESWC : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC
+public partial interface IPlugBitmapRenderWaterTMNESWC : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMU : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU
-{
-    float ClipPlaneHeight { get; set; }
-    float FMargin { get; set; }
-    float FogMaxDepth { get; set; }
-    BoxAligned Frustum { get; set; }
-    bool IsOrthographic { get; set; }
-    float MirrorScaleY { get; set; }
-}
-
-public partial interface IPlugBitmapRenderWaterVSK5 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
+public partial interface IPlugBitmapRenderWaterTMU : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMF : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF
+public partial interface IPlugBitmapRenderWaterVSK5 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
+{
+}
+
+public partial interface IPlugBitmapRenderWaterTMF : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
@@ -52,15 +60,17 @@ public partial interface IPlugBitmapRenderWaterMP3 : IPlugBitmapRenderWater, glo
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTMT : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT
+public partial interface IPlugBitmapRenderWaterTMT : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderWaterMP4 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4
+public partial interface IPlugBitmapRenderWaterMP4 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
 }
 
-public partial interface IPlugBitmapRenderWaterTM2020 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020
+public partial interface IPlugBitmapRenderWaterTM2020 : IPlugBitmapRenderWater, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderWaterMembers2
 {
+    int InvisibleSleepPeriod { get; set; }
+    int MaxUpdatePeriod { get; set; }
 }
 

@@ -88,10 +88,24 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     /// CPlugAnimSkelEdition 0x000 chunk (editable animation)
     /// </summary>
     [Chunk(0x09134000, "editable animation")]
+    [ChunkGameVersion(GameVersion.MP4, 11)]
     public partial class Chunk09134000 : Chunk<CPlugAnimSkelEdition>, IVersionable
     {
         public override uint Id => 0x09134000;
+        public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk09134000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09134000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 11;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

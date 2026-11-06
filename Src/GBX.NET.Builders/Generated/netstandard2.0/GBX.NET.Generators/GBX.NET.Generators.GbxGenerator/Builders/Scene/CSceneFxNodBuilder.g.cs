@@ -53,6 +53,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
     public partial class TMNESWC : CSceneFxNodBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
+        public TMNESWC WithFx(global::GBX.NET.Interfaces.Scene.ISceneFxTMNESWC? value) => base.WithFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithNodInputs(params global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC[] values) => base.WithNodInputs(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC>(values, false));
         public TMNESWC WithNodInputs(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC> values) => WithNodInputs(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneFxNodTMNESWC BuildInterface() => Build();
@@ -72,6 +73,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
     public partial class VSK5 : CSceneFxNodBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
+        public VSK5 WithFx(global::GBX.NET.Interfaces.Scene.ISceneFxVSK5? value) => base.WithFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithNodInputs(params global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5[] values) => base.WithNodInputs(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxNod, global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>(values, false));
         public VSK5 WithNodInputs(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5> values) => WithNodInputs(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5 BuildInterface() => Build();
@@ -99,6 +101,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
     public partial class TMT : CSceneFxNodBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
+        public TMT WithFx(global::GBX.NET.Interfaces.Scene.ISceneFxTMT? value) => base.WithFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithNodInput(global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT? value) => base.WithNodInput(value is null ? (global::GBX.NET.Engines.Scene.CSceneFxNod?)null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxNod Build() => BuildNode(CSceneFxNodBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
@@ -107,6 +110,7 @@ public partial class CSceneFxNodBuilder : CSceneFxNodBuilderBase<CSceneFxNodBuil
     public partial class MP4 : CSceneFxNodBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxNod> state) : base(state) { }
+        public MP4 WithFx(global::GBX.NET.Interfaces.Scene.ISceneFxMP4? value) => base.WithFx(value is null ? (global::GBX.NET.Engines.Scene.CSceneFx?)null : value is global::GBX.NET.Engines.Scene.CSceneFx node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithNodInput(global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4? value) => base.WithNodInput(value is null ? (global::GBX.NET.Engines.Scene.CSceneFxNod?)null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxNod Build() => BuildNode(CSceneFxNodBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);

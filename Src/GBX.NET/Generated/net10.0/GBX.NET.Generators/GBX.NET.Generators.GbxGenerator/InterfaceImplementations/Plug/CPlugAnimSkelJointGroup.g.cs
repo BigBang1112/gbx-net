@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimSkelJointGroup : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020
+public partial class CPlugAnimSkelJointGroup : global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020
 {
 }

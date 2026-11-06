@@ -159,7 +159,12 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     public partial class Chunk0312D000 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 7 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public bool U01;
 
@@ -317,7 +322,12 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     public partial class Chunk0312D002 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D002;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public byte U01;
         public byte U02;
@@ -382,7 +392,12 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     public partial class Chunk0312D003 : SkippableChunk<CGamePlayerProfileChunk_GameSettings>, IVersionable
     {
         public override uint Id => 0x0312D003;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public byte U01;
 

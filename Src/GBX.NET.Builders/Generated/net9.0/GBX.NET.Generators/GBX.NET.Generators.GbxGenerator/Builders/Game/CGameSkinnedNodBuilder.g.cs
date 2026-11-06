@@ -7,13 +7,32 @@ public abstract class CGameSkinnedNodBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CGameSkinnedNodBuilderBase() { }
     private protected CGameSkinnedNodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+}
+public abstract class CGameSkinnedNodBuilderMembers1<TSelf> : CGameSkinnedNodBuilderBase<TSelf> where TSelf : CGameSkinnedNodBuilderMembers1<TSelf>
+{
+    private protected CGameSkinnedNodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+    public TSelf WithBaseNod(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameSkinnedNodBuilderAssignments.GetBaseNodAssignment(), value, SupportedGames1);
+    public TSelf WithBaseNodReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameSkinnedNodBuilderAssignments.GetBaseNodReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithGameSkin(global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameSkinnedNodBuilderAssignments.GetGameSkinAssignment(), value, SupportedGames1);
+    public TSelf WithGameSkinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameSkinnedNodBuilderAssignments.GetGameSkinReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithRemaps(params global::GBX.NET.Engines.Game.CGameSkinnedNod.Remap[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameSkinnedNodBuilderAssignments.GetRemapsAssignment(), value, SupportedGames1);
+    public TSelf WithRemaps(IEnumerable<global::GBX.NET.Engines.Game.CGameSkinnedNod.Remap> values) => WithRemaps(values.ToArray());
 }
 public partial class CGameSkinnedNodBuilder : CGameSkinnedNodBuilderBase<CGameSkinnedNodBuilder>
 {
     private static global::GBX.NET.Engines.Game.CGameSkinnedNod CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameSkinnedNod();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameSkinnedNod CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameSkinnedNod();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameSkinnedNod.Chunk0305F000() { Version = 0 });
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameSkinnedNod.Chunk0305F001() { Version = 0 });
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
         return node;
     }
@@ -86,25 +105,28 @@ public partial class CGameSkinnedNodBuilder : CGameSkinnedNodBuilderBase<CGameSk
         public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
     }
-    public partial class TMT : CGameSkinnedNodBuilderBase<TMT>
+    public partial class TMT : CGameSkinnedNodBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+        public TMT WithGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? value) => base.WithGameSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameSkinnedNodTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
     }
-    public partial class MP4 : CGameSkinnedNodBuilderBase<MP4>
+    public partial class MP4 : CGameSkinnedNodBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+        public MP4 WithGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value) => base.WithGameSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameSkinnedNodMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
     }
-    public partial class TM2020 : CGameSkinnedNodBuilderBase<TM2020>
+    public partial class TM2020 : CGameSkinnedNodBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSkinnedNod> state) : base(state) { }
+        public TM2020 WithGameSkin(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value) => base.WithGameSkin(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameSkinnedNodTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameSkinnedNod Build() => BuildNode(CGameSkinnedNodBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameSkinnedNod node);
     }
 }

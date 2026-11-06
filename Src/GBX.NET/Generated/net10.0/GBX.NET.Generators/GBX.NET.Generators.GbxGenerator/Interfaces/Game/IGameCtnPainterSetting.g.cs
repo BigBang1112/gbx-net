@@ -3,6 +3,59 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnPainterSettingMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting where T0 : class where T1 : class
+{
+    T0? FxBloom_FidFuncIntensAtHdrNorm
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).FxBloom_FidFuncIntensAtHdrNorm);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? MaterialFillColor
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialFillColor);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialFillColor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? MaterialLayerModulate
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerModulate);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnPainterSettingMembers2<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new T0? BitmapBrushFade
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapBrushFade);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapBrushFade = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? BitmapStickerFade
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapStickerFade);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapStickerFade = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Camera
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Camera);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Camera = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? MaterialLayerBlend
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerBlend);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerBlend = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? MaterialPaint
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialPaint);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialPaint = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T3? Remapping
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Remapping);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IGameCtnPainterSetting : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnPainterSetting>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapBrushFade
@@ -44,37 +97,25 @@ public partial interface IGameCtnPainterSetting : IClassVersion<global::GBX.NET.
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ScenesFids { get; set; }
 }
 
-public partial interface IGameCtnPainterSettingTMU : IGameCtnPainterSetting
+public partial interface IGameCtnPainterSettingTMU : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? BitmapBrushFade
+}
+
+public partial interface IGameCtnPainterSettingMP4 : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>
+{
+}
+
+public partial interface IGameCtnPainterSettingTM2020 : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>
+{
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? ShaderRasterAlphaMask
     {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapBrushFade);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapBrushFade = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).ShaderRasterAlphaMask);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).ShaderRasterAlphaMask = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? BitmapStickerFade
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? ShaderRasterRgbMask
     {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapStickerFade);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).BitmapStickerFade = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU? Camera
-    {
-        get => (global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Camera);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Camera = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? MaterialLayerBlend
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerBlend);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialLayerBlend = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? MaterialPaint
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialPaint);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).MaterialPaint = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? Remapping
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Remapping);
-        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).ShaderRasterRgbMask);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)this).ShaderRasterRgbMask = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
 

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxSuperSample : global::GBX.NET.Interfaces.Scene.ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMU
+public partial class CSceneFxSuperSample : global::GBX.NET.Interfaces.Scene.ISceneFxSuperSample, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTM10, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMU, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMF, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTMT, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleMP4, global::GBX.NET.Interfaces.Scene.ISceneFxSuperSampleTM2020
 {
 }

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectSwitchStyle : global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTM10, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMPU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMU
+public partial class CControlEffectSwitchStyle : global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTM10, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMPU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMSX, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleVSK5, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMF, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMT
 {
 }

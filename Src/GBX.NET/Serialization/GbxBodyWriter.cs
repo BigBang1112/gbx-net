@@ -21,6 +21,12 @@ internal sealed class GbxBodyWriter(GbxBody body, GbxWriter writer)
         }
 
         logger?.LogInformation("Main node complete.");
+
+        // Text mode needs tweaking
+        if (writer.Format == GbxFormat.Binary)
+        {
+            GbxSignatureChunk.Write(writer);
+        }
     }
 
     internal void WriteRaw()

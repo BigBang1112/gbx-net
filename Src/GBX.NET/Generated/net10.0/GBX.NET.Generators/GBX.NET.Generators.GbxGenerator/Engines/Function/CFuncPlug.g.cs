@@ -13,10 +13,12 @@ public partial class CFuncPlug : CFunc, IClass
     internal override uint GetId() => Id;
 
     private float period;
-    /// <remarks>Applied with: 0x003, 0x004, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x003, 0x004, 0x005, CFuncShaderLayerUV.0x002, CFuncShaderLayerUV.0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0500B003>]
     [AppliedWithChunk<Chunk0500B004>]
     [AppliedWithChunk<Chunk0500B005>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015002>]
+    [AppliedWithChunk<global::GBX.NET.Engines.Function.CFuncShaderLayerUV.Chunk05015003>]
     public float Period
     {
         get => this.period;

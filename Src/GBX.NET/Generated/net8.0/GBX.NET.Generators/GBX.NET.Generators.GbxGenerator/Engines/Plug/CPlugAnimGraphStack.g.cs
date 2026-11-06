@@ -72,11 +72,11 @@ public partial class CPlugAnimGraphStack : CMwNod, IClass
     /// CPlugAnimGraphStack 0x000 chunk (graphs and input action delays)
     /// </summary>
     [Chunk(0x09138000, "graphs and input action delays")]
-    [ChunkGameVersion(GameVersion.TM2020, 13)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 13, 13)]
     public partial class Chunk09138000 : Chunk<CPlugAnimGraphStack>, IVersionable
     {
         public override uint Id => 0x09138000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk09138000() : this(GameVersion.Unspecified)
@@ -85,7 +85,7 @@ public partial class CPlugAnimGraphStack : CMwNod, IClass
 
         public Chunk09138000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 13;
             }

@@ -11,16 +11,18 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> : NodeBuilder<glob
     private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
     private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
     public TSelf WithBaseTexture(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetBaseTextureAssignment(), value, SupportedGames1);
-    public TSelf WithColor(params int[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetColorAssignment(), value, SupportedGames1);
-    public TSelf WithColor(IEnumerable<int> values) => WithColor(values.ToArray());
+    public TSelf WithCstValues(params int[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetCstValuesAssignment(), value, SupportedGames1);
+    public TSelf WithCstValues(IEnumerable<int> values) => WithCstValues(values.ToArray());
     public TSelf WithCsts(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetCstsAssignment(), value, SupportedGames1);
     public TSelf WithCsts(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst> values) => WithCsts(values.ToArray());
     public TSelf WithLink(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetLinkAssignment(), value, SupportedGames1);
-    public TSelf WithMaterialName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetMaterialNameAssignment(), value, SupportedGames1);
     public TSelf WithModel(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetModelAssignment(), value, SupportedGames1);
+    public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetNameAssignment(), value, SupportedGames1);
     public TSelf WithSurfacePhysicId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfacePhysicIdAssignment(), value, SupportedGames1);
     public TSelf WithUvAnims(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUvAnimsAssignment(), value, SupportedGames1);
     public TSelf WithUvAnims(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim> values) => WithUvAnims(values.ToArray());
+    public TSelf WithVisibleIds(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetVisibleIdsAssignment(), value, SupportedGames1);
+    public TSelf WithVisibleIds(IEnumerable<string> values) => WithVisibleIds(values.ToArray());
 }
 public abstract class CPlugMaterialUserInstBuilderMembers1<TSelf> : CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlugMaterialUserInstBuilderMembers1<TSelf>
 {
@@ -33,6 +35,8 @@ public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMateria
     private protected CPlugMaterialUserInstBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
     public TSelf WithHidingGroup(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetHidingGroupAssignment(), value, SupportedGames2);
     public TSelf WithIsNatural(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsNaturalAssignment(), value, SupportedGames2);
+    public TSelf WithTextureAtlas(global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureAtlasAssignment(), value, SupportedGames2);
+    public TSelf WithTextureAtlasReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmapAtlas> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureAtlasReferenceAssignment(), value, SupportedGames2);
     public TSelf WithTextureSizeInMeters(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureSizeInMetersAssignment(), value, SupportedGames2);
     public TSelf WithTilingU(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingUAssignment(), value, SupportedGames2);
     public TSelf WithTilingV(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingVAssignment(), value, SupportedGames2);
@@ -80,6 +84,7 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
     public partial class MP4 : CPlugMaterialUserInstBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
+        public MP4 WithTextureAtlas(global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasMP4? value) => base.WithTextureAtlas(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapAtlas?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
@@ -89,6 +94,7 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
         public TM2020 WithIsUsingGameMaterial(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsUsingGameMaterialAssignment(), value, SupportedGames3);
         public TM2020 WithSurfaceGameplayId(global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfaceGameplayIdAssignment(), value, SupportedGames3);
+        public TM2020 WithTextureAtlas(global::GBX.NET.Interfaces.Plug.IPlugBitmapAtlasTM2020? value) => base.WithTextureAtlas(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmapAtlas?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmapAtlas node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build() => BuildNode(CPlugMaterialUserInstBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);

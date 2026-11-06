@@ -7,35 +7,126 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CSceneFxDistor2dBuilderBase() { }
     private protected CSceneFxDistor2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBitmapDistor(global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorAssignment(), value, SupportedGames1);
     public TSelf WithBitmapDistorReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorReferenceAssignment(), value, SupportedGames1);
     public TSelf WithDistorScale(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetDistorScaleAssignment(), value, SupportedGames1);
+}
+public abstract class CSceneFxDistor2dBuilderMembers1<TSelf> : CSceneFxDistor2dBuilderBase<TSelf> where TSelf : CSceneFxDistor2dBuilderMembers1<TSelf>
+{
+    private protected CSceneFxDistor2dBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+    public TSelf WithWantPreLoad(bool value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBuilderAssignments.GetWantPreLoadAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT);
 }
 public partial class CSceneFxDistor2dBuilder : CSceneFxDistor2dBuilderBase<CSceneFxDistor2dBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneFxDistor2d CreateRecipe0(GameVersion game)
     {
+        var node = CreateRecipe1(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDistor2d CreateRecipe1(GameVersion game)
+    {
         var node = new global::GBX.NET.Engines.Scene.CSceneFxDistor2d();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001());
         return node;
     }
+    private static global::GBX.NET.Engines.Scene.CSceneFxDistor2d CreateRecipe2(GameVersion game)
+    {
+        var node = CreateRecipe1(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneFx.Chunk0A072002());
+        return node;
+    }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TM10 : CSceneFxDistor2dBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TM10 WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TMPU : CSceneFxDistor2dBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TMPU WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TMSX : CSceneFxDistor2dBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TMSX WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TMNESWC : CSceneFxDistor2dBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TMNESWC WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
     public partial class TMU : CSceneFxDistor2dBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
         public TMU WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
     }
-    public partial class TMF : CSceneFxDistor2dBuilderBase<TMF>
+    public partial class VSK5 : CSceneFxDistor2dBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public VSK5 WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TMF : CSceneFxDistor2dBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
         public TMF WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TMT : CSceneFxDistor2dBuilderMembers1<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TMT WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class MP4 : CSceneFxDistor2dBuilderMembers1<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public MP4 WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
+    }
+    public partial class TM2020 : CSceneFxDistor2dBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) : base(state) { }
+        public TM2020 WithBitmapDistor(global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020? value) => base.WithBitmapDistor(value is null ? (global::GBX.NET.Engines.Plug.CPlugShaderApply?)null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build() => BuildNode(CSceneFxDistor2dBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node);
     }
 }

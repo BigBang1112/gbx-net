@@ -3,11 +3,6 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IMwCmdExpClassIdentMembers1 : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassIdent
-{
-    string? Ident { get; set; }
-}
 public partial interface IMwCmdExpClassIdent : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassIdent>, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClass
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,6 +12,7 @@ public partial interface IMwCmdExpClassIdent : IClassVersion<global::GBX.NET.Eng
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
+    string? Ident { get; set; }
 }
 
 public partial interface IMwCmdExpClassIdentTM10 : IMwCmdExpClassIdent, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTM10
@@ -35,7 +31,7 @@ public partial interface IMwCmdExpClassIdentTMNESWC : IMwCmdExpClassIdent, globa
 {
 }
 
-public partial interface IMwCmdExpClassIdentTMU : IMwCmdExpClassIdent, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassIdentMembers1
+public partial interface IMwCmdExpClassIdentTMU : IMwCmdExpClassIdent, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMU
 {
 }
 
@@ -43,7 +39,7 @@ public partial interface IMwCmdExpClassIdentVSK5 : IMwCmdExpClassIdent, global::
 {
 }
 
-public partial interface IMwCmdExpClassIdentTMF : IMwCmdExpClassIdent, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMF, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassIdentMembers1
+public partial interface IMwCmdExpClassIdentTMF : IMwCmdExpClassIdent, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpClassTMF
 {
 }
 

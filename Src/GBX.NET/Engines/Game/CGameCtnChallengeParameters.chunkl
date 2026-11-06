@@ -81,7 +81,7 @@ CGameCtnChallengeParameters 0x0305B000 // Map parameters.
   string MapType
   string MapStyle
 
-0x00D [MP3, TMT, MP4] // RaceValidateGhost
+0x00D (retired: TM2020) [MP3, TMT, MP4, TM2020] // RaceValidateGhost
   CGameCtnGhost RaceValidateGhost
 
 0x00E (skippable) [MP3, TMT, MP4, TM2020] // map type

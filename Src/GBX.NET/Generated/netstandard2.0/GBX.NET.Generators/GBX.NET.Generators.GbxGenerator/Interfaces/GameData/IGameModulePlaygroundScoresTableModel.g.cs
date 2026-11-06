@@ -12,6 +12,10 @@ public partial interface IGameModulePlaygroundScoresTableModel : IClassVersion<g
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
+}
+
+public partial interface IGameModulePlaygroundScoresTableModelMP4 : IGameModulePlaygroundScoresTableModel, global::GBX.NET.Interfaces.GameData.IGameModulePlaygroundModelMP4
+{
     int ColumnCount { get; set; }
     float ColumnMargin { get; set; }
     global::GBX.NET.Engines.GameData.CGameModulePlaygroundScoresTableModel.Column[]? Columns { get; set; }
@@ -70,7 +74,7 @@ public partial interface IGameModulePlaygroundScoresTableModel : IClassVersion<g
     bool UseTeams { get; set; }
 }
 
-public partial interface IGameModulePlaygroundScoresTableModelMP4 : IGameModulePlaygroundScoresTableModel, global::GBX.NET.Interfaces.GameData.IGameModulePlaygroundModelMP4
+public partial interface IGameModulePlaygroundScoresTableModelTM2020 : IGameModulePlaygroundScoresTableModel, global::GBX.NET.Interfaces.GameData.IGameModulePlaygroundModelTM2020
 {
 }
 

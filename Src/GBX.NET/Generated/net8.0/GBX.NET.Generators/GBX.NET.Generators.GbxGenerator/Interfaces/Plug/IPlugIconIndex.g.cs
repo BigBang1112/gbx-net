@@ -7,7 +7,15 @@ public partial interface IPlugIconIndex : IClassVersion<global::GBX.NET.Engines.
 {
 }
 
+public partial interface IPlugIconIndexTMT : IPlugIconIndex
+{
+}
+
 public partial interface IPlugIconIndexMP4 : IPlugIconIndex
+{
+}
+
+public partial interface IPlugIconIndexTM2020 : IPlugIconIndex
 {
 }
 

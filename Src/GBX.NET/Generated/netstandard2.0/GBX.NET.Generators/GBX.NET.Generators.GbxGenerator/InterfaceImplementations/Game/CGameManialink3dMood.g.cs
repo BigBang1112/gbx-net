@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManialink3dMood : global::GBX.NET.Interfaces.Game.IGameManialink3dMood, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020
+public partial class CGameManialink3dMood : global::GBX.NET.Interfaces.Game.IGameManialink3dMood, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020
 {
 }

@@ -3,6 +3,17 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEnumMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlEnum where T0 : class
+{
+    int DisplayType { get; set; }
+    T0? FuncEnum
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    bool IsLooping { get; set; }
+}
 public partial interface IControlEnum : IClassVersion<global::GBX.NET.Engines.Control.CControlEnum>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,9 +25,13 @@ public partial interface IControlEnum : IClassVersion<global::GBX.NET.Engines.Co
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlEnumTM10 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlEnumTM10 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTM10>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -34,9 +49,13 @@ public partial interface IControlEnumTM10 : IControlEnum, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlEnumTMPU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlEnumTMPU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -54,9 +73,13 @@ public partial interface IControlEnumTMPU : IControlEnum, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlEnumTMSX : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlEnumTMSX : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -74,9 +97,13 @@ public partial interface IControlEnumTMSX : IControlEnum, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -94,15 +121,8 @@ public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU
+public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMU>
 {
-    int DisplayType { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? FuncEnum
-    {
-        get => (global::GBX.NET.Interfaces.Function.IFuncEnumTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum);
-        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).FuncEnum = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    bool IsLooping { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
@@ -125,9 +145,13 @@ public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -145,7 +169,7 @@ public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interf
     }
 }
 
-public partial interface IControlEnumTMF : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlEnumTMF : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
     {
@@ -189,9 +213,13 @@ public partial interface IControlEnumMP3 : IControlEnum, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlEnumTMT : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlEnumTMT : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlEnum)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlEnum)this).LegacyStyle);
@@ -209,7 +237,7 @@ public partial interface IControlEnumTMT : IControlEnum, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -233,7 +261,7 @@ public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfa
     }
 }
 
-public partial interface IControlEnumTM2020 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM2020
+public partial interface IControlEnumTM2020 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

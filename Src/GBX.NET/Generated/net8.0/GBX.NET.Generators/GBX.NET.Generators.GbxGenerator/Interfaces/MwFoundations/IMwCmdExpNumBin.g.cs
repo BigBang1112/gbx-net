@@ -16,6 +16,22 @@ public partial interface IMwCmdExpNumBin : IClassVersion<global::GBX.NET.Engines
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
+public partial interface IMwCmdExpNumBinTM10 : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTM10
+{
+}
+
+public partial interface IMwCmdExpNumBinTMPU : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMPU
+{
+}
+
+public partial interface IMwCmdExpNumBinTMSX : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMSX
+{
+}
+
+public partial interface IMwCmdExpNumBinTMNESWC : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMNESWC
+{
+}
+
 public partial interface IMwCmdExpNumBinTMU : IMwCmdExpNumBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU
 {
 }

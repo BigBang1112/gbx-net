@@ -3,13 +3,30 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhyMaterialsMembers1 : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials
+{
+    int[]? MaterialIndices { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhyMaterialsMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials where T0 : class
+{
+    new IReadOnlyList<T0>? Materials { get; set; }
+}
 public partial interface IPlugCharPhyMaterials : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterial>? Materials { get; set; }
 }
 
-public partial interface IPlugCharPhyMaterialsTM2020 : IPlugCharPhyMaterials
+public partial interface IPlugCharPhyMaterialsTMT : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>? Materials { get; set; }
+}
+
+public partial interface IPlugCharPhyMaterialsMP4 : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4>
+{
+}
+
+public partial interface IPlugCharPhyMaterialsTM2020 : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>
+{
 }
 

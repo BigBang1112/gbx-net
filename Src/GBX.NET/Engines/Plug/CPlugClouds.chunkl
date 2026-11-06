@@ -34,7 +34,7 @@ CPlugClouds 0x09180000
   CPlugSolid[] SolidFids
   CPlugCloudsParam CloudsParam
 
-0x007 // images, material, solids and parameters
+0x007 [TM2020] // images, material, solids and parameters
   CPlugFileImg ImageColorMin
   CPlugFileImg ImageColorMax
   CPlugMaterial MaterialModelToForce

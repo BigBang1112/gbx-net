@@ -7,7 +7,7 @@ public abstract class CPlugBeamEmitterModelBuilderBase<TSelf> : NodeBuilder<glob
 {
     private protected CPlugBeamEmitterModelBuilderBase() { }
     private protected CPlugBeamEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) : base(state) { }
-    public TSelf WithSubModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilderAssignments.GetSubModelsAssignment(), value, GameVersion.MP4);
+    public TSelf WithSubModels(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilderAssignments.GetSubModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TSelf WithSubModels(params global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel[] values) => WithSubModels(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(values));
     public TSelf WithSubModels(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel> values) => WithSubModels(values.ToArray());
 }
@@ -19,9 +19,20 @@ public partial class CPlugBeamEmitterModelBuilder : CPlugBeamEmitterModelBuilder
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel.Chunk090B4002() { Version = 0 });
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugBeamEmitterModelBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) : base(state) { }
+        public TMT WithSubModels(params global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT[] values) => base.WithSubModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>(values, false));
+        public TMT WithSubModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT> values) => WithSubModels(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel Build() => BuildNode(CPlugBeamEmitterModelBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node);
+    }
     public partial class MP4 : CPlugBeamEmitterModelBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) : base(state) { }
@@ -29,6 +40,15 @@ public partial class CPlugBeamEmitterModelBuilder : CPlugBeamEmitterModelBuilder
         public MP4 WithSubModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4> values) => WithSubModels(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel Build() => BuildNode(CPlugBeamEmitterModelBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node);
+    }
+    public partial class TM2020 : CPlugBeamEmitterModelBuilderBase<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) : base(state) { }
+        public TM2020 WithSubModels(params global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020[] values) => base.WithSubModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>(values, false));
+        public TM2020 WithSubModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020> values) => WithSubModels(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel Build() => BuildNode(CPlugBeamEmitterModelBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node);
     }
 }

@@ -20,8 +20,26 @@ internal static class CVisPostFx_MotionBlurBuilderAssignments
     private static NodeBuilderProperty<float>? cached3;
     internal static NodeBuilderProperty<float> GetT2_MotionScaleAssignment() => cached3 ??= new("T2_MotionScale", new Action<object, float>(Assign3));
     private static void Assign3(object node, float value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).T2_MotionScale = value;
-    private static NodeBuilderProperty<int>? cached4;
-    internal static NodeBuilderProperty<int> GetTechniqueAssignment() => cached4 ??= new("Technique", new Action<object, int>(Assign4));
-    private static void Assign4(object node, int value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).Technique = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached4;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetT3_BitmapDepthAssignment() => cached4 ??= new("T3_BitmapDepth", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign4));
+    private static void Assign4(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).T3_BitmapDepth = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached4Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetT3_BitmapDepthReferenceAssignment() => cached4Reference ??= new("T3_BitmapDepth", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
+    private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).References.T3_BitmapDepth.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached5;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetT3_BitmapMotionAssignment() => cached5 ??= new("T3_BitmapMotion", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign5));
+    private static void Assign5(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).T3_BitmapMotion = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached5Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetT3_BitmapMotionReferenceAssignment() => cached5Reference ??= new("T3_BitmapMotion", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
+    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).References.T3_BitmapMotion.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetT3_PHlsl_MotionBlurAssignment() => cached6 ??= new("T3_PHlsl_MotionBlur", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign6));
+    private static void Assign6(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).T3_PHlsl_MotionBlur = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached6Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetT3_PHlsl_MotionBlurReferenceAssignment() => cached6Reference ??= new("T3_PHlsl_MotionBlur", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy0));
+    private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).References.T3_PHlsl_MotionBlur.CopyFrom(value);
+    private static NodeBuilderProperty<int>? cached7;
+    internal static NodeBuilderProperty<int> GetTechniqueAssignment() => cached7 ??= new("Technique", new Action<object, int>(Assign7));
+    private static void Assign7(object node, int value) => ((global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)node).Technique = value;
     private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> Copy0(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(value); return copy; }
 }

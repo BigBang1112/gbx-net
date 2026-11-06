@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlListConstructionMembers1 : global::GBX.NET.Interfaces.Control.IControlListConstruction
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleNotValid { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleValid { get; set; }
+}
 public partial interface IControlListConstruction : IClassVersion<global::GBX.NET.Engines.Control.CControlListConstruction>, global::GBX.NET.Interfaces.Control.IControlList
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,14 +20,18 @@ public partial interface IControlListConstruction : IClassVersion<global::GBX.NE
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlListConstructionTM10 : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTM10
+public partial interface IControlListConstructionTM10 : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTM10, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);
@@ -39,14 +49,18 @@ public partial interface IControlListConstructionTM10 : IControlListConstruction
     }
 }
 
-public partial interface IControlListConstructionTMPU : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMPU
+public partial interface IControlListConstructionTMPU : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMPU, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);
@@ -64,14 +78,18 @@ public partial interface IControlListConstructionTMPU : IControlListConstruction
     }
 }
 
-public partial interface IControlListConstructionTMSX : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMSX
+public partial interface IControlListConstructionTMSX : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMSX, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);
@@ -89,14 +107,18 @@ public partial interface IControlListConstructionTMSX : IControlListConstruction
     }
 }
 
-public partial interface IControlListConstructionTMNESWC : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMNESWC
+public partial interface IControlListConstructionTMNESWC : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMNESWC, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);
@@ -114,7 +136,7 @@ public partial interface IControlListConstructionTMNESWC : IControlListConstruct
     }
 }
 
-public partial interface IControlListConstructionTMU : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMU
+public partial interface IControlListConstructionTMU : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMU, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript
     {
@@ -141,18 +163,20 @@ public partial interface IControlListConstructionTMU : IControlListConstruction,
         get => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlListConstruction)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleNotValid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? StyleValid { get; set; }
 }
 
-public partial interface IControlListConstructionVSK5 : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListVSK5
+public partial interface IControlListConstructionVSK5 : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListVSK5, global::GBX.NET.Interfaces.Control.IControlListConstructionMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript
     {
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript);
         set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);
@@ -223,7 +247,11 @@ public partial interface IControlListConstructionMP3 : IControlListConstruction,
 public partial interface IControlListConstructionTMT : IControlListConstruction, global::GBX.NET.Interfaces.Control.IControlListTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlListConstruction)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlListConstruction)this).LegacyStyle);

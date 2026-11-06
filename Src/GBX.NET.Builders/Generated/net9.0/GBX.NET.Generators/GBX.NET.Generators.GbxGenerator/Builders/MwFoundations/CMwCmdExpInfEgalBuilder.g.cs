@@ -7,7 +7,7 @@ public abstract class CMwCmdExpInfEgalBuilderBase<TSelf> : NodeBuilder<global::G
 {
     private protected CMwCmdExpInfEgalBuilderBase() { }
     private protected CMwCmdExpInfEgalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU;
     public TSelf WithValue1(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, SupportedGames1);
     public TSelf WithValue1Reference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1ReferenceAssignment(), value, SupportedGames1);
     public TSelf WithValue2(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, SupportedGames1);
@@ -18,24 +18,62 @@ public partial class CMwCmdExpInfEgalBuilder : CMwCmdExpInfEgalBuilderBase<CMwCm
     private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal();
+        node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal();
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000());
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TM10 : CMwCmdExpInfEgalBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
+    }
+    public partial class TMPU : CMwCmdExpInfEgalBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
+    }
+    public partial class TMSX : CMwCmdExpInfEgalBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
+    }
+    public partial class TMNESWC : CMwCmdExpInfEgalBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
+    }
     public partial class TMU : CMwCmdExpInfEgalBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
     }
     public partial class TMF : CMwCmdExpInfEgalBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpInfEgalTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal Build() => BuildNode(CMwCmdExpInfEgalBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdExpInfEgal node);
     }
 }

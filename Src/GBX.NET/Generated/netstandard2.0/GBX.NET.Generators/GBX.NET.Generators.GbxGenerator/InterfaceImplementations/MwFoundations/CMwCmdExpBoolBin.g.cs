@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.MwFoundations;
 
-public partial class CMwCmdExpBoolBin : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMF
+public partial class CMwCmdExpBoolBin : global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBin, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTM10, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMPU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMU, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolBinTMF
 {
 }

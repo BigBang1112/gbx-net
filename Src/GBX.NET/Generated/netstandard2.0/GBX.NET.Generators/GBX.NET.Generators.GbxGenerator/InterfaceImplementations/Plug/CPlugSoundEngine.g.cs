@@ -5,22 +5,42 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugSoundEngine : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngineTM2020
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>.Components
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMSX>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMSX>.Components
+    {
+        get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMSX>(GetComponentsInterfaceReferences, true, "Components");
+        set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMSX>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMNESWC>.Components
+    {
+        get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMNESWC>(GetComponentsInterfaceReferences, true, "Components");
+        set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMNESWC>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>.Components
     {
         get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>(GetComponentsInterfaceReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>.Components
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentVSK5>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentVSK5>.Components
+    {
+        get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentVSK5>(GetComponentsInterfaceReferences, true, "Components");
+        set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentVSK5>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>.Components
     {
         get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>(GetComponentsInterfaceReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>.Components
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMT>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMT>.Components
+    {
+        get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMT>(GetComponentsInterfaceReferences, true, "Components");
+        set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTMT>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>.Components
     {
         get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>(GetComponentsInterfaceReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>.Components
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSoundEngineMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>.Components
     {
         get => Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>(GetComponentsInterfaceReferences, true, "Components");
         set => Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, global::GBX.NET.Interfaces.Plug.IPlugSoundComponentTM2020>(value, false));

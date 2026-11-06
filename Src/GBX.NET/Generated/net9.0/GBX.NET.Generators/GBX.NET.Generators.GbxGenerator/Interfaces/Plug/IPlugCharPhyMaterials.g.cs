@@ -3,6 +3,20 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhyMaterialsMembers1 : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials
+{
+    int[]? MaterialIndices { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhyMaterialsMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials where T0 : class
+{
+    new IReadOnlyList<T0>? Materials
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).Materials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, T0>(((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).GetMaterialsInterfaceReferences, true, "Materials");
+        set => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, T0>(value, false));
+    }
+}
 public partial interface IPlugCharPhyMaterials : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterial>? Materials
@@ -12,12 +26,15 @@ public partial interface IPlugCharPhyMaterials : IClassVersion<global::GBX.NET.E
     }
 }
 
-public partial interface IPlugCharPhyMaterialsTM2020 : IPlugCharPhyMaterials
+public partial interface IPlugCharPhyMaterialsTMT : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>? Materials
-    {
-        get => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).Materials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>(((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).GetMaterialsInterfaceReferences, true, "Materials");
-        set => ((global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials)this).Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>(value, false));
-    }
+}
+
+public partial interface IPlugCharPhyMaterialsMP4 : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers1, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4>
+{
+}
+
+public partial interface IPlugCharPhyMaterialsTM2020 : IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMembers2<global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020>
+{
 }
 

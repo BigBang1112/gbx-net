@@ -7,7 +7,7 @@ public abstract class CPlugAnimClipBuilderBase<TSelf> : NodeBuilder<global::GBX.
 {
     private protected CPlugAnimClipBuilderBase() { }
     private protected CPlugAnimClipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithBaked(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedAssignment(), value, SupportedGames1);
     public TSelf WithBakedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetBakedReferenceAssignment(), value, SupportedGames1);
     public TSelf WithEdition(global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimClipBuilderAssignments.GetEditionAssignment(), value, SupportedGames1);
@@ -24,7 +24,19 @@ public partial class CPlugAnimClipBuilder : CPlugAnimClipBuilderBase<CPlugAnimCl
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimClip.Chunk09135000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimClipBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state) : base(state) { }
+        public MP4 WithBaked(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4? value) => base.WithBaked(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithEdition(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEditionMP4? value) => base.WithEdition(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimClipMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimClip Build() => BuildNode(CPlugAnimClipBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimClip node);
+    }
     public partial class TM2020 : CPlugAnimClipBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimClip> state) : base(state) { }

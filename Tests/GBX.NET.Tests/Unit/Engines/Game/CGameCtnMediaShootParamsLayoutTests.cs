@@ -90,7 +90,7 @@ public class CGameCtnMediaShootParamsLayoutTests
         var chunk = new CGameCtnMediaShootParams.Chunk03060002(GameVersion.TM2020);
 
         await Assert.That(chunk.Version).IsEqualTo(1);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
         await RoundTrip(payload, rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(version);
         await Assert.That((int)node.MotionBlur).IsEqualTo(motionBlur);
@@ -203,9 +203,7 @@ public class CGameCtnMediaShootParamsLayoutTests
             VideoEncoding = new() { Version = 7, Bitrate = 8192 },
             AudioEncoding = new() { Version = 3, VbrQuality = 0.5f }
         };
-#pragma warning disable GBXNET10001
         var clone = (CGameCtnMediaShootParams)node.DeepClone();
-#pragma warning restore GBXNET10001
 
         await Assert.That(clone.MotionBlur).IsEqualTo(node.MotionBlur);
         await Assert.That(clone.Stereo3d).IsEqualTo(node.Stereo3d);

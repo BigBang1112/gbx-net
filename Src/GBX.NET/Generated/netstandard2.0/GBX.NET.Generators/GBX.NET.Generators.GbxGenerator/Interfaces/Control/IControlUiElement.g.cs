@@ -19,37 +19,37 @@ public partial interface IControlUiElement : IClassVersion<global::GBX.NET.Engin
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlUiElementTM10 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTM10
+public partial interface IControlUiElementTM10 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTM10, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementTMPU : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMPU
+public partial interface IControlUiElementTMPU : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMPU, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementTMSX : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMSX
+public partial interface IControlUiElementTMSX : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMSX, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementTMNESWC : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMNESWC
+public partial interface IControlUiElementTMNESWC : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMNESWC, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
@@ -64,10 +64,10 @@ public partial interface IControlUiElementTMU : IControlUiElement, global::GBX.N
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementVSK5 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormVSK5
+public partial interface IControlUiElementVSK5 : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormVSK5, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -91,10 +91,10 @@ public partial interface IControlUiElementMP3 : IControlUiElement, global::GBX.N
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlUiElementTMT : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMT
+public partial interface IControlUiElementTMT : IControlUiElement, global::GBX.NET.Interfaces.Control.IControlFormTMT, global::GBX.NET.Interfaces.Control.IControlUiElementMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }

@@ -11,3 +11,7 @@ public partial interface IGameModuleModelCommonMP4 : IGameModuleModelCommon
 {
 }
 
+public partial interface IGameModuleModelCommonTM2020 : IGameModuleModelCommon
+{
+}
+

@@ -3,6 +3,6 @@ CMwCmdExpNumBin 0x01053000
 
 0x01046000 [TMU, TMF] // Type
 
-0x000 [TMU, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF]
   CMwCmdExp Value1
   CMwCmdExp Value2

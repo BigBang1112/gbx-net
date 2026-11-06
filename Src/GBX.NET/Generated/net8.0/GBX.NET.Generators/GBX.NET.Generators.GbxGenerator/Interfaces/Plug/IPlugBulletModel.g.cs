@@ -4,56 +4,98 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugBulletModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugBulletModel where T0 : class where T1 : class where T2 : class
+public interface IPlugBulletModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBulletModel
 {
-    new T0? BitmapCrosshair
+    PlugCurve? DamageAttenuationFromDist { get; set; }
+    bool DamageAttenuationWithDist { get; set; }
+    int DirectHitDamageValue { get; set; }
+    bool ExplosionBlowOnAllPlayers { get; set; }
+    float ExplosionElectroPulseValue { get; set; }
+    bool FireBulletPattern_OnlyVisual { get; set; }
+    float FlareAttractionRadius { get; set; }
+    float FlareExplosionRadius { get; set; }
+    float GuidedAngularSpeed { get; set; }
+    int GuidedMinLifeTime { get; set; }
+    float GuidedRollAngleMax { get; set; }
+    int HomingLockDuration { get; set; }
+    bool IsFlare { get; set; }
+    bool IsIce { get; set; }
+    bool IsWard { get; set; }
+    bool MultiSphereDetection { get; set; }
+    float Sm_Recoil { get; set; }
+    float WardRadius { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBulletModelMembers2<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugBulletModel where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    new T0? BeamVisualModel
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair);
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? BitmapCrosshair
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T0? BitmapCrosshairTriLaser
+    new T1? BitmapCrosshairTriLaser
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T0? BitmapLasersight
+    new T1? BitmapLasersight
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight);
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T0? Icon
+    new T2? ExplosionBullet
     {
-        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon);
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? ExplosionSurface
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Icon
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T1? ParticleModelAlive
+    new T2? ImpactBounce
     {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive);
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T3? ParticleModelAlive
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T1? ParticleModelFire
+    new T3? ParticleModelFire
     {
-        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire);
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T2? SoundAlive
+    new T4? SoundAlive
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive);
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T2? SoundFire
+    new T4? SoundFire
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire);
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T2? SoundGauge
+    new T4? SoundGauge
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge);
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new T2? SoundReloading
+    new T4? SoundReloading
     {
-        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading);
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading);
         set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }
@@ -87,14 +129,10 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float BulletVsRadiusMargin { get; set; }
     int ChargeDurationFull { get; set; }
     int ChargeDurationStop { get; set; }
-    PlugCurve? DamageAttenuationFromDist { get; set; }
-    bool DamageAttenuationWithDist { get; set; }
     int DefuserFirePeriod { get; set; }
     int DefuserMissAmmoLoss { get; set; }
-    int DirectHitDamageValue { get; set; }
     byte EndLifeWithoutExplosionOnMaterialId { get; set; }
     int EnergyGainDelay { get; set; }
-    bool ExplosionBlowOnAllPlayers { get; set; }
     float ExplosionBlowRadius { get; set; }
     float ExplosionBlowRadiusAttenuation { get; set; }
     float ExplosionBlowValue { get; set; }
@@ -109,7 +147,6 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     int ExplosionDamageValue { get; set; }
     float ExplosionDetectionRadius_Flying { get; set; }
     float ExplosionDetectionRadius_Resting { get; set; }
-    float ExplosionElectroPulseValue { get; set; }
     PlugCurve? ExplosionEnergyFromLifeTime { get; set; }
     float ExplosionEnergyWhenOccluded { get; set; }
     int ExplosionOccultationTest { get; set; }
@@ -132,7 +169,6 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     Vec3[]? FireBulletPattern_GrowingOffset_Offsets { get; set; }
     float FireBulletPattern_InitialBlendDuration { get; set; }
     int FireBulletPattern_Mode { get; set; }
-    bool FireBulletPattern_OnlyVisual { get; set; }
     bool FireBulletPattern_RotateOddBulletsCounterClockwise { get; set; }
     int FireBulletPattern_SpiralHatchetNet_BulletCount { get; set; }
     float FireBulletPattern_SpiralHatchetNet_Radius { get; set; }
@@ -141,19 +177,13 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     int FireEnergyCost { get; set; }
     int FireMaxEnergyStorage { get; set; }
     int FirePeriod { get; set; }
-    float FlareAttractionRadius { get; set; }
-    float FlareExplosionRadius { get; set; }
     float FluidFriction { get; set; }
-    float GuidedAngularSpeed { get; set; }
-    int GuidedMinLifeTime { get; set; }
-    float GuidedRollAngleMax { get; set; }
     float GunSpeedCoef { get; set; }
     float GunSpeedCoefRatioMax { get; set; }
     float GunSpeedCoefRatioMin { get; set; }
     float HiddenDist { get; set; }
     bool HoldTriggerToPower { get; set; }
     float HomingDist { get; set; }
-    int HomingLockDuration { get; set; }
     float HomingMaxAngularSpeed { get; set; }
     float HomingPeriod { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? Icon
@@ -168,13 +198,9 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     }
     float ImpactBouncingN { get; set; }
     float ImpactBouncingT { get; set; }
-    bool IsFlare { get; set; }
-    bool IsIce { get; set; }
-    bool IsWard { get; set; }
     float LifeTime { get; set; }
     float LifeTimeAfterFirstImpact { get; set; }
     float Mass { get; set; }
-    bool MultiSphereDetection { get; set; }
     string? Name { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? ParticleModelAlive
     {
@@ -202,7 +228,6 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float Sm_OtherHitThisBulletBonusAmmoCount { get; set; }
     int Sm_OtherHitThisBulletBonusDuration { get; set; }
     int Sm_ProtectDuration { get; set; }
-    float Sm_Recoil { get; set; }
     int Sm_SpChargeDuration { get; set; }
     int Sm_SpInactivityDelayBeforeCharge { get; set; }
     string? Sm_SpModelName { get; set; }
@@ -244,38 +269,17 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float TriLaserRadiusAtOneMeter_Zoom1 { get; set; }
     float VisualOffsetDuration { get; set; }
     Vec3 VisualOffsetFirstPerson { get; set; }
-    float WardRadius { get; set; }
 }
 
-public partial interface IPlugBulletModelMP4 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
+public partial interface IPlugBulletModelTMT : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? BeamVisualModel
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel);
-        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionBullet
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet);
-        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionSurface
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface);
-        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ImpactBounce
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce);
-        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }
 
-public partial interface IPlugBulletModelTM2020 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+public partial interface IPlugBulletModelMP4 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
-    new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? BeamVisualModel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionBullet { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ExplosionSurface { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel? ImpactBounce { get; set; }
+}
+
+public partial interface IPlugBulletModelTM2020 : IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+{
 }
 

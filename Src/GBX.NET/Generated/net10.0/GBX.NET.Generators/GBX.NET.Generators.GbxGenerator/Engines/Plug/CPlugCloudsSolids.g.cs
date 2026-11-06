@@ -62,9 +62,11 @@ public partial class CPlugCloudsSolids : CFunc, IClass
     /// CPlugCloudsSolids 0x000 chunk (SolidFids)
     /// </summary>
     [Chunk(0x09183000, "SolidFids")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09183000 : Chunk<CPlugCloudsSolids>
     {
         public override uint Id => 0x09183000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -81,9 +83,11 @@ public partial class CPlugCloudsSolids : CFunc, IClass
     /// CPlugCloudsSolids 0x001 chunk (GridSizeXZ)
     /// </summary>
     [Chunk(0x09183001, "GridSizeXZ")]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09183001 : Chunk<CPlugCloudsSolids>
     {
         public override uint Id => 0x09183001;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

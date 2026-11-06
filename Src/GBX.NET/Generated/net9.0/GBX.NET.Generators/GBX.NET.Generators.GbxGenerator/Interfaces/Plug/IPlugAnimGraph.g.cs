@@ -8,6 +8,10 @@ public partial interface IPlugAnimGraph : IClassVersion<global::GBX.NET.Engines.
     global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph? Graph { get; set; }
 }
 
+public partial interface IPlugAnimGraphMP4 : IPlugAnimGraph
+{
+}
+
 public partial interface IPlugAnimGraphTM2020 : IPlugAnimGraph
 {
 }

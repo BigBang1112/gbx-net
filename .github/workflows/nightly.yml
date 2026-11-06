@@ -17,22 +17,32 @@ jobs:
     - uses: actions/checkout@v6
       with:
         ref: dev
-    
+        fetch-depth: 0 # Full history for the commit count in the version suffix
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
-      
+
+    # Derived from the commit, not the build time, so rebuilding the same commit
+    # yields the same version and --skip-duplicate skips it. The commit count is
+    # numeric and increases with every commit, so same-day builds order correctly.
+    # The commit hash is already in AssemblyInformationalVersion and the nuspec.
+    - name: Compute version suffix
+      run: |
+        commit_date=$(TZ=UTC git log -1 --format=%cd --date=format-local:%Y%m%d)
+        commit_count=$(git rev-list --count HEAD)
+        echo "VERSION_SUFFIX=nightly.${commit_date}.${commit_count}" >> "$GITHUB_ENV"
+
     - name: Build
       run: |
-        git_hash=$(git rev-parse HEAD)
-        dotnet build Src/GBX.NET -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet build Src/GBX.NET.Tool -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet build Src/GBX.NET.Tool.CLI -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet build Src/GBX.NET.PAK -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet build Src/GBX.NET.ZLib -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet build Src/GBX.NET.Crypto -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
-        dotnet pack Templates -c Release -p:ContinuousIntegrationBuild=true --version-suffix nightly.$(date +'%Y%m%d').c${git_hash::7}
+        dotnet build Src/GBX.NET -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet build Src/GBX.NET.Tool -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet build Src/GBX.NET.Tool.CLI -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet build Src/GBX.NET.PAK -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet build Src/GBX.NET.ZLib -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet build Src/GBX.NET.Crypto -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
+        dotnet pack Templates -c Release -p:ContinuousIntegrationBuild=true --version-suffix "$VERSION_SUFFIX"
 
     - name: Publish nightly GBX.NET nupkg to nuget.gbx.tools
       run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k ${{ secrets.NUGET_GBXTOOLS_API_KEY }} -s https://nuget.gbx.tools/v3/index.json --skip-duplicate

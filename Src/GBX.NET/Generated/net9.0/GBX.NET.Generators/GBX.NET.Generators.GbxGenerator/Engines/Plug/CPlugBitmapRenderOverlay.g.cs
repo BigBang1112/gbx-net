@@ -35,9 +35,11 @@ public partial class CPlugBitmapRenderOverlay : CPlugBitmapRender, IClass
     /// CPlugBitmapRenderOverlay 0x000 chunk (IsOverlaySelfBlur)
     /// </summary>
     [Chunk(0x0909E000, "IsOverlaySelfBlur")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0909E000 : Chunk<CPlugBitmapRenderOverlay>
     {
         public override uint Id => 0x0909E000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

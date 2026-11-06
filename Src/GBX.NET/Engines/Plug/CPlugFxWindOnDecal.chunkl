@@ -1,13 +1,13 @@
 CPlugFxWindOnDecal 0x090D9000
 - inherits: CPlug
 
-0x000 // wind settings
-  int
-  float
-  float
-  float
-  float
-  float
-  float
-  float
-  float
+0x000 [TMT, MP4, TM2020] // wind settings
+  version
+  float Amplitude = 0.1f // maximum sideways displacement
+  float OscillationBlend = 0.5f // weight of the first oscillation; the second uses 1 minus this value
+  float OscillationFrequency1 = 0.5f // cycles per second, slowed down for taller sprites
+  float OscillationFrequency2 = 1.88f // cycles per second, slowed down for taller sprites
+  float SpatialVariation // strength of position-dependent amplitude modulation, from 0 to 1
+  float SpatialPeriod = 10f // distance over which the wind intensity pattern repeats
+  float WindSpeed = 1f // speed of the wind intensity pattern
+  float WindDirection = 0.125f // in turns; 0 points along +Z and 0.25 along +X

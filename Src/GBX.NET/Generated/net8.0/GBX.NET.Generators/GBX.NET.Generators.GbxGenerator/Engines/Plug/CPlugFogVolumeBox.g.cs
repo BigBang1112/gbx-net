@@ -25,11 +25,11 @@ public partial class CPlugFogVolumeBox : CPlugFogVolume, IClass
     /// CPlugFogVolumeBox 0x000 chunk
     /// </summary>
     [Chunk(0x090D5000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090D5000 : Chunk<CPlugFogVolumeBox>
     {
         public override uint Id => 0x090D5000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public float U01;
         public float U02 = 8;
 

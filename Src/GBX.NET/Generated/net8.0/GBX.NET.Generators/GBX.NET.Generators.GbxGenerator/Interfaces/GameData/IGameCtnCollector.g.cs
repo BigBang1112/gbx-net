@@ -11,7 +11,6 @@ public interface IGameCtnCollectorMembers1 : global::GBX.NET.Interfaces.GameData
     int IconQuarterRotationY { get; set; }
     bool IconUseAutoRender { get; set; }
     bool IsAdvanced { get; set; }
-    DateTime? LightmapComputeTime { get; set; }
     string? Name { get; set; }
     string? SkinDirectory { get; set; }
 }
@@ -33,15 +32,20 @@ public interface IGameCtnCollectorMembers3 : global::GBX.NET.Interfaces.GameData
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectorMembers4 : global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
-    global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
+    DateTime? LightmapComputeTime { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectorMembers5 : global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
-    string? ParentCollectorId { get; set; }
+    global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectorMembers6 : global::GBX.NET.Interfaces.GameData.IGameCtnCollector
+{
+    string? ParentCollectorId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectorMembers7 : global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
     global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
 }
@@ -54,47 +58,47 @@ public partial interface IGameCtnCollector : IClassVersion<global::GBX.NET.Engin
     string? PageName { get; set; }
 }
 
-public partial interface IGameCtnCollectorTM10 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4
+public partial interface IGameCtnCollectorTM10 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
 {
 }
 
-public partial interface IGameCtnCollectorTMPU : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3
+public partial interface IGameCtnCollectorTMPU : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4
 {
 }
 
-public partial interface IGameCtnCollectorTMSX : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorTMSX : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorTMNESWC : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorTMNESWC : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorTMU : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorTMU : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorVSK5 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorVSK5 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorTMF : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorTMF : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers3, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorMP3 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5
+public partial interface IGameCtnCollectorMP3 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
 {
 }
 
-public partial interface IGameCtnCollectorTMT : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
+public partial interface IGameCtnCollectorTMT : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers7
 {
 }
 
-public partial interface IGameCtnCollectorMP4 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
+public partial interface IGameCtnCollectorMP4 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers7
 {
 }
 
-public partial interface IGameCtnCollectorTM2020 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6
+public partial interface IGameCtnCollectorTM2020 : IGameCtnCollector, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers1, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers2, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers4, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers5, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers6, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMembers7
 {
     string? DefaultSkinName { get; set; }
     float IconPhase01 { get; set; }

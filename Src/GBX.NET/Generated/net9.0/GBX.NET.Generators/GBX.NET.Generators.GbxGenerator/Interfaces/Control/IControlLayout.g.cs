@@ -13,11 +13,35 @@ public partial interface IControlLayout : IClassVersion<global::GBX.NET.Engines.
     float RatioVertical { get; set; }
 }
 
+public partial interface IControlLayoutTM10 : IControlLayout
+{
+}
+
+public partial interface IControlLayoutTMPU : IControlLayout
+{
+}
+
+public partial interface IControlLayoutTMSX : IControlLayout
+{
+}
+
+public partial interface IControlLayoutTMNESWC : IControlLayout
+{
+}
+
 public partial interface IControlLayoutTMU : IControlLayout
 {
 }
 
+public partial interface IControlLayoutVSK5 : IControlLayout
+{
+}
+
 public partial interface IControlLayoutTMF : IControlLayout
+{
+}
+
+public partial interface IControlLayoutTMT : IControlLayout
 {
 }
 

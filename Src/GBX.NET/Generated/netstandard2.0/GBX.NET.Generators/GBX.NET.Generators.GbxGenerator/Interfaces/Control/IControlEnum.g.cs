@@ -3,6 +3,13 @@
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEnumMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlEnum where T0 : class
+{
+    int DisplayType { get; set; }
+    T0? FuncEnum { get; set; }
+    bool IsLooping { get; set; }
+}
 public partial interface IControlEnum : IClassVersion<global::GBX.NET.Engines.Control.CControlEnum>, global::GBX.NET.Interfaces.Control.IControlText
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,58 +21,55 @@ public partial interface IControlEnum : IClassVersion<global::GBX.NET.Engines.Co
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlEnumTM10 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlEnumTM10 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTM10>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMPU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlEnumTMPU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMSX : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlEnumTMSX : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlEnumTMNESWC : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU
+public partial interface IControlEnumTMU : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMU>
 {
-    int DisplayType { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? FuncEnum { get; set; }
-    bool IsLooping { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlEnumVSK5 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMF : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlEnumTMF : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -81,15 +85,15 @@ public partial interface IControlEnumMP3 : IControlEnum, global::GBX.NET.Interfa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTMT : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlEnumTMT : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -97,7 +101,7 @@ public partial interface IControlEnumMP4 : IControlEnum, global::GBX.NET.Interfa
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlEnumTM2020 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM2020
+public partial interface IControlEnumTM2020 : IControlEnum, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlEnumMembers1<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

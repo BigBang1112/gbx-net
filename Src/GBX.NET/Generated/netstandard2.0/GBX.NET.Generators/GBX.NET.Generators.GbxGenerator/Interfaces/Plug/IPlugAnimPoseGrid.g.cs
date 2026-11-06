@@ -3,18 +3,27 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimPoseGridMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid where T0 : class
+{
+    new T0? ChannelGroup { get; set; }
+}
 public partial interface IPlugAnimPoseGrid : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? ChannelGroup { get; set; }
-    Quat[]? JointOffsets { get; set; }
     string? Name { get; set; }
     Quat[]? RefPoseGlobalJoints { get; set; }
     float[]? Xs { get; set; }
     float[]? Ys { get; set; }
 }
 
-public partial interface IPlugAnimPoseGridTM2020 : IPlugAnimPoseGrid
+public partial interface IPlugAnimPoseGridMP4 : IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? ChannelGroup { get; set; }
+    TransQuat[]? LegacyJointOffsets { get; set; }
+}
+
+public partial interface IPlugAnimPoseGridTM2020 : IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020>
+{
+    Quat[]? JointOffsets { get; set; }
 }
 

@@ -69,7 +69,12 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     public partial class Chunk09147000 : Chunk<CPlugVehicleVisStyleRandomGroup>, IVersionable
     {
         public override uint Id => 0x09147000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09147000() : this(GameVersion.Unspecified)

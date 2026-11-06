@@ -1,0 +1,19 @@
+.method-button {
+    border: none;
+    font-family: Source Code Pro;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.method-result {
+    font-family: Source Code Pro;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.method-error {
+    background-color: #DD050555;
+    color: #eee;
+}

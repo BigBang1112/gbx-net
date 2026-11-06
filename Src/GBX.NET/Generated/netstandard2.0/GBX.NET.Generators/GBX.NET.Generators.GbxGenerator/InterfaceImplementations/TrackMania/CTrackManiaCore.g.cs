@@ -5,4 +5,14 @@ namespace GBX.NET.Engines.TrackMania;
 
 public partial class CTrackManiaCore : global::GBX.NET.Interfaces.TrackMania.ITrackManiaCore, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM10, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMPU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMSX, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMNESWC, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP3, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreTM2020
 {
+    global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMembers1<global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceTMT>.Resource
+    {
+        get => Resource;
+        set => Resource = value is null ? null : value is global::GBX.NET.Engines.TrackMania.CTrackManiaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaCoreMembers1<global::GBX.NET.Interfaces.TrackMania.ITrackManiaResourceMP4>.Resource
+    {
+        get => Resource;
+        set => Resource = value is null ? null : value is global::GBX.NET.Engines.TrackMania.CTrackManiaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

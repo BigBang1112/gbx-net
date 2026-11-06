@@ -3,6 +3,6 @@ CMwCmdExpBoolBin 0x01054000
 
 0x0103B000 [TMU, TMF]
 
-0x000 [TMU, TMF]
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF]
   CMwCmdExp Value1
   CMwCmdExp Value2

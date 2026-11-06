@@ -4,10 +4,33 @@
 namespace GBX.NET.Interfaces.Control;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlButtonMembers1 : global::GBX.NET.Interfaces.Control.IControlButton
+public interface IControlButtonMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
+{
+    T0? ActionScript { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
 {
     int DisplayType { get; set; }
+    T0? Icons { get; set; }
     string? Label { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
+{
+    T0? ActionSound { get; set; }
+    string? IconsId { get; set; }
+    int SubIconIndexOff { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers4 : global::GBX.NET.Interfaces.Control.IControlButton
+{
+    global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? ActionScript { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers5 : global::GBX.NET.Interfaces.Control.IControlButton
+{
+    int SubIconIndexOn { get; set; }
 }
 public partial interface IControlButton : IClassVersion<global::GBX.NET.Engines.Control.CControlButton>, global::GBX.NET.Interfaces.Control.IControlText
 {
@@ -20,61 +43,55 @@ public partial interface IControlButton : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlButtonTM10 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlButtonTM10 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM10>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMPU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlButtonTMPU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMSX : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlButtonTMSX : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
+public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? ActionScript { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? ActionSound { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? Icons { get; set; }
-    string? IconsId { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    int SubIconIndexOff { get; set; }
-    int SubIconIndexOn { get; set; }
 }
 
-public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMF : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlButtonTMF : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -90,15 +107,15 @@ public partial interface IControlButtonMP3 : IControlButton, global::GBX.NET.Int
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTMT : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlButtonTMT : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Control.IControlButtonMembers4, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlButtonMembers4, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -106,7 +123,7 @@ public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Int
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
+public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

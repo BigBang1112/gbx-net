@@ -22,7 +22,27 @@ public partial interface IMwCmdWhile : IClassVersion<global::GBX.NET.Engines.MwF
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Condition { get; set; }
 }
 
+public partial interface IMwCmdWhileTM10 : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10>
+{
+}
+
+public partial interface IMwCmdWhileTMPU : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU>
+{
+}
+
+public partial interface IMwCmdWhileTMSX : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX>
+{
+}
+
+public partial interface IMwCmdWhileTMNESWC : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC>
+{
+}
+
 public partial interface IMwCmdWhileTMU : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU>
+{
+}
+
+public partial interface IMwCmdWhileVSK5 : IMwCmdWhile, global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5>
 {
 }
 

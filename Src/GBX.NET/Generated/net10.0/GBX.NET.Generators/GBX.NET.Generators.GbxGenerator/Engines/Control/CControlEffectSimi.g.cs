@@ -214,32 +214,18 @@ public partial class CControlEffectSimi : CControlEffect, IClass
             set => this.depth = value;
         }
 
-        private float u01;
-        public float U01
+        private float colorBlend;
+        public float ColorBlend
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.colorBlend;
+            set => this.colorBlend = value;
         }
 
-        private float u02;
-        public float U02
+        private Vec3 color;
+        public Vec3 Color
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private float u03;
-        public float U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.color;
+            set => this.color = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -258,10 +244,8 @@ public partial class CControlEffectSimi : CControlEffect, IClass
             ((Key)clone).scale = context.Clone(this.scale)!;
             ((Key)clone).opacity = context.Clone(this.opacity)!;
             ((Key)clone).depth = context.Clone(this.depth)!;
-            ((Key)clone).u01 = context.Clone(this.u01)!;
-            ((Key)clone).u02 = context.Clone(this.u02)!;
-            ((Key)clone).u03 = context.Clone(this.u03)!;
-            ((Key)clone).u04 = context.Clone(this.u04)!;
+            ((Key)clone).colorBlend = context.Clone(this.colorBlend)!;
+            ((Key)clone).color = context.Clone(this.color)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -281,10 +265,8 @@ public partial class CControlEffectSimi : CControlEffect, IClass
 
                     if (v >= 3)
                     {
-                        rw.Single(ref this.u01);
-                        rw.Single(ref this.u02);
-                        rw.Single(ref this.u03);
-                        rw.Single(ref this.u04);
+                        rw.Single(ref this.colorBlend);
+                        rw.Vec3(ref this.color);
                     }
                 }
             }

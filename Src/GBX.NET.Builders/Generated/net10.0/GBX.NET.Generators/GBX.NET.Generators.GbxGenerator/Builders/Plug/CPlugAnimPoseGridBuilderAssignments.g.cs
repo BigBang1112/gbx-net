@@ -14,19 +14,23 @@ internal static class CPlugAnimPoseGridBuilderAssignments
     private static NodeBuilderProperty<Quat[]?>? cached1;
     internal static NodeBuilderProperty<Quat[]?> GetJointOffsetsAssignment() => cached1 ??= new("JointOffsets", new Action<object, Quat[]?>(Assign1), new Func<Quat[]?, Quat[]?>(Copy1));
     private static void Assign1(object node, Quat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).JointOffsets = value;
-    private static NodeBuilderProperty<string?>? cached2;
-    internal static NodeBuilderProperty<string?> GetNameAssignment() => cached2 ??= new("Name", new Action<object, string?>(Assign2));
-    private static void Assign2(object node, string? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Name = value;
-    private static NodeBuilderProperty<Quat[]?>? cached3;
-    internal static NodeBuilderProperty<Quat[]?> GetRefPoseGlobalJointsAssignment() => cached3 ??= new("RefPoseGlobalJoints", new Action<object, Quat[]?>(Assign3), new Func<Quat[]?, Quat[]?>(Copy1));
-    private static void Assign3(object node, Quat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).RefPoseGlobalJoints = value;
-    private static NodeBuilderProperty<float[]?>? cached4;
-    internal static NodeBuilderProperty<float[]?> GetXsAssignment() => cached4 ??= new("Xs", new Action<object, float[]?>(Assign4), new Func<float[]?, float[]?>(Copy2));
-    private static void Assign4(object node, float[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Xs = value;
+    private static NodeBuilderProperty<TransQuat[]?>? cached2;
+    internal static NodeBuilderProperty<TransQuat[]?> GetLegacyJointOffsetsAssignment() => cached2 ??= new("LegacyJointOffsets", new Action<object, TransQuat[]?>(Assign2), new Func<TransQuat[]?, TransQuat[]?>(Copy2));
+    private static void Assign2(object node, TransQuat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).LegacyJointOffsets = value;
+    private static NodeBuilderProperty<string?>? cached3;
+    internal static NodeBuilderProperty<string?> GetNameAssignment() => cached3 ??= new("Name", new Action<object, string?>(Assign3));
+    private static void Assign3(object node, string? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Name = value;
+    private static NodeBuilderProperty<Quat[]?>? cached4;
+    internal static NodeBuilderProperty<Quat[]?> GetRefPoseGlobalJointsAssignment() => cached4 ??= new("RefPoseGlobalJoints", new Action<object, Quat[]?>(Assign4), new Func<Quat[]?, Quat[]?>(Copy1));
+    private static void Assign4(object node, Quat[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).RefPoseGlobalJoints = value;
     private static NodeBuilderProperty<float[]?>? cached5;
-    internal static NodeBuilderProperty<float[]?> GetYsAssignment() => cached5 ??= new("Ys", new Action<object, float[]?>(Assign5), new Func<float[]?, float[]?>(Copy2));
-    private static void Assign5(object node, float[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Ys = value;
+    internal static NodeBuilderProperty<float[]?> GetXsAssignment() => cached5 ??= new("Xs", new Action<object, float[]?>(Assign5), new Func<float[]?, float[]?>(Copy3));
+    private static void Assign5(object node, float[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Xs = value;
+    private static NodeBuilderProperty<float[]?>? cached6;
+    internal static NodeBuilderProperty<float[]?> GetYsAssignment() => cached6 ??= new("Ys", new Action<object, float[]?>(Assign6), new Func<float[]?, float[]?>(Copy3));
+    private static void Assign6(object node, float[]? value) => ((global::GBX.NET.Engines.Plug.CPlugAnimPoseGrid)node).Ys = value;
     private static NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup>(); copy.CopyFrom(value); return copy; }
     private static Quat[]? Copy1(Quat[]? value) => value is null ? null! : (Quat[])value.Clone();
-    private static float[]? Copy2(float[]? value) => value is null ? null! : (float[])value.Clone();
+    private static TransQuat[]? Copy2(TransQuat[]? value) => value is null ? null! : (TransQuat[])value.Clone();
+    private static float[]? Copy3(float[]? value) => value is null ? null! : (float[])value.Clone();
 }

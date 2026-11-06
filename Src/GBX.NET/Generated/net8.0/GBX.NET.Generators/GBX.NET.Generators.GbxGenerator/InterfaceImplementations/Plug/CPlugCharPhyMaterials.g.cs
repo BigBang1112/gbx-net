@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCharPhyMaterials : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTM2020
+public partial class CPlugCharPhyMaterials : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterials, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTMT, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTM2020
 {
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? GetMaterialsInterfaceReferences() => Materials;
 }

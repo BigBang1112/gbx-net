@@ -3,6 +3,21 @@
 
 namespace GBX.NET.Engines.GameData;
 
-public partial class CGameEditorModel : global::GBX.NET.Interfaces.GameData.IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020
+public partial class CGameEditorModel : global::GBX.NET.Interfaces.GameData.IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelMP4, global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020
 {
+    global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSet? global::GBX.NET.Interfaces.GameData.IGameEditorModel.MainPluginTextSet
+    {
+        get => MainPluginTextSet;
+        set => MainPluginTextSet = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameManiaAppTextSet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetMP4? global::GBX.NET.Interfaces.GameData.IGameEditorModelMembers1<global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetMP4>.MainPluginTextSet
+    {
+        get => MainPluginTextSet;
+        set => MainPluginTextSet = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameManiaAppTextSet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetTM2020? global::GBX.NET.Interfaces.GameData.IGameEditorModelMembers1<global::GBX.NET.Interfaces.GameData.IGameManiaAppTextSetTM2020>.MainPluginTextSet
+    {
+        get => MainPluginTextSet;
+        set => MainPluginTextSet = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameManiaAppTextSet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

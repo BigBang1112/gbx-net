@@ -9,8 +9,9 @@ public abstract class CControlTimeLine2BuilderBase<TSelf> : NodeBuilder<global::
     private protected CControlTimeLine2BuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames3 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames4 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithControlFlags(uint value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, SupportedGames1);
     public TSelf WithItem(global::GBX.NET.Engines.Hms.CHmsItem? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, SupportedGames1);
     public TSelf WithLayout(global::GBX.NET.Engines.Control.CControlLayout? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, SupportedGames1);
@@ -30,8 +31,8 @@ public abstract class CControlTimeLine2BuilderBase<TSelf> : NodeBuilder<global::
 public abstract class CControlTimeLine2BuilderMembers1<TSelf> : CControlTimeLine2BuilderBase<TSelf> where TSelf : CControlTimeLine2BuilderMembers1<TSelf>
 {
     private protected CControlTimeLine2BuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
-    public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-    public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+    public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
 }
 public abstract class CControlTimeLine2BuilderMembers2<TSelf> : CControlTimeLine2BuilderBase<TSelf> where TSelf : CControlTimeLine2BuilderMembers2<TSelf>
 {
@@ -39,6 +40,36 @@ public abstract class CControlTimeLine2BuilderMembers2<TSelf> : CControlTimeLine
     public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, SupportedGames2);
     public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, SupportedGames2);
     public TSelf WithStyleId(string? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, SupportedGames2);
+}
+public abstract class CControlTimeLine2BuilderMembers3<TSelf> : CControlTimeLine2BuilderMembers2<TSelf> where TSelf : CControlTimeLine2BuilderMembers3<TSelf>
+{
+    private protected CControlTimeLine2BuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+    public TSelf WithBlockHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetBlockHeightAssignment(), value, SupportedGames3);
+    public TSelf WithHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetHeightAssignment(), value, SupportedGames3);
+    public TSelf WithKeyHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHeightAssignment(), value, SupportedGames3);
+    public TSelf WithKeyHighLightHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHighLightHeightAssignment(), value, SupportedGames3);
+    public TSelf WithKeyHighLightWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHighLightWidthAssignment(), value, SupportedGames3);
+    public TSelf WithKeyWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyWidthAssignment(), value, SupportedGames3);
+    public TSelf WithRulerHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerHeightAssignment(), value, SupportedGames3);
+    public TSelf WithRulerLinesColorBig(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerLinesColorBigAssignment(), value, SupportedGames3);
+    public TSelf WithRulerLinesColorSmall(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerLinesColorSmallAssignment(), value, SupportedGames3);
+    public TSelf WithTimeCursorHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorHeightAssignment(), value, SupportedGames3);
+    public TSelf WithTimeCursorLineColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorLineColorAssignment(), value, SupportedGames3);
+    public TSelf WithTimeCursorWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorWidthAssignment(), value, SupportedGames3);
+    public TSelf WithTrackCount(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackCountAssignment(), value, SupportedGames3);
+    public TSelf WithTrackHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackHeightAssignment(), value, SupportedGames3);
+    public TSelf WithTrackSeparationColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackSeparationColorAssignment(), value, SupportedGames3);
+    public TSelf WithWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetWidthAssignment(), value, SupportedGames3);
+}
+public abstract class CControlTimeLine2BuilderMembers4<TSelf> : CControlTimeLine2BuilderMembers3<TSelf> where TSelf : CControlTimeLine2BuilderMembers4<TSelf>
+{
+    private protected CControlTimeLine2BuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+    public TSelf WithBgColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetBgColorAssignment(), value, SupportedGames4);
+    public TSelf WithBlockHighLightColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetBlockHighLightColorAssignment(), value, SupportedGames4);
+    public TSelf WithDeadZoneColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetDeadZoneColorAssignment(), value, SupportedGames4);
+    public TSelf WithKeyColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyColorAssignment(), value, SupportedGames4);
+    public TSelf WithKeyHighLightColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHighLightColorAssignment(), value, SupportedGames4);
+    public TSelf WithRulerBgColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerBgColorAssignment(), value, SupportedGames4);
 }
 public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CControlTimeLine2Builder>
 {
@@ -59,6 +90,12 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
     private static global::GBX.NET.Engines.Control.CControlTimeLine2 CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlTimeLine2();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022005());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
@@ -101,7 +138,6 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
         return node;
@@ -109,6 +145,7 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
     private static global::GBX.NET.Engines.Control.CControlTimeLine2 CreateRecipe4(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Control.CControlTimeLine2();
+        node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlTimeLine2.Chunk07022006(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E());
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F());
@@ -135,6 +172,7 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
     public partial class TM10 : CControlTimeLine2BuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public TM10 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM10? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM10? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -147,6 +185,7 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
     public partial class TMPU : CControlTimeLine2BuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public TMPU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -156,12 +195,13 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TMSX : CControlTimeLine2BuilderMembers2<TMSX>
+    public partial class TMSX : CControlTimeLine2BuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public TMSX WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+        public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
         public TMSX WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMSX? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(values, false));
@@ -171,12 +211,13 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TMNESWC : CControlTimeLine2BuilderMembers2<TMNESWC>
+    public partial class TMNESWC : CControlTimeLine2BuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public TMNESWC WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+        public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
         public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(values, false));
@@ -186,67 +227,52 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TMU : CControlTimeLine2BuilderMembers2<TMU>
+    public partial class TMU : CControlTimeLine2BuilderMembers3<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
-        public TMU WithBlockHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetBlockHeightAssignment(), value, SupportedGames4);
-        public TMU WithHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetHeightAssignment(), value, SupportedGames4);
-        public TMU WithKeyHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHeightAssignment(), value, SupportedGames4);
-        public TMU WithKeyHighLightHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHighLightHeightAssignment(), value, SupportedGames4);
-        public TMU WithKeyHighLightWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyHighLightWidthAssignment(), value, SupportedGames4);
-        public TMU WithKeyWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetKeyWidthAssignment(), value, SupportedGames4);
         public TMU WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMU? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public TMU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+        public TMU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
         public TMU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMU? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMU? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
         public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
-        public TMU WithRulerHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerHeightAssignment(), value, SupportedGames4);
-        public TMU WithRulerLinesColorBig(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerLinesColorBigAssignment(), value, SupportedGames4);
-        public TMU WithRulerLinesColorSmall(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetRulerLinesColorSmallAssignment(), value, SupportedGames4);
         public TMU WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMU? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithTimeCursorHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorHeightAssignment(), value, SupportedGames4);
-        public TMU WithTimeCursorLineColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorLineColorAssignment(), value, SupportedGames4);
-        public TMU WithTimeCursorWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTimeCursorWidthAssignment(), value, SupportedGames4);
-        public TMU WithTrackCount(int value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackCountAssignment(), value, SupportedGames4);
-        public TMU WithTrackHeight(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackHeightAssignment(), value, SupportedGames4);
-        public TMU WithTrackSeparationColor(Vec4 value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetTrackSeparationColorAssignment(), value, SupportedGames4);
-        public TMU WithWidth(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlTimeLine2BuilderAssignments.GetWidthAssignment(), value, SupportedGames4);
         public global::GBX.NET.Interfaces.Control.IControlTimeLine2TMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class VSK5 : CControlTimeLine2BuilderMembers2<VSK5>
+    public partial class VSK5 : CControlTimeLine2BuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public VSK5 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+        public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
         public VSK5 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionVSK5? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(values, false));
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlTimeLine2VSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TMF : CControlTimeLine2BuilderMembers2<TMF>
+    public partial class TMF : CControlTimeLine2BuilderMembers3<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
         public TMF WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMF? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames3);
-        public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames3);
+        public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames5);
+        public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames5);
         public TMF WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? value) => WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMF? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(values, false));
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlTimeLine2TMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
     public partial class MP3 : CControlTimeLine2BuilderMembers2<MP3>
@@ -258,12 +284,13 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value) => base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlTimeLine2MP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TMT : CControlTimeLine2BuilderMembers2<TMT>
+    public partial class TMT : CControlTimeLine2BuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
+        public TMT WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMT? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMT? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
@@ -273,7 +300,7 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class MP4 : CControlTimeLine2BuilderMembers2<MP4>
+    public partial class MP4 : CControlTimeLine2BuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
         public MP4 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutMP4? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -286,7 +313,7 @@ public partial class CControlTimeLine2Builder : CControlTimeLine2BuilderBase<CCo
         public global::GBX.NET.Engines.Control.CControlTimeLine2 Build() => BuildNode(CControlTimeLine2Builder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlTimeLine2 node);
     }
-    public partial class TM2020 : CControlTimeLine2BuilderMembers2<TM2020>
+    public partial class TM2020 : CControlTimeLine2BuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlTimeLine2> state) : base(state) { }
         public TM2020 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? value) => base.WithLayout(value is null ? (global::GBX.NET.Engines.Control.CControlLayout?)null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

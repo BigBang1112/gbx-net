@@ -7,13 +7,11 @@ namespace GBX.NET.Interfaces.Hms;
 public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
 {
     bool BackgroundUseClouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
     T0? BitmapLM_ILightDir { get; set; }
     T0? BitmapLM_ILightInput { get; set; }
     T0? BitmapLM_LListUV { get; set; }
     T0? BitmapLM_LListW { get; set; }
     T0? BitmapLM_LocalDirect { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
     T0? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce { get; set; }
     T0? BitmapSM_ColorPeeled { get; set; }
     T0? BitmapSM_DepthToPeel { get; set; }
@@ -31,7 +29,19 @@ public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsL
     bool UseHDR { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IHmsLightMapMembers2<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class where T1 : class
+public interface IHmsLightMapMembers2<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
+{
+    T0? BitmapProbeGridAmbSV { get; set; }
+    T0? BitmapProbeGridAmbSV_Spread1 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers3<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
+{
+    T0? BitmapArrayLightSH { get; set; }
+    T0? BitmapLightSumBump { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers4<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class where T1 : class
 {
     new T0? Mood { get; set; }
     new T1? PointsInSphereOpt { get; set; }
@@ -42,33 +52,33 @@ public partial interface IHmsLightMap : IClassVersion<global::GBX.NET.Engines.Hm
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt? PointsInSphereOpt { get; set; }
 }
 
-public partial interface IHmsLightMapTMU : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>
+public partial interface IHmsLightMapTMU : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMU, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMU>
 {
 }
 
-public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
+public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
 {
 }
 
-public partial interface IHmsLightMapTMF : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>
+public partial interface IHmsLightMapTMF : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>
 {
 }
 
-public partial interface IHmsLightMapMP3 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>
+public partial interface IHmsLightMapMP3 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
+}
+
+public partial interface IHmsLightMapTMT : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>
 {
 }
 
-public partial interface IHmsLightMapTMT : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>
+public partial interface IHmsLightMapMP4 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayMP4>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>
 {
 }
 
-public partial interface IHmsLightMapMP4 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>
+public partial interface IHmsLightMapTM2020 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers4<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>
 {
-}
-
-public partial interface IHmsLightMapTM2020 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>
-{
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV_Spread1 { get; set; }
 }
 

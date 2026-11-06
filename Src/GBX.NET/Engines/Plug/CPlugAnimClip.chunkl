@@ -1,6 +1,6 @@
 CPlugAnimClip 0x09135000
 
-0x000 [TM2020.v3] // animation clip
+0x000 [MP4.v3, TM2020.v3] // animation clip
   version
   int FlagsVersion
   id Name

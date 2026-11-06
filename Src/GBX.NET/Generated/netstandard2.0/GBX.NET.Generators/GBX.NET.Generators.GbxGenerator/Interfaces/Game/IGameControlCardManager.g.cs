@@ -3,13 +3,25 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCardManagerMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameControlCardManager where T0 : class
+{
+    new IReadOnlyList<T0>? DataTypes { get; set; }
+}
 public partial interface IGameControlCardManager : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCardManager>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataType>? DataTypes { get; set; }
 }
 
-public partial interface IGameControlCardManagerTMU : IGameControlCardManager
+public partial interface IGameControlCardManagerTMU : IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTMU>? DataTypes { get; set; }
+}
+
+public partial interface IGameControlCardManagerMP4 : IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeMP4>
+{
+}
+
+public partial interface IGameControlCardManagerTM2020 : IGameControlCardManager, global::GBX.NET.Interfaces.Game.IGameControlCardManagerMembers1<global::GBX.NET.Interfaces.Game.IGameControlDataTypeTM2020>
+{
 }
 

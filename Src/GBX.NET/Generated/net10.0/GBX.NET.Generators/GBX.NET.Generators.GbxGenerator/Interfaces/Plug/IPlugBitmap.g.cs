@@ -137,7 +137,11 @@ public partial interface IPlugBitmapTM2020 : IPlugBitmap, global::GBX.NET.Interf
     global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings? ArraySettings { get; set; }
     uint AtlasCubeFlags { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput? AtlasCubeIn { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArray { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020? BitmapArray
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapArray);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapArray = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string BitmapArrayElemName { get; set; }
     string GrassId { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? GrassIdImage { get; set; }

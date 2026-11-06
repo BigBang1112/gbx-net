@@ -7,8 +7,8 @@ CVisionResourceFile 0x0C012000
   CMwNod BitmapDeferredZ
   CMwNod BitmapDeferredFaceNormalInC
 
-0x00C [MP4] // FolderShaderBench
+0x00C [TMT, MP4, TM2020] // FolderShaderBench
   string FolderShaderBench
 
-0x01D [MP4] // named shaders and resources
+0x01D [TMT, MP4, TM2020] // named shaders and resources
   CPlugModelShading.FidId[] Resources

@@ -10,6 +10,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -29,6 +34,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMPU.LegacyStyle
     {
@@ -50,6 +60,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMSX.LegacyStyle
     {
         get => LegacyStyle;
@@ -69,6 +84,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMNESWC.LegacyStyle
     {
@@ -114,6 +134,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesVSK5.LegacyStyle
     {
@@ -170,10 +195,20 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMT.LegacyStyle
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlContainerTMT? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMembers1<global::GBX.NET.Interfaces.Control.IControlContainerTMT>.MessageModel
+    {
+        get => MessageModel;
+        set => MessageModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlContainer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMT? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTMT.Motion
     {
@@ -195,6 +230,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlContainerMP4? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMembers1<global::GBX.NET.Interfaces.Control.IControlContainerMP4>.MessageModel
+    {
+        get => MessageModel;
+        set => MessageModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlContainer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Motion.IMotionMP4? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMP4.Motion
     {
         get => Motion;
@@ -214,6 +254,11 @@ public partial class CGamePlaygroundControlMessages : global::GBX.NET.Interfaces
     {
         get => LegacyStyle;
         set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlContainerTM2020? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesMembers1<global::GBX.NET.Interfaces.Control.IControlContainerTM2020>.MessageModel
+    {
+        get => MessageModel;
+        set => MessageModel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlContainer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTM2020? global::GBX.NET.Interfaces.Game.IGamePlaygroundControlMessagesTM2020.Motion
     {

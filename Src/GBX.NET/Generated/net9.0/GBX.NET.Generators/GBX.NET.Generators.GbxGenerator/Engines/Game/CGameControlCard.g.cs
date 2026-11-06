@@ -79,11 +79,11 @@ public partial class CGameControlCard : CControlFrame, IClass
     /// CGameControlCard 0x002 chunk
     /// </summary>
     [Chunk(0x0309A002)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309A002 : Chunk<CGameControlCard>
     {
         public override uint Id => 0x0309A002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
         public bool U01;
         public bool U02;
 

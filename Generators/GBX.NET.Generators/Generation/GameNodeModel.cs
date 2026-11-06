@@ -50,6 +50,14 @@ internal sealed class GameNodeModel(LayoutModel layout)
 
         foreach (var node in nodes.Values)
         {
+            foreach (var chunk in node.Layout.Chunks)
+            {
+                var unknown = LayoutModel.RetiredGames(chunk.Declaration.Attributes)
+                    .FirstOrDefault(game => !chunk.Declaration.VersionQualifiers.Any(q => q.Label == game));
+                if (unknown is not null)
+                    node.MetadataError = $"Chunk {chunk.Name} retires '{unknown}', which is not one of its game qualifiers.";
+            }
+
             var declared = new HashSet<(uint Id, bool IsHeader)>();
             foreach (var owner in Hierarchy(node.Layout, plan.Layouts))
             {
@@ -68,7 +76,7 @@ internal sealed class GameNodeModel(LayoutModel layout)
             foreach (var game in knownGames)
             {
                 if (node.Layout.Games.Length > 0 && !node.Layout.Games.Contains(game)) continue;
-                if (node.Chunks.Any(c => c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)) ||
+                if (node.Chunks.Any(c => IsWrittenBy(c, game)) ||
                     plan.Existing.ContainsKey(node.InterfaceNamespace + "." + node.InterfaceName + game))
                     node.Games.Add(game);
             }
@@ -179,11 +187,11 @@ internal sealed class GameNodeModel(LayoutModel layout)
             }
 
             // Every game gets a recipe. A chunk without a writer fails when the
-            // node is written. An ignored chunk is never written, so it is left out.
+            // node is written. Ignored and retired chunks are left out.
             foreach (var game in node.Games.Where(g => !node.Recipes.ContainsKey(g)))
             {
                 node.Recipes[game] = node.Chunks.Where(c => !LayoutModel.Has(c.Chunk.Declaration.Attributes, "ignore") &&
-                    c.Chunk.Declaration.VersionQualifiers.Any(q => q.Label == game)).ToList();
+                    IsWrittenBy(c, game)).ToList();
             }
             foreach (var member in properties.Values.OrderBy(static m => m.Name, StringComparer.Ordinal))
             {
@@ -245,6 +253,12 @@ internal sealed class GameNodeModel(LayoutModel layout)
     }
 
     // A custom property is applied wherever a field its getter reads is applied.
+    private static bool IsWrittenBy(GameChunk chunk, string game)
+    {
+        var declaration = chunk.Chunk.Declaration;
+        return declaration.VersionQualifiers.Any(q => q.Label == game) && !LayoutModel.RetiredGames(declaration.Attributes).Contains(game);
+    }
+
     private static HashSet<string> AppliedNames(GameMember member)
     {
         var names = new HashSet<string>(StringComparer.Ordinal) { member.Name };

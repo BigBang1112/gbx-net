@@ -7,30 +7,27 @@ public abstract class CScene2dBuilderBase<TSelf> : NodeBuilder<global::GBX.NET.E
 {
     private protected CScene2dBuilderBase() { }
     private protected CScene2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames2 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     private protected const GameVersion SupportedGames4 = GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
-}
-public abstract class CScene2dBuilderMembers1<TSelf> : CScene2dBuilderBase<TSelf> where TSelf : CScene2dBuilderMembers1<TSelf>
-{
-    private protected CScene2dBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
     public TSelf WithOverlay(Rect value) => Set(global::GBX.NET.Builders.Engines.Scene.CScene2dBuilderAssignments.GetOverlayAssignment(), value, SupportedGames1);
     public TSelf WithSector(global::GBX.NET.Engines.Scene.CSceneSector? value) => Set(global::GBX.NET.Builders.Engines.Scene.CScene2dBuilderAssignments.GetSectorAssignment(), value, SupportedGames1);
     public TSelf WithSectorReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneSector> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CScene2dBuilderAssignments.GetSectorReferenceAssignment(), value, SupportedGames1);
 }
-public abstract class CScene2dBuilderMembers2<TSelf> : CScene2dBuilderMembers1<TSelf> where TSelf : CScene2dBuilderMembers2<TSelf>
+public abstract class CScene2dBuilderMembers1<TSelf> : CScene2dBuilderBase<TSelf> where TSelf : CScene2dBuilderMembers1<TSelf>
 {
-    private protected CScene2dBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-    public TSelf WithMotionManagerModels(NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetMotionManagerModelsAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithMotionManagerModels(params global::GBX.NET.Engines.Motion.CMotionManager[] values) => WithMotionManagerModels(new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(values));
-    public TSelf WithMotionManagerModels(IEnumerable<global::GBX.NET.Engines.Motion.CMotionManager> values) => WithMotionManagerModels(values.ToArray());
-    public TSelf WithOldMobils(params global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetOldMobilsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
-    public TSelf WithOldMobils(IEnumerable<global::GBX.NET.Engines.Scene.CScene.OldSceneMobil> values) => WithOldMobils(values.ToArray());
+    private protected CScene2dBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
     public TSelf WithSceneConfig(global::GBX.NET.Engines.Scene.CSceneConfig? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigAssignment(), value, SupportedGames4);
     public TSelf WithSceneConfigReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigReferenceAssignment(), value, SupportedGames4);
 }
-public abstract class CScene2dBuilderMembers3<TSelf> : CScene2dBuilderMembers1<TSelf> where TSelf : CScene2dBuilderMembers3<TSelf>
+public abstract class CScene2dBuilderMembers2<TSelf> : CScene2dBuilderMembers1<TSelf> where TSelf : CScene2dBuilderMembers2<TSelf>
+{
+    private protected CScene2dBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
+    public TSelf WithOldMobils(params global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetOldMobilsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
+    public TSelf WithOldMobils(IEnumerable<global::GBX.NET.Engines.Scene.CScene.OldSceneMobil> values) => WithOldMobils(values.ToArray());
+}
+public abstract class CScene2dBuilderMembers3<TSelf> : CScene2dBuilderBase<TSelf> where TSelf : CScene2dBuilderMembers3<TSelf>
 {
     private protected CScene2dBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
     public TSelf WithCameraLocations(params global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? value) => Set(global::GBX.NET.Builders.Engines.Scene.CScene2dBuilderAssignments.GetCameraLocationsAssignment(), value, SupportedGames3);
@@ -63,13 +60,17 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
     {
         var node = new global::GBX.NET.Engines.Scene.CScene2d();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene2d.Chunk0A002000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001002());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001004());
         return node;
     }
     private static global::GBX.NET.Engines.Scene.CScene2d CreateRecipe1(GameVersion game)
     {
-        var node = CreateRecipe0(game);
+        var node = new global::GBX.NET.Engines.Scene.CScene2d();
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene2d.Chunk0A002000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001003());
+        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001005());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001006());
         return node;
@@ -85,21 +86,13 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
     }
     private static global::GBX.NET.Engines.Scene.CScene2d CreateRecipe3(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Scene.CScene2d();
+        var node = CreateRecipe4(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001003());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001005());
         return node;
     }
     private static global::GBX.NET.Engines.Scene.CScene2d CreateRecipe4(GameVersion game)
-    {
-        var node = CreateRecipe5(game);
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001004());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene.Chunk0A001005());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Scene.CScene2d CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CScene2d();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CScene2d.Chunk0A002003() { Version = 1 });
@@ -118,21 +111,17 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CScene2dBuilderMembers1<TM10>
+    public partial class TM10 : CScene2dBuilderMembers2<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-        public TM10 WithSceneConfig(global::GBX.NET.Engines.Scene.CSceneConfig? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigAssignment(), value, SupportedGames4);
-        public TM10 WithSceneConfigReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigReferenceAssignment(), value, SupportedGames4);
         public TM10 WithSector(global::GBX.NET.Interfaces.Scene.ISceneSectorTM10? value) => base.WithSector(value is null ? (global::GBX.NET.Engines.Scene.CSceneSector?)null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.IScene2dTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
-    public partial class TMPU : CScene2dBuilderMembers1<TMPU>
+    public partial class TMPU : CScene2dBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-        public TMPU WithSceneConfig(global::GBX.NET.Engines.Scene.CSceneConfig? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigAssignment(), value, SupportedGames4);
-        public TMPU WithSceneConfigReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigReferenceAssignment(), value, SupportedGames4);
         public TMPU WithSector(global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU? value) => base.WithSector(value is null ? (global::GBX.NET.Engines.Scene.CSceneSector?)null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.IScene2dTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
@@ -141,7 +130,10 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
     public partial class TMSX : CScene2dBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-        public TMSX WithMotionManagerModels(params global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX[] values) => base.WithMotionManagerModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(values, false));
+        public TMSX WithMotionManagerModels(NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetMotionManagerModelsAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMSX WithMotionManagerModels(params global::GBX.NET.Engines.Motion.CMotionManager[] values) => WithMotionManagerModels(new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(values));
+        public TMSX WithMotionManagerModels(IEnumerable<global::GBX.NET.Engines.Motion.CMotionManager> values) => WithMotionManagerModels(values.ToArray());
+        public TMSX WithMotionManagerModels(params global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX[] values) => WithMotionManagerModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(values, false));
         public TMSX WithMotionManagerModels(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX> values) => WithMotionManagerModels(values.ToArray());
         public TMSX WithSector(global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX? value) => base.WithSector(value is null ? (global::GBX.NET.Engines.Scene.CSceneSector?)null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.IScene2dTMSX BuildInterface() => Build();
@@ -151,7 +143,10 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
     public partial class TMNESWC : CScene2dBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
-        public TMNESWC WithMotionManagerModels(params global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC[] values) => base.WithMotionManagerModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(values, false));
+        public TMNESWC WithMotionManagerModels(NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetMotionManagerModelsAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithMotionManagerModels(params global::GBX.NET.Engines.Motion.CMotionManager[] values) => WithMotionManagerModels(new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(values));
+        public TMNESWC WithMotionManagerModels(IEnumerable<global::GBX.NET.Engines.Motion.CMotionManager> values) => WithMotionManagerModels(values.ToArray());
+        public TMNESWC WithMotionManagerModels(params global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC[] values) => WithMotionManagerModels(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(values, false));
         public TMNESWC WithMotionManagerModels(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC> values) => WithMotionManagerModels(values.ToArray());
         public TMNESWC WithSector(global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC? value) => base.WithSector(value is null ? (global::GBX.NET.Engines.Scene.CSceneSector?)null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC BuildInterface() => Build();
@@ -179,9 +174,13 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
-    public partial class VSK5 : CScene2dBuilderBase<VSK5>
+    public partial class VSK5 : CScene2dBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CScene2d> state) : base(state) { }
+        public VSK5 WithCameras(params global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5[] values) => base.WithCameras(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(values, false));
+        public VSK5 WithCameras(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5> values) => WithCameras(values.ToArray());
+        public VSK5 WithLights(params global::GBX.NET.Interfaces.Scene.ISceneLightVSK5[] values) => base.WithLights(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>(values, false));
+        public VSK5 WithLights(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5> values) => WithLights(values.ToArray());
         public VSK5 WithMotionManagerModels(NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetMotionManagerModelsAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithMotionManagerModels(params global::GBX.NET.Engines.Motion.CMotionManager[] values) => WithMotionManagerModels(new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(values));
         public VSK5 WithMotionManagerModels(IEnumerable<global::GBX.NET.Engines.Motion.CMotionManager> values) => WithMotionManagerModels(values.ToArray());
@@ -189,8 +188,11 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public VSK5 WithMotionManagerModels(IEnumerable<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5> values) => WithMotionManagerModels(values.ToArray());
         public VSK5 WithSceneConfig(global::GBX.NET.Engines.Scene.CSceneConfig? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigAssignment(), value, SupportedGames4);
         public VSK5 WithSceneConfigReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneConfig> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneBuilderAssignments.GetSceneConfigReferenceAssignment(), value, SupportedGames4);
+        public VSK5 WithSector(global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5? value) => base.WithSector(value is null ? (global::GBX.NET.Engines.Scene.CSceneSector?)null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(values, false));
+        public VSK5 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe3(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
     public partial class TMF : CScene2dBuilderMembers4<TMF>
@@ -211,7 +213,7 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public TMF WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectTMF[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>(values, false));
         public TMF WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe4(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
     public partial class MP3 : CScene2dBuilderMembers4<MP3>
@@ -232,7 +234,7 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public MP3 WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectMP3[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>(values, false));
         public MP3 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe4(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
     public partial class TMT : CScene2dBuilderMembers4<TMT>
@@ -253,7 +255,7 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public TMT WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectTMT[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>(values, false));
         public TMT WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
     public partial class MP4 : CScene2dBuilderMembers4<MP4>
@@ -267,7 +269,7 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public MP4 WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectMP4[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>(values, false));
         public MP4 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe5(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
     public partial class TM2020 : CScene2dBuilderMembers4<TM2020>
@@ -281,7 +283,7 @@ public partial class CScene2dBuilder : CScene2dBuilderBase<CScene2dBuilder>
         public TM2020 WithSounds(params global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020[] values) => base.WithSounds(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020>(values, false));
         public TM2020 WithSounds(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020> values) => WithSounds(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.IScene2dTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe5(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CScene2d Build() => BuildNode(CScene2dBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CScene2d node);
     }
 }

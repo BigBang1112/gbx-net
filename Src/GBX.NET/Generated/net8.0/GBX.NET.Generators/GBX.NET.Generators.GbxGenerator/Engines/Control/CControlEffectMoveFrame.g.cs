@@ -65,11 +65,11 @@ public partial class CControlEffectMoveFrame : CControlEffect, IClass
     /// CControlEffectMoveFrame 0x000 chunk (inversion, period and shift)
     /// </summary>
     [Chunk(0x07025000, "inversion, period and shift")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07025000 : Chunk<CControlEffectMoveFrame>
     {
         public override uint Id => 0x07025000;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public Vec2[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -91,11 +91,11 @@ public partial class CControlEffectMoveFrame : CControlEffect, IClass
     /// CControlEffectMoveFrame 0x001 chunk (AngleFrom)
     /// </summary>
     [Chunk(0x07025001, "AngleFrom")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07025001 : Chunk<CControlEffectMoveFrame>
     {
         public override uint Id => 0x07025001;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

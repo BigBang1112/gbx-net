@@ -23,6 +23,7 @@ internal sealed partial class GbxBodyReader
         {
             if (logger is not null) global::Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(logger, "Reading main node directly...");
             ReadMainNode(node, body, readerWriter);
+            body.Signature = reader.Signature;
             return body;
         }
 
@@ -38,6 +39,7 @@ internal sealed partial class GbxBodyReader
         if (logger is not null) global::Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(logger, "Reading main node...");
 
         ReadMainNode(node, body, decompressedReaderWriter);
+        body.Signature = decompressedReader.Signature;
 
         if (logger is not null) global::Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(logger, "Main node complete.");
 

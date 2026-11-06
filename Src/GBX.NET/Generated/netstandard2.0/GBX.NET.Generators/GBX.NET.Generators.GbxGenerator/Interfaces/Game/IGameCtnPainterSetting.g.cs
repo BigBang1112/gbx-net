@@ -3,6 +3,23 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnPainterSettingMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting where T0 : class where T1 : class
+{
+    T0? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
+    T1? MaterialFillColor { get; set; }
+    T1? MaterialLayerModulate { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnPainterSettingMembers2<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Game.IGameCtnPainterSetting where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new T0? BitmapBrushFade { get; set; }
+    new T0? BitmapStickerFade { get; set; }
+    new T1? Camera { get; set; }
+    new T2? MaterialLayerBlend { get; set; }
+    new T2? MaterialPaint { get; set; }
+    new T3? Remapping { get; set; }
+}
 public partial interface IGameCtnPainterSetting : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnPainterSetting>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapBrushFade { get; set; }
@@ -20,13 +37,17 @@ public partial interface IGameCtnPainterSetting : IClassVersion<global::GBX.NET.
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ScenesFids { get; set; }
 }
 
-public partial interface IGameCtnPainterSettingTMU : IGameCtnPainterSetting
+public partial interface IGameCtnPainterSettingTMU : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? BitmapBrushFade { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? BitmapStickerFade { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTMU? Camera { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? MaterialLayerBlend { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMU? MaterialPaint { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU? Remapping { get; set; }
+}
+
+public partial interface IGameCtnPainterSettingMP4 : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>
+{
+}
+
+public partial interface IGameCtnPainterSettingTM2020 : IGameCtnPainterSetting, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnPainterSettingMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>
+{
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? ShaderRasterAlphaMask { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? ShaderRasterRgbMask { get; set; }
 }
 

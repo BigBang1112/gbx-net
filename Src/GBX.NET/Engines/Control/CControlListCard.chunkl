@@ -7,10 +7,10 @@ CControlListCard 0x07036000
   int NbColumnsPerPage
   bool Transpose
 
-0x001 // AllowMultipleSelection
+0x001 [TMT, MP4, TM2020] // AllowMultipleSelection
   bool AllowMultipleSelection
 
-0x002 // page size, transposition and grid size
+0x002 [TMT.v1, MP4.v1, TM2020.v1] // page size, transposition and grid size
   version = 1
   CControlBase[] (deprec)
   int NbLinesPerPage

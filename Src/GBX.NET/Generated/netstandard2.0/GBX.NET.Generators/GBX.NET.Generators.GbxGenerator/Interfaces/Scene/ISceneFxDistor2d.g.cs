@@ -21,11 +21,43 @@ public partial interface ISceneFxDistor2d : IClassVersion<global::GBX.NET.Engine
     float DistorScale { get; set; }
 }
 
+public partial interface ISceneFxDistor2dTM10 : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM10>
+{
+}
+
+public partial interface ISceneFxDistor2dTMPU : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMPU>
+{
+}
+
+public partial interface ISceneFxDistor2dTMSX : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMSX>
+{
+}
+
+public partial interface ISceneFxDistor2dTMNESWC : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMNESWC>
+{
+}
+
 public partial interface ISceneFxDistor2dTMU : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMU, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMU>
 {
 }
 
+public partial interface ISceneFxDistor2dVSK5 : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyVSK5>
+{
+}
+
 public partial interface ISceneFxDistor2dTMF : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF>
+{
+}
+
+public partial interface ISceneFxDistor2dTMT : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT>
+{
+}
+
+public partial interface ISceneFxDistor2dMP4 : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4>
+{
+}
+
+public partial interface ISceneFxDistor2dTM2020 : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020, global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020>
 {
 }
 

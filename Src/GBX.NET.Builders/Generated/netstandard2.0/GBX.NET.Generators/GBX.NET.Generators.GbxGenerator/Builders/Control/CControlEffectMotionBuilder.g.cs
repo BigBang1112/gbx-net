@@ -7,7 +7,7 @@ public abstract class CControlEffectMotionBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CControlEffectMotionBuilderBase() { }
     private protected CControlEffectMotionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMSX | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithChargeTime(float value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMotionBuilderAssignments.GetChargeTimeAssignment(), value, SupportedGames1);
     public TSelf WithEnvelope(global::GBX.NET.Engines.Function.CFuncEnvelope? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMotionBuilderAssignments.GetEnvelopeAssignment(), value, SupportedGames1);
     public TSelf WithEnvelopeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnvelope> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlEffectMotionBuilderAssignments.GetEnvelopeReferenceAssignment(), value, SupportedGames1);
@@ -32,7 +32,14 @@ public partial class CControlEffectMotionBuilder : CControlEffectMotionBuilderBa
         return node;
     }
     public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public partial class TMSX : CControlEffectMotionBuilderBase<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
@@ -41,12 +48,52 @@ public partial class CControlEffectMotionBuilder : CControlEffectMotionBuilderBa
         public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
     }
+    public partial class TMNESWC : CControlEffectMotionBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
+        public TMNESWC WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMotionTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
+    }
     public partial class TMU : CControlEffectMotionBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
         public TMU WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlEffectMotionTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
+    }
+    public partial class VSK5 : CControlEffectMotionBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
+        public VSK5 WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMotionVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
+    }
+    public partial class TMF : CControlEffectMotionBuilderBase<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
+        public TMF WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMotionTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
+    }
+    public partial class TMT : CControlEffectMotionBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
+        public TMT WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMT? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMotionTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
+    }
+    public partial class MP4 : CControlEffectMotionBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMotion> state) : base(state) { }
+        public MP4 WithEnvelope(global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP4? value) => base.WithEnvelope(value is null ? (global::GBX.NET.Engines.Function.CFuncEnvelope?)null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlEffectMotionMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlEffectMotion Build() => BuildNode(CControlEffectMotionBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectMotion node);
     }
 }

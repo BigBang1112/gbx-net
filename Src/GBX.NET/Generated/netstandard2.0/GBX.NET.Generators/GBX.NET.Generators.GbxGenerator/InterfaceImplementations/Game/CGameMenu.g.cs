@@ -3,14 +3,89 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameMenu : global::GBX.NET.Interfaces.Game.IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuTMU
+public partial class CGameMenu : global::GBX.NET.Interfaces.Game.IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuTM10, global::GBX.NET.Interfaces.Game.IGameMenuTMPU, global::GBX.NET.Interfaces.Game.IGameMenuTMSX, global::GBX.NET.Interfaces.Game.IGameMenuTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuTMU, global::GBX.NET.Interfaces.Game.IGameMenuVSK5, global::GBX.NET.Interfaces.Game.IGameMenuTMF, global::GBX.NET.Interfaces.Game.IGameMenuTMT, global::GBX.NET.Interfaces.Game.IGameMenuMP4, global::GBX.NET.Interfaces.Game.IGameMenuTM2020
 {
-    global::GBX.NET.Interfaces.Control.IControlStyleSheet? global::GBX.NET.Interfaces.Game.IGameMenu.StyleSheet
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMSX? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMSX>.StyleSheet
     {
         get => StyleSheet;
         set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU? global::GBX.NET.Interfaces.Game.IGameMenuTMU.StyleSheet
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMNESWC? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMNESWC>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMU>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetVSK5? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetVSK5>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BackgroundBitmapUnderlay
+    {
+        get => BackgroundBitmapUnderlay;
+        set => BackgroundBitmapUnderlay = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMF? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMF>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BackgroundBitmapUnderlay
+    {
+        get => BackgroundBitmapUnderlay;
+        set => BackgroundBitmapUnderlay = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundDisplayed
+    {
+        get => SoundDisplayed;
+        set => SoundDisplayed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundHidden
+    {
+        get => SoundHidden;
+        set => SoundHidden = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundPageChanged
+    {
+        get => SoundPageChanged;
+        set => SoundPageChanged = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Game.IGameMenuMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BackgroundBitmapUnderlay
+    {
+        get => BackgroundBitmapUnderlay;
+        set => BackgroundBitmapUnderlay = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4>.StyleSheet
+    {
+        get => StyleSheet;
+        set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundDisplayed
+    {
+        get => SoundDisplayed;
+        set => SoundDisplayed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundHidden
+    {
+        get => SoundHidden;
+        set => SoundHidden = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameMenuMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundPageChanged
+    {
+        get => SoundPageChanged;
+        set => SoundPageChanged = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020? global::GBX.NET.Interfaces.Game.IGameMenuMembers4<global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020>.StyleSheet
     {
         get => StyleSheet;
         set => StyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

@@ -10,6 +10,11 @@ public interface IHmsZoneOverlayMembers1 : global::GBX.NET.Interfaces.Hms.IHmsZo
     bool IsOrthographic { get; set; }
     bool UseZBuffer { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsZoneOverlayMembers2 : global::GBX.NET.Interfaces.Hms.IHmsZoneOverlay
+{
+    int AdaptRatio { get; set; }
+}
 public partial interface IHmsZoneOverlay : IClassVersion<global::GBX.NET.Engines.Hms.CHmsZoneOverlay>, global::GBX.NET.Interfaces.Hms.IHmsZone
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -21,19 +26,19 @@ public partial interface IHmsZoneOverlay : IClassVersion<global::GBX.NET.Engines
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IHmsZoneOverlayTM10 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10
+public partial interface IHmsZoneOverlayTM10 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
 }
 
-public partial interface IHmsZoneOverlayTMPU : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU
+public partial interface IHmsZoneOverlayTMPU : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
 }
 
-public partial interface IHmsZoneOverlayTMSX : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX
+public partial interface IHmsZoneOverlayTMSX : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
 }
 
-public partial interface IHmsZoneOverlayTMNESWC : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC
+public partial interface IHmsZoneOverlayTMNESWC : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
 }
 
@@ -41,11 +46,11 @@ public partial interface IHmsZoneOverlayTMU : IHmsZoneOverlay, global::GBX.NET.I
 {
 }
 
-public partial interface IHmsZoneOverlayVSK5 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5
+public partial interface IHmsZoneOverlayVSK5 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
 {
 }
 
-public partial interface IHmsZoneOverlayTMF : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF
+public partial interface IHmsZoneOverlayTMF : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers2
 {
 }
 
@@ -53,16 +58,15 @@ public partial interface IHmsZoneOverlayMP3 : IHmsZoneOverlay, global::GBX.NET.I
 {
 }
 
-public partial interface IHmsZoneOverlayTMT : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT
+public partial interface IHmsZoneOverlayTMT : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers2
 {
 }
 
-public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1
+public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers2
 {
-    int AdaptRatio { get; set; }
 }
 
-public partial interface IHmsZoneOverlayTM2020 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020
+public partial interface IHmsZoneOverlayTM2020 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers1, global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMembers2
 {
 }
 

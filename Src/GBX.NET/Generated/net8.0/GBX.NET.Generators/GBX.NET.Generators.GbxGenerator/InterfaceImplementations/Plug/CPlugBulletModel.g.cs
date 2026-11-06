@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020
+public partial class CPlugBulletModel : global::GBX.NET.Interfaces.Plug.IPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBulletModelTM2020
 {
 }

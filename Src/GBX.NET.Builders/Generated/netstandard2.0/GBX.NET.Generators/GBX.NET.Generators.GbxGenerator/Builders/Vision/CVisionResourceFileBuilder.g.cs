@@ -7,8 +7,15 @@ public abstract class CVisionResourceFileBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CVisionResourceFileBuilderBase() { }
     private protected CVisionResourceFileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     private protected const GameVersion SupportedGames2 = GameVersion.TMF;
+}
+public abstract class CVisionResourceFileBuilderMembers1<TSelf> : CVisionResourceFileBuilderBase<TSelf> where TSelf : CVisionResourceFileBuilderMembers1<TSelf>
+{
+    private protected CVisionResourceFileBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
+    public TSelf WithFolderShaderBench(string? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetFolderShaderBenchAssignment(), value, SupportedGames1);
+    public TSelf WithResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
+    public TSelf WithResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId> values) => WithResources(values.ToArray());
 }
 public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase<CVisionResourceFileBuilder>
 {
@@ -26,9 +33,11 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
         return node;
     }
     public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMF : CVisionResourceFileBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
@@ -46,14 +55,25 @@ public partial class CVisionResourceFileBuilder : CVisionResourceFileBuilderBase
         public global::GBX.NET.Engines.Vision.CVisionResourceFile Build() => BuildNode(CVisionResourceFileBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
     }
-    public partial class MP4 : CVisionResourceFileBuilderBase<MP4>
+    public partial class TMT : CVisionResourceFileBuilderMembers1<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Vision.IVisionResourceFileTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Vision.CVisionResourceFile Build() => BuildNode(CVisionResourceFileBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
+    }
+    public partial class MP4 : CVisionResourceFileBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
-        public MP4 WithFolderShaderBench(string? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetFolderShaderBenchAssignment(), value, SupportedGames1);
-        public MP4 WithResources(params global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => Set(global::GBX.NET.Builders.Engines.Vision.CVisionResourceFileBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
-        public MP4 WithResources(IEnumerable<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId> values) => WithResources(values.ToArray());
         public global::GBX.NET.Interfaces.Vision.IVisionResourceFileMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Vision.CVisionResourceFile Build() => BuildNode(CVisionResourceFileBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
+    }
+    public partial class TM2020 : CVisionResourceFileBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Vision.CVisionResourceFile> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Vision.IVisionResourceFileTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Vision.CVisionResourceFile Build() => BuildNode(CVisionResourceFileBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Vision.CVisionResourceFile node);
     }
 }

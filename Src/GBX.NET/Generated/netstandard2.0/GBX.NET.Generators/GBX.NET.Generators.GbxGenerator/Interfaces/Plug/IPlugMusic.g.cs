@@ -3,6 +3,12 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMusicMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMusic
+{
+    string? RootFolder { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileText? Settings { get; set; }
+}
 public partial interface IPlugMusic : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMusic>, global::GBX.NET.Interfaces.Plug.IPlugMusicType
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,15 +52,15 @@ public partial interface IPlugMusicMP3 : IPlugMusic, global::GBX.NET.Interfaces.
 {
 }
 
-public partial interface IPlugMusicTMT : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMT
+public partial interface IPlugMusicTMT : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMT, global::GBX.NET.Interfaces.Plug.IPlugMusicMembers1
 {
 }
 
-public partial interface IPlugMusicMP4 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP4
+public partial interface IPlugMusicMP4 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP4, global::GBX.NET.Interfaces.Plug.IPlugMusicMembers1
 {
 }
 
-public partial interface IPlugMusicTM2020 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM2020
+public partial interface IPlugMusicTM2020 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM2020, global::GBX.NET.Interfaces.Plug.IPlugMusicMembers1
 {
 }
 

@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ITrackManiaControlPlayerInfoCardMembers1 : global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCard
+{
+    bool ShowBasedTimeInfosInRounds { get; set; }
+}
 public partial interface ITrackManiaControlPlayerInfoCard : IClassVersion<global::GBX.NET.Engines.TrackMania.CTrackManiaControlPlayerInfoCard>, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCard
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,7 +22,7 @@ public partial interface ITrackManiaControlPlayerInfoCard : IClassVersion<global
 public partial interface ITrackManiaControlPlayerInfoCardTM10 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +31,7 @@ public partial interface ITrackManiaControlPlayerInfoCardTM10 : ITrackManiaContr
 public partial interface ITrackManiaControlPlayerInfoCardTMPU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +40,7 @@ public partial interface ITrackManiaControlPlayerInfoCardTMPU : ITrackManiaContr
 public partial interface ITrackManiaControlPlayerInfoCardTMSX : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,32 +49,31 @@ public partial interface ITrackManiaControlPlayerInfoCardTMSX : ITrackManiaContr
 public partial interface ITrackManiaControlPlayerInfoCardTMNESWC : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMU
+public partial interface ITrackManiaControlPlayerInfoCardTMU : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMU, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
-    bool ShowBasedTimeInfosInRounds { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5
+public partial interface ITrackManiaControlPlayerInfoCardVSK5 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardVSK5, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMF : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMF
+public partial interface ITrackManiaControlPlayerInfoCardTMF : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
@@ -87,16 +91,16 @@ public partial interface ITrackManiaControlPlayerInfoCardMP3 : ITrackManiaContro
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTMT : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMT
+public partial interface ITrackManiaControlPlayerInfoCardTMT : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTMT, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardMP4
+public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
@@ -105,7 +109,7 @@ public partial interface ITrackManiaControlPlayerInfoCardMP4 : ITrackManiaContro
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface ITrackManiaControlPlayerInfoCardTM2020 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM2020
+public partial interface ITrackManiaControlPlayerInfoCardTM2020 : ITrackManiaControlPlayerInfoCard, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlCardTM2020, global::GBX.NET.Interfaces.TrackMania.ITrackManiaControlPlayerInfoCardMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

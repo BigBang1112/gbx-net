@@ -16,5 +16,13 @@ public partial interface IGameModulePlaygroundModel : IClassVersion<global::GBX.
 
 public partial interface IGameModulePlaygroundModelMP4 : IGameModulePlaygroundModel, global::GBX.NET.Interfaces.GameData.IGameModuleModelCommonMP4
 {
+    global::GBX.NET.Engines.Plug.CPlugFileImg? Icon { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileText? ManialinkCode { get; set; }
+    float SizeX { get; set; }
+    float SizeY { get; set; }
+}
+
+public partial interface IGameModulePlaygroundModelTM2020 : IGameModulePlaygroundModel, global::GBX.NET.Interfaces.GameData.IGameModuleModelCommonTM2020
+{
 }
 

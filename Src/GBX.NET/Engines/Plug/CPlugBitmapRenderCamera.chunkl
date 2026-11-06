@@ -4,11 +4,11 @@ CPlugBitmapRenderCamera 0x09089000
 0x000 // legacy render path
   int
 
-0x001 (skippable)
+0x001 (skippable) [VSK5, TMF]
   datauint
 
-0x002 (skippable)
+0x002 (skippable) [TMT, MP4, TM2020]
   datauint
 
-0x003 (skippable) // PlaneY_Offset
+0x003 (skippable) [TMT, MP4, TM2020] // PlaneY_Offset
   float PlaneY_Offset

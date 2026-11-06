@@ -95,6 +95,11 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         get => SpriteParam;
         set => SpriteParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSpriteParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapArrayTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020.BitmapArray
+    {
+        get => BitmapArray;
+        set => BitmapArray = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020>.BitmapRender
     {
         get => BitmapRender;

@@ -6,14 +6,18 @@ namespace GBX.NET.Interfaces.Control;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlLabelMembers1 : global::GBX.NET.Interfaces.Control.IControlLabel
 {
-    Vec4 ImageColor { get; set; }
+    bool DontDrawText { get; set; }
+    string? Label { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlLabelMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlLabel where T0 : class
 {
     T0? Bitmap { get; set; }
-    bool DontDrawText { get; set; }
-    string? Label { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlLabelMembers3 : global::GBX.NET.Interfaces.Control.IControlLabel
+{
+    Vec4 ImageColor { get; set; }
 }
 public partial interface IControlLabel : IClassVersion<global::GBX.NET.Engines.Control.CControlLabel>, global::GBX.NET.Interfaces.Control.IControlText
 {
@@ -26,39 +30,39 @@ public partial interface IControlLabel : IClassVersion<global::GBX.NET.Engines.C
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlLabelTM10 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlLabelTM10 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlLabelMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMPU : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlLabelTMPU : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlLabelMembers1
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMSX : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlLabelTMSX : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMNESWC : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlLabelTMNESWC : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMU : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
+public partial interface IControlLabelTMU : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
@@ -66,15 +70,15 @@ public partial interface IControlLabelTMU : IControlLabel, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelVSK5 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlLabelVSK5 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMF : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlLabelTMF : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
@@ -90,15 +94,15 @@ public partial interface IControlLabelMP3 : IControlLabel, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTMT : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlLabelTMT : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Control.IControlLabelMembers3
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelMP4 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlLabelMembers1
+public partial interface IControlLabelMP4 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Control.IControlLabelMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
@@ -106,7 +110,7 @@ public partial interface IControlLabelMP4 : IControlLabel, global::GBX.NET.Inter
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IControlLabelTM2020 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>
+public partial interface IControlLabelTM2020 : IControlLabel, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlLabelMembers1, global::GBX.NET.Interfaces.Control.IControlLabelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Control.IControlLabelMembers3
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }

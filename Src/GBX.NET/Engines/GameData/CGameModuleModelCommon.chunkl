@@ -1,7 +1,7 @@
 CGameModuleModelCommon 0x2E015000
 - abstract
 
-0x000 (skippable)
+0x000 (skippable) [MP4.v2, TM2020.v2]
   version = 2
   v2+
     string

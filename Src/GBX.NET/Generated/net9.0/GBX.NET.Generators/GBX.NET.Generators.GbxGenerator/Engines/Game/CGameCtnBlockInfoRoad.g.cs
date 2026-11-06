@@ -28,8 +28,8 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
         internal NodeRefView(CGameCtnBlockInfoRoad owner) => this.owner = owner;
         public NodeRef<CGameCtnBlockInfoSlope> Slope => NodeRef.GetOrCreate(ref owner.slopeRef);
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => ((CGameCtnBlockInfo)owner).References.Pillar;
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
-        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo?>>? AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? GroundMobils => ((CGameCtnBlockInfo)owner).References.GroundMobils;
         public IReadOnlyList<IReadOnlyList<NodeRef<CSceneMobil>>?>? AirMobils => ((CGameCtnBlockInfo)owner).References.AirMobils;
         public NodeRef<CSceneMobil> GroundHelperMobil => ((CGameCtnBlockInfo)owner).References.GroundHelperMobil;

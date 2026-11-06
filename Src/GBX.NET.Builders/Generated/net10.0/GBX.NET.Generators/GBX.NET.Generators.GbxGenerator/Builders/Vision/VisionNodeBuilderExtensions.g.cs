@@ -3,11 +3,27 @@
 
 namespace GBX.NET.Engines.Vision;
 
+public static class CVisPostFx_BloomHdrBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Vision.CVisPostFx_BloomHdr)
+    {
+        public static global::GBX.NET.Builders.Engines.Vision.CVisPostFx_BloomHdrBuilder Create() => new();
+    }
+}
+
 public static class CVisPostFx_MotionBlurBuilderExtensions
 {
     extension(global::GBX.NET.Engines.Vision.CVisPostFx_MotionBlur)
     {
         public static global::GBX.NET.Builders.Engines.Vision.CVisPostFx_MotionBlurBuilder Create() => new();
+    }
+}
+
+public static class CVisPostFx_ToneMappingBuilderExtensions
+{
+    extension(global::GBX.NET.Engines.Vision.CVisPostFx_ToneMapping)
+    {
+        public static global::GBX.NET.Builders.Engines.Vision.CVisPostFx_ToneMappingBuilder Create() => new();
     }
 }
 

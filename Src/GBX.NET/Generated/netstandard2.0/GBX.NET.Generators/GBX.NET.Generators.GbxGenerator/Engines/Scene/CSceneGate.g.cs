@@ -130,11 +130,11 @@ public partial class CSceneGate : CMwNod, IClass
     /// CSceneGate 0x001 chunk (portals)
     /// </summary>
     [Chunk(0x0A006001, "portals")]
-    [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A006001 : Chunk<CSceneGate>
     {
         public override uint Id => 0x0A006001;
-        public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public int U01;
 
         private NodeRef<CMwNod>? U02Ref;

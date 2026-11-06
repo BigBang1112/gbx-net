@@ -5,4 +5,19 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameManiaTitleCore : global::GBX.NET.Interfaces.Game.IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM10, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMPU, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMSX, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMNESWC, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMU, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreVSK5, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMF, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP3, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTMT, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020
 {
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT? global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMT>.CollectionCommon
+    {
+        get => CollectionCommon;
+        set => CollectionCommon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4? global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>.CollectionCommon
+    {
+        get => CollectionCommon;
+        set => CollectionCommon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020? global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMembers1<global::GBX.NET.Interfaces.Game.IGameCtnCollectionTM2020>.CollectionCommon
+    {
+        get => CollectionCommon;
+        set => CollectionCommon = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }

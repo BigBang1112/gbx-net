@@ -24,6 +24,29 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     }
 
     [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task ReadWrite_LegacyArchive_SharesReceivedMessagesTimeWithMessagesChunk(bool empty)
+    {
+        DateTime? date = empty ? null : new DateTime(2026, 11, 2, 12, 34, 56, 789);
+        var node = new CGamePlayerProfileChunk_AccountSettings { Flags = 0, ReceivedMessagesAt = date };
+        var payload = Write(rw => node.ReadWrite(rw, 1));
+        var restored = new CGamePlayerProfileChunk_AccountSettings();
+        Read(payload, rw => restored.ReadWrite(rw, 1));
+
+        await Assert.That(restored.ReceivedMessagesAt).IsEqualTo(date);
+        await Assert.That(Write(rw => restored.ReadWrite(rw, 1)).SequenceEqual(payload)).IsTrue();
+
+        var messages = new CGamePlayerProfileChunk_AccountSettings.Chunk0312C005();
+        var messagePayload = Write(rw => messages.ReadWrite(restored, rw));
+        const ulong packedDate = 2026UL | (11UL << 16) | (1UL << 20) | (2UL << 23)
+            | (12UL << 32) | (34UL << 37) | (56UL << 43) | (789UL << 49);
+        using var reader = new BinaryReader(new MemoryStream(messagePayload));
+        await Assert.That(reader.ReadInt32()).IsEqualTo(0);
+        await Assert.That(reader.ReadUInt64()).IsEqualTo(empty ? 0UL : packedDate);
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]

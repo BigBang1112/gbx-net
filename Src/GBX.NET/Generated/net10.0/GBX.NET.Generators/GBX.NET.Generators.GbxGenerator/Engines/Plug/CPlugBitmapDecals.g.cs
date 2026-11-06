@@ -76,7 +76,13 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     public partial class Chunk09078000 : Chunk<CPlugBitmapDecals>, IVersionable
     {
         public override uint Id => 0x09078000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09078000() : this(GameVersion.Unspecified)

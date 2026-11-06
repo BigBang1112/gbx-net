@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.GameData;
 
-public partial class CGameEditorModel : global::GBX.NET.Interfaces.GameData.IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020
+public partial class CGameEditorModel : global::GBX.NET.Interfaces.GameData.IGameEditorModel, global::GBX.NET.Interfaces.GameData.IGameEditorModelMP4, global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020
 {
 }

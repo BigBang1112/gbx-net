@@ -1,5 +1,5 @@
 CPlugBitmapArray 0x090AB000
 - inherits: CPlug
 
-0x000 // Bitmaps
+0x000 [TMT, MP4, TM2020] // Bitmaps
   CPlugBitmap[] Bitmaps

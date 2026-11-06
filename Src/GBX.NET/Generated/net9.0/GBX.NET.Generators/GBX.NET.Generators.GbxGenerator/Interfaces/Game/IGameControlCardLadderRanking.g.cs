@@ -27,7 +27,11 @@ public partial interface IGameControlCardLadderRankingTM10 : IGameControlCardLad
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -52,7 +56,11 @@ public partial interface IGameControlCardLadderRankingTMPU : IGameControlCardLad
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -77,7 +85,11 @@ public partial interface IGameControlCardLadderRankingTMSX : IGameControlCardLad
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -102,7 +114,11 @@ public partial interface IGameControlCardLadderRankingTMNESWC : IGameControlCard
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -156,7 +172,11 @@ public partial interface IGameControlCardLadderRankingVSK5 : IGameControlCardLad
         get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript);
         set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -227,7 +247,11 @@ public partial interface IGameControlCardLadderRankingMP3 : IGameControlCardLadd
 public partial interface IGameControlCardLadderRankingTMT : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout);
+        set => ((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameControlCardLadderRanking)this).LegacyStyle);
@@ -270,7 +294,7 @@ public partial interface IGameControlCardLadderRankingMP4 : IGameControlCardLadd
     }
 }
 
-public partial interface IGameControlCardLadderRankingTM2020 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020
+public partial interface IGameControlCardLadderRankingTM2020 : IGameControlCardLadderRanking, global::GBX.NET.Interfaces.Game.IGameControlCardTM2020, global::GBX.NET.Interfaces.Game.IGameControlCardLadderRankingMembers1
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout

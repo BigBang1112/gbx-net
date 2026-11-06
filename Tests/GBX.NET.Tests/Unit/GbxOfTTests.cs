@@ -44,7 +44,7 @@ public class GbxOfTTests
 
         using var saved = new MemoryStream();
         parsed.Save(saved);
-        await Assert.That(saved.ToArray()).IsEquivalentTo(stream.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(stream.ToArray(), saved.ToArray());
     }
 
     [Test]
@@ -83,9 +83,7 @@ public class GbxOfTTests
             BodyCompression = GbxCompression.Uncompressed
         };
 
-#pragma warning disable GBXNET10001
         var clone = original.DeepClone();
-#pragma warning restore GBXNET10001
         var clonedChunk = (SkippableChunk)clone.Node.Chunks.Get(chunkId)!;
         clonedChunk.Data![0] = 99;
         clone.BodyCompression = GbxCompression.Compressed;

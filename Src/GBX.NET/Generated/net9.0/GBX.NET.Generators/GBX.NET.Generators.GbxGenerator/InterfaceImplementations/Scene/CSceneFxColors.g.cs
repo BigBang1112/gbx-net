@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxColors : global::GBX.NET.Interfaces.Scene.ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU
+public partial class CSceneFxColors : global::GBX.NET.Interfaces.Scene.ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM10, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU, global::GBX.NET.Interfaces.Scene.ISceneFxColorsVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMF, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMT, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMP4, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM2020
 {
 }

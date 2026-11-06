@@ -7,26 +7,32 @@ public abstract class CPlugCloudsBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CPlugCloudsBuilderBase() { }
     private protected CPlugCloudsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
-    public TSelf WithPointHeights(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
-    public TSelf WithPointHeights(IEnumerable<Vec2> values) => WithPointHeights(values.ToArray());
+    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5;
 }
 public abstract class CPlugCloudsBuilderMembers1<TSelf> : CPlugCloudsBuilderBase<TSelf> where TSelf : CPlugCloudsBuilderMembers1<TSelf>
 {
     private protected CPlugCloudsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
-    public TSelf WithBottomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, SupportedGames1);
-    public TSelf WithBottomNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, SupportedGames1);
-    public TSelf WithHeightCenter(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, SupportedGames1);
-    public TSelf WithHeightCenterXZ(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, SupportedGames1);
-    public TSelf WithImageColorMax(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, SupportedGames1);
-    public TSelf WithImageColorMaxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithImageColorMin(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, SupportedGames1);
-    public TSelf WithImageColorMinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithLighting(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, SupportedGames1);
-    public TSelf WithSolidFids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, SupportedGames1);
+    public TSelf WithImageColorMax(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxAssignment(), value, SupportedGames2);
+    public TSelf WithImageColorMaxReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMaxReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithImageColorMin(global::GBX.NET.Engines.Plug.CPlugFileImg? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinAssignment(), value, SupportedGames2);
+    public TSelf WithImageColorMinReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetImageColorMinReferenceAssignment(), value, SupportedGames2);
+}
+public abstract class CPlugCloudsBuilderMembers2<TSelf> : CPlugCloudsBuilderMembers1<TSelf> where TSelf : CPlugCloudsBuilderMembers2<TSelf>
+{
+    private protected CPlugCloudsBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
+    public TSelf WithBottomFarZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomFarZAssignment(), value, SupportedGames3);
+    public TSelf WithBottomNearZ(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetBottomNearZAssignment(), value, SupportedGames3);
+    public TSelf WithHeightCenter(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterAssignment(), value, SupportedGames3);
+    public TSelf WithHeightCenterXZ(Vec2 value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetHeightCenterXZAssignment(), value, SupportedGames3);
+    public TSelf WithLighting(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetLightingAssignment(), value, SupportedGames3);
+    public TSelf WithPointHeights(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
+    public TSelf WithPointHeights(IEnumerable<Vec2> values) => WithPointHeights(values.ToArray());
+    public TSelf WithSolidFids(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidFidsAssignment(), value, SupportedGames3);
     public TSelf WithSolidFids(params global::GBX.NET.Engines.Plug.CPlugSolid[] values) => WithSolidFids(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(values));
     public TSelf WithSolidFids(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSolid> values) => WithSolidFids(values.ToArray());
-    public TSelf WithSpeedScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, SupportedGames1);
+    public TSelf WithSpeedScale(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSpeedScaleAssignment(), value, SupportedGames3);
 }
 public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuilder>
 {
@@ -51,18 +57,27 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180004());
         return node;
     }
+    private static global::GBX.NET.Engines.Plug.CPlugClouds CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugClouds();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugClouds.Chunk09180007());
+        return node;
+    }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMNESWC : CPlugCloudsBuilderBase<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
+        public TMNESWC WithPointHeights(params Vec2[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetPointHeightsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5);
+        public TMNESWC WithPointHeights(IEnumerable<Vec2> values) => WithPointHeights(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
-    public partial class TMU : CPlugCloudsBuilderMembers1<TMU>
+    public partial class TMU : CPlugCloudsBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
         public TMU WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidTMU[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMU>(values, false));
@@ -71,7 +86,7 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
-    public partial class VSK5 : CPlugCloudsBuilderMembers1<VSK5>
+    public partial class VSK5 : CPlugCloudsBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
         public VSK5 WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(values, false));
@@ -80,13 +95,29 @@ public partial class CPlugCloudsBuilder : CPlugCloudsBuilderBase<CPlugCloudsBuil
         public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
-    public partial class TMF : CPlugCloudsBuilderMembers1<TMF>
+    public partial class TMF : CPlugCloudsBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
         public TMF WithSolidFids(params global::GBX.NET.Interfaces.Plug.IPlugSolidTMF[] values) => base.WithSolidFids(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(values, false));
         public TMF WithSolidFids(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF> values) => WithSolidFids(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
+    }
+    public partial class TM2020 : CPlugCloudsBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugClouds> state) : base(state) { }
+        public TM2020 WithCloudsParam(global::GBX.NET.Engines.Plug.CPlugCloudsParam? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetCloudsParamAssignment(), value, SupportedGames1);
+        public TM2020 WithCloudsParamReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCloudsParam> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetCloudsParamReferenceAssignment(), value, SupportedGames1);
+        public TM2020 WithCloudsParam(global::GBX.NET.Interfaces.Plug.IPlugCloudsParamTM2020? value) => WithCloudsParam(value is null ? (global::GBX.NET.Engines.Plug.CPlugCloudsParam?)null : value is global::GBX.NET.Engines.Plug.CPlugCloudsParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMaterialModelToForce(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetMaterialModelToForceAssignment(), value, SupportedGames1);
+        public TM2020 WithMaterialModelToForceReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetMaterialModelToForceReferenceAssignment(), value, SupportedGames1);
+        public TM2020 WithMaterialModelToForce(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => WithMaterialModelToForce(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithSolids(global::GBX.NET.Engines.Plug.CPlugCloudsSolids? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidsAssignment(), value, SupportedGames1);
+        public TM2020 WithSolidsReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCloudsSolids> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilderAssignments.GetSolidsReferenceAssignment(), value, SupportedGames1);
+        public TM2020 WithSolids(global::GBX.NET.Interfaces.Plug.IPlugCloudsSolidsTM2020? value) => WithSolids(value is null ? (global::GBX.NET.Engines.Plug.CPlugCloudsSolids?)null : value is global::GBX.NET.Engines.Plug.CPlugCloudsSolids node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugCloudsTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugClouds Build() => BuildNode(CPlugCloudsBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugClouds node);
     }
 }

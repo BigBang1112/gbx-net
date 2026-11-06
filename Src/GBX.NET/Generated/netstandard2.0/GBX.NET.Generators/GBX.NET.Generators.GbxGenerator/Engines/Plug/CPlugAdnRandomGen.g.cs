@@ -33,7 +33,12 @@ public partial class CPlugAdnRandomGen : CMwNod, IClass
     public partial class Chunk09140000 : Chunk<CPlugAdnRandomGen>, IVersionable
     {
         public override uint Id => 0x09140000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09140000() : this(GameVersion.Unspecified)

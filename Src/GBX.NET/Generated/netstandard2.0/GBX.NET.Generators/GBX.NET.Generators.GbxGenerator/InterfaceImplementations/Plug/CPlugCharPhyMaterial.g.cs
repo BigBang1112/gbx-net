@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCharPhyMaterial : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020
+public partial class CPlugCharPhyMaterial : global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterial, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTM2020
 {
 }

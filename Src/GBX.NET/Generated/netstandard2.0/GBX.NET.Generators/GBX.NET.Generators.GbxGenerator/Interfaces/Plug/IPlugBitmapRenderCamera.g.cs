@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderCameraMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCamera
+{
+    float PlaneY_Offset { get; set; }
+}
 public partial interface IPlugBitmapRenderCamera : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCamera>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,15 +51,15 @@ public partial interface IPlugBitmapRenderCameraMP3 : IPlugBitmapRenderCamera, g
 {
 }
 
-public partial interface IPlugBitmapRenderCameraTMT : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT
+public partial interface IPlugBitmapRenderCameraTMT : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderCameraMP4 : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4
+public partial interface IPlugBitmapRenderCameraMP4 : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMembers1
 {
 }
 
-public partial interface IPlugBitmapRenderCameraTM2020 : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020
+public partial interface IPlugBitmapRenderCameraTM2020 : IPlugBitmapRenderCamera, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCameraMembers1
 {
 }
 

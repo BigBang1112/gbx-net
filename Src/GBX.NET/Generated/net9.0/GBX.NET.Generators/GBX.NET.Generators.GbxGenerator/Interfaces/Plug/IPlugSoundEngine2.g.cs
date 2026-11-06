@@ -6,6 +6,18 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundEngine2Members1 : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2
 {
+    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Rpm { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Throttle { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? RpmFactor_Gear { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Distance { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Gear { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Rpm { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Speed { get; set; }
+    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Throttle { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSoundEngine2Members2 : global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2
+{
     global::GBX.NET.Engines.Plug.CPlugSoundEngine2.AudioMotor[]? AudioMotors { get; set; }
     string? Loops_Folder { get; set; }
     bool Loops_RpmClamp { get; set; }
@@ -61,23 +73,15 @@ public partial interface IPlugSoundEngine2MP3 : IPlugSoundEngine2, global::GBX.N
 {
 }
 
-public partial interface IPlugSoundEngine2TMT : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT
+public partial interface IPlugSoundEngine2TMT : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members2
 {
 }
 
-public partial interface IPlugSoundEngine2MP4 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1
+public partial interface IPlugSoundEngine2MP4 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members2
 {
-    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Rpm { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? AudioMotors_PitchRandomize_Throttle { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? RpmFactor_Gear { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Distance { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Gear { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Rpm { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Speed { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Throttle { get; set; }
 }
 
-public partial interface IPlugSoundEngine2TM2020 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members1
+public partial interface IPlugSoundEngine2TM2020 : IPlugSoundEngine2, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundEngine2Members2
 {
     global::GBX.NET.Engines.Plug.CPlugSoundEngine2.LowPassFilter[]? LowPassFilters { get; set; }
 }

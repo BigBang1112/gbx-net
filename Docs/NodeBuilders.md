@@ -98,7 +98,7 @@ If a member stops being common, an obsolete method in the outer builder partial 
 
 ## Exceptional creation recipes
 
-Most builders use the game's chunk writer qualifiers. Chunks marked `ignore` are left out, they are not meant to be used in builders. When that selection needs an explicit override, add `NodeBuilderRecipe` to the node partial. The supplied types replace the inferred chunk selection for that game, including inherited and header chunks:
+Most builders use the game's chunk writer qualifiers. Chunks marked `ignore` are left out, they are not meant to be used in builders. Chunks marked `retired: Game` are left out of that game's builders only. When that selection needs an explicit override, add `NodeBuilderRecipe` to the node partial. The supplied types replace the inferred chunk selection for that game, including inherited and header chunks:
 
 ```cs
 using GBX.NET.Attributes;

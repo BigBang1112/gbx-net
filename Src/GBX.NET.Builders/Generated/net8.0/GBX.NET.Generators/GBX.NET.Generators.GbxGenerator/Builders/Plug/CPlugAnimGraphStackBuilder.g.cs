@@ -7,7 +7,7 @@ public abstract class CPlugAnimGraphStackBuilderBase<TSelf> : NodeBuilder<global
 {
     private protected CPlugAnimGraphStackBuilderBase() { }
     private protected CPlugAnimGraphStackBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithGraphs(NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimGraphStackBuilderAssignments.GetGraphsAssignment(), value, SupportedGames1);
     public TSelf WithGraphs(params global::GBX.NET.Engines.Plug.CPlugAnimGraph[] values) => WithGraphs(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraph>(values));
     public TSelf WithGraphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimGraph> values) => WithGraphs(values.ToArray());
@@ -23,7 +23,19 @@ public partial class CPlugAnimGraphStackBuilder : CPlugAnimGraphStackBuilderBase
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimGraphStack.Chunk09138000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimGraphStackBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> state) : base(state) { }
+        public MP4 WithGraphs(params global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4[] values) => base.WithGraphs(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>(values, false));
+        public MP4 WithGraphs(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4> values) => WithGraphs(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimGraphStack Build() => BuildNode(CPlugAnimGraphStackBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimGraphStack node);
+    }
     public partial class TM2020 : CPlugAnimGraphStackBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack> state) : base(state) { }

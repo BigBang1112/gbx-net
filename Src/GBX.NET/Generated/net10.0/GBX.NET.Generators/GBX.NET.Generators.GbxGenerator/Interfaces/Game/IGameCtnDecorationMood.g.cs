@@ -24,7 +24,6 @@ public interface IGameCtnDecorationMoodMembers1<T0, T1, T2> : global::GBX.NET.In
         get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxLightning);
         set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
     float LocalLightScale { get; set; }
     float SunMoonIntensity { get; set; }
@@ -72,6 +71,15 @@ public interface IGameCtnDecorationMoodMembers5<T0> : global::GBX.NET.Interfaces
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMoodMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
 {
+    T0? FxWindOnDecal
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxWindOnDecal);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxWindOnDecal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers7<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
+{
     T0? HmsLightMap
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).HmsLightMap);
@@ -108,31 +116,32 @@ public partial interface IGameCtnDecorationMoodTMNESWC : IGameCtnDecorationMood,
 {
 }
 
-public partial interface IGameCtnDecorationMoodTMU : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>
+public partial interface IGameCtnDecorationMoodTMU : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMU>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>
 {
 }
 
-public partial interface IGameCtnDecorationMoodVSK5 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>
+public partial interface IGameCtnDecorationMoodVSK5 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>
 {
 }
 
-public partial interface IGameCtnDecorationMoodTMF : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>
+public partial interface IGameCtnDecorationMoodTMF : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>
 {
 }
 
-public partial interface IGameCtnDecorationMoodMP3 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>
+public partial interface IGameCtnDecorationMoodMP3 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>
+{
+    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
+}
+
+public partial interface IGameCtnDecorationMoodTMT : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>
 {
 }
 
-public partial interface IGameCtnDecorationMoodTMT : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>
+public partial interface IGameCtnDecorationMoodMP4 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>
 {
 }
 
-public partial interface IGameCtnDecorationMoodMP4 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>
-{
-}
-
-public partial interface IGameCtnDecorationMoodTM2020 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>
+public partial interface IGameCtnDecorationMoodTM2020 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>
 {
 }
 

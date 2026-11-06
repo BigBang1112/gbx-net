@@ -3,6 +3,36 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBeamEmitterSubModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel
+{
+    bool BloomEnabled { get; set; }
+    float BloomEnergy { get; set; }
+    float BloomFadeEndAtEndLife { get; set; }
+    bool BloomFadeOut { get; set; }
+    float BloomIntensity { get; set; }
+    float BloomScale { get; set; }
+    bool BloomShrinkOverLife { get; set; }
+    float BloomStartOffset { get; set; }
+    bool EnableCenterLaser { get; set; }
+    bool EnableTriLaser { get; set; }
+    float LaserRadius { get; set; }
+    bool SharpEnabled { get; set; }
+    float SharpEnergy { get; set; }
+    float SharpFadeEndAtEndLife { get; set; }
+    bool SharpFadeOut { get; set; }
+    float SharpIntensity { get; set; }
+    float SharpScale { get; set; }
+    bool SharpShrinkOverLife { get; set; }
+    float SharpStartOffset { get; set; }
+    float StartOffsetAtEndLife { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBeamEmitterSubModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel where T0 : class
+{
+    new IReadOnlyList<T0>? AdditionalMaterials { get; set; }
+    new T0? Material { get; set; }
+}
 public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>
 {
     string[]? AdditionalMaterialPaths { get; set; }
@@ -21,21 +51,11 @@ public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NE
     float BeamWithSpheres_Radius { get; set; }
     float BeamWithSpheres_Speed { get; set; }
     float BeamWithSpheres_StartDistance { get; set; }
-    bool BloomEnabled { get; set; }
-    float BloomEnergy { get; set; }
-    float BloomFadeEndAtEndLife { get; set; }
-    bool BloomFadeOut { get; set; }
-    float BloomIntensity { get; set; }
-    float BloomScale { get; set; }
-    bool BloomShrinkOverLife { get; set; }
-    float BloomStartOffset { get; set; }
     int CylinderSideCount { get; set; }
     int DisplayType { get; set; }
     bool DoubleHelix_ClockWise { get; set; }
     float DoubleHelix_StartAngle { get; set; }
     int Duration { get; set; }
-    bool EnableCenterLaser { get; set; }
-    bool EnableTriLaser { get; set; }
     float FadeTimeOffset { get; set; }
     float FadeTimeScale { get; set; }
     float Helix_CoeffLowDef { get; set; }
@@ -45,7 +65,6 @@ public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NE
     float Helix_OutterRadius { get; set; }
     float Helix_TurnLength { get; set; }
     int Helix_VerticesCountPerTurn { get; set; }
-    float LaserRadius { get; set; }
     int LightningBeamCount { get; set; }
     float LightningDistStep { get; set; }
     float LightningJitterRadius { get; set; }
@@ -55,23 +74,20 @@ public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NE
     string? MaterialPath { get; set; }
     bool MaterialsAsStrings { get; set; }
     float Radius { get; set; }
-    bool SharpEnabled { get; set; }
-    float SharpEnergy { get; set; }
-    float SharpFadeEndAtEndLife { get; set; }
-    bool SharpFadeOut { get; set; }
-    float SharpIntensity { get; set; }
-    float SharpScale { get; set; }
-    bool SharpShrinkOverLife { get; set; }
-    float SharpStartOffset { get; set; }
-    float StartOffsetAtEndLife { get; set; }
     float USpeed { get; set; }
     float UVScale { get; set; }
     float VSpeed { get; set; }
 }
 
-public partial interface IPlugBeamEmitterSubModelMP4 : IPlugBeamEmitterSubModel
+public partial interface IPlugBeamEmitterSubModelTMT : IPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? AdditionalMaterials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material { get; set; }
+}
+
+public partial interface IPlugBeamEmitterSubModelMP4 : IPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>
+{
+}
+
+public partial interface IPlugBeamEmitterSubModelTM2020 : IPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>
+{
 }
 

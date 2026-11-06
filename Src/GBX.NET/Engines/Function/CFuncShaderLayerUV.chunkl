@@ -1,53 +1,168 @@
 CFuncShaderLayerUV 0x05015000
 - inherits: CFuncShader
 
+property bool EnablePingPong
+  get = (Flags & 1) != 0
+  set
+    if value
+      Flags = Flags | 1
+    else
+      Flags = Flags & 0xFE
+
+property bool EnableSmooth
+  get = (Flags & 2) != 0
+  set
+    if value
+      Flags = Flags | 2
+    else
+      Flags = Flags & 0xFD
+
+property bool WriteX
+  get = (WriteFlags & 1) != 0
+  set
+    if value
+      WriteFlags = WriteFlags | 1
+    else
+      WriteFlags = WriteFlags & 0xFFFFFFFE
+
+property bool WriteY
+  get = (WriteFlags & 2) != 0
+  set
+    if value
+      WriteFlags = WriteFlags | 2
+    else
+      WriteFlags = WriteFlags & 0xFFFFFFFD
+
+property bool WriteZ
+  get = (WriteFlags & 4) != 0
+  set
+    if value
+      WriteFlags = WriteFlags | 4
+    else
+      WriteFlags = WriteFlags & 0xFFFFFFFB
+
+property bool WriteW
+  get = (WriteFlags & 8) != 0
+  set
+    if value
+      WriteFlags = WriteFlags | 8
+    else
+      WriteFlags = WriteFlags & 0xFFFFFFF7
+
+0x002
+  int
+  float Period (inherited)
+  int<EType> SignalType
+
+0x003
+  byte<EType> SignalType
+  byte
+  short
+  float Period (inherited)
+
+0x004
+  byte<EType> SignalType
+  byte
+  short
+
 0x005 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  string LayerName
-  int
+  string LayerName = "EnvMap"
+  byte<EType> SignalType
+  byte<uint> Flags // EnablePingPong (bit 0), EnableSmooth (bit 1)
+  short
 
-0x009 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  vec2
-  vec2
+0x009 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // TransLinear
+  vec2 Base
+  vec2 Amplitude = (1, 1)
 
-0x00A (base: 0x009) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x00A (base: 0x009) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4] // TransCircular
   base
-  vec2 U03
+  vec2 Offset
 
-0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
-  vec2
-  vec2
-  vec2
+0x00B // Base
+  vec2 Base
 
-0x011 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
-  int
-  int
-  bool
-  bool
-  bool
-  CMwNod
+0x00C // legacy TransSubTexture
+  int NbSubTexture
+  int NbSubTexturePerLine
+  bool LegacyEnablePingPong (local, write: n.EnablePingPong)
+  EnablePingPong = LegacyEnablePingPong
 
-0x012 [TM10, TMPU, TMSX, TMNESWC, VSK5]
-  int
-  int
+0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // TransLinearScale
+  vec2 Base
+  vec2 Amplitude
+  vec2 Scale
 
-0x013 (base: 0x00A) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
+0x00E
+  int NbSubTexture
+  int NbSubTexturePerLine
+  bool LegacyEnablePingPong (local, write: n.EnablePingPong)
+  bool EnableBlending
+  CPlugBitmap BitmapCopy
+  EnablePingPong = LegacyEnablePingPong
 
-0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
-  vec2
-  float
-  float
+0x00F
+  int NbSubTexture
+  int NbSubTexturePerLine
+  bool LegacyEnablePingPong (local, write: n.EnablePingPong)
+  bool EnableBlending
+  bool EnableSmoothBlend
+  CPlugBitmap BitmapCopy
+  EnablePingPong = LegacyEnablePingPong
 
-0x015 [TMF, MP3, TMT]
-  int
-  int
-  int
-  int
+0x010
+  int NbSubTexture
+  int NbSubTexturePerLine
+  bool LegacyEnablePingPong (local, write: n.EnablePingPong)
+  bool EnableMipMapping
+  bool EnableBlending
+  bool EnableSmoothBlend
+  CPlugBitmap BitmapCopy
+  EnablePingPong = LegacyEnablePingPong
 
-0x016 [TMF, MP3, TMT]
-  uint
+0x011 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4] // CopySubTexture
+  int NbSubTexture
+  int NbSubTexturePerLine
+  bool EnableMipMapping
+  bool EnableBlending
+  bool EnableSmoothBlend
+  CPlugBitmap BitmapCopy
 
-0x017 [MP4, TM2020]
-  vec2
-  vec2
-  vec2
-  float
+0x012 [TM10, TMPU, TMSX, TMNESWC, VSK5] // legacy TransSubTexture
+  int NbSubTexture
+  int NbSubTexturePerLine
+
+0x013 (base: 0x00A) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Scale
+
+0x014 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Rotate
+  vec2 Base
+  float AngleStart
+  float AngleEnd
+
+0x015 [TMF, MP3, TMT, MP4, TM2020] // TransSubTexture
+  int NbSubTexture
+  int NbSubTexturePerLine
+  int NbSubTexturePerColumn
+  bool TopToBottom
+
+0x016 [TMF, MP3, TMT, MP4] // WriteFlags
+  uint WriteFlags // WriteX (bit 0), WriteY (bit 1), WriteZ (bit 2), WriteW (bit 3)
+
+0x017 [TMT, MP4, TM2020] // TransLinearScaleRotate
+  vec2 Base
+  vec2 Amplitude
+  vec2 Scale
+  float Angle
+
+enum EType
+  TransLinear
+  TransCircular
+  Rotate
+  TransSubTexture
+  TransLinearScale
+  CopySubTexture
+  Scale
+  Reset
+  TransSubTexture2
+  Comp
+  TransLinearScaleRotate

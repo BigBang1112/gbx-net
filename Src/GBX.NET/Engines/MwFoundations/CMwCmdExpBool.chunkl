@@ -1,5 +1,5 @@
 CMwCmdExpBool 0x0103B000
 - inherits: CMwCmdExp
 
-0x000 [TMU, TMF] // Bool
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, TMF] // Bool
   bool Bool

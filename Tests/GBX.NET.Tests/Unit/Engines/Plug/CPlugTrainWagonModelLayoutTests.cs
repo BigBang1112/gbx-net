@@ -44,7 +44,7 @@ public class CPlugTrainWagonModelLayoutTests
         await Assert.That(node.GenLengthFromShape).IsFalse();
         await Assert.That(node.AccelCurve!.Values![0].Y).IsEqualTo(4f);
         await Assert.That(chunk.U04).IsEqualTo(0.75f);
-        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP4 | GameVersion.TM2020);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
     }
 
     [Test]

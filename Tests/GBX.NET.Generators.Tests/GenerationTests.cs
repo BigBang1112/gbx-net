@@ -1409,6 +1409,40 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_GamesWithDifferentChunkVersions_DropsGamesOnlyPastTheirMaximum()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+
+            0x001 [TM10.v1, TMF, MP4.v3, TM2020.v3]
+              version
+
+            0x002 [MP4.v2, TM2020.v2]
+              version
+
+            0x003 [MP4, TM2020]
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
+        var switchLines = classes.Single(x => x.Identifier.ValueText == "Chunk03043001").ToString().Split('\n').Select(static x => x.Trim()).ToArray();
+        var start = Array.IndexOf(switchLines, "public override GameVersion GameVersion => Version switch");
+        await Assert.That(start).IsGreaterThanOrEqualTo(0);
+        await Assert.That(switchLines[(start + 1)..(start + 6)]).IsEquivalentTo(
+        [
+            "{",
+            "<= 1 => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "<= 3 => GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "_ => GameVersion.TM10 | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020,",
+            "};"
+        ], TUnit.Assertions.Enums.CollectionOrdering.Matching);
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043002").ToString()).DoesNotContain("Version switch");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043003").ToString()).DoesNotContain("Version switch");
+    }
+
+    [Test]
     [Arguments("version")]
     [Arguments("versionb")]
     public async Task Generate_VersionDefaultsWithExplicitChunkVersions_PreservesFallbackAndCompatibilityLimit(string keyword)
@@ -3357,6 +3391,129 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_MethodFlags_MergeMultipleMethodsAcrossOccurrencesAndCompile()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public string First() => "first";
+                public int Second() => 2;
+                private int custom;
+                public partial int Custom { get => custom; set => custom = value; }
+                public partial class Metadata
+                {
+                    public int Inspect() => Data;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            property int Computed
+              get = Value
+            0x001
+              int Value (method: First, method: Second)
+              int Custom (method: Second)
+              CMwNod Target (method: First)
+              int Computed (method: Second)
+              int Plain
+            0x002
+              int Value (method: First, protected)
+            archive Metadata
+              int Data (method: Inspect, protected)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var type = compilation.GetTypeByMetadataName("GBX.NET.Engines.Game.Example")!;
+        var value = type.GetMembers("Value").OfType<IPropertySymbol>().Single();
+        var methods = value.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute")
+            .Select(x => (string)x.ConstructorArguments[0].Value!).ToArray();
+        await Assert.That(methods).IsEquivalentTo(new[] { "First", "Second" });
+        var methodAttributes = value.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+        await Assert.That(methodAttributes.Single(x => (string)x.ConstructorArguments[0].Value! == "First")
+            .NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+        await Assert.That(methodAttributes.Single(x => (string)x.ConstructorArguments[0].Value! == "Second")
+            .NamedArguments).IsEmpty();
+
+        foreach (var (property, method) in new[] { ("Custom", "Second"), ("Target", "First"), ("Computed", "Second") })
+        {
+            var attributes = type.GetMembers(property).OfType<IPropertySymbol>().Single().GetAttributes()
+                .Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+            await Assert.That(attributes).Count().IsEqualTo(1);
+            await Assert.That(attributes[0].ConstructorArguments[0].Value).IsEqualTo(method);
+        }
+
+        await Assert.That(type.GetMembers("Plain").OfType<IPropertySymbol>().Single().GetAttributes()
+            .Any(x => x.AttributeClass?.Name == "MethodAttribute")).IsFalse();
+        var data = type.GetTypeMembers("Metadata").Single().GetMembers("Data").OfType<IPropertySymbol>().Single();
+        await Assert.That(data.GetAttributes().Single(x => x.AttributeClass?.Name == "MethodAttribute")
+            .ConstructorArguments[0].Value).IsEqualTo("Inspect");
+        await Assert.That(data.GetAttributes().Single(x => x.AttributeClass?.Name == "MethodAttribute")
+            .NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+    }
+
+    [Test]
+    public async Task Generate_ExternalMethodFlags_CompileWithoutReferencingTheExternalAssembly()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public string Inspect() => "local";
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value (method: Inspect)
+            0x002
+              int Value (method: Inspect, method-type: "Optional.Handler, Optional", protected)
+            0x003
+              int Value (method: Inspect, method-type: "Optional.Handler, Optional", protected)
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var property = compilation.GetTypeByMetadataName("GBX.NET.Engines.Game.Example")!
+            .GetMembers("Value").OfType<IPropertySymbol>().Single();
+        var attributes = property.GetAttributes().Where(x => x.AttributeClass?.Name == "MethodAttribute").ToArray();
+        await Assert.That(attributes).Count().IsEqualTo(2);
+        var external = attributes.Single(x => x.NamedArguments.Any(x => x.Key == "DeclaringTypeName"));
+        await Assert.That(external.ConstructorArguments[0].Value).IsEqualTo("Inspect");
+        await Assert.That(external.NamedArguments.Single(x => x.Key == "DeclaringTypeName").Value.Value).IsEqualTo("Optional.Handler, Optional");
+        await Assert.That(external.NamedArguments.Single(x => x.Key == "Protected").Value.Value).IsEqualTo(true);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("[Method(nameof(Inspect))]");
+        await Assert.That(generated).Contains("[Method(\"Inspect\", DeclaringTypeName = \"Optional.Handler, Optional\", Protected = true)]");
+    }
+
+    [Test]
+    [Arguments("method-type")]
+    [Arguments("method-type: \"\"")]
+    [Arguments("method-type: Handler")]
+    public async Task Generate_MethodTypeWithoutQuotedName_ReportsDiagnostic(string flag)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001
+              int Value (method: Inspect, {{flag}})
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("method-type"));
+    }
+
+    [Test]
+    public async Task Generate_MethodFlagWithoutName_ReportsDiagnostic()
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value (method)
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("method name"));
+    }
+
+    [Test]
     public async Task Generate_FormattingOnAnyFieldOccurrence_AddsAttribute()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -4347,6 +4504,12 @@ public partial class GenerationTests
             public class ChunkAttribute(uint id) : System.Attribute { }
             public class ChunkGameVersionAttribute(GBX.NET.GameVersion game, params int[] versions) : System.Attribute { }
             public class HexadecimalAttribute : System.Attribute { }
+            [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+            public class MethodAttribute(string methodName) : System.Attribute
+            {
+                public bool Protected { get; set; }
+                public string? DeclaringTypeName { get; set; }
+            }
             [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple = true)]
             public class GameVersionDefaultAttribute(GBX.NET.GameVersion game, object? defaultValue = null) : System.Attribute
             {

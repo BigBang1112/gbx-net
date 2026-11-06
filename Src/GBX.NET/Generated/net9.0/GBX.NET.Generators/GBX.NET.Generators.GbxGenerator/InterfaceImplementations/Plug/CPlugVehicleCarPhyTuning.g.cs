@@ -11,5 +11,6 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning)this).Name = value;
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModelsInterfaceReferences() => CameraModels;
+    internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModels_AlternateInterfaceReferences() => CameraModels_Alternate;
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModels_ConsoleInterfaceReferences() => CameraModels_Console;
 }

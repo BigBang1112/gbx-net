@@ -5,28 +5,53 @@ namespace GBX.NET.Builders.Engines.Scene;
 
 internal static class CSceneFxColorsBuilderAssignments
 {
-    private static NodeBuilderProperty<Vec2[]?>? cached0;
-    internal static NodeBuilderProperty<Vec2[]?> GetBitmapRangesAssignment() => cached0 ??= new("BitmapRanges", new Action<object, Vec2[]?>(Assign0), new Func<Vec2[]?, Vec2[]?>(Copy0));
-    private static void Assign0(object node, Vec2[]? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapRanges = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?>? cached1;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?> GetBitmapSbchAssignment() => cached1 ??= new("BitmapSbch", new Action<object, global::GBX.NET.Engines.Plug.CPlugBitmap?>(Assign1));
-    private static void Assign1(object node, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapSbch = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>? cached1Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>> GetBitmapSbchReferenceAssignment() => cached1Reference ??= new("BitmapSbch", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Assign1Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Copy1));
-    private static void Assign1Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.BitmapSbch.CopyFrom(value);
-    private static NodeBuilderProperty<Vec2>? cached2;
-    internal static NodeBuilderProperty<Vec2> GetBitmapTcPeriodAssignment() => cached2 ??= new("BitmapTcPeriod", new Action<object, Vec2>(Assign2));
-    private static void Assign2(object node, Vec2 value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapTcPeriod = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?>? cached0;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?> GetBitmapDepthAssignment() => cached0 ??= new("BitmapDepth", new Action<object, global::GBX.NET.Engines.Plug.CPlugBitmap?>(Assign0));
+    private static void Assign0(object node, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapDepth = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>? cached0Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>> GetBitmapDepthReferenceAssignment() => cached0Reference ??= new("BitmapDepth", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Assign0Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Copy0));
+    private static void Assign0Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.BitmapDepth.CopyFrom(value);
+    private static NodeBuilderProperty<Vec2[]?>? cached1;
+    internal static NodeBuilderProperty<Vec2[]?> GetBitmapRangesAssignment() => cached1 ??= new("BitmapRanges", new Action<object, Vec2[]?>(Assign1), new Func<Vec2[]?, Vec2[]?>(Copy1));
+    private static void Assign1(object node, Vec2[]? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapRanges = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?>? cached2;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugBitmap?> GetBitmapSbchAssignment() => cached2 ??= new("BitmapSbch", new Action<object, global::GBX.NET.Engines.Plug.CPlugBitmap?>(Assign2));
+    private static void Assign2(object node, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapSbch = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>? cached2Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>> GetBitmapSbchReferenceAssignment() => cached2Reference ??= new("BitmapSbch", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Assign2Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>(Copy0));
+    private static void Assign2Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.BitmapSbch.CopyFrom(value);
     private static NodeBuilderProperty<Vec2>? cached3;
-    internal static NodeBuilderProperty<Vec2> GetBitmapTcScaleAssignment() => cached3 ??= new("BitmapTcScale", new Action<object, Vec2>(Assign3));
-    private static void Assign3(object node, Vec2 value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapTcScale = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached4;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetMaterialColorsAssignment() => cached4 ??= new("MaterialColors", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign4));
-    private static void Assign4(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).MaterialColors = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached4Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetMaterialColorsReferenceAssignment() => cached4Reference ??= new("MaterialColors", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign4Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy2));
-    private static void Assign4Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.MaterialColors.CopyFrom(value);
-    private static Vec2[]? Copy0(Vec2[]? value) => value is null ? null! : (Vec2[])value.Clone();
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> Copy1(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(value); return copy; }
+    internal static NodeBuilderProperty<Vec2> GetBitmapTcPeriodAssignment() => cached3 ??= new("BitmapTcPeriod", new Action<object, Vec2>(Assign3));
+    private static void Assign3(object node, Vec2 value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapTcPeriod = value;
+    private static NodeBuilderProperty<Vec2>? cached4;
+    internal static NodeBuilderProperty<Vec2> GetBitmapTcScaleAssignment() => cached4 ??= new("BitmapTcScale", new Action<object, Vec2>(Assign4));
+    private static void Assign4(object node, Vec2 value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).BitmapTcScale = value;
+    private static NodeBuilderProperty<float>? cached5;
+    internal static NodeBuilderProperty<float> GetCloudsIntensityAssignment() => cached5 ??= new("CloudsIntensity", new Action<object, float>(Assign5));
+    private static void Assign5(object node, float value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).CloudsIntensity = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetMaterialColorsAssignment() => cached6 ??= new("MaterialColors", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign6));
+    private static void Assign6(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).MaterialColors = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached6Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetMaterialColorsReferenceAssignment() => cached6Reference ??= new("MaterialColors", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy2));
+    private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.MaterialColors.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShaderApply?>? cached7;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShaderApply?> GetShaderAutoSaturateWithLightAssignment() => cached7 ??= new("ShaderAutoSaturateWithLight", new Action<object, global::GBX.NET.Engines.Plug.CPlugShaderApply?>(Assign7));
+    private static void Assign7(object node, global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).ShaderAutoSaturateWithLight = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>>? cached7Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>> GetShaderAutoSaturateWithLightReferenceAssignment() => cached7Reference ??= new("ShaderAutoSaturateWithLight", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>>(Assign7Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>>(Copy3));
+    private static void Assign7Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.ShaderAutoSaturateWithLight.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?>? cached8;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.MwFoundations.CMwNod?> GetShaderColorGradingAssignment() => cached8 ??= new("ShaderColorGrading", new Action<object, global::GBX.NET.Engines.MwFoundations.CMwNod?>(Assign8));
+    private static void Assign8(object node, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).ShaderColorGrading = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>? cached8Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>> GetShaderColorGradingReferenceAssignment() => cached8Reference ??= new("ShaderColorGrading", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Assign8Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>(Copy2));
+    private static void Assign8Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).References.ShaderColorGrading.CopyFrom(value);
+    private static NodeBuilderProperty<float>? cached9;
+    internal static NodeBuilderProperty<float> GetUserIntensityAssignment() => cached9 ??= new("UserIntensity", new Action<object, float>(Assign9));
+    private static void Assign9(object node, float value) => ((global::GBX.NET.Engines.Scene.CSceneFxColors)node).UserIntensity = value;
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(value); return copy; }
+    private static Vec2[]? Copy1(Vec2[]? value) => value is null ? null! : (Vec2[])value.Clone();
     private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> Copy2(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> Copy3(NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>(); copy.CopyFrom(value); return copy; }
 }

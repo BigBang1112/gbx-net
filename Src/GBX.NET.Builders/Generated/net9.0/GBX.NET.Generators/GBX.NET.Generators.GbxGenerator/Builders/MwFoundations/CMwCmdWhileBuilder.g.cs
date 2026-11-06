@@ -7,7 +7,7 @@ public abstract class CMwCmdWhileBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
 {
     private protected CMwCmdWhileBuilderBase() { }
     private protected CMwCmdWhileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithBlock(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockAssignment(), value, SupportedGames1);
     public TSelf WithBlockReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value) => SetReference(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetBlockReferenceAssignment(), value, SupportedGames1);
     public TSelf WithCondition(global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdWhileBuilderAssignments.GetConditionAssignment(), value, SupportedGames1);
@@ -21,14 +21,59 @@ public partial class CMwCmdWhileBuilder : CMwCmdWhileBuilderBase<CMwCmdWhileBuil
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdWhile.Chunk01037000());
         return node;
     }
+    public TM10 ForTM10() => new(state.Snapshot());
+    public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
+    public partial class TM10 : CMwCmdWhileBuilderBase<TM10>
+    {
+        internal TM10(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
+        public TM10 WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTM10 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
+    }
+    public partial class TMPU : CMwCmdWhileBuilderBase<TMPU>
+    {
+        internal TMPU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
+        public TMPU WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMPU BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
+    }
+    public partial class TMSX : CMwCmdWhileBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
+        public TMSX WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
+    }
+    public partial class TMNESWC : CMwCmdWhileBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
+        public TMNESWC WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
+    }
     public partial class TMU : CMwCmdWhileBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
         public TMU WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMU? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
+        partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
+    }
+    public partial class VSK5 : CMwCmdWhileBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdWhile> state) : base(state) { }
+        public VSK5 WithBlock(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5? value) => base.WithBlock(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?)null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.MwFoundations.IMwCmdWhileVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdWhile Build() => BuildNode(CMwCmdWhileBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdWhile node);
     }
     public partial class TMF : CMwCmdWhileBuilderBase<TMF>

@@ -1,6 +1,6 @@
 CPlugAnimSkelBaked 0x09132000
 
-0x000 [TM2020.v8] // baked animation
+0x000 [MP4.v5, TM2020.v8] // baked animation
   version
   int FlagsVersion
   int TimingVersion

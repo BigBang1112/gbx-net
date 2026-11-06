@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderTweakKeysTranssMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranss where T0 : class
+{
+    IReadOnlyList<T0?>? BoneKeys { get; set; }
+}
 public partial interface IFuncShaderTweakKeysTranss : IClassVersion<global::GBX.NET.Engines.Function.CFuncShaderTweakKeysTranss>, global::GBX.NET.Interfaces.Function.IFuncShader
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -14,31 +19,31 @@ public partial interface IFuncShaderTweakKeysTranss : IClassVersion<global::GBX.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IFuncShaderTweakKeysTranssTM10 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTM10
+public partial interface IFuncShaderTweakKeysTranssTM10 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTM10>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMPU : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU
+public partial interface IFuncShaderTweakKeysTranssTMPU : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMPU>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMSX : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX
+public partial interface IFuncShaderTweakKeysTranssTMSX : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMSX>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMNESWC : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC
+public partial interface IFuncShaderTweakKeysTranssTMNESWC : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMNESWC>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMU : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMU
+public partial interface IFuncShaderTweakKeysTranssTMU : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMU, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMU>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssVSK5 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
+public partial interface IFuncShaderTweakKeysTranssVSK5 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransVSK5>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMF : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMF
+public partial interface IFuncShaderTweakKeysTranssTMF : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMF, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMF>
 {
 }
 
@@ -46,11 +51,11 @@ public partial interface IFuncShaderTweakKeysTranssMP3 : IFuncShaderTweakKeysTra
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssTMT : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMT
+public partial interface IFuncShaderTweakKeysTranssTMT : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderTMT, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransTMT>
 {
 }
 
-public partial interface IFuncShaderTweakKeysTranssMP4 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderMP4
+public partial interface IFuncShaderTweakKeysTranssMP4 : IFuncShaderTweakKeysTranss, global::GBX.NET.Interfaces.Function.IFuncShaderMP4, global::GBX.NET.Interfaces.Function.IFuncShaderTweakKeysTranssMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysTransMP4>
 {
 }
 

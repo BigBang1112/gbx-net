@@ -2,47 +2,37 @@
 
 public partial class CPlugMaterialCustom
 {
-    [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
-    public partial class Chunk0903A00A;
-
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class GpuFx
     {
-        public string U01 { get; set; } = "";
+        public string? Name { get; set; }
         public bool U02 { get; set; }
-        public float[][] U03 { get; set; } = [];
+        public float[][] Values { get; set; } = [[0]];
 
-        public void Read(GbxReader r, int v = 0)
+        /// <summary>Number of components per register, retained when Values is empty.</summary>
+        public int ComponentCount { get; set; } = 1;
+
+        public int U04 { get; set; }
+
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            U01 = r.ReadId();
-            var count1 = r.ReadInt32();
-            var count2 = r.ReadInt32();
-            U02 = r.ReadBoolean();
+            Name = rw.Id(Name);
+            var componentCount = v is 1 or 2 ? 4 : Values.Length > 0 ? Values[0].Length : ComponentCount;
+            var registerCount = v == 0 ? Values.Length : 1;
 
-            U03 = new float[count2][];
+            if (v == 1) U04 = rw.Int32(U04);
+            if (v is 0 or 3) rw.Int32(ref componentCount);
+            if (v == 0) rw.Int32(ref registerCount);
+            if (v is 0 or 3) U02 = rw.Boolean(U02);
 
-            for (var i = 0; i < count2; i++)
+            if (rw.Reader is not null)
             {
-                U03[i] = r.ReadArray<float>(count1);
+                Values = new float[registerCount][];
             }
-        }
+            ComponentCount = componentCount;
 
-        public void Write(GbxWriter w, int v = 0)
-        {
-            var count2 = U03.Length;
-            var count1 = U03.Length > 0 ? U03[0].Length : 0;
-
-            w.WriteIdAsString(U01);
-            w.Write(count1);
-            w.Write(count2);
-            w.Write(U02);
-
-            for (var i = 0; i < count2; i++)
+            for (var i = 0; i < registerCount; i++)
             {
-                for (var j = 0; j < count1; j++)
-                {
-                    w.Write(U03[i][j]);
-                }
+                Values[i] = rw.Array(Values[i], componentCount)!;
             }
         }
     }

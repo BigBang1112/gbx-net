@@ -649,7 +649,13 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public partial class Chunk0315B005 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B005;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0315B005() : this(GameVersion.Unspecified)
@@ -715,7 +721,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public partial class Chunk0315B006 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B006;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 8 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 10 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 11 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugSolid>? U01Ref;
@@ -917,7 +930,13 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public partial class Chunk0315B008 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B008;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 0 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 1 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public BoxAligned U02;
@@ -1035,7 +1054,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     public partial class Chunk0315B00A : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B00A;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CGameObjectPhyModel>? U01Ref;

@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlDataTypeMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameControlDataType where T0 : class
+{
+    new T0? CardTemplate { get; set; }
+}
 public partial interface IGameControlDataType : IClassVersion<global::GBX.NET.Engines.Game.CGameControlDataType>
 {
     global::GBX.NET.Interfaces.Game.IGameControlCard? CardTemplate { get; set; }
@@ -10,8 +15,15 @@ public partial interface IGameControlDataType : IClassVersion<global::GBX.NET.En
     string? Name { get; set; }
 }
 
-public partial interface IGameControlDataTypeTMU : IGameControlDataType
+public partial interface IGameControlDataTypeTMU : IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardTMU>
 {
-    new global::GBX.NET.Interfaces.Game.IGameControlCardTMU? CardTemplate { get; set; }
+}
+
+public partial interface IGameControlDataTypeMP4 : IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardMP4>
+{
+}
+
+public partial interface IGameControlDataTypeTM2020 : IGameControlDataType, global::GBX.NET.Interfaces.Game.IGameControlDataTypeMembers1<global::GBX.NET.Interfaces.Game.IGameControlCardTM2020>
+{
 }
 

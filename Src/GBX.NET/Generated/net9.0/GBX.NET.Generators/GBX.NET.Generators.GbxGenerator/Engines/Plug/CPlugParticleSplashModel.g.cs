@@ -29,7 +29,12 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     public partial class Chunk090B5000 : Chunk<CPlugParticleSplashModel>, IVersionable
     {
         public override uint Id => 0x090B5000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 4 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int U01;
         public float U02;

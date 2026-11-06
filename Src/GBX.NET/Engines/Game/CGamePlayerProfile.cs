@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Managers;
+using System.Text;
 
 namespace GBX.NET.Engines.Game;
 
@@ -16,6 +17,28 @@ public partial class CGamePlayerProfile
 
     private CGamePlayerProfileChunk[]? profileChunks;
     public partial CGamePlayerProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }
+
+    /// <summary>
+    /// Decrypts the online password using its stored MD5 digest.
+    /// </summary>
+    /// <returns>The decrypted password, or an empty string if no password is stored.</returns>
+    public string DecryptPassword()
+    {
+        if (EncryptedPassword is null || EncryptedPassword.Length == 0)
+        {
+            return string.Empty;
+        }
+
+        var bytes = (byte[])EncryptedPassword.Clone();
+        var digest = CryptedPassword.GetBytes();
+
+        for (var i = 0; i < bytes.Length; i++)
+        {
+            bytes[i] ^= digest[i & 15];
+        }
+
+        return Encoding.UTF8.GetString(bytes);
+    }
 
     public partial class VehicleProfile
     {

@@ -1,7 +1,7 @@
 CTrackManiaControlPlayerInfoCard 0x2408C000
 - inherits: CTrackManiaControlCard
 
-0x000 [TMU]
+0x000 [TMU, VSK5, TMF, TMT, MP4, TM2020]
 
-0x001 [TMU] // ShowBasedTimeInfosInRounds
+0x001 [TMU, VSK5, TMF, TMT, MP4, TM2020] // ShowBasedTimeInfosInRounds
   bool ShowBasedTimeInfosInRounds

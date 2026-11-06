@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectCombined : global::GBX.NET.Interfaces.Control.IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMU
+public partial class CControlEffectCombined : global::GBX.NET.Interfaces.Control.IControlEffectCombined, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMSX, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMU, global::GBX.NET.Interfaces.Control.IControlEffectCombinedVSK5, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMF, global::GBX.NET.Interfaces.Control.IControlEffectCombinedTMT, global::GBX.NET.Interfaces.Control.IControlEffectCombinedMP4
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? global::GBX.NET.Interfaces.Control.IControlEffectCombined.Effects
     {
@@ -15,7 +15,32 @@ public partial class CControlEffectCombined : global::GBX.NET.Interfaces.Control
         get => Effects;
         set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.Effects
+    {
+        get => Effects;
+        set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMU>.Effects
+    {
+        get => Effects;
+        set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.Effects
+    {
+        get => Effects;
+        set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.Effects
+    {
+        get => Effects;
+        set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.Effects
+    {
+        get => Effects;
+        set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Control.IControlEffectCombinedMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.Effects
     {
         get => Effects;
         set => Effects = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

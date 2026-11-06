@@ -1,6 +1,6 @@
 CPlugParticleImpactModel 0x090B6000
 
-0x000 [MP4.v3]
+0x000 [TMT.v3, MP4.v3, TM2020.v3]
   version
   CPlugSound Sound
   CPlugParticleEmitterModel ParticleEmitterModel

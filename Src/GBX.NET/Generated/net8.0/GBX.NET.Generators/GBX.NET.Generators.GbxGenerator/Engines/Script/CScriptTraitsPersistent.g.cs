@@ -26,11 +26,11 @@ public partial class CScriptTraitsPersistent : CMwNod, IClass
     /// CScriptTraitsPersistent 0x000 chunk
     /// </summary>
     [Chunk(0x11001000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020, 1, 4, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, -1, 4, 5)]
     public partial class Chunk11001000 : Chunk<CScriptTraitsPersistent>
     {
         public override uint Id => 0x11001000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

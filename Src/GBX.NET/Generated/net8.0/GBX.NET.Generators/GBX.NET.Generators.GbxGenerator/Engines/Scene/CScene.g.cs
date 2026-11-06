@@ -75,9 +75,11 @@ public abstract partial class CScene : CMwNod, IClass
     /// CScene 0x002 chunk (legacy mobils)
     /// </summary>
     [Chunk(0x0A001002, "legacy mobils")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0A001002 : Chunk<CScene>
     {
         public override uint Id => 0x0A001002;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

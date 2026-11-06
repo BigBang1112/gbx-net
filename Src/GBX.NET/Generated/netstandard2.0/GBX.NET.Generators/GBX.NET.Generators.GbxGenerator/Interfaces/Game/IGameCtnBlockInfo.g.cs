@@ -39,11 +39,11 @@ public interface IGameCtnBlockInfoMembers3 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoMembers4<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo where T0 : class where T1 : class where T2 : class
 {
-    IReadOnlyList<T0?>? AirBlockUnitInfos { get; set; }
+    IReadOnlyList<T0>? AirBlockUnitInfos { get; set; }
     T1? AirHelperMobil { get; set; }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
     T1? ConstructionModeHelperMobil { get; set; }
-    IReadOnlyList<T0?>? GroundBlockUnitInfos { get; set; }
+    IReadOnlyList<T0>? GroundBlockUnitInfos { get; set; }
     T1? GroundHelperMobil { get; set; }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
     T2? Pillar { get; set; }

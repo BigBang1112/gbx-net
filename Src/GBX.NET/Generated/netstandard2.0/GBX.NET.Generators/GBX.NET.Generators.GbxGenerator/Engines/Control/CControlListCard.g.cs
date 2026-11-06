@@ -130,9 +130,11 @@ public partial class CControlListCard : CControlFrame, IClass
     /// CControlListCard 0x001 chunk (AllowMultipleSelection)
     /// </summary>
     [Chunk(0x07036001, "AllowMultipleSelection")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07036001 : Chunk<CControlListCard>
     {
         public override uint Id => 0x07036001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -149,10 +151,12 @@ public partial class CControlListCard : CControlFrame, IClass
     /// CControlListCard 0x002 chunk (page size, transposition and grid size)
     /// </summary>
     [Chunk(0x07036002, "page size, transposition and grid size")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk07036002 : Chunk<CControlListCard>, IVersionable
     {
         public override uint Id => 0x07036002;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         public NodeRefList<CControlBase>? U01;
 
@@ -173,6 +177,22 @@ public partial class CControlListCard : CControlFrame, IClass
             yield break;
         }
 
+        public Chunk07036002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07036002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -183,6 +203,11 @@ public partial class CControlListCard : CControlFrame, IClass
         public override void ReadWrite(CControlListCard n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             U01 = rw.ListNodeRef_deprec<CControlBase>(U01);
             rw.Int32(ref n.nbLinesPerPage);
             rw.Int32(ref n.nbColumnsPerPage);

@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.ShootMania;
 
-public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020
+public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020
 {
 }

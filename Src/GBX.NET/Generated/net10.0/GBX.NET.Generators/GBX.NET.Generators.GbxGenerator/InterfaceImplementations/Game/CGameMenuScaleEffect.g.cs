@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameMenuScaleEffect : global::GBX.NET.Interfaces.Game.IGameMenuScaleEffect, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMSX, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMU
+public partial class CGameMenuScaleEffect : global::GBX.NET.Interfaces.Game.IGameMenuScaleEffect, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMSX, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMU, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectVSK5, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMF, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectTMT, global::GBX.NET.Interfaces.Game.IGameMenuScaleEffectMP4
 {
 }

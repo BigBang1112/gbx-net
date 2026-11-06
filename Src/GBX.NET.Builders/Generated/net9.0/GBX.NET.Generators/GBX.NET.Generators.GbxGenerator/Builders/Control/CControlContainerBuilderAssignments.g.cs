@@ -18,8 +18,11 @@ internal static class CControlContainerBuilderAssignments
     internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>> GetCreateScriptReferenceAssignment() => cached2Reference ??= new("CreateScript", new Action<object, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>>(Assign2Reference), new Func<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>>(Copy1));
     private static void Assign2Reference(object node, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => ((global::GBX.NET.Engines.Control.CControlContainer)node).References.CreateScript.CopyFrom(value);
     private static NodeBuilderProperty<bool>? cached3;
-    internal static NodeBuilderProperty<bool> GetUseScriptAssignment() => cached3 ??= new("UseScript", new Action<object, bool>(Assign3));
-    private static void Assign3(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlContainer)node).UseScript = value;
+    internal static NodeBuilderProperty<bool> GetIsClippingContainerAssignment() => cached3 ??= new("IsClippingContainer", new Action<object, bool>(Assign3));
+    private static void Assign3(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlContainer)node).IsClippingContainer = value;
+    private static NodeBuilderProperty<bool>? cached4;
+    internal static NodeBuilderProperty<bool> GetUseScriptAssignment() => cached4 ??= new("UseScript", new Action<object, bool>(Assign4));
+    private static void Assign4(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlContainer)node).UseScript = value;
     private static global::GBX.NET.Engines.Control.CControlContainer.Child[] Copy0(global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => value is null ? null! : (global::GBX.NET.Engines.Control.CControlContainer.Child[])value.Clone();
     private static NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> Copy1(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>(); copy.CopyFrom(value); return copy; }
 }

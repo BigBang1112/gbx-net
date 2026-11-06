@@ -1,6 +1,6 @@
 CSceneFxBloomData 0x0A03F000
 
-0x000 [TMF] // HDR response
+0x000 [VSK5, TMF, TMT, MP4] // HDR response
   float HighInvExponent = 0.33f
   float FakeHdrExponent = 0.5f
   float FakeHdrMin

@@ -7,18 +7,17 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CPlugAnimSkelBakedBuilderBase() { }
     private protected CPlugAnimSkelBakedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
-    public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsAssignment(), value, SupportedGames1);
-    public TSelf WithFlagsVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsVersionAssignment(), value, SupportedGames1);
-    public TSelf WithHash(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetHashAssignment(), value, SupportedGames1);
-    public TSelf WithJointGroup(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupAssignment(), value, SupportedGames1);
-    public TSelf WithJointGroupReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupReferenceAssignment(), value, SupportedGames1);
-    public TSelf WithPackedLocalJointsData(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetPackedLocalJointsDataAssignment(), value, SupportedGames1);
-    public TSelf WithPackedLocalJointsData(IEnumerable<byte> values) => WithPackedLocalJointsData(values.ToArray());
-    public TSelf WithRootMotionFrames(params global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetRootMotionFramesAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
+    public TSelf WithFlags(global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsAssignment(), value, SupportedGames2);
+    public TSelf WithFlagsVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsVersionAssignment(), value, SupportedGames2);
+    public TSelf WithJointGroup(global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupAssignment(), value, SupportedGames2);
+    public TSelf WithJointGroupReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithRootMotionFrames(params global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetRootMotionFramesAssignment(), value, SupportedGames2);
     public TSelf WithRootMotionFrames(IEnumerable<global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame> values) => WithRootMotionFrames(values.ToArray());
-    public TSelf WithTiming(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingAssignment(), value, SupportedGames1);
-    public TSelf WithTimingVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingVersionAssignment(), value, SupportedGames1);
+    public TSelf WithTiming(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingAssignment(), value, SupportedGames2);
+    public TSelf WithTimingVersion(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingVersionAssignment(), value, SupportedGames2);
 }
 public partial class CPlugAnimSkelBakedBuilder : CPlugAnimSkelBakedBuilderBase<CPlugAnimSkelBakedBuilder>
 {
@@ -28,11 +27,31 @@ public partial class CPlugAnimSkelBakedBuilder : CPlugAnimSkelBakedBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.Chunk09132000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimSkelBakedBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state) : base(state) { }
+        public MP4 WithFloatChannelData(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFloatChannelDataAssignment(), value, SupportedGames1);
+        public MP4 WithFloatChannelData(IEnumerable<float> values) => WithFloatChannelData(values.ToArray());
+        public MP4 WithFloatChannelIds(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFloatChannelIdsAssignment(), value, SupportedGames1);
+        public MP4 WithFloatChannelIds(IEnumerable<string> values) => WithFloatChannelIds(values.ToArray());
+        public MP4 WithJointGroup(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4? value) => base.WithJointGroup(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithLocalJointsData(params TransQuat[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetLocalJointsDataAssignment(), value, SupportedGames1);
+        public MP4 WithLocalJointsData(IEnumerable<TransQuat> values) => WithLocalJointsData(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked Build() => BuildNode(CPlugAnimSkelBakedBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node);
+    }
     public partial class TM2020 : CPlugAnimSkelBakedBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state) : base(state) { }
+        public TM2020 WithHash(ulong value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetHashAssignment(), value, SupportedGames3);
         public TM2020 WithJointGroup(global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? value) => base.WithJointGroup(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithPackedLocalJointsData(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetPackedLocalJointsDataAssignment(), value, SupportedGames3);
+        public TM2020 WithPackedLocalJointsData(IEnumerable<byte> values) => WithPackedLocalJointsData(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked Build() => BuildNode(CPlugAnimSkelBakedBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node);

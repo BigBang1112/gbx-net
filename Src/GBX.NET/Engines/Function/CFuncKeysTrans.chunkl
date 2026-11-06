@@ -1,8 +1,8 @@
 CFuncKeysTrans 0x05003000
 - inherits: CFuncKeys
 
-0x000 [TMU, VSK5, TMF] // Trans
+0x000 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4] // Trans
   vec3[] Trans
 
-0x001 [TMU, VSK5, TMF]
+0x001 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4]
   bool

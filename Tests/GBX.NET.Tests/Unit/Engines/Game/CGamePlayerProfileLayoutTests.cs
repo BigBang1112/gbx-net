@@ -1,6 +1,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
+using GBX.NET.Serialization.Chunking;
 using System.Text;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
@@ -8,6 +9,43 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 [Category("Unit")]
 public class CGamePlayerProfileLayoutTests
 {
+    [Test]
+    [Arguments(false, false)]
+    [Arguments(false, true)]
+    [Arguments(true, false)]
+    [Arguments(true, true)]
+    public async Task ReadWrite_OnlineSupportKey_PreservesRawBytes(bool body, bool empty)
+    {
+        byte[] key = empty ? [] : [0x00, 0x80, 0xFF, 0xC3, 0x28, 0xED, 0xA0, 0x80];
+        var payload = Payload(w =>
+        {
+            String(w, "login");
+            if (body)
+            {
+                String(w, "password");
+                String(w, "validation code");
+            }
+            w.Write(key.Length);
+            w.Write(key);
+            if (body)
+            {
+                w.Write(1); // LoginValidated.
+                w.Write(1); // RememberOnlinePassword.
+                String(w, "server");
+                String(w, "path");
+            }
+        });
+        var node = new CGamePlayerProfile();
+        Chunk<CGamePlayerProfile> chunk = body
+            ? new CGamePlayerProfile.Chunk0308C078()
+            : new CGamePlayerProfile.HeaderChunk0308C000();
+        Read(payload, rw => chunk.ReadWrite(node, rw));
+
+        await Assert.That(node.OnlineLogin).IsEqualTo("login");
+        await Assert.That(node.OnlineSupportKey).IsEquivalentTo(key, CollectionOrdering.Matching);
+        await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload, CollectionOrdering.Matching);
+    }
+
     [Test]
     public async Task ReadWrite_PlayerTags_PreserveConsultationFlagsAndDisplayOrder()
     {
@@ -353,12 +391,46 @@ public class CGamePlayerProfileLayoutTests
         await Assert.That(node.OnlineSupportKeyHexa).IsEqualTo("support key");
         await Assert.That(node.LastUsedMSAddress).IsEqualTo("server");
         await Assert.That(node.LoginValidated).IsTrue();
-        await Assert.That(node.EncryptedPasswordLength).IsEqualTo(passwordLength);
+        await Assert.That(node.EncryptedPassword?.Length ?? 0).IsEqualTo(passwordLength);
         if (passwordLength > 0)
         {
             await Assert.That(node.EncryptedPassword).IsEquivalentTo(cipher);
         }
         await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload);
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(4)]
+    public async Task ReadWrite_CryptedPasswordArchive_DerivesByteCountFromData(int passwordLength)
+    {
+        var cipher = new byte[] { 0xC0, 0xDE, 0xFE, 0xED };
+        var digest = Enumerable.Range(1, 16).Select(x => (byte)x).ToArray();
+        var archive = new CGamePlayerProfile.CryptedPasswordData
+        {
+            EncryptedPassword = passwordLength == 0 ? null : cipher,
+            Checksum = new Checksum128(digest)
+        };
+        var payload = Payload(w =>
+        {
+            w.Write(passwordLength);
+            if (passwordLength > 0)
+            {
+                w.Write(digest);
+                w.Write(cipher);
+            }
+        });
+
+        await Assert.That(Write(rw => archive.ReadWrite(rw))).IsEquivalentTo(payload);
+
+        var restored = new CGamePlayerProfile.CryptedPasswordData();
+        Read(payload, rw => restored.ReadWrite(rw));
+        await Assert.That(restored.EncryptedPassword?.Length ?? 0).IsEqualTo(passwordLength);
+        if (passwordLength > 0)
+        {
+            await Assert.That(restored.EncryptedPassword).IsEquivalentTo(cipher);
+            await Assert.That(restored.Checksum).IsEqualTo(archive.Checksum);
+        }
     }
 
     [Test]
@@ -426,9 +498,7 @@ public class CGamePlayerProfileLayoutTests
         await Assert.That(node.ProfileChunks[0].CreatedAt.HasValue).IsEqualTo(currentContainer && version >= 2);
         await Assert.That(Write(Serialize)).IsEquivalentTo(payload);
 
-#pragma warning disable GBXNET10001
         var clone = (CGamePlayerProfile)node.DeepClone();
-#pragma warning restore GBXNET10001
         var originalData = ((CGamePlayerProfileChunk_Unknown)node.ProfileChunks[1]).Data;
         var clonedData = ((CGamePlayerProfileChunk_Unknown)clone.ProfileChunks![1]).Data;
         await Assert.That(clonedData).IsEquivalentTo(originalData);

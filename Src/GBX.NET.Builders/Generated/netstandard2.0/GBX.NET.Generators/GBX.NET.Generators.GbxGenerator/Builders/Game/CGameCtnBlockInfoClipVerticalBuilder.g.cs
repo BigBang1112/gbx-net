@@ -47,9 +47,9 @@ public abstract class CGameCtnBlockInfoClipVerticalBuilderMembers3<TSelf> : CGam
 public abstract class CGameCtnBlockInfoClipVerticalBuilderMembers4<TSelf> : CGameCtnBlockInfoClipVerticalBuilderBase<TSelf> where TSelf : CGameCtnBlockInfoClipVerticalBuilderMembers4<TSelf>
 {
     private protected CGameCtnBlockInfoClipVerticalBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-    public TSelf WithAirBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, SupportedGames8);
-    public TSelf WithAirBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?[] values) => WithAirBlockUnitInfos(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(values));
-    public TSelf WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?> values) => WithAirBlockUnitInfos(values.ToArray());
+    public TSelf WithAirBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirBlockUnitInfosAssignment(), value, SupportedGames8);
+    public TSelf WithAirBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo[] values) => WithAirBlockUnitInfos(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(values));
+    public TSelf WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> values) => WithAirBlockUnitInfos(values.ToArray());
     public TSelf WithAirHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilAssignment(), value, SupportedGames8);
     public TSelf WithAirHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirHelperMobilReferenceAssignment(), value, SupportedGames8);
     public TSelf WithAirMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetAirMobilsAssignment(), value, SupportedGames8);
@@ -57,9 +57,9 @@ public abstract class CGameCtnBlockInfoClipVerticalBuilderMembers4<TSelf> : CGam
     public TSelf WithConstructionModeHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilAssignment(), value, SupportedGames8);
     public TSelf WithConstructionModeHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetConstructionModeHelperMobilReferenceAssignment(), value, SupportedGames8);
     public TSelf WithCopperPrice(int value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetCopperPriceAssignment(), value, SupportedGames8);
-    public TSelf WithGroundBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, SupportedGames8);
-    public TSelf WithGroundBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?[] values) => WithGroundBlockUnitInfos(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(values));
-    public TSelf WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?> values) => WithGroundBlockUnitInfos(values.ToArray());
+    public TSelf WithGroundBlockUnitInfos(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundBlockUnitInfosAssignment(), value, SupportedGames8);
+    public TSelf WithGroundBlockUnitInfos(params global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo[] values) => WithGroundBlockUnitInfos(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(values));
+    public TSelf WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo> values) => WithGroundBlockUnitInfos(values.ToArray());
     public TSelf WithGroundHelperMobil(global::GBX.NET.Engines.Scene.CSceneMobil? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilAssignment(), value, SupportedGames8);
     public TSelf WithGroundHelperMobilReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundHelperMobilReferenceAssignment(), value, SupportedGames8);
     public TSelf WithGroundMobils(params NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetGroundMobilsAssignment(), value, SupportedGames8);
@@ -113,7 +113,7 @@ public abstract class CGameCtnBlockInfoClipVerticalBuilderMembers6<TSelf> : CGam
     public TSelf WithIsAdvanced(bool value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIsAdvancedAssignment(), value, SupportedGames4);
     public TSelf WithIsExclusiveFreeClip(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoClipBuilderAssignments.GetIsExclusiveFreeClipAssignment(), value, SupportedGames4);
     public TSelf WithIsFullFreeClip(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoClipBuilderAssignments.GetIsFullFreeClipAssignment(), value, SupportedGames4);
-    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, SupportedGames4);
+    public TSelf WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetNameAssignment(), value, SupportedGames4);
     public TSelf WithPodiumInfo(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoAssignment(), value, SupportedGames4);
     public TSelf WithPodiumInfoReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetPodiumInfoReferenceAssignment(), value, SupportedGames4);
@@ -172,6 +172,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -185,6 +186,8 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001004());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
@@ -202,6 +205,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001004());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -218,6 +222,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.HeaderChunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
@@ -227,11 +232,28 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe4(GameVersion game)
     {
-        var node = CreateRecipe3(game);
+        var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip.Chunk03053002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00B());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E00D());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001002());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001006());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001007());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001008());
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001009());
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe5(GameVersion game)
+    {
+        var node = CreateRecipe3(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100A());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip.Chunk03053002());
@@ -251,7 +273,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E00100B());
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe6(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe7(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip.Chunk03053002());
@@ -287,7 +309,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe7(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe8(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip.Chunk03053002());
@@ -324,7 +346,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe8(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe9(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClip.Chunk03053002());
@@ -360,7 +382,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         node.Chunks.Add(new global::GBX.NET.Engines.GameData.CGameCtnCollector.Chunk2E001011(game));
         return node;
     }
-    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe9(GameVersion game)
+    private static global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical CreateRecipe10(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical.Chunk03340000() { Version = 0 });
@@ -414,17 +436,18 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class TM10 : CGameCtnBlockInfoClipVerticalBuilderMembers4<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TM10 WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>(values, true));
-        public TM10 WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TM10 WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10>(values, false));
+        public TM10 WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10> values) => WithAirBlockUnitInfos(values.ToArray());
         public TM10 WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        public TM10 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>(values, true));
-        public TM10 WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TM10 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10>(values, false));
+        public TM10 WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TM10 WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TM10 WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TM10 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TM10 WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
@@ -433,16 +456,17 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class TMPU : CGameCtnBlockInfoClipVerticalBuilderMembers4<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TMPU WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>(values, true));
-        public TMPU WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMPU WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU>(values, false));
+        public TMPU WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU> values) => WithAirBlockUnitInfos(values.ToArray());
         public TMPU WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMPU WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>(values, true));
-        public TMPU WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMPU WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU>(values, false));
+        public TMPU WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMPU WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMPU WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMPU WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMPU WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMPU WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
@@ -451,17 +475,18 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class TMSX : CGameCtnBlockInfoClipVerticalBuilderMembers5<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TMSX WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>(values, true));
-        public TMSX WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMSX WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX>(values, false));
+        public TMSX WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX> values) => WithAirBlockUnitInfos(values.ToArray());
         public TMSX WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        public TMSX WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>(values, true));
-        public TMSX WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMSX WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX>(values, false));
+        public TMSX WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMSX WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMSX WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
         public TMSX WithIconWebP(IEnumerable<byte> values) => WithIconWebP(values.ToArray());
+        public TMSX WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMSX WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
@@ -470,13 +495,14 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class TMNESWC : CGameCtnBlockInfoClipVerticalBuilderMembers5<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TMNESWC WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>(values, true));
-        public TMNESWC WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMNESWC WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC>(values, false));
+        public TMNESWC WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC> values) => WithAirBlockUnitInfos(values.ToArray());
         public TMNESWC WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMNESWC WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMNESWC WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>(values, true));
-        public TMNESWC WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMNESWC WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC>(values, false));
+        public TMNESWC WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMNESWC WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public TMNESWC WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe3(GameVersion.TMNESWC), GameVersion.TMNESWC);
@@ -485,12 +511,12 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class TMU : CGameCtnBlockInfoClipVerticalBuilderMembers5<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TMU WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(values, true));
-        public TMU WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMU WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU>(values, false));
+        public TMU WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU> values) => WithAirBlockUnitInfos(values.ToArray());
         public TMU WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public TMU WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?>(values, true));
-        public TMU WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMU WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU>(values, false));
+        public TMU WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMU> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMU WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMU? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMU? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMU BuildInterface() => Build();
@@ -500,28 +526,29 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
     public partial class VSK5 : CGameCtnBlockInfoClipVerticalBuilderMembers5<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public VSK5 WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>(values, true));
-        public VSK5 WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public VSK5 WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5>(values, false));
+        public VSK5 WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5> values) => WithAirBlockUnitInfos(values.ToArray());
         public VSK5 WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public VSK5 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>(values, true));
-        public VSK5 WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public VSK5 WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5>(values, false));
+        public VSK5 WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5> values) => WithGroundBlockUnitInfos(values.ToArray());
         public VSK5 WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithLightmapComputeTime(DateTime? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetLightmapComputeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
         public VSK5 WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe5(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
     public partial class TMF : CGameCtnBlockInfoClipVerticalBuilderMembers5<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical> state) : base(state) { }
-        public TMF WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>(values, true));
-        public TMF WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?> values) => WithAirBlockUnitInfos(values.ToArray());
+        public TMF WithAirBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF[] values) => base.WithAirBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF>(values, false));
+        public TMF WithAirBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF> values) => WithAirBlockUnitInfos(values.ToArray());
         public TMF WithAirHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? value) => base.WithAirHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithConstructionModeHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? value) => base.WithConstructionModeHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithFlags(global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX | GameVersion.TMT);
-        public TMF WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>(values, true));
-        public TMF WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?> values) => WithGroundBlockUnitInfos(values.ToArray());
+        public TMF WithGroundBlockUnitInfos(params global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF[] values) => base.WithGroundBlockUnitInfos(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF>(values, false));
+        public TMF WithGroundBlockUnitInfos(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF> values) => WithGroundBlockUnitInfos(values.ToArray());
         public TMF WithGroundHelperMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? value) => base.WithGroundHelperMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMF WithIcon(global::GBX.NET.Color[,]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconAssignment(), value, SupportedGames2);
         public TMF WithIconWebP(params byte[]? value) => Set(global::GBX.NET.Builders.Engines.GameData.CGameCtnCollectorBuilderAssignments.GetIconWebPAssignment(), value, SupportedGames2);
@@ -529,7 +556,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         public TMF WithNoRespawn(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoBuilderAssignments.GetNoRespawnAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
         public TMF WithPillar(global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF? value) => base.WithPillar(value is null ? (global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic?)null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe6(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
     public partial class MP3 : CGameCtnBlockInfoClipVerticalBuilderMembers10<MP3>
@@ -545,7 +572,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         public MP3 WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP3 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe6(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe7(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
     public partial class TMT : CGameCtnBlockInfoClipVerticalBuilderMembers10<TMT>
@@ -568,7 +595,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         public TMT WithSymmetricalClipGroupId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoClipBuilderAssignments.GetSymmetricalClipGroupIdAssignment(), value, SupportedGames7);
         public TMT WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? value) => base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe7(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe8(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
     public partial class MP4 : CGameCtnBlockInfoClipVerticalBuilderMembers9<MP4>
@@ -588,7 +615,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         public MP4 WithSound1(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSound1(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithSound2(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value) => base.WithSound2(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe8(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe9(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
     public partial class TM2020 : CGameCtnBlockInfoClipVerticalBuilderMembers9<TM2020>
@@ -627,7 +654,7 @@ public partial class CGameCtnBlockInfoClipVerticalBuilder : CGameCtnBlockInfoCli
         public TM2020 WithSymmetricalClipGroupId2(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoClipBuilderAssignments.GetSymmetricalClipGroupId2Assignment(), value, SupportedGames9);
         public TM2020 WithVerticalClipGroupId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoClipVerticalBuilderAssignments.GetVerticalClipGroupIdAssignment(), value, SupportedGames9);
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVerticalTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe9(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical Build() => BuildNode(CGameCtnBlockInfoClipVerticalBuilder.CreateRecipe10(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlockInfoClipVertical node);
     }
 }

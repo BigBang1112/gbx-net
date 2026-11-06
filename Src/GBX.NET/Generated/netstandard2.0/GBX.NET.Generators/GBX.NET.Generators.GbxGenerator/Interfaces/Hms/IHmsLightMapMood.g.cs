@@ -37,7 +37,7 @@ public partial interface IHmsLightMapMoodTMT : IHmsLightMapMood, global::GBX.NET
 {
 }
 
-public partial interface IHmsLightMapMoodMP4 : IHmsLightMapMood
+public partial interface IHmsLightMapMoodMP4 : IHmsLightMapMood, global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMembers1
 {
 }
 

@@ -15,26 +15,26 @@ CPlugFontBitmap 0x0904E000
   int FontAscent
   OldLetter[] OldLetters
 
-0x003 [TMU]
+0x003 [TMSX, TMNESWC, TMU, VSK5]
   int FontHeight
   int FontAscent
   Letter[] Letters
   Page[] Pages
 
-0x004 [TMU, MP4, TM2020]
+0x004 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   RemapPage[] RemapPages
   ushort[] RemapLetters
 
-0x005 [TMU]
+0x005 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   int KerningCount (local, write: "n.Kernings?.Length ?? 0")
   if KerningCount > 0
     int KerningCapacity
     Kerning[KerningCount] Kernings
 
-0x006 [TMU, MP4, TM2020]
+0x006 [TMSX, TMNESWC, TMU, VSK5, TMF, TMT, MP4, TM2020]
   rect Bounds = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue)
 
-0x007
+0x007 [TMF]
   int FontHeight
   int FontAscent
   Letter[] Letters
@@ -44,10 +44,10 @@ CPlugFontBitmap 0x0904E000
   else
     Page[] Pages
 
-0x008 [MP4, TM2020]
+0x008 [TMT, MP4, TM2020]
   CPlugFontBitmap FallbackFont
 
-0x009 [MP4.v1, TM2020.v1]
+0x009 [TMT.v1, MP4.v1, TM2020.v1]
   version
   int FontHeight
   int FontAscent

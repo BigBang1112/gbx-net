@@ -6,12 +6,12 @@ CTrackManiaControlCheckPointList 0x2406E000
   CControlStyle
   CControlStyle
 
-0x001 [TMU] // line styles
+0x001 [TMU, VSK5, TMF, TMT, MP4, TM2020] // line styles
   StyleSheetElem
   StyleSheetElem
   StyleSheetElem
 
-0x002 // CardModel
+0x002 [TMF, TMT, MP4, TM2020] // CardModel
   CControlFrame CardModel
 
 archive StyleSheetElem

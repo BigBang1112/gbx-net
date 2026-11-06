@@ -3,14 +3,24 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManialink3dStyle : global::GBX.NET.Interfaces.Game.IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4
+public partial class CGameManialink3dStyle : global::GBX.NET.Interfaces.Game.IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020
 {
     global::GBX.NET.Interfaces.Game.IGameManialink3dMood? global::GBX.NET.Interfaces.Game.IGameManialink3dStyle.Mood
     {
         get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4? global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4.Mood
+    global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTMT? global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTMT>.Mood
+    {
+        get => Mood;
+        set => Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4? global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4>.Mood
+    {
+        get => Mood;
+        set => Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020? global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMembers1<global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020>.Mood
     {
         get => Mood;
         set => Mood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

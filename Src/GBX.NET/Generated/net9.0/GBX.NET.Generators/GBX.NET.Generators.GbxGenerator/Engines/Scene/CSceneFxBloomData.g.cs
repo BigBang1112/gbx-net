@@ -55,11 +55,11 @@ public partial class CSceneFxBloomData : CMwNod, IClass
     /// CSceneFxBloomData 0x000 chunk (HDR response)
     /// </summary>
     [Chunk(0x0A03F000, "HDR response")]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A03F000 : Chunk<CSceneFxBloomData>
     {
         public override uint Id => 0x0A03F000;
-        public override GameVersion GameVersion => GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

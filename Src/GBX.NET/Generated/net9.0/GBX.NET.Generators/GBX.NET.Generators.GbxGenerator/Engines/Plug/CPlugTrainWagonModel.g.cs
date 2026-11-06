@@ -211,7 +211,12 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     public partial class Chunk0911C000 : Chunk<CPlugTrainWagonModel>, IVersionable
     {
         public override uint Id => 0x0911C000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 7 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public int[]? U05;
         public Vec3 U01;

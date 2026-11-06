@@ -3,336 +3,1211 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTM2020
+public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTMT, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.AttractorModel
     {
         get => AttractorModel;
         set => AttractorModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.GrapnelModel
-    {
-        get => GrapnelModel;
-        set => GrapnelModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.NullMesh
-    {
-        get => NullMesh;
-        set => NullMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.AttractorModel
-    {
-        get => AttractorModel;
-        set => AttractorModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.GrapnelModel
-    {
-        get => GrapnelModel;
-        set => GrapnelModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.JumpMaterialImpact
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.JumpMaterialImpact
     {
         get => JumpMaterialImpact;
         set => JumpMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.LandMaterialImpact
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.LandMaterialImpact
     {
         get => LandMaterialImpact;
         set => LandMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.NullMesh
-    {
-        get => NullMesh;
-        set => NullMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.ParagliderMesh
-    {
-        get => ParagliderMesh;
-        set => ParagliderMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_Deactivated
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_Deactivated
     {
         get => Particle_Deactivated;
         set => Particle_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_DeactivatedShot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_DeactivatedShot
     {
         get => Particle_DeactivatedShot;
         set => Particle_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_Deprecated_InjuredLight
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_Deprecated_InjuredLight
     {
         get => Particle_Deprecated_InjuredLight;
         set => Particle_Deprecated_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_EvolutionChange
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_EvolutionChange
     {
         get => Particle_EvolutionChange;
         set => Particle_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_EvolutionInProgress
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_EvolutionInProgress
     {
         get => Particle_EvolutionInProgress;
         set => Particle_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_JumpPad
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_JumpPad
     {
         get => Particle_JumpPad;
         set => Particle_JumpPad = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_ShieldDestroyed
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_ShieldDestroyed
     {
         get => Particle_ShieldDestroyed;
         set => Particle_ShieldDestroyed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_ShieldDestroyed_Mesh
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_ShieldDestroyed_Mesh
     {
         get => Particle_ShieldDestroyed_Mesh;
         set => Particle_ShieldDestroyed_Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_Spawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_Spawn
     {
         get => Particle_Spawn;
         set => Particle_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_SpeedUp
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_SpeedUp
     {
         get => Particle_SpeedUp;
         set => Particle_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_TeleportSpawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_TeleportSpawn
     {
         get => Particle_TeleportSpawn;
         set => Particle_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_TeleportUnspawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_TeleportUnspawn
     {
         get => Particle_TeleportUnspawn;
         set => Particle_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Particle_Turbo
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Particle_Turbo
     {
         get => Particle_Turbo;
         set => Particle_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.ShieldModel
+    global::GBX.NET.Interfaces.Plug.IPlugShieldModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.ShieldModel
     {
         get => ShieldModel;
         set => ShieldModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Attractor
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Attractor
     {
         get => Sound_Attractor;
         set => Sound_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Breathe
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Breathe
     {
         get => Sound_Breathe;
         set => Sound_Breathe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_EvolutionChange
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_EvolutionChange
     {
         get => Sound_EvolutionChange;
         set => Sound_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_EvolutionInProgress
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_EvolutionInProgress
     {
         get => Sound_EvolutionInProgress;
         set => Sound_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Gliding
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Gliding
     {
         get => Sound_Gliding;
         set => Sound_Gliding = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Attractor
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Attractor
     {
         get => Sound_Notice_Attractor;
         set => Sound_Notice_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_BackFlipJump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_BackFlipJump
     {
         get => Sound_Notice_BackFlipJump;
         set => Sound_Notice_BackFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_BulletHit
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_BulletHit
     {
         get => Sound_Notice_BulletHit;
         set => Sound_Notice_BulletHit = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_DoubleJump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_DoubleJump
     {
         get => Sound_Notice_DoubleJump;
         set => Sound_Notice_DoubleJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_FallDamage
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_FallDamage
     {
         get => Sound_Notice_FallDamage;
         set => Sound_Notice_FallDamage = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Fire
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Fire
     {
         get => Sound_Notice_Fire;
         set => Sound_Notice_Fire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_FreeWheeling
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_FreeWheeling
     {
         get => Sound_Notice_FreeWheeling;
         set => Sound_Notice_FreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_FrontFlipJump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_FrontFlipJump
     {
         get => Sound_Notice_FrontFlipJump;
         set => Sound_Notice_FrontFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_GesturePointTo
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_GesturePointTo
     {
         get => Sound_Notice_GesturePointTo;
         set => Sound_Notice_GesturePointTo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_GestureTaunt
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_GestureTaunt
     {
         get => Sound_Notice_GestureTaunt;
         set => Sound_Notice_GestureTaunt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_InjuredEliminated
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_InjuredEliminated
     {
         get => Sound_Notice_InjuredEliminated;
         set => Sound_Notice_InjuredEliminated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_InjuredEliminatedShot
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_InjuredEliminatedShot
     {
         get => Sound_Notice_InjuredEliminatedShot;
         set => Sound_Notice_InjuredEliminatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_InjuredLight
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_InjuredLight
     {
         get => Sound_Notice_InjuredLight;
         set => Sound_Notice_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Jump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Jump
     {
         get => Sound_Notice_Jump;
         set => Sound_Notice_Jump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_JumpChain1
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_JumpChain1
     {
         get => Sound_Notice_JumpChain1;
         set => Sound_Notice_JumpChain1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_JumpChain2
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_JumpChain2
     {
         get => Sound_Notice_JumpChain2;
         set => Sound_Notice_JumpChain2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_JumpPadBig
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_JumpPadBig
     {
         get => Sound_Notice_JumpPadBig;
         set => Sound_Notice_JumpPadBig = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_JumpPadMed
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_JumpPadMed
     {
         get => Sound_Notice_JumpPadMed;
         set => Sound_Notice_JumpPadMed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_JumpPadSmall
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_JumpPadSmall
     {
         get => Sound_Notice_JumpPadSmall;
         set => Sound_Notice_JumpPadSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Land
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Land
     {
         get => Sound_Notice_Land;
         set => Sound_Notice_Land = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_MissingStamina
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_MissingStamina
     {
         get => Sound_Notice_MissingStamina;
         set => Sound_Notice_MissingStamina = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Spawn
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Spawn
     {
         get => Sound_Notice_Spawn;
         set => Sound_Notice_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_SpeedUp
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_SpeedUp
     {
         get => Sound_Notice_SpeedUp;
         set => Sound_Notice_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_TechJump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_TechJump
     {
         get => Sound_Notice_TechJump;
         set => Sound_Notice_TechJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_TeleportSpawn
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_TeleportSpawn
     {
         get => Sound_Notice_TeleportSpawn;
         set => Sound_Notice_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_TeleportUnspawn
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_TeleportUnspawn
     {
         get => Sound_Notice_TeleportUnspawn;
         set => Sound_Notice_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_Turbo
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_Turbo
     {
         get => Sound_Notice_Turbo;
         set => Sound_Notice_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_WallJump
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_WallJump
     {
         get => Sound_Notice_WallJump;
         set => Sound_Notice_WallJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_ZoomIn
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_ZoomIn
     {
         get => Sound_Notice_ZoomIn;
         set => Sound_Notice_ZoomIn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Notice_ZoomOut
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Notice_ZoomOut
     {
         get => Sound_Notice_ZoomOut;
         set => Sound_Notice_ZoomOut = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_RunBody
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_RunBody
     {
         get => Sound_RunBody;
         set => Sound_RunBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Slide
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Slide
     {
         get => Sound_Slide;
         set => Sound_Slide = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_SwimBody
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_SwimBody
     {
         get => Sound_SwimBody;
         set => Sound_SwimBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_Swimming
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_Swimming
     {
         get => Sound_Swimming;
         set => Sound_Swimming = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_WalkBody
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_WalkBody
     {
         get => Sound_WalkBody;
         set => Sound_WalkBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.Sound_WalkBodySilent
+    global::GBX.NET.Interfaces.Plug.IPlugSound? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.Sound_WalkBodySilent
     {
         get => Sound_WalkBodySilent;
         set => Sound_WalkBodySilent = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.WalkStepMaterialImpact
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? global::GBX.NET.Interfaces.Plug.IPlugCharVisModel.WalkStepMaterialImpact
     {
         get => WalkStepMaterialImpact;
         set => WalkStepMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.NullMesh
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.AttractorModel
+    {
+        get => AttractorModel;
+        set => AttractorModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.JumpMaterialImpact
+    {
+        get => JumpMaterialImpact;
+        set => JumpMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.LandMaterialImpact
+    {
+        get => LandMaterialImpact;
+        set => LandMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_Deactivated
+    {
+        get => Particle_Deactivated;
+        set => Particle_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_DeactivatedShot
+    {
+        get => Particle_DeactivatedShot;
+        set => Particle_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_Deprecated_InjuredLight
+    {
+        get => Particle_Deprecated_InjuredLight;
+        set => Particle_Deprecated_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_EvolutionChange
+    {
+        get => Particle_EvolutionChange;
+        set => Particle_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_EvolutionInProgress
+    {
+        get => Particle_EvolutionInProgress;
+        set => Particle_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_JumpPad
+    {
+        get => Particle_JumpPad;
+        set => Particle_JumpPad = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_ShieldDestroyed
+    {
+        get => Particle_ShieldDestroyed;
+        set => Particle_ShieldDestroyed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_ShieldDestroyed_Mesh
+    {
+        get => Particle_ShieldDestroyed_Mesh;
+        set => Particle_ShieldDestroyed_Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_Spawn
+    {
+        get => Particle_Spawn;
+        set => Particle_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_SpeedUp
+    {
+        get => Particle_SpeedUp;
+        set => Particle_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_TeleportSpawn
+    {
+        get => Particle_TeleportSpawn;
+        set => Particle_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_TeleportUnspawn
+    {
+        get => Particle_TeleportUnspawn;
+        set => Particle_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Particle_Turbo
+    {
+        get => Particle_Turbo;
+        set => Particle_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Attractor
+    {
+        get => Sound_Attractor;
+        set => Sound_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Breathe
+    {
+        get => Sound_Breathe;
+        set => Sound_Breathe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_EvolutionChange
+    {
+        get => Sound_EvolutionChange;
+        set => Sound_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_EvolutionInProgress
+    {
+        get => Sound_EvolutionInProgress;
+        set => Sound_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Gliding
+    {
+        get => Sound_Gliding;
+        set => Sound_Gliding = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Attractor
+    {
+        get => Sound_Notice_Attractor;
+        set => Sound_Notice_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_BackFlipJump
+    {
+        get => Sound_Notice_BackFlipJump;
+        set => Sound_Notice_BackFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_BulletHit
+    {
+        get => Sound_Notice_BulletHit;
+        set => Sound_Notice_BulletHit = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_DoubleJump
+    {
+        get => Sound_Notice_DoubleJump;
+        set => Sound_Notice_DoubleJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_FallDamage
+    {
+        get => Sound_Notice_FallDamage;
+        set => Sound_Notice_FallDamage = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Fire
+    {
+        get => Sound_Notice_Fire;
+        set => Sound_Notice_Fire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_FreeWheeling
+    {
+        get => Sound_Notice_FreeWheeling;
+        set => Sound_Notice_FreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_FrontFlipJump
+    {
+        get => Sound_Notice_FrontFlipJump;
+        set => Sound_Notice_FrontFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_GesturePointTo
+    {
+        get => Sound_Notice_GesturePointTo;
+        set => Sound_Notice_GesturePointTo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_GestureTaunt
+    {
+        get => Sound_Notice_GestureTaunt;
+        set => Sound_Notice_GestureTaunt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_InjuredEliminated
+    {
+        get => Sound_Notice_InjuredEliminated;
+        set => Sound_Notice_InjuredEliminated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_InjuredEliminatedShot
+    {
+        get => Sound_Notice_InjuredEliminatedShot;
+        set => Sound_Notice_InjuredEliminatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_InjuredLight
+    {
+        get => Sound_Notice_InjuredLight;
+        set => Sound_Notice_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Jump
+    {
+        get => Sound_Notice_Jump;
+        set => Sound_Notice_Jump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_JumpChain1
+    {
+        get => Sound_Notice_JumpChain1;
+        set => Sound_Notice_JumpChain1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_JumpChain2
+    {
+        get => Sound_Notice_JumpChain2;
+        set => Sound_Notice_JumpChain2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_JumpPadBig
+    {
+        get => Sound_Notice_JumpPadBig;
+        set => Sound_Notice_JumpPadBig = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_JumpPadMed
+    {
+        get => Sound_Notice_JumpPadMed;
+        set => Sound_Notice_JumpPadMed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_JumpPadSmall
+    {
+        get => Sound_Notice_JumpPadSmall;
+        set => Sound_Notice_JumpPadSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Land
+    {
+        get => Sound_Notice_Land;
+        set => Sound_Notice_Land = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_MissingStamina
+    {
+        get => Sound_Notice_MissingStamina;
+        set => Sound_Notice_MissingStamina = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Spawn
+    {
+        get => Sound_Notice_Spawn;
+        set => Sound_Notice_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_SpeedUp
+    {
+        get => Sound_Notice_SpeedUp;
+        set => Sound_Notice_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_TechJump
+    {
+        get => Sound_Notice_TechJump;
+        set => Sound_Notice_TechJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_TeleportSpawn
+    {
+        get => Sound_Notice_TeleportSpawn;
+        set => Sound_Notice_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_TeleportUnspawn
+    {
+        get => Sound_Notice_TeleportUnspawn;
+        set => Sound_Notice_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_Turbo
+    {
+        get => Sound_Notice_Turbo;
+        set => Sound_Notice_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_WallJump
+    {
+        get => Sound_Notice_WallJump;
+        set => Sound_Notice_WallJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_ZoomIn
+    {
+        get => Sound_Notice_ZoomIn;
+        set => Sound_Notice_ZoomIn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Notice_ZoomOut
+    {
+        get => Sound_Notice_ZoomOut;
+        set => Sound_Notice_ZoomOut = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_RunBody
+    {
+        get => Sound_RunBody;
+        set => Sound_RunBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Slide
+    {
+        get => Sound_Slide;
+        set => Sound_Slide = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_SwimBody
+    {
+        get => Sound_SwimBody;
+        set => Sound_SwimBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_Swimming
+    {
+        get => Sound_Swimming;
+        set => Sound_Swimming = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_WalkBody
+    {
+        get => Sound_WalkBody;
+        set => Sound_WalkBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound_WalkBodySilent
+    {
+        get => Sound_WalkBodySilent;
+        set => Sound_WalkBodySilent = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.WalkStepMaterialImpact
+    {
+        get => WalkStepMaterialImpact;
+        set => WalkStepMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.AttractorModel
+    {
+        get => AttractorModel;
+        set => AttractorModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>.GrapnelModel
+    {
+        get => GrapnelModel;
+        set => GrapnelModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.JumpMaterialImpact
+    {
+        get => JumpMaterialImpact;
+        set => JumpMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.LandMaterialImpact
+    {
+        get => LandMaterialImpact;
+        set => LandMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>.NullMesh
     {
         get => NullMesh;
         set => NullMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>.ParagliderMesh
+    {
+        get => ParagliderMesh;
+        set => ParagliderMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_Deactivated
+    {
+        get => Particle_Deactivated;
+        set => Particle_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_DeactivatedShot
+    {
+        get => Particle_DeactivatedShot;
+        set => Particle_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_Deprecated_InjuredLight
+    {
+        get => Particle_Deprecated_InjuredLight;
+        set => Particle_Deprecated_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_EvolutionChange
+    {
+        get => Particle_EvolutionChange;
+        set => Particle_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_EvolutionInProgress
+    {
+        get => Particle_EvolutionInProgress;
+        set => Particle_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_JumpPad
+    {
+        get => Particle_JumpPad;
+        set => Particle_JumpPad = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_ShieldDestroyed
+    {
+        get => Particle_ShieldDestroyed;
+        set => Particle_ShieldDestroyed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_ShieldDestroyed_Mesh
+    {
+        get => Particle_ShieldDestroyed_Mesh;
+        set => Particle_ShieldDestroyed_Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_Spawn
+    {
+        get => Particle_Spawn;
+        set => Particle_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_SpeedUp
+    {
+        get => Particle_SpeedUp;
+        set => Particle_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_TeleportSpawn
+    {
+        get => Particle_TeleportSpawn;
+        set => Particle_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_TeleportUnspawn
+    {
+        get => Particle_TeleportUnspawn;
+        set => Particle_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Particle_Turbo
+    {
+        get => Particle_Turbo;
+        set => Particle_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>.ShieldModel
+    {
+        get => ShieldModel;
+        set => ShieldModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Attractor
+    {
+        get => Sound_Attractor;
+        set => Sound_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Breathe
+    {
+        get => Sound_Breathe;
+        set => Sound_Breathe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_EvolutionChange
+    {
+        get => Sound_EvolutionChange;
+        set => Sound_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_EvolutionInProgress
+    {
+        get => Sound_EvolutionInProgress;
+        set => Sound_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Gliding
+    {
+        get => Sound_Gliding;
+        set => Sound_Gliding = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Attractor
+    {
+        get => Sound_Notice_Attractor;
+        set => Sound_Notice_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_BackFlipJump
+    {
+        get => Sound_Notice_BackFlipJump;
+        set => Sound_Notice_BackFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_BulletHit
+    {
+        get => Sound_Notice_BulletHit;
+        set => Sound_Notice_BulletHit = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_DoubleJump
+    {
+        get => Sound_Notice_DoubleJump;
+        set => Sound_Notice_DoubleJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_FallDamage
+    {
+        get => Sound_Notice_FallDamage;
+        set => Sound_Notice_FallDamage = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Fire
+    {
+        get => Sound_Notice_Fire;
+        set => Sound_Notice_Fire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_FreeWheeling
+    {
+        get => Sound_Notice_FreeWheeling;
+        set => Sound_Notice_FreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_FrontFlipJump
+    {
+        get => Sound_Notice_FrontFlipJump;
+        set => Sound_Notice_FrontFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_GesturePointTo
+    {
+        get => Sound_Notice_GesturePointTo;
+        set => Sound_Notice_GesturePointTo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_GestureTaunt
+    {
+        get => Sound_Notice_GestureTaunt;
+        set => Sound_Notice_GestureTaunt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_InjuredEliminated
+    {
+        get => Sound_Notice_InjuredEliminated;
+        set => Sound_Notice_InjuredEliminated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_InjuredEliminatedShot
+    {
+        get => Sound_Notice_InjuredEliminatedShot;
+        set => Sound_Notice_InjuredEliminatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_InjuredLight
+    {
+        get => Sound_Notice_InjuredLight;
+        set => Sound_Notice_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Jump
+    {
+        get => Sound_Notice_Jump;
+        set => Sound_Notice_Jump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_JumpChain1
+    {
+        get => Sound_Notice_JumpChain1;
+        set => Sound_Notice_JumpChain1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_JumpChain2
+    {
+        get => Sound_Notice_JumpChain2;
+        set => Sound_Notice_JumpChain2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_JumpPadBig
+    {
+        get => Sound_Notice_JumpPadBig;
+        set => Sound_Notice_JumpPadBig = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_JumpPadMed
+    {
+        get => Sound_Notice_JumpPadMed;
+        set => Sound_Notice_JumpPadMed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_JumpPadSmall
+    {
+        get => Sound_Notice_JumpPadSmall;
+        set => Sound_Notice_JumpPadSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Land
+    {
+        get => Sound_Notice_Land;
+        set => Sound_Notice_Land = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_MissingStamina
+    {
+        get => Sound_Notice_MissingStamina;
+        set => Sound_Notice_MissingStamina = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Spawn
+    {
+        get => Sound_Notice_Spawn;
+        set => Sound_Notice_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_SpeedUp
+    {
+        get => Sound_Notice_SpeedUp;
+        set => Sound_Notice_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_TechJump
+    {
+        get => Sound_Notice_TechJump;
+        set => Sound_Notice_TechJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_TeleportSpawn
+    {
+        get => Sound_Notice_TeleportSpawn;
+        set => Sound_Notice_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_TeleportUnspawn
+    {
+        get => Sound_Notice_TeleportUnspawn;
+        set => Sound_Notice_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_Turbo
+    {
+        get => Sound_Notice_Turbo;
+        set => Sound_Notice_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_WallJump
+    {
+        get => Sound_Notice_WallJump;
+        set => Sound_Notice_WallJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_ZoomIn
+    {
+        get => Sound_Notice_ZoomIn;
+        set => Sound_Notice_ZoomIn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Notice_ZoomOut
+    {
+        get => Sound_Notice_ZoomOut;
+        set => Sound_Notice_ZoomOut = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_RunBody
+    {
+        get => Sound_RunBody;
+        set => Sound_RunBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Slide
+    {
+        get => Sound_Slide;
+        set => Sound_Slide = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_SwimBody
+    {
+        get => Sound_SwimBody;
+        set => Sound_SwimBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_Swimming
+    {
+        get => Sound_Swimming;
+        set => Sound_Swimming = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_WalkBody
+    {
+        get => Sound_WalkBody;
+        set => Sound_WalkBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound_WalkBodySilent
+    {
+        get => Sound_WalkBodySilent;
+        set => Sound_WalkBodySilent = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.WalkStepMaterialImpact
+    {
+        get => WalkStepMaterialImpact;
+        set => WalkStepMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.AttractorModel
+    {
+        get => AttractorModel;
+        set => AttractorModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>.GrapnelModel
+    {
+        get => GrapnelModel;
+        set => GrapnelModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.JumpMaterialImpact
+    {
+        get => JumpMaterialImpact;
+        set => JumpMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.LandMaterialImpact
+    {
+        get => LandMaterialImpact;
+        set => LandMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>.NullMesh
+    {
+        get => NullMesh;
+        set => NullMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>.ParagliderMesh
+    {
+        get => ParagliderMesh;
+        set => ParagliderMesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_Deactivated
+    {
+        get => Particle_Deactivated;
+        set => Particle_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_DeactivatedShot
+    {
+        get => Particle_DeactivatedShot;
+        set => Particle_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_Deprecated_InjuredLight
+    {
+        get => Particle_Deprecated_InjuredLight;
+        set => Particle_Deprecated_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_EvolutionChange
+    {
+        get => Particle_EvolutionChange;
+        set => Particle_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_EvolutionInProgress
+    {
+        get => Particle_EvolutionInProgress;
+        set => Particle_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_JumpPad
+    {
+        get => Particle_JumpPad;
+        set => Particle_JumpPad = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_ShieldDestroyed
+    {
+        get => Particle_ShieldDestroyed;
+        set => Particle_ShieldDestroyed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_ShieldDestroyed_Mesh
+    {
+        get => Particle_ShieldDestroyed_Mesh;
+        set => Particle_ShieldDestroyed_Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_Spawn
+    {
+        get => Particle_Spawn;
+        set => Particle_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_SpeedUp
+    {
+        get => Particle_SpeedUp;
+        set => Particle_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_TeleportSpawn
+    {
+        get => Particle_TeleportSpawn;
+        set => Particle_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_TeleportUnspawn
+    {
+        get => Particle_TeleportUnspawn;
+        set => Particle_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Particle_Turbo
+    {
+        get => Particle_Turbo;
+        set => Particle_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>.ShieldModel
+    {
+        get => ShieldModel;
+        set => ShieldModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Attractor
+    {
+        get => Sound_Attractor;
+        set => Sound_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Breathe
+    {
+        get => Sound_Breathe;
+        set => Sound_Breathe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_EvolutionChange
+    {
+        get => Sound_EvolutionChange;
+        set => Sound_EvolutionChange = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_EvolutionInProgress
+    {
+        get => Sound_EvolutionInProgress;
+        set => Sound_EvolutionInProgress = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Gliding
+    {
+        get => Sound_Gliding;
+        set => Sound_Gliding = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Attractor
+    {
+        get => Sound_Notice_Attractor;
+        set => Sound_Notice_Attractor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_BackFlipJump
+    {
+        get => Sound_Notice_BackFlipJump;
+        set => Sound_Notice_BackFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_BulletHit
+    {
+        get => Sound_Notice_BulletHit;
+        set => Sound_Notice_BulletHit = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_DoubleJump
+    {
+        get => Sound_Notice_DoubleJump;
+        set => Sound_Notice_DoubleJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_FallDamage
+    {
+        get => Sound_Notice_FallDamage;
+        set => Sound_Notice_FallDamage = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Fire
+    {
+        get => Sound_Notice_Fire;
+        set => Sound_Notice_Fire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_FreeWheeling
+    {
+        get => Sound_Notice_FreeWheeling;
+        set => Sound_Notice_FreeWheeling = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_FrontFlipJump
+    {
+        get => Sound_Notice_FrontFlipJump;
+        set => Sound_Notice_FrontFlipJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_GesturePointTo
+    {
+        get => Sound_Notice_GesturePointTo;
+        set => Sound_Notice_GesturePointTo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_GestureTaunt
+    {
+        get => Sound_Notice_GestureTaunt;
+        set => Sound_Notice_GestureTaunt = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_InjuredEliminated
+    {
+        get => Sound_Notice_InjuredEliminated;
+        set => Sound_Notice_InjuredEliminated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_InjuredEliminatedShot
+    {
+        get => Sound_Notice_InjuredEliminatedShot;
+        set => Sound_Notice_InjuredEliminatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_InjuredLight
+    {
+        get => Sound_Notice_InjuredLight;
+        set => Sound_Notice_InjuredLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Jump
+    {
+        get => Sound_Notice_Jump;
+        set => Sound_Notice_Jump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_JumpChain1
+    {
+        get => Sound_Notice_JumpChain1;
+        set => Sound_Notice_JumpChain1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_JumpChain2
+    {
+        get => Sound_Notice_JumpChain2;
+        set => Sound_Notice_JumpChain2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_JumpPadBig
+    {
+        get => Sound_Notice_JumpPadBig;
+        set => Sound_Notice_JumpPadBig = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_JumpPadMed
+    {
+        get => Sound_Notice_JumpPadMed;
+        set => Sound_Notice_JumpPadMed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_JumpPadSmall
+    {
+        get => Sound_Notice_JumpPadSmall;
+        set => Sound_Notice_JumpPadSmall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Land
+    {
+        get => Sound_Notice_Land;
+        set => Sound_Notice_Land = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_MissingStamina
+    {
+        get => Sound_Notice_MissingStamina;
+        set => Sound_Notice_MissingStamina = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Spawn
+    {
+        get => Sound_Notice_Spawn;
+        set => Sound_Notice_Spawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_SpeedUp
+    {
+        get => Sound_Notice_SpeedUp;
+        set => Sound_Notice_SpeedUp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_TechJump
+    {
+        get => Sound_Notice_TechJump;
+        set => Sound_Notice_TechJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_TeleportSpawn
+    {
+        get => Sound_Notice_TeleportSpawn;
+        set => Sound_Notice_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_TeleportUnspawn
+    {
+        get => Sound_Notice_TeleportUnspawn;
+        set => Sound_Notice_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_Turbo
+    {
+        get => Sound_Notice_Turbo;
+        set => Sound_Notice_Turbo = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_WallJump
+    {
+        get => Sound_Notice_WallJump;
+        set => Sound_Notice_WallJump = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_ZoomIn
+    {
+        get => Sound_Notice_ZoomIn;
+        set => Sound_Notice_ZoomIn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Notice_ZoomOut
+    {
+        get => Sound_Notice_ZoomOut;
+        set => Sound_Notice_ZoomOut = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_RunBody
+    {
+        get => Sound_RunBody;
+        set => Sound_RunBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Slide
+    {
+        get => Sound_Slide;
+        set => Sound_Slide = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_SwimBody
+    {
+        get => Sound_SwimBody;
+        set => Sound_SwimBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_Swimming
+    {
+        get => Sound_Swimming;
+        set => Sound_Swimming = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_WalkBody
+    {
+        get => Sound_WalkBody;
+        set => Sound_WalkBody = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound_WalkBodySilent
+    {
+        get => Sound_WalkBodySilent;
+        set => Sound_WalkBodySilent = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.WalkStepMaterialImpact
+    {
+        get => WalkStepMaterialImpact;
+        set => WalkStepMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

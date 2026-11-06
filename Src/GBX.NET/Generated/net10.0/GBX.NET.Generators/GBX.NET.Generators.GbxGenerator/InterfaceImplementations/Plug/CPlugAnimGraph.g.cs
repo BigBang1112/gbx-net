@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimGraph : global::GBX.NET.Interfaces.Plug.IPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020
+public partial class CPlugAnimGraph : global::GBX.NET.Interfaces.Plug.IPlugAnimGraph, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020
 {
 }

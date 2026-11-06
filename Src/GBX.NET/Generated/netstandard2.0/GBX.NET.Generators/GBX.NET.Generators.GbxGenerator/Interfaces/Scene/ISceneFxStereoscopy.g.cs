@@ -3,6 +3,23 @@
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxStereoscopyMembers1 : global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopy
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? PHlsl_AnaglyphFullColor { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? PHlsl_AnaglyphHalfColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxStereoscopyMembers2 : global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopy
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? PHlsl_AnaglyphLinear { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneFxStereoscopyMembers3 : global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopy
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_DebugBlend { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_Interlaced { get; set; }
+}
 public partial interface ISceneFxStereoscopy : IClassVersion<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy>, global::GBX.NET.Interfaces.Scene.ISceneFxCompo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -12,11 +29,33 @@ public partial interface ISceneFxStereoscopy : IClassVersion<global::GBX.NET.Eng
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_DebugBlend { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_Interlaced { get; set; }
 }
 
-public partial interface ISceneFxStereoscopyTM2020 : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020
+public partial interface ISceneFxStereoscopyTM10 : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM10
+{
+}
+
+public partial interface ISceneFxStereoscopyTMPU : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMPU
+{
+}
+
+public partial interface ISceneFxStereoscopyTMSX : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMSX
+{
+}
+
+public partial interface ISceneFxStereoscopyTMF : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers1
+{
+}
+
+public partial interface ISceneFxStereoscopyTMT : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMT, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers3
+{
+}
+
+public partial interface ISceneFxStereoscopyMP4 : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoMP4, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers1, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers2, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers3
+{
+}
+
+public partial interface ISceneFxStereoscopyTM2020 : ISceneFxStereoscopy, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTM2020, global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyMembers3
 {
 }
 

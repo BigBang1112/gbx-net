@@ -97,6 +97,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004001());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());
@@ -107,6 +108,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());
@@ -117,6 +119,7 @@ public partial class CPlugShaderApplyBuilder : CPlugShaderApplyBuilderBase<CPlug
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugShaderApply(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026001());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09026002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderApply.Chunk09063002());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShaderGeneric.Chunk09004003());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugShader.Chunk0900200E());

@@ -241,9 +241,11 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x000 chunk (custom textures)
     /// </summary>
     [Chunk(0x0900E000, "custom textures")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900E000 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -255,6 +257,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.customTextures!, version: Version);
         }
     }
@@ -263,9 +270,11 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x001 chunk (dyna materials)
     /// </summary>
     [Chunk(0x0900E001, "dyna materials")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900E001 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -277,6 +286,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.materialsDyna0!, version: Version);
         }
     }
@@ -285,10 +299,28 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x002 chunk (static materials and remap)
     /// </summary>
     [Chunk(0x0900E002, "static materials and remap")]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk0900E002 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E002;
-        public int Version { get; set; } = 3;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0900E002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900E002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+            else
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -299,6 +331,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(3, 3))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.materialsStatic!, version: Version);
 
             if (Version >= 1)
@@ -322,10 +359,28 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x003 chunk (character materials)
     /// </summary>
     [Chunk(0x0900E003, "character materials")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2)]
     public partial class Chunk0900E003 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E003;
-        public int Version { get; set; } = 2;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0900E003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900E003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -336,6 +391,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(2, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.materialsChar!, version: Version);
 
             if (Version >= 1)
@@ -357,10 +417,18 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x004 chunk (vehicle materials)
     /// </summary>
     [Chunk(0x0900E004, "vehicle materials")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 5)]
     public partial class Chunk0900E004 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E004;
-        public int Version { get; set; } = 5;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 5 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
+        public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -383,6 +451,30 @@ public partial class CPlugModelShading : CMwNod, IClass
             yield break;
         }
 
+        public Chunk0900E004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900E004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+            else
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -393,6 +485,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(5, 5))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.materialsVehicle!, version: Version);
 
             if (Version == 1)
@@ -422,9 +519,11 @@ public partial class CPlugModelShading : CMwNod, IClass
     /// CPlugModelShading 0x005 chunk (menu box materials)
     /// </summary>
     [Chunk(0x0900E005, "menu box materials")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900E005 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E005;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -436,6 +535,11 @@ public partial class CPlugModelShading : CMwNod, IClass
         public override void ReadWrite(CPlugModelShading n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FidId>(ref n.materialsMenuBox3d!, version: Version);
         }
     }

@@ -6,18 +6,21 @@ namespace GBX.NET.Builders.Engines.Control;
 internal static class CControlEntryBuilderAssignments
 {
     private static NodeBuilderProperty<bool>? cached0;
-    internal static NodeBuilderProperty<bool> GetIsPasswordAssignment() => cached0 ??= new("IsPassword", new Action<object, bool>(Assign0));
-    private static void Assign0(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).IsPassword = value;
-    private static NodeBuilderProperty<int>? cached1;
-    internal static NodeBuilderProperty<int> GetMaxLengthAssignment() => cached1 ??= new("MaxLength", new Action<object, int>(Assign1));
-    private static void Assign1(object node, int value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).MaxLength = value;
-    private static NodeBuilderProperty<bool>? cached2;
-    internal static NodeBuilderProperty<bool> GetSelectAllOnFocusGainedAssignment() => cached2 ??= new("SelectAllOnFocusGained", new Action<object, bool>(Assign2));
-    private static void Assign2(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).SelectAllOnFocusGained = value;
+    internal static NodeBuilderProperty<bool> GetIsNewPasswordAssignment() => cached0 ??= new("IsNewPassword", new Action<object, bool>(Assign0));
+    private static void Assign0(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).IsNewPassword = value;
+    private static NodeBuilderProperty<bool>? cached1;
+    internal static NodeBuilderProperty<bool> GetIsPasswordAssignment() => cached1 ??= new("IsPassword", new Action<object, bool>(Assign1));
+    private static void Assign1(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).IsPassword = value;
+    private static NodeBuilderProperty<int>? cached2;
+    internal static NodeBuilderProperty<int> GetMaxLengthAssignment() => cached2 ??= new("MaxLength", new Action<object, int>(Assign2));
+    private static void Assign2(object node, int value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).MaxLength = value;
     private static NodeBuilderProperty<bool>? cached3;
-    internal static NodeBuilderProperty<bool> GetSetValueOnFocusLostAssignment() => cached3 ??= new("SetValueOnFocusLost", new Action<object, bool>(Assign3));
-    private static void Assign3(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).SetValueOnFocusLost = value;
-    private static NodeBuilderProperty<int>? cached4;
-    internal static NodeBuilderProperty<int> GetTypeAssignment() => cached4 ??= new("Type", new Action<object, int>(Assign4));
-    private static void Assign4(object node, int value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).Type = value;
+    internal static NodeBuilderProperty<bool> GetSelectAllOnFocusGainedAssignment() => cached3 ??= new("SelectAllOnFocusGained", new Action<object, bool>(Assign3));
+    private static void Assign3(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).SelectAllOnFocusGained = value;
+    private static NodeBuilderProperty<bool>? cached4;
+    internal static NodeBuilderProperty<bool> GetSetValueOnFocusLostAssignment() => cached4 ??= new("SetValueOnFocusLost", new Action<object, bool>(Assign4));
+    private static void Assign4(object node, bool value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).SetValueOnFocusLost = value;
+    private static NodeBuilderProperty<int>? cached5;
+    internal static NodeBuilderProperty<int> GetTypeAssignment() => cached5 ??= new("Type", new Action<object, int>(Assign5));
+    private static void Assign5(object node, int value) => ((global::GBX.NET.Engines.Control.CControlEntry)node).Type = value;
 }

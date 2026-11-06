@@ -3,16 +3,76 @@
 
 namespace GBX.NET.Engines.Scene;
 
-public partial class CSceneFxColors : global::GBX.NET.Interfaces.Scene.ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU
+public partial class CSceneFxColors : global::GBX.NET.Interfaces.Scene.ISceneFxColors, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM10, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMPU, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMSX, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU, global::GBX.NET.Interfaces.Scene.ISceneFxColorsVSK5, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMF, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMT, global::GBX.NET.Interfaces.Scene.ISceneFxColorsMP4, global::GBX.NET.Interfaces.Scene.ISceneFxColorsTM2020
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? global::GBX.NET.Interfaces.Scene.ISceneFxColors.BitmapSbch
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.BitmapSbch
     {
         get => BitmapSbch;
         set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Scene.ISceneFxColorsTMU.BitmapSbch
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.BitmapSbch
     {
         get => BitmapSbch;
         set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMU>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT>.BitmapDepth
+    {
+        get => BitmapDepth;
+        set => BitmapDepth = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMT>.ShaderAutoSaturateWithLight
+    {
+        get => ShaderAutoSaturateWithLight;
+        set => ShaderAutoSaturateWithLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4>.BitmapDepth
+    {
+        get => BitmapDepth;
+        set => BitmapDepth = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyMP4>.ShaderAutoSaturateWithLight
+    {
+        get => ShaderAutoSaturateWithLight;
+        set => ShaderAutoSaturateWithLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020>.BitmapDepth
+    {
+        get => BitmapDepth;
+        set => BitmapDepth = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSbch
+    {
+        get => BitmapSbch;
+        set => BitmapSbch = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020? global::GBX.NET.Interfaces.Scene.ISceneFxColorsMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTM2020>.ShaderAutoSaturateWithLight
+    {
+        get => ShaderAutoSaturateWithLight;
+        set => ShaderAutoSaturateWithLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

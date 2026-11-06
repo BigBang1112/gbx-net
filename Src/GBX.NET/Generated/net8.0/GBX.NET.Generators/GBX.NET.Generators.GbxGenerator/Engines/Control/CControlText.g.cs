@@ -73,9 +73,11 @@ public partial class CControlText : CControlBase, IClass
     /// CControlText 0x000 chunk
     /// </summary>
     [Chunk(0x07031000)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07031000 : Chunk<CControlText>
     {
         public override uint Id => 0x07031000;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

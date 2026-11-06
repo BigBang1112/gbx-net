@@ -7,7 +7,7 @@ public abstract class CTrackManiaRace1PBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CTrackManiaRace1PBuilderBase() { }
     private protected CTrackManiaRace1PBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TMF | GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
     public TSelf WithName(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
 }
 public abstract class CTrackManiaRace1PBuilderMembers1<TSelf> : CTrackManiaRace1PBuilderBase<TSelf> where TSelf : CTrackManiaRace1PBuilderMembers1<TSelf>
@@ -21,6 +21,7 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
     private static global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P();
+        node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014001());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
         return node;
     }
@@ -28,6 +29,19 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
     {
         var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P();
         node.Chunks.Add(new global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
+        return node;
+    }
+    private static global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P();
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000());
         return node;
@@ -59,18 +73,18 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
-    public partial class TMSX : CTrackManiaRace1PBuilderBase<TMSX>
+    public partial class TMSX : CTrackManiaRace1PBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
-    public partial class TMNESWC : CTrackManiaRace1PBuilderBase<TMNESWC>
+    public partial class TMNESWC : CTrackManiaRace1PBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMU : CTrackManiaRace1PBuilderMembers1<TMU>
@@ -80,11 +94,11 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
-    public partial class VSK5 : CTrackManiaRace1PBuilderBase<VSK5>
+    public partial class VSK5 : CTrackManiaRace1PBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMF : CTrackManiaRace1PBuilderMembers1<TMF>
@@ -98,28 +112,28 @@ public partial class CTrackManiaRace1PBuilder : CTrackManiaRace1PBuilderBase<CTr
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TMT : CTrackManiaRace1PBuilderBase<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
-    public partial class MP4 : CTrackManiaRace1PBuilderBase<MP4>
+    public partial class MP4 : CTrackManiaRace1PBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
     public partial class TM2020 : CTrackManiaRace1PBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P> state) : base(state) { }
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P Build() => BuildNode(CTrackManiaRace1PBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CTrackManiaRace1P node);
     }
 }

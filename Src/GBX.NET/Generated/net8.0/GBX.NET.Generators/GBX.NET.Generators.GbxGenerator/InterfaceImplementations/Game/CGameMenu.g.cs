@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameMenu : global::GBX.NET.Interfaces.Game.IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuTMU
+public partial class CGameMenu : global::GBX.NET.Interfaces.Game.IGameMenu, global::GBX.NET.Interfaces.Game.IGameMenuTM10, global::GBX.NET.Interfaces.Game.IGameMenuTMPU, global::GBX.NET.Interfaces.Game.IGameMenuTMSX, global::GBX.NET.Interfaces.Game.IGameMenuTMNESWC, global::GBX.NET.Interfaces.Game.IGameMenuTMU, global::GBX.NET.Interfaces.Game.IGameMenuVSK5, global::GBX.NET.Interfaces.Game.IGameMenuTMF, global::GBX.NET.Interfaces.Game.IGameMenuTMT, global::GBX.NET.Interfaces.Game.IGameMenuMP4, global::GBX.NET.Interfaces.Game.IGameMenuTM2020
 {
 }

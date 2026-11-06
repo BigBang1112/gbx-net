@@ -229,7 +229,14 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     public partial class Chunk2E007001 : Chunk<CGameObjectVisModel>, IVersionable
     {
         public override uint Id => 0x2E007001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 12 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 17 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 21 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 22 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int U23;
         public int U24;
         public float U25;

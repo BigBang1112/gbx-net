@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTM2020
+public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTMT, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTM2020
 {
 }

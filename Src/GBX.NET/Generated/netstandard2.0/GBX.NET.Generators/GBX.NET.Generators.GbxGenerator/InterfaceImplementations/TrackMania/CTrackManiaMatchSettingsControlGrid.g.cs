@@ -10,6 +10,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTM10? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTM10.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTM10? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTM10.LegacyStyle
     {
         get => LegacyStyle;
@@ -30,6 +35,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMPU.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMPU? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMPU.LegacyStyle
     {
         get => LegacyStyle;
@@ -49,6 +59,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMSX.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMSX.LegacyStyle
     {
@@ -84,6 +99,11 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMNESWC.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMNESWC.LegacyStyle
     {
@@ -160,10 +180,30 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
         get => PlayListNameLabel;
         set => PlayListNameLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlButtonVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>.ButtonNextPage
+    {
+        get => ButtonNextPage;
+        set => ButtonNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlButtonVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>.ButtonPreviousPage
+    {
+        get => ButtonPreviousPage;
+        set => ButtonPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>.ChallengeCardTemplate
+    {
+        get => ChallengeCardTemplate;
+        set => ChallengeCardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridVSK5.CreateScript
     {
         get => CreateScript;
         set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridVSK5.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridVSK5.LegacyStyle
     {
@@ -179,6 +219,31 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLabelVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>.PlayListCommentLabel
+    {
+        get => PlayListCommentLabel;
+        set => PlayListCommentLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLabelVSK5? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonVSK5, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoVSK5, global::GBX.NET.Interfaces.Control.IControlLabelVSK5>.PlayListNameLabel
+    {
+        get => PlayListNameLabel;
+        set => PlayListNameLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>.ButtonNextPage
+    {
+        get => ButtonNextPage;
+        set => ButtonNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>.ButtonPreviousPage
+    {
+        get => ButtonPreviousPage;
+        set => ButtonPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>.ChallengeCardTemplate
+    {
+        get => ChallengeCardTemplate;
+        set => ChallengeCardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMF.CreateScript
     {
@@ -205,6 +270,16 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlLabelTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>.PlayListCommentLabel
+    {
+        get => PlayListCommentLabel;
+        set => PlayListCommentLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLabelTMF? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMF, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMF, global::GBX.NET.Interfaces.Control.IControlLabelTMF>.PlayListNameLabel
+    {
+        get => PlayListNameLabel;
+        set => PlayListNameLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleMP3? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMP3.LegacyStyle
     {
         get => LegacyStyle;
@@ -220,6 +295,26 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>.ButtonNextPage
+    {
+        get => ButtonNextPage;
+        set => ButtonNextPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlButtonTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>.ButtonPreviousPage
+    {
+        get => ButtonPreviousPage;
+        set => ButtonPreviousPage = value is null ? null : value is global::GBX.NET.Engines.Control.CControlButton node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>.ChallengeCardTemplate
+    {
+        get => ChallengeCardTemplate;
+        set => ChallengeCardTemplate = value is null ? null : value is global::GBX.NET.Engines.Game.CGameControlCardCtnChallengeInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLayoutTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMT.Layout
+    {
+        get => Layout;
+        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridTMT.LegacyStyle
     {
         get => LegacyStyle;
@@ -234,6 +329,16 @@ public partial class CTrackManiaMatchSettingsControlGrid : global::GBX.NET.Inter
     {
         get => ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLabelTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>.PlayListCommentLabel
+    {
+        get => PlayListCommentLabel;
+        set => PlayListCommentLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlLabelTMT? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMembers1<global::GBX.NET.Interfaces.Control.IControlButtonTMT, global::GBX.NET.Interfaces.Game.IGameControlCardCtnChallengeInfoTMT, global::GBX.NET.Interfaces.Control.IControlLabelTMT>.PlayListNameLabel
+    {
+        get => PlayListNameLabel;
+        set => PlayListNameLabel = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLabel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Control.IControlLayoutMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMatchSettingsControlGridMP4.Layout
     {

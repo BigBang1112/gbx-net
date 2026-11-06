@@ -3,7 +3,8 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
-public partial interface IPlugCharPhyModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhyModel>
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhyModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugCharPhyModel
 {
     int GrapnelAfterGrapnelFrictionDuration { get; set; }
     bool GrapnelAimControlEndJump { get; set; }
@@ -46,7 +47,6 @@ public partial interface IPlugCharPhyModel : IClassVersion<global::GBX.NET.Engin
     float JetPackTakeOffImpulse { get; set; }
     int JetPackVersion2 { get; set; }
     PlugCurve? JetPackYForceFromYSpeed { get; set; }
-    string? Name { get; set; }
     PlugCurve? PowerBootsAccelCurveFromVelKmh { get; set; }
     bool PowerBootsAccelEnabled { get; set; }
     int PowerBootsCooldown { get; set; }
@@ -59,11 +59,19 @@ public partial interface IPlugCharPhyModel : IClassVersion<global::GBX.NET.Engin
     bool PowerBootsSuperJump { get; set; }
     float PowerBootsSuperJumpCoef { get; set; }
     bool PowerBootsWalkOnWaterEnabled { get; set; }
+}
+public partial interface IPlugCharPhyModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhyModel>
+{
+    string? Name { get; set; }
     global::GBX.NET.Engines.Plug.CPlugCharPhyModel.SmoothRealModel[]? Smoothing { get; set; }
     int SmoothingVersion { get; set; }
 }
 
-public partial interface IPlugCharPhyModelMP4 : IPlugCharPhyModel
+public partial interface IPlugCharPhyModelTMT : IPlugCharPhyModel
+{
+}
+
+public partial interface IPlugCharPhyModelMP4 : IPlugCharPhyModel, global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelMembers1
 {
     ushort SniperTurretAmmoGain { get; set; }
     int SniperTurretCooldown { get; set; }
@@ -71,7 +79,7 @@ public partial interface IPlugCharPhyModelMP4 : IPlugCharPhyModel
     bool SniperTurretEnabled { get; set; }
 }
 
-public partial interface IPlugCharPhyModelTM2020 : IPlugCharPhyModel
+public partial interface IPlugCharPhyModelTM2020 : IPlugCharPhyModel, global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelMembers1
 {
 }
 

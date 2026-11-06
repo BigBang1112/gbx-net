@@ -9,7 +9,27 @@ public partial interface IMwCmdExpEnum : IClassVersion<global::GBX.NET.Engines.M
     uint ParamId { get; set; }
 }
 
+public partial interface IMwCmdExpEnumTM10 : IMwCmdExpEnum
+{
+}
+
+public partial interface IMwCmdExpEnumTMPU : IMwCmdExpEnum
+{
+}
+
+public partial interface IMwCmdExpEnumTMSX : IMwCmdExpEnum
+{
+}
+
+public partial interface IMwCmdExpEnumTMNESWC : IMwCmdExpEnum
+{
+}
+
 public partial interface IMwCmdExpEnumTMU : IMwCmdExpEnum
+{
+}
+
+public partial interface IMwCmdExpEnumVSK5 : IMwCmdExpEnum
 {
 }
 

@@ -7,49 +7,56 @@ public abstract class CPlugFontBitmapBuilderBase<TSelf> : NodeBuilder<global::GB
 {
     private protected CPlugFontBitmapBuilderBase() { }
     private protected CPlugFontBitmapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMPU | GameVersion.TMU;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
-    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMU;
-    private protected const GameVersion SupportedGames4 = GameVersion.TM10 | GameVersion.TMPU;
-    private protected const GameVersion SupportedGames5 = GameVersion.TMU;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMPU;
     public TSelf WithFontAscent(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFontAscentAssignment(), value, SupportedGames1);
     public TSelf WithFontHeight(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFontHeightAssignment(), value, SupportedGames1);
 }
 public abstract class CPlugFontBitmapBuilderMembers1<TSelf> : CPlugFontBitmapBuilderBase<TSelf> where TSelf : CPlugFontBitmapBuilderMembers1<TSelf>
 {
     private protected CPlugFontBitmapBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
-    public TSelf WithLegacyBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLegacyBitmapAssignment(), value, SupportedGames4);
-    public TSelf WithLegacyBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLegacyBitmapReferenceAssignment(), value, SupportedGames4);
-    public TSelf WithOldLetters(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetOldLettersAssignment(), value, SupportedGames4);
+    public TSelf WithLegacyBitmap(global::GBX.NET.Engines.Plug.CPlugBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLegacyBitmapAssignment(), value, SupportedGames5);
+    public TSelf WithLegacyBitmapReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLegacyBitmapReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithOldLetters(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetOldLettersAssignment(), value, SupportedGames5);
     public TSelf WithOldLetters(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.OldLetter> values) => WithOldLetters(values.ToArray());
 }
 public abstract class CPlugFontBitmapBuilderMembers2<TSelf> : CPlugFontBitmapBuilderBase<TSelf> where TSelf : CPlugFontBitmapBuilderMembers2<TSelf>
 {
     private protected CPlugFontBitmapBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
-    public TSelf WithBounds(Rect value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetBoundsAssignment(), value, SupportedGames3);
-    public TSelf WithLetters(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLettersAssignment(), value, SupportedGames3);
+    public TSelf WithBounds(Rect value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetBoundsAssignment(), value, SupportedGames2);
+    public TSelf WithKerningCapacity(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetKerningCapacityAssignment(), value, SupportedGames2);
+    public TSelf WithKernings(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetKerningsAssignment(), value, SupportedGames2);
+    public TSelf WithKernings(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning> values) => WithKernings(values.ToArray());
+    public TSelf WithLetters(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLettersAssignment(), value, SupportedGames2);
     public TSelf WithLetters(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter> values) => WithLetters(values.ToArray());
-    public TSelf WithPages(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPagesAssignment(), value, SupportedGames3);
+    public TSelf WithPages(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPagesAssignment(), value, SupportedGames2);
     public TSelf WithPages(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page> values) => WithPages(values.ToArray());
-    public TSelf WithRemapLetters(params ushort[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapLettersAssignment(), value, SupportedGames3);
+    public TSelf WithRemapLetters(params ushort[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapLettersAssignment(), value, SupportedGames2);
     public TSelf WithRemapLetters(IEnumerable<ushort> values) => WithRemapLetters(values.ToArray());
-    public TSelf WithRemapPages(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapPagesAssignment(), value, SupportedGames3);
+    public TSelf WithRemapPages(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapPagesAssignment(), value, SupportedGames2);
     public TSelf WithRemapPages(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage> values) => WithRemapPages(values.ToArray());
 }
 public abstract class CPlugFontBitmapBuilderMembers3<TSelf> : CPlugFontBitmapBuilderMembers2<TSelf> where TSelf : CPlugFontBitmapBuilderMembers3<TSelf>
 {
     private protected CPlugFontBitmapBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
-    public TSelf WithCustomMaterialModel(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelAssignment(), value, SupportedGames2);
-    public TSelf WithCustomMaterialModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithFallbackFont(global::GBX.NET.Engines.Plug.CPlugFontBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontAssignment(), value, SupportedGames2);
-    public TSelf WithFallbackFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithHasCustomMaterial(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasCustomMaterialAssignment(), value, SupportedGames2);
-    public TSelf WithHasTextureDataRefs(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasTextureDataRefsAssignment(), value, SupportedGames2);
-    public TSelf WithPageTextureDataRefs(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTextureDataRefsAssignment(), value, SupportedGames2);
-    public TSelf WithPageTextureDataRefs(IEnumerable<string> values) => WithPageTextureDataRefs(values.ToArray());
-    public TSelf WithPageTextures(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTexturesAssignment(), value, SupportedGames2);
+    public TSelf WithCustomMaterialModel(global::GBX.NET.Engines.Plug.CPlugMaterial? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelAssignment(), value, SupportedGames3);
+    public TSelf WithCustomMaterialModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelReferenceAssignment(), value, SupportedGames3);
+    public TSelf WithPageTextures(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTexturesAssignment(), value, SupportedGames3);
     public TSelf WithPageTextures(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithPageTextures(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithPageTextures(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithPageTextures(values.ToArray());
+}
+public abstract class CPlugFontBitmapBuilderMembers4<TSelf> : CPlugFontBitmapBuilderMembers3<TSelf> where TSelf : CPlugFontBitmapBuilderMembers4<TSelf>
+{
+    private protected CPlugFontBitmapBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+    public TSelf WithFallbackFont(global::GBX.NET.Engines.Plug.CPlugFontBitmap? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontAssignment(), value, SupportedGames4);
+    public TSelf WithFallbackFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap> value) => SetReference(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithHasCustomMaterial(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasCustomMaterialAssignment(), value, SupportedGames4);
+    public TSelf WithHasTextureDataRefs(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasTextureDataRefsAssignment(), value, SupportedGames4);
+    public TSelf WithPageTextureDataRefs(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTextureDataRefsAssignment(), value, SupportedGames4);
+    public TSelf WithPageTextureDataRefs(IEnumerable<string> values) => WithPageTextureDataRefs(values.ToArray());
 }
 public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFontBitmapBuilder>
 {
@@ -78,6 +85,16 @@ public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFo
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugFontBitmap();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E005());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E007());
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFontBitmap CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFontBitmap();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004());
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E005());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008());
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009(game));
@@ -85,7 +102,12 @@ public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFo
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -106,32 +128,67 @@ public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFo
         public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
     }
+    public partial class TMSX : CPlugFontBitmapBuilderMembers2<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe2(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
+    }
+    public partial class TMNESWC : CPlugFontBitmapBuilderMembers2<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
+    }
     public partial class TMU : CPlugFontBitmapBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
-        public TMU WithKerningCapacity(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetKerningCapacityAssignment(), value, SupportedGames5);
-        public TMU WithKernings(params global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetKerningsAssignment(), value, SupportedGames5);
-        public TMU WithKernings(IEnumerable<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Kerning> values) => WithKernings(values.ToArray());
         public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
     }
-    public partial class MP4 : CPlugFontBitmapBuilderMembers3<MP4>
+    public partial class VSK5 : CPlugFontBitmapBuilderMembers2<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
+    }
+    public partial class TMF : CPlugFontBitmapBuilderMembers3<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+        public TMF WithCustomMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value) => base.WithCustomMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe3(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
+    }
+    public partial class TMT : CPlugFontBitmapBuilderMembers4<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
+        public TMT WithCustomMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value) => base.WithCustomMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithFallbackFont(global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMT? value) => base.WithFallbackFont(value is null ? (global::GBX.NET.Engines.Plug.CPlugFontBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe4(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
+    }
+    public partial class MP4 : CPlugFontBitmapBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
         public MP4 WithCustomMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value) => base.WithCustomMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithFallbackFont(global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4? value) => base.WithFallbackFont(value is null ? (global::GBX.NET.Engines.Plug.CPlugFontBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe4(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
     }
-    public partial class TM2020 : CPlugFontBitmapBuilderMembers3<TM2020>
+    public partial class TM2020 : CPlugFontBitmapBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) : base(state) { }
         public TM2020 WithCustomMaterialModel(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value) => base.WithCustomMaterialModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM2020 WithFallbackFont(global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020? value) => base.WithFallbackFont(value is null ? (global::GBX.NET.Engines.Plug.CPlugFontBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build() => BuildNode(CPlugFontBitmapBuilder.CreateRecipe4(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFontBitmap node);
     }
 }

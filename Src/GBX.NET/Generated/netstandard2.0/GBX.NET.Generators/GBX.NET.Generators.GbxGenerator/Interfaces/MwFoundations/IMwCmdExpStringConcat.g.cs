@@ -16,6 +16,10 @@ public partial interface IMwCmdExpStringConcat : IClassVersion<global::GBX.NET.E
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
+public partial interface IMwCmdExpStringConcatTMSX : IMwCmdExpStringConcat, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringTMSX
+{
+}
+
 public partial interface IMwCmdExpStringConcatTMF : IMwCmdExpStringConcat, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpStringTMF
 {
 }

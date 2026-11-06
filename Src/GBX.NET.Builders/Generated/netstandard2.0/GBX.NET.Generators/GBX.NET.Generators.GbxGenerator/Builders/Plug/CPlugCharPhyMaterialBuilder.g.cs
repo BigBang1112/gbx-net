@@ -7,7 +7,7 @@ public abstract class CPlugCharPhyMaterialBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CPlugCharPhyMaterialBuilderBase() { }
     private protected CPlugCharPhyMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithAccelMax(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialBuilderAssignments.GetAccelMaxAssignment(), value, SupportedGames1);
     public TSelf WithBlowHorizontalCoef(float value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialBuilderAssignments.GetBlowHorizontalCoefAssignment(), value, SupportedGames1);
     public TSelf WithClimbable(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialBuilderAssignments.GetClimbableAssignment(), value, SupportedGames1);
@@ -29,10 +29,18 @@ public partial class CPlugCharPhyMaterialBuilder : CPlugCharPhyMaterialBuilderBa
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial.Chunk090CA001(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMT : CPlugCharPhyMaterialBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial Build() => BuildNode(CPlugCharPhyMaterialBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial node);
+    }
     public partial class MP4 : CPlugCharPhyMaterialBuilderBase<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial> state) : base(state) { }

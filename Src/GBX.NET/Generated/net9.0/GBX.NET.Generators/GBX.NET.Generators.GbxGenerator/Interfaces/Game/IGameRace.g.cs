@@ -27,11 +27,11 @@ public partial interface IGameRaceTMPU : IGameRace, global::GBX.NET.Interfaces.G
 {
 }
 
-public partial interface IGameRaceTMSX : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMSX
+public partial interface IGameRaceTMSX : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMSX, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
 {
 }
 
-public partial interface IGameRaceTMNESWC : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMNESWC
+public partial interface IGameRaceTMNESWC : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTMNESWC, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
 {
 }
 
@@ -39,7 +39,7 @@ public partial interface IGameRaceTMU : IGameRace, global::GBX.NET.Interfaces.Ga
 {
 }
 
-public partial interface IGameRaceVSK5 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundVSK5
+public partial interface IGameRaceVSK5 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundVSK5, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
 {
 }
 
@@ -55,7 +55,7 @@ public partial interface IGameRaceTMT : IGameRace, global::GBX.NET.Interfaces.Ga
 {
 }
 
-public partial interface IGameRaceMP4 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundMP4
+public partial interface IGameRaceMP4 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundMP4, global::GBX.NET.Interfaces.Game.IGameRaceMembers1
 {
 }
 

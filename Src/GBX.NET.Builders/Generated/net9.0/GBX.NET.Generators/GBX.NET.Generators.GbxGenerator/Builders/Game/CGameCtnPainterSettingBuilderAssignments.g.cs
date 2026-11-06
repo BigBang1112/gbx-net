@@ -29,46 +29,78 @@ internal static class CGameCtnPainterSettingBuilderAssignments
     private static NodeBuilderProperty<float>? cached4;
     internal static NodeBuilderProperty<float> GetCameraBottomIn_m1p1Assignment() => cached4 ??= new("CameraBottomIn_m1p1", new Action<object, float>(Assign4));
     private static void Assign4(object node, float value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).CameraBottomIn_m1p1 = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?>? cached5;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?> GetImageSubObjectAllIconAssignment() => cached5 ??= new("ImageSubObjectAllIcon", new Action<object, global::GBX.NET.Engines.Plug.CPlugFileImg?>(Assign5));
-    private static void Assign5(object node, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ImageSubObjectAllIcon = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>? cached5Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>> GetImageSubObjectAllIconReferenceAssignment() => cached5Reference ??= new("ImageSubObjectAllIcon", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Copy2));
-    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.ImageSubObjectAllIcon.CopyFrom(value);
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached6;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialLayerBlendAssignment() => cached6 ??= new("MaterialLayerBlend", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign6));
-    private static void Assign6(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialLayerBlend = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached6Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialLayerBlendReferenceAssignment() => cached6Reference ??= new("MaterialLayerBlend", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy3));
-    private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialLayerBlend.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncKeysReal?>? cached5;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Function.CFuncKeysReal?> GetFxBloom_FidFuncIntensAtHdrNormAssignment() => cached5 ??= new("FxBloom_FidFuncIntensAtHdrNorm", new Action<object, global::GBX.NET.Engines.Function.CFuncKeysReal?>(Assign5));
+    private static void Assign5(object node, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).FxBloom_FidFuncIntensAtHdrNorm = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>? cached5Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>> GetFxBloom_FidFuncIntensAtHdrNormReferenceAssignment() => cached5Reference ??= new("FxBloom_FidFuncIntensAtHdrNorm", new Action<object, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>(Assign5Reference), new Func<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>(Copy2));
+    private static void Assign5Reference(object node, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.FxBloom_FidFuncIntensAtHdrNorm.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?>? cached6;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugFileImg?> GetImageSubObjectAllIconAssignment() => cached6 ??= new("ImageSubObjectAllIcon", new Action<object, global::GBX.NET.Engines.Plug.CPlugFileImg?>(Assign6));
+    private static void Assign6(object node, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ImageSubObjectAllIcon = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>? cached6Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>> GetImageSubObjectAllIconReferenceAssignment() => cached6Reference ??= new("ImageSubObjectAllIcon", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Assign6Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>(Copy3));
+    private static void Assign6Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.ImageSubObjectAllIcon.CopyFrom(value);
     private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached7;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialPaintAssignment() => cached7 ??= new("MaterialPaint", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign7));
-    private static void Assign7(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialPaint = value;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialFillColorAssignment() => cached7 ??= new("MaterialFillColor", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign7));
+    private static void Assign7(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialFillColor = value;
     private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached7Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialPaintReferenceAssignment() => cached7Reference ??= new("MaterialPaint", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign7Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy3));
-    private static void Assign7Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialPaint.CopyFrom(value);
-    private static NodeBuilderProperty<float>? cached8;
-    internal static NodeBuilderProperty<float> GetMouseZDeltaRotAssignment() => cached8 ??= new("MouseZDeltaRot", new Action<object, float>(Assign8));
-    private static void Assign8(object node, float value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MouseZDeltaRot = value;
-    private static NodeBuilderProperty<float>? cached9;
-    internal static NodeBuilderProperty<float> GetMouseZDeltaScaleAssignment() => cached9 ??= new("MouseZDeltaScale", new Action<object, float>(Assign9));
-    private static void Assign9(object node, float value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MouseZDeltaScale = value;
-    private static NodeBuilderProperty<string?>? cached10;
-    internal static NodeBuilderProperty<string?> GetRemapFolderAssignment() => cached10 ??= new("RemapFolder", new Action<object, string?>(Assign10));
-    private static void Assign10(object node, string? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).RemapFolder = value;
-    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGameSkin?>? cached11;
-    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGameSkin?> GetRemappingAssignment() => cached11 ??= new("Remapping", new Action<object, global::GBX.NET.Engines.Plug.CPlugGameSkin?>(Assign11));
-    private static void Assign11(object node, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).Remapping = value;
-    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>? cached11Reference;
-    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>> GetRemappingReferenceAssignment() => cached11Reference ??= new("Remapping", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>(Assign11Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>(Copy4));
-    private static void Assign11Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.Remapping.CopyFrom(value);
-    private static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>? cached12;
-    internal static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?> GetScenesFidsAssignment() => cached12 ??= new("ScenesFids", new Action<object, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>(Assign12), new Func<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>(Copy5));
-    private static void Assign12(object node, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ScenesFids = value;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialFillColorReferenceAssignment() => cached7Reference ??= new("MaterialFillColor", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign7Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy4));
+    private static void Assign7Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialFillColor.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached8;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialLayerBlendAssignment() => cached8 ??= new("MaterialLayerBlend", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign8));
+    private static void Assign8(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialLayerBlend = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached8Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialLayerBlendReferenceAssignment() => cached8Reference ??= new("MaterialLayerBlend", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign8Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy4));
+    private static void Assign8Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialLayerBlend.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached9;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialLayerModulateAssignment() => cached9 ??= new("MaterialLayerModulate", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign9));
+    private static void Assign9(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialLayerModulate = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached9Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialLayerModulateReferenceAssignment() => cached9Reference ??= new("MaterialLayerModulate", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign9Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy4));
+    private static void Assign9Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialLayerModulate.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?>? cached10;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugMaterial?> GetMaterialPaintAssignment() => cached10 ??= new("MaterialPaint", new Action<object, global::GBX.NET.Engines.Plug.CPlugMaterial?>(Assign10));
+    private static void Assign10(object node, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MaterialPaint = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>? cached10Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>> GetMaterialPaintReferenceAssignment() => cached10Reference ??= new("MaterialPaint", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Assign10Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>(Copy4));
+    private static void Assign10Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.MaterialPaint.CopyFrom(value);
+    private static NodeBuilderProperty<float>? cached11;
+    internal static NodeBuilderProperty<float> GetMouseZDeltaRotAssignment() => cached11 ??= new("MouseZDeltaRot", new Action<object, float>(Assign11));
+    private static void Assign11(object node, float value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MouseZDeltaRot = value;
+    private static NodeBuilderProperty<float>? cached12;
+    internal static NodeBuilderProperty<float> GetMouseZDeltaScaleAssignment() => cached12 ??= new("MouseZDeltaScale", new Action<object, float>(Assign12));
+    private static void Assign12(object node, float value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).MouseZDeltaScale = value;
+    private static NodeBuilderProperty<string?>? cached13;
+    internal static NodeBuilderProperty<string?> GetRemapFolderAssignment() => cached13 ??= new("RemapFolder", new Action<object, string?>(Assign13));
+    private static void Assign13(object node, string? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).RemapFolder = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGameSkin?>? cached14;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugGameSkin?> GetRemappingAssignment() => cached14 ??= new("Remapping", new Action<object, global::GBX.NET.Engines.Plug.CPlugGameSkin?>(Assign14));
+    private static void Assign14(object node, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).Remapping = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>? cached14Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>> GetRemappingReferenceAssignment() => cached14Reference ??= new("Remapping", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>(Assign14Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>(Copy5));
+    private static void Assign14Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.Remapping.CopyFrom(value);
+    private static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>? cached15;
+    internal static NodeBuilderProperty<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?> GetScenesFidsAssignment() => cached15 ??= new("ScenesFids", new Action<object, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>(Assign15), new Func<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>(Copy6));
+    private static void Assign15(object node, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ScenesFids = value;
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShader?>? cached16;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShader?> GetShaderRasterAlphaMaskAssignment() => cached16 ??= new("ShaderRasterAlphaMask", new Action<object, global::GBX.NET.Engines.Plug.CPlugShader?>(Assign16));
+    private static void Assign16(object node, global::GBX.NET.Engines.Plug.CPlugShader? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ShaderRasterAlphaMask = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>? cached16Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>> GetShaderRasterAlphaMaskReferenceAssignment() => cached16Reference ??= new("ShaderRasterAlphaMask", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>(Assign16Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>(Copy7));
+    private static void Assign16Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.ShaderRasterAlphaMask.CopyFrom(value);
+    private static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShader?>? cached17;
+    internal static NodeBuilderProperty<global::GBX.NET.Engines.Plug.CPlugShader?> GetShaderRasterRgbMaskAssignment() => cached17 ??= new("ShaderRasterRgbMask", new Action<object, global::GBX.NET.Engines.Plug.CPlugShader?>(Assign17));
+    private static void Assign17(object node, global::GBX.NET.Engines.Plug.CPlugShader? value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).ShaderRasterRgbMask = value;
+    private static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>? cached17Reference;
+    internal static NodeBuilderProperty<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>> GetShaderRasterRgbMaskReferenceAssignment() => cached17Reference ??= new("ShaderRasterRgbMask", new Action<object, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>(Assign17Reference), new Func<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>(Copy7));
+    private static void Assign17Reference(object node, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => ((global::GBX.NET.Engines.Game.CGameCtnPainterSetting)node).References.ShaderRasterRgbMask.CopyFrom(value);
     private static NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> Copy0(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(value); return copy; }
     private static NodeRef<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> Copy1(NodeRef<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d> value) { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> Copy2(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> Copy3(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(value); return copy; }
-    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> Copy4(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>(); copy.CopyFrom(value); return copy; }
-    private static NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Copy5(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => value is null ? null! : NodeBuilderReferences.CopyList(value);
+    private static NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> Copy2(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> Copy3(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> Copy4(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(value); return copy; }
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> Copy5(NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>(); copy.CopyFrom(value); return copy; }
+    private static NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Copy6(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => value is null ? null! : NodeBuilderReferences.CopyList(value);
+    private static NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> Copy7(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>(); copy.CopyFrom(value); return copy; }
 }

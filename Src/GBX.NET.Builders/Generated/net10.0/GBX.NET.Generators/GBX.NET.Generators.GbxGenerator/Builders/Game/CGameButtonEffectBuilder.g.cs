@@ -7,7 +7,7 @@ public abstract class CGameButtonEffectBuilderBase<TSelf> : NodeBuilder<global::
 {
     private protected CGameButtonEffectBuilderBase() { }
     private protected CGameButtonEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameButtonEffect> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU;
+    private protected const GameVersion SupportedGames1 = GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX;
     public TSelf WithFlash(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameButtonEffectBuilderAssignments.GetFlashAssignment(), value, SupportedGames1);
     public TSelf WithHighlightColor(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameButtonEffectBuilderAssignments.GetHighlightColorAssignment(), value, SupportedGames1);
     public TSelf WithHighlightColor2(Vec3 value) => Set(global::GBX.NET.Builders.Engines.Game.CGameButtonEffectBuilderAssignments.GetHighlightColor2Assignment(), value, SupportedGames1);
@@ -22,6 +22,7 @@ public partial class CGameButtonEffectBuilder : CGameButtonEffectBuilderBase<CGa
     }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
+    public TMSX ForTMSX() => new(state.Snapshot());
     public partial class TM10 : CGameButtonEffectBuilderBase<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameButtonEffect> state) : base(state) { }
@@ -34,6 +35,13 @@ public partial class CGameButtonEffectBuilder : CGameButtonEffectBuilderBase<CGa
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameButtonEffect> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameButtonEffectTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameButtonEffect Build() => BuildNode(CGameButtonEffectBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
+        partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameButtonEffect node);
+    }
+    public partial class TMSX : CGameButtonEffectBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameButtonEffect> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Game.IGameButtonEffectTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Game.CGameButtonEffect Build() => BuildNode(CGameButtonEffectBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameButtonEffect node);
     }
 }

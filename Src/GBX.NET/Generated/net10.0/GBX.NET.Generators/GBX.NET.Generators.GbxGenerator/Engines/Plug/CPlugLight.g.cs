@@ -12,21 +12,22 @@ public partial class CPlugLight : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<GxLight>? lightRef;
+    private NodeRef<GxLight>? gxLightModelRef;
     /// <remarks>Applied with: 0x000, 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     [AppliedWithChunk<Chunk0901D004>]
-    public GxLight? Light
+    public GxLight? GxLightModel
     {
-        get => lightRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref lightRef, value);
+        get => gxLightModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gxLightModelRef, value);
     }
 
     private NodeRef<CFuncLight>? funcLightRef;
-    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
+    [AppliedWithChunk<Chunk0901D004>]
     public CFuncLight? FuncLight
     {
         get => funcLightRef?.Resolve();
@@ -34,9 +35,10 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapFlareRef;
-    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
+    [AppliedWithChunk<Chunk0901D004>]
     public CPlugBitmap? BitmapFlare
     {
         get => bitmapFlareRef?.Resolve();
@@ -44,18 +46,20 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapProjectorRef;
-    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
+    [AppliedWithChunk<Chunk0901D004>]
     public CPlugBitmap? BitmapProjector
     {
         get => bitmapProjectorRef?.Resolve();
         set => NodeRef.SetEmbedded(ref bitmapProjectorRef, value);
     }
 
-    private EFlags flags;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    private EFlags flags = EFlags.NightOnly;
+    /// <remarks>Applied with: 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D002>]
+    [AppliedWithChunk<Chunk0901D004>]
     public EFlags Flags
     {
         get => this.flags;
@@ -98,32 +102,43 @@ public partial class CPlugLight : CPlug, IClass
         set => this.animTimerName = value;
     }
 
+    private NodeRef<CPlugMaterialColorTargetTable>? colorTargetTableRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk0901D004>]
+    public CPlugMaterialColorTargetTable? ColorTargetTable
+    {
+        get => colorTargetTableRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref colorTargetTableRef, value);
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
         private readonly CPlugLight owner;
         internal NodeRefView(CPlugLight owner) => this.owner = owner;
-        public NodeRef<GxLight> Light => NodeRef.GetOrCreate(ref owner.lightRef);
+        public NodeRef<GxLight> GxLightModel => NodeRef.GetOrCreate(ref owner.gxLightModelRef);
         public NodeRef<CFuncLight> FuncLight => NodeRef.GetOrCreate(ref owner.funcLightRef);
         public NodeRef<CPlugBitmap> BitmapFlare => NodeRef.GetOrCreate(ref owner.bitmapFlareRef);
         public NodeRef<CPlugBitmap> BitmapProjector => NodeRef.GetOrCreate(ref owner.bitmapProjectorRef);
         public NodeRef<CPlugFileImg> ImageAnim => NodeRef.GetOrCreate(ref owner.imageAnimRef);
+        public NodeRef<CPlugMaterialColorTargetTable> ColorTargetTable => NodeRef.GetOrCreate(ref owner.colorTargetTableRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Light", NodeRef.GetOrCreate(ref lightRef));
+        yield return new("GxLightModel", NodeRef.GetOrCreate(ref gxLightModelRef));
         yield return new("FuncLight", NodeRef.GetOrCreate(ref funcLightRef));
         yield return new("BitmapFlare", NodeRef.GetOrCreate(ref bitmapFlareRef));
         yield return new("BitmapProjector", NodeRef.GetOrCreate(ref bitmapProjectorRef));
         yield return new("ImageAnim", NodeRef.GetOrCreate(ref imageAnimRef));
+        yield return new("ColorTargetTable", NodeRef.GetOrCreate(ref colorTargetTableRef));
         yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugLight)clone).lightRef = context.Clone(this.lightRef)!;
+        ((CPlugLight)clone).gxLightModelRef = context.Clone(this.gxLightModelRef)!;
         ((CPlugLight)clone).funcLightRef = context.Clone(this.funcLightRef)!;
         ((CPlugLight)clone).bitmapFlareRef = context.Clone(this.bitmapFlareRef)!;
         ((CPlugLight)clone).bitmapProjectorRef = context.Clone(this.bitmapProjectorRef)!;
@@ -132,6 +147,7 @@ public partial class CPlugLight : CPlug, IClass
         ((CPlugLight)clone).animPeriodMin = context.Clone(this.animPeriodMin)!;
         ((CPlugLight)clone).animPeriodMax = context.Clone(this.animPeriodMax)!;
         ((CPlugLight)clone).animTimerName = context.Clone(this.animTimerName)!;
+        ((CPlugLight)clone).colorTargetTableRef = context.Clone(this.colorTargetTableRef)!;
     }
 
     public CPlugLight()
@@ -155,7 +171,7 @@ public partial class CPlugLight : CPlug, IClass
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref n.lightRef);
+            rw.NodeRef(ref n.gxLightModelRef);
             rw.NodeRef(ref n.funcLightRef);
             rw.NodeRef(ref n.bitmapFlareRef);
             rw.NodeRef(ref n.bitmapProjectorRef);
@@ -233,30 +249,20 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     /// <summary>
-    /// CPlugLight 0x004 chunk
+    /// CPlugLight 0x004 chunk (light and color target table)
     /// </summary>
-    [Chunk(0x0901D004)]
+    [Chunk(0x0901D004, "light and color target table")]
     [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk0901D004 : Chunk<CPlugLight>, IVersionable
+    public partial class Chunk0901D004 : Chunk0901D002, IVersionable
     {
         public override uint Id => 0x0901D004;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0901D004)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0901D004)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0901D004)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0901D004)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0901D004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0901D004)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
@@ -267,12 +273,8 @@ public partial class CPlugLight : CPlug, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref n.lightRef);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
+            base.ReadWrite(n, rw);
+            rw.NodeRef(ref n.colorTargetTableRef);
         }
     }
 
@@ -283,6 +285,7 @@ public partial class CPlugLight : CPlug, IClass
         ReflectByGround,
         DuplicateGxLight = 4,
         SceneLightOnlyWhenTreeVisible = 8,
+        SceneLightAlwaysActive = 16,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch

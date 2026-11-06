@@ -4,33 +4,113 @@
 namespace GBX.NET.Interfaces.Plug;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugCharVisModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel where T0 : class
+public interface IPlugCharVisModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel where T0 : class where T1 : class where T2 : class
 {
-    new T0? NullMesh { get; set; }
+    T0? GrapnelModel { get; set; }
+    float GrapnelReturnSpeed { get; set; }
+    T1? NullMesh { get; set; }
+    T1? ParagliderMesh { get; set; }
+    new T2? ShieldModel { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharVisModelMembers2<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new T0? AttractorModel { get; set; }
+    new T1? JumpMaterialImpact { get; set; }
+    new T1? LandMaterialImpact { get; set; }
+    new T2? Particle_Deactivated { get; set; }
+    new T2? Particle_DeactivatedShot { get; set; }
+    new T2? Particle_Deprecated_InjuredLight { get; set; }
+    new T2? Particle_EvolutionChange { get; set; }
+    new T2? Particle_EvolutionInProgress { get; set; }
+    new T2? Particle_JumpPad { get; set; }
+    new T2? Particle_ShieldDestroyed { get; set; }
+    new T2? Particle_ShieldDestroyed_Mesh { get; set; }
+    new T2? Particle_Spawn { get; set; }
+    new T2? Particle_SpeedUp { get; set; }
+    new T2? Particle_TeleportSpawn { get; set; }
+    new T2? Particle_TeleportUnspawn { get; set; }
+    new T2? Particle_Turbo { get; set; }
+    new T3? Sound_Attractor { get; set; }
+    new T3? Sound_Breathe { get; set; }
+    new T3? Sound_EvolutionChange { get; set; }
+    new T3? Sound_EvolutionInProgress { get; set; }
+    new T3? Sound_Gliding { get; set; }
+    new T3? Sound_Notice_Attractor { get; set; }
+    new T3? Sound_Notice_BackFlipJump { get; set; }
+    new T3? Sound_Notice_BulletHit { get; set; }
+    new T3? Sound_Notice_DoubleJump { get; set; }
+    new T3? Sound_Notice_FallDamage { get; set; }
+    new T3? Sound_Notice_Fire { get; set; }
+    new T3? Sound_Notice_FreeWheeling { get; set; }
+    new T3? Sound_Notice_FrontFlipJump { get; set; }
+    new T3? Sound_Notice_GesturePointTo { get; set; }
+    new T3? Sound_Notice_GestureTaunt { get; set; }
+    new T3? Sound_Notice_InjuredEliminated { get; set; }
+    new T3? Sound_Notice_InjuredEliminatedShot { get; set; }
+    new T3? Sound_Notice_InjuredLight { get; set; }
+    new T3? Sound_Notice_Jump { get; set; }
+    new T3? Sound_Notice_JumpChain1 { get; set; }
+    new T3? Sound_Notice_JumpChain2 { get; set; }
+    new T3? Sound_Notice_JumpPadBig { get; set; }
+    new T3? Sound_Notice_JumpPadMed { get; set; }
+    new T3? Sound_Notice_JumpPadSmall { get; set; }
+    new T3? Sound_Notice_Land { get; set; }
+    new T3? Sound_Notice_MissingStamina { get; set; }
+    new T3? Sound_Notice_Spawn { get; set; }
+    new T3? Sound_Notice_SpeedUp { get; set; }
+    new T3? Sound_Notice_TechJump { get; set; }
+    new T3? Sound_Notice_TeleportSpawn { get; set; }
+    new T3? Sound_Notice_TeleportUnspawn { get; set; }
+    new T3? Sound_Notice_Turbo { get; set; }
+    new T3? Sound_Notice_WallJump { get; set; }
+    new T3? Sound_Notice_ZoomIn { get; set; }
+    new T3? Sound_Notice_ZoomOut { get; set; }
+    new T3? Sound_RunBody { get; set; }
+    new T3? Sound_Slide { get; set; }
+    new T3? Sound_SwimBody { get; set; }
+    new T3? Sound_Swimming { get; set; }
+    new T3? Sound_WalkBody { get; set; }
+    new T3? Sound_WalkBodySilent { get; set; }
+    new T1? WalkStepMaterialImpact { get; set; }
 }
 public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharVisModel>
 {
+    int AimingAfterFireDurationMs { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? AttractorModel { get; set; }
     Vec3 AttractorRelPos { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? AudioEnvironmentForFirstPerson { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? GrapnelModel { get; set; }
-    float GrapnelReturnSpeed { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DummySkinnable { get; set; }
     Vec3 HurtFlashColor { get; set; }
     float HurtViewOffsetAngle { get; set; }
     int HurtViewOffsetDuration { get; set; }
     float HurtViewOffsetPos { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? JumpMaterialImpact { get; set; }
     PlugCurve? JumpPitchFromVel { get; set; }
     float JumpViewOffsetAngle { get; set; }
     int JumpViewOffsetDuration1 { get; set; }
     int JumpViewOffsetDuration2 { get; set; }
     float JumpViewOffsetPos { get; set; }
     PlugCurve? JumpVolumeFromVel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? LandMaterialImpact { get; set; }
     float LandViewOffsetAngle { get; set; }
     int LandViewOffsetDuration1 { get; set; }
     int LandViewOffsetDuration2 { get; set; }
     float LandViewOffsetPos { get; set; }
     PlugCurve? LandVolumeFromVel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? NullMesh { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_Deactivated { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_DeactivatedShot { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_Deprecated_InjuredLight { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_EvolutionChange { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_EvolutionInProgress { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_JumpPad { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_ShieldDestroyed { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_ShieldDestroyed_Mesh { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_Spawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_SpeedUp { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_TeleportSpawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_TeleportUnspawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? Particle_Turbo { get; set; }
     PlugCurve? RunStepBodyPitchFromVel { get; set; }
     PlugCurve? RunStepBodyVolumeFromVel { get; set; }
     PlugCurve? RunStepDistFromVel { get; set; }
@@ -41,8 +121,50 @@ public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engin
     float RunViewBobOffsetPitch { get; set; }
     float RunViewBobOffsetPos { get; set; }
     float RunViewBobOffsetRoll { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugShieldModel? ShieldModel { get; set; }
     PlugCurve? SlideSurfPitchFromVel { get; set; }
     PlugCurve? SlideSurfgVolumeFromVel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Attractor { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Breathe { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_EvolutionChange { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_EvolutionInProgress { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Gliding { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Attractor { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_BackFlipJump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_BulletHit { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_DoubleJump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_FallDamage { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Fire { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_FreeWheeling { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_FrontFlipJump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_GesturePointTo { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_GestureTaunt { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_InjuredEliminated { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_InjuredEliminatedShot { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_InjuredLight { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Jump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_JumpChain1 { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_JumpChain2 { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_JumpPadBig { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_JumpPadMed { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_JumpPadSmall { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Land { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_MissingStamina { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Spawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_SpeedUp { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_TechJump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_TeleportSpawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_TeleportUnspawn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_Turbo { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_WallJump { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_ZoomIn { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Notice_ZoomOut { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_RunBody { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Slide { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_SwimBody { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_Swimming { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_WalkBody { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound_WalkBodySilent { get; set; }
     float StrafeMaxRollAngle { get; set; }
     float StrafeSmoothingPeriod { get; set; }
     PlugCurve? SwimStepBodyPitchFromVel { get; set; }
@@ -61,6 +183,7 @@ public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engin
     PlugCurve? WalkStepDistFromVel_Snow { get; set; }
     PlugCurve? WalkStepImpactPitchFromVel { get; set; }
     PlugCurve? WalkStepImpactVolumeFromVel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? WalkStepMaterialImpact { get; set; }
     Vec3 WalkStepSoundOffset { get; set; }
     PlugCurve? WalkViewBobAmountFromVel { get; set; }
     PlugCurve? WalkViewBobAmountFromVel_Rushing { get; set; }
@@ -71,76 +194,16 @@ public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engin
     PlugCurve? WallJumpVolumeFromVel { get; set; }
 }
 
-public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>
+public partial interface IPlugCharVisModelTMT : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    int AimingAfterFireDurationMs { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? AttractorModel { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DummySkinnable { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? GrapnelModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? JumpMaterialImpact { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? LandMaterialImpact { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? ParagliderMesh { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_Deactivated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_DeactivatedShot { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_Deprecated_InjuredLight { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_EvolutionChange { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_EvolutionInProgress { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_JumpPad { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_ShieldDestroyed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_ShieldDestroyed_Mesh { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_Spawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_SpeedUp { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_TeleportSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_TeleportUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_Turbo { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? ShieldModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Attractor { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Breathe { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_EvolutionChange { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_EvolutionInProgress { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Gliding { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Attractor { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_BackFlipJump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_BulletHit { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_DoubleJump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_FallDamage { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Fire { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_FreeWheeling { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_FrontFlipJump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_GesturePointTo { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_GestureTaunt { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_InjuredEliminated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_InjuredEliminatedShot { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_InjuredLight { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Jump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_JumpChain1 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_JumpChain2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_JumpPadBig { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_JumpPadMed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_JumpPadSmall { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Land { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_MissingStamina { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Spawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_SpeedUp { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_TechJump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_TeleportSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_TeleportUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_Turbo { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_WallJump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_ZoomIn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Notice_ZoomOut { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_RunBody { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Slide { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_SwimBody { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_Swimming { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_WalkBody { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound_WalkBodySilent { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? WalkStepMaterialImpact { get; set; }
+    new global::GBX.NET.Engines.Plug.CPlugShieldModel? ShieldModel { get; set; }
 }
 
-public partial interface IPlugCharVisModelTM2020 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>
+public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
-    new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? AttractorModel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? GrapnelModel { get; set; }
+}
+
+public partial interface IPlugCharVisModelTM2020 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
+{
 }
 

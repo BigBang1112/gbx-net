@@ -6,9 +6,9 @@ CMwCmdExpStringParam 0x01050000
 0x000
   CMwCmdExpClassParam.OldParamArchive OldParameter
 
-0x001
+0x001 [TM10, TMPU]
   CMwCmdExpClassParam.ParamArchive Parameter
 
-0x002 [TMU, TMF]
+0x002 [TMSX, TMNESWC, TMU, VSK5, TMF]
   CMwCmdExpClassParam.ParamArchive Parameter
   bool

@@ -67,10 +67,10 @@ public interface IGameCtnBlockInfoMembers3 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoMembers4<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo where T0 : class where T1 : class where T2 : class
 {
-    IReadOnlyList<T0?>? AirBlockUnitInfos
+    IReadOnlyList<T0>? AirBlockUnitInfos
     {
-        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetAirBlockUnitInfosInterfaceReferences, false, "AirBlockUnitInfos");
-        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(value, true));
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, T0>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetAirBlockUnitInfosInterfaceReferences, true, "AirBlockUnitInfos");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, T0>(value, false));
     }
     T1? AirHelperMobil
     {
@@ -83,10 +83,10 @@ public interface IGameCtnBlockInfoMembers4<T0, T1, T2> : global::GBX.NET.Interfa
         get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).ConstructionModeHelperMobil);
         set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<T0?>? GroundBlockUnitInfos
+    IReadOnlyList<T0>? GroundBlockUnitInfos
     {
-        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetGroundBlockUnitInfosInterfaceReferences, false, "GroundBlockUnitInfos");
-        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(value, true));
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, T0>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetGroundBlockUnitInfosInterfaceReferences, true, "GroundBlockUnitInfos");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, T0>(value, false));
     }
     T1? GroundHelperMobil
     {

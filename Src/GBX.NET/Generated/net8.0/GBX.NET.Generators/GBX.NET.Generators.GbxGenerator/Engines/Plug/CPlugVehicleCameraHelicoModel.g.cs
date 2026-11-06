@@ -29,7 +29,12 @@ public partial class CPlugVehicleCameraHelicoModel : CPlugCamControlModel, IClas
     public partial class Chunk0914D000 : Chunk<CPlugVehicleCameraHelicoModel>, IVersionable
     {
         public override uint Id => 0x0914D000;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 8 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
         public float U01;
         public float U02;

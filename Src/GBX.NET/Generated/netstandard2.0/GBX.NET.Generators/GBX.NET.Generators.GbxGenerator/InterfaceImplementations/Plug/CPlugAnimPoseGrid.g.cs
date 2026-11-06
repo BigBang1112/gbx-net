@@ -3,14 +3,19 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugAnimPoseGrid : global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020
+public partial class CPlugAnimPoseGrid : global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGrid.ChannelGroup
     {
         get => ChannelGroup;
         set => ChannelGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridTM2020.ChannelGroup
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4? global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupMP4>.ChannelGroup
+    {
+        get => ChannelGroup;
+        set => ChannelGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? global::GBX.NET.Interfaces.Plug.IPlugAnimPoseGridMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020>.ChannelGroup
     {
         get => ChannelGroup;
         set => ChannelGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

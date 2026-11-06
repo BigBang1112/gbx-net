@@ -282,7 +282,7 @@ public class GbxReaderTests
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
-        ms.Write([1, 0, 0, 16, 69]);
+        ms.Write(BitConverter.GetBytes(GbxReader.MaxDataSize + 1));
         ms.Position = 0;
 
         // Act & Assert
@@ -360,7 +360,7 @@ public class GbxReaderTests
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
-        ms.Write([1, 0, 0, 16, 69]);
+        ms.Write(BitConverter.GetBytes(GbxReader.MaxDataSize + 1));
         ms.Position = 0;
 
         // Act & Assert
@@ -374,7 +374,7 @@ public class GbxReaderTests
         using var ms = new MemoryStream();
         using var r = new GbxReader(ms);
 
-        ms.Write([1, 0, 0, 16, 69]);
+        ms.Write(BitConverter.GetBytes(GbxReader.MaxDataSize + 1));
         ms.Position = 0;
 
         // Act & Assert

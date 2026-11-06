@@ -3,18 +3,42 @@
 
 namespace GBX.NET.Interfaces.MwFoundations;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMwCmdSleepMembers1<T0> : global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleep where T0 : class
+{
+    new T0? Time { get; set; }
+}
 public partial interface IMwCmdSleep : IClassVersion<global::GBX.NET.Engines.MwFoundations.CMwCmdSleep>
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNum? Time { get; set; }
 }
 
-public partial interface IMwCmdSleepTM10 : IMwCmdSleep
+public partial interface IMwCmdSleepTM10 : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTM10>
+{
+}
+
+public partial interface IMwCmdSleepTMPU : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMPU>
+{
+}
+
+public partial interface IMwCmdSleepTMSX : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMSX>
+{
+}
+
+public partial interface IMwCmdSleepTMNESWC : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMNESWC>
+{
+}
+
+public partial interface IMwCmdSleepTMU : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU>
+{
+}
+
+public partial interface IMwCmdSleepVSK5 : IMwCmdSleep
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum? Time { get; set; }
 }
 
-public partial interface IMwCmdSleepTMU : IMwCmdSleep
+public partial interface IMwCmdSleepTMF : IMwCmdSleep, global::GBX.NET.Interfaces.MwFoundations.IMwCmdSleepMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMF>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMU? Time { get; set; }
 }
 

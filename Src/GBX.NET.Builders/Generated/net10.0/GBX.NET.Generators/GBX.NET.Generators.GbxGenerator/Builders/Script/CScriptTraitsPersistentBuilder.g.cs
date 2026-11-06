@@ -17,6 +17,7 @@ public partial class CScriptTraitsPersistentBuilder : CScriptTraitsPersistentBui
         return node;
     }
     public MP3 ForMP3() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -26,6 +27,13 @@ public partial class CScriptTraitsPersistentBuilder : CScriptTraitsPersistentBui
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Script.CScriptTraitsPersistent> state) : base(state) { }
         public global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe0(GameVersion.MP3), GameVersion.MP3);
+        partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsPersistent node);
+    }
+    public partial class TMT : CScriptTraitsPersistentBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Script.CScriptTraitsPersistent> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Script.IScriptTraitsPersistentTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Script.CScriptTraitsPersistent Build() => BuildNode(CScriptTraitsPersistentBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Script.CScriptTraitsPersistent node);
     }
     public partial class MP4 : CScriptTraitsPersistentBuilderBase<MP4>

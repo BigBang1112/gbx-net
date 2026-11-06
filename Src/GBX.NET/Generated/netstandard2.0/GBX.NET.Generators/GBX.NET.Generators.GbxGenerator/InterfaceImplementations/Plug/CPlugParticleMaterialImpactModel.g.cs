@@ -3,17 +3,27 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugParticleMaterialImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4
+public partial class CPlugParticleMaterialImpactModel : global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTMT, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel?>? global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel.MaterialImpacts
     {
         get => MaterialImpacts is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel?>(GetMaterialImpactsInterfaceReferences, false, "MaterialImpacts");
         set => MaterialImpacts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModel?>(value, true));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?>? global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4.MaterialImpacts
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?>? global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT>.MaterialImpacts
+    {
+        get => MaterialImpacts is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?>(GetMaterialImpactsInterfaceReferences, false, "MaterialImpacts");
+        set => MaterialImpacts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTMT?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?>? global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4>.MaterialImpacts
     {
         get => MaterialImpacts is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?>(GetMaterialImpactsInterfaceReferences, false, "MaterialImpacts");
         set => MaterialImpacts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelMP4?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?>? global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020>.MaterialImpacts
+    {
+        get => MaterialImpacts is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?>(GetMaterialImpactsInterfaceReferences, false, "MaterialImpacts");
+        set => MaterialImpacts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?, global::GBX.NET.Interfaces.Plug.IPlugParticleImpactModelTM2020?>(value, true));
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleImpactModel?>? GetMaterialImpactsInterfaceReferences() => MaterialImpacts;
 }

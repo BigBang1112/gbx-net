@@ -3,7 +3,7 @@
 
 namespace GBX.NET.Engines.Control;
 
-public partial class CControlEffectSwitchStyle : global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTM10, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMPU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMU
+public partial class CControlEffectSwitchStyle : global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyle, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTM10, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMPU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMSX, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMU, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleVSK5, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMF, global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleTMT
 {
     global::GBX.NET.Interfaces.Control.IControlStyle? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyle.FocusedStyle
     {
@@ -20,7 +20,32 @@ public partial class CControlEffectSwitchStyle : global::GBX.NET.Interfaces.Cont
         get => FocusedStyle;
         set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMSX? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMSX>.FocusedStyle
+    {
+        get => FocusedStyle;
+        set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC>.FocusedStyle
+    {
+        get => FocusedStyle;
+        set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Control.IControlStyleTMU? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMU>.FocusedStyle
+    {
+        get => FocusedStyle;
+        set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleVSK5? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleVSK5>.FocusedStyle
+    {
+        get => FocusedStyle;
+        set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMF? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMF>.FocusedStyle
+    {
+        get => FocusedStyle;
+        set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleTMT? global::GBX.NET.Interfaces.Control.IControlEffectSwitchStyleMembers1<global::GBX.NET.Interfaces.Control.IControlStyleTMT>.FocusedStyle
     {
         get => FocusedStyle;
         set => FocusedStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

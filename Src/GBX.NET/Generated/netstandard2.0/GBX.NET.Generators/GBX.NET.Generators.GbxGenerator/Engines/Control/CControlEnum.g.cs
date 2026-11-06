@@ -381,9 +381,11 @@ public partial class CControlEnum : CControlText, IClass
     /// CControlEnum 0x007 chunk (legacy looping, display type and enum)
     /// </summary>
     [Chunk(0x0700A007, "legacy looping, display type and enum")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0700A007 : Chunk<CControlEnum>
     {
         public override uint Id => 0x0700A007;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -430,11 +432,11 @@ public partial class CControlEnum : CControlText, IClass
     /// CControlEnum 0x009 chunk (looping, display and text modes, enum and clip length)
     /// </summary>
     [Chunk(0x0700A009, "looping, display and text modes, enum and clip length")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700A009 : Chunk<CControlEnum>
     {
         public override uint Id => 0x0700A009;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -458,11 +460,11 @@ public partial class CControlEnum : CControlText, IClass
     /// CControlEnum 0x00A chunk
     /// </summary>
     [Chunk(0x0700A00A)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700A00A : Chunk<CControlEnum>
     {
         public override uint Id => 0x0700A00A;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public string[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

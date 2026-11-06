@@ -25,3 +25,7 @@ public partial interface IGameButtonEffectTMPU : IGameButtonEffect, global::GBX.
 {
 }
 
+public partial interface IGameButtonEffectTMSX : IGameButtonEffect, global::GBX.NET.Interfaces.Control.IControlEffectTMSX
+{
+}
+

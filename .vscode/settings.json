@@ -1,0 +1,8 @@
+{
+  "dotnet.defaultSolution": "GBX.NET.slnx",
+  "dotnet.build.useMultithreadedMSBuild": false,
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  }
+}

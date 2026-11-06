@@ -7,32 +7,71 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> : NodeBuilder<globa
 {
     private protected CPlugGpuCompileCacheBuilderBase() { }
     private protected CPlugGpuCompileCacheBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.TM2020;
-    public TSelf WithData(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetDataAssignment(), value, SupportedGames1);
-    public TSelf WithEntryPoint(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetEntryPointAssignment(), value, SupportedGames1);
-    public TSelf WithHasSlots(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHasSlotsAssignment(), value, SupportedGames1);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames3 = GameVersion.TM2020;
+    public TSelf WithData(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetDataAssignment(), value, SupportedGames2);
+    public TSelf WithEntryPoint(string? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetEntryPointAssignment(), value, SupportedGames2);
+    public TSelf WithType(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetTypeAssignment(), value, SupportedGames2);
+}
+public abstract class CPlugGpuCompileCacheBuilderMembers1<TSelf> : CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlugGpuCompileCacheBuilderMembers1<TSelf>
+{
+    private protected CPlugGpuCompileCacheBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) : base(state) { }
     public TSelf WithHashes(params ulong[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHashesAssignment(), value, SupportedGames1);
     public TSelf WithHashes(IEnumerable<ulong> values) => WithHashes(values.ToArray());
     public TSelf WithIncludes(params global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetIncludesAssignment(), value, SupportedGames1);
     public TSelf WithIncludes(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include> values) => WithIncludes(values.ToArray());
-    public TSelf WithSlots(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetSlotsAssignment(), value, SupportedGames1);
-    public TSelf WithType(int value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetTypeAssignment(), value, SupportedGames1);
 }
 public partial class CPlugGpuCompileCacheBuilder : CPlugGpuCompileCacheBuilderBase<CPlugGpuCompileCacheBuilder>
 {
     private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache CreateRecipe0(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache();
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053007(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008(game));
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache CreateRecipe1(GameVersion game)
+    {
+        var node = CreateRecipe0(game);
+        node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009(game));
+        return node;
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache();
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009(game));
         return node;
     }
+    public TMT ForTMT() => new(state.Snapshot());
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM2020 : CPlugGpuCompileCacheBuilderBase<TM2020>
+    public partial class TMT : CPlugGpuCompileCacheBuilderBase<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) : base(state) { }
+        public TMT WithLegacyHashes(params global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair[]? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetLegacyHashesAssignment(), value, GameVersion.TMT);
+        public TMT WithLegacyHashes(IEnumerable<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.HashPair> values) => WithLegacyHashes(values.ToArray());
+        public global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache Build() => BuildNode(CPlugGpuCompileCacheBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache node);
+    }
+    public partial class MP4 : CPlugGpuCompileCacheBuilderMembers1<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache Build() => BuildNode(CPlugGpuCompileCacheBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache node);
+    }
+    public partial class TM2020 : CPlugGpuCompileCacheBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) : base(state) { }
+        public TM2020 WithHasSlots(bool value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHasSlotsAssignment(), value, SupportedGames3);
+        public TM2020 WithSlots(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetSlotsAssignment(), value, SupportedGames3);
         public global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache Build() => BuildNode(CPlugGpuCompileCacheBuilder.CreateRecipe0(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache Build() => BuildNode(CPlugGpuCompileCacheBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache node);
     }
 }

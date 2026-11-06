@@ -5,6 +5,16 @@ namespace GBX.NET.Engines.ShootMania;
 
 public partial class CShootMania : global::GBX.NET.Interfaces.ShootMania.IShootMania, global::GBX.NET.Interfaces.ShootMania.IShootManiaTM10, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMPU, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMSX, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMNESWC, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMU, global::GBX.NET.Interfaces.ShootMania.IShootManiaVSK5, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMF, global::GBX.NET.Interfaces.ShootMania.IShootManiaMP3, global::GBX.NET.Interfaces.ShootMania.IShootManiaTMT, global::GBX.NET.Interfaces.ShootMania.IShootManiaMP4, global::GBX.NET.Interfaces.ShootMania.IShootManiaTM2020
 {
+    global::GBX.NET.Interfaces.Scene.IScene2dTMT? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT>.ArenaInterfaceUI
+    {
+        get => ArenaInterfaceUI;
+        set => ArenaInterfaceUI = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT>.ArenaResources
+    {
+        get => ArenaResources;
+        set => ArenaResources = value is null ? null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Scene.IScene2dMP4? global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4>.ArenaInterfaceUI
     {
         get => ArenaInterfaceUI;

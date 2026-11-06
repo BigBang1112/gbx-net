@@ -7,12 +7,13 @@ public partial interface IGameCharacterModel : IClassVersion<global::GBX.NET.Eng
 {
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModel>? Objects { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugCharPhyModel? PhysicsModel { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel { get; set; }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferSelect? VisualModel { get; set; }
 }
 
 public partial interface IGameCharacterModelTM2020 : IGameCharacterModel
 {
     new IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? Objects { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTM2020? PhysicsModel { get; set; }
+    new global::GBX.NET.Engines.MwFoundations.CMwRefBufferSelect? VisualModel { get; set; }
 }
 

@@ -23,6 +23,11 @@ public abstract class CSceneMobilParticlesFXBuilderMembers1<TSelf> : CSceneMobil
     public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, SupportedGames2);
     public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => SetReference(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, SupportedGames2);
 }
+public abstract class CSceneMobilParticlesFXBuilderMembers2<TSelf> : CSceneMobilParticlesFXBuilderMembers1<TSelf> where TSelf : CSceneMobilParticlesFXBuilderMembers2<TSelf>
+{
+    private protected CSceneMobilParticlesFXBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
+    public TSelf WithSplashStrength(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilParticlesFXBuilderAssignments.GetSplashStrengthAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
+}
 public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuilderBase<CSceneMobilParticlesFXBuilder>
 {
     private static global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX CreateRecipe0(GameVersion game)
@@ -43,25 +48,13 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004());
         return node;
     }
     private static global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX CreateRecipe2(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX();
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001());
-        node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003());
-        return node;
-    }
-    private static global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX CreateRecipe3(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX();
         node.Chunks.Add(new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003());
@@ -83,19 +76,18 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CSceneMobilParticlesFXBuilderMembers1<TM10>
+    public partial class TM10 : CSceneMobilParticlesFXBuilderMembers2<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TM10 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(values, false));
         public TM10 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10> values) => WithObjectLink(values.ToArray());
-        public TM10 WithSplashStrength(float value) => Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilParticlesFXBuilderAssignments.GetSplashStrengthAssignment(), value, GameVersion.TM10);
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
-    public partial class TMPU : CSceneMobilParticlesFXBuilderMembers1<TMPU>
+    public partial class TMPU : CSceneMobilParticlesFXBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -103,10 +95,10 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMPU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(values, false));
         public TMPU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMPU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.TMPU), GameVersion.TMPU);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
-    public partial class TMSX : CSceneMobilParticlesFXBuilderMembers1<TMSX>
+    public partial class TMSX : CSceneMobilParticlesFXBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
         public TMSX WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -114,10 +106,10 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMSX WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(values, false));
         public TMSX WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMSX BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
-    public partial class TMNESWC : CSceneMobilParticlesFXBuilderMembers1<TMNESWC>
+    public partial class TMNESWC : CSceneMobilParticlesFXBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
         public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value) => base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -125,7 +117,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMNESWC WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(values, false));
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMNESWC BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class TMU : CSceneMobilParticlesFXBuilderMembers1<TMU>
@@ -136,7 +128,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(values, false));
         public TMU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class VSK5 : CSceneMobilParticlesFXBuilderMembers1<VSK5>
@@ -147,7 +139,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public VSK5 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(values, false));
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXVSK5 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.VSK5), GameVersion.VSK5);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class TMF : CSceneMobilParticlesFXBuilderMembers1<TMF>
@@ -158,7 +150,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMF WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(values, false));
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class MP3 : CSceneMobilParticlesFXBuilderBase<MP3>
@@ -168,7 +160,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public MP3 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(values, false));
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP3 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe3(GameVersion.MP3), GameVersion.MP3);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.MP3), GameVersion.MP3);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class TMT : CSceneMobilParticlesFXBuilderBase<TMT>
@@ -178,7 +170,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTMT BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe3(GameVersion.TMT), GameVersion.TMT);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class MP4 : CSceneMobilParticlesFXBuilderBase<MP4>
@@ -188,7 +180,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         public MP4 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4[] values) => base.WithObjectLink(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(values, false));
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values) => WithObjectLink(values.ToArray());
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXMP4 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe3(GameVersion.MP4), GameVersion.MP4);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
     public partial class TM2020 : CSceneMobilParticlesFXBuilderBase<TM2020>
@@ -196,7 +188,7 @@ public partial class CSceneMobilParticlesFXBuilder : CSceneMobilParticlesFXBuild
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX> state) : base(state) { }
         public TM2020 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM2020? value) => base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Scene.ISceneMobilParticlesFXTM2020 BuildInterface() => Build();
-        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe3(GameVersion.TM2020), GameVersion.TM2020);
+        public global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX Build() => BuildNode(CSceneMobilParticlesFXBuilder.CreateRecipe2(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilParticlesFX node);
     }
 }

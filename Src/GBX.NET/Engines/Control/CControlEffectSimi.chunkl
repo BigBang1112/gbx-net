@@ -36,7 +36,5 @@ archive Key (inherits: IKey)
     v2+
       float Depth = 0.5f
       v3+
-        float
-        float
-        float
-        float
+        float ColorBlend
+        vec3 Color

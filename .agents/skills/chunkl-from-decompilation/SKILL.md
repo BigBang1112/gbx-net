@@ -42,7 +42,7 @@ Create or fill `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl` using verified deco
 
 If new types are discovered, create them.
 
-Use comments to describe what the data does, rather than how it is implemented. Keep chunk descriptions short and informative, such as "legacy tracks and name", without a period for very short descriptions. For a chunk with one member, use the member name as the comment.
+Use comments to describe what the data does, rather than how it is implemented. Keep chunk descriptions short and informative, such as "tracks and name", without a period for very short descriptions. For a chunk with one member, use the member name as the comment.
 
 Do not change generator behavior unless absolutely necessary, but do not immediately switch to handwritten C# when you identify a problem.
 

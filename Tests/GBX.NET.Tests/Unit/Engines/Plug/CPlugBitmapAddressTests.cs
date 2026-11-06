@@ -207,7 +207,7 @@ public class CPlugBitmapAddressTests
         await Assert.That(parsed.Node.TexCoordIndex).IsEqualTo(2);
         using var saved = new MemoryStream();
         parsed.Save(saved);
-        await Assert.That(saved.ToArray()).IsEquivalentTo(stream.ToArray(), CollectionOrdering.Matching);
+        await GbxAssert.HaveEqualSavedBytes(stream.ToArray(), saved.ToArray());
     }
 
     [Test]

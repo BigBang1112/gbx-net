@@ -42,7 +42,27 @@ public partial interface IControlEffectMotionTMSX : IControlEffectMotion, global
 {
 }
 
+public partial interface IControlEffectMotionTMNESWC : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>
+{
+}
+
 public partial interface IControlEffectMotionTMU : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMU, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMU>
+{
+}
+
+public partial interface IControlEffectMotionVSK5 : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>
+{
+}
+
+public partial interface IControlEffectMotionTMF : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>
+{
+}
+
+public partial interface IControlEffectMotionTMT : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMT>
+{
+}
+
+public partial interface IControlEffectMotionMP4 : IControlEffectMotion, global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.Control.IControlEffectMotionMembers1<global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP4>
 {
 }
 

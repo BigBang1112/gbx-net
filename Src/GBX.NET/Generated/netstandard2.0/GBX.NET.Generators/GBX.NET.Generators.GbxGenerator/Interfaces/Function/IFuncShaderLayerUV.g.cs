@@ -3,6 +3,44 @@
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderLayerUVMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV where T0 : class
+{
+    T0? BitmapCopy { get; set; }
+    bool EnableBlending { get; set; }
+    bool EnableMipMapping { get; set; }
+    bool EnableSmoothBlend { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderLayerUVMembers2 : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV
+{
+    float AngleEnd { get; set; }
+    float AngleStart { get; set; }
+    int NbSubTexture { get; set; }
+    int NbSubTexturePerLine { get; set; }
+    Vec2 Offset { get; set; }
+    Vec2 Scale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderLayerUVMembers3 : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV
+{
+    uint WriteFlags { get; set; }
+    bool WriteW { get; set; }
+    bool WriteX { get; set; }
+    bool WriteY { get; set; }
+    bool WriteZ { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderLayerUVMembers4 : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV
+{
+    int NbSubTexturePerColumn { get; set; }
+    bool TopToBottom { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShaderLayerUVMembers5 : global::GBX.NET.Interfaces.Function.IFuncShaderLayerUV
+{
+    float Angle { get; set; }
+}
 public partial interface IFuncShaderLayerUV : IClassVersion<global::GBX.NET.Engines.Function.CFuncShaderLayerUV>, global::GBX.NET.Interfaces.Function.IFuncShader
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -12,22 +50,28 @@ public partial interface IFuncShaderLayerUV : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    string? LayerName { get; set; }
+    Vec2 Amplitude { get; set; }
+    Vec2 Base { get; set; }
+    bool EnablePingPong { get; set; }
+    bool EnableSmooth { get; set; }
+    uint Flags { get; set; }
+    string LayerName { get; set; }
+    global::GBX.NET.Engines.Function.CFuncShaderLayerUV.EType SignalType { get; set; }
 }
 
-public partial interface IFuncShaderLayerUVTM10 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM10
+public partial interface IFuncShaderLayerUVTM10 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2
 {
 }
 
-public partial interface IFuncShaderLayerUVTMPU : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU
+public partial interface IFuncShaderLayerUVTMPU : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2
 {
 }
 
-public partial interface IFuncShaderLayerUVTMSX : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX
+public partial interface IFuncShaderLayerUVTMSX : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2
 {
 }
 
-public partial interface IFuncShaderLayerUVTMNESWC : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC
+public partial interface IFuncShaderLayerUVTMNESWC : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2
 {
 }
 
@@ -35,27 +79,27 @@ public partial interface IFuncShaderLayerUVTMU : IFuncShaderLayerUV, global::GBX
 {
 }
 
-public partial interface IFuncShaderLayerUVVSK5 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
+public partial interface IFuncShaderLayerUVVSK5 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2
 {
 }
 
-public partial interface IFuncShaderLayerUVTMF : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMF
+public partial interface IFuncShaderLayerUVTMF : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMF, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers4
 {
 }
 
-public partial interface IFuncShaderLayerUVMP3 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP3
+public partial interface IFuncShaderLayerUVMP3 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers4
 {
 }
 
-public partial interface IFuncShaderLayerUVTMT : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMT
+public partial interface IFuncShaderLayerUVTMT : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMT, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers5
 {
 }
 
-public partial interface IFuncShaderLayerUVMP4 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP4
+public partial interface IFuncShaderLayerUVMP4 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers3, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers5
 {
 }
 
-public partial interface IFuncShaderLayerUVTM2020 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020
+public partial interface IFuncShaderLayerUVTM2020 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers2, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers4, global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMembers5
 {
 }
 

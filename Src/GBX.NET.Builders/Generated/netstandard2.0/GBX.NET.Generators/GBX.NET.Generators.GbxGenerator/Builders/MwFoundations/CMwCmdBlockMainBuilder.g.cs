@@ -13,25 +13,15 @@ public abstract class CMwCmdBlockMainBuilderBase<TSelf> : NodeBuilder<global::GB
     public TSelf WithCmds(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwCmdScript> values) => WithCmds(values.ToArray());
     public TSelf WithContextVariables(params global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetContextVariablesAssignment(), value, SupportedGames1);
     public TSelf WithContextVariables(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable> values) => WithContextVariables(values.ToArray());
-    public TSelf WithVariables(params global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetVariablesAssignment(), value, SupportedGames1);
-    public TSelf WithVariables(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable> values) => WithVariables(values.ToArray());
-}
-public abstract class CMwCmdBlockMainBuilderMembers1<TSelf> : CMwCmdBlockMainBuilderBase<TSelf> where TSelf : CMwCmdBlockMainBuilderMembers1<TSelf>
-{
-    private protected CMwCmdBlockMainBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state) : base(state) { }
-    public TSelf WithMethods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockMainBuilderAssignments.GetMethodsAssignment(), value, GameVersion.TMF | GameVersion.TMU);
+    public TSelf WithMethods(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockMainBuilderAssignments.GetMethodsAssignment(), value, SupportedGames1);
     public TSelf WithMethods(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithMethods(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithMethods(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithMethods(values.ToArray());
+    public TSelf WithVariables(params global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetVariablesAssignment(), value, SupportedGames1);
+    public TSelf WithVariables(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable> values) => WithVariables(values.ToArray());
 }
 public partial class CMwCmdBlockMainBuilder : CMwCmdBlockMainBuilderBase<CMwCmdBlockMainBuilder>
 {
     private static global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain CreateRecipe0(GameVersion game)
-    {
-        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain();
-        node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004());
-        return node;
-    }
-    private static global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain CreateRecipe1(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain();
         node.Chunks.Add(new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain.Chunk01067005());
@@ -73,11 +63,11 @@ public partial class CMwCmdBlockMainBuilder : CMwCmdBlockMainBuilderBase<CMwCmdB
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node);
     }
-    public partial class TMU : CMwCmdBlockMainBuilderMembers1<TMU>
+    public partial class TMU : CMwCmdBlockMainBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe1(GameVersion.TMU), GameVersion.TMU);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node);
     }
     public partial class VSK5 : CMwCmdBlockMainBuilderBase<VSK5>
@@ -87,11 +77,11 @@ public partial class CMwCmdBlockMainBuilder : CMwCmdBlockMainBuilderBase<CMwCmdB
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node);
     }
-    public partial class TMF : CMwCmdBlockMainBuilderMembers1<TMF>
+    public partial class TMF : CMwCmdBlockMainBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> state) : base(state) { }
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF BuildInterface() => Build();
-        public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe1(GameVersion.TMF), GameVersion.TMF);
+        public global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain Build() => BuildNode(CMwCmdBlockMainBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node);
     }
 }

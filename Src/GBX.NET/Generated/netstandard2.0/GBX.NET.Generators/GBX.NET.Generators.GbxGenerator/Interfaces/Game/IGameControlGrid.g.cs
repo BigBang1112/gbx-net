@@ -3,6 +3,29 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlGridMembers1 : global::GBX.NET.Interfaces.Game.IGameControlGrid
+{
+    bool HaveLocalData { get; set; }
+    bool HideLocalDataIfNone { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlGridMembers2<T0, T1> : global::GBX.NET.Interfaces.Game.IGameControlGrid where T0 : class where T1 : class
+{
+    T0? ButtonFastNextPage { get; set; }
+    T0? ButtonFastPreviousPage { get; set; }
+    T0? ButtonFirstPage { get; set; }
+    T0? ButtonLastPage { get; set; }
+    T0? ButtonNextPage { get; set; }
+    T0? ButtonPreviousPage { get; set; }
+    T1? EntryPageCounter { get; set; }
+    int FastNextPageCount { get; set; }
+    int FastPreviousPageCount { get; set; }
+    bool ForceHideArrows { get; set; }
+    bool ForceHidePageCounter { get; set; }
+    int MaxPerColumn { get; set; }
+    int MaxPerRow { get; set; }
+}
 public partial interface IGameControlGrid : IClassVersion<global::GBX.NET.Engines.Game.CGameControlGrid>, global::GBX.NET.Interfaces.Control.IControlGrid
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -17,7 +40,7 @@ public partial interface IGameControlGrid : IClassVersion<global::GBX.NET.Engine
 public partial interface IGameControlGridTM10 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM10
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
@@ -26,7 +49,7 @@ public partial interface IGameControlGridTM10 : IGameControlGrid, global::GBX.NE
 public partial interface IGameControlGridTMPU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMPU
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
@@ -35,7 +58,7 @@ public partial interface IGameControlGridTMPU : IGameControlGrid, global::GBX.NE
 public partial interface IGameControlGridTMSX : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMSX
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
@@ -44,30 +67,17 @@ public partial interface IGameControlGridTMSX : IGameControlGrid, global::GBX.NE
 public partial interface IGameControlGridTMNESWC : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMNESWC
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU
+public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMU, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonTMU, global::GBX.NET.Interfaces.Control.IControlEntryTMU>
 {
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastNextPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFastPreviousPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonFirstPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonLastPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonNextPage { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlButtonTMU? ButtonPreviousPage { get; set; }
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? CreateScript { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEntryTMU? EntryPageCounter { get; set; }
-    int FastNextPageCount { get; set; }
-    int FastPreviousPageCount { get; set; }
-    bool ForceHideArrows { get; set; }
-    bool ForceHidePageCounter { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMU? LegacyStyle { get; set; }
-    int MaxPerColumn { get; set; }
-    int MaxPerRow { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>? ObjectLink { get; set; }
 }
@@ -75,7 +85,7 @@ public partial interface IGameControlGridTMU : IGameControlGrid, global::GBX.NET
 public partial interface IGameControlGridVSK5 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridVSK5
 {
     new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
@@ -102,13 +112,13 @@ public partial interface IGameControlGridMP3 : IGameControlGrid, global::GBX.NET
 public partial interface IGameControlGridTMT : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTMT
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridMP4
+public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridMP4, global::GBX.NET.Interfaces.Game.IGameControlGridMembers1, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonMP4, global::GBX.NET.Interfaces.Control.IControlEntryMP4>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
@@ -117,7 +127,7 @@ public partial interface IGameControlGridMP4 : IGameControlGrid, global::GBX.NET
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
-public partial interface IGameControlGridTM2020 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM2020
+public partial interface IGameControlGridTM2020 : IGameControlGrid, global::GBX.NET.Interfaces.Control.IControlGridTM2020, global::GBX.NET.Interfaces.Game.IGameControlGridMembers1, global::GBX.NET.Interfaces.Game.IGameControlGridMembers2<global::GBX.NET.Interfaces.Control.IControlButtonTM2020, global::GBX.NET.Interfaces.Control.IControlEntryTM2020>
 {
     new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }

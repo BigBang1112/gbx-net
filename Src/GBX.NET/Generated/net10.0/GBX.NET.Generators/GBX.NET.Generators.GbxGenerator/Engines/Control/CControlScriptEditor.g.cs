@@ -161,9 +161,11 @@ public partial class CControlScriptEditor : CControlBase, IClass
     /// CControlScriptEditor 0x001 chunk (ShowLineNumbers)
     /// </summary>
     [Chunk(0x07034001, "ShowLineNumbers")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07034001 : Chunk<CControlScriptEditor>
     {
         public override uint Id => 0x07034001;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -180,9 +182,11 @@ public partial class CControlScriptEditor : CControlBase, IClass
     /// CControlScriptEditor 0x002 chunk (syntax colors)
     /// </summary>
     [Chunk(0x07034002, "syntax colors")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07034002 : Chunk<CControlScriptEditor>, IVersionable
     {
         public override uint Id => 0x07034002;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec4 U01;
 
@@ -196,6 +200,11 @@ public partial class CControlScriptEditor : CControlBase, IClass
         public override void ReadWrite(CControlScriptEditor n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec4(ref n.keywordColor);
             rw.Vec4(ref n.operatorColor);
             rw.Vec4(ref n.constantColor);

@@ -45,11 +45,11 @@ public partial class CTrackManiaControlScores : CControlFrame, IClass
     /// CTrackManiaControlScores 0x000 chunk
     /// </summary>
     [Chunk(0x240BF000)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240BF000 : Chunk<CTrackManiaControlScores>
     {
         public override uint Id => 0x240BF000;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.TMF;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -288,11 +288,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x003 chunk
     /// </summary>
     [Chunk(0x0904E003)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0904E003 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E003;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -312,11 +312,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x004 chunk
     /// </summary>
     [Chunk(0x0904E004)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0904E004 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E004;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -334,11 +334,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x005 chunk
     /// </summary>
     [Chunk(0x0904E005)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0904E005 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E005;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -361,11 +361,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x006 chunk
     /// </summary>
     [Chunk(0x0904E006)]
-    [ChunkGameVersion(GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0904E006 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E006;
-        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -382,9 +382,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x007 chunk
     /// </summary>
     [Chunk(0x0904E007)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0904E007 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E007;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -413,11 +415,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x008 chunk
     /// </summary>
     [Chunk(0x0904E008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0904E008 : Chunk<CPlugFontBitmap>
     {
         public override uint Id => 0x0904E008;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -434,11 +436,11 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
     /// CPlugFontBitmap 0x009 chunk
     /// </summary>
     [Chunk(0x0904E009)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk0904E009 : Chunk<CPlugFontBitmap>, IVersionable
     {
         public override uint Id => 0x0904E009;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk0904E009() : this(GameVersion.Unspecified)
@@ -447,7 +449,7 @@ public partial class CPlugFontBitmap : CPlugFont, IClass
 
         public Chunk0904E009(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

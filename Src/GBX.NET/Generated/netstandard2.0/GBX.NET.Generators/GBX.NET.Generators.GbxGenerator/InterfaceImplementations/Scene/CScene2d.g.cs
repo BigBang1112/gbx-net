@@ -5,6 +5,11 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CScene2d : global::GBX.NET.Interfaces.Scene.IScene2d, global::GBX.NET.Interfaces.Scene.IScene2dTM10, global::GBX.NET.Interfaces.Scene.IScene2dTMPU, global::GBX.NET.Interfaces.Scene.IScene2dTMSX, global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC, global::GBX.NET.Interfaces.Scene.IScene2dTMU, global::GBX.NET.Interfaces.Scene.IScene2dVSK5, global::GBX.NET.Interfaces.Scene.IScene2dTMF, global::GBX.NET.Interfaces.Scene.IScene2dMP3, global::GBX.NET.Interfaces.Scene.IScene2dTMT, global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.Scene.IScene2dTM2020
 {
+    global::GBX.NET.Interfaces.Scene.ISceneSector? global::GBX.NET.Interfaces.Scene.IScene2d.Sector
+    {
+        get => Sector;
+        set => Sector = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Scene.ISceneSectorTM10? global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorTM10>.Sector
     {
         get => Sector;
@@ -44,6 +49,26 @@ public partial class CScene2d : global::GBX.NET.Interfaces.Scene.IScene2d, globa
     {
         get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(GetSoundsInterfaceReferences, true, "Sounds");
         set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>.Cameras
+    {
+        get => Cameras is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(GetCamerasInterfaceReferences, true, "Cameras");
+        set => Cameras = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>? global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>.Lights
+    {
+        get => Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>(GetLightsInterfaceReferences, true, "Lights");
+        set => Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>(value, false));
+    }
+    global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5? global::GBX.NET.Interfaces.Scene.IScene2dMembers1<global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>.Sector
+    {
+        get => Sector;
+        set => Sector = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneSector node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>.Sounds
+    {
+        get => Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(GetSoundsInterfaceReferences, true, "Sounds");
+        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? global::GBX.NET.Interfaces.Scene.IScene2dMembers3<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneLightTMF>.Cameras
     {

@@ -12,23 +12,441 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
 
     internal override uint GetId() => Id;
 
-    private string? layerName;
+    private EType signalType;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005 body chunks</remarks>
+    [AppliedWithChunk<Chunk05015002>]
+    [AppliedWithChunk<Chunk05015003>]
+    [AppliedWithChunk<Chunk05015004>]
+    [AppliedWithChunk<Chunk05015005>]
+    public EType SignalType
+    {
+        get => this.signalType;
+        set => this.signalType = value;
+    }
+
+    private string layerName = "EnvMap";
     /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk05015005>]
-    public string? LayerName
+    public string LayerName
     {
         get => this.layerName;
         set => this.layerName = value;
     }
 
+    private uint flags;
+    /// <summary>
+    /// EnablePingPong (bit 0), EnableSmooth (bit 1)
+    /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015005>]
+    public uint Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
+    private Vec2 @base;
+    /// <remarks>Applied with: 0x009, 0x00A, 0x00B, 0x00D, 0x013, 0x014, 0x017 body chunks</remarks>
+    [AppliedWithChunk<Chunk05015009>]
+    [AppliedWithChunk<Chunk0501500A>]
+    [AppliedWithChunk<Chunk0501500B>]
+    [AppliedWithChunk<Chunk0501500D>]
+    [AppliedWithChunk<Chunk05015013>]
+    [AppliedWithChunk<Chunk05015014>]
+    [AppliedWithChunk<Chunk05015017>]
+    public Vec2 Base
+    {
+        get => this.@base;
+        set => this.@base = value;
+    }
+
+    private Vec2 amplitude = (1, 1);
+    /// <remarks>Applied with: 0x009, 0x00A, 0x00D, 0x013, 0x017 body chunks</remarks>
+    [AppliedWithChunk<Chunk05015009>]
+    [AppliedWithChunk<Chunk0501500A>]
+    [AppliedWithChunk<Chunk0501500D>]
+    [AppliedWithChunk<Chunk05015013>]
+    [AppliedWithChunk<Chunk05015017>]
+    public Vec2 Amplitude
+    {
+        get => this.amplitude;
+        set => this.amplitude = value;
+    }
+
+    private Vec2 offset;
+    /// <remarks>Applied with: 0x00A, 0x013 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500A>]
+    [AppliedWithChunk<Chunk05015013>]
+    public Vec2 Offset
+    {
+        get => this.offset;
+        set => this.offset = value;
+    }
+
+    private int nbSubTexture;
+    /// <remarks>Applied with: 0x00C, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x015 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500C>]
+    [AppliedWithChunk<Chunk0501500E>]
+    [AppliedWithChunk<Chunk0501500F>]
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    [AppliedWithChunk<Chunk05015012>]
+    [AppliedWithChunk<Chunk05015015>]
+    public int NbSubTexture
+    {
+        get => this.nbSubTexture;
+        set => this.nbSubTexture = value;
+    }
+
+    private int nbSubTexturePerLine;
+    /// <remarks>Applied with: 0x00C, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x015 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500C>]
+    [AppliedWithChunk<Chunk0501500E>]
+    [AppliedWithChunk<Chunk0501500F>]
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    [AppliedWithChunk<Chunk05015012>]
+    [AppliedWithChunk<Chunk05015015>]
+    public int NbSubTexturePerLine
+    {
+        get => this.nbSubTexturePerLine;
+        set => this.nbSubTexturePerLine = value;
+    }
+
+    private Vec2 scale;
+    /// <remarks>Applied with: 0x00D, 0x017 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500D>]
+    [AppliedWithChunk<Chunk05015017>]
+    public Vec2 Scale
+    {
+        get => this.scale;
+        set => this.scale = value;
+    }
+
+    private bool enableBlending;
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500E>]
+    [AppliedWithChunk<Chunk0501500F>]
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    public bool EnableBlending
+    {
+        get => this.enableBlending;
+        set => this.enableBlending = value;
+    }
+
+    private NodeRef<CPlugBitmap>? bitmapCopyRef;
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500E>]
+    [AppliedWithChunk<Chunk0501500F>]
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    public CPlugBitmap? BitmapCopy
+    {
+        get => bitmapCopyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCopyRef, value);
+    }
+
+    private bool enableSmoothBlend;
+    /// <remarks>Applied with: 0x00F, 0x010, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk0501500F>]
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    public bool EnableSmoothBlend
+    {
+        get => this.enableSmoothBlend;
+        set => this.enableSmoothBlend = value;
+    }
+
+    private bool enableMipMapping;
+    /// <remarks>Applied with: 0x010, 0x011 body chunks</remarks>
+    [AppliedWithChunk<Chunk05015010>]
+    [AppliedWithChunk<Chunk05015011>]
+    public bool EnableMipMapping
+    {
+        get => this.enableMipMapping;
+        set => this.enableMipMapping = value;
+    }
+
+    private float angleStart;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015014>]
+    public float AngleStart
+    {
+        get => this.angleStart;
+        set => this.angleStart = value;
+    }
+
+    private float angleEnd;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015014>]
+    public float AngleEnd
+    {
+        get => this.angleEnd;
+        set => this.angleEnd = value;
+    }
+
+    private int nbSubTexturePerColumn;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015015>]
+    public int NbSubTexturePerColumn
+    {
+        get => this.nbSubTexturePerColumn;
+        set => this.nbSubTexturePerColumn = value;
+    }
+
+    private bool topToBottom;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015015>]
+    public bool TopToBottom
+    {
+        get => this.topToBottom;
+        set => this.topToBottom = value;
+    }
+
+    private uint writeFlags;
+    /// <summary>
+    /// WriteX (bit 0), WriteY (bit 1), WriteZ (bit 2), WriteW (bit 3)
+    /// </summary>
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015016>]
+    public uint WriteFlags
+    {
+        get => this.writeFlags;
+        set => this.writeFlags = value;
+    }
+
+    private float angle;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015017>]
+    public float Angle
+    {
+        get => this.angle;
+        set => this.angle = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncShaderLayerUV owner;
+        internal NodeRefView(CFuncShaderLayerUV owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapCopy => NodeRef.GetOrCreate(ref owner.bitmapCopyRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BitmapCopy", NodeRef.GetOrCreate(ref bitmapCopyRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CFuncShaderLayerUV)clone).signalType = context.Clone(this.signalType)!;
         ((CFuncShaderLayerUV)clone).layerName = context.Clone(this.layerName)!;
+        ((CFuncShaderLayerUV)clone).flags = context.Clone(this.flags)!;
+        ((CFuncShaderLayerUV)clone).@base = context.Clone(this.@base)!;
+        ((CFuncShaderLayerUV)clone).amplitude = context.Clone(this.amplitude)!;
+        ((CFuncShaderLayerUV)clone).offset = context.Clone(this.offset)!;
+        ((CFuncShaderLayerUV)clone).nbSubTexture = context.Clone(this.nbSubTexture)!;
+        ((CFuncShaderLayerUV)clone).nbSubTexturePerLine = context.Clone(this.nbSubTexturePerLine)!;
+        ((CFuncShaderLayerUV)clone).scale = context.Clone(this.scale)!;
+        ((CFuncShaderLayerUV)clone).enableBlending = context.Clone(this.enableBlending)!;
+        ((CFuncShaderLayerUV)clone).bitmapCopyRef = context.Clone(this.bitmapCopyRef)!;
+        ((CFuncShaderLayerUV)clone).enableSmoothBlend = context.Clone(this.enableSmoothBlend)!;
+        ((CFuncShaderLayerUV)clone).enableMipMapping = context.Clone(this.enableMipMapping)!;
+        ((CFuncShaderLayerUV)clone).angleStart = context.Clone(this.angleStart)!;
+        ((CFuncShaderLayerUV)clone).angleEnd = context.Clone(this.angleEnd)!;
+        ((CFuncShaderLayerUV)clone).nbSubTexturePerColumn = context.Clone(this.nbSubTexturePerColumn)!;
+        ((CFuncShaderLayerUV)clone).topToBottom = context.Clone(this.topToBottom)!;
+        ((CFuncShaderLayerUV)clone).writeFlags = context.Clone(this.writeFlags)!;
+        ((CFuncShaderLayerUV)clone).angle = context.Clone(this.angle)!;
+    }
+
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015005>]
+    public bool EnablePingPong
+    {
+        get => (Flags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 1;
+            }
+            else
+            {
+                Flags = Flags& 0xFE;
+            }
+        }
+    }
+
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015005>]
+    public bool EnableSmooth
+    {
+        get => (Flags& 2) != 0;
+        set
+        {
+            if (value)
+            {
+                Flags = Flags| 2;
+            }
+            else
+            {
+                Flags = Flags& 0xFD;
+            }
+        }
+    }
+
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015016>]
+    public bool WriteX
+    {
+        get => (WriteFlags& 1) != 0;
+        set
+        {
+            if (value)
+            {
+                WriteFlags = WriteFlags| 1;
+            }
+            else
+            {
+                WriteFlags = WriteFlags& 0xFFFFFFFE;
+            }
+        }
+    }
+
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015016>]
+    public bool WriteY
+    {
+        get => (WriteFlags& 2) != 0;
+        set
+        {
+            if (value)
+            {
+                WriteFlags = WriteFlags| 2;
+            }
+            else
+            {
+                WriteFlags = WriteFlags& 0xFFFFFFFD;
+            }
+        }
+    }
+
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015016>]
+    public bool WriteZ
+    {
+        get => (WriteFlags& 4) != 0;
+        set
+        {
+            if (value)
+            {
+                WriteFlags = WriteFlags| 4;
+            }
+            else
+            {
+                WriteFlags = WriteFlags& 0xFFFFFFFB;
+            }
+        }
+    }
+
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk05015016>]
+    public bool WriteW
+    {
+        get => (WriteFlags& 8) != 0;
+        set
+        {
+            if (value)
+            {
+                WriteFlags = WriteFlags| 8;
+            }
+            else
+            {
+                WriteFlags = WriteFlags& 0xFFFFFFF7;
+            }
+        }
     }
 
     public CFuncShaderLayerUV()
     {
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x002 chunk
+    /// </summary>
+    [Chunk(0x05015002)]
+    public partial class Chunk05015002 : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x05015002;
+        public int U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015002)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            n.Period = rw.Single(n.Period);
+            rw.EnumInt32<EType>(ref n.signalType);
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x003 chunk
+    /// </summary>
+    [Chunk(0x05015003)]
+    public partial class Chunk05015003 : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x05015003;
+        public byte U01;
+        public short U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015003)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.EnumByte<EType>(ref n.signalType);
+            rw.Byte(ref U01);
+            rw.Int16(ref U02);
+            n.Period = rw.Single(n.Period);
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x004 chunk
+    /// </summary>
+    [Chunk(0x05015004)]
+    public partial class Chunk05015004 : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x05015004;
+        public byte U01;
+        public short U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015004)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.EnumByte<EType>(ref n.signalType);
+            rw.Byte(ref U01);
+            rw.Int16(ref U02);
+        }
     }
 
     /// <summary>
@@ -40,7 +458,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     {
         public override uint Id => 0x05015005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
+        public short U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -51,182 +469,264 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             rw.String(ref n.layerName);
-            rw.Int32(ref U01);
+            rw.EnumByte<EType>(ref n.signalType);
+            n.flags = (uint)rw.Byte((byte)n.flags);
+            rw.Int16(ref U01);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x009 chunk
+    /// CFuncShaderLayerUV 0x009 chunk (TransLinear)
     /// </summary>
-    [Chunk(0x05015009)]
+    [Chunk(0x05015009, "TransLinear")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015009 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015009;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public Vec2 U01;
-        public Vec2 U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015009)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015009)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Vec2(ref U01);
-            rw.Vec2(ref U02);
+            rw.Vec2(ref n.@base);
+            rw.Vec2(ref n.amplitude);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x00A chunk
+    /// CFuncShaderLayerUV 0x00A chunk (TransCircular)
     /// </summary>
-    [Chunk(0x0501500A)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x0501500A, "TransCircular")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0501500A : Chunk05015009
     {
         public override uint Id => 0x0501500A;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public Vec2 U03;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0501500A)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.Vec2(ref U03);
+            rw.Vec2(ref n.offset);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x00D chunk
+    /// CFuncShaderLayerUV 0x00B chunk (Base)
     /// </summary>
-    [Chunk(0x0501500D)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x0501500B, "Base")]
+    public partial class Chunk0501500B : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x0501500B;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Vec2(ref n.@base);
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00C chunk (legacy TransSubTexture)
+    /// </summary>
+    [Chunk(0x0501500C, "legacy TransSubTexture")]
+    public partial class Chunk0501500C : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x0501500C;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            var legacyEnablePingPong = rw.Boolean((rw.Writer is null ? default : (n. EnablePingPong)));
+            if (rw.Reader is not null)
+            {
+                n.EnablePingPong = legacyEnablePingPong;
+            }
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00D chunk (TransLinearScale)
+    /// </summary>
+    [Chunk(0x0501500D, "TransLinearScale")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0501500D : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x0501500D;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public Vec2 U01;
-        public Vec2 U02;
-        public Vec2 U03;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0501500D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0501500D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0501500D)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Vec2(ref U01);
-            rw.Vec2(ref U02);
-            rw.Vec2(ref U03);
+            rw.Vec2(ref n.@base);
+            rw.Vec2(ref n.amplitude);
+            rw.Vec2(ref n.scale);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x011 chunk
+    /// CFuncShaderLayerUV 0x00E chunk
     /// </summary>
-    [Chunk(0x05015011)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x0501500E)]
+    public partial class Chunk0501500E : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x0501500E;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            var legacyEnablePingPong = rw.Boolean((rw.Writer is null ? default : (n. EnablePingPong)));
+            rw.Boolean(ref n.enableBlending);
+            rw.NodeRef(ref n.bitmapCopyRef);
+            if (rw.Reader is not null)
+            {
+                n.EnablePingPong = legacyEnablePingPong;
+            }
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00F chunk
+    /// </summary>
+    [Chunk(0x0501500F)]
+    public partial class Chunk0501500F : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x0501500F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            var legacyEnablePingPong = rw.Boolean((rw.Writer is null ? default : (n. EnablePingPong)));
+            rw.Boolean(ref n.enableBlending);
+            rw.Boolean(ref n.enableSmoothBlend);
+            rw.NodeRef(ref n.bitmapCopyRef);
+            if (rw.Reader is not null)
+            {
+                n.EnablePingPong = legacyEnablePingPong;
+            }
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x010 chunk
+    /// </summary>
+    [Chunk(0x05015010)]
+    public partial class Chunk05015010 : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x05015010;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            var legacyEnablePingPong = rw.Boolean((rw.Writer is null ? default : (n. EnablePingPong)));
+            rw.Boolean(ref n.enableMipMapping);
+            rw.Boolean(ref n.enableBlending);
+            rw.Boolean(ref n.enableSmoothBlend);
+            rw.NodeRef(ref n.bitmapCopyRef);
+            if (rw.Reader is not null)
+            {
+                n.EnablePingPong = legacyEnablePingPong;
+            }
+        }
+    }
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x011 chunk (CopySubTexture)
+    /// </summary>
+    [Chunk(0x05015011, "CopySubTexture")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05015011 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015011;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public int U01;
-        public int U02;
-        public bool U03;
-        public bool U04;
-        public bool U05;
-
-        private NodeRef<CMwNod>? U06Ref;
-        public CMwNod? U06
-        {
-            get => U06Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U06Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk05015011 owner;
-            internal NodeRefView(Chunk05015011 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
-            yield break;
-        }
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015011)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015011)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk05015011)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk05015011)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk05015011)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk05015011)clone).U06Ref = context.Clone(this.U06Ref)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Boolean(ref U03);
-            rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
-            rw.NodeRef(ref U06Ref);
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            rw.Boolean(ref n.enableMipMapping);
+            rw.Boolean(ref n.enableBlending);
+            rw.Boolean(ref n.enableSmoothBlend);
+            rw.NodeRef(ref n.bitmapCopyRef);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x012 chunk
+    /// CFuncShaderLayerUV 0x012 chunk (legacy TransSubTexture)
     /// </summary>
-    [Chunk(0x05015012)]
+    [Chunk(0x05015012, "legacy TransSubTexture")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk05015012 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015012;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
-        public int U01;
-        public int U02;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015012)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015012)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x013 chunk
+    /// CFuncShaderLayerUV 0x013 chunk (Scale)
     /// </summary>
-    [Chunk(0x05015013)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x05015013, "Scale")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015013 : Chunk0501500A
     {
         public override uint Id => 0x05015013;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -235,127 +735,126 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x014 chunk
+    /// CFuncShaderLayerUV 0x014 chunk (Rotate)
     /// </summary>
-    [Chunk(0x05015014)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x05015014, "Rotate")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015014 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015014;
-        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public Vec2 U01;
-        public float U02;
-        public float U03;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015014)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015014)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk05015014)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Vec2(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.Vec2(ref n.@base);
+            rw.Single(ref n.angleStart);
+            rw.Single(ref n.angleEnd);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x015 chunk
+    /// CFuncShaderLayerUV 0x015 chunk (TransSubTexture)
     /// </summary>
-    [Chunk(0x05015015)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x05015015, "TransSubTexture")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015015 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015015;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015015)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015015)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk05015015)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk05015015)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
+            rw.Int32(ref n.nbSubTexture);
+            rw.Int32(ref n.nbSubTexturePerLine);
+            rw.Int32(ref n.nbSubTexturePerColumn);
+            rw.Boolean(ref n.topToBottom);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x016 chunk
+    /// CFuncShaderLayerUV 0x016 chunk (WriteFlags)
     /// </summary>
-    [Chunk(0x05015016)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [Chunk(0x05015016, "WriteFlags")]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05015016 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015016;
-        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT;
-        public uint U01;
+        public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015016)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.UInt32(ref U01);
+            rw.UInt32(ref n.writeFlags);
         }
     }
 
     /// <summary>
-    /// CFuncShaderLayerUV 0x017 chunk
+    /// CFuncShaderLayerUV 0x017 chunk (TransLinearScaleRotate)
     /// </summary>
-    [Chunk(0x05015017)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [Chunk(0x05015017, "TransLinearScaleRotate")]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015017 : Chunk<CFuncShaderLayerUV>
     {
         public override uint Id => 0x05015017;
-        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public Vec2 U01;
-        public Vec2 U02;
-        public Vec2 U03;
-        public float U04;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk05015017)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk05015017)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk05015017)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk05015017)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
         {
-            rw.Vec2(ref U01);
-            rw.Vec2(ref U02);
-            rw.Vec2(ref U03);
-            rw.Single(ref U04);
+            rw.Vec2(ref n.@base);
+            rw.Vec2(ref n.amplitude);
+            rw.Vec2(ref n.scale);
+            rw.Single(ref n.angle);
         }
+    }
+
+    public enum EType
+    {
+        TransLinear,
+        TransCircular,
+        Rotate,
+        TransSubTexture,
+        TransLinearScale,
+        CopySubTexture,
+        Scale,
+        Reset,
+        TransSubTexture2,
+        Comp,
+        TransLinearScaleRotate,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x05015002 => new Chunk05015002(),
+        0x05015003 => new Chunk05015003(),
+        0x05015004 => new Chunk05015004(),
         0x05015005 => new Chunk05015005(),
         0x05015009 => new Chunk05015009(),
         0x0501500A => new Chunk0501500A(),
+        0x0501500B => new Chunk0501500B(),
+        0x0501500C => new Chunk0501500C(),
         0x0501500D => new Chunk0501500D(),
+        0x0501500E => new Chunk0501500E(),
+        0x0501500F => new Chunk0501500F(),
+        0x05015010 => new Chunk05015010(),
         0x05015011 => new Chunk05015011(),
         0x05015012 => new Chunk05015012(),
         0x05015013 => new Chunk05015013(),

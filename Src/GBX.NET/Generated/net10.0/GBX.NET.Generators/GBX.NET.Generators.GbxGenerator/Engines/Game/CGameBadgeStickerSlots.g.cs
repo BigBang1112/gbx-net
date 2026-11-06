@@ -65,9 +65,11 @@ public partial class CGameBadgeStickerSlots : CMwNod, IClass
     /// CGameBadgeStickerSlots 0x000 chunk
     /// </summary>
     [Chunk(0x031D6000)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk031D6000 : Chunk<CGameBadgeStickerSlots>, IVersionable
     {
         public override uint Id => 0x031D6000;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -79,6 +81,11 @@ public partial class CGameBadgeStickerSlots : CMwNod, IClass
         public override void ReadWrite(CGameBadgeStickerSlots n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<StickerSlot>(ref n.stickerSlots!, version: Version);
             rw.ArrayReadableWritable<StickerMeshSlotLocation>(ref n.stickerMeshSlotLocations!, version: Version);
             rw.ArrayReadableWritable<StickerMeshSlot>(ref n.stickerMeshSlots!, version: Version);

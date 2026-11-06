@@ -41,7 +41,12 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
     public partial class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>, IVersionable
     {
         public override uint Id => 0x03199000;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 1 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk03199000() : this(GameVersion.Unspecified)

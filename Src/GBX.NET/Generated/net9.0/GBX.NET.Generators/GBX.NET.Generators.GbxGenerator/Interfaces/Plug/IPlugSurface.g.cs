@@ -26,7 +26,27 @@ public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Pl
     global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials { get; set; }
 }
 
+public partial interface IPlugSurfaceTM10 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTM10>
+{
+}
+
+public partial interface IPlugSurfaceTMPU : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMPU>
+{
+}
+
+public partial interface IPlugSurfaceTMSX : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMSX>
+{
+}
+
+public partial interface IPlugSurfaceTMNESWC : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMNESWC>
+{
+}
+
 public partial interface IPlugSurfaceTMU : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMU>
+{
+}
+
+public partial interface IPlugSurfaceVSK5 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5>
 {
 }
 

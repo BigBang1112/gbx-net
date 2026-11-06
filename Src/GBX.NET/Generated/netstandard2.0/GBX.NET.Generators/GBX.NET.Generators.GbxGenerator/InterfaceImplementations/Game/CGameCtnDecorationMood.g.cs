@@ -20,7 +20,7 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMU>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -30,7 +30,7 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -45,7 +45,7 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -75,7 +75,7 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -105,12 +105,17 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTMT>.FxWindOnDecal
+    {
+        get => FxWindOnDecal;
+        set => FxWindOnDecal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT>.HmsAmbientOcc
     {
         get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -140,12 +145,17 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalMP4>.FxWindOnDecal
+    {
+        get => FxWindOnDecal;
+        set => FxWindOnDecal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4>.HmsAmbientOcc
     {
         get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
@@ -175,12 +185,17 @@ public partial class CGameCtnDecorationMood : global::GBX.NET.Interfaces.Game.IG
         get => FxLightning;
         set => FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Plug.IPlugFxWindOnDecalTM2020>.FxWindOnDecal
+    {
+        get => FxWindOnDecal;
+        set => FxWindOnDecal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020>.HmsAmbientOcc
     {
         get => HmsAmbientOcc;
         set => HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>.HmsLightMap
+    global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020? global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers7<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>.HmsLightMap
     {
         get => HmsLightMap;
         set => HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

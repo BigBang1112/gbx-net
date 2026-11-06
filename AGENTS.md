@@ -24,6 +24,7 @@ Do not edit generated files directly.
 
 ## Development notes
 
+- When investigating Gbx fields with GhidraMCP, apply verified findings to layouts and handwritten serialization as part of the investigation, unless the user explicitly requests a read-only review.
 - [.agents/game-installation-paths.md](.agents/game-installation-paths.md) lists common game installation paths and where to find loose Gbx files and pack archives.
 - In chunk serialization, use `value >= 1` instead of `value != 0` for signed integer versions, including when the native unsigned version check uses `!= 0`.
 - Omit `.v0` from chunk game qualifiers unless another game has a nonzero version.

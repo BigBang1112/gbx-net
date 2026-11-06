@@ -2,7 +2,7 @@ CGameModulePlaygroundModel 0x2E012000
 - inherits: CGameModuleModelCommon
 - abstract
 
-0x000 (skippable) // size, icon and manialink code
+0x000 (skippable) [MP4.v1] // size, icon and manialink code
   version = 1
   float SizeX
   float SizeY

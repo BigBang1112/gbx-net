@@ -14,7 +14,7 @@ CSceneFxBloom 0x0A03B000
   float
   float Intensity
 
-0x002 [TMF] // bloom settings and data
+0x002 [VSK5, TMF, TMT, MP4] // bloom settings and data
   int BlurSize = 7
   float Intensity = 1f
   CSceneFxBloomData[] Datas (deprec)

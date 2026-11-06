@@ -1,7 +1,7 @@
 CTrackManiaMatchSettingsControlGrid 0x2409C000
 - inherits: CControlGrid
 
-0x000 [TMNESWC, TMU] // play list controls and paging
+0x000 [TMNESWC, TMU, VSK5, TMF, TMT] // play list controls and paging
   CControlLabel PlayListCommentLabel
   CGameControlCardCtnChallengeInfo ChallengeCardTemplate
   int MaxChallengeInfosPerColumn = -1
@@ -11,5 +11,5 @@ CTrackManiaMatchSettingsControlGrid 0x2409C000
   CControlButton ButtonNextPage
   CControlButton ButtonPreviousPage
 
-0x001 [TMNESWC, TMU] // PlayListNameLabel
+0x001 [TMNESWC, TMU, VSK5, TMF, TMT] // PlayListNameLabel
   CControlLabel PlayListNameLabel

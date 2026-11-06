@@ -211,11 +211,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     /// CHmsLightMapMood 0x004 chunk
     /// </summary>
     [Chunk(0x06023004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06023004 : Chunk<CHmsLightMapMood>, IVersionable
     {
         public override uint Id => 0x06023004;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01 = 1;
         public float U02 = 0;

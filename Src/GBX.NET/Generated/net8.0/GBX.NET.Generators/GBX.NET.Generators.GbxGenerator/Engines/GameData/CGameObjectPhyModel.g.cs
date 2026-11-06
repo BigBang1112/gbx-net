@@ -193,7 +193,14 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     public partial class Chunk2E006001 : Chunk<CGameObjectPhyModel>, IVersionable
     {
         public override uint Id => 0x2E006001;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 11 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 12 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 21 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 26 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
 
         private NodeRef<CMwNod>? U03Ref;
         /// <summary>

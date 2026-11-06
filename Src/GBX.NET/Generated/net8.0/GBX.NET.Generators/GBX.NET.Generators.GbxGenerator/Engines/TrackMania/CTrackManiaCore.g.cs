@@ -50,11 +50,11 @@ public partial class CTrackManiaCore : CGameManiaTitleCore, IClass
     /// CTrackManiaCore 0x000 skippable chunk
     /// </summary>
     [Chunk(0x24013000)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk24013000 : SkippableChunk<CTrackManiaCore>, IVersionable
     {
         public override uint Id => 0x24013000;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)

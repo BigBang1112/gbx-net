@@ -217,7 +217,7 @@ public class CPlugCharPhyModelLayoutTests
     }
 
     [Test]
-    [Arguments(0x000, GameVersion.MP4 | GameVersion.TM2020)]
+    [Arguments(0x000, GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     [Arguments(0x02C, GameVersion.MP4 | GameVersion.TM2020)]
     [Arguments(0x031, GameVersion.MP4 | GameVersion.TM2020)]
     public async Task GameVersion_ManiaPlanetWritableChunks_IncludeMP4(int offset, GameVersion expected)

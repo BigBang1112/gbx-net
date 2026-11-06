@@ -5,4 +5,75 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugMaterialCustom : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMU, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020
 {
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShader?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShader?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMU?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMU>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMU?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMU?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5?>(value, true));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMF?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMF?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMF?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapShadowOpacity
+    {
+        get => BitmapShadowOpacity;
+        set => BitmapShadowOpacity = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP3?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderMP3?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderMP3?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapShadowOpacity
+    {
+        get => BitmapShadowOpacity;
+        set => BitmapShadowOpacity = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMT?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMT?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTMT?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapShadowOpacity
+    {
+        get => BitmapShadowOpacity;
+        set => BitmapShadowOpacity = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP4?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderMP4?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderMP4?>(value, true));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapShadowOpacity
+    {
+        get => BitmapShadowOpacity;
+        set => BitmapShadowOpacity = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020?>? global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers4<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>.FuncShaders
+    {
+        get => FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020?>(GetFuncShadersInterfaceReferences, false, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader?, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020?>(value, true));
+    }
+    internal NodeRefList<global::GBX.NET.Engines.Function.CFuncShader?>? GetFuncShadersInterfaceReferences() => FuncShaders;
 }

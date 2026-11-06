@@ -3,9 +3,14 @@
 
 namespace GBX.NET.Engines.ShootMania;
 
-public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020
+public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTMT, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020
 {
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? global::GBX.NET.Interfaces.ShootMania.ISmArenaResource.RefBuffer
+    {
+        get => RefBuffer;
+        set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.RefBuffer
     {
         get => RefBuffer;
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));

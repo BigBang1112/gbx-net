@@ -247,7 +247,14 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     public partial class Chunk090E7000 : Chunk<CPlugVehicleVisModel>, IVersionable
     {
         public override uint Id => 0x090E7000;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 6 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 9 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 18 => GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         private NodeRef<CPlugSolid>? U01Ref;
@@ -341,7 +348,12 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     public partial class Chunk090E7001 : Chunk<CPlugVehicleVisModel>, IVersionable
     {
         public override uint Id => 0x090E7001;
-        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 6 => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 10 => GameVersion.TM2020,
+            _ => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk090E7001() : this(GameVersion.Unspecified)

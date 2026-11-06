@@ -7,16 +7,29 @@ public abstract class CControlStyleSheetBuilderBase<TSelf> : NodeBuilder<global:
 {
     private protected CControlStyleSheetBuilderBase() { }
     private protected CControlStyleSheetBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
-    private protected const GameVersion SupportedGames1 = GameVersion.MP4;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TMU;
-    public TSelf WithBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferAssignment(), value, SupportedGames2);
-    public TSelf WithBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferReferenceAssignment(), value, SupportedGames2);
-    public TSelf WithColors(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAssignment(), value, SupportedGames2);
+    private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    public TSelf WithBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferAssignment(), value, SupportedGames1);
+    public TSelf WithBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetBufferReferenceAssignment(), value, SupportedGames1);
+    public TSelf WithColors(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAssignment(), value, SupportedGames1);
     public TSelf WithColors(IEnumerable<Vec3> values) => WithColors(values.ToArray());
-    public TSelf WithColorsAlpha(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAlphaAssignment(), value, SupportedGames2);
+    public TSelf WithColorsAlpha(params float[]? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetColorsAlphaAssignment(), value, SupportedGames1);
     public TSelf WithColorsAlpha(IEnumerable<float> values) => WithColorsAlpha(values.ToArray());
-    public TSelf WithMasterStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleAssignment(), value, SupportedGames2);
-    public TSelf WithMasterStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithMasterStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleAssignment(), value, SupportedGames1);
+    public TSelf WithMasterStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetMasterStyleReferenceAssignment(), value, SupportedGames1);
+}
+public abstract class CControlStyleSheetBuilderMembers1<TSelf> : CControlStyleSheetBuilderBase<TSelf> where TSelf : CControlStyleSheetBuilderMembers1<TSelf>
+{
+    private protected CControlStyleSheetBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+    public TSelf WithOverrides(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetOverridesAssignment(), value, SupportedGames2);
+    public TSelf WithOverrides(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithOverrides(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
+    public TSelf WithOverrides(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithOverrides(values.ToArray());
+    public TSelf WithPagerIconStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleAssignment(), value, SupportedGames2);
+    public TSelf WithPagerIconStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithPagerTextBackgroundStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleAssignment(), value, SupportedGames2);
+    public TSelf WithPagerTextBackgroundStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithPagerTextStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleAssignment(), value, SupportedGames2);
+    public TSelf WithPagerTextStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleReferenceAssignment(), value, SupportedGames2);
 }
 public partial class CControlStyleSheetBuilder : CControlStyleSheetBuilderBase<CControlStyleSheetBuilder>
 {
@@ -34,10 +47,34 @@ public partial class CControlStyleSheetBuilder : CControlStyleSheetBuilderBase<C
         node.Chunks.Add(new global::GBX.NET.Engines.Control.CControlStyleSheet.Chunk07027007(game));
         return node;
     }
+    public TMSX ForTMSX() => new(state.Snapshot());
+    public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
+    public VSK5 ForVSK5() => new(state.Snapshot());
+    public TMF ForTMF() => new(state.Snapshot());
+    public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
+    public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class TMSX : CControlStyleSheetBuilderBase<TMSX>
+    {
+        internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public TMSX WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMSX WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetTMSX BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe0(GameVersion.TMSX), GameVersion.TMSX);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
+    public partial class TMNESWC : CControlStyleSheetBuilderBase<TMNESWC>
+    {
+        internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public TMNESWC WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMNESWC WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetTMNESWC BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe0(GameVersion.TMNESWC), GameVersion.TMNESWC);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
     public partial class TMU : CControlStyleSheetBuilderBase<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
@@ -47,25 +84,58 @@ public partial class CControlStyleSheetBuilder : CControlStyleSheetBuilderBase<C
         public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe0(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
     }
-    public partial class MP4 : CControlStyleSheetBuilderBase<MP4>
+    public partial class VSK5 : CControlStyleSheetBuilderBase<VSK5>
+    {
+        internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public VSK5 WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetVSK5 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe0(GameVersion.VSK5), GameVersion.VSK5);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
+    public partial class TMF : CControlStyleSheetBuilderBase<TMF>
+    {
+        internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public TMF WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMF WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetTMF BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe0(GameVersion.TMF), GameVersion.TMF);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
+    public partial class TMT : CControlStyleSheetBuilderMembers1<TMT>
+    {
+        internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public TMT WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithPagerIconStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithPagerIconStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithPagerTextBackgroundStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithPagerTextBackgroundStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMT WithPagerTextStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value) => base.WithPagerTextStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetTMT BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe1(GameVersion.TMT), GameVersion.TMT);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
+    public partial class MP4 : CControlStyleSheetBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
         public MP4 WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public MP4 WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithOverrides(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetOverridesAssignment(), value, SupportedGames1);
-        public MP4 WithOverrides(params global::GBX.NET.Engines.MwFoundations.CMwNod?[] values) => WithOverrides(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>(values));
-        public MP4 WithOverrides(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod?> values) => WithOverrides(values.ToArray());
-        public MP4 WithPagerIconStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleAssignment(), value, SupportedGames1);
-        public MP4 WithPagerIconStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerIconStyleReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithPagerIconStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => WithPagerIconStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithPagerTextBackgroundStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleAssignment(), value, SupportedGames1);
-        public MP4 WithPagerTextBackgroundStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextBackgroundStyleReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithPagerTextBackgroundStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => WithPagerTextBackgroundStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        public MP4 WithPagerTextStyle(global::GBX.NET.Engines.Control.CControlStyle? value) => Set(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleAssignment(), value, SupportedGames1);
-        public MP4 WithPagerTextStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => SetReference(global::GBX.NET.Builders.Engines.Control.CControlStyleSheetBuilderAssignments.GetPagerTextStyleReferenceAssignment(), value, SupportedGames1);
-        public MP4 WithPagerTextStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => WithPagerTextStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithPagerIconStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithPagerIconStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithPagerTextBackgroundStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithPagerTextBackgroundStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public MP4 WithPagerTextStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value) => base.WithPagerTextStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
+    }
+    public partial class TM2020 : CControlStyleSheetBuilderMembers1<TM2020>
+    {
+        internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyleSheet> state) : base(state) { }
+        public TM2020 WithBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? value) => base.WithBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithMasterStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithMasterStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithPagerIconStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithPagerIconStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithPagerTextBackgroundStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithPagerTextBackgroundStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM2020 WithPagerTextStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value) => base.WithPagerTextStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public global::GBX.NET.Interfaces.Control.IControlStyleSheetTM2020 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Control.CControlStyleSheet Build() => BuildNode(CControlStyleSheetBuilder.CreateRecipe1(GameVersion.TM2020), GameVersion.TM2020);
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyleSheet node);
     }
 }

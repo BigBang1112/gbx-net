@@ -25,9 +25,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x001 chunk (legacy resources)
     /// </summary>
     [Chunk(0x24001001, "legacy resources")]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk24001001 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001001;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -77,11 +79,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x002 chunk
     /// </summary>
     [Chunk(0x24001002)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk24001002 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001002;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -179,11 +181,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x006 chunk (legacy buffer)
     /// </summary>
     [Chunk(0x24001006, "legacy buffer")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk24001006 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001006;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
 
         private NodeRef<CMwRefBuffer>? U01Ref;
         public CMwRefBuffer? U01
@@ -261,11 +263,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x008 chunk
     /// </summary>
     [Chunk(0x24001008)]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk24001008 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001008;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
         public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -284,11 +286,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x009 chunk (legacy resources)
     /// </summary>
     [Chunk(0x24001009, "legacy resources")]
-    [ChunkGameVersion(GameVersion.TMU)]
+    [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk24001009 : Chunk<CTrackMania>
     {
         public override uint Id => 0x24001009;
-        public override GameVersion GameVersion => GameVersion.TMU;
+        public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -349,9 +351,11 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     /// CTrackMania 0x00A chunk
     /// </summary>
     [Chunk(0x2400100A)]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk2400100A : Chunk<CTrackMania>
     {
         public override uint Id => 0x2400100A;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01

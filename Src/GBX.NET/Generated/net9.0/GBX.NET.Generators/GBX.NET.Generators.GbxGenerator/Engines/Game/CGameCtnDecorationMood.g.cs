@@ -633,7 +633,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     public partial class Chunk0303A00F : Chunk<CGameCtnDecorationMood>, IVersionable
     {
         public override uint Id => 0x0303A00F;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+            <= 3 => GameVersion.MP4 | GameVersion.TM2020,
+            _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk0303A00F() : this(GameVersion.Unspecified)

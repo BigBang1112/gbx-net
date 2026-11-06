@@ -3,6 +3,6 @@
 
 namespace GBX.NET.Engines.Game;
 
-public partial class CGameManialink3dStyle : global::GBX.NET.Interfaces.Game.IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4
+public partial class CGameManialink3dStyle : global::GBX.NET.Interfaces.Game.IGameManialink3dStyle, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTMT, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4, global::GBX.NET.Interfaces.Game.IGameManialink3dStyleTM2020
 {
 }

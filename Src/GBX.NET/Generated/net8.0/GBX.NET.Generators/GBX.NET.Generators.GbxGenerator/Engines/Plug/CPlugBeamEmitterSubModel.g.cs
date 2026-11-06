@@ -664,11 +664,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     /// CPlugBeamEmitterSubModel 0x001 chunk (beam geometry)
     /// </summary>
     [Chunk(0x09105001, "beam geometry")]
-    [ChunkGameVersion(GameVersion.MP4, 11)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 11, 11, 11)]
     public partial class Chunk09105001 : Chunk<CPlugBeamEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x09105001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -679,7 +679,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
 
         public Chunk09105001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 11;
             }
@@ -806,11 +806,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     /// CPlugBeamEmitterSubModel 0x002 chunk (material and radius)
     /// </summary>
     [Chunk(0x09105002, "material and radius")]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk09105002 : Chunk<CPlugBeamEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x09105002;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public string? U02;
@@ -821,7 +821,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
 
         public Chunk09105002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -871,11 +871,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     /// CPlugBeamEmitterSubModel 0x003 chunk (laser appearance)
     /// </summary>
     [Chunk(0x09105003, "laser appearance")]
-    [ChunkGameVersion(GameVersion.MP4, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 4)]
     public partial class Chunk09105003 : Chunk<CPlugBeamEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x09105003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -905,7 +905,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
 
         public Chunk09105003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -999,11 +999,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     /// CPlugBeamEmitterSubModel 0x004 chunk (sharp and bloom appearance)
     /// </summary>
     [Chunk(0x09105004, "sharp and bloom appearance")]
-    [ChunkGameVersion(GameVersion.MP4, 3)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 3)]
     public partial class Chunk09105004 : Chunk<CPlugBeamEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x09105004;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         public Chunk09105004() : this(GameVersion.Unspecified)
@@ -1012,7 +1012,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
 
         public Chunk09105004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

@@ -5,15 +5,20 @@ namespace GBX.NET.Interfaces.Plug;
 
 public partial interface IPlugAnimSkelJointGroup : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup>
 {
-    ulong Hash { get; set; }
     int JointCount { get; set; }
     string[]? JointNames { get; set; }
     float[]? JointWeights { get; set; }
     string? Name { get; set; }
-    Int2[]? Ranges { get; set; }
+}
+
+public partial interface IPlugAnimSkelJointGroupMP4 : IPlugAnimSkelJointGroup
+{
+    int LegacyNameCount { get; set; }
 }
 
 public partial interface IPlugAnimSkelJointGroupTM2020 : IPlugAnimSkelJointGroup
 {
+    ulong Hash { get; set; }
+    Int2[]? Ranges { get; set; }
 }
 

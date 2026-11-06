@@ -7,6 +7,6 @@ public partial class CGameCtnBlockInfo : global::GBX.NET.Interfaces.Game.IGameCt
 {
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>? GetAdditionalVariantsAirInterfaceReferences() => AdditionalVariantsAir;
     internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>? GetAdditionalVariantsGroundInterfaceReferences() => AdditionalVariantsGround;
-    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? GetAirBlockUnitInfosInterfaceReferences() => AirBlockUnitInfos;
-    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>? GetGroundBlockUnitInfosInterfaceReferences() => GroundBlockUnitInfos;
+    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? GetAirBlockUnitInfosInterfaceReferences() => AirBlockUnitInfos;
+    internal NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? GetGroundBlockUnitInfosInterfaceReferences() => GroundBlockUnitInfos;
 }

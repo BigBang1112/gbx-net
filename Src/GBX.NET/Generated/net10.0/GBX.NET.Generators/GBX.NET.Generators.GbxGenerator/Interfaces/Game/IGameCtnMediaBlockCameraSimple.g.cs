@@ -20,6 +20,10 @@ public partial interface IGameCtnMediaBlockCameraSimpleTMT : IGameCtnMediaBlockC
 {
 }
 
+public partial interface IGameCtnMediaBlockCameraSimpleMP4 : IGameCtnMediaBlockCameraSimple, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraMP4
+{
+}
+
 public partial interface IGameCtnMediaBlockCameraSimpleTM2020 : IGameCtnMediaBlockCameraSimple, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTM2020
 {
 }

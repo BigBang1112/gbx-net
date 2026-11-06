@@ -3,6 +3,11 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimGraphStackMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStack where T0 : class
+{
+    new IReadOnlyList<T0>? Graphs { get; set; }
+}
 public partial interface IPlugAnimGraphStack : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraph>? Graphs { get; set; }
@@ -10,8 +15,11 @@ public partial interface IPlugAnimGraphStack : IClassVersion<global::GBX.NET.Eng
     string? Name { get; set; }
 }
 
-public partial interface IPlugAnimGraphStackTM2020 : IPlugAnimGraphStack
+public partial interface IPlugAnimGraphStackMP4 : IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>? Graphs { get; set; }
+}
+
+public partial interface IPlugAnimGraphStackTM2020 : IPlugAnimGraphStack, global::GBX.NET.Interfaces.Plug.IPlugAnimGraphStackMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimGraphTM2020>
+{
 }
 

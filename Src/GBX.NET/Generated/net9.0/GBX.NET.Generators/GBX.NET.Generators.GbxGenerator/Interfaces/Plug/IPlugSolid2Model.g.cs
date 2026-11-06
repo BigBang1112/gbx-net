@@ -38,6 +38,11 @@ public interface IPlugSolid2ModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlu
     global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? FakeOccProjs { get; set; }
     byte[]? FileImageBytes { get; set; }
 }
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolid2ModelMembers3 : global::GBX.NET.Interfaces.Plug.IPlugSolid2Model
+{
+    int FileVersion { get; set; }
+}
 public partial interface IPlugSolid2Model : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSolid2Model>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>? LightUserModels
@@ -71,15 +76,15 @@ public partial interface IPlugSolid2ModelMP3 : IPlugSolid2Model, global::GBX.NET
 {
 }
 
-public partial interface IPlugSolid2ModelTMT : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>
+public partial interface IPlugSolid2ModelTMT : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers3
 {
 }
 
-public partial interface IPlugSolid2ModelMP4 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2
+public partial interface IPlugSolid2ModelMP4 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers3
 {
 }
 
-public partial interface IPlugSolid2ModelTM2020 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2
+public partial interface IPlugSolid2ModelTM2020 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers3
 {
 }
 

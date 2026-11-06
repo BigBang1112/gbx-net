@@ -1,7 +1,4 @@
 ﻿using System.Collections.Immutable;
-#if NET8_0_OR_GREATER
-using System.Diagnostics.CodeAnalysis;
-#endif
 using System.Text;
 
 namespace GBX.NET.Components;
@@ -28,6 +25,9 @@ public sealed partial class GbxBody
     }
 
     public Exception? Exception { get; internal set; }
+
+    /// <summary>Signature metadata read from the body. Use <see cref="Gbx.ValidateSignature(Stream, GbxReadSettings)"/> to verify the checksum.</summary>
+    public GbxSignature? Signature { get; internal set; }
 
     public override string ToString()
     {
@@ -82,14 +82,12 @@ public sealed partial class GbxBody
         new GbxBodyWriter(this, writer).Write(uncompressedInputStream, compressionOfBody);
     }
 
-#if NET8_0_OR_GREATER
-    [Experimental("GBXNET10001")]
-#endif
     public GbxBody DeepClone() => new()
     {
         RawData = RawData,
         UncompressedSize = UncompressedSize,
         CompressedSize = CompressedSize,
-        Exception = Exception
+        Exception = Exception,
+        Signature = Signature
     };
 }

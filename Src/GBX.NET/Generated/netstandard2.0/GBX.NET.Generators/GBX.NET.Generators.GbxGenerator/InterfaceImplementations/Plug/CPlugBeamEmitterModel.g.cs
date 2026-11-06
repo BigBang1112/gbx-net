@@ -3,17 +3,27 @@
 
 namespace GBX.NET.Engines.Plug;
 
-public partial class CPlugBeamEmitterModel : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4
+public partial class CPlugBeamEmitterModel : global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelTM2020
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel.SubModels
     {
         get => SubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>(GetSubModelsInterfaceReferences, true, "SubModels");
         set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModel>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4.SubModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>.SubModels
+    {
+        get => SubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>(GetSubModelsInterfaceReferences, true, "SubModels");
+        set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTMT>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>.SubModels
     {
         get => SubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(GetSubModelsInterfaceReferences, true, "SubModels");
         set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(value, false));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>.SubModels
+    {
+        get => SubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>(GetSubModelsInterfaceReferences, true, "SubModels");
+        set => SubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelTM2020>(value, false));
     }
     internal NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? GetSubModelsInterfaceReferences() => SubModels;
 }

@@ -4,10 +4,45 @@
 namespace GBX.NET.Interfaces.Control;
 
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IControlButtonMembers1 : global::GBX.NET.Interfaces.Control.IControlButton
+public interface IControlButtonMembers1<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
+{
+    T0? ActionScript
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers2<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
 {
     int DisplayType { get; set; }
+    T0? Icons
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Icons);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? Label { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlButton where T0 : class
+{
+    T0? ActionSound
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    string? IconsId { get; set; }
+    int SubIconIndexOff { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers4 : global::GBX.NET.Interfaces.Control.IControlButton
+{
+    global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? ActionScript { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlButtonMembers5 : global::GBX.NET.Interfaces.Control.IControlButton
+{
+    int SubIconIndexOn { get; set; }
 }
 public partial interface IControlButton : IClassVersion<global::GBX.NET.Engines.Control.CControlButton>, global::GBX.NET.Interfaces.Control.IControlText
 {
@@ -20,9 +55,13 @@ public partial interface IControlButton : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IControlButtonTM10 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM10
+public partial interface IControlButtonTM10 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM10, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM10>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM10? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -40,9 +79,13 @@ public partial interface IControlButtonTM10 : IControlButton, global::GBX.NET.In
     }
 }
 
-public partial interface IControlButtonTMPU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMPU
+public partial interface IControlButtonTMPU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMPU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMPU>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMPU? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -60,9 +103,13 @@ public partial interface IControlButtonTMPU : IControlButton, global::GBX.NET.In
     }
 }
 
-public partial interface IControlButtonTMSX : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMSX
+public partial interface IControlButtonTMSX : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMSX, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMSX>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMSX? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -80,9 +127,13 @@ public partial interface IControlButtonTMSX : IControlButton, global::GBX.NET.In
     }
 }
 
-public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC
+public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMNESWC, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -100,24 +151,8 @@ public partial interface IControlButtonTMNESWC : IControlButton, global::GBX.NET
     }
 }
 
-public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
+public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMU, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMU>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU? ActionScript
-    {
-        get => (global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript);
-        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMU? ActionSound
-    {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound);
-        set => ((global::GBX.NET.Engines.Control.CControlButton)this).ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMU? Icons
-    {
-        get => (global::GBX.NET.Interfaces.Function.IFuncEnumTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Icons);
-        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Icons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    string? IconsId { get; set; }
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMU? Layout
     {
         get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMU?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
@@ -138,13 +173,15 @@ public partial interface IControlButtonTMU : IControlButton, global::GBX.NET.Int
         get => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(((global::GBX.NET.Engines.Control.CControlButton)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
         set => ((global::GBX.NET.Engines.Control.CControlButton)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMU>(value, false));
     }
-    int SubIconIndexOff { get; set; }
-    int SubIconIndexOn { get; set; }
 }
 
-public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextVSK5
+public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextVSK5, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutVSK5? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -162,7 +199,7 @@ public partial interface IControlButtonVSK5 : IControlButton, global::GBX.NET.In
     }
 }
 
-public partial interface IControlButtonTMF : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMF
+public partial interface IControlButtonTMF : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMF, global::GBX.NET.Interfaces.Control.IControlButtonMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
     {
@@ -206,9 +243,13 @@ public partial interface IControlButtonMP3 : IControlButton, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlButtonTMT : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMT
+public partial interface IControlButtonTMT : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTMT, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Control.IControlButtonMembers4, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMT? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlButton)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
     {
         get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlButton)this).LegacyStyle);
@@ -226,7 +267,7 @@ public partial interface IControlButtonTMT : IControlButton, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextMP4
+public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextMP4, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlButtonMembers4, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
     {
@@ -250,7 +291,7 @@ public partial interface IControlButtonMP4 : IControlButton, global::GBX.NET.Int
     }
 }
 
-public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlButtonMembers1
+public partial interface IControlButtonTM2020 : IControlButton, global::GBX.NET.Interfaces.Control.IControlTextTM2020, global::GBX.NET.Interfaces.Control.IControlButtonMembers2<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>, global::GBX.NET.Interfaces.Control.IControlButtonMembers3<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Control.IControlButtonMembers5
 {
     new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
     {

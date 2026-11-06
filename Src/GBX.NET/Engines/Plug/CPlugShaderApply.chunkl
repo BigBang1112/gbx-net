@@ -10,7 +10,7 @@ CPlugShaderApply 0x09026000
   base
   datauint LegacyAlphaFlags
 
-0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020] // BitmapAddresses
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // BitmapAddresses
   CPlugBitmapAddress[] BitmapAddresses = empty
 
 0x003

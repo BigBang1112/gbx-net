@@ -129,11 +129,16 @@ public partial class CPlugAnimSkelJointGroup : CMwNod, IClass
     /// CPlugAnimSkelJointGroup 0x000 chunk
     /// </summary>
     [Chunk(0x09133000)]
-    [ChunkGameVersion(GameVersion.TM2020, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 4)]
     public partial class Chunk09133000 : Chunk<CPlugAnimSkelJointGroup>, IVersionable
     {
         public override uint Id => 0x09133000;
-        public override GameVersion GameVersion => GameVersion.TM2020;
+        public override GameVersion GameVersion => Version switch
+        {
+            <= 2 => GameVersion.MP4 | GameVersion.TM2020,
+            <= 4 => GameVersion.TM2020,
+            _ => GameVersion.MP4 | GameVersion.TM2020,
+        };
         public int Version { get; set; }
 
         public Chunk09133000() : this(GameVersion.Unspecified)
@@ -142,7 +147,11 @@ public partial class CPlugAnimSkelJointGroup : CMwNod, IClass
 
         public Chunk09133000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

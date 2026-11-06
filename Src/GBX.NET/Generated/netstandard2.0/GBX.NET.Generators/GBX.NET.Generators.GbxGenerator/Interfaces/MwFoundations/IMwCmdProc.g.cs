@@ -9,7 +9,27 @@ public partial interface IMwCmdProc : IClassVersion<global::GBX.NET.Engines.MwFo
     global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter { get; set; }
 }
 
+public partial interface IMwCmdProcTM10 : IMwCmdProc
+{
+}
+
+public partial interface IMwCmdProcTMPU : IMwCmdProc
+{
+}
+
+public partial interface IMwCmdProcTMSX : IMwCmdProc
+{
+}
+
+public partial interface IMwCmdProcTMNESWC : IMwCmdProc
+{
+}
+
 public partial interface IMwCmdProcTMU : IMwCmdProc
+{
+}
+
+public partial interface IMwCmdProcVSK5 : IMwCmdProc
 {
 }
 

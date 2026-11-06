@@ -7,7 +7,7 @@ public abstract class CPlugAnimGraphBuilderBase<TSelf> : NodeBuilder<global::GBX
 {
     private protected CPlugAnimGraphBuilderBase() { }
     private protected CPlugAnimGraphBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraph> state) : base(state) { }
-    public TSelf WithGraph(global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimGraphBuilderAssignments.GetGraphAssignment(), value, GameVersion.TM2020);
+    public TSelf WithGraph(global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph? value) => Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimGraphBuilderAssignments.GetGraphAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
 }
 public partial class CPlugAnimGraphBuilder : CPlugAnimGraphBuilderBase<CPlugAnimGraphBuilder>
 {
@@ -17,7 +17,17 @@ public partial class CPlugAnimGraphBuilder : CPlugAnimGraphBuilderBase<CPlugAnim
         node.Chunks.Add(new global::GBX.NET.Engines.Plug.CPlugAnimGraph.Chunk0912B000(game));
         return node;
     }
+    public MP4 ForMP4() => new(state.Snapshot());
+    public MP4 ForTM2() => ForMP4();
+    public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
+    public partial class MP4 : CPlugAnimGraphBuilderBase<MP4>
+    {
+        internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraph> state) : base(state) { }
+        public global::GBX.NET.Interfaces.Plug.IPlugAnimGraphMP4 BuildInterface() => Build();
+        public global::GBX.NET.Engines.Plug.CPlugAnimGraph Build() => BuildNode(CPlugAnimGraphBuilder.CreateRecipe0(GameVersion.MP4), GameVersion.MP4);
+        partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAnimGraph node);
+    }
     public partial class TM2020 : CPlugAnimGraphBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimGraph> state) : base(state) { }

@@ -60,3 +60,7 @@ public partial interface IHmsPortalTMT : IHmsPortal
 {
 }
 
+public partial interface IHmsPortalMP4 : IHmsPortal
+{
+}
+

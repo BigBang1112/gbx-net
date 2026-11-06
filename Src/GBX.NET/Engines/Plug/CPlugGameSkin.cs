@@ -2,78 +2,73 @@
 
 public partial class CPlugGameSkin
 {
+    private Fid[]? customizableFids;
+    private string? dirName;
+
+    [AppliedWithChunk<Chunk090F4000>]
+    [AppliedWithChunk<Chunk090F4002>]
+    public partial Fid[]? CustomizableFids { get => customizableFids; set => customizableFids = value; }
+
+    [AppliedWithChunk<Chunk090F4002>]
+    public partial string? DirName { get => dirName; set => dirName = value; }
+
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090F4001>]
-    public Fid[]? CustomizableFids2 { get; set; }
+    public Fid[]? CustomizableSounds { get; set; }
+
+    /// <summary>Compatibility alias for <see cref="CustomizableSounds"/>.</summary>
+    [AppliedWithChunk<Chunk090F4001>]
+    public Fid[]? CustomizableFids2 { get => CustomizableSounds; set => CustomizableSounds = value; }
 
     public partial class Chunk090F4000
     {
-        public override void Read(CPlugGameSkin n, GbxReader r)
+        public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
-            n.CustomizableFids = new Fid[r.ReadInt32()];
-            r.ReadInt32(); // CustomizableNames count thats not used in loop
-            for (var i = 0; i < n.CustomizableFids.Length; i++)
-            {
-                var fid = new Fid();
-                r.ReadNodeRef(fid.References.Node);
-                fid.Name = r.ReadString();
-                n.CustomizableFids[i] = fid;
-            }
-        }
-
-        public override void Write(CPlugGameSkin n, GbxWriter w)
-        {
-            var count = n.CustomizableFids?.Length ?? 0;
-            w.Write(count);
-            w.Write(count); // CustomizableNames count that is not used in loop
-
-            if (n.CustomizableFids is null)
-            {
-                return;
-            }
-
-            for (var i = 0; i < count; i++)
-            {
-                var fid = n.CustomizableFids[i];
-                w.WriteNodeRef(fid.References.Node);
-                w.Write(fid.Name);
-            }
+            n.CustomizableFids = ReadWriteLegacyFids(rw, n.CustomizableFids, 0x09025000);
         }
     }
 
     public partial class Chunk090F4001
     {
-        public override void Read(CPlugGameSkin n, GbxReader r)
+        public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
-            n.CustomizableFids2 = new Fid[r.ReadInt32()];
-            r.ReadInt32(); // CustomizableNames count thats not used in loop
-            for (var i = 0; i < n.CustomizableFids2.Length; i++)
-            {
-                var fid = new Fid();
-                r.ReadNodeRef(fid.References.Node);
-                fid.Name = r.ReadString();
-                n.CustomizableFids2[i] = fid;
-            }
+            n.CustomizableSounds = ReadWriteLegacyFids(rw, n.CustomizableSounds, 0x09030000);
+        }
+    }
+
+    public partial class Chunk090F4002
+    {
+        public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
+        {
+            rw.String(ref n.dirName!);
+            n.CustomizableFids = ReadWriteLegacyFids(rw, n.CustomizableFids, 0, classIdsOnWire: true);
+        }
+    }
+
+    private static Fid[]? ReadWriteLegacyFids(GbxReaderWriter rw, Fid[]? fids, uint classId, bool classIdsOnWire = false)
+    {
+        var count = rw.Int32(fids?.Length ?? 0);
+        var nameCount = rw.Int32(count);
+        var classIdCount = classIdsOnWire ? rw.Int32(count) : count;
+        if (count < 0 || nameCount != count || classIdCount != count)
+        {
+            throw new InvalidDataException("Skin remapping counts must be equal and nonnegative.");
         }
 
-        public override void Write(CPlugGameSkin n, GbxWriter w)
+        if (rw.Reader is not null)
         {
-            var count = n.CustomizableFids2?.Length ?? 0;
-            w.Write(count);
-            w.Write(count); // CustomizableNames count that is not used in loop
-
-            if (n.CustomizableFids2 is null)
-            {
-                return;
-            }
-
-            for (var i = 0; i < count; i++)
-            {
-                var fid = n.CustomizableFids2[i];
-                w.WriteNodeRef(fid.References.Node);
-                w.Write(fid.Name);
-            }
+            fids = new Fid[count];
         }
+
+        for (var i = 0; i < count; i++)
+        {
+            var fid = rw.Reader is not null ? fids![i] = new Fid { ClassId = classId } : fids![i];
+            rw.NodeRef(fid.References.Node);
+            fid.Name = rw.String(fid.Name);
+            if (classIdsOnWire) fid.ClassId = rw.UInt32(fid.ClassId);
+        }
+
+        return fids;
     }
 
     public partial class Fid : IReadableWritable
@@ -81,7 +76,7 @@ public partial class CPlugGameSkin
         private uint classId;
         private string name = "";
 
-        private string directory = "";
+        private string path = "";
         private bool mipMaps;
 
         public uint ClassId { get => classId; set => classId = value; }
@@ -89,7 +84,11 @@ public partial class CPlugGameSkin
 
         public CMwNod? Node { get => nodeRef?.Resolve(); set => NodeRef.SetEmbedded(ref nodeRef, value); }
 
-        public string Directory { get => directory; set => directory = value; }
+        /// <summary>A file or folder path relative to game data; v3 and later use this for folders.</summary>
+        public string Path { get => path; set => path = value; }
+
+        [Obsolete("Use Path instead.")]
+        public string Directory { get => Path; set => Path = value; }
         public bool MipMaps { get => mipMaps; set => mipMaps = value; }
 
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
@@ -105,12 +104,12 @@ public partial class CPlugGameSkin
                 }
                 else
                 {
-                    rw.String(ref directory!);
+                    rw.String(ref path!);
                 }
             }
             else
             {
-                rw.String(ref directory!);
+                rw.String(ref path!);
             }
 
             if (version >= 2)
@@ -121,15 +120,18 @@ public partial class CPlugGameSkin
 
         public override string ToString()
         {
-            return $"[0x{ClassId:X8}] {Name} ({Node?.ToString() ?? Directory})";
+            return $"[0x{ClassId:X8}] {Name} ({Node?.ToString() ?? Path})";
         }
     }
 
     public partial class HeaderFid
     {
+        [Obsolete("Use Path instead.")]
+        public string? Directory { get => Path; set => Path = value; }
+
         public override string ToString()
         {
-            return $"[0x{ClassId:X8}] {Name} ({Directory})";
+            return $"[0x{ClassId:X8}] {Name} ({Path})";
         }
     }
 }

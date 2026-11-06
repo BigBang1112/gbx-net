@@ -23,12 +23,17 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         set => this.text = value;
     }
 
+    private string? skinName;
     /// <summary>
     /// Ignored by games from TMS onward
     /// </summary>
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03059000>]
-    public partial string? SkinName { get; set; }
+    public string? SkinName
+    {
+        get => this.skinName;
+        set => this.skinName = value;
+    }
 
     private PackDesc? packDesc;
     /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
@@ -62,10 +67,10 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnBlockSkin)clone).text = context.Clone(this.text)!;
+        ((CGameCtnBlockSkin)clone).skinName = context.Clone(this.skinName)!;
         ((CGameCtnBlockSkin)clone).packDesc = context.Clone(this.packDesc)!;
         ((CGameCtnBlockSkin)clone).parentPackDesc = context.Clone(this.parentPackDesc)!;
         ((CGameCtnBlockSkin)clone).foregroundPackDesc = context.Clone(this.foregroundPackDesc)!;
-        ((CGameCtnBlockSkin)clone).skinName = context.Clone(this.skinName)!;
     }
 
     public CGameCtnBlockSkin()

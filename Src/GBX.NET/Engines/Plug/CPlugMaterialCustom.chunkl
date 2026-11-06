@@ -1,102 +1,121 @@
 CPlugMaterialCustom 0x0903A000
 - inherits: CPlug
 
-0x004 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int[]
+0x004 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // FuncShaders
+  CFuncShader?[] FuncShaders
 
 0x006 [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
-  Bitmap[] Textures
+  Bitmap[] Bitmaps
 
-0x00A [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  GpuFx[] GpuFxs1
-  GpuFx[] GpuFxs2
+0x009 (skippable) [TMSX] // legacy shader flags and requirements
+  datauint<ulong> Flags
+  dataulong ShaderRequirements
+  if (Flags & 1) != 0
+    short
+
+0x00A [TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // GPU constants
+  GpuFx[] GpuFxColors
+  GpuFx[] GpuFxReals
 
 0x00B [TMNESWC, TMU, VSK5]
-  uint U01
-  ulong U02
-  if (U01 & 1) != 0
-    short U03
-    short U04
+  datauint<ulong> Flags
+  dataulong ShaderRequirements
+  if (Flags & 1) != 0
+    VisibleFilterData VisibleFilter
 
 0x00C [TMU, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  BitmapSkip[] SkipSamplers
+  BitmapSkip[] BitmapSkips
 
 0x00D [TMF, MP3, TMT, MP4]
-  ulong U01
-  ulong U02
-  if (U01 & 1) != 0 // SPlugVisibleFilter
-    short U03
-    short U04
+  dataulong Flags = 0x7F0001FC0000 [TM2020 = 0x7F8001FC0000]
+  dataulong ShaderRequirements
+  if (Flags & 1) != 0
+    VisibleFilterData VisibleFilter
+
+0x00E (skippable) // legacy VisibleMaxDist
+  float VisibleMaxDist = -1
 
 0x00F (skippable) [MP3.v1, TMT.v1, MP4.v2, TM2020.v2]
   version
-  float
-  float
+  float VisibleMaxDist
+  float VisibleMinScreenHeight = -1
   v1+
-    float
+    float LightThroughRatioBounce
     v2+
-      DefineNat[]
+      DefineNat[] DefineNats
 
 0x010 [MP3, TMT]
-  CPlugBitmap
+  CPlugBitmap BitmapShadowOpacity
 
-0x011 (skippable) [MP3, TMT, MP4, TM2020]
-  int
+0x011 (skippable) [MP3, TMT, MP4, TM2020] // VSplitIndexSemantic
+  int VSplitIndexSemantic = -1
 
 0x012 [MP4, TM2020]
-  CMwNod
+  CPlugBitmap BitmapShadowOpacity
 
 0x013 [MP4, TM2020]
   version
-  Bitmap[] Textures (version: 1)
+  Bitmap[] Bitmaps (version: 1)
 
-0x014 [MP4.v0, TM2020.v1]
+0x014 [MP4.v0, TM2020.v1] // ConstantBuffers
   version
-  CBuffer[]
+  CBuffer[] ConstantBuffers
 
 0x015 [MP4.v1, TM2020.v2]
   version
   v1+
-    int U01
-  if U01 == 0
-    string
-    string
+    int IndexCountPerVertex
+  if IndexCountPerVertex == 0
+    string SubTextureNamePxz
+    string SubTextureNamePy
     v2+
-      string
-      string
+      string SubTextureNamePyX2
+      string SubTextureNamePyH2
 
 0x016 [TM2020.v2]
   version
-  ulong U01
-  ulong U02
+  dataulong Flags
+  dataulong ShaderRequirements
   v1+
-    int U03
-  if (U01 & 1) != 0
-    short U04
-    short U05
+    int
+  if (Flags & 1) != 0
+    VisibleFilterData VisibleFilter
 
 archive Bitmap
-  id Name
+  id LayerName
   int
-  CMwNod Texture
+  CMwNod BitmapOrImage
   v1+
-    int
-    int
+    int TexAddressU = 4 // preserves the shader's address mode
+    int TexAddressV = 4
 
 archive GpuFx
 
 archive BitmapSkip
-  id Name
-  bool
+  id LayerName
+  bool IsSkipped
 
 archive DefineNat
-  id
-  int
+  id Name
+  int Value
 
 archive CBuffer
-  int U01
-  int DataSize (write: "v >= 1 && IsDataAbsent ? DataSize : U02?.Length ?? 0")
+  int<EGpuStage> Stage = EGpuStage.Unknown
+  int ByteSize (write: "v >= 1 && IsDataAbsent ? ByteSize : Data?.Length ?? 0")
   v1+
-    bool IsDataAbsent
+    bool IsDataAbsent // retains ByteSize without serializing data
   if v == 0 || !IsDataAbsent
-    byte[DataSize] U02
+    byte[ByteSize] Data
+
+archive VisibleFilterData
+  short BitMask
+  short BitValue // replaces shader visibility bits selected by BitMask
+
+enum EGpuStage
+  Vertex = 0
+  Pixel = 1
+  Domain = 2
+  Geometry = 3
+  Hull = 4
+  Compute = 8
+  Unknown = 9

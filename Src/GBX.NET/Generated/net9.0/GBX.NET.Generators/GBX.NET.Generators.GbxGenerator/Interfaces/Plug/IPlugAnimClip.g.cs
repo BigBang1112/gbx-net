@@ -3,6 +3,15 @@
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimClipMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAnimClip where T0 : class
+{
+    new T0? Baked
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+}
 public partial interface IPlugAnimClip : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimClip>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked? Baked
@@ -10,18 +19,27 @@ public partial interface IPlugAnimClip : IClassVersion<global::GBX.NET.Engines.P
         get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBaked?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked);
         set => ((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEdition? Edition
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEdition?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Edition);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Edition = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags { get; set; }
     int FlagsVersion { get; set; }
     string? Name { get; set; }
 }
 
-public partial interface IPlugAnimClipTM2020 : IPlugAnimClip
+public partial interface IPlugAnimClipMP4 : IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020? Baked
+    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEditionMP4? Edition
     {
-        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked);
-        set => ((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Baked = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelEditionMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Edition);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimClip)this).Edition = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+}
+
+public partial interface IPlugAnimClipTM2020 : IPlugAnimClip, global::GBX.NET.Interfaces.Plug.IPlugAnimClipMembers1<global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020>
+{
+    new global::GBX.NET.Engines.Plug.CPlugAnimSkelEdition? Edition { get; set; }
 }
 

@@ -59,12 +59,18 @@ internal static class CGameControlGridBuilderAssignments
     private static NodeBuilderProperty<bool>? cached10;
     internal static NodeBuilderProperty<bool> GetForceHidePageCounterAssignment() => cached10 ??= new("ForceHidePageCounter", new Action<object, bool>(Assign10));
     private static void Assign10(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).ForceHidePageCounter = value;
-    private static NodeBuilderProperty<int>? cached11;
-    internal static NodeBuilderProperty<int> GetMaxPerColumnAssignment() => cached11 ??= new("MaxPerColumn", new Action<object, int>(Assign11));
-    private static void Assign11(object node, int value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).MaxPerColumn = value;
-    private static NodeBuilderProperty<int>? cached12;
-    internal static NodeBuilderProperty<int> GetMaxPerRowAssignment() => cached12 ??= new("MaxPerRow", new Action<object, int>(Assign12));
-    private static void Assign12(object node, int value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).MaxPerRow = value;
+    private static NodeBuilderProperty<bool>? cached11;
+    internal static NodeBuilderProperty<bool> GetHaveLocalDataAssignment() => cached11 ??= new("HaveLocalData", new Action<object, bool>(Assign11));
+    private static void Assign11(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).HaveLocalData = value;
+    private static NodeBuilderProperty<bool>? cached12;
+    internal static NodeBuilderProperty<bool> GetHideLocalDataIfNoneAssignment() => cached12 ??= new("HideLocalDataIfNone", new Action<object, bool>(Assign12));
+    private static void Assign12(object node, bool value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).HideLocalDataIfNone = value;
+    private static NodeBuilderProperty<int>? cached13;
+    internal static NodeBuilderProperty<int> GetMaxPerColumnAssignment() => cached13 ??= new("MaxPerColumn", new Action<object, int>(Assign13));
+    private static void Assign13(object node, int value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).MaxPerColumn = value;
+    private static NodeBuilderProperty<int>? cached14;
+    internal static NodeBuilderProperty<int> GetMaxPerRowAssignment() => cached14 ??= new("MaxPerRow", new Action<object, int>(Assign14));
+    private static void Assign14(object node, int value) => ((global::GBX.NET.Engines.Game.CGameControlGrid)node).MaxPerRow = value;
     private static NodeRef<global::GBX.NET.Engines.Control.CControlButton> Copy0(NodeRef<global::GBX.NET.Engines.Control.CControlButton> value) { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlButton>(); copy.CopyFrom(value); return copy; }
     private static NodeRef<global::GBX.NET.Engines.Control.CControlEntry> Copy1(NodeRef<global::GBX.NET.Engines.Control.CControlEntry> value) { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEntry>(); copy.CopyFrom(value); return copy; }
 }

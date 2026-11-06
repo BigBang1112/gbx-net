@@ -25,10 +25,12 @@ public partial class CGameModulePlaygroundThrottleModel : CGameModulePlaygroundM
     /// CGameModulePlaygroundThrottleModel 0x000 skippable chunk
     /// </summary>
     [Chunk(0x2E004000)]
+    [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk2E004000 : SkippableChunk<CGameModulePlaygroundThrottleModel>, IVersionable
     {
         public override uint Id => 0x2E004000;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
         public float U01;
         public float U02;
         public float U03;
@@ -42,6 +44,22 @@ public partial class CGameModulePlaygroundThrottleModel : CGameModulePlaygroundM
         public CGameModulePlaygroundModel.ImageRef? U11;
         public bool U12;
         public CGameModulePlaygroundModel.ImageRef? U13;
+
+        public Chunk2E004000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E004000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -65,6 +83,11 @@ public partial class CGameModulePlaygroundThrottleModel : CGameModulePlaygroundM
         public override void ReadWrite(CGameModulePlaygroundThrottleModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
