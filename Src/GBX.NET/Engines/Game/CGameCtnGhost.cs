@@ -41,7 +41,14 @@ public partial class CGameCtnGhost
     /// Retrieves inputs from <see cref="Inputs"/> that are displayable. Currently it only makes a difference with Competition Patch 2 features.
     /// </summary>
     /// <returns>Displayable inputs as IEnumerable.</returns>
-    public IEnumerable<IInput> GetDisplayableInputs()
+    [Obsolete("Use GetDisplayInputs instead.")]
+    public IEnumerable<IInput> GetDisplayableInputs() => GetDisplayInputs();
+
+    /// <summary>
+    /// Retrieves inputs from <see cref="Inputs"/> that are displayable. Currently it only makes a difference with Competition Patch 2 features.
+    /// </summary>
+    /// <returns>Displayable inputs as IEnumerable.</returns>
+    public IEnumerable<IInput> GetDisplayInputs()
     {
         uint version = 0;
 
