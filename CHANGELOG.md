@@ -1,5 +1,31 @@
 # Changelog
 
+## [GBX.NET 2.5.1](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.1) - 2026-11-06
+
+- Added signature chunk at the end of written binary bodies
+  - Added `GbxBody.Signature` and `Gbx.ValidateSignature(Async)` returning `GbxSignatureStatus`
+- Implemented remaining MP4 and TM2020 `CPlugVehicleCarPhyTuning` chunks and discovered many of their member names
+- `CPlugVehicleVisModelShared`: Discovered member names of materials, lights, particles, sounds, arms, and wheels
+- `CPlugVehicleVisModelShared`: Fixed `0x01F` version 6 and `0x022` versions below 5
+- Updated `CPlugMaterial`, `CPlugMaterialCustom`, `CPlugMaterialUserInst`, `CPlugMaterialColorTargetTable`, `CPlugLight`, `CPlugGameSkin`, `CPlugFxWindOnDecal`, and `CPlugTurretObjectParams`, `CGameItemModel`, `CFuncShaderLayerUV`, and `CFuncShaderTweakKeysTranss`
+- Resolved few unknowns in `CGamePlayerProfileChunk_AccountSettings`
+- `CGameCtnGhost`: Added TM2020 `TICK` chunk
+- `GameVersion` now differentiates MP3 and TMT maps, and TMT and MP4 ghosts
+- Fixed `GameVersion` in chunk versions and `IsGameVersion(GameVersion.Unspecified)`
+- Added missing game version qualifiers to many chunks
+- Increased default array, body, and skippable chunk size limits from 256 MB to 512 MB
+- Added `MethodAttribute` to link properties to methods
+- Removed forgotten `Experimental` attributes on `DeepClone`
+
+GBX.NET.Crypto 1.2.4
+- Added `DecryptOnlinePassword`, `DecryptOnlineSupportKey`, `DecryptOnlineValidationCode`, and `DecryptKey` for `CGamePlayerProfileChunk_AccountSettings`
+- Added `DecryptOnlineSupportKey` and `DecryptOnlineValidationKey` for `CGamePlayerProfile`
+- Removed GBX.NET.Hashing dependency
+
+Gbx Explorer
+- Added property methods, such as decrypting profile keys
+- Removed file limits
+
 ## [GBX.NET 2.5.0](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.0) - 2026-10-28
 
 - **Added 250+ new Gbx classes** and updated existing ones

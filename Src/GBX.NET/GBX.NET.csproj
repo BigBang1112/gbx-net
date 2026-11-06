@@ -11,24 +11,20 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes>
-- **Added 250+ new Gbx classes** and updated existing ones
-- **Discovered 4500+ member names** across class and archive layouts
-- Reworked node references to preserve external file and resource descriptors for any node
-  - Added `NodeRef&lt;T&gt;`, `NodeRefList&lt;T&gt;`, and `References` views with lazy resolution
-  - Deprecated older `External&lt;T&gt;` APIs
-  - Node collections now use `NodeRefList&lt;T&gt;`
-- Finally implemented `CMwNod.DeepClone()` for cloning nodes
-- Added support for `Action.Gbx` and `Crystal.Gbx`
-- Added generated Game Version Interfaces
-- Reworked class source generator
-  - Uses syntax trees over symbols, which improves build time
-  - Better handling of partial classes, chunk versions, and game-specific defaults
-  - Uses new ChunkL spec
-- Added `AppliedWithArchiveAttribute`
-- Unchanged map embedded data are now reused when writing
-- Fixed validation ghost sample data
-- Fixed lightmaps without frames
-- Fixed issues with TMUnlimiter 1.3 maps
+- Added signature chunk at the end of written binary bodies
+  - Added `GbxBody.Signature` and `Gbx.ValidateSignature(Async)` returning `GbxSignatureStatus`
+- Implemented remaining MP4 and TM2020 `CPlugVehicleCarPhyTuning` chunks and discovered many of their member names
+- `CPlugVehicleVisModelShared`: Discovered member names of materials, lights, particles, sounds, arms, and wheels
+- `CPlugVehicleVisModelShared`: Fixed `0x01F` version 6 and `0x022` versions below 5
+- Updated `CPlugMaterial`, `CPlugMaterialCustom`, `CPlugMaterialUserInst`, `CPlugMaterialColorTargetTable`, `CPlugLight`, `CPlugGameSkin`, `CPlugFxWindOnDecal`, and `CPlugTurretObjectParams`, `CGameItemModel`, `CFuncShaderLayerUV`, and `CFuncShaderTweakKeysTranss`
+- Resolved few unknowns in `CGamePlayerProfileChunk_AccountSettings`
+- `CGameCtnGhost`: Added TM2020 `TICK` chunk
+- `GameVersion` now differentiates MP3 and TMT maps, and TMT and MP4 ghosts
+- Fixed `GameVersion` in chunk versions and `IsGameVersion(GameVersion.Unspecified)`
+- Added missing game version qualifiers to many chunks
+- Increased default array, body, and skippable chunk size limits from 256 MB to 512 MB
+- Added `MethodAttribute` to link properties to methods
+- Removed forgotten `Experimental` attributes on `DeepClone`
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
