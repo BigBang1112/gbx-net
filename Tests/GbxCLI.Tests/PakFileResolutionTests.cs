@@ -6,7 +6,7 @@ public class PakFileResolutionTests
 {
     private const string Hash = "91A747924FFCC4A05C106FB086ECF95C34";
     private const string Name = "2dFlareAdd_Hdr.Shader.Gbx";
-    private const string UnresolvedHash = "010F9E0EA7C9EBDC2B9C5FBCBF76595693";
+    private const string UnresolvedHash = "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE";
 
     [Test]
     [Arguments("parse", "Data/" + Name)]
