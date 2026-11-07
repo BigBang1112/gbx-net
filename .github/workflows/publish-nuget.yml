@@ -14,39 +14,39 @@ on:
         type: boolean
         default: true
 
-permissions:
-  contents: write
-  packages: write
-
-concurrency:
-  group: publish-nuget-${{ github.ref }}
-  cancel-in-progress: false
-
 jobs:
   deploy:
     name: Build, test, and publish NuGet
-    uses: bigbang1112/workflows/.github/workflows/publish-nuget-immutable.yml@main
-    with:
-      package-prefix: GBX.NET
-      main-project: GBX.NET
-      dotnet-version: |
-        10.0.x
-        9.0.x
-        8.0.x
-      project-path: |
-        Src/*/*.csproj
-        Tools/GbxCLI/GbxCLI.csproj
-      test-path: Tests/*/*.csproj
-      pack-path: |
-        Src/*/*.csproj
-        Tools/GbxCLI/GbxCLI.csproj
-        Templates/GBX.NET.Templates.csproj
-      push-to-custom-feeds: true
-      custom-feed-urls: https://nuget.gbx.tools/v3/index.json
-      send-discord-message: ${{ github.event_name == 'push' || inputs.notify_discord }}
-      discord-top-lines: ${{ inputs.optional_description }}
-      discord-bottom-lines: "Explorer: <https://explorer.gbx.tools>"
-    secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      CUSTOM_FEED_API_KEYS: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
-      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+    concurrency:
+      group: publish-nuget-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: bigbang1112/workflows/publish-nuget-immutable@main
+        with:
+          package-prefix: GBX.NET
+          main-project: GBX.NET
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
+          project-path: |
+            Src/*/*.csproj
+            Tools/GbxCLI/GbxCLI.csproj
+          test-path: Tests/*/*.csproj
+          pack-path: |
+            Src/*/*.csproj
+            Tools/GbxCLI/GbxCLI.csproj
+            Templates/GBX.NET.Templates.csproj
+          nuget-user: ${{ vars.NUGET_USER }}
+          push-to-custom-feeds: true
+          custom-feed-urls: https://nuget.gbx.tools/v3/index.json
+          custom-feed-api-keys: ${{ secrets.NUGET_GBXTOOLS_API_KEY }}
+          send-discord-message: ${{ github.event_name == 'push' || inputs.notify_discord }}
+          discord-webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          discord-top-lines: ${{ inputs.optional_description }}
+          discord-bottom-lines: "Explorer: <https://explorer.gbx.tools>"
