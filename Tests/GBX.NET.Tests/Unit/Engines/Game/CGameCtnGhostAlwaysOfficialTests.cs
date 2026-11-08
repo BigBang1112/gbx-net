@@ -17,14 +17,14 @@ public class CGameCtnGhostAlwaysOfficialTests
     [Arguments(3, true, true)]
     public async Task ReadWrite_CommonPayload_MatchesModEncoder(int carried, bool accelerate, bool brake)
     {
-        // Version 0.1.0.0 without a commit, as written by the Always Official encoder
+        // Version 0.1.0.0 without a commit or a race start, as written by the Always Official encoder
         var payload = Payload(w =>
         {
             w.Write((byte)0);
             w.Write((byte)carried);
             w.Write([0x00, 0x01, 0x00]);
             w.Write(new byte[20]);
-            WriteUnsigned(w, Timestamp);
+            w.Write((byte)0);
         });
 
         var ghost = await RoundTrip(payload);
@@ -33,19 +33,43 @@ public class CGameCtnGhostAlwaysOfficialTests
         await Assert.That(data.GitCommit).IsNull();
         await Assert.That(data.CarriedAccelerate).IsEqualTo(accelerate);
         await Assert.That(data.CarriedBrake).IsEqualTo(brake);
-        await Assert.That(data.GhostStartTimestamp).IsEqualTo(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp));
-        await Assert.That(data.GhostEndTimestamp).IsNull();
-        await Assert.That(data.OfficialStartTimestamp).IsNull();
-        await Assert.That(data.OfficialEndTimestamp).IsNull();
+        await Assert.That(data.IsOfficial).IsFalse();
+        await Assert.That(data.RaceStartTimestamp).IsNull();
+        await Assert.That(data.RaceFinishTimestamp).IsNull();
+        await Assert.That(data.RaceDuration).IsNull();
     }
 
     [Test]
-    public async Task ReadWrite_FullPayload_ReadsRevisionCommitAndTimestamps()
+    [Arguments(false, false)]
+    [Arguments(false, true)]
+    [Arguments(true, false)]
+    [Arguments(true, true)]
+    public async Task ReadWrite_RaceTimestamps_ReadOfficialFlagAndOptionalFinish(bool finished, bool official)
     {
         var payload = Payload(w =>
         {
             w.Write((byte)0);
-            w.Write((byte)63);
+            w.Write((byte)((finished ? 8 : 0) | (official ? 16 : 0)));
+            w.Write([0x00, 0x01, 0x00]);
+            w.Write(new byte[20]);
+            WriteUnsigned(w, Timestamp);
+            if (finished) WriteUnsigned(w, Timestamp + 1000);
+        });
+
+        var data = (await RoundTrip(payload)).AlwaysOfficialData!;
+        await Assert.That(data.IsOfficial).IsEqualTo(official);
+        await Assert.That(data.RaceStartTimestamp).IsEqualTo(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp));
+        await Assert.That(data.RaceFinishTimestamp.HasValue).IsEqualTo(finished);
+        await Assert.That(data.RaceDuration).IsEqualTo(finished ? TimeSpan.FromSeconds(1) : null);
+    }
+
+    [Test]
+    public async Task ReadWrite_FullPayload_ReadsRevisionAndCommit()
+    {
+        var payload = Payload(w =>
+        {
+            w.Write((byte)0);
+            w.Write((byte)31);
             WriteUnsigned(w, 127);
             WriteUnsigned(w, 128);
             WriteUnsigned(w, 16384);
@@ -53,8 +77,6 @@ public class CGameCtnGhostAlwaysOfficialTests
             w.Write(Convert.FromHexString(Commit));
             WriteUnsigned(w, Timestamp);
             WriteUnsigned(w, Timestamp + 1000);
-            WriteUnsigned(w, Timestamp + 200);
-            WriteUnsigned(w, Timestamp + 900);
         });
 
         var data = (await RoundTrip(payload)).AlwaysOfficialData!;
@@ -62,9 +84,16 @@ public class CGameCtnGhostAlwaysOfficialTests
         await Assert.That(data.GitCommit).IsEqualTo(Commit);
         await Assert.That(data.CarriedAccelerate).IsTrue();
         await Assert.That(data.CarriedBrake).IsTrue();
-        await Assert.That(data.GhostDuration).IsEqualTo(TimeSpan.FromSeconds(1));
-        await Assert.That(data.OfficialStartTimestamp).IsEqualTo(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp + 200));
-        await Assert.That(data.OfficialDuration).IsEqualTo(TimeSpan.FromMilliseconds(700));
+        await Assert.That(data.IsOfficial).IsTrue();
+    }
+
+    [Test]
+    public async Task Read_UnknownFlag_Throws()
+    {
+        using var stream = new MemoryStream([0, 32]);
+        using var reader = new GbxReader(stream);
+        var chunk = new CGameCtnGhost.ChunkBB111201();
+        await Assert.That(() => chunk.Read(new CGameCtnGhost(), reader)).Throws<NotSupportedException>();
     }
 
     [Test]
@@ -73,7 +102,7 @@ public class CGameCtnGhostAlwaysOfficialTests
         var payload = Payload(w =>
         {
             w.Write((byte)0);
-            w.Write((byte)(2 | 32));
+            w.Write((byte)(2 | 8 | 16));
             w.Write([0x01, 0x02, 0x03]);
             w.Write(Convert.FromHexString(Commit));
             WriteUnsigned(w, Timestamp);
@@ -93,12 +122,13 @@ public class CGameCtnGhostAlwaysOfficialTests
         var restored = reader.ReadNode<CGameCtnGhost>()!;
         await Assert.That(input.Position).IsEqualTo(input.Length);
         await Assert.That(restored.AlwaysOfficialData!.ModVersion).IsEqualTo(new Version(1, 2, 3));
-        await Assert.That(restored.AlwaysOfficialData.OfficialEndTimestamp).IsEqualTo(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp + 5000));
+        await Assert.That(restored.AlwaysOfficialData.RaceFinishTimestamp).IsEqualTo(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp + 5000));
 
         var clone = (CGameCtnGhost)restored.DeepClone();
         await Assert.That(clone.AlwaysOfficialData).IsNotSameReferenceAs(restored.AlwaysOfficialData);
         await Assert.That(clone.AlwaysOfficialData!.GitCommit).IsEqualTo(Commit);
         await Assert.That(clone.AlwaysOfficialData.CarriedBrake).IsTrue();
+        await Assert.That(clone.AlwaysOfficialData.IsOfficial).IsTrue();
 
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output)) writer.WriteNode(clone);

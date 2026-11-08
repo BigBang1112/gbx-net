@@ -1408,6 +1408,22 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         Write((byte)(value >> 7));
     }
 
+#if !NET5_0_OR_GREATER
+    // BinaryWriter has this method publicly since .NET 5
+    internal void Write7BitEncodedInt64(long value)
+    {
+        var remaining = (ulong)value;
+
+        while (remaining > 0x7F)
+        {
+            Write((byte)(remaining | 0x80));
+            remaining >>= 7;
+        }
+
+        Write((byte)remaining);
+    }
+#endif
+
     public void WriteArrayOptimizedInt(int[]? value, int? determineFrom = null, bool hasLengthPrefix = true)
     {
         if (value is null || value.Length == 0)

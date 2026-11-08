@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnGhost
@@ -48,17 +46,15 @@ public partial class CGameCtnGhost
             CarriedAccelerate = 1 << 0,
             CarriedBrake = 1 << 1,
             HasRevision = 1 << 2,
-            HasGhostEnd = 1 << 3,
-            HasOfficialStart = 1 << 4,
-            HasOfficialEnd = 1 << 5,
+            HasRaceFinish = 1 << 3,
+            IsOfficial = 1 << 4,
         }
 
         private const Flags KnownFlags = Flags.CarriedAccelerate
             | Flags.CarriedBrake
             | Flags.HasRevision
-            | Flags.HasGhostEnd
-            | Flags.HasOfficialStart
-            | Flags.HasOfficialEnd;
+            | Flags.HasRaceFinish
+            | Flags.IsOfficial;
 
         private const int GitCommitSize = 20;
 
@@ -70,7 +66,10 @@ public partial class CGameCtnGhost
         /// <summary>
         /// Lowercase SHA-1 Git commit hash of the mod build, or null when the build didn't include one.
         /// </summary>
-        public string? GitCommit { get; private set; }
+        public string? GitCommit => gitCommit.All(static x => x == 0) ? null : ToHex(gitCommit);
+
+        // The raw bytes are written back as read
+        private byte[] gitCommit = new byte[GitCommitSize];
 
         /// <summary>
         /// Accelerate was carried over from the previous run instead of being pressed again.
@@ -83,34 +82,24 @@ public partial class CGameCtnGhost
         public bool CarriedBrake { get; private set; }
 
         /// <summary>
-        /// Real time when the ghost recording started.
+        /// The run entered official mode (<c>StartOfficialRecord</c>).
         /// </summary>
-        public DateTimeOffset GhostStartTimestamp { get; private set; }
+        public bool IsOfficial { get; private set; }
 
         /// <summary>
-        /// Real time when the run ended, if the ghost was saved after the end of the run.
+        /// Real time when the local player's race started (the Go transition), or null when the race didn't start.
         /// </summary>
-        public DateTimeOffset? GhostEndTimestamp { get; private set; }
+        public DateTimeOffset? RaceStartTimestamp { get; private set; }
 
         /// <summary>
-        /// Real time when official mode started (<c>StartOfficialRecord</c>).
+        /// Real time when the local player's final finish was accepted, or null when the run didn't finish.
         /// </summary>
-        public DateTimeOffset? OfficialStartTimestamp { get; private set; }
+        public DateTimeOffset? RaceFinishTimestamp { get; private set; }
 
         /// <summary>
-        /// Real time when official mode stopped (<c>StopOfficialRecord</c>).
+        /// Real time between <see cref="RaceStartTimestamp"/> and <see cref="RaceFinishTimestamp"/>.
         /// </summary>
-        public DateTimeOffset? OfficialEndTimestamp { get; private set; }
-
-        /// <summary>
-        /// Duration between <see cref="GhostStartTimestamp"/> and <see cref="GhostEndTimestamp"/>.
-        /// </summary>
-        public TimeSpan? GhostDuration => GhostEndTimestamp - GhostStartTimestamp;
-
-        /// <summary>
-        /// Duration between <see cref="OfficialStartTimestamp"/> and <see cref="OfficialEndTimestamp"/>.
-        /// </summary>
-        public TimeSpan? OfficialDuration => OfficialEndTimestamp - OfficialStartTimestamp;
+        public TimeSpan? RaceDuration => RaceFinishTimestamp - RaceStartTimestamp;
 
         private AlwaysOfficial() { }
 
@@ -131,18 +120,15 @@ public partial class CGameCtnGhost
                 ? new Version(major, minor, build, ReadVersionComponent(r))
                 : new Version(major, minor, build);
 
-            var gitCommit = r.ReadBytes(GitCommitSize);
-
             return new AlwaysOfficial
             {
                 ModVersion = modVersion,
-                GitCommit = gitCommit.All(static x => x == 0) ? null : ToHex(gitCommit),
+                gitCommit = r.ReadBytes(GitCommitSize),
                 CarriedAccelerate = (flags & Flags.CarriedAccelerate) != 0,
                 CarriedBrake = (flags & Flags.CarriedBrake) != 0,
-                GhostStartTimestamp = ReadTimestamp(r),
-                GhostEndTimestamp = (flags & Flags.HasGhostEnd) != 0 ? ReadTimestamp(r) : null,
-                OfficialStartTimestamp = (flags & Flags.HasOfficialStart) != 0 ? ReadTimestamp(r) : null,
-                OfficialEndTimestamp = (flags & Flags.HasOfficialEnd) != 0 ? ReadTimestamp(r) : null,
+                IsOfficial = (flags & Flags.IsOfficial) != 0,
+                RaceStartTimestamp = ReadTimestamp(r),
+                RaceFinishTimestamp = (flags & Flags.HasRaceFinish) != 0 ? ReadTimestamp(r) : null,
             };
         }
 
@@ -155,9 +141,8 @@ public partial class CGameCtnGhost
             if (CarriedAccelerate) flags |= Flags.CarriedAccelerate;
             if (CarriedBrake) flags |= Flags.CarriedBrake;
             if (revision != 0) flags |= Flags.HasRevision;
-            if (GhostEndTimestamp.HasValue) flags |= Flags.HasGhostEnd;
-            if (OfficialStartTimestamp.HasValue) flags |= Flags.HasOfficialStart;
-            if (OfficialEndTimestamp.HasValue) flags |= Flags.HasOfficialEnd;
+            if (RaceFinishTimestamp.HasValue) flags |= Flags.HasRaceFinish;
+            if (IsOfficial) flags |= Flags.IsOfficial;
 
             w.Write((byte)flags);
 
@@ -170,23 +155,13 @@ public partial class CGameCtnGhost
                 WriteVersionComponent(w, revision);
             }
 
-            w.Write(GitCommit is null ? new byte[GitCommitSize] : FromHex(GitCommit));
+            w.Write(gitCommit);
 
-            WriteTimestamp(w, GhostStartTimestamp);
+            WriteTimestamp(w, RaceStartTimestamp);
 
-            if (GhostEndTimestamp.HasValue)
+            if (RaceFinishTimestamp.HasValue)
             {
-                WriteTimestamp(w, GhostEndTimestamp.Value);
-            }
-
-            if (OfficialStartTimestamp.HasValue)
-            {
-                WriteTimestamp(w, OfficialStartTimestamp.Value);
-            }
-
-            if (OfficialEndTimestamp.HasValue)
-            {
-                WriteTimestamp(w, OfficialEndTimestamp.Value);
+                WriteTimestamp(w, RaceFinishTimestamp);
             }
         }
 
@@ -200,9 +175,9 @@ public partial class CGameCtnGhost
 
         private static int ReadVersionComponent(GbxReader r)
         {
-            var value = ReadUnsigned(r);
+            var value = r.Read7BitEncodedInt64();
 
-            if (value > ushort.MaxValue)
+            if (value is < 0 or > ushort.MaxValue)
             {
                 throw new InvalidDataException($"Always Official version component {value} is out of range.");
             }
@@ -217,70 +192,37 @@ public partial class CGameCtnGhost
                 throw new ArgumentOutOfRangeException(nameof(value), value, "Always Official version components must fit in 16 bits.");
             }
 
-            WriteUnsigned(w, (ulong)value);
+            w.Write7BitEncodedInt64(value);
         }
 
-        private static DateTimeOffset ReadTimestamp(GbxReader r)
+        // Zero stands for a missing timestamp
+        private static DateTimeOffset? ReadTimestamp(GbxReader r)
         {
-            return DateTimeOffset.FromUnixTimeMilliseconds(checked((long)ReadUnsigned(r)));
+            var milliseconds = r.Read7BitEncodedInt64();
+            return milliseconds == 0 ? null : DateTimeOffset.FromUnixTimeMilliseconds(milliseconds);
         }
 
-        private static void WriteTimestamp(GbxWriter w, DateTimeOffset value)
+        private static void WriteTimestamp(GbxWriter w, DateTimeOffset? value)
         {
-            var milliseconds = value.ToUnixTimeMilliseconds();
+            var milliseconds = value?.ToUnixTimeMilliseconds() ?? 0;
 
             if (milliseconds < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(value), value, "Always Official timestamps cannot precede the Unix epoch.");
             }
 
-            WriteUnsigned(w, (ulong)milliseconds);
-        }
-
-        // Unsigned LEB128, the same encoding as BinaryWriter.Write7BitEncodedInt64
-        private static ulong ReadUnsigned(GbxReader r)
-        {
-            var value = 0UL;
-
-            for (var shift = 0; shift < 64; shift += 7)
-            {
-                var b = r.ReadByte();
-                value |= (ulong)(b & 0x7F) << shift;
-
-                if ((b & 0x80) == 0)
-                {
-                    return value;
-                }
-            }
-
-            throw new InvalidDataException("Always Official variable-length integer is too long.");
-        }
-
-        private static void WriteUnsigned(GbxWriter w, ulong value)
-        {
-            do
-            {
-                var b = (byte)(value & 0x7F);
-                value >>= 7;
-                w.Write((byte)(b | (value != 0 ? 0x80 : 0)));
-            } while (value != 0);
+            w.Write7BitEncodedInt64(milliseconds);
         }
 
         private static string ToHex(byte[] bytes)
         {
+#if NET9_0_OR_GREATER
+            return Convert.ToHexStringLower(bytes);
+#elif NET5_0_OR_GREATER
+            return Convert.ToHexString(bytes).ToLowerInvariant();
+#else
             return string.Concat(bytes.Select(static x => x.ToString("x2")));
-        }
-
-        private static byte[] FromHex(string hex)
-        {
-            var bytes = new byte[GitCommitSize];
-
-            for (var i = 0; i < bytes.Length; i++)
-            {
-                bytes[i] = byte.Parse(hex.Substring(i * 2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
-            }
-
-            return bytes;
+#endif
         }
     }
 }

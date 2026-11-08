@@ -1362,6 +1362,27 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return (short)((b1 & 0x7F) | (b2 << 7));
     }
 
+#if !NET5_0_OR_GREATER
+    // BinaryReader has this method publicly since .NET 5
+    internal long Read7BitEncodedInt64()
+    {
+        var value = 0UL;
+
+        for (var shift = 0; shift < 70; shift += 7)
+        {
+            var b = ReadByte();
+            value |= (ulong)(b & 0x7F) << shift;
+
+            if ((b & 0x80) == 0)
+            {
+                return (long)value;
+            }
+        }
+
+        throw new FormatException("Too many bytes in what should have been a 7-bit encoded integer.");
+    }
+#endif
+
     public int[] ReadArrayOptimizedInt(int length, int? determineFrom = null)
     {
         if (length == 0)
