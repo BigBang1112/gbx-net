@@ -15,7 +15,7 @@ internal static class NodeBuilderWriter
         code.Open($"public abstract class {node.BuilderName}Base<TSelf> : NodeBuilder<{node.Layout.QualifiedName}, TSelf> where TSelf : {node.BuilderName}Base<TSelf>");
         code.Line($"private protected {node.BuilderName}Base() {{ }}");
         code.Line($"private protected {node.BuilderName}Base(NodeBuilderState<{node.Layout.QualifiedName}> state) : base(state) {{ }}");
-        var gameMasks = node.Members.Where(static m => m.Writable).GroupBy(GameMask)
+        var gameMasks = node.Members.Where(static m => m.Buildable).GroupBy(GameMask)
             .Where(static group => group.Count() > 1 || group.Any(static m => m.IsReference &&
                 m.Field?.StorageDeclaration.Type.ArrayDimensions == 0))
             .OrderBy(static group => group.Key, StringComparer.Ordinal)
@@ -24,7 +24,7 @@ internal static class NodeBuilderWriter
         foreach (var mask in gameMasks)
             code.Line($"private protected const GameVersion {mask.Value} = {mask.Key};");
         var referencedHelpers = ReferencedAssignmentHelpers(node, plan);
-        foreach (var member in node.Members.Where(static m => m.Writable))
+        foreach (var member in node.Members.Where(static m => m.Buildable))
         {
             if (referencedHelpers.Contains("Set" + member.Name))
                 code.Line($"private protected static void Set{member.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state, {member.Type} value) => {Assignment(member, "value", gameMasks)};");
@@ -123,7 +123,7 @@ internal static class NodeBuilderWriter
     // inherits the property.
     public static void WriteAssignments(SourceProductionContext context, GameVersionModel model)
     {
-        var owners = model.Nodes.Values.Where(static n => n.HasBuilder).SelectMany(static n => n.Members).Where(static m => m.Writable)
+        var owners = model.Nodes.Values.Where(static n => n.HasBuilder).SelectMany(static n => n.Members).Where(static m => m.Buildable)
             .GroupBy(static m => m.Owner).OrderBy(static g => g.Key.File.TypeKey, StringComparer.Ordinal);
         foreach (var owner in owners)
         {
@@ -244,7 +244,7 @@ internal static class NodeBuilderWriter
     {
         var stage = game.Length == 0 ? "TSelf" : game;
         var self = game.Length == 0 ? "(TSelf)this" : "this";
-        foreach (var member in (selectedMembers ?? node.MembersFor(game)).Where(static m => m.Writable))
+        foreach (var member in (selectedMembers ?? node.MembersFor(game)).Where(static m => m.Buildable))
         {
             if (game.Length > 0 && (node.IsCommon(member.Name) || inheritedMembers?.Contains(member) == true))
             {

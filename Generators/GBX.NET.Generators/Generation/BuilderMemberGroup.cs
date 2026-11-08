@@ -23,7 +23,7 @@ internal sealed class BuilderMemberGroup(List<GameMember> members)
             }
         }
 
-        var shareable = node.Members.Where(m => m.Writable && !common.Contains(m.Name) && !customized.Contains(m.Name)).ToList();
+        var shareable = node.Members.Where(m => m.Buildable && !common.Contains(m.Name) && !customized.Contains(m.Name)).ToList();
         var candidates = new Dictionary<string, BuilderMemberGroup>(StringComparer.Ordinal);
         foreach (var member in shareable)
         {
