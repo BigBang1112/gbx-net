@@ -23,7 +23,10 @@ public partial class Pak
             return false;
         }
 
-        using var stream = OpenFile(file, out var _);
+        // The magic only needs the IV and the first compressed block (at most 0x8092 bytes for LZ4),
+        // so avoid buffering whole entries when checking every file in a Pak.
+        var rawStream = GetRawFileStream(file, maxLength: 0x10000);
+        using var stream = DecodeFileStream(rawStream, file, out _);
         return global::GBX.NET.Gbx.IsGbx(stream);
     }
 }

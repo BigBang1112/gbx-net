@@ -24,6 +24,7 @@ public partial class Pak
     /// <param name="importExternalNodesFromRefTable"></param>
     /// <param name="fileHashes"></param>
     /// <returns></returns>
+    /// <remarks>With <see cref="BufferFilesAsync"/> enabled, the async version reads the Pak stream only asynchronously. External nodes imported from the reference table still load synchronously when they are accessed.</remarks>
     public global::GBX.NET.Gbx OpenGbxFile(global::GBX.NET.PAK.PakFile file, global::GBX.NET.GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, global::System.Collections.Generic.IDictionary<string, string>? fileHashes = default)
     {
         if (Version == 3 && settings.GameVersion == global::GBX.NET.GameVersion.Unspecified)
@@ -33,7 +34,8 @@ public partial class Pak
             settings = settings with { GameVersion = global::GBX.NET.GameVersion.TMF };
         }
 
-        using var stream = OpenFile(file, out var encryptionInitializer);
+        var rawStream = GetRawFileStream(file);
+        using var stream = DecodeFileStream(rawStream, file, out var encryptionInitializer);
 
         if (!file.DontUseDummyWrite)
         {

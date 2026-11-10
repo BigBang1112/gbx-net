@@ -109,6 +109,43 @@ public class PakParsingTests
         await Assert.That(Convert.ToHexString(actual)).IsEqualTo(Convert.ToHexString(Payload));
     }
 
+    [Test]
+    [Arguments(7, 0U, true, false, false)]
+    [Arguments(7, 0U, true, false, true)]
+    [Arguments(12, 5U, true, false, true)]
+    [Arguments(17, 7U, false, false, true)]
+    [Arguments(18, 7U, true, false, false)]
+    [Arguments(18, 7U, true, false, true)]
+    [Arguments(18, 0U, false, false, true)]
+    [Arguments(18, 2U, true, true, true)]
+    public async Task OpenFileAsync_ReadsData(int version, uint headerFlags, bool salted, bool publicFile, bool bufferFiles)
+    {
+        var key = (headerFlags & 4) != 0 ? EncryptionKey : null;
+        await using var stream = CreatePak(version, headerFlags, salted, publicFile);
+        await using var pak = await Pak.ParseAsync(stream, key, KeyType.EncryptionKey);
+        pak.BufferFilesAsync = bufferFiles;
+
+        await using var data = await pak.OpenFileAsync(pak.Files["Test.bin"]);
+        var actual = new byte[Payload.Length];
+        await data.ReadExactlyAsync(actual);
+
+        await Assert.That(Convert.ToHexString(actual)).IsEqualTo(Convert.ToHexString(Payload));
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task CheckFileIsGbxAsync_NonGbx_ReturnsFalse(bool bufferFiles)
+    {
+        await using var stream = CreatePak(18, headerFlags: 7, salted: true, publicFile: false);
+        await using var pak = await Pak.ParseAsync(stream, EncryptionKey, KeyType.EncryptionKey);
+        pak.BufferFilesAsync = bufferFiles;
+
+        var isGbx = await pak.CheckFileIsGbxAsync(pak.Files["Test.bin"]);
+
+        await Assert.That(isGbx).IsFalse();
+    }
+
     private static MemoryStream CreatePak(int version, uint headerFlags, bool salted, bool publicFile)
     {
         var stream = new MemoryStream();

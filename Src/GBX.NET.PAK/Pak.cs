@@ -68,6 +68,11 @@ public partial class Pak : IDisposable
 
     public ImmutableDictionary<string, PakFile> Files { get; private set; } = ImmutableDictionary<string, PakFile>.Empty;
 
+    /// <summary>
+    /// If <see langword="true"/>, <see cref="OpenFileAsync"/>, <see cref="OpenGbxFileAsync"/>, and <see cref="CheckFileIsGbxAsync"/> read the stored file data asynchronously into memory before decrypting and decompressing it. Enable this for streams that don't support synchronous reads. Default is <see langword="false"/>, which reads directly from the Pak stream.
+    /// </summary>
+    public bool BufferFilesAsync { get; set; }
+
     protected Pak(Stream stream, byte[]? key, int version)
     {
         this.stream = stream;
@@ -394,7 +399,33 @@ public partial class Pak : IDisposable
         }
     }
 
+    public Stream OpenFile(PakFile file) => OpenFile(file, out _);
+
     public Stream OpenFile(PakFile file, out EncryptionInitializer? encryptionInitializer)
+    {
+        return DecodeFileStream(GetRawFileStream(file), file, out encryptionInitializer);
+    }
+
+    /// <summary>
+    /// Opens the file data. With <see cref="BufferFilesAsync"/> enabled, the Pak stream is read only asynchronously, so it also works with streams that don't support synchronous reads.
+    /// </summary>
+    /// <param name="file">File in this Pak.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task. The task result contains the decrypted and decompressed file data.</returns>
+    /// <remarks>With <see cref="BufferFilesAsync"/> enabled, the stored file data is read into memory first. Decryption and decompression then run over that copy, because dummy writes can change the cipher state while a Gbx is parsed.</remarks>
+    public async Task<Stream> OpenFileAsync(PakFile file, CancellationToken cancellationToken = default)
+    {
+        var rawStream = await GetRawFileStreamAsync(file, cancellationToken: cancellationToken);
+        return DecodeFileStream(rawStream, file, out _);
+    }
+
+    /// <summary>
+    /// Moves the shared Pak stream to the file data as stored in the Pak (IV, then encrypted and compressed data) and returns it.
+    /// </summary>
+    /// <param name="file">File in this Pak.</param>
+    /// <param name="maxLength">Number of raw bytes the caller needs at most. Only <see cref="GetRawFileStreamAsync"/> uses it, when buffering.</param>
+    /// <returns>The Pak stream itself, not a new stream.</returns>
+    private Stream GetRawFileStream(PakFile file, int maxLength = int.MaxValue)
     {
         if (HeaderMaxSize is null)
         {
@@ -403,46 +434,88 @@ public partial class Pak : IDisposable
 
         stream.Position = HeaderMaxSize.Value + file.Offset;
 
-        var newStream = stream;
-
-        if (file.IsEncrypted && IsDataEncrypted)
-        {
-            var ivBuffer = new byte[8];
-            stream.ReadExactly(ivBuffer);
-            var iv = BitConverter.ToUInt64(ivBuffer, 0);
-
-            if (key is null && IsDataPrivate)
-            {
-                throw new Exception("Encryption key is missing");
-            }
-
-            var keyForData = key is null ? new byte[16] : (byte[])key.Clone();
-            ApplyKeySalt(keyForData);
-
-            var blowfish = new BlowfishStream(newStream, keyForData, iv, Version, counterMode: file.UsesCounterMode && Version >= 11);
-
-            encryptionInitializer = new EncryptionInitializer(blowfish, Version);
-
-            newStream = blowfish;
-        }
-        else
-        {
-            encryptionInitializer = null;
-        }
-
-        if (file.IsCompressed)
-        {
-            newStream = Version >= 18 ? 
-                new LZ4Stream(newStream, file.UncompressedSize) : 
-                new NativeZlibStream(newStream, CompressionMode.Decompress, leaveOpen: true);
-        }
-
-        // Only wrap in NonDisposingStream when newStream IS the underlying pak stream (no wrappers
-        // created). BlowfishStream and LZ4Stream do not propagate Dispose to their inner streams,
-        // so returning them directly lets the caller properly dispose any unmanaged resources (e.g.
-        // the Marshal.AllocHGlobal buffers inside LZ4Stream) without ever touching the pak stream.
-        return ReferenceEquals(newStream, stream) ? new NonDisposingStream(newStream) : newStream;
+        return stream;
     }
+
+    /// <summary>
+    /// Same as <see cref="GetRawFileStream"/>, unless <see cref="BufferFilesAsync"/> is enabled. Then the stored file data is read asynchronously and returned as a new in-memory stream.
+    /// </summary>
+    private async Task<Stream> GetRawFileStreamAsync(PakFile file, int maxLength = int.MaxValue, CancellationToken cancellationToken = default)
+    {
+        var rawStream = GetRawFileStream(file);
+
+        if (!BufferFilesAsync)
+        {
+            return rawStream;
+        }
+
+        var rawData = new byte[Math.Min(GetRawFileSize(file), maxLength)];
+        var count = await rawStream.ReadAtLeastAsync(rawData, rawData.Length, throwOnEndOfStream: false, cancellationToken);
+
+        return new MemoryStream(rawData, 0, count, writable: false);
+    }
+
+    private bool HasEncryptedData(PakFile file) => file.IsEncrypted && IsDataEncrypted;
+
+    private int GetRawFileSize(PakFile file)
+    {
+        var size = file.IsCompressed ? file.CompressedSize : file.UncompressedSize;
+
+        // Encrypted data starts with the 8-byte IV and is padded to whole Blowfish blocks.
+        // Archives align the following entry further, so this doesn't read into it.
+        return HasEncryptedData(file) ? 8 + (size + 7) / 8 * 8 : size;
+    }
+
+    /// <summary>
+    /// Wraps the raw file data with decryption and decompression as needed.
+    /// </summary>
+    /// <param name="rawStream">Raw file data, from <see cref="GetRawFileStream"/> or <see cref="GetRawFileStreamAsync"/>.</param>
+    /// <param name="file">File in this Pak.</param>
+    /// <param name="encryptionInitializer">Cipher state for dummy writes, or <see langword="null"/> if the data isn't encrypted.</param>
+    /// <returns>Decrypted and decompressed file data. Disposing it never disposes the Pak stream.</returns>
+    private Stream DecodeFileStream(Stream rawStream, PakFile file, out EncryptionInitializer? encryptionInitializer)
+    {
+        var decryptedStream = rawStream;
+        encryptionInitializer = null;
+
+        if (HasEncryptedData(file))
+        {
+            var blowfish = CreateDecryptionStream(rawStream, file);
+            encryptionInitializer = new EncryptionInitializer(blowfish, Version);
+            decryptedStream = blowfish;
+        }
+
+        var decodedStream = file.IsCompressed
+            ? CreateDecompressionStream(decryptedStream, file)
+            : decryptedStream;
+
+        // None of the wrappers dispose the stream they wrap. That frees their own resources
+        // (such as LZ4Stream's unmanaged buffers) when the caller disposes them. Without any
+        // wrapper, protect the shared Pak stream.
+        return decodedStream == stream ? new NonDisposingStream(decodedStream) : decodedStream;
+    }
+
+    private BlowfishStream CreateDecryptionStream(Stream encryptedStream, PakFile file)
+    {
+        if (key is null && IsDataPrivate)
+        {
+            throw new Exception("Encryption key is missing");
+        }
+
+        // The IV precedes the encrypted data.
+        var ivBuffer = new byte[8];
+        encryptedStream.ReadExactly(ivBuffer);
+        var iv = BitConverter.ToUInt64(ivBuffer, 0);
+
+        var keyForData = key is null ? new byte[16] : (byte[])key.Clone();
+        ApplyKeySalt(keyForData);
+
+        return new BlowfishStream(encryptedStream, keyForData, iv, Version, counterMode: file.UsesCounterMode && Version >= 11);
+    }
+
+    private Stream CreateDecompressionStream(Stream compressedStream, PakFile file) => Version >= 18
+        ? new LZ4Stream(compressedStream, file.UncompressedSize)
+        : new NativeZlibStream(compressedStream, CompressionMode.Decompress, leaveOpen: true);
 
     /// <summary>
     /// Attempts to open the Gbx file from Pak. If the file is not a Gbx file, <see cref="global::GBX.NET.Exceptions.NotAGbxException"/> is thrown.
@@ -453,6 +526,7 @@ public partial class Pak : IDisposable
     /// <param name="fileHashes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
+    /// <remarks>With <see cref="BufferFilesAsync"/> enabled, the async version reads the Pak stream only asynchronously. External nodes imported from the reference table still load synchronously when they are accessed.</remarks>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, IDictionary<string, string>? fileHashes = default, CancellationToken cancellationToken = default)
     {
@@ -463,7 +537,8 @@ public partial class Pak : IDisposable
             settings = settings with { GameVersion = GameVersion.TMF };
         }
 
-        using var stream = OpenFile(file, out var encryptionInitializer);
+        var rawStream = await GetRawFileStreamAsync(file, cancellationToken: cancellationToken);
+        using var stream = DecodeFileStream(rawStream, file, out var encryptionInitializer);
 
         if (!file.DontUseDummyWrite)
         {
@@ -539,7 +614,10 @@ public partial class Pak : IDisposable
             return false;
         }
 
-        using var stream = OpenFile(file, out var _);
+        // The magic only needs the IV and the first compressed block (at most 0x8092 bytes for LZ4),
+        // so avoid buffering whole entries when checking every file in a Pak.
+        var rawStream = await GetRawFileStreamAsync(file, maxLength: 0x10000, cancellationToken);
+        using var stream = DecodeFileStream(rawStream, file, out _);
         return await Gbx.IsGbxAsync(stream, cancellationToken);
     }
 
