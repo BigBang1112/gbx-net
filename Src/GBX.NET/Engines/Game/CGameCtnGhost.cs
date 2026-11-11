@@ -1,4 +1,4 @@
-using GBX.NET.Inputs;
+﻿using GBX.NET.Inputs;
 using System.Buffers.Binary;
 using System.Collections.Immutable;
 
@@ -112,6 +112,199 @@ public partial class CGameCtnGhost
             }
 
             yield return input;
+        }
+    }
+    
+    /// <summary>
+    /// Retrieves inputs from <see cref="Inputs"/> that are used for simulation. Converts binary steer to analog.
+    /// Currently it only makes a difference with Competition Patch 2 features when replayed by TMInterface.
+    /// </summary>
+    /// <returns>Simulatable inputs as IEnumerable.</returns>
+    public IEnumerable<IInput> GetSimulationInputs()
+    {
+        int start = 0;
+
+        bool stateLeft = false;
+        bool stateRight = false;
+        int stateSteer = 0;
+        int nextStateSteer = 0;
+
+        TimeInt32 kbTime = TimeInt32.Zero;
+        TimeInt32 steerTime = TimeInt32.Zero;
+        TimeInt32 lastCeilingTime = TimeInt32.Zero;
+        
+        Steer? nextSteer = null;
+        SteerLeft? nextSteerLeft = null;
+        SteerRight? nextSteerRight = null;
+
+        foreach (var input in inputs)
+        {
+            if (input is FakeIsRaceRunning)
+            {
+                start = input.Time.TotalMilliseconds;
+            }
+
+            var time = input.Time.TotalMilliseconds - start;
+            var ceilingTime = TimeInt32.FromMilliseconds((time + 9) / 10 * 10);
+
+            if (ceilingTime > lastCeilingTime)
+            {
+                int? updateSteer = null;
+                if (steerTime > kbTime || (steerTime == kbTime && !stateLeft && !stateRight && Math.Abs(nextStateSteer) > 6553))
+                {
+                    if (nextSteer != null)
+                    {
+                        updateSteer = nextStateSteer;
+                    }
+                }
+                else
+                {
+                    if (nextSteerLeft != null)
+                    {
+                        if (nextSteerLeft.Value.Pressed)
+                        {
+                            updateSteer = -65536;
+                        }
+                        else if (stateRight)
+                        {
+                            updateSteer = 65536;
+                        }
+                        else
+                        {
+                            updateSteer = 0;
+                        }
+                    }
+                    else if (nextSteerRight != null)
+                    {
+                        if (stateLeft)
+                        {
+                            updateSteer = -65536;
+                        }
+                        else
+                        {
+                            if (nextSteerRight.Value.Pressed)
+                            {
+                                updateSteer = 65536;
+                            }
+                            else
+                            {
+                                updateSteer = 0;
+                            }
+                        }
+                    }
+                }
+                
+                if (updateSteer != null && updateSteer.Value != stateSteer)
+                {
+                    stateSteer = updateSteer.Value;
+                    yield return new Steer(lastCeilingTime, stateSteer);
+                }
+
+                nextSteer = null;
+                nextSteerLeft = null;
+                nextSteerRight = null;
+            }
+
+            switch (input) {
+                case FakeDontInverseAxis fakeDontInverseAxis:
+                    yield return fakeDontInverseAxis with { Time = ceilingTime };
+                    break;
+                case FakeIsRaceRunning fakeIsRaceRunning:
+                    yield return fakeIsRaceRunning with { Time = ceilingTime };
+                    break;
+                case Accelerate accelerate:
+                    yield return accelerate with { Time = ceilingTime };
+                    break;
+                case AccelerateReal accelerateReal:
+                    yield return accelerateReal with { Time = ceilingTime };
+                    break;
+                case Brake brake:
+                    yield return brake with { Time = ceilingTime };
+                    break;
+                case BrakeReal brakeReal:
+                    yield return brakeReal with { Time = ceilingTime };
+                    break;
+                case Gas gas:
+                    yield return gas with { Time = ceilingTime };
+                    break;
+                case Horn horn:
+                    yield return horn with { Time = ceilingTime };
+                    break;
+                case Respawn respawn:
+                    yield return respawn with { Time = ceilingTime };
+                    break;
+                case FakeFinishLine fakeFinishLine:
+                    yield return fakeFinishLine with { Time = ceilingTime };
+                    break;
+                case Steer steer:
+                    nextSteer = steer;
+                    steerTime = input.Time;
+                    nextStateSteer = steer.Value;
+                    break;
+                case SteerLeft steerLeft:
+                    nextSteerLeft = steerLeft;
+                    kbTime = input.Time;
+                    stateLeft = steerLeft.Pressed;
+                    break;
+                case SteerRight steerRight:
+                    nextSteerRight = steerRight;
+                    kbTime = input.Time;
+                    stateRight = steerRight.Pressed;
+                    break;
+            };
+
+            lastCeilingTime = ceilingTime;
+        }
+        
+        int? updateSteerLast = null;
+        if (steerTime > kbTime || (steerTime == kbTime && !stateLeft && !stateRight && Math.Abs(nextStateSteer) > 6553))
+        {
+            if (nextSteer != null)
+            {
+                updateSteerLast = nextStateSteer;
+            }
+        }
+        else
+        {
+            if (nextSteerLeft != null)
+            {
+                if (nextSteerLeft.Value.Pressed)
+                {
+                    updateSteerLast = -65536;
+                }
+                else if (stateRight)
+                {
+                    updateSteerLast = 65536;
+                }
+                else
+                {
+                    updateSteerLast = 0;
+                }
+            }
+            else if (nextSteerRight != null)
+            {
+                if (stateLeft)
+                {
+                    updateSteerLast = -65536;
+                }
+                else
+                {
+                    if (nextSteerRight.Value.Pressed)
+                    {
+                        updateSteerLast = 65536;
+                    }
+                    else
+                    {
+                        updateSteerLast = 0;
+                    }
+                }
+            }
+        }
+        
+        if (updateSteerLast != null && updateSteerLast.Value != stateSteer)
+        {
+            stateSteer = updateSteerLast.Value;
+            yield return new Steer(lastCeilingTime, stateSteer);
         }
     }
 
