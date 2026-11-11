@@ -135,7 +135,7 @@ public class CGameItemModelChunkTests
         using var rw = new GbxReaderWriter(writer);
         var node = new CGameItemModel { ItemType = CGameItemModel.EItemType.Block };
 
-        var exception = Assert.Throws<Exception>(() => new CGameItemModel.Chunk2E002019 { Version = 8 }.ReadWrite(node, rw));
+        var exception = Assert.Throws<InvalidDataException>(() => new CGameItemModel.Chunk2E002019 { Version = 8 }.ReadWrite(node, rw));
         await Assert.That(exception.Message).IsEqualTo("EntityModel cannot exist for Block");
     }
 

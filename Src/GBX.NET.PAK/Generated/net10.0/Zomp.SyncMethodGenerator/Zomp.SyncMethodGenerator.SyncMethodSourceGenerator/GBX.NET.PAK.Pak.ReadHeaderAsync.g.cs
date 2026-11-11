@@ -35,7 +35,7 @@ public partial class Pak
         {
             if (key is null)
             {
-                throw new global::System.Exception("Key is required for header decryption.");
+                throw new global::GBX.NET.Exceptions.ThisShouldNotHappenException("Key is required for header decryption.");
             }
 
             global::System.Array.Copy(key, keyForHeader, 16);

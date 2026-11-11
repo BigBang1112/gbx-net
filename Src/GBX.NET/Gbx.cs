@@ -563,11 +563,11 @@ public partial class Gbx : IGbx
         }
         else if (Header is GbxHeaderUnknown)
         {
-            throw new Exception("Gbx has an unknown header with a null Node, cannot write body. Set the ReadRawBody (in read setting) to true to fix this problem.");
+            throw new InvalidOperationException("Gbx has an unknown header with a null Node, cannot write body. Set the ReadRawBody (in read setting) to true to fix this problem.");
         }
         else
         {
-            throw new Exception("Node cannot be null for a known header, as the node contains the header chunk definitions.");
+            throw new InvalidOperationException("Node cannot be null for a known header, as the node contains the header chunk definitions.");
         }
 
         logger?.LogDebug("Number of nodes: {NumNodes}", numNodes);
@@ -957,7 +957,7 @@ public class Gbx<
     /// <summary>
     /// Main typed node of the Gbx.
     /// </summary>
-    public new T Node => (T)(base.Node ?? throw new Exception("Null node is not expected here."));
+    public new T Node => (T)(base.Node ?? throw new MemberNullException(nameof(Node)));
 
 	/// <summary>
 	/// Typed header of the Gbx.

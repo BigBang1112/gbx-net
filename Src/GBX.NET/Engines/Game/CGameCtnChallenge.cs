@@ -415,7 +415,7 @@ public partial class CGameCtnChallenge :
 
     public string GetEnvironment()
     {
-        return Collection ?? throw new Exception("Environment not available");
+        return Collection ?? throw new MemberNullException(nameof(Collection));
     }
 
     public IEnumerable<CGameCtnBlock> GetBlocks()
@@ -437,7 +437,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         var ms = new MemoryStream(EmbeddedZipData);
@@ -514,7 +514,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         using var ms = new MemoryStream(EmbeddedZipData);
@@ -525,7 +525,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         using var ms = new MemoryStream(EmbeddedZipData);
@@ -576,7 +576,7 @@ public partial class CGameCtnChallenge :
             toHash = $"0x{hex.ToString()}???{MapUid}";
         }
 
-        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new Exception("CRC32 is not imported (ICrc32).");
+        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new InvalidOperationException("CRC32 is not defined. Set 'Gbx.CRC32' to an ICrc32 implementation to fix this problem.");
 
         static void TryHex(ReadOnlySpan<byte> value, Span<char> chars)
         {

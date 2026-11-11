@@ -7,7 +7,7 @@ namespace GBX.NET.Serialization;
 
 internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCompression compression)
 {
-    private readonly GbxReader reader = readerWriter.Reader ?? throw new Exception("Reader is required but not available.");
+    private readonly GbxReader reader = readerWriter.Reader ?? throw new ArgumentException("Reader is required but not available.", nameof(readerWriter));
     private readonly ILogger? logger = readerWriter.Reader?.Settings.Logger;
 
     private GbxReadSettings Settings => reader.Settings;
@@ -88,7 +88,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
         var maxUncompressedSize = settings.MaxUncompressedBodySize ?? GbxReader.MaxDataSize;
         if (uncompressedSize > maxUncompressedSize)
         {
-            throw new Exception($"Uncompressed body size {uncompressedSize} exceeds maximum allowed size {maxUncompressedSize}.");
+            throw new LengthLimitException($"Uncompressed body size {uncompressedSize} exceeds maximum allowed size {maxUncompressedSize}.");
         }
     }
 
@@ -98,7 +98,7 @@ internal sealed partial class GbxBodyReader(GbxReaderWriter readerWriter, GbxCom
 
         if (compressedSize > maxCompressedSize)
         {
-            throw new Exception($"Compressed body size {compressedSize} exceeds maximum allowed size {maxCompressedSize}.");
+            throw new LengthLimitException($"Compressed body size {compressedSize} exceeds maximum allowed size {maxCompressedSize}.");
         }
     }
 

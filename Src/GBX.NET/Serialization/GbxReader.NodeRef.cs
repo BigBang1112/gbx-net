@@ -78,7 +78,7 @@ public partial class GbxReader
             }
         }
 
-        var node = ClassManager.New(classId, Settings.GameVersion) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = ClassManager.New(classId, Settings.GameVersion) ?? throw new ClassNotSupportedException(classId);
 
         if (index.HasValue)
         {

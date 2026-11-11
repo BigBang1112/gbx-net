@@ -384,7 +384,7 @@ public partial class CGameCtnGhost
 
             if (n.HasInputs >= 1)
             {
-                throw new Exception("Inputs stored separately");
+                throw new NotSupportedException("Inputs stored separately are not supported.");
             }
 
             rw.String(ref n.validate_ExeVersion);

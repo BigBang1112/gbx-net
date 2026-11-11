@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Exceptions;
 
 [Serializable]
-public class FormatNotSupportedException : Exception
+public class FormatNotSupportedException : NotSupportedException
 {
     public FormatNotSupportedException(GbxFormat format) : base($"Unsupported format: {format}") { }
     public FormatNotSupportedException() : base("Unsupported format.") { }

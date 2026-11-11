@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Exceptions;
 
 [Serializable]
-public class VersionNotSupportedException : Exception
+public class VersionNotSupportedException : NotSupportedException
 {
 	public int Version { get; init; }
 

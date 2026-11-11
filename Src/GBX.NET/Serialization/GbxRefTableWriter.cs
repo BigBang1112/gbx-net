@@ -44,7 +44,7 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
                 continue;
             }
 
-            var dir = root.InsertPath(parts, 0) ?? throw new Exception("Failed to insert path into directory tree");
+            var dir = root.InsertPath(parts, 0) ?? throw new ThisShouldNotHappenException("Failed to insert path into directory tree.");
 
             fileDirDict[file] = dir;
         }
@@ -127,7 +127,7 @@ internal sealed class GbxRefTableWriter(GbxRefTable refTable, GbxHeader header, 
                 continue;
             }
 
-            var dir = root.InsertPath(parts, 0) ?? throw new Exception("Failed to insert path into directory tree");
+            var dir = root.InsertPath(parts, 0) ?? throw new ThisShouldNotHappenException("Failed to insert path into directory tree.");
 
             fileDirDict[file] = dir;
         }

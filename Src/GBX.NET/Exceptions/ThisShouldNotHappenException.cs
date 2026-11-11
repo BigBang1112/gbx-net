@@ -3,7 +3,7 @@
 /// <summary>
 /// The exception that is thrown when a hypothetically impossible state is detected.
 /// </summary>
-public class ThisShouldNotHappenException : Exception
+public class ThisShouldNotHappenException : InvalidOperationException
 {
     public ThisShouldNotHappenException() : base("This should not happen.")
     {

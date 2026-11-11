@@ -203,7 +203,7 @@ public partial class Pak : IDisposable
         {
             if (key is null)
             {
-                throw new Exception("Key is required for header decryption.");
+                throw new ThisShouldNotHappenException("Key is required for header decryption.");
             }
 
             Array.Copy(key, keyForHeader, 16);
@@ -429,7 +429,7 @@ public partial class Pak : IDisposable
     {
         if (HeaderMaxSize is null)
         {
-            throw new Exception("Cannot open file.");
+            throw new InvalidOperationException("Cannot open file because the Pak header was not read. A key may be required.");
         }
 
         stream.Position = HeaderMaxSize.Value + file.Offset;
@@ -499,7 +499,7 @@ public partial class Pak : IDisposable
     {
         if (key is null && IsDataPrivate)
         {
-            throw new Exception("Encryption key is missing");
+            throw new InvalidOperationException("Encryption key is missing.");
         }
 
         // The IV precedes the encrypted data.

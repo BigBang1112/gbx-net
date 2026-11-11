@@ -33,7 +33,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
         else
         {
             logger?.LogInformation("Known class!");
-            WriteKnownHeaderUserData(node ?? throw new Exception("Node cannot be null for a known header, as it contains the header chunk instances."));
+            WriteKnownHeaderUserData(node ?? throw new InvalidOperationException("Node cannot be null for a known header, as it contains the header chunk instances."));
         }
 
         // NumNodes is handled elsewhere as unknown header doesnt change it while known header needs to first count it when writing body
@@ -132,7 +132,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
 
             if (chunk.Node is null)
             {
-                throw new Exception("Node cannot be null for an unknown header on a known header chunk.");
+                throw new InvalidOperationException("Node cannot be null for an unknown header on a known header chunk.");
             }
 
             var chunkStartPos = concatenatedDataMs.Position;
@@ -258,7 +258,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 writable.Write(node, rw.Writer!);
                 break;
             default:
-                throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
+                throw new ChunkNotSupportedException(chunk.Id);
         }
     }
 }

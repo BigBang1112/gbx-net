@@ -1310,7 +1310,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (readableWritable is null)
         {
-            throw new Exception("Archive cannot be null if zlib data was parsed.");
+            throw new ArgumentNullException(nameof(readableWritable), "Archive cannot be null if zlib data was parsed.");
         }
 
         using var uncompressedStream = new MemoryStream();
@@ -1339,7 +1339,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 
         if (writable is null)
         {
-            throw new Exception("Archive cannot be null if zlib data was parsed.");
+            throw new ArgumentNullException(nameof(writable), "Archive cannot be null if zlib data was parsed.");
         }
 
         using var uncompressedStream = new MemoryStream();

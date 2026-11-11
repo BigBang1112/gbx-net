@@ -15,6 +15,6 @@ internal sealed class HeaderChunkSet : ChunkSet<IHeaderChunk>, IHeaderChunkSet
 
     protected override IHeaderChunk New(uint chunkId, bool preferHeaderChunks)
     {
-        return ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Chunk 0x{chunkId:X8} is not supported.");
+        return ClassManager.NewHeaderChunk(chunkId) ?? throw new ChunkNotSupportedException(chunkId);
     }
 }

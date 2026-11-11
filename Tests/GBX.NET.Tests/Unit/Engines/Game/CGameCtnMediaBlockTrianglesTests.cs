@@ -11,7 +11,7 @@ public class CGameCtnMediaBlockTrianglesTests
         var block = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[3] };
         block.Triangles = [new Int3(0, 1, 2)];
 
-        Assert.Throws<Exception>(() => block.Triangles = [new Int3(0, 1, 3)]);
+        Assert.Throws<ArgumentException>(() => block.Triangles = [new Int3(0, 1, 3)]);
 
         await Assert.That(block.Triangles).IsEquivalentTo(new[] { new Int3(0, 1, 2) }, CollectionOrdering.Matching);
     }

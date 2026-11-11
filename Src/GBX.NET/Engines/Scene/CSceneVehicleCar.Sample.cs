@@ -497,7 +497,7 @@ public partial class CSceneVehicleCar
 
                             if (unavailableVal2 != 0)
                             {
-                                throw new Exception();
+                                throw new NotSupportedException($"Nonzero value 0x{unavailableVal2:X8} after dirt blend is not supported.");
                             }
 
                             // damage amount
@@ -576,7 +576,7 @@ public partial class CSceneVehicleCar
 
             if (r.BaseStream.Position != r.BaseStream.Length)
             {
-                throw new Exception("Not all bytes were read");
+                throw new InvalidDataException("Not all bytes were read.");
             }
         }
 

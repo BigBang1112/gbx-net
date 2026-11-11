@@ -139,7 +139,7 @@ CGameItemModel 0x2E002000
     CMwNod EntityModelEdition // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
     if n.References.EntityModelEdition.Kind == NodeRefKind.None
       if ItemType == EItemType.Block
-        throw (type: Exception, message: EntityModel cannot exist for Block)
+        throw (type: InvalidDataException, message: EntityModel cannot exist for Block)
       CMwNod EntityModel
   v13+
     CPlugVFXFile VFX

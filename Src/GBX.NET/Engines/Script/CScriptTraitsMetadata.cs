@@ -209,7 +209,7 @@ public partial class CScriptTraitsMetadata
     {
         if (type is not ScriptArrayType arrayType)
         {
-            throw new Exception("EScriptType.Array not matching ScriptArrayType");
+            throw new ArgumentException("EScriptType.Array not matching ScriptArrayType.", nameof(type));
         }
 
         var arrayFieldCount = noContent ? 0 : (version >= 1 ? r.ReadSmallLen() : r.ReadInt32());
@@ -287,7 +287,7 @@ public partial class CScriptTraitsMetadata
 
         if (type is not ScriptStructType structType)
         {
-            throw new Exception("EScriptType.Struct not matching ScriptStructType");
+            throw new ArgumentException("EScriptType.Struct not matching ScriptStructType.", nameof(type));
         }
 
         var dictionary = new Dictionary<string, ScriptTrait>(structType.Members.Count);

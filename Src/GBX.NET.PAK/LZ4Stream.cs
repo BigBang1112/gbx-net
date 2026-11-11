@@ -128,7 +128,7 @@ internal partial class LZ4Stream : Stream
         Marshal.Copy(LZ4_DICTIONARY, 0, dictionary, LZ4_DICTIONARY.Length);
         lz4_stream = LZ4_createStreamDecode();
         if (LZ4_setStreamDecode(lz4_stream, dictionary, LZ4_DICTIONARY.Length) != 1)
-            throw new Exception("LZ4_setStreamDecode failed.");
+            throw new LZ4Exception("LZ4_setStreamDecode failed.");
 
         ringBuffer = Marshal.AllocHGlobal(RING_BUFFER_SIZE);
     }

@@ -220,7 +220,7 @@ public partial class CPlugSolid2Model
 
                                                                                 if (U11 > 0)
                                                                                 {
-                                                                                    throw new Exception("U18 > 0");
+                                                                                    throw new NotSupportedException("U11 > 0 is not supported.");
                                                                                 }
 
                                                                                 rw.Array<int>(ref U12);
@@ -245,7 +245,7 @@ public partial class CPlugSolid2Model
 
                                                                                                 if (U18 > 0)
                                                                                                 {
-                                                                                                    throw new Exception("U25 > 0");
+                                                                                                    throw new NotSupportedException("U18 > 0 is not supported.");
                                                                                                 }
 
                                                                                                 if (Version >= 33)

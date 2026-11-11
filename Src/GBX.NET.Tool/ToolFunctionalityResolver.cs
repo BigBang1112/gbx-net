@@ -34,7 +34,7 @@ public sealed class ToolFunctionalityResolver<[DynamicallyAccessedMembers(Dynami
 
         if (ctors.Length == 0)
         {
-            throw new Exception("No public constructors found.");
+            throw new InvalidOperationException($"{typeof(T).Name} has no public constructors.");
         }
 
         if (logger.IsEnabled(LogLevel.Information))

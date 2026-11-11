@@ -1136,7 +1136,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var classId = ClassManager.Wrap(rawClassId);
 
-        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = ClassManager.New(classId) ?? throw new ClassNotSupportedException(classId);
 
         if (node is not T metaNod)
         {
@@ -1281,7 +1281,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (!actual.SequenceEqual(expected))
         {
-            throw new Exception($"Invalid marker: expected '{value}', got '{encoding.GetString(actual)}'");
+            throw new InvalidDataException($"Invalid marker: expected '{value}', got '{encoding.GetString(actual)}'");
         }
     }
 
@@ -1305,7 +1305,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (uncompressedSize != rBuffer.BaseStream.Position)
             {
-                throw new Exception($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
+                throw new InvalidDataException($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
             }
 
             return new ZlibData(uncompressedSize, data, exception: null) { Parsed = true };
@@ -1329,7 +1329,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (uncompressedSize != rBuffer.BaseStream.Position)
             {
-                throw new Exception($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
+                throw new InvalidDataException($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
             }
 
             return new ZlibData(uncompressedSize, data, exception: null) { Parsed = true };
@@ -1868,7 +1868,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (endPos - startPos != size)
         {
-            throw new Exception($"Encapsulation size mismatch: expected {size} bytes, but read {endPos - startPos} bytes.");
+            throw new InvalidDataException($"Encapsulation size mismatch: expected {size} bytes, but read {endPos - startPos} bytes.");
         }
     }
 
@@ -2004,7 +2004,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             {
                 if (base.ReadByte() != 0x0A)
                 {
-                    throw new Exception("Invalid string format.");
+                    throw new InvalidDataException("Invalid string format.");
                 }
 
                 return sb.ToString();
@@ -2013,7 +2013,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             sb.Append((char)b);
         }
 
-        throw new Exception("String is too long.");
+        throw new LengthLimitException("String is too long.");
     }
 
     protected override void Dispose(bool disposing)

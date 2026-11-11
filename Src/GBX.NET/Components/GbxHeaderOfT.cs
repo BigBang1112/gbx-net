@@ -12,7 +12,7 @@ public sealed class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader(basic) where 
 #if NET8_0_OR_GREATER
         T.Id;
 #else
-        classId ??= ClassManager.GetId<T>() ?? throw new Exception("Class ID not available");
+        classId ??= ClassManager.GetId<T>() ?? throw new InvalidOperationException($"Class ID of {typeof(T).Name} is not available.");
 #endif
 
 #if NETSTANDARD2_0

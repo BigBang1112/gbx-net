@@ -44,7 +44,7 @@ public partial class CGameCtnGhost
                 0 => EStart.NotStarted,
                 1 => EStart.Character,
                 2 or 3 or 4 => EStart.Vehicle,
-                0xC or 0xD => throw new Exception($"Unsupported input kind 0x{kind:X} (float-based steering is not implemented)."),
+                0xC or 0xD => throw new NotSupportedException($"Unsupported input kind 0x{kind:X} (float-based steering is not implemented)."),
                 _ => EStart.Character,
             };
         }
@@ -152,7 +152,7 @@ public partial class CGameCtnGhost
                 if (!sameValue)
                 {
                     var strafe = (Inputs.EStrafe)r.Read2Bit();
-                    if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+                    if (strafe == NET.Inputs.EStrafe.Corrupted) throw new InvalidDataException("Corrupted inputs. (strafe == 2)");
 
                     if (strafe != prevStrafe)
                     {
@@ -161,7 +161,7 @@ public partial class CGameCtnGhost
                     }
 
                     var walk = (Inputs.EWalk)r.Read2Bit();
-                    if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                    if (walk == NET.Inputs.EWalk.Corrupted) throw new InvalidDataException("Corrupted inputs. (walk == 2)");
 
                     if (walk != prevWalk)
                     {
@@ -507,7 +507,7 @@ public partial class CGameCtnGhost
                             }
 
                             var strafe = (Inputs.EStrafe)r.Read2Bit();
-                            if (strafe == NET.Inputs.EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+                            if (strafe == NET.Inputs.EStrafe.Corrupted) throw new InvalidDataException("Corrupted inputs. (strafe == 2)");
 
                             if (strafe != prevStrafe)
                             {
@@ -516,7 +516,7 @@ public partial class CGameCtnGhost
                             }
 
                             var walk = (Inputs.EWalk)r.Read2Bit();
-                            if (walk == NET.Inputs.EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                            if (walk == NET.Inputs.EWalk.Corrupted) throw new InvalidDataException("Corrupted inputs. (walk == 2)");
 
                             if (walk != prevWalk)
                             {
@@ -553,7 +553,7 @@ public partial class CGameCtnGhost
 
             if (theRest.Any(x => x != 0))
             {
-                throw new Exception("Input buffer not cleared out completely");
+                throw new InvalidDataException("Input buffer not cleared out completely.");
             }
 
             return inputs.ToImmutable();
@@ -600,10 +600,10 @@ public partial class CGameCtnGhost
                 if (!sameValue)
                 {
                     strafe = (EStrafe)r.Read2Bit();
-                    if (strafe == EStrafe.Corrupted) throw new Exception("Corrupted inputs. (strafe == 2)");
+                    if (strafe == EStrafe.Corrupted) throw new InvalidDataException("Corrupted inputs. (strafe == 2)");
 
                     walk = (EWalk)r.Read2Bit();
-                    if (walk == EWalk.Corrupted) throw new Exception("Corrupted inputs. (walk == 2)");
+                    if (walk == EWalk.Corrupted) throw new InvalidDataException("Corrupted inputs. (walk == 2)");
 
                     if (version == EVersion._2017_09_12)
                     {
@@ -639,7 +639,7 @@ public partial class CGameCtnGhost
 
             if (theRest.Any(x => x != 0))
             {
-                throw new Exception("Input buffer not cleared out completely");
+                throw new InvalidDataException("Input buffer not cleared out completely.");
             }
         }
 
@@ -762,7 +762,7 @@ public partial class CGameCtnGhost
 
             if (theRest.Any(x => x != 0))
             {
-                throw new Exception("Input buffer not cleared out completely");
+                throw new InvalidDataException("Input buffer not cleared out completely.");
             }
         }
 

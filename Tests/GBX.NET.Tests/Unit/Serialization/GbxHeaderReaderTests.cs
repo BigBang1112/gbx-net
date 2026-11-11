@@ -59,7 +59,7 @@ public class GbxHeaderReaderTests
         var parser = new GbxHeaderReader(r);
 
         // Act & Assert
-        Assert.Throws<Exception>(() => parser.ReadUserData(node: null, unknownHeader: null));
+        Assert.Throws<InvalidOperationException>(() => parser.ReadUserData(node: null, unknownHeader: null));
     }
 
     [Test]

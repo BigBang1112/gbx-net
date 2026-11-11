@@ -187,7 +187,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (boundedStream.Remaining > 0)
         {
-            throw new Exception($"Not all data was read from user data. {boundedStream.Remaining} bytes remaining.");
+            throw new InvalidDataException($"Not all data was read from user data. {boundedStream.Remaining} bytes remaining.");
         }
 
         return true;
@@ -206,7 +206,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (ClassManager.New(classId) is not CMwNod nod)
         {
-            throw new Exception($"Header chunk 0x{desc.Id:X8} requires a non-abstract CMwNod to read into.");
+            throw new NotSupportedException($"Header chunk 0x{desc.Id:X8} requires a non-abstract CMwNod to read into.");
         }
 
         nodeDict.Add(classId, nod);
@@ -305,7 +305,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         }
         else
         {
-            throw new Exception($"Header chunk 0x{desc.Id:X8} cannot be stored anywhere.");
+            throw new InvalidOperationException($"Header chunk 0x{desc.Id:X8} cannot be stored anywhere.");
         }
     }
 
@@ -334,7 +334,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (boundedStream.Remaining > 0)
         {
-            throw new Exception($"Not all data was read from header chunk 0x{chunk.Id:X8} ({ClassManager.GetName(chunk.Id)}). {boundedStream.Remaining} bytes remaining.");
+            throw new InvalidDataException($"Not all data was read from header chunk 0x{chunk.Id:X8} ({ClassManager.GetName(chunk.Id)}). {boundedStream.Remaining} bytes remaining.");
         }
     }
 }
