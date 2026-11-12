@@ -22,6 +22,7 @@ public partial class CGameGhost
         // 2 = SVehicleSimpleState_ReplayAfter211003 - 22 bytes
         // 4 = SVehicleSimpleState_ReplayAfter040104 - 28 bytes
         // 5 = SVehicleSimpleState_ReplayAfter100205 - 30 bytes
+        // 6 = SVehicleSimpleNetState - 2 bytes
         // 7 = SVehicleSimpleState_ReplayAfter100205 - 30 bytes
         // 8 = SVehicleSimpleState_ReplayAfter081205 - 34 bytes
         // 9 = SVehicleSimpleState_ReplayAfter081205 - 35 bytes
