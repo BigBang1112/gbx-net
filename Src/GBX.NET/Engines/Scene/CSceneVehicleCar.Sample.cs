@@ -2,7 +2,7 @@
 
 public partial class CSceneVehicleCar
 {
-    public sealed class Sample : CGameGhost.Data.Sample, ISampleRawData
+    public sealed partial class Sample : CGameGhost.Data.Sample, ISampleRawData
     {
         private uint velocity;
         private uint angularVelocity;
@@ -40,8 +40,8 @@ public partial class CSceneVehicleCar
         private byte? u45;
         private (Vec3, Quat, byte)[]? u35_1;
 
-        uint ISampleRawData.Velocity { get => velocity; set => velocity = value; }
-        uint ISampleRawData.AngularVelocity { get => angularVelocity; set => angularVelocity = value; }
+        uint ISampleRawData.Velocity { get => velocity; set { velocity = value; legacyVelocity = null; } }
+        uint ISampleRawData.AngularVelocity { get => angularVelocity; set { angularVelocity = value; legacyAngularVelocity = null; } }
         ushort ISampleRawData.SpeedForward { get => speedForward; set => speedForward = value; }
         ushort ISampleRawData.SpeedSideward { get => speedSideward; set => speedSideward = value; }
         ushort ISampleRawData.RPM { get => rpm; set => rpm = value; }
@@ -72,14 +72,14 @@ public partial class CSceneVehicleCar
 
         public override Vec3 Velocity
         {
-            get => ToVec3_4(velocity);
-            set => velocity = FromVec3_4(value);
+            get => legacyVelocity ?? ToVec3_4(velocity);
+            set { velocity = FromVec3_4(value); legacyVelocity = null; }
         }
 
         public override Vec3 AngularVelocity
         {
-            get => ToVec3_4(angularVelocity);
-            set => angularVelocity = FromVec3_4(value);
+            get => legacyAngularVelocity ?? ToVec3_4(angularVelocity);
+            set { angularVelocity = FromVec3_4(value); legacyAngularVelocity = null; }
         }
 
         public float SpeedForward
@@ -376,6 +376,16 @@ public partial class CSceneVehicleCar
 
         internal override void Read(GbxReader r, int version)
         {
+            if (version == 2)
+            {
+                ReadLegacy(r);
+                if (r.BaseStream.Position != r.BaseStream.Length)
+                {
+                    throw new InvalidDataException("Not all bytes were read.");
+                }
+                return;
+            }
+
             if (version < 6)
             {
                 throw new VersionNotSupportedException(version);
@@ -601,6 +611,12 @@ public partial class CSceneVehicleCar
 
         internal override void Write(GbxWriter w, int version)
         {
+            if (version == 2)
+            {
+                WriteLegacy(w);
+                return;
+            }
+
             if (version < 6)
             {
                 throw new VersionNotSupportedException(version);

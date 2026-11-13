@@ -41,7 +41,8 @@ public partial class CGameGhost
                     {
                         using var ms = new MemoryStream(RawData.Data);
                         using var reader = new GbxReader(ms);
-                        sampleData.SavedMobilClassId = savedMobilClassId.GetValueOrDefault();
+                        // Early CGameCtnGhost archives predate the saved mobil class-ID chunk.
+                        sampleData.SavedMobilClassId = savedMobilClassId ?? (this is CGameCtnGhost ? 0x0A02B000u : 0);
                         sampleData.ReadSamplesOld(reader);
                         RawData.Parsed = true;
                         return sampleData;

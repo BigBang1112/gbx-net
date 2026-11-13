@@ -9,6 +9,111 @@ namespace GBX.NET.Tests.Unit.Engines.Scene;
 public class CSceneVehicleCarSampleTests
 {
     [Test]
+    [Arguments(0x70, 46)]
+    [Arguments(0x30, 42)]
+    [Arguments(0x10, 38)]
+    [Arguments(0x20, 50)]
+    [Arguments(0x60, 62)]
+    [Arguments(0x71, 42)]
+    [Arguments(0x61, 50)]
+    [Arguments(0xE1, 62)]
+    public async Task Version2_ReadAndWrite_UsesInlineDynaFlags(int flags, int expectedSize)
+    {
+        var sample = new CSceneVehicleCar.Sample(TimeInt32.Zero, [(byte)flags])
+        {
+            Position = new Vec3(1, 2, 3),
+            Rotation = new Quat(0, 0, 0, 1),
+            Velocity = new Vec3(1, 2, 3),
+            AngularVelocity = new Vec3(0.1f, 0.2f, 0.3f),
+            FLWheelRotation = (float)Math.PI * 2,
+            FRWheelRotation = (float)Math.PI,
+            TurboStrength = 0.5f,
+            U25 = 0xF8,
+            U26 = 0xC0,
+            U27 = 0x3F
+        };
+        var raw = (CSceneVehicleCar.ISampleRawData)sample;
+        raw.SpeedForward = 0x1234;
+        raw.SpeedSideward = 0x5678;
+        raw.RPM = 0x9ABC;
+        var bytes = Write(sample, version: 2);
+        await Assert.That(bytes.Length).IsEqualTo(expectedSize);
+        await Assert.That(bytes[0]).IsEqualTo((byte)flags);
+
+        var restored = new CSceneVehicleCar.Sample(TimeInt32.Zero, bytes);
+        using var input = new MemoryStream(bytes);
+        using var reader = new GbxReader(input);
+        restored.Read(reader, version: 2);
+
+        var restoredRaw = (CSceneVehicleCar.ISampleRawData)restored;
+        await Assert.That(input.Position).IsEqualTo(input.Length);
+        await Assert.That(restoredRaw.SpeedForward).IsEqualTo(raw.SpeedForward);
+        await Assert.That(restoredRaw.SpeedSideward).IsEqualTo(raw.SpeedSideward);
+        await Assert.That(restoredRaw.RPM).IsEqualTo(raw.RPM);
+        await Assert.That(restoredRaw.TurboStrength).IsEqualTo(raw.TurboStrength);
+        await Assert.That(restored.Horn).IsEqualTo((byte)3);
+        await Assert.That(restored.U25_3).IsEqualTo((byte)3);
+        await Assert.That(restored.U25_4).IsTrue();
+        await Assert.That(restored.U26).IsEqualTo((byte)0xC0);
+        await Assert.That(restored.U27).IsEqualTo((byte)0x3F);
+        await Assert.That(restored.FLWheelRotation).IsBetween(6.27f, 6.30f);
+        if ((flags & 0x20) == 0 || ((flags & 0x80) == 0 && (flags & 0xF) != 0))
+        {
+            await Assert.That(restored.Velocity).IsEqualTo(new Vec3(0, 0, 0));
+        }
+        if ((flags & 0x20) == 0 || (flags & 0x40) == 0)
+        {
+            await Assert.That(restored.AngularVelocity).IsEqualTo(new Vec3(0, 0, 0));
+        }
+        await Assert.That(Write(restored, version: 2)).IsEquivalentTo(bytes, CollectionOrdering.Matching);
+    }
+
+    [Test]
+    public async Task Version2_ReadAndWrite_UsesSignedQuaternionAxisBytes()
+    {
+        using var stream = new MemoryStream();
+        using (var writer = new GbxWriter(stream))
+        {
+            writer.Write((byte)0x10);
+            writer.Write(new Vec3(1, 2, 3));
+            writer.Write((byte)85);
+            writer.Write((sbyte)-63);
+            writer.Write((sbyte)-32);
+            writer.Write(new byte[22]);
+        }
+        var bytes = stream.ToArray();
+        var sample = new CSceneVehicleCar.Sample(TimeInt32.Zero, bytes);
+        stream.Position = 0;
+        using var reader = new GbxReader(stream);
+
+        sample.Read(reader, version: 2);
+
+        await Assert.That(sample.Rotation.W).IsBetween(0.499f, 0.501f);
+        await Assert.That(sample.Rotation.Y).IsLessThan(0f);
+        await Assert.That(sample.Rotation.Z).IsLessThan(0f);
+        await Assert.That(Write(sample, version: 2)).IsEquivalentTo(bytes, CollectionOrdering.Matching);
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(255)]
+    public async Task Version2_ReadAndWrite_PreservesUndefinedQuaternionAxis(int angle)
+    {
+        var bytes = new byte[38];
+        bytes[0] = 0x10;
+        bytes[13] = (byte)angle;
+        bytes[14] = 126;
+        bytes[15] = 37;
+        var sample = new CSceneVehicleCar.Sample(TimeInt32.Zero, bytes);
+        using var input = new MemoryStream(bytes);
+        using var reader = new GbxReader(input);
+
+        sample.Read(reader, version: 2);
+
+        await Assert.That(Write(sample, version: 2)).IsEquivalentTo(bytes, CollectionOrdering.Matching);
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
