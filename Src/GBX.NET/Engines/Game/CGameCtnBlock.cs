@@ -6,11 +6,13 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGameCtnBlockTMF, IGameCtnBlockMP4, IGameCtnBlockTM2020
 {
     private const int GroundBit = 12;
-    private const int ClipBit = 13;
+    private const int EditableBit = 13;
     private const int PillarBit = 14;
     private const int SkinnableBit = 15;
     private const int ReplacementBit = 16;
     private const int DecalBit = 17;
+    private const int SquareCardEventsBit = 18;
+    private const int PhyCharBit = 19;
     private const int WaypointBit = 20;
     private const int GhostBit = 28;
     private const int FreeBit = 29;
@@ -18,6 +20,8 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     private const int VariantMax = 63;
     private const int SubVariantOffset = 6;
     private const int SubVariantMax = 63;
+    private const int BlockInfoVariantOffset = 21;
+    private const int BlockInfoVariantMax = 127;
 
     private string? name;
     /// <summary>
@@ -76,7 +80,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     public byte Variant
     {
         get => (byte)(flags & VariantMax);
-        set => flags = (flags & ~VariantMax) | value;
+        set => flags = (flags & ~VariantMax) | (value & VariantMax);
     }
 
     /// <summary>
@@ -85,7 +89,17 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     public byte SubVariant
     {
         get => (byte)((flags >> SubVariantOffset) & SubVariantMax);
-        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | (value << SubVariantOffset);
+        set => flags = (flags & ~(SubVariantMax << SubVariantOffset)) | ((value & SubVariantMax) << SubVariantOffset);
+    }
+
+    /// <summary>
+    /// Ground or air block info variant index. Range 0-127. Supported by ManiaPlanet, Turbo, and TM2020.
+    /// </summary>
+    /// <remarks><see cref="IsGround"/> selects ground or air. Index 0 selects the primary variant, and higher indices select additional variants at index minus one.</remarks>
+    public byte BlockInfoVariantIndex
+    {
+        get => (byte)((flags >> BlockInfoVariantOffset) & BlockInfoVariantMax);
+        set => flags = (flags & ~(BlockInfoVariantMax << BlockInfoVariantOffset)) | ((value & BlockInfoVariantMax) << BlockInfoVariantOffset);
     }
 
     /// <summary>
@@ -98,16 +112,27 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// If the block is considered as clip. Also known as <c>IsEditable</c>. Taken from flags.
+    /// Whether the block is editable in the puzzle or simple editor. It can also identify a clip block.
     /// </summary>
-    public bool IsClip
+    /// <remarks>Native <c>Editable</c> in older games and <c>IsEditableInPuzzleOrSimpleEditor</c> in TM2020.</remarks>
+    public bool IsEditable
     {
-        get => IsFlagBitSet(ClipBit);
-        set => SetFlagBit(ClipBit, value);
+        get => IsFlagBitSet(EditableBit);
+        set => SetFlagBit(EditableBit, value);
     }
 
     /// <summary>
-    /// Taken from flags.
+    /// Compatibility alias for <see cref="IsEditable"/>.
+    /// </summary>
+    [Obsolete("Use IsEditable instead")]
+    public bool IsClip
+    {
+        get => IsEditable;
+        set => IsEditable = value;
+    }
+
+    /// <summary>
+    /// Cached pillar classification from the block model.
     /// </summary>
     public bool IsPillar
     {
@@ -123,18 +148,13 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
         get => skinRef?.Resolve();
         set
         {
-            if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
-            {
-                flags &= ~(1 << SkinnableBit);
-            }
-
-            flags |= 1 << SkinnableBit;
+            SetFlagBit(SkinnableBit, value is not null || !string.IsNullOrEmpty(Author));
             NodeRef.SetEmbedded(ref skinRef, value);
         }
     }
 
     /// <summary>
-    /// Taken from flags.
+    /// Cached replacement classification from the selected block-info variant.
     /// </summary>
     public bool IsReplacement
     {
@@ -143,7 +163,36 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// Additional block parameters.
+    /// Character physics.
+    /// </summary>
+    [AppliedWithArchive(2)]
+    public CPlugCharPhySpecialProperty? PhyCharSpecialProperty
+    {
+        get => phyCharSpecialPropertyRef?.Resolve();
+        set
+        {
+            SetFlagBit(PhyCharBit, value is not null);
+            NodeRef.SetEmbedded(ref phyCharSpecialPropertyRef, value);
+        }
+    }
+
+    private SSquareCardEventIds[]? squareCardEventIds;
+    /// <summary>
+    /// Card events associated with block units.
+    /// </summary>
+    [AppliedWithArchive(2)]
+    public SSquareCardEventIds[]? SquareCardEventIds
+    {
+        get => squareCardEventIds;
+        set
+        {
+            SetFlagBit(SquareCardEventsBit, value is { Length: > 0 });
+            squareCardEventIds = value;
+        }
+    }
+
+    /// <summary>
+    /// Waypoint parameters.
     /// </summary>
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
@@ -156,14 +205,18 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// Determines the hill ground variant in TM®. Taken from flags.
+    /// The low bit of <see cref="BlockInfoVariantIndex"/>. Retained for compatibility.
     /// </summary>
+    [Obsolete("Use BlockInfoVariantIndex instead.")]
     public bool Bit21
     {
         get => IsFlagBitSet(21);
         set => SetFlagBit(21, value);
     }
 
+    /// <summary>
+    /// Whether the block uses ghost placement. Supported by ManiaPlanet, Turbo, and TM2020.
+    /// </summary>
     public bool IsGhost
     {
         get => IsFlagBitSet(GhostBit);
@@ -171,7 +224,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     }
 
     /// <summary>
-    /// If this block is a free block. Feature available since TM2020.
+    /// Whether this block uses free placement with an absolute position and rotation. Available since TM2020.
     /// </summary>
     public bool IsFree
     {
@@ -236,7 +289,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
             }
             n.Flags = 0;
             n.Variant = (byte)(flags & 0xFFF);
-            n.SubVariant = (byte)((flags >> 12) & 0xFFF);
+            n.SubVariant = (byte)Math.Min((flags >> 12) & 0xFFF, SubVariantMax);
             n.Flags |= (flags >> 12) & 0xF000;
         }
 

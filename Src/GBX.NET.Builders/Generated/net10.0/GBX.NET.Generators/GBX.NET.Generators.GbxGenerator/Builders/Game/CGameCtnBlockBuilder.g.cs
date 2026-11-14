@@ -23,11 +23,13 @@ public abstract class CGameCtnBlockBuilderMembers1<TSelf> : CGameCtnBlockBuilder
 {
     private protected CGameCtnBlockBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
     public TSelf WithIsClip(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsClipAssignment(), value, SupportedGames3);
+    public TSelf WithIsEditable(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsEditableAssignment(), value, SupportedGames3);
     public TSelf WithSubVariant(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSubVariantAssignment(), value, SupportedGames3);
 }
 public abstract class CGameCtnBlockBuilderMembers2<TSelf> : CGameCtnBlockBuilderMembers1<TSelf> where TSelf : CGameCtnBlockBuilderMembers2<TSelf>
 {
     private protected CGameCtnBlockBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
+    public TSelf WithBlockInfoVariantIndex(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetBlockInfoVariantIndexAssignment(), value, SupportedGames2);
     public TSelf WithIsGhost(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGhostAssignment(), value, SupportedGames2);
     public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, SupportedGames2);
     public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, SupportedGames2);
