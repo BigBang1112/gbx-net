@@ -26,7 +26,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path, "-o", path + ".extracted"], output, error);
             var extracted = path + ".extracted";
 
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
@@ -71,7 +71,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", outputOption, extracted, path + "/" + pattern], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", outputOption, extracted, path + "/" + pattern], output, error);
             var expected = expectedNames.Split('|');
 
             await Assert.That(exitCode).IsEqualTo(0);
@@ -107,7 +107,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path + "/data/*.TXT"], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path + "/data/*.TXT", "-o", path + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
@@ -135,7 +135,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path + "/" + pattern], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path + "/" + pattern, "-o", path + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(error.ToString()).Contains("No files matching");
@@ -164,7 +164,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path, "-o", path + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(error.ToString()).Contains("already exists");
@@ -192,7 +192,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path, "-o", path + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(error.ToString()).Contains("not a safe relative file path");
@@ -217,7 +217,7 @@ public class PakExtractionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path, "-o", path + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(output.ToString()).Contains("Extracted 0 files");
@@ -227,6 +227,37 @@ public class PakExtractionTests
         finally
         {
             directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Extract_WithoutOutput_UsesFolderNamedLikeArchiveInWorkingDirectory()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-extract-");
+        var name = $"gbx-cli-{Guid.NewGuid():N}.pak";
+        var extracted = Path.GetFullPath(name);
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, name);
+            await File.WriteAllBytesAsync(path, CreatePak(false, ("readme.txt", "content"u8.ToArray())));
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["pack", "extract", path], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+            await Assert.That(await File.ReadAllTextAsync(Path.Combine(extracted, "readme.txt"))).IsEqualTo("content");
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+
+            if (Directory.Exists(extracted))
+            {
+                Directory.Delete(extracted, recursive: true);
+            }
         }
     }
 

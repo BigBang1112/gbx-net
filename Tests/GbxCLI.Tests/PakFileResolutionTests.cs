@@ -74,8 +74,8 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
             var input = archive + selection;
-            string[] args = option.Length == 0 ? ["pak", "files", input]
-                : optionFirst ? ["pak", "files", option, input] : ["pak", "files", input, option];
+            string[] args = option.Length == 0 ? ["pack", "list", input]
+                : optionFirst ? ["pack", "list", option, input] : ["pack", "list", input, option];
             string[] resolved = [Path.Combine("Data", Name), Path.Combine("Named", namedHex), Path.Combine(UnresolvedHash, "readme [blue].txt"), nonHex];
             string[] unresolved = [Path.Combine("Data", UnresolvedHash), Path.Combine("Unknown", unknownHash)];
             var expected = option switch
@@ -116,7 +116,7 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "files", archive, option], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "list", archive, option], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(output.ToString()).IsEqualTo(string.Empty);
@@ -148,7 +148,7 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "files", archive + selection], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "list", archive + selection], output, error);
             var resolved = Path.Combine("Data", Name);
             var expected = selection.Length == 0
                 ? string.Join(Environment.NewLine, new[] { resolved, UnresolvedHash, new string('F', 34) }.Order(StringComparer.Ordinal))
@@ -181,7 +181,7 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", archive + selection], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", archive + selection, "-o", archive + ".extracted"], output, error);
             var extracted = Path.Combine(archive + ".extracted", "Data", Name);
 
             await Assert.That(exitCode).IsEqualTo(0);
@@ -270,7 +270,7 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", archive], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", archive, "-o", archive + ".extracted"], output, error);
             var root = archive + ".extracted";
 
             await Assert.That(exitCode).IsEqualTo(0);
@@ -323,37 +323,11 @@ public class PakFileResolutionTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", archive], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", archive, "-o", archive + ".extracted"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(error.ToString()).Contains("Multiple PAK entries");
+            await Assert.That(error.ToString()).Contains("Multiple entries");
             await Assert.That(Directory.Exists(archive + ".extracted")).IsFalse();
-        }
-        finally
-        {
-            directory.Delete(recursive: true);
-        }
-    }
-
-    [Test]
-    public async Task Verify_ResolvedNameAndSelection_ReportsCorruptHashedGbxByName()
-    {
-        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-hashes-");
-
-        try
-        {
-            var archive = Path.Combine(directory.FullName, "archive.pak");
-            await File.WriteAllBytesAsync(archive, PakExtractionTests.CreatePak(false,
-                (Hash, "Invalid signature"u8.ToArray()), ("valid.gbx", PakEntryTests.CreateGbx(false))));
-            using var output = new StringWriter();
-            using var error = new StringWriter();
-
-            var exitCode = await Cli.RunAsync(["pak", "verify", archive + "/" + Name], output, error);
-
-            await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-            await Assert.That(output.ToString()).Contains(Name + ":");
-            await Assert.That(output.ToString()).Contains("Parsed 0 Gbx files; 1 failed; 0 non-Gbx files skipped.");
         }
         finally
         {

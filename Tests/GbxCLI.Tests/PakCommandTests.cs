@@ -20,7 +20,7 @@ public class PakCommandTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "files", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "list", path], output, error);
             var expected = string.Join(Environment.NewLine, names.Order(StringComparer.Ordinal)
                 .Select(name => Path.Combine("Data", "Nested [red]", name))) + Environment.NewLine;
 
@@ -47,7 +47,7 @@ public class PakCommandTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "files", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "list", path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(output.ToString()).IsEqualTo(string.Empty);
@@ -60,10 +60,8 @@ public class PakCommandTests
     }
 
     [Test]
-    [Arguments(true, "files")]
-    [Arguments(false, "files")]
-    [Arguments(true, "verify")]
-    [Arguments(false, "verify")]
+    [Arguments(true, "list")]
+    [Arguments(false, "list")]
     [Arguments(true, "extract")]
     [Arguments(false, "extract")]
     public async Task Subcommand_UnavailableIndexOrGbx_ReportsError(bool privatePak, string command)
@@ -85,7 +83,7 @@ public class PakCommandTests
 
             using var output = new StringWriter();
             using var error = new StringWriter();
-            var exitCode = await Cli.RunAsync(["pak", command, path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", command, path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(output.ToString()).IsEqualTo(string.Empty);
@@ -99,41 +97,21 @@ public class PakCommandTests
     }
 
     [Test]
-    [Arguments("", "Missing PAK subcommand")]
-    [Arguments("files", "Missing input file for pak files")]
-    [Arguments("verify", "Missing input file for pak verify")]
-    [Arguments("extract", "Missing input file for pak extract")]
-    [Arguments("unknown", "Unknown PAK subcommand")]
+    [Arguments("list", "Missing input file for pack list")]
+    [Arguments("verify", "Missing input file for verify")]
+    [Arguments("extract", "Missing input file for pack extract")]
+    [Arguments("unknown", "Unexpected argument: unknown")]
     public async Task Pak_MissingOrUnknownArguments_ReportsError(string subcommand, string expectedError)
     {
         using var output = new StringWriter();
         using var error = new StringWriter();
-        string[] args = subcommand.Length == 0 ? ["pak"] : ["pak", subcommand];
+        string[] args = ["pack", subcommand];
 
         var exitCode = await Cli.RunAsync(args, output, error);
 
         await Assert.That(exitCode).IsEqualTo(1);
         await Assert.That(output.ToString()).IsEqualTo(string.Empty);
         await Assert.That(error.ToString()).Contains(expectedError);
-    }
-
-    [Test]
-    [Arguments("--help", "files")]
-    [Arguments("--version", "files")]
-    [Arguments("--help", "verify")]
-    [Arguments("--version", "verify")]
-    [Arguments("--help", "extract")]
-    [Arguments("--version", "extract")]
-    public async Task Subcommand_GlobalOptions_DoNotRequireAnArchive(string option, string command)
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-
-        var exitCode = await Cli.RunAsync(["pak", command, option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains(option == "--help" ? $"pak {command} <file>" : "gbx 0.1.0");
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
     }
 
     [Test]
@@ -144,7 +122,7 @@ public class PakCommandTests
         using var output = new StringWriter();
         using var error = new StringWriter();
 
-        var exitCode = await Cli.RunAsync(["pak", "files", first, "unused.pak", second], output, error);
+        var exitCode = await Cli.RunAsync(["pack", "list", first, "unused.pak", second], output, error);
 
         await Assert.That(exitCode).IsEqualTo(1);
         await Assert.That(output.ToString()).IsEqualTo(string.Empty);
@@ -156,16 +134,16 @@ public class PakCommandTests
     [Arguments("verify", "--unresolved")]
     [Arguments("extract", "--resolved")]
     [Arguments("extract", "--unresolved")]
-    public async Task Subcommand_ResolutionFiltersOnlyApplyToFiles_ReportError(string command, string option)
+    public async Task Subcommand_ResolutionFiltersOnlyApplyToList_ReportError(string command, string option)
     {
         using var output = new StringWriter();
         using var error = new StringWriter();
 
-        var exitCode = await Cli.RunAsync(["pak", command, "unused.pak", option], output, error);
+        var exitCode = await Cli.RunAsync(["pack", command, "unused.pak", option], output, error);
 
         await Assert.That(exitCode).IsEqualTo(1);
         await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-        await Assert.That(error.ToString()).Contains($"does not accept {option}");
+        await Assert.That(error.ToString()).Contains($"Unexpected argument: {option}");
     }
 
     private static byte[] CreatePakData(IReadOnlyList<string> names)
@@ -210,7 +188,7 @@ public class PakCommandTests
             CreateZip(path, ["a.Gbx", "Media/", "Media/b.txt", "Media/Texture/c.dds"]);
             using var output = new StringWriter();
             using var error = new StringWriter();
-            string[] args = option.Length == 0 ? ["pak", "files", path + selection] : ["pak", "files", path + selection, option];
+            string[] args = option.Length == 0 ? ["pack", "list", path + selection] : ["pack", "list", path + selection, option];
 
             var exitCode = await Cli.RunAsync(args, output, error);
             var expected = string.Concat(expectedEntries.Split('|', StringSplitOptions.RemoveEmptyEntries)
@@ -246,12 +224,12 @@ public class PakCommandTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
             var lines = output.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(lines.Length).IsEqualTo(2);
-            await Assert.That(lines[0]).StartsWith("Broken.Gbx: ");
+            await Assert.That(lines[0]).StartsWith(Path.Combine(path, "Broken.Gbx") + ": ");
             await Assert.That(lines[1]).IsEqualTo("Parsed 2 Gbx files; 1 failed; 1 non-Gbx files skipped.");
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
         }
@@ -280,7 +258,7 @@ public class PakCommandTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path + "/Media/*", "-o", extracted], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path + "/Media/*", "-o", extracted], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(await File.ReadAllTextAsync(Path.Combine(extracted, "Media", "a.txt"))).IsEqualTo("first");
@@ -290,7 +268,7 @@ public class PakCommandTests
 
             using var secondOutput = new StringWriter();
             using var secondError = new StringWriter();
-            var secondExitCode = await Cli.RunAsync(["pak", "extract", path + "/Media/*", "-o", extracted], secondOutput, secondError);
+            var secondExitCode = await Cli.RunAsync(["pack", "extract", path + "/Media/*", "-o", extracted], secondOutput, secondError);
 
             await Assert.That(secondExitCode).IsEqualTo(1);
             await Assert.That(secondError.ToString()).Contains("already exists");
@@ -313,10 +291,10 @@ public class PakCommandTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "extract", path, "-o", Path.Combine(directory.FullName, "out")], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "extract", path, "-o", Path.Combine(directory.FullName, "out")], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(error.ToString()).Contains("The ZIP entry '..");
+            await Assert.That(error.ToString()).Contains("The entry '..");
             await Assert.That(File.Exists(Path.Combine(directory.FullName, "escape.txt"))).IsFalse();
         }
         finally

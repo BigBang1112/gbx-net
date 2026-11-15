@@ -609,7 +609,8 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<bool> CheckFileIsGbxAsync(PakFile file, CancellationToken cancellationToken = default)
     {
-        if (file.Size == 0)
+        // Gbx.IsGbx needs 5 bytes. Shorter entries would fail it or be checked against the data that follows them.
+        if (file.Size == 0 || file.UncompressedSize < 5)
         {
             return false;
         }

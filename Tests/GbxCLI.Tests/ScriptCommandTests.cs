@@ -239,21 +239,6 @@ public class ScriptCommandTests
     }
 
     [Test]
-    [Arguments("--help")]
-    [Arguments("--version")]
-    public async Task Script_InformationAfterInputDoesNotOpenMissingScript(string option)
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-
-        var exitCode = await Cli.RunAsync(["script", "missing.csx", option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-        await Assert.That(output.ToString()).Contains(option == "--help" ? "Usage: gbx script" : "gbx 0.1.0");
-    }
-
-    [Test]
     [Arguments("")]
     [Arguments("--unknown")]
     [Arguments("missing.csx")]

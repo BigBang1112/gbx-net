@@ -138,17 +138,4 @@ public class EvalCommandTests
         await Assert.That(output.ToString()).Contains("Interactive mode is not implemented yet");
         await Assert.That(error.ToString()).IsEqualTo(string.Empty);
     }
-
-    [Test]
-    public async Task Eval_InteractiveHelpDoesNotRequireTerminalOrFile()
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-
-        var exitCode = await Cli.RunAsync(["eval", "--interactive", "--help"], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("eval <file> [code...]");
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-    }
 }

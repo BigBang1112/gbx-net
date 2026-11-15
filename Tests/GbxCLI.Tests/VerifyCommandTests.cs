@@ -29,8 +29,9 @@ public class VerifyCommandTests
             var lines = output.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
             await Assert.That(exitCode).IsEqualTo(1);
+            // Broken.Gbx has no Gbx signature, so it is skipped like any other file.
             await Assert.That(lines.Length).IsEqualTo(3);
-            await Assert.That(lines[0]).StartsWith(Path.Combine("Sub", "Broken.Gbx") + ": ");
+            await Assert.That(lines[0]).StartsWith("Archive.Pack.Gbx: ");
             await Assert.That(lines[1]).StartsWith(Path.Combine("Sub", "Deeper", "Unknown.Gbx") + ": NotSupportedException: Root class 0x7FFF0000");
             await Assert.That(lines[2]).IsEqualTo("Parsed 2 Gbx files; 2 failed; 2 non-Gbx files skipped.");
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
@@ -117,23 +118,44 @@ public class VerifyCommandTests
     }
 
     [Test]
-    [Arguments("Readme.txt", "is not a Gbx file")]
-    [Arguments("Missing.Gbx", "was not found")]
-    public async Task Verify_InvalidInput_Fails(string name, string message)
+    public async Task Verify_NonGbxFile_IsSkipped()
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-verify-");
 
         try
         {
-            await File.WriteAllTextAsync(Path.Combine(directory.FullName, "Readme.txt"), "text");
+            var path = Path.Combine(directory.FullName, "Readme.txt");
+            await File.WriteAllTextAsync(path, "text");
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["verify", Path.Combine(directory.FullName, name)], output, error);
+            var exitCode = await Cli.RunAsync(["verify", path], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(output.ToString()).IsEqualTo($"Parsed 0 Gbx files; 0 failed; 1 non-Gbx files skipped.{Environment.NewLine}");
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Verify_MissingFile_Fails()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-verify-");
+
+        try
+        {
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["verify", Path.Combine(directory.FullName, "Missing.Gbx")], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-            await Assert.That(error.ToString()).Contains(message);
+            await Assert.That(error.ToString()).Contains("Could not find file");
         }
         finally
         {

@@ -33,7 +33,7 @@ public class PakLoaderTests
         {
             var path = Path.Combine(directory.FullName, name);
             await File.WriteAllBytesAsync(path, CreateEncryptedPak(baseKey, publicHeader, version));
-            await using var file = await ParsedFile.OpenAsync(path, fullGbx: true);
+            await using var file = await FileObject.OpenAsync(path, fullGbx: true);
             var pak = (Pak)file.Value;
             await Assert.That(pak.Files.Count).IsEqualTo(1);
 
@@ -51,7 +51,7 @@ public class PakLoaderTests
     [Test]
     [Arguments("parse")]
     [Arguments("eval")]
-    [Arguments("pak files")]
+    [Arguments("pack list")]
     public async Task Command_KnownPrivateArchive_ExposesDecryptedFileIndex(string command)
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-keys-");
@@ -65,7 +65,7 @@ public class PakLoaderTests
             string[] args = command switch
             {
                 "eval" => [command, path, "Files.Count"],
-                "pak files" => ["pak", "files", path],
+                "pack list" => ["pack", "list", path],
                 _ => [command, path]
             };
             var exitCode = await Cli.RunAsync(args, output, error);
@@ -74,7 +74,7 @@ public class PakLoaderTests
             var expected = command switch
             {
                 "eval" => "Result: 1",
-                "pak files" => "sample [blue].txt",
+                "pack list" => "sample [blue].txt",
                 _ => "Files: 1"
             };
             await Assert.That(output.ToString()).Contains(expected);

@@ -4,6 +4,7 @@ using GBX.NET.ZLib;
 using GbxCLI.Commands;
 using Spectre.Console;
 using System.Reflection;
+using SimplestGitSourceGenerator;
 
 namespace GbxCLI;
 
@@ -31,6 +32,9 @@ internal static class Cli
 
     private static async Task<int> RunCoreAsync(string[] args, TextWriter output)
     {
+        var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+
         using var argsEnumerator = args.AsEnumerable().GetEnumerator();
 
         if (!argsEnumerator.MoveNext())
@@ -49,13 +53,14 @@ internal static class Cli
 
         return arg switch
         {
-            "parse" => await ParseCommand.RunAsync(argsEnumerator, output),
-            "eval" => await EvalCommand.RunAsync(argsEnumerator, output),
-            "script" => await ScriptCommand.RunAsync(argsEnumerator, output),
-            "pak" => await PakCommand.RunAsync(argsEnumerator, output),
-            "verify" => await VerifyCommand.RunAsync(argsEnumerator, output),
-            "compress" or "decompress" => await CompressionCommand.RunAsync(arg, argsEnumerator, output),
-            _ when File.Exists(arg) => await ParseCommand.RunAsync(argsEnumerator, output, inputPath: arg),
+            "eval" => await EvalCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "inspect" or "parse" => await InspectCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "script" => await ScriptCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "pack" => await PackCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "verify" => await VerifyCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "compress" => await CompressCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            "decompress" => await DecompressCommand.RunAsync(argsEnumerator, output, cancellationToken),
+            _ when File.Exists(arg) => await InspectCommand.RunAsync(argsEnumerator, output, cancellationToken, inputPath: arg),
             _ => throw new ArgumentException($"Unknown command: {arg}. Use --help for usage.")
         };
     }
@@ -84,17 +89,17 @@ internal static class Cli
         return 0;
     }
 
-    public static bool TryHandleGlobalOption(string arg, TextWriter output, string? command = null)
+    public static bool TryHandleGlobalOption(string arg, TextWriter output)
     {
         switch (arg)
         {
             case "-h":
             case "--help":
-                CliHelp.Write(output, distribution, command);
+                CliHelp.Write(output, distribution);
                 return true;
             case "-v":
             case "--version":
-                new CliConsole(output).WriteLine($"[bold]gbx[/] {typeof(Cli).Assembly.GetName().Version?.ToString(3)} [grey]({Markup.Escape(distribution)})[/]");
+                new CliConsole(output).WriteLine($"[bold]gbx[/] {SimplestGit.Tag} [grey]({Markup.Escape(distribution)})[/]");
                 return true;
             default:
                 return false;

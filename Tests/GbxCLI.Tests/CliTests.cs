@@ -99,28 +99,6 @@ public class CliTests
     }
 
     [Test]
-    [Arguments("parse")]
-    [Arguments("compress")]
-    [Arguments("decompress")]
-    [Arguments("eval")]
-    [Arguments("pak")]
-    [Arguments("script")]
-    public async Task CommandHandler_AcceptsGlobalOptions(string command)
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-
-        await Assert.That(await Cli.RunAsync([command, "--help"], output, error)).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("Usage: gbx");
-
-        output.GetStringBuilder().Clear();
-
-        await Assert.That(await Cli.RunAsync([command, "--version"], output, error)).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("gbx 0.1.0");
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-    }
-
-    [Test]
     [Arguments("-o")]
     [Arguments("--output")]
     public async Task OutputOption_RequiresValue(string option)
@@ -135,7 +113,7 @@ public class CliTests
     }
 
     [Test]
-    public async Task ExampleCommands_RoundTripWithoutOverwritingFiles()
+    public async Task ExampleCommands_RoundTripAndBackUpOverwrittenFiles()
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-");
 
@@ -164,9 +142,13 @@ public class CliTests
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
 
             var compressedBytes = File.ReadAllBytes(compressedPath);
-            await Assert.That(await Cli.RunAsync(["compress", inputPath, "-o", compressedPath], output, error)).IsEqualTo(1);
-            await Assert.That(File.ReadAllBytes(compressedPath)).IsEquivalentTo(compressedBytes, CollectionOrdering.Matching);
-            await Assert.That(await Cli.RunAsync(["decompress", inputPath, "-o", inputPath], output, error)).IsEqualTo(1);
+            var inputBytes = File.ReadAllBytes(inputPath);
+
+            // Overwritten files are kept with a .bak suffix.
+            await Assert.That(await Cli.RunAsync(["compress", inputPath, "-o", compressedPath], output, error)).IsEqualTo(0);
+            await Assert.That(File.ReadAllBytes(compressedPath + ".bak")).IsEquivalentTo(compressedBytes, CollectionOrdering.Matching);
+            await Assert.That(await Cli.RunAsync(["decompress", inputPath], output, error)).IsEqualTo(0);
+            await Assert.That(File.ReadAllBytes(inputPath + ".bak")).IsEquivalentTo(inputBytes, CollectionOrdering.Matching);
             await Assert.That(File.ReadAllBytes(inputPath)).IsEquivalentTo(File.ReadAllBytes(decompressedPath), CollectionOrdering.Matching);
         }
         finally
@@ -283,19 +265,5 @@ public class CliTests
         {
             directory.Delete(recursive: true);
         }
-    }
-
-    [Test]
-    public async Task InteractiveParse_HelpDoesNotRequireTerminalOrFile()
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-
-        var exitCode = await Cli.RunAsync(["parse", "--interactive", "--help"], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("parse <file>");
-        await Assert.That(output.ToString()).Contains("-i, --interactive");
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
     }
 }

@@ -158,7 +158,7 @@ public class ParseCommandTests
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(output.ToString()).IsEqualTo(string.Empty);
             await Assert.That(error.ToString()).Contains("Unsupported file format");
-            await Assert.That(error.ToString()).Contains("Gbx (GBX) or PAK (NadeoPak)");
+            await Assert.That(error.ToString()).Contains("Gbx (GBX), PAK (NadeoPak) or ZIP");
             await Assert.That(error.ToString().Contains("Use --help")).IsFalse();
 
             using var reopened = new FileStream(inputPath, FileMode.Open, FileAccess.ReadWrite, FileShare.None);

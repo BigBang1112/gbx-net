@@ -1,5 +1,4 @@
 using GBX.NET.PAK;
-using System.Buffers.Binary;
 using System.Globalization;
 
 namespace GbxCLI;
@@ -114,30 +113,30 @@ internal static class PakLoader
         ["Wight"] = ["B70F2BF8475EDF00A399BC68EDD45422"],
     };
 
-    private static readonly byte[] defaultHeaderKey = Convert.FromHexString("56EECBBBDEB6BC90A17DFCEB761D59CE");
-
     internal static IReadOnlyList<string> GetKeys(string path)
     {
         var name = Path.GetFileNameWithoutExtension(path);
+
         if (keys.TryGetValue(name, out var candidates))
         {
             return candidates;
         }
 
+        // Dated copies like TMNext_2014-04-30.pak use the key of the undated name.
         var separator = name.LastIndexOf('_');
-        if (separator > 0
-            && DateOnly.TryParseExact(name.AsSpan(separator + 1), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _)
-            && keys.TryGetValue(name[..separator], out candidates))
-        {
-            return candidates;
-        }
 
-        return [];
+        return separator > 0
+            && DateOnly.TryParseExact(name.AsSpan(separator + 1), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _)
+            && keys.TryGetValue(name[..separator], out candidates) ? candidates : [];
     }
 
-    internal static async Task<(Pak Pak, bool HasKey)> ParseAsync(Stream stream, string path)
+    /// <summary>
+    /// Parses the PAK, decrypting it with the first known key that works for its name or title ID.
+    /// Without one, only the public part of the header is available.
+    /// </summary>
+    internal static async Task<(Pak Pak, bool HasKey)> ParseAsync(Stream stream, string path, CancellationToken cancellationToken = default)
     {
-        var pak = await Pak.ParseAsync(stream);
+        var pak = await Pak.ParseAsync(stream, cancellationToken: cancellationToken);
 
         if (!pak.IsHeaderPrivate && !pak.IsDataPrivate)
         {
@@ -154,87 +153,24 @@ internal static class PakLoader
 
         foreach (var baseKey in candidates)
         {
-            var key = Pak.ComputeKey(Convert.FromHexString(baseKey));
-
-            if (pak.IsHeaderPrivate && !await HasMatchingHeaderAsync(stream, pak, key))
-            {
-                continue;
-            }
-
             stream.Position = 0;
-            return (await Pak.ParseAsync(stream, key, KeyType.EncryptionKey), true);
+
+            try
+            {
+                var decrypted = await Pak.ParseAsync(stream, Pak.ComputeKey(Convert.FromHexString(baseKey)), KeyType.EncryptionKey, cancellationToken);
+
+                // A wrong key decrypts the header into garbage, which either fails to parse
+                // or lists files at offsets past the end of the archive. Unstored files have no offset.
+                if (decrypted.Files.Values.All(file => file.Offset == uint.MaxValue || file.Offset <= stream.Length))
+                {
+                    return (decrypted, true);
+                }
+            }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+            }
         }
 
         return (pak, false);
-    }
-
-    private static async Task<bool> HasMatchingHeaderAsync(Stream stream, Pak pak, byte[] key)
-    {
-        var headerPosition = stream.Position;
-        var headerKey = (byte[])key.Clone();
-
-        for (var i = 0; i < headerKey.Length; i++)
-        {
-            headerKey[i] ^= (byte)((pak.UseDefaultHeaderKey ? defaultHeaderKey[i] : 0) ^ (pak.KeySalt?[i] ?? 0));
-        }
-
-        try
-        {
-            var ivBytes = new byte[8];
-            await stream.ReadExactlyAsync(ivBytes);
-            using var decrypted = new BlowfishStream(stream, headerKey, BinaryPrimitives.ReadUInt64LittleEndian(ivBytes), pak.Version);
-            var prefixSize = 20 + (pak.Version < 15 ? 4 : 0) + (pak.Version >= 2 ? 8 : 0)
-                + (pak.Version >= 14 ? 16 : 0) + (pak.Version >= 16 ? 4 : 0) + (pak.Version >= 3 ? 16 : 0);
-            var prefix = new byte[prefixSize];
-            await decrypted.ReadExactlyAsync(prefix);
-
-            // Reject wrong keys before the parser reads arbitrary folder/file counts.
-            // The data offset moved into the public header in version 15.
-            var dataStart = pak.Version >= 15
-                ? (long)pak.HeaderMaxSize!.Value
-                : BinaryPrimitives.ReadUInt32LittleEndian(prefix.AsSpan(20));
-            var gbxHeadersStart = BinaryPrimitives.ReadUInt32LittleEndian(prefix.AsSpan(16));
-
-            if (dataStart < headerPosition + ivBytes.Length + prefix.Length + 4
-                || dataStart > stream.Length
-                || (gbxHeadersStart != 0 && (gbxHeadersStart < dataStart || gbxHeadersStart > stream.Length)))
-            {
-                return false;
-            }
-
-            var value = new byte[4];
-
-            if (pak.Version == 6)
-            {
-                // Version 6 stores the author version and four strings before the flags.
-                await decrypted.ReadExactlyAsync(value);
-                var buffer = new byte[4096];
-
-                for (var i = 0; i < 4; i++)
-                {
-                    await decrypted.ReadExactlyAsync(value);
-                    var length = BinaryPrimitives.ReadInt32LittleEndian(value);
-
-                    if (length < 0 || length > dataStart - headerPosition - ivBytes.Length - decrypted.Position)
-                    {
-                        return false;
-                    }
-
-                    while (length > 0)
-                    {
-                        var count = Math.Min(length, buffer.Length);
-                        await decrypted.ReadExactlyAsync(buffer.AsMemory(0, count));
-                        length -= count;
-                    }
-                }
-            }
-
-            await decrypted.ReadExactlyAsync(value);
-            return BinaryPrimitives.ReadUInt32LittleEndian(value) <= 7;
-        }
-        finally
-        {
-            stream.Position = headerPosition;
-        }
     }
 }

@@ -43,11 +43,11 @@ internal sealed class CSharpSession
         }
     }
 
-    public async Task<object?> EvaluateAsync(string code)
+    public async Task<object?> EvaluateAsync(string code, CancellationToken cancellationToken = default)
     {
         state = state is null
-            ? await CSharpScript.RunAsync(code, options, globals: globals)
-            : await state.ContinueWithAsync(code, options);
+            ? await CSharpScript.RunAsync(code, options, globals: globals, cancellationToken: cancellationToken)
+            : await state.ContinueWithAsync(code, options, cancellationToken);
 
         return state.ReturnValue;
     }

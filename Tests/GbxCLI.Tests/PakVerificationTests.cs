@@ -25,7 +25,7 @@ public class PakVerificationTests
 
             await File.WriteAllBytesAsync(path, CreatePak(
                 ("01-body [red].gbx", invalidBody),
-                ("02-hashed-name", "GBX"u8.ToArray()),
+                ("02-hashed-name", BrokenGbx),
                 ("03-invalid.GBX", "Invalid Gbx header"u8.ToArray()),
                 ("04-valid.gbx", CreateGbx(compressed: false)),
                 ("05-renamed.dat", CreateGbx(compressed: true)),
@@ -35,16 +35,15 @@ public class PakVerificationTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
             var lines = output.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
             await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(lines.Length).IsEqualTo(4);
-            await Assert.That(lines[0].StartsWith("01-body [red].gbx: ", StringComparison.Ordinal)).IsTrue();
+            await Assert.That(lines.Length).IsEqualTo(3);
+            await Assert.That(lines[0].StartsWith(Path.Combine(path, "01-body [red].gbx") + ": ", StringComparison.Ordinal)).IsTrue();
             await Assert.That(lines[0]).Contains("ChunkReadException");
-            await Assert.That(lines[1].StartsWith("02-hashed-name: ", StringComparison.Ordinal)).IsTrue();
-            await Assert.That(lines[2].StartsWith("03-invalid.GBX: ", StringComparison.Ordinal)).IsTrue();
-            await Assert.That(lines[3]).IsEqualTo("Parsed 2 Gbx files; 3 failed; 3 non-Gbx files skipped.");
+            await Assert.That(lines[1].StartsWith(Path.Combine(path, "02-hashed-name") + ": ", StringComparison.Ordinal)).IsTrue();
+            await Assert.That(lines[2]).IsEqualTo("Parsed 2 Gbx files; 2 failed; 4 non-Gbx files skipped.");
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
             using var reopened = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
         }
@@ -69,7 +68,7 @@ public class PakVerificationTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(output.ToString()).IsEqualTo($"Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.{Environment.NewLine}");
@@ -93,7 +92,7 @@ public class PakVerificationTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
             await Assert.That(output.ToString()).IsEqualTo($"Parsed 0 Gbx files; 0 failed; 0 non-Gbx files skipped.{Environment.NewLine}");
@@ -121,7 +120,7 @@ public class PakVerificationTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(output.ToString()).Contains("Root class 0x7FFF0000 is not supported");
@@ -135,7 +134,7 @@ public class PakVerificationTests
     }
 
     [Test]
-    public async Task Verify_Directory_VerifiesTopLevelArchivesAndReportsTotals()
+    public async Task Verify_Directory_VerifiesArchivesRecursivelyAndReportsTotals()
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-verify-");
 
@@ -143,28 +142,26 @@ public class PakVerificationTests
         {
             var path = directory.FullName;
             await File.WriteAllBytesAsync(Path.Combine(path, "a.pak"), CreatePak(
-                ("broken.gbx", "GBX"u8.ToArray()),
+                ("broken.gbx", BrokenGbx),
                 ("valid.gbx", CreateGbx(compressed: false))));
             await File.WriteAllBytesAsync(Path.Combine(path, "b.Pack.Gbx"), CreatePak(("valid.gbx", CreateGbx(compressed: true))));
             await File.WriteAllBytesAsync(Path.Combine(path, "c.zip"), CreateZip(("Valid.Gbx", CreateGbx(compressed: false)), ("Readme.txt", "text"u8.ToArray())));
             await File.WriteAllBytesAsync(Path.Combine(path, "d.pak"), ParseCommandTests.CreatePakData(privateHeader: true));
             await File.WriteAllTextAsync(Path.Combine(path, "notes.txt"), "Not an archive");
             Directory.CreateDirectory(Path.Combine(path, "Sub"));
-            await File.WriteAllBytesAsync(Path.Combine(path, "Sub", "nested.pak"), CreatePak(("broken.gbx", "GBX"u8.ToArray())));
+            await File.WriteAllBytesAsync(Path.Combine(path, "Sub", "nested.pak"), CreatePak(("broken.gbx", BrokenGbx)));
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
             var lines = output.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
             await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(lines.Length).IsEqualTo(6);
-            await Assert.That(lines[0]).StartsWith($"a.pak{Path.DirectorySeparatorChar}broken.gbx: ");
-            await Assert.That(lines[1]).IsEqualTo("a.pak: Parsed 1 Gbx files; 1 failed; 0 non-Gbx files skipped.");
-            await Assert.That(lines[2]).IsEqualTo("b.Pack.Gbx: Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.");
-            await Assert.That(lines[3]).IsEqualTo("c.zip: Parsed 1 Gbx files; 0 failed; 1 non-Gbx files skipped.");
-            await Assert.That(lines[4]).StartsWith("d.pak: InvalidDataException: ");
-            await Assert.That(lines[5]).IsEqualTo("Verified 4 archives (1 could not be opened). Parsed 3 Gbx files; 1 failed; 1 non-Gbx files skipped.");
+            await Assert.That(lines.Length).IsEqualTo(4);
+            await Assert.That(lines[0]).StartsWith(Path.Combine("a.pak", "broken.gbx") + ": ");
+            await Assert.That(lines[1]).StartsWith("d.pak: InvalidDataException: ");
+            await Assert.That(lines[2]).StartsWith(Path.Combine("Sub", "nested.pak", "broken.gbx") + ": ");
+            await Assert.That(lines[3]).IsEqualTo("Parsed 3 Gbx files; 3 failed; 2 non-Gbx files skipped.");
             await Assert.That(error.ToString()).IsEqualTo(string.Empty);
         }
         finally
@@ -174,7 +171,7 @@ public class PakVerificationTests
     }
 
     [Test]
-    public async Task Verify_DirectoryWithoutArchives_Fails()
+    public async Task Verify_DirectoryWithoutGbx_SkipsEverything()
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-verify-");
 
@@ -184,11 +181,11 @@ public class PakVerificationTests
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", directory.FullName], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", directory.FullName], output, error);
 
-            await Assert.That(exitCode).IsEqualTo(1);
-            await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-            await Assert.That(error.ToString()).Contains("No PAK or ZIP archives were found");
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(output.ToString()).IsEqualTo($"Parsed 0 Gbx files; 0 failed; 1 non-Gbx files skipped.{Environment.NewLine}");
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
         }
         finally
         {
@@ -206,12 +203,12 @@ public class PakVerificationTests
             var path = Path.Combine(directory.FullName, "skin.zip");
             await File.WriteAllBytesAsync(path, CreateZip(("Model.Pack.Gbx", CreatePak(
                 ("good.gbx", CreateGbx(compressed: true)),
-                ("bad.gbx", "GBX"u8.ToArray()),
+                ("bad.gbx", BrokenGbx),
                 ("texture.dds", new byte[] { 1, 2 })))));
             using var output = new StringWriter();
             using var error = new StringWriter();
 
-            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var exitCode = await Cli.RunAsync(["pack", "verify", path], output, error);
 
             await Assert.That(exitCode).IsEqualTo(1);
             await Assert.That(output.ToString()).Contains($"Model.Pack.Gbx{Path.DirectorySeparatorChar}bad.gbx: ");
@@ -224,6 +221,11 @@ public class PakVerificationTests
             directory.Delete(recursive: true);
         }
     }
+
+    /// <summary>
+    /// Starts like a Gbx, so it is detected as one, but ends before its header does.
+    /// </summary>
+    private static byte[] BrokenGbx => [.. "GBX"u8, 6, 0, (byte)'B'];
 
     private static byte[] CreateZip(params (string Name, byte[] Contents)[] files)
     {
