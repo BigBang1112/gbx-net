@@ -3,6 +3,9 @@ using System.Globalization;
 
 namespace GbxCLI;
 
+/// <summary>
+/// Decrypts private PAK files with known keys, looked up by filename and by the title ID in the public header.
+/// </summary>
 internal static class PakLoader
 {
     private static readonly Dictionary<string, string[]> keys = new(StringComparer.OrdinalIgnoreCase)
@@ -113,6 +116,9 @@ internal static class PakLoader
         ["Wight"] = ["B70F2BF8475EDF00A399BC68EDD45422"],
     };
 
+    /// <summary>
+    /// Gets the known keys for a PAK filename. Dated copies like <c>TMNext_2014-04-30.pak</c> use the key of the undated name.
+    /// </summary>
     internal static IReadOnlyList<string> GetKeys(string path)
     {
         var name = Path.GetFileNameWithoutExtension(path);
@@ -122,7 +128,6 @@ internal static class PakLoader
             return candidates;
         }
 
-        // Dated copies like TMNext_2014-04-30.pak use the key of the undated name.
         var separator = name.LastIndexOf('_');
 
         return separator > 0
@@ -131,9 +136,10 @@ internal static class PakLoader
     }
 
     /// <summary>
-    /// Parses the PAK, decrypting it with the first known key that works for its name or title ID.
-    /// Without one, only the public part of the header is available.
+    /// Parses the PAK, decrypting it with the first known key that works. Without one, only the public header is available.
     /// </summary>
+    /// <param name="path">Path or name of the PAK, used to look up its key.</param>
+    /// <returns>The PAK, and whether a key decrypted it.</returns>
     internal static async Task<(Pak Pak, bool HasKey)> ParseAsync(Stream stream, string path, CancellationToken cancellationToken = default)
     {
         var pak = await Pak.ParseAsync(stream, cancellationToken: cancellationToken);

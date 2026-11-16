@@ -1,5 +1,4 @@
 using GBX.NET.PAK;
-using System.IO.Enumeration;
 using MD5 = GBX.NET.Crypto.MD5;
 
 namespace GbxCLI;
@@ -7,123 +6,98 @@ namespace GbxCLI;
 internal static class PakExtensions
 {
     /// <summary>
-    /// Lazily selects the entries matching <paramref name="pattern"/>, sorted by resolved path.
-    /// Without a pattern, all of them are selected. A pattern with * or ? is matched against the stored and resolved path
-    /// and every part of them starting after a separator. Any other pattern selects, in this order of preference:
-    /// the entry with exactly that stored path, the entry with exactly that resolved path, or the entries whose
-    /// stored or resolved path ends with it, or whose hashed name is the hash of it. Both / and \ can be used as separators.
+    /// Selects the entries matching <paramref name="pattern"/>, sorted by resolved path. Without a pattern, all of them are selected.
+    /// A pattern with <c>*</c> or <c>?</c> is matched against the stored and resolved path as described in <see cref="PathPattern.Matches"/>.
+    /// Any other pattern selects, in this order of preference: the entry with exactly that stored path, the entry with exactly
+    /// that resolved path, or the entries whose stored or resolved path ends with it, or whose hashed name is the hash of it.
     /// </summary>
     public static IEnumerable<PakEntry> Select(this Pak pak, string? pattern)
     {
-        var entries = pak.Files.Select(pair => new PakEntry(pair.Key, PakFileHashes.ResolvePath(pair.Key), pair.Value))
+        var entries = pak.Files
+            .Select(pair => new PakEntry(pair.Key, PakFileHashes.ResolvePath(pair.Key), pair.Value))
             .OrderBy(entry => entry.Path, StringComparer.Ordinal)
-            .ThenBy(entry => entry.StoredPath, StringComparer.Ordinal);
+            .ThenBy(entry => entry.StoredPath, StringComparer.Ordinal)
+            .ToArray();
 
         if (pattern is null)
         {
             return entries;
         }
 
-        pattern = Normalize(pattern);
-
-        if (pattern.IndexOfAny(['*', '?']) >= 0)
+        if (PathPattern.HasWildcard(pattern))
         {
-            return entries.Where(entry => Matches(pattern, entry.StoredPath) || Matches(pattern, entry.Path));
+            return entries.Where(entry => PathPattern.Matches(pattern, entry.StoredPath) || PathPattern.Matches(pattern, entry.Path));
         }
 
-        return SelectPath(entries, pattern);
+        // A stored path always identifies the original entry, even if a resolved name collides with it.
+        var exact = entries.Where(entry => PathPattern.Equal(entry.StoredPath, pattern)).ToArray();
+
+        if (exact.Length == 0)
+        {
+            exact = entries.Where(entry => PathPattern.Equal(entry.Path, pattern)).ToArray();
+        }
+
+        if (exact.Length > 0)
+        {
+            return exact;
+        }
+
+        var hashes = GetHashedSuffixes(PathPattern.Normalize(pattern));
+
+        return entries.Where(entry => PathPattern.EndsWith(entry.StoredPath, pattern)
+            || PathPattern.EndsWith(entry.Path, pattern)
+            || PathPattern.Suffixes(entry.StoredPath).Any(hashes.Contains));
     }
 
     /// <summary>
-    /// Finds the single file matching <paramref name="pattern"/>, which is a path rather than a wildcard pattern.
+    /// Finds the single entry matching <paramref name="pattern"/>.
     /// </summary>
-    /// <returns>The file, or null if there is none.</returns>
-    /// <exception cref="InvalidDataException">The pattern matches more than one file.</exception>
-    public static PakFile? Find(this Pak pak, string pattern)
+    /// <returns>The entry, or null if there is none.</returns>
+    /// <exception cref="InvalidDataException">The pattern matches more than one entry.</exception>
+    public static PakEntry? Find(this Pak pak, string pattern)
     {
-        var matches = pak.Select(pattern).ToArray();
+        var matches = pak.Select(pattern).Take(11).ToArray();
 
         if (matches.Length > 1)
         {
-            throw new InvalidDataException($"PAK entry '{pattern}' is ambiguous ({matches.Length} matches). Specify a full path or stored hash. First matches: {string.Join(", ", matches.Take(10).Select(entry => entry.StoredPath))}");
+            throw new InvalidDataException($"PAK entry '{pattern}' is ambiguous. Specify a full path or stored hash. Matches include: {string.Join(", ", matches.Take(10).Select(entry => entry.StoredPath))}");
         }
 
-        return matches.FirstOrDefault()?.File;
+        return matches.FirstOrDefault();
     }
 
-    private static IEnumerable<PakEntry> SelectPath(IEnumerable<PakEntry> source, string path)
+    /// <summary>
+    /// Throws if the file index could not be read, because the private header needs a key.
+    /// </summary>
+    public static void EnsureIndex(this Pak pak, bool hasKey)
     {
-        var entries = source.ToArray();
-
-        // The first stage with any match wins.
-        Func<IEnumerable<PakEntry>>[] stages =
-        [
-            // A stored path always identifies the original entry, even if a resolved alias collides with it.
-            () => entries.Where(entry => Equal(entry.StoredPath, path)),
-            () => entries.Where(entry => Equal(entry.Path, path)),
-            () =>
-            {
-                var hashes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-                // The hashed portion can be a filename or a path relative to a stored folder.
-                for (var start = 0; start < path.Length;)
-                {
-                    hashes.Add(path[..start] + MD5.Compute136(path[start..].Replace('/', '\\')));
-                    var separator = path.IndexOf('/', start);
-
-                    if (separator < 0)
-                    {
-                        break;
-                    }
-
-                    start = separator + 1;
-                }
-
-                return entries.Where(entry => HasSuffix(entry.StoredPath, path) || HasSuffix(entry.Path, path)
-                    || PathSuffixes(entry.StoredPath).Any(hashes.Contains));
-            }
-        ];
-
-        foreach (var stage in stages)
+        if (pak.IsHeaderPrivate && !hasKey)
         {
-            var found = false;
-
-            foreach (var entry in stage())
-            {
-                found = true;
-                yield return entry;
-            }
-
-            if (found)
-            {
-                yield break;
-            }
+            throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
         }
     }
 
-    private static string Normalize(string path) => path.Replace('\\', '/');
-
-    private static IEnumerable<string> PathSuffixes(string path)
+    /// <summary>
+    /// A name outside the hash catalogue is matched by its PAK filename hash. The hashed part can be
+    /// a filename or a path relative to a stored folder, so each of those is hashed.
+    /// </summary>
+    private static HashSet<string> GetHashedSuffixes(string path)
     {
-        var normalized = Normalize(path);
-        yield return normalized;
+        var hashes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-        for (var separator = normalized.IndexOf('/'); separator >= 0; separator = normalized.IndexOf('/', separator + 1))
+        for (var start = 0; start < path.Length;)
         {
-            yield return normalized[(separator + 1)..];
+            hashes.Add(path[..start] + MD5.Compute136(path[start..].Replace('/', '\\')));
+            var separator = path.IndexOf('/', start);
+
+            if (separator < 0)
+            {
+                break;
+            }
+
+            start = separator + 1;
         }
+
+        return hashes;
     }
-
-    private static bool Equal(string left, string right) => string.Equals(Normalize(left), right, StringComparison.OrdinalIgnoreCase);
-
-    private static bool HasSuffix(string path, string suffix) => Equal(path, suffix)
-        || Normalize(path).EndsWith('/' + suffix, StringComparison.OrdinalIgnoreCase);
-
-    private static bool Matches(string pattern, string path) => PathSuffixes(path)
-        .Any(suffix => FileSystemName.MatchesSimpleExpression(pattern, suffix, ignoreCase: true));
-}
-
-internal sealed record PakEntry(string StoredPath, string Path, PakFile File)
-{
-    public bool IsResolved => !PakFileHashes.IsHash(Path);
 }

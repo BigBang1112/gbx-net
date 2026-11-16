@@ -1,43 +1,45 @@
+using GbxCLI.Browsing;
+
 namespace GbxCLI.Commands;
 
 internal static class InspectCommand
 {
-    /// <param name="inputPath">The file given without a command, which opens it interactively.</param>
-    public static async Task<int> RunAsync(IEnumerator<string> argsEnumerator, TextWriter output, CancellationToken cancellationToken, string? inputPath = null)
+    /// <param name="inputPath">The path given without a command, which opens the browser.</param>
+    public static async Task RunAsync(IEnumerator<string> args, CliContext context, string? inputPath = null)
     {
         var interactive = inputPath is not null;
 
-        while (argsEnumerator.MoveNext())
+        while (args.MoveNext())
         {
-            var arg = argsEnumerator.Current;
-
-            if (arg is "-i" or "--interactive")
+            switch (args.Current)
             {
-                interactive = true;
-            }
-            else if (inputPath is null)
-            {
-                inputPath = arg;
-            }
-            else
-            {
-                throw new ArgumentException($"Unexpected argument: {arg}.");
+                case "-h" or "--help":
+                    await CliHelp.WriteCommandAsync(context.Console, "inspect");
+                    return;
+                case "-i" or "--interactive":
+                    interactive = true;
+                    break;
+                case var arg when inputPath is null:
+                    inputPath = arg;
+                    break;
+                case var arg:
+                    throw ArgumentExtensions.Unexpected("inspect", arg);
             }
         }
 
         if (string.IsNullOrWhiteSpace(inputPath))
         {
-            throw new ArgumentException("Missing input file for inspect.");
+            throw ArgumentExtensions.MissingInput("inspect");
         }
 
-        if (interactive)
+        // With redirected input or output, the summary keeps scripts and pipes working.
+        if (interactive && context.IsInteractive)
         {
-            return await Cli.RunInteractiveAsync(output);
+            await Browser.RunAsync(inputPath, context);
+            return;
         }
 
-        await using var file = await FileObject.OpenAsync(inputPath, fullGbx: true, cancellationToken);
-        await file.WriteSummaryAsync(new CliConsole(output));
-
-        return 0;
+        await using var file = await FileObject.OpenAsync(inputPath, context.CancellationToken);
+        await file.WriteSummaryAsync(context.Console);
     }
 }

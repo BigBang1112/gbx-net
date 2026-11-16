@@ -1,9 +1,11 @@
 using GBX.NET;
 using GBX.NET.Components;
-using Spectre.Console;
 
 namespace GbxCLI;
 
+/// <summary>
+/// Writes the <c>inspect</c> summary of a Gbx: its header, body, external references and node.
+/// </summary>
 internal sealed class GbxSummary(CliConsole console)
 {
     private readonly ConsoleValueWriter values = new(console);
@@ -27,6 +29,7 @@ internal sealed class GbxSummary(CliConsole console)
         {
             await values.LineAsync("Compressed size", $"{compressedSize:N0} bytes");
             await values.LineAsync("Uncompressed size", $"{gbx.Body.UncompressedSize:N0} bytes");
+
             if (gbx.Body.UncompressedSize > 0)
             {
                 await values.LineAsync("Compression ratio", $"{gbx.Body.CompressionRatio:P2}");
@@ -41,6 +44,7 @@ internal sealed class GbxSummary(CliConsole console)
         await values.LineAsync("Class ID remapping", gbx.ClassIdRemapMode);
 
         await SectionAsync("External references");
+
         if (gbx.RefTable is null)
         {
             await values.LineAsync("References", "None");
@@ -62,12 +66,15 @@ internal sealed class GbxSummary(CliConsole console)
         await values.WriteValueAsync("Node", gbx.Node, 0);
         await values.WriteTruncationNoticeAsync();
 
-        await console.WriteLineAsync("[grey]Preview limits: 10 items per collection (100 chunks), 4 nesting levels, 240 characters per value, 1000 detail lines. Use gbx eval <file> <expression> to inspect more.[/]");
+        await console.WriteLineAsync(string.Empty);
+        await console.WriteLineAsync($"{CliConsole.Label}Preview limits: {ConsoleValueWriter.CollectionLimit} items per collection ({ConsoleValueWriter.ChunkLimit} chunks), "
+            + $"{ConsoleValueWriter.DepthLimit} nesting levels, {ValueFormatter.TextLimit} characters per value, {ConsoleValueWriter.LineLimit} detail lines. "
+            + $"Use gbx <file> to browse everything, or gbx eval <file> <expression>.{CliConsole.Reset}");
     }
 
     private async Task SectionAsync(string title)
     {
         await console.WriteLineAsync(string.Empty);
-        await console.WriteLineAsync($"[bold cyan]{Markup.Escape(title)}[/]");
+        await console.WriteLineAsync($"{CliConsole.Heading}{CliConsole.Escape(title)}{CliConsole.Reset}");
     }
 }

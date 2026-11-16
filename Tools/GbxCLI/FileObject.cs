@@ -1,55 +1,82 @@
 using GBX.NET;
 using GBX.NET.PAK;
-using Spectre.Console;
 using System.IO.Compression;
 
 namespace GbxCLI;
 
 /// <summary>
 /// Opens a <see cref="Gbx"/>, <see cref="Pak"/> or <see cref="ZipArchive"/> from a path. The path can point to the file
-/// itself (<c>My/Zip.zip</c>, <c>My/Gbx.Gbx</c>, <c>My/Pak.pak</c>) or to an entry inside a ZIP or PAK archive
-/// (<c>My/Zip.zip/My/Gbx.Gbx</c>, <c>My/Pak.pak/My/Map.Gbx</c>). The file type is detected from its signature, not its extension.
+/// itself (<c>My/Map.Gbx</c>, <c>My/Pak.pak</c>) or continue inside an archive (<c>My/Pak.pak/My/Map.Gbx</c>,
+/// <c>skin.zip/Model.Pack.Gbx/good.gbx</c>). The file type is detected from its signature, not its extension.
 /// </summary>
 internal sealed class FileObject : IAsyncDisposable
 {
-    private enum FileKind { Unknown, Gbx, Pak, Zip }
+    private enum OpenMode
+    {
+        /// <summary>Parse a Gbx with its body.</summary>
+        Full,
+
+        /// <summary>Stop at the innermost archive and keep the rest of the path as an entry pattern.</summary>
+        Archive
+    }
 
     private readonly List<object> owned;
 
     /// <summary>
-    /// A <see cref="Gbx"/>, <see cref="Pak"/> or <see cref="ZipArchive"/>. For paths with an entry, this is the parsed entry.
+    /// A <see cref="Gbx"/>, <see cref="Pak"/> or <see cref="ZipArchive"/>. For paths inside an archive, this is the opened entry.
     /// </summary>
     public object Value { get; }
 
     /// <summary>
-    /// The path as it was passed to <see cref="OpenAsync"/>.
+    /// The path as it was passed to open the file.
     /// </summary>
     public string InputPath { get; }
+
+    /// <summary>
+    /// Name of the opened file or archive entry, without folders.
+    /// </summary>
+    public string Name { get; }
 
     /// <summary>
     /// Size of the opened file or archive entry (uncompressed) in bytes.
     /// </summary>
     public long FileSize { get; }
 
-    public string RootName => Value switch
-    {
-        Gbx => "Gbx",
-        Pak => "Pak",
-        ZipArchive => "Zip",
-        _ => throw new InvalidOperationException("Unexpected file object value.")
-    };
+    /// <summary>
+    /// Whether a key decrypted the PAK file index. Only meaningful when <see cref="Value"/> is a <see cref="Pak"/>.
+    /// </summary>
+    public bool HasKey { get; }
 
-    private FileObject(string inputPath, object value, long fileSize, List<object> owned)
+    /// <summary>
+    /// Path or pattern of the entries inside the archive, left over when it was opened with <see cref="OpenArchiveAsync"/>.
+    /// </summary>
+    public string? EntryPattern { get; }
+
+    private FileObject(string inputPath, Opened opened, List<object> owned)
     {
         InputPath = inputPath;
-        Value = value;
-        FileSize = fileSize;
+        Value = opened.Value;
+        Name = Path.GetFileName(PathPattern.Normalize(opened.Name).TrimEnd('/').Replace('/', Path.DirectorySeparatorChar));
+        FileSize = opened.FileSize;
+        HasKey = opened.HasKey;
+        EntryPattern = opened.EntryPattern;
         this.owned = owned;
     }
 
-    /// <param name="path">Path to a file, or to an entry inside a ZIP or PAK archive.</param>
-    /// <param name="fullGbx">If false, only the header of a Gbx is parsed.</param>
-    public static async Task<FileObject> OpenAsync(string path, bool fullGbx = true, CancellationToken cancellationToken = default)
+    /// <summary>
+    /// Opens a Gbx with its body parsed, or a PAK or ZIP archive. A path inside an archive selects one entry.
+    /// </summary>
+    public static Task<FileObject> OpenAsync(string path, CancellationToken cancellationToken = default)
+        => OpenAsync(path, OpenMode.Full, cancellationToken);
+
+    /// <summary>
+    /// Opens the innermost PAK or ZIP archive on the path. What is left of the path, if anything, is <see cref="EntryPattern"/>.
+    /// A ZIP entry is only opened as a nested archive when the path continues after it, such as <c>skin.zip/Inner.zip/*</c>.
+    /// </summary>
+    public static Task<FileObject> OpenArchiveAsync(string path, CancellationToken cancellationToken = default)
+        => OpenAsync(path, OpenMode.Archive, cancellationToken);
+
+    private static async Task<FileObject> OpenAsync(string path, OpenMode mode, CancellationToken cancellationToken)
     {
         var (filePath, entryPath) = Split(path);
         var owned = new List<object>();
@@ -59,9 +86,9 @@ internal sealed class FileObject : IAsyncDisposable
             var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
             owned.Add(stream);
 
-            var (value, fileSize) = await ParseAsync(stream, filePath, entryPath, fullGbx, owned, cancellationToken);
+            var opened = await ParseAsync(stream, filePath, entryPath, mode, owned, cancellationToken);
 
-            return new FileObject(path, value, fileSize, owned);
+            return new FileObject(path, opened, owned);
         }
         catch
         {
@@ -70,130 +97,74 @@ internal sealed class FileObject : IAsyncDisposable
         }
     }
 
-    public async Task WriteSummaryAsync(CliConsole console)
-    {
-        await console.WriteLineAsync($"[grey]File:[/] {Markup.Escape(InputPath)}");
-
-        switch (Value)
-        {
-            case Gbx gbx:
-                await console.WriteLineAsync($"[grey]File size:[/] {FileSize:N0} bytes");
-                await new GbxSummary(console).WriteAsync(gbx);
-                break;
-            case Pak pak:
-                await console.WriteLineAsync($"[grey]Format:[/] {Pak.Magic}");
-                await console.WriteLineAsync($"[grey]Version:[/] {pak.Version}");
-                await console.WriteLineAsync($"[grey]Header encryption:[/] {(pak.IsHeaderEncrypted ? "Encrypted" : "Unencrypted")}");
-
-                // Without a matching key, a private header is left unread and no files are listed.
-                if (pak.IsHeaderPrivate && pak.Files.Count == 0)
-                {
-                    await console.WriteLineAsync("[grey]Files:[/] Unavailable (private header requires a key).");
-                }
-                else
-                {
-                    await console.WriteLineAsync($"[grey]Files:[/] {pak.Files.Count}");
-                }
-
-                break;
-            case ZipArchive zip:
-                await console.WriteLineAsync("[grey]Format:[/] ZIP");
-                await console.WriteLineAsync($"[grey]Files:[/] {zip.Entries.Count(entry => !entry.FullName.EndsWith('/'))}");
-                break;
-        }
-    }
-
-    public ValueTask DisposeAsync() => DisposeAllAsync(owned);
-
     /// <summary>
-    /// Splits the path into the file on disk and the entry path inside of it, using the longest prefix that is an existing file.
+    /// Splits the path into the file on disk and the path inside of it, using the longest leading part that is an existing file.
     /// </summary>
-    internal static (string FilePath, string? EntryPath) Split(string path)
+    /// <exception cref="FileNotFoundException">No leading part of the path is an existing file.</exception>
+    public static (string FilePath, string? EntryPath) Split(string path) => TrySplit(path, out var filePath, out var entryPath)
+        ? (filePath, entryPath)
+        : throw new FileNotFoundException($"File '{path}' was not found.", path);
+
+    /// <inheritdoc cref="Split"/>
+    /// <returns>False if no leading part of the path is an existing file.</returns>
+    public static bool TrySplit(string path, out string filePath, out string? entryPath)
     {
+        filePath = path;
+        entryPath = null;
+
         if (File.Exists(path))
         {
-            return (path, null);
+            return true;
         }
 
         for (var i = path.Length - 1; i > 0; i--)
         {
-            if ((path[i] == '/' || path[i] == '\\') && File.Exists(path[..i]))
+            if (path[i] is '/' or '\\' && File.Exists(path[..i]))
             {
-                return (path[..i], i + 1 < path.Length ? path[(i + 1)..] : null);
+                filePath = path[..i];
+                entryPath = i + 1 < path.Length ? path[(i + 1)..] : null;
+                return true;
             }
         }
 
-        throw new FileNotFoundException($"File '{path}' was not found.", path);
+        return false;
     }
 
-    private static async Task<(object Value, long FileSize)> ParseAsync(
-        Stream stream, string name, string? entryPath, bool fullGbx, List<object> owned, CancellationToken cancellationToken)
+    /// <summary>
+    /// Opens a ZIP entry of an archive that this object owns. It is parsed like a file, so it can be a nested archive.
+    /// </summary>
+    public async Task<object> OpenEntryAsync(ZipArchiveEntry entry, CancellationToken cancellationToken = default)
     {
-        var signature = new byte[Pak.Magic.Length];
-        var bytesRead = await stream.ReadAtLeastAsync(signature, signature.Length, throwOnEndOfStream: false, cancellationToken);
-        stream.Position = 0;
-
-        switch (GetKind(signature.AsSpan(0, bytesRead)))
-        {
-            case FileKind.Gbx:
-                if (entryPath is not null)
-                {
-                    throw new InvalidDataException($"'{name}' is a Gbx file, so it has no entry '{entryPath}'.");
-                }
-
-                return (fullGbx ? await Gbx.ParseAsync(stream, cancellationToken: cancellationToken) : Gbx.ParseHeader(stream), stream.Length);
-
-            case FileKind.Pak:
-                return await ParsePakAsync(stream, name, entryPath, fullGbx, owned, cancellationToken);
-
-            case FileKind.Zip:
-                return await ParseZipAsync(stream, name, entryPath, fullGbx, owned, cancellationToken);
-
-            default:
-                throw new InvalidDataException("Unsupported file format. Expected a Gbx (GBX), PAK (NadeoPak) or ZIP file.");
-        }
-    }
-
-    private static async Task<(object Value, long FileSize)> ParsePakAsync(
-        Stream stream, string name, string? entryPath, bool fullGbx, List<object> owned, CancellationToken cancellationToken)
-    {
-        var (pak, hasKey) = await PakLoader.ParseAsync(stream, name, cancellationToken);
-        owned.Add(pak);
-
-        if (entryPath is null)
-        {
-            return (pak, stream.Length);
-        }
-
-        if (pak.IsHeaderPrivate && !hasKey)
-        {
-            throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
-        }
-
-        var pakFile = pak.Find(entryPath)
-            ?? throw new FileNotFoundException($"File '{entryPath}' was not found in PAK '{name}'.", name);
-
-        object gbx = fullGbx ? await pak.OpenGbxFileAsync(pakFile, cancellationToken: cancellationToken) : pak.OpenGbxFileHeader(pakFile);
-
-        return (gbx, pakFile.UncompressedSize);
-    }
-
-    private static async Task<(object Value, long FileSize)> ParseZipAsync(
-        Stream stream, string name, string? entryPath, bool fullGbx, List<object> owned, CancellationToken cancellationToken)
-    {
-        var zip = new ZipArchive(stream, ZipArchiveMode.Read, leaveOpen: true);
-        owned.Add(zip);
-
-        if (entryPath is null)
-        {
-            return (zip, stream.Length);
-        }
-
-        var (entry, innerPath) = FindZipEntry(zip, name, entryPath);
-
-        // Gbx and PAK parsing need a seekable stream, which a compressed entry stream is not.
-        var memory = new MemoryStream(capacity: (int)Math.Min(entry.Length, int.MaxValue));
+        var memory = await BufferAsync(entry, cancellationToken);
         owned.Add(memory);
+
+        return (await ParseAsync(memory, entry.FullName, entryPath: null, OpenMode.Full, owned, cancellationToken)).Value;
+    }
+
+    /// <summary>
+    /// Opens a PAK entry of an archive that this object owns as a fully parsed Gbx. PAK entries are not opened as nested archives.
+    /// </summary>
+    public static async Task<Gbx> OpenEntryAsync(Pak pak, PakEntry entry, CancellationToken cancellationToken = default)
+    {
+        if (entry.IsUnstored)
+        {
+            throw new InvalidDataException($"PAK entry '{entry.Path}' has no stored data.");
+        }
+
+        if (!await pak.CheckFileIsGbxAsync(entry.File, cancellationToken))
+        {
+            throw new InvalidDataException($"PAK entry '{entry.Path}' is not a Gbx file.");
+        }
+
+        return await pak.OpenGbxFileAsync(entry.File, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>
+    /// Copies a ZIP entry into memory, because Gbx and PAK parsing need a seekable stream.
+    /// </summary>
+    public static async Task<MemoryStream> BufferAsync(ZipArchiveEntry entry, CancellationToken cancellationToken = default)
+    {
+        var memory = new MemoryStream(capacity: (int)Math.Min(entry.Length, Array.MaxLength));
 
         await using (var entryStream = entry.Open())
         {
@@ -201,57 +172,125 @@ internal sealed class FileObject : IAsyncDisposable
         }
 
         memory.Position = 0;
+        return memory;
+    }
+
+    public async Task WriteSummaryAsync(CliConsole console)
+    {
+        await console.WriteLineAsync($"{CliConsole.Label}File:{CliConsole.Reset} {CliConsole.Escape(InputPath)}");
+
+        switch (Value)
+        {
+            case Gbx gbx:
+                await console.WriteLineAsync($"{CliConsole.Label}File size:{CliConsole.Reset} {FileSize:N0} bytes");
+                await new GbxSummary(console).WriteAsync(gbx);
+                break;
+            case Pak pak:
+                await console.WriteLineAsync($"{CliConsole.Label}Format:{CliConsole.Reset} {Pak.Magic}");
+                await console.WriteLineAsync($"{CliConsole.Label}Version:{CliConsole.Reset} {pak.Version}");
+                await console.WriteLineAsync($"{CliConsole.Label}Header encryption:{CliConsole.Reset} {(pak.IsHeaderEncrypted ? "Encrypted" : "Unencrypted")}");
+                await console.WriteLineAsync(pak.IsHeaderPrivate && !HasKey
+                    ? $"{CliConsole.Label}Files:{CliConsole.Reset} Unavailable (private header requires a key)."
+                    : $"{CliConsole.Label}Files:{CliConsole.Reset} {pak.Files.Count}");
+                break;
+            case ZipArchive zip:
+                await console.WriteLineAsync($"{CliConsole.Label}Format:{CliConsole.Reset} ZIP");
+                await console.WriteLineAsync($"{CliConsole.Label}Files:{CliConsole.Reset} {zip.Select(pattern: null).Count()}");
+                break;
+        }
+    }
+
+    public ValueTask DisposeAsync() => DisposeAllAsync(owned);
+
+    private static async Task<Opened> ParseAsync(Stream stream, string name, string? entryPath, OpenMode mode, List<object> owned, CancellationToken cancellationToken)
+    {
+        switch (await FileSignature.ReadAsync(stream, cancellationToken))
+        {
+            case FileKind.Gbx:
+                if (entryPath is not null)
+                {
+                    throw new InvalidDataException($"'{name}' is a Gbx file, so it has no entry '{entryPath}'.");
+                }
+
+                if (mode == OpenMode.Archive)
+                {
+                    throw new InvalidDataException($"'{name}' is a Gbx file, not a PAK (NadeoPak) or ZIP archive.");
+                }
+
+                return new(await Gbx.ParseAsync(stream, cancellationToken: cancellationToken), name, stream.Length);
+            case FileKind.Pak:
+                return await ParsePakAsync(stream, name, entryPath, mode, owned, cancellationToken);
+            case FileKind.Zip:
+                return await ParseZipAsync(stream, name, entryPath, mode, owned, cancellationToken);
+            default:
+                throw new InvalidDataException($"'{name}' has an unsupported format. Expected a Gbx (GBX), PAK (NadeoPak) or ZIP file.");
+        }
+    }
+
+    private static async Task<Opened> ParsePakAsync(Stream stream, string name, string? entryPath, OpenMode mode, List<object> owned, CancellationToken cancellationToken)
+    {
+        var (pak, hasKey) = await PakLoader.ParseAsync(stream, name, cancellationToken);
+        owned.Add(pak);
+
+        if (mode == OpenMode.Archive)
+        {
+            pak.EnsureIndex(hasKey);
+            return new(pak, name, stream.Length, hasKey, entryPath);
+        }
+
+        if (entryPath is null)
+        {
+            return new(pak, name, stream.Length, hasKey);
+        }
+
+        pak.EnsureIndex(hasKey);
+
+        var entry = pak.Find(entryPath)
+            ?? throw new FileNotFoundException($"File '{entryPath}' was not found in PAK '{name}'.", name);
+
+        return new(await OpenEntryAsync(pak, entry, cancellationToken), entry.Path, entry.File.UncompressedSize);
+    }
+
+    private static async Task<Opened> ParseZipAsync(Stream stream, string name, string? entryPath, OpenMode mode, List<object> owned, CancellationToken cancellationToken)
+    {
+        var zip = new ZipArchive(stream, ZipArchiveMode.Read, leaveOpen: true);
+        owned.Add(zip);
+
+        if (entryPath is null)
+        {
+            return new(zip, name, stream.Length);
+        }
+
+        ZipArchiveEntry entry;
+        string? innerPath;
+
+        if (zip.Find(entryPath, requireInnerPath: mode == OpenMode.Archive) is var (found, rest))
+        {
+            (entry, innerPath) = (found, rest);
+        }
+        else if (mode == OpenMode.Archive)
+        {
+            // The rest of the path selects entries of this archive.
+            return new(zip, name, stream.Length, EntryPattern: entryPath);
+        }
+        else
+        {
+            var matches = zip.Select(entryPath).Take(11).ToArray();
+
+            entry = matches.Length switch
+            {
+                0 => throw new FileNotFoundException($"File '{entryPath}' was not found in ZIP '{name}'.", name),
+                1 => matches[0],
+                _ => throw ZipArchiveExtensions.Ambiguous(entryPath, matches)
+            };
+            innerPath = null;
+        }
+
+        var memory = await BufferAsync(entry, cancellationToken);
+        owned.Add(memory);
 
         // The entry can be an archive itself, so whatever path is left continues inside of it.
-        return await ParseAsync(memory, entry.FullName, innerPath, fullGbx, owned, cancellationToken);
-    }
-
-    /// <summary>
-    /// Finds the entry matching the longest leading part of <paramref name="entryPath"/>
-    /// and returns the rest of the path, which points inside of that entry.
-    /// </summary>
-    private static (ZipArchiveEntry Entry, string? InnerPath) FindZipEntry(ZipArchive zip, string name, string entryPath)
-    {
-        var pattern = entryPath.Replace('\\', '/').Trim('/');
-
-        for (var end = pattern.Length; end > 0; end = pattern.LastIndexOf('/', end - 1))
-        {
-            var prefix = pattern[..end];
-            var matches = zip.Select(prefix).ToArray();
-
-            if (matches.Length > 1)
-            {
-                throw new InvalidDataException($"ZIP entry '{prefix}' is ambiguous ({matches.Length} matches). Specify a full path. First matches: {string.Join(", ", matches.Take(10).Select(entry => entry.FullName))}");
-            }
-
-            if (matches.Length == 1)
-            {
-                return (matches[0], end < pattern.Length ? pattern[(end + 1)..] : null);
-            }
-        }
-
-        throw new FileNotFoundException($"File '{entryPath}' was not found in ZIP '{name}'.", name);
-    }
-
-    private static FileKind GetKind(ReadOnlySpan<byte> signature)
-    {
-        if (signature.StartsWith("GBX"u8))
-        {
-            return FileKind.Gbx;
-        }
-
-        if (signature.StartsWith("NadeoPak"u8))
-        {
-            return FileKind.Pak;
-        }
-
-        // Local file header, empty archive and spanned archive markers
-        if (signature.StartsWith("PK\x03\x04"u8) || signature.StartsWith("PK\x05\x06"u8) || signature.StartsWith("PK\x07\x08"u8))
-        {
-            return FileKind.Zip;
-        }
-
-        return FileKind.Unknown;
+        return await ParseAsync(memory, entry.FullName, innerPath, mode, owned, cancellationToken);
     }
 
     /// <summary>
@@ -274,4 +313,6 @@ internal sealed class FileObject : IAsyncDisposable
 
         owned.Clear();
     }
+
+    private sealed record Opened(object Value, string Name, long FileSize, bool HasKey = false, string? EntryPattern = null);
 }

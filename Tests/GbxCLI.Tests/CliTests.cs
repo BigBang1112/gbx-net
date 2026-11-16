@@ -1,269 +1,190 @@
-using GBX.NET;
-using GBX.NET.Engines.MwFoundations;
-using System.Reflection;
-using TUnit.Assertions.Enums;
-
 namespace GbxCLI.Tests;
 
 public class CliTests
 {
     [Test]
-    public async Task Startup_InitializesCompressionProviders()
+    public async Task Run_NoArguments_WritesHelp()
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        var run = await CliRun.RunAsync();
 
-        var exitCode = await Cli.RunAsync(["--help"], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(Gbx.LZO is GBX.NET.LZO.Lzo).IsTrue();
-        await Assert.That(Gbx.ZLib is GBX.NET.ZLib.ZLib).IsTrue();
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-    }
-
-    [Test]
-    public async Task NoArguments_ShowsHelpWithoutWaitingForRedirectedOutput()
-    {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-        using var helpOutput = new StringWriter();
-
-        var exitCode = await Cli.RunAsync([], output, error);
-        var helpExitCode = await Cli.RunAsync(["--help"], helpOutput, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(helpExitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("Usage: gbx");
-        await Assert.That(output.ToString()).IsEqualTo(helpOutput.ToString());
-        await Assert.That(output.ToString().Contains("Press any key")).IsFalse();
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Usage: gbx <command>");
+        await Assert.That(run.Output).Contains("pack extract <archive>");
+        await Assert.That(run.Output.Contains("Press Enter")).IsFalse();
     }
 
     [Test]
     [Arguments("-h")]
     [Arguments("--help")]
-    [Arguments("-v")]
-    [Arguments("--version")]
-    public async Task InformationalOption_Succeeds(string option)
+    public async Task Run_Help_WritesHelpWithoutFormattingCodes(string option)
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        var run = await CliRun.RunAsync(option);
 
-        var exitCode = await Cli.RunAsync([option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("gbx");
-        await Assert.That(output.ToString().Contains("Press any key")).IsFalse();
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Global options:");
+        await Assert.That(run.Output.Contains('$')).IsFalse();
+        await Assert.That(run.Output.Contains('\u001b')).IsFalse();
     }
 
     [Test]
-    [Arguments("-h")]
-    [Arguments("--help")]
     [Arguments("-v")]
     [Arguments("--version")]
-    public async Task InformationalOutput_IdentifiesDistribution(string option)
+    public async Task Run_Version_WritesDistribution(string option)
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-        var distribution = typeof(Cli).Assembly.GetCustomAttributes<AssemblyMetadataAttribute>()
-            .Single(attribute => attribute.Key == "CliDistribution").Value;
+        var run = await CliRun.RunAsync(option);
 
-        var exitCode = await Cli.RunAsync([option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(distribution is ".NET tool" or "standalone").IsTrue();
-        await Assert.That(output.ToString()).Contains($"({distribution})");
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).StartsWith("gbx ");
+        await Assert.That(run.Output).Contains($"({Cli.Distribution})");
     }
 
     [Test]
-    [Arguments("unknown")]
-    [Arguments("--unknown")]
-    [Arguments("info")]
+    public async Task Run_UnknownCommand_FailsWithMessage()
+    {
+        var run = await CliRun.RunAsync("frobnicate");
+
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Output).IsEqualTo(string.Empty);
+        await Assert.That(run.Error.Trim()).IsEqualTo("gbx: Unknown command: frobnicate. Use --help for usage.");
+    }
+
+    [Test]
+    [Arguments("inspect", "Usage: gbx inspect")]
+    [Arguments("parse", "Usage: gbx inspect")]
+    [Arguments("eval", "Usage: gbx eval")]
+    [Arguments("script", "Usage: gbx script")]
+    [Arguments("verify", "Usage: gbx verify")]
+    [Arguments("pack", "Usage: gbx pack")]
+    [Arguments("compress", "Usage: gbx compress")]
+    [Arguments("decompress", "Usage: gbx decompress")]
+    public async Task Run_CommandHelp_WritesCommandSection(string command, string expected)
+    {
+        var run = await CliRun.RunAsync(command, "--help");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains(expected);
+    }
+
+    [Test]
+    [Arguments("pack", "list", "--help")]
+    [Arguments("pack", "extract", "-h")]
+    [Arguments("pack", "verify", "--help")]
+    public async Task Run_PackSubcommandHelp_WritesHelp(string pack, string command, string option)
+    {
+        var run = await CliRun.RunAsync(pack, command, option);
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Usage: gbx");
+    }
+
+    [Test]
+    [Arguments("inspect")]
     [Arguments("eval")]
-    [Arguments("parse")]
-    [Arguments("script")]
+    [Arguments("verify")]
     [Arguments("compress")]
     [Arguments("decompress")]
-    public async Task InvalidArguments_ReportError(string argument)
+    public async Task Run_MissingInput_Fails(string command)
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        var run = await CliRun.RunAsync(command);
 
-        var exitCode = await Cli.RunAsync([argument], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(1);
-        await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-        await Assert.That(error.ToString()).Contains("gbx:");
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error).Contains($"Missing input file for {command}.");
     }
 
     [Test]
-    [Arguments("-o")]
-    [Arguments("--output")]
-    public async Task OutputOption_RequiresValue(string option)
+    [Arguments("inspect", "a.Gbx", "b.Gbx", "inspect")]
+    [Arguments("verify", "a", "b", "verify")]
+    [Arguments("compress", "a.Gbx", "b.Gbx", "compress")]
+    [Arguments("decompress", "a.Gbx", "--bogus", "decompress")]
+    public async Task Run_ExtraArgument_UsesOneMessageFormat(string command, string first, string second, string name)
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        var run = await CliRun.RunAsync(command, first, second);
 
-        var exitCode = await Cli.RunAsync(["decompress", "input.Gbx", option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(1);
-        await Assert.That(error.ToString()).Contains($"Missing file path after {option}");
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error).Contains($"Unexpected argument for {name}: {second}.");
     }
 
     [Test]
-    public async Task ExampleCommands_RoundTripAndBackUpOverwrittenFiles()
+    public async Task Run_PackWithoutSubcommand_Fails()
     {
-        var directory = Directory.CreateTempSubdirectory("gbx-cli-");
+        var run = await CliRun.RunAsync("pack");
 
-        try
-        {
-            var inputPath = Path.Combine(directory.FullName, "input [blue] file.Gbx");
-            var compressedPath = Path.Combine(directory.FullName, "compressed [green].Gbx");
-            var decompressedPath = Path.Combine(directory.FullName, "decompressed.Gbx");
-            var gbx = new Gbx<CMwNod>(new CMwNod())
-            {
-                BodyCompression = GbxCompression.Uncompressed
-            };
-            gbx.Save(inputPath);
-
-            using var output = new StringWriter();
-            using var error = new StringWriter();
-
-            await Assert.That(await Cli.RunAsync(["parse", inputPath], output, error)).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains($"File: {inputPath}");
-            await Assert.That(output.ToString()).Contains("Body compression: Uncompressed");
-            await Assert.That(await Cli.RunAsync(["compress", inputPath, "-o", compressedPath], output, error)).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains($"Written: {compressedPath}");
-            await Assert.That(Gbx.IsCompressed(compressedPath)).IsTrue();
-            await Assert.That(await Cli.RunAsync(["decompress", "--output", decompressedPath, compressedPath], output, error)).IsEqualTo(0);
-            await Assert.That(File.ReadAllBytes(decompressedPath)).IsEquivalentTo(File.ReadAllBytes(inputPath), CollectionOrdering.Matching);
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-
-            var compressedBytes = File.ReadAllBytes(compressedPath);
-            var inputBytes = File.ReadAllBytes(inputPath);
-
-            // Overwritten files are kept with a .bak suffix.
-            await Assert.That(await Cli.RunAsync(["compress", inputPath, "-o", compressedPath], output, error)).IsEqualTo(0);
-            await Assert.That(File.ReadAllBytes(compressedPath + ".bak")).IsEquivalentTo(compressedBytes, CollectionOrdering.Matching);
-            await Assert.That(await Cli.RunAsync(["decompress", inputPath], output, error)).IsEqualTo(0);
-            await Assert.That(File.ReadAllBytes(inputPath + ".bak")).IsEquivalentTo(inputBytes, CollectionOrdering.Matching);
-            await Assert.That(File.ReadAllBytes(inputPath)).IsEquivalentTo(File.ReadAllBytes(decompressedPath), CollectionOrdering.Matching);
-        }
-        finally
-        {
-            directory.Delete(recursive: true);
-        }
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error).Contains("Missing command for pack");
     }
 
     [Test]
-    public async Task ExistingFileWithoutCommand_ShowsInteractivePlaceholder()
+    public async Task Run_MissingOptionValue_Fails()
     {
-        var directory = Directory.CreateTempSubdirectory("gbx-cli-");
+        var run = await CliRun.RunAsync("compress", "a.Gbx", "-o");
 
-        try
-        {
-            var inputPath = Path.Combine(directory.FullName, "input file.Gbx");
-            var gbx = new Gbx<CMwNod>(new CMwNod())
-            {
-                BodyCompression = GbxCompression.Uncompressed
-            };
-            gbx.Save(inputPath);
-
-            using var output = new StringWriter();
-            using var explicitOutput = new StringWriter();
-            using var error = new StringWriter();
-
-            await Assert.That(await Cli.RunAsync([inputPath], output, error)).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains("Interactive mode is not implemented yet");
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-
-            error.GetStringBuilder().Clear();
-
-            await Assert.That(await Cli.RunAsync(["parse", inputPath], explicitOutput, error)).IsEqualTo(0);
-            await Assert.That(explicitOutput.ToString()).Contains("Body compression: Uncompressed");
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-        }
-        finally
-        {
-            directory.Delete(recursive: true);
-        }
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error).Contains("Missing value after --output.");
     }
 
     [Test]
-    public async Task ExistingInvalidFileWithoutCommand_IsNotTreatedAsUnknownCommand()
+    public async Task Run_ExistingFileWithoutCommand_WritesSummaryWhenNotInteractive()
     {
-        var directory = Directory.CreateTempSubdirectory("gbx-cli-");
+        using var directory = new TempDirectory();
+        var path = directory.Write("input.Gbx", Fixtures.CreateGbx());
 
-        try
-        {
-            var inputPath = Path.Combine(directory.FullName, "invalid.Gbx");
-            File.WriteAllText(inputPath, "Not a Gbx file.");
-            using var output = new StringWriter();
-            using var error = new StringWriter();
+        var run = await CliRun.RunAsync(path);
 
-            await Assert.That(await Cli.RunAsync([inputPath], output, error)).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains("Interactive mode is not implemented yet");
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-        }
-        finally
-        {
-            directory.Delete(recursive: true);
-        }
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Class ID: 0x03085000");
+        await Assert.That(run.Output.Contains("Interactive mode")).IsFalse();
     }
 
     [Test]
-    public async Task MissingFileWithoutCommand_SuggestsHelp()
+    public async Task Run_ArchivePathWithoutCommand_OpensEntry()
     {
-        var inputPath = Path.Combine(Path.GetTempPath(), $"gbx-cli-{Guid.NewGuid():N}.Gbx");
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        using var directory = new TempDirectory();
+        var path = directory.Write("skin.zip", Fixtures.CreateZip(("Folder/Map.Gbx", Fixtures.CreateGbx())));
 
-        await Assert.That(await Cli.RunAsync([inputPath], output, error)).IsEqualTo(1);
-        await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-        await Assert.That(error.ToString()).Contains("Use --help");
+        var run = await CliRun.RunAsync(path + "/Folder/Map.Gbx");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("CGameCtnMediaBlockTime");
     }
 
     [Test]
-    [Arguments("-i")]
-    [Arguments("--interactive")]
-    public async Task InteractiveParse_ShowsPlaceholderWithoutOpeningFile(string option)
+    public async Task Run_Exception_WritesEscapedMessageWithoutStackTrace()
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
+        var run = await CliRun.RunAsync("inspect", "missing $file.Gbx");
 
-        var exitCode = await Cli.RunAsync(["parse", "input.Gbx", option], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("Interactive mode is not implemented yet");
-        await Assert.That(output.ToString().Contains('\u001b')).IsFalse();
-        await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error.Trim()).IsEqualTo("gbx: File 'missing $file.Gbx' was not found.");
     }
 
     [Test]
-    [Arguments("-i")]
-    [Arguments("--interactive")]
-    public async Task InteractiveDefaultCommand_ShowsPlaceholderWithoutParsingFile(string option)
+    public async Task Run_InteractiveWithoutArguments_OpensDraggedPath()
     {
-        var directory = Directory.CreateTempSubdirectory("gbx-cli-");
+        using var directory = new TempDirectory();
+        var path = directory.Write("dragged file.Gbx", Fixtures.CreateGbx());
 
-        try
-        {
-            var inputPath = Path.Combine(directory.FullName, "input.Gbx");
-            File.WriteAllText(inputPath, "Existing file");
-            using var output = new StringWriter();
-            using var error = new StringWriter();
+        var run = await CliRun.RunInteractiveAsync($"\"{path}\"\nq\n");
 
-            var exitCode = await Cli.RunAsync([inputPath, option], output, error);
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Drag a Gbx");
+        await Assert.That(run.Output).Contains("Node (CGameCtnMediaBlockTime)");
+    }
 
-            await Assert.That(exitCode).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains("Interactive mode is not implemented yet");
-            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
-        }
-        finally
-        {
-            directory.Delete(recursive: true);
-        }
+    [Test]
+    public async Task Run_InteractiveWithoutArguments_EmptyLineWritesHelp()
+    {
+        var run = await CliRun.RunInteractiveAsync("\n\n");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Global options:");
+        await Assert.That(run.Output).Contains("Press Enter to close.");
+    }
+
+    [Test]
+    public async Task Run_InteractiveWithoutArguments_MissingPathAsksAgain()
+    {
+        var run = await CliRun.RunInteractiveAsync("missing.Gbx\n");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("File 'missing.Gbx' was not found.");
     }
 }

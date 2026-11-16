@@ -7,12 +7,17 @@
         <Nullable>enable</Nullable>
         <AssemblyName>gbx</AssemblyName>
         <FileHashesSource>$(MSBuildProjectDirectory)/../../Resources/FileHashes.txt</FileHashesSource>
+        <!-- LibraryImport needs unsafe code for the console mode calls. -->
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!-- Report trim problems during a normal build, not only when publishing. -->
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">true</PublishSingleFile>
         <EnableCompressionInSingleFile Condition="'$(PublishSingleFile)' == 'true' and '$(EnableCompressionInSingleFile)' == ''">true</EnableCompressionInSingleFile>
+        <!-- Roslyn references assemblies by their location, so they are extracted from the single file. -->
+        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
         <PublishTrimmed Condition="'$(PublishTrimmed)' == ''">true</PublishTrimmed>
         <TrimMode Condition="'$(TrimMode)' == ''">partial</TrimMode>
         <TrimmerRemoveSymbols Condition="'$(TrimmerRemoveSymbols)' == ''">true</TrimmerRemoveSymbols>
-        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
 
         <PackAsTool Condition="'$(_IsPublishing)' != 'true'">true</PackAsTool>
         <ToolCommandName>gbx</ToolCommandName>
@@ -24,7 +29,7 @@
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>
-- A tool for parsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
+- A tool for inspecting and browsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>
@@ -43,7 +48,6 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Spectre.Console" Version="0.57.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -62,7 +66,7 @@
         <!-- Keep the default ScriptOptions references available to code compiled at runtime. -->
         <TrimmerRootAssembly Include="System.Collections;System.Collections.Concurrent;System.Console" />
         <TrimmerRootAssembly Include="System.Diagnostics.Debug;System.Diagnostics.Process;System.Diagnostics.StackTrace;System.Globalization" />
-        <TrimmerRootAssembly Include="System.IO;System.IO.FileSystem;System.IO.FileSystem.Primitives" />
+        <TrimmerRootAssembly Include="System.IO;System.IO.FileSystem;System.IO.FileSystem.Primitives;System.IO.Compression" />
         <TrimmerRootAssembly Include="System.Reflection;System.Reflection.Extensions;System.Reflection.Primitives" />
         <TrimmerRootAssembly Include="System.Runtime.Extensions;System.Runtime.InteropServices" />
         <TrimmerRootAssembly Include="System.Text.Encoding;System.Text.Encoding.CodePages;System.Text.Encoding.Extensions;System.Text.RegularExpressions" />

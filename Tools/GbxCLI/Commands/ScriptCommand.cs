@@ -2,48 +2,42 @@ namespace GbxCLI.Commands;
 
 internal static class ScriptCommand
 {
-    public static async Task<int> RunAsync(IEnumerator<string> argsEnumerator, TextWriter output, CancellationToken cancellationToken)
+    public static async Task RunAsync(IEnumerator<string> args, CliContext context)
     {
-        string? inputPath = null;
+        string? scriptPath = null;
         var arguments = new List<string>();
-        var passThrough = false;
 
-        while (argsEnumerator.MoveNext())
+        while (args.MoveNext())
         {
-            var arg = argsEnumerator.Current;
-
-            if (!passThrough && arg == "--")
+            switch (args.Current)
             {
-                passThrough = true;
-                continue;
-            }
-
-            if (inputPath is null)
-            {
-                if (!passThrough && arg.StartsWith('-'))
-                {
-                    throw new ArgumentException($"Unknown option for script: {arg}. Use gbx script --help for usage.");
-                }
-
-                inputPath = arg;
-            }
-            else
-            {
-                arguments.Add(arg);
+                // Arguments after the script belong to it, also when they start with -.
+                case var arg when scriptPath is not null:
+                    arguments.Add(arg);
+                    break;
+                case "-h" or "--help":
+                    await CliHelp.WriteCommandAsync(context.Console, "script");
+                    return;
+                case "--":
+                    scriptPath = args.NextValue("--");
+                    break;
+                case var arg when arg.StartsWith('-'):
+                    throw ArgumentExtensions.Unexpected("script", arg);
+                case var arg:
+                    scriptPath = arg;
+                    break;
             }
         }
 
-        if (string.IsNullOrWhiteSpace(inputPath))
+        if (string.IsNullOrWhiteSpace(scriptPath))
         {
             throw new ArgumentException("Missing C# script file for script.");
         }
 
-        var path = Path.GetFullPath(inputPath);
-        var code = await File.ReadAllTextAsync(path, cancellationToken);
-        var session = new CSharpSession(new ScriptGlobals(arguments.ToArray(), output), path);
-        
-        await session.EvaluateAsync(code, cancellationToken);
-        
-        return 0;
+        var path = Path.GetFullPath(scriptPath);
+        var code = await File.ReadAllTextAsync(path, context.CancellationToken);
+        var session = new CSharpSession(new ScriptGlobals([.. arguments], context.Output), path);
+
+        await session.EvaluateAsync(code, context.CancellationToken);
     }
 }
