@@ -154,7 +154,7 @@ internal sealed class Browser
             switch (item.Value)
             {
                 case NodeRef { Kind: NodeRefKind.Embedded } reference:
-                    frames.Add(new BrowserFrame(Current.GetChildTitle(item.Name), reference.Node!));
+                    frames.Add(new BrowserFrame(Current.GetChildTitle(item.Name), reference.Node!) { HasExternalReferences = Current.HasExternalReferences });
                     await RenderAsync();
                     break;
                 case null or NodeRef:
@@ -167,7 +167,7 @@ internal sealed class Browser
                     await Console.WriteLineAsync($"{CliConsole.Label}{CliConsole.Escape(item.Name)}:{CliConsole.Reset} {CliConsole.Escape(text)}");
                     break;
                 case var value:
-                    frames.Add(new BrowserFrame(Current.GetChildTitle(item.Name), value));
+                    frames.Add(new BrowserFrame(Current.GetChildTitle(item.Name), value) { HasExternalReferences = Current.HasExternalReferences });
                     await RenderAsync();
                     break;
             }
@@ -184,11 +184,13 @@ internal sealed class Browser
     /// <param name="owner">The file object that owns entries of an archive, so they are disposed with it.</param>
     private void PushFile(string name, object value, FileObject? owner)
     {
-        frames.Add(new BrowserFrame(name, value, isFile: true) { Owner = owner });
+        var hasExternalReferences = ValueInspector.HasExternalReferences(value);
+
+        frames.Add(new BrowserFrame(name, value, isFile: true) { Owner = owner, HasExternalReferences = hasExternalReferences });
 
         if (value is Gbx { Node: { } node })
         {
-            frames.Add(new BrowserFrame("Node", node));
+            frames.Add(new BrowserFrame("Node", node) { HasExternalReferences = hasExternalReferences });
         }
     }
 

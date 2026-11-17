@@ -57,6 +57,9 @@ internal sealed class BrowserFrame(string title, object value, bool isFile = fal
     /// </summary>
     public FileObject? Owner { get; init; }
 
+    /// <inheritdoc cref="ValueInspector.GetMembers" path="/param[@name='hasExternalReferences']"/>
+    public bool HasExternalReferences { get; init; } = true;
+
     private List<BrowserItem> CreateItems()
     {
         switch (Value)
@@ -74,7 +77,7 @@ internal sealed class BrowserFrame(string title, object value, bool isFile = fal
         }
 
         var isCollection = Value is System.Collections.IEnumerable;
-        var members = ValueInspector.GetMembers(Value);
+        var members = ValueInspector.GetMembers(Value, hasExternalReferences: HasExternalReferences);
 
         if (!isCollection)
         {

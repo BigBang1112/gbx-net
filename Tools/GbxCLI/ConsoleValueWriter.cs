@@ -18,6 +18,9 @@ internal sealed class ConsoleValueWriter(CliConsole console)
     private readonly HashSet<object> visited = new(ReferenceEqualityComparer.Instance);
     private int lines;
 
+    /// <inheritdoc cref="ValueInspector.GetMembers" path="/param[@name='hasExternalReferences']"/>
+    public bool HasExternalReferences { get; set; } = true;
+
     public async Task WriteResultAsync(object? value)
     {
         await WriteValueAsync("Result", value, 0);
@@ -42,7 +45,8 @@ internal sealed class ConsoleValueWriter(CliConsole console)
 
         await LineAsync(name, value, depth, formatted: formatted && value is string);
 
-        if (value is null || ValueInspector.IsScalar(value) || value is NodeRef { Kind: not NodeRefKind.Embedded })
+        // "0 items" already says everything about an empty collection, and ("Id", "Collection", "Author") about an Ident.
+        if (value is null || ValueInspector.IsScalar(value) || value is NodeRef { Kind: not NodeRefKind.Embedded } or ICollection { Count: 0 } or Ident)
         {
             return;
         }
@@ -73,7 +77,7 @@ internal sealed class ConsoleValueWriter(CliConsole console)
     {
         var isCollection = value is IEnumerable;
         var limit = value is IChunkSet or IHeaderChunkSet ? ChunkLimit : CollectionLimit;
-        var members = ValueInspector.GetMembers(value);
+        var members = ValueInspector.GetMembers(value, hasExternalReferences: HasExternalReferences);
 
         if (!isCollection)
         {

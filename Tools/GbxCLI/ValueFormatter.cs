@@ -21,6 +21,7 @@ internal static class ValueFormatter
     {
         null => "(null)",
         string text => text.Length == 0 ? "\"\"" : text,
+        byte[] { Length: 0 } => "0 bytes",
         byte[] bytes => $"{bytes.Length:N0} bytes (hex): {Convert.ToHexString(bytes.AsSpan(0, Math.Min(bytes.Length, 32)))}{(bytes.Length > 32 ? " ..." : "")}",
         NodeRef { Kind: NodeRefKind.None } => "(null)",
         NodeRef { Kind: NodeRefKind.Embedded } => "Embedded node",
@@ -30,8 +31,36 @@ internal static class ValueFormatter
         ICollection collection => $"{collection.Count:N0} items",
         IEnumerable => "Collection",
         Exception exception => exception.Message,
-        _ => Convert.ToString(value, CultureInfo.InvariantCulture) ?? "(null)"
+        _ => DescribeOther(value)
     };
+
+    private static string DescribeOther(object value)
+    {
+        var type = value.GetType();
+        var culture = CultureInfo.CurrentCulture;
+        string? text;
+
+        // Vectors and other structs format their numbers with the current culture, where a decimal comma would blur their separators.
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
+        try
+        {
+            text = Convert.ToString(value, CultureInfo.InvariantCulture);
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = culture;
+        }
+
+        // Without its own ToString, a class only gives its full type name, such as Namespace.Outer+Inner.
+        if (text is null || text == type.ToString())
+        {
+            return type.IsNested ? $"{GetTypeName(type.DeclaringType!)}.{GetTypeName(type)}" : GetTypeName(type);
+        }
+
+        // An empty Id, for example, would otherwise leave nothing after the name.
+        return text.Length == 0 ? "\"\"" : text;
+    }
 
     /// <summary>
     /// Makes control characters visible, so a value stays on one line, and shortens it to <paramref name="limit"/> characters.

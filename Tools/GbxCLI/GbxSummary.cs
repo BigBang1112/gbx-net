@@ -63,6 +63,7 @@ internal sealed class GbxSummary(CliConsole console)
         }
 
         await SectionAsync("Node");
+        values.HasExternalReferences = ValueInspector.HasExternalReferences(gbx);
         await values.WriteValueAsync("Node", gbx.Node, 0);
         await values.WriteTruncationNoticeAsync();
 

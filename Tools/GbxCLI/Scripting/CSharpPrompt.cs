@@ -36,7 +36,7 @@ internal static class CSharpPrompt
                 // A statement such as a declaration has no value to show.
                 if (result is not null || !line.TrimEnd().EndsWith(';'))
                 {
-                    await new ConsoleValueWriter(console).WriteResultAsync(result);
+                    await new ConsoleValueWriter(console) { HasExternalReferences = ValueInspector.HasExternalReferences(file.Value) }.WriteResultAsync(result);
                 }
             }
             catch (CompilationErrorException exception)

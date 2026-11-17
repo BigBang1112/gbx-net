@@ -45,7 +45,7 @@ internal static class EvalCommand
         foreach (var expression in expressions)
         {
             var result = await session.EvaluateAsync(expression, context.CancellationToken);
-            await new ConsoleValueWriter(context.Console).WriteResultAsync(result);
+            await new ConsoleValueWriter(context.Console) { HasExternalReferences = ValueInspector.HasExternalReferences(file.Value) }.WriteResultAsync(result);
         }
 
         if (interactive)

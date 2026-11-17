@@ -25,7 +25,10 @@ internal static class ValueInspector
     /// <param name="useStoredReferences">
     /// List node references as they are stored, so that external nodes are not loaded from other files.
     /// </param>
-    public static IEnumerable<InspectorMember> GetMembers(object value, bool useStoredReferences = true)
+    /// <param name="hasExternalReferences">
+    /// Whether the Gbx of the value has external references. Without them, computed properties cannot load other files, so they are read too.
+    /// </param>
+    public static IEnumerable<InspectorMember> GetMembers(object value, bool useStoredReferences = true, bool hasExternalReferences = true)
     {
         if (IsScalar(value))
         {
@@ -37,8 +40,14 @@ internal static class ValueInspector
             return GetItems(useStoredReferences && value is INodeRefList list ? list.EnumerateReferences() : collection);
         }
 
-        return GetObjectMembers(value, useStoredReferences);
+        return GetObjectMembers(value, useStoredReferences, hasExternalReferences);
     }
+
+    /// <summary>
+    /// Whether nodes of an opened file can come from other files, through the reference table of a Gbx. Archives count as having them.
+    /// </summary>
+    public static bool HasExternalReferences(object file) => file is not Gbx gbx
+        || gbx.RefTable is { } refTable && (refTable.Files.Count > 0 || refTable.Resources.Count > 0);
 
     private static IEnumerable<InspectorMember> GetItems(IEnumerable collection)
     {
@@ -51,7 +60,7 @@ internal static class ValueInspector
     }
 
     [UnconditionalSuppressMessage("Trimming", "IL2075", Justification = RootedJustification)]
-    private static IEnumerable<InspectorMember> GetObjectMembers(object value, bool useStoredReferences)
+    private static IEnumerable<InspectorMember> GetObjectMembers(object value, bool useStoredReferences, bool hasExternalReferences)
     {
         var members = new Dictionary<string, MemberInfo>(StringComparer.Ordinal);
 
@@ -86,10 +95,11 @@ internal static class ValueInspector
             var referenceProperty = referenceView?.GetType().GetProperty(member.Name);
             var memberType = member is PropertyInfo property ? property.PropertyType : ((FieldInfo)member).FieldType;
 
-            // Computed aliases can resolve references indirectly, too.
-            if (referenceView is not null && referenceProperty is null && member is PropertyInfo computed
+            // Computed aliases can resolve references indirectly, too. Auto-properties only store a value, so they are safe.
+            if (hasExternalReferences && referenceView is not null && referenceProperty is null && member is PropertyInfo computed
                 && (typeof(CMwNod).IsAssignableFrom(memberType) || computed.SetMethod is null)
-                && member.Name is not ("Chunks" or "GameVersion"))
+                && member.Name is not ("Chunks" or "GameVersion")
+                && !IsAutoProperty(computed))
             {
                 yield return new InspectorMember(member.Name, "(computed; inspect with gbx eval)");
                 continue;
@@ -113,4 +123,11 @@ internal static class ValueInspector
                 IsFormatted: member.IsDefined(typeof(SupportsFormattingAttribute), inherit: true));
         }
     }
+
+    /// <summary>
+    /// Whether the property is <c>{ get; set; }</c> with a compiler-generated backing field, so reading it runs no other code.
+    /// </summary>
+    [UnconditionalSuppressMessage("Trimming", "IL2075", Justification = RootedJustification)]
+    private static bool IsAutoProperty(PropertyInfo property)
+        => property.DeclaringType?.GetField($"<{property.Name}>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic) is not null;
 }
