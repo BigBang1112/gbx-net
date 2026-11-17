@@ -6,7 +6,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "Build GbxCLI",
-      "program": "${workspaceFolder}/Tools/GbxCLI/bin/Debug/net10.0/gbx.dll",
+      "program": "${workspaceFolder}/Tools/GbxCLI/bin/Debug/net11.0/gbx.dll",
       "args": "${input:gbxCliArgs}",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",

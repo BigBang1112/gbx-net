@@ -7,6 +7,7 @@ Cryptographic features for GBX.NET 2. Adds MUX and CRY algorithms, simplifies MD
 
 ## Framework support
 
+- .NET 11
 - .NET 10
 - .NET 9
 - .NET 8

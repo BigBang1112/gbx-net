@@ -14,15 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         ref: dev
         fetch-depth: 0 # Full history for the commit count in the version suffix
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: 10.0.x
+        dotnet-version: latest
 
     # Derived from the commit, not the build time, so rebuilding the same commit
     # yields the same version and --skip-duplicate skips it. The commit count is

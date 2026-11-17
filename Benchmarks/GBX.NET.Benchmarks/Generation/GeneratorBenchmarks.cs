@@ -18,11 +18,11 @@ public class GeneratorBenchmarks
     public void Setup()
     {
         var root = Path.Combine(AppContext.BaseDirectory, "GeneratorInputs");
-        var options = new CSharpParseOptions(LanguageVersion.CSharp14, preprocessorSymbols:
+        var options = new CSharpParseOptions(LanguageVersion.CSharp15, preprocessorSymbols:
         [
-            "TRACE", "RELEASE", "NET", "NET10_0", "NETCOREAPP", "NET5_0_OR_GREATER",
+            "TRACE", "RELEASE", "NET", "NET11_0", "NETCOREAPP", "NET5_0_OR_GREATER",
             "NET6_0_OR_GREATER", "NET7_0_OR_GREATER", "NET8_0_OR_GREATER",
-            "NET9_0_OR_GREATER", "NET10_0_OR_GREATER", "NETCOREAPP1_0_OR_GREATER",
+            "NET9_0_OR_GREATER", "NET10_0_OR_GREATER", "NET11_0_OR_GREATER", "NETCOREAPP1_0_OR_GREATER",
             "NETCOREAPP1_1_OR_GREATER", "NETCOREAPP2_0_OR_GREATER", "NETCOREAPP2_1_OR_GREATER",
             "NETCOREAPP2_2_OR_GREATER", "NETCOREAPP3_0_OR_GREATER", "NETCOREAPP3_1_OR_GREATER"
         ]);

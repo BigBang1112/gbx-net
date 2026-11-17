@@ -19,7 +19,7 @@ Each suite has a `BenchmarkCategory`: `Generator`, `Serialization`, or `Micro`. 
 
 ## Run
 
-Use the .NET 10 SDK and run from the repository root in Release configuration. List the available benchmarks:
+Use the .NET 11 SDK and run from the repository root in Release configuration. List the available benchmarks:
 
 ```powershell
 dotnet run --project Benchmarks/GBX.NET.Benchmarks -c Release -- --list flat
@@ -68,7 +68,7 @@ The manual [Benchmarks workflow](../.github/workflows/benchmarks.yml) runs on Ub
 
 `GeneratorBenchmarks` runs `GbxGenerator` against every repository `.chunkl` layout, the six resource tables supplied by the library project, and the handwritten C# sources. The project copies these inputs into its output directory during the build, so benchmark processes can resolve them independently of the working directory. Generated C#, `bin`, and `obj` are excluded.
 
-The setup loads and parses C# inputs with .NET 10 Release preprocessor symbols. `GbxGenerator` currently analyzes declarations syntactically, so the input compilation does not need metadata references. The measurements cover Roslyn driver execution, ChunkL parsing, planning, and source emission. They exclude disk reads, C# input parsing, compilation of generated code, and the other source generators used by the library build.
+The setup loads and parses C# inputs with .NET 11 Release preprocessor symbols. `GbxGenerator` currently analyzes declarations syntactically, so the input compilation does not need metadata references. The measurements cover Roslyn driver execution, ChunkL parsing, planning, and source emission. They exclude disk reads, C# input parsing, compilation of generated code, and the other source generators used by the library build.
 
 | Method | Workload |
 | --- | --- |
@@ -103,7 +103,7 @@ For comparisons, use the same job, fixtures, runtime, compression implementation
 
 ### Setup and run
 
-You need the .NET 10 SDK, Node.js 20 or newer with npm, Python 3.10 or newer with a compatible `gbx-py` wheel, and Git. The measured run uses CPython 3.13. Setup uses an isolated Python environment and local Node modules, and it checks out the gbx-py parser and ManiaPlanetSharp at the revisions in [dependencies.json](Comparison/dependencies.json). It does not install the Python GUI dependencies or change system-wide packages.
+You need the .NET 11 SDK, Node.js 20 or newer with npm, Python 3.10 or newer with a compatible `gbx-py` wheel, and Git. The measured run uses CPython 3.13. Setup uses an isolated Python environment and local Node modules, and it checks out the gbx-py parser and ManiaPlanetSharp at the revisions in [dependencies.json](Comparison/dependencies.json). It does not install the Python GUI dependencies or change system-wide packages.
 
 Run from the repository root on Windows:
 

@@ -7,6 +7,7 @@ Provides extensions for image handling in GBX.NET using SkiaSharp.
 
 ## Framework support
 
+- .NET 11
 - .NET 10
 - .NET 9
 - .NET 8

@@ -9,6 +9,7 @@ The game version interfaces, such as `IGameCtnMediaClipTMF`, are part of the mai
 
 ## Framework support
 
+- .NET 11
 - .NET 10
 - .NET 9
 - .NET 8

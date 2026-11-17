@@ -9,6 +9,7 @@ Provides extensions for image handling in GBX.NET (GDI+, Windows only).
 
 ## Framework support
 
+- .NET 11 (Windows)
 - .NET 10 (Windows)
 - .NET 9 (Windows)
 - .NET 8 (Windows)
