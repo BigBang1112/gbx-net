@@ -27,10 +27,17 @@ internal sealed class Browser
     public static async Task RunAsync(string path, CliContext context)
     {
         await using var file = await FileObject.OpenAsync(path, context.CancellationToken);
+        await RunAsync(file, context);
+    }
 
+    /// <summary>
+    /// Browses a file that is already open. The caller disposes it.
+    /// </summary>
+    public static Task RunAsync(FileObject file, CliContext context)
+    {
         var browser = new Browser(context);
         browser.PushFile(file.Name, file.Value, file);
-        await browser.RunAsync();
+        return browser.RunAsync();
     }
 
     private async Task RunAsync()
@@ -122,10 +129,18 @@ internal sealed class Browser
 
         try
         {
-            if (item.OpenEntryAsync is not null)
+            if (item.OpenEntryAsync is { } openEntryAsync)
             {
-                var value = await item.OpenEntryAsync(context.CancellationToken);
-                PushFile(item.Name, value, Current.Owner);
+                object? value = null;
+
+                // Ctrl+C cancels a slow entry, such as a large file in a PAK, and keeps the session.
+                if (!await context.TryRunCancellableAsync(async cancellationToken => value = await openEntryAsync(cancellationToken)))
+                {
+                    await NoticeAsync("Opening was canceled.");
+                    return;
+                }
+
+                PushFile(item.Name, value!, Current.Owner);
                 await RenderAsync();
                 return;
             }
@@ -147,9 +162,9 @@ internal sealed class Browser
                     await Console.WriteLineAsync($"{CliConsole.Label}{CliConsole.Escape(item.Name)}:{CliConsole.Reset} {CliConsole.Escape(ValueFormatter.Describe(item.Value))}");
                     break;
                 case var value when ValueInspector.IsScalar(value):
-                    // The full value, without the length limit of the list.
+                    // The full, exact value without the length limit of the list. The list already shows formatted text in color.
                     var text = ValueFormatter.Clean(ValueFormatter.Describe(value), int.MaxValue);
-                    await Console.WriteLineAsync($"{CliConsole.Label}{CliConsole.Escape(item.Name)}:{CliConsole.Reset} {(item.IsFormatted ? Console.Formatted(text) : CliConsole.Escape(text))}");
+                    await Console.WriteLineAsync($"{CliConsole.Label}{CliConsole.Escape(item.Name)}:{CliConsole.Reset} {CliConsole.Escape(text)}");
                     break;
                 case var value:
                     frames.Add(new BrowserFrame(Current.GetChildTitle(item.Name), value));

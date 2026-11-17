@@ -32,14 +32,15 @@ internal sealed class ConsoleValueWriter(CliConsole console)
         }
     }
 
-    public async Task WriteValueAsync(string name, object? value, int depth)
+    /// <param name="formatted">Whether the value is a member marked with <see cref="GBX.NET.Attributes.SupportsFormattingAttribute"/>.</param>
+    public async Task WriteValueAsync(string name, object? value, int depth, bool formatted = false)
     {
         if (lines >= LineLimit)
         {
             return;
         }
 
-        await LineAsync(name, value, depth, formatted: value is string);
+        await LineAsync(name, value, depth, formatted: formatted && value is string);
 
         if (value is null || ValueInspector.IsScalar(value) || value is NodeRef { Kind: not NodeRefKind.Embedded })
         {
@@ -113,7 +114,7 @@ internal sealed class ConsoleValueWriter(CliConsole console)
             }
             else
             {
-                await WriteValueAsync(member.Name, member.Value, depth + 1);
+                await WriteValueAsync(member.Name, member.Value, depth + 1, member.IsFormatted);
             }
         }
 

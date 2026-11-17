@@ -176,7 +176,7 @@ public class CliTests
 
         await Assert.That(run.ExitCode).IsEqualTo(0);
         await Assert.That(run.Output).Contains("Global options:");
-        await Assert.That(run.Output).Contains("Press Enter to close.");
+        await Assert.That(run.Output).Contains("Press Enter to close this window.");
     }
 
     [Test]
@@ -186,5 +186,39 @@ public class CliTests
 
         await Assert.That(run.ExitCode).IsEqualTo(0);
         await Assert.That(run.Output).Contains("File 'missing.Gbx' was not found.");
+    }
+
+    [Test]
+    public async Task Run_InteractiveWithoutArguments_UnreadableFileAsksAgain()
+    {
+        using var directory = new TempDirectory();
+        var broken = directory.Write("notes.txt", "not a Gbx"u8.ToArray());
+        var path = directory.Write("input.Gbx", Fixtures.CreateGbx());
+
+        var run = await CliRun.RunInteractiveAsync($"{broken}\n{path}\nq\n");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains($"error: '{broken}' has an unsupported format.");
+        await Assert.That(run.Output).Contains("Node (CGameCtnMediaBlockTime)");
+        await Assert.That(run.Error).IsEmpty();
+    }
+
+    [Test]
+    public async Task TryRunCancellable_CancelOperation_KeepsSessionToken()
+    {
+        var context = new CliContext(TextReader.Null, TextWriter.Null, IsInteractive: true, CancellationToken.None);
+        var started = new TaskCompletionSource();
+
+        var run = context.TryRunCancellableAsync(async cancellationToken =>
+        {
+            started.SetResult();
+            await Task.Delay(Timeout.Infinite, cancellationToken);
+        });
+
+        await started.Task;
+
+        await Assert.That(context.TryCancelOperation()).IsTrue();
+        await Assert.That(await run).IsFalse();
+        await Assert.That(context.TryCancelOperation()).IsFalse();
     }
 }

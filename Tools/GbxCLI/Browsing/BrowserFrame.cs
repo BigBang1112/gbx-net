@@ -98,7 +98,7 @@ internal sealed class BrowserFrame(string title, object value, bool isFile = fal
             }
 
             result.Add(member.Error is null
-                ? new BrowserItem(member.Name, ValueFormatter.Describe(member.Value), member.Value is string, member.Value)
+                ? new BrowserItem(member.Name, ValueFormatter.Describe(member.Value), member.IsFormatted && member.Value is string, member.Value)
                 : new BrowserItem(member.Name, $"(error: {member.Error})", Error: member.Error));
         }
 

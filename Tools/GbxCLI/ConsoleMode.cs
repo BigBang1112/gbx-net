@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 namespace GbxCLI;
 
 /// <summary>
-/// Turns on ANSI escape sequences in the Windows console host. Windows Terminal and other platforms process them already.
+/// Turns on ANSI escape sequences in the Windows console host, which Windows Terminal and other platforms process already,
+/// and tells whether the console window belongs to this process.
 /// </summary>
 internal static partial class ConsoleMode
 {
@@ -40,6 +41,31 @@ internal static partial class ConsoleMode
             return false;
         }
     }
+
+    /// <summary>
+    /// Whether this process is the only one attached to its console, so the window closes when it ends.
+    /// That happens when gbx.exe is started from Explorer, such as by a double-click or a file dropped on it, but not from a terminal.
+    /// </summary>
+    public static bool OwnsConsoleWindow()
+    {
+        if (!OperatingSystem.IsWindows())
+        {
+            return false;
+        }
+
+        try
+        {
+            Span<uint> processIds = stackalloc uint[2];
+            return GetConsoleProcessList(ref processIds[0], (uint)processIds.Length) == 1;
+        }
+        catch (Exception exception) when (exception is DllNotFoundException or EntryPointNotFoundException)
+        {
+            return false;
+        }
+    }
+
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    private static partial uint GetConsoleProcessList(ref uint processIds, uint processCount);
 
     [LibraryImport("kernel32.dll", SetLastError = true)]
     private static partial nint GetStdHandle(int standardHandle);

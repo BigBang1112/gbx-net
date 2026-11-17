@@ -1,4 +1,5 @@
 using GBX.NET;
+using GBX.NET.Attributes;
 using GBX.NET.Engines.MwFoundations;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -108,7 +109,8 @@ internal static class ValueInspector
                 error = exception is TargetInvocationException { InnerException: { } inner } ? inner.Message : exception.Message;
             }
 
-            yield return new InspectorMember(member.Name, memberValue, error);
+            yield return new InspectorMember(member.Name, memberValue, error,
+                IsFormatted: member.IsDefined(typeof(SupportsFormattingAttribute), inherit: true));
         }
     }
 }
