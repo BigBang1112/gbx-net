@@ -28,14 +28,16 @@ public class CliConsoleTests
     }
 
     [Test]
-    public async Task WriteLine_WithColorsAndUnsupportedCode_FallsBackToPlainText()
+    public async Task WriteLine_WithColorsAndLink_WritesLinkTextOnly()
     {
         using var writer = new StringWriter();
         var console = new CliConsole(writer, colors: true);
 
         await console.WriteLineAsync("$l[https://example.com]link$l");
 
-        await Assert.That(writer.ToString().TrimEnd()).IsEqualTo("link");
+        var line = writer.ToString().TrimEnd();
+        await Assert.That(line).DoesNotContain("https://example.com");
+        await Assert.That(System.Text.RegularExpressions.Regex.Replace(line, @"\u001b\[[0-9;]*m", "")).IsEqualTo("link");
     }
 
     [Test]

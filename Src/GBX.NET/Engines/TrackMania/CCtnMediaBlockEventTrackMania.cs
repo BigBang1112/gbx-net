@@ -13,7 +13,7 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class Checkpoint
     {
-        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value.ToTimeInt32(); }
 
         public override string ToString()
         {
@@ -23,7 +23,7 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class EndOfLap
     {
-        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value.ToTimeInt32(); }
 
         public override string ToString()
         {
@@ -33,7 +33,7 @@ public partial class CCtnMediaBlockEventTrackMania
 
     public partial class EndOfRace
     {
-        public TimeSingle Time { get => RaceTime; set => RaceTime = value; }
+        public TimeSingle Time { get => RaceTime; set => RaceTime = value.ToTimeInt32(); }
 
         public override string ToString()
         {

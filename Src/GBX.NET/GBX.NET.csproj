@@ -61,10 +61,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
-        <PackageReference Include="System.IO.Hashing" Version="10.0.12" />
-        <PackageReference Include="TmEssentials" Version="2.8.0" />
-        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.56">
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.15" />
+        <PackageReference Include="System.IO.Hashing" Version="10.0.15" />
+        <PackageReference Include="TmEssentials" Version="2.9.0" />
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.66">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -72,7 +72,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <PackageReference Include="System.Memory" Version="4.6.3" />
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.2" />
+        <PackageReference Include="System.Collections.Immutable" Version="11.0.0" />
         <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
     </ItemGroup>
 

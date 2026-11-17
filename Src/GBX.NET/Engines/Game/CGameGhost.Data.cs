@@ -396,7 +396,7 @@ public partial class CGameGhost
 
             var t = (float)(sampleKey - Math.Floor(sampleKey));
 
-            return new Sample(timestamp, a.Data)
+            return new Sample(timestamp.ToTimeInt32(), a.Data)
             {
                 Position = AdditionalMath.Lerp(a.Position, b.Position, t),
                 Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),

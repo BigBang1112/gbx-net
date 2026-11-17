@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
-        <PackageReference Include="TUnit" Version="1.72.4" />
+        <PackageReference Include="TUnit" Version="1.86.6" />
     </ItemGroup>
 
     <ItemGroup>

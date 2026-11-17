@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="GBX.NET.Tool.CLI" Version="0.5.3" />
-        <PackageReference Include="GBX.NET.ZLib" Version="1.1.2" Condition="'$(EnableZlib)' == 'true'" />
+        <PackageReference Include="GBX.NET.Tool.CLI" Version="0.5.4" />
+        <PackageReference Include="GBX.NET.ZLib" Version="1.1.3" Condition="'$(EnableZlib)' == 'true'" />
     </ItemGroup>
 
 </Project>
