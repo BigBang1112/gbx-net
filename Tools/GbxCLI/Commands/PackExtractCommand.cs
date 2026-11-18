@@ -14,6 +14,7 @@ internal static class PackExtractCommand
     {
         string? inputPath = null;
         string? outputPath = null;
+        var existing = ExistingFiles.Fail;
 
         while (args.MoveNext())
         {
@@ -24,6 +25,12 @@ internal static class PackExtractCommand
                     return;
                 case "-o" or "--output":
                     outputPath = outputPath is null ? args.NextValue("--output") : throw new ArgumentException("Output can only be specified once.");
+                    break;
+                case "--overwrite":
+                    existing = existing is ExistingFiles.Skip ? throw ConflictingExistingOptions() : ExistingFiles.Overwrite;
+                    break;
+                case "--skip-existing":
+                    existing = existing is ExistingFiles.Overwrite ? throw ConflictingExistingOptions() : ExistingFiles.Skip;
                     break;
                 case var arg when inputPath is null:
                     inputPath = arg;
@@ -70,28 +77,74 @@ internal static class PackExtractCommand
         }
 
         // Every destination is checked before anything is written, so a rejected extraction leaves no files behind.
-        var destinations = GetDestinations(directoryPath, entries);
+        var destinations = GetDestinations(directoryPath, entries, existing);
 
         Directory.CreateDirectory(directoryPath);
+
+        var extracted = 0;
+        var failed = 0;
+        var skipped = 0;
 
         for (var i = 0; i < entries.Count; i++)
         {
             context.CancellationToken.ThrowIfCancellationRequested();
 
-            var destinationPath = destinations[i];
-            Directory.CreateDirectory(Path.GetDirectoryName(destinationPath)!);
+            var (destinationPath, exists) = destinations[i];
 
-            await using (var destination = new FileStream(destinationPath, FileMode.CreateNew, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true))
+            if (exists && existing is ExistingFiles.Skip)
             {
-                await entries[i].CopyAsync(destination, context.CancellationToken);
+                skipped++;
+                continue;
             }
 
+            // An entry that cannot be read is reported, and the others are still extracted.
+            // The temporary file leaves no partial file behind, and keeps the file that --overwrite would replace.
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(destinationPath)!);
+                await OutputFile.WriteAsync(destinationPath, entries[i].CopyAsync, backup: false, context.CancellationToken);
+            }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+                failed++;
+                await context.Console.WriteLineAsync(CliConsole.Escape($"{PathPattern.ToDisplay(entries[i].Path)}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}"));
+                continue;
+            }
+
+            extracted++;
             await context.Console.WriteLineAsync($"{CliConsole.Written}Written:{CliConsole.Reset} {CliConsole.Escape(destinationPath)}");
         }
 
-        await context.Console.WriteLineAsync(CliConsole.Escape(unstored == 0
-            ? $"Extracted {entries.Count} files to {directoryPath}."
-            : $"Extracted {entries.Count} files to {directoryPath}; {unstored} entries without stored data skipped."));
+        await context.Console.WriteLineAsync(CliConsole.Escape(GetSummary(directoryPath, extracted, failed, skipped, unstored)));
+
+        if (failed > 0)
+        {
+            throw new IOException($"{failed} entries could not be extracted.");
+        }
+    }
+
+    private static ArgumentException ConflictingExistingOptions() => new("--overwrite and --skip-existing cannot be used together.");
+
+    private static string GetSummary(string directoryPath, int extracted, int failed, int skipped, int unstored)
+    {
+        var summary = $"Extracted {extracted} files to {directoryPath}";
+
+        if (failed > 0)
+        {
+            summary += $"; {failed} failed";
+        }
+
+        if (skipped > 0)
+        {
+            summary += $"; {skipped} existing files skipped";
+        }
+
+        if (unstored > 0)
+        {
+            summary += $"; {unstored} entries without stored data skipped";
+        }
+
+        return summary + ".";
     }
 
     /// <summary>
@@ -112,14 +165,14 @@ internal static class PackExtractCommand
     }
 
     /// <summary>
-    /// Resolves the destination of every entry under <paramref name="directoryPath"/>.
+    /// Resolves the destination of every entry under <paramref name="directoryPath"/>, and whether a file already exists there.
     /// </summary>
     /// <exception cref="InvalidDataException">An entry path is unsafe, or two entries would be written to the same file.</exception>
-    /// <exception cref="IOException">A destination already exists.</exception>
-    private static string[] GetDestinations(string directoryPath, IReadOnlyList<ExtractEntry> entries)
+    /// <exception cref="IOException">A destination is a folder, or it already exists and <paramref name="existing"/> doesn't allow it.</exception>
+    private static (string Path, bool Exists)[] GetDestinations(string directoryPath, IReadOnlyList<ExtractEntry> entries, ExistingFiles existing)
     {
         var root = Path.TrimEndingDirectorySeparator(directoryPath) + Path.DirectorySeparatorChar;
-        var destinations = new string[entries.Count];
+        var destinations = new (string Path, bool Exists)[entries.Count];
         var files = new Dictionary<string, string>(PathComparer);
         var folders = new HashSet<string>(PathComparer);
 
@@ -133,9 +186,16 @@ internal static class PackExtractCommand
                 throw new InvalidDataException($"Entries '{files[destination]}' and '{entryPath}' would both be extracted to '{destination}'.");
             }
 
-            if (File.Exists(destination) || Directory.Exists(destination))
+            if (Directory.Exists(destination))
             {
-                throw new IOException($"'{destination}' already exists.");
+                throw new IOException($"'{destination}' already exists as a folder.");
+            }
+
+            var exists = File.Exists(destination);
+
+            if (exists && existing is ExistingFiles.Fail)
+            {
+                throw new IOException($"'{destination}' already exists. Use --overwrite or --skip-existing.");
             }
 
             for (var folder = Path.GetDirectoryName(destination); folder is not null && folder.Length >= root.Length && folders.Add(folder); folder = Path.GetDirectoryName(folder))
@@ -146,7 +206,7 @@ internal static class PackExtractCommand
                 }
             }
 
-            destinations[i] = destination;
+            destinations[i] = (destination, exists);
         }
 
         if (files.Keys.FirstOrDefault(folders.Contains) is { } conflict)
@@ -183,22 +243,26 @@ internal static class PackExtractCommand
     }
 
     /// <summary>
-    /// Reads exactly the entry's data, without the padding after it. A Gbx is saved again through GBX.NET,
-    /// because the stored data can depend on how the game reads it. Anything else is written as stored.
+    /// A Gbx is saved again through GBX.NET, because the stored data can depend on how the game reads it. Anything else,
+    /// and a Gbx that cannot be fully parsed, is written as stored, without the padding after it.
     /// </summary>
+    /// <remarks>
+    /// The Gbx check reads only the signature. Reading a whole Gbx raw fails when it uses dummy writes,
+    /// because they change the cipher state only while the Gbx is parsed.
+    /// </remarks>
     private static async Task CopyPakEntryAsync(Pak pak, PakEntry entry, Stream destination, CancellationToken cancellationToken)
     {
+        if (await pak.CheckFileIsGbxAsync(entry.File, cancellationToken) && await TrySaveGbxAsync(pak, entry, cancellationToken) is { } saved)
+        {
+            await destination.WriteAsync(saved, cancellationToken);
+            return;
+        }
+
         var data = new byte[entry.File.UncompressedSize];
 
         await using (var source = await pak.OpenFileAsync(entry.File, cancellationToken))
         {
             await source.ReadExactlyAsync(data, cancellationToken);
-        }
-
-        if (FileSignature.Detect(data) == FileKind.Gbx && await TrySaveGbxAsync(pak, entry, cancellationToken) is { } saved)
-        {
-            await destination.WriteAsync(saved, cancellationToken);
-            return;
         }
 
         await destination.WriteAsync(data, cancellationToken);
@@ -227,4 +291,14 @@ internal static class PackExtractCommand
     }
 
     private sealed record ExtractEntry(string Path, Func<Stream, CancellationToken, Task> CopyAsync);
+
+    /// <summary>
+    /// What happens to an entry whose destination file already exists.
+    /// </summary>
+    private enum ExistingFiles
+    {
+        Fail,
+        Overwrite,
+        Skip
+    }
 }

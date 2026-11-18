@@ -54,6 +54,8 @@ internal static class CliHelp
                 --unresolved         Only list entries that are still hashes.
               extract                Extract all or matching entries.
                 -o, --output <dir>   Output folder. Defaults to the title ID, or the archive name.
+                --overwrite          Replace existing files.
+                --skip-existing      Keep existing files and extract only the missing ones.
               verify                 Same as gbx verify.
 
             A pattern with * or ? matches whole entry paths or their ends, and * also matches folders (Media/*).

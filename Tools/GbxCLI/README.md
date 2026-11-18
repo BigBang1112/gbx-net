@@ -27,7 +27,7 @@ gbx <path>
 | `script` | `<script.csx> [args...]` | Run a C# script file with GBX.NET available. |
 | `verify` (alias `pack verify`) | `<path> [-g <game>] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
 | `pack list` | `<archive>[/pattern] [--resolved \| --unresolved]` | List archive entries, resolving known hashes. |
-| `pack extract` | `<archive>[/pattern] [-o <dir>]` | Extract all or matching entries. |
+| `pack extract` | `<archive>[/pattern] [-o <dir>] [--overwrite \| --skip-existing]` | Extract all or matching entries. |
 | `compress` | `<file> [-o <file>] [--no-backup]` | Compress a Gbx body. |
 | `decompress` | `<file> [-o <file>] [--no-backup]` | Decompress a Gbx body. |
 
@@ -126,7 +126,12 @@ Extracts the selected entries into the output folder, keeping their folder struc
 
 Every destination is checked before anything is written. Extraction fails without writing any file when an entry path is rooted or contains `..`, when two entries would be written to the same file, or when a destination already exists.
 
+- `--overwrite` replaces existing files.
+- `--skip-existing` keeps existing files and extracts only the missing ones, so a repeated extraction continues where the last one failed.
+
 A PAK entry that is a Gbx is saved again through GBX.NET. Other entries are written exactly as stored.
+
+An entry that cannot be read is reported as `<entry>: <error>`, and the other entries are still extracted. The summary counts the failed entries, and the command then exits with `1`. Each entry is written to a temporary file first, so a failed entry leaves no partial file and doesn't replace an existing one.
 
 ### compress and decompress
 

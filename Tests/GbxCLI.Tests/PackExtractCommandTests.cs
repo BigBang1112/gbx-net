@@ -44,6 +44,96 @@ public class PackExtractCommandTests
     }
 
     [Test]
+    public async Task Extract_UnreadableEntry_ExtractsOthersAndFails()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("archive.pak", CreatePakWithUnreadableFirstEntry());
+        var output = directory.Combine("out");
+
+        var run = await CliRun.RunAsync("pack", "extract", path, "-o", output);
+
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Output).Contains(Path.Combine("Media", "broken.bin") + ": ");
+        await Assert.That(run.Output).Contains($"Extracted 1 files to {output}; 1 failed.");
+        await Assert.That(run.Error).Contains("1 entries could not be extracted.");
+        await Assert.That(await File.ReadAllTextAsync(Path.Combine(output, "readme.txt"))).IsEqualTo("readable");
+        await Assert.That(Directory.GetFiles(output, "*", SearchOption.AllDirectories).Length).IsEqualTo(1);
+    }
+
+    [Test]
+    public async Task Extract_UnreadableEntryWithOverwrite_KeepsExistingFile()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("archive.pak", CreatePakWithUnreadableFirstEntry());
+        var output = directory.Combine("out");
+        var existing = directory.Write("out/Media/broken.bin", "original"u8.ToArray());
+
+        var run = await CliRun.RunAsync("pack", "extract", path, "-o", output, "--overwrite");
+
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(await File.ReadAllTextAsync(existing)).IsEqualTo("original");
+        await Assert.That(Directory.GetFiles(output, "*", SearchOption.AllDirectories).Length).IsEqualTo(2);
+    }
+
+    [Test]
+    public async Task Extract_ExistingWithOverwrite_ReplacesFile()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("archive.pak", Fixtures.CreatePak(false, ("first.txt", "first"u8.ToArray()), ("last.txt", "replacement"u8.ToArray())));
+        var output = directory.Combine("out");
+        var existing = directory.Write("out/last.txt", "original"u8.ToArray());
+
+        var run = await CliRun.RunAsync("pack", "extract", path, "-o", output, "--overwrite");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(await File.ReadAllTextAsync(existing)).IsEqualTo("replacement");
+        await Assert.That(await File.ReadAllTextAsync(Path.Combine(output, "first.txt"))).IsEqualTo("first");
+        await Assert.That(run.Output).Contains($"Extracted 2 files to {output}.");
+    }
+
+    [Test]
+    public async Task Extract_ExistingWithSkipExisting_KeepsFileAndExtractsMissing()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("archive.pak", Fixtures.CreatePak(false, ("first.txt", "first"u8.ToArray()), ("last.txt", "replacement"u8.ToArray())));
+        var output = directory.Combine("out");
+        var existing = directory.Write("out/last.txt", "original"u8.ToArray());
+
+        var run = await CliRun.RunAsync("pack", "extract", path, "-o", output, "--skip-existing");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(await File.ReadAllTextAsync(existing)).IsEqualTo("original");
+        await Assert.That(await File.ReadAllTextAsync(Path.Combine(output, "first.txt"))).IsEqualTo("first");
+        await Assert.That(run.Output).Contains($"Extracted 1 files to {output}; 1 existing files skipped.");
+    }
+
+    [Test]
+    public async Task Extract_OverwriteAndSkipExisting_IsRejected()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("archive.pak", Fixtures.CreatePak(false, ("readme.txt", "content"u8.ToArray())));
+        var output = directory.Combine("out");
+
+        var run = await CliRun.RunAsync("pack", "extract", path, "-o", output, "--overwrite", "--skip-existing");
+
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Error).Contains("cannot be used together");
+        await Assert.That(Directory.Exists(output)).IsFalse();
+    }
+
+    /// <summary>
+    /// A compressed PAK whose first entry, <c>Media/broken.bin</c>, has a corrupted zlib header, followed by a readable <c>readme.txt</c>.
+    /// </summary>
+    private static byte[] CreatePakWithUnreadableFirstEntry()
+    {
+        var data = Fixtures.CreatePak(true, ("Media/broken.bin", new byte[1000]), ("readme.txt", "readable"u8.ToArray()));
+        // The first entry starts right after the 4096-byte header.
+        data[4096] = 0xFF;
+        data[4097] = 0xFF;
+        return data;
+    }
+
+    [Test]
     [Arguments("media/nested/one [BLUE].txt", "Media/Nested/One [blue].txt")]
     [Arguments("MEDIA\\NESTED\\ONE [blue].TXT", "Media/Nested/One [blue].txt")]
     [Arguments("Media/*.txt", "Media/Nested/One [blue].txt|Media/Two.txt")]
