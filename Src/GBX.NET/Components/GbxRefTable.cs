@@ -17,6 +17,7 @@ public sealed class GbxRefTable : IDeepCloneable
 
     internal NodeRefLoadContext? LoadContext { get; set; }
     internal bool InferAncestorLevelOnWrite { get; set; }
+    internal bool UseOutputDirectory { get; init; }
 
     public int AncestorLevel { get; set; }
 
@@ -79,7 +80,7 @@ public sealed class GbxRefTable : IDeepCloneable
 
     internal CMwNod? ResolveNode(GbxRefTableFile file)
     {
-        if (FileSystemPath is null)
+        if (!UsesFileSystem(file))
         {
             if (!ExternalNodes.ContainsKey(file.FilePath) && ExternalNodesAsync.ContainsKey(file.FilePath))
             {
@@ -105,7 +106,7 @@ public sealed class GbxRefTable : IDeepCloneable
 
     internal async Task<CMwNod?> ResolveNodeAsync(GbxRefTableFile file)
     {
-        if (FileSystemPath is null)
+        if (!UsesFileSystem(file))
         {
             if (ExternalNodesAsync.TryGetValue(file.FilePath, out var resolve))
             {
@@ -127,6 +128,19 @@ public sealed class GbxRefTable : IDeepCloneable
         using var stream = OpenReference(path, useAsync: true);
 
         return stream is null ? null : LoadedNode(await Gbx.ParseAsync(stream, ReadSettings).ConfigureAwait(false));
+    }
+
+    private bool UsesFileSystem(GbxRefTableFile file)
+        => FileSystemPath is not null || (UseOutputDirectory && IsAbsoluteFilePath(file.FilePath));
+
+    private static bool IsAbsoluteFilePath(string path)
+    {
+#if NETSTANDARD2_0
+        var root = Path.GetPathRoot(path);
+        return !string.IsNullOrEmpty(root) && (Path.DirectorySeparatorChar != '\\' || root.Length > 2);
+#else
+        return Path.IsPathFullyQualified(path);
+#endif
     }
 
     private static FileStream? OpenReference(string path, bool useAsync)
@@ -195,7 +209,9 @@ public sealed class GbxRefTable : IDeepCloneable
     }
 
     /// <summary>
-    /// Directory path of the Gbx file used to resolve external files via the file system. File system is not used if this is null, instead, <see cref="ExternalNodes"/> is used.
+    /// Directory of the Gbx file used to resolve external files. When no directory is set,
+    /// resolution uses <see cref="ExternalNodes"/> and <see cref="ExternalNodesAsync"/>.
+    /// Absolute paths assigned through <see cref="NodeRef.SetFile"/> can resolve from disk directly.
     /// </summary>
     public string? FileSystemPath { get; init; }
 
@@ -267,21 +283,28 @@ public sealed class GbxRefTable : IDeepCloneable
         }
 
         var path = file.FilePath;
+        var source = file.RefTable;
 
-        if (!ReferenceEquals(file.RefTable, this))
+        if (!ReferenceEquals(source, this))
         {
-            if (file.RefTable.FileSystemPath is not null && FileSystemPath is not null)
+            if (FileSystemPath is not null
+                && (source.FileSystemPath is not null || source.UseOutputDirectory || IsAbsoluteFilePath(path)))
             {
                 var destination = Path.GetFullPath(GetFilePath("."));
-                var target = file.GetFullPath();
+                var target = source.UseOutputDirectory
+                    ? Path.GetFullPath(Path.Combine(FileSystemPath, source.GetFilePath(file)))
+                    : file.GetFullPath();
 #if NETSTANDARD2_0
                 var directoryUri = new Uri(destination.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar);
-                path = Uri.UnescapeDataString(directoryUri.MakeRelativeUri(new Uri(target)).ToString()).Replace('/', Path.DirectorySeparatorChar);
+                var relativeUri = directoryUri.MakeRelativeUri(new Uri(target));
+                path = relativeUri.IsAbsoluteUri
+                    ? target
+                    : Uri.UnescapeDataString(relativeUri.ToString()).Replace('/', Path.DirectorySeparatorChar);
 #else
                 path = Path.GetRelativePath(destination, target);
 #endif
             }
-            else if (file.RefTable.AncestorLevel != AncestorLevel || file.RefTable.FileSystemPath is not null)
+            else if (source.AncestorLevel != AncestorLevel || source.FileSystemPath is not null)
             {
                 throw new InvalidOperationException("Importing this file requires a destination file-system path for rebasing.");
             }
@@ -326,6 +349,7 @@ public sealed class GbxRefTable : IDeepCloneable
             Files = Files.Select(x => new UnlinkedGbxRefTableFile(x.Flags, x.UseFile, x.NodeIndex, x.FilePath)).ToList(),
             Resources = Resources.Select(x => new UnlinkedGbxRefTableResource(x.Flags, x.UseFile, x.NodeIndex, x.ResourceIndex)).ToList(),
             FileSystemPath = FileSystemPath,
+            UseOutputDirectory = UseOutputDirectory,
             ReadSettings = ReadSettings
         };
 

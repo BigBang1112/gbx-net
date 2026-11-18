@@ -923,6 +923,76 @@ public class NodeRefTests
     }
 
     [Test]
+    [Arguments(false, false)]
+    [Arguments(true, false)]
+    [Arguments(false, true)]
+    [Arguments(true, true)]
+    public async Task SetFile_Save_WritesReferenceRelativeToTheOutputAncestor(bool absolute, bool existingRefTable)
+    {
+        var root = Path.Combine(Path.GetTempPath(), "gbx-set-file-" + Guid.NewGuid().ToString("N"));
+        var itemDirectory = Path.Combine(root, "items");
+        var templateDirectory = Path.Combine(root, "templates");
+        var dependencyPath = Path.Combine(itemDirectory, "assets", "dependency.Gbx");
+        Directory.CreateDirectory(Path.GetDirectoryName(dependencyPath)!);
+        Directory.CreateDirectory(templateDirectory);
+
+        try
+        {
+            var basic = GbxHeaderBasic.Create(compressionOfBody: GbxCompression.Uncompressed);
+            new CGameItemModel().ToGbx(basic).Save(dependencyPath);
+
+            var template = new CGameItemModel();
+            template.CreateChunk<CGameItemModel.Chunk2E002019>().Version = 15;
+            if (existingRefTable)
+            {
+                var table = new GbxRefTable { AncestorLevel = 1 };
+                template.References.EntityModelEdition.Descriptor = table.CreateFile("old.Gbx");
+            }
+
+            var templatePath = Path.Combine(templateDirectory, "template.Item.Gbx");
+            template.ToGbx(basic).Save(templatePath);
+            var item = Gbx.Parse<CGameItemModel>(templatePath);
+            await Assert.That(item.RefTable is not null).IsEqualTo(existingRefTable);
+
+            var reference = item.Node.References.EntityModelEdition;
+            reference.SetFile(absolute ? dependencyPath : Path.GetRelativePath(itemDirectory, dependencyPath), flags: 32);
+            await Assert.That(reference.State).IsEqualTo(NodeRefState.Unresolved);
+            if (absolute)
+            {
+                await Assert.That(await reference.ResolveAsync()).IsTypeOf<CGameItemModel>();
+            }
+
+            var outputPath = Path.Combine(itemDirectory, "output.Item.Gbx");
+            (existingRefTable ? item.DeepClone() : item).Save(outputPath);
+            var saved = Gbx.Parse<CGameItemModel>(outputPath);
+            var savedFile = saved.Node.References.EntityModelEdition.File!;
+            var ancestor = existingRefTable ? root : itemDirectory;
+            await Assert.That(saved.RefTable!.AncestorLevel).IsEqualTo(existingRefTable ? 1 : 0);
+            await Assert.That(savedFile.FilePath).IsEqualTo(Path.GetRelativePath(ancestor, dependencyPath));
+            await Assert.That(savedFile.Flags).IsEqualTo(32);
+            await Assert.That(savedFile.UseFile).IsTrue();
+            await Assert.That(saved.Node.EntityModelEdition).IsTypeOf<CGameItemModel>();
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Import_AbsoluteFile_UsesTheDestinationDirectoryWithoutASourceDirectory()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "gbx-reference-import");
+        var file = new GbxRefTable().CreateFile(Path.Combine(root, "assets", "dependency.Gbx"));
+        var destination = new GbxRefTable { FileSystemPath = Path.Combine(root, "items"), AncestorLevel = 1 };
+
+        var imported = destination.Import(file);
+
+        await Assert.That(imported.FilePath).IsEqualTo(Path.Combine("assets", "dependency.Gbx"));
+        await Assert.That(imported.GetFullPath()).IsEqualTo(file.FilePath);
+    }
+
+    [Test]
     public async Task Resolve_FilesystemReferences_PreservesSettingsAndExternalCycles()
     {
         var directory = Path.Combine(Path.GetTempPath(), "gbx-reference-cycle-" + Guid.NewGuid().ToString("N"));

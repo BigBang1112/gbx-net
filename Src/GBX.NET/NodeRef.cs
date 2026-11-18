@@ -71,6 +71,15 @@ public abstract class NodeRef
     public GbxRefTableFile? File => Descriptor as GbxRefTableFile;
 
     /// <summary>
+    /// Stores an external file reference without loading it. When saving to a file, relative paths use the output Gbx directory.
+    /// </summary>
+    public void SetFile(string filePath, int flags = 0, bool useFile = true)
+    {
+        var table = new GbxRefTable { UseOutputDirectory = true };
+        Descriptor = table.CreateFile(filePath, flags, useFile);
+    }
+
+    /// <summary>
     /// The external resource descriptor, if this reference points to a resource.
     /// </summary>
     public GbxRefTableResource? Resource => Descriptor as GbxRefTableResource;
