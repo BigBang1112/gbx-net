@@ -257,7 +257,41 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal ILogger? Logger => logger;
 
-    internal ClassIdRemapMode ClassIdRemapMode { get; set; }
+    private ClassIdRemapCandidates classIdRemapCandidates = new();
+
+    internal bool HasLegacyClassIds { get; private set; }
+
+    internal uint NormalizeClassId(uint rawId, ClassIdLocation location)
+    {
+        if (location == ClassIdLocation.BodyChunk && !ClassManager.IsChunkIdRemapped(rawId))
+        {
+            return rawId;
+        }
+
+        var id = ClassManager.Wrap(rawId);
+
+        if (location is ClassIdLocation.Root or ClassIdLocation.BodyChunk)
+        {
+            HasLegacyClassIds |= id != rawId;
+        }
+
+        classIdRemapCandidates.Observe(location, id, rawId);
+        return id;
+    }
+
+    internal ClassIdRemapMode ResolveClassIdRemapMode()
+    {
+        var mode = classIdRemapCandidates.SelectMode(Settings.GameVersion);
+
+        if (!classIdRemapCandidates.HasMatch)
+        {
+            logger?.LogWarning("The Gbx uses class IDs from different remap modes. Using {ClassIdRemapMode} based on the header", mode);
+        }
+
+        return mode;
+    }
+
+    internal void LoadClassIdRemappingFrom(GbxReader reader) => classIdRemapCandidates = reader.classIdRemapCandidates;
 
     public GbxReader(Stream input, GbxReadSettings settings = default) : base(input, encoding, !settings.CloseStream)
     {
@@ -289,6 +323,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             encapsulation = r.encapsulation;
             packDescVersion = r.packDescVersion;
             deprecVersion = r.deprecVersion;
+            LoadClassIdRemappingFrom(r);
 
             ExpectedNodeCount = r.ExpectedNodeCount;
             Signature = r.Signature;
@@ -1134,7 +1169,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return default;
         }
 
-        var classId = ClassManager.Wrap(rawClassId);
+        var classId = NormalizeClassId(rawClassId, ClassIdLocation.MetaRef);
 
         var node = ClassManager.New(classId) ?? throw new ClassNotSupportedException(classId);
 

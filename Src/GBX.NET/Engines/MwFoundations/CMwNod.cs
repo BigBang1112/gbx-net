@@ -60,7 +60,7 @@ public partial class CMwNod : IClass
 
             chunks ??= new ChunkSet(this);
 
-            _ = TryRemapChunkId(r, rawChunkId, out var chunkId);
+            var chunkId = r.NormalizeClassId(rawChunkId, ClassIdLocation.BodyChunk);
 
             var chunk = NewChunk(chunkId) ?? ClassManager.NewChunk(chunkId);
             chunks.AddInternal(chunk);
@@ -628,31 +628,5 @@ public partial class CMwNod : IClass
     public bool ContainsChunk<T>() where T : IChunk
     {
         return Chunks.Contains<T>();
-    }
-
-    private static bool TryRemapChunkId(GbxReader reader, uint chunkId, out uint remappedChunkId)
-    {
-        if (!ClassManager.IsChunkIdRemapped(chunkId))
-        {
-            remappedChunkId = chunkId;
-            return false;
-        }
-
-        remappedChunkId = ClassManager.Wrap(chunkId);
-
-        if (chunkId == remappedChunkId)
-        {
-            return false;
-        }
-
-        // Make sure 2008 doesn't get remapped to 2006 again after
-        if (reader.ClassIdRemapMode != ClassIdRemapMode.Id2008)
-        {
-            reader.ClassIdRemapMode = (chunkId & 0xFFFFF000) is 0x0301A000 // CGameCtnCollector in TMF
-                ? ClassIdRemapMode.Id2008
-                : ClassIdRemapMode.Id2006;
-        }
-
-        return true;
     }
 }

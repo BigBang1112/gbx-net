@@ -247,12 +247,12 @@ map.Save("Path/To/MyNew.Map.Gbx", new()
 });
 ```
 
-For TMS or TMN ESWC, you would have to specify `ClassIdRemapMode` for example:
+When saving a node directly for Sunrise eXtreme or Nations ESWC, select the class ID mapping along with the pack descriptor version.
 
 ```cs
 map.Save("Path/To/MyNew.Map.Gbx", new()
 {
-    ClassIdRemapMode = ClassIdRemapMode.Id2006
+    ClassIdRemapMode = ClassIdRemapMode.TrackManiaSunriseExtreme,
     PackDescVersion = 1
 });
 ```

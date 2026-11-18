@@ -87,6 +87,7 @@
         <AdditionalFiles Include="../../Resources/ClassIdManual.txt" />
         <AdditionalFiles Include="../../Resources/CollectionId.txt" />
         <AdditionalFiles Include="../../Resources/Wrap.txt" />
+        <AdditionalFiles Include="../../Resources/ClassIdRemap.txt" />
         <AdditionalFiles Include="../../Resources/Unwrap.txt" />
         <AdditionalFiles Include="../../Resources/Extensions.txt" />
     </ItemGroup>

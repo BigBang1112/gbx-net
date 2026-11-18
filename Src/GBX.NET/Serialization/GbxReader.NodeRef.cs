@@ -64,7 +64,7 @@ public partial class GbxReader
             return;
         }
 
-        var classId = ClassManager.Wrap(rawClassId);
+        var classId = NormalizeClassId(rawClassId, ClassIdLocation.NodeRef);
 
         if (logger is not null)
         {

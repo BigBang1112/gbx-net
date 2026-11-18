@@ -276,11 +276,12 @@ public partial class Gbx : IGbx
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, cancellationToken);
+            var classIdRemapMode = reader.ResolveClassIdRemapMode();
 
             if (logger is not null)
             {
                 logger.LogDebug("Id version: {IdVersion}", reader.IdVersion);
-                logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+                logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", classIdRemapMode);
                 logger.LogInformation("Unknown Gbx completed.");
             }
 
@@ -289,7 +290,7 @@ public partial class Gbx : IGbx
                 RefTable = refTable,
                 ReadSettings = settings,
                 IdVersion = reader.IdVersion,
-                ClassIdRemapMode = reader.ClassIdRemapMode,
+                ClassIdRemapMode = classIdRemapMode,
                 FilePath = filePath
             };
         }
@@ -316,7 +317,7 @@ public partial class Gbx : IGbx
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
         gbx.DeprecVersion = reader.DeprecVersion;
-        gbx.ClassIdRemapMode = reader.ClassIdRemapMode;
+        gbx.ClassIdRemapMode = reader.ResolveClassIdRemapMode();
         gbx.FilePath = filePath;
 
         if (logger is not null)
@@ -324,7 +325,7 @@ public partial class Gbx : IGbx
             logger.LogDebug("Id version: {IdVersion}", reader.IdVersion);
             logger.LogDebug("PackDesc version: {PackDescVersion}", reader.PackDescVersion);
             logger.LogDebug("Deprec version: {DeprecVersion}", reader.DeprecVersion);
-            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", gbx.ClassIdRemapMode);
             logger.LogInformation("Known Gbx completed.");
         }
 
@@ -382,13 +383,14 @@ public partial class Gbx : IGbx
         var header = GbxHeader.Parse(reader, out var node);
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
+        var classIdRemapMode = reader.ResolveClassIdRemapMode();
 
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             if (logger is not null)
             {
                 logger.LogDebug("Id version: {IdVersion}", reader.IdVersion);
-                logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+                logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", classIdRemapMode);
                 logger.LogInformation("Unknown Gbx completed.");
             }
 
@@ -397,7 +399,7 @@ public partial class Gbx : IGbx
                 RefTable = refTable,
                 ReadSettings = settings,
                 IdVersion = reader.IdVersion,
-                ClassIdRemapMode = reader.ClassIdRemapMode,
+                ClassIdRemapMode = classIdRemapMode,
                 FilePath = filePath,
             };
         }
@@ -407,7 +409,7 @@ public partial class Gbx : IGbx
             logger.LogDebug("Id version: {IdVersion}", reader.IdVersion);
             logger.LogDebug("PackDesc version: {PackDescVersion}", reader.PackDescVersion);
             logger.LogDebug("Deprec version: {DeprecVersion}", reader.DeprecVersion);
-            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            logger.LogDebug("Class ID remap mode: {ClassIdRemapMode}", classIdRemapMode);
             logger.LogInformation("Known Gbx completed.");
         }
 
@@ -417,7 +419,7 @@ public partial class Gbx : IGbx
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
         gbx.DeprecVersion = reader.DeprecVersion;
-        gbx.ClassIdRemapMode = reader.ClassIdRemapMode;
+        gbx.ClassIdRemapMode = classIdRemapMode;
         gbx.FilePath = filePath;
 
         return gbx;
@@ -805,21 +807,61 @@ public partial class Gbx : IGbx
     {
         _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
-        var minimalData = new byte[13];
-        var count = await stream.ReadAtLeastAsync(minimalData, minimalData.Length, throwOnEndOfStream: false, cancellationToken);
-        if (count < minimalData.Length)
+        var prefix = new byte[6];
+        if (await stream.ReadAtLeastAsync(prefix, prefix.Length, throwOnEndOfStream: false, cancellationToken) != prefix.Length)
         {
             throw new NotAGbxException("Not enough data to read the class ID.");
         }
 
-        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        if (prefix[0] != 'G' || prefix[1] != 'B' || prefix[2] != 'X')
         {
             throw new NotAGbxException();
         }
 
-        var classId = BitConverter.ToUInt32(minimalData, 9);
+        var format = (GbxFormat)prefix[5];
+        var basicSize = BitConverter.ToUInt16(prefix, 3) >= 4 ? 3 : 2;
+        var basic = new byte[basicSize + (format == GbxFormat.Binary ? sizeof(uint) : 0)];
+        if (await stream.ReadAtLeastAsync(basic, basic.Length, throwOnEndOfStream: false, cancellationToken) != basic.Length)
+        {
+            throw new NotAGbxException("Not enough data to read the class ID.");
+        }
+
+        var classId = format switch
+        {
+            GbxFormat.Binary => BitConverter.ToUInt32(basic, basicSize),
+            GbxFormat.Text => await ReadTextClassIdAsync(stream, cancellationToken),
+            _ => throw new InvalidDataException($"Invalid Gbx format byte: 0x{prefix[5]:X2}.")
+        };
 
         return remap ? ClassManager.Wrap(classId) : classId;
+    }
+
+    [Zomp.SyncMethodGenerator.CreateSyncVersion]
+    private static async Task<uint> ReadTextClassIdAsync(Stream stream, CancellationToken cancellationToken)
+    {
+        var line = new byte[255];
+        var next = new byte[1];
+
+        for (var i = 0; i < line.Length; i++)
+        {
+            await stream.ReadExactlyAsync(next, cancellationToken);
+            if (next[0] != '\r')
+            {
+                line[i] = next[0];
+                continue;
+            }
+
+            await stream.ReadExactlyAsync(next, cancellationToken);
+            if (next[0] != '\n')
+            {
+                break;
+            }
+
+            return uint.Parse(System.Text.Encoding.ASCII.GetString(line, 0, i),
+                System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        throw new InvalidDataException("Invalid text Gbx class ID.");
     }
 
     /// <exception cref="NotAGbxException"></exception>

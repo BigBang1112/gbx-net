@@ -4167,6 +4167,20 @@ public partial class GenerationTests
     }
 
     [Test]
+    [Arguments("@Legacy\n03043000 24003001")]
+    [Arguments("@Legacy\n03043000 24003000 Root\n03043000 24003000 Root")]
+    [Arguments("@Legacy\n03043000 24004000")]
+    public async Task Generate_ClassIdRemapProfiles_RejectsInvalidMappings(string profiles)
+    {
+        var (result, _) = Run("",
+            new Text("Resources/CollectionId.txt", "1 Stadium"),
+            new Text("Resources/Wrap.txt", "24003000 03043000"),
+            new Text("Resources/ClassIdRemap.txt", profiles));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN303");
+    }
+
+    [Test]
     public async Task Generate_ReusedClassIdForSeveralGames_MatchesEachGame()
     {
         var (result, _) = Run("",

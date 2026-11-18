@@ -44,7 +44,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
     private void WriteClassId()
     {
         var classId = header.ClassId;
-        var rawClassId = writer.WriteClassId(classId);
+        var rawClassId = writer.WriteClassId(classId, ClassIdLocation.Root);
 
         if (rawClassId == classId)
         {
@@ -94,7 +94,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 ? (uint)chunk.Data.Length + 0x80000000
                 : (uint)chunk.Data.Length;
 
-            var rawChunkId = writer.WriteChunkId(chunk.Id);
+            var rawChunkId = writer.WriteChunkId(chunk.Id, ClassIdLocation.HeaderChunk);
             writer.Write(length);
 
             LogChunk(chunk.Id, rawChunkId, chunk.Data.Length, chunk.IsHeavy);
@@ -109,7 +109,10 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
     private void WritePartiallyKnownHeaderUserData(GbxHeaderUnknown unknownHeader)
     {
         using var concatenatedDataMs = new MemoryStream();
-        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false });
+        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false })
+        {
+            ClassIdRemapMode = writer.ClassIdRemapMode
+        };
         using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
 
         var infos = new List<HeaderChunkInfo>();
@@ -162,7 +165,10 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
         }
 
         using var concatenatedDataMs = new MemoryStream();
-        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false });
+        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false })
+        {
+            ClassIdRemapMode = writer.ClassIdRemapMode
+        };
         using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
 
         var infos = new List<HeaderChunkInfo>();
@@ -212,7 +218,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 ? (uint)chunk.Size + 0x80000000
                 : (uint)chunk.Size;
 
-            var rawChunkId = writer.WriteChunkId(chunk.Id);
+            var rawChunkId = writer.WriteChunkId(chunk.Id, ClassIdLocation.HeaderChunk);
             writer.Write(size);
 
             LogChunk(chunk.Id, rawChunkId, chunk.Size, chunk.IsHeavy);

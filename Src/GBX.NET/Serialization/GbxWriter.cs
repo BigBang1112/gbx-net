@@ -270,6 +270,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             encapsulation = w.encapsulation;
             PackDescVersion = w.PackDescVersion;
             DeprecVersion = w.DeprecVersion;
+            ClassIdRemapMode = w.ClassIdRemapMode;
 
             ExpectedNodeCount = w.ExpectedNodeCount;
             ReferenceTable = w.ReferenceTable;
@@ -1070,7 +1071,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new ClassWriteNotSupportedException(classId);
         }
 
-        WriteHexUInt32(classId);
+        WriteClassId(classId, ClassIdLocation.MetaRef);
 
         WriteNodeContent(value);
     }
@@ -2312,29 +2313,17 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     }
 
     /// <returns>The raw chunk ID that was written.</returns>
-    internal uint WriteChunkId(uint chunkId)
+    internal uint WriteChunkId(uint chunkId, ClassIdLocation location = ClassIdLocation.BodyChunk)
     {
-        var rawChunkId = ClassIdRemapMode switch
-        {
-            ClassIdRemapMode.Latest => chunkId,
-            ClassIdRemapMode.Id2008 when (chunkId & 0xFFFFF000) == 0x2E001000 => 0x0301A000 | (chunkId & 0xFFF),
-            _ => ClassManager.Unwrap(chunkId)
-        };
-
+        var rawChunkId = ClassIdRemapping.ToWireId(ClassIdRemapMode, location, chunkId);
         WriteHexUInt32(rawChunkId);
         return rawChunkId;
     }
 
     /// <returns>The raw class ID that was written.</returns>
-    internal uint WriteClassId(uint classId)
+    internal uint WriteClassId(uint classId, ClassIdLocation location = ClassIdLocation.NodeRef)
     {
-        var rawClassId = ClassIdRemapMode switch
-        {
-            ClassIdRemapMode.Latest => classId,
-            ClassIdRemapMode.Id2008 when classId == 0x2E001000 => 0x0301A000u,
-            _ => ClassManager.Unwrap(classId)
-        };
-
+        var rawClassId = ClassIdRemapping.ToWireId(ClassIdRemapMode, location, classId);
         WriteHexUInt32(rawClassId);
         return rawClassId;
     }
