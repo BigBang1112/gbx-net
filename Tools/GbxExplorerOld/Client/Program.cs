@@ -3,12 +3,9 @@ using GbxExplorerOld.Client.Sections;
 using GbxExplorerOld.Client.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using System.Globalization;
 using Blazored.LocalStorage;
 using GbxExplorerOld.Client.Sections.SectionEditor;
 using Microsoft.AspNetCore.Components.Authorization;
-
-CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 GBX.NET.Gbx.LZO = new GBX.NET.LZO.Lzo();
 GBX.NET.Gbx.ZLib = new GBX.NET.ZLib.ZLib();

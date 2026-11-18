@@ -7,6 +7,7 @@
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
         <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+        <InvariantGlobalization>true</InvariantGlobalization>
         <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
         <WasmBuildNative>true</WasmBuildNative>
         <WasmEnableStreamingResponse>false</WasmEnableStreamingResponse>
