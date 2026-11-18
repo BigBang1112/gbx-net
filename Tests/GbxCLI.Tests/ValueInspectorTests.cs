@@ -36,6 +36,25 @@ public class ValueInspectorTests
     }
 
     [Test]
+    public async Task IsScalar_StructOnlyWithSimpleMembers()
+    {
+        var clip = new CGameCtnMediaClipGroup.ClipTrigger(new CGameCtnMediaClip(), new CGameCtnMediaClipGroup.Trigger());
+
+        await Assert.That(ValueInspector.IsScalar(new GBX.NET.Vec3(1, 2, 3))).IsTrue();
+        await Assert.That(ValueInspector.IsScalar(DateTime.UnixEpoch)).IsTrue();
+        await Assert.That(ValueInspector.IsScalar(clip)).IsFalse();
+        await Assert.That(ValueInspector.GetMembers(clip).Select(member => member.Name)).IsEquivalentTo(["Clip", "Trigger"]);
+    }
+
+    [Test]
+    public async Task Describe_StructWithReferences_UsesTypeName()
+    {
+        var clip = new CGameCtnMediaClipGroup.ClipTrigger(new CGameCtnMediaClip(), new CGameCtnMediaClipGroup.Trigger());
+
+        await Assert.That(ValueFormatter.Describe(clip)).IsEqualTo("CGameCtnMediaClipGroup.ClipTrigger");
+    }
+
+    [Test]
     public async Task GetMembers_WithExternalReferences_ReadsAutoProperties()
     {
         var item = new CGameCtnAnchoredObject { SnappedOnItem = new CGameCtnAnchoredObject() };

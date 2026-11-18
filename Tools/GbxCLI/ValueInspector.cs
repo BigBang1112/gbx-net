@@ -2,6 +2,7 @@ using GBX.NET;
 using GBX.NET.Attributes;
 using GBX.NET.Engines.MwFoundations;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -14,10 +15,38 @@ internal static class ValueInspector
 {
     private const string RootedJustification = "GBX.NET, GBX.NET.PAK and TmEssentials are rooted with TrimmerRootAssembly, so the metadata of their members is kept.";
 
+    private static readonly ConcurrentDictionary<Type, bool> scalarStructs = new();
+
     /// <summary>
-    /// Whether the value is written on one line, without members.
+    /// Whether the value is written on one line, without members. A struct is, when all its members are,
+    /// such as a vector, but not when it holds a node or an object, such as a media clip with its trigger.
     /// </summary>
-    public static bool IsScalar(object value) => value is string or byte[] || value.GetType().IsValueType;
+    public static bool IsScalar(object value) => value is string or byte[] || value.GetType() is { IsValueType: true } type && IsScalarStruct(type);
+
+    private static bool IsScalarStruct(Type type) => scalarStructs.GetOrAdd(type, static type => IsScalarType(type, []));
+
+    [UnconditionalSuppressMessage("Trimming", "IL2070", Justification = RootedJustification)]
+    private static bool IsScalarType(Type type, HashSet<Type> visiting)
+    {
+        type = Nullable.GetUnderlyingType(type) ?? type;
+
+        if (type.IsPrimitive || type.IsEnum || type.IsByRefLike || type == typeof(string) || type == typeof(byte[]) || type == typeof(decimal))
+        {
+            return true;
+        }
+
+        // A struct can refer to its own type, such as DateTime.Date, so a struct that is being checked counts as scalar.
+        if (!type.IsValueType || !visiting.Add(type))
+        {
+            return type.IsValueType;
+        }
+
+        const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public;
+
+        return type.GetProperties(flags).Where(property => property.GetIndexParameters().Length == 0).Select(property => property.PropertyType)
+            .Concat(type.GetFields(flags).Select(field => field.FieldType))
+            .All(memberType => IsScalarType(memberType, visiting));
+    }
 
     /// <summary>
     /// Gets the items of a collection, or the public properties and fields of another object, sorted by name.

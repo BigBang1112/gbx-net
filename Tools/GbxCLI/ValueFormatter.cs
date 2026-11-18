@@ -2,7 +2,9 @@ using GBX.NET;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Serialization.Chunking;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Reflection;
 using System.Text;
 
 namespace GbxCLI;
@@ -37,6 +39,13 @@ internal static class ValueFormatter
     private static string DescribeOther(object value)
     {
         var type = value.GetType();
+
+        // A generated record ToString, such as of a media clip with its trigger, would resolve the references and could load other files.
+        if (HasReferenceView(type))
+        {
+            return GetNestedTypeName(type);
+        }
+
         var culture = CultureInfo.CurrentCulture;
         string? text;
 
@@ -55,12 +64,24 @@ internal static class ValueFormatter
         // Without its own ToString, a class only gives its full type name, such as Namespace.Outer+Inner.
         if (text is null || text == type.ToString())
         {
-            return type.IsNested ? $"{GetTypeName(type.DeclaringType!)}.{GetTypeName(type)}" : GetTypeName(type);
+            return GetNestedTypeName(type);
         }
 
         // An empty Id, for example, would otherwise leave nothing after the name.
         return text.Length == 0 ? "\"\"" : text;
     }
+
+    /// <summary>
+    /// Whether the type has a generated view of its node references, such as <c>ClipTrigger.References</c>.
+    /// </summary>
+    [UnconditionalSuppressMessage("Trimming", "IL2070", Justification = "GBX.NET is rooted with TrimmerRootAssembly, so the metadata of its members is kept.")]
+    private static bool HasReferenceView(Type type)
+        => type.GetProperty("References", BindingFlags.Instance | BindingFlags.Public) is { PropertyType.Name: "NodeRefView" };
+
+    /// <summary>
+    /// A readable type name that includes the declaring type of a nested type, such as <c>CHmsLightMapCache.Small</c>.
+    /// </summary>
+    private static string GetNestedTypeName(Type type) => type.IsNested ? $"{GetTypeName(type.DeclaringType!)}.{GetTypeName(type)}" : GetTypeName(type);
 
     /// <summary>
     /// Makes control characters visible, so a value stays on one line, and shortens it to <paramref name="limit"/> characters.
