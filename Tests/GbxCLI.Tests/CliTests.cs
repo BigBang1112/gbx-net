@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace GbxCLI.Tests;
 
 public class CliTests
@@ -11,6 +13,29 @@ public class CliTests
         await Assert.That(run.Output).Contains("Usage: gbx <command>");
         await Assert.That(run.Output).Contains("pack extract <archive>");
         await Assert.That(run.Output.Contains("Press Enter")).IsFalse();
+    }
+
+    [Test]
+    public async Task Run_SystemCulture_FormatsWithInvariantCultureAndRestoresIt()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("input.Gbx", Fixtures.CreateGbx());
+        var culture = CultureInfo.CurrentCulture;
+        CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-CZ");
+
+        try
+        {
+            var run = await CliRun.RunAsync("eval", path, "1234567.5.ToString(\"N1\")", "0.7967.ToString(\"P2\")");
+
+            await Assert.That(run.ExitCode).IsEqualTo(0);
+            await Assert.That(run.Output).Contains("Result: 1,234,567.5");
+            await Assert.That(run.Output).Contains("Result: 79.67 %");
+            await Assert.That(CultureInfo.CurrentCulture.Name).IsEqualTo("cs-CZ");
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = culture;
+        }
     }
 
     [Test]

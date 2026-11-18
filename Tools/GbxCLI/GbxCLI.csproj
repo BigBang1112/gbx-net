@@ -9,6 +9,8 @@
         <FileHashesSource>$(MSBuildProjectDirectory)/../../Resources/FileHashes.txt</FileHashesSource>
         <!-- LibraryImport needs unsafe code for the console mode calls. -->
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!-- Numbers, dates and compiler messages don't depend on the system language. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
         <!-- Report trim problems during a normal build, not only when publishing. -->
         <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">true</PublishSingleFile>

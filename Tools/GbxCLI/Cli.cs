@@ -4,6 +4,7 @@ using GBX.NET.ZLib;
 using GbxCLI.Browsing;
 using GbxCLI.Commands;
 using SimplestGitSourceGenerator;
+using System.Globalization;
 using System.Reflection;
 
 namespace GbxCLI;
@@ -26,6 +27,11 @@ internal static class Cli
     /// <param name="interactive">Whether the browser and prompts can run. By default, they run when the input and output are both a console.</param>
     public static async Task<int> RunAsync(string[] args, TextReader input, TextWriter output, TextWriter error, bool? interactive = null)
     {
+        // Output doesn't depend on the system language, so scripts can parse it. The project also enables InvariantGlobalization,
+        // and this covers callers in another process configuration, such as tests. An async method restores the caller's culture.
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+
         using var cancellationTokenSource = new CancellationTokenSource();
         CliContext? context = null;
 

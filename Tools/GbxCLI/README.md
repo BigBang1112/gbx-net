@@ -39,6 +39,8 @@ A command that fails exits with `1` and writes `gbx: <message>` to standard erro
 
 Ctrl+C stops a long command, such as `verify`, between files. A second Ctrl+C ends the process immediately.
 
+Output doesn't depend on the system language. Numbers use `,` to group thousands and `.` for decimals, such as `494,112 bytes` and `79.67 %`, and C# compiler messages are in English.
+
 ## Paths inside archives
 
 Commands that open a file accept a path that continues inside an archive. The longest leading part of the path that is an existing file is opened, and the rest is a path inside it.
