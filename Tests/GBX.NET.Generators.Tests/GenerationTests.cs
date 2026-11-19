@@ -3783,6 +3783,40 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_NarrowWireTypeWithIntBackingField_UsesRefOverloadWithoutTruncatingOnWrite()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private int position = 1;
+                public int Position { get => position; set => position = value; }
+                private int count;
+                public int Count { get => count; set => count = value; }
+                private int flags;
+                public int Flags { get => flags; set => flags = value; }
+                public int NoBacking { get; set; }
+            }
+            """;
+        var (result, _) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              ushort Position = 1
+              byte Count
+              short Flags
+              short NoBacking
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("rw.UInt16(ref n.position);");
+        await Assert.That(generated).Contains("rw.Byte(ref n.count);");
+        await Assert.That(generated).Contains("rw.Int16(ref n.flags);");
+        await Assert.That(generated).DoesNotContain("n.position = (int)rw.UInt16");
+        // A property without a backing field can't be passed by ref.
+        await Assert.That(generated).Contains("n.NoBacking = (int)rw.Int16((short)n.NoBacking)");
+    }
+
+    [Test]
     public async Task Generate_ArchiveDeclarations_EmitsInheritanceEnumsAndThrowMessages()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -4601,7 +4635,9 @@ public partial class GenerationTests
                 public GbxReaderWriter(GbxWriter writer) { Writer = writer; }
                 public GbxReaderWriter(GbxReader reader, GbxWriter writer) { Reader = reader; Writer = writer; }
                 public int Byte(int value) => Int32(value);
+                public void Byte(ref int value) { var read = Byte(value); if (Reader is not null) value = read; }
                 public short Int16(short value) => (short)Int32(value);
+                public void Int16(ref int value) { var read = Int16((short)value); if (Reader is not null) value = read; }
                 public void Int32(ref int value) { value = Int32(value); }
                 public void EnumInt32<T>(ref T value) where T : struct, System.Enum
                 {

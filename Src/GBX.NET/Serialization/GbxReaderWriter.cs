@@ -158,10 +158,21 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     }
 
     public int Byte(int value) => Byte((byte)value);
-    public void Byte(ref int value) => value = Byte(value);
     [return: NotNullIfNotNull(nameof(value))]
     public int? Byte(int? value, int defaultValue = default) => Byte((byte?)value, (byte)defaultValue);
-    public void Byte([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default) => value = Byte(value, defaultValue);
+
+    // The ref overloads assign only when reading, so writing doesn't truncate the stored value.
+    public void Byte(ref int value)
+    {
+        if (Reader is not null) value = Reader.ReadByte();
+        Writer?.Write((byte)value);
+    }
+
+    public void Byte([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default)
+    {
+        if (Reader is not null) value = Reader.ReadByte();
+        Writer?.Write((byte)value.GetValueOrDefault(defaultValue));
+    }
 
     public void VersionInt32(IVersionable versionable)
     {
@@ -199,10 +210,34 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     public int? Int16(int? value, int defaultValue = default) => Int16((short?)value, (short)defaultValue);
 
-    public void Int16(ref int value) => value = Int16(value);
+    public void Int16(ref int value)
+    {
+        if (Reader is not null) value = Reader.ReadInt16();
+        Writer?.Write((short)value);
+    }
 
     public void Int16([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default)
-        => value = Int16(value, defaultValue);
+    {
+        if (Reader is not null) value = Reader.ReadInt16();
+        Writer?.Write((short)value.GetValueOrDefault(defaultValue));
+    }
+
+    public int UInt16(int value) => UInt16((ushort)value);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public int? UInt16(int? value, int defaultValue = default) => UInt16((ushort?)value, (ushort)defaultValue);
+
+    public void UInt16(ref int value)
+    {
+        if (Reader is not null) value = Reader.ReadUInt16();
+        Writer?.Write((ushort)value);
+    }
+
+    public void UInt16([NotNullIfNotNull(nameof(value))] ref int? value, int defaultValue = default)
+    {
+        if (Reader is not null) value = Reader.ReadUInt16();
+        Writer?.Write((ushort)value.GetValueOrDefault(defaultValue));
+    }
 
     [return: NotNullIfNotNull(nameof(value))]
     public string? Id(string? value = null) => IdAsString(value);

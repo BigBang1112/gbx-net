@@ -33,12 +33,12 @@ public class CGameCtnCollectorLayoutTests
             if (version is 1 or 2) writer.Write(true);
             if (version == 2) writer.Write(true);
             if (version >= 3) writer.Write(4);
-            if (version >= 2) writer.Write((short)-1234);
+            if (version >= 2) writer.Write((ushort)60000); // Unsigned 16-bit, above short.MaxValue.
             if (version is >= 2 and <= 5)
             {
                 writer.Write((byte)200);
                 writer.Write(-123456);
-                writer.Write((short)-2345);
+                writer.Write((ushort)50000);
             }
             if (version >= 7) writer.Write("Display Name");
             if (version >= 8) writer.Write((byte)3);
@@ -47,7 +47,7 @@ public class CGameCtnCollectorLayoutTests
         var chunk = new CGameCtnCollector.HeaderChunk2E001003();
         Read(payload, node, chunk);
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(node.CatalogPosition).IsEqualTo(version >= 2 ? -1234 : 1);
+        await Assert.That(node.CatalogPosition).IsEqualTo(version >= 2 ? 60000 : 1);
         await Assert.That(node.Flags).IsEqualTo(version >= 3
             ? CGameCtnCollector.ECollectorFlags.IsAdvanced
             : version == 2 ? CGameCtnCollector.ECollectorFlags.IsInternal : CGameCtnCollector.ECollectorFlags.None);
@@ -55,7 +55,7 @@ public class CGameCtnCollectorLayoutTests
         if (version is >= 2 and <= 5)
         {
             await Assert.That(node.NbAvailableMin).IsEqualTo(200);
-            await Assert.That(node.NbAvailableMax).IsEqualTo(-2345);
+            await Assert.That(node.NbAvailableMax).IsEqualTo(50000);
             await Assert.That(node.CopperPrice).IsEqualTo(-123456);
         }
         await RoundTrip(payload, node, chunk);
