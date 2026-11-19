@@ -1580,93 +1580,54 @@ public partial class CGameCtnChallenge :
                         }
                     }
 
-                    var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
-                    var usedBlockIndexList = new List<(int blockIndex, int group)>();
-                    var usedItemIndexHashSet = new HashSet<(int itemIndex, int group)>();
-                    var usedItemIndexList = new List<(int itemIndex, int group)>();
-
-                    var indicesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
+                    // Each snap target is a block, an item, or both, in a group. Items share the targets by index.
+                    var targets = new List<(int BlockIndex, int ItemIndex, int Group)>();
+                    var targetIndices = new Dictionary<(int BlockIndex, int ItemIndex, int Group), int>();
                     var snappedOnIndices = new List<int>(n.anchoredObjects?.Count ?? 0);
 
                     foreach (var item in n.GetAnchoredObjects())
                     {
-                        var isItemNotSnappedOnBlock = item.SnappedOnBlock is null || !blockDict.ContainsKey(item.SnappedOnBlock);
-                        var isItemNotSnappedOnItem = item.SnappedOnItem is null || !itemDict.ContainsKey(item.SnappedOnItem);
+                        var blockIndex = item.SnappedOnBlock is not null && blockDict.TryGetValue(item.SnappedOnBlock, out var b) ? b : -1;
+                        var itemIndex = item.SnappedOnItem is not null && itemDict.TryGetValue(item.SnappedOnItem, out var i) ? i : -1;
 
-                        if (isItemNotSnappedOnBlock && isItemNotSnappedOnItem)
+                        if (blockIndex == -1 && itemIndex == -1)
                         {
                             snappedOnIndices.Add(-1);
                             continue;
                         }
 
-                        var groupIndex = item.SnappedOnGroup ?? 0;
-                        var unique = (-1, groupIndex);
+                        var target = (blockIndex, itemIndex, item.SnappedOnGroup ?? 0);
 
-                        if (item.SnappedOnBlock is not null)
+                        if (!targetIndices.TryGetValue(target, out var targetIndex))
                         {
-                            var blockIndex = blockDict[item.SnappedOnBlock];
-
-                            unique = (blockIndex, groupIndex);
-
-                            if (!usedBlockIndexHashSet.Contains(unique))
-                            {
-                                usedBlockIndexList.Add(unique);
-                                usedBlockIndexHashSet.Add(unique);
-
-                                if (isItemNotSnappedOnItem)
-                                {
-                                    usedItemIndexList.Add((-1, groupIndex));
-                                }
-                            }
+                            targetIndex = targets.Count;
+                            targetIndices[target] = targetIndex;
+                            targets.Add(target);
                         }
 
-                        if (item.SnappedOnItem is not null && itemDict.TryGetValue(item.SnappedOnItem, out var itemIndex))
-                        {
-                            unique = (itemIndex, groupIndex);
-
-                            if (!usedItemIndexHashSet.Contains(unique))
-                            {
-                                usedItemIndexList.Add(unique);
-                                usedItemIndexHashSet.Add(unique);
-
-                                if (item.SnappedOnBlock is null)
-                                {
-                                    usedBlockIndexList.Add((-1, groupIndex));
-                                }
-                            }
-                        }
-
-                        if (indicesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
-                        {
-                            snappedOnIndices.Add(indexOfBlockOrItemIndex);
-                        }
-                        else
-                        {
-                            indicesOnUsedBlocksAndItems[unique] = indicesOnUsedBlocksAndItems.Count;
-                            snappedOnIndices.Add(indicesOnUsedBlocksAndItems.Count - 1);
-                        }
+                        snappedOnIndices.Add(targetIndex);
                     }
 
-                    w.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
+                    w.WriteArray(targets.Select(x => x.BlockIndex).ToArray());
 
                     if (Version < 7)
                     {
-                        w.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                        w.WriteArray(targets.Select(x => x.Group).ToArray());
                     }
 
                     if (Version >= 6)
                     {
-                        w.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
+                        w.WriteArray(targets.Select(x => x.ItemIndex).ToArray());
                     }
 
                     if (Version >= 7)
                     {
-                        w.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                        w.WriteArray(targets.Select(x => x.Group).ToArray());
                     }
 
                     if (Version != 6)
                     {
-                        w.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
+                        w.WriteArray(Enumerable.Repeat(-1, targets.Count).ToArray());
                     }
 
                     w.WriteArray(snappedOnIndices.ToArray());
