@@ -39,6 +39,10 @@ CPlugShaderApply 0x09026000
 0x00C [MP3, TMT, MP4, TM2020]
   CPlugBitmapAddress[] UnusedBitmapAddresses = empty (deprec)
 
+0x00D // legacy upper ApplyFlags bits
+  byte ApplyFlagsHigh (local, write: "(byte)(n.ApplyFlags >> 4)")
+  ApplyFlags = ApplyFlags & 0xF | ApplyFlagsHigh << 4
+
 0x010 [MP3, TMT, MP4, TM2020] // ApplyFlags
   byte ApplyFlags
 

@@ -1293,7 +1293,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
                                         if (Version >= 9)
                                         {
-                                            n.lightmapVersion = (int?)rw.Byte((byte?)n.lightmapVersion);
+                                            rw.Byte(ref n.lightmapVersion);
 
                                             if (Version >= 11)
                                             {

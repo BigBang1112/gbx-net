@@ -724,16 +724,36 @@ public partial class CGameCtnApp : CGameApp, IClass
         public override uint Id => 0x030D3013;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk030D3013 owner;
+            internal NodeRefView(Chunk030D3013 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk030D3013)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnApp n, GbxReaderWriter rw)
         {
-            NodeRef<CMwNod>? unusedFidRef = null;
-            rw.NodeRef(ref unusedFidRef);
-            var unusedFid = unusedFidRef?.CachedNode;
+            rw.NodeRef(ref U01Ref);
         }
     }
 
