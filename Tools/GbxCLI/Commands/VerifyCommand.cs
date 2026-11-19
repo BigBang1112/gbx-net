@@ -11,11 +11,13 @@ internal sealed class VerifyCommand
 {
     private readonly CliContext context;
     private readonly GbxReadSettings settings;
+    private readonly bool roundTrip;
 
-    private VerifyCommand(CliContext context, GbxReadSettings settings)
+    private VerifyCommand(CliContext context, GbxReadSettings settings, bool roundTrip)
     {
         this.context = context;
         this.settings = settings;
+        this.roundTrip = roundTrip;
     }
 
     public static async Task RunAsync(IEnumerator<string> args, CliContext context)
@@ -23,6 +25,7 @@ internal sealed class VerifyCommand
         string? inputPath = null;
         var settings = new GbxReadSettings();
         var strict = false;
+        var roundTrip = false;
 
         while (args.MoveNext())
         {
@@ -37,6 +40,9 @@ internal sealed class VerifyCommand
                 case "--strict":
                     strict = true;
                     break;
+                case "--roundtrip":
+                    roundTrip = true;
+                    break;
                 case var arg when inputPath is null:
                     inputPath = arg;
                     break;
@@ -50,7 +56,7 @@ internal sealed class VerifyCommand
             throw ArgumentExtensions.MissingInput("verify");
         }
 
-        var counts = await new VerifyCommand(context, settings).VerifyPathAsync(inputPath);
+        var counts = await new VerifyCommand(context, settings, roundTrip).VerifyPathAsync(inputPath);
 
         await context.Console.WriteLineAsync(counts.ToString());
 
@@ -120,9 +126,13 @@ internal sealed class VerifyCommand
             throw new InvalidDataException($"'{path}' is not a PAK or ZIP archive, so it has no entry '{entryPath}'.");
         }
 
-        return kind == FileKind.Gbx
-            ? Parsed(await Gbx.ParseAsync(stream, settings, context.CancellationToken))
-            : new(0, 0, 1);
+        if (kind != FileKind.Gbx) return new(0, 0, 1);
+
+        return await VerifyGbxAsync(() =>
+        {
+            stream.Position = 0;
+            return Gbx.ParseAsync(stream, settings, context.CancellationToken);
+        });
     });
 
     private async Task<VerifyCounts> VerifyPakAsync(Stream stream, string path, string? entryPath)
@@ -148,7 +158,7 @@ internal sealed class VerifyCommand
 
             counts += await ReportAsync(Path.Combine(path, PathPattern.ToDisplay(entry.Path)), async () =>
                 await pak.CheckFileIsGbxAsync(entry.File, context.CancellationToken)
-                    ? Parsed(await pak.OpenGbxFileAsync(entry.File, settings, cancellationToken: context.CancellationToken))
+                    ? await VerifyGbxAsync(() => pak.OpenGbxFileAsync(entry.File, settings, cancellationToken: context.CancellationToken))
                     : new(0, 0, 1));
         }
 
@@ -199,6 +209,34 @@ internal sealed class VerifyCommand
             using var data = await FileObject.BufferAsync(entry, context.CancellationToken);
             return await VerifyAsync(data, entryPath, innerPath);
         });
+    }
+
+    private async Task<VerifyCounts> VerifyGbxAsync(Func<Task<Gbx>> parse)
+    {
+        var original = await parse();
+        var counts = Parsed(original);
+
+        if (roundTrip)
+        {
+            // Some serializers normalize properties while writing. Keep the first parsed model for comparison.
+            await CheckRoundTripAsync(original, await parse(), context.CancellationToken);
+        }
+
+        return counts;
+    }
+
+    private static async Task CheckRoundTripAsync(Gbx original, Gbx toSave, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        using var saved = new MemoryStream();
+        toSave.Save(saved);
+        saved.Position = 0;
+
+        var reparsed = await Gbx.ParseAsync(saved, original.ReadSettings with { EncryptionInitializer = null }, cancellationToken);
+        if (GbxPropertyComparer.FindDifference(original, reparsed, cancellationToken) is { } difference)
+        {
+            throw new InvalidDataException($"Round trip changed {difference}");
+        }
     }
 
     /// <summary>

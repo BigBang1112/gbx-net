@@ -36,13 +36,14 @@ internal static class CliHelp
             also when they start with -. Scripts can call Print(value) and write to Output.
             """,
         ["verify"] = $"""
-            {H}Usage:{Z} gbx verify <path> [-g <game>] [--strict]
+            {H}Usage:{Z} gbx verify <path> [-g <game>] [--roundtrip] [--strict]
             {L}Alias:{Z} gbx pack verify
 
             Fully parses every Gbx in a file, folder or archive, and continues after failures.
 
             {H}Options:{Z}
               -g, --game <game>      Game version, for games that reuse a class ID for a different class.
+              --roundtrip            Save and reparse each Gbx, then compare its properties recursively.
               --strict               Fail with exit code 1 when any file fails verification.
             """,
         ["pack"] = $"""

@@ -25,7 +25,7 @@ gbx <path>
 | `inspect` (alias `parse`) | `<path> [-i]` | Fully parse a Gbx and write a summary, or summarize a PAK or ZIP. |
 | `eval` | `<path> <code>... [-i]` | Evaluate C# expressions against the opened file. |
 | `script` | `<script.csx> [args...]` | Run a C# script file with GBX.NET available. |
-| `verify` (alias `pack verify`) | `<path> [-g <game>] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
+| `verify` (alias `pack verify`) | `<path> [-g <game>] [--roundtrip] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
 | `pack list` | `<archive>[/pattern] [--resolved \| --unresolved]` | List archive entries, resolving known hashes. |
 | `pack extract` | `<archive>[/pattern] [-o <dir>] [--overwrite \| --skip-existing]` | Extract all or matching entries. |
 | `compress` | `<file> [-o <file>] [--no-backup]` | Compress a Gbx body. |
@@ -116,6 +116,7 @@ Parsed 1532 Gbx files; 1 failed; 220 non-Gbx files skipped.
 A Gbx whose root class is unknown counts as a failure, because its body was not parsed.
 
 - `-g` (`--game`) sets the game version for games that reuse a class ID for a different class. It takes the name of exactly one game, such as `TMF` or `MP4`.
+- `--roundtrip` saves each parsed Gbx in memory, parses it again, and compares the node and chunk properties recursively. It reports the first changed property path. Stored external references are compared by descriptor. Compression, signatures, and other file encoding details do not affect the result.
 - `--strict` exits with `1` after the summary when any file failed.
 
 ### pack list

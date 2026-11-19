@@ -1,4 +1,5 @@
 using GBX.NET;
+using GBX.NET.Engines.Game;
 using GbxCLI.Commands;
 
 namespace GbxCLI.Tests;
@@ -49,6 +50,66 @@ public class VerifyCommandTests
     }
 
     [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Verify_RoundTrip_AcceptsMatchingGbx(bool compressed)
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("Good.Gbx", Fixtures.CreateGbx(compressed));
+
+        var run = await CliRun.RunAsync("verify", path, "--roundtrip", "--strict");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output.Trim()).IsEqualTo("Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.");
+    }
+
+    [Test]
+    public async Task Verify_RoundTrip_ComparesCyclicNodesAndUnresolvedFileReferences()
+    {
+        using var directory = new TempDirectory();
+        var node = new CGameCtnApp { CollectionFids = new() };
+        node.CollectionFids.Add(node);
+        node.References.NationsList.SetFile("Missing.Gbx");
+        node.CreateChunk<CGameCtnApp.Chunk030D300B>();
+        node.CreateChunk<CGameCtnApp.Chunk030D300C>();
+        using var stream = new MemoryStream();
+        new Gbx<CGameCtnApp>(node) { BodyCompression = GbxCompression.Uncompressed }.Save(stream);
+        var path = directory.Write("References.Gbx", stream.ToArray());
+
+        var run = await CliRun.RunAsync("verify", path, "--roundtrip", "--strict");
+
+        await Assert.That(run.Output.Trim()).IsEqualTo("Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.");
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+    }
+
+    [Test]
+    public async Task Verify_RoundTrip_ReportsChangedPropertyAndContinuesPastEncodingChanges()
+    {
+        using var directory = new TempDirectory();
+        var node = new CGameCtnBlockInfoFrontier();
+        node.CreateChunk<CGameCtnBlockInfoFrontier.Chunk03050000>();
+        using var stream = new MemoryStream();
+        new Gbx<CGameCtnBlockInfoFrontier>(node) { BodyCompression = GbxCompression.Uncompressed }.Save(stream);
+
+        var changed = stream.ToArray();
+        // This v6 fixture has empty header user data and no external references. Its chunk flag is always written as true.
+        const int firstChunkPayload = 29;
+        changed[firstChunkPayload] = 0;
+        var changedPath = directory.Write("a.Changed.Gbx", changed);
+        var original = Fixtures.CreateGbx();
+        original[17] = 7; // The writer recalculates the node count stored in the header.
+        directory.Write("b.Encoding.Gbx", [.. original, 0]);
+        directory.Write("c.Good.Gbx", Fixtures.CreateGbx(compressed: true));
+
+        var run = await CliRun.RunAsync("verify", directory.Path, "--roundtrip", "--strict");
+
+        await Assert.That(run.ExitCode).IsEqualTo(1);
+        await Assert.That(run.Output).Contains("a.Changed.Gbx: InvalidDataException: Round trip changed Node.Chunks[0x03050000].U01 from False to True.");
+        await Assert.That(run.Output).Contains("Parsed 2 Gbx files; 1 failed; 0 non-Gbx files skipped.");
+        await Assert.That((await File.ReadAllBytesAsync(changedPath)).SequenceEqual(changed)).IsTrue();
+    }
+
+    [Test]
     [Arguments("verify")]
     [Arguments("pack verify")]
     public async Task Verify_Pak_ReportsEntryPaths(string command)
@@ -80,13 +141,34 @@ public class VerifyCommandTests
     }
 
     [Test]
-    public async Task Verify_PathInsideNestedZip_VerifiesSelectedEntries()
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Verify_RoundTrip_AcceptsMatchingPakEntry(bool encrypted)
+    {
+        using var directory = new TempDirectory();
+        var gbx = Fixtures.CreateGbx();
+        var archive = encrypted
+            ? Fixtures.CreateEncryptedPak(Fixtures.TMNextKey, publicHeader: false, fileContents: gbx, entryPath: "Good.Gbx")
+            : Fixtures.CreatePak(true, ("Good.Gbx", gbx));
+        var path = directory.Write("TMNext.pak", archive);
+
+        var run = await CliRun.RunAsync("pack", "verify", path + "/Good.Gbx", "--roundtrip", "--strict");
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output.Trim()).IsEqualTo("Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.");
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Verify_PathInsideNestedZip_VerifiesSelectedEntries(bool roundTrip)
     {
         using var directory = new TempDirectory();
         var inner = Fixtures.CreateZip(("Good.Gbx", Fixtures.CreateGbx()), ("Broken.Gbx", Fixtures.BrokenGbx));
         var path = directory.Write("outer.zip", Fixtures.CreateZip(("Inner.zip", inner)));
 
-        var run = await CliRun.RunAsync("verify", path + "/Inner.zip/Good.Gbx");
+        var args = new[] { "verify", path + "/Inner.zip/Good.Gbx" };
+        var run = await CliRun.RunAsync(roundTrip ? [.. args, "--roundtrip"] : args);
 
         await Assert.That(run.Output.Trim()).IsEqualTo("Parsed 1 Gbx files; 0 failed; 0 non-Gbx files skipped.");
     }
