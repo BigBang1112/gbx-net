@@ -7,7 +7,7 @@ CFuncEnvelope 0x05036000
   float KeyFrameValue2
   float KeyFrameValue3
   float KeyFramePos1
-  float KeyFramePos1
+  float KeyFramePos2
   float Frequency
   float Amplitude
   int<EModulation> ModFunc
