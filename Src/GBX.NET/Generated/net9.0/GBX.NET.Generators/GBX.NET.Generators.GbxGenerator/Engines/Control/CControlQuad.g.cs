@@ -56,16 +56,6 @@ public partial class CControlQuad : CControlBase, IClass
         set => this.isFill = value;
     }
 
-    private string? iconId;
-    /// <remarks>Applied with: 0x006, 0x007 body chunks</remarks>
-    [AppliedWithChunk<Chunk0701B006>]
-    [AppliedWithChunk<Chunk0701B007>]
-    public string? IconId
-    {
-        get => this.iconId;
-        set => this.iconId = value;
-    }
-
     private Vec3 iconVertexColors = (1, 1, 1);
     /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0701B007>]
@@ -91,9 +81,9 @@ public partial class CControlQuad : CControlBase, IClass
         ((CControlQuad)clone).gradientDir = context.Clone(this.gradientDir)!;
         ((CControlQuad)clone).isLines = context.Clone(this.isLines)!;
         ((CControlQuad)clone).isFill = context.Clone(this.isFill)!;
-        ((CControlQuad)clone).iconId = context.Clone(this.iconId)!;
         ((CControlQuad)clone).iconVertexColors = context.Clone(this.iconVertexColors)!;
         ((CControlQuad)clone).iconVertexAlpha = context.Clone(this.iconVertexAlpha)!;
+        ((CControlQuad)clone).iconId = context.Clone(this.iconId)!;
     }
 
     public CControlQuad()

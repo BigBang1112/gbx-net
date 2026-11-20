@@ -74,20 +74,6 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
 
     public partial class SubTex : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private string? u01;
-        public string? U01
-        {
-            get => this.u01;
-            set => this.u01 = value;
-        }
-
-        private string? u02;
-        public string? U02
-        {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
         private int u03;
         public int U03
         {
@@ -168,8 +154,6 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SubTex)clone).u01 = context.Clone(this.u01)!;
-            ((SubTex)clone).u02 = context.Clone(this.u02)!;
             ((SubTex)clone).u03 = context.Clone(this.u03)!;
             ((SubTex)clone).u04 = context.Clone(this.u04)!;
             ((SubTex)clone).u05 = context.Clone(this.u05)!;
@@ -180,6 +164,8 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
             ((SubTex)clone).u10 = context.Clone(this.u10)!;
             ((SubTex)clone).u11 = context.Clone(this.u11)!;
             ((SubTex)clone).u12 = context.Clone(this.u12)!;
+            ((SubTex)clone).u01 = context.Clone(this.u01)!;
+            ((SubTex)clone).u02 = context.Clone(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)

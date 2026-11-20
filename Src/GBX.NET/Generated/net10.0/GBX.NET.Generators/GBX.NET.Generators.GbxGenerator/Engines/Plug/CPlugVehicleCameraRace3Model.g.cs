@@ -43,6 +43,9 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     private int flyDurationBeforeFlyingBehavior = 1;
+    /// <summary>
+    /// MP4 and TM2020 set it to 100 after loading this chunk. TMT, which writes it, keeps the stored value.
+    /// </summary>
     /// <remarks>Applied with: 0x000, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk090EF000>]
     [AppliedWithChunk<Chunk090EF005>]
@@ -937,10 +940,6 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
             n.slerpSpeedModulationFromSpeed = rw.ReadableWritable<PlugCurve>(n.slerpSpeedModulationFromSpeed, version: -1);
             n.lookAtFactorFromUpSpeedRatio = rw.ReadableWritable<PlugCurve>(n.lookAtFactorFromUpSpeedRatio, version: -1);
             n.flyingLookDownFactorFromSpeedRatio = rw.ReadableWritable<PlugCurve>(n.flyingLookDownFactorFromSpeedRatio, version: -1);
-            if (rw.Reader is not null)
-            {
-                n.FlyDurationBeforeFlyingBehavior = 100;
-            }
         }
     }
 

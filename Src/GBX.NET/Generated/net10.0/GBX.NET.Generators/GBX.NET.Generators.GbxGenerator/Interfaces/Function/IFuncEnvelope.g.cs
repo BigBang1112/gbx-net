@@ -15,6 +15,7 @@ public partial interface IFuncEnvelope : IClassVersion<global::GBX.NET.Engines.F
     float Amplitude { get; set; }
     float Frequency { get; set; }
     float KeyFramePos1 { get; set; }
+    float KeyFramePos2 { get; set; }
     float KeyFrameValue0 { get; set; }
     float KeyFrameValue1 { get; set; }
     float KeyFrameValue2 { get; set; }

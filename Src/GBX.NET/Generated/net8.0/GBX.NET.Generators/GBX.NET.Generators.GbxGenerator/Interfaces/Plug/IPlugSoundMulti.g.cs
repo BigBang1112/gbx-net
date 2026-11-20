@@ -20,13 +20,9 @@ public interface IPlugSoundMultiMembers2 : global::GBX.NET.Interfaces.Plug.IPlug
     global::GBX.NET.Engines.MwFoundations.CMwNod? AdditionalSounds { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugSoundMultiMembers3 : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti
+public interface IPlugSoundMultiMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti where T0 : class
 {
     global::GBX.NET.Engines.Plug.CPlugSoundMulti.ESoundInputMapping InputMapping { get; set; }
-}
-[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public interface IPlugSoundMultiMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti where T0 : class
-{
     T0? VolumeFromInput
     {
         get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSoundMulti)this).VolumeFromInput);
@@ -52,39 +48,39 @@ public partial interface IPlugSoundMultiTMPU : IPlugSoundMulti, global::GBX.NET.
 {
 }
 
-public partial interface IPlugSoundMultiTMSX : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiTMSX : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2
 {
 }
 
-public partial interface IPlugSoundMultiTMNESWC : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiTMNESWC : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2
 {
 }
 
-public partial interface IPlugSoundMultiTMU : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiTMU : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2
 {
 }
 
-public partial interface IPlugSoundMultiVSK5 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiVSK5 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2
 {
 }
 
-public partial interface IPlugSoundMultiTMF : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiTMF : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers2
 {
 }
 
-public partial interface IPlugSoundMultiMP3 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3
+public partial interface IPlugSoundMultiMP3 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1
 {
 }
 
-public partial interface IPlugSoundMultiTMT : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>
+public partial interface IPlugSoundMultiTMT : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>
 {
 }
 
-public partial interface IPlugSoundMultiMP4 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>
+public partial interface IPlugSoundMultiMP4 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>
 {
 }
 
-public partial interface IPlugSoundMultiTM2020 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>
+public partial interface IPlugSoundMultiTM2020 : IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers1, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers3<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>
 {
 }
 

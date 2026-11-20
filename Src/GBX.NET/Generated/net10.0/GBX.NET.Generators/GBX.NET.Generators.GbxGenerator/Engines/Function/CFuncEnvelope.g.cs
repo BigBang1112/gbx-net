@@ -57,6 +57,15 @@ public partial class CFuncEnvelope : CFunc, IClass
         set => this.keyFramePos1 = value;
     }
 
+    private float keyFramePos2;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk05036000>]
+    public float KeyFramePos2
+    {
+        get => this.keyFramePos2;
+        set => this.keyFramePos2 = value;
+    }
+
     private float frequency;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
@@ -92,6 +101,7 @@ public partial class CFuncEnvelope : CFunc, IClass
         ((CFuncEnvelope)clone).keyFrameValue2 = context.Clone(this.keyFrameValue2)!;
         ((CFuncEnvelope)clone).keyFrameValue3 = context.Clone(this.keyFrameValue3)!;
         ((CFuncEnvelope)clone).keyFramePos1 = context.Clone(this.keyFramePos1)!;
+        ((CFuncEnvelope)clone).keyFramePos2 = context.Clone(this.keyFramePos2)!;
         ((CFuncEnvelope)clone).frequency = context.Clone(this.frequency)!;
         ((CFuncEnvelope)clone).amplitude = context.Clone(this.amplitude)!;
         ((CFuncEnvelope)clone).modFunc = context.Clone(this.modFunc)!;
@@ -123,7 +133,7 @@ public partial class CFuncEnvelope : CFunc, IClass
             rw.Single(ref n.keyFrameValue2);
             rw.Single(ref n.keyFrameValue3);
             rw.Single(ref n.keyFramePos1);
-            rw.Single(ref n.keyFramePos1);
+            rw.Single(ref n.keyFramePos2);
             rw.Single(ref n.frequency);
             rw.Single(ref n.amplitude);
             rw.EnumInt32<EModulation>(ref n.modFunc);

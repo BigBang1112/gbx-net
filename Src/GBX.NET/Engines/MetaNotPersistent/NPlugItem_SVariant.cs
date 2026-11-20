@@ -3,7 +3,10 @@ namespace GBX.NET.Engines.MetaNotPersistent;
 
 public partial class NPlugItem_SVariant
 {
-    public Dictionary<string, string> Tags { get; set; } = [];
+    /// <summary>
+    /// Tags in stored order. A key can repeat, such as several MatModifier tags.
+    /// </summary>
+    public List<KeyValuePair<string, string>> Tags { get; set; } = [];
 
     public CMwNod? EntityModel { get => entityModelRef?.Resolve(); set => NodeRef.SetEmbedded(ref entityModelRef, value); }
 
@@ -15,13 +18,14 @@ public partial class NPlugItem_SVariant
         if (rw.Reader is not null)
         {
             var count = rw.Reader.ReadInt32();
-            Tags = new Dictionary<string, string>(count);
+            rw.Reader.EnsureValidLength(count);
+            Tags = new List<KeyValuePair<string, string>>(count);
 
             for (var i = 0; i < count; i++)
             {
                 var key = rw.Reader.ReadString();
                 var value = rw.Reader.ReadString();
-                Tags[key] = value;
+                Tags.Add(new(key, value));
             }
         }
 
