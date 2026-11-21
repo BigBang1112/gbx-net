@@ -29,6 +29,7 @@ public interface IGameCtnChallengeMembers4<T0, T1, T2, T3, T4> : global::GBX.NET
     string? AuthorNickname { get; set; }
     int AuthorVersion { get; set; }
     string? AuthorZone { get; set; }
+    int BakedBlockArchiveVersion { get; set; }
     global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
     List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
     string? BuildVersion { get; set; }
@@ -158,6 +159,7 @@ public interface IGameCtnChallengeMembers18 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeMembers19 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
 {
+    int BlockArchiveVersion { get; set; }
     bool IsLapRace { get; set; }
     PackDesc? ModPackDesc { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }

@@ -1222,10 +1222,8 @@ public partial class CGameCtnChallenge :
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03043013;
 
-    public partial class Chunk0304301F : IVersionable
+    public partial class Chunk0304301F
     {
-        public int Version { get; set; } = 6;
-
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
             n.mapInfo = r.ReadIdent();
@@ -1233,16 +1231,16 @@ public partial class CGameCtnChallenge :
             n.decoration = r.ReadIdent();
             n.size = r.ReadInt3();
             n.needUnlock = r.ReadBoolean();
-            Version = r.ReadInt32();
+            n.blockArchiveVersion = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
             n.blocks = new NodeRefList<CGameCtnBlock>(nbBlocks);
 
             for (var i = 0; i < nbBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(Version);
+                var block = r.ReadReadable<CGameCtnBlock>(n.blockArchiveVersion);
 
-                if (Version >= 6)
+                if (n.blockArchiveVersion >= 6)
                 {
                     block.Coord -= new Int3(1, 0, 1);
                 }
@@ -1258,19 +1256,19 @@ public partial class CGameCtnChallenge :
             w.Write(n.decoration);
             w.Write(n.size);
             w.Write(n.needUnlock);
-            w.Write(Version);
+            w.Write(n.blockArchiveVersion);
 
-            if (Version < 6)
+            if (n.blockArchiveVersion < 6)
             {
                 var tmUnlimiterChunk = n.GetChunk<Chunk3F001001>() ?? (Chunk3F001001?)n.GetChunk<Chunk3F001002>() ?? (Chunk3F001001?)n.GetChunk<Chunk3F001003>();
 
                 if (tmUnlimiterChunk?.Version > 0)
                 {
-                    w.WriteListWritable(n.TMUnlimiterData?.FakeBlocks, version: Version);
+                    w.WriteListWritable(n.TMUnlimiterData?.FakeBlocks, version: n.blockArchiveVersion);
                     return;
                 }
 
-                w.WriteListWritable(n.blocks?.GetEmbeddedNodes().ToList(), version: Version);
+                w.WriteListWritable(n.blocks?.GetEmbeddedNodes().ToList(), version: n.blockArchiveVersion);
                 return;
             }
 
@@ -1291,7 +1289,7 @@ public partial class CGameCtnChallenge :
                 try
                 {
                     block.Coord += new Int3(1, 0, 1);
-                    w.WriteWritable(block, Version);
+                    w.WriteWritable(block, n.blockArchiveVersion);
                 }
                 finally
                 {
@@ -1655,7 +1653,6 @@ public partial class CGameCtnChallenge :
     public partial class Chunk03043048 : IVersionable
     {
         public int Version { get; set; }
-        public int BlocksVersion { get; set; } = 6;
         public int U01;
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
@@ -1667,14 +1664,14 @@ public partial class CGameCtnChallenge :
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            BlocksVersion = r.ReadInt32();
+            n.bakedBlockArchiveVersion = r.ReadInt32();
 
             var nbBakedBlocks = r.ReadInt32();
             n.bakedBlocks = new NodeRefList<CGameCtnBlock>(nbBakedBlocks);
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
+                var block = r.ReadReadable<CGameCtnBlock>(n.bakedBlockArchiveVersion);
                 block.Coord -= new Int3(1, 0, 1);
                 n.bakedBlocks.Add(block);
             }
@@ -1687,11 +1684,11 @@ public partial class CGameCtnChallenge :
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(Version);
-            w.Write(BlocksVersion);
+            w.Write(n.bakedBlockArchiveVersion);
 
-            if (BlocksVersion < 6)
+            if (n.bakedBlockArchiveVersion < 6)
             {
-                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedNodes().ToList(), version: BlocksVersion);
+                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedNodes().ToList(), version: n.bakedBlockArchiveVersion);
             }
             else
             {
@@ -1709,7 +1706,7 @@ public partial class CGameCtnChallenge :
                         try
                         {
                             block.Coord += new Int3(1, 0, 1);
-                            w.WriteWritable(block, BlocksVersion);
+                            w.WriteWritable(block, n.bakedBlockArchiveVersion);
                         }
                         finally
                         {

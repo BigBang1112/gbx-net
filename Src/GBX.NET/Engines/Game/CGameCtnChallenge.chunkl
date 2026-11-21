@@ -139,14 +139,14 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01E
   CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
-0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, VSK5.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
+0x01F (demonstration: partial) [TMS, TMO, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT, MP4, TM2020] // block data
   ident MapInfo = empty
   string MapName (formatted)
   ident Decoration
   int3 Size
   bool NeedUnlock
-  version
-  CGameCtnBlock[] Blocks (list, version: Version) // Coordinates are offset by (1, 0, 1) in version 6 and above.
+  int BlockArchiveVersion = 6 [TMS = 1, TMO = 1, TMSX = 1, TMNESWC = 1, TMU = 1, VSK5 = 1, TMF = 1]
+  CGameCtnBlock[] Blocks (list, version: BlockArchiveVersion) // Coordinates are offset by (1, 0, 1) in version 6 and above.
 
 0x020 // legacy legacy mediatracker
   CGameCtnMediaClip ClipIntro
@@ -265,8 +265,8 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x048 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // baked blocks
   version
-  int = 6
-  CGameCtnBlock[] BakedBlocks (list)
+  int BakedBlockArchiveVersion = 6
+  CGameCtnBlock[] BakedBlocks (list, version: BakedBlockArchiveVersion)
   SBakedClipsAdditionalData[] BakedClipsAdditionalData (list) // Preceded by U01.
 
 0x049 [MP3.v2, TMT.v2, MP4.v2, TM2020.v2] // mediatracker

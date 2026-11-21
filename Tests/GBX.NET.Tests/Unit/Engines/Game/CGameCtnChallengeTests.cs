@@ -41,7 +41,7 @@ public class CGameCtnChallengeTests
     [Arguments(true)]
     public void WriteBlocks_NullEntryWithCoordinateOffset_ThrowsInvalidOperationException(bool baked)
     {
-        var map = new CGameCtnChallenge();
+        var map = new CGameCtnChallenge { BlockArchiveVersion = 6, BakedBlockArchiveVersion = 6 };
         var blocks = new NodeRefList<CGameCtnBlock>();
         blocks.Add(new NodeRef<CGameCtnBlock>());
         if (baked) map.BakedBlocks = blocks;
@@ -51,11 +51,11 @@ public class CGameCtnChallengeTests
 
         if (baked)
         {
-            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk03043048 { BlocksVersion = 6 }.Write(map, writer));
+            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk03043048().Write(map, writer));
         }
         else
         {
-            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk0304301F { Version = 6 }.Write(map, writer));
+            Assert.Throws<InvalidOperationException>(() => new CGameCtnChallenge.Chunk0304301F().Write(map, writer));
         }
     }
 

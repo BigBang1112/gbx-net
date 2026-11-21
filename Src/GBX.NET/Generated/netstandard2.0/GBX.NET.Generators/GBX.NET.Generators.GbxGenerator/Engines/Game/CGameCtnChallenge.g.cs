@@ -365,6 +365,22 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.modPackDesc = value;
     }
 
+    private int blockArchiveVersion;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
+    [AppliedWithChunk<Chunk0304301F>]
+    [GameVersionDefault(GameVersion.TMS, 1)]
+    [GameVersionDefault(GameVersion.TMO, 1)]
+    [GameVersionDefault(GameVersion.TMSX, 1)]
+    [GameVersionDefault(GameVersion.TMNESWC, 1)]
+    [GameVersionDefault(GameVersion.TMU, 1)]
+    [GameVersionDefault(GameVersion.VSK5, 1)]
+    [GameVersionDefault(GameVersion.TMF, 1)]
+    public int BlockArchiveVersion
+    {
+        get => this.blockArchiveVersion;
+        set => this.blockArchiveVersion = value;
+    }
+
     private NodeRef<CGameCtnMediaClip>? clipIntroRef;
     /// <remarks>Applied with: 0x020, 0x021, 0x049 body chunks</remarks>
     [AppliedWithChunk<Chunk03043020>]
@@ -546,6 +562,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.challengeScript = value;
     }
 
+    private int bakedBlockArchiveVersion;
+    /// <remarks>Applied with: 0x048 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043048>]
+    public int BakedBlockArchiveVersion
+    {
+        get => this.bakedBlockArchiveVersion;
+        set => this.bakedBlockArchiveVersion = value;
+    }
+
     /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk03043048>]
     public partial NodeRefList<CGameCtnBlock>? BakedBlocks { get; set; }
@@ -575,7 +600,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref clipAmbianceRef, value);
     }
 
-    private Int3 clipTriggerSize = (1, 1, 1);
+    private Int3 clipTriggerSize;
     /// <remarks>Applied with: 0x049 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043049>(1)]
     public Int3 ClipTriggerSize
@@ -1009,6 +1034,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).kind = context.Clone(this.kind)!;
         ((CGameCtnChallenge)clone).checkpoints = context.CloneList(this.checkpoints)!;
         ((CGameCtnChallenge)clone).modPackDesc = context.Clone(this.modPackDesc)!;
+        ((CGameCtnChallenge)clone).blockArchiveVersion = context.Clone(this.blockArchiveVersion)!;
         ((CGameCtnChallenge)clone).clipIntroRef = context.Clone(this.clipIntroRef)!;
         ((CGameCtnChallenge)clone).clipGroupInGameRef = context.Clone(this.clipGroupInGameRef)!;
         ((CGameCtnChallenge)clone).clipGroupEndRaceRef = context.Clone(this.clipGroupEndRaceRef)!;
@@ -1023,6 +1049,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).anchoredObjects = context.Clone(this.anchoredObjects)!;
         ((CGameCtnChallenge)clone).zoneGenealogy = context.Clone(this.zoneGenealogy)!;
         ((CGameCtnChallenge)clone).challengeScript = context.Clone(this.challengeScript)!;
+        ((CGameCtnChallenge)clone).bakedBlockArchiveVersion = context.Clone(this.bakedBlockArchiveVersion)!;
         ((CGameCtnChallenge)clone).clipPodiumRef = context.Clone(this.clipPodiumRef)!;
         ((CGameCtnChallenge)clone).clipAmbianceRef = context.Clone(this.clipAmbianceRef)!;
         ((CGameCtnChallenge)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
@@ -1120,8 +1147,30 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043048>]
     public partial int? NbBakedBlocks { get; }
 
-    public CGameCtnChallenge()
+    public CGameCtnChallenge() : this(GameVersion.Unspecified)
     {
+    }
+
+    public CGameCtnChallenge(GameVersion gameVersion)
+    {
+        mapInfo = Ident.Empty;
+        mapName = string.Empty;
+        decoration = Ident.Empty;
+
+        if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
+        {
+            blockArchiveVersion = 1;
+        }
+        else
+        {
+            blockArchiveVersion = 6;
+        }
+
+        thumbnailFov = 90;
+        thumbnailNearClipPlane = -1;
+        thumbnailFarClipPlane = -1;
+        bakedBlockArchiveVersion = 6;
+        clipTriggerSize = (1, 1, 1);
     }
 
     /// <summary>
@@ -1892,37 +1941,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// CGameCtnChallenge 0x01F chunk (block data)
     /// </summary>
     [Chunk(0x0304301F, "block data")]
-    [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1, 1, 1, 1, 6, 6, 6, 6)]
-    public partial class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
+    [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk0304301F : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x0304301F;
-        public override GameVersion GameVersion => Version switch
-        {
-            <= 1 => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
-            <= 6 => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
-            _ => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
-        };
-
-        public Chunk0304301F() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0304301F(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
-            {
-                Version = 1;
-            }
-            else if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 6;
-            }
-        }
+        public override GameVersion GameVersion => GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304301F)clone).Version = context.Clone(this.Version)!;
         }
     }
 
@@ -2589,7 +2616,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk03043048)clone).Version = context.Clone(this.Version)!;
             ((Chunk03043048)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03043048)clone).BlocksVersion = context.Clone(this.BlocksVersion)!;
         }
     }
 
