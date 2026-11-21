@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.NewtonsoftJson</PackageId>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
         <Authors>BigBang1112</Authors>
         <Description>Better and easier JSON serialization with polymorphic support for GBX.NET objects.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -10,7 +10,9 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, json, trackmania, shootmania, maniaplanet, gamebox, net, chunk, newtonsoft</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Updated to .NET 11
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 

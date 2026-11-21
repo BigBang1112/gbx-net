@@ -11,6 +11,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, builder, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
         <PackageReleaseNotes>
+- Updated map and block builders
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>

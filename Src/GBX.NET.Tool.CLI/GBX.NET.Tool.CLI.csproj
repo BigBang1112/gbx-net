@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Tool.CLI</PackageId>
-        <VersionPrefix>0.5.4</VersionPrefix>
+        <VersionPrefix>0.5.5</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>CLI implementation for the GBX.NET tool framework using Spectre.Console.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -10,7 +10,9 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, tool, cli, console, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Updated to .NET 11
+        </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>

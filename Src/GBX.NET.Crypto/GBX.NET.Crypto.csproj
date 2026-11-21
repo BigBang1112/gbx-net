@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Crypto</PackageId>
-        <VersionPrefix>1.2.4</VersionPrefix>
+        <VersionPrefix>1.2.5</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Cryptographic features for GBX.NET 2.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,9 +11,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, encryption, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
         <PackageReleaseNotes>
-- Added `DecryptOnlinePassword`, `DecryptOnlineSupportKey`, `DecryptOnlineValidationCode`, and `DecryptKey` for `CGamePlayerProfileChunk_AccountSettings`
-- Added `DecryptOnlineSupportKey` and `DecryptOnlineValidationKey` for `CGamePlayerProfile`
-- Removed GBX.NET.Hashing dependency
+- Changed `Blowfish` block operations to throw `ArgumentException` when the input length is not a multiple of eight bytes
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>

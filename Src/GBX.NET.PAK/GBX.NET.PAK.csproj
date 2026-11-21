@@ -11,6 +11,9 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes>
+- Added `Pak.OpenFileAsync()` and `Pak.BufferFilesAsync` to open entries from streams that require asynchronous reads
+- Fixed `CheckFileIsGbx` and `CheckFileIsGbxAsync` to return `false` for entries shorter than the Gbx signature check requires
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>

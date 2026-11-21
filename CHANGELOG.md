@@ -1,5 +1,91 @@
 # Changelog
 
+## GBX.NET 2.5.2
+
+- Added `CGameCtnGhost.GetSimulationInputs()` for replaying Competition Patch 2
+- Deprecated `GetDisplayableInputs()` in favor of `GetDisplayInputs()`
+- Added support for `CSceneVehicleCar` ghost sample versions 2 and 6
+- Added Always Official ghost metadata, including race start and finish timestamps
+- Added `NodeRef.SetFile()` to assign an external file reference without loading it
+- Added `INodeRefList.EnumerateReferences()` to inspect stored references without resolving them
+- Fixed class ID remapping for older games
+- Fixed map round-trips that lost `SnappedOnBlock` links
+- `CGameCtnChallenge`: Added `BlockArchiveVersion` and `BakedBlockArchiveVersion`
+  - `Chunk0304301F.Version` was removed.
+- `CGameCtnBlock`: Added `BlockInfoVariantIndex` and `IsEditable`
+  - Use them in place of `Bit21` and `IsClip`
+- Changed `NPlugItem_SVariant.Tags` to `List<KeyValuePair<string, string>>` to preserve tag order and duplicate keys
+- Fixed `CGameCtnCollector.CatalogPosition` and `NbAvailableMax` for values above 32767
+- Fixed serialization of official campaign paths in `CGameCtnApp`, `CFuncEnvelope.KeyFramePos2`, `CPlugShaderPass.PipelineGpu.HasExternalFile`, and numeric-looking IDs in `CPlugTree`
+- Updated to .NET 11
+
+### GBX.NET.Builders 2.5.2
+
+- Updated map and block builders
+- Updated to .NET 11
+
+### GBX.NET.CLI 0.2.0
+
+- Added an interactive Gbx, PAK, and ZIP browser. Open it with `gbx <path>` or `gbx inspect -i`
+- Replaced `pak files`, `pak extract`, and `pak verify` with `pack list`, `pack extract`, and `verify`. `inspect` also accepts the `parse` alias
+- Added `verify --roundtrip` to report properties that change after saving and reloading
+- Added nested archive browsing, more PAK filename hashes, and `pack extract --overwrite` and `--skip-existing`
+- Changed `compress` and `decompress` to replace the input when `-o` is omitted, keeping a `.bak` file by default
+- Updated `eval -i` with an interactive C# prompt
+- Updated to .NET 11
+
+### GBX.NET.Crypto 1.2.5
+
+- Changed `Blowfish` block operations to throw `ArgumentException` when the input length is not a multiple of eight bytes
+- Updated to .NET 11
+
+### GBX.NET.Imaging 2.0.5
+
+- Updated to .NET 11
+
+### GBX.NET.Imaging.ImageSharp 1.0.5
+
+- Updated to .NET 11
+
+### GBX.NET.Imaging.SkiaSharp 1.1.5
+
+- Updated to .NET 11
+
+### GBX.NET.LZO 2.1.7
+
+- Updated to .NET 11
+
+### GBX.NET.NewtonsoftJson 1.0.5
+
+- Updated to .NET 11
+
+### GBX.NET.PAK 2.4.6
+
+- Added `Pak.OpenFileAsync()` and `Pak.BufferFilesAsync` to open entries from streams that require asynchronous reads
+- Fixed `CheckFileIsGbx` and `CheckFileIsGbxAsync` to return `false` for entries shorter than the Gbx signature check requires
+- Updated to .NET 11
+
+### GBX.NET.Templates 0.3.0
+
+- Updated templates for .NET 11 and latest GBX.NET
+
+### GBX.NET.Tool 0.3.5
+
+- Changed `ToolFunctionalityResolver` to throw `InvalidOperationException` when the tool type has no public constructor
+- Updated to .NET 11
+
+### GBX.NET.Tool.CLI 0.5.5
+
+- Updated to .NET 11
+
+### GBX.NET.ZLib 1.1.4
+
+- Updated to .NET 11
+
+### Gbx Explorer
+
+- Updated formatted property display with TmEssentials
+
 ## [GBX.NET 2.5.1](https://github.com/BigBang1112/gbx-net/releases/tag/v2.5.1) - 2026-11-06
 
 - Added signature chunk at the end of written binary bodies
