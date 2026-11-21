@@ -2,9 +2,9 @@
 
 ## GBX.NET 2.5.2
 
-- Added `CGameCtnGhost.GetSimulationInputs()` for replaying Competition Patch 2
-- Deprecated `GetDisplayableInputs()` in favor of `GetDisplayInputs()`
 - Added support for `CSceneVehicleCar` ghost sample versions 2 and 6
+- Added `CGameCtnGhost.GetSimulationInputs()` for replaying Competition Patch 2 (by Tomashu)
+- Deprecated `CGameCtnGhost.GetDisplayableInputs()` in favor of `GetDisplayInputs()`
 - Added Always Official ghost metadata, including race start and finish timestamps
 - Added `NodeRef.SetFile()` to assign an external file reference without loading it
 - Added `INodeRefList.EnumerateReferences()` to inspect stored references without resolving them
