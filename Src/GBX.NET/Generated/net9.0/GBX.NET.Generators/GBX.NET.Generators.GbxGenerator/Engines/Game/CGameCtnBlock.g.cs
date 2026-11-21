@@ -128,12 +128,31 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
             {
                 this.squareCardEventIds = r.ReadArrayReadable<SSquareCardEventIds>(version: v);
             }
+            else
+            {
+                if (v <= 4)
+                {
+                    this.squareCardEventIds = r.ReadArrayReadable<SSquareCardEventIds>(version: v);
+                }
+            }
 
             if ((Flags& (1 << 17)) != 0)
             {
                 this.decalId = r.ReadId();
                 this.decalIntensity = r.ReadInt32();
                 this.decalVariant = r.ReadInt32();
+            }
+            else
+            {
+                if (v >= 3)
+                {
+                    if (v <= 4)
+                    {
+                        this.decalId = r.ReadId();
+                        this.decalIntensity = r.ReadInt32();
+                        this.decalVariant = r.ReadInt32();
+                    }
+                }
             }
         }
     }
@@ -176,12 +195,31 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
             {
                 w.WriteArrayWritable<SSquareCardEventIds>(this.squareCardEventIds, version: v);
             }
+            else
+            {
+                if (v <= 4)
+                {
+                    w.WriteArrayWritable<SSquareCardEventIds>(this.squareCardEventIds, version: v);
+                }
+            }
 
             if ((Flags& (1 << 17)) != 0)
             {
                 w.WriteIdAsString(this.decalId);
                 w.Write(this.decalIntensity);
                 w.Write(this.decalVariant);
+            }
+            else
+            {
+                if (v >= 3)
+                {
+                    if (v <= 4)
+                    {
+                        w.WriteIdAsString(this.decalId);
+                        w.Write(this.decalIntensity);
+                        w.Write(this.decalVariant);
+                    }
+                }
             }
         }
     }

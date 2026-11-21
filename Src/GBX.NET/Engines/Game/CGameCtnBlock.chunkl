@@ -26,10 +26,19 @@ archive
       CGameWaypointSpecialProperty WaypointSpecialProperty
     if (Flags & (1 << 18)) != 0
       SSquareCardEventIds[] SquareCardEventIds
+    else
+      v4-
+        SSquareCardEventIds[] SquareCardEventIds // Versions 2-4 always store card events.
     if (Flags & (1 << 17)) != 0
       id DecalId
       int DecalIntensity = 1
       int DecalVariant = -1
+    else
+      v3+
+        v4-
+          id DecalId // Versions 3-4 always store decals.
+          int DecalIntensity
+          int DecalVariant
 
 archive SSquareCardEventIds
   version
