@@ -228,7 +228,8 @@ public class PackExtractCommandTests
     public async Task Extract_TwoEntriesToSameFile_WritesNothing()
     {
         using var directory = new TempDirectory();
-        var path = directory.Write("archive.pak", Fixtures.CreatePak(false, ("a/b.txt", [1]), ("a\\b.txt", [2])));
+        // A ZIP keeps both names on every platform. A PAK reader already merges them on Linux, where it turns backslashes into slashes.
+        var path = directory.Write("archive.zip", Fixtures.CreateZip(("a/b.txt", [1]), ("a\\b.txt", [2])));
         var output = directory.Combine("out");
 
         var run = await CliRun.RunAsync("pack", "extract", path, "-o", output);
