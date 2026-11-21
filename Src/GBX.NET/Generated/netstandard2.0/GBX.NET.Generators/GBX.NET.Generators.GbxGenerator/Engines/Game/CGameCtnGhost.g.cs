@@ -783,6 +783,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).simulationFlags = context.Clone(this.simulationFlags)!;
         ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
         ((CGameCtnGhost)clone).inputs = context.Clone(this.inputs)!;
+        ((CGameCtnGhost)clone).AlwaysOfficialData = context.Clone(this.AlwaysOfficialData)!;
     }
 
     /// <remarks>Applied with: 0x02C, 0x02D body chunks</remarks>
@@ -2048,6 +2049,23 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x201 skippable chunk (Always Official)
+    /// </summary>
+    [Chunk(0xBB111201, "Always Official")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class ChunkBB111201 : SkippableChunk<CGameCtnGhost>
+    {
+        public override uint Id => 0xBB111201;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((ChunkBB111201)clone).Version = context.Clone(this.Version)!;
+        }
+    }
+
     public partial class PlayerInputData : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private EVersion version;
@@ -2781,6 +2799,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         0x0309202D => new Chunk0309202D(),
         0x0309202E => new Chunk0309202E(),
         0x03092FFE => new Chunk03092FFE(),
+        0xBB111201 => new ChunkBB111201(),
         _ => base.NewChunk(chunkId),
     };
 }

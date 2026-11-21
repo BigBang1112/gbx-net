@@ -203,6 +203,23 @@ public class NodeBuilderTests
     }
 
     [Test]
+    public async Task Build_BlockVariantAndEditable_KeepPackedFieldsAndAliasOrdering()
+    {
+        var node = CGameCtnBlock.Create().ForMP4()
+            .WithFlags(unchecked((int)0xC0000000))
+            .WithBlockInfoVariantIndex(42)
+            .WithVariant(7)
+            .WithSubVariant(9)
+            .WithIsEditable(true)
+            .WithIsClip(false)
+            .Build();
+
+        await Assert.That(node.Flags).IsEqualTo(unchecked((int)0xC0000000) | (42 << 21) | (9 << 6) | 7);
+        await Assert.That(node.IsEditable).IsFalse();
+        await Assert.That(node.BlockInfoVariantIndex).IsEqualTo((byte)42);
+    }
+
+    [Test]
     public async Task Build_Clip_RoundTripsThroughSerialization()
     {
         var track = CGameCtnMediaTrack.Create().WithName("Camera").ForTMF().Build();

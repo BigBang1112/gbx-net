@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET</PackageId>
-        <VersionPrefix>2.5.1</VersionPrefix>
+        <VersionPrefix>2.5.2</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>General purpose library for Gbx files - data from Nadeo games like Trackmania or Shootmania. It supports high performance serialization and deserialization of 500+ Gbx classes.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,29 +11,31 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, trackmania, shootmania, maniaplanet, gamebox, net, chunk, file</PackageTags>
         <PackageReleaseNotes>
-- Added signature chunk at the end of written binary bodies
-  - Added `GbxBody.Signature` and `Gbx.ValidateSignature(Async)` returning `GbxSignatureStatus`
-- Implemented remaining MP4 and TM2020 `CPlugVehicleCarPhyTuning` chunks and discovered many of their member names
-- `CPlugVehicleVisModelShared`: Discovered member names of materials, lights, particles, sounds, arms, and wheels
-- `CPlugVehicleVisModelShared`: Fixed `0x01F` version 6 and `0x022` versions below 5
-- Updated `CPlugMaterial`, `CPlugMaterialCustom`, `CPlugMaterialUserInst`, `CPlugMaterialColorTargetTable`, `CPlugLight`, `CPlugGameSkin`, `CPlugFxWindOnDecal`, and `CPlugTurretObjectParams`, `CGameItemModel`, `CFuncShaderLayerUV`, and `CFuncShaderTweakKeysTranss`
-- Resolved few unknowns in `CGamePlayerProfileChunk_AccountSettings`
-- `CGameCtnGhost`: Added TM2020 `TICK` chunk
-- `GameVersion` now differentiates MP3 and TMT maps, and TMT and MP4 ghosts
-- Fixed `GameVersion` in chunk versions and `IsGameVersion(GameVersion.Unspecified)`
-- Added missing game version qualifiers to many chunks
-- Increased default array, body, and skippable chunk size limits from 256 MB to 512 MB
-- Added `MethodAttribute` to link properties to methods
-- Removed forgotten `Experimental` attributes on `DeepClone`
+- Added support for `CSceneVehicleCar` ghost sample versions 2 and 6
+- Added `CGameCtnGhost.GetSimulationInputs()` for replaying Competition Patch 2 (by Tomashu)
+- Deprecated `CGameCtnGhost.GetDisplayableInputs()` in favor of `GetDisplayInputs()`
+- Added Always Official ghost metadata, including race start and finish timestamps
+- Added `NodeRef.SetFile()` to assign an external file reference without loading it
+- Added `INodeRefList.EnumerateReferences()` to inspect stored references without resolving them
+- Fixed class ID remapping for older games
+- Fixed map round-trips that lost `SnappedOnBlock` links
+- `CGameCtnChallenge`: Added `BlockArchiveVersion` and `BakedBlockArchiveVersion`
+  - `Chunk0304301F.Version` was removed.
+- `CGameCtnBlock`: Added `BlockInfoVariantIndex` and `IsEditable`
+  - Use them in place of `Bit21` and `IsClip`
+- Changed `NPlugItem_SVariant.Tags` to `List&lt;KeyValuePair&lt;string, string&gt;&gt;` to preserve tag order and duplicate keys
+- Fixed `CGameCtnCollector.CatalogPosition` and `NbAvailableMax` for values above 32767
+- Fixed serialization of official campaign paths in `CGameCtnApp`, `CFuncEnvelope.KeyFramePos2`, `CPlugShaderPass.PipelineGpu.HasExternalFile`, and numeric-looking IDs in `CPlugTree`
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net11.0;net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\Generated\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
-        <LangVersion>14</LangVersion>
+        <LangVersion>15</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
@@ -61,10 +63,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
-        <PackageReference Include="System.IO.Hashing" Version="10.0.12" />
-        <PackageReference Include="TmEssentials" Version="2.8.0" />
-        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.56">
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.15" />
+        <PackageReference Include="System.IO.Hashing" Version="10.0.15" />
+        <PackageReference Include="TmEssentials" Version="2.9.1" />
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.66">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -72,7 +74,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <PackageReference Include="System.Memory" Version="4.6.3" />
-        <PackageReference Include="System.Collections.Immutable" Version="10.0.2" />
+        <PackageReference Include="System.Collections.Immutable" Version="11.0.0" />
         <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
     </ItemGroup>
 
@@ -87,6 +89,7 @@
         <AdditionalFiles Include="../../Resources/ClassIdManual.txt" />
         <AdditionalFiles Include="../../Resources/CollectionId.txt" />
         <AdditionalFiles Include="../../Resources/Wrap.txt" />
+        <AdditionalFiles Include="../../Resources/ClassIdRemap.txt" />
         <AdditionalFiles Include="../../Resources/Unwrap.txt" />
         <AdditionalFiles Include="../../Resources/Extensions.txt" />
     </ItemGroup>

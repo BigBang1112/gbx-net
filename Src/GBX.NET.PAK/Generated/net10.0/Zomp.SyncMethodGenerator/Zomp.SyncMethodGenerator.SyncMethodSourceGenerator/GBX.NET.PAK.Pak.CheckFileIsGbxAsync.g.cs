@@ -18,12 +18,16 @@ public partial class Pak
 {
     public bool CheckFileIsGbx(global::GBX.NET.PAK.PakFile file)
     {
-        if (file.Size == 0)
+        // Gbx.IsGbx needs 5 bytes. Shorter entries would fail it or be checked against the data that follows them.
+        if (file.Size == 0 || file.UncompressedSize < 5)
         {
             return false;
         }
 
-        using var stream = OpenFile(file, out var _);
+        // The magic only needs the IV and the first compressed block (at most 0x8092 bytes for LZ4),
+        // so avoid buffering whole entries when checking every file in a Pak.
+        var rawStream = GetRawFileStream(file, maxLength: 0x10000);
+        using var stream = DecodeFileStream(rawStream, file, out _);
         return global::GBX.NET.Gbx.IsGbx(stream);
     }
 }

@@ -11,6 +11,7 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> : NodeBuilder<global::GBX.
     public TSelf WithAmplitude(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, SupportedGames1);
     public TSelf WithFrequency(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, SupportedGames1);
     public TSelf WithKeyFramePos1(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, SupportedGames1);
+    public TSelf WithKeyFramePos2(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos2Assignment(), value, SupportedGames1);
     public TSelf WithKeyFrameValue0(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, SupportedGames1);
     public TSelf WithKeyFrameValue1(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, SupportedGames1);
     public TSelf WithKeyFrameValue2(float value) => Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, SupportedGames1);

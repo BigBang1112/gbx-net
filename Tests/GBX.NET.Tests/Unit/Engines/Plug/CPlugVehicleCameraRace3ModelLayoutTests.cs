@@ -77,7 +77,8 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
             await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
         }
         await Assert.That(node.SlerpSpeed).IsEqualTo(0.25f);
-        await Assert.That(node.FlyDurationBeforeFlyingBehavior).IsEqualTo(version < 0 ? 100 : -4);
+        // The legacy chunk keeps the stored value, like TMT. Only MP4 and TM2020 change it to 100 when loading.
+        await Assert.That(node.FlyDurationBeforeFlyingBehavior).IsEqualTo(-4);
         await Assert.That(node.SlerpTargetPosNormalBehaviorTimeUp).IsEqualTo(-10);
         await Assert.That(node.SlerpTargetPosNormalBehaviorTimeDown).IsEqualTo(-11);
         await Assert.That(node.EventBurningRadiusTimeDown).IsEqualTo(-65);
@@ -91,12 +92,6 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
                 new[] { new Vec2(4, 5), new Vec2(6, 7) }, CollectionOrdering.Matching);
         }
 
-        if (version < 0)
-        {
-            payload.Position = 12;
-            using var writer = new GbxWriter(payload);
-            writer.Write(100);
-        }
         using var saved = new MemoryStream();
         using (var writer = new GbxWriter(saved))
         using (var rw = new GbxReaderWriter(writer)) chunk.ReadWrite(node, rw);

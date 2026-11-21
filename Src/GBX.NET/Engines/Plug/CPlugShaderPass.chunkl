@@ -95,7 +95,7 @@ CPlugShaderPass 0x09067000
   Sampler[] GeometrySamplers = empty
 
 archive PipelineGpu
-  bool HasExternalFile (write: "References.FileGpu.Kind == NodeRefKind.ExternalFile")
+  bool HasExternalFile (write: "References.FileGpu.Kind is NodeRefKind.ExternalFile or NodeRefKind.ExternalResource") // Whether FileGpu is a file reference, including a pack resource, instead of an embedded node.
   CPlugFileGPU FileGpu
   if FileGpu != null
     GpuLoadFx[] GpuLoadFxs = empty (version: 0)

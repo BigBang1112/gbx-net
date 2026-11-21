@@ -197,7 +197,8 @@ public partial class CPlugSurface
 
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean((materialRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
+            // A material that isn't a default surface material, which can also be null.
+            if (rw.Boolean((materialRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None || SurfaceId is null))
             {
                 rw.NodeRef(ref materialRef);
             }

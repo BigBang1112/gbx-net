@@ -109,6 +109,36 @@ public class CPlugTreeLayoutTests
     }
 
     [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task ReadWrite_DigitPlugIds_KeepNameOrNumberAsStored(bool numeric)
+    {
+        // Decorators find trees by these ids, so the name "1" and the number 1 must not swap when saving.
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            if (numeric) writer.Write(new Id(1));
+            else writer.WriteIdAsString("1");
+            writer.WriteNodeRef(new CPlugSolid());
+            if (numeric) writer.Write(new Id(2));
+            else writer.WriteIdAsString("2");
+        }
+
+        var chunk = new CPlugTree.Chunk0904F00D();
+        var node = new CPlugTree();
+        payload.Position = 0;
+        using (var reader = new GbxReader(payload))
+        using (var rw = new GbxReaderWriter(reader)) chunk.ReadWrite(node, rw);
+        await Assert.That(node.PlugId).IsEqualTo("1");
+        await Assert.That(node.ModelPlugId).IsEqualTo("2");
+
+        using var saved = new MemoryStream();
+        using (var writer = new GbxWriter(saved))
+        using (var rw = new GbxReaderWriter(writer)) chunk.ReadWrite(node, rw);
+        await Assert.That(saved.ToArray()).IsEquivalentTo(payload.ToArray(), CollectionOrdering.Matching);
+    }
+
+    [Test]
     public async Task ReadWrite_LegacyParameterIds_DoNotConsumeTheFollowingChunk()
     {
         using var payload = new MemoryStream();

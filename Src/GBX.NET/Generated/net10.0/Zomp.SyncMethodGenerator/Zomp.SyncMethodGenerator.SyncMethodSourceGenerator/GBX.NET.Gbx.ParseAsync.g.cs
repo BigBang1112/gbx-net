@@ -31,11 +31,12 @@ public partial class Gbx
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             var unknownBody = global::GBX.NET.Components.GbxBody.Parse(reader, header.Basic.CompressionOfBody);
+            var classIdRemapMode = reader.ResolveClassIdRemapMode();
 
             if (logger is not null)
             {
                 global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
-                global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+                global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", classIdRemapMode);
                 global::Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(logger, "Unknown Gbx completed.");
             }
 
@@ -44,7 +45,7 @@ public partial class Gbx
                 RefTable = refTable,
                 ReadSettings = settings,
                 IdVersion = reader.IdVersion,
-                ClassIdRemapMode = reader.ClassIdRemapMode,
+                ClassIdRemapMode = classIdRemapMode,
                 FilePath = filePath
             };
         }
@@ -71,7 +72,7 @@ public partial class Gbx
         gbx.IdVersion = reader.IdVersion;
         gbx.PackDescVersion = reader.PackDescVersion;
         gbx.DeprecVersion = reader.DeprecVersion;
-        gbx.ClassIdRemapMode = reader.ClassIdRemapMode;
+        gbx.ClassIdRemapMode = reader.ResolveClassIdRemapMode();
         gbx.FilePath = filePath;
 
         if (logger is not null)
@@ -79,7 +80,7 @@ public partial class Gbx
             global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Id version: {IdVersion}", reader.IdVersion);
             global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "PackDesc version: {PackDescVersion}", reader.PackDescVersion);
             global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Deprec version: {DeprecVersion}", reader.DeprecVersion);
-            global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", reader.ClassIdRemapMode);
+            global::Microsoft.Extensions.Logging.LoggerExtensions.LogDebug(logger, "Class ID remap mode: {ClassIdRemapMode}", gbx.ClassIdRemapMode);
             global::Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(logger, "Known Gbx completed.");
         }
 

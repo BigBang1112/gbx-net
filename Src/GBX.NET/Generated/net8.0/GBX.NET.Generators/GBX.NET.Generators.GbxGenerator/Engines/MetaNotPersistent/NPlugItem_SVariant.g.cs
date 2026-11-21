@@ -33,7 +33,7 @@ public partial class NPlugItem_SVariant : CMwNod, IClass, IReadableWritable, IRe
         base.DeepCloneFields(clone, context);
         ((NPlugItem_SVariant)clone).entityModelRef = context.Clone(this.entityModelRef)!;
         ((NPlugItem_SVariant)clone).hiddenInManualCycle = context.Clone(this.hiddenInManualCycle)!;
-        ((NPlugItem_SVariant)clone).Tags = context.CloneDictionary(this.Tags)!;
+        ((NPlugItem_SVariant)clone).Tags = context.CloneList(this.Tags)!;
     }
 
     public NPlugItem_SVariant()

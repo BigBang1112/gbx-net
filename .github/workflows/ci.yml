@@ -40,9 +40,6 @@ jobs:
     name: Continuous Integration
     uses: bigbang1112/workflows/.github/workflows/dotnet-ci.yml@main
     with:
-      dotnet-version: |
-        10.0.x
-        9.0.x
-        8.0.x
+      dotnet-version: latest
       restore-args: -p:SkipWasmNative=true
       build-args: -p:SkipWasmNative=true

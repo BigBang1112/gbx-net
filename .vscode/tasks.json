@@ -16,6 +16,17 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Build GbxCLI",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/Tools/GbxCLI/GbxCLI.csproj"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": "build"
     }
   ]
 }

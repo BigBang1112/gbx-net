@@ -33,16 +33,16 @@ internal static class ObjExporter
             mtlWriter.WriteLine("Ns 250.000000"); // Specular exponent
             mtlWriter.WriteLine("Ka 1.0000 1.0000 1.0000"); // Ambient color
 
-            if (material.Color is null || material.Color.Length == 0)
+            if (material.CstValues is null || material.CstValues.Length == 0)
             {
                 mtlWriter.WriteLine("Kd 1.0000 1.0000 1.0000"); // Diffuse color
             }
             else
             {
                 mtlWriter.WriteLine("Kd {0} {1} {2}",
-                    material.Color.ElementAtOrDefault(0).ToString("0.0000", Invariant),
-                    material.Color.ElementAtOrDefault(1).ToString("0.0000", Invariant),
-                    material.Color.ElementAtOrDefault(2).ToString("0.0000", Invariant));
+                    material.CstValues.ElementAtOrDefault(0).ToString("0.0000", Invariant),
+                    material.CstValues.ElementAtOrDefault(1).ToString("0.0000", Invariant),
+                    material.CstValues.ElementAtOrDefault(2).ToString("0.0000", Invariant));
             }
 
             mtlWriter.WriteLine("Ks 0.5000 0.5000 0.5000"); // Specular color
@@ -410,7 +410,7 @@ internal static class ObjExporter
 
         if (solid.Visuals is null || solid.Visuals.Count == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
         {
-            throw new Exception("CPlugSolid2Model has no Visuals.");
+            throw new ArgumentException("CPlugSolid2Model has no Visuals.", nameof(solid));
         }
 
         var pickedLod = solid.ShadedGeoms.Any(x => x.LodMask == lod) ? lod : solid.ShadedGeoms.Min(x => x.LodMask);

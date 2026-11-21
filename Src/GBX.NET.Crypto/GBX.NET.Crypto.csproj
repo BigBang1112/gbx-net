@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Crypto</PackageId>
-        <VersionPrefix>1.2.4</VersionPrefix>
+        <VersionPrefix>1.2.5</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Cryptographic features for GBX.NET 2.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -11,18 +11,17 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, encryption, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
         <PackageReleaseNotes>
-- Added `DecryptOnlinePassword`, `DecryptOnlineSupportKey`, `DecryptOnlineValidationCode`, and `DecryptKey` for `CGamePlayerProfileChunk_AccountSettings`
-- Added `DecryptOnlineSupportKey` and `DecryptOnlineValidationKey` for `CGamePlayerProfile`
-- Removed GBX.NET.Hashing dependency
+- Changed `Blowfish` block operations to throw `ArgumentException` when the input length is not a multiple of eight bytes
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net11.0;net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\Generated\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
-        <LangVersion>14</LangVersion>
+        <LangVersion>15</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
@@ -57,7 +56,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.56">
+        <PackageReference Include="Zomp.SyncMethodGenerator" Version="2.0.66">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

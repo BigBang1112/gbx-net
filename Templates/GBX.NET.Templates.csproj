@@ -3,7 +3,7 @@
     <PropertyGroup>
         <PackageId>GBX.NET.Templates</PackageId>
         <PackageType>Template</PackageType>
-        <VersionPrefix>0.2.2</VersionPrefix>
+        <VersionPrefix>0.3.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Title>GBX.NET Templates</Title>
         <Description>Templates for GBX.NET.</Description>
@@ -12,7 +12,9 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, templates, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Updated templates for .NET 11 and latest GBX.NET
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 

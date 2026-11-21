@@ -8,7 +8,7 @@ namespace GBX.NET;
 /// A collection that retains external descriptors and resolves nodes on element access.
 /// </summary>
 /// <typeparam name="T">The node type. Use a nullable type argument when elements can be null.</typeparam>
-public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepCloneable where T : CMwNod?
+public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, INodeRefList, IDeepCloneable where T : CMwNod?
 {
     private readonly List<NodeRef<T>> references;
     private ReadOnlyCollection<NodeRef<T>>? referenceView;
@@ -103,6 +103,8 @@ public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepClo
             yield return reference;
         }
     }
+
+    IEnumerable<NodeRef> INodeRefList.EnumerateReferences() => EnumerateReferences();
 
     /// <summary>
     /// Appends a copy of the stored reference without resolving it. The new element owns its own handle.
@@ -318,4 +320,15 @@ public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepClo
 
         return clone;
     }
+}
+
+/// <summary>
+/// A <see cref="NodeRefList{T}"/> viewed without its node type.
+/// </summary>
+public interface INodeRefList : IList
+{
+    /// <summary>
+    /// Enumerates the stored handles without resolving their nodes.
+    /// </summary>
+    IEnumerable<NodeRef> EnumerateReferences();
 }

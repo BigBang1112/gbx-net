@@ -415,7 +415,7 @@ public partial class CGameCtnChallenge :
 
     public string GetEnvironment()
     {
-        return Collection ?? throw new Exception("Environment not available");
+        return Collection ?? throw new MemberNullException(nameof(Collection));
     }
 
     public IEnumerable<CGameCtnBlock> GetBlocks()
@@ -437,7 +437,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         var ms = new MemoryStream(EmbeddedZipData);
@@ -514,7 +514,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         using var ms = new MemoryStream(EmbeddedZipData);
@@ -525,7 +525,7 @@ public partial class CGameCtnChallenge :
     {
         if (EmbeddedZipData is null || EmbeddedZipData.Length == 0)
         {
-            throw new Exception("Embedded data zip is not available and cannot be read.");
+            throw new InvalidOperationException("Embedded data zip is not available and cannot be read.");
         }
 
         using var ms = new MemoryStream(EmbeddedZipData);
@@ -576,7 +576,7 @@ public partial class CGameCtnChallenge :
             toHash = $"0x{hex.ToString()}???{MapUid}";
         }
 
-        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new Exception("CRC32 is not imported (ICrc32).");
+        Crc32 = Gbx.CRC32?.Hash(Encoding.ASCII.GetBytes(toHash)) ?? throw new InvalidOperationException("CRC32 is not defined. Set 'Gbx.CRC32' to an ICrc32 implementation to fix this problem.");
 
         static void TryHex(ReadOnlySpan<byte> value, Span<char> chars)
         {
@@ -1222,10 +1222,8 @@ public partial class CGameCtnChallenge :
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03043013;
 
-    public partial class Chunk0304301F : IVersionable
+    public partial class Chunk0304301F
     {
-        public int Version { get; set; } = 6;
-
         public override void Read(CGameCtnChallenge n, GbxReader r)
         {
             n.mapInfo = r.ReadIdent();
@@ -1233,16 +1231,16 @@ public partial class CGameCtnChallenge :
             n.decoration = r.ReadIdent();
             n.size = r.ReadInt3();
             n.needUnlock = r.ReadBoolean();
-            Version = r.ReadInt32();
+            n.blockArchiveVersion = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
             n.blocks = new NodeRefList<CGameCtnBlock>(nbBlocks);
 
             for (var i = 0; i < nbBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(Version);
+                var block = r.ReadReadable<CGameCtnBlock>(n.blockArchiveVersion);
 
-                if (Version >= 6)
+                if (n.blockArchiveVersion >= 6)
                 {
                     block.Coord -= new Int3(1, 0, 1);
                 }
@@ -1258,19 +1256,19 @@ public partial class CGameCtnChallenge :
             w.Write(n.decoration);
             w.Write(n.size);
             w.Write(n.needUnlock);
-            w.Write(Version);
+            w.Write(n.blockArchiveVersion);
 
-            if (Version < 6)
+            if (n.blockArchiveVersion < 6)
             {
                 var tmUnlimiterChunk = n.GetChunk<Chunk3F001001>() ?? (Chunk3F001001?)n.GetChunk<Chunk3F001002>() ?? (Chunk3F001001?)n.GetChunk<Chunk3F001003>();
 
                 if (tmUnlimiterChunk?.Version > 0)
                 {
-                    w.WriteListWritable(n.TMUnlimiterData?.FakeBlocks, version: Version);
+                    w.WriteListWritable(n.TMUnlimiterData?.FakeBlocks, version: n.blockArchiveVersion);
                     return;
                 }
 
-                w.WriteListWritable(n.blocks?.GetEmbeddedNodes().ToList(), version: Version);
+                w.WriteListWritable(n.blocks?.GetEmbeddedNodes().ToList(), version: n.blockArchiveVersion);
                 return;
             }
 
@@ -1291,7 +1289,7 @@ public partial class CGameCtnChallenge :
                 try
                 {
                     block.Coord += new Int3(1, 0, 1);
-                    w.WriteWritable(block, Version);
+                    w.WriteWritable(block, n.blockArchiveVersion);
                 }
                 finally
                 {
@@ -1580,93 +1578,54 @@ public partial class CGameCtnChallenge :
                         }
                     }
 
-                    var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
-                    var usedBlockIndexList = new List<(int blockIndex, int group)>();
-                    var usedItemIndexHashSet = new HashSet<(int itemIndex, int group)>();
-                    var usedItemIndexList = new List<(int itemIndex, int group)>();
-
-                    var indicesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
+                    // Each snap target is a block, an item, or both, in a group. Items share the targets by index.
+                    var targets = new List<(int BlockIndex, int ItemIndex, int Group)>();
+                    var targetIndices = new Dictionary<(int BlockIndex, int ItemIndex, int Group), int>();
                     var snappedOnIndices = new List<int>(n.anchoredObjects?.Count ?? 0);
 
                     foreach (var item in n.GetAnchoredObjects())
                     {
-                        var isItemNotSnappedOnBlock = item.SnappedOnBlock is null || !blockDict.ContainsKey(item.SnappedOnBlock);
-                        var isItemNotSnappedOnItem = item.SnappedOnItem is null || !itemDict.ContainsKey(item.SnappedOnItem);
+                        var blockIndex = item.SnappedOnBlock is not null && blockDict.TryGetValue(item.SnappedOnBlock, out var b) ? b : -1;
+                        var itemIndex = item.SnappedOnItem is not null && itemDict.TryGetValue(item.SnappedOnItem, out var i) ? i : -1;
 
-                        if (isItemNotSnappedOnBlock && isItemNotSnappedOnItem)
+                        if (blockIndex == -1 && itemIndex == -1)
                         {
                             snappedOnIndices.Add(-1);
                             continue;
                         }
 
-                        var groupIndex = item.SnappedOnGroup ?? 0;
-                        var unique = (-1, groupIndex);
+                        var target = (blockIndex, itemIndex, item.SnappedOnGroup ?? 0);
 
-                        if (item.SnappedOnBlock is not null)
+                        if (!targetIndices.TryGetValue(target, out var targetIndex))
                         {
-                            var blockIndex = blockDict[item.SnappedOnBlock];
-
-                            unique = (blockIndex, groupIndex);
-
-                            if (!usedBlockIndexHashSet.Contains(unique))
-                            {
-                                usedBlockIndexList.Add(unique);
-                                usedBlockIndexHashSet.Add(unique);
-
-                                if (isItemNotSnappedOnItem)
-                                {
-                                    usedItemIndexList.Add((-1, groupIndex));
-                                }
-                            }
+                            targetIndex = targets.Count;
+                            targetIndices[target] = targetIndex;
+                            targets.Add(target);
                         }
 
-                        if (item.SnappedOnItem is not null && itemDict.TryGetValue(item.SnappedOnItem, out var itemIndex))
-                        {
-                            unique = (itemIndex, groupIndex);
-
-                            if (!usedItemIndexHashSet.Contains(unique))
-                            {
-                                usedItemIndexList.Add(unique);
-                                usedItemIndexHashSet.Add(unique);
-
-                                if (item.SnappedOnBlock is null)
-                                {
-                                    usedBlockIndexList.Add((-1, groupIndex));
-                                }
-                            }
-                        }
-
-                        if (indicesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
-                        {
-                            snappedOnIndices.Add(indexOfBlockOrItemIndex);
-                        }
-                        else
-                        {
-                            indicesOnUsedBlocksAndItems[unique] = indicesOnUsedBlocksAndItems.Count;
-                            snappedOnIndices.Add(indicesOnUsedBlocksAndItems.Count - 1);
-                        }
+                        snappedOnIndices.Add(targetIndex);
                     }
 
-                    w.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
+                    w.WriteArray(targets.Select(x => x.BlockIndex).ToArray());
 
                     if (Version < 7)
                     {
-                        w.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                        w.WriteArray(targets.Select(x => x.Group).ToArray());
                     }
 
                     if (Version >= 6)
                     {
-                        w.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
+                        w.WriteArray(targets.Select(x => x.ItemIndex).ToArray());
                     }
 
                     if (Version >= 7)
                     {
-                        w.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                        w.WriteArray(targets.Select(x => x.Group).ToArray());
                     }
 
                     if (Version != 6)
                     {
-                        w.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
+                        w.WriteArray(Enumerable.Repeat(-1, targets.Count).ToArray());
                     }
 
                     w.WriteArray(snappedOnIndices.ToArray());
@@ -1694,7 +1653,6 @@ public partial class CGameCtnChallenge :
     public partial class Chunk03043048 : IVersionable
     {
         public int Version { get; set; }
-        public int BlocksVersion { get; set; } = 6;
         public int U01;
 
         public override void Read(CGameCtnChallenge n, GbxReader r)
@@ -1706,14 +1664,14 @@ public partial class CGameCtnChallenge :
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            BlocksVersion = r.ReadInt32();
+            n.bakedBlockArchiveVersion = r.ReadInt32();
 
             var nbBakedBlocks = r.ReadInt32();
             n.bakedBlocks = new NodeRefList<CGameCtnBlock>(nbBakedBlocks);
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
-                var block = r.ReadReadable<CGameCtnBlock>(BlocksVersion);
+                var block = r.ReadReadable<CGameCtnBlock>(n.bakedBlockArchiveVersion);
                 block.Coord -= new Int3(1, 0, 1);
                 n.bakedBlocks.Add(block);
             }
@@ -1726,11 +1684,11 @@ public partial class CGameCtnChallenge :
         public override void Write(CGameCtnChallenge n, GbxWriter w)
         {
             w.Write(Version);
-            w.Write(BlocksVersion);
+            w.Write(n.bakedBlockArchiveVersion);
 
-            if (BlocksVersion < 6)
+            if (n.bakedBlockArchiveVersion < 6)
             {
-                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedNodes().ToList(), version: BlocksVersion);
+                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedNodes().ToList(), version: n.bakedBlockArchiveVersion);
             }
             else
             {
@@ -1748,7 +1706,7 @@ public partial class CGameCtnChallenge :
                         try
                         {
                             block.Coord += new Int3(1, 0, 1);
-                            w.WriteWritable(block, BlocksVersion);
+                            w.WriteWritable(block, n.bakedBlockArchiveVersion);
                         }
                         finally
                         {

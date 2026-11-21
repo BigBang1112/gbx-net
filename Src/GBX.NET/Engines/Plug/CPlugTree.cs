@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Components;
+using System.Globalization;
 
 using static GBX.NET.BitHelper;
 
@@ -212,29 +213,35 @@ public partial class CPlugTree
 
     public partial class Chunk0904F00D
     {
+        // The ids as stored. Decorators find trees by these ids, so a name like "1" must stay a name, and a number a number.
+        private Id? storedPlugId;
+        private Id? storedModelPlugId;
+
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
-            n.PlugId = ReadWriteId(n.PlugId, rw);
+            n.PlugId = ReadWriteId(n.PlugId, ref storedPlugId, rw);
             rw.NodeRef(ref n.modelSolidRef);
 
             if (n.HasModel)
             {
-                n.ModelPlugId = ReadWriteId(n.ModelPlugId, rw);
+                n.ModelPlugId = ReadWriteId(n.ModelPlugId, ref storedModelPlugId, rw);
             }
         }
 
-        private static string ReadWriteId(string? value, GbxReaderWriter rw)
+        private static string ReadWriteId(string? value, ref Id? stored, GbxReaderWriter rw)
         {
             if (rw.Reader is not null)
             {
-                value = rw.Reader.ReadIdAsString();
+                stored = rw.Reader.ReadId();
+                value = stored.Value.Number?.ToString(CultureInfo.InvariantCulture) ?? stored.Value.String;
             }
 
             if (rw.Writer is not null)
             {
-                if (int.TryParse(value, out var numericId) && (numericId & 0xC0000000) == 0)
+                // A changed value is written as a name.
+                if (stored is { Number: int number } && value == number.ToString(CultureInfo.InvariantCulture))
                 {
-                    rw.Writer.Write(new Id(numericId));
+                    rw.Writer.Write(stored.Value);
                 }
                 else
                 {

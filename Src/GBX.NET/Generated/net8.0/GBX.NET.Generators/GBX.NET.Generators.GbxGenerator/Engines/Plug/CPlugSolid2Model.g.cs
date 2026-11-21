@@ -176,6 +176,63 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     }
 
     /// <summary>
+    /// CPlugSolid2Model 0x001 chunk (ShootMania Minion skin)
+    /// </summary>
+    [Chunk(0x090BB001, "ShootMania Minion skin")]
+    public partial class Chunk090BB001 : Chunk<CPlugSolid2Model>, IVersionable
+    {
+        public override uint Id => 0x090BB001;
+        public int Version { get; set; }
+
+        public NodeRefList<CMwNod?>? U01;
+
+        public NodeRefList<CMwNod?>? U02;
+        public IndexedLocation[]? U03;
+        public IndexedLocation[]? U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090BB001 owner;
+            internal NodeRefView(Chunk090BB001 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod?>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CMwNod?>>? U02 => owner.U02?.References;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            if (U02 is not null)
+            {
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
+            }
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090BB001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090BB001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090BB001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090BB001)clone).U03 = context.CloneArray(this.U03)!;
+            ((Chunk090BB001)clone).U04 = context.CloneArray(this.U04)!;
+        }
+
+        public override void ReadWrite(CPlugSolid2Model n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            U01 = rw.ListNodeRef_deprec<CMwNod?>(U01);
+            U02 = rw.ListNodeRef_deprec<CMwNod?>(U02);
+            rw.ArrayReadableWritable<IndexedLocation>(ref U03!, version: Version);
+            rw.ArrayReadableWritable<IndexedLocation>(ref U04!, version: Version);
+        }
+    }
+
+    /// <summary>
     /// CPlugSolid2Model 0x002 skippable chunk (fake occlusion)
     /// </summary>
     [Chunk(0x090BB002, "fake occlusion")]
@@ -964,9 +1021,59 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         }
     }
 
+    public partial class IndexedLocation : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int index;
+        public int Index
+        {
+            get => this.index;
+            set => this.index = value;
+        }
+
+        private Iso4 location;
+        public Iso4 Location
+        {
+            get => this.location;
+            set => this.location = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (IndexedLocation)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((IndexedLocation)clone).index = context.Clone(this.index)!;
+            ((IndexedLocation)clone).location = context.Clone(this.location)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.index);
+            rw.Iso4(ref this.location);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x090BB000 => new Chunk090BB000(),
+        0x090BB001 => new Chunk090BB001(),
         0x090BB002 => new Chunk090BB002(),
         _ => base.NewChunk(chunkId),
     };

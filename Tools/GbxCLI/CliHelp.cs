@@ -1,138 +1,119 @@
-using Spectre.Console;
-
 namespace GbxCLI;
 
 internal static class CliHelp
 {
-    public static void Write(TextWriter output, string distribution, string? command = null)
+    private const string H = CliConsole.Heading;
+    private const string L = CliConsole.Label;
+    private const string Z = CliConsole.Reset;
+
+    private static readonly Dictionary<string, string> commands = new()
     {
-        var console = new CliConsole(output);
-        console.WriteLine($"[bold]GBX.NET.CLI[/] [grey]({Markup.Escape(distribution)})[/]");
-        console.WriteLine(string.Empty);
+        ["inspect"] = $"""
+            {H}Usage:{Z} gbx inspect <path> [-i]
+            {L}Alias:{Z} gbx parse
 
-        if (command is null)
-        {
-            WriteOverview(console);
-            return;
-        }
+            Fully parses a Gbx and writes a summary, or summarizes a PAK or ZIP archive.
+            The path can continue inside an archive, such as Stadium.pak/Media/Grass.Texture.Gbx.
 
-        if (command == "pak")
-        {
-            console.WriteLine("[bold]Usage:[/] [cyan]gbx pak[/] <command> <file> [[options]]");
-            console.WriteLine(string.Empty);
-            WritePakCommands(console);
-            WriteGlobalOptions(console);
-            console.WriteLine("Run [cyan]gbx pak <command> --help[/] for command options and examples.");
-            return;
-        }
-
-        var help = GetCommandHelp(command);
-        console.WriteLine($"[bold]Usage:[/] [cyan]gbx[/] {Markup.Escape(help.Usage)}");
-        console.WriteLine(string.Empty);
-        console.WriteLine(help.Description);
-
-        if (help.Options.Length > 0)
-        {
-            console.WriteLine(string.Empty);
-            console.WriteLine("[bold]Command options:[/]");
-            console.WriteLine(help.Options);
-        }
-
-        WriteGlobalOptions(console);
-        console.WriteLine("[bold]Example:[/]");
-        console.WriteLine("  " + Markup.Escape(help.Example));
-    }
-
-    private static void WriteOverview(CliConsole console)
-    {
-        console.WriteLine("""
-            [bold]Usage:[/] [cyan]gbx[/] [[command]] <file> [[options]]
-
-            [bold]Commands:[/]
-              [cyan]parse[/] <file>                  Inspect a Gbx or PAK file (default).
-              [cyan]eval[/] <file> [[code...]]         Evaluate C# against a Gbx or PAK file.
-              [cyan]script[/] <file> [[-- args...]]    Run a C# script with GBX.NET available.
-              [cyan]verify[/] <file>                 Fully parse a Gbx file or a folder tree of Gbx files.
-              [cyan]pak files[/] <file>              List PAK or ZIP files, resolving known hashes.
-              [cyan]pak verify[/] <file>             Fully parse Gbx entries of archives and list failures.
-              [cyan]pak extract[/] <file>            Extract all or matching PAK or ZIP entries.
-              [cyan]compress[/] <file>               Compress a Gbx body.
-              [cyan]decompress[/] <file>             Decompress a Gbx body.
-            """);
-        WriteGlobalOptions(console);
-        console.WriteLine("Run [cyan]gbx <command> --help[/] for command options and examples.");
-    }
-
-    private static void WritePakCommands(CliConsole console)
-    {
-        console.WriteLine("""
-            [bold]PAK commands:[/]
-              [cyan]pak files[/] <file>              List all PAK or ZIP files, resolving known hashes.
-              [cyan]pak verify[/] <file>             Fully parse matching Gbx entries of one or more archives.
-              [cyan]pak extract[/] <file>            Extract all or matching entries without overwriting.
-            """);
-    }
-
-    private static void WriteGlobalOptions(CliConsole console)
-    {
-        console.WriteLine(string.Empty);
-        console.WriteLine("""
-            [bold]Global options:[/]
-              [cyan]-h, --help[/]                   Show help for the current command.
-              [cyan]-v, --version[/]                Show the CLI version.
-
-            """);
-    }
-
-    private static CommandHelp GetCommandHelp(string command) => command switch
-    {
-        "parse" => new(
-            "parse <file> [options]",
-            "Inspect the header, body, references, and node properties of a Gbx or PAK file.\nAppend a PAK entry path, filename, hash, or pattern to inspect exactly one entry.",
-            "  [cyan]-i, --interactive[/]            Interactive mode (not implemented yet).",
-            "gbx parse \"Resource.pak/Media/Texture/WhiteFlare1.Texture.gbx\""),
-        "eval" => new(
-            "eval <file> [code...] [options]",
-            "Evaluate quoted C# expressions against a Gbx or PAK object, in order.\nAppend a PAK entry path, filename, hash, or pattern to evaluate exactly one entry.",
-            "  [cyan]-i, --interactive[/]            Interactive mode (not implemented yet).",
-            "gbx eval \"My Map.Map.Gbx\" \"Node.Chunks.Count\""),
-        "script" => new(
-            "script <file> [-- args...]",
-            "Run a C# script file with GBX.NET references, async support, and Args.\nUse Print(value), Output, or Console.WriteLine for output. Relative #load paths use the script directory.",
-            "  [cyan]--[/]                           Pass remaining arguments to the script, including --help and --version.",
-            "gbx script inspect.csx -- \"My Map.Map.Gbx\""),
-        "pak files" => new(
-            "pak files <file> [options]",
-            "List every matching PAK or ZIP entry, resolving known hashes and keeping unresolved hashes.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",
-            """
-              [cyan]--resolved[/]                   Show named files and hashes with known names.
-              [cyan]--unresolved[/]                 Show only hashes without known names.
-
-            The filters cannot be combined. Without a filter, all matching entries are listed.
+            {H}Options:{Z}
+              -i, --interactive      Browse the file. Without a console, the summary is written instead.
             """,
-            "gbx pak files \"Resource.pak/Media/Texture/*\" --unresolved"),
-        "pak verify" => new(
-            "pak verify <file> [options]",
-            "Fully parse matching Gbx entries and list failures. Exit with code 1 if any fail.\nAppend a path or pattern to the archive to select entries. Matching ignores case.\nPass a folder to verify every PAK and ZIP archive directly inside it.",
-            "  [cyan]-g, --game[/] <version>         Select the game when class IDs are reused, for example TMSX.",
-            "gbx pak verify \"Resource.pak/*.Shader.Gbx\""),
-        "verify" => new(
-            "verify <file> [options]",
-            "Fully parse a Gbx file and report the exception if it fails. Exit with code 1 if any fail.\nPass a folder to verify every Gbx file in it and its subfolders. Other files are skipped.",
-            "  [cyan]-g, --game[/] <version>         Select the game when class IDs are reused, for example TMSX.",
-            "gbx verify \"Maps\""),
-        "pak extract" => new(
-            "pak extract <file> [options]",
-            "Extract every matching entry, restoring known filenames and preserving folders.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",
-            "  [cyan]-o, --output[/] <directory>     Destination (default: <archive>.extracted). Never overwrite existing files.",
-            "gbx pak extract \"Resource.pak/Media/Texture/*.gbx\" -o \"Textures\""),
-        "compress" or "decompress" => new(
-            $"{command} <file> -o <output> [options]",
-            command == "compress" ? "Write a Gbx with a compressed body." : "Write a Gbx with an uncompressed body.",
-            "  [cyan]-o, --output[/] <file>          Required destination file. Never overwrite existing files.",
-            $"gbx {command} \"My Map.Map.Gbx\" -o \"Output.Map.Gbx\""),
-        _ => throw new ArgumentException($"Unknown command: {command}.")
+        ["eval"] = $"""
+            {H}Usage:{Z} gbx eval <path> <code>... [-i]
+
+            Evaluates C# expressions against the opened Gbx, Pak or ZipArchive, which is the script global.
+            Each argument is one expression, and later ones can use variables from earlier ones.
+            Example: gbx eval My.Map.Gbx "Node.MapName" "Node.Author"
+
+            {H}Options:{Z}
+              -i, --interactive      Start a C# prompt after the expressions. Enter q to quit.
+            """,
+        ["script"] = $"""
+            {H}Usage:{Z} gbx script <script.csx> [args...]
+                   gbx script -- <-script.csx> [args...]
+
+            Runs a C# script with GBX.NET available. Arguments after the script are passed as Args,
+            also when they start with -. Scripts can call Print(value) and write to Output.
+            """,
+        ["verify"] = $"""
+            {H}Usage:{Z} gbx verify <path> [-g <game>] [--roundtrip] [--strict]
+            {L}Alias:{Z} gbx pack verify
+
+            Fully parses every Gbx in a file, folder or archive, and continues after failures.
+
+            {H}Options:{Z}
+              -g, --game <game>      Game version, for games that reuse a class ID for a different class.
+              --roundtrip            Save and reparse each Gbx, then compare its properties recursively.
+              --strict               Fail with exit code 1 when any file fails verification.
+            """,
+        ["pack"] = $"""
+            {H}Usage:{Z} gbx pack <command> <archive>[/pattern] [options]
+
+            {H}Commands:{Z}
+              list                   List archive entries, resolving known hashes.
+                --resolved           Only list entries with known names.
+                --unresolved         Only list entries that are still hashes.
+              extract                Extract all or matching entries.
+                -o, --output <dir>   Output folder. Defaults to the title ID, or the archive name.
+                --overwrite          Replace existing files.
+                --skip-existing      Keep existing files and extract only the missing ones.
+              verify                 Same as gbx verify.
+
+            A pattern with * or ? matches whole entry paths or their ends, and * also matches folders (Media/*).
+            A pattern without wildcards selects the entry with that path, or entries ending with it.
+            """,
+        ["compress"] = $"""
+            {H}Usage:{Z} gbx compress <file> [-o <file>] [--no-backup]
+
+            Compresses a Gbx body. Without -o, the input file is replaced.
+
+            {H}Options:{Z}
+              -o, --output <file>    Output file.
+              --no-backup            Don't keep an existing output as <output>.bak.
+            """,
+        ["decompress"] = $"""
+            {H}Usage:{Z} gbx decompress <file> [-o <file>] [--no-backup]
+
+            Decompresses a Gbx body. Without -o, the input file is replaced.
+
+            {H}Options:{Z}
+              -o, --output <file>    Output file.
+              --no-backup            Don't keep an existing output as <output>.bak.
+            """,
     };
 
-    private sealed record CommandHelp(string Usage, string Description, string Options, string Example);
+    public static async Task WriteAsync(CliConsole console)
+    {
+        await console.WriteLineAsync($"$oGBX.NET.CLI$z {L}({CliConsole.Escape(Cli.Distribution)}){Z}");
+        await console.WriteLineAsync(string.Empty);
+        await WriteLinesAsync(console, $"""
+            {H}Usage:{Z} gbx <command> [arguments] [options]
+                   gbx <path>                     Browse a Gbx, PAK or ZIP file.
+
+            {H}Commands:{Z}
+              inspect <path>                  Fully parse a Gbx and write a summary, or summarize a PAK or ZIP.
+              eval <path> <code>...           Evaluate C# against a Gbx, PAK or ZIP file.
+              script <file> [args...]         Run a C# script with GBX.NET available.
+              verify <path>                   Fully parse Gbx files, also inside folders and PAK or ZIP archives.
+              pack list <archive>             List PAK or ZIP entries, resolving known hashes.
+              pack extract <archive>          Extract all or matching PAK or ZIP entries.
+              compress <file>                 Compress a Gbx body.
+              decompress <file>               Decompress a Gbx body.
+
+            {H}Global options:{Z}
+              -h, --help                      Show this help. Use gbx <command> --help for a command.
+              -v, --version                   Show the version.
+            """);
+    }
+
+    public static Task WriteCommandAsync(CliConsole console, string command) => WriteLinesAsync(console, commands[command]);
+
+    private static async Task WriteLinesAsync(CliConsole console, string text)
+    {
+        // Each line is formatted on its own, so it ends in a reset.
+        foreach (var line in text.ReplaceLineEndings("\n").Split('\n'))
+        {
+            await console.WriteLineAsync(line);
+        }
+    }
 }

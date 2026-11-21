@@ -73,6 +73,12 @@ public sealed class GbxGenerator : IIncrementalGenerator
         {
             if (!input.Right.Any(static x => x.Key == "CollectionId.txt")) return;
             ManagerWriter.Generate(sourceContext, input.Left.Layouts, input.Right);
+
+            if (input.Right.FirstOrDefault(static file => file.Key == "ClassIdRemap.txt").Value is { } remapProfiles)
+            {
+                var aliases = input.Right.FirstOrDefault(static file => file.Key == "Wrap.txt").Value ?? "";
+                ClassIdRemapWriter.Generate(sourceContext, remapProfiles, aliases);
+            }
         });
     }
 }

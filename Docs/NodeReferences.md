@@ -28,6 +28,15 @@ Changing `GbxRefTableFile.FilePath` invalidates the shared node, missing result,
 
 ## Reference tables
 
+Use `SetFile` to assign an external file directly, including when the template has no reference table:
+
+```cs
+gbx.Node.References.EntityModelEdition.SetFile(Path.Combine("Assets", "Dependency.Gbx"));
+gbx.Save(outputPath);
+```
+
+`SetFile` also accepts absolute paths, which can be resolved before saving. When saving to a file, relative paths start at the output Gbx directory and are then rebased for the reference table's ancestor level. To resolve a relative reference from disk, parse the saved file by path.
+
 Create descriptors through a table, then attach them to a stored reference:
 
 ```cs
@@ -39,7 +48,7 @@ reference.Descriptor = file;
 
 `CreateFile` and `CreateResource` provide the usual flags and `UseFile` defaults. They do not load a node or add entries to the header preview. `Descriptor` accepts the common `GbxRefTableNode` type, so metadata tools can work with either descriptor kind.
 
-`destinationTable.Import(descriptor)` copies a descriptor into another table. The typed overloads retain the file or resource type. File paths are rebased when both filesystem locations are known, and importing never modifies the source. Rebasing that needs an unknown filesystem location throws an exception.
+`destinationTable.Import(descriptor)` copies a descriptor into another table. The typed overloads retain the file or resource type. When the destination directory is known, relative paths can be rebased using the source directory and absolute paths can be rebased directly. Importing never modifies the source. Rebasing that needs an unknown filesystem location throws an exception.
 
 `Files` and `Resources` contain unlinked header-preview entries. Changing those entries affects saves with a raw body. Normal saves rebuild the table from the descriptors stored in the node's references.
 

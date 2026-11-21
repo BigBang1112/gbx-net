@@ -417,14 +417,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
             if (Version >= 2)
             {
-                n.catalogPosition = (int)rw.Int16((short)n.catalogPosition);
+                rw.UInt16(ref n.catalogPosition);
             }
 
             if (Version >= 2 && Version <= 5)
             {
-                n.nbAvailableMin = (int)rw.Byte((byte)n.nbAvailableMin);
+                rw.Byte(ref n.nbAvailableMin);
                 rw.Int32(ref n.copperPrice);
-                n.nbAvailableMax = (int)rw.Int16((short)n.nbAvailableMax);
+                rw.UInt16(ref n.nbAvailableMax);
             }
 
             if (Version >= 7)

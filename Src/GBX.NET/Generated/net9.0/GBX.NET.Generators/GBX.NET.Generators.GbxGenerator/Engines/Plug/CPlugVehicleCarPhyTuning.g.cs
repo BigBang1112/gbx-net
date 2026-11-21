@@ -885,9 +885,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionSquareForce = 1f;
-    /// <remarks>Applied with: 0x036, 0x039, 0x0AF body chunks</remarks>
+    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
-    [AppliedWithChunk<Chunk090ED039>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4LateralFrictionSquareForce
     {
@@ -6963,16 +6962,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     {
         public override uint Id => 0x090ED039;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public float U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk090ED039)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m4LateralFrictionSquareTorque);
-            rw.Single(ref n.m4LateralFrictionSquareForce);
+            rw.Single(ref U01);
         }
     }
 

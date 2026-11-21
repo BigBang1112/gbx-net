@@ -5,25 +5,25 @@ CGameCtnApp 0x030D3000
   CGameResources Resources
 
 0x001 [TM10, TMPU, TMSX] // legacy files
-  CMwNod[]
+  CMwNod[] LegacyFileFids
 
 0x002 // legacy campaign
-  CGameCtnCampaign
+  CGameCtnCampaign Campaign
 
 0x003 // legacy campaigns
-  CGameCtnCampaign
-  CGameCtnCampaign
+  CGameCtnCampaign Campaign
+  CGameCtnCampaign Campaign2
 
 0x004 // legacy campaigns
-  CGameCtnCampaign
-  CGameCtnCampaign
-  CGameCtnCampaign
+  CGameCtnCampaign Campaign
+  CGameCtnCampaign Campaign2
+  CGameCtnCampaign Campaign3
 
 0x005 [TM10, TMPU] // legacy campaigns
-  CGameCtnCampaign
-  CGameCtnCampaign
-  CGameCtnCampaign
-  CGameCtnCampaign
+  CGameCtnCampaign Campaign
+  CGameCtnCampaign Campaign2
+  CGameCtnCampaign Campaign3
+  CGameCtnCampaign Campaign4
 
 0x006 [TMSX, TMNESWC, TMU, VSK5] // legacy official campaigns
   CGameCtnCampaign[] BaseOfficialCampaigns (deprec)
@@ -34,18 +34,19 @@ CGameCtnApp 0x030D3000
 0x008
   CMwNod
 
-0x009 [TMNESWC, TMU, VSK5]
-  CGameItemModel
+0x009 [TMNESWC, TMU, TMF, VSK5] // DefaultCollectorVehicle
+  CGameItemModel DefaultCollectorVehicle
 
-0x00A
-  CPlugFileText
+0x00A // inline Nations list
+  CPlugFileText InlineNationsList (local, write: "n.NationsList")
+  NationsList = InlineNationsList
 
-0x00B [TMNESWC, TMU]
-  CPlugFileText*
+0x00B [TMNESWC, TMU] // NationsList
+  CPlugFileText* NationsList
 
-0x00C [TMU, VSK5, MP4, TM2020]
-  CMwNod[]
-  CMwNod[]
+0x00C [TMU, TMF, VSK5, TMT, MP4, TM2020] // collection and additional collector files
+  CMwNod[] CollectionFids
+  CMwNod[] AdditionalCollectorsFids
 
 0x00D
   CPlugFileText*
@@ -53,10 +54,10 @@ CGameCtnApp 0x030D3000
 0x00E [VSK5, MP4, TM2020] // MenuBackground_MustLoopIntro
   bool MenuBackground_MustLoopIntro
 
-0x00F [MP4, TM2020] // legacy official campaign folder and names
-  int CampaignCount (local, write: 0)
-  string
-  string[CampaignCount]
+0x00F [TMF, TMT, MP4, TM2020] // base official campaign folder and paths
+  int CampaignCount (local, write: "n.BaseOfficialCampaignPaths?.Length ?? 0")
+  string BaseOfficialCampaignsFolder
+  string[CampaignCount] BaseOfficialCampaignPaths
 
 0x010 [MP4, TM2020] // AdditionalSkinsFids
   CMwNod[] AdditionalSkinsFids
@@ -64,8 +65,8 @@ CGameCtnApp 0x030D3000
 0x011
   CMwNod
 
-0x012 [MP4, TM2020]
-  id
+0x012 [TMT, MP4, TM2020] // VehicleCollectionId
+  id VehicleCollectionId
 
-0x013 [MP4, TM2020]
+0x013 [TMT, MP4, TM2020] // unused file reference
   CMwNod

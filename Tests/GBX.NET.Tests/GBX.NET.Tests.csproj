@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
-        <LangVersion>14</LangVersion>
+        <TargetFrameworks>net11.0;net10.0;net9.0;net8.0</TargetFrameworks>
+        <LangVersion>15</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="CompareNETObjects" Version="4.84.0" />
-        <PackageReference Include="TUnit" Version="1.72.4" />
+        <PackageReference Include="TUnit" Version="1.86.6" />
     </ItemGroup>
 
     <ItemGroup>

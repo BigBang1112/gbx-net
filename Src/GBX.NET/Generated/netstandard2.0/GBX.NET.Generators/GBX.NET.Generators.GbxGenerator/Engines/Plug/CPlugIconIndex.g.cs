@@ -46,17 +46,7 @@ public partial class CPlugIconIndex : CMwNod, IClass
             ((Chunk09093000)clone).U05 = context.Clone(this.U05)!;
             ((Chunk09093000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk09093000)clone).U07 = context.Clone(this.U07)!;
-        }
-
-        public override void ReadWrite(CPlugIconIndex n, GbxReaderWriter rw)
-        {
-            rw.Id(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
+            ((Chunk09093000)clone).storedId = context.Clone(this.storedId)!;
         }
     }
 
@@ -125,12 +115,7 @@ public partial class CPlugIconIndex : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09093003)clone).U01 = context.CloneArray(this.U01)!;
-        }
-
-        public override void ReadWrite(CPlugIconIndex n, GbxReaderWriter rw)
-        {
-            base.ReadWrite(n, rw);
-            rw.ArrayId(ref U01!, 6);
+            ((Chunk09093003)clone).storedIds = context.CloneArray(this.storedIds)!;
         }
     }
 

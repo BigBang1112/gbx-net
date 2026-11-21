@@ -2,19 +2,42 @@ namespace GbxCLI.Commands;
 
 internal static class ScriptCommand
 {
-    public static async Task<int> RunAsync(IEnumerator<string> argsEnumerator, TextWriter output)
+    public static async Task RunAsync(IEnumerator<string> args, CliContext context)
     {
-        var arguments = ScriptArguments.Parse(argsEnumerator, output);
+        string? scriptPath = null;
+        var arguments = new List<string>();
 
-        if (arguments is null)
+        while (args.MoveNext())
         {
-            return 0;
+            switch (args.Current)
+            {
+                // Arguments after the script belong to it, also when they start with -.
+                case var arg when scriptPath is not null:
+                    arguments.Add(arg);
+                    break;
+                case "-h" or "--help":
+                    await CliHelp.WriteCommandAsync(context.Console, "script");
+                    return;
+                case "--":
+                    scriptPath = args.NextValue("--");
+                    break;
+                case var arg when arg.StartsWith('-'):
+                    throw ArgumentExtensions.Unexpected("script", arg);
+                case var arg:
+                    scriptPath = arg;
+                    break;
+            }
         }
 
-        var path = Path.GetFullPath(arguments.InputPath);
-        var code = await File.ReadAllTextAsync(path);
-        var session = new CSharpSession(new ScriptGlobals(arguments.Args, output), path);
-        await session.EvaluateAsync(code);
-        return 0;
+        if (string.IsNullOrWhiteSpace(scriptPath))
+        {
+            throw new ArgumentException("Missing C# script file for script.");
+        }
+
+        var path = Path.GetFullPath(scriptPath);
+        var code = await File.ReadAllTextAsync(path, context.CancellationToken);
+        var session = new CSharpSession(new ScriptGlobals([.. arguments], context.Output), path);
+
+        await session.EvaluateAsync(code, context.CancellationToken);
     }
 }

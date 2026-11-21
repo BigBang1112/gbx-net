@@ -672,6 +672,9 @@ public partial class CPlugShaderPass : CPlug, IClass
     public partial class PipelineGpu : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private bool hasExternalFile;
+        /// <summary>
+        /// Whether FileGpu is a file reference, including a pack resource, instead of an embedded node.
+        /// </summary>
         public bool HasExternalFile
         {
             get => this.hasExternalFile;
@@ -730,7 +733,7 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            this.hasExternalFile = rw.Boolean((rw.Writer is null ? default : (References.FileGpu.Kind == NodeRefKind.ExternalFile)));
+            this.hasExternalFile = rw.Boolean((rw.Writer is null ? default : (References.FileGpu.Kind is NodeRefKind.ExternalFile or NodeRefKind.ExternalResource)));
             rw.NodeRef(ref this.fileGpuRef);
 
             if ((fileGpuRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)

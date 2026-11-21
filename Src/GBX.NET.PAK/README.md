@@ -7,6 +7,7 @@ Support for reading Pak (NadeoPak) package files, integrated with GBX.NET.
 
 ## Framework support
 
+- .NET 11
 - .NET 10
 - .NET 9
 - .NET 8

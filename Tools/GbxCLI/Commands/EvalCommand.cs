@@ -2,30 +2,55 @@ namespace GbxCLI.Commands;
 
 internal static class EvalCommand
 {
-    public static async Task<int> RunAsync(IEnumerator<string> argsEnumerator, TextWriter output)
+    public static async Task RunAsync(IEnumerator<string> args, CliContext context)
     {
-        var arguments = EvalArguments.Parse(argsEnumerator, output);
+        string? inputPath = null;
+        var expressions = new List<string>();
+        var interactive = false;
 
-        if (arguments is null)
+        while (args.MoveNext())
         {
-            return 0;
+            switch (args.Current)
+            {
+                case "-h" or "--help" when inputPath is null:
+                    await CliHelp.WriteCommandAsync(context.Console, "eval");
+                    return;
+                case "-i" or "--interactive":
+                    interactive = true;
+                    break;
+                case var arg when inputPath is null:
+                    inputPath = arg;
+                    break;
+                case var arg when string.IsNullOrWhiteSpace(arg):
+                    throw new ArgumentException("C# expressions for eval cannot be empty.");
+                case var arg:
+                    expressions.Add(arg);
+                    break;
+            }
         }
 
-        if (arguments.Interactive)
+        if (string.IsNullOrWhiteSpace(inputPath))
         {
-            return await Cli.RunInteractiveAsync(output);
+            throw ArgumentExtensions.MissingInput("eval");
         }
 
-        var console = new CliConsole(output);
-        await using var file = await ParsedFile.OpenAsync(arguments.InputPath, fullGbx: true);
+        if (!interactive && expressions.Count == 0)
+        {
+            throw new ArgumentException("Missing C# expression for eval.");
+        }
+
+        await using var file = await FileObject.OpenAsync(inputPath, context.CancellationToken);
         var session = new CSharpSession(file.Value);
 
-        foreach (var expression in arguments.Expressions)
+        foreach (var expression in expressions)
         {
-            var result = await session.EvaluateAsync(expression);
-            await console.WriteResultAsync(result);
+            var result = await session.EvaluateAsync(expression, context.CancellationToken);
+            await new ConsoleValueWriter(context.Console) { HasExternalReferences = ValueInspector.HasExternalReferences(file.Value) }.WriteResultAsync(result);
         }
 
-        return 0;
+        if (interactive)
+        {
+            await CSharpPrompt.RunAsync(session, file, context);
+        }
     }
 }

@@ -61,7 +61,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
     private uint ReadClassId(GbxReader reader)
     {
         var rawClassId = reader.ReadHexUInt32();
-        var classId = ClassManager.Wrap(rawClassId);
+        var classId = reader.NormalizeClassId(rawClassId, ClassIdLocation.Root);
 
         if (rawClassId == classId)
         {
@@ -73,10 +73,6 @@ internal sealed class GbxHeaderReader(GbxReader reader)
                 classId, rawClassId,
                 ClassManager.GetName(rawClassId) ?? "unknown class",
                 ClassManager.GetName(classId) ?? "unknown class");
-
-            reader.ClassIdRemapMode = rawClassId is 0x0301A000 // CGameCtnCollector in TMF
-                ? ClassIdRemapMode.Id2008
-                : ClassIdRemapMode.Id2006;
         }
 
         return classId;
@@ -187,7 +183,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (boundedStream.Remaining > 0)
         {
-            throw new Exception($"Not all data was read from user data. {boundedStream.Remaining} bytes remaining.");
+            throw new InvalidDataException($"Not all data was read from user data. {boundedStream.Remaining} bytes remaining.");
         }
 
         return true;
@@ -206,28 +202,28 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (ClassManager.New(classId) is not CMwNod nod)
         {
-            throw new Exception($"Header chunk 0x{desc.Id:X8} requires a non-abstract CMwNod to read into.");
+            throw new NotSupportedException($"Header chunk 0x{desc.Id:X8} requires a non-abstract CMwNod to read into.");
         }
 
         nodeDict.Add(classId, nod);
         return nod;
     }
 
-    private void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader reader)
+    private void FillHeaderChunkInfo(Span<HeaderChunkInfo> headerChunkDescs, GbxReader chunkReader)
     {
         var maxUserDataSize = Settings.MaxUserDataSize ?? MaxUserDataSize;
 
-        var userDataSize = reader.BaseStream.Length;
+        var userDataSize = chunkReader.BaseStream.Length;
         var totalSize = 4; // Includes the number of header chunks
 
         for (var i = 0; i < headerChunkDescs.Length; i++)
         {
-            var rawChunkId = reader.ReadHexUInt32();
-            var chunkSize = reader.ReadInt32();
+            var rawChunkId = chunkReader.ReadHexUInt32();
+            var chunkSize = chunkReader.ReadInt32();
             var actualChunkSize = (int)(chunkSize & ~0x80000000);
             var isHeavy = (chunkSize & 0x80000000) != 0;
 
-            var chunkId = ClassManager.Wrap(rawChunkId);
+            var chunkId = reader.NormalizeClassId(rawChunkId, ClassIdLocation.HeaderChunk);
 
             if (logger is not null)
             {
@@ -305,16 +301,17 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         }
         else
         {
-            throw new Exception($"Header chunk 0x{desc.Id:X8} cannot be stored anywhere.");
+            throw new InvalidOperationException($"Header chunk 0x{desc.Id:X8} cannot be stored anywhere.");
         }
     }
 
-    private static void ReadKnownHeaderChunk(IHeaderChunk chunk, IClass node, BoundedStream stream, HeaderChunkInfo desc)
+    private void ReadKnownHeaderChunk(IHeaderChunk chunk, IClass node, BoundedStream stream, HeaderChunkInfo desc)
     {
         chunk.IsHeavy = desc.IsHeavy;
 
         using var boundedStream = new BoundedStream(stream, desc.Size);
         using var r = new GbxReader(boundedStream);
+        r.LoadClassIdRemappingFrom(reader);
 
         switch (chunk)
         {
@@ -334,7 +331,9 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         if (boundedStream.Remaining > 0)
         {
-            throw new Exception($"Not all data was read from header chunk 0x{chunk.Id:X8} ({ClassManager.GetName(chunk.Id)}). {boundedStream.Remaining} bytes remaining.");
+            throw new InvalidDataException($"Not all data was read from header chunk 0x{chunk.Id:X8} ({ClassManager.GetName(chunk.Id)}). {boundedStream.Remaining} bytes remaining.");
         }
+
+        reader.LoadClassIdRemappingFrom(r);
     }
 }

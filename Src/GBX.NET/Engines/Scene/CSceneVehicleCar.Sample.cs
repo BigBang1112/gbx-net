@@ -2,7 +2,7 @@
 
 public partial class CSceneVehicleCar
 {
-    public sealed class Sample : CGameGhost.Data.Sample, ISampleRawData
+    public sealed partial class Sample : CGameGhost.Data.Sample, ISampleRawData
     {
         private uint velocity;
         private uint angularVelocity;
@@ -40,8 +40,8 @@ public partial class CSceneVehicleCar
         private byte? u45;
         private (Vec3, Quat, byte)[]? u35_1;
 
-        uint ISampleRawData.Velocity { get => velocity; set => velocity = value; }
-        uint ISampleRawData.AngularVelocity { get => angularVelocity; set => angularVelocity = value; }
+        uint ISampleRawData.Velocity { get => velocity; set { velocity = value; legacyVelocity = null; } }
+        uint ISampleRawData.AngularVelocity { get => angularVelocity; set { angularVelocity = value; legacyAngularVelocity = null; } }
         ushort ISampleRawData.SpeedForward { get => speedForward; set => speedForward = value; }
         ushort ISampleRawData.SpeedSideward { get => speedSideward; set => speedSideward = value; }
         ushort ISampleRawData.RPM { get => rpm; set => rpm = value; }
@@ -72,14 +72,14 @@ public partial class CSceneVehicleCar
 
         public override Vec3 Velocity
         {
-            get => ToVec3_4(velocity);
-            set => velocity = FromVec3_4(value);
+            get => legacyVelocity ?? ToVec3_4(velocity);
+            set { velocity = FromVec3_4(value); legacyVelocity = null; }
         }
 
         public override Vec3 AngularVelocity
         {
-            get => ToVec3_4(angularVelocity);
-            set => angularVelocity = FromVec3_4(value);
+            get => legacyAngularVelocity ?? ToVec3_4(angularVelocity);
+            set { angularVelocity = FromVec3_4(value); legacyAngularVelocity = null; }
         }
 
         public float SpeedForward
@@ -376,7 +376,17 @@ public partial class CSceneVehicleCar
 
         internal override void Read(GbxReader r, int version)
         {
-            if (version < 7)
+            if (version == 2)
+            {
+                ReadLegacy(r);
+                if (r.BaseStream.Position != r.BaseStream.Length)
+                {
+                    throw new InvalidDataException("Not all bytes were read.");
+                }
+                return;
+            }
+
+            if (version < 6)
             {
                 throw new VersionNotSupportedException(version);
             }
@@ -387,17 +397,14 @@ public partial class CSceneVehicleCar
 
             // CHmsDynaReplayItem::RestoreDynaItemState
 
-            // HmsStateVersion == 0 (EHmsDynaItemSaveStateVersion_TmNetworkAfter260205)
-            // Position 9-byte Vec3
-            // Rotation = r.ReadQuat6();
-
             if (!isStateFirst)
             {
-                // HmsStateVersion == 1 (EHmsDynaItemSaveStateVersion_TmReplayAfter260205)
-                Position = version == 13 ? r.ReadVec3_9() : r.ReadVec3();
+                // Hms state version 0 uses a 9-byte position and no motion vectors.
+                // Hms state version 1 uses a 12-byte position followed by motion vectors.
+                Position = version is 6 or 13 ? r.ReadVec3_9() : r.ReadVec3();
                 Rotation = r.ReadQuat6();
 
-                if (version == 13)
+                if (version is 6 or 13)
                 {
                     // SVehicleSimpleNetState::ToVehicle
                     FLGroundContactMaterial = CPlugSurface.MaterialId.Asphalt;
@@ -407,31 +414,53 @@ public partial class CSceneVehicleCar
 
                     var netData = r.ReadUInt16();
 
-                    Brake = netData >> 1 & 1;
+                    U25 = (byte)((U25 & 0xE7) | ((netData >> 4 & 3) << 3));
 
-                    var isSliding = (netData >> 2 & 1) != 0;
-                    FLIsSliding = isSliding;
-                    FRIsSliding = isSliding;
-                    RRIsSliding = isSliding;
-                    RLIsSliding = isSliding;
+                    if (version == 6)
+                    {
+                        // Each old network wheel bit controls both sliding and ground contact.
+                        U26 = (byte)((U26 & 0x3F) | ((netData & 1) != 0 ? 0xC0 : 0));
+                        U27 = (byte)((U27 & 0xC0) | ((netData & 2) != 0 ? 3 : 0)
+                            | ((netData & 4) != 0 ? 0xC : 0) | ((netData & 8) != 0 ? 0x30 : 0));
+                    }
+                    else
+                    {
+                        Brake = netData >> 1 & 1;
 
-                    // Calculate RPM
-                    var min = 100f; // guessed cuz its stored by vehicle
-                    var max = 11000f; // guessed cuz its stored by vehicle
-                    var ratio = min / max; // min/max rpm i guess
+                        var isSliding = (netData & 1) != 0;
+                        FLIsSliding = isSliding;
+                        FRIsSliding = isSliding;
+                        RRIsSliding = isSliding;
+                        RLIsSliding = isSliding;
+
+                        var onGround = (netData & 4) != 0;
+                        U26 = (byte)((U26 & 0x7F) | (onGround ? 0x80 : 0));
+                        U27 = (byte)((U27 & 0xD5) | (onGround ? 0x2A : 0));
+                    }
+
+                    // The vehicle's RPM limits are unavailable here, so use the same
+                    // estimates for both formats. Version 6 has no minimum-RPM remapping.
+                    var min = version == 6 ? 0f : 100f;
+                    var max = 11000f;
+                    var ratio = min / max;
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                    var powRatio = MathF.Pow(ratio, 3.0f);
+                    var powRatio = MathF.Pow(ratio, 2.5f);
 #else
-                    var powRatio = Math.Pow(ratio, 3.0f);
+                    var powRatio = Math.Pow(ratio, 2.5f);
 #endif
                     var normalizedValue = (netData >> 9) / 127.0f;
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                    var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+                    var rpmValue = MathF.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.4f);
 #else
-                    var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.3f);
+                    var rpmValue = Math.Pow(normalizedValue * (1.0f - powRatio) + powRatio, 0.4f);
 #endif
                     rpmValue *= max;
                     RPM = (float)rpmValue;
+
+                    if (r.BaseStream.Position != r.BaseStream.Length)
+                    {
+                        throw new InvalidDataException("Not all bytes were read.");
+                    }
                     return;
                 }
 
@@ -497,7 +526,7 @@ public partial class CSceneVehicleCar
 
                             if (unavailableVal2 != 0)
                             {
-                                throw new Exception();
+                                throw new NotSupportedException($"Nonzero value 0x{unavailableVal2:X8} after dirt blend is not supported.");
                             }
 
                             // damage amount
@@ -576,46 +605,69 @@ public partial class CSceneVehicleCar
 
             if (r.BaseStream.Position != r.BaseStream.Length)
             {
-                throw new Exception("Not all bytes were read");
+                throw new InvalidDataException("Not all bytes were read.");
             }
         }
 
         internal override void Write(GbxWriter w, int version)
         {
-            if (version < 7)
+            if (version == 2)
+            {
+                WriteLegacy(w);
+                return;
+            }
+
+            if (version < 6)
             {
                 throw new VersionNotSupportedException(version);
             }
 
             var isStateFirst = version >= 17;
 
-            if (version == 13)
+            if (version is 6 or 13)
             {
                 w.WriteVec3_9(Position);
                 w.WriteQuat6(Rotation);
 
                 ushort netData = 0;
 
-                if (Brake >= 0.5f) netData |= 1 << 1;
+                // Keep splash events (and v13's unused bit) from the original sample.
+                if (Data.Length == 17)
+                {
+                    netData = (ushort)((Data[15] | Data[16] << 8) & (version == 6 ? 0x1C0 : 0x1C8));
+                }
 
-                // FLIsSliding handles standard sliding bit 
-                if (FLIsSliding) netData |= 1 << 2;
+                netData |= (ushort)(Horn << 4);
 
-                var min = 100f;
+                if (version == 6)
+                {
+                    if (FLIsSliding) netData |= 1;
+                    if (FRIsSliding) netData |= 1 << 1;
+                    if (RRIsSliding) netData |= 1 << 2;
+                    if (RLIsSliding) netData |= 1 << 3;
+                }
+                else
+                {
+                    if (FLIsSliding) netData |= 1;
+                    if (Brake >= 0.5f) netData |= 1 << 1;
+                    if (FLOnGround && FROnGround && RROnGround && RLOnGround) netData |= 1 << 2;
+                }
+
+                var min = version == 6 ? 0f : 100f;
                 var max = 11000f;
                 var ratio = min / max;
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                var powRatio = MathF.Pow(ratio, 3.0f);
+                var powRatio = MathF.Pow(ratio, 2.5f);
                 var rpmValue = Math.Clamp(RPM, min, max) / max;
 #else
-                var powRatio = Math.Pow(ratio, 3.0f);
+                var powRatio = Math.Pow(ratio, 2.5f);
                 var rpmValue = AdditionalMath.Clamp(RPM, min, max) / max;
 #endif
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-                var normalizedValue = (MathF.Pow(rpmValue, 1f / 0.3f) - powRatio) / (1.0f - powRatio);
+                var normalizedValue = (MathF.Pow(rpmValue, 2.5f) - powRatio) / (1.0f - powRatio);
 #else
-                var normalizedValue = (Math.Pow(rpmValue, 1f/0.3f) - powRatio) / (1.0f - powRatio);
+                var normalizedValue = (Math.Pow(rpmValue, 2.5f) - powRatio) / (1.0f - powRatio);
 #endif
                 var rpmBits = (ushort)AdditionalMath.Clamp(Math.Round(normalizedValue * 127f), 0, 127);
                 netData |= (ushort)(rpmBits << 9);

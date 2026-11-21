@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>GBX.NET.Tool</PackageId>
-        <VersionPrefix>0.3.4</VersionPrefix>
+        <VersionPrefix>0.3.5</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>Base library for creating rich tools for different environments with GBX.NET.</Description>
         <Copyright>Copyright (c) 2026 Petr Pivoňka</Copyright>
@@ -10,13 +10,16 @@
         <PackageIcon>logo_icon_outline.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, tool, trackmania, shootmania, maniaplanet, gamebox, net, chunk</PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>
+- Changed `ToolFunctionalityResolver` to throw `InvalidOperationException` when the tool type has no public constructor
+- Updated to .NET 11
+        </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
-        <LangVersion>14</LangVersion>
+        <TargetFrameworks>net11.0;net10.0;net9.0;net8.0</TargetFrameworks>
+        <LangVersion>15</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable>true</IsTrimmable>

@@ -138,7 +138,7 @@ public class Blowfish
 
         if (data.Length % 8 != 0)
         {
-            throw new Exception("Length must be a multiple of 8");
+            throw new ArgumentException("Length must be a multiple of 8.", nameof(data));
         }
 
         Decrypt(data.AsSpan());
@@ -148,7 +148,7 @@ public class Blowfish
     {
         if (span.Length % 8 != 0)
         {
-            throw new Exception("Length must be a multiple of 8");
+            throw new ArgumentException("Length must be a multiple of 8.", nameof(span));
         }
 
         if (trick == BlowfishTrick.BigEndian)
@@ -215,7 +215,7 @@ public class Blowfish
 
         if (data.Length % 8 != 0)
         {
-            throw new Exception("Invalid Length");
+            throw new ArgumentException("Length must be a multiple of 8.", nameof(data));
         }
 
         Encrypt(data.AsSpan());
@@ -225,7 +225,7 @@ public class Blowfish
     {
         if (span.Length % 8 != 0)
         {
-            throw new Exception("Invalid Length");
+            throw new ArgumentException("Length must be a multiple of 8.", nameof(span));
         }
 
         if (trick == BlowfishTrick.BigEndian)

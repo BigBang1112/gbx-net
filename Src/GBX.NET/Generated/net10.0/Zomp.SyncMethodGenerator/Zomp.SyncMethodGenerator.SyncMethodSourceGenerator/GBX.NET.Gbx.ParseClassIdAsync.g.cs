@@ -16,19 +16,31 @@ public partial class Gbx
     {
         _ = stream ?? throw new global::System.ArgumentNullException(nameof(stream));
 
-        var minimalData = new byte[13];
-        var count = stream.ReadAtLeast(minimalData, minimalData.Length, throwOnEndOfStream: false);
-        if (count < minimalData.Length)
+        var prefix = new byte[6];
+        if (stream.ReadAtLeast(prefix, prefix.Length, throwOnEndOfStream: false) != prefix.Length)
         {
             throw new global::GBX.NET.Exceptions.NotAGbxException("Not enough data to read the class ID.");
         }
 
-        if (minimalData[0] != 'G' || minimalData[1] != 'B' || minimalData[2] != 'X')
+        if (prefix[0] != 'G' || prefix[1] != 'B' || prefix[2] != 'X')
         {
             throw new global::GBX.NET.Exceptions.NotAGbxException();
         }
 
-        var classId = global::System.BitConverter.ToUInt32(minimalData, 9);
+        var format = (global::GBX.NET.GbxFormat)prefix[5];
+        var basicSize = global::System.BitConverter.ToUInt16(prefix, 3) >= 4 ? 3 : 2;
+        var basic = new byte[basicSize + (format == global::GBX.NET.GbxFormat.Binary ? sizeof(uint) : 0)];
+        if (stream.ReadAtLeast(basic, basic.Length, throwOnEndOfStream: false) != basic.Length)
+        {
+            throw new global::GBX.NET.Exceptions.NotAGbxException("Not enough data to read the class ID.");
+        }
+
+        var classId = format switch
+        {
+            global::GBX.NET.GbxFormat.Binary => global::System.BitConverter.ToUInt32(basic, basicSize),
+            global::GBX.NET.GbxFormat.Text => ReadTextClassId(stream),
+            _ => throw new global::System.IO.InvalidDataException($"Invalid Gbx format byte: 0x{(prefix[5]):X2}.")
+        };
 
         return remap ? global::GBX.NET.Managers.ClassManager.Wrap(classId) : classId;
     }

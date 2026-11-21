@@ -9,6 +9,44 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameGhostDataTests
 {
     [Test]
+    [Arguments(0, true)]
+    [Arguments(0, false)]
+    [Arguments(1, true)]
+    [Arguments(1, false)]
+    public async Task ReadWrite_Version6Samples_PreservesNetworkStatesAndTiming(int archiveVersion, bool fixedTimeStep)
+    {
+        byte[] first = [0x80, 0, 0, 0x80, 0, 0, 0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0x25, 0x81];
+        byte[] second = [.. first[..15], 0xDA, 0xFE];
+        var bytes = WriteArchive(fixedTimeStep, 6, [first, second], [100, 200],
+            fixedTimeStep && archiveVersion >= 1 ? 50 : null);
+        using var input = new MemoryStream(bytes);
+        using var reader = new GbxReader(input);
+        var data = new CGameGhost.Data();
+
+        data.ReadNew(reader, archiveVersion);
+
+        await Assert.That(data.Samples.Count).IsEqualTo(2);
+        await Assert.That(input.Position).IsEqualTo(input.Length);
+        var firstSample = (CSceneVehicleCar.Sample)data.Samples[0];
+        var secondSample = (CSceneVehicleCar.Sample)data.Samples[1];
+        await Assert.That(firstSample.Horn).IsEqualTo((byte)2);
+        await Assert.That(firstSample.FLIsSliding).IsTrue();
+        await Assert.That(firstSample.RPM).IsBetween(8362f, 8363f);
+        await Assert.That(secondSample.Horn).IsEqualTo((byte)1);
+        await Assert.That(secondSample.FRIsSliding).IsTrue();
+        await Assert.That(secondSample.RPM).IsBetween(10999f, 11001f);
+        await Assert.That(data.Samples[0].Time.TotalMilliseconds).IsEqualTo(fixedTimeStep ? (archiveVersion >= 1 ? 50 : 0) : 100);
+        await Assert.That(data.Samples[1].Time.TotalMilliseconds).IsEqualTo(fixedTimeStep ? (archiveVersion >= 1 ? 150 : 100) : (archiveVersion >= 1 ? 300 : 200));
+
+        using var output = new MemoryStream();
+        using (var writer = new GbxWriter(output))
+        {
+            data.WriteNew(writer, archiveVersion);
+        }
+        await Assert.That(output.ToArray()).IsEquivalentTo(bytes, CollectionOrdering.Matching);
+    }
+
+    [Test]
     public async Task Read_Version13VariableTimeStep_DoesNotReadExtraValueAfterStateTimes()
     {
         var sample = new CSceneVehicleCar.Sample(TimeInt32.Zero, []);

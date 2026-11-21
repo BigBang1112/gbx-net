@@ -1,5 +1,6 @@
 namespace GbxCLI.Commands;
 
+/// <param name="Unstored">Title pack entries without stored data.</param>
 internal readonly record struct VerifyCounts(int Parsed, int Failed, int Skipped, int Unstored = 0)
 {
     public static VerifyCounts operator +(VerifyCounts left, VerifyCounts right)

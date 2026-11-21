@@ -468,7 +468,14 @@ internal sealed class SerializationWriter
             var wireType = WireTypes.Map(declaration.Type.Name, declaration.Attributes);
             var conversion = (numeric || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
             var value = write is null ? target : WriteArgument(write);
-            if (conversion)
+            if (conversion && hasBacking && write is null && arguments.Count == 0 && embeddedHandle is null &&
+                declaration.Type.CastTarget is null && SyntaxOverlap.Normalize(storageType) == "int" &&
+                wireType is "byte" or "short" or "ushort")
+            {
+                // The int overloads assign only when reading, so writing doesn't truncate the stored value.
+                code.Line($"rw.{method}(ref {target});");
+            }
+            else if (conversion)
             {
                 code.Line(Assign($"({storageType})rw.{method}(({wireType}{(storageType.EndsWith("?", StringComparison.Ordinal) ? "?" : "")}){value}{argumentSuffix})"));
             }
