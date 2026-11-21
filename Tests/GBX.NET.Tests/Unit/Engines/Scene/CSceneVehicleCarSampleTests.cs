@@ -147,6 +147,10 @@ public class CSceneVehicleCarSampleTests
         await Assert.That(sample.RLOnGround).IsEqualTo(sample.RLIsSliding);
         await Assert.That(sample.Horn).IsEqualTo((byte)(netState >> 4 & 3));
         await Assert.That(sample.FLGroundContactMaterial).IsEqualTo(CPlugSurface.MaterialId.Asphalt);
+        await Assert.That(sample.FLDampenLen).IsEqualTo(0f);
+        await Assert.That(sample.FRDampenLen).IsEqualTo(0f);
+        await Assert.That(sample.RRDampenLen).IsEqualTo(0f);
+        await Assert.That(sample.RLDampenLen).IsEqualTo(0f);
         await Assert.That(Write(sample, version: 6)).IsEquivalentTo(bytes, CollectionOrdering.Matching);
     }
 

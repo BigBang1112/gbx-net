@@ -4,6 +4,8 @@ public partial class CSceneVehicleCar
 {
     public sealed partial class Sample : CGameGhost.Data.Sample, ISampleRawData
     {
+        private const byte EncodedNeutralDampenLen = 128;
+
         private uint velocity;
         private uint angularVelocity;
         private ushort speedForward;
@@ -21,10 +23,10 @@ public partial class CSceneVehicleCar
         private byte u14;
         private byte turboStrength;
         private byte steerFront;
-        private byte flDampenLen;
-        private byte frDampenLen;
-        private byte rrDampenLen;
-        private byte rlDampenLen;
+        private byte? flDampenLen = 0;
+        private byte? frDampenLen = 0;
+        private byte? rrDampenLen = 0;
+        private byte? rlDampenLen = 0;
         private byte? dirtBlend;
         private byte? u33;
         private byte? u34;
@@ -57,10 +59,10 @@ public partial class CSceneVehicleCar
         byte ISampleRawData.U14 { get => u14; set => u14 = value; }
         byte ISampleRawData.TurboStrength { get => turboStrength; set => turboStrength = value; }
         byte ISampleRawData.SteerFront { get => steerFront; set => steerFront = value; }
-        byte ISampleRawData.FLDampenLen { get => flDampenLen; set => flDampenLen = value; }
-        byte ISampleRawData.FRDampenLen { get => frDampenLen; set => frDampenLen = value; }
-        byte ISampleRawData.RRDampenLen { get => rrDampenLen; set => rrDampenLen = value; }
-        byte ISampleRawData.RLDampenLen { get => rlDampenLen; set => rlDampenLen = value; }
+        byte ISampleRawData.FLDampenLen { get => flDampenLen ?? EncodedNeutralDampenLen; set => flDampenLen = value; }
+        byte ISampleRawData.FRDampenLen { get => frDampenLen ?? EncodedNeutralDampenLen; set => frDampenLen = value; }
+        byte ISampleRawData.RRDampenLen { get => rrDampenLen ?? EncodedNeutralDampenLen; set => rrDampenLen = value; }
+        byte ISampleRawData.RLDampenLen { get => rlDampenLen ?? EncodedNeutralDampenLen; set => rlDampenLen = value; }
         byte? ISampleRawData.DirtBlend { get => dirtBlend; set => dirtBlend = value; }
         byte? ISampleRawData.U33 { get => u33; set => u33 = value; }
         byte? ISampleRawData.U34 { get => u34; set => u34 = value; }
@@ -188,31 +190,33 @@ public partial class CSceneVehicleCar
 
         public float FLDampenLen
         {
-            get => flDampenLen / 255f * 4 - 2;
+            get => DecodeDampenLen(flDampenLen);
             set => flDampenLen = (byte)AdditionalMath.Clamp(Math.Round((value + 2f) / 4f * 255f), 0, 255);
         }
         public CPlugSurface.MaterialId FLGroundContactMaterial { get; set; }
 
         public float FRDampenLen
         {
-            get => frDampenLen / 255f * 4 - 2;
+            get => DecodeDampenLen(frDampenLen);
             set => frDampenLen = (byte)AdditionalMath.Clamp(Math.Round((value + 2f) / 4f * 255f), 0, 255);
         }
         public CPlugSurface.MaterialId FRGroundContactMaterial { get; set; }
 
         public float RRDampenLen
         {
-            get => rrDampenLen / 255f * 4 - 2;
+            get => DecodeDampenLen(rrDampenLen);
             set => rrDampenLen = (byte)AdditionalMath.Clamp(Math.Round((value + 2f) / 4f * 255f), 0, 255);
         }
         public CPlugSurface.MaterialId RRGroundContactMaterial { get; set; }
 
         public float RLDampenLen
         {
-            get => rlDampenLen / 255f * 4 - 2;
+            get => DecodeDampenLen(rlDampenLen);
             set => rlDampenLen = (byte)AdditionalMath.Clamp(Math.Round((value + 2f) / 4f * 255f), 0, 255);
         }
         public CPlugSurface.MaterialId RLGroundContactMaterial { get; set; }
+
+        private static float DecodeDampenLen(byte? value) => value is byte encoded ? encoded / 255f * 4 - 2 : 0f;
 
         public byte U25 { get; set; }
         public byte U25_1 => (byte)(U25 & 7);
@@ -418,6 +422,9 @@ public partial class CSceneVehicleCar
 
                     if (version == 6)
                     {
+                        // Network states leave damping at the wheel state's reset length of zero.
+                        flDampenLen = frDampenLen = rrDampenLen = rlDampenLen = null;
+
                         // Each old network wheel bit controls both sliding and ground contact.
                         U26 = (byte)((U26 & 0x3F) | ((netData & 1) != 0 ? 0xC0 : 0));
                         U27 = (byte)((U27 & 0xC0) | ((netData & 2) != 0 ? 3 : 0)
@@ -708,13 +715,13 @@ public partial class CSceneVehicleCar
                 w.Write(u14);
                 w.Write(turboStrength);
                 w.Write(steerFront);
-                w.Write(flDampenLen);
+                w.Write(flDampenLen ?? EncodedNeutralDampenLen);
                 w.Write((byte)FLGroundContactMaterial);
-                w.Write(frDampenLen);
+                w.Write(frDampenLen ?? EncodedNeutralDampenLen);
                 w.Write((byte)FRGroundContactMaterial);
-                w.Write(rrDampenLen);
+                w.Write(rrDampenLen ?? EncodedNeutralDampenLen);
                 w.Write((byte)RRGroundContactMaterial);
-                w.Write(rlDampenLen);
+                w.Write(rlDampenLen ?? EncodedNeutralDampenLen);
                 w.Write((byte)RLGroundContactMaterial);
 
                 if (version >= 8)
