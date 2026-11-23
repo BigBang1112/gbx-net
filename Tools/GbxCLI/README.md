@@ -1,6 +1,6 @@
 # GBX.NET.CLI
 
-`gbx` is a command-line tool for inspecting and transforming Gbx files with GBX.NET. It can summarize and browse a Gbx, verify whole folders and game archives, list and extract PAK and ZIP archives, and compress or decompress Gbx bodies.
+`gbx` is a command-line tool for inspecting and transforming Gbx files with GBX.NET. It can summarize and browse a Gbx, change its members and save it, verify whole folders and game archives, list and extract PAK and ZIP archives, and compress or decompress Gbx bodies.
 
 ## Installation
 
@@ -23,7 +23,8 @@ gbx <path>
 | Command | Arguments | Purpose |
 | --- | --- | --- |
 | `inspect` (alias `parse`) | `<path> [-i]` | Fully parse a Gbx and write a summary, or summarize a PAK or ZIP. |
-| `eval` | `<path> <code>... [-i]` | Evaluate C# expressions against the opened file. |
+| `eval` | `<path> <code>... [-i \| -w \| -o <file>]` | Evaluate C# expressions against the opened file, and optionally write the Gbx. |
+| `set` | `<path> <member>=<value>... [-o <file>] [-n]` | Change members of a Gbx and write it. |
 | `script` | `<script.csx> [args...]` | Run a C# script file with GBX.NET available. |
 | `verify` (alias `pack verify`) | `<path> [-g <game>] [--roundtrip] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
 | `pack list` | `<archive>[/pattern] [--resolved \| --unresolved]` | List archive entries, resolving known hashes. |
@@ -98,11 +99,75 @@ The first argument that is not `-i` is the path. Every further argument is one C
 gbx eval "My.Map.Gbx" "Node.MapName" "Node.Author"
 ```
 
-With `-i`, a C# prompt starts after the expressions. Errors are shown, and the prompt continues until you enter `q`.
+With `-i`, a C# prompt starts after the expressions. Errors are shown, and the prompt continues until you enter `q`. Enter `save` to write the Gbx back to its file, or `save <path>` to write it to another file. `save --force` and `save --no-backup` work like the options below.
+
+To keep the changes from the expressions, pass `-w` (`--write`) to write the Gbx back to its file, or `-o <file>` to write it to another file.
+
+```
+gbx eval "My.Map.Gbx" "Node.MapName = \"Night run\"" "Node.AuthorTime = null" -w
+```
+
+- `--no-backup` doesn't keep an existing output as `<output>.bak`.
+- `--force` writes even when the check below finds a difference, and shows it as a warning.
+
+### Writing a Gbx
+
+`eval`, `set`, the C# prompt and `SaveAsync` in scripts write a Gbx the same way.
+
+1. The Gbx is saved into memory.
+2. The saved data is parsed again, and its properties are compared with the changed Gbx, like `verify --roundtrip` does.
+3. If anything differs, nothing is written and the command fails with the first difference. A value that the file format can't store is caught this way, such as a block coordinate of 300 in a TMF map, which stores it in one byte.
+4. The data is written to a temporary file, which then replaces the output. An existing output is kept as `<output>.bak`.
+
+A Gbx inside a PAK or ZIP archive is only written with `-o`, because archives are never changed. A Gbx whose root class is unknown can't be written, because its body wasn't parsed. Some classes, such as replays, can't be written by GBX.NET at all, and the command fails with that error.
+
+### set
+
+Assigns values to members of a Gbx, then writes it like `eval -w`. Without `-o`, the input file is replaced. Each change is shown with its old and new value.
+
+```
+gbx set "My.Map.Gbx" "MapName=Night run" "Decoration=48x48Night,Stadium2020,Nadeo" "Blocks[0].Coord.Y=20"
+```
+
+```
+Node.MapName: My map -> Night run
+Node.Decoration: ("48x48Day", "Stadium2020", "Nadeo") -> ("48x48Night", "Stadium2020", "Nadeo")
+Node.Blocks[0].Coord.Y: 9 -> 20
+Written: My.Map.Gbx
+Backup: My.Map.Gbx.bak
+```
+
+A member path starts at the opened `Gbx`, such as `Node.MapName` or `Node.Blocks[3].Coord.X`. A first name that the `Gbx` doesn't have is looked up on its node, so `MapName` means `Node.MapName`. Names ignore case when only one member matches. A member of a struct or a record, such as `Coord.Y` or `Decoration.Author`, is changed on a copy that is assigned back, so other places that share the record don't change.
+
+The value is converted to the type of the member.
+
+| Type | Value |
+| --- | --- |
+| String | The text as it is, also `null`. |
+| Enum | A name, ignoring case, such as `west`. Flags also take numbers and names separated by commas. |
+| Number | Invariant culture, such as `1.5`. Integers also take hexadecimal, such as `0x03043000`. |
+| Time | `1:23.456`, or any other text that the type's `Parse` method accepts. |
+| `Id` | A number makes a collection number, such as `26`. Other text makes a string `Id`. |
+| Vector, `Ident` and other types | Constructor arguments separated by commas, such as `1,2,3` or `48x48Night,Stadium2020,Nadeo`. |
+| Nullable value or object | `null` clears it. |
+
+Collections, nodes and byte arrays can't be set from text. Use `eval` for those.
+
+- `-o` (`--output`) writes to another file and keeps the input.
+- `-n` (`--dry-run`) shows the changes and runs the check, but writes nothing. It also works inside an archive without `-o`.
+- `--no-backup` and `--force` work as in `eval`.
 
 ### script
 
 Runs a C# script file. Arguments after the script path are passed to the script as `Args`, also when they start with `-`. Use `--` before the script path only when the path itself starts with `-`. Scripts can call `Print(value)` and write to `Output`.
+
+`SaveAsync(gbx, path)` writes a Gbx with the same check and backup as `eval -w`. It also takes `backup: false` and `force: true`.
+
+```cs
+var gbx = Gbx.Parse<CGameCtnChallenge>(Args[0]);
+gbx.Node.MapName = "Night run";
+await SaveAsync(gbx, Args[0]);
+```
 
 ### verify
 

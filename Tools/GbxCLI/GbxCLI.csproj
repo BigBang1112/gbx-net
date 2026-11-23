@@ -31,13 +31,9 @@
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>
-- Added an interactive Gbx, PAK, and ZIP browser. Open it with `gbx &lt;path&gt;` or `gbx inspect -i`
-- Replaced `pak files`, `pak extract`, and `pak verify` with `pack list`, `pack extract`, and `verify`. `inspect` also accepts the `parse` alias
-- Added `verify --roundtrip` to report properties that change after saving and reloading
-- Added nested archive browsing, more PAK filename hashes, and `pack extract --overwrite` and `--skip-existing`
-- Changed `compress` and `decompress` to replace the input when `-o` is omitted, keeping a `.bak` file by default
-- Updated `eval -i` with an interactive C# prompt
-- Updated to .NET 11
+- Added `gbx set` to change members of a Gbx, with `--dry-run` to preview the changes
+- Added `eval -w` and `eval -o` to write a Gbx after the expressions, `save` to the `eval -i` prompt, and `SaveAsync` to scripts
+- A written Gbx is parsed again and compared before it replaces a file, and the previous file is kept as `.bak`
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>

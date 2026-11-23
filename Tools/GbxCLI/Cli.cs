@@ -105,6 +105,9 @@ internal static class Cli
             case "script":
                 await ScriptCommand.RunAsync(argsEnumerator, context);
                 break;
+            case "set":
+                await SetCommand.RunAsync(argsEnumerator, context);
+                break;
             case "verify":
                 await VerifyCommand.RunAsync(argsEnumerator, context);
                 break;
@@ -195,7 +198,7 @@ internal static class Cli
     /// <summary>
     /// Removes the quotes that a console adds around a dragged path with spaces.
     /// </summary>
-    private static string? CleanPath(string? line)
+    internal static string? CleanPath(string? line)
     {
         if (line is null)
         {

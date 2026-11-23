@@ -20,13 +20,39 @@ internal static class CliHelp
             """,
         ["eval"] = $"""
             {H}Usage:{Z} gbx eval <path> <code>... [-i]
+                   gbx eval <path> <code>... (-w | -o <file>) [--no-backup] [--force]
 
             Evaluates C# expressions against the opened Gbx, Pak or ZipArchive, which is the script global.
             Each argument is one expression, and later ones can use variables from earlier ones.
             Example: gbx eval My.Map.Gbx "Node.MapName" "Node.Author"
+            Example: gbx eval My.Map.Gbx "Node.MapName = \"Night run\"" -w
 
             {H}Options:{Z}
-              -i, --interactive      Start a C# prompt after the expressions. Enter q to quit.
+              -i, --interactive      Start a C# prompt after the expressions. Enter save [path] to write, or q to quit.
+              -w, --write            Write the Gbx back to the input file after the expressions.
+              -o, --output <file>    Write the Gbx to another file after the expressions.
+              --no-backup            Don't keep an existing output as <output>.bak.
+              --force                Write even when reading the saved Gbx back gives different properties.
+
+            Before writing, the saved Gbx is parsed again and compared with the changed one.
+            A Gbx inside an archive can only be written to another file with -o.
+            """,
+        ["set"] = $"""
+            {H}Usage:{Z} gbx set <path> <member>=<value>... [-o <file>] [-n] [--no-backup] [--force]
+
+            Assigns values to members of a Gbx and writes it. Without -o, the input file is replaced.
+            Example: gbx set My.Map.Gbx "MapName=Night run" Decoration=48x48Night,Stadium2020,Nadeo
+
+            A member path starts at the Gbx, such as Node.MapName or Node.Blocks[3].Coord.X.
+            A first name that the Gbx doesn't have is looked up on the node, so MapName is Node.MapName.
+            Strings are taken as they are. Enums take names, integers also take 0x hexadecimal, and times take 1:23.456.
+            Vectors and other values take their parts separated by commas, such as 1,2,3. null clears a nullable value.
+
+            {H}Options:{Z}
+              -o, --output <file>    Output file.
+              -n, --dry-run          Show the changes and check them, but write nothing.
+              --no-backup            Don't keep an existing output as <output>.bak.
+              --force                Write even when reading the saved Gbx back gives different properties.
             """,
         ["script"] = $"""
             {H}Usage:{Z} gbx script <script.csx> [args...]
@@ -34,6 +60,7 @@ internal static class CliHelp
 
             Runs a C# script with GBX.NET available. Arguments after the script are passed as Args,
             also when they start with -. Scripts can call Print(value) and write to Output.
+            await SaveAsync(gbx, path) writes a Gbx with the same check and backup as eval --write.
             """,
         ["verify"] = $"""
             {H}Usage:{Z} gbx verify <path> [-g <game>] [--roundtrip] [--strict]
@@ -93,6 +120,7 @@ internal static class CliHelp
             {H}Commands:{Z}
               inspect <path>                  Fully parse a Gbx and write a summary, or summarize a PAK or ZIP.
               eval <path> <code>...           Evaluate C# against a Gbx, PAK or ZIP file.
+              set <path> <member>=<value>...  Change members of a Gbx and write it.
               script <file> [args...]         Run a C# script with GBX.NET available.
               verify <path>                   Fully parse Gbx files, also inside folders and PAK or ZIP archives.
               pack list <archive>             List PAK or ZIP entries, resolving known hashes.
