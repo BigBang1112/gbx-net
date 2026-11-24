@@ -1,3 +1,5 @@
+using GBX.NET;
+
 namespace GbxCLI.Commands;
 
 internal static class EvalCommand
@@ -95,21 +97,45 @@ internal static class EvalCommand
             await new ConsoleValueWriter(context.Console) { HasExternalReferences = ValueInspector.HasExternalReferences(file.Value) }.WriteResultAsync(result);
         }
 
-        if (gbx is not null && dryRun)
+        if (gbx is not null)
         {
             // The same check as a real write, so a dry run also shows whether the file could be written.
-            await CheckedGbxWriter.SaveAsync(gbx, force, context.CancellationToken);
-            await context.Console.WriteLineAsync($"{CliConsole.Label}Dry run, so nothing was written.{CliConsole.Reset}");
-        }
-        else if (gbx is not null)
-        {
-            await CheckedGbxWriter.WriteAsync(gbx, outputPath ?? file.InputPath, context.Console, backup, force, context.CancellationToken);
+            var saved = await CheckedGbxWriter.SaveAsync(gbx, force, context.CancellationToken);
+
+            await WriteChangesAsync(inputPath, saved.Reparsed ?? gbx, context);
+
+            if (dryRun)
+            {
+                await context.Console.WriteLineAsync($"{CliConsole.Label}Dry run, so nothing was written.{CliConsole.Reset}");
+            }
+            else
+            {
+                await CheckedGbxWriter.WriteSavedAsync(saved, outputPath ?? file.InputPath, context.Console, backup, context.CancellationToken);
+            }
         }
 
         if (interactive)
         {
             await CSharpPrompt.RunAsync(session, file, context);
         }
+    }
+
+    /// <summary>
+    /// Lists what changed from the input file to the saved Gbx. That shows what the expressions changed, and that saving changed nothing else.
+    /// </summary>
+    private static async Task WriteChangesAsync(string inputPath, Gbx saved, CliContext context)
+    {
+        await using var original = await FileObject.OpenAsync(inputPath, context.CancellationToken);
+        var changes = GbxPropertyComparer.FindDifferences(original.GetGbx(), saved, DiffCommand.ChangesMax, cancellationToken: context.CancellationToken);
+
+        if (changes.Count == 0)
+        {
+            await context.Console.WriteLineAsync($"{CliConsole.Label}No changes.{CliConsole.Reset}");
+            return;
+        }
+
+        await context.Console.WriteLineAsync($"{CliConsole.Heading}Changes:{CliConsole.Reset}");
+        await DiffCommand.WriteDifferencesAsync(context.Console, changes, DiffCommand.ChangesMax);
     }
 
     /// <summary>

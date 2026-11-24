@@ -1,6 +1,6 @@
 # GBX.NET.CLI
 
-`gbx` is a command-line tool for inspecting and transforming Gbx files with GBX.NET. It can summarize and browse a Gbx, change its members and save it, verify whole folders and game archives, list and extract PAK and ZIP archives, and compress or decompress Gbx bodies.
+`gbx` is a command-line tool for inspecting and transforming Gbx files with GBX.NET. It can summarize, browse and edit a Gbx, change members of many files at once, compare two Gbx files, verify whole folders and game archives, list and extract PAK and ZIP archives, and compress or decompress Gbx bodies.
 
 ## Installation
 
@@ -26,6 +26,7 @@ gbx <path>
 | `eval` | `<path> <code>... [-i \| -w \| -o <path> \| -n]` | Evaluate C# expressions against one or many files, and optionally write the Gbx files. |
 | `set` | `<path> <member>=<value>... [-o <path>] [-n]` | Change members of one or many Gbx files and write them. |
 | `script` | `<script.csx> [args...]` | Run a C# script file with GBX.NET available. |
+| `diff` | `<path> <path> [--max <n>] [--strict]` | List the properties that differ between two Gbx files. |
 | `verify` (alias `pack verify`) | `<path> [-g <game>] [--roundtrip] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
 | `pack list` | `<archive>[/pattern] [--resolved \| --unresolved]` | List archive entries, resolving known hashes. |
 | `pack extract` | `<archive>[/pattern] [-o <dir>] [--overwrite \| --skip-existing]` | Extract all or matching entries. |
@@ -106,6 +107,14 @@ CGameCtnChallenge> 3
 - Long lists are shown in pages of 20 items. `n` and `p` move between pages.
 - In a PAK or ZIP, the root lists the archive entries. `f *.Map.Gbx` filters them with the usual patterns, and `f` alone clears the filter. Opening an entry parses it and continues in the same browser.
 - Node references to other files are shown, but never loaded.
+
+### Editing in the browser
+
+`set <number> <value>` changes a value of the current object, such as `set 1 My map`. The value is converted like in [set](#set), and it can be in double quotes, so `set 1 ""` sets an empty string. A list or another object with values of its own is opened first, and its values are set there.
+
+After a change, the prompt shows a `*`, such as `CGameCtnChallenge*>`. `save` writes the Gbx back to its file, and `save as <path>` writes it to another file, which later saves use too. Both check and back up the file like [writing a Gbx](#writing-a-gbx), and `save --force` or `save as --force <path>` writes despite the check. A Gbx opened from a PAK or ZIP archive can only be saved with `save as`.
+
+`q`, and `..` or `/` when they close a changed file, ask before the changes are lost. Enter `y` to discard them.
 
 The browser needs a console for both input and output. With redirected input or output, `gbx <path>` and `inspect -i` write the `inspect` summary instead, so scripts and pipes keep working.
 
@@ -205,6 +214,28 @@ foreach (var path in GetGbxFiles(Args[0]))
     await SaveAsync(gbx, path);
 }
 ```
+
+### diff
+
+Lists the properties that differ between two Gbx files, one per line. Both paths can continue inside an archive.
+
+```
+gbx diff "Old.Map.Gbx" "New.Map.Gbx"
+```
+
+```
+Node.AuthorTime: 0:08.810 -> 0:12.000
+Node.Blocks[2].Direction: North -> West
+Node.MapName: My map -> Night run
+3 differences.
+```
+
+The properties are compared like `verify --roundtrip` does. List items are compared by index, so a block removed at the start of a list makes every later block differ. Chunks are compared by ID. Compressed data, such as a lightmap, is compared after decompressing it, and a byte array shows only its first different byte.
+
+- `--max <n>` stops after `n` differences. The default is 200, and `0` lists all of them.
+- `--strict` exits with `1` when the files differ.
+
+`eval` with `-w`, `-o` or `-n` uses the same comparison to list what changed, between the input file and the saved Gbx read back. So the list also shows anything that saving changed besides the expressions.
 
 ### verify
 

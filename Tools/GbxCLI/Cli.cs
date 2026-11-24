@@ -108,6 +108,9 @@ internal static class Cli
             case "set":
                 await SetCommand.RunAsync(argsEnumerator, context);
                 break;
+            case "diff":
+                await DiffCommand.RunAsync(argsEnumerator, context);
+                break;
             case "verify":
                 await VerifyCommand.RunAsync(argsEnumerator, context);
                 break;

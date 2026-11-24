@@ -111,6 +111,80 @@ public class BrowserTests
     /// <summary>
     /// Finds the number the browser gives a member, by reading the first page of the node or of an opened member.
     /// </summary>
+    [Test]
+    public async Task Browse_SetAndSave_WritesGbxAndClearsStar()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("input.Gbx", Fixtures.CreateGbx());
+        var keys = await FindItemAsync(path, "Keys");
+        var timeValue = await FindItemAsync(path, "TimeValue", keys, 1);
+
+        var run = await CliRun.RunInteractiveAsync($"{keys}\n1\nset {timeValue} 7.5\nsave\nq\n", path);
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("TimeValue: 7.5");
+        await Assert.That(run.Output).Contains("Node.Keys[0].TimeValue: 42.5 -> 7.5");
+        await Assert.That(run.Output).Contains("Key*> ");
+        await Assert.That(run.Output).Contains($"Written: {path}");
+        await Assert.That(run.Output).Contains("Key> ");
+        await Assert.That(run.Output.Contains("unsaved changes")).IsFalse();
+        await Assert.That(Fixtures.ReadTimeValue(path)).IsEqualTo(7.5f);
+        await Assert.That(File.Exists(path + ".bak")).IsTrue();
+    }
+
+    [Test]
+    public async Task Browse_QuitWithUnsavedChanges_AsksFirst()
+    {
+        using var directory = new TempDirectory();
+        var original = Fixtures.CreateGbx();
+        var path = directory.Write("input.Gbx", original);
+        var keys = await FindItemAsync(path, "Keys");
+        var timeValue = await FindItemAsync(path, "TimeValue", keys, 1);
+
+        var run = await CliRun.RunInteractiveAsync($"{keys}\n1\nset {timeValue} 1\nq\nn\nq\ny\n", path);
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output.Split("input.Gbx has unsaved changes. Enter y to discard them:").Length).IsEqualTo(3);
+        await Assert.That(await File.ReadAllBytesAsync(path)).IsEquivalentTo(original);
+    }
+
+    [Test]
+    public async Task Browse_SaveEntryOfArchive_NeedsSaveAs()
+    {
+        using var directory = new TempDirectory();
+        var zip = directory.Write("skin.zip", Fixtures.CreateZip(("a.Gbx", Fixtures.CreateGbx())));
+        var output = directory.Combine("out.Gbx");
+
+        var keys = await FindItemAsync(zip, "Keys", 1);
+        var timeValue = await FindItemAsync(zip, "TimeValue", 1, keys, 1);
+
+        var run = await CliRun.RunInteractiveAsync($"1\n{keys}\n1\nset {timeValue} 3\nsave\nsave as \"{output}\"\n/\nq\n", zip);
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("This Gbx is inside an archive, which is never written. Use save as <path>.");
+        await Assert.That(run.Output).Contains($"Written: {output}");
+        await Assert.That(run.Output.Contains("unsaved changes")).IsFalse();
+        await Assert.That(Fixtures.ReadTimeValue(output)).IsEqualTo(3f);
+    }
+
+    [Test]
+    public async Task Browse_SetInvalid_ShowsNoticeOrError()
+    {
+        using var directory = new TempDirectory();
+        var path = directory.Write("input.Gbx", Fixtures.CreateGbx());
+        var keys = await FindItemAsync(path, "Keys");
+        var timeValue = await FindItemAsync(path, "TimeValue", keys, 1);
+
+        var run = await CliRun.RunInteractiveAsync($"set {keys} 1\nset 999 1\nset x\n{keys}\n1\nset {timeValue} abc\nq\n", path);
+
+        await Assert.That(run.ExitCode).IsEqualTo(0);
+        await Assert.That(run.Output).Contains("Keys has values of its own.");
+        await Assert.That(run.Output).Contains("There is no item 999.");
+        await Assert.That(run.Output).Contains("Use set <number> <value>");
+        await Assert.That(run.Output).Contains("error: 'abc' is not a valid Single.");
+        await Assert.That(run.Output.Contains("*> ")).IsFalse();
+    }
+
     private static async Task<int> FindItemAsync(string path, string name, params int[] open)
     {
         var input = string.Concat(open.Select(number => $"{number}\n")) + "q\n";

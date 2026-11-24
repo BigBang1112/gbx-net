@@ -36,6 +36,8 @@
 - A written Gbx is parsed again and compared before it replaces a file, and the previous file is kept as `.bak`
 - `eval` and `set` run on many files with a folder or pattern, such as `"Maps/*.Map.Gbx"` or `Stadium.pak/Maps/*`, and only write the changed ones
 - `verify` accepts patterns on disk, and scripts can list Gbx files with `GetGbxFiles`
+- Added `gbx diff` to list the properties that differ between two Gbx files, replacing the separate GbxDiff tool. `eval` lists what a write changes
+- Added `set`, `save` and `save as` to the browser
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>

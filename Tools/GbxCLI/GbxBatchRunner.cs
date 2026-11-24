@@ -87,38 +87,46 @@ internal sealed class GbxBatchRunner(CliContext context, GbxBatchWrite? write)
             return;
         }
 
-        var firstChange = result.Changed is null ? GbxPropertyComparer.FindDifference(original!, gbx, context.CancellationToken) : null;
-
         // An unchanged file is never saved, so a class that GBX.NET can't write only fails when it changed.
-        if (!(result.Changed ?? firstChange is not null))
+        if (!(result.Changed ?? GbxPropertyComparer.FindDifference(original!, gbx, context.CancellationToken) is not null))
         {
             unchanged++;
             await WriteLineAsync(item, $"{CliConsole.Label}unchanged{CliConsole.Reset}");
             return;
         }
 
-        var data = CheckedGbxWriter.Save(gbx);
-        var difference = await CheckedGbxWriter.FindDifferenceAsync(gbx, data, context.CancellationToken);
-
-        if (difference is not null && !write.Force)
-        {
-            throw CheckedGbxWriter.NotWritten(difference);
-        }
+        var saved = await CheckedGbxWriter.SaveAsync(gbx, write.Force, context.CancellationToken);
 
         if (!write.DryRun)
         {
             var destination = root is null ? item.FilePath! : OutputFile.GetDestination(root, item.RelativePath);
             Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
-            await CheckedGbxWriter.WriteDataAsync(data, destination, write.Backup, context.CancellationToken);
+            await CheckedGbxWriter.WriteDataAsync(saved.Data, destination, write.Backup, context.CancellationToken);
         }
 
         changed++;
 
         var status = write.DryRun ? "would change" : "changed";
-        var details = (result.Text ?? (firstChange is null ? null : $"first difference: {firstChange.TrimEnd('.')}")) is { } text ? $" ({text})" : "";
-        var warning = difference is null ? "" : $"{CliConsole.Error} warning:{CliConsole.Reset} {CliConsole.Escape($"writing anyway, although {difference}")}";
+        var details = (result.Text ?? DescribeChanges(original, saved.Reparsed ?? gbx)) is { } text ? $" ({text})" : "";
+        var warning = saved.Difference is null ? "" : $"{CliConsole.Error} warning:{CliConsole.Reset} {CliConsole.Escape($"writing anyway, although {saved.Difference}")}";
 
         await WriteLineAsync(item, $"{CliConsole.Written}{status}{CliConsole.Reset}{CliConsole.Escape(details)}{warning}");
+    }
+
+    /// <summary>
+    /// The first changes from the original file to the saved Gbx, so the line also shows a change that saving made.
+    /// </summary>
+    private string? DescribeChanges(Gbx? original, Gbx saved)
+    {
+        if (original is null)
+        {
+            return null;
+        }
+
+        const int shown = 3;
+        var changes = GbxPropertyComparer.FindDifferences(original, saved, shown + 1, cancellationToken: context.CancellationToken);
+
+        return changes.Count == 0 ? null : string.Join(", ", changes.Take(shown)) + (changes.Count > shown ? ", ..." : "");
     }
 
     private Task WriteLineAsync(GbxBatchItem item, string text)

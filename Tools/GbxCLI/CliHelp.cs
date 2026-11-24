@@ -79,6 +79,16 @@ internal static class CliHelp
               --roundtrip            Save and reparse each Gbx, then compare its properties recursively.
               --strict               Fail with exit code 1 when any file fails verification.
             """,
+        ["diff"] = $"""
+            {H}Usage:{Z} gbx diff <path> <path> [--max <n>] [--strict]
+
+            Lists the properties that differ between two Gbx files, one per line, such as Node.MapName: A -> B.
+            Both paths can continue inside an archive. Compressed data is compared after decompressing it.
+
+            {H}Options:{Z}
+              --max <n>              Stop after n differences. The default is 200, and 0 lists all of them.
+              --strict               Fail with exit code 1 when the files differ.
+            """,
         ["pack"] = $"""
             {H}Usage:{Z} gbx pack <command> <archive>[/pattern] [options]
 
@@ -128,6 +138,7 @@ internal static class CliHelp
               eval <path> <code>...           Evaluate C# against a Gbx, PAK or ZIP file.
               set <path> <member>=<value>...  Change members of a Gbx and write it.
               script <file> [args...]         Run a C# script with GBX.NET available.
+              diff <path> <path>              List the properties that differ between two Gbx files.
               verify <path>                   Fully parse Gbx files, also inside folders and PAK or ZIP archives.
               pack list <archive>             List PAK or ZIP entries, resolving known hashes.
               pack extract <archive>          Extract all or matching PAK or ZIP entries.

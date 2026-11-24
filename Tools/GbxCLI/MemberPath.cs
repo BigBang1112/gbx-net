@@ -84,17 +84,7 @@ internal sealed class MemberPath
     public MemberChange Assign(object root, string text)
     {
         var path = new StringBuilder();
-
-        if (root is Gbx { Node: { } node } && segments[0].Name is { } name && FindMember(root.GetType(), name) is null)
-        {
-            if (FindMember(node.GetType(), name) is null)
-            {
-                throw new InvalidOperationException($"Neither the Gbx nor its {ValueFormatter.GetTypeName(node.GetType())} node has a member '{name}'.");
-            }
-
-            root = node;
-            path.Append(nameof(Gbx.Node));
-        }
+        root = ResolveRoot(root, path);
 
         object? oldValue = null;
         object? newValue = null;
@@ -142,6 +132,42 @@ internal sealed class MemberPath
         AssignAt(root, 0);
 
         return new MemberChange(path.ToString(), oldValue, newValue);
+    }
+
+    /// <summary>
+    /// Reads the value at the path, such as the value that a browser frame shows.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">The path doesn't lead to a member.</exception>
+    public object? GetValue(object root)
+    {
+        var path = new StringBuilder();
+        object? value = ResolveRoot(root, path);
+
+        foreach (var segment in segments)
+        {
+            value = Resolve(value ?? throw new InvalidOperationException($"{path} is null, so it has no members."), segment, path).GetValue();
+        }
+
+        return value;
+    }
+
+    /// <summary>
+    /// From a <see cref="Gbx"/>, a first name that the Gbx doesn't have starts at its node instead.
+    /// </summary>
+    private object ResolveRoot(object root, StringBuilder path)
+    {
+        if (root is not Gbx { Node: { } node } || segments[0].Name is not { } name || FindMember(root.GetType(), name) is not null)
+        {
+            return root;
+        }
+
+        if (FindMember(node.GetType(), name) is null)
+        {
+            throw new InvalidOperationException($"Neither the Gbx nor its {ValueFormatter.GetTypeName(node.GetType())} node has a member '{name}'.");
+        }
+
+        path.Append(nameof(Gbx.Node));
+        return node;
     }
 
     private static Member Resolve(object target, Segment segment, StringBuilder path)

@@ -159,7 +159,7 @@ public class BatchTests
 
         await Assert.That(run.ExitCode).IsEqualTo(0);
         await Assert.That(Lines(run)).IsEquivalentTo([
-            "a.Gbx: changed (first difference: Node.Keys[0].TimeValue from 42.5 to 1)",
+            "a.Gbx: changed (Node.Keys[0].TimeValue: 42.5 -> 1)",
             "b.Gbx: unchanged",
             "Changed 1 Gbx files; 1 unchanged; 0 failed; 0 non-Gbx files skipped."]);
         await Assert.That(Fixtures.ReadTimeValue(a)).IsEqualTo(1f);
