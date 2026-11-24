@@ -5,7 +5,7 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x0312E000</remarks>
 [Class(0x0312E000)]
-public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x0312E000;
@@ -13,8 +13,9 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     internal override uint GetId() => Id;
 
     private string? menuLeagueFilter;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312E000>]
+    [AppliedWithArchive]
     public string? MenuLeagueFilter
     {
         get => this.menuLeagueFilter;
@@ -22,12 +23,72 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     }
 
     private byte menuInternetView;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk0312E000>]
+    [AppliedWithArchive]
     public byte MenuInternetView
     {
         get => this.menuInternetView;
         set => this.menuInternetView = value;
+    }
+
+    private int u01;
+    public int U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
+    private SCampaignSettings[]? campaignSettings;
+    /// <remarks>Applied with: 0x004 body chunk, archive</remarks>
+    [AppliedWithChunk<Chunk0312E004>]
+    [AppliedWithArchive]
+    public SCampaignSettings[]? CampaignSettings
+    {
+        get => this.campaignSettings;
+        set => this.campaignSettings = value;
+    }
+
+    private Pair[]? u02;
+    public Pair[]? U02
+    {
+        get => this.u02;
+        set => this.u02 = value;
+    }
+
+    private Vec3[]? u03;
+    public Vec3[]? U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
+    private byte u04;
+    public byte U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private string[]? u05;
+    public string[]? U05
+    {
+        get => this.u05;
+        set => this.u05 = value;
+    }
+
+    private string[]? u06;
+    public string[]? U06
+    {
+        get => this.u06;
+        set => this.u06 = value;
+    }
+
+    private string[]? u07;
+    public string[]? U07
+    {
+        get => this.u07;
+        set => this.u07 = value;
     }
 
     private int dynamicLoadScreenIndex;
@@ -39,26 +100,58 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
         set => this.dynamicLoadScreenIndex = value;
     }
 
-    private SCampaignSettings[]? campaignSettings;
-    /// <remarks>Applied with: 0x004 body chunk</remarks>
-    [AppliedWithChunk<Chunk0312E004>]
-    public SCampaignSettings[]? CampaignSettings
-    {
-        get => this.campaignSettings;
-        set => this.campaignSettings = value;
-    }
-
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerProfileChunk_InterfaceSettings)clone).menuLeagueFilter = context.Clone(this.menuLeagueFilter)!;
         ((CGamePlayerProfileChunk_InterfaceSettings)clone).menuInternetView = context.Clone(this.menuInternetView)!;
-        ((CGamePlayerProfileChunk_InterfaceSettings)clone).dynamicLoadScreenIndex = context.Clone(this.dynamicLoadScreenIndex)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u01 = context.Clone(this.u01)!;
         ((CGamePlayerProfileChunk_InterfaceSettings)clone).campaignSettings = context.CloneArray(this.campaignSettings)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u02 = context.CloneArray(this.u02)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u03 = context.CloneArray(this.u03)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u04 = context.Clone(this.u04)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u05 = context.CloneArray(this.u05)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u06 = context.CloneArray(this.u06)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).u07 = context.CloneArray(this.u07)!;
+        ((CGamePlayerProfileChunk_InterfaceSettings)clone).dynamicLoadScreenIndex = context.Clone(this.dynamicLoadScreenIndex)!;
     }
 
     public CGamePlayerProfileChunk_InterfaceSettings()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.String(ref this.menuLeagueFilter);
+        rw.Byte(ref this.menuInternetView);
+        rw.Int32(ref this.u01);
+        rw.ArrayReadableWritable<SCampaignSettings>(ref this.campaignSettings!, version: v);
+        rw.ArrayReadableWritable<Pair>(ref this.u02!, version: v);
+        rw.Array<Vec3>(ref this.u03!, 5);
+        rw.Byte(ref this.u04);
+
+        if (v >= 1)
+        {
+            rw.ArrayString(ref this.u05!, 3);
+        }
+
+        if (v >= 2)
+        {
+            rw.ArrayString(ref this.u06!, 3);
+            rw.ArrayString(ref this.u07!, 3);
+        }
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>

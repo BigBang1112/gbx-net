@@ -5,30 +5,301 @@ namespace GBX.NET.Engines.TrackMania;
 
 /// <remarks>ID: 0x240D5000</remarks>
 [Class(0x240D5000)]
-public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x240D5000;
 
     internal override uint GetId() => Id;
 
+    private byte u01;
+    public byte U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
+    private byte[]? u02;
+    public byte[]? U02
+    {
+        get => this.u02;
+        set => this.u02 = value;
+    }
+
+    private byte[]? u03;
+    public byte[]? U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
     private int serverParametersVersion = 6;
-    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    /// <remarks>Applied with: 0x003 body chunk, archive v7+</remarks>
     [AppliedWithChunk<Chunk240D5003>]
+    [AppliedWithArchive(7)]
     public int ServerParametersVersion
     {
         get => this.serverParametersVersion;
         set => this.serverParametersVersion = value;
     }
 
+    private byte[]? u04;
+    public byte[]? U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private byte[]? u05;
+    public byte[]? U05
+    {
+        get => this.u05;
+        set => this.u05 = value;
+    }
+
+    private uint u06;
+    public uint U06
+    {
+        get => this.u06;
+        set => this.u06 = value;
+    }
+
+    private ushort u07;
+    public ushort U07
+    {
+        get => this.u07;
+        set => this.u07 = value;
+    }
+
+    private ushort u08;
+    public ushort U08
+    {
+        get => this.u08;
+        set => this.u08 = value;
+    }
+
+    private ushort u09;
+    public ushort U09
+    {
+        get => this.u09;
+        set => this.u09 = value;
+    }
+
+    private ushort u10;
+    public ushort U10
+    {
+        get => this.u10;
+        set => this.u10 = value;
+    }
+
+    private ushort u11;
+    public ushort U11
+    {
+        get => this.u11;
+        set => this.u11 = value;
+    }
+
+    private ushort u12;
+    public ushort U12
+    {
+        get => this.u12;
+        set => this.u12 = value;
+    }
+
+    private int u13;
+    public int U13
+    {
+        get => this.u13;
+        set => this.u13 = value;
+    }
+
+    private int u14;
+    public int U14
+    {
+        get => this.u14;
+        set => this.u14 = value;
+    }
+
+    private ushort u15;
+    public ushort U15
+    {
+        get => this.u15;
+        set => this.u15 = value;
+    }
+
+    private int u16;
+    public int U16
+    {
+        get => this.u16;
+        set => this.u16 = value;
+    }
+
+    private ushort u17;
+    public ushort U17
+    {
+        get => this.u17;
+        set => this.u17 = value;
+    }
+
+    private ushort u18;
+    public ushort U18
+    {
+        get => this.u18;
+        set => this.u18 = value;
+    }
+
+    private ushort u19;
+    public ushort U19
+    {
+        get => this.u19;
+        set => this.u19 = value;
+    }
+
+    private int u20;
+    public int U20
+    {
+        get => this.u20;
+        set => this.u20 = value;
+    }
+
+    private int u21;
+    public int U21
+    {
+        get => this.u21;
+        set => this.u21 = value;
+    }
+
+    private string? u22;
+    public string? U22
+    {
+        get => this.u22;
+        set => this.u22 = value;
+    }
+
+    private int respawnCount;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public int RespawnCount
+    {
+        get => this.respawnCount;
+        set => this.respawnCount = value;
+    }
+
+    private int restartCount;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public int RestartCount
+    {
+        get => this.restartCount;
+        set => this.restartCount = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u01 = context.Clone(this.u01)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u02 = context.CloneArray(this.u02)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u03 = context.CloneArray(this.u03)!;
         ((CGamePlayerProfileChunk_TrackManiaSettings)clone).serverParametersVersion = context.Clone(this.serverParametersVersion)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u04 = context.CloneArray(this.u04)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u05 = context.CloneArray(this.u05)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u06 = context.Clone(this.u06)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u07 = context.Clone(this.u07)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u08 = context.Clone(this.u08)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u09 = context.Clone(this.u09)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u10 = context.Clone(this.u10)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u11 = context.Clone(this.u11)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u12 = context.Clone(this.u12)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u13 = context.Clone(this.u13)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u14 = context.Clone(this.u14)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u15 = context.Clone(this.u15)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u16 = context.Clone(this.u16)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u17 = context.Clone(this.u17)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u18 = context.Clone(this.u18)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u19 = context.Clone(this.u19)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u20 = context.Clone(this.u20)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u21 = context.Clone(this.u21)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).u22 = context.Clone(this.u22)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).respawnCount = context.Clone(this.respawnCount)!;
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).restartCount = context.Clone(this.restartCount)!;
     }
 
     public CGamePlayerProfileChunk_TrackManiaSettings()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.Byte(ref this.u01);
+        rw.Array<byte>(ref this.u02!);
+        rw.Array<byte>(ref this.u03!);
+
+        if (v >= 7)
+        {
+            rw.Int32(ref this.serverParametersVersion);
+        }
+
+        if (v== 0)
+        {
+            if (rw.Reader is not null)
+            {
+                ServerParametersVersion = 4;
+            }
+        }
+
+        if (v>= 1 && v< 7)
+        {
+            if (rw.Reader is not null)
+            {
+                ServerParametersVersion = v;
+            }
+        }
+
+        if (ServerParametersVersion== 1)
+        {
+            rw.Data(ref this.u04!, 42);
+        }
+
+        if (ServerParametersVersion!= 1 && ServerParametersVersion< 5)
+        {
+            rw.Data(ref this.u05!, 44);
+        }
+
+        if (ServerParametersVersion>= 5)
+        {
+            rw.UInt32(ref this.u06);
+            rw.UInt16(ref this.u07);
+            rw.UInt16(ref this.u08);
+            rw.UInt16(ref this.u09);
+            rw.UInt16(ref this.u10);
+            rw.UInt16(ref this.u11);
+            rw.UInt16(ref this.u12);
+            rw.Int32(ref this.u13);
+            rw.Int32(ref this.u14);
+            rw.UInt16(ref this.u15);
+            rw.Int32(ref this.u16);
+            rw.UInt16(ref this.u17);
+            rw.UInt16(ref this.u18);
+            rw.UInt16(ref this.u19);
+            rw.Int32(ref this.u20);
+            rw.Int32(ref this.u21);
+            rw.String(ref this.u22);
+        }
+
+        rw.Int32(ref this.respawnCount);
+        rw.Int32(ref this.restartCount);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>

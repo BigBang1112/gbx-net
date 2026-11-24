@@ -22,6 +22,8 @@ public partial class CGamePlayerProfileChunk : CMwNod, IClass
         ((CGamePlayerProfileChunk)clone).ArchiveVersion = context.Clone(this.ArchiveVersion)!;
         ((CGamePlayerProfileChunk)clone).SkipArchiveVersion = context.Clone(this.SkipArchiveVersion)!;
         ((CGamePlayerProfileChunk)clone).CreatedAt = context.Clone(this.CreatedAt)!;
+        ((CGamePlayerProfileChunk)clone).IsBufferMemoryArchivation = context.Clone(this.IsBufferMemoryArchivation)!;
+        ((CGamePlayerProfileChunk)clone).IsOnlineSaveArchivation = context.Clone(this.IsOnlineSaveArchivation)!;
     }
 
     public CGamePlayerProfileChunk()

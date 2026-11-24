@@ -5,16 +5,24 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03148000</remarks>
 [Class(0x03148000)]
-public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03148000;
 
     internal override uint GetId() => Id;
 
+    private int u01;
+    public int U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
     private SChallengeStats[]? challengeStats;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x001 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03148001>]
+    [AppliedWithArchive]
     public SChallengeStats[]? ChallengeStats
     {
         get => this.challengeStats;
@@ -24,11 +32,34 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ChallengesStats)clone).u01 = context.Clone(this.u01)!;
         ((CGamePlayerProfileChunk_ChallengesStats)clone).challengeStats = context.CloneArray(this.challengeStats)!;
     }
 
     public CGamePlayerProfileChunk_ChallengesStats()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        if (!IsOnlineSaveArchivation)
+        {
+            rw.Int32(ref this.u01);
+        }
+
+        rw.ArrayReadableWritable<SChallengeStats>(ref this.challengeStats!, version: 0);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>

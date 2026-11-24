@@ -5,12 +5,21 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03140000</remarks>
 [Class(0x03140000)]
-public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03140000;
 
     internal override uint GetId() => Id;
+
+    private OldPackageInfo[]? oldPackagesInfos;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public OldPackageInfo[]? OldPackagesInfos
+    {
+        get => this.oldPackagesInfos;
+        set => this.oldPackagesInfos = value;
+    }
 
     private PackageInfo[]? packagesInfos;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
@@ -24,11 +33,29 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_PackagesInfos)clone).oldPackagesInfos = context.CloneArray(this.oldPackagesInfos)!;
         ((CGamePlayerProfileChunk_PackagesInfos)clone).packagesInfos = context.CloneArray(this.packagesInfos)!;
     }
 
     public CGamePlayerProfileChunk_PackagesInfos()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.ArrayReadableWritable<OldPackageInfo>(ref this.oldPackagesInfos!, version: v);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>
@@ -124,6 +151,94 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
             rw.String(ref this.key);
             this.startTimestamp = rw.UnixTime(this.startTimestamp);
             this.endTimestamp = rw.UnixTime(this.endTimestamp);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class OldPackageInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private byte[]? checksum;
+        public byte[]? Checksum
+        {
+            get => this.checksum;
+            set => this.checksum = value;
+        }
+
+        private string? key;
+        public string? Key
+        {
+            get => this.key;
+            set => this.key = value;
+        }
+
+        private DateTimeOffset? startTimestamp;
+        public DateTimeOffset? StartTimestamp
+        {
+            get => this.startTimestamp;
+            set => this.startTimestamp = value;
+        }
+
+        private DateTimeOffset? endTimestamp;
+        public DateTimeOffset? EndTimestamp
+        {
+            get => this.endTimestamp;
+            set => this.endTimestamp = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldPackageInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldPackageInfo)clone).u01 = context.Clone(this.u01)!;
+            ((OldPackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
+            ((OldPackageInfo)clone).key = context.Clone(this.key)!;
+            ((OldPackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
+            ((OldPackageInfo)clone).endTimestamp = context.Clone(this.endTimestamp)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v <= 1)
+            {
+                rw.String(ref this.u01);
+            }
+
+            rw.Data(ref this.checksum!, 32);
+            rw.String(ref this.key);
+
+            if (v >= 1)
+            {
+                this.startTimestamp = rw.UnixTime(this.startTimestamp);
+
+                if (v >= 3)
+                {
+                    this.endTimestamp = rw.UnixTime(this.endTimestamp);
+                }
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

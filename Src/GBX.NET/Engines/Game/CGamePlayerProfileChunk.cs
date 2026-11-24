@@ -12,6 +12,53 @@ public partial class CGamePlayerProfileChunk
     public int? SkipArchiveVersion { get; set; }
     public DateTimeOffset? CreatedAt { get; set; }
 
+    /// <summary>
+    /// Selects the buffer memory payload of an old archive, which embeds referenced nodes as Gbx files instead of node references.
+    /// This context is supplied by the caller and is not stored in the payload.
+    /// </summary>
+    public bool IsBufferMemoryArchivation { get; set; }
+
+    /// <summary>
+    /// Selects the native online-save payload, which omits local data.
+    /// This context is supplied by the caller and is not stored in the payload.
+    /// </summary>
+    public bool IsOnlineSaveArchivation { get; set; }
+
+    /// <summary>
+    /// Reads or writes a node of an old archive. Buffer memory payloads store a presence byte and an uncompressed Gbx, other payloads store a node reference.
+    /// </summary>
+    private protected void ReadWriteArchivedNode<T>(GbxReaderWriter rw, ref NodeRef<T>? nodeRef) where T : CMwNod
+    {
+        if (!IsBufferMemoryArchivation)
+        {
+            rw.NodeRef(ref nodeRef);
+            return;
+        }
+
+        var node = rw.Writer is null ? null : nodeRef?.Resolve();
+        var hasNode = rw.Boolean(node is not null, asByte: true);
+
+        if (rw.Reader is GbxReader r)
+        {
+            node = null;
+
+            if (hasNode)
+            {
+                var embedded = Gbx.ParseNode(r.BaseStream, r.Settings with { CloseStream = false });
+                node = embedded as T ?? throw new InvalidDataException($"Embedded node {embedded?.GetType().Name ?? "null"} is not {typeof(T).Name}.");
+            }
+
+            NodeRef.SetEmbedded(ref nodeRef, node);
+        }
+
+        if (rw.Writer is GbxWriter w && node is not null)
+        {
+            var gbx = node.ToGbx();
+            gbx.BodyCompression = GbxCompression.Uncompressed;
+            gbx.Save(w.BaseStream, w.Settings with { CloseStream = false });
+        }
+    }
+
     public override string ToString()
     {
         var sb = new StringBuilder(GetType().Name);

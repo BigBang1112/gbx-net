@@ -1,6 +1,19 @@
 CGamePlayerProfileChunk_VehiclesSettings 0x03130000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  v6=
+    return
+  string U01
+  v3+
+    data[32] U02
+  float U03
+  float U04
+  float U05
+  OldVehicleProfile[] OldVehicleProfiles (version: v)
+  v4+
+    int OldVehicleProfileVersion = 3 // Version 4+ clears default skin checksums.
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   string
@@ -54,6 +67,21 @@ archive VehicleProfile
     bool
     v3+
       bool
+
+archive OldVehicleProfile
+  ident PlayerModel
+  string SkinName
+  v8+
+    string SkinUrl
+  v0=
+    int LegacySkinChecksum
+  v1=
+    uint128 SkinChecksum128
+  v2+
+    data[32] SkinChecksum
+  int GameCamera
+  float AnalogSensitivity
+  float AnalogDeadZone
 
 archive Unknown
   ident

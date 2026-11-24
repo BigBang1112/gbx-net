@@ -1,6 +1,20 @@
 CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  string MenuLeagueFilter
+  byte MenuInternetView
+  int U01
+  SCampaignSettings[] CampaignSettings
+  Pair[] U02
+  vec3[5] U03
+  byte U04
+  v1+
+    string[3] U05
+  v2+
+    string[3] U06
+    string[3] U07
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   string MenuLeagueFilter

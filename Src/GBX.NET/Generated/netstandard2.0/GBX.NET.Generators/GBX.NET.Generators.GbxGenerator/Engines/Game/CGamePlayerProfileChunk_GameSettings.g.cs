@@ -129,6 +129,22 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
         set => this.shootParamsVideo = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerProfileChunk_GameSettings owner;
+        internal NodeRefView(CGamePlayerProfileChunk_GameSettings owner) => this.owner = owner;
+        public NodeRef<CGameCtnMediaShootParams> OldShootParamsVideo => NodeRef.GetOrCreate(ref owner.oldShootParamsVideoRef);
+        public NodeRef<CGameCtnMediaShootParams> OldShootParams2 => NodeRef.GetOrCreate(ref owner.oldShootParams2Ref);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("OldShootParamsVideo", NodeRef.GetOrCreate(ref oldShootParamsVideoRef));
+        yield return new("OldShootParams2", NodeRef.GetOrCreate(ref oldShootParams2Ref));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -145,6 +161,26 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
         ((CGamePlayerProfileChunk_GameSettings)clone).stereoscopyStrength01 = context.Clone(this.stereoscopyStrength01)!;
         ((CGamePlayerProfileChunk_GameSettings)clone).stereoscopyAdvancedScreenDist = context.Clone(this.stereoscopyAdvancedScreenDist)!;
         ((CGamePlayerProfileChunk_GameSettings)clone).shootParamsVideo = context.Clone(this.shootParamsVideo)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).oldShootParamsVideoRef = context.Clone(this.oldShootParamsVideoRef)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).oldShootParams2Ref = context.Clone(this.oldShootParams2Ref)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU01 = context.Clone(this.OldU01)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU02 = context.Clone(this.OldU02)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU03 = context.Clone(this.OldU03)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldMaxPlayerCount = context.Clone(this.OldMaxPlayerCount)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldMaxSpectatorCount = context.Clone(this.OldMaxSpectatorCount)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldNetStateQuality = context.Clone(this.OldNetStateQuality)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldLadderMode = context.Clone(this.OldLadderMode)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldFlags = context.Clone(this.OldFlags)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldUnlockFlags = context.Clone(this.OldUnlockFlags)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldProposeSimpleEditor = context.Clone(this.OldProposeSimpleEditor)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU04 = context.CloneArray(this.OldU04)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU05 = context.CloneArray(this.OldU05)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU06 = context.CloneArray(this.OldU06)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU07 = context.Clone(this.OldU07)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU08 = context.Clone(this.OldU08)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldStereoscopyStrength01Multiplier = context.Clone(this.OldStereoscopyStrength01Multiplier)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldMouseSensitivity = context.Clone(this.OldMouseSensitivity)!;
+        ((CGamePlayerProfileChunk_GameSettings)clone).OldU09 = context.Clone(this.OldU09)!;
     }
 
     public CGamePlayerProfileChunk_GameSettings()
