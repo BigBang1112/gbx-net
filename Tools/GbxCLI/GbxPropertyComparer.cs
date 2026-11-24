@@ -13,7 +13,64 @@ internal sealed class GbxPropertyComparer(bool hasExternalReferences, Cancellati
         (a, b) => ReferenceEquals(a.Left, b.Left) && ReferenceEquals(a.Right, b.Right),
         pair => HashCode.Combine(RuntimeHelpers.GetHashCode(pair.Left), RuntimeHelpers.GetHashCode(pair.Right))));
 
+    /// <summary>
+    /// Compares the header class ID, unknown user data and the node properties recursively.
+    /// </summary>
+    /// <remarks>
+    /// Reading a lazily parsed member, such as the lightmap cache of a map, can change a stored node reference that the comparison
+    /// reads before it. When only one side was read before, such as by C# expressions, that looks like a difference. So after
+    /// a difference, both sides are read completely, which parses such members on both, and compared again.
+    /// </remarks>
+    /// <returns>The first difference as <c>Path from A to B.</c>, or null if there is none.</returns>
     public static string? FindDifference(Gbx original, Gbx reparsed, CancellationToken cancellationToken)
+    {
+        if (FindDifferenceOnce(original, reparsed, cancellationToken) is null)
+        {
+            return null;
+        }
+
+        var hasExternalReferences = ValueInspector.HasExternalReferences(original) || ValueInspector.HasExternalReferences(reparsed);
+        var touched = new HashSet<object>(ReferenceEqualityComparer.Instance);
+
+        ReadAll(original.Node, hasExternalReferences, touched, cancellationToken);
+        ReadAll(reparsed.Node, hasExternalReferences, touched, cancellationToken);
+
+        return FindDifferenceOnce(original, reparsed, cancellationToken);
+    }
+
+    /// <summary>
+    /// Reads every member recursively, the same way the comparison does.
+    /// </summary>
+    private static void ReadAll(object? value, bool hasExternalReferences, HashSet<object> touched, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        if (value is null or string || value is not IEnumerable && ValueInspector.IsScalar(value)
+            || !value.GetType().IsValueType && !touched.Add(value))
+        {
+            return;
+        }
+
+        // An external reference is never resolved, so no other file is loaded.
+        if (value is NodeRef reference)
+        {
+            ReadAll(reference.Kind == NodeRefKind.Embedded ? reference.Node : null, hasExternalReferences, touched, cancellationToken);
+            return;
+        }
+
+        // Collections that are structs, such as immutable arrays, are skipped, because a default one cannot be enumerated.
+        if (value is IEnumerable && value.GetType().IsValueType)
+        {
+            return;
+        }
+
+        foreach (var member in ValueInspector.GetMembers(value, hasExternalReferences: hasExternalReferences))
+        {
+            ReadAll(member.Value, hasExternalReferences, touched, cancellationToken);
+        }
+    }
+
+    private static string? FindDifferenceOnce(Gbx original, Gbx reparsed, CancellationToken cancellationToken)
     {
         var comparer = new GbxPropertyComparer(
             ValueInspector.HasExternalReferences(original) || ValueInspector.HasExternalReferences(reparsed), cancellationToken);
@@ -70,11 +127,28 @@ internal sealed class GbxPropertyComparer(bool hasExternalReferences, Cancellati
                 ?? Compare(a.RefTable.AncestorLevel, b.RefTable.AncestorLevel, $"{path}.AncestorLevel") ?? CompareDescriptor(a, b, path),
             (GbxRefTableResource a, GbxRefTableResource b) => Compare(a.ResourceIndex, b.ResourceIndex, $"{path}.ResourceIndex")
                 ?? CompareDescriptor(a, b, path),
+            (ZlibData a, ZlibData b) => CompareZlibData(a, b, path),
             (IDictionary a, IDictionary b) => CompareDictionary(a, b, path),
             (Exception a, Exception b) => Compare(a.Message, b.Message, $"{path}.Message"),
             (IEnumerable a, IEnumerable b) => CompareItems(a, b, path),
             _ => CompareMembers(left, right, path)
         };
+    }
+
+    /// <summary>
+    /// Saved compressed data can differ while the data is the same, such as by compression level. Parsed data is compared through
+    /// the members it was parsed into, and saving it again can change the compressed data nested in it. Otherwise, the
+    /// decompressed data is compared.
+    /// </summary>
+    private string? CompareZlibData(ZlibData left, ZlibData right, string path) => left.Parsed && right.Parsed
+        ? null
+        : Compare(left.UncompressedSize, right.UncompressedSize, $"{path}.UncompressedSize")
+            ?? Compare(Decompress(left), Decompress(right), $"{path}.Decompressed");
+
+    private static byte[] Decompress(ZlibData data)
+    {
+        using var reader = data.OpenDecompressedReader();
+        return reader.ReadBytes(data.UncompressedSize);
     }
 
     private string? CompareDescriptor(GbxRefTableNode left, GbxRefTableNode right, string path)

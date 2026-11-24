@@ -1,3 +1,5 @@
+using GBX.NET;
+
 namespace GbxCLI.Commands;
 
 /// <summary>
@@ -54,6 +56,13 @@ internal static class SetCommand
             throw new ArgumentException("Missing <member>=<value> for set.");
         }
 
+        if (GbxBatch.IsBatch(inputPath))
+        {
+            var write = new GbxBatchWrite(outputPath, dryRun, backup, force);
+            await new GbxBatchRunner(context, write).RunAsync(inputPath, (gbx, _) => Task.FromResult(Assign(gbx, assignments)));
+            return;
+        }
+
         await using var file = await FileObject.OpenAsync(inputPath, context.CancellationToken);
 
         // A dry run writes nothing, so a Gbx inside an archive can be tried without -o.
@@ -76,5 +85,21 @@ internal static class SetCommand
         await CheckedGbxWriter.WriteAsync(gbx, outputPath ?? file.InputPath, context.Console, backup, force, context.CancellationToken);
     }
 
-    private static string Describe(object? value) => CliConsole.Escape(ValueFormatter.Clean(ValueFormatter.Describe(value)));
+    /// <summary>
+    /// Assigns the values to one Gbx of a batch. A file whose values already match is unchanged, so it isn't written.
+    /// </summary>
+    private static GbxBatchEdit Assign(Gbx gbx, List<(MemberPath Path, string Value)> assignments)
+    {
+        var changes = assignments.Select(assignment => assignment.Path.Assign(gbx, assignment.Value))
+            .Where(change => !Equals(change.OldValue, change.NewValue))
+            .ToArray();
+
+        return new GbxBatchEdit(changes.Length > 0, changes.Length > 0
+            ? string.Join(", ", changes.Select(change => $"{change.Path}: {Format(change.OldValue)} -> {Format(change.NewValue)}"))
+            : null);
+    }
+
+    private static string Format(object? value) => ValueFormatter.Clean(ValueFormatter.Describe(value));
+
+    private static string Describe(object? value) => CliConsole.Escape(Format(value));
 }

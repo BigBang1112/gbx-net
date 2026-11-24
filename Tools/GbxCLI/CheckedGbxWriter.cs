@@ -8,46 +8,70 @@ namespace GbxCLI;
 internal static class CheckedGbxWriter
 {
     /// <summary>
-    /// Saves the Gbx into memory, parses the result again and compares its properties with <paramref name="gbx"/>.
+    /// Saves the Gbx into memory, without checking the result.
     /// </summary>
-    /// <param name="force">Return the saved data even when the check finds a difference.</param>
-    /// <returns>The saved data, and the difference that <paramref name="force"/> let through, or null.</returns>
-    /// <exception cref="NotSupportedException">The root class is unknown, so the body was not parsed.</exception>
-    /// <exception cref="InvalidDataException">The check found a difference, and <paramref name="force"/> is false.</exception>
-    public static async Task<(byte[] Data, string? Difference)> SaveAsync(Gbx gbx, bool force, CancellationToken cancellationToken = default)
+    /// <exception cref="NotSupportedException">The body was not parsed, or parsing it failed.</exception>
+    public static byte[] Save(Gbx gbx)
     {
         if (gbx.Node is null)
         {
             throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported, so its body cannot be saved.");
         }
 
-        cancellationToken.ThrowIfCancellationRequested();
+        if (gbx.Body.Exception is { } exception)
+        {
+            throw new NotSupportedException($"The body was only partly parsed, so it cannot be saved: {exception.Message}");
+        }
 
         using var saved = new MemoryStream();
         gbx.Save(saved);
-        saved.Position = 0;
+        return saved.ToArray();
+    }
 
-        string? difference;
-
+    /// <summary>
+    /// Parses <paramref name="data"/> saved from <paramref name="gbx"/> again and compares its properties with <paramref name="gbx"/>.
+    /// </summary>
+    /// <returns>The first difference as a sentence, or null if there is none.</returns>
+    public static async Task<string?> FindDifferenceAsync(Gbx gbx, byte[] data, CancellationToken cancellationToken = default)
+    {
         try
         {
+            using var saved = new MemoryStream(data, writable: false);
+
             // The saved data is not encrypted, also when the Gbx came from an encrypted PAK entry.
             var reparsed = await Gbx.ParseAsync(saved, gbx.ReadSettings with { EncryptionInitializer = null }, cancellationToken);
-            difference = GbxPropertyComparer.FindDifference(gbx, reparsed, cancellationToken) is { } changed
+
+            return GbxPropertyComparer.FindDifference(gbx, reparsed, cancellationToken) is { } changed
                 ? $"reading it back changed {changed}"
                 : null;
         }
         catch (Exception exception) when (exception is not OperationCanceledException)
         {
-            difference = $"it cannot be read back: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ").TrimEnd('.')}.";
+            return $"it cannot be read back: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ").TrimEnd('.')}.";
         }
+    }
 
-        if (difference is not null && !force)
-        {
-            throw new InvalidDataException($"The saved Gbx was not written, because {difference} Use --force to write it anyway.");
-        }
+    /// <summary>
+    /// The error for a save that <see cref="FindDifferenceAsync"/> rejected.
+    /// </summary>
+    public static InvalidDataException NotWritten(string difference)
+        => new($"The saved Gbx was not written, because {difference} Use --force to write it anyway.");
 
-        return (saved.ToArray(), difference);
+    /// <summary>
+    /// Saves the Gbx into memory, parses the result again and compares its properties with <paramref name="gbx"/>.
+    /// </summary>
+    /// <param name="force">Return the saved data even when the check finds a difference.</param>
+    /// <returns>The saved data, and the difference that <paramref name="force"/> let through, or null.</returns>
+    /// <exception cref="NotSupportedException">The body was not parsed, or parsing it failed.</exception>
+    /// <exception cref="InvalidDataException">The check found a difference, and <paramref name="force"/> is false.</exception>
+    public static async Task<(byte[] Data, string? Difference)> SaveAsync(Gbx gbx, bool force, CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        var data = Save(gbx);
+        var difference = await FindDifferenceAsync(gbx, data, cancellationToken);
+
+        return difference is not null && !force ? throw NotWritten(difference) : (data, difference);
     }
 
     /// <summary>
@@ -64,7 +88,7 @@ internal static class CheckedGbxWriter
             await console.WriteLineAsync($"{CliConsole.Error}warning:{CliConsole.Reset} {CliConsole.Escape($"Writing anyway, although {difference}")}");
         }
 
-        var backupPath = await OutputFile.WriteAsync(path, (destination, token) => destination.WriteAsync(data, token).AsTask(), backup, cancellationToken);
+        var backupPath = await WriteDataAsync(data, path, backup, cancellationToken);
 
         await console.WriteLineAsync($"{CliConsole.Written}Written:{CliConsole.Reset} {CliConsole.Escape(path)}");
 
@@ -73,4 +97,8 @@ internal static class CheckedGbxWriter
             await console.WriteLineAsync($"{CliConsole.Written}Backup:{CliConsole.Reset} {CliConsole.Escape(backupPath)}");
         }
     }
+
+    /// <inheritdoc cref="OutputFile.WriteAsync"/>
+    public static Task<string?> WriteDataAsync(byte[] data, string path, bool backup, CancellationToken cancellationToken = default)
+        => OutputFile.WriteAsync(path, (destination, token) => destination.WriteAsync(data, token).AsTask(), backup, cancellationToken);
 }

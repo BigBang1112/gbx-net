@@ -34,6 +34,8 @@
 - Added `gbx set` to change members of a Gbx, with `--dry-run` to preview the changes
 - Added `eval -w` and `eval -o` to write a Gbx after the expressions, `save` to the `eval -i` prompt, and `SaveAsync` to scripts
 - A written Gbx is parsed again and compared before it replaces a file, and the previous file is kept as `.bak`
+- `eval` and `set` run on many files with a folder or pattern, such as `"Maps/*.Map.Gbx"` or `Stadium.pak/Maps/*`, and only write the changed ones
+- `verify` accepts patterns on disk, and scripts can list Gbx files with `GetGbxFiles`
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>

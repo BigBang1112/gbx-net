@@ -171,7 +171,7 @@ internal static class PackExtractCommand
     /// <exception cref="IOException">A destination is a folder, or it already exists and <paramref name="existing"/> doesn't allow it.</exception>
     private static (string Path, bool Exists)[] GetDestinations(string directoryPath, IReadOnlyList<ExtractEntry> entries, ExistingFiles existing)
     {
-        var root = Path.TrimEndingDirectorySeparator(directoryPath) + Path.DirectorySeparatorChar;
+        var root = OutputFile.GetRoot(directoryPath);
         var destinations = new (string Path, bool Exists)[entries.Count];
         var files = new Dictionary<string, string>(PathComparer);
         var folders = new HashSet<string>(PathComparer);
@@ -179,7 +179,7 @@ internal static class PackExtractCommand
         for (var i = 0; i < entries.Count; i++)
         {
             var entryPath = entries[i].Path;
-            var destination = GetDestination(root, entryPath);
+            var destination = OutputFile.GetDestination(root, entryPath);
 
             if (!files.TryAdd(destination, entryPath))
             {
@@ -216,25 +216,6 @@ internal static class PackExtractCommand
 
         return destinations;
     }
-
-    /// <summary>
-    /// Rejects rooted paths, <c>..</c> parts and invalid filename characters, and checks that the result stays under <paramref name="root"/>.
-    /// </summary>
-    private static string GetDestination(string root, string entryPath)
-    {
-        var parts = PathPattern.Normalize(entryPath).Split('/');
-
-        if (Path.IsPathRooted(entryPath) || parts.Any(part => part is "" or "." or ".." || part.IndexOfAny(invalidFileNameChars) >= 0))
-        {
-            throw Unsafe(entryPath);
-        }
-
-        var destination = Path.GetFullPath(Path.Join(root, Path.Join(parts)));
-
-        return destination.StartsWith(root, StringComparison.OrdinalIgnoreCase) ? destination : throw Unsafe(entryPath);
-    }
-
-    private static InvalidDataException Unsafe(string entryPath) => new($"Entry '{entryPath}' is not a safe relative file path.");
 
     private static async Task CopyZipEntryAsync(ZipArchiveEntry entry, Stream destination, CancellationToken cancellationToken)
     {

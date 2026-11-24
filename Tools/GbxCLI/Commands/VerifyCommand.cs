@@ -83,16 +83,24 @@ internal sealed class VerifyCommand
 
     private async Task<VerifyCounts> VerifyPathAsync(string inputPath)
     {
-        if (Directory.Exists(inputPath))
+        // A folder or a pattern on disk, such as Maps/*.Map.Gbx. A pattern inside an archive is handled below.
+        if (GbxBatch.IsBatch(inputPath) && !GbxBatch.IsInArchive(inputPath))
         {
+            var files = GbxBatch.FindDiskFiles(inputPath);
+
+            if (files.Count == 0 && !Directory.Exists(inputPath))
+            {
+                throw new FileNotFoundException($"No files matching '{inputPath}' were found.", inputPath);
+            }
+
             var counts = new VerifyCounts();
 
-            foreach (var path in Directory.EnumerateFiles(inputPath, "*", SearchOption.AllDirectories).Order(StringComparer.OrdinalIgnoreCase))
+            foreach (var diskFile in files)
             {
                 context.CancellationToken.ThrowIfCancellationRequested();
 
-                await using var stream = File.OpenRead(path);
-                counts += await VerifyAsync(stream, Path.GetRelativePath(inputPath, path), entryPath: null);
+                await using var stream = File.OpenRead(diskFile.FullPath);
+                counts += await VerifyAsync(stream, diskFile.RelativePath, entryPath: null);
             }
 
             return counts;

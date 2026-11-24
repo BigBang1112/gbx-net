@@ -28,6 +28,28 @@ public sealed class ScriptGlobals(string[] args, TextWriter output, Cancellation
     public void Print(object? value) => Output.WriteLine(value);
 
     /// <summary>
+    /// Gets the full paths of the Gbx files that a folder or a pattern on disk selects, such as <c>Maps/*.Map.Gbx</c>, the way
+    /// <c>gbx set</c> and <c>gbx eval</c> select them. Only files whose name ends with <c>.Gbx</c> are included. A path to one file
+    /// returns that file.
+    /// </summary>
+    public IReadOnlyList<string> GetGbxFiles(string path)
+    {
+        if (File.Exists(path))
+        {
+            return [Path.GetFullPath(path)];
+        }
+
+        if (GbxBatch.IsInArchive(path))
+        {
+            throw new NotSupportedException("GetGbxFiles selects files on disk. Open an archive with Pak or ZipArchive instead.");
+        }
+
+        return [.. GbxBatch.FindDiskFiles(path)
+            .Where(file => file.RelativePath.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase))
+            .Select(file => file.FullPath)];
+    }
+
+    /// <summary>
     /// Saves a Gbx the way <c>gbx eval --write</c> does. The saved data is parsed again and compared with <paramref name="gbx"/>
     /// before anything is written, and the file is replaced through a temporary file.
     /// </summary>

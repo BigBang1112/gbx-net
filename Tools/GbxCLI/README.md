@@ -23,8 +23,8 @@ gbx <path>
 | Command | Arguments | Purpose |
 | --- | --- | --- |
 | `inspect` (alias `parse`) | `<path> [-i]` | Fully parse a Gbx and write a summary, or summarize a PAK or ZIP. |
-| `eval` | `<path> <code>... [-i \| -w \| -o <file>]` | Evaluate C# expressions against the opened file, and optionally write the Gbx. |
-| `set` | `<path> <member>=<value>... [-o <file>] [-n]` | Change members of a Gbx and write it. |
+| `eval` | `<path> <code>... [-i \| -w \| -o <path> \| -n]` | Evaluate C# expressions against one or many files, and optionally write the Gbx files. |
+| `set` | `<path> <member>=<value>... [-o <path>] [-n]` | Change members of one or many Gbx files and write them. |
 | `script` | `<script.csx> [args...]` | Run a C# script file with GBX.NET available. |
 | `verify` (alias `pack verify`) | `<path> [-g <game>] [--roundtrip] [--strict]` | Fully parse every Gbx in a file, folder or archive. |
 | `pack list` | `<archive>[/pattern] [--resolved \| --unresolved]` | List archive entries, resolving known hashes. |
@@ -36,7 +36,7 @@ gbx <path>
 
 ### Exit codes
 
-A command that fails exits with `1` and writes `gbx: <message>` to standard error. Anything else exits with `0`. A file that fails verification is a result, not an error, so `verify` exits with `0` unless you pass `--strict`.
+A command that fails exits with `1` and writes `gbx: <message>` to standard error. Anything else exits with `0`. A file that fails verification is a result, not an error, so `verify` exits with `0` unless you pass `--strict`. `eval` and `set` with [many files](#many-files) exit with `1` after the summary when any file failed.
 
 Ctrl+C stops a long command, such as `verify`, between files. A second Ctrl+C ends the process immediately.
 
@@ -59,9 +59,35 @@ Entry paths follow the same rules in PAK and ZIP archives. Both slash styles wor
 - A path without wildcards selects the entry with exactly that path. If there is none, it selects the entries whose path ends with it, such as a filename.
 - In a PAK, an exact stored path wins over a resolved name. A name outside the hash catalogue is also matched by its PAK filename hash.
 
-`inspect` and `eval` need exactly one entry, so they report an ambiguous path. `verify`, `pack list` and `pack extract` accept many matches, but a pattern that matches nothing is an error.
+`inspect` needs exactly one entry, and so do `eval` and `set` with a path without wildcards, so they report an ambiguous path. `verify`, `pack list` and `pack extract` accept many matches, and so do `eval` and `set` with a pattern, but a pattern that matches nothing is an error.
 
 Private PAK files are decrypted with built-in keys, looked up by filename (also without a `_yyyy-MM-dd` suffix) and by the title ID in the public header. Without a key, only the public header is available.
+
+## Many files
+
+`eval` and `set` run on many Gbx files when the path is a folder or has a `*` or `?`. Any other path opens one file, as described above. Quote a pattern, so the shell passes it as it is.
+
+```
+gbx set "Maps/*.Map.Gbx" AuthorLogin=bigbang1112 --dry-run
+```
+
+```
+Night.Map.Gbx: would change (Node.AuthorLogin: someone -> bigbang1112)
+Old/Day.Map.Gbx: unchanged
+Old/Broken.Map.Gbx: ChunkReadException: ...
+1 Gbx files would change; 1 unchanged; 1 failed; 0 non-Gbx files skipped. Dry run, so nothing was written.
+```
+
+- A folder selects the files in it and all its subfolders.
+- A pattern on disk starts from the folder before its first wildcard, and matches like an entry pattern, so `*` also matches subfolders. `Maps/*.Map.Gbx` selects the maps in `Maps` and below it.
+- On disk, only files whose name ends with `.Gbx` are selected, so backups and other files are left out. A selected file without a Gbx signature is skipped and counted.
+- A pattern inside an archive, such as `Packs/Stadium.pak/Maps/*`, selects the matching entries. Entries that aren't a Gbx are skipped and counted.
+
+Each file gets one line with its result, and a summary follows. A file that fails is reported, and the others continue. Ctrl+C stops between files.
+
+When writing, only files that changed are written. `set` compares the values it assigns, and `eval` compares the properties with a second, unchanged copy of each file. A file that GBX.NET can't save, such as a replay, only fails if it changed. Each changed file is checked and written like [one Gbx](#writing-a-gbx), and the dry run (`-n`) runs the check without writing.
+
+With many files, `-o` is a folder. Each changed file is written there at its path under the selected folder, or at its entry path in an archive. Gbx files inside an archive are only written with `-o`.
 
 ## Browsing a file
 
@@ -101,7 +127,7 @@ gbx eval "My.Map.Gbx" "Node.MapName" "Node.Author"
 
 With `-i`, a C# prompt starts after the expressions. Errors are shown, and the prompt continues until you enter `q`. Enter `save` to write the Gbx back to its file, or `save <path>` to write it to another file. `save --force` and `save --no-backup` work like the options below.
 
-To keep the changes from the expressions, pass `-w` (`--write`) to write the Gbx back to its file, or `-o <file>` to write it to another file.
+To keep the changes from the expressions, pass `-w` (`--write`) to write the Gbx back to its file, or `-o <file>` to write it to another file. `-n` (`--dry-run`) runs the check below, but writes nothing.
 
 ```
 gbx eval "My.Map.Gbx" "Node.MapName = \"Night run\"" "Node.AuthorTime = null" -w
@@ -109,6 +135,12 @@ gbx eval "My.Map.Gbx" "Node.MapName = \"Night run\"" "Node.AuthorTime = null" -w
 
 - `--no-backup` doesn't keep an existing output as `<output>.bak`.
 - `--force` writes even when the check below finds a difference, and shows it as a warning.
+
+With [many files](#many-files), each file shows the values of its expressions on one line, separated by `|`. A statement that ends with `;` shows nothing, like in the C# prompt. With `-w`, `-o` or `-n`, each file shows whether it changed instead. The expressions are compiled once for each node type, so a folder with many maps doesn't compile them again for each file. `-i` only opens one file.
+
+```
+gbx eval "Maps" "Node.MapName" "Node.AuthorTime"
+```
 
 ### Writing a Gbx
 
@@ -119,11 +151,13 @@ gbx eval "My.Map.Gbx" "Node.MapName = \"Night run\"" "Node.AuthorTime = null" -w
 3. If anything differs, nothing is written and the command fails with the first difference. A value that the file format can't store is caught this way, such as a block coordinate of 300 in a TMF map, which stores it in one byte.
 4. The data is written to a temporary file, which then replaces the output. An existing output is kept as `<output>.bak`.
 
-A Gbx inside a PAK or ZIP archive is only written with `-o`, because archives are never changed. A Gbx whose root class is unknown can't be written, because its body wasn't parsed. Some classes, such as replays, can't be written by GBX.NET at all, and the command fails with that error.
+A Gbx inside a PAK or ZIP archive is only written with `-o`, because archives are never changed. A Gbx whose root class is unknown can't be written, because its body wasn't parsed, and neither can a Gbx whose body was only partly parsed. Some classes, such as replays, can't be written by GBX.NET at all, and the command fails with that error.
+
+Compressed data inside a Gbx, such as a lightmap, is compared after decompressing it, because GBX.NET can compress it differently than the game did.
 
 ### set
 
-Assigns values to members of a Gbx, then writes it like `eval -w`. Without `-o`, the input file is replaced. Each change is shown with its old and new value.
+Assigns values to members of a Gbx, then writes it like `eval -w`. Without `-o`, the input file is replaced. A folder or pattern changes [many files](#many-files). Each change is shown with its old and new value.
 
 ```
 gbx set "My.Map.Gbx" "MapName=Night run" "Decoration=48x48Night,Stadium2020,Nadeo" "Blocks[0].Coord.Y=20"
@@ -161,17 +195,20 @@ Collections, nodes and byte arrays can't be set from text. Use `eval` for those.
 
 Runs a C# script file. Arguments after the script path are passed to the script as `Args`, also when they start with `-`. Use `--` before the script path only when the path itself starts with `-`. Scripts can call `Print(value)` and write to `Output`.
 
-`SaveAsync(gbx, path)` writes a Gbx with the same check and backup as `eval -w`. It also takes `backup: false` and `force: true`.
+`SaveAsync(gbx, path)` writes a Gbx with the same check and backup as `eval -w`. It also takes `backup: false` and `force: true`. `GetGbxFiles(path)` returns the full paths of the Gbx files that a folder or a pattern on disk selects, like [many files](#many-files) in `eval` and `set`.
 
 ```cs
-var gbx = Gbx.Parse<CGameCtnChallenge>(Args[0]);
-gbx.Node.MapName = "Night run";
-await SaveAsync(gbx, Args[0]);
+foreach (var path in GetGbxFiles(Args[0]))
+{
+    var gbx = Gbx.Parse<CGameCtnChallenge>(path);
+    gbx.Node.MapName = "Night run";
+    await SaveAsync(gbx, path);
+}
 ```
 
 ### verify
 
-Parses every Gbx fully and continues after exceptions. A folder is walked with all subfolders in name order, and archives are opened to verify each entry. Files without a Gbx, PAK or ZIP signature are skipped and counted.
+Parses every Gbx fully and continues after exceptions. A folder is walked with all subfolders in name order, and archives are opened to verify each entry. A pattern on disk, such as `Maps/*.Map.Gbx`, selects files like in [many files](#many-files), but without the `.Gbx` name filter. Files without a Gbx, PAK or ZIP signature are skipped and counted.
 
 ```
 Packs/Stadium.pak/Media/Broken.Gbx: ChunkReadException: ...

@@ -21,9 +21,15 @@ internal sealed class CSharpSession
     public CSharpSession(object globals, string? filePath = null)
     {
         this.globals = globals;
+        options = CreateOptions(globals.GetType(), filePath);
+    }
 
-        var globalsType = globals.GetType();
-
+    /// <summary>
+    /// Options with GBX.NET and the type of the globals referenced and imported.
+    /// </summary>
+    /// <param name="filePath">Path of a script file, which lets it load other scripts and references relative to it.</param>
+    public static ScriptOptions CreateOptions(Type globalsType, string? filePath = null)
+    {
         var options = ScriptOptions.Default
             .AddReferences(typeof(Gbx).Assembly, typeof(Pak).Assembly, typeof(Enumerable).Assembly,
                 typeof(ImmutableDictionary<,>).Assembly, typeof(TmEssentials.TimeInt32).Assembly, globalsType.Assembly)
@@ -46,7 +52,7 @@ internal sealed class CSharpSession
                 .AddImports("System.IO", "GBX.NET.Engines.Game", "GBX.NET.Engines.MwFoundations");
         }
 
-        this.options = options;
+        return options;
     }
 
     /// <returns>The value of the last expression, or null.</returns>

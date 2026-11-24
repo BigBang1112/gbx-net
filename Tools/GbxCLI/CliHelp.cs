@@ -20,7 +20,7 @@ internal static class CliHelp
             """,
         ["eval"] = $"""
             {H}Usage:{Z} gbx eval <path> <code>... [-i]
-                   gbx eval <path> <code>... (-w | -o <file>) [--no-backup] [--force]
+                   gbx eval <path> <code>... (-w | -o <path> | -n) [--no-backup] [--force]
 
             Evaluates C# expressions against the opened Gbx, Pak or ZipArchive, which is the script global.
             Each argument is one expression, and later ones can use variables from earlier ones.
@@ -30,17 +30,22 @@ internal static class CliHelp
             {H}Options:{Z}
               -i, --interactive      Start a C# prompt after the expressions. Enter save [path] to write, or q to quit.
               -w, --write            Write the Gbx back to the input file after the expressions.
-              -o, --output <file>    Write the Gbx to another file after the expressions.
+              -o, --output <path>    Write the Gbx to another file, or with many files, into a folder.
+              -n, --dry-run          Check the changed Gbx like a write, but write nothing.
               --no-backup            Don't keep an existing output as <output>.bak.
               --force                Write even when reading the saved Gbx back gives different properties.
 
             Before writing, the saved Gbx is parsed again and compared with the changed one.
             A Gbx inside an archive can only be written to another file with -o.
+
+            A folder or a path with * or ? runs on many Gbx files, such as "Maps/*.Map.Gbx" or Stadium.pak/Maps/*.
+            Each file shows its values on one line, or with -w, -o or -n, whether it changed. Only changed files are written.
             """,
         ["set"] = $"""
-            {H}Usage:{Z} gbx set <path> <member>=<value>... [-o <file>] [-n] [--no-backup] [--force]
+            {H}Usage:{Z} gbx set <path> <member>=<value>... [-o <path>] [-n] [--no-backup] [--force]
 
             Assigns values to members of a Gbx and writes it. Without -o, the input file is replaced.
+            A folder or a path with * or ? changes many Gbx files, such as "Maps/*.Map.Gbx". Only changed files are written.
             Example: gbx set My.Map.Gbx "MapName=Night run" Decoration=48x48Night,Stadium2020,Nadeo
 
             A member path starts at the Gbx, such as Node.MapName or Node.Blocks[3].Coord.X.
@@ -49,7 +54,7 @@ internal static class CliHelp
             Vectors and other values take their parts separated by commas, such as 1,2,3. null clears a nullable value.
 
             {H}Options:{Z}
-              -o, --output <file>    Output file.
+              -o, --output <path>    Output file, or with many files, the output folder.
               -n, --dry-run          Show the changes and check them, but write nothing.
               --no-backup            Don't keep an existing output as <output>.bak.
               --force                Write even when reading the saved Gbx back gives different properties.
@@ -61,12 +66,13 @@ internal static class CliHelp
             Runs a C# script with GBX.NET available. Arguments after the script are passed as Args,
             also when they start with -. Scripts can call Print(value) and write to Output.
             await SaveAsync(gbx, path) writes a Gbx with the same check and backup as eval --write.
+            GetGbxFiles(path) lists the Gbx files of a folder or pattern, like eval and set select them.
             """,
         ["verify"] = $"""
             {H}Usage:{Z} gbx verify <path> [-g <game>] [--roundtrip] [--strict]
             {L}Alias:{Z} gbx pack verify
 
-            Fully parses every Gbx in a file, folder or archive, and continues after failures.
+            Fully parses every Gbx in a file, folder, pattern such as "Maps/*.Map.Gbx", or archive, and continues after failures.
 
             {H}Options:{Z}
               -g, --game <game>      Game version, for games that reuse a class ID for a different class.
