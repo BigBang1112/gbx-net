@@ -420,11 +420,11 @@ public partial class CSceneVehicleCar
 
                     U25 = (byte)((U25 & 0xE7) | ((netData >> 4 & 3) << 3));
 
+                    // Network states leave damping at the wheel state's reset length of zero.
+                    flDampenLen = frDampenLen = rrDampenLen = rlDampenLen = null;
+
                     if (version == 6)
                     {
-                        // Network states leave damping at the wheel state's reset length of zero.
-                        flDampenLen = frDampenLen = rrDampenLen = rlDampenLen = null;
-
                         // Each old network wheel bit controls both sliding and ground contact.
                         U26 = (byte)((U26 & 0x3F) | ((netData & 1) != 0 ? 0xC0 : 0));
                         U27 = (byte)((U27 & 0xC0) | ((netData & 2) != 0 ? 3 : 0)
