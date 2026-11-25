@@ -12,21 +12,10 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
     internal override uint GetId() => Id;
 
-    private PackageInfo[]? oldPackagesInfos;
-    /// <summary>
-    /// Record versions 0 and 1 use the chunk format.
-    /// </summary>
-    /// <remarks>Applied with: archive</remarks>
-    [AppliedWithArchive]
-    public PackageInfo[]? OldPackagesInfos
-    {
-        get => this.oldPackagesInfos;
-        set => this.oldPackagesInfos = value;
-    }
-
     private PackageInfo[]? packagesInfos;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03140000>]
+    [AppliedWithArchive]
     public PackageInfo[]? PackagesInfos
     {
         get => this.packagesInfos;
@@ -36,7 +25,6 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGamePlayerProfileChunk_PackagesInfos)clone).oldPackagesInfos = context.CloneArray(this.oldPackagesInfos)!;
         ((CGamePlayerProfileChunk_PackagesInfos)clone).packagesInfos = context.CloneArray(this.packagesInfos)!;
     }
 
@@ -46,7 +34,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
-        rw.ArrayReadableWritable<PackageInfo>(ref this.oldPackagesInfos!, version: v+ 2);
+        rw.ArrayReadableWritable<PackageInfo>(ref this.packagesInfos!, version: v+ 2);
     }
 
     public virtual void Read(GbxReader r, int v = 0)

@@ -112,13 +112,60 @@ public class CGamePlayerProfileOldArchiveTests
             : rw => chunk.ReadWrite(node, rw);
         Read(payload, serialize);
 
-        var record = (isLegacy ? node.OldPackagesInfos : node.PackagesInfos)!.Single();
+        var record = node.PackagesInfos!.Single();
         await Assert.That(record.U01).IsEqualTo(hasLegacyString ? legacyValue : null);
         await Assert.That(record.Checksum!.SequenceEqual(checksum)).IsTrue();
         await Assert.That(record.Key).IsEqualTo(key);
         await Assert.That(record.StartTimestamp?.ToUnixTimeSeconds()).IsEqualTo(hasStartTimestamp ? (long?)startTimestamp : null);
         await Assert.That(record.EndTimestamp?.ToUnixTimeSeconds()).IsEqualTo(hasEndTimestamp ? (long?)endTimestamp : null);
         await Assert.That(Write(serialize).SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task ReadWrite_ChallengeOpponents_PreservesLegacyOpponentIds(int opponentsVersion)
+    {
+        var opponentIds = new[] { "opponent-one", "opponent-two" };
+        var payload = Payload(w =>
+        {
+            w.Write(1);
+            w.Write(2);
+            w.Write(opponentsVersion);
+            w.Write(1);
+            w.Write(3); // ID table version.
+            NewId(w, "MapUid");
+            NewId(w, "Stadium");
+            NewId(w, "author");
+            if (opponentsVersion == 0)
+            {
+                w.Write(opponentIds.Length);
+                foreach (var id in opponentIds) NewId(w, id);
+            }
+            w.Write(3);
+            String(w, "Medals");
+            w.Write(1);
+        });
+
+        var node = new CGamePlayerProfileChunk_InterfaceSettings();
+        var chunk = new CGamePlayerProfileChunk_InterfaceSettings.Chunk0312E006();
+        Read(payload, rw => chunk.ReadWrite(node, rw));
+
+        var opponents = node.ChallengeOpponents!.Single();
+        await Assert.That(node.DefaultSelectedMedal).IsEqualTo(2);
+        await Assert.That(node.OpponentsVersionLast).IsEqualTo(opponentsVersion);
+        await Assert.That(opponents.ChallengeId?.Id).IsEqualTo("MapUid");
+        await Assert.That(opponents.SelectedMedal).IsEqualTo(3);
+        await Assert.That(opponents.SelectedLeaguePath).IsEqualTo("Medals");
+        if (opponentsVersion == 0)
+        {
+            await Assert.That(opponents.LegacyOpponentIds!.SequenceEqual(opponentIds)).IsTrue();
+        }
+        else
+        {
+            await Assert.That(opponents.LegacyOpponentIds).IsNull();
+        }
+        await Assert.That(Write(rw => chunk.ReadWrite(node, rw)).SequenceEqual(payload)).IsTrue();
     }
 
     [Test]
