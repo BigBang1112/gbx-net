@@ -2,12 +2,47 @@ using GBX.NET.Engines.Game;
 using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using System.Xml.Linq;
+using TmEssentials;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
 
 [Category("Unit")]
 public class CGameCtnChallengeTests
 {
+    [Test]
+    [Arguments(46303, 50000, 56000, 70000, false)]
+    [Arguments(20000, 22000, 25000, 31000, true)]
+    [Arguments(null, null, null, null, true)]
+    [Arguments(-1, null, null, null, false)]
+    public async Task RecalculateMedalTimes_UpdatesRaceMedalTimes(
+        int? authorMilliseconds, int? gold, int? silver, int? bronze, bool hasChallengeParameters)
+    {
+        TimeInt32? authorTime = authorMilliseconds is int milliseconds ? new TimeInt32(milliseconds) : null;
+        var parameters = hasChallengeParameters ? new CGameCtnChallengeParameters { AuthorTime = authorTime } : null;
+        var map = new CGameCtnChallenge
+        {
+            AuthorTime = parameters is null ? authorTime : null,
+            ChallengeParameters = parameters,
+            GoldTime = new TimeInt32(123),
+            SilverTime = new TimeInt32(456),
+            BronzeTime = new TimeInt32(789)
+        };
+
+        map.RecalculateMedalTimes();
+
+        await Assert.That(map.AuthorTime).IsEqualTo(authorTime);
+        await Assert.That(map.GoldTime?.TotalMilliseconds).IsEqualTo(gold);
+        await Assert.That(map.SilverTime?.TotalMilliseconds).IsEqualTo(silver);
+        await Assert.That(map.BronzeTime?.TotalMilliseconds).IsEqualTo(bronze);
+
+        if (parameters is not null)
+        {
+            await Assert.That(parameters.GoldTime?.TotalMilliseconds).IsEqualTo(gold);
+            await Assert.That(parameters.SilverTime?.TotalMilliseconds).IsEqualTo(silver);
+            await Assert.That(parameters.BronzeTime?.TotalMilliseconds).IsEqualTo(bronze);
+        }
+    }
+
     [Test]
     [Arguments(false)]
     [Arguments(true)]

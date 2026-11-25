@@ -557,6 +557,18 @@ public partial class CGameCtnChallenge :
 #endif
 
     /// <summary>
+    /// Recalculates the default gold, silver, and bronze race times from <see cref="AuthorTime"/>.
+    /// </summary>
+    /// <remarks>
+    /// The times are 106%, 120%, and 150% of the author time, advanced to the next whole second
+    /// even when the scaled time already falls on a whole second. An unset author time clears all three times.
+    /// </remarks>
+    public void RecalculateMedalTimes()
+    {
+        (GoldTime, SilverTime, BronzeTime) = CGameCtnChallengeParameters.CalculateMedalTimes(AuthorTime);
+    }
+
+    /// <summary>
     /// Calculates the CRC32 of the map.
     /// </summary>
     public void ComputeCrc32()
