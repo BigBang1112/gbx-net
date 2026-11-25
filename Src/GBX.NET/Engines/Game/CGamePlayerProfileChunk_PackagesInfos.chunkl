@@ -2,24 +2,21 @@ CGamePlayerProfileChunk_PackagesInfos 0x03140000
 - inherits: CGamePlayerProfileChunk
 
 archive
-  OldPackageInfo[] OldPackagesInfos (version: v)
+  PackageInfo[] OldPackagesInfos (version: v + 2) // Record versions 0 and 1 use the chunk format.
 
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
-  PackageInfo[] PackagesInfos
+  PackageInfo[] PackagesInfos (version: 1)
 
 archive PackageInfo
-  data[32] Checksum
-  string Key
-  unixtime StartTimestamp
-  unixtime EndTimestamp
-
-archive OldPackageInfo
-  v1-
+  v2..3
     string U01
   data[32] Checksum
   string Key
-  v1+
+  v1-
     unixtime StartTimestamp
-    v3+
+    unixtime EndTimestamp
+  v3+
+    unixtime StartTimestamp
+    v5+
       unixtime EndTimestamp

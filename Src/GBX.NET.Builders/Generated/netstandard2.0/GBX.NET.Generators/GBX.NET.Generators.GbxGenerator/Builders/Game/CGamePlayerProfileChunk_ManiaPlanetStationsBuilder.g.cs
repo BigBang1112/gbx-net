@@ -9,6 +9,9 @@ public abstract class CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase<TSe
     private protected CGamePlayerProfileChunk_ManiaPlanetStationsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
     public TSelf WithHasSeenWelcomePage(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetHasSeenWelcomePageAssignment(), value, SupportedGames1);
+    public TSelf WithInstallStationClickCount(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetInstallStationClickCountAssignment(), value, SupportedGames1);
+    public TSelf WithIsFirstLaunch(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetIsFirstLaunchAssignment(), value, SupportedGames1);
+    public TSelf WithIsManualLayout(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetIsManualLayoutAssignment(), value, SupportedGames1);
     public TSelf WithLatestTitleIdLoaded(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetLatestTitleIdLoadedAssignment(), value, SupportedGames1);
     public TSelf WithStations(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStationsBuilderAssignments.GetStationsAssignment(), value, SupportedGames1);
     public TSelf WithStations(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc> values) => WithStations(values.ToArray());

@@ -6,6 +6,9 @@ namespace GBX.NET.Interfaces.Game;
 public partial interface IGamePlayerProfileChunk_ManiaPlanetStations : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations>
 {
     bool HasSeenWelcomePage { get; set; }
+    int InstallStationClickCount { get; set; }
+    bool IsFirstLaunch { get; set; }
+    bool IsManualLayout { get; set; }
     string? LatestTitleIdLoaded { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ManiaPlanetStations.GameStationDesc[]? Stations { get; set; }
 }

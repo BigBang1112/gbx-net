@@ -12,10 +12,13 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
     internal override uint GetId() => Id;
 
-    private OldPackageInfo[]? oldPackagesInfos;
+    private PackageInfo[]? oldPackagesInfos;
+    /// <summary>
+    /// Record versions 0 and 1 use the chunk format.
+    /// </summary>
     /// <remarks>Applied with: archive</remarks>
     [AppliedWithArchive]
-    public OldPackageInfo[]? OldPackagesInfos
+    public PackageInfo[]? OldPackagesInfos
     {
         get => this.oldPackagesInfos;
         set => this.oldPackagesInfos = value;
@@ -43,7 +46,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
-        rw.ArrayReadableWritable<OldPackageInfo>(ref this.oldPackagesInfos!, version: v);
+        rw.ArrayReadableWritable<PackageInfo>(ref this.oldPackagesInfos!, version: v+ 2);
     }
 
     public virtual void Read(GbxReader r, int v = 0)
@@ -95,78 +98,11 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ArrayReadableWritable<PackageInfo>(ref n.packagesInfos!, version: Version);
+            rw.ArrayReadableWritable<PackageInfo>(ref n.packagesInfos!, version: 1);
         }
     }
 
     public partial class PackageInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        private byte[]? checksum;
-        public byte[]? Checksum
-        {
-            get => this.checksum;
-            set => this.checksum = value;
-        }
-
-        private string? key;
-        public string? Key
-        {
-            get => this.key;
-            set => this.key = value;
-        }
-
-        private DateTimeOffset? startTimestamp;
-        public DateTimeOffset? StartTimestamp
-        {
-            get => this.startTimestamp;
-            set => this.startTimestamp = value;
-        }
-
-        private DateTimeOffset? endTimestamp;
-        public DateTimeOffset? EndTimestamp
-        {
-            get => this.endTimestamp;
-            set => this.endTimestamp = value;
-        }
-
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (PackageInfo)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((PackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
-            ((PackageInfo)clone).key = context.Clone(this.key)!;
-            ((PackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
-            ((PackageInfo)clone).endTimestamp = context.Clone(this.endTimestamp)!;
-        }
-
-        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
-        {
-            rw.Data(ref this.checksum!, 32);
-            rw.String(ref this.key);
-            this.startTimestamp = rw.UnixTime(this.startTimestamp);
-            this.endTimestamp = rw.UnixTime(this.endTimestamp);
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
-        }
-    }
-
-    public partial class OldPackageInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private string? u01;
         public string? U01
@@ -205,7 +141,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
-            var clone = (OldPackageInfo)MemberwiseClone();
+            var clone = (PackageInfo)MemberwiseClone();
             context.Register(this, clone);
             DeepCloneArchiveFields(clone, context);
             return clone;
@@ -213,16 +149,16 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((OldPackageInfo)clone).u01 = context.Clone(this.u01)!;
-            ((OldPackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
-            ((OldPackageInfo)clone).key = context.Clone(this.key)!;
-            ((OldPackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
-            ((OldPackageInfo)clone).endTimestamp = context.Clone(this.endTimestamp)!;
+            ((PackageInfo)clone).u01 = context.Clone(this.u01)!;
+            ((PackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
+            ((PackageInfo)clone).key = context.Clone(this.key)!;
+            ((PackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
+            ((PackageInfo)clone).endTimestamp = context.Clone(this.endTimestamp)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            if (v <= 1)
+            if (v >= 2 && v <= 3)
             {
                 rw.String(ref this.u01);
             }
@@ -230,11 +166,17 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
             rw.Data(ref this.checksum!, 32);
             rw.String(ref this.key);
 
-            if (v >= 1)
+            if (v <= 1)
+            {
+                this.startTimestamp = rw.UnixTime(this.startTimestamp);
+                this.endTimestamp = rw.UnixTime(this.endTimestamp);
+            }
+
+            if (v >= 3)
             {
                 this.startTimestamp = rw.UnixTime(this.startTimestamp);
 
-                if (v >= 3)
+                if (v >= 5)
                 {
                     this.endTimestamp = rw.UnixTime(this.endTimestamp);
                 }

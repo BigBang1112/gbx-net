@@ -76,6 +76,52 @@ public class CGamePlayerProfileOldArchiveTests
     }
 
     [Test]
+    [Arguments(true, 0)]
+    [Arguments(true, 1)]
+    [Arguments(true, 2)]
+    [Arguments(true, 3)]
+    [Arguments(true, 4)]
+    [Arguments(false, 0)]
+    [Arguments(false, 1)]
+    public async Task ReadWrite_PackageRecords_PreserveLegacyAndChunkLayouts(bool isLegacy, int version)
+    {
+        const string legacyValue = "legacy package string";
+        const string key = "package key";
+        const uint startTimestamp = 1_700_000_000;
+        const uint endTimestamp = 1_700_000_001;
+        var checksum = Enumerable.Range(0, 32).Select(value => (byte)value).ToArray();
+        var hasLegacyString = isLegacy && version <= 1;
+        var hasStartTimestamp = !isLegacy || version >= 1;
+        var hasEndTimestamp = !isLegacy || version >= 3;
+        var payload = Payload(w =>
+        {
+            if (!isLegacy) w.Write(version);
+
+            w.Write(1);
+            if (hasLegacyString) String(w, legacyValue);
+            w.Write(checksum);
+            String(w, key);
+            if (hasStartTimestamp) w.Write(startTimestamp);
+            if (hasEndTimestamp) w.Write(endTimestamp);
+        });
+
+        var node = new CGamePlayerProfileChunk_PackagesInfos();
+        var chunk = new CGamePlayerProfileChunk_PackagesInfos.Chunk03140000();
+        Action<GbxReaderWriter> serialize = isLegacy
+            ? rw => node.ReadWrite(rw, version)
+            : rw => chunk.ReadWrite(node, rw);
+        Read(payload, serialize);
+
+        var record = (isLegacy ? node.OldPackagesInfos : node.PackagesInfos)!.Single();
+        await Assert.That(record.U01).IsEqualTo(hasLegacyString ? legacyValue : null);
+        await Assert.That(record.Checksum!.SequenceEqual(checksum)).IsTrue();
+        await Assert.That(record.Key).IsEqualTo(key);
+        await Assert.That(record.StartTimestamp?.ToUnixTimeSeconds()).IsEqualTo(hasStartTimestamp ? (long?)startTimestamp : null);
+        await Assert.That(record.EndTimestamp?.ToUnixTimeSeconds()).IsEqualTo(hasEndTimestamp ? (long?)endTimestamp : null);
+        await Assert.That(Write(serialize).SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
     public async Task ReadWrite_ManiaPlanet1ProfileChunks_OmitLocalData()
     {
         var accountPayload = Payload(w =>

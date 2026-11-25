@@ -12,17 +12,17 @@ archive
   version
   DisplayInfo[] DisplayInfos
   v2+
-    bool IsFirstLaunch
+    bool IsFirstLaunch = true
     v3+
-      int
+      int InstallStationClickCount
 
 0x002 (skippable, demonstration: partial) [MP3.v4, TMT.v4, MP4.v6, TM2020.v6] // Stations
   version
   GameStationDesc[] Stations (version: Version)
-  bool
-  int
+  bool IsFirstLaunch
+  int InstallStationClickCount
   v2+
-    bool
+    bool IsManualLayout
     // Extra station fields are handled in C#.
     v4+
       bool HasSeenWelcomePage
@@ -32,28 +32,28 @@ archive
   id LatestTitleIdLoaded
 
 archive OldGameStationDesc
-  int
-  int
-  id
+  int MasterServerStationId
+  int LegacySizeCode // A value of 1 maps to size 3. Other values map to size 1.
+  id TitleId
   v3+
-    int
+    int U04
   v2-
-    int
-    int
-    int
+    int X
+    int Y
+    int Size
 
 archive GameStationDesc
-  int
-  int
+  int MasterServerStationId
+  int StationType
   id TitleId
-  data[32] Checksum
-  int
-  int
-  int
-  int
+  data[32] PackChecksum
+  int U03
+  int X
+  int Y
+  int Size = 1
 
 archive DisplayInfo
-  int
-  int
-  int
-  int
+  int MasterServerStationId
+  int X
+  int Y
+  int Size
