@@ -106,7 +106,6 @@
     <Project Path="Tools/CryCryptSwitch/CryCryptSwitch.csproj" />
     <Project Path="Tools/ExtractPakFileHashes/ExtractPakFileHashes.csproj" />
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
-    <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
     <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
     <Project Path="Tools/GbxToJson/GbxToJson.csproj" />

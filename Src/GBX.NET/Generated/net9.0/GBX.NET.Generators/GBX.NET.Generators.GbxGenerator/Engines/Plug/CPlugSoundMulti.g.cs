@@ -21,17 +21,6 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         set => NodeRef.SetEmbedded(ref additionalSoundsRef, value);
     }
 
-    private ESoundInputMapping inputMapping;
-    /// <remarks>Applied with: 0x000, 0x001, 0x003 v2+ body chunks</remarks>
-    [AppliedWithChunk<Chunk09064000>]
-    [AppliedWithChunk<Chunk09064001>]
-    [AppliedWithChunk<Chunk09064003>(2)]
-    public ESoundInputMapping InputMapping
-    {
-        get => this.inputMapping;
-        set => this.inputMapping = value;
-    }
-
     private NodeRefList<CMwNod>? additionalSounds2;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09064001>]
@@ -104,6 +93,15 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         set => NodeRef.SetEmbedded(ref volumeFromInputRef, value);
     }
 
+    private ESoundInputMapping inputMapping;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09064003>(2)]
+    public ESoundInputMapping InputMapping
+    {
+        get => this.inputMapping;
+        set => this.inputMapping = value;
+    }
+
     public new NodeRefView References => new(this);
     public new readonly struct NodeRefView
     {
@@ -136,7 +134,6 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CPlugSoundMulti)clone).additionalSoundsRef = context.Clone(this.additionalSoundsRef)!;
-        ((CPlugSoundMulti)clone).inputMapping = context.Clone(this.inputMapping)!;
         ((CPlugSoundMulti)clone).additionalSounds2 = context.Clone(this.additionalSounds2)!;
         ((CPlugSoundMulti)clone).pitchVariancePos = context.Clone(this.pitchVariancePos)!;
         ((CPlugSoundMulti)clone).volumeVariance = context.Clone(this.volumeVariance)!;
@@ -145,6 +142,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         ((CPlugSoundMulti)clone).pitchVarianceNeg = context.Clone(this.pitchVarianceNeg)!;
         ((CPlugSoundMulti)clone).preferedDistances = context.CloneArray(this.preferedDistances)!;
         ((CPlugSoundMulti)clone).volumeFromInputRef = context.Clone(this.volumeFromInputRef)!;
+        ((CPlugSoundMulti)clone).inputMapping = context.Clone(this.inputMapping)!;
     }
 
     public CPlugSoundMulti()
@@ -169,7 +167,15 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
             rw.NodeRef(ref n.additionalSoundsRef);
-            rw.EnumInt32<ESoundInputMapping>(ref n.inputMapping);
+            var isForceRandom = rw.Boolean((rw.Writer is null ? default : (n.InputMapping == ESoundInputMapping.ForceRandom)));
+
+            if (isForceRandom)
+            {
+                if (rw.Reader is not null)
+                {
+                    n.InputMapping = ESoundInputMapping.ForceRandom;
+                }
+            }
         }
     }
 
@@ -191,7 +197,15 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
             n.additionalSounds2 = rw.ListNodeRef_deprec<CMwNod>(n.additionalSounds2);
-            rw.EnumInt32<ESoundInputMapping>(ref n.inputMapping);
+            var isForceRandom = rw.Boolean((rw.Writer is null ? default : (n.InputMapping == ESoundInputMapping.ForceRandom)));
+
+            if (isForceRandom)
+            {
+                if (rw.Reader is not null)
+                {
+                    n.InputMapping = ESoundInputMapping.ForceRandom;
+                }
+            }
         }
     }
 
@@ -267,7 +281,6 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
             _ => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020,
         };
         public int Version { get; set; }
-        public bool U01;
 
         public Chunk09064003() : this(GameVersion.Unspecified)
         {
@@ -289,7 +302,6 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09064003)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09064003)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
@@ -300,7 +312,16 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref U01);
+            var isDistance = rw.Boolean((rw.Writer is null ? default : (n.InputMapping == ESoundInputMapping.Distance)));
+
+            if (isDistance)
+            {
+                if (rw.Reader is not null)
+                {
+                    n.InputMapping = ESoundInputMapping.Distance;
+                }
+            }
+
             rw.Array<Vec3>(ref n.preferedDistances!);
 
             if (Version >= 1)

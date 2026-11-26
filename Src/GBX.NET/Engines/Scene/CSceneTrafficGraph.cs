@@ -11,12 +11,12 @@ public partial class CSceneTrafficGraph
 
             if (count1 > 0)
             {
-                throw new Exception("CSceneTrafficGraph.Chunk0A062004: count1 > 0");
+                throw new NotSupportedException("CSceneTrafficGraph.Chunk0A062004: count1 > 0 is not supported.");
             }
 
             if (count2 > 0)
             {
-                throw new Exception("CSceneTrafficGraph.Chunk0A062004: count2 > 0");
+                throw new NotSupportedException("CSceneTrafficGraph.Chunk0A062004: count2 > 0 is not supported.");
             }
         }
     }

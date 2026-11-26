@@ -8,7 +8,12 @@ public abstract class CGameCtnAppBuilderBase<TSelf> : NodeBuilder<global::GBX.NE
     private protected CGameCtnAppBuilderBase() { }
     private protected CGameCtnAppBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
-    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT;
+    private protected const GameVersion SupportedGames3 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames4 = GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames5 = GameVersion.TM10 | GameVersion.TMPU;
+    private protected const GameVersion SupportedGames6 = GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5;
+    private protected const GameVersion SupportedGames7 = GameVersion.TMNESWC | GameVersion.TMU;
 }
 public abstract class CGameCtnAppBuilderMembers1<TSelf> : CGameCtnAppBuilderBase<TSelf> where TSelf : CGameCtnAppBuilderMembers1<TSelf>
 {
@@ -16,30 +21,79 @@ public abstract class CGameCtnAppBuilderMembers1<TSelf> : CGameCtnAppBuilderBase
     public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
     public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames1);
 }
-public abstract class CGameCtnAppBuilderMembers2<TSelf> : CGameCtnAppBuilderMembers1<TSelf> where TSelf : CGameCtnAppBuilderMembers2<TSelf>
+public abstract class CGameCtnAppBuilderMembers2<TSelf> : CGameCtnAppBuilderBase<TSelf> where TSelf : CGameCtnAppBuilderMembers2<TSelf>
 {
     private protected CGameCtnAppBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
-    public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames2);
-    public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames2);
+    public TSelf WithAdditionalCollectorsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalCollectorsFidsAssignment(), value, SupportedGames3);
+    public TSelf WithAdditionalCollectorsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalCollectorsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+    public TSelf WithAdditionalCollectorsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalCollectorsFids(values.ToArray());
+    public TSelf WithCollectionFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCollectionFidsAssignment(), value, SupportedGames3);
+    public TSelf WithCollectionFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithCollectionFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+    public TSelf WithCollectionFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithCollectionFids(values.ToArray());
 }
-public abstract class CGameCtnAppBuilderMembers3<TSelf> : CGameCtnAppBuilderMembers2<TSelf> where TSelf : CGameCtnAppBuilderMembers3<TSelf>
+public abstract class CGameCtnAppBuilderMembers3<TSelf> : CGameCtnAppBuilderMembers1<TSelf> where TSelf : CGameCtnAppBuilderMembers3<TSelf>
 {
     private protected CGameCtnAppBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames4);
+    public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames4);
+}
+public abstract class CGameCtnAppBuilderMembers4<TSelf> : CGameCtnAppBuilderMembers1<TSelf> where TSelf : CGameCtnAppBuilderMembers4<TSelf>
+{
+    private protected CGameCtnAppBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithLegacyFileFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetLegacyFileFidsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+    public TSelf WithLegacyFileFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithLegacyFileFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+    public TSelf WithLegacyFileFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithLegacyFileFids(values.ToArray());
+}
+public abstract class CGameCtnAppBuilderMembers5<TSelf> : CGameCtnAppBuilderMembers3<TSelf> where TSelf : CGameCtnAppBuilderMembers5<TSelf>
+{
+    private protected CGameCtnAppBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
     public TSelf WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
     public TSelf WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
     public TSelf WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
 }
-public abstract class CGameCtnAppBuilderMembers4<TSelf> : CGameCtnAppBuilderMembers2<TSelf> where TSelf : CGameCtnAppBuilderMembers4<TSelf>
+public abstract class CGameCtnAppBuilderMembers6<TSelf> : CGameCtnAppBuilderMembers2<TSelf> where TSelf : CGameCtnAppBuilderMembers6<TSelf>
 {
-    private protected CGameCtnAppBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
-    public TSelf WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.VSK5);
+    private protected CGameCtnAppBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithBaseOfficialCampaignPaths(params string[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignPathsAssignment(), value, SupportedGames2);
+    public TSelf WithBaseOfficialCampaignPaths(IEnumerable<string> values) => WithBaseOfficialCampaignPaths(values.ToArray());
+    public TSelf WithBaseOfficialCampaignsFolder(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsFolderAssignment(), value, SupportedGames2);
 }
-public abstract class CGameCtnAppBuilderMembers5<TSelf> : CGameCtnAppBuilderMembers4<TSelf> where TSelf : CGameCtnAppBuilderMembers5<TSelf>
+public abstract class CGameCtnAppBuilderMembers7<TSelf> : CGameCtnAppBuilderMembers6<TSelf> where TSelf : CGameCtnAppBuilderMembers7<TSelf>
 {
-    private protected CGameCtnAppBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    private protected CGameCtnAppBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithVehicleCollectionId(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetVehicleCollectionIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+}
+public abstract class CGameCtnAppBuilderMembers8<TSelf> : CGameCtnAppBuilderMembers5<TSelf> where TSelf : CGameCtnAppBuilderMembers8<TSelf>
+{
+    private protected CGameCtnAppBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithDefaultCollectorVehicle(global::GBX.NET.Engines.GameData.CGameItemModel? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleAssignment(), value, SupportedGames6);
+    public TSelf WithDefaultCollectorVehicleReference(NodeRef<global::GBX.NET.Engines.GameData.CGameItemModel> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleReferenceAssignment(), value, SupportedGames6);
+    public TSelf WithNationsList(global::GBX.NET.Engines.Plug.CPlugFileText? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetNationsListAssignment(), value, SupportedGames7);
+    public TSelf WithNationsListReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFileText> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetNationsListReferenceAssignment(), value, SupportedGames7);
+}
+public abstract class CGameCtnAppBuilderMembers9<TSelf> : CGameCtnAppBuilderMembers4<TSelf> where TSelf : CGameCtnAppBuilderMembers9<TSelf>
+{
+    private protected CGameCtnAppBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+    public TSelf WithCampaign(global::GBX.NET.Engines.Game.CGameCtnCampaign? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaignAssignment(), value, SupportedGames5);
+    public TSelf WithCampaignReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaignReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithCampaign2(global::GBX.NET.Engines.Game.CGameCtnCampaign? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign2Assignment(), value, SupportedGames5);
+    public TSelf WithCampaign2Reference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign2ReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithCampaign3(global::GBX.NET.Engines.Game.CGameCtnCampaign? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign3Assignment(), value, SupportedGames5);
+    public TSelf WithCampaign3Reference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign3ReferenceAssignment(), value, SupportedGames5);
+    public TSelf WithCampaign4(global::GBX.NET.Engines.Game.CGameCtnCampaign? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign4Assignment(), value, SupportedGames5);
+    public TSelf WithCampaign4Reference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnCampaign> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCampaign4ReferenceAssignment(), value, SupportedGames5);
+}
+public abstract class CGameCtnAppBuilderMembers10<TSelf> : CGameCtnAppBuilderMembers7<TSelf> where TSelf : CGameCtnAppBuilderMembers10<TSelf>
+{
+    private protected CGameCtnAppBuilderMembers10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
     public TSelf WithAdditionalSkinsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public TSelf WithAdditionalSkinsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalSkinsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
     public TSelf WithAdditionalSkinsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalSkinsFids(values.ToArray());
+    public TSelf WithAdvertising(global::GBX.NET.Engines.MwFoundations.CMwNod? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, SupportedGames4);
+    public TSelf WithAdvertisingReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, SupportedGames4);
+    public TSelf WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.VSK5);
+    public TSelf WithResources(global::GBX.NET.Engines.Game.CGameResources? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, SupportedGames1);
+    public TSelf WithResourcesReference(NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, SupportedGames1);
 }
 public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuilder>
 {
@@ -110,12 +164,19 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
     private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe5(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3009());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe6(GameVersion game)
     {
         var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012());
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B());
         return node;
     }
@@ -145,75 +206,107 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CGameCtnAppBuilderMembers1<TM10>
+    public partial class TM10 : CGameCtnAppBuilderMembers9<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+        public TM10 WithCampaign(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10? value) => base.WithCampaign(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithCampaign2(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10? value) => base.WithCampaign2(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithCampaign3(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10? value) => base.WithCampaign3(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TM10 WithCampaign4(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10? value) => base.WithCampaign4(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe0(GameVersion.TM10), GameVersion.TM10);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMPU : CGameCtnAppBuilderMembers1<TMPU>
+    public partial class TMPU : CGameCtnAppBuilderMembers9<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+        public TMPU WithCampaign(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU? value) => base.WithCampaign(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithCampaign2(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU? value) => base.WithCampaign2(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithCampaign3(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU? value) => base.WithCampaign3(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public TMPU WithCampaign4(global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU? value) => base.WithCampaign4(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCampaign?)null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe0(GameVersion.TMPU), GameVersion.TMPU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMSX : CGameCtnAppBuilderMembers3<TMSX>
+    public partial class TMSX : CGameCtnAppBuilderMembers5<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
         public TMSX WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>(values, false));
         public TMSX WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public TMSX WithLegacyFileFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetLegacyFileFidsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+        public TMSX WithLegacyFileFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithLegacyFileFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+        public TMSX WithLegacyFileFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithLegacyFileFids(values.ToArray());
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe1(GameVersion.TMSX), GameVersion.TMSX);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMNESWC : CGameCtnAppBuilderMembers3<TMNESWC>
+    public partial class TMNESWC : CGameCtnAppBuilderMembers8<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
         public TMNESWC WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>(values, false));
         public TMNESWC WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public TMNESWC WithDefaultCollectorVehicle(global::GBX.NET.Interfaces.GameData.IGameItemModelTMNESWC? value) => base.WithDefaultCollectorVehicle(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe2(GameVersion.TMNESWC), GameVersion.TMNESWC);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMU : CGameCtnAppBuilderMembers3<TMU>
+    public partial class TMU : CGameCtnAppBuilderMembers8<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+        public TMU WithAdditionalCollectorsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalCollectorsFidsAssignment(), value, SupportedGames3);
+        public TMU WithAdditionalCollectorsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalCollectorsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+        public TMU WithAdditionalCollectorsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalCollectorsFids(values.ToArray());
         public TMU WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU[] values) => base.WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU>(values, false));
         public TMU WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMU> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public TMU WithCollectionFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCollectionFidsAssignment(), value, SupportedGames3);
+        public TMU WithCollectionFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithCollectionFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+        public TMU WithCollectionFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithCollectionFids(values.ToArray());
+        public TMU WithDefaultCollectorVehicle(global::GBX.NET.Interfaces.GameData.IGameItemModelTMU? value) => base.WithDefaultCollectorVehicle(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public TMU WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesTMU? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe3(GameVersion.TMU), GameVersion.TMU);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class VSK5 : CGameCtnAppBuilderMembers4<VSK5>
+    public partial class VSK5 : CGameCtnAppBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+        public VSK5 WithAdditionalCollectorsFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalCollectorsFidsAssignment(), value, SupportedGames3);
+        public VSK5 WithAdditionalCollectorsFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithAdditionalCollectorsFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+        public VSK5 WithAdditionalCollectorsFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithAdditionalCollectorsFids(values.ToArray());
         public VSK5 WithBaseOfficialCampaigns(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetBaseOfficialCampaignsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
         public VSK5 WithBaseOfficialCampaigns(params global::GBX.NET.Engines.Game.CGameCtnCampaign[] values) => WithBaseOfficialCampaigns(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(values));
         public VSK5 WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnCampaign> values) => WithBaseOfficialCampaigns(values.ToArray());
         public VSK5 WithBaseOfficialCampaigns(params global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5[] values) => WithBaseOfficialCampaigns(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>(values, false));
         public VSK5 WithBaseOfficialCampaigns(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5> values) => WithBaseOfficialCampaigns(values.ToArray());
+        public VSK5 WithCollectionFids(NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetCollectionFidsAssignment(), value, SupportedGames3);
+        public VSK5 WithCollectionFids(params global::GBX.NET.Engines.MwFoundations.CMwNod[] values) => WithCollectionFids(new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>(values));
+        public VSK5 WithCollectionFids(IEnumerable<global::GBX.NET.Engines.MwFoundations.CMwNod> values) => WithCollectionFids(values.ToArray());
+        public VSK5 WithDefaultCollectorVehicle(global::GBX.NET.Engines.GameData.CGameItemModel? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleAssignment(), value, SupportedGames6);
+        public VSK5 WithDefaultCollectorVehicleReference(NodeRef<global::GBX.NET.Engines.GameData.CGameItemModel> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleReferenceAssignment(), value, SupportedGames6);
+        public VSK5 WithDefaultCollectorVehicle(global::GBX.NET.Interfaces.GameData.IGameItemModelVSK5? value) => WithDefaultCollectorVehicle(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+        public VSK5 WithMenuBackground_MustLoopIntro(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.VSK5);
         public global::GBX.NET.Interfaces.Game.IGameCtnAppVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe4(GameVersion.VSK5), GameVersion.VSK5);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMF : CGameCtnAppBuilderBase<TMF>
+    public partial class TMF : CGameCtnAppBuilderMembers6<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
+        public TMF WithDefaultCollectorVehicle(global::GBX.NET.Engines.GameData.CGameItemModel? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleAssignment(), value, SupportedGames6);
+        public TMF WithDefaultCollectorVehicleReference(NodeRef<global::GBX.NET.Engines.GameData.CGameItemModel> value) => SetReference(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetDefaultCollectorVehicleReferenceAssignment(), value, SupportedGames6);
+        public TMF WithDefaultCollectorVehicle(global::GBX.NET.Interfaces.GameData.IGameItemModelTMF? value) => WithDefaultCollectorVehicle(value is null ? (global::GBX.NET.Engines.GameData.CGameItemModel?)null : value is global::GBX.NET.Engines.GameData.CGameItemModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe5(GameVersion.TMF), GameVersion.TMF);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TMT : CGameCtnAppBuilderBase<TMT>
+    public partial class TMT : CGameCtnAppBuilderMembers7<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe6(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class MP4 : CGameCtnAppBuilderMembers5<MP4>
+    public partial class MP4 : CGameCtnAppBuilderMembers10<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
         public MP4 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesMP4? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -221,7 +314,7 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Engines.Game.CGameCtnApp Build() => BuildNode(CGameCtnAppBuilder.CreateRecipe7(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnApp node);
     }
-    public partial class TM2020 : CGameCtnAppBuilderMembers5<TM2020>
+    public partial class TM2020 : CGameCtnAppBuilderMembers10<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) : base(state) { }
         public TM2020 WithResources(global::GBX.NET.Interfaces.Game.IGameResourcesTM2020? value) => base.WithResources(value is null ? (global::GBX.NET.Engines.Game.CGameResources?)null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));

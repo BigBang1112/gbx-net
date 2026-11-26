@@ -84,7 +84,7 @@ public class CGameCtnGhostTests
         using var rw = new GbxReaderWriter(reader);
         var ghost = new CGameCtnGhost();
 
-        await Assert.That(() => new CGameCtnGhost.Chunk0309202D().ReadWrite(ghost, rw)).Throws<Exception>();
+        await Assert.That(() => new CGameCtnGhost.Chunk0309202D().ReadWrite(ghost, rw)).Throws<NotSupportedException>();
         await Assert.That(ghost.HasInputs).IsEqualTo(1);
     }
 

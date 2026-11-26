@@ -27,24 +27,8 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     private NodeRef<CGameCtnBlockSkin>? skinRef;
 
     private NodeRef<CPlugCharPhySpecialProperty>? phyCharSpecialPropertyRef;
-    /// <remarks>Applied with: archive v2+</remarks>
-    [AppliedWithArchive(2)]
-    public CPlugCharPhySpecialProperty? PhyCharSpecialProperty
-    {
-        get => phyCharSpecialPropertyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref phyCharSpecialPropertyRef, value);
-    }
 
     private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
-
-    private SSquareCardEventIds[]? squareCardEventIds;
-    /// <remarks>Applied with: archive v2+</remarks>
-    [AppliedWithArchive(2)]
-    public SSquareCardEventIds[]? SquareCardEventIds
-    {
-        get => this.squareCardEventIds;
-        set => this.squareCardEventIds = value;
-    }
 
     private int decalIntensity = 1;
     /// <remarks>Applied with: archive v2+</remarks>
@@ -89,13 +73,13 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         ((CGameCtnBlock)clone).skinRef = context.Clone(this.skinRef)!;
         ((CGameCtnBlock)clone).phyCharSpecialPropertyRef = context.Clone(this.phyCharSpecialPropertyRef)!;
         ((CGameCtnBlock)clone).waypointSpecialPropertyRef = context.Clone(this.waypointSpecialPropertyRef)!;
-        ((CGameCtnBlock)clone).squareCardEventIds = context.CloneArray(this.squareCardEventIds)!;
         ((CGameCtnBlock)clone).decalIntensity = context.Clone(this.decalIntensity)!;
         ((CGameCtnBlock)clone).decalVariant = context.Clone(this.decalVariant)!;
         ((CGameCtnBlock)clone).name = context.Clone(this.name)!;
         ((CGameCtnBlock)clone).blockModel = context.Clone(this.blockModel)!;
         ((CGameCtnBlock)clone).coord = context.Clone(this.coord)!;
         ((CGameCtnBlock)clone).flags = context.Clone(this.flags)!;
+        ((CGameCtnBlock)clone).squareCardEventIds = context.CloneArray(this.squareCardEventIds)!;
         ((CGameCtnBlock)clone).decalId = context.Clone(this.decalId)!;
         ((CGameCtnBlock)clone).Direction = context.Clone(this.Direction)!;
         ((CGameCtnBlock)clone).AbsolutePositionInMap = context.Clone(this.AbsolutePositionInMap)!;
@@ -114,7 +98,7 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
 
         if (v == 0)
         {
-            this.flags = (int)r.ReadInt16();
+            this.flags = (int)r.ReadUInt16();
         }
 
         if (v >= 1)
@@ -144,12 +128,31 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
             {
                 this.squareCardEventIds = r.ReadArrayReadable<SSquareCardEventIds>(version: v);
             }
+            else
+            {
+                if (v <= 4)
+                {
+                    this.squareCardEventIds = r.ReadArrayReadable<SSquareCardEventIds>(version: v);
+                }
+            }
 
             if ((Flags& (1 << 17)) != 0)
             {
                 this.decalId = r.ReadId();
                 this.decalIntensity = r.ReadInt32();
                 this.decalVariant = r.ReadInt32();
+            }
+            else
+            {
+                if (v >= 3)
+                {
+                    if (v <= 4)
+                    {
+                        this.decalId = r.ReadId();
+                        this.decalIntensity = r.ReadInt32();
+                        this.decalVariant = r.ReadInt32();
+                    }
+                }
             }
         }
     }
@@ -162,7 +165,7 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
 
         if (v == 0)
         {
-            w.Write((short)this.flags);
+            w.Write((ushort)this.flags);
         }
 
         if (v >= 1)
@@ -192,12 +195,31 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
             {
                 w.WriteArrayWritable<SSquareCardEventIds>(this.squareCardEventIds, version: v);
             }
+            else
+            {
+                if (v <= 4)
+                {
+                    w.WriteArrayWritable<SSquareCardEventIds>(this.squareCardEventIds, version: v);
+                }
+            }
 
             if ((Flags& (1 << 17)) != 0)
             {
                 w.WriteIdAsString(this.decalId);
                 w.Write(this.decalIntensity);
                 w.Write(this.decalVariant);
+            }
+            else
+            {
+                if (v >= 3)
+                {
+                    if (v <= 4)
+                    {
+                        w.WriteIdAsString(this.decalId);
+                        w.Write(this.decalIntensity);
+                        w.Write(this.decalVariant);
+                    }
+                }
             }
         }
     }

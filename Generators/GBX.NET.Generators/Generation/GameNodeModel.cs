@@ -187,11 +187,11 @@ internal sealed class GameNodeModel(LayoutModel layout)
             }
 
             // Every game gets a recipe. A chunk without a writer fails when the
-            // node is written. Ignored and retired chunks are left out.
+            // node is written. Ignored, opt-in and retired chunks are left out.
             foreach (var game in node.Games.Where(g => !node.Recipes.ContainsKey(g)))
             {
                 node.Recipes[game] = node.Chunks.Where(c => !LayoutModel.Has(c.Chunk.Declaration.Attributes, "ignore") &&
-                    IsWrittenBy(c, game)).ToList();
+                    !IsOptIn(c) && IsWrittenBy(c, game)).ToList();
             }
             foreach (var member in properties.Values.OrderBy(static m => m.Name, StringComparer.Ordinal))
             {
@@ -202,6 +202,13 @@ internal sealed class GameNodeModel(LayoutModel layout)
                     if (contract is not null) member.Games.Add(game);
                     else if (node.Recipes[game].Any(c => c.Owner == member.Owner && Available(c, member, names ??= AppliedNames(member), game)))
                         member.Games.Add(game);
+                    // An opt-in chunk is still written by the game, so its members belong to the game interface
+                    else if (node.Chunks.Any(c => c.Owner == member.Owner && IsOptIn(c) && IsWrittenBy(c, game) &&
+                        Available(c, member, names ??= AppliedNames(member), game)))
+                    {
+                        member.Games.Add(game);
+                        member.OptInGames.Add(game);
+                    }
                 }
                 if (member.Games.Count > 0) node.Members.Add(member);
             }
@@ -253,6 +260,9 @@ internal sealed class GameNodeModel(LayoutModel layout)
     }
 
     // A custom property is applied wherever a field its getter reads is applied.
+    // An opt-in chunk is written only when its data exists, such as a chunk added by a game mod.
+    private static bool IsOptIn(GameChunk chunk) => LayoutModel.Has(chunk.Chunk.Declaration.Attributes, "opt-in");
+
     private static bool IsWrittenBy(GameChunk chunk, string game)
     {
         var declaration = chunk.Chunk.Declaration;

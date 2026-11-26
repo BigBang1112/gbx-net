@@ -1,6 +1,6 @@
 # GBX.NET tests
 
-Unit and integration tests for the main library, written with TUnit on **.NET 8, 9, and 10**. You need the .NET 10 SDK and all three runtimes to run every target.
+Unit and integration tests for the main library, written with TUnit on **.NET 8, 9, 10, and 11**. You need the .NET 11 SDK and all four runtimes to run every target.
 
 ## Run
 

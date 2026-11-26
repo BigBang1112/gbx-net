@@ -57,8 +57,17 @@ public partial class CGameManiaPlanet : CGameCtnApp, IClass
         public NodeRef<CMwNod> TitleMainDefaultBgFid => NodeRef.GetOrCreate(ref owner.titleMainDefaultBgFidRef);
         public NodeRef<CControlStyleSheet> DefaultStyleSheet => NodeRef.GetOrCreate(ref owner.defaultStyleSheetRef);
         public NodeRef<CGameResources> Resources => ((CGameCtnApp)owner).References.Resources;
+        public IReadOnlyList<NodeRef<CMwNod>>? LegacyFileFids => ((CGameCtnApp)owner).References.LegacyFileFids;
+        public NodeRef<CGameCtnCampaign> Campaign => ((CGameCtnApp)owner).References.Campaign;
+        public NodeRef<CGameCtnCampaign> Campaign2 => ((CGameCtnApp)owner).References.Campaign2;
+        public NodeRef<CGameCtnCampaign> Campaign3 => ((CGameCtnApp)owner).References.Campaign3;
+        public NodeRef<CGameCtnCampaign> Campaign4 => ((CGameCtnApp)owner).References.Campaign4;
         public IReadOnlyList<NodeRef<CGameCtnCampaign>>? BaseOfficialCampaigns => ((CGameCtnApp)owner).References.BaseOfficialCampaigns;
         public NodeRef<CMwNod> Advertising => ((CGameCtnApp)owner).References.Advertising;
+        public NodeRef<CGameItemModel> DefaultCollectorVehicle => ((CGameCtnApp)owner).References.DefaultCollectorVehicle;
+        public NodeRef<CPlugFileText> NationsList => ((CGameCtnApp)owner).References.NationsList;
+        public IReadOnlyList<NodeRef<CMwNod>>? CollectionFids => ((CGameCtnApp)owner).References.CollectionFids;
+        public IReadOnlyList<NodeRef<CMwNod>>? AdditionalCollectorsFids => ((CGameCtnApp)owner).References.AdditionalCollectorsFids;
         public IReadOnlyList<NodeRef<CMwNod>>? AdditionalSkinsFids => ((CGameCtnApp)owner).References.AdditionalSkinsFids;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

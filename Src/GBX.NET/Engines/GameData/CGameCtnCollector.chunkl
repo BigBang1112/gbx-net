@@ -22,11 +22,11 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   v3+
     int<ECollectorFlags> Flags = ECollectorFlags.IsInternal
   v2+
-    short CatalogPosition = 1
+    ushort CatalogPosition = 1
   v2..5
     byte NbAvailableMin
     int CopperPrice = 100
-    short NbAvailableMax = 10
+    ushort NbAvailableMax = 10
   v7+
     string Name
   v8+

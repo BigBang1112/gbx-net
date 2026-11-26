@@ -49,7 +49,7 @@ archive
 0x000 (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v3]
   version
   int EulaVersion
-  if !IsOnlineSaveArchivation
+  if !n.IsOnlineSaveArchivation
     string NickName (formatted)
     byte Flags = 14
     if LoginValidated
@@ -95,7 +95,7 @@ archive
     string U02
   v4=
     string[] U03
-  if !IsOnlineSaveArchivation
+  if !n.IsOnlineSaveArchivation
     v6+
       data U04
     v7+
@@ -107,7 +107,7 @@ archive
 
 0x005 (skippable) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
   version
-  if IsOnlineSaveArchivation
+  if n.IsOnlineSaveArchivation
     return
   v1-
     systemtime ReceivedMessagesAt
@@ -123,7 +123,7 @@ archive
 
 0x006 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
-  if !IsOnlineSaveArchivation
+  if !n.IsOnlineSaveArchivation
     byte Flags2
 
 0x007 (skippable) [MP3, TMT, MP4, TM2020]
@@ -138,7 +138,7 @@ archive
   bool BroadcastAudioEnable = true
   float BroadcastAudioVolumePlayback = 1
   float BroadcastAudioVolumeRecorder = 1
-  if !IsOnlineSaveArchivation
+  if !n.IsOnlineSaveArchivation
     string BroadcastPasswordEncryptedHexa
 
 0x008 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
@@ -184,14 +184,14 @@ archive
 
 0x00E (skippable) [MP3, TMT, MP4, TM2020]
   version
-  if IsOnlineSaveArchivation
+  if n.IsOnlineSaveArchivation
     return
   ulong SteamId
   bool
 
 0x00F (skippable) [MP4, TM2020]
   version
-  if !IsOnlineSaveArchivation
+  if !n.IsOnlineSaveArchivation
     string
 
 0x010 (skippable) [TM2020]

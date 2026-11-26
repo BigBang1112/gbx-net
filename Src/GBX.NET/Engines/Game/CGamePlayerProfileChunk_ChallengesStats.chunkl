@@ -1,6 +1,11 @@
 CGamePlayerProfileChunk_ChallengesStats 0x03148000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  if !IsOnlineSaveArchivation
+    int U01
+  SChallengeStats[] ChallengeStats (version: 0)
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   int

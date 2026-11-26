@@ -1,12 +1,22 @@
 CGamePlayerProfileChunk_PackagesInfos 0x03140000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  PackageInfo[] PackagesInfos (version: v + 2)
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
-  PackageInfo[] PackagesInfos
+  PackageInfo[] PackagesInfos (version: 1)
 
 archive PackageInfo
+  v2..3
+    string U01
   data[32] Checksum
   string Key
-  unixtime StartTimestamp
-  unixtime EndTimestamp
+  v1-
+    unixtime StartTimestamp
+    unixtime EndTimestamp
+  v3+
+    unixtime StartTimestamp
+    v5+
+      unixtime EndTimestamp

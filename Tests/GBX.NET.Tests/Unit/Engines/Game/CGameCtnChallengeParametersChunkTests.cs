@@ -1,6 +1,7 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
+using TmEssentials;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
 
@@ -46,6 +47,40 @@ public class CGameCtnChallengeParametersChunkTests
         await Assert.That(restored.GoldTime?.TotalMilliseconds).IsEqualTo(40000);
         await Assert.That(restored.AuthorTime).IsNull();
         await Assert.That(restored.TimeLimit.TotalMilliseconds).IsEqualTo(120000);
+        await Assert.That(restored.AuthorScore).IsEqualTo(12345);
+    }
+
+    [Test]
+    [Arguments(20000, 22000, 25000, 31000)]
+    [Arguments(null, null, null, null)]
+    public async Task ReadWrite_MedalChunk_PreservesRecalculatedMedalTimes(
+        int? authorMilliseconds, int? gold, int? silver, int? bronze)
+    {
+        var parameters = new CGameCtnChallengeParameters
+        {
+            AuthorTime = authorMilliseconds is int milliseconds ? new TimeInt32(milliseconds) : null,
+            GoldTime = new TimeInt32(1000),
+            SilverTime = new TimeInt32(2000),
+            BronzeTime = new TimeInt32(3000),
+            AuthorScore = 12345
+        };
+
+        parameters.RecalculateMedalTimes();
+
+        var chunk = new CGameCtnChallengeParameters.Chunk0305B00A();
+        using var stream = new MemoryStream();
+        using (var writer = new GbxWriter(stream))
+        using (var rw = new GbxReaderWriter(writer))
+        {
+            chunk.ReadWrite(parameters, rw);
+            writer.Write(0x12345678);
+        }
+
+        var restored = await ReadAndRewrite(stream, chunk);
+        await Assert.That(restored.AuthorTime?.TotalMilliseconds).IsEqualTo(authorMilliseconds);
+        await Assert.That(restored.GoldTime?.TotalMilliseconds).IsEqualTo(gold);
+        await Assert.That(restored.SilverTime?.TotalMilliseconds).IsEqualTo(silver);
+        await Assert.That(restored.BronzeTime?.TotalMilliseconds).IsEqualTo(bronze);
         await Assert.That(restored.AuthorScore).IsEqualTo(12345);
     }
 

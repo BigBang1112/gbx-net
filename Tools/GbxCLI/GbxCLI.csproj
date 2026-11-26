@@ -2,29 +2,42 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net11.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>gbx</AssemblyName>
         <FileHashesSource>$(MSBuildProjectDirectory)/../../Resources/FileHashes.txt</FileHashesSource>
+        <!-- LibraryImport needs unsafe code for the console mode calls. -->
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!-- Numbers, dates and compiler messages don't depend on the system language. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <!-- Report trim problems during a normal build, not only when publishing. -->
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">true</PublishSingleFile>
         <EnableCompressionInSingleFile Condition="'$(PublishSingleFile)' == 'true' and '$(EnableCompressionInSingleFile)' == ''">true</EnableCompressionInSingleFile>
+        <!-- Roslyn references assemblies by their location, so they are extracted from the single file. -->
+        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
         <PublishTrimmed Condition="'$(PublishTrimmed)' == ''">true</PublishTrimmed>
         <TrimMode Condition="'$(TrimMode)' == ''">partial</TrimMode>
         <TrimmerRemoveSymbols Condition="'$(TrimmerRemoveSymbols)' == ''">true</TrimmerRemoveSymbols>
-        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
 
         <PackAsTool Condition="'$(_IsPublishing)' != 'true'">true</PackAsTool>
         <ToolCommandName>gbx</ToolCommandName>
         <PackageId>GBX.NET.CLI</PackageId>
         <Title>GBX.NET.CLI</Title>
-        <VersionPrefix>0.1.0</VersionPrefix>
+        <VersionPrefix>0.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>A command-line interface for inspecting and transforming Gbx files with GBX.NET.</Description>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>
-- A tool for parsing, C# evaluation and scripting, verification, compression, and PAK/ZIP listing and extraction
+- Added `gbx set` to change members of a Gbx, with `--dry-run` to preview the changes
+- Added `eval -w` and `eval -o` to write a Gbx after the expressions, `save` to the `eval -i` prompt, and `SaveAsync` to scripts
+- A written Gbx is parsed again and compared before it replaces a file, and the previous file is kept as `.bak`
+- `eval` and `set` run on many files with a folder or pattern, such as `"Maps/*.Map.Gbx"` or `Stadium.pak/Maps/*`, and only write the changed ones
+- `verify` accepts patterns on disk, and scripts can list Gbx files with `GetGbxFiles`
+- Added `gbx diff` to list the properties that differ between two Gbx files, replacing the separate GbxDiff tool. `eval` lists what a write changes
+- Added `set`, `save` and `save as` to the browser
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>
@@ -38,8 +51,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="5.9.0" />
-        <PackageReference Include="Spectre.Console" Version="0.57.2" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="5.12.0" />
+        <PackageReference Include="SimplestGitSourceGenerator" Version="1.0.6">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
@@ -58,7 +74,7 @@
         <!-- Keep the default ScriptOptions references available to code compiled at runtime. -->
         <TrimmerRootAssembly Include="System.Collections;System.Collections.Concurrent;System.Console" />
         <TrimmerRootAssembly Include="System.Diagnostics.Debug;System.Diagnostics.Process;System.Diagnostics.StackTrace;System.Globalization" />
-        <TrimmerRootAssembly Include="System.IO;System.IO.FileSystem;System.IO.FileSystem.Primitives" />
+        <TrimmerRootAssembly Include="System.IO;System.IO.FileSystem;System.IO.FileSystem.Primitives;System.IO.Compression" />
         <TrimmerRootAssembly Include="System.Reflection;System.Reflection.Extensions;System.Reflection.Primitives" />
         <TrimmerRootAssembly Include="System.Runtime.Extensions;System.Runtime.InteropServices" />
         <TrimmerRootAssembly Include="System.Text.Encoding;System.Text.Encoding.CodePages;System.Text.Encoding.Extensions;System.Text.RegularExpressions" />

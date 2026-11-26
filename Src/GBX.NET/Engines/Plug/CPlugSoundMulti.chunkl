@@ -3,11 +3,15 @@ CPlugSoundMulti 0x09064000
 
 0x000 [TMSX, TMNESWC, TMU, VSK5, TMF]
   CMwNod AdditionalSounds
-  int<ESoundInputMapping> InputMapping
+  bool IsForceRandom (local, write: "n.InputMapping == ESoundInputMapping.ForceRandom")
+  if IsForceRandom
+    InputMapping = ESoundInputMapping.ForceRandom
 
 0x001 [MP3, TMT, MP4, TM2020]
   CMwNod[] AdditionalSounds2 (deprec)
-  int<ESoundInputMapping> InputMapping
+  bool IsForceRandom (local, write: "n.InputMapping == ESoundInputMapping.ForceRandom")
+  if IsForceRandom
+    InputMapping = ESoundInputMapping.ForceRandom
 
 0x002 [MP3.v3, TMT.v3, MP4.v3, TM2020.v3]
   version
@@ -22,7 +26,9 @@ CPlugSoundMulti 0x09064000
 
 0x003 [MP3.v0, TMT.v2, MP4.v2, TM2020.v2]
   version
-  bool // is Distance from ESoundInputMapping
+  bool IsDistance (local, write: "n.InputMapping == ESoundInputMapping.Distance")
+  if IsDistance
+    InputMapping = ESoundInputMapping.Distance
   vec3[] PreferedDistances
   v1+
     CFuncKeysReal VolumeFromInput

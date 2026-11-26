@@ -148,24 +148,31 @@ public class GbxFixtureTests
         await GbxAssert.HaveEqualSerializedData(synchronous, asynchronous);
     }
 
+    public static IEnumerable<string> ReplayFixtures() => TestFiles.GbxFixtures()
+        .Where(path => path.StartsWith("CGameCtnReplayRecord/", StringComparison.Ordinal));
+
     [Test]
-    [Arguments("TM10")]
-    [Arguments("TMPU")]
-    [Arguments("TMSX")]
-    [Arguments("TMNESWC")]
-    [Arguments("TMU")]
-    [Arguments("TMF")]
-    [Arguments("MP3")]
-    [Arguments("TMT")]
-    [Arguments("MP4")]
-    [Arguments("TM2020")]
-    public async Task ReplayFixturesReturnGhostsWithoutIgnoringChunkFailures(string game)
+    [MethodDataSource(nameof(ReplayFixtures))]
+    public async Task ReplayFixturesDecodeGhostDataWithoutIgnoringChunkFailures(string filePath)
     {
-        var path = TestFiles.Gbx("CGameCtnReplayRecord", $"CGameCtnReplayRecord {game} 001.Replay.Gbx");
+        var path = TestFiles.Gbx(filePath);
         var gbx = Gbx.Parse<CGameCtnReplayRecord>(path, new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false });
         var replay = gbx.Node;
         await Assert.That(gbx.Body.Exception).IsNull();
-        await Assert.That(replay.GetGhosts().Any()).IsTrue();
+        var ghosts = replay.GetGhosts().ToArray();
+        await Assert.That(ghosts).IsNotEmpty();
+        foreach (var ghost in ghosts)
+        {
+            var data = ghost.SampleData;
+            if (data.SavedMobilClassId == uint.MaxValue)
+            {
+                await Assert.That(data.Samples).IsEmpty();
+            }
+            else
+            {
+                await Assert.That(data.Samples).IsNotEmpty();
+            }
+        }
 
         if (replay.GetChunk<CGameCtnReplayRecord.Chunk03093004>() is { } legacyGhosts)
         {
@@ -173,6 +180,26 @@ public class GbxFixtureTests
             {
                 await Assert.That(ghost!.GhostVersion).IsEqualTo(legacyGhosts.Version);
             }
+        }
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task TMFReplayFixtureDecodesVersion6NetworkSamples(bool async)
+    {
+        var path = TestFiles.Gbx("CGameCtnReplayRecord", "CGameCtnReplayRecord TMF 002.Replay.Gbx");
+        var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
+        var replay = async ? await Gbx.ParseAsync<CGameCtnReplayRecord>(path, settings) : Gbx.Parse<CGameCtnReplayRecord>(path, settings);
+
+        await Assert.That(replay.Body.Exception).IsNull();
+        var sampleData = replay.Node.GetGhosts().Select(ghost => ghost.SampleData).ToArray();
+        await Assert.That(sampleData.Any(data => data.Version == 6)).IsTrue();
+
+        foreach (var data in sampleData.Where(data => data.Version == 6))
+        {
+            await Assert.That(data.Samples).IsNotEmpty();
+            await Assert.That(data.Samples.All(sample => sample.Data.Length == 17)).IsTrue();
         }
     }
 

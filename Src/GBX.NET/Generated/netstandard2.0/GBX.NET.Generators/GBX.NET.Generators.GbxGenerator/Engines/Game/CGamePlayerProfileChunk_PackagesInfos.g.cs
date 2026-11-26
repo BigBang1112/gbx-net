@@ -5,7 +5,7 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03140000</remarks>
 [Class(0x03140000)]
-public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03140000;
@@ -13,8 +13,9 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     internal override uint GetId() => Id;
 
     private PackageInfo[]? packagesInfos;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03140000>]
+    [AppliedWithArchive]
     public PackageInfo[]? PackagesInfos
     {
         get => this.packagesInfos;
@@ -29,6 +30,23 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
     public CGamePlayerProfileChunk_PackagesInfos()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.ArrayReadableWritable<PackageInfo>(ref this.packagesInfos!, version: v+ 2);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>
@@ -68,12 +86,19 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ArrayReadableWritable<PackageInfo>(ref n.packagesInfos!, version: Version);
+            rw.ArrayReadableWritable<PackageInfo>(ref n.packagesInfos!, version: 1);
         }
     }
 
     public partial class PackageInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
         private byte[]? checksum;
         public byte[]? Checksum
         {
@@ -112,6 +137,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((PackageInfo)clone).u01 = context.Clone(this.u01)!;
             ((PackageInfo)clone).checksum = context.CloneArray(this.checksum)!;
             ((PackageInfo)clone).key = context.Clone(this.key)!;
             ((PackageInfo)clone).startTimestamp = context.Clone(this.startTimestamp)!;
@@ -120,10 +146,29 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
+            if (v >= 2 && v <= 3)
+            {
+                rw.String(ref this.u01);
+            }
+
             rw.Data(ref this.checksum!, 32);
             rw.String(ref this.key);
-            this.startTimestamp = rw.UnixTime(this.startTimestamp);
-            this.endTimestamp = rw.UnixTime(this.endTimestamp);
+
+            if (v <= 1)
+            {
+                this.startTimestamp = rw.UnixTime(this.startTimestamp);
+                this.endTimestamp = rw.UnixTime(this.endTimestamp);
+            }
+
+            if (v >= 3)
+            {
+                this.startTimestamp = rw.UnixTime(this.startTimestamp);
+
+                if (v >= 5)
+                {
+                    this.endTimestamp = rw.UnixTime(this.endTimestamp);
+                }
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

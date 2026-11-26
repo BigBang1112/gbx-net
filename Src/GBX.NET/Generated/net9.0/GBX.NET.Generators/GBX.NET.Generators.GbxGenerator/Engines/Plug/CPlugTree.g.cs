@@ -282,6 +282,8 @@ public partial class CPlugTree : CPlug, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0904F00D)clone).storedPlugId = context.Clone(this.storedPlugId)!;
+            ((Chunk0904F00D)clone).storedModelPlugId = context.Clone(this.storedModelPlugId)!;
         }
     }
 

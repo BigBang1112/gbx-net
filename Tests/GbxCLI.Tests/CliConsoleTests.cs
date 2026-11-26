@@ -1,155 +1,73 @@
-using Spectre.Console;
-
-using GBX.NET;
-using GBX.NET.Components;
-using GBX.NET.Engines.MwFoundations;
-
 namespace GbxCLI.Tests;
 
 public class CliConsoleTests
 {
     [Test]
-    public async Task WriteResult_ShowsStoredReferencesWithoutLoadingExternalNodes()
+    public async Task WriteLine_WithoutColors_WritesPlainText()
     {
-        var table = new GbxRefTable();
-        var calls = 0;
-        table.ExternalNodes["external [red].Gbx"] = () =>
-        {
-            calls++;
-            throw new InvalidOperationException("Must not load");
-        };
-        var references = new NodeRefList<CMwNod>();
-        references.Add(new NodeRef<CMwNod>
-        {
-            Descriptor = table.CreateFile("external [red].Gbx")
-        });
-        using var output = new StringWriter();
+        using var writer = new StringWriter();
+        var console = new CliConsole(writer, colors: false);
 
-        await new CliConsole(output).WriteResultAsync(references);
+        await console.WriteLineAsync($"{CliConsole.Label}Name:{CliConsole.Reset} {CliConsole.Escape("a $f00 b $$")}");
 
-        await Assert.That(calls).IsEqualTo(0);
-        await Assert.That(output.ToString()).Contains("Result: 1 items");
-        await Assert.That(output.ToString()).Contains("  [0]: ExternalFile, Unresolved: external [red].Gbx");
+        await Assert.That(writer.ToString()).IsEqualTo("Name: a $f00 b $$" + Environment.NewLine);
     }
 
     [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task PlainOutput_PreservesLongLiteralValues(bool asynchronous)
+    public async Task WriteLine_WithColors_WritesAnsiAndEndsInReset()
     {
-        using var output = new StringWriter();
-        var console = new CliConsole(output);
-        var path = $"{new string('x', 200)} [red] map.Gbx";
-        var markup = $"[grey]File:[/] {Markup.Escape(path)}";
+        using var writer = new StringWriter();
+        var console = new CliConsole(writer, colors: true);
 
-        if (asynchronous)
-        {
-            await console.WriteLineAsync(markup);
-        }
-        else
-        {
-            console.WriteLine(markup);
-        }
+        await console.WriteLineAsync($"{CliConsole.Heading}Header{CliConsole.Reset}");
 
-        await Assert.That(output.ToString()).IsEqualTo($"File: {path}{Environment.NewLine}");
+        var line = writer.ToString().TrimEnd();
+        await Assert.That(line).Contains("\u001b[");
+        await Assert.That(line).Contains("Header");
+        await Assert.That(line.EndsWith('m')).IsTrue();
     }
 
     [Test]
-    [NotInParallel]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task PlainOutput_GitHubActions_PreservesLongLiteralValues(bool asynchronous)
+    public async Task WriteLine_WithColorsAndLink_WritesLinkTextOnly()
     {
-        var githubActions = Environment.GetEnvironmentVariable("GITHUB_ACTIONS");
+        using var writer = new StringWriter();
+        var console = new CliConsole(writer, colors: true);
 
-        try
-        {
-            Environment.SetEnvironmentVariable("GITHUB_ACTIONS", "true");
-            using var output = new StringWriter();
-            var console = new CliConsole(output);
-            var path = $"{new string('x', 200)} [red] map.Gbx";
-            var markup = $"[grey]File:[/] {Markup.Escape(path)}";
+        await console.WriteLineAsync("$l[https://example.com]link$l");
 
-            if (asynchronous)
-            {
-                await console.WriteLineAsync(markup);
-            }
-            else
-            {
-                console.WriteLine(markup);
-            }
-
-            await Assert.That(output.ToString()).IsEqualTo($"File: {path}{Environment.NewLine}");
-        }
-        finally
-        {
-            Environment.SetEnvironmentVariable("GITHUB_ACTIONS", githubActions);
-        }
+        var line = writer.ToString().TrimEnd();
+        await Assert.That(line).DoesNotContain("https://example.com");
+        await Assert.That(System.Text.RegularExpressions.Regex.Replace(line, @"\u001b\[[0-9;]*m", "")).IsEqualTo("link");
     }
 
     [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task AnsiOutput_StylesLabelsWithoutInterpretingLiteralValues(bool asynchronous)
+    public async Task Formatted_WithoutColors_KeepsOriginalValue()
     {
-        using var output = new StringWriter();
-        var ansiConsole = AnsiConsole.Create(new AnsiConsoleSettings
-        {
-            Out = new AnsiConsoleOutput(output),
-            Ansi = AnsiSupport.Yes,
-            ColorSystem = ColorSystemSupport.Standard,
-            Interactive = InteractionSupport.No
-        });
-        ansiConsole.Profile.Width = 200;
-        var console = new CliConsole(ansiConsole);
-        var path = "literal [green] map.Gbx";
-        var markup = $"[cyan]File:[/] {Markup.Escape(path)}";
+        using var writer = new StringWriter();
+        var console = new CliConsole(writer, colors: false);
 
-        if (asynchronous)
-        {
-            await console.WriteLineAsync(markup);
-        }
-        else
-        {
-            console.WriteLine(markup);
-        }
+        await console.WriteLineAsync(console.Formatted("$s$f00My Map"));
 
-        await Assert.That(output.ToString()).Contains("\u001b[");
-        await Assert.That(output.ToString()).Contains("File:");
-        await Assert.That(output.ToString()).Contains(path);
+        await Assert.That(writer.ToString().TrimEnd()).IsEqualTo("$s$f00My Map");
     }
 
     [Test]
-    public async Task WriteResult_PreservesNullAndLiteralMarkupAndBoundsCollections()
+    public async Task Formatted_WithColors_WritesFormattingAsColors()
     {
-        using var output = new StringWriter();
-        var console = new CliConsole(output);
+        using var writer = new StringWriter();
+        var console = new CliConsole(writer, colors: true);
 
-        await console.WriteResultAsync(null);
-        await console.WriteResultAsync("literal [red] text");
-        await console.WriteResultAsync(Enumerable.Range(0, int.MaxValue));
+        await console.WriteLineAsync(console.Formatted("$f00My Map"));
 
-        await Assert.That(output.ToString()).Contains("(null)");
-        await Assert.That(output.ToString()).Contains("literal [red] text");
-        await Assert.That(output.ToString()).Contains("Result: (null)");
-        await Assert.That(output.ToString()).Contains("[9]: 9");
-        await Assert.That(output.ToString().Contains("[10]: 10")).IsFalse();
-        await Assert.That(output.ToString()).Contains("More items (showing first 10)");
-        await Assert.That(output.ToString().Contains('\u001b')).IsFalse();
+        await Assert.That(writer.ToString()).Contains("\u001b[");
+        await Assert.That(writer.ToString().Contains("$f00")).IsFalse();
     }
 
     [Test]
-    public async Task ErrorOutput_PreservesLiteralMarkup()
+    public async Task Create_OtherWriter_HasNoColors()
     {
-        using var output = new StringWriter();
-        using var error = new StringWriter();
-        var argument = "[red]unknown[/]";
+        using var writer = new StringWriter();
 
-        var exitCode = await Cli.RunAsync([argument], output, error);
-
-        await Assert.That(exitCode).IsEqualTo(1);
-        await Assert.That(output.ToString()).IsEqualTo(string.Empty);
-        await Assert.That(error.ToString()).Contains($"gbx: Unknown command: {argument}.");
-        await Assert.That(error.ToString().Contains('\u001b')).IsFalse();
+        await Assert.That(CliConsole.Create(writer).Colors).IsFalse();
     }
 }

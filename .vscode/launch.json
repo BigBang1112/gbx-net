@@ -2,6 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "GbxCLI",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "Build GbxCLI",
+      "program": "${workspaceFolder}/Tools/GbxCLI/bin/Debug/net11.0/gbx.dll",
+      "args": "${input:gbxCliArgs}",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
       "name": "Gbx Explorer: Debug (Edge)",
       "type": "blazorwasm",
       "request": "launch",
@@ -33,6 +44,13 @@
         "pattern": "Now listening on:\\s+(https?://\\S+)",
         "uriFormat": "%s"
       }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "gbxCliArgs",
+      "type": "promptString",
+      "description": "GbxCLI arguments"
     }
   ]
 }

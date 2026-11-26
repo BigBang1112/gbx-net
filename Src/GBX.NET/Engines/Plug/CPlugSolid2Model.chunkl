@@ -11,6 +11,13 @@ CPlugSolid2Model 0x090BB000
   CPlugLightUserModel[] LightUserModels
   CMwNod U14
 
+0x001 // ShootMania Minion skin
+  version
+  CMwNod?[] U01 (deprec)
+  CMwNod?[] U02 (deprec)
+  IndexedLocation[] U03
+  IndexedLocation[] U04
+
 0x002 (skippable) [MP4, TM2020] // fake occlusion
   data FileImageBytes
   FakeOccProj[] FakeOccProjs
@@ -91,3 +98,7 @@ archive FakeOccProj
   float
   float
   float
+
+archive IndexedLocation
+  int Index
+  iso4 Location

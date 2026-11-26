@@ -33,7 +33,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
         else
         {
             logger?.LogInformation("Known class!");
-            WriteKnownHeaderUserData(node ?? throw new Exception("Node cannot be null for a known header, as it contains the header chunk instances."));
+            WriteKnownHeaderUserData(node ?? throw new InvalidOperationException("Node cannot be null for a known header, as it contains the header chunk instances."));
         }
 
         // NumNodes is handled elsewhere as unknown header doesnt change it while known header needs to first count it when writing body
@@ -44,7 +44,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
     private void WriteClassId()
     {
         var classId = header.ClassId;
-        var rawClassId = writer.WriteClassId(classId);
+        var rawClassId = writer.WriteClassId(classId, ClassIdLocation.Root);
 
         if (rawClassId == classId)
         {
@@ -94,7 +94,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 ? (uint)chunk.Data.Length + 0x80000000
                 : (uint)chunk.Data.Length;
 
-            var rawChunkId = writer.WriteChunkId(chunk.Id);
+            var rawChunkId = writer.WriteChunkId(chunk.Id, ClassIdLocation.HeaderChunk);
             writer.Write(length);
 
             LogChunk(chunk.Id, rawChunkId, chunk.Data.Length, chunk.IsHeavy);
@@ -109,7 +109,10 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
     private void WritePartiallyKnownHeaderUserData(GbxHeaderUnknown unknownHeader)
     {
         using var concatenatedDataMs = new MemoryStream();
-        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false });
+        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false })
+        {
+            ClassIdRemapMode = writer.ClassIdRemapMode
+        };
         using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
 
         var infos = new List<HeaderChunkInfo>();
@@ -132,7 +135,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
 
             if (chunk.Node is null)
             {
-                throw new Exception("Node cannot be null for an unknown header on a known header chunk.");
+                throw new InvalidOperationException("Node cannot be null for an unknown header on a known header chunk.");
             }
 
             var chunkStartPos = concatenatedDataMs.Position;
@@ -162,7 +165,10 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
         }
 
         using var concatenatedDataMs = new MemoryStream();
-        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false });
+        using var concatenatedDataW = new GbxWriter(concatenatedDataMs, writer.Settings with { CloseStream = false })
+        {
+            ClassIdRemapMode = writer.ClassIdRemapMode
+        };
         using var concatenatedDataRw = new GbxReaderWriter(concatenatedDataW);
 
         var infos = new List<HeaderChunkInfo>();
@@ -212,7 +218,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 ? (uint)chunk.Size + 0x80000000
                 : (uint)chunk.Size;
 
-            var rawChunkId = writer.WriteChunkId(chunk.Id);
+            var rawChunkId = writer.WriteChunkId(chunk.Id, ClassIdLocation.HeaderChunk);
             writer.Write(size);
 
             LogChunk(chunk.Id, rawChunkId, chunk.Size, chunk.IsHeavy);
@@ -258,7 +264,7 @@ internal sealed class GbxHeaderWriter(GbxHeader header, GbxWriter writer)
                 writable.Write(node, rw.Writer!);
                 break;
             default:
-                throw new Exception($"Unwritable chunk: {chunk.GetType().Name}");
+                throw new ChunkNotSupportedException(chunk.Id);
         }
     }
 }

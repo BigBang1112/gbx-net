@@ -115,7 +115,8 @@ Here are some of the known file types to start with:
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
-- **.NET 10**
+- **.NET 11**
+- .NET 10
 - .NET 9
 - .NET 8
 - .NET Standard 2.0
@@ -185,7 +186,7 @@ The compression logic is split up from the read/write logic to **allow GBX.NET 2
 
 ## Usage (simple examples)
 
-> These examples expect you to have .NET 10 installed. In older versions, you may need to include relevant packages with `dotnet add package` command or add the `using System.Linq;` statement at the top.
+> These examples expect you to have .NET 11 installed. In older versions, you may need to include relevant packages with `dotnet add package` command or add the `using System.Linq;` statement at the top.
 
 ### Load a map and display block count per block name
 
@@ -246,12 +247,12 @@ map.Save("Path/To/MyNew.Map.Gbx", new()
 });
 ```
 
-For TMS or TMN ESWC, you would have to specify `ClassIdRemapMode` for example:
+When saving a node directly for Sunrise eXtreme or Nations ESWC, select the class ID mapping along with the pack descriptor version.
 
 ```cs
 map.Save("Path/To/MyNew.Map.Gbx", new()
 {
-    ClassIdRemapMode = ClassIdRemapMode.Id2006
+    ClassIdRemapMode = ClassIdRemapMode.TrackManiaSunriseExtreme,
     PackDescVersion = 1
 });
 ```
@@ -586,12 +587,13 @@ The library uses sync method generators to simplify async method definitions wit
 
 Make sure you have these framework SDKs available:
 
-- **.NET 10**
+- **.NET 11**
+- .NET 10
 - .NET 9
 - .NET 8
 - .NET Standard 2.0
 
-**Visual Studio 2022** should be able to install those with default installation settings. Using Visual Studio 2019 will not work.
+**Visual Studio 2026** should be able to install those with default installation settings. Older Visual Studio versions will not work.
 
 You should also have **.NET WebAssembly Build Tools** installed additionally to build the full solution. It is required for Gbx Explorer to work properly, as it uses native LZO implementation compiled into WebAssembly.
 

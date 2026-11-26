@@ -54,7 +54,7 @@ public partial class CPlugVertexStream
         {
             // Version -1 represents the unversioned format used before Maniaplanet.
             if (rw.Reader is { } reader && (IsLegacyGame(reader.Settings.GameVersion)
-                || (reader.Settings.GameVersion == GameVersion.Unspecified && reader.ClassIdRemapMode != ClassIdRemapMode.Latest)))
+                || (reader.Settings.GameVersion == GameVersion.Unspecified && reader.HasLegacyClassIds)))
             {
                 Version = -1;
             }

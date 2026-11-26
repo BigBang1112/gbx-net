@@ -5,7 +5,7 @@ CPlugVehicleCameraRace3Model 0x090EF000
   float SlerpSpeed = 5.0f
   float Up = 2.0f
   float Far = 4.0f
-  int FlyDurationBeforeFlyingBehavior = 1
+  int FlyDurationBeforeFlyingBehavior = 1 // MP4 and TM2020 set it to 100 after loading this chunk. TMT, which writes it, keeps the stored value.
   int InputNoSteerDurationBeforeReset = 150
   int InputSteerDurationBeforeBurnoutShowView = 2000
   float MinSpeed = 30.0f
@@ -70,7 +70,6 @@ CPlugVehicleCameraRace3Model 0x090EF000
   CFuncKeysReal SlerpSpeedModulationFromSpeed
   CFuncKeysReal LookAtFactorFromUpSpeedRatio
   CFuncKeysReal FlyingLookDownFactorFromSpeedRatio
-  FlyDurationBeforeFlyingBehavior = 100
 
 0x001 [MP3, TMT, MP4, TM2020]
   float

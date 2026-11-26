@@ -410,7 +410,7 @@ internal static class ObjExporter
 
         if (solid.Visuals is null || solid.Visuals.Count == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
         {
-            throw new Exception("CPlugSolid2Model has no Visuals.");
+            throw new ArgumentException("CPlugSolid2Model has no Visuals.", nameof(solid));
         }
 
         var pickedLod = solid.ShadedGeoms.Any(x => x.LodMask == lod) ? lod : solid.ShadedGeoms.Min(x => x.LodMask);

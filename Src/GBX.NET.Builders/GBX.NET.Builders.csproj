@@ -11,15 +11,17 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>gbx, builder, trackmania, shootmania, maniaplanet, gamebox, net</PackageTags>
         <PackageReleaseNotes>
+- Updated map and block builders
+- Updated to .NET 11
         </PackageReleaseNotes>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net11.0;net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)\Generated\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
-        <LangVersion>14</LangVersion>
+        <LangVersion>15</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>

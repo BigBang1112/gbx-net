@@ -545,6 +545,33 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_GameBuilders_OptInChunkStaysInInterfaceButNotInRecipe()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static int Verify() => System.Linq.Enumerable.Count(Example.Create().ForTM10().WithValue(7).Build().Chunks);
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4]
+              int Value
+            0x002 (opt-in) [TM10]
+              int ModValue
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var contract = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM10")!;
+        await Assert.That(contract.GetMembers("ModValue").Length).IsEqualTo(1);
+        await Assert.That(compilation.GetSymbolsWithName("WithModValue")).IsEmpty();
+        await Assert.That(compilation.GetSymbolsWithName("WithValue")).IsNotEmpty();
+        await Assert.That((int)InvokeGame(compilation, "Verify")!).IsEqualTo(1);
+    }
+
+    [Test]
     public async Task Generate_GameBuilders_ExplicitRecipeSupportsOtherwiseUnqualifiedChunks()
     {
         var (result, compilation) = RunGame("""

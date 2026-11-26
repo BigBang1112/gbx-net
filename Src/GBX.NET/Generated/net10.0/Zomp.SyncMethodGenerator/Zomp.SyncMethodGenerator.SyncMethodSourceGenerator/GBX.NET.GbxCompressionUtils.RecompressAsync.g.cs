@@ -36,7 +36,7 @@ internal static partial class GbxCompressionUtils
                 w.Write((byte)'U');
                 break;
             default:
-                throw new global::System.Exception("Invalid compression type");
+                throw new global::System.IO.InvalidDataException("Invalid compression type.");
         }
 
         CopyRestOfTheHeader(version, r, w);

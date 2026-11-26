@@ -56,6 +56,7 @@ public abstract class CGameCtnChallengeBuilderMembers2<TSelf> : CGameCtnChalleng
 public abstract class CGameCtnChallengeBuilderMembers3<TSelf> : CGameCtnChallengeBuilderMembers2<TSelf> where TSelf : CGameCtnChallengeBuilderMembers3<TSelf>
 {
     private protected CGameCtnChallengeBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public TSelf WithBlockArchiveVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockArchiveVersionAssignment(), value, SupportedGames3);
     public TSelf WithIsLapRace(bool value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, SupportedGames3);
     public TSelf WithModPackDesc(PackDesc? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, SupportedGames3);
     public TSelf WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, SupportedGames3);
@@ -111,6 +112,7 @@ public abstract class CGameCtnChallengeBuilderMembers7<TSelf> : CGameCtnChalleng
     public TSelf WithAuthorNickname(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorNicknameAssignment(), value, SupportedGames11);
     public TSelf WithAuthorVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorVersionAssignment(), value, SupportedGames11);
     public TSelf WithAuthorZone(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorZoneAssignment(), value, SupportedGames11);
+    public TSelf WithBakedBlockArchiveVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedBlockArchiveVersionAssignment(), value, SupportedGames11);
     public TSelf WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedBlocksAssignment(), value, SupportedGames11);
     public TSelf WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values) => WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
     public TSelf WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values) => WithBakedBlocks(values.ToArray());
@@ -205,7 +207,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
 {
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe0(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
@@ -216,7 +218,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe1(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -234,7 +236,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe3(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -247,7 +249,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         return node;
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe4(GameVersion game)
@@ -266,7 +268,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe6(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -279,7 +281,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
@@ -290,7 +292,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe7(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
@@ -299,7 +301,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
@@ -310,7 +312,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe8(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -322,7 +324,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
@@ -339,7 +341,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe9(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -350,7 +352,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025());
@@ -383,7 +385,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe10(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -394,7 +396,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025());
@@ -431,7 +433,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     }
     private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe11(GameVersion game)
     {
-        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge(game);
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game));
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game));
@@ -442,7 +444,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019());
-        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game));
+        node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024());
         node.Chunks.Add(new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025());
@@ -606,6 +608,7 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     public partial class VSK5 : CGameCtnChallengeBuilderBase<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+        public VSK5 WithBlockArchiveVersion(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockArchiveVersionAssignment(), value, SupportedGames3);
         public VSK5 WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? value) => base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5? value) => base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         public VSK5 WithCheckpoints(List<Int3>? value) => Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);

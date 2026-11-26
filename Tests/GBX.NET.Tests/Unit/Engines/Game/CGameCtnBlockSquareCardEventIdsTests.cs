@@ -9,6 +9,54 @@ public class CGameCtnBlockSquareCardEventIdsTests
     private const int Sentinel = 0x12345678;
 
     [Test]
+    [Arguments(2)]
+    [Arguments(3)]
+    [Arguments(4)]
+    public async Task BlockArchive_LegacyVersions_ReadImpliedEventsAndDecalsWithClearFlags(int version)
+    {
+        using var payload = new MemoryStream();
+        using (var writer = new GbxWriter(payload))
+        {
+            writer.WriteIdAsString("Block");
+            writer.Write((byte)Direction.West);
+            writer.Write(new Byte3(1, 2, 3));
+            writer.Write(0); // These versions imply payload presence without a stored flag.
+            writer.Write(0); // Empty card events.
+            if (version >= 3)
+            {
+                writer.WriteIdAsString("Decal");
+                writer.Write(2);
+                writer.Write(3);
+            }
+            writer.Write(Sentinel);
+        }
+
+        var block = new CGameCtnBlock();
+        using var input = new MemoryStream(payload.ToArray());
+        using var reader = new GbxReader(input);
+        block.Read(reader, version);
+
+        await Assert.That(block.SquareCardEventIds!.Length).IsEqualTo(0);
+        await Assert.That(block.Flags).IsEqualTo(0);
+        if (version >= 3)
+        {
+            await Assert.That(block.DecalId).IsEqualTo("Decal");
+            await Assert.That(block.DecalIntensity).IsEqualTo(2);
+            await Assert.That(block.DecalVariant).IsEqualTo(3);
+        }
+        await Assert.That(reader.ReadInt32()).IsEqualTo(Sentinel);
+        await Assert.That(input.Position).IsEqualTo(input.Length);
+
+        using var output = new MemoryStream();
+        using (var writer = new GbxWriter(output))
+        {
+            block.Write(writer, version);
+            writer.Write(Sentinel);
+        }
+        await Assert.That(output.ToArray().SequenceEqual(payload.ToArray())).IsTrue();
+    }
+
+    [Test]
     [Arguments(0, 0)]
     [Arguments(0, 2)]
     [Arguments(3, 2)]

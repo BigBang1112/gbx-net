@@ -139,6 +139,7 @@ public partial interface IGameCtnGhostVSK5 : IGameCtnGhost, global::GBX.NET.Inte
 
 public partial interface IGameCtnGhostTMF : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMF, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers10, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
+    global::GBX.NET.Engines.Game.CGameCtnGhost.AlwaysOfficial? AlwaysOfficialData { get; }
 }
 
 public partial interface IGameCtnGhostMP3 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostMP3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers1, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11

@@ -5,7 +5,7 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03147000</remarks>
 [Class(0x03147000)]
-public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03147000;
@@ -13,8 +13,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     internal override uint GetId() => Id;
 
     private int totalTimePlay;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimePlay
     {
         get => this.totalTimePlay;
@@ -22,8 +23,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSolo;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSolo
     {
         get => this.totalTimeInSolo;
@@ -31,8 +33,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSoloRace;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSoloRace
     {
         get => this.totalTimeInSoloRace;
@@ -40,8 +43,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSoloPuzzle;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSoloPuzzle
     {
         get => this.totalTimeInSoloPuzzle;
@@ -49,8 +53,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSoloPlatform;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSoloPlatform
     {
         get => this.totalTimeInSoloPlatform;
@@ -58,8 +63,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSoloScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSoloScript
     {
         get => this.totalTimeInSoloScript;
@@ -67,8 +73,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInSplitScreen;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInSplitScreen
     {
         get => this.totalTimeInSplitScreen;
@@ -76,8 +83,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInHotSeat;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInHotSeat
     {
         get => this.totalTimeInHotSeat;
@@ -85,8 +93,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetwork;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetwork
     {
         get => this.totalTimeInNetwork;
@@ -94,8 +103,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkTimeAttack;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkTimeAttack
     {
         get => this.totalTimeInNetworkTimeAttack;
@@ -103,8 +113,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkRounds;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkRounds
     {
         get => this.totalTimeInNetworkRounds;
@@ -112,8 +123,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkLaps;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkLaps
     {
         get => this.totalTimeInNetworkLaps;
@@ -121,8 +133,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkStunts;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkStunts
     {
         get => this.totalTimeInNetworkStunts;
@@ -130,8 +143,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkCup;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkCup
     {
         get => this.totalTimeInNetworkCup;
@@ -139,8 +153,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInNetworkScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInNetworkScript
     {
         get => this.totalTimeInNetworkScript;
@@ -148,8 +163,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInEditChallenge;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInEditChallenge
     {
         get => this.totalTimeInEditChallenge;
@@ -157,8 +173,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInEditReplay;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInEditReplay
     {
         get => this.totalTimeInEditReplay;
@@ -166,8 +183,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInEditSkin;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInEditSkin
     {
         get => this.totalTimeInEditSkin;
@@ -175,8 +193,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalTimeInManiaLink;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalTimeInManiaLink
     {
         get => this.totalTimeInManiaLink;
@@ -184,8 +203,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalNbReset;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalNbReset
     {
         get => this.totalNbReset;
@@ -193,8 +213,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalNbFinish;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalNbFinish
     {
         get => this.totalNbFinish;
@@ -202,8 +223,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int totalNbChallenges;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int TotalNbChallenges
     {
         get => this.totalNbChallenges;
@@ -211,8 +233,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimePlay;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimePlay
     {
         get => this.averageTimePlay;
@@ -220,8 +243,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSolo;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSolo
     {
         get => this.averageTimeInSolo;
@@ -229,8 +253,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSoloRace;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSoloRace
     {
         get => this.averageTimeInSoloRace;
@@ -238,8 +263,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSoloPuzzle;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSoloPuzzle
     {
         get => this.averageTimeInSoloPuzzle;
@@ -247,8 +273,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSoloPlatform;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSoloPlatform
     {
         get => this.averageTimeInSoloPlatform;
@@ -256,8 +283,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSoloScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSoloScript
     {
         get => this.averageTimeInSoloScript;
@@ -265,8 +293,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInSplitScreen;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInSplitScreen
     {
         get => this.averageTimeInSplitScreen;
@@ -274,8 +303,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInHotSeat;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInHotSeat
     {
         get => this.averageTimeInHotSeat;
@@ -283,8 +313,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetwork;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetwork
     {
         get => this.averageTimeInNetwork;
@@ -292,8 +323,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkTimeAttack;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkTimeAttack
     {
         get => this.averageTimeInNetworkTimeAttack;
@@ -301,8 +333,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkRounds;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkRounds
     {
         get => this.averageTimeInNetworkRounds;
@@ -310,8 +343,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkLaps;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkLaps
     {
         get => this.averageTimeInNetworkLaps;
@@ -319,8 +353,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkStunts;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkStunts
     {
         get => this.averageTimeInNetworkStunts;
@@ -328,8 +363,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkCup;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkCup
     {
         get => this.averageTimeInNetworkCup;
@@ -337,8 +373,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInNetworkScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInNetworkScript
     {
         get => this.averageTimeInNetworkScript;
@@ -346,8 +383,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageTimeInEditChallenge;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageTimeInEditChallenge
     {
         get => this.averageTimeInEditChallenge;
@@ -355,8 +393,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageNbReset;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageNbReset
     {
         get => this.averageNbReset;
@@ -364,8 +403,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int averageNbFinish;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int AverageNbFinish
     {
         get => this.averageNbFinish;
@@ -373,8 +413,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimePlay;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimePlay
     {
         get => this.maxTimePlay;
@@ -382,8 +423,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSolo;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSolo
     {
         get => this.maxTimeInSolo;
@@ -391,8 +433,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSoloRace;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSoloRace
     {
         get => this.maxTimeInSoloRace;
@@ -400,8 +443,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSoloPuzzle;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSoloPuzzle
     {
         get => this.maxTimeInSoloPuzzle;
@@ -409,8 +453,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSoloPlatform;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSoloPlatform
     {
         get => this.maxTimeInSoloPlatform;
@@ -418,8 +463,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSoloScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSoloScript
     {
         get => this.maxTimeInSoloScript;
@@ -427,8 +473,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInSplitScreen;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInSplitScreen
     {
         get => this.maxTimeInSplitScreen;
@@ -436,8 +483,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInHotSeat;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInHotSeat
     {
         get => this.maxTimeInHotSeat;
@@ -445,8 +493,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetwork;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetwork
     {
         get => this.maxTimeInNetwork;
@@ -454,8 +503,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkTimeAttack;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkTimeAttack
     {
         get => this.maxTimeInNetworkTimeAttack;
@@ -463,8 +513,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkRounds;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkRounds
     {
         get => this.maxTimeInNetworkRounds;
@@ -472,8 +523,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkLaps;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkLaps
     {
         get => this.maxTimeInNetworkLaps;
@@ -481,8 +533,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkStunts;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkStunts
     {
         get => this.maxTimeInNetworkStunts;
@@ -490,8 +543,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkCup;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkCup
     {
         get => this.maxTimeInNetworkCup;
@@ -499,8 +553,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInNetworkScript;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInNetworkScript
     {
         get => this.maxTimeInNetworkScript;
@@ -508,8 +563,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxTimeInEditChallenge;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxTimeInEditChallenge
     {
         get => this.maxTimeInEditChallenge;
@@ -517,8 +573,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxNbReset;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxNbReset
     {
         get => this.maxNbReset;
@@ -526,8 +583,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private int maxNbFinish;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public int MaxNbFinish
     {
         get => this.maxNbFinish;
@@ -535,8 +593,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private string? mostPlayed;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public string? MostPlayed
     {
         get => this.mostPlayed;
@@ -544,8 +603,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private string? mostRaced;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public string? MostRaced
     {
         get => this.mostRaced;
@@ -553,8 +613,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private string? mostEdited;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public string? MostEdited
     {
         get => this.mostEdited;
@@ -562,8 +623,9 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     }
 
     private string? mostNetted;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03147000>]
+    [AppliedWithArchive]
     public string? MostNetted
     {
         get => this.mostNetted;
@@ -639,6 +701,84 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
 
     public CGamePlayerProfileChunk_GameStats()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.Int32(ref this.totalTimePlay);
+        rw.Int32(ref this.totalTimeInSolo);
+        rw.Int32(ref this.totalTimeInSoloRace);
+        rw.Int32(ref this.totalTimeInSoloPuzzle);
+        rw.Int32(ref this.totalTimeInSoloPlatform);
+        rw.Int32(ref this.totalTimeInSoloScript);
+        rw.Int32(ref this.totalTimeInSplitScreen);
+        rw.Int32(ref this.totalTimeInHotSeat);
+        rw.Int32(ref this.totalTimeInNetwork);
+        rw.Int32(ref this.totalTimeInNetworkTimeAttack);
+        rw.Int32(ref this.totalTimeInNetworkRounds);
+        rw.Int32(ref this.totalTimeInNetworkLaps);
+        rw.Int32(ref this.totalTimeInNetworkStunts);
+        rw.Int32(ref this.totalTimeInNetworkCup);
+        rw.Int32(ref this.totalTimeInNetworkScript);
+        rw.Int32(ref this.totalTimeInEditChallenge);
+        rw.Int32(ref this.totalTimeInEditReplay);
+        rw.Int32(ref this.totalTimeInEditSkin);
+        rw.Int32(ref this.totalTimeInManiaLink);
+        rw.Int32(ref this.totalNbReset);
+        rw.Int32(ref this.totalNbFinish);
+        rw.Int32(ref this.totalNbChallenges);
+        rw.Int32(ref this.averageTimePlay);
+        rw.Int32(ref this.averageTimeInSolo);
+        rw.Int32(ref this.averageTimeInSoloRace);
+        rw.Int32(ref this.averageTimeInSoloPuzzle);
+        rw.Int32(ref this.averageTimeInSoloPlatform);
+        rw.Int32(ref this.averageTimeInSoloScript);
+        rw.Int32(ref this.averageTimeInSplitScreen);
+        rw.Int32(ref this.averageTimeInHotSeat);
+        rw.Int32(ref this.averageTimeInNetwork);
+        rw.Int32(ref this.averageTimeInNetworkTimeAttack);
+        rw.Int32(ref this.averageTimeInNetworkRounds);
+        rw.Int32(ref this.averageTimeInNetworkLaps);
+        rw.Int32(ref this.averageTimeInNetworkStunts);
+        rw.Int32(ref this.averageTimeInNetworkCup);
+        rw.Int32(ref this.averageTimeInNetworkScript);
+        rw.Int32(ref this.averageTimeInEditChallenge);
+        rw.Int32(ref this.averageNbReset);
+        rw.Int32(ref this.averageNbFinish);
+        rw.Int32(ref this.maxTimePlay);
+        rw.Int32(ref this.maxTimeInSolo);
+        rw.Int32(ref this.maxTimeInSoloRace);
+        rw.Int32(ref this.maxTimeInSoloPuzzle);
+        rw.Int32(ref this.maxTimeInSoloPlatform);
+        rw.Int32(ref this.maxTimeInSoloScript);
+        rw.Int32(ref this.maxTimeInSplitScreen);
+        rw.Int32(ref this.maxTimeInHotSeat);
+        rw.Int32(ref this.maxTimeInNetwork);
+        rw.Int32(ref this.maxTimeInNetworkTimeAttack);
+        rw.Int32(ref this.maxTimeInNetworkRounds);
+        rw.Int32(ref this.maxTimeInNetworkLaps);
+        rw.Int32(ref this.maxTimeInNetworkStunts);
+        rw.Int32(ref this.maxTimeInNetworkCup);
+        rw.Int32(ref this.maxTimeInNetworkScript);
+        rw.Int32(ref this.maxTimeInEditChallenge);
+        rw.Int32(ref this.maxNbReset);
+        rw.Int32(ref this.maxNbFinish);
+        rw.String(ref this.mostPlayed);
+        rw.String(ref this.mostRaced);
+        rw.String(ref this.mostEdited);
+        rw.String(ref this.mostNetted);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>

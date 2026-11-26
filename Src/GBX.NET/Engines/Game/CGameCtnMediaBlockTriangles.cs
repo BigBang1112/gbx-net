@@ -55,7 +55,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
                 if (int3.X >= vertices.Length
                  || int3.Y >= vertices.Length
                  || int3.Z >= vertices.Length)
-                    throw new Exception($"Index in {int3} is not available in vertices.");
+                    throw new ArgumentException($"Index in {int3} is not available in vertices.", nameof(value));
             }
 
             triangles = value;

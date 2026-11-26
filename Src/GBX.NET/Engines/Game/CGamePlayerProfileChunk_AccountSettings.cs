@@ -2,12 +2,6 @@
 
 public partial class CGamePlayerProfileChunk_AccountSettings
 {
-    /// <summary>
-    /// Selects the native online-save payload, which omits local account data.
-    /// This context is supplied by the caller and is not stored in the payload.
-    /// </summary>
-    public bool IsOnlineSaveArchivation { get; set; }
-
     [Obsolete("Use OnlineValidationCode instead.")]
     public string? OnlineValidationKey { get => OnlineValidationCode; set => OnlineValidationCode = value; }
 

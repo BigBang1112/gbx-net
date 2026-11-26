@@ -63,6 +63,10 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         ((CGamePlayerProfileChunk_GameScores)clone).officialScores1Ref = context.Clone(this.officialScores1Ref)!;
         ((CGamePlayerProfileChunk_GameScores)clone).officialScores2Ref = context.Clone(this.officialScores2Ref)!;
         ((CGamePlayerProfileChunk_GameScores)clone).ladderMatchResults = context.CloneArray(this.ladderMatchResults)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).oldCampaignPlayerScoresRefs = context.CloneArray(this.oldCampaignPlayerScoresRefs)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).OldU01 = context.Clone(this.OldU01)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).OldU02 = context.CloneArray(this.OldU02)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).OldU03 = context.CloneArray(this.OldU03)!;
     }
 
     public CGamePlayerProfileChunk_GameScores()

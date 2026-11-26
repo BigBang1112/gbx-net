@@ -80,4 +80,24 @@ public readonly record struct Id
     /// </summary>
     /// <param name="id">The <see cref="int"/>.</param>
     public static explicit operator Id(int id) => new(id);
+
+    /// <summary>
+    /// Formats a stored number as digits and returns a stored name verbatim.
+    /// </summary>
+    internal static string? ToStoredString(Id? id) => id is not { } value
+        ? null
+        : value.Number is int number ? FormatStoredNumber(number) : value.String ?? "";
+
+    /// <summary>
+    /// Converts a string property value back to an Id, preserving the numeric encoding of an unchanged value.
+    /// </summary>
+    internal static Id? FromStoredString(string? value, Id? current) => value switch
+    {
+        null => null,
+        "" => new Id(),
+        _ when current is { Number: int number } && value == FormatStoredNumber(number) => current,
+        _ => new Id(value)
+    };
+
+    private static string FormatStoredNumber(int number) => unchecked((uint)number).ToString(System.Globalization.CultureInfo.InvariantCulture);
 }

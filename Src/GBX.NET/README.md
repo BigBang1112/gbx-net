@@ -11,6 +11,7 @@ For more details, see the main README.
 
 Due to the recently paced evolution of .NET, framework support has been limited only to a few ones compared to GBX.NET 1:
 
+- .NET 11
 - .NET 10
 - .NET 9
 - .NET 8

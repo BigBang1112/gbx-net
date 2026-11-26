@@ -267,7 +267,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x039 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4LateralFrictionSquareTorque
-  float M4LateralFrictionSquareForce
+  float // A separate member from M4LateralFrictionSquareForce in 0x036 (TMF: +0x1AC, not +0x19C).
 
 0x03A [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   float M4SlipAngleSpeed = 0.005f

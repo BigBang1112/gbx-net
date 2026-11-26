@@ -3783,6 +3783,40 @@ public partial class GenerationTests
     }
 
     [Test]
+    public async Task Generate_NarrowWireTypeWithIntBackingField_UsesRefOverloadWithoutTruncatingOnWrite()
+    {
+        const string source = """
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private int position = 1;
+                public int Position { get => position; set => position = value; }
+                private int count;
+                public int Count { get => count; set => count = value; }
+                private int flags;
+                public int Flags { get => flags; set => flags = value; }
+                public int NoBacking { get; set; }
+            }
+            """;
+        var (result, _) = Run(source, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              ushort Position = 1
+              byte Count
+              short Flags
+              short NoBacking
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("rw.UInt16(ref n.position);");
+        await Assert.That(generated).Contains("rw.Byte(ref n.count);");
+        await Assert.That(generated).Contains("rw.Int16(ref n.flags);");
+        await Assert.That(generated).DoesNotContain("n.position = (int)rw.UInt16");
+        // A property without a backing field can't be passed by ref.
+        await Assert.That(generated).Contains("n.NoBacking = (int)rw.Int16((short)n.NoBacking)");
+    }
+
+    [Test]
     public async Task Generate_ArchiveDeclarations_EmitsInheritanceEnumsAndThrowMessages()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -4164,6 +4198,20 @@ public partial class GenerationTests
         await Assert.That(manager).Contains("0x24003000 => 0x03043000");
         await Assert.That(manager).Contains("new string[] { \"Challenge.Gbx\", \"Map.Gbx\" }");
         await Assert.That(manager).DoesNotContain("\"Example Challenge.Gbx Map.Gbx\"");
+    }
+
+    [Test]
+    [Arguments("@Legacy\n03043000 24003001")]
+    [Arguments("@Legacy\n03043000 24003000 Root\n03043000 24003000 Root")]
+    [Arguments("@Legacy\n03043000 24004000")]
+    public async Task Generate_ClassIdRemapProfiles_RejectsInvalidMappings(string profiles)
+    {
+        var (result, _) = Run("",
+            new Text("Resources/CollectionId.txt", "1 Stadium"),
+            new Text("Resources/Wrap.txt", "24003000 03043000"),
+            new Text("Resources/ClassIdRemap.txt", profiles));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN303");
     }
 
     [Test]
@@ -4587,7 +4635,9 @@ public partial class GenerationTests
                 public GbxReaderWriter(GbxWriter writer) { Writer = writer; }
                 public GbxReaderWriter(GbxReader reader, GbxWriter writer) { Reader = reader; Writer = writer; }
                 public int Byte(int value) => Int32(value);
+                public void Byte(ref int value) { var read = Byte(value); if (Reader is not null) value = read; }
                 public short Int16(short value) => (short)Int32(value);
+                public void Int16(ref int value) { var read = Int16((short)value); if (Reader is not null) value = read; }
                 public void Int32(ref int value) { value = Int32(value); }
                 public void EnumInt32<T>(ref T value) where T : struct, System.Enum
                 {

@@ -4,5 +4,6 @@ public partial interface IGameCtnBlockTMSX : IGameCtnBlock
 {
     new byte Variant { get; set; }
     byte SubVariant { get; set; }
+    bool IsEditable { get; set; }
     bool IsClip { get; set; }
 }

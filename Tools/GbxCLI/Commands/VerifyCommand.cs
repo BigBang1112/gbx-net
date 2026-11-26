@@ -1,102 +1,272 @@
 using GBX.NET;
 using GBX.NET.PAK;
+using System.IO.Compression;
 
 namespace GbxCLI.Commands;
 
-internal static class VerifyCommand
+/// <summary>
+/// Fully parses every Gbx in a file, folder or archive, and continues after exceptions.
+/// </summary>
+internal sealed class VerifyCommand
 {
-    public static async Task<int> RunAsync(IEnumerator<string> argsEnumerator, TextWriter output)
+    private readonly CliContext context;
+    private readonly GbxReadSettings settings;
+    private readonly bool roundTrip;
+
+    private VerifyCommand(CliContext context, GbxReadSettings settings, bool roundTrip)
     {
-        var arguments = FileArguments.Parse(argsEnumerator, "verify", output, requiresOutput: false);
-
-        if (arguments is null)
-        {
-            return 0;
-        }
-
-        var inputPath = arguments.InputPath;
-        var settings = new GbxReadSettings { GameVersion = arguments.Game };
-
-        if (Directory.Exists(inputPath))
-        {
-            var counts = new VerifyCounts();
-            var paths = Directory.EnumerateFiles(inputPath, "*", SearchOption.AllDirectories)
-                .Order(StringComparer.OrdinalIgnoreCase);
-
-            foreach (var path in paths)
-            {
-                counts += await VerifyFileAsync(path, Path.GetRelativePath(inputPath, path), settings, output);
-            }
-
-            await output.WriteLineAsync(counts.ToString());
-            return counts.Failed == 0 ? 0 : 1;
-        }
-
-        if (!File.Exists(inputPath))
-        {
-            throw new FileNotFoundException($"File or directory '{inputPath}' was not found.", inputPath);
-        }
-
-        if (!await IsGbxAsync(inputPath))
-        {
-            throw new InvalidDataException($"The file '{inputPath}' is not a Gbx file.");
-        }
-
-        var result = await VerifyFileAsync(inputPath, inputPath, settings, output);
-        await output.WriteLineAsync(result.ToString());
-        return result.Failed == 0 ? 0 : 1;
+        this.context = context;
+        this.settings = settings;
+        this.roundTrip = roundTrip;
     }
 
-    private static async Task<VerifyCounts> VerifyFileAsync(string path, string displayPath, GbxReadSettings settings, TextWriter output)
+    public static async Task RunAsync(IEnumerator<string> args, CliContext context)
+    {
+        string? inputPath = null;
+        var settings = new GbxReadSettings();
+        var strict = false;
+        var roundTrip = false;
+
+        while (args.MoveNext())
+        {
+            switch (args.Current)
+            {
+                case "-h" or "--help":
+                    await CliHelp.WriteCommandAsync(context.Console, "verify");
+                    return;
+                case "-g" or "--game":
+                    settings = settings with { GameVersion = ParseGameVersion(args.NextValue("--game")) };
+                    break;
+                case "--strict":
+                    strict = true;
+                    break;
+                case "--roundtrip":
+                    roundTrip = true;
+                    break;
+                case var arg when inputPath is null:
+                    inputPath = arg;
+                    break;
+                case var arg:
+                    throw ArgumentExtensions.Unexpected("verify", arg);
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(inputPath))
+        {
+            throw ArgumentExtensions.MissingInput("verify");
+        }
+
+        var counts = await new VerifyCommand(context, settings, roundTrip).VerifyPathAsync(inputPath);
+
+        await context.Console.WriteLineAsync(counts.ToString());
+
+        if (strict && counts.Failed > 0)
+        {
+            throw new InvalidDataException($"{counts.Failed} files failed verification.");
+        }
+    }
+
+    /// <summary>
+    /// Accepts the name of exactly one defined game version. <see cref="GameVersion"/> is a flags enum,
+    /// so numbers and combinations would parse too.
+    /// </summary>
+    internal static GameVersion ParseGameVersion(string value)
+    {
+        if (!Enum.TryParse<GameVersion>(value, ignoreCase: true, out var game)
+            || char.IsAsciiDigit(value.TrimStart()[0]) || value.TrimStart()[0] == '-' || value.Contains(',') || !Enum.IsDefined(game))
+        {
+            throw new ArgumentException($"Unknown game version: {value}. Use one of: {string.Join(", ", Enum.GetNames<GameVersion>())}.");
+        }
+
+        return game;
+    }
+
+    private async Task<VerifyCounts> VerifyPathAsync(string inputPath)
+    {
+        // A folder or a pattern on disk, such as Maps/*.Map.Gbx. A pattern inside an archive is handled below.
+        if (GbxBatch.IsBatch(inputPath) && !GbxBatch.IsInArchive(inputPath))
+        {
+            var files = GbxBatch.FindDiskFiles(inputPath);
+
+            if (files.Count == 0 && !Directory.Exists(inputPath))
+            {
+                throw new FileNotFoundException($"No files matching '{inputPath}' were found.", inputPath);
+            }
+
+            var counts = new VerifyCounts();
+
+            foreach (var diskFile in files)
+            {
+                context.CancellationToken.ThrowIfCancellationRequested();
+
+                await using var stream = File.OpenRead(diskFile.FullPath);
+                counts += await VerifyAsync(stream, diskFile.RelativePath, entryPath: null);
+            }
+
+            return counts;
+        }
+
+        // The path can continue inside a PAK or ZIP archive, also nested in a ZIP.
+        var (filePath, entryPath) = FileObject.Split(inputPath);
+        await using var file = File.OpenRead(filePath);
+
+        return await VerifyAsync(file, filePath, entryPath);
+    }
+
+    /// <summary>
+    /// Fully parses a Gbx, or the Gbx files inside a PAK or ZIP archive. Other files are skipped.
+    /// </summary>
+    /// <param name="entryPath">Path or pattern of the entries to verify inside the archive, or null for all of them.</param>
+    private Task<VerifyCounts> VerifyAsync(Stream stream, string path, string? entryPath) => ReportAsync(path, async () =>
+    {
+        var kind = await FileSignature.ReadAsync(stream, context.CancellationToken);
+
+        switch (kind)
+        {
+            case FileKind.Pak:
+                return await VerifyPakAsync(stream, path, entryPath);
+            case FileKind.Zip:
+                return await VerifyZipAsync(stream, path, entryPath);
+        }
+
+        if (entryPath is not null)
+        {
+            throw new InvalidDataException($"'{path}' is not a PAK or ZIP archive, so it has no entry '{entryPath}'.");
+        }
+
+        if (kind != FileKind.Gbx) return new(0, 0, 1);
+
+        return await VerifyGbxAsync(() =>
+        {
+            stream.Position = 0;
+            return Gbx.ParseAsync(stream, settings, context.CancellationToken);
+        });
+    });
+
+    private async Task<VerifyCounts> VerifyPakAsync(Stream stream, string path, string? entryPath)
+    {
+        var (pak, hasKey) = await PakLoader.ParseAsync(stream, path, context.CancellationToken);
+        using var _ = pak;
+
+        pak.EnsureIndex(hasKey);
+
+        var counts = new VerifyCounts();
+        var matched = false;
+
+        foreach (var entry in pak.Select(entryPath))
+        {
+            context.CancellationToken.ThrowIfCancellationRequested();
+            matched = true;
+
+            if (entry.IsUnstored)
+            {
+                counts += new VerifyCounts(0, 0, 0, 1);
+                continue;
+            }
+
+            counts += await ReportAsync(Path.Combine(path, PathPattern.ToDisplay(entry.Path)), async () =>
+                await pak.CheckFileIsGbxAsync(entry.File, context.CancellationToken)
+                    ? await VerifyGbxAsync(() => pak.OpenGbxFileAsync(entry.File, settings, cancellationToken: context.CancellationToken))
+                    : new(0, 0, 1));
+        }
+
+        if (entryPath is not null && !matched)
+        {
+            throw new FileNotFoundException($"No files matching '{entryPath}' were found in PAK '{path}'.", path);
+        }
+
+        return counts;
+    }
+
+    private async Task<VerifyCounts> VerifyZipAsync(Stream stream, string path, string? entryPath)
+    {
+        using var zip = new ZipArchive(stream, ZipArchiveMode.Read, leaveOpen: true);
+
+        // A path can select one entry, and whatever is left of it continues inside that entry.
+        if (entryPath is not null && zip.Find(entryPath) is var (found, innerPath))
+        {
+            return await VerifyZipEntryAsync(found, path, innerPath);
+        }
+
+        // Otherwise, the pattern is matched against the entries of this ZIP.
+        var counts = new VerifyCounts();
+        var matched = false;
+
+        foreach (var entry in zip.Select(entryPath))
+        {
+            context.CancellationToken.ThrowIfCancellationRequested();
+            matched = true;
+            counts += await VerifyZipEntryAsync(entry, path, innerPath: null);
+        }
+
+        if (entryPath is not null && !matched)
+        {
+            throw new FileNotFoundException($"No files matching '{entryPath}' were found in ZIP '{path}'.", path);
+        }
+
+        return counts;
+    }
+
+    private async Task<VerifyCounts> VerifyZipEntryAsync(ZipArchiveEntry entry, string path, string? innerPath)
+    {
+        var entryPath = Path.Combine(path, PathPattern.ToDisplay(entry.FullName));
+
+        // A ZIP entry can be a nested archive, and Gbx and PAK parsing need a seekable stream.
+        return await ReportAsync(entryPath, async () =>
+        {
+            using var data = await FileObject.BufferAsync(entry, context.CancellationToken);
+            return await VerifyAsync(data, entryPath, innerPath);
+        });
+    }
+
+    private async Task<VerifyCounts> VerifyGbxAsync(Func<Task<Gbx>> parse)
+    {
+        var original = await parse();
+        var counts = Parsed(original);
+
+        if (roundTrip)
+        {
+            // Some serializers normalize properties while writing. Keep the first parsed model for comparison.
+            await CheckRoundTripAsync(original, await parse(), context.CancellationToken);
+        }
+
+        return counts;
+    }
+
+    private static async Task CheckRoundTripAsync(Gbx original, Gbx toSave, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        using var saved = new MemoryStream();
+        toSave.Save(saved);
+        saved.Position = 0;
+
+        var reparsed = await Gbx.ParseAsync(saved, original.ReadSettings with { EncryptionInitializer = null }, cancellationToken);
+        if (GbxPropertyComparer.FindDifference(original, reparsed, cancellationToken) is { } difference)
+        {
+            throw new InvalidDataException($"Round trip changed {difference}");
+        }
+    }
+
+    /// <summary>
+    /// A Gbx whose root class is unknown counts as a failure, because its body was not parsed.
+    /// </summary>
+    private static VerifyCounts Parsed(Gbx gbx) => gbx.Node is null
+        ? throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported (its body was not parsed).")
+        : new(1, 0, 0);
+
+    /// <summary>
+    /// Runs the verification, reporting any exception as a failure of <paramref name="path"/>.
+    /// </summary>
+    private async Task<VerifyCounts> ReportAsync(string path, Func<Task<VerifyCounts>> verify)
     {
         try
         {
-            if (!await IsGbxAsync(path))
-            {
-                return new(0, 0, 1);
-            }
-
-            await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-
-            if (stream.Length < 3)
-            {
-                throw new InvalidDataException("The file is too short to contain a Gbx signature.");
-            }
-
-            EnsureBodyParsed(await Gbx.ParseAsync(stream, settings));
-            return new(1, 0, 0);
+            return await verify();
         }
-        catch (Exception exception)
+        catch (Exception exception) when (exception is not OperationCanceledException)
         {
-            await WriteFailureAsync(output, displayPath, exception);
+            await context.Console.WriteLineAsync(CliConsole.Escape($"{path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}"));
             return new(0, 1, 0);
         }
     }
-
-    private static async Task<bool> IsGbxAsync(string path)
-    {
-        await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
-        var signature = new byte[Pak.Magic.Length];
-        var bytesRead = await stream.ReadAtLeastAsync(signature, signature.Length, throwOnEndOfStream: false);
-        var data = signature.AsSpan(0, bytesRead);
-
-        if (data.StartsWith("GBX"u8))
-        {
-            return true;
-        }
-
-        // Damaged files named as Gbx are reported, but .Pack.Gbx archives are not Gbx files.
-        return path.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase) && !data.SequenceEqual("NadeoPak"u8);
-    }
-
-    internal static void EnsureBodyParsed(Gbx gbx)
-    {
-        if (gbx.Node is null)
-        {
-            throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported; its body was not parsed.");
-        }
-    }
-
-    internal static Task WriteFailureAsync(TextWriter output, string path, Exception exception)
-        => output.WriteLineAsync($"{path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}");
 }

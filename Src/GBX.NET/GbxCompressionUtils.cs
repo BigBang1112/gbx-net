@@ -134,7 +134,7 @@ internal static partial class GbxCompressionUtils
                 w.Write((byte)'U');
                 break;
             default:
-                throw new Exception("Invalid compression type");
+                throw new InvalidDataException("Invalid compression type.");
         }
 
         await CopyRestOfTheHeaderAsync(version, r, w, cancellationToken);

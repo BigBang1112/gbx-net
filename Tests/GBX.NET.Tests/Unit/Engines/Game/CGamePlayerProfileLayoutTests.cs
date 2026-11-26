@@ -477,7 +477,7 @@ public class CGamePlayerProfileLayoutTests
             ProfileEntry(w, 0x0312C000, [], currentContainer && version >= 2);
             ProfileEntry(w, 0x0BADF000, [7, 8, 9, 10, 11], currentContainer && version >= 2);
             ProfileEntry(w, 0x0312D000, Payload(p => { p.Write(10); p.Write(10); p.Write(0xFACADE01u); }), currentContainer && version >= 2);
-            ProfileEntry(w, 0x0312D000, [5, 0, 0, 0, 0xAA, 0xBB], currentContainer && version >= 2); // Unsupported old archive.
+            ProfileEntry(w, 0x03179000, [0, 0, 0, 0, 0xAA, 0xBB], currentContainer && version >= 2); // Unsupported old archive.
         });
         var node = new CGamePlayerProfile();
         var old = new CGamePlayerProfile.Chunk0308C07D();

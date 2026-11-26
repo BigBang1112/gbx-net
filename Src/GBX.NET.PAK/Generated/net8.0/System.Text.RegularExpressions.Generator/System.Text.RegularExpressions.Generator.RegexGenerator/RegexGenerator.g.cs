@@ -18,7 +18,7 @@ namespace GBX.NET.PAK
         /// ○ Match if at the end of the string or if before an ending newline.<br/>
         /// </code>
         /// </remarks>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
         private static partial global::System.Text.RegularExpressions.Regex HashGuessRegex() => global::System.Text.RegularExpressions.Generated.HashGuessRegex_0.Instance;
     }
 }
@@ -43,7 +43,7 @@ namespace GBX.NET.PAK
         /// ○ Match '"'.<br/>
         /// </code>
         /// </remarks>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
         private static partial global::System.Text.RegularExpressions.Regex ScriptNameRegex() => global::System.Text.RegularExpressions.Generated.ScriptNameRegex_1.Instance;
     }
 }
@@ -68,7 +68,7 @@ namespace GBX.NET.PAK
         /// ○ Match '"'.<br/>
         /// </code>
         /// </remarks>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
         private static partial global::System.Text.RegularExpressions.Regex IncludeRegex() => global::System.Text.RegularExpressions.Generated.IncludeRegex_2.Instance;
     }
 }
@@ -91,7 +91,7 @@ namespace GBX.NET.PAK
         /// ○ Match '"'.<br/>
         /// </code>
         /// </remarks>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
         private static partial global::System.Text.RegularExpressions.Regex NameRegex() => global::System.Text.RegularExpressions.Generated.NameRegex_3.Instance;
     }
 }
@@ -109,7 +109,7 @@ namespace System.Text.RegularExpressions.Generated
     using System.Threading;
 
     /// <summary>Custom <see cref="Regex"/>-derived type for the HashGuessRegex method.</summary>
-    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
     [SkipLocalsInit]
     file sealed class HashGuessRegex_0 : Regex
     {
@@ -215,7 +215,7 @@ namespace System.Text.RegularExpressions.Generated
     }
     
     /// <summary>Custom <see cref="Regex"/>-derived type for the ScriptNameRegex method.</summary>
-    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
     [SkipLocalsInit]
     file sealed class ScriptNameRegex_1 : Regex
     {
@@ -447,7 +447,7 @@ namespace System.Text.RegularExpressions.Generated
     }
     
     /// <summary>Custom <see cref="Regex"/>-derived type for the IncludeRegex method.</summary>
-    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
     [SkipLocalsInit]
     file sealed class IncludeRegex_2 : Regex
     {
@@ -676,7 +676,7 @@ namespace System.Text.RegularExpressions.Generated
     }
     
     /// <summary>Custom <see cref="Regex"/>-derived type for the NameRegex method.</summary>
-    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
     [SkipLocalsInit]
     file sealed class NameRegex_3 : Regex
     {
@@ -872,7 +872,7 @@ namespace System.Text.RegularExpressions.Generated
     }
     
     /// <summary>Helper methods used by generated <see cref="Regex"/>-derived implementations.</summary>
-    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.14.42015")]
+    [GeneratedCodeAttribute("System.Text.RegularExpressions.Generator", "8.0.15.2217")]
     file static class Utilities
     {
         /// <summary>Default timeout value set in <see cref="AppContext"/>, or <see cref="Regex.InfiniteMatchTimeout"/> if none was set.</summary>

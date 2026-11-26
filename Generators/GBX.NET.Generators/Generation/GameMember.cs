@@ -11,4 +11,9 @@ internal sealed class GameMember(LayoutModel owner, string name, string type, bo
     public bool IsReference { get; } = reference;
     public PropertyDeclarationSyntax? Existing { get; } = existing;
     public HashSet<string> Games { get; } = new(StringComparer.Ordinal);
+
+    // Games where only an opt-in chunk applies the member. A builder never creates
+    // that chunk, so a value set through the builder would not be written.
+    public HashSet<string> OptInGames { get; } = new(StringComparer.Ordinal);
+    public bool Buildable => Writable && OptInGames.Count == 0;
 }

@@ -1747,7 +1747,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 {
                     if (n.ItemType== EItemType.Block)
                     {
-                        throw new Exception("EntityModel cannot exist for Block");
+                        throw new InvalidDataException("EntityModel cannot exist for Block");
                     }
 
                     rw.NodeRef(ref n.entityModelRef);

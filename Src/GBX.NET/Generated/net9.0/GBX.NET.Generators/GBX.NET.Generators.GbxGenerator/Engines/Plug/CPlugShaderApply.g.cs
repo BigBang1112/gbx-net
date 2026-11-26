@@ -531,6 +531,29 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
+    /// CPlugShaderApply 0x00D chunk (legacy upper ApplyFlags bits)
+    /// </summary>
+    [Chunk(0x0902600D, "legacy upper ApplyFlags bits")]
+    public partial class Chunk0902600D : Chunk<CPlugShaderApply>
+    {
+        public override uint Id => 0x0902600D;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
+        {
+            var applyFlagsHigh = rw.Byte((byte)(rw.Writer is null ? default : ((byte)(n.ApplyFlags >> 4))));
+            if (rw.Reader is not null)
+            {
+                n.ApplyFlags = (byte)(n.ApplyFlags& 0xF | applyFlagsHigh<< 4);
+            }
+        }
+    }
+
+    /// <summary>
     /// CPlugShaderApply 0x010 chunk (ApplyFlags)
     /// </summary>
     [Chunk(0x09026010, "ApplyFlags")]
@@ -689,6 +712,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         0x09026009 => new Chunk09026009(),
         0x0902600A => new Chunk0902600A(),
         0x0902600C => new Chunk0902600C(),
+        0x0902600D => new Chunk0902600D(),
         0x09026010 => new Chunk09026010(),
         0x09026011 => new Chunk09026011(),
         0x09026012 => new Chunk09026012(),

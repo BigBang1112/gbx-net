@@ -70,8 +70,8 @@ if (build) {
     if (result.error || result.status !== 0) throw new Error(`Release build failed:\n${result.stdout}\n${result.stderr}\n${result.error ?? ''}`);
   }
 }
-const dll = path.join(project, 'bin/Release/net10.0/GBX.NET.Comparison.dll');
-const maniaPlanetSharpDll = path.join(maniaPlanetSharpProject, 'bin/Release/net10.0/ManiaPlanetSharp.Comparison.dll');
+const dll = path.join(project, 'bin/Release/net11.0/GBX.NET.Comparison.dll');
+const maniaPlanetSharpDll = path.join(maniaPlanetSharpProject, 'bin/Release/net11.0/ManiaPlanetSharp.Comparison.dll');
 if (!existsSync(dll) || !existsSync(maniaPlanetSharpDll)) throw new Error('Release worker is missing. Run without --no-build.');
 mkdirSync(output, { recursive: true });
 if (existsSync(path.join(output, 'report.json'))) throw new Error('Output already has a report. Choose a new directory.');

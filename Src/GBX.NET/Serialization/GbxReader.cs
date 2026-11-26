@@ -257,7 +257,41 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     internal ILogger? Logger => logger;
 
-    internal ClassIdRemapMode ClassIdRemapMode { get; set; }
+    private ClassIdRemapCandidates classIdRemapCandidates = new();
+
+    internal bool HasLegacyClassIds { get; private set; }
+
+    internal uint NormalizeClassId(uint rawId, ClassIdLocation location)
+    {
+        if (location == ClassIdLocation.BodyChunk && !ClassManager.IsChunkIdRemapped(rawId))
+        {
+            return rawId;
+        }
+
+        var id = ClassManager.Wrap(rawId);
+
+        if (location is ClassIdLocation.Root or ClassIdLocation.BodyChunk)
+        {
+            HasLegacyClassIds |= id != rawId;
+        }
+
+        classIdRemapCandidates.Observe(location, id, rawId);
+        return id;
+    }
+
+    internal ClassIdRemapMode ResolveClassIdRemapMode()
+    {
+        var mode = classIdRemapCandidates.SelectMode(Settings.GameVersion);
+
+        if (!classIdRemapCandidates.HasMatch)
+        {
+            logger?.LogWarning("The Gbx uses class IDs from different remap modes. Using {ClassIdRemapMode} based on the header", mode);
+        }
+
+        return mode;
+    }
+
+    internal void LoadClassIdRemappingFrom(GbxReader reader) => classIdRemapCandidates = reader.classIdRemapCandidates;
 
     public GbxReader(Stream input, GbxReadSettings settings = default) : base(input, encoding, !settings.CloseStream)
     {
@@ -289,6 +323,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             encapsulation = r.encapsulation;
             packDescVersion = r.packDescVersion;
             deprecVersion = r.deprecVersion;
+            LoadClassIdRemappingFrom(r);
 
             ExpectedNodeCount = r.ExpectedNodeCount;
             Signature = r.Signature;
@@ -1134,9 +1169,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             return default;
         }
 
-        var classId = ClassManager.Wrap(rawClassId);
+        var classId = NormalizeClassId(rawClassId, ClassIdLocation.MetaRef);
 
-        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
+        var node = ClassManager.New(classId) ?? throw new ClassNotSupportedException(classId);
 
         if (node is not T metaNod)
         {
@@ -1281,7 +1316,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (!actual.SequenceEqual(expected))
         {
-            throw new Exception($"Invalid marker: expected '{value}', got '{encoding.GetString(actual)}'");
+            throw new InvalidDataException($"Invalid marker: expected '{value}', got '{encoding.GetString(actual)}'");
         }
     }
 
@@ -1305,7 +1340,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (uncompressedSize != rBuffer.BaseStream.Position)
             {
-                throw new Exception($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
+                throw new InvalidDataException($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
             }
 
             return new ZlibData(uncompressedSize, data, exception: null) { Parsed = true };
@@ -1329,7 +1364,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
             if (uncompressedSize != rBuffer.BaseStream.Position)
             {
-                throw new Exception($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
+                throw new InvalidDataException($"Not all zlib data was read: {rBuffer.BaseStream.Position} / {uncompressedSize} bytes read.");
             }
 
             return new ZlibData(uncompressedSize, data, exception: null) { Parsed = true };
@@ -1361,6 +1396,27 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var b2 = ReadByte();
         return (short)((b1 & 0x7F) | (b2 << 7));
     }
+
+#if !NET5_0_OR_GREATER
+    // BinaryReader has this method publicly since .NET 5
+    internal long Read7BitEncodedInt64()
+    {
+        var value = 0UL;
+
+        for (var shift = 0; shift < 70; shift += 7)
+        {
+            var b = ReadByte();
+            value |= (ulong)(b & 0x7F) << shift;
+
+            if ((b & 0x80) == 0)
+            {
+                return (long)value;
+            }
+        }
+
+        throw new FormatException("Too many bytes in what should have been a 7-bit encoded integer.");
+    }
+#endif
 
     public int[] ReadArrayOptimizedInt(int length, int? determineFrom = null)
     {
@@ -1847,7 +1903,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         if (endPos - startPos != size)
         {
-            throw new Exception($"Encapsulation size mismatch: expected {size} bytes, but read {endPos - startPos} bytes.");
+            throw new InvalidDataException($"Encapsulation size mismatch: expected {size} bytes, but read {endPos - startPos} bytes.");
         }
     }
 
@@ -1983,7 +2039,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             {
                 if (base.ReadByte() != 0x0A)
                 {
-                    throw new Exception("Invalid string format.");
+                    throw new InvalidDataException("Invalid string format.");
                 }
 
                 return sb.ToString();
@@ -1992,7 +2048,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             sb.Append((char)b);
         }
 
-        throw new Exception("String is too long.");
+        throw new LengthLimitException("String is too long.");
     }
 
     protected override void Dispose(bool disposing)

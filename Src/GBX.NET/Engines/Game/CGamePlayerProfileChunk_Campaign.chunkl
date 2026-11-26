@@ -1,0 +1,2 @@
+CGamePlayerProfileChunk_Campaign 0x03132000
+- inherits: CGamePlayerProfileChunk
