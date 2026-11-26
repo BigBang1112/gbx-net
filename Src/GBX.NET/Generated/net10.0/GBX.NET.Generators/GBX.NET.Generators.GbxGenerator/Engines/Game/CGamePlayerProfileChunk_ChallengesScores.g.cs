@@ -5,12 +5,37 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03149000</remarks>
 [Class(0x03149000)]
-public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03149000;
 
     internal override uint GetId() => Id;
+
+    private int u01;
+    public int U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
+    private OldChallengeScores[]? oldChallengesScores;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public OldChallengeScores[]? OldChallengesScores
+    {
+        get => this.oldChallengesScores;
+        set => this.oldChallengesScores = value;
+    }
+
+    private int[]? oldChallengesScoresU01;
+    /// <remarks>Applied with: archive v3+</remarks>
+    [AppliedWithArchive(3)]
+    public int[]? OldChallengesScoresU01
+    {
+        get => this.oldChallengesScoresU01;
+        set => this.oldChallengesScoresU01 = value;
+    }
 
     private SContextMapRecordForProfile[]? contextMapRecordsForProfile;
     /// <remarks>Applied with: 0x002 body chunk</remarks>
@@ -24,11 +49,26 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_ChallengesScores)clone).u01 = context.Clone(this.u01)!;
+        ((CGamePlayerProfileChunk_ChallengesScores)clone).oldChallengesScores = context.CloneArray(this.oldChallengesScores)!;
+        ((CGamePlayerProfileChunk_ChallengesScores)clone).oldChallengesScoresU01 = context.CloneArray(this.oldChallengesScoresU01)!;
         ((CGamePlayerProfileChunk_ChallengesScores)clone).contextMapRecordsForProfile = context.CloneArray(this.contextMapRecordsForProfile)!;
     }
 
     public CGamePlayerProfileChunk_ChallengesScores()
     {
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>
@@ -292,6 +332,330 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
             rw.Int32(ref this.u15);
             rw.Int32(ref this.u16);
             rw.Boolean(ref this.u17);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class OldChallengeScores : IReadable<CGamePlayerProfileChunk_ChallengesScores>, IWritable<CGamePlayerProfileChunk_ChallengesScores>, IDeepCloneable
+    {
+        private Ident? mapInfo;
+        public Ident? MapInfo
+        {
+            get => this.mapInfo;
+            set => this.mapInfo = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private DateTime? u04;
+        public DateTime? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private DateTime? u05;
+        public DateTime? U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private int u11;
+        public int U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private int u12;
+        public int U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private int u13;
+        public int U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private bool hasU14;
+        public bool HasU14
+        {
+            get => this.hasU14;
+            set => this.hasU14 = value;
+        }
+
+        private OldChallengeScoresU14[]? u14;
+        public OldChallengeScoresU14[]? U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private bool modifiedSinceLastSynchro;
+        public bool ModifiedSinceLastSynchro
+        {
+            get => this.modifiedSinceLastSynchro;
+            set => this.modifiedSinceLastSynchro = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldChallengeScores)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldChallengeScores)clone).mapInfo = context.Clone(this.mapInfo)!;
+            ((OldChallengeScores)clone).u01 = context.Clone(this.u01)!;
+            ((OldChallengeScores)clone).u02 = context.Clone(this.u02)!;
+            ((OldChallengeScores)clone).u03 = context.Clone(this.u03)!;
+            ((OldChallengeScores)clone).u04 = context.Clone(this.u04)!;
+            ((OldChallengeScores)clone).u05 = context.Clone(this.u05)!;
+            ((OldChallengeScores)clone).u06 = context.Clone(this.u06)!;
+            ((OldChallengeScores)clone).u07 = context.Clone(this.u07)!;
+            ((OldChallengeScores)clone).u08 = context.Clone(this.u08)!;
+            ((OldChallengeScores)clone).u09 = context.Clone(this.u09)!;
+            ((OldChallengeScores)clone).u10 = context.Clone(this.u10)!;
+            ((OldChallengeScores)clone).u11 = context.Clone(this.u11)!;
+            ((OldChallengeScores)clone).u12 = context.Clone(this.u12)!;
+            ((OldChallengeScores)clone).u13 = context.Clone(this.u13)!;
+            ((OldChallengeScores)clone).hasU14 = context.Clone(this.hasU14)!;
+            ((OldChallengeScores)clone).u14 = context.CloneArray(this.u14)!;
+            ((OldChallengeScores)clone).modifiedSinceLastSynchro = context.Clone(this.modifiedSinceLastSynchro)!;
+        }
+
+        public virtual void Read(GbxReader r, CGamePlayerProfileChunk_ChallengesScores n, int v = 0)
+        {
+            this.mapInfo = r.ReadIdent();
+            this.u01 = r.ReadInt32();
+            this.u02 = r.ReadInt32();
+            this.u03 = r.ReadInt32();
+            this.u04 = r.ReadSystemTime();
+            this.u05 = r.ReadSystemTime();
+            this.u06 = r.ReadInt32();
+            this.u07 = r.ReadInt32();
+            this.u08 = r.ReadInt32();
+            this.u09 = r.ReadInt32();
+            this.u10 = r.ReadInt32();
+            this.u11 = r.ReadInt32();
+            this.u12 = r.ReadInt32();
+            this.u13 = r.ReadInt32();
+
+            if (!n.IsOnlineSaveArchivation)
+            {
+                if (v >= 1)
+                {
+                    this.hasU14 = r.ReadBoolean();
+
+                    if (HasU14)
+                    {
+                        this.u14 = r.ReadArrayReadable<OldChallengeScoresU14>(version: v);
+                    }
+                }
+
+                this.modifiedSinceLastSynchro = r.ReadBoolean();
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CGamePlayerProfileChunk_ChallengesScores n, int v = 0)
+        {
+            w.Write(this.mapInfo);
+            w.Write(this.u01);
+            w.Write(this.u02);
+            w.Write(this.u03);
+            w.WriteSystemTime(this.u04);
+            w.WriteSystemTime(this.u05);
+            w.Write(this.u06);
+            w.Write(this.u07);
+            w.Write(this.u08);
+            w.Write(this.u09);
+            w.Write(this.u10);
+            w.Write(this.u11);
+            w.Write(this.u12);
+            w.Write(this.u13);
+
+            if (!n.IsOnlineSaveArchivation)
+            {
+                if (v >= 1)
+                {
+                    w.Write(this.hasU14);
+
+                    if (HasU14)
+                    {
+                        w.WriteArrayWritable<OldChallengeScoresU14>(this.u14, version: v);
+                    }
+                }
+
+                w.Write(this.modifiedSinceLastSynchro);
+            }
+        }
+    }
+
+    public partial class OldChallengeScoresU14 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private OldChallengeScoresU14Pair[]? u03;
+        public OldChallengeScoresU14Pair[]? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldChallengeScoresU14)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldChallengeScoresU14)clone).u01 = context.Clone(this.u01)!;
+            ((OldChallengeScoresU14)clone).u02 = context.Clone(this.u02)!;
+            ((OldChallengeScoresU14)clone).u03 = context.CloneArray(this.u03)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.ArrayReadableWritable<OldChallengeScoresU14Pair>(ref this.u03!, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class OldChallengeScoresU14Pair : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldChallengeScoresU14Pair)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldChallengeScoresU14Pair)clone).u01 = context.Clone(this.u01)!;
+            ((OldChallengeScoresU14Pair)clone).u02 = context.Clone(this.u02)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.u01);
+            rw.String(ref this.u02);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

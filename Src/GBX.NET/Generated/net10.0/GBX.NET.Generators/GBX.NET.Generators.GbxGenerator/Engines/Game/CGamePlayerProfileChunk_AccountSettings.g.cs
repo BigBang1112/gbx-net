@@ -700,7 +700,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).youtubeRefreshToken = context.Clone(this.youtubeRefreshToken)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).youtubeUploads = context.CloneArray(this.youtubeUploads)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).steamId = context.Clone(this.steamId)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).IsOnlineSaveArchivation = context.Clone(this.IsOnlineSaveArchivation)!;
     }
 
     public CGamePlayerProfileChunk_AccountSettings()

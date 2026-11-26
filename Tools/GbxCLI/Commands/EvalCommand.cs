@@ -1,3 +1,5 @@
+using GBX.NET;
+
 namespace GbxCLI.Commands;
 
 internal static class EvalCommand
@@ -5,8 +7,13 @@ internal static class EvalCommand
     public static async Task RunAsync(IEnumerator<string> args, CliContext context)
     {
         string? inputPath = null;
+        string? outputPath = null;
         var expressions = new List<string>();
         var interactive = false;
+        var write = false;
+        var dryRun = false;
+        var backup = true;
+        var force = false;
 
         while (args.MoveNext())
         {
@@ -17,6 +24,21 @@ internal static class EvalCommand
                     return;
                 case "-i" or "--interactive":
                     interactive = true;
+                    break;
+                case "-w" or "--write":
+                    write = true;
+                    break;
+                case "-o" or "--output":
+                    outputPath = outputPath is null ? args.NextValue("--output") : throw new ArgumentException("Output can only be specified once.");
+                    break;
+                case "-n" or "--dry-run":
+                    dryRun = true;
+                    break;
+                case "--no-backup":
+                    backup = false;
+                    break;
+                case "--force":
+                    force = true;
                     break;
                 case var arg when inputPath is null:
                     inputPath = arg;
@@ -29,6 +51,8 @@ internal static class EvalCommand
             }
         }
 
+        write |= outputPath is not null || dryRun;
+
         if (string.IsNullOrWhiteSpace(inputPath))
         {
             throw ArgumentExtensions.MissingInput("eval");
@@ -39,7 +63,32 @@ internal static class EvalCommand
             throw new ArgumentException("Missing C# expression for eval.");
         }
 
+        if (write && interactive)
+        {
+            throw new ArgumentException("Use save in the C# prompt instead of --write, --output or --dry-run with -i.");
+        }
+
+        if (!write && (!backup || force))
+        {
+            throw new ArgumentException("--no-backup and --force only apply with --write, --output or --dry-run.");
+        }
+
+        if (GbxBatch.IsBatch(inputPath))
+        {
+            if (interactive)
+            {
+                throw new ArgumentException("The C# prompt (-i) opens one file, not a folder or pattern.");
+            }
+
+            await RunBatchAsync(inputPath, expressions, write ? new GbxBatchWrite(outputPath, dryRun, backup, force, CompareWithOriginal: true) : null, context);
+            return;
+        }
+
         await using var file = await FileObject.OpenAsync(inputPath, context.CancellationToken);
+
+        // Fails before the expressions run, so they don't seem to have been saved. A dry run writes nothing, so it needs no output for an archive entry.
+        var gbx = !write ? null : dryRun ? file.GetGbx() : file.GetWritableGbx(outputPath);
+
         var session = new CSharpSession(file.Value);
 
         foreach (var expression in expressions)
@@ -48,9 +97,64 @@ internal static class EvalCommand
             await new ConsoleValueWriter(context.Console) { HasExternalReferences = ValueInspector.HasExternalReferences(file.Value) }.WriteResultAsync(result);
         }
 
+        if (gbx is not null)
+        {
+            // The same check as a real write, so a dry run also shows whether the file could be written.
+            var saved = await CheckedGbxWriter.SaveAsync(gbx, force, context.CancellationToken);
+
+            await WriteChangesAsync(inputPath, saved.Reparsed ?? gbx, context);
+
+            if (dryRun)
+            {
+                await context.Console.WriteLineAsync($"{CliConsole.Label}Dry run, so nothing was written.{CliConsole.Reset}");
+            }
+            else
+            {
+                await CheckedGbxWriter.WriteSavedAsync(saved, outputPath ?? file.InputPath, context.Console, backup, context.CancellationToken);
+            }
+        }
+
         if (interactive)
         {
             await CSharpPrompt.RunAsync(session, file, context);
         }
+    }
+
+    /// <summary>
+    /// Lists what changed from the input file to the saved Gbx. That shows what the expressions changed, and that saving changed nothing else.
+    /// </summary>
+    private static async Task WriteChangesAsync(string inputPath, Gbx saved, CliContext context)
+    {
+        await using var original = await FileObject.OpenAsync(inputPath, context.CancellationToken);
+        var changes = GbxPropertyComparer.FindDifferences(original.GetGbx(), saved, DiffCommand.ChangesMax, cancellationToken: context.CancellationToken);
+
+        if (changes.Count == 0)
+        {
+            await context.Console.WriteLineAsync($"{CliConsole.Label}No changes.{CliConsole.Reset}");
+            return;
+        }
+
+        await context.Console.WriteLineAsync($"{CliConsole.Heading}Changes:{CliConsole.Reset}");
+        await DiffCommand.WriteDifferencesAsync(context.Console, changes, DiffCommand.ChangesMax);
+    }
+
+    /// <summary>
+    /// Runs the expressions against every Gbx of a folder or pattern. Without <paramref name="write"/>, each file shows the values
+    /// of its expressions on one line. With it, each file shows whether it changed.
+    /// </summary>
+    private static Task RunBatchAsync(string inputPath, List<string> expressions, GbxBatchWrite? write, CliContext context)
+    {
+        var compiled = new CompiledExpressions(expressions);
+
+        return new GbxBatchRunner(context, write).RunAsync(inputPath, async (gbx, cancellationToken) =>
+        {
+            var values = await compiled.EvaluateAsync(gbx, cancellationToken);
+
+            // A statement such as an assignment with ; has no value to show, like in the C# prompt.
+            var shown = values.Where((value, i) => value is not null || !expressions[i].TrimEnd().EndsWith(';'))
+                .Select(value => ValueFormatter.Clean(ValueFormatter.Describe(value)));
+
+            return new GbxBatchEdit(Changed: null, write is null ? string.Join(" | ", shown) : null);
+        });
     }
 }

@@ -36,7 +36,7 @@ internal static class ScriptCommand
 
         var path = Path.GetFullPath(scriptPath);
         var code = await File.ReadAllTextAsync(path, context.CancellationToken);
-        var session = new CSharpSession(new ScriptGlobals([.. arguments], context.Output), path);
+        var session = new CSharpSession(new ScriptGlobals([.. arguments], context.Output, context.CancellationToken), path);
 
         await session.EvaluateAsync(code, context.CancellationToken);
     }

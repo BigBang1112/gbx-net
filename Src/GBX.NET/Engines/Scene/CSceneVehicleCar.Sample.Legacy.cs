@@ -135,16 +135,16 @@ public partial class CSceneVehicleCar
             w.Write(rpm);
             w.Write(turboStrength);
             w.Write(steerFront);
-            w.Write(flDampenLen);
+            w.Write(flDampenLen ?? EncodedNeutralDampenLen);
             w.Write(PackLegacyWheelRotation(FLWheelRotation));
             w.Write((byte)FLGroundContactMaterial);
-            w.Write(frDampenLen);
+            w.Write(frDampenLen ?? EncodedNeutralDampenLen);
             w.Write(PackLegacyWheelRotation(FRWheelRotation));
             w.Write((byte)FRGroundContactMaterial);
-            w.Write(rrDampenLen);
+            w.Write(rrDampenLen ?? EncodedNeutralDampenLen);
             w.Write(PackLegacyWheelRotation(RRWheelRotation));
             w.Write((byte)RRGroundContactMaterial);
-            w.Write(rlDampenLen);
+            w.Write(rlDampenLen ?? EncodedNeutralDampenLen);
             w.Write(PackLegacyWheelRotation(RLWheelRotation));
             w.Write((byte)RLGroundContactMaterial);
 

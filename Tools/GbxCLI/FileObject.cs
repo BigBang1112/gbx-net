@@ -52,9 +52,15 @@ internal sealed class FileObject : IAsyncDisposable
     /// </summary>
     public string? EntryPattern { get; }
 
-    private FileObject(string inputPath, Opened opened, List<object> owned)
+    /// <summary>
+    /// Whether <see cref="Value"/> was opened from inside an archive, so it cannot be written back to <see cref="InputPath"/>.
+    /// </summary>
+    public bool IsArchiveEntry { get; }
+
+    private FileObject(string inputPath, bool isArchiveEntry, Opened opened, List<object> owned)
     {
         InputPath = inputPath;
+        IsArchiveEntry = isArchiveEntry;
         Value = opened.Value;
         Name = Path.GetFileName(PathPattern.Normalize(opened.Name).TrimEnd('/').Replace('/', Path.DirectorySeparatorChar));
         FileSize = opened.FileSize;
@@ -88,7 +94,13 @@ internal sealed class FileObject : IAsyncDisposable
 
             var opened = await ParseAsync(stream, filePath, entryPath, mode, owned, cancellationToken);
 
-            return new FileObject(path, opened, owned);
+            // A parsed Gbx doesn't read from its file anymore, so the file is closed and can be replaced, such as by eval --write.
+            if (entryPath is null && opened.Value is Gbx)
+            {
+                await DisposeAllAsync(owned);
+            }
+
+            return new FileObject(path, entryPath is not null, opened, owned);
         }
         catch
         {
@@ -173,6 +185,27 @@ internal sealed class FileObject : IAsyncDisposable
 
         memory.Position = 0;
         return memory;
+    }
+
+    /// <summary>
+    /// Gets the opened Gbx to change.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">The opened file is not a Gbx.</exception>
+    public Gbx GetGbx() => Value as Gbx
+        ?? throw new InvalidOperationException($"Only a Gbx can be changed and written, not a {ValueFormatter.GetTypeName(Value.GetType())}.");
+
+    /// <summary>
+    /// Gets the opened Gbx to write. A Gbx from an archive needs <paramref name="outputPath"/>, because archives are not written.
+    /// </summary>
+    /// <param name="outputPath">The file to write instead of <see cref="InputPath"/>, or null.</param>
+    /// <exception cref="InvalidOperationException">The opened file is not a Gbx, or it is an archive entry without <paramref name="outputPath"/>.</exception>
+    public Gbx GetWritableGbx(string? outputPath)
+    {
+        var gbx = GetGbx();
+
+        return outputPath is null && IsArchiveEntry
+            ? throw new InvalidOperationException("A Gbx inside an archive cannot be written back to the archive. Use -o to write it to a file.")
+            : gbx;
     }
 
     public async Task WriteSummaryAsync(CliConsole console)

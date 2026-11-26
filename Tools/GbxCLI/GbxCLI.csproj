@@ -25,19 +25,19 @@
         <ToolCommandName>gbx</ToolCommandName>
         <PackageId>GBX.NET.CLI</PackageId>
         <Title>GBX.NET.CLI</Title>
-        <Version>0.2.0</Version>
+        <VersionPrefix>0.2.0</VersionPrefix>
         <Authors>BigBang1112</Authors>
         <Description>A command-line interface for inspecting and transforming Gbx files with GBX.NET.</Description>
         <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>
-- Added an interactive Gbx, PAK, and ZIP browser. Open it with `gbx &lt;path&gt;` or `gbx inspect -i`
-- Replaced `pak files`, `pak extract`, and `pak verify` with `pack list`, `pack extract`, and `verify`. `inspect` also accepts the `parse` alias
-- Added `verify --roundtrip` to report properties that change after saving and reloading
-- Added nested archive browsing, more PAK filename hashes, and `pack extract --overwrite` and `--skip-existing`
-- Changed `compress` and `decompress` to replace the input when `-o` is omitted, keeping a `.bak` file by default
-- Updated `eval -i` with an interactive C# prompt
-- Updated to .NET 11
+- Added `gbx set` to change members of a Gbx, with `--dry-run` to preview the changes
+- Added `eval -w` and `eval -o` to write a Gbx after the expressions, `save` to the `eval -i` prompt, and `SaveAsync` to scripts
+- A written Gbx is parsed again and compared before it replaces a file, and the previous file is kept as `.bak`
+- `eval` and `set` run on many files with a folder or pattern, such as `"Maps/*.Map.Gbx"` or `Stadium.pak/Maps/*`, and only write the changed ones
+- `verify` accepts patterns on disk, and scripts can list Gbx files with `GetGbxFiles`
+- Added `gbx diff` to list the properties that differ between two Gbx files, replacing the separate GbxDiff tool. `eval` lists what a write changes
+- Added `set`, `save` and `save as` to the browser
         </PackageReleaseNotes>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>

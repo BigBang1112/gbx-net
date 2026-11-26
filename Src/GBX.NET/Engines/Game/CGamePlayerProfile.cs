@@ -134,13 +134,14 @@ public partial class CGamePlayerProfile
                     var lastUpdated = r.ReadUnixTime();
                     var archiveVersion = r.ReadInt32();
 
-                    CGamePlayerProfileChunk chunk = chunkId switch
-                    {
-                        0x0312C000 => new CGamePlayerProfileChunk_AccountSettings(), // CGamePlayerProfileChunk_AccountSettings::ArchiveOldVersion
-                        _ => throw new NotImplementedException($"ProfileChunk 0x{chunkId:X8} is not implemented."),
-                    };
+                    // Payloads are stored without a size, so an unknown one cannot be skipped.
+                    var versions = GetProfileArchiveVersions(chunkId)
+                        ?? throw new NotSupportedException($"Archive versions for profile chunk 0x{chunkId:X8} are unknown.");
+                    var chunk = ClassManager.New(chunkId) as CGamePlayerProfileChunk
+                        ?? throw new NotSupportedException($"Profile chunk 0x{chunkId:X8} is not supported.");
+                    chunk.IsBufferMemoryArchivation = false;
+                    chunk.IsOnlineSaveArchivation = false;
 
-                    var versions = GetProfileArchiveVersions(chunkId)!.Value;
                     var payloadVersion = archiveVersion;
                     if (payloadVersion > versions.Beta)
                     {
@@ -150,7 +151,12 @@ public partial class CGamePlayerProfile
 
                     if (payloadVersion < versions.Nod)
                     {
-                        ((IReadableWritable)chunk).ReadWrite(rw, payloadVersion);
+                        if (chunk is not IReadableWritable readableWritable)
+                        {
+                            throw new NotSupportedException($"Old archive version {payloadVersion} of profile chunk 0x{chunkId:X8} is not supported.");
+                        }
+
+                        readableWritable.ReadWrite(rw, payloadVersion);
                     }
                     else
                     {
@@ -175,6 +181,8 @@ public partial class CGamePlayerProfile
                     var classId = ClassManager.GetId(chunk.GetType()) ?? throw new InvalidOperationException($"Type {chunk.GetType()} is not registered in ClassManager.");
                     var versions = GetProfileArchiveVersions(classId)
                         ?? throw new NotSupportedException($"Archive versions for profile chunk 0x{classId:X8} are unknown.");
+                    chunk.IsBufferMemoryArchivation = false;
+                    chunk.IsOnlineSaveArchivation = false;
                     w.Write(classId);
                     w.Write(chunk.ChunkName);
                     w.Write(chunk.GameName);
@@ -214,7 +222,7 @@ public partial class CGamePlayerProfile
             rw.VersionInt32(this);
             rw.Id(ref n.profileId);
             rw.String(ref n.profileName);
-            n.ReadWriteProfileChunks(rw, hasCreationTime: false);
+            n.ReadWriteProfileChunks(rw, hasCreationTime: false, isOnlineSave: true);
         }
     }
 
@@ -227,7 +235,7 @@ public partial class CGamePlayerProfile
             rw.VersionInt32(this);
             rw.Id(ref n.profileId);
             rw.String(ref n.profileName);
-            n.ReadWriteProfileChunks(rw, hasCreationTime: Version >= 2);
+            n.ReadWriteProfileChunks(rw, hasCreationTime: Version >= 2, isOnlineSave: false);
         }
     }
 
@@ -238,6 +246,8 @@ public partial class CGamePlayerProfile
         0x0312E000 => (2, 4), // InterfaceSettings
         0x0312F000 => (0, 2), // InputBindingsConfig
         0x03130000 => (4, 9), // VehiclesSettings
+        0x03131000 => (2, 5), // Challenge
+        0x03132000 => (0, int.MaxValue), // Campaign, ManiaPlanet 1 has no node archive
         0x03140000 => (3, 5), // PackagesInfos
         0x03146000 => (1, 4), // GameScores
         0x03147000 => (0, 2), // GameStats
@@ -247,10 +257,13 @@ public partial class CGamePlayerProfile
         0x03170000 => (0, 2), // ScriptPersistentTraits
         0x03179000 => (0, 2), // GlobalInterfaceSettings
         0x03180000 => (0, 2), // ManiaPlanetStations
+        0x240D5000 => (6, 8), // TrackManiaSettings
         _ => null,
     };
 
-    private void ReadWriteProfileChunks(GbxReaderWriter rw, bool hasCreationTime)
+    // ManiaPlanet 1 archives the payloads of chunk 0x07D with one flag that selects both buffer memory and online-save data.
+    // Later games pass separate flags and load the payloads of chunk 0x07E as local data.
+    private void ReadWriteProfileChunks(GbxReaderWriter rw, bool hasCreationTime, bool isOnlineSave)
     {
         if (rw.Reader is GbxReader r)
         {
@@ -280,6 +293,9 @@ public partial class CGamePlayerProfile
                     using var chunkReader = new GbxReader(ms, r.Settings);
                     using var chunkRw = new GbxReaderWriter(chunkReader);
                     using var _ = r.Logger?.BeginScope(ClassManager.GetName(chunkClassId) ?? $"0x{chunkClassId:X8}");
+
+                    chunk.IsBufferMemoryArchivation = true;
+                    chunk.IsOnlineSaveArchivation = isOnlineSave;
 
                     var archiveVersion = chunkReader.ReadInt32();
                     chunk.ArchiveVersion = archiveVersion;
@@ -353,6 +369,8 @@ public partial class CGamePlayerProfile
                 using var chunkRw = new GbxReaderWriter(chunkWriter);
                 var versions = GetProfileArchiveVersions(chunkClassId)
                     ?? throw new NotSupportedException($"Archive versions for profile chunk 0x{chunkClassId:X8} are unknown.");
+                chunk.IsBufferMemoryArchivation = true;
+                chunk.IsOnlineSaveArchivation = isOnlineSave;
                 var archiveVersion = chunk.SkipArchiveVersion ?? chunk.ArchiveVersion;
 
                 if (chunk.SkipArchiveVersion is null && archiveVersion == 0

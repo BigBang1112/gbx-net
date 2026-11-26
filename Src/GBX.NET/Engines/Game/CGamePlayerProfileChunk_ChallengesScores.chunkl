@@ -1,6 +1,13 @@
 CGamePlayerProfileChunk_ChallengesScores 0x03149000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  if !IsOnlineSaveArchivation
+    int U01
+  OldChallengeScores[] OldChallengesScores (version: v)
+  v3+
+    int[OldChallengesScores.Length] OldChallengesScoresU01
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1]
   version
   int
@@ -29,3 +36,34 @@ archive SContextMapRecordForProfile
   int
   int
   bool
+
+archive OldChallengeScores (contextual)
+  ident MapInfo
+  int U01
+  int U02
+  int U03
+  systemtime U04
+  systemtime U05
+  int U06
+  int U07
+  int U08
+  int U09
+  int U10
+  int U11
+  int U12
+  int U13
+  if !n.IsOnlineSaveArchivation
+    v1+
+      bool HasU14
+      if HasU14
+        OldChallengeScoresU14[] U14
+    bool ModifiedSinceLastSynchro
+
+archive OldChallengeScoresU14
+  string U01
+  int U02
+  OldChallengeScoresU14Pair[] U03
+
+archive OldChallengeScoresU14Pair
+  string U01
+  string U02

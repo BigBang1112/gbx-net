@@ -5,7 +5,7 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03163000</remarks>
 [Class(0x03163000)]
-public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03163000;
@@ -13,8 +13,9 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     internal override uint GetId() => Id;
 
     private PluginInfo[]? pluginInfos;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 body chunk, archive</remarks>
     [AppliedWithChunk<Chunk03163000>]
+    [AppliedWithArchive]
     public PluginInfo[]? PluginInfos
     {
         get => this.pluginInfos;
@@ -39,6 +40,23 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
 
     public CGamePlayerProfileChunk_EditorSettings()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        rw.ArrayReadableWritable<PluginInfo>(ref this.pluginInfos!, version: v);
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>

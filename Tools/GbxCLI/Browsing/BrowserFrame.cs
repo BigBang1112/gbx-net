@@ -60,6 +60,34 @@ internal sealed class BrowserFrame(string title, object value, bool isFile = fal
     /// <inheritdoc cref="ValueInspector.GetMembers" path="/param[@name='hasExternalReferences']"/>
     public bool HasExternalReferences { get; init; } = true;
 
+    /// <summary>
+    /// Whether the Gbx of a file frame has changes that are not saved.
+    /// </summary>
+    public bool IsDirty { get; set; }
+
+    /// <summary>
+    /// Where <c>save</c> writes the Gbx of a file frame, or null for a Gbx from an archive, which needs <c>save as</c>.
+    /// </summary>
+    public string? SavePath { get; set; }
+
+    /// <summary>
+    /// Lists the members again, after a value changed.
+    /// </summary>
+    public void Refresh() => items = null;
+
+    /// <summary>
+    /// The same frame showing another value, such as a struct that was assigned again after one of its members changed.
+    /// </summary>
+    public BrowserFrame WithValue(object value) => new(Title, value, IsFile)
+    {
+        Owner = Owner,
+        HasExternalReferences = HasExternalReferences,
+        IsDirty = IsDirty,
+        SavePath = SavePath,
+        Page = Page,
+        filter = filter
+    };
+
     private List<BrowserItem> CreateItems()
     {
         switch (Value)

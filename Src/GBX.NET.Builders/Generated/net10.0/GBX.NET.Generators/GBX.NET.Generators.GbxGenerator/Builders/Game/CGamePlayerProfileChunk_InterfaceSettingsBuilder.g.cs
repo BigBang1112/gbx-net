@@ -8,11 +8,25 @@ public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf
     private protected CGamePlayerProfileChunk_InterfaceSettingsBuilderBase() { }
     private protected CGamePlayerProfileChunk_InterfaceSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state) : base(state) { }
     private protected const GameVersion SupportedGames1 = GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT;
+    private protected const GameVersion SupportedGames2 = GameVersion.MP4 | GameVersion.TM2020;
     public TSelf WithCampaignSettings(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetCampaignSettingsAssignment(), value, SupportedGames1);
     public TSelf WithCampaignSettings(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings> values) => WithCampaignSettings(values.ToArray());
     public TSelf WithDynamicLoadScreenIndex(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetDynamicLoadScreenIndexAssignment(), value, SupportedGames1);
+    public TSelf WithInterfaceFlags(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.EInterfaceFlags value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetInterfaceFlagsAssignment(), value, SupportedGames1);
+    public TSelf WithLoadScreenTipDisplayCounts(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SPair[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetLoadScreenTipDisplayCountsAssignment(), value, SupportedGames1);
+    public TSelf WithLoadScreenTipDisplayCounts(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SPair> values) => WithLoadScreenTipDisplayCounts(values.ToArray());
     public TSelf WithMenuInternetView(byte value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuInternetViewAssignment(), value, SupportedGames1);
     public TSelf WithMenuLeagueFilter(string? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetMenuLeagueFilterAssignment(), value, SupportedGames1);
+    public TSelf WithPainterCustomColors(params Vec3[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetPainterCustomColorsAssignment(), value, SupportedGames1);
+    public TSelf WithPainterCustomColors(IEnumerable<Vec3> values) => WithPainterCustomColors(values.ToArray());
+}
+public abstract class CGamePlayerProfileChunk_InterfaceSettingsBuilderMembers1<TSelf> : CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TSelf> where TSelf : CGamePlayerProfileChunk_InterfaceSettingsBuilderMembers1<TSelf>
+{
+    private protected CGamePlayerProfileChunk_InterfaceSettingsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state) : base(state) { }
+    public TSelf WithChallengeOpponents(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SGamePlayerProfileChallengeOpponents[]? value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetChallengeOpponentsAssignment(), value, SupportedGames2);
+    public TSelf WithChallengeOpponents(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SGamePlayerProfileChallengeOpponents> values) => WithChallengeOpponents(values.ToArray());
+    public TSelf WithDefaultSelectedMedal(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetDefaultSelectedMedalAssignment(), value, SupportedGames2);
+    public TSelf WithOpponentsVersionLast(int value) => Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InterfaceSettingsBuilderAssignments.GetOpponentsVersionLastAssignment(), value, SupportedGames2);
 }
 public partial class CGamePlayerProfileChunk_InterfaceSettingsBuilder : CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<CGamePlayerProfileChunk_InterfaceSettingsBuilder>
 {
@@ -52,14 +66,14 @@ public partial class CGamePlayerProfileChunk_InterfaceSettingsBuilder : CGamePla
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings Build() => BuildNode(CGamePlayerProfileChunk_InterfaceSettingsBuilder.CreateRecipe0(GameVersion.TMT), GameVersion.TMT);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings node);
     }
-    public partial class MP4 : CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<MP4>
+    public partial class MP4 : CGamePlayerProfileChunk_InterfaceSettingsBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InterfaceSettingsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings Build() => BuildNode(CGamePlayerProfileChunk_InterfaceSettingsBuilder.CreateRecipe1(GameVersion.MP4), GameVersion.MP4);
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings node);
     }
-    public partial class TM2020 : CGamePlayerProfileChunk_InterfaceSettingsBuilderBase<TM2020>
+    public partial class TM2020 : CGamePlayerProfileChunk_InterfaceSettingsBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings> state) : base(state) { }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InterfaceSettingsTM2020 BuildInterface() => Build();

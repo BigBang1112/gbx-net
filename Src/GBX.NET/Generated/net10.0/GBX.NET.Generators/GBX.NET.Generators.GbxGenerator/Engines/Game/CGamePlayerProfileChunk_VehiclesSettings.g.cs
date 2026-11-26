@@ -5,12 +5,68 @@ namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03130000</remarks>
 [Class(0x03130000)]
-public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfileChunk, IClass
+public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfileChunk, IClass, IReadableWritable, IReadable, IWritable
 {
     [Hexadecimal]
     public static new uint Id => 0x03130000;
 
     internal override uint GetId() => Id;
+
+    private string? u01;
+    public string? U01
+    {
+        get => this.u01;
+        set => this.u01 = value;
+    }
+
+    private byte[]? u02;
+    public byte[]? U02
+    {
+        get => this.u02;
+        set => this.u02 = value;
+    }
+
+    private float u03;
+    public float U03
+    {
+        get => this.u03;
+        set => this.u03 = value;
+    }
+
+    private float u04;
+    public float U04
+    {
+        get => this.u04;
+        set => this.u04 = value;
+    }
+
+    private float u05;
+    public float U05
+    {
+        get => this.u05;
+        set => this.u05 = value;
+    }
+
+    private OldVehicleProfile[]? oldVehicleProfiles;
+    /// <remarks>Applied with: archive</remarks>
+    [AppliedWithArchive]
+    public OldVehicleProfile[]? OldVehicleProfiles
+    {
+        get => this.oldVehicleProfiles;
+        set => this.oldVehicleProfiles = value;
+    }
+
+    private int oldVehicleProfileVersion = 3;
+    /// <summary>
+    /// Version 4+ clears default skin checksums.
+    /// </summary>
+    /// <remarks>Applied with: archive v4+</remarks>
+    [AppliedWithArchive(4)]
+    public int OldVehicleProfileVersion
+    {
+        get => this.oldVehicleProfileVersion;
+        set => this.oldVehicleProfileVersion = value;
+    }
 
     private VehicleProfile[]? vehicleProfiles;
     /// <remarks>Applied with: 0x002 body chunk</remarks>
@@ -24,11 +80,55 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).u01 = context.Clone(this.u01)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).u02 = context.CloneArray(this.u02)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).u03 = context.Clone(this.u03)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).u04 = context.Clone(this.u04)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).u05 = context.Clone(this.u05)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).oldVehicleProfiles = context.CloneArray(this.oldVehicleProfiles)!;
+        ((CGamePlayerProfileChunk_VehiclesSettings)clone).oldVehicleProfileVersion = context.Clone(this.oldVehicleProfileVersion)!;
         ((CGamePlayerProfileChunk_VehiclesSettings)clone).vehicleProfiles = context.CloneArray(this.vehicleProfiles)!;
     }
 
     public CGamePlayerProfileChunk_VehiclesSettings()
     {
+    }
+
+    public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+    {
+        if (v == 6)
+        {
+            return;
+        }
+
+        rw.String(ref this.u01);
+
+        if (v >= 3)
+        {
+            rw.Data(ref this.u02!, 32);
+        }
+
+        rw.Single(ref this.u03);
+        rw.Single(ref this.u04);
+        rw.Single(ref this.u05);
+        rw.ArrayReadableWritable<OldVehicleProfile>(ref this.oldVehicleProfiles!, version: v);
+
+        if (v >= 4)
+        {
+            rw.Int32(ref this.oldVehicleProfileVersion);
+        }
+    }
+
+    public virtual void Read(GbxReader r, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(r);
+        ReadWrite(rw, v);
+    }
+
+    public virtual void Write(GbxWriter w, int v = 0)
+    {
+        using var rw = new GbxReaderWriter(w);
+        ReadWrite(rw, v);
     }
 
     /// <summary>
@@ -447,6 +547,135 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
                     rw.Boolean(ref this.u07);
                 }
             }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class OldVehicleProfile : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Ident? playerModel;
+        public Ident? PlayerModel
+        {
+            get => this.playerModel;
+            set => this.playerModel = value;
+        }
+
+        private string? skinName;
+        public string? SkinName
+        {
+            get => this.skinName;
+            set => this.skinName = value;
+        }
+
+        private string? skinUrl;
+        public string? SkinUrl
+        {
+            get => this.skinUrl;
+            set => this.skinUrl = value;
+        }
+
+        private int legacySkinChecksum;
+        public int LegacySkinChecksum
+        {
+            get => this.legacySkinChecksum;
+            set => this.legacySkinChecksum = value;
+        }
+
+        private UInt128 skinChecksum128;
+        public UInt128 SkinChecksum128
+        {
+            get => this.skinChecksum128;
+            set => this.skinChecksum128 = value;
+        }
+
+        private byte[]? skinChecksum;
+        public byte[]? SkinChecksum
+        {
+            get => this.skinChecksum;
+            set => this.skinChecksum = value;
+        }
+
+        private int gameCamera;
+        public int GameCamera
+        {
+            get => this.gameCamera;
+            set => this.gameCamera = value;
+        }
+
+        private float analogSensitivity;
+        public float AnalogSensitivity
+        {
+            get => this.analogSensitivity;
+            set => this.analogSensitivity = value;
+        }
+
+        private float analogDeadZone;
+        public float AnalogDeadZone
+        {
+            get => this.analogDeadZone;
+            set => this.analogDeadZone = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OldVehicleProfile)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OldVehicleProfile)clone).playerModel = context.Clone(this.playerModel)!;
+            ((OldVehicleProfile)clone).skinName = context.Clone(this.skinName)!;
+            ((OldVehicleProfile)clone).skinUrl = context.Clone(this.skinUrl)!;
+            ((OldVehicleProfile)clone).legacySkinChecksum = context.Clone(this.legacySkinChecksum)!;
+            ((OldVehicleProfile)clone).skinChecksum128 = context.Clone(this.skinChecksum128)!;
+            ((OldVehicleProfile)clone).skinChecksum = context.CloneArray(this.skinChecksum)!;
+            ((OldVehicleProfile)clone).gameCamera = context.Clone(this.gameCamera)!;
+            ((OldVehicleProfile)clone).analogSensitivity = context.Clone(this.analogSensitivity)!;
+            ((OldVehicleProfile)clone).analogDeadZone = context.Clone(this.analogDeadZone)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Ident(ref this.playerModel);
+            rw.String(ref this.skinName);
+
+            if (v >= 8)
+            {
+                rw.String(ref this.skinUrl);
+            }
+
+            if (v == 0)
+            {
+                rw.Int32(ref this.legacySkinChecksum);
+            }
+
+            if (v == 1)
+            {
+                rw.UInt128(ref this.skinChecksum128);
+            }
+
+            if (v >= 2)
+            {
+                rw.Data(ref this.skinChecksum!, 32);
+            }
+
+            rw.Int32(ref this.gameCamera);
+            rw.Single(ref this.analogSensitivity);
+            rw.Single(ref this.analogDeadZone);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

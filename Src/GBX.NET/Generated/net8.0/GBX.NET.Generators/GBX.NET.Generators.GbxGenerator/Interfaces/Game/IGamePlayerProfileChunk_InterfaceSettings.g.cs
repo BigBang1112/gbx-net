@@ -3,12 +3,22 @@
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileChunk_InterfaceSettingsMembers1 : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InterfaceSettings
+{
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SGamePlayerProfileChallengeOpponents[]? ChallengeOpponents { get; set; }
+    int DefaultSelectedMedal { get; set; }
+    int OpponentsVersionLast { get; set; }
+}
 public partial interface IGamePlayerProfileChunk_InterfaceSettings : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings>
 {
     global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SCampaignSettings[]? CampaignSettings { get; set; }
     int DynamicLoadScreenIndex { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.EInterfaceFlags InterfaceFlags { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InterfaceSettings.SPair[]? LoadScreenTipDisplayCounts { get; set; }
     byte MenuInternetView { get; set; }
     string? MenuLeagueFilter { get; set; }
+    Vec3[]? PainterCustomColors { get; set; }
 }
 
 public partial interface IGamePlayerProfileChunk_InterfaceSettingsMP3 : IGamePlayerProfileChunk_InterfaceSettings
@@ -19,11 +29,11 @@ public partial interface IGamePlayerProfileChunk_InterfaceSettingsTMT : IGamePla
 {
 }
 
-public partial interface IGamePlayerProfileChunk_InterfaceSettingsMP4 : IGamePlayerProfileChunk_InterfaceSettings
+public partial interface IGamePlayerProfileChunk_InterfaceSettingsMP4 : IGamePlayerProfileChunk_InterfaceSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InterfaceSettingsMembers1
 {
 }
 
-public partial interface IGamePlayerProfileChunk_InterfaceSettingsTM2020 : IGamePlayerProfileChunk_InterfaceSettings
+public partial interface IGamePlayerProfileChunk_InterfaceSettingsTM2020 : IGamePlayerProfileChunk_InterfaceSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InterfaceSettingsMembers1
 {
 }
 

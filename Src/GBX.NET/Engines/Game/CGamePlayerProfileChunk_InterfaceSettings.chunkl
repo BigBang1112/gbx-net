@@ -1,24 +1,34 @@
 CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 - inherits: CGamePlayerProfileChunk
 
+archive
+  string MenuLeagueFilter
+  byte MenuInternetView = 2
+  int DynamicLoadScreenIndex = 1
+  SCampaignSettings[] CampaignSettings
+  SPair[] LoadScreenTipDisplayCounts
+  vec3[5] PainterCustomColors
+  byte<EInterfaceFlags> InterfaceFlags = DefaultInterfaceFlags
+  v1+
+    string[3] U05 // Discarded by the game when loading.
+  v2+
+    string[3] U06
+    string[3] U07
+
 0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   string MenuLeagueFilter
   byte MenuInternetView
-  byte
+  byte<EInterfaceFlags> InterfaceFlags
 
 0x002 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   int DynamicLoadScreenIndex
-  Pair[]
+  SPair[] LoadScreenTipDisplayCounts
 
 0x003 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
-  vec3
-  vec3
-  vec3
-  vec3
-  vec3
+  vec3[5] PainterCustomColors
 
 0x004 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
@@ -35,28 +45,28 @@ CGamePlayerProfileChunk_InterfaceSettings 0x0312E000
 
 0x006 (skippable) [MP4.v1, TM2020.v1]
   version
-  int U01
-  int U02
-  Unknown[] U03 (version: U02)
-  bool
+  int DefaultSelectedMedal = 2
+  int OpponentsVersionLast = 1
+  SGamePlayerProfileChallengeOpponents[] ChallengeOpponents (version: n.OpponentsVersionLast)
+  bool = true // Discarded by the game when loading.
 
-archive Pair
-  id
-  int
+archive SPair
+  id FrameId
+  int DisplayCount
 
 archive SCampaignSettings
-  byte
-  id
-  int
+  byte U01 // Discarded by the game when loading.
+  id CampaignId
+  int Unlocks
   SSoloChallengesCurrentPage[] SoloChallengesCurrentPages
 
 archive SSoloChallengesCurrentPage
-  int
-  int
+  int MapGroupIndex
+  int PageIndex
 
-archive Unknown
-  ident
+archive SGamePlayerProfileChallengeOpponents
+  ident ChallengeId
   v0=
-    data
-  int
-  string
+    id[] LegacyOpponentIds
+  int SelectedMedal
+  string SelectedLeaguePath

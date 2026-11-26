@@ -39,6 +39,11 @@ internal static class Fixtures
         return stream.ToArray();
     }
 
+    /// <summary>
+    /// Reads <c>TimeValue</c> of the first key from a Gbx made by <see cref="CreateGbx"/>.
+    /// </summary>
+    public static float ReadTimeValue(string path) => Gbx.Parse<CGameCtnMediaBlockTime>(path).Node.Keys![0].TimeValue;
+
     public static byte[] CreateZip(params (string Name, byte[] Contents)[] entries)
     {
         using var stream = new MemoryStream();

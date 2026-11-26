@@ -12,30 +12,26 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations
     {
         public int Version { get; set; }
 
-        public bool U01;
-        public int U02;
-        public bool U03;
         public bool U04;
 
         public override void ReadWrite(CGamePlayerProfileChunk_ManiaPlanetStations n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.ArrayReadableWritable<GameStationDesc>(ref n.stations!, version: Version);
-            rw.Boolean(ref U01);
-            rw.Int32(ref U02);
+            rw.Boolean(ref n.isFirstLaunch);
+            rw.Int32(ref n.installStationClickCount);
 
             if (Version >= 2)
             {
-                rw.Boolean(ref U03);
+                rw.Boolean(ref n.isManualLayout);
 
                 foreach (var desc in n.stations!)
                 {
-                    // Placeholder for additional data per GameStationDesc in version 2
-                    desc.U07 = rw.Int32(desc.U07);
-                    desc.U08 = rw.Int32(desc.U08);
+                    desc.AutoLayoutTimestamp = rw.Int32(desc.AutoLayoutTimestamp);
+                    desc.Order = rw.Int32(desc.Order);
                     if (Version >= 3)
                     {
-                        desc.U09 = rw.Boolean(desc.U09);
+                        desc.LoadWithParentalLock = rw.Boolean(desc.LoadWithParentalLock);
                         if (Version >= 5)
                         {
                             desc.DownloadUrl = rw.String(desc.DownloadUrl);
@@ -53,9 +49,12 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations
 
     public sealed partial class GameStationDesc
     {
-        public int? U07 { get; set; }
-        public int? U08 { get; set; }
-        public bool? U09 { get; set; }
+        /// <summary>
+        /// Unix timestamp used to order stations in the automatic layout.
+        /// </summary>
+        public int? AutoLayoutTimestamp { get; set; }
+        public int? Order { get; set; }
+        public bool? LoadWithParentalLock { get; set; }
         public string? DownloadUrl { get; set; }
     }
 }
